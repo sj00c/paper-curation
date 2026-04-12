@@ -40,6 +40,8 @@ Zotero 컬렉션의 논문 PDF를 자동으로 가져와 Claude Haiku가 **6개 
 
 ### 📝 Obsidian 연동 — 지식 축적 (Compounding Knowledge)
 
+> [Karpathy의 LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) 개념을 반영했습니다 — LLM이 정리하고 사람이 큐레이션하는 persistent knowledge base. Paper Curation은 여기에 자동 파이프라인(Zotero → 리뷰 → 분류)과 embedding RAG(Deep Research)를 결합합니다.
+
 Deep Research 답변 아래 **📝 Obsidian** 버튼을 클릭하면 Obsidian이 열리면서 새 노트 파일이 자동 생성됩니다:
 
 - **`## My Notes`** 섹션이 맨 위에 — 바로 자기 생각을 적을 수 있음
@@ -230,7 +232,7 @@ Papers are fetched from a Zotero collection, reviewed via Claude/Gemini APIs, cl
 
 **🧠 Deep Research**: Flip the search box to 🧠 Deep mode to ask free-form questions. Claude answers grounded in `review.md` excerpts + `text.md` raw paper text (local only — for quantitative detail like reagent names, amounts, conditions). Features client-side RAG with OpenAI embeddings, time filters, length presets, Extended Thinking, and export (Copy / Download .md / Open in new tab). Each reference includes a **📄 PDF** button that opens the paper directly in Zotero Desktop via `zotero://open-pdf`.
 
-**📝 Obsidian Integration**: Click **📝 Obsidian** on any Deep Research answer to create a new note file (`PCDR_{date}-{query}.md`) in Obsidian with the answer pre-filled and `[[papers/slug/review]]` wiki-links to cited papers. A `## My Notes` section at the top invites you to add your own thinking. Notes are automatically indexed on the next pipeline run, so your ideas compound into future Deep Research answers.
+**📝 Obsidian Integration** (inspired by [Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)): Click **📝 Obsidian** on any Deep Research answer to create a new note file (`PCDR_{date}-{query}.md`) in Obsidian with the answer pre-filled and `[[papers/slug/review]]` wiki-links to cited papers. A `## My Notes` section at the top invites you to add your own thinking. Notes are automatically indexed on the next pipeline run, so your ideas compound into future Deep Research answers.
 
 **🕸 Network Visualization**: Interactive UMAP 2D/3D network with category/relation filters, ego network (works across 2D ↔ 3D transitions), and Reset View.
 
