@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Learning Getting-Up Policies for Real-World Humanoid Robots</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>Learning Getting-Up Policies for Real-World Humanoid Robots</h1>
+<blockquote><p><strong>저자</strong>: Xialin He, Runpei Dong, Zixuan Chen, Saurabh Gupta | <strong>날짜</strong>: 2025-02-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.12152" target="_blank">https://arxiv.org/abs/2502.12152</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>휴머노이드 로봇의 낙상 복구를 위해 두 단계 강화학습 프레임워크(HUMANUP)를 제시하여 다양한 자세와 지형에서 일어나는 동작을 학습하고 실제 G1 로봇에 배포했다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: 휴머노이드 로봇을 위한 학습 기반 제어는 보행 같은 주기적 동작에서 성공했으나, 복잡한 접촉 패턴과 희소한 보상을 요구하는 일어나기 작업은 미탐색 분야다.</li>
+<li><strong>Gap</strong>: 기존 보행 학습 방법을 일어나기 작업에 직접 적용하기 어려운 이유는 비주기적 동작, 풍부한 접촉 패턴, 희소한 보상이라는 세 가지 본질적 차이가 있기 때문이다.</li>
+<li><strong>Why</strong>: 휴머노이드 로봇이 다양한 환경에서 안정적으로 배포되려면 자동 낙상 복구 능력이 필수적이며, DARPA Robotics Challenge에서 56%의 시도가 인간 개입 없이 복구되지 못했다.</li>
+<li><strong>Approach</strong>: Stage I에서는 제약 없이 일어나기 궤적을 발견하고, Stage II에서는 발견된 궤적을 추적하는 방식으로 배포 가능한 정책으로 변환하는 커리큘럼 학습을 수행한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>실제 로봇 배포 성공</strong>: G1 휴머노이드 로봇이 supine(누운 상태)과 prone(엎드린 상태) 자세에서 6가지 지형(평탄, 변형 가능, 미끄러운 표면, 경사)에서 일어나기에 성공</li>
+<li><strong>제조사 컨트롤러 능력 확대</strong>: 기존 G1의 수동 설계 컨트롤러(평탄면 supine만 가능)보다 훨씬 넓은 범위의 자세와 지형 지원</li>
+<li><strong>인간 규모 로봇의 첫 번째 사례</strong>: 인간 규모 휴머노이드 로봇에서 학습된 일어나기 정책의 첫 번째 성공적 실제 시연</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li><strong>Stage I (Discovery Policy)</strong>: 최소한의 제약(부드러움, 속도/토크 제한 없음)으로 task reward를 통해 일어나기 궤적 발견, 단순화된 충돌 기하학과 정규화된 초기 자세 사용</li>
+<li><strong>Stage II (Deployable Policy)</strong>: Stage I에서 발견한 궤적의 느린 버전을 추적하도록 강한 제어 정규화(control regularization) 하에서 학습, 다양한 지형과 초기 자세로 domain randomization 적용</li>
+<li><strong>커리큘럼 구성</strong>: 충돌 메시 단순화→완전화, 정규화된→무작위 초기 자세, 약한→강한 제어 정규화, 고정→무작위 환경으로 진행</li>
+<li><strong>Sim-to-Real 전이</strong>: 시뮬레이션에서만 학습하고 실제 로봇에 직접 배포, 도메인 무작위화로 현실 편차 대응</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li>보행과 달리 비주기적이고 접촉이 풍부한 일어나기 작업의 고유한 특성을 명확히 규정하고 이를 해결하기 위한 전문화된 프레임워크 제시</li>
+<li>두 단계 커리큘럼의 역설적 설계: 작업 난도는 쉬운→어려운(보상 밀도), 제약은 약한→강한(정규화)으로 진행</li>
+<li>접촉이 풍부한 전신 동작 학습에 대한 시뮬레이션 모델링 방법론(정확한 충돌 기하학, 작은 시뮬레이션 스텝) 기여</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li>두 가지 자세(supine, prone)만 다루며, 옆으로 누운 상태(lateral) 등 다른 자세로의 확장 미흡</li>
+<li>6가지 지형 테스트는 제한적이며, 더 극단적인 환경(가파른 경사, 진흙, 물)에서의 성능 불명확</li>
+<li>Stage I과 Stage II 사이의 전이 메커니즘(궤적 슬로우다운, 추적 거리) 설계의 자동화 부재로 수동 튜닝 필요 가능성</li>
+<li>실패 케이스 분석 부족: 정책이 실패하는 초기 자세나 지형 조건에 대한 체계적 분석 필요</li>
+<li>계산 비용 분석 미흡: 두 단계 학습의 총 시간, 환경 상호작용 수 등 정량적 정보 부족</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: 휴머노이드 로봇 낙상 복구는 중요하면서도 미탐색된 문제이며, 이 논문은 작업 특성을 정확히 파악하고 실용적 커리큘럼 학습을 통해 인간 규모 로봇에서 처음 성공적인 실제 배포를 시연했다. 기술적 기여도 있지만 평가 범위의 한계와 설계 선택의 일반화 가능성에 대한 추가 검증이 필요하다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>

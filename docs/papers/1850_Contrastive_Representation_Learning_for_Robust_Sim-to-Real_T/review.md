@@ -1,0 +1,65 @@
+# Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion
+
+> **저자**: Yidan Lu, Rurui Yang, Qiran Kou, Mengting Chen, Tao Fan, Peter Cui, Yinzhao Dong, Peng Lu | **날짜**: 2025-09-16 | **URL**: [https://arxiv.org/abs/2509.12858](https://arxiv.org/abs/2509.12858)
+
+---
+
+## Essence
+
+![Figure 2](figures/fig2.webp)
+
+*Fig. 2: Overview of our proposed training framework. An asymmetric Actor-*
+
+Contrastive learning을 이용해 시뮬레이션의 특권 정보(terrain heightmap)를 순수 proprioceptive policy에 증류시켜 지각의 선견성을 얻으면서도 배포 시 지각 센서의 비용을 피한다. Adaptive gait clock을 통해 고정된 클럭 보행과 불안정한 자유 클럭 보행 사이의 근본적 trade-off를 해결한다.
+
+## Motivation
+
+- **Known**: Deep reinforcement learning은 인간형 로봇 보행에서 놀라운 성과를 이루었으나, 시뮬레이션에서는 terrain geometry, 마찰 계수 등의 특권 정보에 접근 가능하지만 실제 배포 시에는 proprioceptive 센서(joint encoder, IMU)만 사용 가능한 정보 격차가 존재한다.
+- **Gap**: 기존 reactive proprioceptive 정책은 강건하지만 장애물에 능동적으로 대응할 수 없고, exteroceptive 센서(카메라, LiDAR)를 탑재한 정책은 능동적이나 시스템 복잡도와 배포 비용이 높다. 이 두 전략 사이의 근본적 trade-off를 해결하는 방법이 부재하다.
+- **Why**: 실제 로봇 배포에서 강건하고 능동적인 보행 제어는 매우 도전적인 문제이며, 특히 계단, 경사면 같은 불규칙한 지형에서의 적응적 이동성이 인간형 로봇의 실용성을 크게 좌우한다.
+- **Approach**: Asymmetric actor-critic 프레임워크에서 Actor는 proprioceptive 관측만 받고, Critic은 privileged information(height map)에도 접근하도록 한다. Contrastive learning 손실을 통해 Actor의 latent state를 환경 맥락과 일치시켜 환경 인식을 증류한다. 이렇게 얻은 환경 이해를 adaptive gait clock에 활용해 능동적으로 보행 리듬을 조절한다.
+
+## Achievement
+
+![Figure 1](figures/fig1.webp)
+
+*Fig. 1: Our policy, trained via contrastive knowledge distillation, enables*
+
+- **Contrastive knowledge distillation 프레임워크**: Privileged 환경 정보(height map)를 순수 proprioceptive policy에 직접 증류하는 공간적 대조학습 방법 제안으로, 기존 auxiliary world model 또는 teacher-student 프레임워크의 비효율성을 극복
+- **Adaptive gait clock의 지능적 제어**: Distilled awareness를 통해 정책이 고정된 클럭 보행의 강건성과 자유 클럭 보행의 유연성을 결합한 적응적 gait mechanism 실현
+- **Zero-shot sim-to-real 검증**: Full-sized humanoid (Adam Lite)에서 시뮬레이션 없이 실제 배포 시 30 cm 높이 계단과 26.5° 경사면 같은 극도로 도전적인 지형에서 강건한 보행 달성
+
+## How
+
+![Figure 2](figures/fig2.webp)
+
+*Fig. 2: Overview of our proposed training framework. An asymmetric Actor-*
+
+- RNN 기반 asymmetric actor-critic 아키텍처: Actor는 84차원 센서 입력을 받아 256차원 RNN 숨김 상태를 생성하고 26차원 action을 출력
+- Critic은 Actor 입력에 추가로 CNN으로 처리된 height map 특징을 포함하여 가치 추정
+- Spatial contrastive objective: Actor의 proprioceptive history와 privileged environmental context의 matching/non-matching 쌍을 구분하도록 훈련하여 latent state가 지형 관련 정보 인코딩
+- Adaptive gait clock 메커니즘: Policy가 동적으로 gait frequency와 phase를 조절 가능하도록 설계하여 environment awareness를 활용한 능동적 적응
+- PD controller (400 Hz)를 통한 저수준 action 실행으로 안정성 보장
+
+## Originality
+
+- 기존 temporal contrastive objective (동적 예측)나 auxiliary world model 재구성 대신 spatial contrastive learning으로 환경 맥락을 직접 정렬하는 더 직접적이고 효율적인 접근
+- Privileged information distillation과 adaptive gait control의 새로운 결합으로 reactive vs proactive control의 근본적 trade-off 해소
+- End-to-end representation learning을 통해 다단계 복잡도(teacher-student) 없이 proprioceptive policy 성능 상한선 제거
+
+## Limitation & Further Study
+
+- 현재 연구는 Adam Lite humanoid에서만 검증되었으므로 다양한 로봇 형태로의 일반화 가능성이 불명확
+- Height map이라는 특정 형태의 privileged information에 최적화되어 있어 다른 환경 특성(마찰, 감쇠 등)에 대한 확장성 검토 필요
+- Sim-to-real 전이의 성공이 충분한 domain randomization에 의존하는 정도를 정량적으로 분석하지 않음
+- **후속 연구**: (1) 다양한 보행 표면 및 극한 환경에서의 장기 안정성 평가, (2) 다른 형태의 privileged information (동적 특성, 장애물 형태 등)으로의 확장, (3) Online adaptation 또는 few-shot learning을 통한 빠른 신환경 적응 메커니즘 개발
+
+## Evaluation
+
+- Novelty: 4/5
+- Technical Soundness: 3/5
+- Significance: 4/5
+- Clarity: 4/5
+- Overall: 4/5
+
+**총평**: 이 논문은 contrastive learning을 통해 시뮬레이션 특권 정보를 proprioceptive policy에 효과적으로 증류하여 지각 센서 없이도 선견성 있는 제어를 달성하는 창의적 해결책을 제시한다. Zero-shot sim-to-real 전이로 극도로 도전적인 지형에서의 강건한 보행을 실증함으로써 인간형 로봇 실용화의 중요한 진전을 보여준다.

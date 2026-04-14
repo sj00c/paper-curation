@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GentleHumanoid: Learning Upper-body Compliance for Contact-rich Human and Object Interaction</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>GentleHumanoid: Learning Upper-body Compliance for Contact-rich Human and Object Interaction</h1>
+<blockquote><p><strong>저자</strong>: Qingzhou Lu, Yao Feng, Baiyu Shi, Michael Piseno, Zhenan Bao, C. Karen Liu | <strong>날짜</strong>: 2025-11-06 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.04679" target="_blank">10.48550/arXiv.2511.04679</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>GentleHumanoid는 impedance control을 whole-body motion tracking 정책에 통합하여 humanoid 로봇의 상체 compliance를 학습하는 프레임워크이다. 이는 human motion data에서 샘플링한 spring-based formulation을 통해 resistive contact와 guiding contact를 통일적으로 모델링한다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: 최근 RL 기반 humanoid 제어는 rigid tracking과 external force 억제에 중점을 두고 있으며, 기존 impedance-augmented 방법들은 base 또는 end-effector 제어에 제한되어 있다.</li>
+<li><strong>Gap</strong>: shoulder, elbow, wrist 등 multiple links에서 coordinated compliance가 필요한 상황(hugging, sit-to-stand assistance)에서 whole-body upper-body compliance를 제공하는 통합 프레임워크가 부재한다.</li>
+<li><strong>Why</strong>: humanoid 로봇이 human-centered environment에서 안전하고 자연스러운 physical interaction을 수행해야 하며, 특히 여러 신체 부위가 동시에 접촉하는 상황에서 force를 효과적으로 조정할 필요가 있다.</li>
+<li><strong>Approach</strong>: unified spring-based formulation으로 driving force(motion tracking)와 interaction force(contact)를 결합하고, human motion dataset에서 샘플링한 완전한 posture를 이용하여 kinematically consistent interaction forces를 생성한다. Task-adjustable force thresholds를 통해 safety를 보장한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>통합 impedance control 프레임워크</strong>: motion tracking과 compliance를 동시에 달성하는 whole-body humanoid 제어 정책 개발</li>
+<li><strong>Unified interaction force modeling</strong>: resistive contact(surface pressing)와 guiding contact(human push/pull)를 단일 spring-based formulation으로 통합</li>
+<li><strong>Kinematically consistent forces</strong>: human motion data에서 샘플링한 complete postures를 사용하여 shoulder, elbow, wrist 간 coordinated force 생성</li>
+<li><strong>Safety mechanism</strong>: task-specific adjustable force thresholds로 deployment 시 안전성 보장</li>
+<li><strong>Comprehensive evaluation</strong>: gentle hugging, sit-to-stand assistance, balloon handling 등 diverse tasks에서 baseline 대비 peak contact force 감소 및 task success 유지 입증</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li>Reference dynamics 모델: M¨xi = fdrive,i + finteract,i 형태로 각 link의 motion을 driving force와 interaction force의 합으로 표현</li>
+<li>Driving force: classical impedance control의 virtual spring-damper system으로 target motion을 추적</li>
+<li>Interaction force 모델링: (i) resistive contact는 initial contact point에서 spring anchor를 고정하여 restoring force 생성, (ii) guiding contact는 human motion dataset의 upper-body postures에서 spring anchors 샘플링</li>
+<li>RL training: diverse interaction scenarios에 노출시키기 위해 simulated interaction forces(MuJoCo/IsaacGym 대비 개선) 사용</li>
+<li>Force thresholding: training 중 force limits 적용, deployment 시 task별로 조정 가능</li>
+<li>Evaluation: Unitree G1 humanoid에서 force gauge와 custom pressure-sensing pad(40 calibrated capacitive taxels)로 contact forces/pressures 측정</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li>Human motion dataset에서 complete postures를 샘플링하여 kinematically consistent multi-link compliance를 실현한 점이 기존 end-effector 중심의 impedance control과 구별됨</li>
+<li>Resistive contact와 guiding contact를 unified spring-based formulation으로 통합하는 novel approach</li>
+<li>Vision-based human shape estimation을 결합한 autonomous hugging pipeline으로 personalized interaction 구현</li>
+<li>Custom pressure-sensing pad를 설계하여 distributed contact forces 측정을 위한 새로운 평가 방법론 제시</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li>상체 compliance에만 초점을 맞추었으므로, 하체 locomotion과의 simultaneous compliance 학습 필요</li>
+<li>Human motion data 기반 sampling이 rare or unusual interaction scenarios에 대한 generalization을 제한할 수 있음</li>
+<li>Real-world deployment에서 실제 human-robot physical interaction 데이터 수집의 어려움이 남아있음</li>
+<li>Force thresholds의 최적값 설정 및 다양한 body types에 대한 adaptation 방법 개선 필요</li>
+<li>다양한 humanoid morphology(Boston Dynamics Atlas, Honda ASIMO 등)에 대한 general transferability 검증 필요</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: GentleHumanoid는 humanoid 로봇의 안전한 human-robot physical interaction을 위한 실질적이고 창의적인 솔루션을 제시한다. Unified spring-based formulation과 human motion data 기반 contact modeling의 조합은 novel하며, 실제 Unitree G1에서의 검증과 custom pressure-sensing 평가 방법론은 논문의 신뢰성을 높인다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>

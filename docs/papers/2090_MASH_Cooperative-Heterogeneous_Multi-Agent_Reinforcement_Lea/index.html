@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MASH: Cooperative-Heterogeneous Multi-Agent Reinforcement Learning for Single Humanoid Robot Locomotion</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>MASH: Cooperative-Heterogeneous Multi-Agent Reinforcement Learning for Single Humanoid Robot Locomotion</h1>
+<blockquote><p><strong>저자</strong>: Qi Liu, Xiaopeng Zhang, Mingshan Tan, Shuaikang Ma, Jinliang Ding, Yanjie Li | <strong>날짜</strong>: 2025-08-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.10423" target="_blank">https://arxiv.org/abs/2508.10423</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>단일 인간형 로봇의 보행을 위해 각 팔다리를 독립 에이전트로 모델링하여 Cooperative-Heterogeneous MARL을 적용하는 MASH 프레임워크를 제안한다. 이는 전역 비평가를 공유하며 협력학습을 통해 전신 조화 능력을 향상시킨다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: 인간형 로봇 보행은 모델 기반 방법(MPC, 궤적 최적화) 또는 단일 에이전트 Deep RL을 사용해왔다. 단계 정책 훈련은 상체-하체 분리 학습으로 조화 부족 문제가 있다.</li>
+<li><strong>Gap</strong>: 기존 방법들은 단일 로봇에는 단일 에이전트 RL을, 다중 로봇에는 MARL을 적용해왔으나, MARL 원칙을 단일 인간형 로봇의 신체 부위 간 조화에 활용하는 방안은 미탐색 상태이다.</li>
+<li><strong>Why</strong>: 인간형 로봇은 높은 자유도(DoF)를 가지며 상체-하체 간 복잡한 조화가 필수적이므로, MARL의 협력 학습 메커니즘을 통해 효율적인 보행 정책 학습과 환경 적응성을 향상시킬 수 있다.</li>
+<li><strong>Approach</strong>: 각 팔다리(양팔, 양다리)를 독립적인 에이전트로 취급하되 서로 다른 행동 공간을 탐색하면서 전역 비평가(global critic)를 공유하는 cooperative-heterogeneous MARL 구조를 설계하였다. 경험 공유 및 협력 정책 학습을 통해 전신 조화 보행을 학습한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>훈련 수렴 가속화</strong>: MASH이 기존 단일 에이전트 RL 방법 대비 더 빠른 수렴 속도를 달성하여 샘플 효율성을 개선하였다.</li>
+<li><strong>전신 조화 능력 향상</strong>: 각 팔다리 간 협력을 통해 보행 실행(gait execution) 품질이 향상되고 최종 성능이 우수해졌다.</li>
+<li><strong>동적 환경 견고성</strong>: 동적 환경에서의 견고성(robustness)이 증대되어 실제 응용 가능성이 높아졌다.</li>
+<li><strong>MARL-인간형 로봇 제어 통합</strong>: MARL 원칙을 단일 인간형 로봇 제어에 효과적으로 적용한 새로운 패러다임을 제시하였다.</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li>Cooperative-heterogeneous MARL 알고리즘 적용: 각 팔다리를 독립 에이전트로 정의하되, 서로 다른 행동 공간(heterogeneous)을 가지면서도 공동 목표(보행) 달성을 위해 협력(cooperative)</li>
+<li>공유 전역 비평가(shared global critic) 구조: 모든 에이전트가 단일 가치 함수를 공유하여 전신 상태 정보를 반영하고 에이전트 간 정보 흐름 증대</li>
+<li>경험 공유 메커니즘: 각 에이전트의 경험을 공유하여 학습 효율 제고 및 정책 최적화 가속화</li>
+<li>Markov Decision Process(MDP) 및 Policy Gradient 기반 학습: MDP 프레임워크에서 상태, 행동, 보상을 정의하고 정책 그래디언트를 통해 최적화</li>
+<li>시뮬레이션 환경(Simulator unspecified)에서 검증: 다양한 보행 시나리오에서 수렴성 및 성능 비교</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li>기존 MARL이 다중 로봇 협력에 적용된 반면, 본 연구는 단일 인간형 로봇의 신체 부위를 에이전트로 모델링하는 새로운 관점을 제시한다.</li>
+<li>Heterogeneous 행동 공간(팔과 다리의 서로 다른 제어 차원)을 갖는 협력 MARL은 기존 동질 다중 에이전트 문제와 차별화된다.</li>
+<li>전역 비평가 공유 구조는 전신 보행 조화를 명시적으로 강화하는 설계 아이디어이다.</li>
+<li>단계 정책 훈련의 조화 부족 문제를 MARL로 해결하는 대안을 제시한다.</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li><strong>시뮬레이션 환경 한정</strong>: 실제 인간형 로봇(예: Atlas, HUBO 등)에서의 실물 검증이 부재하여 sim-to-real gap 미검토</li>
+<li><strong>알고리즘 세부사항 부족</strong>: 구체적인 MARL 알고리즘(예: QMIX, MAPPO, MADDPG 등)이 명확히 명시되지 않음</li>
+<li><strong>계산복잡도 분석 미흡</strong>: 4개 에이전트 협력에 따른 계산 비용 증가 및 확장성(limb 수 증가 시) 미분석</li>
+<li><strong>비교 기저선 제한</strong>: 다른 협력 MARL 변형(예: 부분 공유 비평가)과의 상세 비교 부족</li>
+<li><strong>후속 연구 방향</strong>: (1) 실제 인간형 로봇 플랫폼에서의 sim-to-real 전이 학습 (2) 다양한 보행 과제(계단 오르기, 불규칙 지형) 확대 (3) 온라인 적응 학습 능력 강화 (4) 복합 조작-보행 작업에의 확장</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: MASH는 MARL 원칙을 단일 인간형 로봇에 창의적으로 적용하여 전신 조화 보행 학습을 효과적으로 개선한 의미 있는 기여이다. 다만 실제 로봇 검증과 알고리즘 세부사항 명확화가 필요하다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>

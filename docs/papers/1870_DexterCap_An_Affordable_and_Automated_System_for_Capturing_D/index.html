@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DexterCap: An Affordable and Automated System for Capturing Dexterous Hand-Object Manipulation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>DexterCap: An Affordable and Automated System for Capturing Dexterous Hand-Object Manipulation</h1>
+<blockquote><p><strong>저자</strong>: Yutong Liang, Shiyi Xu, Yulong Zhang, Bowen Zhan, He Zhang, Libin Liu | <strong>날짜</strong>: 2026-01-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.05844" target="_blank">https://arxiv.org/abs/2601.05844</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>DexterCap는 문자 코드화된 마커 패치를 사용하는 저비용 광학 모션 캡처 시스템으로, 심한 자기 폐색 상황에서도 손가락의 섬세한 조작 동작을 정확하게 추적하며 최소한의 수동 작업으로 자동 재구성 파이프라인을 제공한다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: 기존 고비용 광학 모션 캡처 시스템은 정확하지만 광범위한 수동 후처리가 필요하고, 저비용 비전 기반 방법은 폐색에 취약하다. 손-물체 상호작용(HOI) 데이터셋이 증가하고 있지만 대부분 단순한 파악과 이동에만 집중한다.</li>
+<li><strong>Gap</strong>: 손가락 간 심한 자기 폐색으로 인한 섬세한 손-물체 조작 추적의 어려움과 고비용 하드웨어 대비 저렴하면서도 정확한 포즈 복원을 동시에 달성하는 시스템의 부재, 그리고 루빅스 큐브 같은 복잡한 조작 데이터의 부족이 있다.</li>
+<li><strong>Why</strong>: 손의 섬세한 조작은 일상 작업부터 정밀 제조까지 광범위한 활동의 핵심인데, 이를 정확하게 캡처하고 합성할 수 있는 자료와 기술이 부족하여 손 기술 이해와 애니메이션 생성의 발전을 제약한다.</li>
+<li><strong>Approach</strong>: 밀집된 문자 코드화 마커 패치를 손과 물체에 부착하고, 마커 검출-모서리-태그를 계단식으로 수행하는 3단계 이미지 처리 파이프라인으로 다중 스케일 폐색 하에서 강건한 추적을 달성하며, MANO 형태 모델을 활용한 자동 캘리브레이션 및 포즈 복원을 수행한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>저비용 하드웨어 기반 시스템</strong>: 고가의 상용 모션 캡처 장비 대신 저비용 카메라로 구성된 실용적인 광학 캡처 시스템 구현</li>
+<li><strong>자동화 파이프라인</strong>: 초기 라벨링 후 누적 학습을 통해 후속 세션에서 완전 자동 처리 가능하도록 설계하여 수동 작업 최소화</li>
+<li><strong>강건한 폐색 처리</strong>: 밀집 마커 배치와 문자 코딩 기법으로 심한 손가락 자기 폐색 상황에서도 정확한 추적 실현</li>
+<li><strong>대규모 다양한 데이터셋 구축</strong>: 원시 형태부터 루빅스 큐브 같은 복잡한 조절 가능 물체까지 포함하며 대부분 10분 이상의 길이를 가진 DexterHand 데이터셋 공개</li>
+<li><strong>코드 및 데이터 공개</strong>: 처리 파이프라인, 학습된 모델, 전체 데이터셋을 오픈소스로 공개하여 후속 연구 지원</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li>문자 코드화된 마커 패치 설계: 각 마커에 고유한 2D 바코드 패턴을 인쇄하여 개별 식별 가능</li>
+<li>3단계 이미지 처리 파이프라인: (1) 마커 검출, (2) 마커 모서리 추적, (3) 바코드 태그 디코딩 순서로 강건성 확보</li>
+<li>다중 스케일 처리: 카메라 근거리 촬영으로 인한 손의 이동 시 스케일 변화에 대응하는 마커 검출 메커니즘</li>
+<li>MANO 기반 포즈 복원: morphable hand model MANO를 활용한 손 형태 추정 및 자동 캘리브레이션</li>
+<li>결측 마커 처리: occlusion과 노이즈로 인한 결측 마커에 대해 robust solving 절차로 완전한 손-물체 포즈 복원</li>
+<li>데이터 누적 학습: 이전 세션들로부터 수집된 라벨 데이터를 활용하여 새로운 세션에서의 모델 일반화 성능 향상</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li><strong>문자 코드화 마커 활용의 확장</strong>: 기존 전신 동작 캡처 시스템(CPMK21)의 아이디어를 손 조작 특화로 전환하되, 손의 극단적 자기 폐색 환경에 맞춘 3단계 마커 인식 파이프라인 개발</li>
+<li><strong>저비용-자동화의 동시 달성</strong>: 단순히 저비용이 아닌 최소 라벨링으로 자동화 가능한 설계로 스케일 가능한 데이터 수집 체계 구현</li>
+<li><strong>조절 가능 물체 포함</strong>: 기존 HOI 데이터셋(ManipNet, ContactPose 등)의 rigid object 위주 제약을 벗어나 루빅스 큐브 같은 복잡한 조절 가능 물체 포함</li>
+<li><strong>완전 공개 생태계</strong>: 하드웨어 설계, 처리 파이프라인, 학습 모델, 평가 벤치마크, 전체 데이터셋을 모두 공개하는 포괄적 오픈소스 기여</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li><strong>마커 부착의 물리적 제약</strong>: 밀집 마커 부착이 손의 자연스러운 접촉 감각과 움직임을 제약할 수 있으며, 마커 손상 또는 박리 시 재작업 필요</li>
+<li><strong>카메라 근거리 촬영의 한계</strong>: 깊이 필드 제약으로 인해 손의 급속한 움직임이나 카메라에서 큰 거리 변화는 추적 어려움</li>
+<li><strong>물체 유형의 확장성</strong>: 현재 rigid objects와 루빅스 큐브 수준의 조절 가능 물체만 포함되어 있으며, 변형 가능(deformable) 물체나 복잡한 다중 조절 물체 확장 필요</li>
+<li><strong>초기 라벨링 의존성</strong>: 각 새로운 환경이나 카메라 설정에서 일부 프레임 수동 라벨링 필요로 완전 자동화는 아직 미달성</li>
+<li><strong>정량적 검증 한계</strong>: 논문에서 제시된 정량적 평가 메트릭이 제한적이며, 기존 고가 상용 시스템과의 직접 비교 분석 필요</li>
+<li><strong>후속 연구 방향</strong>: 손-물체 상호작용의 물리 시뮬레이션 통합, 더 복잡한 도구 사용 동작 캡처, 실시간 처리 파이프라인 개발</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: DexterCap은 문자 코드화 마커와 자동화 파이프라인을 통해 저비용으로도 섬세한 손 조작을 정확하게 캡처할 수 있음을 보여주며, 공개된 DexterHand 데이터셋과 함께 손-물체 상호작용 연구의 중요한 리소스로 기여한다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>

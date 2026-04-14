@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills</h1>
+<blockquote><p><strong>저자</strong>: Weiji Xie, Jinrui Han, Jiakun Zheng, Huanyu Li, Xinzhe Liu, Jiyuan Shi, Weinan Zhang, Chenjia Bai, Xuelong Li | <strong>날짜</strong>: 2025-06-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.12851" target="_blank">https://arxiv.org/abs/2506.12851</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>본 논문은 물리 기반 인간형 로봇 제어 프레임워크(PBHC)를 제안하여 쿵푸, 댄싱 등 고도로 동적인 인간 행동을 모방하도록 학습하는 방법을 제시한다. 다단계 모션 처리와 적응형 모션 추적을 통해 기존 방법보다 현저히 낮은 추적 오차를 달성하고 실제 로봇에 배포된다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: 인간형 로봇은 모션 캡처 데이터와 RL을 활용하여 인간 행동을 모방할 수 있으나, 기존 알고리즘은 부드럽고 저속의 모션 추적에만 제한된다. 물리적 제약 조건 위반과 고차원 제어 공간의 어려움이 주요 도전이다.</li>
+<li><strong>Gap</strong>: 기존 방법들(H2O, OmniH2O, ExBody 등)은 낮은 속도의 부드러운 모션만 추적 가능하며, 동적이고 복잡한 모션에 대해 높은 추적 오차를 보인다. 어려운 모션에 대한 적절한 허용 메커니즘 부재로 고도로 동적인 행동 학습이 불가능하다.</li>
+<li><strong>Why</strong>: 인간형 로봇의 실용적 적용성을 높이기 위해 고차원 제어 정책이 복잡하고 빠른 동작을 정확히 추적할 수 있어야 하며, 이는 로봇의 물리적 가능성을 보장하면서도 인간과 유사한 표현력 있는 행동 생성을 가능하게 한다.</li>
+<li><strong>Approach</strong>: 두 단계 프레임워크를 도입한다: (1) 모션 처리 단계에서 HMR 모델로 SMPL 포맷 추출, 물리 기반 필터링(CoM-CoP 안정성), 접촉 마스크 기반 보정, IK 기반 리타겟팅을 수행하고 (2) 모션 모방 단계에서 bi-level optimization으로 추적 팩터를 동적 조정하는 적응형 커리큘럼을 구성하며, 비대칭 actor-critic 아키텍처로 정책을 훈련한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>물리 기반 모션 필터링</strong>: CoM과 CoP의 거리 기반 안정성 판별과 접촉 마스크 추출을 통해 물리적으로 불가능한 모션을 사전에 제거하여 데이터셋 품질 향상</li>
+<li><strong>적응형 모션 추적 메커니즘</strong>: Bi-level optimization 기반의 추적 팩터 σ를 동적으로 조정하여 어려운 모션에 대한 합리적인 허용도 설정 및 온라인 추정을 통한 폐루프 제어</li>
+<li><strong>비대칭 actor-critic 아키텍처</strong>: 비평가가 reward vectorization과 특권 정보를 활용하여 가치 추정을 개선하면서 배우는 국소 관측만 사용하도록 설계</li>
+<li><strong>실제 배포 성공</strong>: Unitree G1 로봇에서 쿵푸, 댄싱 등 고도로 동적인 모션을 안정적이고 표현력 있게 수행</li>
+<li><strong>낮은 추적 오차</strong>: 기존 방법(ExBody, ExBody2, ASAP 등) 대비 현저히 낮은 추적 오차 달성</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li>GVHMR으로 단안 비디오로부터 SMPL 포맷 모션 추정 (중력 정렬 및 발 미끄럼 감소)</li>
+<li>CoM(center of mass)과 CoP(center of pressure)의 투영 거리를 계산하여 프레임별 안정성 평가 (Equation 1)</li>
+<li>경계 프레임 안정성 조건과 최대 불안정 갭 조건으로 동적 안정성이 부족한 모션 시퀀스 제거</li>
+<li>발목 변위의 영속도 가정(zero-velocity assumption) 기반 접촉 마스크 추정 (Equation 2)</li>
+<li>접촉 마스크로부터 부동 아티팩트 보정</li>
+<li>미분 역기구학(differential inverse kinematics)을 통한 G1 로봇으로의 모션 리타겟팅</li>
+<li>추적 보상 함수를 추적 팩터 σ로 조정: r_track = σ · r_track^base</li>
+<li>추적 오차에 기반한 bi-level optimization으로 최적 추적 팩터 σ*를 도출</li>
+<li>온라인 추적 오차 추정을 통한 폐루프 팩터 업데이트 규칙 적용</li>
+<li>PPO 알고리즘으로 actor-critic 정책 최적화 (비평가는 특권 정보 활용, 배우는 국소 관측만 사용)</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li><strong>물리 제약 기반 사전 필터링</strong>: CoM-CoP 거리 및 동적 안정성 조건을 이용한 체계적인 모션 필터링은 기존 언어 라벨(ExBody) 또는 사후 필터링(H2O) 방식과 달리 물리 원리 기반의 사전 선별 방식으로 보다 근거 있는 접근</li>
+<li><strong>적응형 커리큘럼의 bi-level optimization 공식화</strong>: 추적 팩터를 동적으로 조정하는 bi-level optimization 문제 설정은 어려운 모션에 대한 자동 허용도 조정을 가능하게 하는 새로운 메커니즘</li>
+<li><strong>온라인 폐루프 팩터 업데이트</strong>: 훈련 중 실시간으로 추적 오차를 추정하여 팩터를 동적으로 정제하는 적응형 메커니즘은 고정 커리큘럼과 차별화</li>
+<li><strong>비대칭 actor-critic 구조의 특권 정보 활용</strong>: 비평가는 참조 상태와 추가 정보를 활용하여 가치 추정을 강화하면서도 배우는 현실적 관측만 사용하여 sim-to-real 갭 감소</li>
+<li><strong>종합적 파이프라인</strong>: 모션 추정부터 필터링, 보정, 리타겟팅, 적응형 추적, RL 훈련을 통합한 체계적인 프레임워크는 기존 단편적 접근 대비 보다 정교한 설계</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li><strong>모션 추정 정확도에 의존</strong>: GVHMR의 모션 복구 품질에 의존하며, 초기 추정 오류가 이후 단계에 전파될 수 있음</li>
+<li><strong>물리 필터링 임계값의 경험적 설정</strong>: ϵ_stab, ϵ_N, ϵ_vel, ϵ_height 등 다수의 임계값이 경험적으로 선택되어 일반화성이 제한될 수 있음</li>
+<li><strong>단일 로봇 배포</strong>: Unitree G1에만 배포되어 다양한 인간형 로봇으로의 확장성 미검증</li>
+<li><strong>정상 상태 가정의 한계</strong>: zero-velocity assumption 기반 접촉 마스크 추정은 발이 완전히 정지할 때만 정확하여 빠른 동작에서 오류 가능</li>
+<li><strong>후속 연구 방향</strong>: (1) 적응형 임계값 학습으로 자동 파라미터 조정, (2) 다양한 로봇 형태와 물리 제약에 일반화 가능한 프레임워크 개발, (3) Sim-to-real gap 추가 감소를 위한 도메인 적응 기법 적용, (4) 더 복잡한 다체 상호작용(예: 타격, 기술 조합) 학습 능력 강화</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 4/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: 본 논문은 물리 기반 모션 처리, 적응형 bi-level optimization 커리큘럼, 비대칭 actor-critic 구조를 결합한 포괄적 프레임워크로 고도로 동적인 인간형 로봇 제어 문제를 체계적으로 해결한다. 실제 로봇 배포 성공과 기존 방법 대비 현저한 성능 향상은 강력한 기술적 기여를 입증하며, 인간형 로봇의 동적 행동 학습 분야에서 중요한 진전을 이룬다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>

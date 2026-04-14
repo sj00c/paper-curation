@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Berkeley Humanoid: A Research Platform for Learning-based Control</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>Berkeley Humanoid: A Research Platform for Learning-based Control</h1>
+<blockquote><p><strong>저자</strong>: Qiayuan Liao, Bike Zhang, Xuanyu Huang, Xiaoyu Huang, Zhongyu Li, Koushil Sreenath | <strong>날짜</strong>: 2024-07-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2407.21781" target="_blank">https://arxiv.org/abs/2407.21781</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>학습 기반 제어를 위해 특별히 설계된 저비용 중형 휴머노이드 로봇 플랫폼인 Berkeley Humanoid를 제시하며, 좁은 sim-to-real 갭과 높은 신뢰성으로 다양한 지형에서 동적 보행을 실현한다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: 기존의 full-scale 휴머노이드는 높은 비용과 안전 문제가 있으며, 소형 휴머노이드는 동적 운동 능력이 제한적이다. 학습 기반 제어는 높은 성능을 보이지만 시뮬레이션과 실제 환경 간의 갭이 크다.</li>
+<li><strong>Gap</strong>: 중형 휴머노이드를 위한 학습 기반 제어는 낮은 무게중심과 높은 감도로 인한 제어 어려움이 있으며, 복잡한 전달 메커니즘으로 인한 큰 sim-to-real 갭이 존재한다. 또한 저비용이면서 높은 성능을 모두 만족하는 플랫폼이 부족하다.</li>
+<li><strong>Why</strong>: 중형 휴머노이드는 연구실 공간 내에서 수행 가능하고 낙하로 인한 피해가 적으면서도 동적 과제를 수행할 수 있어 학습 기반 제어 연구의 빠른 반복이 필요하다. 이러한 플랫폼은 학습 기반 휴머노이드 시스템의 확장 가능한 배포를 가능하게 한다.</li>
+<li><strong>Approach</strong>: 학습 기반 제어에 최적화된 하드웨어 설계와 custom modular actuator, 낮은 시뮬레이션 복잡도, 경량 domain randomization을 활용하여 sim-to-real 갭을 최소화한다. Isaac Lab을 이용한 reinforcement learning 정책 학습으로 간단하면서도 견고한 제어를 실현한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>저비용 중형 휴머노이드 플랫폼</strong>: 약 10,000 USD의 가격으로 fully electric 구동 및 6 DoF 다리를 갖춘 16kg의 로봇 개발</li>
+<li><strong>동적 보행 능력</strong>: 수백 미터 주행, 가파른 비포장 오솔길 보행, 단다리 및 양다리 hopping 등 다양한 지형에서의 견고한 동적 운동 실현</li>
+<li><strong>좁은 sim-to-real 갭</strong>: 간단한 RL 제어기와 경량 domain randomization으로 높은 신뢰성을 달성</li>
+<li><strong>전방향 운동</strong>: 방향 변화 및 외란 저항 능력을 갖춘 omnidirectional locomotion 지원</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li>Custom modular actuator 설계: integrated transmission, hollow shaft, EtherCAT 통신을 통해 높은 토크 밀도와 낮은 복잡도 실현</li>
+<li>낮은 시뮬레이션 복잡도: 간단한 모터 모델과 actuator 모델링으로 학습 효율 향상</li>
+<li>Hardware-algorithm 공동 설계: learning-based control을 위해 저비용 IMU 센서 활용 가능하도록 설계</li>
+<li>Isaac Lab 기반 정책 학습: lightweight domain randomization을 통한 sim-to-real 전이</li>
+<li>견고한 mechanical design: 낙하 및 외란에 대한 높은 신뢰성 확보</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li>학습 기반 제어에 특화된 중형 휴머노이드 플랫폼의 체계적 설계 및 구현</li>
+<li>Custom actuator 개발을 통한 높은 토크 밀도와 낮은 시뮬레이션 복잡도의 양립</li>
+<li>경량 domain randomization만으로 복잡한 지형에서의 robust locomotion 달성</li>
+<li>Open-source codebase 제공으로 재현 가능성 및 확장성 제시</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li>팔(arm) 기능이 제한적이어서 주로 보행 과제에만 초점을 맞춤</li>
+<li>현재 IMU 센서만 활용하고 있으며 추가 센서(발 접촉 감지 등) 활용 가능성 미탐색</li>
+<li>제어 정책의 단순성은 장점이지만 더 복잡한 운동(조작 등)으로의 확장 가능성이 불명확함</li>
+<li>실외 환경에서의 광범위한 테스트는 제시되었으나 극한 환경에서의 견고성 추가 검증 필요</li>
+<li>후속 연구로서 더 복잡한 조작 과제, 다중 로봇 협력, 학습 알고리즘의 고도화 등이 고려될 수 있음</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: Berkeley Humanoid는 학습 기반 휴머노이드 제어 연구를 위한 실용적이고 비용 효율적인 플랫폼으로, 하드웨어와 제어 알고리즘의 통합 설계를 통해 중요한 sim-to-real 문제를 해결한 가치 있는 기여이다. Open-source 공개 계획은 커뮤니티 연구를 촉진할 것으로 예상된다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>

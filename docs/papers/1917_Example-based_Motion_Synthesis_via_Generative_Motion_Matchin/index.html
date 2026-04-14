@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Example-based Motion Synthesis via Generative Motion Matching</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }
+h1 { font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid #D63423; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.1rem; color: #D63423; margin: 0 0 0.6rem; padding: 0; border: none; }
+h3 { font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }
+p { margin: 0.4rem 0; font-size: 0.93rem; }
+blockquote { border-left: 4px solid #D63423; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }
+ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
+li { margin: 0.2rem 0; font-size: 0.93rem; }
+.section-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+table { border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }
+th, td { border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }
+th { background: #D63423; color: white; font-weight: 600; font-size: 0.82rem; }
+tr:nth-child(even) { background: #f8f9fa; }
+td:last-child { text-align: center; font-weight: 600; color: #D63423; }
+.eval-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.eval-badge { background: #FEF0EF; color: #A62018; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }
+.essence-box { border: 2px solid #8B1A1A; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: #FDF8F8; }
+.essence-box h2 { color: #8B1A1A; margin: 0 0 0.5rem; border: none; padding: 0; }
+code { background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+img { max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
+strong { color: #1a1a2e; }
+a { color: #A62018; }
+.back { margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }
+.back a { font-weight: 600; text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.connections-box { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.connections-box h2 { color: #D63423; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }
+.conn-item { border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }
+.conn-item.alternative { border-left-color: #3B82F6; }
+.conn-item.extension { border-left-color: #10B981; }
+.conn-item.foundation { border-left-color: #8B5CF6; }
+.conn-item.counterpoint { border-left-color: #F59E0B; }
+.conn-item.application { border-left-color: #EF4444; }
+.conn-type { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }
+.conn-item.alternative .conn-type { color: #3B82F6; }
+.conn-item.extension .conn-type { color: #10B981; }
+.conn-item.foundation .conn-type { color: #8B5CF6; }
+.conn-item.counterpoint .conn-type { color: #F59E0B; }
+.conn-item.application .conn-type { color: #EF4444; }
+.conn-title { font-size: 0.9rem; font-weight: 600; }
+.conn-title a { color: #1a1a2e; text-decoration: none; }
+.conn-title a:hover { color: #D63423; text-decoration: underline; }
+.conn-reason { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
+.review-fig { text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }
+.review-fig img { max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }
+.fig-caption { font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>Example-based Motion Synthesis via Generative Motion Matching</h1>
+<blockquote><p><strong>저자</strong>: Weiyu Li, Xuelin Chen, Peizhuo Li, Olga Sorkine-Hornung, Baoquan Chen | <strong>날짜</strong>: 2023-06-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2306.00378" target="_blank">https://arxiv.org/abs/2306.00378</a></p></blockquote>
+<hr>
+<div class="essence-box"><h2>Essence</h2>
+<p>GenMM은 단일 또는 소수의 예제 모션으로부터 다양한 모션을 생성하는 학습 불필요한 생성 모델로, Motion Matching의 품질을 유지하면서 Bidirectional similarity를 생성 비용 함수로 활용하여 다단계 프레임워크로 점진적으로 모션을 정제한다.</p></div>
+<div class="section-box"><h2>Motivation</h2>
+<ul>
+<li><strong>Known</strong>: Motion Matching은 대규모 모션 데이터베이스를 사용하여 고품질의 자연스러운 캐릭터 애니메이션을 생성하는 산업 표준 방식이며, 최근 deep learning 기반 방법들은 다양한 모션을 생성하지만 긴 훈련 시간, visual artifacts, 복잡한 스켈레톤에 대한 확장성 부족 문제가 있다.</li>
+<li><strong>Gap</strong>: 기존 data-driven 모션 생성 방법들은 대규모 데이터셋과 오래된 훈련 시간을 요구하며 복잡한 스켈레톤 구조에서 실패하는 반면, 소수 예제로부터 고품질 다양한 모션을 빠르게 생성할 수 있는 방법이 부족하다.</li>
+<li><strong>Why</strong>: 모션 캡처 데이터 수집은 비용이 높고 스켈레톤 구조의 다양성이 제한되어 있으므로, 제한된 예제로부터 효과적으로 모션을 생성할 수 있는 방법이 애니메이션 제작에서 실용적으로 중요하다.</li>
+<li><strong>Approach</strong>: Motion Matching의 nearest neighbor 개념을 재해석하여 bidirectional visual similarity를 생성 비용 함수로 사용하고, 다단계 프레임워크에서 초기 랜덤 추측을 예제 모션 패치로 점진적으로 정제하며, 가장 낮은 해상도 단계에 노이즈를 입력하여 생성 다양성을 확보한다.</li>
+</ul></div>
+<div class="section-box"><h2>Achievement</h2>
+<ul>
+<li><strong>훈련 불필요한 고속 생성</strong>: 사전 훈련 없이 단 몇 분의 1초 내에 고품질 모션 생성 가능</li>
+<li><strong>Motion Matching 품질 유지</strong>: Motion Matching의 높은 품질과 충실도를 그대로 상속하면서 생성 능력 추가</li>
+<li><strong>복잡한 스켈레톤 확장성</strong>: 433개 관절을 가진 매우 복잡한 스켈레톤 구조에서도 안정적으로 작동</li>
+<li><strong>다양한 응용 시나리오</strong>: Motion completion, key frame-guided generation, infinite looping, motion reassembly 등 기본 Motion Matching으로는 불가능한 작업 수행</li>
+<li><strong>다중 예제 지원 용이성</strong>: 여러 모션 예제 입력을 자연스럽게 확장 가능</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<ul>
+<li>Skeleton-aware motion patch extraction으로 복잡한 스켈레톤 구조를 효율적으로 처리</li>
+<li>Bidirectional similarity를 비용 함수로 사용하여 예제의 모든 모션 패치가 합성에 포함되고, 합성 결과가 예제의 패치 분포를 따르도록 강제</li>
+<li>Multi-stage framework에서 coarsest stage부터 시작하여 노이즈 입력으로 초기 다양한 후보 생성</li>
+<li>각 단계에서 upsampling된 이전 단계의 결과를 초기 추측으로 사용하여 점진적으로 모션 정제</li>
+<li>Generative matching and blending을 통해 motion patch를 적절히 선택 및 블렌딩</li>
+</ul></div>
+<div class="section-box"><h2>Originality</h2>
+<ul>
+<li>Motion Matching을 생성 모델로 재해석한 새로운 관점: 전통적인 nearest neighbor 기반 방식을 bidirectional similarity를 통해 생성 모델로 변환</li>
+<li>Image synthesis의 patch-based generative 개념 (Granot et al. 2022)을 모션 합성에 최초로 적용</li>
+<li>다단계 프레임워크와 노이즈 기반 초기화를 통한 생성 다양성 확보 전략</li>
+<li>Skeleton-aware patch 추출로 복잡한 스켈레톤 구조 처리의 새로운 솔루션 제시</li>
+</ul></div>
+<div class="section-box"><h2>Limitation &amp; Further Study</h2>
+<ul>
+<li>예제 모션의 품질이 생성 결과의 상한선을 결정하므로, 저품질 예제로부터는 고품질 모션 생성 불가</li>
+<li>단일 또는 소수 예제로부터 생성하기 때문에 매우 다양한 모션 스타일 학습의 한계</li>
+<li>Bidirectional similarity 계산의 계산 복잡성이 예제 길이와 생성 길이의 증가에 따라 증가할 가능성</li>
+<li>Motion completion이나 keyframe-guided generation 같은 조건부 생성 작업의 추가 제약 조건 처리 메커니즘의 확장 방향 제시 필요</li>
+<li>다양한 모션 도메인(보행, 춤, 격투 등)에 대한 광범위한 평가 필요</li>
+</ul></div>
+<div class="section-box"><h2>Evaluation</h2>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: GenMM은 Motion Matching의 우수한 품질을 유지하면서 학습 불필요한 생성 모델을 구현한 창의적인 접근법으로, 산업 실무에서 즉시 적용 가능한 실용성과 복잡한 스켈레톤에 대한 강력한 확장성을 제공하는 매우 가치 있는 연구이다.</p></div>
+<div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
+<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.addEventListener('click', function(e) {
+    const img = e.target.closest('.review-fig img');
+    if (img) { lbImg.src = img.src; lb.classList.add('active'); }
+  });
+  lb.addEventListener('click', function() { lb.classList.remove('active'); lbImg.src = ''; });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lb.classList.contains('active')) { lb.classList.remove('active'); lbImg.src = ''; }
+  });
+});
+</script>
+<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
+Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+</footer>
+</body>
+</html>
