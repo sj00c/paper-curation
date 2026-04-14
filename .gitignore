@@ -87,3 +87,6 @@ docs/**/.obsidian/
 
 # Exclude internal planning / spec drafts
 docs/superpowers/
+
+docs/ai4s/
+docs/scisci/
