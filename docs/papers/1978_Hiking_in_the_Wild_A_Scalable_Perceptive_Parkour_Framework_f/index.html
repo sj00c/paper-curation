@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shaoting Zhu, Ziwen Zhuang, Mengjie Zhao, Kun-Ying Lee, Hang Zhao | <strong>날짜</strong>: 2026-01-12 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2601.07718" target="_blank">10.48550/arXiv.2601.07718</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. Our framework trains an end-to-end policy using simulated depth and proprioception. To ensure</em></p></div>
 <p>이 논문은 깊이 카메라와 proprioception을 직접 joint actions으로 변환하는 end-to-end RL 프레임워크를 제시하여, 외부 상태 추정 없이 humanoid 로봇이 복잡한 비정형 지형에서 최대 2.5 m/s의 속도로 안전하게 이동할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Single-stage RL을 통해 raw depth와 proprioception을 직접 joint actions에 매핑하되, Terrain Edge Detection + Foot Volume Points로 foothold safety를 보장하고, Flat Patch Sampling으로 reward hacking을 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Hiking in the Wild. Our framework enables a humanoid robot to traverse diverse terrains in both indoor and outdo</em></p></div>
 <ul>
 <li><strong>Zero-shot Sim-to-Real transfer</strong>: 외부 localization이나 map reconstruction 없이 시뮬레이션 정책이 실제 로봇에서 바로 작동</li>
 <li><strong>High-speed robust traversal</strong>: 계단, 갭, 경사지, 불규칙한 잔디 지형에서 최대 2.5 m/s 속도로 안전하게 주행</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Open-source 배포</strong>: 최소한의 하드웨어 수정으로 실제 로봇에 배포 가능한 훈련/배포 코드 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. Our framework trains an end-to-end policy using simulated depth and proprioception. To ensure</em></p></div>
 <ul>
 <li>Mixture-of-Experts (MoE) 아키텍처를 활용한 깊이 인코더로 고차원 시각 데이터 처리</li>
 <li>Depth synthesis 모듈로 센서 노이즈와 artifacts를 모의하여 realistic training 구현</li>

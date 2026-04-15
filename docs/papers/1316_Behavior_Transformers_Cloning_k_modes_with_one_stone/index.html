@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nur Muhammad Mahi Shafiullah, Zichen Jeff Cui, Ariuntuya Altanzaya, Lerrel Pinto | <strong>날짜</strong>: 2022-06-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2206.11251" target="_blank">https://arxiv.org/abs/2206.11251</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Architecture of Behavior Transformer. (A) The continuous action binning using k-means algorithm</em></p></div>
 <p>Behavior Transformer (BeT)는 transformer 아키텍처에 action discretization과 multi-task action correction을 결합하여 unlabeled demonstration data에서 multi-modal continuous actions를 학습하는 기법이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Continuous actions를 k-means로 discrete bins로 clustering한 후, transformer가 각 bin의 확률과 residual offset을 동시에 예측하는 방식으로 multi-modal continuous action distribution을 모델링한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Unconditional rollouts from BeT models trained from multi-modal demonstartions on the CARLA,</em></p></div>
 <ul>
 <li><strong>Multi-modal 성능</strong>: 다양한 robotic manipulation과 self-driving 데이터셋에서 기존 behavior modeling 방법들을 크게 능가한다.</li>
 <li><strong>Mode coverage</strong>: 하나의 모드로 붕괴되지 않고 pre-collected dataset의 주요 modes를 포착한다.</li>
 <li><strong>Architecture simplicity</strong>: 복잡한 generative model이나 complicated training scheme 없이 standard transformer를 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Architecture of Behavior Transformer. (A) The continuous action binning using k-means algorithm</em></p></div>
 <ul>
 <li>k-means clustering을 통해 continuous actions를 discrete action bins ⌊a⌋와 continuous residual ⟨a⟩로 분해</li>
 <li>MinGPT transformer backbone을 사용하여 observation sequence로부터 action bin probabilities를 예측</li>

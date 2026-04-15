@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Enshen Zhou, Yiran Qin, Zhenfei Yin, Yuzhou Huang, Ruimao Zhang, Lu Sheng, Yu Qiao, Jing Shao | <strong>날짜</strong>: 2024-03-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.12037" target="_blank">https://arxiv.org/abs/2403.12037</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Comparison between MineDreamer and previous studies. In “Chop</em></p></div>
 <p>MineDreamer는 Chain-of-Imagination(CoI) 메커니즘을 통해 MLLM과 diffusion model을 활용하여 Minecraft에서 자연어 지시를 단계별로 상상하고 실행하는 embodied agent이다. CoI는 현재 상태에 맞춘 시각적 프롬프트를 반복적으로 생성하여 지시 추종 능력을 크게 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MineDreamer는 Imaginator가 지시와 현재 관찰을 기반으로 미래 목표를 상상하고, Prompt Generator가 이를 정밀한 시각적 프롬프트로 변환하며, PolicyNet(VPT)이 이 프롬프트를 따라 행동을 생성하는 3단계 구조를 채택한다. 이 과정을 반복하는 CoI 메커니즘이 핵심이다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: Performance on Programmatic Evaluation. MineDreamer surpasses the</em></p></div>
 <ul>
 <li><strong>Chain-of-Imagination 메커니즘</strong>: Sequential decision-making 영역에 '자기 다중 턴 상호작용'을 도입하여 에이전트가 지시를 안정적으로 따르도록 함", '<strong>MLLM-향상된 diffusion model</strong>: 물리 법칙과 환경 이해를 포함한 고품질 상상을 생성하여 현재 상태에 맞는 정밀한 시각적 프롬프트 제공</li>
 <li><strong>Goal Drift Collection 방법</strong>: 대규모 자동수집된 egocentric embodied 데이터로 Imaginator 학습</li>
 <li><strong>성능 향상</strong>: 최고 성능의 generalist agent baseline 대비 거의 2배의 성능 달성(단일 및 다중 단계 지시 모두)</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The Overview of Chain-of-Imagination. The Imaginator imagines a goal</em></p></div>
 <ul>
 <li>Imaginator: Parameter-efficiently fine-tuned diffusion model이 MLLM의 시각적 추론 능력을 활용하여 현재 상태와 지시에 기반한 미래 목표 이미지 생성</li>
 <li>Prompt Generator: 현재 관찰, 미래 상상, 지시를 활용하여 latent visual prompt 재구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Uri Katz, Mosh Levy, Yoav Goldberg (Bar-Ilan University, Allen Institute for AI) | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2408.15836" target="_blank">arXiv:2408.15836</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>"Tool Use in Animals" 쿼리에 대해 생성된 계층적 지식 맵으로, 주요 주제와 하위 주제들을 체계적으로 조직화함</em></p></div>
 <p>대규모 과학 문헌에서 탐색적 검색을 지원하기 위해 LLM과 클러스터링 기법을 결합하여 검색 결과를 2단계 계층 구조의 주제로 자동 조직화하는 시스템을 제안한다. 이를 통해 연구자들이 수백 개의 문서를 직관적으로 탐색할 수 있도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 최신 LLM의 고급 텍스트 이해 능력과 현대적 NLP/IR 기법을 활용하여 클러스터 기반 네비게이션을 재구현</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Knowledge Navigator 워크플로우: 검색 결과 임베딩 및 클러스터링 → 클러스터 판독기를 통한 설명/명명 → 주제 조직화 → 부분주제 확장</em></p></div>
 <ol>
 <li><strong>효과적인 계층 구조 생성</strong>: 광범위한 쿼리(예: "Tool Use in Animals")에 대해 신뢰성 높은 2단계 주제 계층을 자동 생성하며, 각 부분주제는 구체적인 문서들로 근거화됨</li>
 <li><strong>평가 벤치마크 구축 및 검증</strong>:
@@ -87,6 +91,8 @@ a { color: #A62018; }
 <li><strong>다양한 모델 호환성</strong>: GPT-4o(독점) 및 Mixtral-8x7B(오픈소스) 포함 여러 LLM에서 실행 가능함을 시연</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+</div>
 <p><strong>시스템 5단계 아키텍처</strong>:</p>
 <ol>
 <li><strong>주제 코퍼스 구성</strong>: 검색 엔진(Google Scholar 등)에서 광범위한 쿼리(T)에 대해 상위 K개 문서(최대 1000개) 수집</li>

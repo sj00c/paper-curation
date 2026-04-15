@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chuizheng Kong, Yunho Cho, Wonsuhk Jung, Idris Wibowo, Parth Shinde, Sundhar Vinodh-Sangeetha, Long Kiu Chung, Zhenyang Chen, Andrew Mattei, Advaith Nidumukkala, Alexander Elias, Danfei Xu, Taylor Higgins, Shreyas Kousik | <strong>날짜</strong>: 2026-02-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.01632" target="_blank">https://arxiv.org/abs/2602.01632</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We propose SEW-Mimic for retargeting human shoulder, elbow, and wrist (SEW) keypoints analytically to robot</em></p></div>
 <p>SEW-Mimic은 인간의 어깨, 팔꿈치, 손목(SEW) 키포인트를 7-DoF 로봇 팔의 관절각으로 변환하는 폐형식(closed-form) 기하학적 역운동학 솔버로, 3kHz의 고속 추론과 최적성 보장을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 팔의 상·하완 방향벡터를 로봇 링크 벡터와 정렬하는 기하학적 부분문제(geometric subproblems)로 재구성하여, Jacobian 행렬이나 반복 최적화 없이 폐형식 해석해를 도출한다. 방향 오차를 기반으로 한 정의로 인해 휴먼-로봇 크기 차이에 대해 스케일 독립적이다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We propose SEW-Mimic for retargeting human shoulder, elbow, and wrist (SEW) keypoints analytically to robot</em></p></div>
 <ul>
 <li><strong>초고속 추론</strong>: 3kHz의 연산 속도로 표준 CPU에서 실시간 처리 가능하며, 충돌 회피 안전필터 등 다운스트림 애플리케이션을 위한 계산 여유 제공</li>
 <li><strong>최적성 보증</strong>: 폐형식 기하학적 솔루션으로 수렴 보장 및 Jacobian 특이점 제약 없음</li>
@@ -86,6 +90,8 @@ a { color: #A62018; }
 <li><strong>하드웨어 검증</strong>: Kinova Gen3, Rainbow RB-Y1, Unitree G1 플랫폼에서의 실시간 데모 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: SEW-Mimic takes in human arm keypoints (left) and</em></p></div>
 <ul>
 <li>인간 상하완을 단위벡터로 표현(shoulder-elbow, elbow-wrist 벡터)</li>
 <li>로봇 링크의 해당 방향벡터와의 방향 오차(orientation error)를 정의</li>

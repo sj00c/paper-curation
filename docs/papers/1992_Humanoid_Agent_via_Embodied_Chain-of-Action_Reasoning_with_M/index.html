@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Congcong Wen, Geeta Chandra Raju Bethala, Yu Hao, Niraj Pudasaini, Hao Huang, Shuaihang Yuan, Baoru Huang, Anh Nguyen, Mengyu Wang, Anthony Tzes, Yi Fang | <strong>날짜</strong>: 2025-04-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.09532" target="_blank">https://arxiv.org/abs/2504.09532</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>인형로봇의 전신 보행-조작을 위해 기초 모델의 추론 능력과 Embodied Chain-of-Action (CoA) 메커니즘을 통합한 제로샷 에이전트 프레임워크를 제시한다. 고수준 인간 지시를 affordance 분석, 공간 추론, 전신 동작 추론을 통해 체계적인 보행 및 조작 원시 동작 수열로 분해한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Perception-Reasoning-Action 패러다임에서 핵심 기여는 Reasoning 단계의 CoA 메커니즘으로, LLM을 통해 고수준 지시를 affordance 분석(객체 조작 가능성), 공간 추론(가려진 객체 위치 추정), 전신 동작 추론(운동학·동역학 실행 가능성)으로 구조화된 원시 동작 수열로 분해한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>첫 인형로봇 보행-조작 프레임워크</strong>: Foundation model 추론과 CoA Reasoning을 통합한 제로샷 자연어 지시 기반 인형로봇 에이전트의 첫 제안</li>
 <li><strong>강건한 일반화</strong>: Unitree H1-2, G1 두 인형로봇에서 열린 환경 및 아파트 환경 포함 다양한 보행, 조작, 보행-조작 태스크에서 기저선을 크게 능가하는 성능 달성</li>
 <li><strong>장지평선·비정형 환경 적응</strong>: 사전 정의된 태스크 템플릿 없이 해석 가능한 기호적 행동 계획을 통해 장지평선 비정형 시나리오에 강건하게 대응</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li>Ego-centric 시각 입력을 Vision-Language Model으로 장면 설명으로 변환하고, 인간 지시와 함께 토큰화</li>
 <li>LLM에 object affordance analysis, region spatial reasoning, whole-body movement inference를 포함하는 구조화된 프롬프트 제공</li>

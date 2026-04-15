@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Austin Stone, Ted Xiao, Yao Lu, Keerthana Gopalakrishnan, Kuang-Huei Lee, Quan Vuong, Paul Wohlhart, Sean Kirmani, Brianna Zitkovich, Fei Xia, Chelsea Finn, Karol Hausman | <strong>날짜</strong>: 2023-03-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.00905" target="_blank">https://arxiv.org/abs/2303.00905</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of MOO. We train a language-conditioned policy conditioned on object locations from a</em></p></div>
 <p>Pre-trained vision-language model(VLM)을 로봇 정책과 인터페이싱하여 로봇이 직접 경험하지 못한 새로운 물체 카테고리에 대한 지시를 따를 수 있도록 하는 MOO(Manipulation of Open-World Objects) 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Frozen VLM을 사용하여 언어 지시에서 물체를 지역화하고, 이 물체 위치 정보와 이미지, 지시를 결합하여 조작 정책을 조건화함으로써 end-to-end 학습 정책이 의미론적 정보를 활용하도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Main Results. While baseline methods perform competitively on in-distribution combinations of</em></p></div>
 <ul>
 <li><strong>Zero-shot 일반화</strong>: 훈련에서 본 106개 물체를 넘어 다양한 미경험 물체 카테고리와 환경에 걸쳐 zero-shot 일반화 달성</li>
 <li><strong>실제 로봇 평가</strong>: 실제 모바일 조작기에서 1,472번의 평가를 통해 최근 로봇 학습 방법을 유의미하게 초과</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>모바일 조작 통합</strong>: Clip-on-Wheels(CoW)와 통합하여 미경험 물체에 대한 모바일 조작 작업 완성 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: MOO architecture: We extract object location (represented as the center of the bounding box) on</em></p></div>
 <ul>
 <li>OWL-ViT를 사용한 개방형 어휘 물체 검출로 언어 지시의 물체명 추출 및 2D 좌표 지역화</li>
 <li>지역화된 물체의 2D 중심 좌표를 정책 입력으로 포함시켜 명시적 물체-지시 연결</li>

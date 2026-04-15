@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yinhuai Wang, Qihan Zhao, Runyi Yu, Hok Wai Tsui, Ailing Zeng, Jing Lin, Zhengyi Luo, Jiwen Yu, Xiu Li, Qifeng Chen, Jian Zhang, Lei Zhang, Ping Tan | <strong>날짜</strong>: 2024-08-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2408.15270" target="_blank">https://arxiv.org/abs/2408.15270</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Concept of SkillMimic. We define an interaction skill as</em></p></div>
 <p>SkillMimic은 skill-specific reward 설계 없이 통합된 HOI imitation reward를 사용하여 단일 policy로 다양한 농구 상호작용 기술을 학습하고 합성할 수 있는 data-driven 프레임워크다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Contact graph를 통해 정밀한 접촉 모방을 가능하게 하고, 통합된 HOI imitation reward로 다양한 기술을 학습한 후, high-level controller를 통해 기술을 재조합하여 복합 작업을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We propose a novel approach that for the first time enables physically simulated humanoids to learn a variety </em></p></div>
 <ul>
 <li><strong>SkillMimic 프레임워크</strong>: 동일한 hyperparameter로 dribbling, layup, shooting 등 다양한 농구 기술을 학습하고 smooth skill switching을 실현</li>
 <li><strong>Contact graph</strong>: 다양한 상호작용 skill에 적용 가능한 일반적인 접촉 모델링 방법으로 precise contact imitation 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>BallPlay 데이터셋</strong>: RGB 비디오 기반 BallPlay-V(8개 기술)와 optical motion capture 기반 BallPlay-M(35분)의 두 농구 HOI 데이터셋 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3 (b) shows the training pipeline of SkillMimic. Given</em></p></div>
 <ul>
 <li>HOI state transition으로 interaction skill을 정의하여 reference motion과의 상태 전이 일치도 기반 학습</li>
 <li>Contact graph를 사용하여 humanoid와 object 간의 physical contact를 explicitly 모델링 및 reward 설계</li>

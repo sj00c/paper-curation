@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haolin Song, Hongbo Zhu, Tao Yu, Yan Liu, Mingqi Yuan, Wengang Zhou, Hua Chen, Houqiang Li | <strong>날짜</strong>: 2025-12-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.07464" target="_blank">https://arxiv.org/abs/2512.07464</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed Successive Teacher–Student (S-TS) framework and deployment pipeline. A teacher–student</em></p></div>
 <p>인간형 로봇의 복잡한 지형 보행을 위해 하향식 깊이 카메라로 촬영한 영상을 U-Net으로 높이맵으로 재구성하고, 이를 통합 정책에 입력하여 관절 제어와 보행 주기를 동시에 적응시키는 지각 기반 보행 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 하향식 깊이 카메라 기반 단일 프레임 U-Net 높이맵 재구성과 지각·자체감각 정보를 입력으로 하는 통합 정책이 관절 명령과 보행 주기 신호를 동시에 생성하며, Successive Teacher–Student 학습으로 효율적으로 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Full-sized humanoid robot Oli performing gait-</em></p></div>
 <ul>
 <li><strong>실시간 높이맵 재구성</strong>: 하향식 깊이 카메라로부터 50Hz에서 작동하는 compact U-Net을 통해 자아중심적 높이맵을 실시간으로 구성</li>
 <li><strong>통합 적응형 정책</strong>: 지형 정보와 자체감각 정보를 처리하여 관절 목표값과 보행 주기 신호를 동시에 출력하며, 명령 동작과 국소 지형에 따라 보행 리듬 자동 조정</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: 31-DoF, 1.65m 인간형 로봇으로 계단 오르내림(전진/후진), 46cm 갭 횡단 등 다양한 복잡 지형에서 견고한 전방향 보행 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed Successive Teacher–Student (S-TS) framework and deployment pipeline. A teacher–student</em></p></div>
 <ul>
 <li>하향식 깊이 카메라를 로봇 베이스 아래에 장착하여 발 주변 지지 영역 촬영</li>
 <li>U-Net 기반 경량 신경망으로 각 깊이 프레임을 조밀한 자아중심적 높이맵으로 변환하여 신체 및 다리 자체폐색 문제 해결</li>

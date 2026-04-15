@@ -82,6 +82,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 상태공간모델을 유리 전달함수(Rational Transfer Function, RTF) 표현 H(z) = h₀ + (b₁z⁻¹ + ... + bₙz⁻ⁿ)/(1 + a₁z⁻¹ + ... + aₙz⁻ⁿ)로 직접 매개변수화하고, 분자/분모 계수(a, b)를 시퀀스 길이로 패딩한 후 FFT를 이용하여 임펄스 응답 필터를 계산.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>메모리 소비 측면에서 S5(스캔 기반)는 상태 크기에 따라 메모리가 급증하지만, RTF는 선형적으로 증가</em></p></div>
 <ol>
 <li><strong>상태-자유 복잡도 달성</strong>:
 <ul>
@@ -104,6 +106,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>상태-자유 병렬 추론 알고리즘: (a) RTF 표현, (b) 알고리즘 흐름도(rFFT→패딩→합성곱→irFFT), (c) 단일 스텝 추론용 재귀 형태</em></p></div>
 <ul>
 <li><strong>전달함수 표현의 좌표 불변성(Coordinate Invariance)</strong>:</li>
 </ul>

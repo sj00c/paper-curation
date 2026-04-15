@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yufei Ye, Jiaman Li, Ryan Rong, C. Karen Liu | <strong>날짜</strong>: 2026-02-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.22209" target="_blank">https://arxiv.org/abs/2602.22209</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Reconstruction Using the Generative Motion Prior. Given a metric-SLAMed egocentric videos, and the object temp</em></p></div>
 <p>본 논문은 egocentric 비디오에서 손과 객체의 상호작용을 jointly하게 재구성하기 위해 diffusion-based generative motion prior를 학습하고, 테스트 시점에 visual observations와 VLM-기반 contact cues로 이를 guided generation하는 WHOLE 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 손과 객체의 상호작용 dynamics를 모델링하는 diffusion-based generative motion prior를 학습한 후, 테스트 시점에 segmentation mask, contact cues, SLAM poses 등의 visual observations로 guided generation을 수행하여 전역 좌표계에서 일관성 있는 trajectory를 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. HOI Visualization. We show hand-object reconstructions from GT (green), FP+HaWor-Simple (purple), FP+HaWor-Con</em></p></div>
 <ul>
 <li><strong>Hand Motion Estimation</strong>: 기존 방법 대비 우수한 성능 달성</li>
 <li><strong>6D Object Pose Estimation</strong>: 이전 SOTA를 넘는 성과</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>VLM-기반 Contact Localization</strong>: 자동화된 contact annotation으로 ground-truth 레이블과 유사한 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Reconstruction Using the Generative Motion Prior. Given a metric-SLAMed egocentric videos, and the object temp</em></p></div>
 <ul>
 <li>Diffusion model을 조건 c ≡ (H̄, O)로 훈련하여 hand motion H, object trajectory T, contact label C를 생성</li>
 <li>Off-the-shelf hand estimator로부터 rough estimate H̄를 얻고, generative prior이 이를 refine</li>

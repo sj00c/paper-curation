@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao | <strong>날짜</strong>: 2022-10-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2210.03629" target="_blank">https://arxiv.org/abs/2210.03629</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (1) Comparison of 4 prompting methods, (a) Standard, (b) Chain-of-thought (CoT,</em></p></div>
 <p>ReAct는 대형 언어 모델이 reasoning trace와 task-specific action을 interleaved manner로 생성하도록 함으로써, 추론과 행동의 시너지를 통해 다양한 언어 이해 및 의사결정 태스크의 성능을 향상시키는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ReAct 프레임워크는 LLM에 대하여 Thought(내부 추론), Action(외부 행동), Observation(환경 반응)을 순환적으로 생성하도록 프롬프트하여, 추론이 행동 계획을 유도·추적·갱신하고 행동이 외부 지식베이스나 환경과 상호작용하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (1) Comparison of 4 prompting methods, (a) Standard, (b) Chain-of-thought (CoT,</em></p></div>
 <ul>
 <li><strong>HotpotQA에서의 성능 향상</strong>: Wikipedia API와의 상호작용을 통해 hallucination과 error propagation을 극복하고 해석 가능한 task-solving trajectory 생성</li>
 <li><strong>Fever 사실 검증에서의 우수성</strong>: 외부 정보 접근을 통한 정확한 사실 검증 성능 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>해석 가능성 및 신뢰성 개선</strong>: 내부 추론과 외부 정보의 구분이 명확하여 모델의 의사결정 근거 추적 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (1) Comparison of 4 prompting methods, (a) Standard, (b) Chain-of-thought (CoT,</em></p></div>
 <ul>
 <li>LLM에 in-context examples를 포함한 프롬프트로 Thought, Action, Observation의 반복적 생성 유도</li>
 <li>외부 인터페이스(Wikipedia API, 텍스트 환경 등)와의 상호작용을 통해 실시간 정보 수집</li>

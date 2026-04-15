@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Dingzirui Wang, Longxu Dou, Xuanliang Zhang, Qingfu Zhu, Wanxiang Che | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>기준선(좌)과 FUSED(우)의 시연(demonstration) 풀 구성 비교. FUSED는 기존 라벨링 없이도 또는 인간 개입 없이 시연 풀을 합성하고 다양성을 향상시킬 수 있음</em></p></div>
 <p>본 논문은 대규모 언어모델(LLM)의 문맥 내 학습(in-context learning)을 활용한 Text-to-SQL 작업에서 시연(demonstration) 풀의 다양성을 측정하고 향상시키는 방법을 제안한다. 기존의 인간 라벨링 기반 시연 선택 방식의 낮은 다양성과 높은 비용 문제를 해결하기 위해 FUSED(FUSing itEratively for Demonstrations) 방법을 도입한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -84,6 +86,8 @@ a { color: #A62018; }
 </ol>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4, 5">
+<p class="fig-caption"><em>기존 라벨링 데이터의 DM 값과 성능 분석. 더 높은 DM을 가진 시연 풀의 존재를 시각적으로 확인</em></p></div>
 <ol>
 <li><strong>다양성 지표 정의</strong>: 사용자 질문 중 시연 풀의 가장 유사한 시연과의 유사도가 최소인 질문을 기반으로 하는 DM 지표 도입. 기존 라벨링의 다양성이 추가로 향상될 수 있음을 증명</li>
 <li><strong>성능 개선</strong>:
@@ -96,6 +100,8 @@ a { color: #A62018; }
 <li><strong>비용 절감</strong>: 인간 라벨링 없이 LLM 기반 자동 합성으로 라벨링 비용 제거</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>FUSED의 파이프라인: (1) 시연 샘플링, (2) 시연 융합 단계로 구성</em></p></div>
 <p><strong>FUSED의 반복적 융합 프로세스:</strong></p>
 <ul>
 <li><strong>단계 1: 시연 샘플링(Demonstration Sampling)</strong>

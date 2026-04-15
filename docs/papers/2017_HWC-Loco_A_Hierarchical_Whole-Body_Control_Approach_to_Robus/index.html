@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HWC-Loco는 goal-tracking policy와 safety-recovery policy를 계층적으로 구성하고, high-level planning policy가 상황에 따라 두 정책 간을 동적으로 전환하며, Zero Moment Point 기반 동적 제약과 인간 행동 모방을 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of HWC-Loco: The framework consists of two stages: (a) Training goal-tracking</em></p></div>
 <ul>
 <li><strong>계층적 정책 구조</strong>: Goal-tracking과 safety-recovery를 분리하고 high-level planning으로 동적 선택 메커니즘 도입</li>
 <li><strong>Robust optimization 공식화</strong>: 환경 동역학 불일치 하에서의 정책 학습을 명시적 robust optimization 문제로 재정의</li>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>광범위한 검증</strong>: 다양한 지형, 로봇 구조, 외부 교란 상황에서 시뮬레이션 및 실제 환경 모두에서 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of HWC-Loco: The framework consists of two stages: (a) Training goal-tracking</em></p></div>
 <ul>
 <li>POMDP 기반 학습 환경 정의: 속도 명령, 고유감각, 특권 정보(기저 속도, 지형 높이, 외부 교란, ZMP)를 포함</li>
 <li>Reward 함수 설계: Task reward (rT), penalty reward (rP), regularization reward (rR)를 가중 결합</li>

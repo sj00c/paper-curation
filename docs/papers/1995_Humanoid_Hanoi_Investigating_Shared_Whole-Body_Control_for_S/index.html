@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Minku Kim, Kuan-Chia Chen, Aayam Shrestha, Li Fuxin, Stefan Lee, Alan Fern | <strong>날짜</strong>: 2026-02-23 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.13850" target="_blank">10.48550/arXiv.2602.13850</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Independently trained high-level skills generate task-level commands that are executed through a shared, task-ag</em></p></div>
 <p>휴머노이드 로봇의 장기 박스 재배열 작업을 위해 공유된 task-agnostic WBC를 통해 재사용 가능한 스킬들을 조합하는 skill-based framework를 제안하고, 분포 이동으로 인한 강건성 저하를 데이터 집계를 통해 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모든 스킬이 하나의 공유된 task-agnostic WBC를 통해 실행되도록 아키텍처를 설계하고, domain randomization 하에서 closed-loop 스킬 실행 롤아웃을 통한 데이터 집계로 WBC를 재훈련하여 distribution shift에 대응한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Cumulative task success rates for the Humanoid Hanoi benchmark. Each move consists of four skills: GoTo, Pickup,</em></p></div>
 <ul>
 <li><strong>공유 WBC 스킬 조합 아키텍처</strong>: 스킬별 별도 low-level 제어기 대신 하나의 unified WBC를 유지함으로써 스킬 경계에서의 동역학 변화를 제거하고 scalable composition을 실현</li>
 <li><strong>롤아웃 기반 데이터 집계</strong>: closed-loop 스킬 실행 롤아웃으로 WBC 훈련을 확장하여 분포 이동으로 인한 성능 저하를 완화하고, 스킬별 residual 및 fine-tuning 기반 baseline을 능가</li>
 <li><strong>Humanoid Hanoi 벤치마크 도입</strong>: Tower-of-Hanoi 스타일의 long-horizon 박스 재배열 벤치마크 제공, 누적 실행 오류로 인한 off-nominal 상태 노출 및 실패 모드 분석</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Independently trained high-level skills generate task-level commands that are executed through a shared, task-ag</em></p></div>
 <ul>
 <li>High-level에서 GoTo (unloaded/with-box), Pickup, Place 스킬을 독립적으로 훈련하여 task-level 커맨드 생성</li>
 <li>모든 스킬 커맨드를 항상 활성화된 shared WBC로 라우팅하여 proprioceptive state와 스킬 커맨드로부터 joint-level PD 타겟 출력</li>

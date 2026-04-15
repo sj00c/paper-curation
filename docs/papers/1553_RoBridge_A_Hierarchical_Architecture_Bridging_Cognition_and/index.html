@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kaidong Zhang, Rongtao Xu, Pengzhen Ren, Junfan Lin, Hefeng Wu, Liang Lin, Xiaodan Liang | <strong>날짜</strong>: 2025-05-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.01709" target="_blank">https://arxiv.org/abs/2505.01709</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Comparison of RoBridge and previous methods. Declarative skill methods (left) directly generate specific contr</em></p></div>
 <p>RoBridge는 Vision-Language Model의 선언적 능력과 강화학습의 절차적 능력을 통합하는 계층적 아키텍처로, Invariant Operable Representation(IOR)을 상징적 브릿지로 활용하여 로봇의 인지와 실행 간 격차를 해소한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: High-level Cognitive Planner(HCP)가 자연언어 명령을 물리적 직관을 가진 IOR로 변환하고, Guided Embodied Agent(GEA)가 이를 구체적 실행 동작으로 변환하는 3계층 구조를 제시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Comparison of RoBridge and previous methods. Declarative skill methods (left) directly generate specific contr</em></p></div>
 <ul>
 <li><strong>새로운 작업에 대한 높은 성공률</strong>: 미학습 작업에 대해 75% 성공률 달성</li>
 <li><strong>우수한 Sim-to-Real 일반화</strong>: 작업당 5개의 실제 데이터 샘플만으로 83% 평균 성공률</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>환경 불변성</strong>: 조명 변화, 카메라 자세 편차 등 다양한 간섭 조건에서 안정적 성능 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. RoBridge overview. RoBridge adopts a three-layer architecture, consisting of a high-level cognitive planner (H</em></p></div>
 <ul>
 <li>High-level Cognitive Planner: 대규모 사전학습된 VLM을 기반으로 자연언어 명령을 분석하고 인과 추론을 통해 물리적으로 타당한 IOR 생성</li>
 <li>Invariant Operable Representation: 환경 불변성과 물리적 직관을 가진 기호적 표현으로 Action(place, push 등), Gripper, Object, Target, Constraint 등의 구조화된 정보 포함</li>

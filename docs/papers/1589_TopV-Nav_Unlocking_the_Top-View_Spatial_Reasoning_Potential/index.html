@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Linqing Zhong, Chen Gao, Zihan Ding, Yue Liao, Huimin Ma, Shifeng Zhang, Xu Zhou, Si Liu | <strong>날짜</strong>: 2024-11-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2411.16425" target="_blank">https://arxiv.org/abs/2411.16425</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overall framework of TopV-Nav. During navigation, the agent receives egocentric RGB-D images It from the envir</em></p></div>
 <p>TopV-Nav는 MLLM을 활용하여 top-view 지도 위에서 직접 공간 추론을 수행함으로써 Zero-Shot Object Navigation 작업을 개선하는 방법론이다. Adaptive Visual Prompt Generation, Dynamic Map Scaling, Potential Target Driven 메커니즘을 통해 공간 정보 손실을 방지하고 의미론적 탐색 공간을 확대한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: TopV-Nav는 top-view 지도 이미지를 MLLM의 입력으로 직접 사용하여 map-to-text 과정을 제거하고, AVPG로 의미론적으로 풍부한 시각 프롬프트를 생성하며, DMS와 PTD 메커니즘으로 세밀한 추론과 인간처럼의 탐색을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. (a) Current LLM-based methods lie in two exploration</em></p></div>
 <ul>
 <li><strong>Map-to-text 제거</strong>: 기존 언어 변환 방식을 버리고 MLLM이 top-view 지도 이미지에서 직접 공간 추론을 수행하도록 변경하여 공간 정보 손실 해결</li>
 <li><strong>Adaptive Visual Prompt Generation (AVPG)</strong>: 지도 위에 적응적으로 시각 프롬프트를 생성하여 MLLM의 객체 위치와 공간 관계 이해 향상</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>의미론적 행동 공간</strong>: 기존의 frontier나 미리 정의된 waypoint로 제한되지 않고 전역적이며 의미론적으로 풍부한 행동 선택 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overall framework of TopV-Nav. During navigation, the agent receives egocentric RGB-D images It from the envir</em></p></div>
 <ul>
 <li>환경으로부터 egocentric RGB-D 이미지를 수신하여 top-view 지도 Mt 구성</li>
 <li>AVPG가 지도 위에 객체, 장애물, 탐색 가능 영역 등을 시각적 프롬프트로 적응적으로 배치</li>

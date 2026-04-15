@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Delin Qu, Haoming Song, Qizhi Chen, Zhaoqing Chen, Xianqiang Gao, Dong Wang, Xinyi Ye, Qi Lv, Modi Shi, Guanghui Ren, Cheng Ruan, Maoqing Yao, Haoran Yang, Jiacheng Bao, Bin Zhao, Xuelong Li | <strong>날짜</strong>: 2025-08-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.21112" target="_blank">https://arxiv.org/abs/2508.21112</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: EO-1 Model Architecture. EO-1 model is a Vision-Language-Action (VLA) model that adopts a</em></p></div>
 <p>EO-1은 interleaved vision-text-action 사전학습을 통해 multimodal embodied reasoning과 robot control을 통합한 unified embodied foundation model이며, 1.5M 샘플의 EO-Data1.5M 데이터셋과 함께 개발되었다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: unified decoder-only transformer 아키텍처를 통해 auto-regressive decoding과 flow matching denoising을 통합하고, VLM 기반의 shared parameter를 modality-specific objective로 최적화하며, causal attention을 전체 interleaved vision-text-action 시퀀스에 적용한다. 또한 VLM과 human annotation을 활용하여 embodied reasoning QA pair와 robot action을 temporal order로 연결한 interleaved embodied dataset을 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: (a) Statistics of EO-Robotics Dataset (EO-Data1.5M) and Benchmark (EO-Bench). (b) Dataset</em></p></div>
 <ul>
 <li><strong>Unified Architecture</strong>: 별도의 action-specific parameter 없이 multimodal embodied reasoning과 real robot control을 shared backbone에 통합하여 seamless cross-modal interaction을 실현</li>
 <li><strong>Interleaved Embodied Dataset</strong>: 1.5M 샘플 규모의 EO-Data1.5M을 통해 vision, text, action의 temporal dynamics와 causal dependency를 포착하는 interleaved vision-text-action pretraining 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Open Release</strong>: 모델 가중치, training code, interleaved embodied dataset 전체를 공개하여 community의 further research 촉진</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Interleaved rectifying sampling strategy. Our method samples variable-length subsequences from</em></p></div>
 <ul>
 <li>VLM 기반 unified decoder-only transformer에 two MLP를 추가하여 continuous robotic action을 encode/decode</li>
 <li>Pre-trained VLM의 shared parameter를 text generation을 위한 next-token prediction과 robot action을 위한 flow matching으로 dual objective로 최적화</li>

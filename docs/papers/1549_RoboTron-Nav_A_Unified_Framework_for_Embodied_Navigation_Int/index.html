@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yufeng Zhong, Chengjian Feng, Feng Yan, Fanfan Liu, Liming Zheng, Lin Ma | <strong>날짜</strong>: 2025-03-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.18525" target="_blank">https://arxiv.org/abs/2503.18525</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of RoboTron-Nav architecture. The current frame It is initially processed through 2D and 3D feature e</em></p></div>
 <p>RoboTron-Nav는 perception, planning, prediction을 통합하는 embodied navigation 프레임워크로, multitask collaboration (navigation + EQA)과 adaptive 3D-aware history sampling을 통해 언어 기반 시각 네비게이션 성능을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Multitask collaboration을 통해 navigation과 EQA 과제를 공동 학습하여 perception과 planning을 강화하고, adaptive 3D-aware history sampling으로 spatial과 semantic 차원의 관찰 중복을 최소화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Top: During long-term navigation, agents may revisit</em></p></div>
 <ul>
 <li><strong>CHORES-S 벤치마크 SOTA</strong>: ObjectNav에서 81.1% success rate 달성, 기존 방법 대비 9% 절대 개선</li>
 <li><strong>Multitask collaboration 전략</strong>: Navigation과 EQA 과제의 공동 학습으로 의사결정 과정의 해석가능성 향상</li>
 <li><strong>Adaptive 3D-aware history sampling</strong>: Spatial 및 semantic 차원에서 관찰 중복성을 제어하여 장기 네비게이션 효율성 극대화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of RoboTron-Nav architecture. The current frame It is initially processed through 2D and 3D feature e</em></p></div>
 <ul>
 <li>Visual encoder (UVFormer + ViT)를 통한 현재 프레임의 2D/3D 특성 추출</li>
 <li>Adaptive 3D-aware history sampling: RGB 프레임을 공간적으로 인접하지 않거나 다른 시점에서 캡처한 경우만 유효한 관찰로 선택</li>

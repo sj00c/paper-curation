@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Pei Xu, Zhen Wu, Ruocheng Wang, Vishnu Sarukkai, Kayvon Fatahalian, Ioannis Karamouzas, Victor Zordan, C. Karen Liu | <strong>날짜</strong>: 2025-09-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.22442" target="_blank">https://arxiv.org/abs/2509.22442</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We introduce a novel policy integration framework to enable the composition of drastically different motor skill</em></p></div>
 <p>농구 동작과 같은 다단계 장기 과제에서 정의되지 않은 중간 상태를 가진 이질적인 스킬들을 seamlessly 합성하기 위해 policy integration framework와 soft routing을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Well-defined subtask A, C의 사전학습 정책으로부터 ill-defined subtask B의 초기 상태 분포와 terminal reward를 지정하고, C를 B의 생성 상태에 적응시키면서 동시에 B를 최적화한다. 그 후 soft routing policy로 실시간 명령 기반의 primitive policy들을 통합 제어한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Our physically simulated character is capable of performing seven</em></p></div>
 <ul>
 <li><strong>Policy integration framework</strong>: Well-defined 스킬의 policy를 ill-defined 중간 subtask 학습에 활용하여 정책 합성 문제를 해결</li>
 <li><strong>Soft routing 메커니즘</strong>: 실시간 외부 명령(드리블 목적지, 속도, 점프 슛)에 따라 primitive policy 간의 robust transition 실현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>광범위한 검증</strong>: Soft routing, policy fine-tuning의 중요성을 입증하고 기존 방법의 한계를 노출하는 ablation study 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4 shows our system architecture for primitive policy learn-</em></p></div>
 <ul>
 <li>Well-defined goal을 가진 subtask A와 C에 대해 먼저 독립적으로 RL 정책 학습</li>
 <li>Subtask B의 training 시 policy A의 탐색으로부터 유효한 초기 상태 분포 정의</li>

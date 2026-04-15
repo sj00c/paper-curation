@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Daehwa Kim, Mario Srouji, Chen Chen, Jian Zhang | <strong>날짜</strong>: 2024-11-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.00396" target="_blank">https://arxiv.org/abs/2412.00396</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: ARMOR’s egocentric perception hardware in simu-</em></p></div>
 <p>휴머노이드 로봇의 팔과 손에 분산 배치된 ToF 센서 기반의 자아중심 지각 시스템 ARMOR과 transformer 기반 모방학습 정책을 제시하여 밀집 환경에서의 충돌 회피 및 동작 계획을 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 40개의 VL53L5CX ToF 센서를 팔에 분산 배치하여 폐색 없는 지각을 확보하고, AMASS 데이터셋의 86시간 분량 인간 동작을 전문가 궤적으로 사용하여 transformer 기반 imitation learning 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: ARMOR presents a novel egocentric wearable perception hardware and software system for humanoid robots (left).</em></p></div>
 <ul>
 <li><strong>지각 성능</strong>: 머리 장착 및 외부 카메라 설정 대비 충돌 63.7% 감소, 성공률 78.7% 향상</li>
 <li><strong>정책 성능</strong>: cuRobo 샘플링 기반 계획법 대비 충돌 31.6% 감소, 성공률 16.9% 향상, 계산 지연 26배 감소</li>
 <li><strong>실제 배포</strong>: Fourier Intelligence GR1 휴머노이드에 ARMOR 지각 시스템 구현 및 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: ARMOR-Policy’s neural motion planner network</em></p></div>
 <ul>
 <li>SparkFun VL53L5CX ToF 센서 40개를 각 팔에 20개씩 전략적으로 배치 (6.4×3.0×1.5mm 컴팩트 사이즈, 15Hz, 8×8 해상도)</li>
 <li>4개 센서당 XIAO ESP 마이크로컨트롤러로 관리, I2C 버스로 연결, Jetson Xavier NX를 통해 RTX 4090 GPU로 처리</li>

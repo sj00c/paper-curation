@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Akshay L Chandra, Iman Nematollahi, Chenguang Huang, Tim Welschehold, Wolfram Burgard, Abhinav Valada | <strong>날짜</strong>: 2025-08-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.03645" target="_blank">https://arxiv.org/abs/2508.03645</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) Standard diffusion policies trained via imitation learning are limited by offline data. (b) DPPO [17]</em></p></div>
 <p>DiWA는 학습된 world model을 활용하여 diffusion 기반 로봇 정책을 오프라인으로 미세조정하는 프레임워크로, RL을 통해 상상 속 롤아웃에서 정책을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 데이터 효율성이 높은 world model을 오프라인 play 데이터로 학습한 후, 이를 안전한 시뮬레이터로 사용하여 diffusion policy를 오프라인 RL로 미세조정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) Standard diffusion policies trained via imitation learning are limited by offline data. (b) DPPO [17]</em></p></div>
 <ul>
 <li><strong>오프라인 Diffusion Policy 미세조정</strong>: Dream Diffusion MDP를 공식화하여 실제 또는 시뮬레이션 환경과의 상호작용 없이 diffusion policy를 완전히 오프라인으로 미세조정하는 최초의 프레임워크 제시</li>
 <li><strong>샘플 효율성 향상</strong>: CALVIN 벤치마크에서 수십만 개의 오프라인 play 상호작용으로 학습한 world model만으로 모형 없는 기준선 대비 수 배 이상 적은 물리적 상호작용으로 성능 개선</li>
 <li><strong>제로샷 실제 환경 배포</strong>: World model로 완전히 미세조정된 diffusion 정책이 추가 물리적 상호작용 없이 실제 로봇에 배포 가능함을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: DiWA framework: (1) A world model is trained on unstructured robot play data to learn latent dynamics.</em></p></div>
 <ul>
 <li>Unstructured play 데이터로 task-agnostic world model을 학습하고 고정</li>
 <li>Expert demonstration으로 사전학습된 diffusion policy를 초기화</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shu Wang, Muzhi Han, Ziyuan Jiao, Zeyu Zhang, Ying Nian Wu, Song-Chun Zhu, Hangxin Liu | <strong>날짜</strong>: 2024-03-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.11552" target="_blank">https://arxiv.org/abs/2403.11552</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The proposed LLM3 framework. (a) Traditional TAMP</em></p></div>
 <p>LLM3는 대규모 언어모델(LLM)을 기반으로 한 Task and Motion Planning 프레임워크로, 모션 계획 실패에 대한 추론을 통해 기호적 계획과 연속 모션 생성을 통합한다. 도메인 특화 인터페이스 대신 LLM의 추론 능력을 활용하여 작업 계획과 행동 매개변수를 제안하고 반복적으로 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: pre-trained LLM을 도메인 독립적 task planner, informed action parameter sampler, 그리고 motion failure reasoner로 활용하며, 모션 계획 피드백(충돌, 도달 불가능)을 체계적으로 분류하여 LLM이 제안을 반복적으로 개선하도록 prompting한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System diagram of the proposed LLM3 framework. (a) We show an example of utilizing a pre-trained LLM for reasoni</em></p></div>
 <ul>
 <li><strong>도메인 독립적 TAMP 프레임워크</strong>: pre-trained LLM을 기반으로 수작업으로 설계된 모듈 없이 기호적 계획과 연속 매개변수 선택을 통합</li>
 <li><strong>모션 실패 추론 메커니즘</strong>: collision과 unreachability 두 가지 주요 실패 모드를 체계화하여 targeted refinement 실현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실증적 검증</strong>: 상자 포장 도메인에서 정량적 평가와 ablation study를 통해 모션 피드백 추론의 중요성 확인, 실제 로봇에서의 적용 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System diagram of the proposed LLM3 framework. (a) We show an example of utilizing a pre-trained LLM for reasoni</em></p></div>
 <ul>
 <li>pre-trained LLM에 자연언어로 환경 상태, 작업 목표, 이전 실패를 포함한 prompt 제공</li>
 <li>LLM이 기호적 action sequence와 연속 action parameters(예: 객체 배치 위치)를 동시에 생성</li>

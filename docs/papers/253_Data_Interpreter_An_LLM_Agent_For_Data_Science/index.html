@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sirui Hong, Yizhang Lin, Bangbang Liu, Binhao Wu, Danyang Li 외 다수 | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2402.18679" target="_blank">10.48550/arXiv.2402.18679</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Data Interpreter의 계층적 그래프 모델링 워크플로우: 프로젝트 요구사항을 태스크 그래프로 분해한 후, 실행 가능한 액션 그래프로 다시 분해하는 과정</em></p></div>
 <p>본 논문은 대규모 언어모델(LLM) 기반 에이전트가 데이터 사이언스의 장기적이고 상호연결된 작업들을 자동으로 해결할 수 있도록 설계된 <strong>Data Interpreter</strong>를 제안한다. 계층적 그래프 모델링과 프로그래밍 가능한 노드 생성이라는 두 가지 핵심 메커니즘을 통해 복잡한 데이터 사이언스 워크플로우를 동적으로 관리하고 실시간 데이터 변화에 적응한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 복잡한 데이터 사이언스 문제를 계층적 그래프 구조(태스크 그래프 → 액션 그래프)로 재구성하고, 프로그래밍 가능한 노드 생성을 통해 각 부분 문제를 동적으로 생성·검증·최적화</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>다양한 오픈소스 프레임워크와의 비교 분석: 종합 점수(comprehensive score)로 표준화된 성능 평가</em></p></div>
 <ol>
 <li><strong>벤치마크 성능 향상</strong>: InfiAgent-DABench에서 정확도 75.9%에서 94.9%로 <strong>25% 개선</strong>, MATH 데이터셋에서 최고 성능 대비 <strong>26% 향상</strong></li>
 <li><strong>다양한 작업 영역 우수성</strong>: 머신러닝 작업에서 88%→95%, 개방형 작업에서 60%→97%로 향상되어 다중 도메인 적용성 입증</li>
 <li><strong>프레임워크 우월성</strong>: Figure 1에서 보이듯이 기존 오픈소스 프레임워크(예: MetaGPT 등)를 일관되게 상회하는 성능 달성</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>계층적 그래프 모델링 및 생성 실행 프로세스</em></p></div>
 <p><strong>핵심 방법론:</strong></p>
 <ul>
 <li><strong>계층적 그래프 모델링 (Hierarchical Graph Modeling)</strong>

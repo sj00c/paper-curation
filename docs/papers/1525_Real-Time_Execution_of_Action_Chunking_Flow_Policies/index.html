@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kevin Black, Manuel Y. Galliker, Sergey Levine | <strong>날짜</strong>: 2025-06-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.07339" target="_blank">https://arxiv.org/abs/2506.07339</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An illustration of a typical bifurcation be-</em></p></div>
 <p>Real-time chunking (RTC)은 diffusion 또는 flow 기반 VLA의 inference 시간에 action chunking 정책을 비동기적으로 실행하는 알고리즘으로, 현재 chunk 실행 중 다음 chunk를 생성하면서 inference 지연으로 인한 불연속성을 제거한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RTC는 asynchronous action chunking을 inpainting 문제로 정식화하여, 반드시 실행될 action들은 '동결'하고 나머지는 flow matching의 guidance를 통해 '복원'함으로써 chunk 경계의 연속성을 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Top: Real-time chunking (RTC) enables the robot to perform highly dexterous and dynamic tasks,</em></p></div>
 <ul>
 <li><strong>Latency-robust 성능</strong>: 300ms 이상의 inference delay(예측 범위의 30% 이상)가 있어도 match lighting 같은 정밀한 작업을 높은 성공률로 수행</li>
 <li><strong>속도 개선</strong>: synchronous inference 대비 20% 빠른 execution 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>벤치마크 구축</strong>: Kinetix 시뮬레이터 기반 12개의 동적 작업으로 구성된 새로운 평가 벤치마크 제시 및 6개의 실제 bimanual manipulation 작업에서 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: A diagram illustrating how action generation attends to the previous action chunk in real-time chunking.</em></p></div>
 <ul>
 <li>Flow matching 정책의 velocity field v_π를 활용하여 frozen action들에 대한 조건을 유지하면서 inpainting 방식으로 새로운 chunk 생성</li>
 <li>Inference delay d와 execution horizon s의 관계를 분석하여 반드시 실행될 actions을 수학적으로 결정</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jianglong Ye, Keyi Wang, Chengjing Yuan, Ruihan Yang, Yiquan Li, Jiyue Zhu, Yuzhe Qin, Xueyan Zou, Xiaolong Wang | <strong>날짜</strong>: 2025-06-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.17198" target="_blank">https://arxiv.org/abs/2506.17198</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The Dex1B benchmark consists of 1B generated high-quality demonstrations for grasping (top) and articulation (mi</em></p></div>
 <p>생성 모델과 최적화 방법을 결합하여 10억 개의 고품질 손가락 조작 시연을 생성한 Dex1B 데이터셋과 이를 활용하는 DexSimple 방법을 제시하여 손가락 조작 작업의 성능을 22% 향상시켰다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 최적화 기반으로 작은 규모의 seed 데이터셋을 구성한 후 generative model을 학습시키고, geometric constraints를 통합하여 실현 가능성을 개선하며, 조건부 생성과 debiasing 메커니즘으로 다양성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The Dex1B benchmark consists of 1B generated high-quality demonstrations for grasping (top) and articulation (mi</em></p></div>
 <ul>
 <li><strong>Dex1B 데이터셋</strong>: 6,000개 이상의 다양한 객체에 대해 grasping과 articulation 작업을 위한 10억 개의 시연으로 구성되며, DexGraspNet 대비 700배 이상의 시연 규모를 확보</li>
 <li><strong>DexSimple 베이스라인</strong>: 조건부 생성과 강화된 손실 함수를 통합한 간단하면서도 효과적인 정책 학습 방법으로, Dex1B의 규모와 다양성을 활용하는 데 최적화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>sim-to-real 전이</strong>: 시뮬레이션에서 학습한 정책이 실제 로봇 환경으로 효과적으로 전이되는 것을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Dex1B demonstration collection. The engine takes object assets and hand pose initialization as input, using a co</em></p></div>
 <ul>
 <li>최적화 기반 seed 데이터셋 구성: GraspIt 플래너와 유사한 접근을 통해 고품질 초기 시연 생성</li>
 <li>Geometric constraints 통합: 생성 모델에 기하학적 제약을 포함하여 물리적 실현 가능성 향상</li>

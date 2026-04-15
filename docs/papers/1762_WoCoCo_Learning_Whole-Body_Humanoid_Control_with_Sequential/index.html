@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chong Zhang, Wenli Xiao, Tairan He, Guanya Shi | <strong>날짜</strong>: 2024-06-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.06005" target="_blank">https://arxiv.org/abs/2406.06005</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of WoCoCo and tasks. (A) We decompose the task into separate contact</em></p></div>
 <p>WoCoCo는 순차적 접촉을 포함하는 휴머노이드 로봇의 전신 제어를 학습하기 위한 강화학습 프레임워크로, 작업을 접촉 단계로 자연스럽게 분해하여 task-agnostic한 보상과 sim-to-real 설계를 통해 복잡한 동작을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 작업을 접촉 목표와 task 목표로 정의된 여러 접촉 단계로 분해하고, dense contact rewards, stage count rewards, curiosity rewards로 구성된 WoCoCo reward와 curriculum 기반 sim-to-real 파이프라인을 통해 PPO로 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of WoCoCo and tasks. (A) We decompose the task into separate contact</em></p></div>
 <ul>
 <li><strong>일반적인 프레임워크</strong>: 휴머노이드와 22-DoF 공룡 로봇 모두에 적용 가능한 통일된 WoCoCo 프레임워크 제시</li>
 <li><strong>Minimal task-specific 설계</strong>: 각 작업마다 1-2개의 task-related 항만 지정하면 되는 간단한 reward 설계</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>효과적인 탐색</strong>: stage count rewards로 장기 지평 탐색 문제를 해결하고 dense contact rewards로 sparse contact 신호 대응</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Learned versatile jumping motions in simulation and the real world. Upper Row: The</em></p></div>
 <ul>
 <li><strong>Task decomposition</strong>: 순차적 접촉 계획을 여러 contact stage로 분해하며, 각 stage는 contact goal과 task goal 정의</li>
 <li><strong>WoCoCo reward design</strong>: rcon (dense contact rewards - 각 올바른/잘못된 접촉을 계산), rstage (stage count rewards - 완료한 stage 수 기반), rcuri (task-agnostic curiosity rewards) 결합</li>

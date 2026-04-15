@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhaoliang Wan, Zetong Bi, Zida Zhou, Hao Ren, Yiming Zeng, Yihan Li, Lu Qi, Xu Yang, Ming-Hsuan Yang, Hui Cheng | <strong>날짜</strong>: 2025-06-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.07490" target="_blank">https://arxiv.org/abs/2506.07490</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: RAPID Hand is an open-source, low-cost, fully direct-driven robotic hand platform with</em></p></div>
 <p>RAPID Hand는 저비용의 20-DoF 다지형 로봇 손으로, 시각, 촉각, 고유감각을 통합한 멀티모달 인지 시스템과 고-DoF 원격조종 인터페이스를 함께 설계하여 로봇 자율성을 위한 고품질 조작 데이터 수집을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 손의 온톨로지 설계(20-DoF, 병렬 MCP 관절, 20mm 핑거 두께), 하드웨어 수준의 멀티모달 인지 프레임워크(sub-7ms 지연시간과 공간 정렬), 그리고 고-DoF 원격조종 인터페이스를 공동 최적화하여 통합된 플랫폼을 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Finger Size & Kinematics Comparison. Comparison of RAPID, LEAP, and Allegro</em></p></div>
 <ul>
 <li><strong>컴팩트한 손 온톨로지</strong>: 20mm 핑거 두께로 LEAP(59mm) 대비 획기적으로 슬림화하면서 자연스러운 인간형 운동학을 유지한 20-DoF 완전 구동 손 설계</li>
 <li><strong>안정적인 멀티센서 통합</strong>: wrist-mounted vision, fingertip tactile sensing, proprioception을 sub-7ms 지연시간과 공간 정렬 조건에서 안정적으로 통합하여 센서 간섭과 드롭아웃 제거</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 접근성</strong>: 저비용 표준 부품과 3D-프린팅된 모듈 설계로 구성된 완전 공개 플랫폼으로 재현성과 광범위한 채택 가능성 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: RAPID Hand with universal multi-phalangeal actuation scheme. The DIP and PIP</em></p></div>
 <ul>
 <li>universal multi-phalangeal actuation scheme 적용: 원위 관절(DIP, PIP)은 직접 구동, 근위 관절(MCP, CMC)은 병렬 메커니즘으로 구동하여 효율적인 독립 제어 달성</li>
 <li>segment-mounted motors의 최적화된 레이아웃으로 핑거 두께 최소화</li>

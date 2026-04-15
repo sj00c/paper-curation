@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Guanren Qiao, Sixu Lin, Ronglai Zuo, Zhizheng Wu, Kui Jia, Guiliang Liu | <strong>날짜</strong>: 2025-05-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.24266" target="_blank">https://arxiv.org/abs/2505.24266</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of SignBot: The framework consists of three stages: (1) Motion Retargeting aligns human sign language</em></p></div>
 <p>SignBot은 수화 언어를 인식하고 생성할 수 있는 인간형 로봇을 위한 프레임워크로, motion retargeting, policy training, 그리고 generative interaction을 통합하여 청각장애인과의 자연스러운 상호작용을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SignBot은 세 가지 주요 컴포넌트로 구성된다: (1) 인간 수화를 로봇 kinematics로 변환하는 motion retargeting, (2) decoupled upper/lower body policies로 simulation에서 학습하는 policy training, (3) translator, responder, generator를 통합한 generative interaction 모듈.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: An example of real-world interaction between the robot and the human customer.</em></p></div>
 <ul>
 <li><strong>인간-로봇 상호작용 프레임워크</strong>: 청각장애인 커뮤니티와 로봇 간 seamless한 수화 의사소통을 가능하게 하는 통합 시스템 개발</li>
 <li><strong>정확한 수화 실행</strong>: 다양한 인간 수화 동작에 강건하게 적응하는 로봇 제어 정책으로 안정적이고 정확한 수화 표현 달성</li>
 <li><strong>도메인 적응성</strong>: Sim-to-Real 전이를 통해 다양한 로봇과 데이터셋에 대한 적응 및 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of SignBot: The framework consists of three stages: (1) Motion Retargeting aligns human sign language</em></p></div>
 <ul>
 <li>Human sign language video mesh에서 motion 추출 후, body와 hand를 분리하여 retargeting 수행</li>
 <li>Dual T-Pose를 spatial alignment reference로 사용하여 human skeleton과 robot skeleton 간 mapping</li>

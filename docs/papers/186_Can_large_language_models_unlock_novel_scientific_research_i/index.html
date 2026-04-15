@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sandeep Kumar, Tirthankar Ghosal, Vinayak Goyal, Asif Ekbal | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>대규모 언어모델이 연구논문을 읽고 미래 연구 아이디어를 제안하는 과정</em></p></div>
 <p>본 논문은 대규모 언어모델(LLM)이 과학 논문으로부터 새로운 미래 연구 아이디어를 생성할 수 있는지를 체계적으로 평가한다. 이를 위해 자동 평가 메트릭(IAScore, Idea Distinctness Index)을 제안하고 인간 평가를 병행하여 LLM의 아이디어 생성 능력과 한계를 분석한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,18 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 5개 도메인(컴퓨터과학, 경제학, 물리학, 화학, 의학)의 1,250개 논문으로 데이터셋을 구성하고, 저자가 제시한 미래 연구 아이디어와의 정렬도를 측정하는 IAScore와 아이디어 다양성을 평가하는 Idea Distinctness Index를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>도메인별 및 모델별 IAScore 비교; 높은 값은 저자의 아이디어와 더 나은 정렬을 의미</em></p></div>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>아이디어 다양성 지수 분석; 인간은 논문의 저자</em></p></div>
 <ol>
 <li><strong>자동 평가 메트릭 개발</strong>: IAScore는 생성된 아이디어가 저자가 제시한 미래 연구 방향과 얼마나 잘 정렬되는지를 측정하며, 해석 가능하고 확장 가능한 하한(lower-bound) 지표로 기능한다.</li>
 <li><strong>포괄적 데이터셋 구축</strong>: 5개 도메인의 최신 논문들로부터 FRI(Future Research Ideas) 말뭉치를 구성하고, 저자의 미래 연구 아이디어를 AP-FRI 코퍼스로 정리하여 벤치마크를 제공한다.</li>
 <li><strong>LLM 비교 분석</strong>: Gemini, Claude-2, GPT-3.5, GPT-4의 성능을 평가하여 모델별 강점과 약점을 파악하고, 컴퓨터과학 분야 660개 아이디어에 대한 인간 평가를 통해 참신성, 관련성, 실행 가능성을 검증한다.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>도메인별 논문 내 평균 단어 수 비교 (미래연구 섹션 포함/제외)</em></p></div>
 <ul>
 <li><strong>데이터셋 구성</strong>: S2ORC에서 각 도메인별 250개씩 총 1,250개 논문 수집; 전체 내용과 미래연구 섹션 포함 논문만 선별</li>
 <li><strong>미래 연구 아이디어 제거</strong>: 논문에서 언급된 FRI를 식별하여 제거(Direct FRI는 전체 제거, Mixed FRI는 부분 제거)하여 LLM이 사전 정보를 갖지 않도록 처리</li>

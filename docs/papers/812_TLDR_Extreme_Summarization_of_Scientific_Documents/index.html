@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Isabel Cachola, Kyle Lo, Arman Cohan, Daniel S. Weld | <strong>날짜</strong>: 2020 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/ARXIV.2004.15011" target="_blank">10.48550/ARXIV.2004.15011</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>과학 논문의 TLDR 예시. TLDR은 일반적으로 논문의 초록, 서론, 결론 섹션에서 발견되는 두드러진 정보로 구성됨</em></p></div>
 <p>본 논문은 과학 논문을 위한 극단적 요약(extreme summarization) 작업인 TLDR 생성을 소개하고, 이를 위한 5.4K 규모의 멀티-타겟 데이터셋 SciTLDR과 제목을 보조 신호로 활용하는 CATTS 학습 전략을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 저자 작성 TLDR과 전문가 파생 TLDR의 두 가지 유형을 포함하는 멀티-타겟 데이터셋 구성. 제목을 보조 학습 신호로 활용하는 CATTS 학습 전략 제안.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>동료 평가 의견을 TLDR로 다시 쓴 예시. 피어 리뷰 의견의 첫 부분을 활용하여 주석 자들이 TLDR을 작성</em></p></div>
 <ol>
 <li><strong>SciTLDR 데이터셋</strong>: 3,229개의 컴퓨터 과학 논문에 대한 5,411개의 TLDR로 구성. 학습셋(1,992개), 개발셋(619개), 테스트셋(618개) 구성. 기존 요약 데이터셋과 달리 다중 목표 요약 포함.</li>
 <li><strong>CATTS 학습 전략</strong>: 제목을 보조 신호로 활용하여 제어 코드(control code)를 통해 제목과 TLDR을 동시에 생성하도록 훈련. BART 모델에 적용 시 자동 메트릭과 인간 평가 모두에서 개선 달성.</li>

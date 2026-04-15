@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kwan-Yee Lin, Stella X. Yu | <strong>날짜</strong>: 2025-05-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.06218" target="_blank">https://arxiv.org/abs/2505.06218</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We propose training humanoids to hike complex trails, driving integrative skill development across visual perc</em></p></div>
 <p>휴머노이드 로봇이 복잡한 산길을 자율적으로 하이킹하도록 학습시키기 위해 시각 인식, 의사결정, 운동 실행을 통합하는 LEGO-H 프레임워크를 제안한다. TC-ViT와 Hierarchical Latent Matching을 통해 네비게이션과 로코모션을 단일 학습 체계로 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Hierarchical Reinforcement Learning 프레임워크 내에서 temporal vision transformer (TC-ViT)를 사용하여 미래 로컬 목표를 예측하고, Hierarchical Latent Matching을 통해 특권 학습(privileged learning)에서 실제 배포로의 정책 전이를 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Hiking requires locomotion versatility, perceptual</em></p></div>
 <ul>
 <li><strong>TC-ViT 아키텍처</strong>: 네비게이션 목표의 시간-공간 관계를 모델링하여 순차적 로컬 목표 예측을 가능하게 하고, 로코모션 정책과 긴밀하게 통합된다.</li>
 <li><strong>Hierarchical Latent Matching (HLM)</strong>: VAE를 기반으로 관절 간 의존성을 보존하면서 행동의 합리성을 기반으로 정책을 증류하여 특권 학습과 실제 실행 간 격차를 감소시킨다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 지형 적응성</strong>: 미리 정의된 운동 패턴 없이 다양한 물리적·환경적 도전을 처리할 수 있음을 시뮬레이션 실험으로 입증한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. LEGO-H framework overview. LEGO-H equips hu-</em></p></div>
 <ul>
 <li>TC-ViT는 로봇의 과거, 현재, 미래 상태를 고려하여 토큰화와 temporal modeling을 결합하는 Temporal Vision Transformer를 설계한다.</li>
 <li>로코모션 정책 네트워크는 시각 특징, proprioceptive 입력, 예상된 네비게이션 목표를 통합하여 운동 행동을 생성한다.</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jianwei Yang, Reuben Tan, Qianhui Wu, Ruijie Zheng, Baolin Peng, Yongyuan Liang, Yu Gu, Mu Cai, Seonghyeon Ye, Joel Jang, Yuquan Deng, Lars Liden, Jianfeng Gao | <strong>날짜</strong>: 2025-02-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.13130" target="_blank">https://arxiv.org/abs/2502.13130</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We introduce Magma, the first foundation model that is capable of interpreting and grounding multimodal inputs</em></p></div>
 <p>Magma는 디지털 및 물리적 환경에서 UI 네비게이션부터 로봇 조작까지 다양한 에이전트 작업을 수행할 수 있는 멀티모달 기초 모델이다. Set-of-Mark(SoM)과 Trace-of-Mark(ToM) 기법을 통해 시공간 지능을 획득하여 언어 이해와 행동 예측을 동시에 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SoM과 ToM이라는 두 가지 대리 작업을 도입하여 이미지의 상호작용 가능한 객체와 비디오의 객체 움직임을 표시함으로써 라벨이 없는 데이터를 VLA 데이터로 변환한다. UI, 로봇, 인스트럭셔널 비디오 등 이질적 데이터셋 39백만 샘플을 통합 학습하여 공간-시간 지능을 획득한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We introduce Magma, the first foundation model that is capable of interpreting and grounding multimodal inputs</em></p></div>
 <ul>
 <li><strong>UI 네비게이션 SOTA 달성</strong>: Mind2Web, AITW 벤치마크에서 도메인 특화 모델을 능가하는 성능 달성</li>
 <li><strong>로봇 조작 SOTA 달성</strong>: Bridge, LIBERO 로봇 조작 벤치마크에서 OpenVLA, RT-2 등 기존 모델 초과</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>모델 및 코드 공개</strong>: 재현성을 위해 모델 가중치와 코드를 공개하여 커뮤니티 기여</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Trace-of-Mark supervisions for robot manipulation (left) and human action (right). Same coordinate normalizati</em></p></div>
 <ul>
 <li><strong>Set-of-Mark(SoM)</strong>: 이미지의 상호작용 가능한 시각 객체(UI 버튼 등)에 번호 표시를 자동으로 추가하여 action grounding 학습 가능하게 변환</li>
 <li><strong>Trace-of-Mark(ToM)</strong>: 비디오에서 인간 손이나 로봇 팔의 움직임 궤적을 자동 레이블링하여 action planning 학습</li>

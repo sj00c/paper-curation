@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Maxime Oquab, Timothée Darcet, Théo Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, Mahmoud Assran, Nicolas Ballas, Wojciech Galuba, Russell Howes, Po-Yao Huang, Shang-Wen Li, Ishan Misra, Michael Rabbat, Vasu Sharma, Gabriel Synnaeve, Hu Xu, Hervé Jegou, Julien Mairal, Patrick Labatut, Armand Joulin, Piotr Bojanowski | <strong>날짜</strong>: 2023-04-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2304.07193" target="_blank">https://arxiv.org/abs/2304.07193</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Evolution of performance when scaling in parameters. We show performance on eight</em></p></div>
 <p>자기지도학습(self-supervised learning)을 대규모 큐레이션 데이터와 1B 파라미터 ViT 모델로 학습하여 텍스트 감독 없이도 다양한 비전 작업에서 통용되는 고급 시각 특성을 생성하는 DINOv2 모델을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 자동화된 데이터 처리 파이프라인으로 142M 이미지의 큐레이션 데이터셋을 구축하고, 판별적 자기지도학습(discriminative self-supervised learning) 기반의 iBOT를 개선하여 모델 및 데이터 크기 확장 시 안정성과 속도를 향상시킨 후, 1B 파라미터 ViT를 학습하고 이를 소규모 모델로 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Evolution of performance when scaling in parameters. We show performance on eight</em></p></div>
 <ul>
 <li><strong>데이터 처리 파이프라인</strong>: 비큐레이션 이미지와 큐레이션 이미지를 embedding 기반 deduplication과 retrieval로 통합하여 다양하고 균형잡힌 대규모 데이터셋 구성</li>
 <li><strong>확장성 개선</strong>: 기존 방법 대비 약 2배 빠른 학습 속도와 3배 적은 메모리 사용으로 대규모 배치와 장시간 학습 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>범용 특성</strong>: 미세조정 없이 다양한 하위 작업(분류, 인스턴스 검색, 비디오 이해, 깊이 추정 등)에서 강력한 전이 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of our data processing pipeline. Images from curated and uncurated data sources</em></p></div>
 <ul>
 <li>데이터: 비큐레이션 소스를 자기지도 retrieval로 큐레이션 데이터와 정렬하고 naive clustering으로 개념 균형 조정</li>
 <li>모델: iBOT 기반 판별적 자기지도학습에 gradient checkpointing, selective gradient computation, efficient attention 등 메모리-효율 기법 적용</li>

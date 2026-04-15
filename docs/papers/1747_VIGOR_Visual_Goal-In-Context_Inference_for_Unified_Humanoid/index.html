@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Osher Azulay, Zhengjie Xu, Andrew Scheffer, Stella X. Yu | <strong>날짜</strong>: 2026-03-03 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.16511" target="_blank">10.48550/arXiv.2602.16511</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Vision-enabled unified fall safety for humanoids. A single learned policy integrates fall mitigation and stand-u</em></p></div>
 <p>휴머노이드 로봇의 넘어짐 안전성을 위해 teacher-student 증류 방식으로 egocentric depth와 proprioception만 사용하여 시각적 goal-in-context 표현을 학습하는 통합 접근법을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Natural human pose가 지형 간 이동 가능하다는 통찰과 빠른 whole-body reaction이 통합된 perceptual-motor 표현을 필요로 한다는 통찰에 기반하여, sparse human demonstration으로 privileged teacher를 학습하고 이를 egocentric vision 기반 student로 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Vision-enabled unified fall safety for humanoids. A single learned policy integrates fall mitigation and stand-u</em></p></div>
 <ul>
 <li><strong>통합 fall safety 프레임워크</strong>: fall avoidance, impact mitigation, stand-up recovery를 단일 정책으로 처리</li>
 <li><strong>factorized data generation</strong>: pose와 terrain을 독립적 요소로 분해하여 sample-efficient learning 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>zero-shot transfer</strong>: 시뮬레이션에서 학습한 정책이 실제 Unitree G1 로봇에서 다양한 non-flat 환경에 전이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Factorized data generation yields sample-efficient imitation and scalable adaptation for humanoid fall safety</em></p></div>
 <ul>
 <li>Sparse human demonstration을 flat terrain에서 수집하고 motion retargeting으로 정규화</li>
 <li>RL을 사용하여 privileged teacher 정책 학습 (terrain geometry 접근 가능)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Seonghyeon Ye, Joel Jang, Byeongguk Jeon, Sejune Joo, Jianwei Yang, Baolin Peng, Ajay Mandlekar, Reuben Tan, Yu-Wei Chao, Bill Yuchen Lin, Lars Liden, Kimin Lee, Jianfeng Gao, Luke Zettlemoyer, Dieter Fox, Minjoon Seo | <strong>날짜</strong>: 2024-10-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.11758" target="_blank">https://arxiv.org/abs/2410.11758</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of Latent Action Pretraining. (1) Latent Action Quantization: We first learn discrete</em></p></div>
 <p>인터넷 규모의 라벨 없는 비디오에서 로봇 행동을 학습하기 위해 VQ-VAE 기반 잠재 행동 양자화와 Vision-Language-Action 모델 사전학습을 결합한 비지도 학습 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 먼저 VQ-VAE 목적함수로 이미지 프레임 간 이산 잠재 행동을 비지도 방식으로 학습하고, 이 잠재 행동을 예측하도록 VLA 모델을 사전학습한 후, 소규모 로봇 데이터로 파인튜닝하여 잠재 행동을 로봇 행동으로 매핑한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Real-world Tabletop Manipulation Results. We evaluate on a total of 54 rollouts for each model</em></p></div>
 <ul>
 <li><strong>상태 기술 성능 초월</strong>: OpenVLA 대비 실제 조작 작업에서 6.22% 성능 향상을 달성하면서 사전학습 효율성은 30배 이상 증가</li>
 <li><strong>다중 일반화 능력</strong>: 언어 조건화, 미학습 객체 일반화, 미학습 지시문에 대한 의미론적 일반화가 필요한 실제 조작 작업에서 우수한 성능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>신경 시뮬레이션 가능성</strong>: 잠재 행동 예측과 디코더를 활용해 폐루프 평가가 가능한 신경망 기반 시뮬레이션 구현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of Latent Action Pretraining. (1) Latent Action Quantization: We first learn discrete</em></p></div>
 <ul>
 <li><strong>잠재 행동 양자화 (Stage 1)</strong>: Encoder-Decoder 구조의 VQ-VAE 목적함수를 사용하여 연속 이미지 프레임 간의 이산 잠재 행동을 학습하며, 이는 사전정의된 행동 프라이어 없이 원자적 행동 토큰화를 수행</li>
 <li><strong>잠재 사전학습 (Stage 2)</strong>: Vision-Language 모델을 이용해 비디오 관찰과 작업 설명으로부터 Stage 1의 잠재 행동을 예측하는 행동 복제(behavior cloning) 수행</li>

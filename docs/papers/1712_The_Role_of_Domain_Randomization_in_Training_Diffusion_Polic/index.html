@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Oleg Kaidanov, Firas Al-Hafez, Yusuf Suvari, Boris Belousov, Jan Peters | <strong>날짜</strong>: 2024-11-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2411.01349" target="_blank">https://arxiv.org/abs/2411.01349</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Evaluation of Diffusion Policies in a non-randomized target environment. Top: A plot dis-</em></p></div>
 <p>본 논문은 Humanoid 로봇의 전신 제어를 위해 Diffusion Policies를 훈련할 때 Domain Randomization의 역할을 조사하며, 조작 작업보다 보행 작업이 훨씬 더 큰 규모와 다양성의 데이터셋을 요구함을 보여준다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: IsaacGym 시뮬레이션 환경에서 다양한 Domain Randomization 조건 하에 AMP 에이전트를 훈련하여 합성 시연을 생성하고, 서로 다른 크기와 다양성의 데이터셋으로 훈련된 Diffusion Policies의 성능을 비교한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Evaluation of Diffusion Policies in a non-randomized target environment. Top: A plot dis-</em></p></div>
 <ul>
 <li><strong>Domain Randomization의 필수성</strong>: DR 없이는 데이터셋 규모가 크더라도 비무작위화 환경에 일반화하지 못하며, DR의 다양한 유형(perturbations, dynamic variations, terrain changes)의 효과를 입증</li>
 <li><strong>데이터셋 크기-다양성 상호작용</strong>: 조작 작업과 달리 전신 보행 제어는 안정적 성능을 위해 매우 큰 규모와 높은 다양성의 데이터셋이 필요함을 정량적으로 증명</li>
 <li><strong>Humanoid 제어의 특수성</strong>: 높은 자유도와 균형 요구사항으로 인해 humanoid 보행이 조작 작업보다 데이터 효율성이 현저히 낮음을 처음 체계적으로 분석</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Proposed method. First, a robust and stable RL policy is trained using AMP under ex-</em></p></div>
 <ul>
 <li>AMP 알고리즘을 사용하여 AMASS 모션 캡처 데이터(10개 시퀀스)와 목표 조건부 RL을 결합한 강건한 RL 정책 훈련</li>
 <li>8가지 서로 다른 환경 설정과 3가지 데이터셋 크기로 총 24개의 구별된 데이터셋 생성</li>

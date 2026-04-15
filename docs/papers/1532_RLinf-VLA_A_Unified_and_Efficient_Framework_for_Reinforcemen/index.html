@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hongzhi Zang, Mingjie Wei, Si Xu, Yongji Wu, Zhen Guo, Yuanqing Wang, Hao Lin, Peihong Wang, Liangzhi Shi, Yuqing Xie, Zhexuan Xu, Zhihao Liu, Kang Chen, Wenhao Tang, Quanlu Zhang, Weinan Zhang, Chao Yu, Yu Wang | <strong>날짜</strong>: 2025-10-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.06710" target="_blank">https://arxiv.org/abs/2510.06710</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <p>RLinf-VLA는 Vision-Language-Action 모델의 강화학습 훈련을 위한 통합되고 효율적인 프레임워크로, 다양한 VLA 아키텍처, RL 알고리즘, 시뮬레이터를 지원하며 GPU 할당 최적화를 통해 2.27배 속도 향상을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RLinf-VLA는 다양한 VLA 아키텍처(OpenVLA, OpenVLA-OFT), RL 알고리즘(PPO, GRPO), 시뮬레이터(ManiSkill, LIBERO, RoboTwin)를 지원하는 통합 인터페이스를 제공하고, GPU 병렬화 시뮬레이터를 위한 하이브리드 fine-grained 파이프라인 할당 전략을 도입한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <ul>
 <li><strong>통합 시스템 추상화</strong>: 다양한 시뮬레이터, VLA 아키텍처, RL 알고리즘을 지원하며 collocated, disaggregated, 새로운 hybrid 모드 등 세 가지 실행 모드를 제공</li>
 <li><strong>효율적 설계</strong>: GPU 병렬화 시뮬레이터를 위한 hybrid fine-grained 파이프라인과 CPU 병렬화 시뮬레이터를 위한 collocated 실행으로 최대 2.27배 속도 향상 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>공개 플랫폼</strong>: 오픈소스 활성 유지 플랫폼으로 구체화 인텔리전스 연구 표준화 및 재현성 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Pipeline of Reinforcement Learning for VLA models</em></p></div>
 <ul>
 <li>Generation, Simulator, Training의 세 가지 구성 요소를 포함하는 RL 파이프라인 구조 채택 및 GPU 자원 할당 최적화</li>
 <li>Chunk → Atomic Action → Token의 세 단계 계층 구조를 통해 VLA의 액션 표현 통일</li>

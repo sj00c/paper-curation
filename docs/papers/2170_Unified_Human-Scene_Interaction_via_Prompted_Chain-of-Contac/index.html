@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zeqi Xiao, Tai Wang, Jingbo Wang, Jinkun Cao, Wenwei Zhang, Bo Dai, Dahua Lin, Jiangmiao Pang | <strong>날짜</strong>: 2023-09-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2309.07918" target="_blank">https://arxiv.org/abs/2309.07918</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Comprehensive Overview of UniHSI. The entire pipeline comprises two principal com-</em></p></div>
 <p>UniHSI는 Large Language Model을 활용하여 자연어 명령을 Chain of Contacts (CoC)로 변환하고, 통합 컨트롤러를 통해 다양한 인간-장면 상호작용을 물리적으로 타당하게 수행하는 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Chain of Contacts라는 새로운 상호작용 표현 형식을 정의하여 상호작용을 인간-객체 접촉 쌍의 순서열로 모델링하고, LLM Planner와 Unified Controller라는 두 단계 파이프라인으로 자연어 명령을 실행 가능한 동작으로 변환한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: UniHSI facilitates unified and long-horizon control in response to natural language com-</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 단일 컨트롤러로 다양한 상호작용을 처리하고 15개 전신 관절을 제어하여 세밀한 제어와 다중 객체 상호작용을 지원</li>
 <li><strong>자동 계획 생성</strong>: 주석 없이 LLM을 활용한 상호작용 계획 생성으로 annotation 비용 대폭 절감</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>일반화 성능</strong>: 실제 스캔된 장면에 대한 좋은 일반화 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: The Procedure for Translating Language Commands into Chains of Contacts.</em></p></div>
 <ul>
 <li>Chain of Contacts (CoC)를 S = {S1, S2, ...} 형태로 정의하되, 각 단계 Si는 인간 관절-객체 부분 쌍의 접촉을 포함</li>
 <li>LLM Planner에서 body joint 이름, object part layout, 장면 정보를 포함한 prompt engineering으로 LLM이 자연어를 CoC로 변환하도록 유도</li>

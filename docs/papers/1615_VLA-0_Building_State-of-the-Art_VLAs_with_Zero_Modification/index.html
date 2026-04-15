@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ankit Goyal, Hugo Hadfield, Xuning Yang, Valts Blukis, Fabio Ramos | <strong>날짜</strong>: 2025-10-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.13054" target="_blank">https://arxiv.org/abs/2510.13054</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Schematic representation of VLA-0. VLA-0 con-</em></p></div>
 <p>VLA-0는 Vision-Language Model의 구조 변경 없이 액션을 직접 텍스트로 표현하여 로봇 조작을 위한 최첨단 Vision-Language-Action 모델을 구축한다. 이 단순한 설계가 기존의 복잡한 방법들보다 우수한 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLA-0는 액션(좌표, 관절각 등)을 space-separated integers의 텍스트로 표현하고, VLM의 네이티브 텍스트 생성 능력을 활용하여 액션을 예측한다. 최첨단 성능을 위해 학습 시 random masking과 테스트 시 prediction ensembling을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Families of methods for building VLAs. We categorize existing VLAs into three categories: Discrete Token VLAs,</em></p></div>
 <ul>
 <li><strong>LIBERO 벤치마크 우수성</strong>: 동일한 로봇 데이터로 학습한 모든 기존 방법(π0.5-KI, OpenVLA-OFT, SmolVLA)을 능가</li>
 <li><strong>대규모 사전학습 데이터 없이 경쟁성</strong>: 대규모 로봇 데이터로 학습한 π0.5-KI, π0, GR00T-N1, MolmoAct를 초월</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>구조 수정 없음</strong>: VLM의 vocabulary, 아키텍처, 토크나이저에 어떠한 변경도 필요 없음</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Our proposed VLA-0. It creates a VLA without making any changes to the underlying VLM. It takes a system</em></p></div>
 <ul>
 <li>VLM을 프롬프트하여 action을 텍스트로 직접 생성하도록 유도 (예: '4 12 98 3 0 0 13 5 ...')", '시스템 프롬프트, 언어 지시사항, 이미지를 입력으로 받아 space-separated integers 형태의 액션 출력</li>
 <li>학습 시 action text에 random masking을 적용하여 모델의 견고성 향상</li>

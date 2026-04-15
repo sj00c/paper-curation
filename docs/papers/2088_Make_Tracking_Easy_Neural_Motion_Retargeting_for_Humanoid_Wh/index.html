@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qingrui Zhao, Kaiyue Yang, Xiyu Wang, Shiqi Zhao, Yi Lu, Xinfang Zhang, Wei Yin, Qiu Shen, Xiao-Xiao Long, Xun Cao | <strong>날짜</strong>: 2026-03-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.22201" target="_blank">https://arxiv.org/abs/2603.22201</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Data Construction Pipeline. We obtain high-quality human–humanoid motion pairs through three processing stages.</em></p></div>
 <p>기존 최적화 기반 모션 리타겟팅의 비볼록 문제를 해결하기 위해 Neural Motion Retargeting (NMR) 프레임워크를 제안하며, VAE 기반 클러스터링과 RL 전문가를 활용한 Clustered-Expert Physics Refinement (CEPR) 파이프라인으로 인간 동작을 휴머노이드 로봇의 실행 가능한 동작으로 변환한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모션 리타겟팅 문제를 단일 프레임 최적화에서 모션 분포 학습으로 재정의하고, VAE 기반 클러스터링으로 이질적 동작을 분류한 후 병렬 RL 전문가들이 물리 시뮬레이터에서 동작을 추적 및 정제하여 고품질 학습 데이터를 자동으로 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Visualization of NMR retargeting results with and without CEPR data fine-tuning</em></p></div>
 <ul>
 <li><strong>NMR 프레임워크</strong>: 최적화 기반 방법의 지역 최적값, 관절 불연속성, 자기 충돌 문제를 완화하는 신경망 기반 리타겟팅 접근법 제시</li>
 <li><strong>CEPR 데이터 파이프라인</strong>: 모션 클러스터링, 병렬 RL 전문가 정책, 물리 기반 정제를 통해 약 30,000개의 물리적으로 일관성 있는 인간-로봇 동작 쌍 자동 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실험 성과</strong>: Unitree G1 휴머노이드에서 다양한 동적 작업(격투기, 춤 등) 실험 결과 관절 점프와 자기 충돌이 현저히 감소하고 다운스트림 전신 제어 정책의 수렴 가속화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Data Construction Pipeline. We obtain high-quality human–humanoid motion pairs through three processing stages.</em></p></div>
 <ul>
 <li>VAE를 사용한 모션 특징 추출 및 이질적 인간 동작 데이터의 계층적 클러스터링</li>
 <li>병렬 RL 전문가 정책들을 훈련하여 물리 시뮬레이터에서 클러스터링된 동작 추적 및 물리적 결함 자동 수정</li>

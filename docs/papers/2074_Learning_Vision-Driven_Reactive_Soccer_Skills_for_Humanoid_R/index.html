@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yushi Wang, Changsheng Luo, Penghui Chen, Jianran Liu, Weijian Sun, Tong Guo, Kechang Yang, Biao Hu, Yangang Zhang, Mingguo Zhao | <strong>날짜</strong>: 2025-11-06 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.03996" target="_blank">10.48550/arXiv.2511.03996</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 System overview. The real-world robot is equipped with an onboard camera for visual perception. Image</em></p></div>
 <p>본 논문은 시각 인식과 모션 제어를 직접 통합한 통합 강화학습 기반 컨트롤러를 통해 인형 로봇이 반응형 축구 기술을 습득할 수 있도록 하는 방법을 제시한다. Adversarial Motion Priors를 시각 기반 동적 제어 환경으로 확장하여 실제 RoboCup 경기에서 강력한 반응성을 보여준다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: encoder-decoder 아키텍처와 실제 시각 특성을 모델링하는 virtual perception system을 결합하여, 불완전한 관찰로부터 privileged state를 복원하고 perception과 action 사이의 능동적 조정을 가능하게 한다. 단계적 훈련 과정 없이 AMP 기반 RL로 통합 학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Performance of the controller in various scenarios. (A to F) Real match performance in cluttered</em></p></div>
 <ul>
 <li><strong>통합 시각-모터 제어</strong>: 단일 단계 훈련으로 ball searching, chasing, multi-directional kicking 등의 적응형 행동을 수동 스킬 분할 없이 획득</li>
 <li><strong>강력한 반응성</strong>: 시각 입력에 대한 빠른 반응과 gait 동적 조정으로 정확한 슈팅 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>perception-action coupling</strong>: encoder-decoder 네트워크와 virtual perception system으로 시각 노이즈 완화 및 볼 움직임 예측 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 System overview. The real-world robot is equipped with an onboard camera for visual perception. Image</em></p></div>
 <ul>
 <li>Intel RealSense Depth Camera D435i를 이용한 25 Hz 카메라 입력</li>
 <li>Camera 이미지를 Bird's Eye View (BEV) 공간으로 투영하여 detection 처리", 'Proprioception, ball detection, odometry 기반 goal 정보를 정책에 입력</li>

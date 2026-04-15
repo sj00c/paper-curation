@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiangyong Huang, Silong Yong, Xiaojian Ma, Xiongkun Linghu, Puhao Li, Yan Wang, Qing Li, Song-Chun Zhu, Baoxiong Jia, Siyuan Huang | <strong>날짜</strong>: 2023-11-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2311.12871" target="_blank">https://arxiv.org/abs/2311.12871</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The proposed embodied generalist agent LEO. It takes egocentric 2D images, 3D point clouds, and texts as input</em></p></div>
 <p>LEO는 egocentric 2D 이미지, 3D point cloud, 텍스트를 입력으로 받아 3D 환경에서 인식, grounding, 추론, 계획, 행동을 수행할 수 있는 최초의 embodied generalist agent이다. 통일된 모델 아키텍처와 학습 목표로 3D vision-language alignment와 3D vision-language-action instruction tuning의 두 단계로 학습된다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: object-centric 3D representation과 LLM을 연결하는 통일된 프레임워크를 제시하고, LLM-assisted pipeline으로 고품질 3D vision-language 데이터를 생성한다. 모든 modality를 token 시퀀스로 변환하여 GPT-style autoregressive language modeling으로 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The proposed embodied generalist agent LEO. It takes egocentric 2D images, 3D point clouds, and texts as input</em></p></div>
 <ul>
 <li><strong>통일된 embodied generalist agent</strong>: 단일 모델으로 3D captioning, question answering, embodied reasoning, navigation, manipulation을 포함한 다양한 작업을 처리하며 대부분의 작업에서 task-specific 모델을 능가한다.</li>
 <li><strong>효율적인 3D vision-language 데이터 생성</strong>: scene graph와 Object-centric Chain-of-Thought(O-CoT) 방법을 활용한 LLM-assisted pipeline으로 대규모 고품질 3D VL 데이터를 생성하고, 정규 표현식 매칭과 scene graph retrieval을 통해 LLM hallucination을 완화한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장성 검증</strong>: 모델 크기 증가에 따른 성능 개선을 보여주며 scaling law를 입증한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Our proposed LLM-assisted 3D-language data generation pipeline and data examples.. (Top-left) Messages with 3D</em></p></div>
 <ul>
 <li>2단계 학습 스킴: (1) 3D vision-language alignment - 대규모 3D captioning 데이터로 visual-language 연결 학습, (2) 3D vision-language-action instruction tuning - action 토큰을 포함한 instruction tuning</li>
 <li>Multi-modal tokenization: egocentric 2D 이미지 토큰, object-centric 3D point cloud 토큰, 텍스트 토큰을 통합 시퀀스로 변환하여 LLM에 입력</li>

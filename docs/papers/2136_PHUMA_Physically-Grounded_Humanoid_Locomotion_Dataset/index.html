@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kyungmin Lee, Sibeen Kim, Minho Park, Hyunseung Kim, Dongyoon Hwang, Hojoon Lee, Jaegul Choo | <strong>날짜</strong>: 2025-10-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.26236" target="_blank">https://arxiv.org/abs/2510.26236</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Physical reliability of Humanoid-X vs. PHUMA. Each column illustrates four failure</em></p></div>
 <p>PHUMA는 대규모 인터넷 비디오로부터 인간다운 보행을 위한 물리적으로 타당한 휴머노이드 모션 데이터셋을 구축하며, 데이터 큐레이션과 physics-constrained retargeting을 통해 floating, penetration, foot skating 등의 물리적 artifacts를 제거한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Humanoid-X 데이터셋을 기반으로 두 단계 파이프라인을 적용한다: (1) 물리적으로 부정확한 모션을 필터링하는 physics-aware curation, (2) joint limits, ground contact, anti-skating constraints를 적용하는 PhySINK (Physically-grounded Shape-adaptive Inverse Kinematics)를 통한 물리 제약 retargeting.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of datasets and performance. PHUMA is both large-scale and physically</em></p></div>
 <ul>
 <li><strong>데이터셋 규모와 품질의 균형</strong>: AMASS보다 349.9% 더 많은 물리적으로 타당한 모션을 제공하면서 Humanoid-X의 규모를 유지하여 27.4시간에서 69.1시간으로 확장</li>
 <li><strong>물리적 신뢰성 향상</strong>: joint feasibility, non-floating, non-penetration, non-skating 모든 지표에서 기존 데이터셋을 초과하며 특히 skating 제거에서 Humanoid-X 대비 5.5% 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>경로 추종 성능</strong>: pelvis-only guidance 기반 경로 추종에서 AMASS 대비 1.4배, 수직 움직임에서 1.6배, 수평 움직임에서 2.1배 성공률 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of the PHUMA pipeline. Our four-stage pipeline for motion imitation learning</em></p></div>
 <ul>
 <li>Physics-aware motion curation: Humanoid-X에서 root jitter, 의자 앉기 등 외부 객체 상호작용이 포함된 약 70%의 부정확한 모션 필터링</li>
 <li>PhySINK 최적화: joint alignment fidelity를 유지하면서 soft joint limit loss, ground contact height loss, velocity-based anti-skating loss를 결합한 목적함수 구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chenhao Liu, Leyun Jiang, Yibo Wang, Kairan Yao, Jinchen Fu, Xiaoyu Ren | <strong>날짜</strong>: 2025-12-09 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.11218" target="_blank">10.48550/arXiv.2511.11218</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. (a) Training: PPO learns a single policy πWBC using Privileged Critic Obs together with Actor</em></p></div>
 <p>이 논문은 다단계 강화학습 커리큘럼을 통해 휴머노이드 로봇이 배드민턴을 하도록 학습하는 통합 전신 제어기를 제시하며, 시뮬레이션과 실제 로봇 모두에서 1초 이내의 반응 시간으로 19.1 m/s의 셔틀콕 속도를 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PPO 알고리즘을 사용한 3단계 커리큘럼 학습(풋워크 습득 → 정밀 라켓 스윙 생성 → 작업 중심 정제)과 배포 시 EKF 기반 셔틀콕 궤적 예측을 결합한 방식이다. 또한 명시적 예측이 없는 변형 방식도 제시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Simulation results. Figure (a) illustrates the Two-</em></p></div>
 <ul>
 <li><strong>첫 실제 휴머노이드 배드민턴</strong>: 기계가 서빙한 셔틀콕을 자율적으로 반환하는 기능을 1.28m 크기의 21-DoF 휴머노이드에서 달성</li>
 <li><strong>뛰어난 성능 지표</strong>: 5.3 m/s 스윙 속도, 최대 19.1 m/s 아웃고잉 셔틀콕 속도, 평균 4m 착지 거리</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Zero-shot 실제 배포</strong>: 시뮬레이션에서만 학습된 정책이 시스템 식별 및 수동 매개변수 조정 없이 실제 로봇에서 작동</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. (a) Training: PPO learns a single policy πWBC using Privileged Critic Obs together with Actor</em></p></div>
 <ul>
 <li>3단계 RL 커리큘럼: (1) 발 스윙 시간과 높이 정규화를 포함한 목표 영역으로의 풋워크 습득, (2) 타이밍과 위치/방향 정확도 스케줄링을 통한 정밀 스윙 생성, (3) 로코모션 정규화 제거를 통한 최종 정제</li>
 <li>약 20k 개의 사전 생성된 셔틀콕 궤적으로부터 각 롤아웃 시 목표 튜플(hit time, 절편 위치, 목표 라켓 방향) 샘플링</li>

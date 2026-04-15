@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhongyu Li, Xue Bin Peng, Pieter Abbeel, Sergey Levine, Glen Berseth, Koushil Sreenath | <strong>날짜</strong>: 2023-02-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2302.09450" target="_blank">https://arxiv.org/abs/2302.09450</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Representative dynamic jumping maneuvers performed by a bipedal robot Cassie using the proposed goal-conditioned</em></p></div>
 <p>Reinforcement learning과 새로운 정책 구조를 활용하여 이족 로봇 Cassie가 다양한 착지 위치와 방향으로 점프하는 강건하고 다목적인 동적 점프 제어를 실현했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 다단계 훈련 스킴과 장기 I/O 이력을 인코딩하는 새로운 정책 구조를 가진 goal-conditioned RL 프레임워크를 개발하여 시뮬레이션에서 훈련하고 실제 하드웨어로 전달했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Representative dynamic jumping maneuvers performed by a bipedal robot Cassie using the proposed goal-conditioned</em></p></div>
 <ul>
 <li><strong>다목적 점프 제어</strong>: 1.4m의 수평 점프, 0.44m 높이의 플랫폼으로의 점프, ±55° 방향 회전 점프 등 다양한 점프 작업을 성공적으로 수행</li>
 <li><strong>강건성 입증</strong>: 다양한 점프 작업으로부터 학습한 기동을 활용하여 외부 교란이나 착지 실패로부터 복구 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>선행 연구 대비 우월성</strong>: 기존 최적 제어 방법 대비 더 긴 점프 거리(1.4m vs ~0.5m), 더 긴 비행 시간(0.58s vs ~0.42s), 제어된 착지 높이 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The schematic to train the robot to perform versatile jumping</em></p></div>
 <ul>
 <li><strong>정책 구조 설계</strong>: 장기 I/O 이력을 인코딩하는 RNN과 단기 I/O 이력에 직접 접근하는 구조를 결합하여 성능 개선</li>
 <li><strong>다단계 훈련</strong>: 서로 다른 목표를 위한 여러 훈련 단계를 포함하는 다단계 훈련 스킴 적용</li>

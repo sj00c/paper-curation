@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junhao Cai, Zetao Cai, Jiafei Cao, Yilun Chen, Zeyu He, Lei Jiang, Hang Li, Hengjie Li, Yang Li, Yufei Liu, Yanan Lu, Qi Lv, Haoxiang Ma, Jiangmiao Pang, Yu Qiao, Zherui Qiu, Yanqing Shen, Xu Shi, Yang Tian, Bolun Wang, Hanqing Wang, Jiaheng Wang, Tai Wang, Xueyuan Wei, Chao Wu, Yiman Xie, Boyang Xing, Yuqiang Yang, Yuyin Yang, Qiaojun Yu, Feng Yuan, Jia Zeng, Jingjing Zhang, Shenghan Zhang, Shi Zhang, Zhuoma Zhaxi, Bowen Zhou, Yuanzhen Zhou, Yunsong Zhou, Hongrui Zhu, Yangkun Zhu, Yuchen Zhu | <strong>날짜</strong>: 2026-01-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.02456" target="_blank">https://arxiv.org/abs/2601.02456</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. InternVLA-A1 unifies scene understanding, visual foresight generation, and action execution</em></p></div>
 <p>InternVLA-A1은 Mixture-of-Transformers 아키텍처를 통해 의미 이해, 시각적 예측, 행동 실행을 통합하여 로봇 조작 성능을 향상시키는 Vision-Language-Action 모델이다. 실세계 로봇 데이터, 합성 시뮬레이션 데이터, 인간 비디오를 포함한 692M 프레임의 이질적 데이터로 사전학습되어 동적 조작 작업에서 26.7% 성능 향상을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 세 개의 전문가(scene understanding, visual foresight generation, action execution)로 구성된 통합 Mixture-of-Transformers 아키텍처를 설계하고, 실제 로봇 데이터, 합성 시뮬레이션 데이터, 인간 비디오의 이질적 데이터 소스로 joint training을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. InternVLA-A1 unifies scene understanding, visual foresight generation, and action execution</em></p></div>
 <ul>
 <li><strong>정적 조작 성능</strong>: π0.5 대비 4.4% 성능 향상 달성</li>
 <li><strong>동적 조작 성능</strong>: π0.5 대비 26.7% 성능 향상으로 동적 환경에서의 뛰어난 우수성 입증</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>데이터 규모</strong>: 692M 프레임의 대규모 이질적 데이터로 사전학습</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Framework of InternVLA-A1. The architecture comprises three experts: (1) an under-</em></p></div>
 <ul>
 <li>Mixture-of-Transformers 아키텍처를 통해 세 개의 전문가를 unified masked self-attention 메커니즘으로 조화롭게 연결</li>
 <li>InternVL3과 Qwen3-VL을 기반으로 구축하여 강력한 의미 이해 능력 확보</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Delin Qu, Haoming Song, Qizhi Chen, Yuanqi Yao, Xinyi Ye, Yan Ding, Zhigang Wang, JiaYuan Gu, Bin Zhao, Dong Wang, Xuelong Li | <strong>날짜</strong>: 2025-01-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2501.15830" target="_blank">https://arxiv.org/abs/2501.15830</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of SpatialVLA. Given an image observation ot and a task instruction L, the model processes the image</em></p></div>
 <p>로봇 조작을 위한 3D 공간 이해를 강화한 VLA 모델 SpatialVLA를 제안하며, Ego3D Position Encoding과 Adaptive Action Grids를 통해 이질적인 로봇 간 일반화 가능한 공간 표현을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Ego3D Position Encoding으로 2D 시각 특징에 3D 공간 정보를 주입하고, Adaptive Action Grids로 연속 로봇 행동을 적응적 이산화된 공간 격자로 표현하여 로봇 간 행동 공간을 통일한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We present SpatialVLA, a spatial-enhanced vision-language-action model that is trained on 1.1 Million real robot</em></p></div>
 <ul>
 <li><strong>대규모 사전학습</strong>: 110만 개의 실제 로봇 에피소드로 사전학습되어 다양한 로봇 환경과 작업에 걸쳐 일반화 가능한 조작 정책 학습</li>
 <li><strong>우수한 Zero-shot 성능</strong>: 사전학습된 모델이 직접 다양한 작업을 zero-shot으로 수행 가능하며 우수한 복잡 로봇 궤적 추론 능력 시연</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>우수한 일반화 능력</strong>: 시점/텍스처/조명 변화, 보지 못한 객체, 보지 못한 로봇 환경, 공간 배치 변화 등 다양한 시나리오에서 뛰어난 in-distribution 일반화 및 out-of-distribution 적응 능력</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of SpatialVLA. Given an image observation ot and a task instruction L, the model processes the image</em></p></div>
 <ul>
 <li><strong>Ego3D Position Encoding</strong>: Egocentric 카메라 프레임에서 3D 위치 인코딩 도출으로 특정 로봇-카메라 캘리브레이션 불필요하고 다양한 로봇 embodiment에 보편 적용 가능</li>
 <li><strong>Adaptive Action Grids</strong>: 전체 로봇 에피소드의 통계적 행동 분포에 따라 연속 7D 행동(Δ T, Δ R, G)을 3개의 공간 행동 토큰으로 이산화하고 이들에 대해 공간 행동 토큰 학습</li>

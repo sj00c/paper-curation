@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuxi Wei, Zirui Wang, Kangning Yin, Yue Hu, Jingbo Wang, Siheng Chen | <strong>날짜</strong>: 2025-12-07 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.09241" target="_blank">10.48550/arXiv.2511.09241</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We present the large-scale, high-quality robot motion dataset</em></p></div>
 <p>대규모 인간 모션 데이터를 활용하여 자동 파이프라인으로 생성한 Humanoid-Union 데이터셋(260시간)과 이를 기반으로 하는 SCHUR 프레임워크를 제안하여 텍스트 기반 휴머노이드 로봇 모션 생성의 확장성을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 자동 파이프라인을 통해 비디오 포즈 추정, SMPL 표현, 로봇 모션 retargeting, universal whole-body tracker를 이용한 필터링으로 고품질 로봇 모션 데이터셋을 구축하고, FSQ VAE 기반의 tokenization과 LLaMA 기반 autoregressive generation으로 텍스트-로봇 모션 정렬을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We present the large-scale, high-quality robot motion dataset</em></p></div>
 <ul>
 <li><strong>Humanoid-Union 데이셋</strong>: 260시간 이상의 대규모 다양한 휴머노이드 로봇 모션 데이터와 자동 생성된 의미론적 주석을 포함하며 확장 가능한 파이프라인 제공</li>
 <li><strong>SCHUR 프레임워크</strong>: FSQ VAE tokenization과 prefix bidirectional attention mask를 활용한 텍스트 기반 고품질 로봇 모션 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 배포 검증</strong>: 실제 휴머노이드 로봇에 성공적으로 배포 및 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>비디오로부터 pose estimation으로 SMPL 표현 추출</li>
 <li>GPT-4V 등 vision-language model으로 자동 caption 생성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tianyang Wu, Hanwei Guo, Yuhang Wang, Junshu Yang, Xinyang Sui, Jiayi Xie, Xingyu Chen, Zeyang Liu, Xuguang Lan | <strong>날짜</strong>: 2026-01-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.00678" target="_blank">https://arxiv.org/abs/2602.00678</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <p>본 논문은 Mixture-of-Experts (MoE) 기반 사족 로봇 이동 정책과 sim-to-real 전이 가능성을 정량화하는 RoboGauge 평가 프레임워크를 통합하여 신뢰할 수 있는 시뮬레이션-실제 간 갭을 해소하는 통합 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MoE 아키텍처를 사용하여 고정된 전문가 네트워크의 게이팅을 통해 지형과 명령을 분해하고, 병렬화된 sim-to-sim 테스트를 통해 다차원 고유감각 기반 메트릭으로 sim-to-real 전이성을 정량화하는 RoboGauge 평가 스위트를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Comparative analysis against one-stage proprioceptive</em></p></div>
 <ul>
 <li><strong>RoboGauge 평가 프레임워크</strong>: 7개 지형, 10개 난이도 수준, 4개 도메인 무작위화를 포함한 병렬화된 sim-to-sim 방법론으로 실제 배포 전 하드웨어 손상 위험을 완화</li>
 <li><strong>MoE 정책 우월성</strong>: 모든 지형 범주에서 CTS, HIM, DreamWaQ 등 기존 단계식 고유감각 방법을 능가하는 다중 지형 표현 능력</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>도전적 지형 횡단</strong>: 눈, 모래, 계단, 경사면, 30cm 장애물 등 미지의 까다로운 지형에서 견고한 이동 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <ul>
 <li>POMDP로 모델링된 사족 로봇 이동 제어 문제에서 IMU와 조인트 인코더만 사용하는 고유감각 기반 관찰</li>
 <li>K개의 병렬 전문가 서브네트워크 {Ek}와 동적 가중치 할당을 위한 게이팅 네트워크 g로 구성된 MoE 구조</li>

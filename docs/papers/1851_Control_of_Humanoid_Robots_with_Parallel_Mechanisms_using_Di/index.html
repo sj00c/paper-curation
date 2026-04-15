@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Victor Lutz, Ludovic de Matteis, Virgile Batto, Nicolas Mansard | <strong>날짜</strong>: 2025-03-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.22459" target="_blank">https://arxiv.org/abs/2503.22459</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Planar 4-bar mechanism, with the serial link rotating</em></p></div>
 <p>Cassie 영감의 휴머노이드 로봇에 사용되는 병렬 구동 메커니즘에 대한 미분가능한 해석 모델을 제시하여 정확한 비선형 전달 특성을 효율적으로 계산 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 표준 4-bar linkage와 intricate dual 4-bar linkage 메커니즘에 대해 Actuation Jacobian과 transmission dynamics를 해석적으로 도출하고, 이를 2차 미분까지 효율적으로 계산 가능하게 최소 형식(minimal formulation)으로 표현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The Bipetto robot includes serial-parallel architecture,</em></p></div>
 <ul>
 <li><strong>해석적 미분가능 모델</strong>: 1-DoF 4-bar linkage와 2-DoF intricate 4-bar linkage에 대한 compact 해석 공식을 도출하여 정확한 비선형 전달을 2차 미분까지 지원</li>
 <li><strong>임피던스 전달 이론</strong>: motor space 임피던스 게인을 serial space로 변환하는 해석적 모델을 개발하여 impedance control 구현 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>하드웨어 검증</strong>: Bipetto 로봇에서 무릎과 발목 양쪽에 parallel actuation을 적용하여 상수 감속비 방식 대비 개선된 정확도와 로버스트성 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Sub projected planar four-bar from the ankle in</em></p></div>
 <ul>
 <li>Direct geometry: Al-Kashi 정리를 이용한 4-bar linkage 기하학 매핑 f(q_s) → q_m 공식화</li>
 <li>Planar projection: Intricate 4-bar를 motor 축 직교 평면으로 투영하여 가상 planar 메커니즘으로 단순화</li>

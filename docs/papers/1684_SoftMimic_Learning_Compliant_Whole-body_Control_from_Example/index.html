@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gabriel B. Margolis, Michelle Wang, Nolan Fey, Pulkit Agrawal | <strong>날짜</strong>: 2025-10-20 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.17792" target="_blank">10.48550/arXiv.2510.17792</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Soft Whole-body Control via Compliant Motion Augmentation. Left: Given an original reference motion (qref) and a</em></p></div>
 <p>SoftMimic은 역기구학 솔버를 이용해 순응적 동작 데이터셋을 생성하고 강화학습으로 학습하여, 인간형 로봇이 외부 힘에 순응하면서도 균형을 유지하는 제어 정책을 학습하는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 오프라인 단계에서 IK 솔버를 이용해 다양한 상호작용 시나리오에 대한 운동학적으로 실행 가능한 순응 궤적 데이터셋을 생성하고, RL 정책이 원본 참조 동작을 관찰하면서 증강된 순응 목표를 추적하도록 학습시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Stiffness adherence. The humanoid’s effective translational</em></p></div>
 <ul>
 <li><strong>자동 데이터 생성</strong>: IK 솔버를 통해 광범위한 상호작용 시나리오에서 운동학적으로 가능하고 스타일이 일관된 순응 궤적을 자동으로 생성</li>
 <li><strong>순응성 제어 학습</strong>: 정책이 외부 힘을 고유감각으로부터 추론하고 사전계산된 순응 거동으로 반응하도록 암묵적으로 학습</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: Unitree G1 인간형 로봇 실험으로 시뮬레이션과 실제 환경 간 유효성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Soft Whole-body Control via Compliant Motion Augmentation. Left: Given an original reference motion (qref) and a</em></p></div>
 <ul>
 <li>참조 동작(q_ref), 외부 wrench(W_ext), 로봇 경직도(K_robot)가 주어졌을 때 IK 솔버를 사용하여 운동학적으로 실행 가능한 순응 동작(q_aug) 생성</li>
 <li>생성된 순응 궤적 데이터셋으로 강화학습 정책 훈련—정책은 원본 참조를 입력받지만 증강된 순응 목표에 대한 추적 보상 수신</li>

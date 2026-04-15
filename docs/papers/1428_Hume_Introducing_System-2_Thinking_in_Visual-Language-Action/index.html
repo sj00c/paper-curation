@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoming Song, Delin Qu, Yuanqi Yao, Qizhi Chen, Qi Lv, Yiwen Tang, Modi Shi, Guanghui Ren, Maoqing Yao, Bin Zhao, Dong Wang, Xuelong Li | <strong>날짜</strong>: 2025-05-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.21432" target="_blank">https://arxiv.org/abs/2505.21432</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We present Hume, a dual-system vision-language-action model exploring human-like</em></p></div>
 <p>Hume는 Vision-Language-Action 모델에 System-2 slow thinking을 도입한 dual-system 로봇 정책으로, value-guided 반복 샘플링과 cascaded action denoising을 통해 복잡한 로봇 제어 성능을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: System 2는 flow matching denoising head와 novel value-query head를 갖춘 VLM 기반 모듈로, state-action value를 추정하여 여러 action 후보 중 최적을 선택한다. System 1은 가벼운 visuomotor policy로 System 2의 선택을 받아 real-time cascaded action denoising을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We present Hume, a dual-system vision-language-action model exploring human-like</em></p></div>
 <ul>
 <li><strong>LIBERO 벤치마크 성능 향상</strong>: π0 대비 +4.4% success rate 달성</li>
 <li><strong>Simpler 벤치마크 성능 향상</strong>: +25.9% improvement 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>효율적인 real-time 제어</strong>: System 2는 4Hz, System 1은 90Hz로 비동기 작동하면서도 성능 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of Hume. Hume contains two systems working asynchronously. Given the</em></p></div>
 <ul>
 <li>System 2는 VLM backbone에 flow matching denoising head로 long-horizon action chunk 예측</li>
 <li>Novel value-query head를 통해 예측된 action chunk의 state-action value 추정</li>

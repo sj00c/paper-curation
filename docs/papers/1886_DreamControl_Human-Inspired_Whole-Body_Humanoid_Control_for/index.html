@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Dvij Kalaria, Sudarshan S. Harithas, Pushkal Katara, Sangkyung Kwak, Sarthak Bhagat, Shankar Sastry, Srinath Sridhar, Sai Vemprala, Ashish Kapoor, Jonathan Chung-Kuan Huang | <strong>날짜</strong>: 2025-09-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.14353" target="_blank">10.48550/arXiv.2509.14353</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: DreamControl Overview: (A) we first generate text and spatiotemporally guided human motion trajectories using di</em></p></div>
 <p>DreamControl은 human motion 기반 diffusion prior를 RL과 결합하여 humanoid robot의 whole-body 조작 작업을 학습하는 방법론을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: OmniControl diffusion model을 사용하여 text와 spatiotemporal guidance로부터 human motion trajectory를 생성하고, 이를 robot form factor로 retarget한 후 task completion과 trajectory tracking을 모두 보상하는 RL 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Unitree G1 humanoid performing various skills trained via</em></p></div>
 <ul>
 <li><strong>Human motion prior 활용</strong>: Teleoperation data 대신 풍부한 human motion data를 diffusion prior로 활용하여 RL이 발견 불가능한 해결책을 찾을 수 있음을 입증</li>
 <li><strong>Whole-body manipulation 성공</strong>: Unitree G1 robot에서 drawer 열기, bimanual pick, button press 등 동시적 상하체 제어와 object interaction을 포함한 다양한 작업 수행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Scalability</strong>: 큰 규모의 teleoperation data 없이도 multiple tasks를 학습할 수 있는 확장 가능한 방법론 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: DreamControl Overview: (A) we first generate text and spatiotemporally guided human motion trajectories using di</em></p></div>
 <ul>
 <li>Stage A: OmniControl diffusion model에 text condition ("open the drawer")과 spatiotemporal guidance (특정 시간의 손목 위치)를 입력하여 human motion trajectory 생성</li>
 <li>Motion retargeting: 생성된 human trajectory를 Unitree G1의 형태로 retarget</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Akari Asai, Jacqueline He, Rulin Shao, Weijia Shi, Amanpreet Singh, Joseph Chee Chang, Kyle Lo, Luca Soldaini, Sergey Feldman, Mike D'Arcy, David Wadden, Matt Latzke, Mingliang Tian, Peng Ji, Shengyan Liu, Tong Hao, Borong Wu, Yi Xiong, Luke Zettlemoyer, Graham Neubig | <strong>날짜</strong>: 2024 | <strong>DOI</strong>:</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>OpenScholar의 전체 개요: 전문화된 데이터스토어, 검색기 및 언어모델로 구성되며, 검색 기반 자체 피드백 추론 루프를 통해 반복적으로 응답을 개선한다.</em></p></div>
 <p>본 논문은 4,500만 개의 오픈 액세스 과학 논문에서 관련 구절을 검색하고 인용 기반 응답을 합성하는 검색 증강 대규모 언어모델(RAG-LM) 기반 시스템 OpenScholar를 제안하며, 함께 과학 논문 합성 평가를 위한 대규모 벤치마크 ScholarQA-Bench를 소개한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 과학 문헌 전문화 데이터스토어(45M 논문), 학습된 검색기와 재순위 지정기, 자체 피드백 반복 개선 루프를 포함한 통합 RAG 시스템을 구축하고, 전문가가 작성한 질의-응답 쌍(2,967개)으로 구성된 ScholarQA-Bench 벤치마크를 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>OpenScholar의 상세한 추론(상) 및 학습(하) 파이프라인. 추론 시에는 검색기를 통해 관련 논문을 식별하고 재순위 지정기로 상위 N개를 정제한 후, LM이 초기 응답과 자체 피드백을 생성하여 반복적으로 개선한다.</em></p></div>
 <ol>
 <li><strong>성능 우수성</strong>: OpenScholar-8B가 GPT-4o보다 정확도에서 5%, PaperQA2보다 7% 우수한 성능을 보이며, GPT-4o의 인용 환각률(78-90%)을 인간 전문가 수준으로 개선(인용 정확도 대폭 향상)</li>
 <li><strong>인간 평가 선호도</strong>: OpenScholar-8B는 전문가 작성 응답 대비 51% 승률, OpenScholar-GPT4o는 70% 승률을 달성하여 GPT-4o의 32%를 크게 상회</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>자원 공개</strong>: 코드, 학습된 모델 체크포인트, 45M 논문 데이터스토어(237M 임베딩), ScholarQA-Bench 데이터셋, 공개 데모 전부 공개</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>OpenScholar의 상세 구조: (1)검색 단계: 질의로부터 데이터스토어의 관련 구절 검색, (2)재순위: 신경망 재순위 지정기로 상위 N개 정제, (3)생성: LM이 초기 응답 생성, (4)피드백: LM이 자신의 출력에 대해 자연언어 피드백 생성, (5)반복 개선: 피드백을 반영하여 응답 업데이트를 여러 번 수행</em></p></div>
 <ul>
 <li><strong>OpenScholar-DataStore (OSDS)</strong>: Semantic Scholar에서 수집한 45M 개의 오픈 액세스 논문과 237M 개의 대응 구절 임베딩으로 구성된 전문화된 데이터스토어</li>
 <li><strong>검색 및 재순위 지정</strong>: 기본 검색기로 후보 문서 식별 후, 학습된 신경망 재순위 지정기가 상위 N개 구절 선별하여 검색 품질 향상</li>

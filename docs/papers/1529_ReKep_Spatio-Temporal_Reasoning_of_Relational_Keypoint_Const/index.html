@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wenlong Huang, Chen Wang, Yunzhu Li, Ruohan Zhang, Li Fei-Fei | <strong>날짜</strong>: 2024-09-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.01652" target="_blank">https://arxiv.org/abs/2409.01652</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Relational Keypoint Constraints (ReKep) specify diverse manipulation behaviors as an opti-</em></p></div>
 <p>ReKep는 로봇 조작 작업을 3D 키포인트를 입력으로 하는 Python 함수 형태의 제약 조건으로 표현하며, 대규모 비전 모델과 비전-언어 모델을 활용하여 자동으로 이러한 제약을 생성하고 계층적 최적화로 실시간 로봇 제어를 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DINOv2로 의미론적 키포인트를 제안하고 GPT-4o가 RGB-D 관찰과 자연어 지시로부터 제약 함수를 코드로 작성하며, 계층적 최적화(waypoint 해결 후 receding-horizon 제어)로 SE(3) end-effector 궤적을 실시간으로 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Experiment tasks and visualization of optimization results. Seven tasks are designed to validate</em></p></div>
 <ul>
 <li><strong>자동 제약 생성</strong>: 대규모 비전 모델과 VLM을 결합하여 RGB-D 관찰과 자연어 지시만으로 ReKep을 자동 생성</li>
 <li><strong>다중 플랫폼 구현</strong>: 휠 달린 단일 팔과 고정식 dual-arm 플랫폼에서 다양한 조작 작업 수행</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>일반화 능력</strong>: 다양한 객체와 환경에서 작업별 환경 모델이나 매개변수 조정 없이 작동</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of ReKep. DINOv2 [5] first proposes keypoints in the scene, which are overlaid on</em></p></div>
 <ul>
 <li>DINOv2 self-supervised vision model로부터 장면의 semantic keypoint 제안</li>
 <li>제안된 keypoint를 시각화한 RGB-D 이미지와 자연어 지시를 GPT-4o에 입력하여 Python 함수 형태의 제약 조건 생성</li>

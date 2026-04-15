@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Marion Lepert, Jiaying Fang, Jeannette Bohg | <strong>날짜</strong>: 2025-08-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.09976" target="_blank">https://arxiv.org/abs/2508.09976</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of Masquerade. Left: Large-scale in-the-wild egocentric human videos are edited to obtain “robotized”</em></p></div>
 <p>Masquerade는 in-the-wild 인간 영상을 데이터 편집을 통해 로봇화된 시연으로 변환하고, 이를 통해 사전학습된 visual encoder로 로봇 조작 정책을 학습하는 방법을 제안한다. 675K 프레임의 편집된 인간 영상으로 사전학습 후 50개의 로봇 시연으로 fine-tuning하여 기존 방법 대비 5-6배 향상된 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 영상에서 3D 손 자세를 추정하고 인간 팔을 inpaint한 후 렌더링된 bimanual 로봇을 overlaying하여 robotized 시연을 생성한다. 이 편집된 영상으로 2D robot keypoint 예측 task를 통해 visual encoder를 사전학습하고, 실제 로봇 데이터와 함께 co-training하여 diffusion policy를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Average success rate (%) on three bimanual</em></p></div>
 <ul>
 <li><strong>out-of-distribution 일반화</strong>: 기존 방법 대비 5-6배 우수한 성능으로 세 개의 unseen scene에서 bimanual kitchen task 수행</li>
 <li><strong>데이터 효율성</strong>: 단 50개의 로봇 시연만으로도 robust policy 달성 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>스케일링 특성</strong>: 편집된 인간 영상의 양에 따라 성능이 로그 스케일로 증가하는 pattern 발견</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of Masquerade. (1) In-the-wild egocentric human videos are converted into “robotized” clips by extracti</em></p></div>
 <ul>
 <li>Epic Kitchens 데이터셋에서 in-the-wild 인간 egocentric 영상 수집</li>
 <li>각 프레임에서 3D 손 자세 추정 수행</li>

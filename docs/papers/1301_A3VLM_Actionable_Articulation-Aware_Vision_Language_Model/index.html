@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siyuan Huang, Haonan Chang, Yuhan Liu, Yimeng Zhu, Hao Dong, Peng Gao, Abdeslam Boularias, Hongsheng Li | <strong>날짜</strong>: 2024-06-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.07549" target="_blank">https://arxiv.org/abs/2406.07549</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Articulation Representation in A3VLM</em></p></div>
 <p>A3VLM은 로봇 중심의 행동 학습 대신 물체 중심의 관절 구조(articulation)와 행동 가능성(affordance)을 인식하는 Vision Language Model로, 비용이 많이 드는 로봇 상호작용 데이터 수집을 최소화하면서도 다양한 로봇에 적용 가능한 표현을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: A3VLM은 (Bounding box B, Axis A, Semantic label S) 삼중항으로 물체의 관절 구조와 행동 가능성을 표현하며, 순차적 프롬프트를 통해 4가지 하위 작업으로 분리하여 VLM 미세조정(fine-tuning)을 수행한다. PartNet-Mobility 데이터셋에서 생성한 이미지와 ControlNet 기반 데이터 증강을 활용하여 instruction-following 데이터셋을 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Sequential inference with prompts. To answer the first question, A3VLM identifies the corresponding action typ</em></p></div>
 <ul>
 <li><strong>PartNet-Mobility 벤치마크 우수 성능</strong>: 기존 관련 모델들을 큰 폭으로 능가하는 성능을 달성</li>
 <li><strong>물체 중심 로봇 독립적 표현</strong>: 특정 로봇에 종속되지 않는 표현으로 다양한 로봇에 적용 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>코드 및 자료 공개</strong>: 재현성을 위해 GitHub에서 코드와 학습 자료 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Annotations used for training A3VLM on the PartNet-Mobility dataset.</em></p></div>
 <ul>
 <li>PartNet-Mobility의 2,000개 이상의 관절 물체를 PyRender로 렌더링하여 객체당 40개의 다양한 뷰 이미지 생성</li>
 <li>ControlNet을 활용한 이미지 증강으로 학습 데이터 다양성 증대</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chung Min Kim, Brent Yi, Hongsuk Choi, Yi Ma, Ken Goldberg, Angjoo Kanazawa | <strong>날짜</strong>: 2025-05-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.03728" target="_blank">https://arxiv.org/abs/2505.03728</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: PyRoki is a modular, extensible, and cross-platform toolkit for kinematic optimization. We unify problems</em></p></div>
 <p>PyRoki는 역기구학, 궤적 최적화, 모션 리타게팅 등 다양한 로봇 운동학 최적화 문제를 통합적으로 해결하는 모듈식, 확장 가능하며 CPU/GPU/TPU에서 실행되는 크로스 플랫폼 툴킷이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,8 +77,12 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PyRoki는 Levenberg-Marquardt 최적화기, 모듈식 변수 추상화(joint configuration, SE(3), SO(3) Lie group), 조합 가능한 목적함수를 설계하여 동일한 최적화 인터페이스로 다양한 작업을 통합한다. JAX 기반으로 CPU/GPU/TPU에서 자동 미분과 효율적 병렬 처리를 지원한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Interactive Web-based Robot Viewer. Users can</em></p></div>
 <p><strong>모듈식 툴킷</strong>: 운동학 변수와 목적함수를 분리하여 역기구학, 궤적 최적화, 모션 리타게팅에서 재사용 가능한 컴포넌트로 설계했다. <strong>크로스 플랫폼 지원</strong>: CPU, GPU, TPU에서 네이티브 실행이 가능하며 배치 처리 병렬화를 지원한다. <strong>성능</strong>: 배치 역기구학에서 기존 GPU 가속 라이브러리 cuRobo 대비 1.4-1.7배 빠르고 더 낮은 오류로 수렴한다. <strong>확장성</strong>: 자동 미분을 통한 사용자 정의 목적함수 정의를 쉽게 하면서 분석적 Jacobian도 지원한다. <strong>시각화</strong>: 웹 기반 인터랙티브 뷰어로 비용 가중치를 실시간 조정 가능하다.</p></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Interactive Web-based Robot Viewer. Users can</em></p></div>
 <ul>
 <li>Levenberg-Marquardt 최적화기를 JAX 기반으로 구현하여 자동 미분과 block-sparse Jacobian 계산 지원</li>
 <li>Joint configuration 변수 추상화로 고정, 회전, 직동 관절 및 mimic joints 지원</li>

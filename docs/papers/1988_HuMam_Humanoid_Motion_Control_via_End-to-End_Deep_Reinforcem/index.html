@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yinuo Wang, Yuanyang Qi, Jinzhao Zhou, Pengxiang Meng, Xiaowen Tao | <strong>날짜</strong>: 2025-09-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.18046" target="_blank">https://arxiv.org/abs/2509.18046</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overall architecture of the proposed humanoid locomotion framework. At each time step, robot-centric and exter</em></p></div>
 <p>HuMam은 Mamba 인코더를 백본으로 사용하는 end-to-end 강화학습 기반 휴머노이드 로봇 보행 제어 프레임워크로, 로봇 중심 상태와 목표 발걸음을 효율적으로 융합하여 안정적이고 에너지 효율적인 제어를 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 단일 레이어 Mamba 인코더를 사용하여 로봇 중심 상태(관절 위치/속도, 자세)와 외부 유도 신호(목표 발걸음, 연속 시계 신호)를 융합한 후, PPO로 최적화된 정책이 관절 위치 목표를 출력하고 저수준 PD 제어기가 추적하도록 설계했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Training curves of HuMam and Baseline across</em></p></div>
 <ul>
 <li><strong>첫 Mamba 기반 휴머노이드 RL 제어기</strong>: 단일 Mamba 레이어만으로 순수 상태-중심 설정에서 강력한 성능을 달성한 최초 사례</li>
 <li><strong>학습 효율성 및 안정성 개선</strong>: Feedforward 베이스라인 대비 더 빠른 학습, 향상된 샘플 효율성, 낮은 교차-시드 변동성으로 더 높은 최종 수익 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>광범위한 실증 검증</strong>: JVRC-1 휴머노이드에서 전진, 후진, 곡선, 횡단, 정지 작업 모두에서 일관된 성능 향상 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overall architecture of the proposed humanoid locomotion framework. At each time step, robot-centric and exter</em></p></div>
 <ul>
 <li>Mamba 인코더의 상태-공간 동역학을 활용하여 이질적 입력(로봇 상태 + 외부 가이던스)의 경량 융합 수행</li>
 <li>6-항 보상 설계: contact quality (r_c), swing smoothness (r_s), foot placement (r_p), body orientation (r_o), torso height (r_h), upper-body stability (r_b)</li>

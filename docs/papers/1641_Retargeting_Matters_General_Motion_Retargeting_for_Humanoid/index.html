@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Joao Pedro Araujo, Yanjie Ze, Pei Xu, Jiajun Wu, C. Karen Liu | <strong>날짜</strong>: 2025-10-02 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.02252" target="_blank">10.48550/arXiv.2510.02252</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: General Motion Retargeting (GMR) Pipeline.</em></p></div>
 <p>본 논문은 휴머노이드 로봇의 모션 추적 성능에 미치는 리타겟팅 품질의 영향을 체계적으로 평가하고, 기존 리타겟팅 방법의 문제점을 해결하는 General Motion Retargeting (GMR)을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: BeyondMimic을 사용한 공정한 정책 학습 환경에서 GMR, PHC, ProtoMotions 및 Unitree 폐쇄형 데이터셋을 LAFAN1 데이터에 대해 비교 평가하고, 사용자 연구를 통해 지각적 충실도를 검증한다. GMR은 비균일 국소 스케일링과 2단계 최적화를 통해 기존 방법의 스케일링 문제를 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: User study (N = 20) results for comparing GMR to</em></p></div>
 <ul>
 <li><strong>General Motion Retargeting (GMR) 방법 제안</strong>: 비균일 국소 스케일링 및 2단계 최적화를 통해 발 관통, 자기 교차, 속도 스파이크 등의 아티팩트를 효과적으로 제거</li>
 <li><strong>포괄적 평가 연구</strong>: 센서 노이즈, 모델 파라미터 오차, 네트워크 지연을 포함한 실제 조건에서 리타겟팅 품질의 영향을 정량적으로 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>초기 프레임 민감도 발견</strong>: 참조 모션의 초기 프레임이 리타겟팅 방법과 무관하게 정책의 성공 여부에 큰 영향을 미침을 규명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: General Motion Retargeting (GMR) Pipeline.</em></p></div>
 <ul>
 <li>LAFAN1 데이터셋에서 발 접촉만 포함하는 21개의 다양한 모션 시퀀스(5초~2분) 선정</li>
 <li>GMR: 인간 신체를 SMPL 모델로 표현하고 비균일 국소 스케일링을 적용한 후, 2단계 최적화(위치 + 방향 매칭)로 휴머노이드 모션 계산</li>

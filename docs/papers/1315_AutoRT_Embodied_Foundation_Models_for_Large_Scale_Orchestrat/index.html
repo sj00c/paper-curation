@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Michael Ahn, Debidatta Dwibedi, Chelsea Finn, Montse Gonzalez Arenas, Keerthana Gopalakrishnan, Karol Hausman, Brian Ichter, Alex Irpan, Nikhil Joshi, Ryan Julian, Sean Kirmani, Isabel Leal, Edward Lee, Sergey Levine, Yao Lu, Isabel Leal, Sharath Maddineni, Kanishka Rao, Dorsa Sadigh, Pannag Sanketi, Pierre Sermanet, Quan Vuong, Stefan Welker, Fei Xia, Ted Xiao, Peng Xu, Steve Xu, Zhuo Xu | <strong>날짜</strong>: 2024-01-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2401.12963" target="_blank">https://arxiv.org/abs/2401.12963</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5 shows the visual diversity across each of AutoRT’s data collection policies, along with the</em></p></div>
 <p>AutoRT는 VLM과 LLM을 활용하여 로봇 함대의 대규모 자율 데이터 수집을 오케스트레이션하는 시스템으로, 77,000개의 실제 로봇 에피소드를 다양한 미지의 환경에서 수집했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: AutoRT는 VLM으로 장면 이해와 affordance 발견을 수행하고, LLM으로 다양한 작업을 자동 제안하며, Robot Constitution을 통해 안전성과 인간 선호도 정렬을 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: On the left is AutoRT robot usage and on the right is t-SNE visualization of tasks, colored by collect</em></p></div>
 <ul>
 <li><strong>대규모 실제 로봇 데이터 수집</strong>: 4개 건물의 20+ 로봇으로부터 77,000개 에피소드(원격 조작 및 자율 정책 혼합) 수집</li>
 <li><strong>효율적 인력 활용</strong>: 1명의 인간 감독자가 3-5개 모바일 매니퓨레이터 동시 감독 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실제 환경 자율성</strong>: LLM 제어 로봇이 실제 환경에서 자율 주행, 목표 자가 제안, 행동 실행을 최초 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5 shows the visual diversity across each of AutoRT’s data collection policies, along with the</em></p></div>
 <ul>
 <li><strong>장면 이해</strong>: Open vocabulary object detector와 VLM으로 환경의 객체를 인식하고 시각-언어 임베딩으로 표현</li>
 <li><strong>탐색 단계</strong>: Natural language map(Chen et al. 2023 기반)을 이용하여 관심 영역을 샘플링하고 로봇 네비게이션 가이드</li>

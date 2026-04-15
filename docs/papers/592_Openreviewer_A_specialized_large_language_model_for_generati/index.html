@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Maximilian Idahl, Zahra Ahmadi | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>OpenReviewer 데모 인터페이스: PDF 업로드, 마크다운 변환, 리뷰 템플릿 편집, 리뷰 생성 기능</em></p></div>
 <p>79,000개의 전문가 리뷰로 파인튠된 8B 파라미터 언어모델(Llama-OpenReviewer-8B)을 통해 기계학습 및 AI 학술지 논문에 대한 고품질 동료심사 의견을 생성하는 오픈소스 시스템이다. GPT-4o, Claude-3.5 같은 범용 LLM과 달리 비판적이고 현실적인 리뷰를 생성하여 인간 검토자의 평가 분포와 유사한 결과를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,18 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ICLR 2024 심사자 가이드를 기반으로 한 전문화된 장문맥(long-context) LLM을 개발하고, 상위 ML 학술대회(ICLR, NeurIPS)의 79,000개 전문가 리뷰 데이터셋으로 파인튠.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>GPT-4o를 이용한 선호도 평가 결과</em></p></div>
 <ol>
 <li><strong>권장사항 일치도 향상</strong>: OpenReviewer는 400개 테스트 논문에 대해 인간 심사자 권장사항과 55.5% 정확도로 일치(exact match)하며, 평균 오차 0.96을 기록. 이는 GPT-4o의 23.8% 일치도, 2.34 오차보다 현저히 우수(Table 1 참조).</li>
 <li><strong>비판적 평가의 현실성</strong>: 범용 LLM들이 과도하게 긍정적인 평가(평균 6.5~7.2/10)를 제시하는 반면, OpenReviewer는 인간 심사자와 동일한 분포(평균 5.4/10)의 비판적 리뷰 생성. 이는 원고의 실제 약점을 저자에게 제시하는 데 필수적.</li>
 <li><strong>구조화된 리뷰 생성</strong>: 학술대회별 템플릿 준수, 수식과 표를 포함한 기술 콘텐츠 정확 추출, 마크다운 형식 리뷰 자동 생성.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>OpenReviewer의 시스템 프롬프트</em></p></div>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>OpenReviewer의 사용자 프롬프트</em></p></div>
 <ul>
 <li><strong>데이터 수집</strong>: OpenReview에서 2022년 이후 ICLR, NeurIPS의 36,000개 논문과 141,000개 리뷰 수집. PDF를 마크다운으로 변환(Marker 라이브러리 사용 - Nougat 대비 정확도 향상, 수식·표 정확 변환).</li>
 <li><strong>필터링</strong>: 논문 및 리뷰를 길이별로 필터링(상하위 1% 제거), 고신뢰도 리뷰만 선별("자신있지만 절대적이지 않은" 신뢰도 이상) → 최종 79,000개 리뷰 데이터셋.</li>

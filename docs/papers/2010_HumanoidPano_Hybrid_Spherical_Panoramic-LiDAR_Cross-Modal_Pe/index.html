@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiang Zhang, Zhang Zhang, Wei Cui, Jingkai Sun, Jiahang Cao, Yijie Guo, Gang Han, Wen Zhao, Jiaxu Wang, Chenghao Sun, Lingfeng Zhang, Hao Cheng, Yujie Chen, Lin Wang, Jian Tang, Renjing Xu | <strong>날짜</strong>: 2025-03-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.09010" target="_blank">https://arxiv.org/abs/2503.09010</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. The humanoid robot autonomously navigates complex environments using HumanoidPano, which fuses panoramic visio</em></p></div>
 <p>인간형 로봇의 자아-폐색 및 제한된 시야 문제를 해결하기 위해 파노라마 비전과 LiDAR를 융합하는 HumanoidPano 프레임워크를 제안하며, Spherical Geometry-aware Constraints와 Spatial Deformable Attention을 통해 기하학적으로 정렬된 크로스모달 인식을 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: panoramic 이미지에서 추출한 ray 특성을 활용한 Spherical Geometry-aware Constraints로 distortion-aware 크로스모달 정렬을 수행하고, Spatial Deformable Attention을 통해 360°-to-BEV 융합을 효율적으로 처리하며, cross-view metric consistency를 보존하는 Panoramic Augmentation으로 학습 데이터의 기하학적 정보 부족을 보완한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. The humanoid robot autonomously navigates complex environments using HumanoidPano, which fuses panoramic visio</em></p></div>
 <ul>
 <li><strong>Universal Humanoid Perception Framework</strong>: 인간형 로봇의 생체역학적 제약을 고려한 일반 목적 인식 시스템으로 panoramic vision과 LiDAR를 구조적으로 융합</li>
 <li><strong>State-of-the-art Performance</strong>: 360BEV-Matterport 데이터셋에서 기존 방법들을 능가하는 panoramic BEV 장면 이해 성능 달성</li>
 <li><strong>Real-world Validation</strong>: 실제 인간형 로봇 플랫폼에 배포되어 정확한 BEV 시맨틱 맵 생성 및 복잡한 환경에서의 네비게이션 작업 수행 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. HumanoidPano Framework Overview. The system addresses panoramic image distortion using Spherical Geometric Con</em></p></div>
 <ul>
 <li><strong>Spherical Geometry-aware Constraints (SGC)</strong>: panoramic camera의 ray 특성에서 유도된 기하학적 제약을 통해 distortion-regularized sampling offset을 안내하여 기하학적 정렬 수행</li>
 <li><strong>Spatial Deformable Attention (SDA)</strong>: spherical offset을 통해 계층적 3D 특성을 집계하여 기하학적으로 완전한 객체 표현을 갖춘 360°-to-BEV 융합 실현</li>

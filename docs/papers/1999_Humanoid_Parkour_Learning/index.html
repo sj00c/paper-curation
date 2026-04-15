@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziwen Zhuang, Shenzhe Yao, Hang Zhao | <strong>날짜</strong>: 2024-06-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.10759" target="_blank">https://arxiv.org/abs/2406.10759</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We present a single vision-based end-to-end whole-body-control parkour policy for humanoid robots</em></p></div>
 <p>본 논문은 시각 기반 end-to-end 제어 정책을 통해 인간형 로봇이 모션 프리어 없이 다양한 파쿠르 기술(점프, 허들 뛰기, 갭 넘기 등)을 수행할 수 있도록 학습하는 통합 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3단계 학습 파이프라인을 통해 (1) fractal noise를 활용한 평면 보행 정책 사전학습, (2) 자동 커리큘럼과 10가지 지형을 통한 파쿠르 정책 학습, (3) DAgger를 이용한 깊이 센서 기반 비전 정책 증류를 수행하며, PPO 알고리즘과 GRU 기반 신경망 아키텍처를 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Real-world quantitative results. Our parkour policy achieves the best performance in the 4</em></p></div>
 <ul>
 <li><strong>파쿠르 성능</strong>: 0.42m 플랫폼 점프, 허들 뛰기, 0.8m 갭 넘기, 1.8m/s 주행 속도 달성</li>
 <li><strong>모션 프리어 제거</strong>: 기존 방법과 달리 인간 또는 동물 모션 참고자료 없이 다양한 파쿠르 기술 학습</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>이동 조작 전이</strong>: 암(팔) 액션을 무시할 수 있게 함으로써 인간형 모바일 조작 작업으로의 용이한 전이 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: We design 10 different types of terrain with controllable difficulty. By training on all these</em></p></div>
 <ul>
 <li><strong>Fractal noise 기반 지형 학습</strong>: 보상 항에서 발 들기를 명시적으로 장려하지 않으면서도, fractal noise가 추가된 높이장 지형을 통해 자연스러운 보행 동작 유도</li>
 <li><strong>다중 지형 설계</strong>: 10가지 상이한 파쿠르 관련 지형(점프 업/다운, 허들, 갭, 계단 등)을 구현하고 점진적 난이도 조절</li>

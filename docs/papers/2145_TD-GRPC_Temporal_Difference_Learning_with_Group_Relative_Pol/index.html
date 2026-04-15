@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Khang Nguyen, Khai Nguyen, An T. Le, Jan Peters, Manfred Huber, Ngo Anh Vien, Minh Nhat Vu | <strong>날짜</strong>: 2025-05-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.13549" target="_blank">https://arxiv.org/abs/2505.13549</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of TD-GRPC for Humanoid Locomotion: Starting from an initial state s0 encoded into latent state z0 with</em></p></div>
 <p>본 논문은 Humanoid Locomotion을 위해 TD-MPC 프레임워크에 Group Relative Policy Optimization (GRPO)와 trust-region constraint를 통합한 TD-GRPC를 제안하여, off-policy 학습의 불안정성과 policy mismatch 문제를 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: TD-MPC2 프레임워크에 GRPO를 통합하고 latent policy space에서 trust-region constraint (KL divergence 패널티)를 적용하여, planning 사전과 학습된 롤아웃 간의 일관성을 유지하면서 물리적 실현 가능성을 보존한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Episode Returns of TD-GRPC and Baselines on H1–2 in Humanoid Locomotion Tasks: TD-GRPC achieves rapid convergenc</em></p></div>
 <ul>
 <li><strong>TD-GRPC 프레임워크 개발</strong>: GRPO와 explicit trust-region constraint를 TD-MPC에 통합하여 off-policy MBRL의 안정성을 이론적, 알고리즘적으로 개선</li>
 <li><strong>Unitree H1-2 humanoid 검증</strong>: 기본 보행부터 계단 오르기, 동적 움직임까지 8가지 locomotion task에서 improved stability, robustness, sample efficiency 달성</li>
 <li><strong>빠른 수렴</strong>: 다른 baseline들 대비 더 빠른 convergence rate 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of TD-GRPC for Humanoid Locomotion: Starting from an initial state s0 encoded into latent state z0 with</em></p></div>
 <ul>
 <li>Latent dynamics model dθ, reward model Rθ, Q-value function Qθ, policy πθ를 MPPI planning horizon H에서 joint training</li>
 <li>Group 단위로 action 샘플링 후 Q-value 평가를 통해 softmax 기반 advantage score Ag 계산</li>

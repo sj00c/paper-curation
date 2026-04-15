@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qingqing Zhao, Yao Lu, Moo Jin Kim, Zipeng Fu, Zhuoyang Zhang, Yecheng Wu, Zhaoshuo Li, Qianli Ma, Song Han, Chelsea Finn, Ankur Handa, Ming-Yu Liu, Donglai Xiang, Gordon Wetzstein, Tsung-Yi Lin | <strong>날짜</strong>: 2025-03-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.22020" target="_blank">https://arxiv.org/abs/2503.22020</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of CoT-VLA framework. We build our model on VILA-U [67], a generative multimodal model pretrained on</em></p></div>
 <p>이 논문은 Vision-Language-Action(VLA) 모델에 시각적 chain-of-thought 추론을 도입하여, 로봇이 직접 행동을 생성하기 전에 미래의 부분 목표 이미지를 자동회귀적으로 생성하도록 함으로써 로봇 조작 성능을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CoT-VLA는 VILA-U 기반 7B 모델로서, 현재 관찰과 언어 지시에서 부분 목표 이미지를 먼저 생성한 후, 그 이미지와 원래 관찰을 조건으로 하여 짧은 행동 수열을 생성한다. Hybrid attention 메커니즘을 사용하여 텍스트/이미지 생성에는 causal attention을, 행동 예측에는 full attention을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Franka-Tabletop comparisons. Evaluation across six distinct manipulation tasks, with separate models trained p</em></p></div>
 <ul>
 <li><strong>실제 로봇 조작 성능</strong>: 기존 state-of-the-art VLA 모델 대비 17% 향상된 성능 달성</li>
 <li><strong>시뮬레이션 벤치마크</strong>: LIBERO, Bridge-V2 등 시뮬레이션 환경에서 6% 성능 향상</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Action chunking 효과</strong>: 단일 행동이 아닌 행동 수열 예측이 성능 개선에 기여함을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of CoT-VLA framework. We build our model on VILA-U [67], a generative multimodal model pretrained on</em></p></div>
 <ul>
 <li>VILA-U 기반 multimodal 기초 모델을 Open X-Embodiment dataset 및 행동 주석이 없는 비디오 데이터로 사전 학습</li>
 <li>Hybrid attention 메커니즘 설계: 픽셀과 텍스트 생성에는 causal attention으로 순차적 예측, 행동 예측에는 full attention으로 모든 행동 차원을 동시 예측</li>

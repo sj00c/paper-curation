@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yikai Wang, Tingxuan Leng, Changyi Lin, Shiqi Liu, Shir Simon, Bingqing Chen, Jonathan Francis, Ding Zhao | <strong>날짜</strong>: 2026-02-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.11143" target="_blank">https://arxiv.org/abs/2602.11143</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The robot adaptively traverses high platforms of up to 0.8 m (≈114% of leg length) by leveraging diverse full-bo</em></p></div>
 <p>APEX는 humanoid 로봇이 다리 길이의 114%에 달하는 높은 플랫폼을 traversal할 수 있도록 하는 시스템으로, ratchet progress reward를 통해 학습한 6가지 기술(climb-up, climb-down, stand-up, lie-down, walking, crawling)을 하나의 정책으로 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: APEX는 두 단계 프레임워크를 제안하는데: (1) ratchet progress reward를 사용하여 6가지 skill을 개별적으로 학습하고, (2) 이들을 teacher-student distillation을 통해 단일 정책으로 통합하며, LiDAR 기반 elevation mapping과 sim-to-real 간극 감소 전략을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The robot adaptively traverses high platforms of up to 0.8 m (≈114% of leg length) by leveraging diverse full-bo</em></p></div>
 <ul>
 <li><strong>고플랫폼 traversal</strong>: 0.8m(다리 길이의 약 114%)에 달하는 플랫폼을 zero-shot sim-to-real transfer로 traversal하는 것을 달성</li>
 <li><strong>다중 기술 통합</strong>: climb-up, climb-down, stand-up, lie-down, walking, crawling의 6가지 기술을 하나의 정책으로 통합</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>contact-rich 학습</strong>: ratchet progress reward를 통해 접촉이 많은 goal-reaching 기동을 효율적으로 학습</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Learning pipeline for high-platform traversal: Teacher Training uses RL with the Ratchet Progress Reward, where </em></p></div>
 <ul>
 <li><strong>Ratchet Progress Reward</strong>: best-so-far 작업 상태를 추적하고 개선되지 않는 단계를 페널티 부여하여 밀도 있고 속도-무관한 감독 신호 제공</li>
 <li><strong>Teacher Training</strong>: 각 skill을 DRL로 개별 학습하되, reward shaping과 data sampling 전략으로 predecessor와 successor 간 상태 분포 매칭 개선</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ye Yuan, Jiaming Song, Umar Iqbal, Arash Vahdat, Jan Kautz | <strong>날짜</strong>: 2022-12-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2212.02500" target="_blank">https://arxiv.org/abs/2212.02500</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Our PhysDiff model generates physically-plausible motions using a physics-based motion projection in the diffu</em></p></div>
 <p>PhysDiff는 diffusion 과정에 물리 기반 motion projection 모듈을 통합하여 physically-plausible human motion을 생성하는 physics-guided motion diffusion 모델이다. 기존 motion diffusion 모델의 floating, foot sliding, ground penetration 같은 물리적 artifacts를 제거한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion imitation을 통해 physics simulator에서 훈련한 policy를 motion projection 모듈로 사용하고, diffusion 과정의 각 스텝에서 denoised motion을 physically-plausible space로 projection한다. 이렇게 projected motion을 다음 diffusion 스텝의 가이드로 사용하여 iteratively physical plausibility를 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Visual comparison of PhysDiff against the SOTA, MDM [79], on HumanML3D, HumanAct12, and UESTC. PhysDiff reduce</em></p></div>
 <ul>
 <li><strong>물리적 정확성 대폭 개선</strong>: HumanML3D에서 physical error를 86% 이상 감소, HumanAct12에서 78% 이상 개선, UESTC에서 94% 개선</li>
 <li><strong>Motion quality 동시 개선</strong>: HumanML3D에서 FID 20% 이상 개선하면서 물리 제약을 만족</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Physics-based projection scheduling 분석</strong>: Projection 스텝 수에 따른 physical plausibility와 motion quality의 trade-off 관계 발견</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of PhysDiff. Each physics-guided diffusion step denoises a motion from timestep t to s, where physics</em></p></div>
 <ul>
 <li>Large-scale motion capture 데이터로 motion imitation policy를 physics simulator에서 훈련</li>
 <li>각 diffusion 스텝에서 denoised motion에 대해 trained motion imitation policy를 실행하여 physically-plausible motion으로 projection</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuhui Chen, Shuai Tian, Shugao Liu, Yingting Zhou, Haoran Li, Dongbin Zhao | <strong>날짜</strong>: 2025-02-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.05450" target="_blank">https://arxiv.org/abs/2502.05450</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of ConRFT. This figure illustrates the architecture of our reinforced fine-tuning approach for a pre-tr</em></p></div>
 <p>ConRFT는 Vision-Language-Action 모델의 강화학습 기반 미세조정 방법으로, 오프라인 단계에서 행동 복제와 Q-러닝을 통합하고 온라인 단계에서 consistency policy를 통해 실제 로봇 조작 작업에서 높은 성공률을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ConRFT는 오프라인-온라인 두 단계 파이프라인으로, 오프라인 단계(Cal-ConRFT)에서는 consistency 기반 행동 복제와 Q-러닝을 통합하여 적은 시연으로 안정적인 정책과 가치함수를 학습하고, 온라인 단계(HIL-ConRFT)에서는 인간 개입을 통해 안전한 탐색 하에서 consistency policy로 미세조정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Learning curves during online training. This figure presents the success rates, intervention rates, and episode </em></p></div>
 <ul>
 <li><strong>성공률 개선</strong>: 8개 실제 로봇 작업에서 평균 96.3% 성공률 달성, 기존 감독 학습 방법 대비 144% 개선</li>
 <li><strong>샘플 효율성</strong>: 45-90분의 온라인 미세조정만으로 높은 성능 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>코드 공개</strong>: 재현 가능성을 위해 프로젝트 웹사이트에서 코드와 영상 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of ConRFT. This figure illustrates the architecture of our reinforced fine-tuning approach for a pre-tr</em></p></div>
 <ul>
 <li><strong>오프라인 단계(Cal-ConRFT)</strong>: 시연 데이터로부터 행동 복제(BC) 손실과 Q-러닝을 통합한 consistency 기반 목표로 정책과 가치함수 학습</li>
 <li><strong>온라인 단계(HIL-ConRFT)</strong>: 오프라인 단계의 손실 구조를 유지하면서 CPQL을 기반으로 task-specific reward로 미세조정</li>

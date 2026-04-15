@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tairan He, Zi Wang, Haoru Xue, Qingwei Ben, Zhengyi Luo, Wenli Xiao, Ye Yuan, Xingye Da, Fernando Castañeda, Shankar Sastry, Changliu Liu, Guanya Shi, Linxi Fan, Yuke Zhu | <strong>날짜</strong>: 2025-11-27 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.15200" target="_blank">10.48550/arXiv.2511.15200</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. VIRAL teacher-student pipeline. Phase 1: In simulation, a privileged RL teacher policy πteacher receives full-</em></p></div>
 <p>VIRAL은 humanoid robot의 loco-manipulation을 시뮬레이션에서 학습하고 zero-shot으로 실제 로봇에 배포하는 visual sim-to-real 프레임워크이며, teacher-student 구조와 대규모 GPU 컴퓨팅을 활용하여 RGB 기반 정책을 통해 54개 사이클의 연속적인 객체 이동을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Teacher-student 구조로 privileged state를 활용한 RL teacher를 먼저 학습하고, 이를 RGB 기반 student policy로 distill하며, DAgger와 behavior cloning의 혼합, 대규모 visual domain randomization, 그리고 실제 하드웨어와의 real-to-sim alignment를 통해 sim-to-real 전이를 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Center: Unitree G1 humanoid performing loco-manipulation, walking between tables to place and pick objects for</em></p></div>
 <ul>
 <li><strong>54 사이클 연속 loco-manipulation</strong>: Unitree G1 humanoid가 테이블 간 이동, 객체 배치, 파지, 운반을 54개 사이클에 걸쳐 연속으로 수행</li>
 <li><strong>Zero-shot 실제 배포</strong>: 시뮬레이션에서 학습한 정책이 실제 로봇에 미세 조정 없이 바로 배포 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>대규모 GPU 컴퓨팅의 효과</strong>: 64개 GPU 스케일링이 teacher와 student 학습의 안정성 향상에 필수적임을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. VIRAL teacher-student pipeline. Phase 1: In simulation, a privileged RL teacher policy πteacher receives full-</em></p></div>
 <ul>
 <li><strong>Teacher 정책 학습</strong>: Privileged state (full proprioception, exteroception, object transforms)를 입력으로 하는 PPO 기반 RL teacher를 16개 GPU로 학습</li>
 <li><strong>Action space 설계</strong>: Delta velocity commands (∆v_t, ∆ω_t)와 delta joint targets (∆q_arm_t, ∆q_finger_t)를 WBC policy에 입력</li>

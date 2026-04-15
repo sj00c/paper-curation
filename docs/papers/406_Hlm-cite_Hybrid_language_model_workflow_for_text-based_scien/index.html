@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jingyang Fan, Qianyue Hao, Yong Li, Fengli Xu, Jian Yuan | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) 핵심 인용(Core Citation) 정의. (b)(c) 핵심 인용과 표면적 인용의 통계적 차이: 키워드 겹침(b)과 주요 텍스트 내 언급 빈도(c)</em></p></div>
 <p>본 논문은 과학 논문의 인용 예측 문제를 단순한 이진 분류에서 벗어나 <strong>핵심 인용(core citations)</strong>을 표면적 인용 및 비인용과 구별하는 다단계 분류 문제로 재정의하고, 임베딩 모델과 생성형 LLM을 결합한 하이브리드 워크플로우(HLM-Cite)를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -84,6 +86,8 @@ a { color: #A62018; }
 </ol>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: 제안된 HLM-Cite 워크플로우의 구조. (a) 전체 개요: 검색 모듈과 LLM 에이전트 순위 결정 모듈의 두 단계. (b) 검색 모듈의 커리큘럼 파인튜닝: 분류(Stage 1)에서 순위 결정(Stage 2) 태스크로 전이. (c) LLM 에이전트 순위 결정: Guider, Analyzer, Decider의 세 역할 분담</em></p></div>
 <ol>
 <li><strong>핵심 인용 개념 도입</strong>:
 <ul>
@@ -100,6 +104,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: LLM 에이전트 순위 결정 모듈의 사례 연구. Guider의 원샷 학습 예시(2→3→1의 정렬)를 통해 Analyzer와 Decider가 논리적 관계를 추론하고 순위를 결정</em></p></div>
 <h3>2단계 하이브리드 워크플로우</h3>
 <p><strong>Stage 1: 검색 모듈 (Embedding-based Retrieval)</strong></p>
 <ul>

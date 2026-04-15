@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiao Feng, Yiming Huang, Yufu Wang, Jiatao Gu, Lingjie Liu | <strong>날짜</strong>: 2025-10-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.02566" target="_blank">https://arxiv.org/abs/2510.02566</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Given a monocular video (a), (b) kinematic-based methods (e.g., GVHMR [Shen et al. 2024]) often cannot produce p</em></p></div>
 <p>PhysHMR은 모노큘러 비디오로부터 물리적으로 타당한 인간 동작 재구성을 위해 비전-기반 휴머노이드 제어 정책을 직접 학습하는 통합 프레임워크이다. 기존의 두 단계 방식(운동학 기반 추정 + 물리 후처리)과 달리, 시각 정보와 물리 제약을 단일 정책 네트워크에서 함께 추론한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PhysHMR은 물리 기반 시뮬레이터 내에서 모노큘러 비디오로부터 직접 제어 신호를 예측하는 시각-대-행동 정책을 학습한다. mocap 학습된 모방 전문가로부터의 distillation과 물리 기반 강화학습 보상을 통해 효율적으로 정책을 훈련한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Given a monocular video (a), (b) kinematic-based methods (e.g., GVHMR [Shen et al. 2024]) often cannot produce p</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 기존의 분리된 재구성-보정 파이프라인을 단일 정책 네트워크로 통합하여 오류 누적 제거</li>
 <li><strong>Soft Global Grounding</strong>: 2D 키포인트를 3D spatial ray로 변환하여 노이즈 있는 3D 루트 예측 회피 및 강건한 전역 자세 안내 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>평가 및 성과</strong>: Human3.6M, AIST++, EMDB2에서 기존 운동학 기반 방법과 비교 가능한 정확도 유지하면서 물리적 타당성 대폭 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2 provides an overview of our method. Given a monocular</em></p></div>
 <ul>
 <li>pretrained visual encoder로부터 각 프레임의 특징 추출하여 로컬 자세 참조 제공</li>
 <li>2D keypoint 검출 후 3D spatial ray로 변환하여 글로벌 공간에서 소프트 제약 조건으로 사용</li>

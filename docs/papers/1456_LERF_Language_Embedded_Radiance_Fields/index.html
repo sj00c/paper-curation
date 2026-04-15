@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Justin Kerr, Chung Min Kim, Ken Goldberg, Angjoo Kanazawa, Matthew Tancik | <strong>날짜</strong>: 2023-03-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.09553" target="_blank">https://arxiv.org/abs/2303.09553</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Language Embedded Radiance Fields (LERF). LERF grounds CLIP representations in a dense, multi-scale 3D ﬁeld. A</em></p></div>
 <p>LERF는 CLIP 임베딩을 NeRF에 정합하여 자연어로 3D 장면을 쿼리할 수 있도록 하는 방법이다. 다중 스케일 언어 필드를 학습함으로써 시각적 속성, 의미론, 추상적 개념, 장기 꼬리 객체 등 다양한 형태의 자연어 질의에 실시간으로 응답한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: NeRF 최적화 과정에서 위치와 물리적 스케일을 입력으로 하는 언어 필드를 함께 학습하며, 다중 스케일 특성 피라미드를 통해 다양한 스케일의 CLIP 임베딩을 감독한다. DINO 특성으로 정규화하여 최적화된 언어 필드의 매끄러움을 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Results with LERF for 5 in-the-wild scenes. Each image shows a visual rendering of the LERF (Sec. 3), along wi</em></p></div>
 <ul>
 <li><strong>제로샷 다중 스케일 쿼리</strong>: 마스크나 지역 제안 없이 픽셀 정렬 방식으로 시각적 속성, 추상 개념, 장기 꼬리 객체, 텍스트 등 광범위한 자연어 쿼리를 지원</li>
 <li><strong>3D 일관성</strong>: 다중 뷰의 CLIP 임베딩을 평균화하여 2D CLIP보다 더 국소화되고 3D 일관성 있는 관련성 맵 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>넓은 적용성</strong>: 로봇공학, 시각-언어 모델 분석, 3D 장면 상호작용 등 다양한 응용 분야에 활용 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: LERF Optimization: Left: LERF represents a ﬁeld of 3D volumes, parameterized by position x, y, z and scale s (</em></p></div>
 <ul>
 <li>NeRF의 부피 렌더링 프레임워크를 확장하여 위치(x, y, z)와 스케일(s)을 입력으로 하는 언어 필드 네트워크 학습</li>
 <li>훈련 뷰의 이미지 패치에서 다중 스케일 CLIP 특성 피라미드 사전 계산</li>

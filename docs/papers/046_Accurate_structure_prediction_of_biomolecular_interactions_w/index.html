@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: AlphaFold 2 아키텍처를 대폭 개선하여, Evoformer를 간단한 Pairformer로 교체하고 Structure Module을 Diffusion Module로 대체하여 일반화된 생체분자 복합체 예측 가능하게 함.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1 - AlphaFold 3의 예측 정확도">
+<p class="fig-caption"><em>그림 1: AlphaFold 3는 다양한 생체분자 복합체에서 정확하게 구조를 예측함</em></p></div>
 <ol>
 <li><strong>포괄적 성능 향상</strong>: 단백질-리간드 상호작용에서는 최고 수준의 도킹 도구를 능가하고, 단백질-핵산 상호작용에서는 핵산 특화 예측기를 초과하는 성능 달성</li>
 <li><strong>통합 프레임워크</strong>: 단백질, 핵산, 소분자, 이온, 변형 잔기를 포함한 거의 모든 PDB 분자 유형을 단일 모델로 예측</li>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>구조적 신뢰도 개선</strong>: 원자 수준(atom-level)과 쌍 수준(pairwise)의 오류를 예측하는 신뢰도 지표 개발 (pLDDT, PAE, PDE)</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2 - 아키텍처 개선사항">
+<p class="fig-caption"><em>그림 2: Diffusion Module을 통한 원자 좌표 직접 예측</em></p></div>
 <ul>
 <li><strong>MSA 처리 축소</strong>: Evoformer의 4개 블록으로 축소하고 pair-weighted averaging 사용으로 계산 효율성 증대</li>
 <li><strong>Pairformer 도입</strong>: 쌍 표현(pair representation)과 단일 표현(single representation)만 처리하여 MSA 표현 제거</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yichen He, Guanhua Huang, Peiyuan Feng, Yuan Lin, Yuchen Zhang, Hang Li, Weinan E | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>PaSa 시스템 아키텍처: Crawler와 Selector 두 개의 LLM 에이전트로 구성</em></p></div>
 <p>PaSa는 복잡한 학술 논문 검색을 자동으로 수행하는 LLM 기반 에이전트로, 검색 도구 활용, 논문 읽기, 인용 네트워크 탐색을 통해 종합적이고 정확한 검색 결과를 제공한다. 합성 데이터(AutoScholarQuery)로 학습했음에도 실제 환경(RealScholarQuery)에서 Google Scholar 및 GPT-4o 기반 방법들을 크게 능가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 개의 LLM 에이전트(Crawler와 Selector)로 구성된 PaSa를 제안하고, AGILE 강화학습 프레임워크로 최적화하며, 새로운 session-level PPO 알고리즘을 설계한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>PaSa 워크플로우 예시: Crawler의 다양한 [Search] 실행과 인용 네트워크 탐색</em></p></div>
 <ol>
 <li><strong>성능 우수성</strong>: PaSa-7B는 AutoScholarQuery 테스트 셋에서 Google+GPT-4o 대비 Recall@20에서 34.05%, Recall@50에서 39.36% 향상. RealScholarQuery에서는 Recall@20 37.78%, Recall@50 39.90% 향상. PaSa-GPT-4o 대비 30.36% 재현율 향상.</li>
 <li><strong>합성 데이터의 효과성</strong>: 합성 데이터(AutoScholarQuery, 33.5k 쿼리-논문 쌍)로만 학습했음에도 실제 환경에서 우수한 성능 달성, 도메인 전이(domain transfer) 가능성 입증.</li>

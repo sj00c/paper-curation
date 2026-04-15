@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xinyang Gu, Yen-Jen Wang, Xiang Zhu, Chengming Shi, Yanjiang Guo, Yichen Liu, Jianyu Chen | <strong>날짜</strong>: 2024-08-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2408.14472" target="_blank">https://arxiv.org/abs/2408.14472</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Extensive showcase of locomotion skills using the proposed framework. Displayed is a sequence illustrating a hum</em></p></div>
 <p>Denoising World Model Learning (DWL)이라는 end-to-end 강화학습 프레임워크를 통해 휴머노이드 로봇이 눈덮인 언덕, 계단, 불규칙한 지형 등 현실의 복잡한 지형을 처음으로 마스터했으며, zero-shot sim-to-real transfer로 같은 신경망을 모든 시나리오에서 구동한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 부분 관찰성을 갖는 POMDP 환경에서 encoder-decoder 구조의 world model을 통해 환경 노이즈, 동역학 노이즈, 센서 노이즈, masking 노이즈를 denoising하여 true state를 복원하고, 이를 policy gradient 방법과 결합하여 sim-to-real gap을 극복한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Extensive showcase of locomotion skills using the proposed framework. Displayed is a sequence illustrating a hum</em></p></div>
 <ul>
 <li><strong>최초 달성</strong>: 휴머노이드 로봇이 end-to-end RL과 zero-shot sim-to-real transfer로 현실의 도전적 지형(눈덮인 경사지, 계단, 극도로 불규칙한 지형)을 마스터한 최초 사례</li>
 <li><strong>일반화 및 견고성</strong>: 단일의 학습된 신경망이 모든 시나리오에서 동작하며 외부 간섭에 대한 저항력 시연</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>두 가지 로봇 플랫폼 검증</strong>: XBot-S (38kg, 1.2m)와 XBot-L (57kg, 1.65m)에서 모두 성공적으로 작동 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Illustration of the Denoising World Model Learning Framework. This diagram details the information flow from sen</em></p></div>
 <ul>
 <li>POMDP 기반 강화학습 문제 정식화로 부분 관찰성을 명시적으로 모델링</li>
 <li>시뮬레이션 내에서 네 가지 유형의 노이즈(environmental, dynamics, sensory, masking)를 주입하여 현실 조건 모방</li>

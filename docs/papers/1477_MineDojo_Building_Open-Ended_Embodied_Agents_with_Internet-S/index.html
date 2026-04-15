@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Linxi Fan, Guanzhi Wang, Yunfan Jiang, Ajay Mandlekar, Yuncong Yang, Haoyi Zhu, Andrew Tang, De-An Huang, Yuke Zhu, Anima Anandkumar | <strong>날짜</strong>: 2022-06-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2206.08853" target="_blank">https://arxiv.org/abs/2206.08853</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: MINEDOJO is a novel framework for developing open-ended, generally capable agents</em></p></div>
 <p>MineDojo는 Minecraft 게임을 기반으로 수천 개의 개방형 작업, 인터넷 규모의 멀티모달 지식베이스(YouTube 영상, Wiki, Reddit), 그리고 사전학습된 비디오-언어 모델을 보상함수로 활용하는 에이전트 학습 알고리즘을 통합하여 일반화 능력을 갖춘 embodied agent를 개발하는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MineDojo는 개방형 Minecraft 환경에 수천 개의 자연어 작업을 정의하고, 100만 이상의 Minecraft 플레이어가 생성한 730K+ YouTube 영상, 6K+ Wiki 페이지, 340K+ Reddit 포스트를 수집한 뒤, CLIP 스타일의 contrastive video-language model (MineClip)을 이용해 자동 보상함수를 학습하여 에이전트를 훈련한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Visualization of our agent’s learned behaviors on four selected tasks. Leftmost texts are the</em></p></div>
 <ul>
 <li><strong>시뮬레이션 플랫폼</strong>: MineRL Challenge 대비 두 자리 수 규모로 확대된 1,581개의 programmatic 작업과 creative 작업들로 구성된 벤치마크 제공</li>
 <li><strong>지식베이스</strong>: 730K+ YouTube 영상(시간 정렬 자막 포함), 6K+ Wiki 페이지, 340K+ Reddit 멀티미디어 포스트로 구성된 인터넷 규모 데이터셋 구축</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>성능</strong>: 12개 실험 작업의 대다수를 해결했으며, 수동 설계 보상 대비 최대 73% 성공률 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Algorithm design. MINECLIP is a contrastive video-language model pre-trained on</em></p></div>
 <ul>
 <li>Minecraft의 three worlds (Overworld, Nether, End)를 모두 지원하도록 MineRL 기반 시뮬레이터 확장</li>
 <li>Programmatic 작업(자동 검증 가능)과 Creative 작업(자동 검증 불가능)의 두 범주로 작업 정의</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ajay Sridhar, Dhruv Shah, Catherine Glossop, Sergey Levine | <strong>날짜</strong>: 2023-10-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2310.07896" target="_blank">https://arxiv.org/abs/2310.07896</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: NoMaD is the first flexibly conditioned diffusion model of robot actions that can perform both goal-conditioned </em></p></div>
 <p>NoMaD는 goal masking을 활용한 unified diffusion policy로 로봇의 목표 지향 네비게이션과 목표 무관 탐색을 단일 모델로 처리하며, Transformer 기반 정책과 diffusion model decoder를 결합하여 미지의 환경에서 효과적인 네비게이션을 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 배포</strong>: 복수의 ground robot 데이터로 학습한 모델을 실제 로봇 플랫폼에 성공적으로 배포하여 indoor/outdoor 환경에서 충돌률 감소와 안정적 네비게이션을 입증했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model Architecture. NoMaD uses two EfficientNet encoders ψ, ϕ to generate input tokens to a Transformer decoder.</em></p></div>
 <ul>
 <li><strong>비전 인코딩</strong>: EfficientNet-B0 encoder ψ를 사용하여 과거 5 timestep의 RGB 관찰을 독립적으로 처리</li>
 <li><strong>Goal Fusion</strong>: goal fusion encoder ϕ(ot, og)로 현재 관찰과 목표 이미지를 결합하여 토큰화</li>

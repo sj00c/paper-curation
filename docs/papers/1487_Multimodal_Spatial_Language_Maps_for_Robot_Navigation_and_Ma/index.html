@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chenguang Huang, Oier Mees, Andy Zeng, Wolfram Burgard | <strong>날짜</strong>: 2025-06-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.06862" target="_blank">https://arxiv.org/abs/2506.06862</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. AVLMaps provide an open-vocabulary 3D map</em></p></div>
 <p>로봇 네비게이션과 조작을 위해 pretrained multimodal foundation model의 특징을 3D 환경 재구성과 융합한 spatial language map (VLMaps, AVLMaps)을 제안한다. 이를 통해 자연어, 이미지, 오디오 등 다중모달 쿼리를 공간상의 목표 위치로 그라운딩할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Pretrained multimodal foundation models (vision-language 및 audio-language models)의 특징을 3D voxelized map에 밀집적으로 융합하여 공간-의미론적 표현을 구축한다. VLMaps은 시각-언어 특징을, AVLMaps은 여기에 오디오 정보를 추가로 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. AVLMaps provide an open-vocabulary 3D map</em></p></div>
 <ul>
 <li><strong>VLMaps 개발</strong>: Pretrained multimodal features를 3D 환경 재구성과 융합하여 'sofa와 TV 사이'같은 공간 관계를 직접 지역화 가능", '<strong>다양한 로봇 플랫폼 지원</strong>: 동일 voxelized map에서 서로 다른 로봇 형태를 위한 맞춤형 obstacle map을 생성 가능</li>
 <li><strong>AVLMaps 확장</strong>: 오디오, 시각, 언어 정보를 통합한 통일된 3D 공간 표현으로 멀티모달 목표 쿼리 지원</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 로봇 작업 지원</strong>: Mobile robots과 tabletop manipulators 모두에서 네비게이션 및 조작 작업 수행 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. The creation and language-conditioned indexing of a VLMap. A VLMap is created by fusing pretrained visual-lang</em></p></div>
 <ul>
 <li>표준 exploration 알고리즘을 사용하여 로봇의 비디오 스트림과 오디오 녹음으로부터 multimodal spatial language map 자동 구축</li>
 <li>Pretrained multimodal foundation models (CLIP, AudioCLIP, CLAP 등)에서 밀집 특징을 계산하고 3D voxel grid에 융합</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zuhong Liu, Junhao Ge, Minhao Xiong, Jiahao Gu, Bowei Tang, Wei Jing, Siheng Chen | <strong>날짜</strong>: 2025-10-11 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.10206" target="_blank">10.48550/arXiv.2510.10206</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the proposed Harmanoid framework. It contains two key components: (i) contact-aware motion retarge</em></p></div>
 <p>Harmanoid는 두 개의 휴머노이드 로봇 간 상호작용 동작을 모방하는 프레임워크로, 접촉 인식 motion retargeting과 상호작용 기반 motion controller를 통해 키네마틱 충실도와 물리적 현실성을 동시에 보존한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Harmanoid는 SMPL 접촉을 로봇 꼭짓점과 정렬하는 contact-aware motion retargeting과 상호작용 특화 보상을 활용하는 interaction-driven motion controller의 두 단계 파이프라인을 제시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Qualitative comparison between Inter-X mocap data, single-PHC retargeting, and our contact-aware retargeting</em></p></div>
 <ul>
 <li><strong>Contact-aware motion retargeting</strong>: SMPL 접촉 정보와 mesh 충돌 감지를 활용하여 inter-body 거리를 최적화하고 interpenetration을 약 25% 감소시킴</li>
 <li><strong>Interaction-driven motion controller</strong>: 상호작용 특화 보상 설계와 curriculum learning을 통해 coordinated keypoint와 물리적으로 타당한 접촉을 강제함</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>새로운 벤치마크</strong>: 쌍 로봇 상호작용 동작 모방의 첫 번째 포괄적 평가 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of our motion retargeting pipeline that</em></p></div>
 <ul>
 <li>Motion retargeting 단계: SMPL 모델에서 추출한 인간 접촉점과 로봇 메시 꼭짓점을 매칭하여 shape optimization 수행</li>
 <li>Contact detection: 고주파 mesh collision detection으로 inter-body 접촉 식별 및 거리 제약 조건 생성</li>

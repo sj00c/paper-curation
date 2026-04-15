@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yinhuai Wang, Qihan Zhao, Yuen Fui Lau, Runyi Yu, Hok Wai Tsui, Qifeng Chen, Jingbo Wang, Jiangmiao Pang, Ping Tan | <strong>날짜</strong>: 2026-02-02 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.02473" target="_blank">10.48550/arXiv.2602.02473</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HumanX enables diverse interaction skills through two core components. XGen synthesizes and augments humanoid in</em></p></div>
 <p>HumanX는 인간 비디오로부터 휴머노이드 로봇의 상호작용 스킬을 학습하는 전체 스택 프레임워크로, XGen 데이터 생성 파이프라인과 XMimic 모방 학습 프레임워크의 두 가지 핵심 컴포넌트를 통합하여 과제별 보상 설계 없이 일반화 가능한 현실 세계 스킬을 습득한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: XGen은 물리 시뮬레이션과 접촉 기반 정제를 통해 비디오로부터 물리적으로 타당한 휴머노이드-물체 상호작용 궤적을 합성하고, 물체 기하학 스케일링 및 궤적 변화를 통한 데이터 증강을 지원한다. XMimic은 통합된 보상 스킴, 유연한 지각 메커니즘, 교란된 초기화를 통한 일반화 우선 학습, 그리고 교사-학생 이단계 프레임워크를 통해 일반화 가능한 상호작용 스킬을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HumanX enables diverse interaction skills through two core components. XGen synthesizes and augments humanoid in</em></p></div>
 <ul>
 <li><strong>다양한 도메인 지원</strong>: 농구, 축구, 배드민턴, 화물 픽업, 반응형 격투 등 5개 도메인에서 10가지 서로 다른 스킬 습득</li>
 <li><strong>높은 일반화 성공률</strong>: 이전 방법 대비 8배 이상 높은 일반화 성공률 달성</li>
@@ -85,6 +89,8 @@ a { color: #A62018; }
 <li><strong>현실 세계 배포</strong>: Unitree G1 휴머노이드에 제로샷 전이 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of XGen. The pipeline begins by estimating SMPL-based human motion from video and retargeting it to the</em></p></div>
 <ul>
 <li><strong>XGen 파이프라인</strong>: (1) 모노큘러 비디오로부터 SMPL 기반 인간 동작 추정 및 로봇 모폴로지로 재타겟팅, (2) 접촉 단계와 비접촉 단계 분할, (3) 접촉 단계에서 사전정의된 앵커(예: 두 손바닥 중점)를 기준으로 물체 메시 및 상대 포즈 추정, (4) 힘-폐합(force-closure) 최적화를 통한 로봇 포즈 정제</li>
 <li><strong>물리 기반 합성</strong>: 비접촉 단계에서 시뮬레이션을 통해 물리적으로 타당한 물체 궤적 생성, 단계 연결 및 매끄로운 보간으로 완전한 상호작용 궤적 획득</li>

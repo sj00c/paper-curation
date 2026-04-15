@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Andrea Boscolo Camiletto, Jian Wang, Eduardo Alvarado, Rishabh Dabral, Thabo Beeler, Marc Habermann, Christian Theobalt | <strong>날짜</strong>: 2025-03-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.23094" target="_blank">https://arxiv.org/abs/2503.23094</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We introduce a large scale egocentric dataset (b) collected with a custom-made wearable capture rig (a). With </em></p></div>
 <p>VR/AR 환경에서 일인칭 시점의 스테레오 카메라와 헤드 트래킹을 활용하여 신체 자세를 추정하는 FRAME 아키텍처를 제안하며, 대규모 실제 데이터셋을 수집하여 합성 데이터 사전학습의 필요성을 제거했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 경량의 VR 기반 데이터 수집 장비를 설계하여 기존의 6배 규모의 실제 데이터셋을 수집했으며, 카메라 피드와 디바이스 포즈를 기하학적으로 명시적으로 통합하는 FRAME 아키텍처를 제안하고, k-fold Cross Training Caching 전략으로 일반화 성능을 향상시켰다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of the proposed architecture. In Fig. 3a, the backbone accepts two images from the stereo camera as i</em></p></div>
 <ul>
 <li><strong>대규모 실제 데이터셋</strong>: 기존 최대 260k 프레임 대비 약 1.56M 프레임 이상의 egocentric stereo 데이터셋 구축</li>
 <li><strong>높은 정확도</strong>: MPJPE 기준 기존 state of the art 대비 28% 향상 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>아티팩트 제거</strong>: body-floor penetration, foot skating 등 기존 방법의 시각적 아티팩트 제거</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of the proposed architecture. In Fig. 3a, the backbone accepts two images from the stereo camera as i</em></p></div>
 <ul>
 <li>경량 VR 기반 수집 장비: 스테레오 일인칭 카메라와 온보드 6D 포즈 트래킹으로 구성된 실용적 센서 구성</li>
 <li>기하학적 명시적 통합: 카메라 좌표계에서 먼저 3D 자세를 예측한 후, 디바이스 포즈를 이용해 floor-aligned 좌표계로 회전-이동 변환하는 two-stage 접근</li>

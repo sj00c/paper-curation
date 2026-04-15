@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuqi Wang, Xinghang Li, Wenxuan Wang, Junbo Zhang, Yingyan Li, Yuntao Chen, Xinlong Wang, Zhaoxiang Zhang | <strong>날짜</strong>: 2025-06-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.19850" target="_blank">https://arxiv.org/abs/2506.19850</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We present UniVLA, a unified vision-language-action model. Unlike prior VLA</em></p></div>
 <p>UniVLA는 vision, language, action을 discrete token으로 통일하여 autoregressive sequence modeling으로 joint하게 학습하는 unified vision-language-action model이다. World model을 post-training에 통합하여 비디오에서 temporal dynamics를 학습하고 downstream policy learning을 강화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Vision, language, action을 shared vocabulary의 discrete token으로 변환하고 unified autoregressive framework에서 모델링한다. Markov chain 기반의 interleaved observation-action sequence 구조로 causal dependencies를 자연스럽게 통합하고, world model post-training을 통해 대규모 robotic video에서 temporal dynamics를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We present UniVLA, a unified vision-language-action model. Unlike prior VLA</em></p></div>
 <ul>
 <li><strong>State-of-the-art 성능</strong>: LIBERO 95.5% (vs π0-FAST 85.5%), CALVIN, SimplerEnv-Bridge 등에서 기존 방법 대비 유의미한 성능 향상 달성</li>
 <li><strong>Unified multimodal capability</strong>: 단일 architecture로 action prediction, spatial reasoning, video prediction 등 다양한 multimodal tasks 지원</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>World model의 효과</strong>: Post-training world model이 downstream policy learning의 data efficiency와 training efficiency를 크게 향상시킴</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the UniVLA framework. Our model unifies information from different</em></p></div>
 <ul>
 <li>Vision, language, action을 tokenizer를 통해 discrete token sequence로 변환하여 unified vocabulary 구성</li>
 <li>Shared autoregressive language model backbone을 사용하여 모든 modality를 jointly modeling</li>

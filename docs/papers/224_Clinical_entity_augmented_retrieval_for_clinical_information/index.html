@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 임상 엔티티 인식(NER), 온톨로지 기반 증강, LLM 기반 동의어 생성을 통해 쿼리와 관련된 임상 엔티티를 식별하고, 이러한 엔티티를 포함하는 노트 청크만 검색하여 LLM에 전달하는 CLEAR 파이프라인 개발.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>CLEAR 파이프라인의 개요: (1) 임상 노트와 (2) 쿼리를 입력받아 엔티티 기반 검색을 수행</em></p></div>
 <ol>
 <li><strong>성능 우수성</strong>: Stanford MOUD 데이터셋에서 CLEAR의 평균 F1 점수는 0.90으로, embedding RAG(0.86)과 full-note(0.79) 접근법을 능가함. 6개 LLM 모두에서 CLEAR이 최고 또는 경쟁력 있는 성능 달성.</li>
 <li><strong>효율성 극대화</strong>:
@@ -89,6 +91,8 @@ a { color: #A62018; }
 <li><strong>BERT 모델 미세조정 가능성</strong>: CLEAR로 생성한 라벨로 Bio+Clinical BERT 모델을 미세조정했을 때, 알코올 의존성과 만성 통증에서 LLM trainer 모델의 F1 점수를 초과하는 성능 달성.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Stanford MOUD 데이터셋에서 NER 제거 시 CLEAR 정보 검색의 F1 점수 변화: 일부 변수는 작은 감소, 일부는 큰 감소를 보임</em></p></div>
 <ul>
 <li><strong>1단계 - Named Entity Recognition (NER)</strong>: Flan-T5 기반의 zero-shot NER을 사용하여 임상 노트에서 관심 엔티티 인식 (NCBI disease: 96% sensitivity, Stanford MOUD: 99% sensitivity)</li>
 <li><strong>2단계 - 엔티티 증강</strong>:

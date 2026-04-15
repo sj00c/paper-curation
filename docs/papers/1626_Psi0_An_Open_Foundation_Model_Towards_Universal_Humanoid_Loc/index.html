@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Songlin Wei, Hongyi Jing, Boqian Li, Zhenyu Zhao, Jiageng Mao, Zhenhao Ni, Sicheng He, Jie Liu, Xiawei Liu, Kaidi Kang, Sheng Zang, Weiduo Yuan, Marco Pavone, Di Huang, Yue Wang | <strong>날짜</strong>: 2026-03-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.12263" target="_blank">https://arxiv.org/abs/2603.12263</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model Training and Deployment: First, we pre-train the VLM on the EgoDex [20] dataset to autoregressively predic</em></p></div>
 <p>Ψ0는 인간 자기중심 비디오로 VLM을 사전학습한 후 실제 휴머노이드 데이터로 flow 기반 액션 전문가를 후학습하는 2단계 학습 패러다임을 통해 휴머노이드 전신 로코-조작 작업을 수행하는 오픈 파운데이션 모델이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 2단계 분리 학습 전략을 채택하여: (1) 대규모 고품질 인간 자기중심 비디오(EgoDex)에서 VLM을 자기회귀적으로 사전학습해 시각-행동 표현 획득, (2) flow 기반 MM-DiT 액션 전문가를 실제 휴머노이드 데이터로 후학습하여 joint-space 제어를 정밀화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid Loco-Manipulation. Ψ0 performs diverse loco-manipulation tasks in a pantry, including taking a cup from</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 기존 방법 대비 10배 이상 적은 데이터(인간 비디오 800시간 + 로봇 데이터 30시간)로 학습</li>
 <li><strong>성능 우수성</strong>: 여러 장시간 로코-조작 작업에서 기존 최신 방법 대비 40% 이상 성공률 향상 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>오픈 소스 생태계</strong>: 데이터 처리·학습 파이프라인, 사전학습 모델 가중치, 실시간 추론 엔진 공개 예정</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model Training and Deployment: First, we pre-train the VLM on the EgoDex [20] dataset to autoregressively predic</em></p></div>
 <ul>
 <li>VLM 사전학습: EgoDex 인간 비디오 데이터셋에서 Qwen3-VL 2B 모델을 다음-행동 토큰 자기회귀 예측으로 학습</li>
 <li>액션 전문가 후학습: MM-DiT 기반 flow 모델을 실제 휴머노이드 텔레조작 데이터로 학습하여 joint-space 행동 청크(action chunks) 직접 예측</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haritheja Etukuru, Norihito Naka, Zijin Hu, Seungjae Lee, Julian Mehu, Aaron Edsinger, Chris Paxton, Soumith Chintala, Lerrel Pinto, Nur Muhammad Mahi Shafiullah | <strong>날짜</strong>: 2024-09-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.05865" target="_blank">https://arxiv.org/abs/2409.05865</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Robot Utility Models are trained on a diverse set of environments and objects, and then</em></p></div>
 <p>Robot Utility Models (RUM)은 다양한 환경에서 수집한 대규모 데이터로 학습하여 새로운 환경에서 파인튜닝 없이 즉시 배포 가능한 로봇 정책 프레임워크이다. 90% 성공률로 미지의 환경과 객체에 대해 zero-shot 일반화를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Stick-v2라는 저비용 데이터 수집 도구로 다양한 환경에서 대규모 고품질 시연 데이터를 수집하고, multi-modal imitation learning으로 정책을 학습한 후, mLLM 기반 self-critique과 retrying을 통해 zero-shot 배포 성능을 향상시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Robot Utility Models are trained on a diverse set of environments and objects, and then</em></p></div>
 <ul>
 <li><strong>Zero-shot 배포 성능</strong>: 25개의 미지 환경에서 평균 90% 성공률을 달성하여 파인튜닝 없이도 새로운 환경에 즉시 배포 가능함을 입증</li>
 <li><strong>다중 로봇 및 센서 호환성</strong>: 다양한 로봇 암, 카메라 설정, 조명 조건에서 추가 데이터나 학습 없이 성공</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>자체 비판 시스템</strong>: mLLM 기반 failure detection 및 retrying으로 성공률을 15.6% 추가 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Stick-v2, our data collection tool (left: real photo, right: render), is built out of an iPhone</em></p></div>
 <ul>
 <li><strong>Stick-v2 데이터 수집 도구</strong>: iPhone Pro 기반의 $25 저비용 휴대용 도구로 RGB, depth, 6D pose를 60-100Hz로 수집</li>
 <li><strong>다양성 중심 데이터 전략</strong>: 여러 지리적 위치(NYC, Jersey City, Pittsburgh)의 다양한 환경과 객체에서 데이터 수집하여 환경 다양성 극대화</li>

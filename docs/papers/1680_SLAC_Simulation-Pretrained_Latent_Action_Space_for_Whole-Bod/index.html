@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiaheng Hu, Peter Stone, Roberto Martín-Martín | <strong>날짜</strong>: 2025-06-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.04147" target="_blank">https://arxiv.org/abs/2506.04147</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: SLAC uses a task-agnostic action space trained in low-fidelity simulation (left) to learn</em></p></div>
 <p>SLAC는 저충실도 시뮬레이터에서 학습한 task-agnostic 잠재 행동 공간을 사용하여 고자유도 모바일 매니퓨레이터가 실제 환경에서 효율적이고 안전하게 강화학습으로 접촉이 풍부한 전신 조작 작업을 학습할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SLAC는 두 단계 절차를 통해 문제를 해결한다: (1) 저충실도 시뮬레이터에서 unsupervised skill discovery를 통해 시간적 추상화, 분리성(disentanglement), 안전성을 갖춘 latent action space를 학습하고, (2) 이를 action interface로 사용하는 novel off-policy RL 알고리즘으로 실제 환경에서 downstream task를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: SLAC uses a task-agnostic action space trained in low-fidelity simulation (left) to learn</em></p></div>
 <ul>
 <li><strong>1시간 미만의 실제 상호작용으로 학습</strong>: bimanual mobile manipulator가 데모나 hand-crafted behavior priors 없이 접촉이 풍부한 전신 조작 작업(청소, 장애물 회피, 집기 등)을 1시간 이내에 학습</li>
 <li><strong>높은 표본 효율성</strong>: latent action space를 통해 고차원 native action space에서의 직접 강화학습 대비 현저히 향상된 표본 효율성 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>현실 격차 강건성</strong>: 저충실도 시뮬레이터 사용으로 high-fidelity simulation의 필요성 제거하고, latent action 수준에서의 약간의 불일치는 실제 환경 보상 신호로 보정 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The two-step SLAC procedure to enable real-world policy learning. (Left) In the first</em></p></div>
 <ul>
 <li><strong>Unsupervised Skill Discovery (USD)</strong>: 저충실도 시뮬레이터에서 task-agnostic latent action space를 학습하기 위해 customized USD 목적함수 설계</li>
 <li><strong>Temporal Abstraction</strong>: latent actions를 여러 환경 스텝에 걸쳐 실행되도록 하여 decision frequency 감소 및 탐색 효율성 향상</li>

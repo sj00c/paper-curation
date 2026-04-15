@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junhyeok Rui Cha, Woohyun Cha, Jaeyong Shin, Donghyeon Kim, Jaeheung Park | <strong>날짜</strong>: 2025-04-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.06585" target="_blank">https://arxiv.org/abs/2504.06585</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the training framework: The dynamics</em></p></div>
 <p>본 논문은 기존 domain randomization의 한계를 극복하기 위해 상태 의존적인 joint torque space perturbation을 주입하여 humanoid 로봇의 sim-to-real 전이를 개선하는 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Neural network을 이용한 상태 의존적 perturbation generator를 제안하여 joint torque 입력 단계에서 동적 불확실성을 시뮬레이션하고, Denoising World Model Learning(DWL)과 Raibert 기반 궤적 생성을 결합한 훈련 프레임워크를 구축한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Snapshots of training, sim-to-sim transfer, and sim-to-real transfer. This work proposes a novel sim-to-real met</em></p></div>
 <ul>
 <li><strong>상태 의존적 joint torque perturbation 방법</strong>: 기존 parametric randomization보다 표현력이 높은 neural network 기반 perturbation으로 비선형 actuator 거동과 contact compliance 같은 복잡한 동역학 불일치를 시뮬레이션</li>
 <li><strong>Full-sized humanoid TOCABI에서 검증</strong>: 확장된 무작위화 범위, 미학습 지면 마찰, 거친 지형, 수정된 동역학에 대해 우수한 강건성을 보이며 zero-shot sim-to-real 전이 달성</li>
 <li><strong>Motion capture 없는 훈련 프레임워크</strong>: GRU 기반 encoder가 privileged observation 재구성을 통해 robust latent representation을 학습하고, online Raibert 기반 궤적 생성이 velocity-adaptive reference를 제공하여 adversarial training 없이 자연스러운 humanoid gait 생성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the training framework: The dynamics</em></p></div>
 <ul>
 <li>Joint torque 입력 단계에 상태 의존적 perturbation을 추가: δ_τ(s) = f_θ(s)로 표현되는 neural network 기반 perturbation function 도입</li>
 <li>Perturbation function의 가중치를 각 에피소드 시작 시 무작위로 샘플링하여 다양한 동역학 환경 생성</li>

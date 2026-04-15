@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shaoting Zhu, Linzhan Mou, Derun Li, Baijun Ye, Runhan Huang, Hang Zhao | <strong>날짜</strong>: 2025-02-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.01536" target="_blank">https://arxiv.org/abs/2502.01536</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our VR-Robo introduces a unified real-to-sim-to-</em></p></div>
 <p>3D Gaussian Splatting을 활용하여 실제 환경을 포토리얼리스틱한 디지털 트윈으로 재구성하고, 이를 시뮬레이션에 통합하여 RL 기반 시각 네비게이션 정책을 학습한 후 실제 로봇에 무영점 전이하는 Real-to-Sim-to-Real 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -81,6 +83,8 @@ a { color: #A62018; }
 <li><strong>복잡한 환경에서의 빠른 정책 적응</strong>: 물체 임의화와 폐색 인식 구성 전략으로 새로운 환경에서의 탐색과 적응 능력 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: VR-Robo real-to-sim-to-real framework. We build a realistic and interactive simulation environment with GS-mesh</em></p></div>
 <ul>
 <li>Structure from Motion (SfM)으로 카메라 포즈 추정 후 3D Gaussian Splatting으로 장면과 물체를 분리 재구성</li>
 <li>Foundation model 제약 (depth, normal)을 활용한 기하 일관성 강화</li>

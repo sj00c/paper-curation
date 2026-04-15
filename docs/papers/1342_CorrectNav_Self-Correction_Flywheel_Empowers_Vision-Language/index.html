@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhuoyuan Yu, Yuxing Long, Zihan Yang, Chengyan Zeng, Hongwei Fan, Jiyao Zhang, Hao Dong | <strong>날짜</strong>: 2025-08-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.10416" target="_blank">https://arxiv.org/abs/2508.10416</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Diverse Capabilities of CorrectNav. The model takes only monocular RGB video and language instructions as inpu</em></p></div>
 <p>Vision-and-Language Navigation 모델의 오류 복구 능력을 강화하기 위해 Self-correction Flywheel이라는 새로운 포스트트레이닝 패러다임을 제안하여 R2R-CE와 RxR-CE 벤치마크에서 최고 성능을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Self-correction Flywheel은 훈련 세트에서 발생한 오류 궤적을 가치 있는 데이터 소스로 활용하여 지각과 행동 관점에서 자동으로 자체 수정 데이터를 생성하고 반복 훈련을 통해 모델을 점진적으로 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: CorrectNav’s performance on R2R-CE and RxR-CE</em></p></div>
 <ul>
 <li><strong>최고 성능 달성</strong>: R2R-CE에서 65.1%, RxR-CE에서 69.3% 성공률로 기존 최고 성능 모델을 8.2%, 16.4% 초과하여 달성</li>
 <li><strong>실제 로봇 검증</strong>: 다양한 실내외 환경에서 오류 수정, 동적 장애물 회피, 긴 지시문 추종 능력 입증</li>
 <li><strong>효율적인 아키텍처</strong>: 추가 모듈이나 복잡한 추론 없이 SigLIP, MLP, Qwen2 기반의 단순한 구조로 단말 배포 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The overview of CorrectNav training. CorrectNav is first finetuned on the navigation tasks (Left), including a</em></p></div>
 <ul>
 <li>훈련된 모델을 훈련 세트에 평가하여 오류 궤적 수집</li>
 <li>거리 기반 편차 감지(DeviDetect) 알고리즘으로 오류 위치 정확히 파악</li>

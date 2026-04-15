@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tan Jing, Shiting Chen, Yangfan Li, Weisheng Xu, Renjing Xu | <strong>날짜</strong>: 2025-08-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.19926" target="_blank">https://arxiv.org/abs/2508.19926</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the FARM pipeline. Failure cases are</em></p></div>
 <p>FARM은 frame-accelerated augmentation과 residual mixture-of-experts를 결합하여 저역학(low-dynamic) 동작에서의 높은 정확도를 유지하면서 고역학(high-dynamic) 인간형 동작 제어 성능을 크게 향상시키는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Frame-accelerated augmentation으로 프레임 간격을 넓혀 고속 자세 변화에 노출시키고, base controller와 residual MoE를 결합하여 동역학 강도에 따라 네트워크 용량을 동적으로 할당한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Comparison between FARM and the baseline FC on two high-dynamic motions. FARM accurately completes both</em></p></div>
 <ul>
 <li><strong>HDHM 데이터셋</strong>: 3593개의 물리적으로 타당한 고역학 인간형 동작 클립으로 구성된 첫번째 공개 벤치마크 제시</li>
 <li><strong>성능 향상</strong>: 추적 실패율 42.8% 감소, 평균 관절 위치 오차 14.6% 감소 (저역학 동작에서의 성능은 유지)</li>
 <li><strong>방법론 기여</strong>: Speed-aware router (SAR)와 dynamic expert-assignment (DEA)를 통한 적응형 용량 할당 메커니즘 제안</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of the FARM framework. Frame-accelerated augmentation increases frame intervals by uniformly downsam-</em></p></div>
 <ul>
 <li>AMASS 데이터셋에서 1.25× 속도 가속화를 적용하여 FC 모델로 실패 케이스 채굴</li>
 <li>채굴된 하드 샘플(hard sample)에 1.0-1.5× 프레임 가속화 증강(frame-accelerated augmentation) 적용</li>

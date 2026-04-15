@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Weishuai Zeng, Shunlin Lu, Kangning Yin, Xiaojie Niu, Minyue Dai, Jingbo Wang, Jiangmiao Pang | <strong>날짜</strong>: 2025-09-17 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.13780" target="_blank">10.48550/arXiv.2509.13780</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of BFM Implementation. (a) Human motion dataset is retargeted to humanoid robots for proxy agent</em></p></div>
 <p>본 논문은 휴머노이드 로봇의 다양한 제어 태스크에 일반화 가능한 행동 기반 파운데이션 모델(BFM)을 제안하며, masked online distillation과 CVAE를 결합하여 대규모 행동 데이터셋으로 사전학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모든 제어 모드를 통일된 행동 생성 문제로 재정의하고, masked online distillation 프레임워크와 CVAE를 통합한 BFM을 대규모 행동 데이터셋으로 사전학습한 후, residual learning을 통해 새로운 행동을 효율적으로 습득한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Behavior Foundation Model enables humanoid robots to perform a variety of behaviors in a zero-shot manner,</em></p></div>
 <ul>
 <li><strong>통합 행동 학습 패러다임</strong>: 태스크별 특화 학습에서 벗어나 다양한 제어 모드(텍스트, 속도 명령, 관절 위치 등)를 통일된 행동 생성 문제로 재정의하는 개념적 전환을 달성</li>
 <li><strong>다중 제어 모드 지원</strong>: 단일의 sparsity mask를 통해 임의의 제어 모드 조합을 지원하며 HOVER의 고정 모드 우선순위 제약을 극복</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>시뮬레이션-현실 적용</strong>: 시뮬레이션과 실제 휴머노이드 플랫폼 양쪽에서 광범위한 WBC 태스크(수영, 앉기, 서기, 나비 킥 등)에 대한 강건한 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of BFM Implementation. (a) Human motion dataset is retargeted to humanoid robots for proxy agent</em></p></div>
 <ul>
 <li>인간 모션 데이터셋을 SMPL을 통해 휴머노이드 로봇에 재타게팅하여 시뮬레이션에서 proxy agent를 motion imitation으로 학습</li>
 <li>Proxy agent로부터 다양한 제어 모드를 포함한 행동 데이터를 수집하고, masked online distillation과 DAgger 프레임워크를 결합하여 BFM을 사전학습</li>

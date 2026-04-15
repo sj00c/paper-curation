@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shuai Liu, Meng Cheng Lau | <strong>날짜</strong>: 2025-09-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.19023" target="_blank">https://arxiv.org/abs/2509.19023</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of the ROM-GRL framework. In Stage 1, a 4-DOF ROM policy is trained in Box2D: the policy</em></p></div>
 <p>ROM-GRL은 모션캡처 데이터 없이 4-DOF reduced-order model로 생성한 gait template을 이용해 full-body humanoid 정책을 학습하는 2단계 강화학습 프레임워크이다. Adversarial discriminator를 통해 ROM의 5-dimensional gait feature 분포를 따르도록 유도하여 자연스러운 보행을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 2단계 프레임워크로 먼저 경량 ROM을 PPO로 학습하여 에너지 효율적인 gait template을 생성하고, 이를 Soft Actor-Critic과 adversarial discriminator를 통해 full-body 정책으로 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3 visualizes pelvis and foot trajectories for the ROM-GRL policy (blue) and the pure-reward baseline (orange),</em></p></div>
 <ul>
 <li><strong>Demonstration-free learning</strong>: 모션캡처 데이터나 elaborate reward shaping 없이 자연스러운 보행 학습</li>
 <li><strong>다중 속도 검증</strong>: 1 m/s와 4 m/s에서 안정적이고 대칭적인 gait 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>패러다임 통합</strong>: 보상 중심 및 모방 기반 방법 간의 간격을 좁혀 versatile humanoid 행동 실현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Schematic of the planar ROM used to generate reference walking trajectories. The ROM consists of a central</em></p></div>
 <ul>
 <li>Stage 1: 4-DOF planar ROM에 PPO 적용하여 compact gait template 생성</li>
 <li>Stage 2: ROM의 궤적으로부터 5-dimensional gait feature (pelvis/foot 궤적 등) 추출</li>

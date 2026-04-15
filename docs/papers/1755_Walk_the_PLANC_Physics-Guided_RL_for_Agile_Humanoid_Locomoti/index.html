@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Min Dai, William D. Compton, Junheng Li, Lizhi Yang, Aaron D. Ames | <strong>날짜</strong>: 2026-01-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.06286" target="_blank">https://arxiv.org/abs/2601.06286</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. A visual depiction of the model-guided RL architecture used to achieve stepping stones. The left column shows th</em></p></div>
 <p>이 논문은 감소된 차수의 발판 계획기와 Control Lyapunov Function (CLF) 기반 보상을 통해 물리학 기반 구조로 강화학습을 안내하여, 제한된 발판에서 인간형 로봇의 정밀한 보행을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 감소된 차수 stepping planner(Linear Inverted Pendulum 기반)로부터 동역학적으로 일관성 있는 동작 목표를 생성하고, 이를 CLF 보상을 통해 RL 훈련 과정에 통합하는 physics-guided RL 프레임워크를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Model-guided RL traversing constrained footholds on the Unitree G1</em></p></div>
 <ul>
 <li><strong>물리학 기반 RL 통합</strong>: 감소된 차수의 stepping planner와 CLF 보상 설계를 통해 RL 훈련 루프에 물리적 제약을 직접 통합하여 계산 효율성을 유지하면서 정밀성 확보</li>
 <li><strong>데이터셋 독립성</strong>: 인간 모션 데이터셋 수집 및 재타겟팅 파이프라인 제거로 다중 환경에서 일반화된 보행 정책 개발</li>
 <li><strong>하드웨어 검증</strong>: Unitree G1 인간형 로봇에서 무작위 높이 변화와 간격이 있는 stepping-stone 지형에서 모델 프리 기준선 대비 향상된 안정성, 정밀한 발 배치, 그리고 일관된 성능 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. A visual depiction of the model-guided RL architecture used to achieve stepping stones. The left column shows th</em></p></div>
 <ul>
 <li><strong>Linear Inverted Pendulum (LIP) 기반 Stepping Planner</strong>: 변하는 높이의 stepping stones를 가상 경사면으로 모델링하여 목표 orbital energy 선택을 통해 forward progression 보장</li>
 <li><strong>동작 생성</strong>: 폐형 LIP 해를 통해 단계 지속 시간을 해석적으로 계산하여 CoM 목표 상태 도달 보장</li>

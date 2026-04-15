@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shivin Dass, Jiaheng Hu, Ben Abbatematteo, Peter Stone, Roberto Martín-Martín | <strong>날짜</strong>: 2024-10-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.18964" target="_blank">https://arxiv.org/abs/2410.18964</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: DISaM for tasks with information-seeking behavior. To make the right decision in a</em></p></div>
 <p>로봇이 조작 작업을 수행하기 위해 필요한 정보를 능동적으로 탐색하는 문제를 factorized Contextual MDP로 정의하고, 정보 탐색 정책과 정보 활용 정책으로 분리된 dual-policy 솔루션 DISaM을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 문제를 factorized CMDP로 형식화하여 정보 탐색 정책(πIS)과 정보 활용 정책(πIR)을 분리 학습하고, IR 정책의 성능을 IS 정책의 내재적 보상으로 사용하여 훈련 효율을 높인다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Tasks in our evaluation of DISaM. We evaluated DISaM on 3 simulation tasks —</em></p></div>
 <ul>
 <li><strong>Factorized CMDP 형식화</strong>: 정보 탐색이 필요한 로봇 조작 문제를 체계적으로 정의하는 새로운 문제 클래스 제안</li>
 <li><strong>Dual-policy 솔루션 DISaM</strong>: 정보 탐색과 조작을 분리된 정책으로 학습하되 IS가 IR을 통해 보상을 받도록 설계</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>광범위한 실험 검증</strong>: 5개의 조작 작업(3개 시뮬레이션 + 2개 실제 로봇)에서 기존 방법 대비 현저한 성능 향상 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Two learning stages of DISaM. In Phase 1, we learn the information-receiving policy πIR</em></p></div>
 <ul>
 <li>IR 정책 학습: 문맥이 주어졌을 때 fully observable MDP로 만들어 imitation learning 또는 behavioral cloning으로 효율적 학습</li>
 <li>IS 정책 학습: IR 정책의 성공 확률이나 보상을 내재적 보상으로 사용하여 POMDP 강화학습으로 학습</li>

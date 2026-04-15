@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Linzhi Huang, Yulong Li, Hongbo Tian, Yue Yang, Xiangang Li, Weihong Deng, Jieping Ye | <strong>날짜</strong>: 2023-03-08 | <strong>DOI</strong>: <a href="https://doi.org/" target="_blank">미제공</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: 위치 불일치(Position Inconsistency) 개념 설명. 신뢰도(confidence)가 낮아도 위치 일관성이 높은 고품질 의사 레이블이 존재함을 보여줌</em></p></div>
 <p>반인체 포즈 추정을 위한 준지도학습(semi-supervised learning)에서 <strong>위치 불일치 기반 의사 레이블 수정 모듈(SSPCM)</strong>을 제안하여, 노이즈 의사 레이블을 효과적으로 제거하고 SOTA 성능을 달성한 연구이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -86,6 +88,8 @@ a { color: #A62018; }
 </ol>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: COCO 데이터셋에서 레이블된 인스턴스 수에 따른 성능 비교. 모든 설정에서 기존 SOTA 대비 우수한 성능</em></p></div>
 <ol>
 <li><strong>성능 향상</strong>: COCO 데이터셋에서
 <ul>
@@ -98,6 +102,8 @@ a { color: #A62018; }
 <li><strong>다중 벤치마크 검증</strong>: MPII, COCO, AI-Challenger에서 일관된 성능 우수성 입증</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>그림 3: SSPCM의 전체 훈련 파이프라인. 4단계 상호 학습(interactive training) 구조</em></p></div>
 <h3>핵심 방법론</h3>
 <p><strong>1. 위치 불일치 의사 레이블 수정 모듈(PCM)</strong></p>
 <ul>

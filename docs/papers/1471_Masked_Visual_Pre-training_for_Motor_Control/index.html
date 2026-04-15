@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tete Xiao, Ilija Radosavovic, Trevor Darrell, Jitendra Malik | <strong>날짜</strong>: 2022-03-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2203.06173" target="_blank">https://arxiv.org/abs/2203.06173</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Masked visual pre-training for motor control. Left: We ﬁrst pre-train visual representations using self-superv</em></p></div>
 <p>실제 이미지에서 자기감독학습(self-supervised learning)으로 시각 표현을 사전학습한 후, 동결된 인코더 위에서 강화학습으로 모터 제어 정책을 학습하는 방법을 제시하며, 지도학습 기반 인코더를 크게 능가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MAE(Masked Autoencoder)를 사용하여 HOI(Human-Object Interaction) 데이터셋의 이미지에서 시각 표현을 자기감독으로 사전학습한 후, 인코더를 고정하고 PPO 알고리즘으로 작업별 제어 정책을 학습한다. 새로운 벤치마크 PixMC를 제공하여 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Example reconstructions. For each triplet from left to right: the masked image, the reconstructed image, the g</em></p></div>
 <ul>
 <li><strong>자기감독 우월성</strong>: 라벨, 상태 추정, 전문가 시연 없이 지도학습 인코더를 최대 80% 절대 성공률로 초과하며 때로는 오라클 상태 성능과 맞먹는다.</li>
 <li><strong>일반화 가능성</strong>: 단일 시각 인코더로 다양한 형태의 움직임, 장면, 로봇을 포함하는 모터 제어 작업을 작업별 미세조정 없이 해결한다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>표현 품질</strong>: 학습된 표현이 색상, 형태, 물체 어포던스를 분리(disentangle)하여 다양한 객체 기하학과 구성을 처리한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Masked visual pre-training for motor control. Left: We ﬁrst pre-train visual representations using self-superv</em></p></div>
 <ul>
 <li>MAE를 사용하여 75% 패치 마스킹 비율로 HOI 데이터셋(~700K 이미지)의 자기감독 사전학습 수행</li>
 <li>Vision Transformer(ViT) 기반 인코더-디코더 아키텍처로 마스크된 패치 재구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Runpei Dong, Ziyan Li, Xialin He, Saurabh Gupta | <strong>날짜</strong>: 2026-02-24 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.16705" target="_blank">10.48550/arXiv.2602.16705</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall architecture for our proposed modular system for open-vocabulary object grasping. Given a free-form</em></p></div>
 <p>HERO 시스템은 정확한 end-effector 추적 정책과 대규모 비전 모델을 결합하여 휴머노이드 로봇이 미지의 환경에서 임의의 일상용품을 자율적으로 집을 수 있게 한다. End-effector 추적 오차를 3.2배 감소시키고 83.8%의 성공률을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모듈식 아키텍처를 채택하여 open-vocabulary large vision models (Grounding DINO, SAM, AnyGrasp)로 객체 감지와 grasp 생성을 수행하고, 정밀한 end-effector 추적 정책(HERO)을 low-level 제어기로 사용하여 두 계층을 분리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We build capability for a humanoid to autonomously loco-manipulate novel objects in novel scenes using onboard</em></p></div>
 <ul>
 <li><strong>End-effector 추적 오차 개선</strong>: 기존 8-13cm에서 시뮬레이션 2.5cm, 실제 환경 2.44cm로 개선(3.2배 감소)</li>
 <li><strong>실제 환경 성공률</strong>: 10개 일상용품에서 90%, 다양한 scene에서 73.3%, 복잡한 장면에서 80%의 pick-up 성공률 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Open-vocabulary 일반화</strong>: 대규모 pre-trained vision models 활용으로 미지 객체와 미지 환경에서의 강한 일반화 성능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: HERO is an accurate end-effector control frame-</em></p></div>
 <ul>
 <li><strong>Inverse kinematics (IK)</strong>: end-effector 목표를 upper-body reference trajectory로 변환</li>
 <li><strong>Neural forward kinematics model</strong>: 저비용 humanoid의 부정확한 analytical forward kinematics를 보정하여 base 대비 EE 위치 추정</li>

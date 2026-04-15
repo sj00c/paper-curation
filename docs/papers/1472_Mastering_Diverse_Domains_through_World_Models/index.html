@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Danijar Hafner, Jurgis Pasukonis, Jimmy Ba, Timothy Lillicrap | <strong>날짜</strong>: 2023-01-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2301.04104" target="_blank">https://arxiv.org/abs/2301.04104</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Benchmark summary. a, Using fixed hyperparameters across all domains, Dreamer</em></p></div>
 <p>DreamerV3는 world model을 학습하여 고정된 하이퍼파라미터로 150개 이상의 다양한 도메인에서 전문화된 알고리즘을 능가하는 범용 RL 알고리즘이다. normalization, balancing, transformation 기반의 robustness 기법으로 도메인 간 안정적 학습을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: world model 기반 actor-critic 구조에서 RSSM으로 환경 표현을 학습하고, symlog 변환, free bits, loss balancing 등의 robustness 기법을 도입하여 도메인 간 일관성을 확보했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Benchmark summary. a, Using fixed hyperparameters across all domains, Dreamer</em></p></div>
 <ul>
 <li><strong>단일 설정으로 다중 도메인 우월성</strong>: 고정된 하이퍼파라미터로 Atari, ProcGen, DMLab, Control Suite, Proprio Control, Visual Control, BSuite 등 150개 이상의 태스크에서 PPO, Rainbow, MuZero 등 전문화된 알고리즘을 능가</li>
 <li><strong>Minecraft diamond 달성</strong>: 인간 데이터나 curriculum 없이 처음으로 Minecraft에서 diamond를 수집하는 데 성공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>데이터 효율성</strong>: 제한된 환경 상호작용 예산에서도 안정적인 학습 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Training process of Dreamer. The world model encodes sensory inputs into discrete</em></p></div>
 <ul>
 <li><strong>Recurrent State-Space Model (RSSM)</strong>: encoder로 입력을 discrete 표현으로 변환, sequence model이 representation 예측, dynamics/reward/continue predictor와 decoder로 미래 예측</li>
 <li><strong>Symlog 변환</strong>: 서로 다른 크기의 신호(보상, 값)를 안정적으로 다루기 위해 동적 범위 압축</li>

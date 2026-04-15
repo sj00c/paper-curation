@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Honglin Bao, Siyang Wu, Jiwoong Choi, Yingrong Mao, James A. Evans (University of Chicago) | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2505.18942" target="_blank">arXiv:2505.18942</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>자기-강화(self-reinforcement)를 통해 암묵적 규범을 점진적으로 증폭시켜 모델이 명시적으로 표현하도록 유도하는 개념적 틀</em></p></div>
 <p>대규모 언어모델(LLM)이 내재된 편향을 진단 도구로 활용하여 과학과 사회의 "불문율(unwritten code)" — 암묵적 고정관념, 휴리스틱, 암수정인 규범 — 을 명시적으로 드러내고 비판 대상으로 만들 수 있다는 주장.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,11 +77,15 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 동료 심사(peer review)의 암묵적 평가 기준을 사례로, 가설 생성-자기일관성 검증-반복 탐색을 통해 LLM의 선험적 신념(prior)을 사후적 판단(posterior)으로 업데이트하는 프레임워크 제시.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>가설 탐색을 통한 선험적 신념에서 사후적 신념으로의 전환 과정</em></p></div>
 <ol>
 <li><strong>은폐된 동료심사 기준 발굴</strong>: 46개 학술 컨퍼런스의 26,731편 논문 데이터를 분석하여, 심사자들이 명시적으로 언급하지 않으면서도 암묵적으로 보상하는 평가 기준을 식별. 이론적 엄밀성(theoretical rigor)은 LLM의 선험적 신념과 부합하지만(상관계수=0.49), 맥락화와 스토리텔링(contextualization & storytelling)은 심사자들이 명시적으로 피하면서(상관계수=-0.14) 동시에 점수로는 암묵적으로 보상함.</li>
 <li><strong>일관된 편향 패턴 확인</strong>: 선험적 신념의 우위에서 사후적 판단으로의 전환이 다양한 모델과 표본 외(out-of-sample) 평가에서 강건하게 나타남. 4라운드 반복 탐색으로 20개 가설이 97%의 사례를 설명.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>선험적 신념 대비 사후적 신념: 각 가설의 지수는 선험 빈도 변화의 순위를 나타냄</em></p></div>
 <p><strong>방법론적 특징:</strong></p>
 <ul>
 <li><strong>데이터 표현</strong>: 전체 논문 텍스트 대신 확장 초록(extended abstract)을 사용. GPT-4o로 배경, 핵심 아이디어, 방법론, 실험 결과, 영향력을 통합한 구조화된 표현 생성. (문맥 윈도우 제약과 장문 입력의 할루시네이션 위험 해소)</li>

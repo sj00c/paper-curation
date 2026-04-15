@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Minku Kim, Brian Acosta, Pratik Chaudhari, Michael Posa | <strong>날짜</strong>: 2025-08-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.06779" target="_blank">https://arxiv.org/abs/2508.06779</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>본 논문은 단일 깊이 카메라와 reinforcement learning 기반의 계층적 제어 프레임워크를 통해 쌍족 로봇이 비정형 지형에서 실시간 발걸음 계획을 수행하도록 하는 시각 기반 발걸음 계획기를 제시한다. Angular Momentum Linear Inverted Pendulum 모델을 활용하여 저차원 상태 표현을 구성하고 상위 레벨의 RL 발걸음 계획기와 하위 레벨의 Operational Space Controller를 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 Intel RealSense D455로부터 elevation map을 생성하고, 이를 ALIP 상태와 함께 RL 정책의 입력으로 사용하여 3D 발걸음 명령을 생성한다. 생성된 발걸음으로부터 spline 궤적을 구성하고 저수준 OSC가 이를 추적하도록 하는 계층적 구조를 채택한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>Vision-based hierarchical controller</strong>: 단일 깊이 카메라와 ALIP reduced-order model을 활용하여 효율적이고 해석 가능한 3D 발걸음 계획을 RL을 통해 실현</li>
 <li><strong>Hardware validation</strong>: Cassie 로봇으로 정형 및 비정형 지형에서 전체 파이프라인을 검증하고 Model Predictive Control 베이스라인과 비교</li>
 <li><strong>Sim-to-real 분석</strong>: ALIP 모델을 정책 입력으로 사용할 때의 한계와 복잡한 지형에서의 성능 저하, 그리고 전이 과정에서의 영향을 체계적으로 분석</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>Intel RealSense D455 깊이 카메라로부터 point cloud를 획득하고 elevation mapping framework으로 로봇 중심 elevation map 생성 (30Hz 업데이트)</li>
 <li>로봇의 다리를 마스킹하여 전처리한 point cloud를 elevation map에 입력하고 nearest-value interpolation과 median filter로 처리</li>

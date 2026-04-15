@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Guanxing Lu, Ziwei Wang, Changliu Liu, Jiwen Lu, Yansong Tang | <strong>날짜</strong>: 2023-12-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2312.07062" target="_blank">https://arxiv.org/abs/2312.07062</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. The overall pipeline of ThinkBot, which consists of an instruction completer and an object localizer. The inst</em></p></div>
 <p>ThinkBot은 희소한 인간 지시문에서 사고 체인 추론을 통해 누락된 행동 설명을 복구하여 embodied instruction following 작업을 수행하는 에이전트를 제안한다. 대규모 언어 모델 기반 instruction completer와 multimodal object localizer로 구성되어 일관된 지시문을 따라 복잡한 목표를 완수할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM 기반 instruction completer를 설계하여 현재 환경 인식과 부분 완료된 부분 목표를 고려하며 누락된 행동을 복구한다. 또한 scene semantic map 기반의 multimodal object localizer를 통해 상호작용할 객체의 위치를 예측한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. The overall pipeline of ThinkBot, which consists of an instruction completer and an object localizer. The inst</em></p></div>
 <ul>
 <li><strong>Instruction Completer</strong>: 희소한 인간 지시문에서 사고 체인 추론을 통해 누락된 행동과 대상 객체를 복구하여 일관된 지시 시퀀스를 생성</li>
 <li><strong>Object Localizer</strong>: Partially observed scene semantic map을 기반으로 multimodal transformer을 사용하여 객체 위치를 정확하게 예측</li>
 <li><strong>성능 향상</strong>: ALFRED 벤치마크에서 기존 최고 수준 방법들 대비 success rate와 path-length-weighted success rate에서 현저한 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. The overall pipeline of ThinkBot, which consists of an instruction completer and an object localizer. The inst</em></p></div>
 <ul>
 <li>LLM을 프롬프트로 활용하여 현재 환경의 인지된 객체와 완료된 부분 목표 정보를 포함한 instruction completion 수행</li>
 <li>Scene semantic map에서 추출한 객체 정보와 multimodal 특징을 이용하여 object localizer 학습</li>

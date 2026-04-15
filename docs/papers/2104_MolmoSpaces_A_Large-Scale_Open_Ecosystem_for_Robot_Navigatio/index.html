@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yejin Kim, Wilbert Pumacay, Omar Rayyan, Max Argus, Winson Han, Eli VanderBilt, Jordi Salvador, Abhay Deshpande, Rose Hendrix, Snehal Jauhri, Shuo Liu, Nur Muhammad Mahi Shafiullah, Maya Guru, Ainaz Eftekhar, Karen Farley, Donovan Clay, Jiafei Duan, Arjun Guru, Piper Wolters, Alvaro Herrasti, Ying-Chun Lee, Georgia Chalvatzaki, Yuchen Cui, Ali Farhadi, Dieter Fox, Ranjay Krishna | <strong>날짜</strong>: 2026-02-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.11337" target="_blank">https://arxiv.org/abs/2602.11337</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 MolmoSpaces is an open ecosystem consisting of a large number of simulation environments, 3D articulated object</em></p></div>
 <p>로봇 네비게이션과 매니퓰레이션을 위한 230k개 이상의 다양한 실내 환경, 130k개의 주석이 달린 객체 자산, 42M개의 안정적인 그래스프를 포함하는 대규모 오픈 에코시스템 MolmoSpaces를 제시하고, 이를 통해 로봇 정책의 일반화 능력을 평가할 수 있는 벤치마크를 구축했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MuJoCo, IsaacSim, ManiSkill을 지원하는 시뮬레이터 agnotic 플랫폼으로 AI2-THOR, ProcTHOR, Holodeck의 230k 장면을 통합하고, 130k 객체와 42M 그래스프 어노테이션을 제공한 후, 8가지 기본 작업으로 구성된 MolmoSpaces-Bench를 설계했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 MolmoSpaces is an open ecosystem consisting of a large number of simulation environments, 3D articulated object</em></p></div>
 <ul>
 <li><strong>대규모 통합 에코시스템</strong>: 230k 실내 환경(수작업 제작 및 절차적 생성), 130k 객체 자산(2.8k 범주), 48k 조작 가능 객체에 대한 42M 안정적 그래스프 제공</li>
 <li><strong>멀티 시뮬레이터 호환성</strong>: MuJoCo, IsaacSim, ManiSkill 간 호환 가능한 assets 및 scenes 제공</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 공개</strong>: 모든 assets, scenes, 벤칭마크 코드 및 도구 공개로 커뮤니티 확장성 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5 Our grasp generation pipeline consists of separate streams for rigid and articulated assets. We generate 42M+ v</em></p></div>
 <ul>
 <li>AI2-THOR, ProcTHOR, Holodeck에서 수집한 장면을 표준화된 포맷으로 변환하고 시뮬레이터 agnotic 로더 개발</li>
 <li>Objaverse 및 기타 소스에서 수집한 130k 객체 모델에 대해 질량, 스케일, 중심 등 물리 메타데이터 추가</li>

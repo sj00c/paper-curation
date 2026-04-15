@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yifu Yuan, Haiqin Cui, Yaoting Huang, Yibin Chen, Fei Ni, Zibin Dong, Pengyi Li, Yan Zheng, Hongyao Tang, Jianye Hao | <strong>날짜</strong>: 2025-08-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.13998" target="_blank">https://arxiv.org/abs/2508.13998</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 Overview of the Embodied-R1 framework and its zero-shot manipulation performance.</em></p></div>
 <p>Embodied-R1은 '포인팅'을 통일된 embodiment-agnostic 중간 표현으로 정의하고, Reinforced Fine-tuning(RFT)으로 훈련된 3B VLM으로서 로봇 조작의 perception-action gap을 효과적으로 극복한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 포인팅의 4가지 핵심 능력(REG, RRG, OFG, VTG)을 정의하고, 이를 지원하는 Embodied-Points-200K 데이터셋을 구성한다. RFT 기반 2단계 커리큘럼으로 훈련하여 다중 해답의 모호성을 해결하고 자유로운 추론을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 Overview of the Embodied-R1 framework and its zero-shot manipulation performance.</em></p></div>
 <ul>
 <li><strong>벤치마크 성과</strong>: 11개의 embodied spatial 및 pointing 벤치마크에서 state-of-the-art 성능 달성</li>
 <li><strong>시뮬레이션 성과</strong>: SIMPLEREnv에서 56.2% 성공률 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>강건성</strong>: 조명 변화, 배경 변화, 높이 변화 등 다양한 시각적 방해에 대한 높은 강건성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3 Overview of training data: In stage 1, we focus on improving the model’s spatial reasoning capability,</em></p></div>
 <ul>
 <li>Embodied-Points-200K 데이터셋 구성: 다양한 embodied 및 일반 시각 추론 데이터셋에서 고품질 인스턴스를 수집하고 검증</li>
 <li>2단계 RFT 커리큘럼: 첫 번째 단계에서 기본 능력 학습, 두 번째 단계에서 정교한 능력 학습</li>

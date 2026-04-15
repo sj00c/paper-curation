@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nicola De Cao, Thomas Kipf | <strong>날짜</strong>: 2018 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/1805.11973" target="_blank">arXiv:1805.11973</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>MolGAN의 전체 구조: 잠재변수 z로부터 생성기가 분자 그래프를 생성하고, 판별기는 실제/생성 데이터 분류, 보상망은 화학적 성질을 평가한다.</em></p></div>
 <p>본 논문은 그래프 구조 데이터에 직접 작동하는 GAN 기반 암묵적(implicit) 생성 모델을 제안하여, 분자 설계에서 비용이 큰 그래프 매칭 절차와 노드 순서 휴리스틱을 우회하고 높은 유효성의 화학 화합물을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GAN을 그래프에 맞게 적응시키되, 판별기와 보상망은 그래프 합성곱(graph convolution)으로 노드 순서 불변성을 확보하고, 생성기는 우도 제약 없이 자유롭게 노드 순서 선택</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>MolGAN 아키텍처: 생성기는 인접 행렬 A와 주석 행렬 X를 생성한 후 카테고리 샘플링으로 이산화하여 분자 그래프를 완성한다.</em></p></div>
 <ol>
 <li><strong>높은 유효성</strong>: QM9 데이터셋에서 거의 100%에 가까운 유효한 화학 화합물 생성 달성</li>
 <li><strong>우수한 비교 성능</strong>: SMILES 기반 방법들(RNN-VAE, ORGAN)과 likelihood 기반 그래프 생성 방법보다 우수한 성능 입증</li>
 <li><strong>화학적 특성 최적화</strong>: 강화학습(RL) 목표와 결합하여 약물 유사성(druglikeness, QED) 등 특정 화학 성질 최적화 가능</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>QM9 데이터셋 샘플(좌)과 약물 유사성(QED)으로 최적화된 MolGAN 생성 분자(우)</em></p></div>
 <ul>
 <li><strong>생성기(Generator)</strong>:
 <ul>

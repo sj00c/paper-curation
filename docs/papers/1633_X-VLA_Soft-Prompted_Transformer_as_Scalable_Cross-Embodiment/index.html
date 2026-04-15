@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jinliang Zheng, Jianxiong Li, Zhihao Wang, Dongxiu Liu, Xirui Kang, Yuchun Feng, Yinan Zheng, Jiayin Zou, Yilun Chen, Jia Zeng, Ya-Qin Zhang, Jiangmiao Pang, Jingjing Liu, Tai Wang, Xianyuan Zhan | <strong>날짜</strong>: 2025-10-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.10274" target="_blank">https://arxiv.org/abs/2510.10274</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 | X-VLA employs distinctive learnable embeddings, referred to as soft prompt, to effectively</em></p></div>
 <p>X-VLA는 소프트 프롬프트(Soft Prompt) 기법을 도입하여 이질적인 로봇 플랫폼 간 cross-embodiment 학습을 효과적으로 처리하는 scalable Vision-Language-Action 모델이다. 0.9B 파라미터 규모로 6개 시뮬레이션 벤치마크와 3개 실로봇에서 SOTA 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 데이터 소스별로 구별되는 learnable embedding 세트를 Soft Prompt로 도입하여 embodiment-specific 특성을 조기 단계부터 인코딩한다. Flow-matching 기반 VLA 아키텍처에 표준 Transformer encoder를 stack하여 multimodal 특성 융합과 action 생성을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 | X-VLA employs distinctive learnable embeddings, referred to as soft prompt, to effectively</em></p></div>
 <ul>
 <li><strong>Cross-embodiment SOTA 달성</strong>: 6개 시뮬레이션 벤치마크(Libero, Calvin, VLABench, Robotwin2 등)와 3개 실로봇(Agibot-3, Agilex, Franka, UR5 등)에서 동시에 최고 성능 달성</li>
 <li><strong>효율적 파라미터 튜닝</strong>: 1% 파라미터(9M)만 조정하여 Libero에서 93%, Simpler-WidowX에서 54% 성공률 달성, π0(300배 더 많은 파라미터)과 비등한 성능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>확장 가능성</strong>: 모델 크기, 데이터 소스 수, 데이터 량 증가에 따른 성능 향상 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 | Comparison among four methods in handling heterogeneity in cross-embodiment training.</em></p></div>
 <ul>
 <li><strong>Soft Prompt 메커니즘</strong>: 각 데이터 소스마다 구별되는 learnable embedding 세트를 도입하여 embodiment-specific 특성을 인코딩</li>
 <li><strong>Flow-matching 기반 VLA</strong>: Optimal transport 경로를 따르는 velocity field를 학습하여 noise에서 action chunk로 변환</li>

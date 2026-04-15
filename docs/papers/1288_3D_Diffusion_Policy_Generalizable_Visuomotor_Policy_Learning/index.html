@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yanjie Ze, Gu Zhang, Kangning Zhang, Chenyuan Hu, Muhan Wang, Huazhe Xu | <strong>날짜</strong>: 2024-03-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.03954" target="_blank">https://arxiv.org/abs/2403.03954</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of 3D Diffusion Policy (DP3). Above: In the training phase, DP3 simultaneously trains its perception mo</em></p></div>
 <p>3D Diffusion Policy (DP3)는 점군(point cloud) 기반의 3D 시각 표현을 diffusion policy와 결합하여 로봇 모방 학습에서 적은 데이터로 높은 일반화 성능을 달성하는 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DP3는 sparse point cloud를 간단한 MLP 인코더로 compact 3D 표현으로 인코딩한 후, 이를 조건으로 하여 diffusion model이 행동 시퀀스를 생성하는 구조를 채택한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: 3D Diffusion Policy (DP3) is a visual imitation learning algorithm that marries 3D visual representations with d</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 시뮬레이션 72개 작업에서 단 10개 시연으로 대부분의 작업을 성공하며 기준 방법 대비 24.2% 상대적 개선 달성</li>
 <li><strong>실제 로봇 성능</strong>: 4개의 실제 로봇 작업에서 각 40개 시연으로 85%의 높은 성공률 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실용성</strong>: 추론 속도가 practical 수준이며 복잡한 변형 객체 조작(dexterous hand manipulation) 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of 3D Diffusion Policy (DP3). Above: In the training phase, DP3 simultaneously trains its perception mo</em></p></div>
 <ul>
 <li>Sparse point cloud를 입력으로 받아 효율적인 point encoder (MLP 기반)를 통해 compact 3D 표현으로 변환</li>
 <li>Robot pose와 함께 3D 시각 특성을 diffusion policy의 조건으로 활용</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shaoting Zhu, Baijun Ye, Jiaxuan Wang, Jiakang Chen, Ziwen Zhuang, Linzhan Mou, Runhan Huang, Hang Zhao | <strong>날짜</strong>: 2026-02-02 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.02331" target="_blank">10.48550/arXiv.2602.02331</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: TTT-Parkour. Our framework consists of three stages: (1) Pre-training: A general policy is pre-trained on divers</em></p></div>
 <p>본 논문은 RGB-D 입력으로부터 고충실도 메시 재구성을 통해 미지의 복잡한 지형에서 휴머노이드 로봇의 빠른 테스트 시간 파인튜닝(TTT)을 가능하게 하는 real-to-sim-to-real 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 패러다임으로, 절차적 생성 지형에서 일반 정책을 사전 학습한 후 피드포워드 재구성 파이프라인(자동 스케일/프레임 정렬 포함)으로 실제 캡처로부터 시뮬레이션 준비 메시를 생성하고 테스트 시간 파인튜닝을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Real-world experiments. The robot successfully traverses extremely challenging terrains, including: (a) Wedges, </em></p></div>
 <ul>
 <li><strong>두 단계 end-to-end 지각 보행 학습 패러다임</strong>: 사전 학습과 테스트 시간 학습 모두 극도로 도전적인 지형 순회에 필수적임을 입증</li>
 <li><strong>고속 피드포워드 기하 재구성 파이프라인</strong>: RGB-D 입력으로부터 시뮬레이션 준비 메시를 고충실도로 빠르게 생성하여 real-to-sim-to-real 워크플로우 효율성 확보</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>강건한 zero-shot sim-to-real 전이</strong>: 테스트 시간 학습 후 정책이 실세계에서 강건한 민첩한 파쿠르 수행 능력 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Efficient Geometry reconstruction. Our pipeline consists of four stages: (1) Real-World Capture. (2) Feed-forwar</em></p></div>
 <ul>
 <li>CNN 기반 깊이 인코더와 고유감각을 결합한 관찰 공간 설계로 안정적 보행을 위한 종합적 상태 정보 제공</li>
 <li>PPO를 이용한 강화 학습으로 절차적 생성 지형 다양성에 대한 사전 학습</li>

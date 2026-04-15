@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Han Xue, Jieji Ren, Wendi Chen, Gu Zhang, Yuan Fang, Guoying Gu, Huazhe Xu, Cewu Lu | <strong>날짜</strong>: 2025-03-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.02881" target="_blank">https://arxiv.org/abs/2503.02881</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: TactAR is a low-cost and versatile teleoperation system which can provide real-time tactile / force feedback via</em></p></div>
 <p>본 논문은 접촉 기반 조작 작업을 위해 AR 기반 촉각 피드백 텔레작동 시스템 TactAR과 slow-fast 계층 구조의 Reactive Diffusion Policy (RDP) 알고리즘을 제안하여, 고주파 촉각 피드백 기반 폐루프 제어와 복잡한 궤적 모델링을 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 가지 핵심 제안으로 구성된다: (1) Meta Quest3를 이용한 AR 기반 실시간 촉각/힘 피드백 텔레작동 시스템 TactAR으로 고품질 데이터 수집, (2) latent diffusion policy(느린 네트워크, 1-2 Hz)로 고수준 action chunk를 예측하고 asymmetric tokenizer(빠른 네트워크, 20-30 Hz)로 고주파 촉각 피드백 기반 폐루프 제어를 수행하는 slow-fast 계층 구조의 RDP 알고리즘.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: TactAR is a low-cost and versatile teleoperation system which can provide real-time tactile / force feedback via</em></p></div>
 <ul>
 <li><strong>TactAR 텔레작동 시스템</strong>: Meta Quest3 기반 저비용($500) AR 시스템으로 GelSight Mini, MCTac, 관절 토크 센서 등 다양한 센서를 지원하며 3D deformation field를 통합 표현으로 실시간 촉각/힘 피드백 제공</li>
 <li><strong>RDP 알고리즘</strong>: slow-fast 계층 구조로 action chunking의 복잡 궤적 모델링 능력과 고주파 촉각 피드백 폐루프 제어를 통합하여 접촉 기반 작업에서 기존 방법 대비 35% 이상 성능 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>복합 능력 평가</strong>: 정밀도, 정밀한 적응 힘 제어, 외란에 대한 빠른 반응, 양팔 협동 등을 포함한 3개 도전적 접촉 작업으로 광범위 평가</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of TactAR teleoperation system. It can provide real-time tactile / force feedback via Augmented Reality</em></p></div>
 <ul>
 <li><strong>TactAR 구성</strong>: Meta Quest3 VR 헤드셋과 컨트롤러로 end-effector 포즈 제어, 촉각 센서와 RGB 카메라 스트림 통합, 3D deformation field를 AR에서 로봇 end-effector에 부착하여 시각화</li>
 <li><strong>3D Deformation Field 표현</strong>: 광학 촉각 센서(GelSight Mini, MCTac)의 젤 표면 변형과 힘/토크 센서의 정규화된 출력을 통일된 3D 변형장으로 표현하여 센서 종류에 무관하게 적용</li>

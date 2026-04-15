@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nuo Chen, Andre Huikai Lin, Jiaying Wu, Junyi Hou, Zining Zhang, Qian Wang, Xidong Wang, Bingsheng He | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2505.11336" target="_blank">arXiv:2505.11336</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>학술 논문 수정 워크플로우 비교 (좌) 및 proprietary LLM의 부족한 수정 예시 (우)</em></p></div>
 <p>본 논문은 맥락 인식(context-aware)과 제어 가능한(controllable) 학술 논문 수정을 위한 인간-AI 협업 프레임워크를 제안하며, 이를 구현한 XtraGPT 모델군(1.5B~14B)을 소개한다. 140,000개의 지도 학습 쌍으로 구성된 ReviseQA 데이터셋을 구축하여 섹션 단위의 정교한 학술 논문 수정을 지원한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -99,6 +101,8 @@ a { color: #A62018; }
 </ul>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>사후 훈련 파이프라인 개요 - 제어 가능한 섹션 단위 정교한 논문 수정 가능</em></p></div>
 <ol>
 <li><strong>데이터셋 구축</strong>: ReviseQA - 상위 학회 7,000개 논문에서 추출한 140,000개 고품질 지도-수정 쌍
 <ul>
@@ -122,6 +126,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>제안된 프레임워크의 주요 설계 원칙과 기술적 구현</em></p></div>
 <p><strong>문제 정의 (Problem Formulation)</strong>:</p>
 <ul>
 <li>입력: 전체 논문 초안 T, 수정 대상 문단 p, 사용자 지시 q</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Boyuan Chen, Fei Xia, Brian Ichter, Kanishka Rao, Keerthana Gopalakrishnan, Michael S. Ryoo, Austin Stone, Daniel Kappler | <strong>날짜</strong>: 2022-09-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2209.09874" target="_blank">https://arxiv.org/abs/2209.09874</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: NLMap + SayCan overview. We propose an open-vocabulary and</em></p></div>
 <p>NLMap은 Visual Language Model을 기반으로 한 개방형 어휘의 쿼리 가능한 장면 표현을 제안하여, LLM 기반 로봇 플래너가 실제 환경의 객체를 인식하고 위치를 파악한 후 맥락-조건부 계획을 수립할 수 있도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: NLMap은 탐사 단계에서 CLIP과 ViLD와 같은 VLM의 이미지 인코더를 사용하여 객체의 특징을 추출하고, 자연어 쿼리로 장면 표현을 질의할 수 있는 구조를 제안한다. LLM 기반 객체 제안 모듈이 지시를 파싱하여 관련 객체를 제안하고, LLM 플래너가 이러한 정보를 활용하여 계획을 수립한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Comparson of NLMap + SayCan with SayCan SayCan: With few-shot prompting, SayCan uses the scoring of a language m</em></p></div>
 <ul>
 <li><strong>개방형 어휘 장면 표현</strong>: CLIP과 ViLD 기반의 자연어 쿼리 가능한 의미론적 장면 표현을 제안하여 테스트 시점에서 임의의 객체를 쿼리할 수 있음</li>
 <li><strong>LLM 플래너 그라운딩</strong>: 장면 정보를 LLM 기반 플래너와 통합하여 환경 맥락을 기반으로 한 계획 수립 가능</li>
 <li><strong>실제 로봇 성능</strong>: 실제 주방 환경에서 55개 작업을 61.8% 성공률로 수행하였으며, 이 중 35개 작업은 기존 방법으로는 불가능했음</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Natural Language Queryable Scene Representation. The key design of NLMap is to establish a queryable map. First,</em></p></div>
 <ul>
 <li>탐사 단계에서 클래스-무관 영역 제안 네트워크로 관심 영역(ROI) 검출</li>
 <li>각 ROI에 대해 CLIP과 ViLD 이미지 인코더를 사용하여 512차원 특징 벡터 추출</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hengtao Li, Pengxiang Ding, Runze Suo, Yihao Wang, Zirui Ge, Dongyuan Zang, Kexian Yu, Mingyang Sun, Hongyin Zhang, Donglin Wang, Weihua Su | <strong>날짜</strong>: 2025-10-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.00406" target="_blank">https://arxiv.org/abs/2510.00406</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The Framework of VLA-RFT. A world model functions as a simulator that processes</em></p></div>
 <p>VLA-RFT는 데이터 기반 world model을 시뮬레이터로 활용하여 vision-language-action 모델을 reinforcement learning으로 효율적으로 fine-tuning하는 프레임워크이다. 검증된 reward를 기반으로 GRPO 최적화를 수행하여 400 단계 이하의 fine-tuning으로 strong supervised baseline을 초과하는 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Data-driven world model을 통해 real-world 상호작용 없이 policy rollout을 시뮬레이션하고, goal-achieving reference trajectory와의 비교를 통해 dense, trajectory-level reward를 생성한다. GRPO 프레임워크로 이러한 검증된 reward를 기반으로 VLA를 end-to-end 최적화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The Framework of VLA-RFT. A world model functions as a simulator that processes</em></p></div>
 <ul>
 <li><strong>효율성</strong>: 400 단계 이하의 fine-tuning으로 150K 반복 supervised fine-tuning baseline을 초과하는 성능 달성</li>
 <li><strong>우수한 성능</strong>: LIBERO 벤치마크에서 base VLA 86.6%에서 91.1%로 성능 향상 (general settings)</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실행시간 Robustness</strong>: 예상치 못한 환경 변화에서도 안정적인 task 실행 및 failure recovery 능력</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Training Paradigm of VLA-RFT. In the pre-training stage, both the world model and</em></p></div>
 <ul>
 <li>Stage I: World model과 VLA policy를 offline 데이터셋에서 함께 pretrain하여 안정적인 초기화 제공</li>
 <li>World model: Real interaction data로부터 action 조건부 future visual observation 예측 학습</li>

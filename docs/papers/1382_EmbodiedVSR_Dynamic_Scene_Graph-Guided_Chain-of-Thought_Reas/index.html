@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yi Zhang, Qiang Zhang, Xiaozhu Ju, Zhaoyang Liu, Jilei Mao, Jingkai Sun, Jintao Wu, Shixiong Gao, Shihan Cai, Zhiyuan Qin, Linkai Liang, Jiaxu Wang, Yiqun Duan, Jiahang Cao, Renjing Xu, Jian Tang | <strong>날짜</strong>: 2025-03-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.11089" target="_blank">https://arxiv.org/abs/2503.11089</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of EmbodiedVSR, a framework integrating multimodal interaction and dynamic task execution. EmbodiedVS</em></p></div>
 <p>EmbodiedVSR는 동적 scene graph와 Chain-of-Thought 추론을 결합하여 embodied agent의 공간 추론 능력을 향상시키는 프레임워크이며, 이를 평가하기 위해 eSpatial-Benchmark 데이터셋을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 동적 scene graph를 통해 물체 상태, 객체 간 관계, 행동 기반 환경 변화를 명시적으로 모델링하고, 이를 physics-constrained Chain-of-Thought 프로세스와 통합하여 zero-shot 공간 추론을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. eSpatial-RoboMIND Benchmark evaluation</em></p></div>
 <ul>
 <li><strong>Zero-shot 공간 추론</strong>: Task-specific fine-tuning 없이도 구조화된 scene graph 기반 추론으로 새로운 작업에 일반화</li>
 <li><strong>eSpatial-Benchmark 구축</strong>: 실제 환경의 동적 상호작용을 포함한 세분화된 공간 주석과 적응형 어려움 수준을 갖춘 포괄적 데이터셋 개발</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>명시적 추론 메커니즘</strong>: 물리적 일관성 규칙으로 검증되는 계층적 작업 분해를 통해 해석 가능성 및 신뢰성 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of EmbodiedVSR, a framework integrating multimodal interaction and dynamic task execution. EmbodiedVS</em></p></div>
 <ul>
 <li>Visual Aid Extractor를 통한 depth estimation과 object detection으로 시각 정보 추출</li>
 <li>Graph Vertex Extractor를 사용하여 객체와 속성을 노드로 추출</li>

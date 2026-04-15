@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoru Xue, Chaoyi Pan, Zeji Yi, Guannan Qu, Guanya Shi | <strong>날짜</strong>: 2024-09-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.15610" target="_blank">https://arxiv.org/abs/2409.15610</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Diffusion-inspired annealing for legged MPC (DIAL-</em></p></div>
 <p>DIAL-MPC는 diffusion 프로세스의 iterative refinement 아이디어를 sampling-based MPC에 적용하여 full-order 사족 로봇의 torque-level 제어를 실시간으로 수행하는 training-free 방법이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MPPI를 single-stage diffusion으로 재해석하고, diffusion의 annealing 개념을 bi-level (trajectory-wise, action-wise) 방식으로 적용하여 sampling variance를 동적으로 조정함으로써 global-local 균형을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: Top: the coverage of DIAL-MPC in crate-climbing</em></p></div>
 <ul>
 <li><strong>Theoretical Foundation</strong>: MPPI를 single-stage diffusion으로 수학적으로 동치 증명 (Proposition 1) 및 landscape analysis를 통해 annealing의 이론적 근거 제시</li>
 <li><strong>Full-Order Real-Time Control</strong>: 사족 로봇의 full-order 동역학을 기반으로 50Hz 실시간 제어 달성으로 reduced-order 제약 극복</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실세계 검증</strong>: payload를 포함한 정밀한 jumping 실험으로 실제 로봇 환경에서의 효과 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Coverage and convergence trade-off in sampling-</em></p></div>
 <ul>
 <li>MPPI 업데이트를 score function ∇log p₁(U)의 gradient ascent로 재해석 (식 2)</li>
 <li>Target distribution p₀(U) ∝ exp(-J(U)/λ)를 Gaussian noise kernel과의 convolution으로 diffused distribution p₁ 생성</li>

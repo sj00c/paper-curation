@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Arturo Flores Alvarez, Fatemeh Zargarbashi, Havel Liu, Shiqi Wang, Liam Edwards, Jessica Anz, Alex Xu, Fan Shi, Stelian Coros, Dennis W. Hong | <strong>날짜</strong>: 2025-09-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.05581" target="_blank">https://arxiv.org/abs/2509.05581</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Cosmo: an entertainment humanoid robot with covers</em></p></div>
 <p>미적 설계 제약이 있는 엔터테인먼트 휴머노이드 로봇 Cosmo를 위해 Adversarial Motion Priors (AMP)를 기반으로 한 강화학습 보행 시스템을 제시하며, 극단적인 질량 분포와 움직임 제약 하에서도 자연스러운 보행 행동을 학습할 수 있음을 보여준다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 모션 캡처 데이터를 Cosmo의 운동학적 제약에 맞게 retargeting한 후, AMP 프레임워크를 사용하여 discriminator 네트워크가 자연스러운 움직임을 유도하도록 하며, domain randomization과 specialized reward 구조를 통해 sim-to-real 전이를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Sim-to-Real pipeline: (a) Retargeting from diverse data sources, (b) Training, (c) Validation, (d) Deployment</em></p></div>
 <ul>
 <li><strong>극단적 질량 분포 제어</strong>: 머리가 총 질량의 16%를 차지하는 상단 중심의 불균형한 휴머노이드 로봇의 안정적인 보행 및 서기 행동 생성</li>
 <li><strong>미적 제약 하의 학습 기반 제어</strong>: 보호 셸과 제한된 움직임으로 인한 미적 설계 제약 하에서도 자연스러운 움직임 생성 가능 입증</li>
 <li><strong>안전한 Sim-to-Real 전이</strong>: Domain randomization과 specialized reward 구조를 통해 고가 하드웨어를 보호하면서 시뮬레이션에서 실제 로봇으로의 성공적인 전이 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: Schematic overview of the training framework.</em></p></div>
 <ul>
 <li>CMU Mocap Dataset으로부터 인간 모션 캡처 데이터 수집 및 Rokoko plugin/Blender를 사용하여 Cosmo의 운동학적 구조에 맞게 retargeting</li>
 <li>Adversarial Motion Priors (AMP) 프레임워크 적용: Discriminator 네트워크 D_ϕ(s)가 참조 데이터셋과 정책 생성 상태를 구별하며 자연성 보상 신호 제공</li>

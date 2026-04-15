@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ilija Radosavovic, Tete Xiao, Bike Zhang, Trevor Darrell, Jitendra Malik, Koushil Sreenath | <strong>날짜</strong>: 2023-03-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.03381" target="_blank">https://arxiv.org/abs/2303.03381</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Deployment to outdoor environments. We deploy our model to a number of outdoor</em></p></div>
 <p>Causal transformer 기반의 학습 정책을 대규모 모델프리 강화학습으로 시뮬레이션에서 훈련하고 실제 휴머노이드 로봇에 제로샷으로 배포하여 다양한 실외 환경에서 안정적인 보행을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Causal transformer를 사용하여 proprioceptive 관찰과 행동의 이력을 입력으로 받아 다음 행동을 예측하도록 설계하고, domain randomization을 적용한 대규모 강화학습으로 훈련하여 제로샷 배포한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Indoor and simulation experiments. We test the robustness of our controller to (A)</em></p></div>
 <ul>
 <li><strong>실외 환경 배포</strong>: 1주일 풀타임 테스트 기간 동안 콘크리트, 잔디, 러닝 트랙 등 다양한 실외 환경에서 안정적인 보행을 달성하고 낙상 없음</li>
 <li><strong>외부 교란 강건성</strong>: 요가볼 던지기, 막대 밀기, 뒤로부터 끌기 등의 갑작스러운 외력에 대해 안정성 유지</li>

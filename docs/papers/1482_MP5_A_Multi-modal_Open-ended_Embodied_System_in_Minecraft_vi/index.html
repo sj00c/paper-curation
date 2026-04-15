@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yiran Qin, Enshen Zhou, Qichang Liu, Zhenfei Yin, Lu Sheng, Ruimao Zhang, Yu Qiao, Jing Shao | <strong>날짜</strong>: 2023-12-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2312.07472" target="_blank">https://arxiv.org/abs/2312.07472</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of module interaction in MP5. After receiving the task instruction, MP5 first utilizes Parser to gene</em></p></div>
 <p>MP5는 Minecraft에서 장기-지평선 개방형 태스크를 해결하기 위해 MLLMs 기반의 다중모듈 embodied 시스템으로, active perception scheme을 통해 프로세스 의존성과 컨텍스트 의존성을 모두 처리한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MP5는 Parser, Percipient, Planner, Performer, Patroller 5개 모듈을 설계하고, Percipient와 Patroller 간의 다중-라운드 active perception을 통해 상황-인식적 계획 및 실행을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. The process of finishing the task “kill a pig with a stone sward during the daytime near the water with grass </em></p></div>
 <ul>
 <li><strong>프로세스 의존 태스크 성공률</strong>: diamond-level 난제에서 22% 성공률 달성</li>
 <li><strong>컨텍스트 의존 태스크 성공률</strong>: 4-6개의 주요 항목을 인식해야 하는 복잡한 장면 이해 태스크에서 91% 성공률 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>MineLLM 개발</strong>: Minecraft 특화 multimodal LLM 도입으로 perception 정확도 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of module interaction in MP5. After receiving the task instruction, MP5 first utilizes Parser to gene</em></p></div>
 <ul>
 <li><strong>Parser 모듈</strong>: LoRA-augmented LLM으로 장기 태스크를 순차적 sub-objectives 목록으로 분해</li>
 <li><strong>Percipient 모듈</strong>: LoRA-enabled MineLLM으로 관찰된 이미지에 대한 다양한 질문에 답변</li>

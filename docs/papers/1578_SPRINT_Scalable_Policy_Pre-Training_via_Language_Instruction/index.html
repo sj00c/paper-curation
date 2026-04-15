@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jesse Zhang, Karl Pertsch, Jiahui Zhang, Joseph J. Lim | <strong>날짜</strong>: 2023-06-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2306.11886" target="_blank">https://arxiv.org/abs/2306.11886</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: SPRINT is a scalable approach for pre-training robot policies with a rich repertoire of skills while minimizing </em></p></div>
 <p>SPRINT는 대규모 언어 모델(LLM)을 활용한 instruction relabeling과 offline RL 기반 cross-trajectory skill chaining을 통해 로봇 정책 사전학습을 위한 인간 주석 비용을 크게 줄이는 확장 가능한 접근법이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SPRINT는 초기 language-annotated trajectory 데이터셋으로부터 시작하여 LLM 기반 instruction 집계와 offline RL 기반 skill chaining을 통해 자동으로 사전학습 태스크 집합을 확장한 후, 확장된 데이터로 instruction-conditioned 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: ALFRED-RL evaluation results. Left: Zero shot performance on EVALINSTRUCT and EVALLENGTH. SPRINT is able</em></p></div>
 <ul>
 <li><strong>자동 instruction 생성</strong>: LLM을 활용한 consecutive instruction 집계로 복합 태스크 자동 생성</li>
 <li><strong>Cross-trajectory skill chaining</strong>: Offline RL 기반 여러 궤적의 기술 조합으로 학습 데이터에 없는 새로운 조합 기술 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>우수한 성능</strong>: ALFRED 시뮬레이터 및 실제 로봇 주방 조작 태스크에서 기존 사전학습 방법 대비 다운스트림 태스크 학습 효율성 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: SPRINT overview. We assume access to a dataset</em></p></div>
 <ul>
 <li>Instruction-conditioned offline RL: 자연어 task description z가 주어졌을 때 π(a|s, z)를 학습하도록 보상 설계</li>
 <li>Language model instruction aggregation: LLaMA 같은 대규모 언어 모델을 통해 연속된 instruction을 더 복잡한 상위 레벨 instruction으로 결합</li>

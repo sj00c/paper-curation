@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Anthony Hu, Lloyd Russell, Hudson Yeo, Zak Murez, George Fedoseev, Alex Kendall, Jamie Shotton, Gianluca Corrado | <strong>날짜</strong>: 2023-09-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2309.17080" target="_blank">https://arxiv.org/abs/2309.17080</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Architecture of GAIA-1. First, we encode information from all input modalities (video, text,</em></p></div>
 <p>GAIA-1은 비디오, 텍스트, 액션 입력을 활용하여 현실적인 운전 시나리오를 생성하는 생성형 월드 모델로, 자율주행 시스템의 미래 예측 및 훈련을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GAIA-1은 비디오 프레임을 벡터 양자화된 이산 토큰으로 변환하여 다음 토큰 예측 문제로 재구성하는 autoregressive transformer 기반 월드 모델과, 이를 고해상도 비디오로 렌더링하는 multi-task video diffusion decoder로 구성된다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: GAIA-1 multimodal video generation. GAIA-1 can generate videos by performing future</em></p></div>
 <ul>
 <li><strong>다중모달 조건부 생성</strong>: 비디오, 텍스트, 액션 입력을 통해 세밀하게 제어 가능한 운전 시나리오 생성</li>
 <li><strong>의미론적 표현 학습</strong>: 정적·동적 요소(자동차, 보행자, 신호등 등)와 장면 역학에 대한 고수준 구조 이해</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>일반화 능력</strong>: 훈련 데이터 범위를 벗어난 시나리오(예: 도로 경계 외 운전)로의 외삽 성능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Architecture of GAIA-1. First, we encode information from all input modalities (video, text,</em></p></div>
 <ul>
 <li>세 가지 입력 모달리티를 공통 d차원 공간으로 인코딩: 이미지는 pre-trained image tokenizer로 n=576 토큰으로, 텍스트는 T5-large로 m=32 토큰으로, 액션은 speed와 curvature를 l=2 스칼라로 표현</li>
 <li>시간-공간 분해된 위치 임베딩 사용: T개의 학습 가능한 시간 임베딩과 m+n+l=610개의 공간 임베딩으로 토큰 위치 인코딩</li>

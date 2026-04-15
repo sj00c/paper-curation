@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zihan Wang, Jiashun Wang, Jeff Tan, Yiwen Zhao, Jessica Hodgins, Shubham Tulsiani, Deva Ramanan | <strong>날짜</strong>: 2025-12-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.14696" target="_blank">https://arxiv.org/abs/2512.14696</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: CRISP pipeline. Given a casual RGB video (left), CRISP reconstructs scene geometry</em></p></div>
 <p>단안 비디오에서 planar primitive 기반 scene geometry 복원과 human motion 추정을 통해 물리 시뮬레이션 가능한 human-scene reconstruction을 수행하는 real-to-sim 파이프라인을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Point cloud에서 depth, normal, optical flow 기반 clustering으로 convex planar primitive를 자동 추출하고, contact modeling을 통해 occluded geometry를 복원한 후, RL-driven humanoid controller로 물리적 타당성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Qualitative comparison. We compare VideoMimic with CRISP (ours) on six sequences</em></p></div>
 <ul>
 <li><strong>Motion tracking 실패율 감소</strong>: EMDB, PROX 벤치마크에서 55.2%에서 6.9%로 8배 감소 (93.1% real-to-sim 성공율)</li>
 <li><strong>Simulation 효율성</strong>: Dense mesh 대비 43% 빠른 RL throughput 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>물리 기반 개선</strong>: Physical reasoning이 human과 scene reconstruction 품질 모두 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Planar fitting. Given per-frame pointmaps from a visual SLAM system, we (1) produce</em></p></div>
 <ul>
 <li>Visual SLAM (camera pose, intrinsics)과 HMR network로 world coordinate에서 global point cloud 및 human mesh 생성</li>
 <li>K-means clustering on normal maps로 candidate planar segment 추출</li>

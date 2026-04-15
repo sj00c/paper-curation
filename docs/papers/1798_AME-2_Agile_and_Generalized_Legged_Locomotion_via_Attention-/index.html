@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chong Zhang, Victor Klemm, Fan Yang, Marco Hutter | <strong>날짜</strong>: 2026-01-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.08485" target="_blank">https://arxiv.org/abs/2601.08485</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Our method enables agile and generalized legged locomotion across diverse terrains with onboard sensing and comp</em></p></div>
 <p>AME-2는 Attention 기반 맵 인코더를 통합한 통합 RL 프레임워크로, 민첩성과 일반화를 동시에 달성하는 사족/이족 로봇 보행 제어 방법이다. 학습 기반의 불확실성 인식 elevation mapping 파이프라인과 teacher-student 학습 체계를 통해 sim-to-real 이전을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Attention 메커니즘을 활용한 neural map encoder를 RL 정책에 통합하여 elevation map의 local/global 특징을 추출하고, Bayesian learning 기반의 경량 neural network로 불확실성 인식 elevation map을 생성하며, teacher-student 학습 체계로 실제 맵핑 파이프라인을 반영한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Our method enables agile and generalized legged locomotion across diverse terrains with onboard sensing and comp</em></p></div>
 <ul>
 <li><strong>Attention 기반 맵 인코더</strong>: Global 특징과 고유 정보로 local 특징에 attention 가중치를 할당하여 현재 과제와 무관한 영역의 가중치를 낮춤으로써 새로운 지형으로의 일반화 향상</li>
 <li><strong>불확실성 인식 elevation mapping</strong>: Depth 이미지를 local grid로 투영하고 Bayesian neural network로 per-cell 불확실성을 추정하여 occlusion과 센서 노이즈에 강건한 표현 제공</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Parallel simulation 통합</strong>: 훈련 중 online mapping을 지원하여 sim-to-real 이전 격차 완화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. An overview of our system. We use RL to train a teacher policy with ground-truth mapping in simulation, and a st</em></p></div>
 <ul>
 <li>AME-2 encoder는 elevation map에서 local feature (pixel-wise 지형 세부사항)와 global feature (전역 지형 맥락)를 추출</li>
 <li>Global feature와 proprioception을 기반으로 local feature에 attention 가중치를 할당하는 attention 메커니즘 적용</li>

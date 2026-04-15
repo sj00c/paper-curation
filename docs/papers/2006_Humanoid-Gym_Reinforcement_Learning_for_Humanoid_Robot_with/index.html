@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xinyang Gu, Yen-Jen Wang, Jianyu Chen | <strong>날짜</strong>: 2024-04-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2404.05695" target="_blank">https://arxiv.org/abs/2404.05695</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Pipeline of Humanoid-Gym. Initially, we employ</em></p></div>
 <p>Humanoid-Gym은 Nvidia Isaac Gym 기반의 강화학습 프레임워크로, 인간형 로봇의 보행 기술을 훈련하고 zero-shot sim-to-real 전이를 통해 실제 환경으로 직접 배포할 수 있도록 설계되었다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Humanoid-Gym은 Isaac Gym에서 domain randomization과 특화된 보상 설계로 정책을 훈련하고, MuJoCo로 sim-to-sim 검증한 후, 고도로 보정된 환경 매개변수를 통해 실제 로봇에 zero-shot 전이한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid-Gym enables users to train their policies</em></p></div>
 <ul>
 <li><strong>Zero-shot Sim-to-Real 전이 성공</strong>: XBot-S(1.2m)와 XBot-L(1.65m) 두 크기의 인간형 로봇에서 실제 환경에서의 zero-shot 전이를 검증하였다.</li>
 <li><strong>Sim-to-Sim 검증 도구</strong>: Isaac Gym과 MuJoCo 간 동적 특성 비교를 통해 정책의 강건성과 일반화 가능성을 사전에 검증할 수 있는 프레임워크를 제공한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 지형 대응</strong>: 평탄한 지형뿐 아니라 훈련 시나리오와 크게 다른 불규칙한 지형에서도 성공적인 보행을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Pipeline of Humanoid-Gym. Initially, we employ</em></p></div>
 <ul>
 <li>Nvidia Isaac Gym에서 PPO와 Asymmetric Actor Critic 방법을 사용하여 대규모 병렬 강화학습 수행</li>
 <li>특화된 4가지 보상 성분(속도 추적, 보행 보상, 정규화항)으로 구성된 다목적 보상 함수 설계</li>

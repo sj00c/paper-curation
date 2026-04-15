@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoru Xue, Tairan He, Zi Wang, Qingwei Ben, Wenli Xiao, Zhengyi Luo, Xingye Da, Fernando Castañeda, Guanya Shi, Shankar Sastry, Linxi "Jim" Fan, Yuke Zhu | <strong>날짜</strong>: 2025-11-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2512.01061" target="_blank">10.48550/arXiv.2512.01061</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: DoorMan training pipeline. All phases are done interactively with IsaacLab. In Phase 1, we train a</em></p></div>
 <p>GPU 가속 포토리얼리스틱 시뮬레이션과 teacher-student-bootstrap 학습 프레임워크를 통해 순수 RGB 시각만 사용하여 인간형 로봇이 다양한 문을 열 수 있는 sim-to-real 정책을 개발했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 세 단계 학습 파이프라인을 제안한다: (1) 특권 정보를 가진 teacher 정책을 staged-reset 탐색 전략으로 훈련, (2) DAgger를 통해 RGB 기반 student 정책으로 증류, (3) GRPO를 사용한 bootstrapping으로 부분 관측성 완화 및 폐루프 일관성 개선.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: DoorMan, a simulation-trained, RGB-only humanoid loco-manipulation policy, opens diverse, real-world doors.</em></p></div>
 <ul>
 <li><strong>첫 번째 순수 RGB 인간형 sim-to-real 정책</strong>: 다양한 구조의 문에 대해 영점 샷(zero-shot) 성능으로 83% 성공률 달성</li>
 <li><strong>인간 텔레오퍼레이터 초과 성능</strong>: 동일한 전신 제어 스택 하에서 31.7% 빠른 작업 완료 시간 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화 성능</strong>: 다양한 핸들 유형, 패널 시각, 공간 배치에 대한 강건한 일반화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of the staged-reset exploration scheme. When entering a new stage, a snapshot of the</em></p></div>
 <ul>
 <li>Teacher 정책: PPO를 사용하여 특권 정보(ground-truth 로봇-도어 변환, 접촉 wrench, 근 선형 속도)에 기반한 보상 형성으로 훈련</li>
 <li>Staged-reset 탐색: 장기 작업의 안정적 훈련을 위해 시뮬레이션 스냅샷 캐시에서 무작위 복원 사용</li>

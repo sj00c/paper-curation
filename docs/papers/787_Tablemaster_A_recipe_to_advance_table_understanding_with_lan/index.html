@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lang Cao, Hanbing Liu | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>표의 특성으로 인한 4가지 주요 도전과제와 이에 대응하는 솔루션 개요</em></p></div>
 <p>언어 모델(LM)의 테이블 이해 능력을 향상시키기 위해 구조화된 데이터의 특성으로부터 발생하는 4가지 도전과제를 식별하고, 이를 해결하기 위한 통합 프레임워크 TableMaster를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 테이블의 구조적(structured), 밀집된(dense), 간결한(concise), 수치적(numerical) 특성으로부터 발생하는 4가지 도전과제를 식별하고, 각각에 대응하는 표적화된 솔루션들을 통합한 통일된 레시피(recipe)를 제시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>테이블 크기, 의미론적 강화, 추론 방식, 정규화의 영향을 보여주는 실험적 분석</em></p></div>
 <ol>
 <li><strong>도전과제의 체계적 분석</strong>: 4가지 핵심 도전과제 식별
 <ul>
@@ -87,6 +91,8 @@ a { color: #A62018; }
 <li><strong>성능 향상</strong>: WikiTQ 데이터셋에서 GPT-4o-mini 기반 78.13% 정확도 달성, 기존 베이스라인 초과</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>TableMaster 프레임워크의 4가지 표적화 솔루션과 적응적 추론</em></p></div>
 <ul>
 <li><strong>Table-of-Focus (S1)</strong>: 질의와 관련된 핵심 테이블만 추출하여 컨텍스트 크기 감소 → C1 해결</li>
 <li><strong>Table Verbalization (S2)</strong>: 테이블을 의미론적으로 풍부한 텍스트로 변환

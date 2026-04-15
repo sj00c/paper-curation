@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yidan Lu, Rurui Yang, Qiran Kou, Mengting Chen, Tao Fan, Peter Cui, Yinzhao Dong, Peng Lu | <strong>날짜</strong>: 2025-09-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.12858" target="_blank">https://arxiv.org/abs/2509.12858</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our proposed training framework. An asymmetric Actor-</em></p></div>
 <p>Contrastive learning을 이용해 시뮬레이션의 특권 정보(terrain heightmap)를 순수 proprioceptive policy에 증류시켜 지각의 선견성을 얻으면서도 배포 시 지각 센서의 비용을 피한다. Adaptive gait clock을 통해 고정된 클럭 보행과 불안정한 자유 클럭 보행 사이의 근본적 trade-off를 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Asymmetric actor-critic 프레임워크에서 Actor는 proprioceptive 관측만 받고, Critic은 privileged information(height map)에도 접근하도록 한다. Contrastive learning 손실을 통해 Actor의 latent state를 환경 맥락과 일치시켜 환경 인식을 증류한다. 이렇게 얻은 환경 이해를 adaptive gait clock에 활용해 능동적으로 보행 리듬을 조절한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our policy, trained via contrastive knowledge distillation, enables</em></p></div>
 <ul>
 <li><strong>Contrastive knowledge distillation 프레임워크</strong>: Privileged 환경 정보(height map)를 순수 proprioceptive policy에 직접 증류하는 공간적 대조학습 방법 제안으로, 기존 auxiliary world model 또는 teacher-student 프레임워크의 비효율성을 극복</li>
 <li><strong>Adaptive gait clock의 지능적 제어</strong>: Distilled awareness를 통해 정책이 고정된 클럭 보행의 강건성과 자유 클럭 보행의 유연성을 결합한 적응적 gait mechanism 실현</li>
 <li><strong>Zero-shot sim-to-real 검증</strong>: Full-sized humanoid (Adam Lite)에서 시뮬레이션 없이 실제 배포 시 30 cm 높이 계단과 26.5° 경사면 같은 극도로 도전적인 지형에서 강건한 보행 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our proposed training framework. An asymmetric Actor-</em></p></div>
 <ul>
 <li>RNN 기반 asymmetric actor-critic 아키텍처: Actor는 84차원 센서 입력을 받아 256차원 RNN 숨김 상태를 생성하고 26차원 action을 출력</li>
 <li>Critic은 Actor 입력에 추가로 CNN으로 처리된 height map 특징을 포함하여 가치 추정</li>

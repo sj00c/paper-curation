@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mazeyu Ji, Xuanbin Peng, Fangchen Liu, Jialong Li, Ge Yang, Xuxin Cheng, Xiaolong Wang | <strong>날짜</strong>: 2024-12-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.13196" target="_blank">https://arxiv.org/abs/2412.13196</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid robot executing various expressive whole-body motions in the real world. The robot can (a) walk with a </em></p></div>
 <p>ExBody2는 휴머노이드 로봇이 인간의 모션 캡처 데이터와 시뮬레이션 데이터를 학습하여 표현력 있는 전신 동작을 수행하도록 하는 프레임워크이며, 자동화된 데이터 필터링과 teacher-student 기반의 decoupled motion-velocity 제어 전략을 통해 실제 로봇에 배포 가능하게 함.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Feasibility-Diversity 원칙을 기반으로 자동화된 데이터 필터링을 통해 generalist policy를 학습하고, 특정 동작 그룹에 대해 specialist policy로 fine-tuning하며, teacher-student framework와 decoupled motion-velocity 제어를 통해 sim-to-real 전이를 강화함.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid robot executing various expressive whole-body motions in the real world. The robot can (a) walk with a </em></p></div>
 <ul>
 <li><strong>자동화된 데이터 필터링</strong>: 하위 신체의 물리적으로 불가능한 동작을 제거하면서 상체의 다양성을 유지하는 Feasibility-Diversity 원칙을 제시하여 훈련 안정성과 추적 정확도를 동시에 개선</li>
 <li><strong>Generalist-Specialist 파이프라인</strong>: 다양한 동작에 강인한 단일 generalist policy와 특정 동작에 고도로 최적화된 specialist policies를 제공하여 적응성과 정밀도의 균형 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 배포</strong>: Unitree G1에서 걷기, 웅크리기, 춤 등 다양한 표현력 있는 전신 동작을 43초의 장시간 안무 포함하여 성공적으로 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Exbody2’s framework. (a) Motion retargeting adapts raw human motion datasets to fit the humanoid robot’s morphol</em></p></div>
 <ul>
 <li>인간 모션 데이터를 로봇의 형태학(morphology)에 맞게 retargeting</li>
 <li>초기 policy π0를 필터링되지 않은 다양한 모션 데이터셋 D에 학습한 후, 각 모션 시퀀스의 추적 오류를 평가</li>

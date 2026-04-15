@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Michal Nazarczuk, Karla Stepanova, Jan Kristof Behrens, Matej Hoffmann, Krystian Mikolajczyk | <strong>날짜</strong>: 2025-03-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.02834" target="_blank">https://arxiv.org/abs/2503.02834</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>MuBlE는 MuJoCo 물리 엔진과 Blender 렌더러를 결합한 로봇 조작 시뮬레이션 환경으로, 현실적인 시각 관찰과 정확한 물리 모델링을 동시에 제공하여 장기 과제 계획을 지원한다. SHOP-VRB2 벤치마크와 함께 시각-물리 속성을 모두 고려하는 다단계 추론 작업 평가를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MuBlE는 robosuite 기반으로 MuJoCo 물리 시뮬레이션 루프와 Blender 렌더링을 분리하여 두 수준의 상호작용(시각-행동 루프, 제어-물리 루프)을 지원한다. SHOP-VRB2는 10가지 다단계 추론 시나리오로 구성되어 시각적, 물리적 측정을 모두 요구한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>MuBlE 환경</strong>: robosuite 기반 모듈식 설계로 높은 품질의 Blender 렌더링과 MuJoCo의 정확한 물리 시뮬레이션을 통합하며, 비시각 속성(무게, 강성)을 포함한 multimodal 데이터 생성 지원</li>
 <li><strong>SHOP-VRB2 벤치마크</strong>: 12,000개 장면과 10가지 조작 과제로 시각 속성 및 물리 측정을 모두 고려하는 폐쇄 루프 추론 평가 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>설계 유연성</strong>: 연속/이산 행동 공간 모두 지원하고 원시 행동 제어기(approach, gripper closing, lifting 등) 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>MuJoCo를 이용한 정확한 강체 동역학 및 관절 시스템 물리 시뮬레이션</li>
 <li>Blender를 통한 절차적 재료 생성 및 포토리얼리스틱 이미지 렌더링</li>

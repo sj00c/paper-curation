@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Harini Narayanan, Joshua A. Hinckley, Rachel Barry, Brendan Dang, Lenna A. Wolffe, Adel Atari, Yuen-Yi Tseng, J. Christopher Love | <strong>날짜</strong>: 2025-07-01 | <strong>DOI</strong>: <a href="https://doi.org/10.1038/s41467-025-61113-5" target="_blank">10.1038/s41467-025-61113-5</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1 | Workﬂow. Schematic representation of the Bayesian Optimization (BO)-based iterative experimental design workﬂow</em></p></div>
 <p>베이지안 최적화(Bayesian Optimization) 기반의 반복적 실험 설계 프레임워크를 적용하여 세포 배양 배지 개발을 가속화했으며, PBMC 배양과 K. phaffii의 재조합 단백질 생산 최적화에서 기존 방법 대비 3-30배 적은 실험으로 우수한 결과를 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 가우시안 프로세스(Gaussian Process) 기반 확률적 서로게이트 모델과 베이지안 최적화기를 결합하여 반복적 실험 설계 프레임워크를 구축했으며, 초기 실험 세트로 GP 모델을 구성하고 각 반복에서 탐색-활용 균형을 맞추며 모델을 지속적으로 업데이트한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2 | Media blend and cytokine composition optimization PBMC cultures.</em></p></div>
 <ul>
 <li><strong>PBMC 배양 배지 최적화</strong>: 세포 생존력 유지와 표현형 분포 안정성을 위한 사이토카인 보충 배지 조성을 도출하여 72시간까지 세포 배양 가능</li>
 <li><strong>K. phaffii 재조합 단백질 생산</strong>: 3개의 재조합 단백질 생산을 최적화하는 배지 조건을 발견하여 표준 배지 대비 향상된 성능 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>복합 설계 공간 처리</strong>: 연속 변수와 범주형 변수, 제약 조건이 혼재된 복잡한 설계 공간을 효율적으로 처리</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1 | Workﬂow. Schematic representation of the Bayesian Optimization (BO)-based iterative experimental design workﬂow</em></p></div>
 <ul>
 <li>가우시안 프로세스(GP)를 확률적 서로게이트 모델로 사용하여 생물학적 시스템의 부드러운 응답 함수 학습</li>
 <li>GP에 사전 신념(prior beliefs)과 공정 잡음(process noise)을 명시적으로 포함하여 생물학적 불확실성 반영</li>

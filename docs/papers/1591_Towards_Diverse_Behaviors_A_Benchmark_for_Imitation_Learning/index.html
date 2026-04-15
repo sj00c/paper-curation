@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiaogang Jia, Denis Blessing, Xinkai Jiang, Moritz Reuss, Atalay Donat, Rudolf Lioutikov, Gerhard Neumann | <strong>날짜</strong>: 2024-02-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2402.14606" target="_blank">https://arxiv.org/abs/2402.14606</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: D3IL Visualizations. This figure provides an overview of various tasks and behaviors</em></p></div>
 <p>이 논문은 인간의 행동 다양성을 학습할 수 있는 imitation learning 알고리즘을 평가하기 위해 D3IL이라는 벤치마크 데이터셋과 환경을 제안하고, 다중 모드 행동의 다양성을 정량화하는 메트릭을 도입한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 다중 서브태스크, 다중 객체 조작, closed-loop feedback이 필요한 시뮬레이션 환경들을 설계하고, behavior entropy 메트릭으로 행동 다양성을 정량화한 후 최신 imitation learning 방법들을 체계적으로 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: D3IL Visualizations. This figure provides an overview of various tasks and behaviors</em></p></div>
 <ul>
 <li><strong>D3IL 벤치마크 제안</strong>: 인간의 다양한 행동 시연을 포함하며 multiple sub-tasks, multiple objects, closed-loop feedback 요구사항을 모두 만족하는 시뮬레이션 환경 및 데이터셋 구축</li>
 <li><strong>행동 다양성 정량화 메트릭</strong>: behavior entropy를 통해 학습된 정책이 다중 모드 행동 분포를 얼마나 잘 캡처했는지 객관적으로 측정할 수 있는 방법 제시</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실증적 인사이트</strong>: state vs. image observations, 작은 데이터셋에서의 성능, 하이퍼파라미터 효과 등 실무적으로 중요한 결과 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Initial State Space. The initial state s0 consists of the</em></p></div>
 <ul>
 <li>Behavior descriptor β를 task-specific하게 정의하여 discrete behavior level에서의 multimodality 평가</li>
 <li>Behavior entropy H(π(β)) = -Σ π(β) log|B| π(β) 메트릭으로 정책의 행동 다양성 정량화</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chenhao Lu, Xuxin Cheng, Jialong Li, Shiqi Yang, Mazeyu Ji, Chengjing Yuan, Ge Yang, Sha Yi, Xiaolong Wang | <strong>날짜</strong>: 2024-12-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.07773" target="_blank">https://arxiv.org/abs/2412.07773</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The training pipeline consists of three stages: (a) preprocessing of the motion dataset by mapping local rotatio</em></p></div>
 <p>휴머노이드 로봇의 전신 제어를 위해 상체 조작과 하체 보행을 분리하고, CVAE 기반 Predictive Motion Priors (PMP)를 사용하여 상체의 정밀한 조작과 하체의 강건한 보행을 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 상체 제어를 역기구학과 모션 리타게팅으로 처리하고, 하체 보행을 RL로 학습하되, CVAE를 통해 상체 모션의 미래 정보를 잠재 표현으로 인코딩하여 하체 정책의 관찰값으로 제공함으로써 상하체 분리와 통합을 동시에 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid robot doing whole-body tasks that require both precise manipulation and robust locomotion. The robot</em></p></div>
 <ul>
 <li><strong>분리된 제어 구조의 안정성</strong>: CVAE 기반 motion prior를 하체 정책에 제공함으로써 완전 분리의 불안정성을 해소하면서도 상체 정밀성 유지</li>
 <li><strong>높은 자유도 조작</strong>: 7 DoF 팔로 GR1, Unitree H1에서 정밀한 조작 수행 (기존 방법은 4-5 DoF)</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실세계 배포</strong>: 시뮬레이션에서의 성능이 실제 로봇(Unitree H1)에 직접 전이 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The training pipeline consists of three stages: (a) preprocessing of the motion dataset by mapping local rotatio</em></p></div>
 <ul>
 <li><strong>Stage 1 (데이터 전처리)</strong>: 인간 모션 데이터셋에 대해 로컬 로테이션 매핑을 적용하여 로봇 관절 각도로 변환 및 리타게팅</li>
 <li><strong>Stage 2 (Motion Prior 학습)</strong>: CVAE 아키텍처로 과거 상체 모션 M₀ₜ(t-W~t-1)으로부터 미래 모션 M₁ₜ(t~t+W-1) 예측, 잠재 벡터 zₜ ∈ ℝ⁶⁴ 학습</li>

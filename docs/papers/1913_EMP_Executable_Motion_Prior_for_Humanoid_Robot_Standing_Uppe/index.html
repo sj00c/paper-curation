@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haocheng Xu, Haodong Zhang, Zhenghan Chen, Rong Xiong | <strong>날짜</strong>: 2025-07-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.15649" target="_blank">https://arxiv.org/abs/2507.15649</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our framework. Motion Retargeting (section III): We train a graph convolution retargeting network to</em></p></div>
 <p>휴머노이드 로봇이 서 있는 자세를 유지하면서 인간의 상체 동작을 모방하기 위해 강화학습과 Executable Motion Prior(EMP) 모듈을 결합한 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion retargeting network로 대규모 상체 동작 데이터셋을 생성하고, RL 정책으로 하체 제어를 담당하면서 EMP 모듈이 로봇의 현재 상태에 기반하여 상체 목표 동작을 최적화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Simulation experiments (left motion: hammer use, right motion: lightbulb screw). The results show that while exe</em></p></div>
 <ul>
 <li><strong>Motion Retargeting Network</strong>: Graph convolutional network와 VQ-VAE를 기반으로 한 구조로 인간 동작을 휴머노이드 동작으로 효과적으로 변환</li>
 <li><strong>Executable Motion Prior(EMP) 모듈</strong>: 로봇의 현재 상태를 인코딩하여 불안정한 동작을 안정적인 동작으로 변환하면서 동작 진폭의 변화를 최소화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Sim-to-Real 전이</strong>: 시뮬레이션에서 훈련된 정책을 두 종류의 실제 휴머노이드 로봇에 성공적으로 배포</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our framework. Motion Retargeting (section III): We train a graph convolution retargeting network to</em></p></div>
 <ul>
 <li>Human skeleton과 humanoid skeleton을 그래프로 표현하고 graph convolutional layer를 통해 motion encoding 수행</li>
 <li>VQ codebook layer를 사용하여 latent space에서 이산화된 동작 표현 생성</li>

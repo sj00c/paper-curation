@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yixuan Pan, Ruoyi Qiao, Li Chen, Kashyap Chitta, Liang Pan, Haoguang Mai, Qingwen Bu, Hao Zhao, Cunyuan Zheng, Ping Luo, Hongyang Li | <strong>날짜</strong>: 2026-03-03 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.17373" target="_blank">10.48550/arXiv.2511.17373</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of AMS. (a) The general whole-body tracking pipeline retargets human MoCap data to reference motions</em></p></div>
 <p>AMS는 휴먼 모션캡처 데이터와 합성 밸런스 데이터를 결합하여 단일 정책으로 민첩한 동작과 극한의 밸런스 유지를 동시에 수행할 수 있는 휴머노이드 제어 프레임워크다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 이질적 데이터 소스(인간 MoCap 데이터와 물리적으로 제약된 합성 밸런스 모션)를 활용하고, 일반 추적 보상과 밸런스 특화 보상으로 구성된 하이브리드 보상 스킴, 그리고 적응형 학습 전략(성능 기반 샘플링 및 모션별 보상 형성)을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Introducing AMS (Agility Meets Stability), one single policy that performs diverse motions with stability and ag</em></p></div>
 <ul>
 <li><strong>이질적 데이터 활용</strong>: 휴먼 모션캡처의 다양성과 합성 밸런스 데이터의 물리적 정확성을 결합하여 장꼬리 분포 문제 해결</li>
 <li><strong>하이브리드 보상 체계</strong>: 모든 데이터에 일반 추적 목표를 적용하면서 합성 모션에만 밸런스 특화 사전 지식을 주입하여 상충하는 최적화 목표 조화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: Unitree G1 휴머노이드에서 춤, 달리기 등의 민첩한 동작과 Ip Man's Squat 같은 제로샷 극한 밸런스 동작 모두 성공적으로 실행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of AMS. (a) The general whole-body tracking pipeline retargets human MoCap data to reference motions</em></p></div>
 <ul>
 <li>Teacher-student 기반 강화학습 파이프라인으로 일반적인 전신 추적(whole-body tracking) 구현</li>
 <li>특정 밸런스 포즈의 CenterOfMass를 생성기로 샘플링하여 물리적으로 실현 가능한 합성 밸런스 모션 데이터 생성</li>

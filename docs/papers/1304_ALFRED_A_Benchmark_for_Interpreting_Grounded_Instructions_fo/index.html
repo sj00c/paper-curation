@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mohit Shridhar, Jesse Thomason, Daniel Gordon, Yonatan Bisk, Winson Han, Roozbeh Mottaghi, Luke Zettlemoyer, Dieter Fox | <strong>날짜</strong>: 2019-12-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/1912.01734" target="_blank">https://arxiv.org/abs/1912.01734</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: ALFRED consists of 25k language directives</em></p></div>
 <p>ALFRED는 자연어 지시사항과 egocentric vision에서 가정용 작업을 위한 action sequence로의 매핑을 학습하기 위한 벤치마크로, 25k개의 자연어 지시문과 비가역적 상태 변화를 포함하여 실제 로봇 응용과의 간극을 줄인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: AI2-THOR 2.0 환경에서 planner 기반 expert demonstration을 수집하고, 각 demonstration에 고수준 목표와 저수준 step-by-step instruction을 포함한 자연언어 주석을 붙인다. 객체 상호작용을 pixelwise interaction mask로 표현하여 현실적인 localization을 요구한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: ALFRED annotations. We introduce 7 different task types parameterized by 84 object classes in 120 scenes.</em></p></div>
 <ul>
 <li><strong>규모와 다양성</strong>: 120개 실내 장면에서 25,743개 영어 지시문과 8,055개 expert demonstration (총 428,322개 image-action pair) 구성</li>
 <li><strong>언어 다양성</strong>: 각 task에 대해 고수준 목표와 저수준 단계별 지시사항을 모두 포함</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>벤치마크 설정</strong>: Baseline seq-to-seq 모델이 5% 미만의 success rate를 보여 significant improvement 여지 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: ALFRED annotations. We introduce 7 different task types parameterized by 84 object classes in 120 scenes.</em></p></div>
 <ul>
 <li>AI2-THOR 2.0의 interactive visual environment에서 planner 기반으로 expert demonstration 생성</li>
 <li>각 demonstration에 대해 crowdsourced annotation으로 고수준 목표와 저수준 step-by-step instruction 작성</li>

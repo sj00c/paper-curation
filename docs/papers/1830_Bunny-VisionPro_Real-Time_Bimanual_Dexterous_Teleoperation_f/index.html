@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Runyu Ding, Yuzhe Qin, Jiyue Zhu, Chengzhe Jia, Shiqi Yang, Ruihan Yang, Xiaojuan Qi, Xiaolong Wang | <strong>날짜</strong>: 2024-07-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2407.03162" target="_blank">https://arxiv.org/abs/2407.03162</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: System Overview and Task Suits. (a) Hand poses captured by Apple Vision Pro are con-</em></p></div>
 <p>Apple Vision Pro의 손 추적 기능을 활용하여 양손 민첩한 조작이 가능한 실시간 텔레오퍼레이션 시스템 Bunny-VisionPro를 제시하며, 저비용 햅틱 피드백과 충돌/특이점 회피를 통해 모방 학습용 고품질 시연 데이터를 수집한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Vision Pro의 손/손목 포즈 추적을 활용하여 손가락 움직임을 로봇 관절로 변환하는 retargeting 모듈, arm 특이점 및 충돌 회피 모듈, 저비용 ERM 액튜에이터 기반 햅틱 피드백 모듈을 독립적으로 설계하여 실시간 처리를 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: System Overview and Task Suits. (a) Hand poses captured by Apple Vision Pro are con-</em></p></div>
 <ul>
 <li><strong>성능 우수성</strong>: Telekinesis 벤치마크에서 기존 시스템 대비 11% 높은 성공률 달성 및 작업 완료 시간 45% 단축</li>
 <li><strong>모방 학습 개선</strong>: 수집된 고품질 시연으로 학습한 정책이 새로운 포즈/미숙한 객체에 대해 20% 향상된 일반화 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실시간 특수 기능</strong>: Loop joint retargeting을 1개 CPU 코어로 300Hz 처리, GPU 없이 arm collision/singularity avoidance 실시간 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Teleoperation System. The operator controls the robot hand and arm using finger and</em></p></div>
 <ul>
 <li>Hand motion retargeting: 인간 손가락 키포인트와 로봇 손 forward kinematics 간 거리 최소화 및 joint 변화율 정규화를 통해 fingertip keypoint 벡터 매핑</li>
 <li>Arm motion control: Sphere modeling을 통한 효율적 충돌 감지 및 Jacobian 기반 특이점 회피로 실시간 arm 제어</li>

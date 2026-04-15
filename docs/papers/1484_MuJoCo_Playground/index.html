@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kevin Zakka, Baruch Tabanpour, Qiayuan Liao, Mustafa Haiderbhai, Samuel Holt, Jing Yuan Luo, Arthur Allshire, Erik Frey, Koushil Sreenath, Lueder A. Kahrs, Carmelo Sferrazza, Yuval Tassa, Pieter Abbeel | <strong>날짜</strong>: 2025-02-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.08844" target="_blank">https://arxiv.org/abs/2502.08844</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <p>MuJoCo Playground는 MJX 기반의 오픈소스 로봇 학습 프레임워크로, GPU에서 빠른 정책 훈련과 다양한 로봇 플랫폼으로의 제로샷 sim-to-real 전이를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MJX 물리 엔진, Madrona 배치 렌더러, 그리고 통합된 훈련 환경을 결합한 완전한 오픈소스 스택을 구현하여, 단일 GPU에서 다양한 로봇 플랫폼의 정책을 빠르게 훈련하고 전이할 수 있도록 설계했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: A preview of locomotion and manipulation environments available in MuJoCo Playground.</em></p></div>
 <ul>
 <li><strong>포괄적인 환경 스위트</strong>: DM Control Suite, 로코모션(사족 및 이족 로봇), 조작(손가락 및 팔 로봇) 등 다양한 카테고리의 환경 구현</li>
 <li><strong>시각 기반 정책 훈련</strong>: Madrona 배치 렌더러를 MJX와 통합하여 GPU에서 end-to-end 비전 기반 정책 훈련 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>완전 재현 가능성</strong>: 노트북, 하이퍼파라미터, 훈련 곡선이 포함된 완전한 오픈소스 파이프라인 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Sample renders from the Madrona batch renderer for the</em></p></div>
 <ul>
 <li>MJX를 기반으로 GPU 가속 물리 엔진을 구현하여 병렬 처리 및 고속 시뮬레이션 실현</li>
 <li>JAX 원시 요소를 통해 Madrona 렌더러를 MJX와 통합하여 jit 및 vmap 변환과 호환되도록 설계</li>

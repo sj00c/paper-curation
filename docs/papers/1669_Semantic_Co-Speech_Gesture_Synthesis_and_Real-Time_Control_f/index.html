@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gang Zhang | <strong>날짜</strong>: 2025-12-19 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2512.17183" target="_blank">10.48550/arXiv.2512.17183</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: System Overview: Training and Inference Pipeline.</em></p></div>
 <p>이 연구는 음성 입력으로부터 의미론적으로 적절한 제스처를 생성하고 실시간으로 휴머노이드 로봇에 배포하는 end-to-end 프레임워크를 제시한다. LLM과 Motion-GPT를 활용한 제스처 생성과 imitation learning 기반의 MotionTracker 제어 정책을 통합하여 의미 있는 비언어적 소통을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: General Motion Retargeting (GMR)으로 human motion을 로봇에 맞추고, Residual VQ-VAE와 Motion-GPT를 통해 의미론적 제스처를 생성한 후, imitation learning 기반의 MotionTracker로 실시간 추적 제어를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Comparison of Original vs. Reconstructed G1 Mo-</em></p></div>
 <ul>
 <li><strong>완전한 end-to-end 파이프라인</strong>: 음성 입력부터 실제 로봇 배포까지 의미론적 co-speech gesture 생성을 자동화하고 실시간 동기화 실행</li>
 <li><strong>GMR 기반 motion retargeting</strong>: 인간 skeleton에서 로봇 morphology로 고충실도 동작 변환을 통해 embodiment gap 해결</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>의미론적 정확성 입증</strong>: LLM 기반 retrieval mechanism과 Motion-GPT의 조합으로 의미론적으로 적절하고 리듬감 있는 제스처 생성 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: System Overview: Training and Inference Pipeline.</em></p></div>
 <ul>
 <li>Motion Retargeting: key body matching, non-uniform local scaling, 두 단계의 differential IK optimization으로 BVH motion을 Unitree G1의 29 DoF에 맞춤</li>
 <li>Motion Codebook Training: Residual VQ-VAE로 motion sequence를 hierarchical discrete latent space로 인코딩하여 motion token 생성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Bolin Li, Yuzhi Jiang, Linwei Sun, Xuecong Huang, Lijun Zhu, Han Ding | <strong>날짜</strong>: 2025-06-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.08416" target="_blank">https://arxiv.org/abs/2506.08416</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: A real-time-gait-driven training framework.</em></p></div>
 <p>본 논문은 humanoid robot의 bipedal gait 학습을 위해 실시간 gait planner와 structured reward composition을 결합한 reinforcement learning framework를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D humanoid model을 두 개의 2D subsystem으로 decoupling하여 H-LIP 모델로 근사화하는 dynamic-aware gait planner를 설계하고, periodicity enforcement, trajectory tracking, time efficiency를 결합한 structured reward composition으로 policy learning을 유도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: A real-time-gait-driven training framework.</em></p></div>
 <ul>
 <li><strong>Dynamical decoupling 전략</strong>: 3D humanoid motion을 계산 가능한 2D H-LIP 근사로 단순화하여 balance와 kinematic constraints 하에서 feasible reference trajectory 생성</li>
 <li><strong>Multi-objective reward design</strong>: Periodic, time-efficient, tracking-consistent gaits를 명시적으로 촉진하는 reward composition이 local optima와 erratic behavior 같은 RL 문제 해결</li>
 <li><strong>Superior learning efficiency</strong>: Simulation 환경에서 baseline 방법 대비 우수한 학습 효율성과 locomotion quality 달성, 실제 humanoid platform 배포 가능성 시사</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Decouple model from the mechanical structure.</em></p></div>
 <ul>
 <li>Humanoid robot을 mass가 무시할 수 있는 upper body를 rigid body로 가정하여 X-axis 5-link 모델과 Y-axis 3-link 모델로 decoupling</li>
 <li>각 decoupled model을 H-LIP (hybrid inverted pendulum) model로 근사화: SSP(single support phase)에서는 passive LIP, DSP(double support phase)는 instantaneous로 가정</li>

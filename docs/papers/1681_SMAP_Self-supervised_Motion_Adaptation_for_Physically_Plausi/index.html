@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoyu Zhao, Sixu Lin, Qingwei Ben, Minyue Dai, Hao Fei, Jingbo Wang, Hua Zou, Junting Dong | <strong>날짜</strong>: 2025-05-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.19463" target="_blank">https://arxiv.org/abs/2505.19463</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Pipeline of SMAP</em></p></div>
 <p>본 논문은 인간 모션과 휴머노이드 로봇의 이질적 행동 공간 간 차이를 해결하기 위해 Vector-Quantized Periodic Autoencoder 기반의 Humanoid-Adapter를 제안하여 인간 모션을 물리적으로 타당한 로봇 모션으로 적응시키고, Teacher-Student 증류 학습을 통해 안정적인 전신 제어 정책을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Humanoid-Adapter라는 Vector-Quantized Periodic Autoencoder를 사용하여 공유 코드북에 인간 모션을 인코딩하고 로봇 행동 공간으로 디코딩함으로써 원자적 행동 단위를 학습한다. 이어 Privileged Teacher 정책으로부터 Student 정책으로 지식을 증류하며, 상체와 하체를 분리하는 디커플된 보상을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Qualitative results on the H1 robot in simulation.</em></p></div>
 <ul>
 <li><strong>Humanoid-Adapter 설계</strong>: Vector-Quantized Periodic Autoencoder를 기반으로 인간과 휴머노이드 로봇 모션의 공유 위상 다양체(phase manifold)를 학습하고, 의미론적으로 유사한 행동들을 자동으로 군집화한다.</li>
 <li><strong>물리적 타당성 확보</strong>: 적응된 모션을 모방 목표로 사용함으로써 학습 수렴 속도를 가속화하고 새로운/도전적 모션 처리 시 안정성을 향상시킨다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: Unitree H1 로봇의 시뮬레이션 및 실제 환경 실험에서 SOTA 방법 대비 우수한 안정성과 성능을 입증한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Humanoid-Adapter. To align heterogeneous</em></p></div>
 <ul>
 <li>Periodic Autoencoder 아키텍처를 기반으로 위상 정렬(phase alignment)을 수행하여 주기적 모션의 구조를 캡처한다.</li>
 <li>Vector Quantization을 통해 인간과 로봇 모션을 공유 코드북으로 매핑하여 이산적 의미 단위를 학습한다.</li>

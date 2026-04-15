@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhenguo Sun, Bo-Sheng Huang, Yibo Peng, Xukun Li, Jingyu Ma, Yu Sun, Zhe Li, Haojun Jiang, Biao Gao, Zhenshan Bing, Xinlong Wang, Alois Knoll | <strong>날짜</strong>: 2026-02-11 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.08594" target="_blank">10.48550/arXiv.2602.08594</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: MOSAIC System Overview. MOSAIC consists of a unified training–deployment pipeline for humanoid motion tracking</em></p></div>
 <p>MOSAIC는 강화학습을 통해 학습한 범용 humanoid 동작 추적기와 빠른 residual 적응 메커니즘을 결합하여 시뮬레이션과 실제 로봇 간의 gap을 줄이고 장시간의 텔레오퍼레이션을 안정적으로 지원하는 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 먼저 multi-source motion bank와 adaptive resampling, world-frame motion consistency를 강조하는 보상 설계를 통해 RL로 범용 motion tracker를 학습하고, 이후 소량의 interface-specific 데이터로 학습한 적응 정책을 residual 모듈로 범용 tracker에 distill하여 빠른 interface 적응을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Quantitative Comparison and Ablation Studies</em></p></div>
 <ul>
 <li><strong>MOSAIC 시스템</strong>: 오프라인 motion replay와 온라인 다중 interface 텔레오퍼레이션을 지원하는 통합 humanoid motion tracking 시스템으로, 실제 로봇에서 분당 단위의 robust한 tracking 성능을 달성했다.</li>
 <li><strong>Residual adaptation 메커니즘</strong>: 일반 tracker에 소량의 interface-specific 데이터(약 30분)만으로 새로운 interface에 빠르게 적응하며, naive fine-tuning이나 continual learning보다 우수한 성능을 제공한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>공개 리소스 및 실증</strong>: 학습 및 배포 파이프라인, 고품질 motion dataset, trained checkpoint와 함께 광범위한 ablation study와 실제 로봇 실험 결과를 공개했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: MOSAIC System Overview. MOSAIC consists of a unified training–deployment pipeline for humanoid motion tracking</em></p></div>
 <ul>
 <li>Multi-source motion bank에서 동작을 수집하고 two-level adaptive resampling을 적용하여 dataset 불균형을 완화</li>
 <li>RL 보상 함수를 설계하여 전체 신체 pose tracking과 함께 world-frame motion consistency(body position, global motion 추적)를 명시적으로 강조</li>

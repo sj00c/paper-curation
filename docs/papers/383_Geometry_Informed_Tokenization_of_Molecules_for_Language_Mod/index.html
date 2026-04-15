@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiner Li, Limei Wang, Youzhi Luo, Carl N. Edwards, Shurui Gui | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2408.10120" target="_blank">10.48550/arXiv.2408.10120</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Geo2Seq 개요: 정규 표준화 라벨링 순서로 노드를 배열하고 각 노드에 원자 종류와 구면 좌표를 벡터 형태로 채워 수열로 변환</em></p></div>
 <p>본 논문은 3D 분자 구조를 SE(3)-불변(invariant) 1D 이산 수열로 변환하는 Geo2Seq 토큰화 방법을 제안하여, 언어 모델(LM)이 3D 분자 생성 태스크를 효과적으로 수행할 수 있도록 한다. 기존의 확산 모델 기반 방법론보다 빠르면서도 더 나은 조건부 생성 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,18 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 분자의 3D 좌표를 SE(3)-불변 구면 좌표(spherical coordinates)로 변환하고, 정규 표준화 라벨링(canonical labeling)을 통해 순서를 결정하여 1D 이산 수열로 인코딩한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>편극율(Polarizability α) 조건으로 생성된 분자의 시각화</em></p></div>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>QM9 데이터셋에서 Geo2Seq + Mamba로 생성된 분자의 시각화</em></p></div>
 <ol>
 <li><strong>생성 품질 및 다양성</strong>: Geo2Seq을 다양한 언어 모델(Transformer, Mamba 등 SSM)과 결합하여 화학적으로 유효하고 다양한 3D 분자를 신뢰성 있게 생성할 수 있음을 입증</li>
 <li><strong>조건부 생성 성능</strong>: 조건부 생성(conditional generation) 태스크에서 강력한 확산 모델 기저선(EDM 등)을 큰 차이로 초과 달성</li>
 <li><strong>효율성</strong>: 확산 모델 대비 훨씬 빠른 생성 속도(자동회귀 디코딩)를 유지하면서 더 나은 성능 제공</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Geo2Seq의 핵심 단계: 정규 표준화 라벨링, 구면 좌표 표현, 토큰화, 수열 생성</em></p></div>
 <ul>
 <li><strong>정규 표준화 라벨링(Canonical Labeling)</strong>: 그래프 동형(isomorphism)을 제외한 정보 손실 없이 분자 그래프의 노드를 고정된 순서로 배열</li>
 <li><strong>구면 좌표 표현</strong>: 각 원자를 <code>[z_i, d_i, θ_i, φ_i]</code>로 표현 (z_i: 원자번호, d_i: 거리, θ_i, φ_i: 각도)

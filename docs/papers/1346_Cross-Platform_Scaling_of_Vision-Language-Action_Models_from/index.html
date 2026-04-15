@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Amir Taherin, Juyi Lin, Arash Akbari, Arman Akbari, Pu Zhao, Weiwei Chen, David Kaeli, Yanzhi Wang | <strong>날짜</strong>: 2025-09-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.11480" target="_blank">https://arxiv.org/abs/2509.11480</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Peak VRAM usage for each evaluated VLA model</em></p></div>
 <p>Vision-Language-Action (VLA) 모델의 성능을 엣지 디바이스부터 데이터센터 GPU까지 다양한 하드웨어 플랫폼에서 체계적으로 평가하여, 아키텍처와 하드웨어 제약 조건에 따른 정확도, 레이턴시, 처리량, 메모리 사용량의 확장 추이를 밝혀낸다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LIBERO 벤치마크를 사용하여 5개의 대표적인 VLA 모델(OpenVLA, SpatialVLA, OpenVLA-OFT, QwenVLA, VOTE 포함 2개의 새로운 아키텍처)을 Jetson AGX Orin 엣지 디바이스(다양한 전력 모드)와 H100, A100, A6000, V100 데이터센터 GPU에서 평가한다. 정확도와 함께 레이턴시, 처리량, 피크 메모리 사용량 등 시스템 레벨 메트릭을 측정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Peak VRAM usage for each evaluated VLA model</em></p></div>
 <ul>
 <li><strong>아키텍처 영향</strong>: Action tokenization과 모델 backbone 크기 같은 아키텍처 선택이 처리량과 메모리 풋프린트에 강하게 영향을 미침을 확인</li>
 <li><strong>엣지 디바이스의 비선형 성능 저하</strong>: 전력 제약이 있는 엣지 디바이스에서 성능이 비선형적으로 저하되지만, 일부 구성이 구형 데이터센터 GPU와 동등하거나 초과하는 성능을 보임</li>

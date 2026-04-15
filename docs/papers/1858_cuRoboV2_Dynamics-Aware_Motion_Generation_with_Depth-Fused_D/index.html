@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Balakumar Sundaralingam, Adithyavairavan Murali, Stan Birchfield | <strong>날짜</strong>: 2026-03-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.05493" target="_blank">https://arxiv.org/abs/2603.05493</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Trajectory optimization loop. Each iteration evaluates B-spline waypoints, computes kinemat-</em></p></div>
 <p>cuRoboV2는 B-spline 궤적 최적화, GPU 기반 TSDF/ESDF 인식 파이프라인, 확장 가능한 고자유도 로봇 계산을 통합하여 조작기부터 인형로봇까지 안전하고 동역학 인식적인 운동 생성을 제공하는 통합 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: B-spline 제어점 최적화로 부드러움과 토크 제약을 자동 보장하고, 블록-희소 TSDF를 밀집 ESDF로 변환하는 GPU 네이티브 인식 파이프라인을 구축하며, 위상 인식 운동학, 미분 가능한 역동역학, 맵-리듀스 자충돌 검사로 고자유도 확장성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: TSDF-ESDF pipeline. Depth images are fused into a block-sparse TSDF via voxel-centric projec-</em></p></div>
 <ul>
 <li><strong>B-spline 궤적 최적화</strong>: 제어점 최적화를 통해 부드러움과 토크 제약을 자동으로 보장하여 동역학 인식적 계획과 비정적 경계 조건의 반응형 제어를 통합</li>
 <li><strong>GPU 네이티브 인식 파이프라인</strong>: 블록-희소 TSDF를 밀집 ESDF로 변환하여 작업공간 전역에 대한 O(1) 거리 쿼리 제공, nvblox 대비 10배 빠르고 8배 메모리 절감, 99% 충돌 감지율</li>

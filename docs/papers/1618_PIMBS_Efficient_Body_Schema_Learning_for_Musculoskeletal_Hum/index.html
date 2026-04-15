@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kento Kawaharazuka, Takahiro Hattori, Keita Yoneda, Kei Okada | <strong>날짜</strong>: 2025-06-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.20343" target="_blank">https://arxiv.org/abs/2506.20343</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>Physics-Informed Neural Networks (PINNs) 개념을 적용하여 근골격 휴머노이드 로봇의 신체 스키마를 적은 데이터로 효율적으로 학습하는 PIMBS 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 물리 법칙(토크와 근육 긴장의 관계: τ = −G^T(θ)f)을 손실 함수에 제약 조건으로 통합하여 neural network 기반 신체 스키마 학습을 강화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4.</em></p></div>
 <ul>
 <li><strong>PIMBS 방법 제안</strong>: 물리 법칙 기반 제약을 neural network 학습에 통합하여 적은 데이터로도 높은 정확도 달성</li>
 <li><strong>이중 손실 함수</strong>: 기본 MSE 손실(L_basic)과 물리 제약 손실(L_pinn)을 결합하여 차분 정보 활용</li>
 <li><strong>시뮬레이션 및 실제 로봇 검증</strong>: 시뮬레이션된 근골격 구조와 실제 근골격 휴머노이드에서 모두 유효성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4.</em></p></div>
 <ul>
 <li>신체 스키마를 관절각 θ (또는 θ와 근육 긴장 f)를 입력으로 근육 길이 l을 출력하는 neural network h(θ) 또는 h(θ, f)로 모델링</li>
 <li>기본 학습 손실 L_basic = MSE(l_pred, l_data)로 측정된 데이터의 재구성 오류 최소화</li>

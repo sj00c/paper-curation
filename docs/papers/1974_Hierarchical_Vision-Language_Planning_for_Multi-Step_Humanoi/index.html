@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: André Schakkal, Ben Zandonati, Zhutian Yang, Navid Azizan | <strong>날짜</strong>: 2025-06-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.22827" target="_blank">https://arxiv.org/abs/2506.22827</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed hierarchical framework for autonomous multi-step humanoid manipulation. The system</em></p></div>
 <p>인간형 로봇의 복잡한 다단계 조작 작업을 위해 저수준 RL 추적 제어기, 중수준 모방학습 기반 스킬 정책, 고수준 VLM 기반 계획 및 모니터링으로 구성된 3계층 계층적 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM 기반 플래너가 텍스트 및 시각 입력으로부터 IL 스킬 시퀀스를 생성하고, VLM 기반 모니터가 실시간 시각 피드백으로 스킬 완료를 검증하는 고수준 계획 모듈을 2계층 humanoid 제어 스택 위에 추가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our hierarchical humanoid manipulation system autonomously executes a multi-step rearrangement task. The robot f</em></p></div>
 <ul>
 <li><strong>3계층 계층적 제어 구조</strong>: 저수준 RL 기반 tracking policy (PPO), 중수준 imitation learning 기반 skill policies, 고수준 VLM 기반 planning 및 monitoring을 통합</li>
 <li><strong>VLM 기반 자율 스킬 관리</strong>: pretrained vision-language models를 활용하여 다단계 작업에서 실시간으로 스킬을 선택하고 완료 여부를 검증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>해석 가능한 계획</strong>: VLM 기반 접근이 end-to-end 모델보다 높은 해석 가능성과 구조화된 스킬 분해를 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed hierarchical framework for autonomous multi-step humanoid manipulation. The system</em></p></div>
 <ul>
 <li><strong>저수준 tracking policy</strong>: 전신 모션 목표(root motion goal + expression goal)를 입력받아 joint commands를 생성하는 PPO 기반 RL 정책으로, 200 Hz 주기로 실행</li>
 <li><strong>중수준 IL 스킬 정책</strong>: 인간 텔레오퍼레이션 데이터로부터 학습된 여러 skill policies가 egocentric visual observations와 proprioceptive states를 입력받아 target joint angles를 생성 (25 Hz)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Anthony Liang, Pavel Czempin, Matthew Hong, Yutai Zhou, Erdem Biyik, Stephen Tu | <strong>날짜</strong>: 2025-05-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.04999" target="_blank">https://arxiv.org/abs/2505.04999</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of CLAM. CLAM consists of a latent inverse dynamics model, fϕ, which in-</em></p></div>
 <p>CLAM은 라벨이 없는 관찰 데이터로부터 로봇 정책을 학습하기 위해 continuous latent action space를 사용하며, action decoder를 jointly training하여 실제 환경 액션으로의 grounding을 보장하는 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CLAM은 latent inverse/forward dynamics models를 self-supervised objective로 pretrain하고, continuous latent action space를 유지하면서 action decoder를 jointly training하여 non-expert play data만으로도 latent actions을 실제 액션으로 grounding할 수 있게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: MetaWorld Image-Based Experiments. Task success rate over 50 evaluation rollouts</em></p></div>
 <ul>
 <li><strong>Continuous latent actions</strong>: discrete representations 대신 continuous latent action space 사용으로 fine-grained robot control tasks에서 우월한 성능 달성</li>
 <li><strong>Joint training</strong>: latent action model과 action decoder의 joint training으로 downstream policy 성능이 2-3배 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Comprehensive evaluation</strong>: DMControl, MetaWorld 벤치마크 및 실제 WidowX robot arm에서 prior state-of-the-art methods 대비 2-3배 task success rate 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of CLAM. CLAM consists of a latent inverse dynamics model, fϕ, which in-</em></p></div>
 <ul>
 <li>Stage 1: Latent Action Model (LAM) pretraining - latent IDM과 latent FDM을 future observation reconstruction loss (L_recon)로 jointly train</li>
 <li>Information bottleneck을 통한 meaningful action representation 학습 - encoder/decoder 아키텍처로 shortcut solutions 방지</li>

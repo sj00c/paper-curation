@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-04-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2604.05697" target="_blank">https://arxiv.org/abs/2604.05697</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>오브젝트의 공간적으로 비균일한 기계적 성질을 고려한 force map 기반 파지 계획 파이프라인을 제안하여, 기하학적으로 동등한 파지 후보들 중 구조적으로 안전한 접촉 영역을 선택하고 손가락별 임피던스를 조절하는 접근법을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 자연언어 명령으로부터 출발하여 Qwen으로 태스크를 파싱하고, YOLO-World와 SAM으로 오브젝트를 감지·분할한 후 SAM3D로 3D 기하학을 복원한다. 이를 Isaac Sim에 임포트하여 국소 벽두께의 물리 기반 기하학적 근사를 통해 force map을 계산하고, 이를 파지 후보 재랭킹과 임피던스 제어에 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>Force map 구성 모듈</strong>: 재구성된 3D 오브젝트 모델에 대해 물리 기반 기하학적 근사를 통해 국소 벽두께로부터 공간 분포하는 허용 가능 접촉 하중을 추정하고, 각 표면 영역별 기계적으로 안전한 접촉 력의 상한을 제공한다.</li>
 <li><strong>물리 기반 파지 선택 기준</strong>: 고전적 다중 기준 랭킹(안정성, 도달가능성, 충돌회피)에 force-map-aware 재랭킹 단계를 확장하여, 기하학적으로 동등한 후보 중 접촉 영역이 기계적으로 가장 허용 가능한 것을 선택한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>전체 파이프라인 통합</strong>: 자연언어 명령에서 그립 실행까지 Isaac Sim에서 통합 구현되었으며, 종이컵, 플라스틱컵, 유리잔 3종 재료의 컵 형태 오브젝트에서 검증되었다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>Qwen LLM으로 자연언어 명령을 파싱하여 대상 오브젝트(O), 행동 유형(a), 상호작용 모드(λ) 추출</li>
 <li>YOLO-World로 오픈 어휘 오브젝트 감지 및 SAM으로 픽셀 정확 이진 마스크 생성</li>

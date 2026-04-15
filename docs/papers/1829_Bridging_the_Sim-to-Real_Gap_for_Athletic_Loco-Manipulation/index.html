@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nolan Fey, Gabriel B. Margolis, Martin Peticco, Pulkit Agrawal | <strong>날짜</strong>: 2025-02-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.10894" target="_blank">https://arxiv.org/abs/2502.10894</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Unsupervised Actuator Network (UAN) approach for real-to-sim-to-real. Our training pipeline involves three steps</em></p></div>
 <p>로봇의 운동 조작 작업에서 시뮬레이션-현실 간 격차를 줄이기 위해 실제 데이터로부터 액추에이터 동역학을 학습하는 Unsupervised Actuator Net (UAN)과 참조 궤적을 탐색 힌트로 활용하는 두 단계 학습 파이프라인을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: UAN을 통해 실제 로봇 데이터로부터 보정 토크를 학습하여 시뮬레이터를 정확하게 만들고, 사전학습된 전신 제어기(WBC)에서 참조 궤적으로 초기화한 후 작업 보상으로 미세조정하는 방식으로 탐색을 유도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Sim-to-real transfer of athletic loco-manipulation.</em></p></div>
 <ul>
 <li><strong>UAN 개발</strong>: 토크 센싱 없이 관절 인코더 측정만으로 액추에이터 동역학의 잔차 모델을 학습하여 시뮬레이션-현실 격차를 효과적으로 해소</li>
 <li><strong>두 단계 학습 파이프라인</strong>: 사전학습(기본 운동 기술 확보) → 미세조정(작업별 성능 최적화) 구조로 보상 해킹을 완화하고 탐색을 가속화</li>
 <li><strong>실제 운동 능력 구현</strong>: Unitree B2 사족 로봇 + Z1 Pro 팔 조합에서 공 던지기, 덤벨 스내치, 썰매 끌기 등 복잡한 전신 조작 작업의 현실 전이 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Unsupervised Actuator Network (UAN) approach for real-to-sim-to-real. Our training pipeline involves three steps</em></p></div>
 <ul>
 <li>UAN: 2계층 MLP [128, 128] 아키텍처로 과거 20 타임스텝(100ms)의 위치/속도 오차를 관찰하고 보정 토크 δτ를 출력</li>
 <li>UAN 훈련: 실제 로봇 롤아웃 데이터에서 시뮬레이션 전이와 실제 전이의 불일치를 최소화하도록 RL로 훈련</li>

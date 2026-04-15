@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoru Xue, Xiaoyu Huang, Dantong Niu, Qiayuan Liao, Thomas Kragerud, Jan Tommy Gravdahl, Xue Bin Peng, Guanya Shi, Trevor Darrell, Koushil Sreenath, Shankar Sastry | <strong>날짜</strong>: 2025-06-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.13751" target="_blank">https://arxiv.org/abs/2506.13751</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of our contributions. Top: we create a photorealistic and dynamically accurate</em></p></div>
 <p>LeVERB는 humanoid 로봇의 전신 제어를 위해 vision-language 입력을 latent action 공간으로 인코딩하는 계층적 프레임워크를 제안하며, 150개 이상의 task로 구성된 첫 번째 sim-to-real 준비 벤치마크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CVAE 기반 architecture를 통해 vision-language 정책이 synthetic kinematic demonstration에서 latent action vocabulary를 학습하고, 강화학습 기반 WBC 정책이 이러한 latent verb를 dynamics-level command로 변환하는 이중 과정(System 2-System 1) 구조를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of our contributions. Top: we create a photorealistic and dynamically accurate</em></p></div>
 <ul>
 <li><strong>LeVERB-Bench 구축</strong>: 10개 카테고리 150개 이상의 task로 구성된 photorealistic, sim-to-real 준비 벤치마크 개발</li>
 <li><strong>성능 달성</strong>: 단순 navigation task에서 80% success rate, 전체적으로 58.5% success rate 달성하며 naive hierarchical VLA보다 7.8배 우수</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Latent instruction interface</strong>: 손으로 설계한 action vocabulary 대신 structured latent space를 통해 표현력 있는 전신 동작 및 장면 상호작용 지원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Details of our data collection and training pipeline. Step 1: we collect a synthetic,</em></p></div>
 <ul>
 <li>Human motion capture 데이터를 humanoid 로봇으로 retargeting한 후 photorealistic rendering으로 합성 데이터 생성</li>
 <li>Diverse scene context에서 randomized visual rendering 수행</li>

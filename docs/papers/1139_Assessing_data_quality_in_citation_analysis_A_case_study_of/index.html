@@ -66,6 +66,8 @@ a { color: #1856A0; }
 <blockquote><p><strong>저자</strong>: Guoyang Rong, Ying Chen, Thorsten Koch, Keisuke Honda | <strong>날짜</strong>: 03/2026 | <strong>DOI</strong>: <a href="https://doi.org/10.1016/j.joi.2026.101775" target="_blank">10.1016/j.joi.2026.101775</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Framework of data quality assessment method.</em></p></div>
 <p>Web of Science와 Crossref 두 주요 인용 데이터 소스의 데이터 품질 차이를 분석하고, 통합 벤치마크 기반 GOLD 프레임워크를 개발하여 reference completeness와 key node inclusion을 체계적으로 평가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #1856A0; }
 <li><strong>Approach</strong>: WoS와 Crossref를 통합하여 벤치마크 데이터셋을 구축하고, reference completeness와 key node inclusion 두 차원에서 target dataset을 평가한다. PageRank-inspired network metrics와 raw citation counts의 rank 변화를 비교하여 GOLD 프레임워크로 key node 누락 케이스를 분류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Principle of ’GOLD’ framework.</em></p></div>
 <ul>
 <li><strong>GOLD 프레임워크 개발</strong>: raw citation count와 network metric rank의 변화 조합을 통해 key node 누락을 4가지 뚜렷한 케이스로 체계적으로 분류</li>
 <li><strong>다층적 평가</strong>: dataset, publication, cluster 세 수준에서 publication coverage, reference completeness, key node inclusion을 평가할 수 있는 통합 방법론 제시</li>
@@ -82,6 +86,8 @@ a { color: #1856A0; }
 <li><strong>영향 받는 출판물 식별</strong>: key node 누락으로 인해 영향을 받는 특정 출판물들을 체계적으로 식별</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Framework of data quality assessment method.</em></p></div>
 <ul>
 <li>두 데이터 소스(WoS, Crossref)를 통합하여 scale-matched benchmark dataset 구축</li>
 <li>Reference Coverage Rate (RCR)를 정의하여 reference completeness 측정</li>

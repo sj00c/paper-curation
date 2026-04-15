@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Aaditya Prasad, Kevin Lin, Jimmy Wu, Linqi Zhou, Jeannette Bohg | <strong>날짜</strong>: 2024-05-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2405.07503" target="_blank">https://arxiv.org/abs/2405.07503</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Both Diffusion and Consistency Policy work by sampling random</em></p></div>
 <p>Consistency Policy는 Diffusion Policy를 Consistency Distillation을 통해 단일 스텝으로 빠르게 추론할 수 있도록 가속화한 로보틱 비주얼모터 정책으로, 자원 제약이 있는 로봇 시스템에서 저지연 의사결정을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Pretrained Diffusion Policy를 EDM framework로 재구성하고 Consistency Trajectory Model (CTM) objective를 사용한 consistency distillation으로 student model을 훈련하여, ODE 궤적의 self-consistency를 강제한다. 주요 설계 결정으로는 consistency objective의 선택, 감소된 초기 샘플 분산, preset chaining steps 설정이 포함된다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Both Diffusion and Consistency Policy work by sampling random</em></p></div>
 <ul>
 <li><strong>추론 속도 향상</strong>: 모든 테스트 작업에서 가장 빠른 대안 대비 약 10배 빠른 추론 속도 달성 (1초 → ~0.1초 수준)</li>
 <li><strong>성능 유지</strong>: 6개 시뮬레이션 작업과 3개 실제 로봇 작업에서 Diffusion Policy와 경쟁력 있는 또는 더 높은 성공률 유지</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>강건성</strong>: Pretrained Diffusion Policy의 품질에 robust하므로 실무자가 teacher model의 광범위한 테스트를 피할 수 있음</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: CTM enforces self-consistency along a PFODE (black) by sampling</em></p></div>
 <ul>
 <li>EDM framework를 사용하여 DDPM 기반의 Diffusion Policy를 ODE 기반 multi-step framework로 전환</li>
 <li>Consistency Trajectory Model (CTM) objective를 로보틱 도메인에 적응시켜 ODE 궤적의 self-consistency 강제</li>

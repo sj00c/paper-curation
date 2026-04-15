@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiahang Liu, Yunpeng Qi, Jiazhao Zhang, Minghan Li, Shaoan Wang, Kui Wu, Hanjing Ye, Hong Zhang, Zhibo Chen, Fangwei Zhong, Zhizheng Zhang, He Wang | <strong>날짜</strong>: 2025-10-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.07134" target="_blank">https://arxiv.org/abs/2510.07134</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The pipeline of TrackVLA++. Given a video stream and a language instruction, TrackVLA++ predicts a tracking traj</em></p></div>
 <p>TrackVLA++는 Vision-Language-Action 모델에 Polar-CoT 공간 추론과 Target Identification Memory(TIM)를 통합하여 장시간 추적과 폐색 상황에서의 강건한 embodied visual tracking을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Polar-CoT를 통해 목표의 상대 위치를 agent-centric 극좌표로 예측하고, 이를 기반으로 TIM이 confidence-aware gating 전략으로 장시간 메모리를 유지한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Real-world demonstration of TrackVLA++. TrackVLA++ is a novel Vision-Language-Action model that incorporates spa</em></p></div>
 <ul>
 <li><strong>State-of-the-art 성능</strong>: EVT-Bench DT 스플릿에서 egocentric 설정에서 5.1%, multi-camera 설정에서 12% 이상 향상</li>
 <li><strong>효율적 추론</strong>: Polar-CoT의 단일 reasoning token으로 높은 추론 속도 유지</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 카메라 지원</strong>: egocentric과 multi-camera 설정 모두에서 호환성 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The pipeline of TrackVLA++. Given a video stream and a language instruction, TrackVLA++ predicts a tracking traj</em></p></div>
 <ul>
 <li>Vision encoder로 RGB 입력을 처리하고 grid pooling으로 시각 토큰 추출</li>
 <li>Polar-CoT를 통해 <θ, d, C> 형태의 극좌표 위치와 confidence 점수 예측</li>

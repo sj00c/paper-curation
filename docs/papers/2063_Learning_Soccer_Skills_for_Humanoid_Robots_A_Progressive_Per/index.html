@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jipeng Kong, Xinzhe Liu, Yuhang Lin, Jinrui Han, Sören Schwertfeger, Chenjia Bai, Xuelong Li | <strong>날짜</strong>: 2026-02-05 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.05310" target="_blank">10.48550/arXiv.2602.05310</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the Perception-Action integrated Decision-making (PAiD) framework. Our pipeline progressively acquir</em></p></div>
 <p>본 논문은 humanoid robot이 human-like kicking과 whole-body balance를 동시에 수행하는 soccer skill을 습득하기 위해, 세 단계로 구성된 Perception-Action integrated Decision-making (PAiD) 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 세 단계 progressive 아키텍처를 통해 문제를 분해한다: (1) human motion tracking으로 fundamental kicking skill 습득, (2) lightweight perception module 추가로 positional generalization, (3) physics-aware sim-to-real transfer로 현실 갭 최소화.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Quantitative analysis of soccer shooting proficiency across the workspace. The heatmaps visualize the spatial di</em></p></div>
 <ul>
 <li><strong>Progressive skill decomposition</strong>: 복잡한 soccer skill을 motion-skill 습득, perception-action 통합, sim-to-real 전이의 세 단계로 분해하여 각 단계에서의 training instability와 reward conflict를 제거</li>
 <li><strong>High-fidelity human-like kicking</strong>: Unitree G1에서 91.3% kick success rate를 달성하며 kinematic trajectory가 human player motion과 유사</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Physics-aware sim-to-real transfer</strong>: Iterative physics alignment 전략으로 ball contact parameter를 식별하여 sim-to-real gap 최소화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the Perception-Action integrated Decision-making (PAiD) framework. Our pipeline progressively acquir</em></p></div>
 <ul>
 <li><strong>Stage I - Motion Tracking</strong>: Motion capture로부터 다양한 human kicking motion을 수집하고 motion retargeting을 통해 humanoid에 적응시킨 후, adaptive sampling을 이용한 motion tracking 정규화로 perception-free kicking skill 학습</li>
 <li><strong>Stage II - Perception-Guided Kicking</strong>: Egocentric perception을 추가하고 minimal prior reward를 통해 ball position에 따른 whole-body gait 조정 및 orientation 제어를 학습하며, lightweight perception module로 reward conflict 회피</li>

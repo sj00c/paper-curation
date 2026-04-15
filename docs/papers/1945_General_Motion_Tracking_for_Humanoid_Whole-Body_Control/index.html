@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>:  | <strong>URL</strong>: <a href="https://gmt-humanoid.github.io/" target="_blank">https://gmt-humanoid.github.io/</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: General Motion Retargeting (GMR) Pipeline.</em></p></div>
 <p>인간-휴머노이드 로봇 간 신체 구조 차이(embodiment gap)를 극복하기 위해 General Motion Retargeting (GMR)을 제안하고, 재타겟팅 품질이 모션 추적 정책 성능에 미치는 영향을 체계적으로 평가한 연구이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 비균등 국소 스케일링(non-uniform local scaling)과 2단계 최적화를 결합한 GMR을 제안하며, BeyondMimic을 사용하여 재타겟팅 방법들을 공정하게 비교하고, LAFAN1 데이터셋의 다양한 21개 시퀀스에서 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: User study (N = 20) results for comparing GMR to</em></p></div>
 <ul>
 <li><strong>GMR 방법론</strong>: 비균등 국소 스케일링과 2단계 최적화를 통해 기존 PHC와 ProtoMotions의 스케일링 관련 인공물을 해결하는 재타겟팅 기법 제안</li>
 <li><strong>체계적 성능 평가</strong>: 재타겟팅 품질이 정책 성공률에 미치는 영향을 보상 튜닝 없이 실증적으로 증명</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>문제 식별</strong>: 발 관통, 자기 교차, 속도 스파이크 같은 주요 재타겟팅 인공물과 초기 프레임의 영향을 명확히 규명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: General Motion Retargeting (GMR) Pipeline.</em></p></div>
 <ul>
 <li>SMPL 모델 기반의 비균등 국소 스케일링으로 신체 부위별 다른 스케일 적용</li>
 <li>2단계 최적화: (1) 관절 공간에서 스케일된 참조를 따라 역운동학 해결, (2) 물리 제약 조건 만족</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sicheng Xie, Haidong Cao, Zejia Weng, Zhen Xing, Haoran Chen, Shiwei Shen, Jiaqi Leng, Zuxuan Wu, Yu-Gang Jiang | <strong>날짜</strong>: 2025-02-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.16587" target="_blank">https://arxiv.org/abs/2502.16587</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: HUMAN2ROBOT: An human-video-conditioned</em></p></div>
 <p>VR 원격조종으로 수집한 정밀하게 정렬된 인간-로봇 비디오 쌍 데이터셋 H&R과 이를 활용한 Human2Robot 프레임워크를 제시하여, Video Prediction Model을 통해 인간 동작으로부터 로봇 동작을 프레임 수준에서 학습하고 미학습 태스크에 일반화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VR 원격조종 시스템을 활용하여 인간 손과 로봇 팔의 좌표계를 정렬하는 방식으로 2,600 에피소드의 완벽하게 동기화된 H&R 데이터셋을 수집하고, 조건부 video generation 문제로 fine-grained human-robot alignment를 다루는 Human2Robot 프레임워크를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Dataset Overview. (L) The ratio of four basic task</em></p></div>
 <ul>
 <li><strong>H&R 데이터셋</strong>: 4가지 기본 태스크와 6가지 장시간 태스크에 걸쳐 정밀하게 동기화된 인간 손과 로봇 팔의 비디오 쌍 2,600 에피소드 수집</li>
 <li><strong>Human2Robot 프레임워크</strong>: Stable Diffusion 기반 Video Prediction Model과 decoupled action decoder를 활용한 2단계 학습 프로세스로 미학습 포지션, 객체, 태스크 카테고리에 대한 일반화 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>KNN 기반 추론</strong>: 인간 비디오 입력 없이도 학습된 태스크를 수행할 수 있는 KNN+Human2Robot 방법으로 확장성과 유연성 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Architecture overview of HUMAN2ROBOT. Our approach consists of two training stages. In the first stage, we tra</em></p></div>
 <ul>
 <li>VR 원격조종 시스템의 좌표계 정렬을 통해 인간과 로봇의 3D 움직임 범위를 일치시키는 정밀한 데이터 수집</li>
 <li>Spatial UNet을 이용한 특징 추출과 behavior extractor로 동작 및 위치 인코딩</li>

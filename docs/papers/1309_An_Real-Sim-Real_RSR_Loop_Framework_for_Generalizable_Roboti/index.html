@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lu Shi, Yuxuan Xu, Shiyu Wang, Jinhao Huang, Wenhao Zhao, Yufei Jia, Zike Yan, Weibin Gu, Guyue Zhou | <strong>날짜</strong>: 2025-03-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.10118" target="_blank">https://arxiv.org/abs/2503.10118</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>본 논문은 Real-Sim-Real (RSR) 루프 프레임워크를 제안하여 differentiable simulation을 활용해 시뮬레이션 파라미터를 반복적으로 개선하고 실제 세계 조건과 정렬시킴으로써 sim-to-real 갭을 해소한다. 정보 이론 기반의 비용 함수를 통해 다양하고 대표적인 실세계 데이터 수집을 유도하여 시뮬레이션 정제의 효율성을 극대화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>플랫폼 호환성</strong>: MuJoCo MJX 플랫폼 기반 구현으로 다양한 로봇 시스템에 적용 가능한 확장성 확보</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li>Kernel Density Estimation (KDE)을 통해 실세계 데이터 분포를 추정하고 미탐색 영역 식별</li>
 <li>정보 이론 메트릭(예: entropy reduction, mutual information)을 기반으로 시뮬레이션 튜닝에 최적화된 데이터 포인트의 정보성 정량화</li>

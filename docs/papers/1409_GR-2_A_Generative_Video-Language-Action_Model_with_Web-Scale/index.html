@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chi-Lam Cheang, Guangzeng Chen, Ya Jing, Tao Kong, Hang Li, Yifeng Li, Yuxiao Liu, Hongtao Wu, Jiafeng Xu, Yichu Yang, Hanbo Zhang, Minzhao Zhu | <strong>날짜</strong>: 2024-10-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.06158" target="_blank">https://arxiv.org/abs/2410.06158</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview. GR-2 undegoes two stages of training: video generation pre-training and robot data</em></p></div>
 <p>GR-2는 38백만 개의 비디오 클립으로 대규모 사전학습한 후 로봇 궤적으로 미세조정하는 generative video-language-action 모델로, 100개 이상의 조작 작업에서 97.7% 평균 성공률을 달성하고 미보기 시나리오에 뛰어난 일반화를 보인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GR-2는 두 단계 학습 프레임워크를 사용한다: (1) Howto100M, Ego4D 등 다양한 공개 데이터와 로봇 데이터셋을 포함한 38백만 개 비디오로 사전학습하여 비디오 생성 능력 확보, (2) 로봇 궤적으로 미세조정하여 행동 예측과 비디오 생성을 동시에 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Multi-Task Learning. We perform experiments in two basic settings (Simple and Distractor) and</em></p></div>
 <ul>
 <li><strong>대규모 멀티태스크 학습</strong>: 5,000개의 궤적(작업당 평균 50개)으로 100개 이상의 조작 작업을 학습하며 97.7% 평균 성공률 달성</li>
 <li><strong>강력한 일반화</strong>: 미보기 배경, 환경, 물체, 작업에 대한 예외적인 일반화 능력을 보유하며 100개 이상의 물체를 포함하는 빈 픽킹에서 미보기 물체 처리</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>효율적인 학습</strong>: 제한된 로봇 데이터(5,000개 궤적)로 사전학습된 지식을 손실 없이 전이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Pre-training Dataset. We show sample videos and the verb distribution of the pre-training dataset</em></p></div>
 <ul>
 <li><strong>비디오 사전학습</strong>: GPT-style transformer로 텍스트 설명과 비디오 프레임으로부터 향후 프레임을 예측하는 auto-regressive 생성 작업 수행</li>
 <li><strong>토큰화</strong>: 텍스트는 frozen text encoder로, 이미지는 VQGAN으로 discrete token으로 변환</li>

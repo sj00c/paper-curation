@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shiqi Yang, Minghuan Liu, Yuzhe Qin, Runyu Ding, Jialong Li, Xuxin Cheng, Ruihan Yang, Sha Yi, Xiaolong Wang | <strong>날짜</strong>: 2024-08-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2408.11805" target="_blank">https://arxiv.org/abs/2408.11805</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An Overview of the Proposed ACE System. The system consists of two bimanual ex-</em></p></div>
 <p>ACE는 3D 프린팅된 이중팔 exoskeleton과 hand-facing 카메라를 결합한 저비용 cross-platform 시각 기반 원격 조종 시스템으로, 다양한 로봇 플랫폼과 end-effector에 대해 정밀한 손과 손목 자세 추적을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Hand-facing 카메라로 3D 손 자세를 추적하고 exoskeleton의 forward kinematics로 end-effector 위치를 측정한 후, inverse kinematics를 통해 로봇 팔의 end-effector에 매핑하는 모듈식 설계 기반의 시각-kinematics 하이브리드 접근법을 사용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Details of Cross-Platform Teleoperation. This figure showcases various control modes</em></p></div>
 <ul>
 <li><strong>Cross-platform 호환성</strong>: 단일 시스템으로 humanoid hands, arm-hands, arm-gripper, quadruped-gripper 등 다양한 end-effector와 fixed/mobile base 로봇 플랫폼을 지원</li>
 <li><strong>저비용 설계</strong>: 3D 프린팅 exoskeleton과 저비용 웹캠을 사용하여 약 $0.6k의 비용으로 ALOHA($20k), Mobile-ALOHA($32k), DexCap($4k)보다 훨씬 저렴한 시스템 구현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실증된 성능</strong>: Imitation learning 실험을 통해 다양한 정밀도와 workspace 요구사항을 가진 작업에서 효율적인 데이터 수집 및 학습 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Architecture of the ACE Teleoperation System. Our system reads the joint angles from</em></p></div>
 <ul>
 <li>Hand detection algorithm을 통한 3D 손 자세 추적 (hand-facing 카메라로 occlusion 문제 해결)</li>
 <li>Exoskeleton의 motor joint angles를 읽어 forward kinematics으로 손목(wrist) 자세 계산</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Se Hwan Jeon, Steve Heim, Charles Khazoom, Sangbae Kim | <strong>날짜</strong>: 2023-07-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2307.10142" target="_blank">https://arxiv.org/abs/2307.10142</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: A visualization of a tracking reward in both direct-</em></p></div>
 <p>본 논문은 humanoid 로봇의 고차원 보행 학습에서 potential-based reward shaping (PBRS)과 direct reward shaping (DRS)을 벤치마크하여, PBRS가 수렴 속도에서는 한계적 이점만 제공하지만 보상 척도에 대해 훨씬 더 견고하다는 것을 실증적으로 입증한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D humanoid biped 로봇의 보행 태스크에서 deep RL을 사용하여 표준 DRS와 PBRS를 동일한 조건 하에서 체계적으로 비교하고, 수렴 속도와 보상 척도 견고성을 분석한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Values for the total baseline rewards during training</em></p></div>
 <ul>
 <li><strong>한계적 수렴 속도 개선</strong>: PBRS는 고차원 humanoid 보행 학습에서 DRS 대비 수렴 속도 향상이 미미함을 실증적으로 입증</li>
 <li><strong>높은 보상 척도 견고성</strong>: PBRS 보상 항이 DRS에 비해 척도 변화에 훨씬 더 견고하여 하이퍼파라미터 튜닝이 용이함</li>
 <li><strong>실무적 인사이트</strong>: 고차원 시스템에서 PBRS의 주요 가치는 수렴 속도 개선이 아닌 튜닝 용이성에 있음을 규명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The potential based (left), direct (middle), and base-</em></p></div>
 <ul>
 <li>Humanoid biped 로봇 시뮬레이션 환경에서 동일한 기본 보상과 관측을 사용하여 PBRS와 DRS를 독립적으로 학습</li>
 <li>Potential 함수 Φ(s)로 DRS 항 R(s)을 사용하여 PBRS 항 P(s_k, s_{k+1}) = γΦ(s_{k+1}) - Φ(s_k)를 구성</li>

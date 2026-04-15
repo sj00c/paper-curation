@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sung-Wook Lee, Xuhui Kang, Brandon Yang, Yen-Ling Kuo | <strong>날짜</strong>: 2025-08-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.01600" target="_blank">https://arxiv.org/abs/2508.01600</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Comparison between Behavior Cloning (BC) and Contrastive Learning via Action</em></p></div>
 <p>CLASS는 행동 시퀀스 유사성을 기반으로 하는 supervised contrastive learning을 통해 로봇 조작 태스크에서 robust한 시각적 표현을 학습하는 방법이다. DTW로 측정된 action sequence 유사성을 약한 감독 신호로 활용하여 heterogeneous 데이터셋에서의 일반화 성능을 크게 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CLASS는 두 단계로 구성된다: (1) DTW를 통해 전체 시연 데이터셋에서 action sequence 간 pairwise 유사도를 사전 계산, (2) 계산된 유사도를 기반으로 soft InfoNCE loss를 사용한 supervised contrastive learning으로 인코더를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Comparison between Behavior Cloning (BC) and Contrastive Learning via Action</em></p></div>
 <ul>
 <li><strong>Heterogeneous 조건에서의 뛰어난 성능</strong>: Diffusion Policy + CLASS 사전학습 조합이 significant visual shift 환경에서 평균 75% 성공률을 달성하며, 다른 baseline 방법들이 경쟁력 있는 성능을 내지 못할 때도 효과적이다.</li>
 <li><strong>광범위한 평가</strong>: 5개의 simulation benchmark와 3개의 실제 로봇 태스크에서 검증되었으며, 기존 behavior cloning 및 representation learning baseline을 지속적으로 초과 달성한다.</li>
 <li><strong>다양한 활용성</strong>: 학습된 표현이 retrieval 기반 제어와 policy fine-tuning 모두에 사용 가능하며, homogeneous와 heterogeneous 데이터 설정 모두에서 성능 향상을 보여준다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Training pipeline. The inner block corre-</em></p></div>
 <ul>
 <li><strong>DTW를 통한 action sequence 유사도 측정</strong>: 두 action sequence 간 거리를 Dynamic Time Warping으로 계산하여 temporal misalignment를 처리한다.</li>
 <li><strong>Positive pair 정의</strong>: 고정된 quantile threshold K를 기준으로 DTW 거리가 낮은 순서쌍을 positive pair로 정의하고, 해당 DTW 값을 저장한다.</li>

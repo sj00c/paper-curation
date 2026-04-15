@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Khang Nguyen, An T. Le, Jan Peters, Minh Nhat Vu | <strong>날짜</strong>: 2025-06-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.12095" target="_blank">https://arxiv.org/abs/2506.12095</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of DoublyAware: Disjoint uncertainty decomposi-</em></p></div>
 <p>DoublyAware는 TD-MPC 프레임워크에서 불확실성을 planning uncertainty와 policy uncertainty로 명시적으로 분해하여, conformal prediction과 Group-Relative Policy Constraint를 통해 휴머노이드 로봇의 샘플 효율적이고 안정적인 학습을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DoublyAware는 두 가지 불확실성을 분리하여 처리한다: (1) planning phase에서 conformal prediction을 활용해 quantile-calibrated risk bounds로 궤적을 필터링하고, (2) learning phase에서 policy rollout을 정보적 사전으로 활용하며 Group-Relative Policy Constraint optimizer로 적응형 신뢰영역을 설정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Episode Returns of DoublyAware and Baselines on H1–2 in Locomotion Tasks: DoublyAware achieves rapid convergence</em></p></div>
 <ul>
 <li><strong>불확실성 분해 프레임워크</strong>: aleatoric과 epistemic 불확실성을 planning과 policy 불확실성으로 명시적으로 분해하여 각각 맞춤형 솔루션을 적용</li>
 <li><strong>Planning-Aware 메커니즘</strong>: conformal prediction 기반 궤적 필터링으로 stochastic 환경에 대한 통계적 일관성과 강건성 보장</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실험적 성능 개선</strong>: HumanoidBench에서 샘플 효율성, 수렴 속도, 운동학적 실현 가능성 측면에서 기존 RL baseline 대비 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Uncertainty-Aware Planning for Humanoid Locomotion: At each planning step, two sets of trajectories are sampled </em></p></div>
 <ul>
 <li><strong>Conformal Prediction 적용</strong>: 양자화된 위험 경계를 통해 후보 궤적을 필터링하여 planning 단계의 aleatoric 불확실성 처리</li>
 <li><strong>Policy Rollout 활용</strong>: 학습된 정책의 rollout을 구조화된 정보적 사전으로 활용하여 high-confidence, high-reward 행동 유도</li>

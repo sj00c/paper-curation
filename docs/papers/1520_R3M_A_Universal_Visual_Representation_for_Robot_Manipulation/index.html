@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Suraj Nair, Aravind Rajeswaran, Vikash Kumar, Chelsea Finn, Abhinav Gupta | <strong>날짜</strong>: 2022-03-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2203.12601" target="_blank">https://arxiv.org/abs/2203.12601</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Pre-Training Reusable Representations for Robot Manipulation (R3M): We pre-train a visual</em></p></div>
 <p>Ego4D 인간 비디오 데이터셋에서 pre-train한 R3M 시각 표현을 제안하여, 로봇 조작 작업의 data-efficient 학습을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Ego4D 인간 비디오 데이터셋에서 time-contrastive learning, video-language alignment, L1 sparsity penalty의 세 가지 학습 목표를 결합하여 R3M을 pre-train하고, 이를 frozen perception module로 사용하여 downstream 정책 학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Data Efﬁcient Imitation Learning in Unseen Environments/Tasks. We report the success rates</em></p></div>
 <ul>
 <li><strong>simulation 성능</strong>: 12개 조작 작업에서 training from scratch 대비 20% 이상, CLIP/MoCo 같은 SOTA 표현 대비 10% 이상의 성공률 향상 달성</li>
 <li><strong>실제 로봇 성능</strong>: Franka Emika Panda 로봇이 20개 미만의 demonstrations(약 10분)으로 수건 접기, 팬에 상추 넣기 등 복잡한 작업을 50% 이상의 성공률로 학습</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실용성</strong>: pre-trained model과 코드 공개로 즉시 다운로드 가능한 standard vision model 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Ego4D [16] Video and Language (left). Sample frames and associated language from Grauman</em></p></div>
 <ul>
 <li>Ego4D 데이터셋의 egocentric 비디오에서 diverse human manipulation behavior 수집</li>
 <li>Time-contrastive learning으로 temporal dynamics 및 state transition 정보 포착</li>

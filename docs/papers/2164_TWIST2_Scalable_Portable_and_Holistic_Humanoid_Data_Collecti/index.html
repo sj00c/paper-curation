@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yanjie Ze, Siheng Zhao, Weizhuo Wang, Angjoo Kanazawa, Rocky Duan, Pieter Abbeel, Guanya Shi, Jiajun Wu, C. Karen Liu | <strong>날짜</strong>: 2025-11-04 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.02832" target="_blank">10.48550/arXiv.2511.02832</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We introduce TWIST2, a holistic humanoid data collection system designed with scalability and portability. TWIST</em></p></div>
 <p>TWIST2는 mocap 없이 VR 기반의 포터블한 휴머노이드 텔레오퍼레이션 시스템으로, 전신 제어를 유지하면서 확장 가능한 데이터 수집을 가능하게 한다. 수집한 데이터로 hierarchical visuomotor policy를 학습하여 자율적인 전신 제어를 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PICO4U VR 기기로 전신 인간 모션을 실시간 스트리밍하고, 저비용 2-DoF 로봇 목(약 $250)으로 자기중심 시각을 제공하며, 강화학습 기반 motion tracking controller와 hierarchical visuomotor policy를 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We introduce TWIST2, a holistic humanoid data collection system designed with scalability and portability. TWIST</em></p></div>
 <ul>
 <li><strong>포터블 mocap-free 시스템</strong>: 1분 내 설치 가능하고 비용 효율적인 TWIST2 Neck 설계로 실외 환경에서의 배포 실현</li>
 <li><strong>확장 가능한 데이터 수집</strong>: 15-20분 내 100개의 성공적인 시연 수집(거의 100% 성공률)</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>완전 오픈소스</strong>: 시스템, 수집 데이터, 모델 모두 공개하여 재현성 보장</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview of TWIST2. We build a holistic humanoid teleoperation system with portable devices and egocentri</em></p></div>
 <ul>
 <li>PICO4U VR 디바이스(헤드셋, 핸드 컨트롤러, 발목 모션 트래커)를 통해 전신 인간 자세 캡처</li>
 <li>2-DoF 로봇 목 설계로 자기중심 active stereo vision 제공(egocentric teleoperation 가능)</li>

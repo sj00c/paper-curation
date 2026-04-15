@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiaming Liu, Hao Chen, Pengju An, Zhuoyang Liu, Renrui Zhang, Chenyang Gu, Xiaoqi Li, Ziyu Guo, Sixiang Chen, Mengzhen Liu, Chengkai Hou, Mengdi Zhao, KC alex Zhou, Pheng-Ann Heng, Shanghang Zhang | <strong>날짜</strong>: 2025-03-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.10631" target="_blank">https://arxiv.org/abs/2503.10631</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) Unlike recent diffusion-based VLA methods [12, 13, 14] that attach a separate diffusion</em></p></div>
 <p>HybridVLA는 diffusion 기반 action 예측의 연속성과 autoregressive VLM의 추론 능력을 단일 LLM 내에서 통합하는 unified vision-language-action 모델이다. Collaborative training recipe와 adaptive action ensemble mechanism을 통해 두 생성 패러다임의 상호 강화를 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 단일 LLM backbone 내에서 diffusion denoising을 next-token prediction 과정에 seamlessly 통합하는 collaborative training recipe를 제안하고, autoregressive action token confidence 기반으로 두 예측을 adaptive하게 fusion하는 collaborative action ensemble mechanism을 설계한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) Unlike recent diffusion-based VLA methods [12, 13, 14] that attach a separate diffusion</em></p></div>
 <ul>
 <li><strong>통합 아키텍처</strong>: Diffusion과 autoregressive action generation을 단일 LLM 내에서 구현하여 두 패러다임이 상호 강화되도록 설계</li>
 <li><strong>Collaborative Training Recipe</strong>: Token sequence formulation과 specialized marker tokens를 통해 discrete autoregressive tokens와 continuous diffusion latents를 효과적으로 연결</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>추론 최적화</strong>: HybridVLA-dif (7B) variant로 9.4 Hz inference speed 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: HybridVLA Framework. All multimodal inputs are encoded into tokens and subsequently</em></p></div>
 <ul>
 <li>Internet-scale pretrained VLM (예: LLaVA)을 초기화 백본으로 사용</li>
 <li>Token sequence formulation으로 multimodal inputs, diffusion tokens, autoregressive tokens를 marker tokens로 연결</li>

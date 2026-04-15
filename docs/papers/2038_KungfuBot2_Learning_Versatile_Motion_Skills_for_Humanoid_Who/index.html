@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jinrui Han, Weiji Xie, Jiakun Zheng, Jiyuan Shi, Weinan Zhang, Ting Xiao, Chenjia Bai | <strong>날짜</strong>: 2025-09-20 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.16638" target="_blank">10.48550/arXiv.2509.16638</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Framework of VMS. The large-scale motion capture dataset is first retargeted to the humanoid skeleton using an I</em></p></div>
 <p>VMS는 Orthogonal Mixture-of-Experts (OMoE) 아키텍처와 하이브리드 추적 목표를 결합하여 단일 정책으로 다양한 동작을 수행하는 휴머노이드 로봇 제어기를 제시한다. 장시간 시퀀스에서 안정적인 성능과 높은 동작 충실도를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: OMoE 아키텍처로 스킬 표현을 분리하면서 동시에 하이브리드 추적 목표(글로벌 루트 + 로컬 키바디)를 도입했고, segment-level tracking reward로 장시간 로버스트성을 개선했다. Teacher-student 학습 패러다임을 통해 시뮬레이션에서 학습한 정책을 실로봇으로 배포했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid learning versatile motion skills. We deploy VMS on the Unitree G1 humanoid robot, demonstrating its cap</em></p></div>
 <ul>
 <li><strong>OMoE 아키텍처</strong>: 동작 표현의 분리로 정책 표현력을 증대시키고 스킬 간 간섭을 감소</li>
 <li><strong>하이브리드 추적 목표</strong>: 글로벌 루트 추적과 로컬 키바디 추적을 결합하여 동작 충실도와 공간적 일관성을 동시 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실증적 성능</strong>: 시뮬레이션과 실로봇 모두에서 고충실도 동작 모방, 분 단위 길이의 장시간 시퀀스에서 안정적 성능, 미학습 동작으로의 강한 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Framework of VMS. The large-scale motion capture dataset is first retargeted to the humanoid skeleton using an I</em></p></div>
 <ul>
 <li>AMASS 데이터셋에서 13,000개 이상의 모션을 역기구학(IK) 기반 retargeting으로 휴머노이드 스켈레톤에 변환</li>
 <li>Oracle 정책 학습을 통한 데이터 큐레이션으로 최종 9,770개의 고품질 모션(30.41시간) 확보</li>

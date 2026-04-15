@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lingfeng Zhang, Xiaoshuai Hao, Qinwen Xu, Qiang Zhang, Xinyao Zhang, Pengwei Wang, Jing Zhang, Zhongyuan Wang, Shanghang Zhang, Renjing Xu | <strong>날짜</strong>: 2025-02-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.13451" target="_blank">https://arxiv.org/abs/2502.13451</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Illustration of our Annotated Semantic</em></p></div>
 <p>MapNav는 Vision-and-Language Navigation에서 Annotated Semantic Map(ASM)을 메모리 표현으로 사용하여 기존의 과거 프레임 저장의 비효율성을 해결하는 end-to-end VLM 기반 모델이다. ASM은 top-down 시멘틱 맵에 텍스트 라벨을 추가하여 구조화된 내비게이션 정보를 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RGB-D와 pose 데이터를 포인트 클라우드로 변환하여 top-down 시멘틱 맵을 생성하고, 시맨틱 세그멘테이션을 정렬하여 기본 맵을 구성한 뒤, 주요 영역에 대한 명시적 텍스트 주석을 추가하여 ASM을 생성한다. 이 ASM을 입력으로 하는 end-to-end VLM 기반 agent를 설계한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An overview of MapNav framework. We present a top-down Annotated Semantic Map (ASM), updated</em></p></div>
 <ul>
 <li><strong>ASM 메모리 표현</strong>: 물리적 장애물, 탐색 영역, 에이전트 위치, 궤적, 시멘틱 객체 정보를 포함하는 구조화된 top-down 맵을 동적으로 업데이트</li>
 <li><strong>SOTA 성능</strong>: 시뮬레이션(Habitat) 및 실제 환경(현실 세계) 벤치마크에서 기존 방법들을 초과하는 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>재현성 기여</strong>: 1 Million step-wise 샘플, ASM 생성 코드, 데이터셋 공개 약속</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: ASM Generation Process. Semantic map generation starts with episode initialization. At each timestep,</em></p></div>
 <ul>
 <li>RGB-D 이미지와 depth 정보를 3D point cloud로 변환</li>
 <li>Semantic segmentation을 point cloud와 정렬하여 객체 마스킹 수행</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, Ilya Sutskever | <strong>날짜</strong>: 2021-02-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2103.00020" target="_blank">https://arxiv.org/abs/2103.00020</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear cla</em></p></div>
 <p>400만 개의 (이미지, 텍스트) 쌍 데이터셋에서 이미지-텍스트 대조 학습(contrastive learning)을 통해 전이 가능한 시각 모델을 학습하고, 자연언어를 이용한 zero-shot 전이로 30개 이상의 다양한 컴퓨터 비전 작업에서 경쟁력 있는 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 400백만 개의 공개 인터넷 (이미지, 텍스트) 쌍에서 contrastive learning 목표로 이미지 인코더와 텍스트 인코더를 공동 훈련하고, 사전학습 후 자연언어 프롬프트로 zero-shot 분류기를 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. CLIP is much more efﬁcient at zero-shot transfer</em></p></div>
 <ul>
 <li><strong>확장성과 효율성</strong>: CLIP은 400M 이미지를 처리하며 이전 bag-of-words 방법 대비 4배 효율적이고, compute에 따른 성능이 매끄러운 확장 법칙을 따른다</li>
 <li><strong>Zero-shot 성능</strong>: ImageNet에서 ResNet-50 수준의 정확도(약 50%)를 1.28M 훈련 예제 없이 달성하며, 30개 이상의 다양한 데이터셋(OCR, 행동 인식, 지리정보화, 미세한 객체 분류)에서 경쟁력 있는 성능을 보인다</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 작업 학습</strong>: 단일 사전학습으로 OCR, 지리정보화, 행동 인식 등 다양한 작업을 자동으로 수행하는 능력을 습득한다</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Summary of our approach. While standard image models jointly train an image feature extractor and a linear cla</em></p></div>
 <ul>
 <li>400백만 개의 (이미지, 텍스트) 쌍을 인터넷에서 수집하고 개방 데이터셋을 활용한다</li>
 <li>Contrastive pre-training: 배치 내 모든 (이미지, 텍스트) 쌍에 대해 유사도 행렬을 구성하고, 올바른 대응만을 최대화하는 대조 손실함수를 사용한다</li>

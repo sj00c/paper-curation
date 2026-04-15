@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xinqing Li, Xin He, Le Zhang, Min Wu, Xiaoli Li, Yun Liu | <strong>날짜</strong>: 2025-10-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.16732" target="_blank">https://arxiv.org/abs/2510.16732</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Structure of this survey. The figure classifies world models along three axes and illustrates representative met</em></p></div>
 <p>Embodied AI를 위한 World Models에 대한 포괄적 조사로, Functionality, Temporal Modeling, Spatial Representation의 세 축 분류체계를 제안하여 환경 동역학을 캡처하고 예측하는 내부 시뮬레이터를 체계적으로 정리한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Decision-Coupled vs. General-Purpose, Sequential Simulation & Inference vs. Global Difference Prediction, Global Latent Vector부터 Decomposed Rendering Representation까지 세 축으로 구성된 통합 분류체계를 제안하고, 로보틱스, 자율주행, 일반 비디오 설정에서 데이터셋과 평가 메트릭을 체계화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Structure of this survey. The figure classifies world models along three axes and illustrates representative met</em></p></div>
 <ul>
 <li><strong>통합 분류체계</strong>: Functionality, Temporal Modeling, Spatial Representation의 세 축으로 world models를 조직화하여 기존 조사들의 산재된 관점을 통합한 프레임워크 제시</li>
 <li><strong>수학적 정식화</strong>: POMDP 기반의 dynamics prior, filtered posterior, reconstruction을 명확히 정의하고 ELBO 최적화 목표를 수립하여 이론적 기초 강화</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>미개척 과제 도출</strong>: 장기 시간적 일관성 달성과 오차 축적 완화의 핵심 모델링 어려움을 특정하고 실시간 제어의 계산 복잡성 문제 제기</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Structure of this survey. The figure classifies world models along three axes and illustrates representative met</em></p></div>
 <ul>
 <li>POMDP 프레임워크를 기반으로 latent state zt에 대한 one-step filtering posterior qϕ(zt | zt−1, at−1, ot)로 부분 관측성 처리</li>
 <li>Markovian factorization 가정 하에 ELBO를 reconstruction 목표 log pθ(ot | zt)와 KL 정규화 항으로 분해하여 학습 목표 수립</li>

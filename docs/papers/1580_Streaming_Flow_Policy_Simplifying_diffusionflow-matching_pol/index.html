@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sunshine Jiang, Xiaolin Fang, Nicholas Roy, Tomás Lozano-Pérez, Leslie Pack Kaelbling, Siddharth Ancha | <strong>날짜</strong>: 2025-05-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.21851" target="_blank">https://arxiv.org/abs/2505.21851</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) Diffusion policy [1] and flow-matching policy [2] input a history of observations (not shown) to</em></p></div>
 <p>Action trajectory를 flow trajectory로 취급하여 diffusion/flow-matching 정책을 단순화하고, 흐름 샘플링 중 실시간으로 로봇에 action을 스트리밍할 수 있는 streaming flow policy를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 마지막 action 주변의 narrow Gaussian에서 샘플링을 시작하고, flow matching으로 학습한 velocity field를 incrementally 통합하여 단일 trajectory를 구성한다. Demonstration trajectory 주변에 안정화되는 velocity field를 구성하여 distribution shift를 감소시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: (a) To illustrate our method, we consider a toy example of 1-D robot actions with two demonstration</em></p></div>
 <ul>
 <li><strong>On-the-fly streaming</strong>: 흐름 샘플링 과정 중 action을 실시간으로 robot에 전달 가능하여 policy 실행 속도 대폭 개선</li>
 <li><strong>Multi-modal behavior 보존</strong>: Flow matching의 특성을 활용하여 각 timestep의 marginal distribution이 training distribution과 일치하도록 함으로써 다중 모드 표현 능력 유지</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>간단한 구조</strong>: 기존 diffusion/flow policy 아키텍처 재사용 가능하며 입출력 차원만 AT에서 A로 변경</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: (a) To illustrate our method, we consider a toy example of 1-D robot actions with two demonstration</em></p></div>
 <ul>
 <li>각 demonstration trajectory에 대해 conditional flow(초기 action 분포 + velocity field)를 분석적으로 구성</li>
 <li>구성된 velocity field를 목표로 하여 neural network vθ(a, t | h)를 flow matching으로 학습</li>

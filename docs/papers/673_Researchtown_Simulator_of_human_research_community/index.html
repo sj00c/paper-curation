@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haofei Yu, Zhaochen Hong, Zirui Cheng, Kunlun Zhu, Keyang Xuan, Jinwei Yao, Tao Feng, Jiaxuan You | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2412.17767" target="_blank">arXiv:2412.17767</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: 인간 연구 커뮤니티를 에이전트-데이터 그래프로 추상화. 연구자는 에이전트 노드, 논문은 데이터 노드로 표현</em></p></div>
 <p>본 논문은 대규모 언어 모델(LLM) 기반 멀티에이전트 프레임워크를 통해 인간 연구 커뮤니티를 시뮬레이션하는 RESEARCHTOWN을 제안한다. 연구 커뮤니티를 에이전트-데이터 그래프로 모델링하고 TextGNN이라는 텍스트 기반 메시지 전달 메커니즘을 통해 논문 작성, 리뷰 작성 등 협업 연구 활동을 동적으로 시뮬레이션한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 연구 커뮤니티를 그래프 구조로 표현(에이전트-데이터 그래프)하고, GNN의 메시지 패싱 개념을 텍스트 기반으로 확장한 TextGNN 프레임워크 개발</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: 커뮤니티 그래프에서 TextGNN 추론의 3단계: 논문 읽기 → 논문 작성 → 리뷰 작성</em></p></div>
 <ol>
 <li><strong>현실적인 협업 연구 활동 시뮬레이션</strong>: 논문 작성에서 평균 유사도 0.68, 리뷰 작성에서 0.49의 유사도 점수 달성 (최신 텍스트 임베딩 모델 기준)</li>
 <li><strong>견고한 다중 에이전트 시뮬레이션</strong>: 에이전트 수 증가 시 성능 향상 및 무관련 논문 포함 시에도 견고성 유지 입증</li>

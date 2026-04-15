@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Eloi Alonso, Adam Jelley, Vincent Micheli, Anssi Kanervisto, Amos Storkey, Tim Pearce, François Fleuret | <strong>날짜</strong>: 2024-05-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2405.12399" target="_blank">https://arxiv.org/abs/2405.12399</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Unrolling imagination of DIAMOND</em></p></div>
 <p>DIAMOND는 diffusion model을 기반으로 한 world model을 제안하여 RL 에이전트를 학습시키며, 이산 잠재 변수 기반 방식보다 시각적 세부 정보를 더 잘 보존함으로써 Atari 100k 벤치마크에서 새로운 최고 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DIAMOND는 diffusion model을 world model로 사용하여 과거 관찰과 행동에 조건화된 다음 관찰을 직접 생성하고, RL 에이전트가 상상 공간에서 정책을 학습하도록 설계되었다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Mean and interquartile mean human nor-</em></p></div>
 <ul>
 <li><strong>성능 개선</strong>: Atari 100k 벤치마크에서 평균 인간 정규화 점수 1.46을 달성하여 world model 내에서만 학습된 에이전트의 새로운 최고 기록을 수립</li>
 <li><strong>시각적 세부 정보 보존</strong>: 이산 latent variable 기반 방식보다 시각적으로 중요한 세부 정보(예: 약한 적, 거리의 물체)를 더 잘 모델링</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>재현 가능성</strong>: 코드, 에이전트, 비디오 및 상호작용 가능한 world model을 공개하여 향후 연구 장려</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Unrolling imagination of DIAMOND</em></p></div>
 <ul>
 <li>Score-based diffusion model을 조건화하여 p(x_{t+1} | x_{≤t}, a_{≤t})를 모델링하고 denoising score matching 목적함수로 학습</li>
 <li>자기회귀적 상상 절차에서 예측된 관찰과 정책의 행동을 다음 시간 단계의 조건으로 사용</li>

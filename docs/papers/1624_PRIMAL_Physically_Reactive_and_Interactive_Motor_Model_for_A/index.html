@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yan Zhang, Yao Feng, Alpár Cseke, Nitin Saini, Nathan Bajandas, Nicolas Heron, Michael J. Black | <strong>날짜</strong>: 2025-03-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.17544" target="_blank">https://arxiv.org/abs/2503.17544</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. PRIMAL is a novel generative real-time 3D character animation system that works in Unreal Engine. The avatar r</em></p></div>
 <p>PRIMAL은 두 단계 학습 패러다임으로 아바타의 모터 시스템을 generative motion model로 구현하여, 물리적으로 반응성 있고 제어 가능하며 실시간 상호작용이 가능한 3D 캐릭터 애니메이션을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Autoregressive diffusion model을 이용해 0.5초(15프레임) 단위의 짧은 motion segment를 학습하는 pretrain 단계와, ControlNet 기반 adaptor로 고수준 행동을 학습하는 adaptation 단계의 두 단계 패러다임을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. PRIMAL is a novel generative real-time 3D character animation system that works in Unreal Engine. The avatar r</em></p></div>
 <ul>
 <li><strong>물리적 사실성</strong>: Physics simulation 없이도 foot-ground contact 등 물리적으로 그럴듯한 movement를 implicit하게 학습</li>
 <li><strong>실시간 반응성</strong>: Classifier-based guidance를 통해 impulse, magnet 등 동적 자극에 실시간 반응</li>

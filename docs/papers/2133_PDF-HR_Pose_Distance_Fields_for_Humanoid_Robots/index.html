@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yi Gu, Yukang Gao, Yangchen Zhou, Xingyu Chen, Yixiao Feng, Mingle Zhao, Yunyang Mo, Zhaorui Wang, Lixin Xu, Renjing Xu | <strong>날짜</strong>: 2026-02-04 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.04851" target="_blank">10.48550/arXiv.2602.04851</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We present PDF-HR, which learns the manifold of plausible G1 poses as a zero-level set. Left: The fϕ is trained </em></p></div>
 <p>Humanoid 로봇을 위한 pose distance field인 PDF-HR을 제안하여, 학습된 로봇 포즈 분포를 연속 미분 가능한 manifold로 표현하고 포즈의 plausibility를 평가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -81,6 +83,8 @@ a { color: #A62018; }
 <li><strong>광범위한 실험 검증</strong>: Single-trajectory motion tracking, general motion tracking, style-based motion mimicry, motion retargeting 등 4가지 humanoid task에서 강력한 baseline을 일관되게 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Visualization of joint orientation distributions of Sideflip at early</em></p></div>
 <ul>
 <li>Retargeted robot pose의 대규모 corpus를 생성하여 pose space를 커버하면서 near-manifold samples를 강조하는 training distribution 설계</li>
 <li>Cross-validation을 통해 reliable positive samples를 선택하고, low-rank metric approximation과 Riemannian geometry를 활용하여 manifold 근처 및 원거리에서 모두 의미 있는 gradient 제공</li>

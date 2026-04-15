@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zifan Wang, Xun Yang, Jianzhuang Zhao, Jiaming Zhou, Teli Ma, Ziyao Gao, Arash Ajoudani, Junwei Liang | <strong>날짜</strong>: 2025-08-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.07611" target="_blank">https://arxiv.org/abs/2508.07611</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>휴머노이드 로봇의 안전하고 편안한 네비게이션을 위해 LiDAR 포인트 클라우드를 모터 커맨드로 직접 매핑하는 end-to-end 정책을 제시하며, CMDP 프레임워크에서 CBF 원리를 비용 함수로 변환하여 P3O로 안전 제약을 강제한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>sim-to-real 성공적 전이</strong>: 시뮬레이션에서 훈련된 정책을 물리 휴머노이드 로봇에 적용하여 정적·동적 장애물 회피 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>상태 공간을 안전(Ssafe)과 비안전(Sunsafe) 집합으로 분할하고, 편안한 상호작용 공간(Interactive Comfortable Space, ICS) 부분집합 정의</li>
 <li>선형 시스템 동역학(xk+1 = ALxk + BLuk) 가정 하에서 DCBF 조건(h(xk+1) + (γCBF−1)h(xk) ≥ 0)을 CMDP의 비용 함수로 변환</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chenhui Dong, Haozhe Xu, Wenhao Feng, Zhipeng Wang, Yanmin Zhou, Yifei Zhao, Bin He | <strong>날짜</strong>: 2026-01-29 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.20275" target="_blank">10.48550/arXiv.2511.20275</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig 1: Overview of the HAFO model. (a) Policy Training. A dual-agent strategy with</em></p></div>
 <p>HAFO는 dual-agent RL 프레임워크를 통해 humanoid robot의 하체 보행과 상체 조작을 동시에 최적화하여 강한 외력 상호작용 환경에서 안정적이고 정밀한 제어를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Spring-damper system으로 외력을 명시적으로 모델링하고, dual-agent(하체-상체) 구조에 constrained residual action space를 적용하며, curriculum learning으로 점진적으로 외력을 증가시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig 3: Unitree G1 Humanoid robot sim2sim results. We evaluate the model’s performance</em></p></div>
 <ul>
 <li><strong>Dual-agent RL 프레임워크</strong>: 하체는 견고한 보행, 상체는 정밀한 조작을 독립적으로 최적화하면서 협력적 전신 제어 달성</li>
 <li><strong>Spring-damper 동적 모델</strong>: 외부 인장력을 spring-damper 시스템으로 모델링하여 세밀한 외력 제어 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>고도 작업 선례</strong>: 로프 현수 상태에서의 안정적 운영을 달성한 첫 locomotion 제어 전략</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig 2: Spring-damper model and performance analysis. (a) Spring-damper model schematic</em></p></div>
 <ul>
 <li>Lower body agent와 upper body agent의 분리된 RL 정책으로 coupled training 수행</li>
 <li>Constrained residual action space로 상체 에이전트 훈련 안정성과 샘플 효율성 향상</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wenqi Zhang, Mengna Wang, Gangao Liu, Xu Huixin, Yiwei Jiang, Yongliang Shen, Guiyang Hou, Zhe Zheng, Hang Zhang, Xin Li, Weiming Lu, Peng Li, Yueting Zhuang | <strong>날짜</strong>: 2025-03-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.21696" target="_blank">https://arxiv.org/abs/2503.21696</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1.</em></p></div>
 <p>o1 스타일의 심층 추론 패러다임을 embodied 인터랙티브 작업으로 확장하여, 시각 탐색, 추론, 행동을 통합하는 Embodied-Reasoner 모델을 제시한다. 9.3k개의 Observation-Thought-Action 궤적과 3단계 학습 파이프라인을 통해 공간 이해, 시간 추론, 자기 반성 능력을 갖춘 모델을 개발했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 9.3k개의 일관된 Observation-Thought-Action 궤적(64k개 인터랙티브 이미지, 90k개 다양한 사고 프로세스)을 합성하고, imitation learning, rejection sampling 기반 자기 탐색, reflection tuning을 포함한 3단계 학습 파이프라인을 제시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Embodied-Reasoner exhibits spontaneous thinking behaviors, e.g., analyzing environmental states (#1,3), reflec</em></p></div>
 <ul>
 <li><strong>성능 향상</strong>: OpenAI o1, o3-mini, Claude-3.7을 각각 +9%, +24%, +13% 능가</li>
 <li><strong>논리적 일관성 개선</strong>: 반복 검색과 논리적 불일치 감소 시연</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다양한 사고 능력</strong>: situation analysis, spatial reasoning, task planning, self-reflection, verification 등 5가지 사고 유형 통합</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Left: Data Engine for <Instruction, Interactive Trajectory> synthesis. First, we synthesize instructions from </em></p></div>
 <ul>
 <li>Data Engine을 통해 Observation-Thought-Action 궤적 자동 합성</li>
 <li>Imitation learning으로 기본 행동 학습</li>

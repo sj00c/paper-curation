@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhiying Du, Bei Liu, Yaobo Liang, Yichao Shen, Haidong Cao, Xiangyu Zheng, Zhiyuan Feng, Zuxuan Wu, Jiaolong Yang, Yu-Gang Jiang | <strong>날짜</strong>: 2025-12-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.05693" target="_blank">https://arxiv.org/abs/2512.05693</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of HiMoE-VLA. The left blue part illustrates the VLM backbone initialized</em></p></div>
 <p>HiMoE-VLA는 로봇 데이터의 이질성(action space, embodiment, sensor configuration 등)을 명시적으로 처리하기 위해 계층적 Mixture-of-Experts 아키텍처를 제안하는 Vision-Language-Action 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>강건한 일반화</strong>: 미보유 객체, 환경, 새로운 로봇과 태스크에 대해 빠른 적응성과 효과적 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Detailed structure of the Hierarchical Mixture-of-Experts (HiMoE). The architecture fol-</em></p></div>
 <ul>
 <li>PaliGemma 기반 VLM 백본이 visual observation과 language instruction 처리</li>
 <li>AS-MoE: Top-K router를 사용하여 입력 토큰을 서로 다른 action space 전문가로 라우팅</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziluo Ding, Haobin Jiang, Yuxuan Wang, Zhenguo Sun, Yu Zhang, Xiaojie Niu, Ming Yang, Weishuai Zeng, Xinrun Xu, Zongqing Lu | <strong>날짜</strong>: 2025-05-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.06584" target="_blank">https://arxiv.org/abs/2505.06584</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The framework of JAEGER. The left shows the retargeting network, which uses an MLP</em></p></div>
 <p>JAEGER는 인간형 로봇의 상체와 하체를 독립적인 두 개의 컨트롤러로 분리하여 제어하는 dual-level whole-body controller를 제안하며, root velocity tracking(coarse-grained)과 local joint angle tracking(fine-grained) 제어를 모두 지원한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 상체와 하체를 분리한 dual-level controller 아키텍처를 제안하고, MLP 기반의 retargeting network로 인간 자세를 인간형 로봇 자세로 변환한 후, supervised learning으로 초기화하고 RL로 최적화하는 curriculum learning 전략을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Some real-world demonstrations of JAEGER deployed on the H1-2. For the root-based</em></p></div>
 <ul>
 <li><strong>MLP 기반 Retargeting</strong>: 최적화 기반 IK 방법보다 정확하고 부드러운 joint angle을 생성하며 1kHz의 높은 실행 빈도로 동작</li>
 <li><strong>Dual-level Controller</strong>: 상하체 간 상호간섭을 감소시키고 각 컨트롤러가 고유 작업에 집중하게 함으로써 강건성 증대</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 환경 검증</strong>: 두 개의 인간형 로봇 플랫폼에서 simulation 및 real-world 환경 모두에서 state-of-the-art 방법들 대비 우월성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The framework of JAEGER. The left shows the retargeting network, which uses an MLP</em></p></div>
 <ul>
 <li>AMASS 인간 모션 데이터셋에서 human-humanoid pose pair를 생성하고 lightweight three-layer MLP로 mapping 학습</li>
 <li>상체(upper-body) 컨트롤러 π_upper와 하체(lower-body) 컨트롤러 π_lower를 분리하여 독립적 학습</li>

@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 최대값 풀링(max pooling)으로 풀링 메커니즘 개선, (2) 쿼리 확장 없는 문서 인코더 버전 제안, (3) 증류 기법을 통한 성능 부스팅</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: Performance vs FLOPS for SPLADE models trained">
+<p class="fig-caption"><em>Figure 1: SPLADE 모델들의 성능 대비 연산량(FLOPS) 비교</em></p></div>
 <ol>
 <li><strong>NDCG@10 향상</strong>: TREC DL 2019에서 기존 SPLADE 대비 <strong>9% 이상의 성능 향상</strong> 달성</li>
 <li><strong>BEIR 벤치마크 최고 성능</strong>: 제로샷 평가에서 BEIR 벤치마크의 최고 성능 달성</li>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>MS MARCO 통과</strong>: 증류된 SPLADE (DistilSPLADE-max)로 최신 기술 수준에 근접한 결과 달성</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2: Performance vs average document length">
+<p class="fig-caption"><em>Figure 2: 문서 길이에 따른 성능 변화 분석</em></p></div>
 <p><strong>핵심 기술 개선사항:</strong></p>
 <ul>
 <li><strong>최대값 풀링 (Max Pooling)</strong>: 기존의 로그-포화 합산 연산(Eq. 2)을 최대값 연산(Eq. 6)으로 변경</li>

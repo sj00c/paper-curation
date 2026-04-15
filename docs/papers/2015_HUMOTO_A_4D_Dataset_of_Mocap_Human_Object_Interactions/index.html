@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiaxin Lu, Chun-Hao Paul Huang, Uttaran Bhattacharya, Qixing Huang, Yi Zhou | <strong>날짜</strong>: 2025-04-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.10414" target="_blank">https://arxiv.org/abs/2504.10414</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of the HUMOTO dataset. The dataset contains mocap 4D human-object interaction animations with multipl</em></p></div>
 <p>HUMOTO는 735개 시퀀스(7,875초)의 고충실도 모션캡처 4D 인간-객체 상호작용 데이터셋으로, 63개의 정밀 모델링 객체와 상세한 손 동작을 포함하며 LLM 기반 스크립팅과 다중센서 캡처로 복잡한 다중-객체 상호작용을 정확히 기록한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Scene-Driven LLM Scripting으로 의미 있는 작업 시나리오를 생성하고, motion capture suit와 dual-Kinect RGB-D 센서의 다중센서 시스템으로 폐색 상황에서도 인간과 객체 포즈를 동시에 추적하며, 전문 아티스트가 수작업으로 각 시퀀스를 검증 및 정제한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of the HUMOTO dataset. The dataset contains mocap 4D human-object interaction animations with multipl</em></p></div>
 <ul>
 <li><strong>735개 고충실도 시퀀스</strong>: 7,875초(30 fps)의 다양한 일상 활동(요리, 정리, 야외 활동 등)을 포함한 인간-객체 상호작용 데이터 구축</li>
 <li><strong>정밀 객체 모델링</strong>: 63개 객체와 72개 articulated parts를 현실 측정값 기반으로 아티스트가 정밀 모델링</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>품질 메트릭 및 벤치마크</strong>: 인간 동작, 객체 동작, 상호작용 품질을 평가하는 정량적 메트릭 체계 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Scene-Driven LLM Scripting. We established target</em></p></div>
 <ul>
 <li>Scene-Driven LLM Scripting: 목표 scene 설정 → 관련 객체 준비 → LLM을 통한 계층적 스크립트 생성(짧은 스크립트→상세 스크립트)</li>
 <li>다중센서 캡처 시스템: electromagnetic field mocap suit + glove(인간 전신 및 손 추적) + dual-Kinect RGB-D sensor(객체 포즈 추적)</li>

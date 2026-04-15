@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiafei Duan, Wentao Yuan, Wilbert Pumacay, Yi Ru Wang, Kiana Ehsani, Dieter Fox, Ranjay Krishna | <strong>날짜</strong>: 2024-06-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.18915" target="_blank">https://arxiv.org/abs/2406.18915</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Manipulate Anything Framework. The process begins by inputting a scene representation</em></p></div>
 <p>Vision-Language Model을 활용하여 실제 로봇 환경에서 특권 정보나 사전 설계된 스킬 없이 자동으로 로봇 조작 시연 데이터를 생성하는 Manipulate-Anything 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Manipulate-Anything은 VLM으로 작업을 하위 작업으로 분해하고, 다중 관점 VLM으로 장면을 이해하며, 동작 생성 후 검증 모듈로 오류 복구를 수행하는 모듈식 파이프라인을 설계했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Action Distribution for Generated Data: We compare the action distribution of data</em></p></div>
 <ul>
 <li><strong>실제 환경 적응성</strong>: 특권 상태 정보 없이 7개의 실제 세계 작업과 14개의 RLBench 시뮬레이션 작업에서 성공적으로 궤적을 생성</li>
 <li><strong>성능 우위</strong>: VoxPoser, Scaling-up, Code-As-Policies 대비 현저히 우수한 성능을 보이며, 특히 시뮬레이션에서 10/14 작업에서 VoxPoser 초과</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Zero-shot 일반화</strong>: 미처음 본 작업을 zero-shot으로 완수할 수 있으며, 실제 환경에서 38.57%의 작업 평균 성공률 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Manipulate Anything Framework. The process begins by inputting a scene representation</em></p></div>
 <ul>
 <li>VLM을 사용하여 입력 장면 이미지와 작업 지시문으로부터 작업 관련 객체 식별 및 LLM으로 주 작업을 하위 작업으로 분해</li>
 <li>각 하위 작업에 대해 다중 관점 이미지를 제공하여 VLM의 공간 추론 능력 강화</li>

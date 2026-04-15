@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoran Jiang, Jin Chen, Qingwen Bu, Li Chen, Modi Shi, Yanjie Zhang, Delong Li, Chuanzhe Suo, Chuang Wang, Zhihui Peng, Hongyang Li | <strong>날짜</strong>: 2025-12-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.11047" target="_blank">https://arxiv.org/abs/2512.11047</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Introducing WholeBodyVLA, a humanoid system that operates on Agibot X2 robot and</em></p></div>
 <p>WholeBodyVLA는 Vision-Language-Action 프레임워크로 humanoid 로봇의 대규모 공간에서 end-to-end 전신 조작-이동(loco-manipulation) 제어를 가능하게 한다. Unified latent learning으로 저비용 영상에서 학습하고 LMO RL policy로 정확한 이동 실행을 보장한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Action-free 인간 egocentric 영상에서 latent action model (LAM)로 이산 latent action을 학습하여 VLA 사전학습에 활용하고, discrete command interface를 사용하는 LMO RL policy로 정확한 저수준 제어를 실현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Introducing WholeBodyVLA, a humanoid system that operates on Agibot X2 robot and</em></p></div>
 <ul>
 <li><strong>End-to-end loco-manipulation 통합</strong>: 모듈화나 순차 처리 없이 단일 VLA 프레임워크에서 bimanual 조작과 locomotion(전진, 회전, squatting)을 동시에 수행</li>
 <li><strong>데이터 효율성</strong>: Manipulation-aware locomotion용 저비용 egocentric 영상 수집 파이프라인 개발으로 대규모 데이터 확보</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>신뢰성</strong>: 50kg 이상의 무거운 하중 이동 등 현실 환경에서의 안정적 작동 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Pipeline of WholeBodyVLA. LAM is pretrained on manipulation and manipulation-</em></p></div>
 <ul>
 <li><strong>Unified latent learning</strong>: 분리된 locomotion LAM과 manipulation LAM을 각각 학습하여 서로 다른 시각 변화 패턴 캡처</li>
 <li><strong>이중 감독(dual supervision)</strong>: Human video와 robot data를 혼합하여 두 LAM으로부터 일관된 의도 예측 학습</li>

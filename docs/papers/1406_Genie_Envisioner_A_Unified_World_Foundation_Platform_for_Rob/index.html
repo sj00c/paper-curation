@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yue Liao, Pengfei Zhou, Siyuan Huang, Donglin Yang, Shengcong Chen, Yuxin Jiang, Yue Hu, Jingbin Cai, Si Liu, Jianlan Luo, Liliang Chen, Shuicheng Yan, Maoqing Yao, Guanghui Ren | <strong>날짜</strong>: 2025-08-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.05635" target="_blank">https://arxiv.org/abs/2508.05635</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of the Genie Envisioner World Foundation Platform. Genie Envisioner is a unified world</em></p></div>
 <p>Genie Envisioner는 video diffusion model 기반의 통합 로봇 조작 플랫폼으로, 정책 학습, 평가, 시뮬레이션을 단일 비디오 생성 프레임워크 내에서 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GE-Base를 핵심으로 하는 instruction-conditioned video diffusion model을 300시간 규모의 실제 로봇 데이터로 학습하고, GE-Act는 flow-matching decoder로 잠재 표현을 행동으로 매핑하며, GE-Sim은 action-conditioned neural simulator로 기능한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Real-world demonstration of GE-Act on a novel robot embodiment, Agilex Cobot Magic, unseen</em></p></div>
 <ul>
 <li><strong>통합 플랫폼 아키텍처</strong>: GE-Base, GE-Act, GE-Sim, EWMBench로 구성되어 정책 학습, 행동 생성, 시뮬레이션, 평가를 단일 프레임워크에서 수행</li>
 <li><strong>크로스 embodiment 일반화</strong>: 사전학습 중에 보지 못한 Agilex Cobot Magic에 대해 1시간의 원격조종 데이터만으로 정책 재학습 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>구조화된 평가 벤치마크</strong>: 시각 fidelity, 물리 consistency, instruction-action alignment를 측정하는 EWMBench 제안</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of the GE-Base World Foundation Model. (a) An illustration of the autoregressive video</em></p></div>
 <ul>
 <li>GE-Base: instruction-conditioned video diffusion model로 AgiBot-World-Beta 데이터셋 (약 300시간, 100만 에피소드)에서 사전학습</li>
 <li>Multi-view generation: 좌측, 우측, 머리 시점의 spatial consistency를 유지하는 causal block 구조 활용</li>

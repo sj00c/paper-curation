@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tejumade Afonja, Ivaxi Sheth, Ruta Binkyte, Waqar Hanif, Thomas Ulas, Matthias Becker, Mario Fritz | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2410.15828" target="_blank">arXiv:2410.15828</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: LLM4GRN 개요. Setting 1.A는 인간 기반 지식베이스(KB)와 LLM을 결합하고, Setting 2.A는 LLM KB와 LLM 추론을 모두 활용하는 완전 LLM 파이프라인</em></p></div>
 <p>본 논문은 단일세포 RNA 시퀀싱(scRNA-seq) 데이터에서 유전자 조절 네트워크(Gene Regulatory Network, GRN)를 발견하기 위해 대규모 언어모델(LLM)을 활용하는 새로운 접근 방식을 제시합니다. 신뢰할 수 있는 정답 그래프가 없는 상황에서 인과관계 합성 데이터 생성을 평가 방법으로 사용하여 LLM의 효과성을 입증합니다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) LLM을 통해 직접 완전한 GRN을 생성하거나, (2) 잠재적 전사인자(TF) 목록 형태의 사전 지식을 제공하여 통계적 인과 발견 알고리즘과 결합. 신뢰할 수 있는 정답 그래프 대신 인과관계 합성 데이터 생성을 평가 작업으로 활용하여 통계적/생물학적 타당성 검증</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: 다양한 방법들이 제안하는 GRN 간의 겹침(overlap) 분석. LLM이 더 높은 겹침을 시연</em></p></div>
 <ol>
 <li><strong>LLM의 효과성 입증</strong>: 일반 목적의 LLM이 복잡한 생물학적 상호작용을 포착하여 GRN 추론에 효과적임을 시연. GPT-4 등의 모델이 생물학적 지식을 통합하여 합리적인 GRN 그래프를 제안</li>
 <li><strong>통계적/생물학적 평가 프레임워크</strong>: 인과관계 합성 데이터 생성을 통한 신규 평가 방법론. 정답 그래프가 부재한 상황에서 GRouNdGAN을 활용하여 합성 데이터와 원본 데이터의 통계적 유사성과 생물학적 타당성을 비교 검증</li>
 <li><strong>하이브리드 접근의 우수성</strong>: LLM과 통계적 방법(GRNBoost2)의 결합이 단독 사용보다 우수한 성능을 달성. LLM의 광범위한 지식과 통계적 방법의 데이터 기반 접근이 상호 보완</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>그림 3: 서로 다른 세포 유형에 걸친 상위 마커 유전자들의 유전자 발현 프로필을 보여주는 점 플롯</em></p></div>
 <ul>
 <li><strong>Setting 1 (인간 KB 기반)</strong>:
 <ul>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hongzhe Bi, Hengkai Tan, Shenghao Xie, Zeyuan Wang, Shuhe Huang, Haitian Liu, Ruowen Zhao, Yao Feng, Chendong Xiang, Yinze Rong, Hongyan Zhao, Hanyu Liu, Zhizhong Su, Lei Ma, Hang Su, Jun Zhu | <strong>날짜</strong>: 2025-12-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.13030" target="_blank">https://arxiv.org/abs/2512.13030</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Motus Architecture. Here, at . . . at+k are actions, zt . . . zt+k are latent actions, and τv and τa are the r</em></p></div>
 <p>Motus는 vision-language-action 모델, world 모델, inverse dynamics 모델, video generation 모델을 unified latent action world model로 통합하는 embodied agent 프레임워크이며, Mixture-of-Transformer 아키텍처와 optical flow 기반 latent action을 통해 대규모 이질적 데이터 학습을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motus는 Tri-model Joint Attention을 통해 vision-language understanding, video generation, action 전문가를 통합하고, UniDiffuser 스타일의 scheduler로 modality 간 flexible switching을 지원하며, optical flow 기반 latent action과 3단계 학습 파이프라인으로 대규모 action 사전학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Motus Architecture. Here, at . . . at+k are actions, zt . . . zt+k are latent actions, and τv and τa are the r</em></p></div>
 <ul>
 <li><strong>통합 아키텍처</strong>: 5가지 embodied intelligence 패러다임(WM, IDM, VLA, VGM, Video-Action Joint Prediction Model)을 하나의 unified model로 통합</li>
 <li><strong>성능 향상</strong>: 시뮬레이션에서 X-VLA 대비 +15%, π0.5 대비 +45% 개선, 실제 로봇에서 +11~48% 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Latent action 표현</strong>: optical flow 기반 pixel-level delta action으로 무레이블 비디오에서의 사전학습 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Motus Architecture. Here, at . . . at+k are actions, zt . . . zt+k are latent actions, and τv and τa are the r</em></p></div>
 <ul>
 <li><strong>Mixture-of-Transformer (MoT) 아키텍처</strong>: understanding expert, video generation model, action expert를 shared multi-head self-attention layer로 연결하는 Tri-model Joint Attention 설계</li>
 <li><strong>UniDiffuser 스타일 scheduler</strong>: 각 modality에 서로 다른 timestep과 noise scale 할당으로 flexible한 inference mode switching 실현</li>

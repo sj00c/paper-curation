@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: , , Arslan Ali, Junjie Bai, Maciej Bala, Yogesh Balaji, Aaron Blakeman, Tiffany Cai, Jiaxin Cao, Tianshi Cao, Elizabeth Cha, Yu-Wei Chao, Prithvijit Chattopadhyay, Mike Chen, Yongxin Chen, Yu Chen, Shuai Cheng, Yin Cui, Jenna Diamond, Yifan Ding, Jiaojiao Fan, Linxi Fan, Liang Feng, Francesco Ferroni, Sanja Fidler, Xiao Fu, Ruiyuan Gao, Yunhao Ge, Jinwei Gu, Aryaman Gupta, Siddharth Gururani, Imad El Hanafi, Ali Hassani, Zekun Hao, Jacob Huffman, Joel Jang, Pooya Jannaty, Jan Kautz, Grace Lam, Xuan Li, Zhaoshuo Li, Maosheng Liao, Chen-Hsuan Lin, Tsung-Yi Lin, Yen-Chen Lin, Huan Ling, Ming-Yu Liu, Xian Liu, Yifan Lu, Alice Luo, Qianli Ma, Hanzi Mao, Kaichun Mo, Seungjun Nah, Yashraj Narang, Abhijeet Panaskar, Lindsey Pavao, Trung Pham, Morteza Ramezanali, Fitsum Reda, Scott Reed, Xuanchi Ren, Haonan Shao, Yue Shen, Stella Shi, Shuran Song, Bartosz Stefaniak, Shangkun Sun, Shitao Tang, Sameena Tasmeen, Lyne Tchapmi, Wei-Cheng Tseng, Jibin Varghese, Andrew Z. Wang, Hao Wang, Haoxiang Wang, Heng Wang, Ting-Chun Wang, Fangyin Wei, Jiashu Xu, Dinghao Yang, Xiaodong Yang, Haotian Ye, Seonghyeon Ye, Xiaohui Zeng, Jing Zhang, Qinsheng Zhang, Kaiwen Zheng, Andrew Zhu, Yuke Zhu | <strong>날짜</strong>: 2025-10-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.00062" target="_blank">https://arxiv.org/abs/2511.00062</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overall architecture of [Cosmos-Predict2.5]. As shown on the right, in the latent space, the model</em></p></div>
 <p>Cosmos-Predict2.5는 flow-based architecture 기반의 세계 시뮬레이션 기초 모델로, Text2World, Image2World, Video2World 생성을 단일 모델에 통합하여 로보틱스와 자율주행 시스템을 위한 합성 데이터 생성과 폐루프 시뮬레이션을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 200M 큐레이션된 비디오 클립으로 사전 훈련하고, supervised fine-tuning과 reinforcement learning 기반 post-training으로 정제하며, Cosmos-Reason1 VLM과 통합하여 더 풍부한 텍스트 기반 제어를 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Domain-specific SFT training improves the performance of the pretrained model on each domain.</em></p></div>
 <ul>
 <li><strong>통합 아키텍처</strong>: Text2World, Image2World, Video2World 생성을 단일 flow-based 모델에 통합</li>
 <li><strong>성능 향상</strong>: Cosmos-Predict1 대비 비디오 품질과 지시 정렬에서 상당한 개선</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>다중 응용</strong>: 로봇 정책 학습, 자율주행 시뮬레이션, VLA 훈련용 합성 데이터, action-conditioned 세계 생성 지원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Our video curation pipeline transforms raw, unstructured video data from diverse real-world sources</em></p></div>
 <ul>
 <li>7단계 비디오 큐레이션 파이프라인: shot 분할, transcoding, 크로핑, 필터링, 캡셔닝, 의미론적 중복 제거, sharding</li>
 <li>로보틱스, 자율주행, 스마트 공간, 인간 동역학, 물리 등 도메인별 특화 데이터 수집 및 처리</li>

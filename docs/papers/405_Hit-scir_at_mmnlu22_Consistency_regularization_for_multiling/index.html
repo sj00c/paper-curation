@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 기계 번역(machine translation)과 부분단어 샘플링(subword sampling) 두 가지 데이터 증강 전략을 기반으로 의도 탐지와 슬롯 채우기 태스크에 일관성 정규화를 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>일관성 정규화 기반 미세조정 프레임워크. 하이브리드 데이터 증강으로 기계 번역(MT)과 부분단어 샘플링(SS)을 활용</em></p></div>
 <ol>
 <li><strong>경쟁 우위</strong>: MMNLU-22 경쟁에서 전체 데이터셋 설정 하에 1위 달성 (정확 매칭 정확도 49.65점, 2위보다 1.02점 우수)</li>
 <li><strong>성능 향상</strong>:
@@ -86,6 +88,8 @@ a { color: #A62018; }
 <li><strong>포괄적 효과</strong>: 전체 데이터셋 설정과 제로샷(zero-shot) 설정 모두에서 지속적인 성능 개선 달성</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>MASSIVE 데이터셋의 영어 예제: 의도(set alarm)와 슬롯 레이블(time, date) 표기</em></p></div>
 <h3>일관성 정규화(Consistency Regularization)</h3>
 <ul>
 <li>원본 입력 x와 증강된 입력 A(x, z)에 대한 예측 분포를 대칭 쿨백-라이블러 발산(symmetric KL divergence)으로 정렬</li>

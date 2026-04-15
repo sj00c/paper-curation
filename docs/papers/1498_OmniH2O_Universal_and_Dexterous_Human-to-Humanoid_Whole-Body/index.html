@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tairan He, Zhengyi Luo, Xialin He, Wenli Xiao, Chong Zhang, Weinan Zhang, Kris Kitani, Changliu Liu, Guanya Shi | <strong>날짜</strong>: 2024-06-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.08858" target="_blank">https://arxiv.org/abs/2406.08858</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) OmniH2O enables teleoperating a full-size humanoid robot (Unitree H1) to complete tasks that</em></p></div>
 <p>OmniH2O는 kinematic pose를 통일된 제어 인터페이스로 사용하여 VR, 카메라, 음성 등 다양한 입력을 통해 휴머노이드 로봇을 원격 조종하고 자율적으로 동작하도록 하는 학습 기반 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: teacher-student distillation 기반 RL 파이프라인으로 AMASS 데이터셋을 kinematic pose로 재타겟팅하고, 특권 정보를 활용한 교사 정책으로부터 센서 입력이 제한된 실제 배포 정책을 학습한다. 또한 kinematic pose 기반 통일 인터페이스를 통해 다양한 입력 소스(VR, 카메라, GPT-4o)와 호환성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) OmniH2O enables teleoperating a full-size humanoid robot (Unitree H1) to complete tasks that</em></p></div>
 <ul>
 <li><strong>통합 원격 조종 시스템</strong>: VR 헤드셋, RGB 카메라, 음성 지시 등 다양한 입력 소스를 하나의 kinematic pose 인터페이스로 통합하여 접근성 높은 전신 제어를 실현</li>
 <li><strong>전신 운동-조작 통합 제어</strong>: 안정적 이동과 정교한 손 조작을 동시에 수행하는 강건한 제어 정책 개발 (스포츠, 물체 이동/조작, 인간 상호작용 등 다양한 실세계 작업 시연)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>휴머노이드 전신 제어 데이터셋</strong>: 6개 일상 작업을 포함한 OmniH2O-6 데이터셋 공개 (첫 휴머노이드 전신 운동-조작 데이터셋)</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: (a) OmniH2O retargets large-scale human motions and filters out infeasible motions for humanoids.</em></p></div>
 <ul>
 <li>AMASS 데이터셋을 Unitree H1 휴머노이드에 맞게 retargeting하고 타당성 필터링 적용</li>
 <li>안정적 자세 유지를 위해 고정된 하반신 동작 수열을 추가하여 학습 데이터 분포 편향 (standing/squatting 강화)</li>

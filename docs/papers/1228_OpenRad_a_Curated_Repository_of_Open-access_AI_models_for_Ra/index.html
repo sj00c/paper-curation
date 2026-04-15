@@ -66,6 +66,8 @@ a { color: #1856A0; }
 <blockquote><p><strong>저자</strong>: Konstantinos Vrettos, Galini Papadaki, E. Brilakis, Matthaios Triantafyllou, D. Leventis, Despina Staraki, Maria Mavroforou, E. Tzanis, Konstantina Giouroukou, Michail E. Klontzas | <strong>날짜</strong>: 2026 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig.1 Flowchart of the article selection process</em></p></div>
 <p>OpenRad는 방사선학 분야의 개방형 AI 모델을 위한 큐레이션된 저장소로, 5,239개의 논문을 검색하여 1,694개의 개방형 코드/모델을 보유한 표준화된 리소스이다. 이 저장소는 RSNA AI Roadmap 온톨로지를 따르며 모델 발견성, 재현성, 임상 적용을 촉진한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #1856A0; }
 <li><strong>Approach</strong>: PubMed, arXiv, Scopus에서 5,239개 논문을 검색한 후, gpt-oss:120b LLM을 사용하여 RSNA JSON 스키마 기반 모델 레코드를 자동 추출하고 10명의 전문가가 수동으로 검증했다. GitHub 저장소 분석을 통해 학습된 가중치와 대화형 구현의 가용성을 추가로 평가했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig.2: (A): OpenRad Interface. (B) Live, interactive statistics based on the entire model</em></p></div>
 <ul>
 <li><strong>1,694개 개방형 모델 큐레이션</strong>: 모든 이미징 모달리티(CT, MRI, X-Ray, US)와 방사선학 전문 분야를 포함하는 전문가 검증 모델 컬렉션 구축</li>
 <li><strong>표준화된 메타데이터</strong>: RSNA AI Roadmap의 RadLex 온톨로지를 따르는 일관성 있고 상호운용 가능한 모델 레코드</li>
@@ -84,6 +88,8 @@ a { color: #1856A0; }
 <li><strong>AI 연구 동향 분석</strong>: CNN과 transformer가 우세 아키텍처이며, MRI가 가장 많이 사용되는 모달리티(뇌신경방사선학 621개 모델), 중국과 미국이 주요 연구국임을 파악</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig.1 Flowchart of the article selection process</em></p></div>
 <ul>
 <li>PubMed, arXiv, Scopus 데이터베이스를 사용하여 5,239개 레코드 수집</li>
 <li>DOI 기반 중복 제거(985개) 및 방사선학 AI 모델에 포함되지 않은 논문 제외(1,832개)</li>

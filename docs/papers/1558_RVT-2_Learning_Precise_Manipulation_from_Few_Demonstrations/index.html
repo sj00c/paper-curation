@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ankit Goyal, Valts Blukis, Jie Xu, Yijie Guo, Yu-Wei Chao, Dieter Fox | <strong>날짜</strong>: 2024-06-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.08545" target="_blank">https://arxiv.org/abs/2406.08545</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: RVT-2 performing high precision tasks. Given a language instruction, a single RVT-2 model can perform multiple 3</em></p></div>
 <p>RVT-2는 적은 수의 시연으로부터 고정밀 3D 조작 작업을 학습할 수 있는 멀티태스크 로봇 조작 모델로, 이전 RVT 대비 6배 빠른 학습 속도와 2배 빠른 추론 속도를 달성하면서 RLBench에서 82%의 최고 성능을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 아키텍처 개선(다단계 추론 파이프라인, convex upsampling, 위치-조건부 특성)과 시스템 레벨 최적화(커스텀 virtual image renderer, 최적화된 트레이닝 기법)를 결합하여 RVT를 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Training time vs Success rate on RLBench. All</em></p></div>
 <ol>
 <li><strong>성능 향상</strong>: RLBench에서 성공률을 65%에서 82%로 향상 (state-of-the-art)</li>
 <li><strong>속도 개선</strong>: 학습 속도 6배 향상 (2.4M → 16M samples/day), 추론 속도 2배 향상 (11.6 fps → 20.6 fps)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화</strong>: 단일 RGB-D 카메라와 단일 멀티태스크 모델로 여러 조작 작업 처리 가능</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: RVT-2 Architecture. Given the current scene and a task instruction, RVT-2 predicts the next key-frame pose. It c</em></p></div>
 <ul>
 <li>Multi-stage coarse-to-fine 추론 파이프라인으로 관심 영역에 대한 고해상도 예측 구현</li>
 <li>Convex upsampling 기법 도입으로 GPU 메모리 사용량 감소 및 학습 속도 개선</li>

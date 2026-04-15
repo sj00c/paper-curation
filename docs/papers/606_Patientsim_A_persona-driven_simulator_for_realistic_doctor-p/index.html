@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Daeun Kyung, Hyunseung Chung, Seongsu Bae, Jiho Kim, Jae Ho Sohn, Taerim Kim, Soo Kyung Kim, Edward Choi | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>PATIENTSIM의 전체 프레임워크: 실제 의료 데이터(MIMIC-IV, MIMIC-ED)에서 추출한 170개의 임상 프로필과 4가지 축(성격, 언어 능력, 의료 이력 회상 수준, 인지 혼동 수준)으로 정의된 37개의 고유한 페르소나를 결합하여 현실적인 의사-환자 대화를 생성함</em></p></div>
 <p>PATIENTSIM은 다양한 환자 페르소나를 반영하여 현실적인 의사-환자 상호작용을 시뮬레이션하는 LLM 기반 환자 시뮬레이터로, 임상 전문가의 검증을 통해 강건성을 입증했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 실제 의료 데이터(MIMIC-IV, MIMIC-ED)에서 추출한 임상 프로필과 4가지 축(성격, 언어 능력, 의료 이력 회상 수준, 인지 혼동 수준)으로 정의된 다양한 페르소나를 결합하여 현실적인 환자 시뮬레이터 개발</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>170개의 실제 임상 프로필 × 37개의 페르소나 조합으로 구성된 PATIENTSIM의 구조 및 다양한 환자-의사 대화의 예시</em></p></div>
 <ol>
 <li><strong>포괄적 페르소나 프레임워크</strong>: 4개의 축(성격, 언어 능력, 의료 이력 회상 수준, 인지 혼동 수준)과 실제 임상 데이터를 결합하여 37개의 고유한 환자 페르소나와 170개의 임상 프로필(총 6,290개의 시뮬레이션 가능)을 생성</li>
 <li><strong>8개 LLM 평가 및 최적 모델 선정</strong>: Llama 3.3 70B를 최종 모델로 선정하며, 팩트 정확도(factual accuracy)와 페르소나 일관성(persona consistency)을 동시에 유지함을 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 기반 확장 가능 플랫폼</strong>: 개인정보 보호를 준수하면서 의료 대화 시스템 평가를 위한 재현 가능하고 확장 가능한 솔루션 제공</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>문장 수준의 팩트 검증 프로세스: PATIENTSIM의 각 응답에 대해 임상 프로필과의 일관성 확인</em></p></div>
 <ul>
 <li><strong>임상 프로필 구성</strong>: MIMIC-IV와 MIMIC-ED에서 170개의 실제 환자 프로필 추출(나이, 성별, 혼인 상태, 의료력, 주요 증상, 약물 등 포함)</li>
 <li><strong>페르소나 축 설정</strong>:

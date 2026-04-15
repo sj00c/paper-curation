@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yitang Li, Yuanhang Zhang, Wenli Xiao, Chaoyi Pan, Haoyang Weng, Guanqi He, Tairan He, Guanya Shi | <strong>날짜</strong>: 2025-05-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.24198" target="_blank">https://arxiv.org/abs/2505.24198</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control with</em></p></div>
 <p>휴머노이드 로봇이 음료를 들고 걸을 때 흘리지 않도록 상체와 하체를 분리된 에이전트로 제어하는 SoFTA 프레임워크를 제안하여, 느린 보행 제어와 빠른 end-effector 안정화를 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 상체(14 DoF)와 하체(13 DoF)를 서로 다른 주파수와 reward structure를 가진 두 개의 독립적인 에이전트로 제어하는 Slow-Fast Two-Agent (SoFTA) 프레임워크를 제안한다. 상체는 100 Hz에서 정밀한 EE 제어를, 하체는 50 Hz에서 robust gait을 담당한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control with</em></p></div>
 <ul>
 <li><strong>End-effector 가속도 감소</strong>: 기존 방법 대비 2-5배 end-effector 가속도 감소를 달성하여 거의 인간 수준의 안정성 달성</li>
 <li><strong>실세계 배포 성공</strong>: Unitree G1과 Booster T1 휴머노이드에서 음료 운반, 안정적인 1인칭 영상 촬영, disturbance 거부 등 실제 작업 수행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>광범위한 검증</strong>: 시뮬레이션과 실세계 실험을 통해 다양한 보행 조건에서 EE 안정화 효과 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the SoFTA framework: The framework employs two distinct agents that</em></p></div>
 <ul>
 <li><strong>Decoupled Action Space</strong>: 상체 14 DoF와 하체 13 DoF를 독립적인 action space로 분리하여 policy interference 완화</li>
 <li><strong>Frequency Separation</strong>: 상체는 100 Hz(정밀 제어), 하체는 50 Hz(robust 보행)의 서로 다른 제어 주파수 설정</li>

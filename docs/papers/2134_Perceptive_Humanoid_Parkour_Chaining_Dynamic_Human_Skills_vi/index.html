@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhen Wu, Xiaoyu Huang, Lujie Yang, Yuanhang Zhang, Koushil Sreenath, Xi Chen, Pieter Abbeel, Rocky Duan, Angjoo Kanazawa, Carmelo Sferrazza, Guanya Shi, C. Karen Liu | <strong>날짜</strong>: 2026-02-17 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.15827" target="_blank">10.48550/arXiv.2602.15827</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Perceptive Humanoid Parkour overview. Atomic parkour skills are composed into long-horizon kinematic reference</em></p></div>
 <p>Motion matching을 통해 인간의 동작 데이터를 원자적 기술로 합성하고, DAgger와 RL을 결합한 teacher-student 파이프라인으로 단일 깊이 기반 정책으로 증류하여 휴머노이드 로봇이 복잡한 장애물 코스에서 자율적으로 장시간 파쿠르를 수행하도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion matching을 nearest-neighbor search 기반으로 원자적 기술들을 장시간 운동학 궤적으로 합성하고, privileged state로 training된 motion-tracking RL expert policies를 depth-conditioned student policy로 DAgger와 RL 목적함수의 결합을 통해 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Perceptive Humanoid Parkour (PHP) enables a Unitree G1 humanoid robot to execute highly dynamic, long-horizon</em></p></div>
 <ul>
 <li><strong>Motion matching 기반 기술 합성</strong>: OmniRetarget으로 인간 동작을 재타겟팅한 원자적 기술들을 feature space에서의 nearest-neighbor search로 구성하여 다양한 접근 거리와 시간에 적응적인 장시간 궤적 생성</li>
 <li><strong>확장 가능한 증류 파이프라인</strong>: DAgger와 RL을 결합한 hybrid 목적함수로 여러 expert policies를 단일 depth 기반 multi-skill 정책으로 효율적으로 증류</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Zero-shot sim-to-real transfer</strong>: 시뮬레이션에서 학습한 depth 정책이 실제 로봇에서 추가 fine-tuning 없이 작동하며, 실시간 장애물 교란에 대한 closed-loop 적응 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Perceptive Humanoid Parkour overview. Atomic parkour skills are composed into long-horizon kinematic reference</em></p></div>
 <ul>
 <li>OmniRetarget을 사용하여 인간 모션 캡처 데이터를 로봇 호환 형태로 재타겟팅</li>
 <li>Motion matching 알고리즘으로 feature space에서 nearest-neighbor search를 수행하여 기술 간 부드러운 전환을 포함한 장시간 kinematic 궤적 생성</li>

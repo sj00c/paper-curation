@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gen Luo, Ganlin Yang, Ziyang Gong, Guanzhou Chen, Haonan Duan, Erfei Cui, Ronglei Tong, Zhi Hou, Tianyi Zhang, Zhe Chen, Shenglong Ye, Lewei Lu, Jingbo Wang, Wenhai Wang, Jifeng Dai, Yu Qiao, Rongrong Ji, Xizhou Zhu | <strong>날짜</strong>: 2025-05-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.00123" target="_blank">https://arxiv.org/abs/2506.00123</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of VeBrain and VeBrain-600k. Compared to existing MLLMs, VeBrain achieves</em></p></div>
 <p>VeBrain은 멀티모달 대형 언어 모델(MLLM)을 지각, 추론, 제어 기능으로 통합하는 프레임워크이며, 로봇 제어 작업을 2D 시각 공간의 텍스트 기반 MLLM 작업으로 재구성합니다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 로봇 제어를 keypoint detection 및 embodied skill recognition의 MLLM 작업으로 재구성하여 학습 목표를 통일하고, novel robotic adapter를 통해 텍스트 제어 신호를 로봇의 운동 정책으로 변환합니다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of VeBrain and VeBrain-600k. Compared to existing MLLMs, VeBrain achieves</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 멀티모달 이해, 시각-공간 추론, 로봇 제어를 2D 시각 공간에서 공통의 MLLM 작업으로 통합</li>
 <li><strong>고품질 데이터셋</strong>: VeBrain-600k 데이터셋 구축으로 200k 멀티모달 이해, 312k 시각-공간 추론, 88k 로봇 제어 데이터 포함</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>로봇 적응성</strong>: 다리 로봇과 로봇 팔에 배포 시 기존 방법 대비 우수한 적응성, 유연성, 합성 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Illustration of VeBrain architecture and robotic adapter. In VeBrain, the MLLM is capable</em></p></div>
 <ul>
 <li>Keypoint detection과 embodied skill recognition 작업으로 로봇 제어를 2D 시각 공간의 MLLM 작업으로 재구성</li>
 <li>Point tracker를 통해 2D 키포인트를 추출하고 2D to 3D 변환기로 실제 로봇 제어 신호로 변환</li>

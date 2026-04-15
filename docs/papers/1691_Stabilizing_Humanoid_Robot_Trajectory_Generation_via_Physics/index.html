@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Evelyn D'Elia, Paolo Maria Viceconte, Lorenzo Rapetti, Diego Ferigo, Giulio Romualdi, Giuseppe L'Erario, Raffaello Camoriano, Daniele Pucci | <strong>날짜</strong>: 2025-09-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.24697" target="_blank">https://arxiv.org/abs/2509.24697</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our method used to execute various walking direc-</em></p></div>
 <p>인간형 로봇의 궤적 생성에 물리 기반 학습과 제어 기반 보정을 결합하여 모방학습의 안정성을 향상시키는 방법을 제안한다. Physics-informed loss와 PI 제어기를 통해 물리 법칙 위반을 줄이고 실제 로봇에서의 안정성을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 가지 전략으로 구성된다: (1) 학습 단계에서 접촉 발의 속도를 0으로 유지하도록 하는 미분가능한 물리 기반 손실함수를 추가하고, (2) 추론 단계에서 네트워크 출력에 비례-적분(PI) 제어기를 직접 적용하여 드리프트를 최소화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Comparison of the drift in base position (top) and</em></p></div>
 <ul>
 <li><strong>Floating-base 로봇의 전체 운동학적 상태 학습</strong>: 표준 데이터 적합 손실과 함께 kinematically feasible 접촉을 고려한 physics-informed loss를 제시하여, 네트워크가 접촉 발은 고정하고 유각 발만 이동하도록 학습하게 함</li>
 <li><strong>제어 기반 드리프트 감소</strong>: 기본 제어 이론을 활용하여 사용자 입력과 네트워크 예측을 결합한 보정항을 도입, 궤적의 드리프트를 효과적으로 감소</li>
 <li><strong>실제 로봇 검증</strong>: ergoCub 인간형 로봇에서 두 가지 제어 아키텍처로 실험하여 방법의 다중성(modularity)과 효과성을 입증, 궤적의 정확도와 물리 제약 준수를 상당히 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall humanoid locomotion architecture integrating</em></p></div>
 <ul>
 <li>Supervised learning을 통해 이전 상태와 사용자 지정 방향 입력이 주어졌을 때 다음 상태의 전체 운동학적 상태를 예측하는 신경망 학습</li>
 <li>Physics-informed loss 함수 L(z; θ) = wF·LF(z; θ) + wB·LB(z; θ) + wD·LD(z; θ) 형태로 정의하여 미분가능한 물리 제약을 backpropagation 중에 반영</li>

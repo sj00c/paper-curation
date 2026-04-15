@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chengyang Peng, Zhihao Zhang, Shiting Gong, Sankalp Agrawal, Keith A. Redmill, Ayonga Hereid | <strong>날짜</strong>: 2025-06-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.02206" target="_blank">https://arxiv.org/abs/2506.02206</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Overall structure of the proposed hierarchical framework for humanoid navigation. The high-level RL-based planne</em></p></div>
 <p>Humanoid robot navigation을 위해 고수준 RL 기반 동적 subgoal 생성기와 저수준 MPC 기반 보행 제어기를 결합한 계층적 프레임워크를 제안하며, data bootstrapping 기법으로 학습을 안정화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RL 기반 고수준 planner가 로봇-중심 극좌표계에서 동적 subgoal을 생성하고, 저수준 MPC controller가 이를 따르는 안정적인 보행을 생성하며, model-based navigation 방법으로부터의 demonstration data를 활용한 data bootstrapping으로 학습을 가속화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. The navigation performance of LMPC, RRT-LMPC,</em></p></div>
 <ul>
 <li><strong>계층적 프레임워크의 효과성</strong>: RL 기반 고수준 계획과 MPC 기반 저수준 제어의 결합으로 환경 적응성과 동역학적 안정성을 동시에 확보</li>
 <li><strong>Data bootstrapping 기법</strong>: Model-based 방법으로부터 생성된 demonstration dataset을 replay buffer에 포함시켜 학습 안정성과 수렴 속도를 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 적용 가능성</strong>: Agility Robotics Digit humanoid에서의 시뮬레이션 검증으로 실제 bipedal robot 적용 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Overall structure of the proposed hierarchical framework for humanoid navigation. The high-level RL-based planne</em></p></div>
 <ul>
 <li>64×64 local occupancy grid map (전방 4.5m, 후방 1.5m, 횡단 6m)과 CoM 상태, 목표 정보를 포함한 heterogeneous state 정의</li>
 <li>로봇-중심 극좌표계에서 (거리 dc, 방향 ϕc)로 표현된 dynamic subgoal을 action으로 정의</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-04-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2604.01158" target="_blank">https://arxiv.org/abs/2604.01158</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of SMASH. Our system connects scalable motion generation, task-aligned policy learning, and egocentric</em></p></div>
 <p>휴머노이드 로봇의 탁구 게임을 위해 확장 가능한 전신 동작 학습과 자체 에고센트릭 비전을 통합한 SMASH 시스템을 제시하며, 외부 카메라나 모션 캡처 없이 실외에서 연속적인 탁구 스트라이킹을 처음으로 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion VAE를 통한 동작 확장으로 스트라이크 모션 라이브러리를 구축하고, Task-aligned motion matching으로 강화학습 정책을 훈련하며, 듀얼 에고센트릭 카메라를 이용한 온보드 지각 파이프라인으로 배포 시 실시간 폐루프 제어를 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: SMASH: Our system enables the first outdoor humanoid ping-pong player and the first whole-body smash on a humano</em></p></div>
 <ul>
 <li><strong>첫 실외 자율 탁구 연속 스트라이킹</strong>: 외부 카메라나 모션 캡처 시스템 없이 에고센트릭 센싱만으로 실외 연속 탁구 게임 실현</li>
 <li><strong>전신 협응 동작</strong>: Smash, low crouching shot, 큰 측면 이동 등 다양한 역동적 전신 동작 구현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>온보드 실시간 지각</strong>: 50Hz 이상의 공 상태 추정과 로봇 자세 동시 인식으로 빠른 반응 시간 확보</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of SMASH. Our system connects scalable motion generation, task-aligned policy learning, and egocentric</em></p></div>
 <ul>
 <li>Motion VAE를 이용하여 스파스한 모션 캡처 데이터를 확장하고 전신 스트라이크 동작의 워크스페이스 커버리지 증대</li>
 <li>Task-conditioned motion matching으로 목표 스트라이크 위치에 정렬된 모션 참조를 선택하여 강화학습과 모션 사전(motion prior) 결합</li>

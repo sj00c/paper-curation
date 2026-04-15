@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yi Chen, Yuying Ge, Weiliang Tang, Yizhuo Li, Yixiao Ge, Mingyu Ding, Ying Shan, Xihui Liu | <strong>날짜</strong>: 2024-12-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.04445" target="_blank">https://arxiv.org/abs/2412.04445</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of Moto’s three training stages: (1) The Latent Motion Tokenizer encodes key visual motions between v</em></p></div>
 <p>이 논문은 비디오에서 비지도 학습으로 latent motion token을 학습하여 로봇 조작 태스크를 위한 사전학습의 중간 표현으로 사용하고, Moto-GPT를 통해 motion token의 자동회귀 예측으로 motion prior를 학습한 후 co-fine-tuning으로 실제 로봇 제어로 전이하는 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VQ-VAE 기반 Latent Motion Tokenizer로 연속 프레임 간의 동작을 압축된 discrete token으로 변환하고, GPT 기반 Moto-GPT를 motion token의 다음 토큰 예측으로 사전학습한 후, action query token을 삽입하는 co-fine-tuning으로 로봇 액션 예측으로 전이한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. The overview of Moto, which utilizes Latent Motion Tokens as a bridging “language” for autoregressive pretrain</em></p></div>
 <ul>
 <li><strong>Latent Motion Token 표현</strong>: VQ-VAE 기반으로 학습된 latent motion token이 의미론적으로 해석 가능하며 human-to-robot 간 cross-embodiment 전이 능력을 보임</li>
 <li><strong>Motion Prior 학습</strong>: 사전학습된 Moto-GPT가 플ausible motion trajectory 예측과 output likelihood를 통한 trajectory rationality 평가 능력을 획득</li>
 <li><strong>로봇 제어 성능</strong>: 사전학습된 motion prior를 포함한 Moto-GPT가 CALVIN 벤치마크에서 유의미한 성능 향상을 달성, 특히 제한된 학습 데이터 상황에서 우수한 견고성과 효율성 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of Moto’s three training stages: (1) The Latent Motion Tokenizer encodes key visual motions between v</em></p></div>
 <ul>
 <li>Latent Motion Tokenizer 학습: VQ-VAE 인코더가 연속된 두 프레임을 입력받아 discrete token으로 압축하고, 디코더가 첫 번째 프레임과 토큰으로부터 두 번째 프레임을 재구성하도록 정규화하여 프레임 간 변화(동작)를 캡처</li>
 <li>Moto-GPT 사전학습: 토큰화된 motion trajectory 시퀀스에 대해 initial frame과 text instruction을 조건으로 하여 next latent motion token을 예측하는 autoregressive 학습</li>

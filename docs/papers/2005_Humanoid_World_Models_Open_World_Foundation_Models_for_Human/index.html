@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Muhammad Qasim Ali, Aditya Sridhar, Shahbuland Matiana, Alex Wong, Mohammad Al-Sharman | <strong>날짜</strong>: 2025-06-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.01182" target="_blank">https://arxiv.org/abs/2506.01182</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of Humanoid World Models (HWM). Given</em></p></div>
 <p>Humanoid World Models (HWM)는 100시간의 humanoid 시연 데이터로 학습된 경량 오픈소스 모델로, egocentric 비디오를 humanoid control token으로 조건화하여 미래 프레임을 예측한다. Masked Transformer와 Flow-Matching 두 가지 생성 모델을 탐색하며 parameter-sharing 기법으로 33-53% 크기 감소를 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Masked Transformer와 Flow-Matching 두 가지 generative model 패밀리를 비교 연구하며, joint/cross-attention과 parameter-sharing 전략 등 아키텍처 변형을 체계적으로 탐색한다. VQ-VAE 기반 토큰화를 통해 효율적 비디오 생성을 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Four sample videos from the Base Block Variant of</em></p></div>
 <ul>
 <li><strong>Masked Transformer 우수성</strong>: 동일 데이터셋과 계산 제약 조건에서 Flow-Matching 모델을 지속적으로 능가, joint attention 변형이 최고 성능 달성</li>
 <li><strong>Parameter-sharing 효율성</strong>: 성능 저하 최소화하면서 모델 크기를 33-53% 감소시켜 계산 요구사항 대폭 낮춤</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실용적 접근성</strong>: 1-2 GPU 환경에서 학습·배포 가능한 오픈소스 humanoid-specific world model 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Architecture of a single transformer block in Masked-</em></p></div>
 <ul>
 <li>VQ-VAE 기반 이산 latent space에서 토큰화된 비디오로 표현</li>
 <li>Masked Transformer: MaskGIT 기반 non-autoregressive 디코딩으로 병렬 샘플링 구현</li>

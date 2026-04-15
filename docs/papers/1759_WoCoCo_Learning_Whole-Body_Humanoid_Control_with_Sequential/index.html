@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chong Zhang, Wenli Xiao, Tairan He, Guanya Shi | <strong>날짜</strong>: 2024-06-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.06005" target="_blank">https://arxiv.org/abs/2406.06005</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of WoCoCo and tasks. (A) We decompose the task into separate contact</em></p></div>
 <p>WoCoCo는 순차적 접촉(sequential contacts)을 포함하는 휴머노이드 로봇의 전신 제어를 학습하기 위한 통합 RL 프레임워크로, 작업을 접촉 단계로 자연스럽게 분해하여 일반화된 정책 학습을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 작업을 접촉 목표(contact goal)와 작업 목표(task goal)로 정의되는 별도의 접촉 단계로 분해하고, 밀도 높은 접촉 보상(dense contact rewards), 단계 카운트 보상(stage count rewards), 호기심 보상(curiosity rewards)으로 구성된 task-agnostic WoCoCo 보상을 설계한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of WoCoCo and tasks. (A) We decompose the task into separate contact</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 접촉 단계 분해를 통해 다양한 휴머노이드 작업을 일관된 방식으로 처리하는 일반적인 RL 프레임워크 제시</li>
 <li><strong>현실 세계 성과</strong>: 파쿠르 점프(versatile parkour jumping), 박스 로코-조작(box loco-manipulation), 동적 박수-탭 춤(clap-and-tap dancing), 절벽 등반(cliffside climbing) 등 4가지 도전적인 작업을 실제 로봇에서 성공적으로 수행</li>

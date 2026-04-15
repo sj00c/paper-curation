@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Weidong Huang, Jingwen Zhang, Jiongye Li, Shibowen Zhang, Jiayang Wu, Jiayi Wang, Hangxin Liu, Yaodong Yang, Yao Su | <strong>날짜</strong>: 2026-02-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.06445" target="_blank">https://arxiv.org/abs/2602.06445</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Comparison between the proposed constrained RL frame-</em></p></div>
 <p>ECO는 에너지 소비를 보상 함수의 가중치가 아닌 명시적 부등식 제약 조건으로 reformulate한 constrained RL 프레임워크로, 휴머노이드 로봇의 에너지 효율적 보행을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ECO는 에너지 소비 및 참조 모션을 명시적 제약 조건으로 분리하고 Lagrangian 방법으로 강제하여, 에너지 제약 임계값을 선형 탐색으로 직관적으로 튜닝한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Comparison of training metrics for ECO, P3O, IPO, and CRPO. The energy consumption and mirror reference motion t</em></p></div>
 <ul>
 <li><strong>에너지 효율성 혁신</strong>: MPC 대비 약 6배, PPO 대비 2.3배 낮은 에너지 소비를 달성하며 robust한 보행 성능 유지</li>
 <li><strong>직관적 하이퍼파라미터 튜닝</strong>: 에너지 제약을 명시적으로 표현하여 물리적 의미가 명확하고 선형 탐색 기반 튜닝 프로세스로 효율성 향상</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Constrained RL 분석</strong>: PPO-Lagrangian이 네 가지 constrained RL 알고리즘 중 가장 빠른 수렴과 안정적 제약 강제 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the training and deployment process in proposed ECO framework. The policy network, taking velocity c</em></p></div>
 <ul>
 <li>Constrained RL formulation으로 에너지 소비를 보상에서 분리하여 명시적 부등식 제약으로 reformulate</li>
 <li>Lagrangian 방법을 통해 에너지 소비 제약과 참조 모션 제약을 강제</li>

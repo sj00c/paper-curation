@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chia-Yu Hung, Navonil Majumder, Haoyuan Deng, Liu Renhang, Yankang Ang, Amir Zadeh, Chuan Li, Dorien Herremans, Ziwei Wang, Soujanya Poria | <strong>날짜</strong>: 2025-11-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.14659" target="_blank">https://arxiv.org/abs/2511.14659</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Training pipeline of NORA-1.5 where firstly a VLA model is pre-trained through imitation learning and subseque</em></p></div>
 <p>NORA-1.5는 flow-matching 기반 action expert를 추가하여 VLA 모델의 성능을 향상시키고, world model 및 action-based reward를 이용한 DPO 기반 post-training으로 실제 로봇 환경에서의 신뢰성과 일반화 능력을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: NORA backbone에 flow-matching 기반 action expert를 layer-wise self-attention으로 연결하고, action-conditioned world model (V-JEPA2-AC)과 deviation-from-ground-truth 휴리스틱을 결합한 reward 신호를 생성하여 DPO를 통해 post-training한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Training pipeline of NORA-1.5 where firstly a VLA model is pre-trained through imitation learning and subseque</em></p></div>
 <ul>
 <li><strong>아키텍처 향상</strong>: Flow-matching action expert 추가만으로도 NORA 대비 상당한 성능 향상을 달성하여, 기존 예상과 달리 flow-matching이 추론 속도뿐 아니라 정책 성능도 개선함을 입증</li>
 <li><strong>최고 성능 달성</strong>: SimplerEnv, LIBERO 등 시뮬레이션 벤치마크와 Galaxea A1 등 실제 로봇 환경에서 state-of-the-art 결과 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장성 있는 Post-training 방법</strong>: DPO 기반 preference 최적화가 추론-bound 대신 compute-bound 방식으로 대규모 데이터에 스케일하는 경로를 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Training pipeline of NORA-1.5 where firstly a VLA model is pre-trained through imitation learning and subseque</em></p></div>
 <ul>
 <li>NORA 3B-parameter autoregressive VLA 모델을 기반으로 flow-matching 기반 action expert를 추가하여 layer-wise self-attention으로 결합</li>
 <li>V-JEPA2-AC action-conditioned world model을 이용하여 action 롤아웃의 goal 도달 가능성을 평가</li>

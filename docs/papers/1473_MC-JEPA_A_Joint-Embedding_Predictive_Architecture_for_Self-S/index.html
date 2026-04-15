@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Adrien Bardes, Jean Ponce, Yann LeCun | <strong>날짜</strong>: 2023-07-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2307.12698" target="_blank">https://arxiv.org/abs/2307.12698</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Multi-task self-supervised learning of content and motion features. MC-JEPA com-</em></p></div>
 <p>MC-JEPA는 광학 흐름 추정과 콘텐츠 특성 학습을 단일 공유 인코더 내에서 결합하는 자기 지도 학습 방법으로, 두 목표가 서로 상호 이득을 주어 모션 정보를 포함하는 콘텐츠 특성을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MC-JEPA는 PWC-Net 기반의 M-JEPA 광학 흐름 추정 모듈과 VICReg 자기 지도 학습 방법을 다중 작업 설정에서 결합하여, 역방향 일관성 손실과 분산-공분산 정규화를 포함한 개선 사항을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Qualitative visualization: optical flow. We compare our results of our complete model</em></p></div>
 <ul>
 <li><strong>통합 아키텍처</strong>: PWC-Net 기반 flow estimator와 VICReg 기반 content learning을 공유 인코더로 통합하여 안정적인 다중 작업 학습 달성</li>
 <li><strong>성능</strong>: KITTI 2015, Sintel 등 unsupervised optical flow 벤치마크에서 기존 방법 수준의 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>단일 모델</strong>: 하나의 인코더로 모션과 콘텐츠 작업을 동시에 수행 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: MC-JEPA architecture. Our method learns motion through optical flow estimation on</em></p></div>
 <ul>
 <li>PWC-Net 기반 coarse-to-fine flow estimation 아키텍처 사용으로 pyramidal features에서 반복적으로 flow 정제</li>
 <li>Forward-backward flow consistency를 위한 cycle consistency loss 적용으로 모션 추정 안정성 개선</li>

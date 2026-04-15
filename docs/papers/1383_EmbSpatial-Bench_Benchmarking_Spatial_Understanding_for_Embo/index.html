@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mengfei Du, Binhao Wu, Zejun Li, Xuanjing Huang, Zhongyu Wei | <strong>날짜</strong>: 2024-06-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.05756" target="_blank">https://arxiv.org/abs/2406.05756</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Comparison between EmbSpatial-Bench and</em></p></div>
 <p>Large Vision-Language Model(LVLM)들의 구현화된 환경에서의 공간 이해 능력을 평가하기 위해 egocentric 관점의 6가지 공간 관계를 포함하는 EmbSpatial-Bench 벤치마크를 구축하고, 이를 개선하기 위한 instruction-tuning 데이터셋 EmbSpatial-SFT를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MP3D, AI2-THOR, ScanNet의 annotated 3D 환경으로부터 자동으로 벤치마크를 구축하고, 3D 좌표를 활용하여 egocentric 관점의 공간 관계(above, below, left, right, close, far)를 추출한다. 추가로 instruction-tuning 데이터셋을 구성하여 LVLM의 spatial understanding 능력을 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the construction pipeline for EmbSpatial-Bench based on existing annotated 3D environments.</em></p></div>
 <ul>
 <li><strong>EmbSpatial-Bench 구축</strong>: 3,640개의 QA pair, 294개 object category, 277개 scene을 포함하는 embodied spatial understanding 벤치마크 자동 구축</li>
 <li><strong>포괄적 평가</strong>: 6가지 공간 관계에 대한 다양한 LVLM(BLIP2, InstructBLIP, GPT-4V, Qwen-VL-Max 등) 평가로 현재 LVLM의 부족한 공간 이해 능력 노출(최고 성능 49.11% vs 인간 90.33%)</li>
 <li><strong>개선 데이터셋</strong>: spatial relationship identification과 object localization 두 가지 auxiliary task를 포함하는 EmbSpatial-SFT instruction-tuning 데이터셋 제시로 LVLM의 embodied spatial understanding 능력 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the construction pipeline for EmbSpatial-Bench based on existing annotated 3D environments.</em></p></div>
 <ul>
 <li>3D 환경(MP3D, AI2-THOR, ScanNet)으로부터 random viewpoint에서 RGB-D 이미지 수집</li>
 <li>camera parameter와 3D 좌표를 활용하여 2D bounding box 획득 및 egocentric 관점의 공간 관계 자동 추출(horizontal: left/right, vertical: above/below, depth: close/far)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Justin Yu, Yide Shentu, Di Wu, Pieter Abbeel, Ken Goldberg, Philipp Wu | <strong>날짜</strong>: 2025-10-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.00153" target="_blank">https://arxiv.org/abs/2511.00153</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of the EgoMI framework. EgoMI captures egocentric human demonstrations with synchronized head and hand</em></p></div>
 <p>EgoMI는 인간의 동시화된 머리 및 손 움직임을 포착하는 egocentric 데이터 수집 프레임워크로, SPARKS 메모리 메커니즘을 통해 급속한 시점 변화를 처리하여 반인간형 로봇으로 zero-shot 전이를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: EgoMI는 인간 머리-손 운동 데이터를 동시에 수집하는 하드웨어 시스템과, Spatial-Aware Robust Keyframe Selection (SPARKS)라는 메모리 기반 정책을 통해 rapid viewpoint changes를 처리하며, π0 foundation model을 fine-tuning하여 robot 재설정을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Tabletop Task Rollout Sequence: (Left). The images show a real 29D policy evaluation rollout where the robot (1)</em></p></div>
 <ul>
 <li><strong>머리 액추에이터의 중요성 입증</strong>: 액추에이트된 머리를 통한 관절 비선형 회전 보정과 active vision 시뮬레이션이 일상적 조작 작업에서 critical하다는 것을 실증했다.</li>
 <li><strong>SPARKS 메커니즘</strong>: viewpoint novelty, temporal recency, motion smoothness를 기준으로 한 lightweight keyframe selection이 시각적 정보 손실을 완화하면서 분포외(out-of-distribution) 실패를 방지한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>통합 평가</strong>: 헤드 궤적 데이터와 메모리 기반 정책이 모두 중요함을 체계적으로 입증했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of the EgoMI framework. EgoMI captures egocentric human demonstrations with synchronized head and hand</em></p></div>
 <ul>
 <li><strong>하드웨어 시스템</strong>: VR 컨트롤러, 머리 마운트 카메라, RGB-D 센서, IMU를 통합하여 동시화된 end-effector 및 head 궤적 데이터 수집</li>
 <li><strong>SPARKS 알고리즘</strong>: 과거 keyframe에서 spatial information을 강조하고, viewpoint novelty(카메라 포즈 변화), temporal recency, motion smoothness score 계산으로 context-aware 선택</li>

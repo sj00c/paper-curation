@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>:  | <strong>URL</strong>: <a href="https://taohuang13.github.io/adamimic.github.io/" target="_blank">https://taohuang13.github.io/adamimic.github.io/</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. Our method, AdaMimic (adaptive motion tracking), achieves agile humanoid whole-body adaptation from on</em></p></div>
 <p>AdaMimic은 단 하나의 참조 동작으로부터 휴머노이드 로봇의 적응형 제어를 가능하게 하는 동작 추적 알고리즘으로, 동작 패턴을 정확히 보존하면서 다양한 조건에 적응한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 단일 참조 동작을 키프레임으로 희소화하고 최소한의 물리 가정으로 편집하여 augmented dataset을 생성한 후, 고정 phase interval을 사용한 1단계 정책 학습과 phase adapter 및 tracking adapter를 활용한 2단계 적응형 학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. Our method, AdaMimic (adaptive motion tracking), achieves agile humanoid whole-body adaptation from on</em></p></div>
 <ul>
 <li><strong>단일 동작 학습</strong>: 대규모 동작 데이터셋 없이 단 하나의 참조 동작만으로 적응형 제어 정책 학습</li>
 <li><strong>시뮬레이션 성능</strong>: 기존 방법 대비 유의미하게 향상된 모방 정확도와 적응성 달성</li>
 <li><strong>실제 로봇 배포</strong>: Unitree G1 휴머노이드 로봇에서 다양한 적응 조건의 여러 작업에서 우수한 성능 입증 (점프 높이 향상, 배드민턴/테니스 스윙 범위 확장, 장거리 점프 등)</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method overview. (a) Human motions are reconstructed into SMPL motions via GVHMR [21] and retargeted to the huma</em></p></div>
 <ul>
 <li>Human motion을 GVHMR을 사용하여 SMPL 형식으로 재구성하고 로봇에 맞게 retarget</li>
 <li>참조 동작에서 중요한 키프레임을 선택하고 global trajectory만 편집하여 local joint trajectories는 보존 (식 3)</li>

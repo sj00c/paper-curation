@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shivin Dass, Alaa Khaddaj, Logan Engstrom, Aleksander Madry, Andrew Ilyas, Roberto Martín-Martín | <strong>날짜</strong>: 2025-05-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.09603" target="_blank">https://arxiv.org/abs/2505.09603</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Data selection with datamodels. (left) Similarity-based methods select close samples</em></p></div>
 <p>DataMIL은 datamodels 패러다임을 로봇 모방학습에 적용하여 대규모 사전 데이터셋에서 작업별 성능을 직접 최적화하는 정책 기반 데이터 선택 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DataMIL은 validation loss를 대리 목적 함수로 사용하여 실시간 롤아웃 없이 데이터의 정책 성능 영향을 추정하는 datamodel을 학습하고, regression 및 metagradient 기반 추정기를 통해 각 데이터 포인트의 영향도 점수를 계산한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Results for data selection on OXE. We test the performance of policies trained on data</em></p></div>
 <ul>
 <li><strong>MetaWorld 벤치마크</strong>: 50개 작업에서 최신 기준 대비 10% 성능 향상 달성</li>
 <li><strong>Open X-Embodiment 데이터셋</strong>: 서로 다른 구현체와 작업에 걸쳐 효과적인 데이터 선택 성공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>휴리스틱 기반 방법 초과</strong>: 시각적 유사성이나 상태-행동 유사성 같은 기존 휴리스틱 기반 방법들을 지속적으로 능가</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Data selection with datamodels. (left) Similarity-based methods select close samples</em></p></div>
 <ul>
 <li>정책 학습 알고리즘 A를 black box로 취급하고 데이터 부분집합 D'에 대한 성능 메트릭 M(A(D'))을 근사하는 datamodel f̂를 학습", 'validation loss를 대리 목적 함수로 사용하여 실제 정책 성능과의 상관관계를 유지하면서 비용을 감소</li>
 <li>Regression 기반 estimator: 작은 규모 정책(MetaWorld)에서 데이터-성능 쌍으로부터 직접 학습</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jaeyong Shin, Woohyun Cha, Donghyeon Kim, Junhyeok Cha, Jaeheung Park | <strong>날짜</strong>: 2025-04-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.08246" target="_blank">https://arxiv.org/abs/2504.08246</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>본 논문은 인간형 로봇의 보행 학습에서 Spectral Normalization (SN)을 사용하여 Lipschitz 연속성을 효율적으로 강제하고, 기존의 gradient penalty 기반 방법보다 GPU 메모리 오버헤드를 줄이면서도 유사한 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Spectral Normalization을 정책 네트워크의 가중치 행렬에 적용하여 가중치의 최대 singular value로 정규화함으로써, 명시적인 gradient 계산 없이 Lipschitz 상수를 제약한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>메모리 효율성</strong>: SN은 gradient penalty 기반 방법 대비 GPU 메모리 사용량을 크게 감소시켜 더 효율적인 병렬 훈련을 가능하게 함</li>
 <li><strong>성능 동등성</strong>: 시뮬레이션과 실제 인간형 로봇 플랫폼 모두에서 SN은 GP-LCP와 유사한 제어 안정성을 달성</li>
 <li><strong>Sim-to-real 전이 개선</strong>: 실제 actuator 대역폭 및 제어 제약을 고려하여 현실적인 정책 학습을 도모</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Comparison between a standard actor network and an actor network</em></p></div>
 <ul>
 <li>Lipschitz 연속성: 함수 f에 대해 ‖f(x) − f(y)‖ ≤ L‖x − y‖를 만족하는 Lipschitz 상수 L이 존재하도록 제약</li>
 <li>Spectral Normalization 적용: 각 가중치 행렬 W_l을 최대 singular value σ(W_l)로 정규화하여 W_l / σ(W_l) 형태로 변환</li>

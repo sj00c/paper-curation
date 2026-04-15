@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gerald Brantner | <strong>날짜</strong>: 2025-07-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.08258" target="_blank">https://arxiv.org/abs/2508.08258</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Jump phases. Magenta: Launch phase, blue: flight</em></p></div>
 <p>고도화된 동적 동작을 수행하는 휴머노이드 로봇을 위해 완전한 articulated rigid body dynamics를 기반으로 하는 제어 아키텍처를 제시하며, trajectory optimization과 whole-body control을 model abstraction으로 중개하여 아크로바틱 동작을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Operational-space based whole-body control (OPWBC)를 기반으로 centroidal dynamics를 활용하여 trajectory optimization과 실시간 제어를 분리하되, 두 계층 사이에 일치하는 model abstraction을 중개함으로써 계산 복잡성을 해결하면서 완전한 dynamics를 유지한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Launch. Center-of-mass xcom and angular momen-</em></p></div>
 <ul>
 <li><strong>완전한 Dynamics 기반 제어</strong>: 선형화나 모델 근사 없이 articulated rigid body dynamics의 완전한 equations of motion을 활용하여 trajectory optimization과 whole-body control을 통합</li>
 <li><strong>다층 제어 구조</strong>: 제약 조건(constraint), 작업(task), 자세(posture) 제어를 hierarchical하게 조직하되 dynamically consistent null-space projection으로 서로 독립적이고 간섭 없는 제어 구현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Centroidal Momentum 기반 제어</strong>: center-of-mass, angular momentum 및 그 부분공간에 대한 제어를 통해 고도의 동적 안정성 확보</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Control Parameters. Task: center-of-mass xcom and</em></p></div>
 <ul>
 <li>Operational-space 기반 whole-body control 프레임워크로 M(q), centrifugal/Coriolis, gravitational 항을 명시적으로 계산하여 dynamically decoupled 제어 실현</li>
 <li>Centroidal Momentum Matrix를 이용하여 multi-body dynamics를 single rigid body equivalent로 축약하되, 세부 dynamics 정보는 보존</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Rohan P. Singh, Mitsuharu Morisawa, Mehdi Benallegue, Zhaoming Xie, Fumio Kanehiro | <strong>날짜</strong>: 2025-04-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.13619" target="_blank">https://arxiv.org/abs/2504.13619</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HRP-5P humanoid bipedal locomotion (clockwise) on flat rigid</em></p></div>
 <p>Deep RL을 이용하여 humanoid robot HRP-5P가 시뮬레이션에서 terrain randomization으로 학습한 정책을 실제 환경의 compliant하고 uneven한 terrain에서도 robust하게 보행하도록 하는 연구이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Sim-to-real deep RL 접근법으로 simulation에서 randomized terrain으로 training curriculum을 구성하여 정책을 학습하고, adaptive gait frequency를 위한 clock signal modulation을 제안하여 aperiodic gait를 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HRP-5P humanoid bipedal locomotion (clockwise) on flat rigid</em></p></div>
 <ul>
 <li><strong>Sim-to-real transfer 성공</strong>: Training curriculum 기반 terrain randomization으로 simulation에서 학습한 single policy가 실제 HRP-5P robot에서 parameter tuning 없이 다양한 terrain (soft cushion, uneven blocks, grass, paved street)에서 robust walking을 달성</li>
 <li><strong>Proprioceptive feedback 기반 제어</strong>: Vision이나 terrain classification 없이 joint encoders, IMU, motor current sensors로부터의 정보만으로 terrain 적응</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>재현성 보장</strong>: Code와 demo video 공개로 연구 재현성 확보</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our training framework. (L) We propose to train a feedforward RL agent while exposing it to randomiz</em></p></div>
 <ul>
 <li>Model-free deep RL을 이용한 end-to-end policy 학습</li>
 <li>Simulation 환경에서 compliant/uneven terrain randomization curriculum으로 training</li>

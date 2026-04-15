@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Matteo Hessel, Hubert Soyer, Lasse Espeholt, Wojciech Czarnecki, Simon Schmitt, Hado van Hasselt | <strong>날짜</strong>: 2018-09-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/1809.04474" target="_blank">https://arxiv.org/abs/1809.04474</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Atari-57 (unclipped): Median human normalised</em></p></div>
 <p>Multi-task Deep Reinforcement Learning에서 task 간의 reward scale과 sparsity 차이로 인한 불균형 문제를 PopArt 정규화를 통해 해결하여, 57개 Atari 게임을 단일 정책으로 인간 수준 이상의 성능으로 학습.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PopArt 정규화를 actor-critic 업데이트에 적용하여 모든 task가 학습 역학에 유사한 영향을 미치도록 자동으로 각 task의 contribution을 조정. 이를 통해 reward scale, sparsity, agent competence에 불변적인 업데이트를 실현.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Atari-57 (unclipped): Median human normalised</em></p></div>
 <ul>
 <li><strong>Atari-57 벤치마크</strong>: 단일 정책으로 110% median human normalised score 달성 (이전 IMPALA 59.7% 대비 대폭 향상)</li>
 <li><strong>DeepMind Lab-30</strong>: 72.8% mean human normalised score로 SOTA 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화 가능한 방법론</strong>: PopArt 정규화가 task 간 불균형 문제에 대한 일반적 해결책 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Normalisation statistics: Top: learned statistics,</em></p></div>
 <ul>
 <li>PopArt 정규화를 value function 업데이트에 적용하여 return의 scale을 자동으로 정규화</li>
 <li>Actor-critic framework에서 value loss와 policy gradient 모두에 정규화된 return을 적용</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiaojun Yu, Siyuan Huang, Xibin Yuan, Zhengkai Jiang, Ce Hao, Xin Li, Haonan Chang, Junbo Wang, Liu Liu, Hongsheng Li, Peng Gao, Cewu Lu | <strong>날짜</strong>: 2024-09-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.20551" target="_blank">https://arxiv.org/abs/2409.20551</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>UniAff는 도구 사용과 관절형 객체 조작을 통합하는 MLLM 기반 프레임워크로, 3D motion constraints와 affordances의 통일된 표현을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 900개의 관절형 객체(19개 카테고리)와 600개의 도구(12개 카테고리)를 포함한 대규모 합성 데이터셋을 구축하고, SPHINX MLLM을 fine-tuning하여 부품 수준의 6D pose, grasp affordance, functional affordance, manipulation type을 예측한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 도구와 관절형 객체의 조작을 하나의 통일된 부품 표현 공식으로 통합한 최초의 MLLM 모델 제안</li>
 <li><strong>포괄적 데이터셋</strong>: 1,500개 객체에 대한 부품 수준 6D pose, manipulation type, affordance 라벨이 포함된 대규모 synthetic dataset 개발</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>현실 환경 적응성</strong>: 시뮬레이션과 실제 로봇 환경 모두에서 검증되어 cross-task 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>Structured 3D spatial formulation 정의: 각 부품 ψi에 대해 6D pose Ai, bounding box Bi, grasp affordance Gi, functional affordance Fi, joint type Ji, part state Li로 구성된 통일된 표현 도입</li>
 <li>Synthetic data generation: 사전 스캔된 메시 또는 URDF 모델을 활용하여 near-realistic 시뮬레이션에서 자동 라벨링으로 대규모 데이터셋 생성</li>

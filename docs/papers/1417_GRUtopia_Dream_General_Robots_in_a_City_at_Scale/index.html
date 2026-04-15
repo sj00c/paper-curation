@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hanqing Wang, Jiahe Chen, Wensi Huang, Qingwei Ben, Tai Wang, Boyu Mi, Tao Huang, Siheng Zhao, Yilun Chen, Sizhe Yang, Peizhou Cao, Wenye Yu, Zichao Ye, Jialun Li, Junfeng Long, Zirui Wang, Huiling Wang, Ying Zhao, Zhongying Tu, Yu Qiao, Dahua Lin, Jiangmiao Pang | <strong>날짜</strong>: 2024-07-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2407.10943" target="_blank">https://arxiv.org/abs/2407.10943</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Key features of GRUtopia.</em></p></div>
 <p>GRUtopia는 로봇 학습을 위한 최초의 대규모 시뮬레이션 3D 도시 환경으로, 100k개의 상호작용 가능한 장면, LLM 기반 NPC 시스템, 그리고 종합적인 벤치마크를 제공하여 embodied AI의 scaling law 탐구를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GRScenes 데이터셋(89개 카테고리, 100k 장면), GRResidents LLM 기반 NPC 시스템, GRBench 벤치마크를 개발하여 다양한 로봇 플랫폼(특히 legged robot)을 지원하고 Object Loco-Navigation, Social Loco-Navigation, Loco-Manipulation 작업을 포함한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The richness and diversity of scenes and objects in GRScenes. (a) The distribution of</em></p></div>
 <ul>
 <li><strong>GRScenes 데이터셋</strong>: 89개 다양한 기능 카테고리, 100k개의 상호작용 가능하고 세밀하게 주석 처리된 장면으로 city-scale 환경 구성 가능</li>
 <li><strong>GRResidents NPC 시스템</strong>: LLM 기반으로 사회적 상호작용, 작업 생성, 작업 할당을 수행하며 환경 지식과 실시간 장면 인식 활용</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>학습 기반 제어 정책 API 제공</strong>: 보행 및 집기-놓기 조작 등 저수준 정책을 API로 제공하여 Sim2Real 갭 축소</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overview of GRResidents (Sec. 3.2). It comprises two modules: (a) A world knowledge</em></p></div>
 <ul>
 <li>100k 규모의 상호작용 가능한 장면을 89개 기능 카테고리로 분류하고 부품 수준 모델링, 재질 라벨, 언어 캡션 등 다층 주석 제공</li>
 <li>Isaac Sim을 기반으로 지속적이고 상호작용 가능한 물리 시뮬레이션 구현</li>

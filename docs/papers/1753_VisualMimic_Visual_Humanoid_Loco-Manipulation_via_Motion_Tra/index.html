@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shaofeng Yin, Yanjie Ze, Hong-Xing Yu, C. Karen Liu, Jiajun Wu | <strong>날짜</strong>: 2025-11-13 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.20322" target="_blank">10.48550/arXiv.2509.20322</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: VisualMimic consists of two training stages: 1) training a general keypoint tracker, where a teacher motion trac</em></p></div>
 <p>VisualMimic은 egocentric vision과 hierarchical whole-body control을 결합한 sim-to-real 프레임워크로, 인간의 동작 데이터로 학습한 task-agnostic keypoint tracker와 task-specific visuomotor policy를 통해 humanoid robot의 loco-manipulation을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Teacher-student distillation 방식으로 (1) motion tracker를 이용해 전체 신체 동작을 학습한 후 keypoint tracker로 증류하고, (2) object state 접근권한이 있는 state-based policy로 먼저 학습한 후 visuomotor policy로 증류하며, action clipping과 noise injection으로 안정성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Our visuomotor policies generalize across diverse space and time, shown on the box-pushing task.</em></p></div>
 <ul>
 <li><strong>Zero-shot sim-to-real transfer</strong>: Simulation에서만 학습한 정책이 실제 humanoid robot에 즉시 적용되어 복잡한 loco-manipulation 작업 수행</li>
 <li><strong>다양한 작업 성공</strong>: 0.5kg 박스 1m 높이로 들어올리기, 3.8kg 대형 박스 밀기, football dribbling, kicking 등 diverse 작업 수행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Task-agnostic low-level policy</strong>: 한 번 학습한 keypoint tracker가 모든 새로운 작업에 재사용 가능하여 scalability 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: VisualMimic consists of two training stages: 1) training a general keypoint tracker, where a teacher motion trac</em></p></div>
 <ul>
 <li><strong>Stage 1 - General Keypoint Tracker</strong>: (1) Teacher motion tracker를 미래 reference motion에 대한 접근권한으로 RL 학습, (2) DAgger를 이용해 keypoint commands만으로 동작하는 student keypoint tracker로 증류</li>
 <li><strong>Stage 2 - Task-Specific Keypoint Generator</strong>: (1) Object state가 주어진 state-based policy πgenerator_tea를 RL로 학습, (2) Egocentric vision과 proprioception만 사용하는 visuomotor policy πgenerator_stu로 distillation</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jin Wang, Rui Dai, Weijie Wang, Luca Rossini, Francesco Ruscelli, Nikos Tsagarakis | <strong>날짜</strong>: 2024-06-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.14655" target="_blank">https://arxiv.org/abs/2406.14655</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of HYPERmotion.We decompose the framework into four sectors: Motion</em></p></div>
 <p>HYPERmotion은 강화학습과 최적화를 결합하여 휴머노이드 로봇이 자연어 명령으로부터 복잡한 로코-조작 작업을 자율적으로 수행할 수 있도록 하는 계층적 행동 계획 프레임워크이다. LLM과 VLM을 활용하여 의미론적 지시를 원시 행동 기술로 변환하고 동적 환경에서 형태론적 선택을 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 논문은 (1) RL과 whole-body 최적화를 통한 모션 기술 학습, (2) 학습된 기술을 motion library에 저장, (3) LLM을 활용한 의미론적 작업 분해 및 hierarchical task graph 생성, (4) VLM과 공간 기하학 정보를 결합한 robotic morphology selector 개발의 네 가지 주요 방법을 제시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: HYPERmotion enables the humanoid robot to learn, plan, and select behaviors to</em></p></div>
 <ul>
 <li><strong>Motion Generation 및 Library 구축</strong>: 38개의 구동 관절을 제어하는 RL 정책을 학습하고 whole-body 최적화를 통해 37도 이상의 자유도를 가진 휴머노이드 로봇의 다양한 모션 기술을 자동 생성·저장</li>
 <li><strong>Hierarchical Task Planning</strong>: LLM을 활용하여 자연어 명령을 작업 그래프로 변환하고 이를 Behavior Tree로 해석하여 장기 작업 수행 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 배포</strong>: 시뮬레이션뿐 아니라 실제 wheeled-leg 휴머노이드 로봇에서 온라인 계획과 자율적 실행 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of HYPERmotion.We decompose the framework into four sectors: Motion</em></p></div>
 <ul>
 <li><strong>분해된 학습 전략 (Decomposed Training)</strong>: 작업별로 관련 구동 부분을 선택적으로 학습한 후 저차원 궤적을 전신 공간에 프로젝션하는 통합 모션 생성기 사용으로 학습 효율성 향상</li>
 <li><strong>Motion Library</strong>: RL을 통해 학습된 원시 행동(primitive behaviors)을 기술 단위로 저장하고 관리</li>

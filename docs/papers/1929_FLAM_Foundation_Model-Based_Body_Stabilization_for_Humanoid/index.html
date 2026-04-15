@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xianqi Zhang, Hongliang Wei, Wenrui Wang, Xingtao Wang, Xiaopeng Fan, Debin Zhao | <strong>날짜</strong>: 2025-03-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.22249" target="_blank">https://arxiv.org/abs/2503.22249</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>FLAM은 인간 동작 재구성 모델 기반의 안정화 보상 함수를 설계하여 휴머노이드 로봇의 전신 제어에서 신체 안정성을 명시적으로 고려하는 강화학습 방법이다. 로봇 자세를 3D 가상 인간 모델에 매핑한 후 안정화된 자세를 재구성하여 보상을 계산함으로써 학습 과정을 가속화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: FLAM은 foundation model인 인간 동작 재구성 모델을 활용하여 안정화 보상 함수를 설계하고, 이를 작업 보상과 결합하여 정책을 학습한다. 로봇 자세의 재구성 전후 차이를 통해 안정성 정도를 정량화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4.</em></p></div>
 <ul>
 <li><strong>Foundation model 기반 안정화 방법</strong>: 인간 동작 재구성 모델을 활용한 창의적인 안정화 보상 함수 설계로 기존 RL 방법들보다 우수한 성능 달성</li>
 <li><strong>학습 가속화</strong>: 안정화 보상이 로봇을 안정적 자세 학습으로 유도하여 정책 학습 속도 향상 및 작업 완성 촉진</li>
 <li><strong>다중 작업 성능</strong>: 보행 및 조작 벤치마크에서 state-of-the-art RL 방법들을 능가하는 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>로봇의 고차원 자세 정보를 SMPL과 같은 3D 가상 인간 모델로 매핑</li>
 <li>매핑된 인간 자세를 사전 학습된 인간 동작 재구성 모델(foundation model)에 입력하여 안정화된 자세 생성</li>

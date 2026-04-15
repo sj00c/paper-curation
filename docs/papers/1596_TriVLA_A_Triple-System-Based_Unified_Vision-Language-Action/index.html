@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhenyang Liu, Yongchong Gu, Sixiao Zheng, Yanwei Fu, Xiangyang Xue, Yu-Gang Jiang | <strong>날짜</strong>: 2025-07-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.01424" target="_blank">https://arxiv.org/abs/2507.01424</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: TriVLA is a unified Vision-Language-Action framework that adopts a triple-system ar-</em></p></div>
 <p>인지신경과학의 에피소딕 메모리 이론에서 영감을 받아, 과거 경험의 축적·회상과 미래 동역학 예측을 통합하는 에피소딕 월드 모델을 VLA 프레임워크에 처음 도입한 TriVLA를 제안한다. Vision-Language Model, Video Diffusion Model, Policy 네트워크의 삼중 시스템 아키텍처로 구현되어 긴 지평의 조작 작업에서 문맥-인식적 행동 생성을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Vision-Language Model(System 2)을 통해 관찰과 지시를 해석하고, Video Diffusion Model(System 3)을 통해 과거 상태 시퀀스와 미래 씬 궤적을 인코딩한 후, 이 두 시스템으로부터의 표현을 통합하는 Policy 네트워크(System 1)가 flow-matching과 cross-modal attention을 활용하여 맥락-인식적 행동 시퀀스를 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: TriVLA is a unified Vision-Language-Action framework that adopts a triple-system ar-</em></p></div>
 <ul>
 <li><strong>에피소딕 월드 모델 개념 도입</strong>: 인지신경과학 이론에 기반한 에피소딕 메모리 원칙을 구현하여 로봇이 순차적 다중모달 경험을 축적, 회상, 예측하도록 함</li>
 <li><strong>삼중 시스템 아키텍처 설계</strong>: System 2의 다중모달 그라운딩과 System 3의 시간 풍부 동역학 모델링을 System 1의 정책 학습에 통합하는 구성적 프레임워크 구현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>장기 지평 및 개방형 이해</strong>: 실세계 조작 작업과 복합 도구 사용 작업에서 강력한 긴 지평 계획 및 개방형 의도 이해 능력 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: The pipeline of TriVLA. TriVLA is a unified Vision-Language-Action framework built</em></p></div>
 <ul>
 <li><strong>System 2 (Episodic Multimodal Perception)</strong>: Eagle-2 VLM을 사용하여 비전-언어 입력을 처리하고 작업 목표와 문맥 단서를 해석</li>
 <li><strong>System 3 (Episodic Dynamics Perception)</strong>: Stable Video Diffusion을 인간 및 로봇 조작 데이터셋에 파인튜닝하여 과거 상태 시퀀스로부터 미래 장면 궤적 예측</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Vongani H. Maluleke, Kie Horiuchi, Lea Wilken, Evonne Ng, Jitendra Malik, Angjoo Kanazawa | <strong>날짜</strong>: 2025-12-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.17900" target="_blank">https://arxiv.org/abs/2512.17900</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. A Generative Model for Multi-Agent Interaction. We propose Multi-Agent Diffusion Forcing Transformer (MAGNet),</em></p></div>
 <p>MAGNet은 diffusion forcing을 활용한 통합 autoregressive diffusion framework로, 다양한 multi-agent interaction 시나리오를 하나의 모델로 처리하며 dyadic부터 polyadic 상황까지 확장 가능한 long-horizon motion generation을 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Agent-time motion token을 설계하여 각 token이 VQ-VAE latent pose와 모든 다른 agent에 대한 명시적 pairwise relative transforms를 포함하도록 하고, diffusion forcing으로 독립적인 per-token noise level을 할당하여 다양한 conditioning과 sampling을 지원한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. A Generative Model for Multi-Agent Interaction. We propose Multi-Agent Diffusion Forcing Transformer (MAGNet),</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: Partner inpainting, partner prediction, joint future prediction, agentic generation, ultra-long sequence generation을 모두 하나의 모델에서 수행</li>
 <li><strong>Polyadic 확장성</strong>: Cross-attention 의존성 제거로 agent 수에 관계없이 P≥3인 polyadic scenario를 자연스럽게 처리</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Coordination 모델링</strong>: Inter-agent coupling을 explicitly model하여 synchronized activities(dancing, boxing)부터 loosely structured social interactions까지 포착</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Coordinate Transform Representations. We use rela-</em></p></div>
 <ul>
 <li>Agent-time motion token 설계: 각 token은 단일 agent의 단일 timestep을 represent하며 VQ-VAE latent pose와 pairwise relative transforms 포함</li>
 <li>Relational coordinate frame 구성: Per-frame canonical coordinate에 embedding된 relative transform으로 world-agnostic representation 구현</li>

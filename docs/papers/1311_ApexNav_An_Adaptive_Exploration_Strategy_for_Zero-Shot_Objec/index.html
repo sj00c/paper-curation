@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mingjie Zhang, Yuheng Du, Chengkai Wu, Jinni Zhou, Zhenchao Qi, Jun Ma, Boyu Zhou | <strong>날짜</strong>: 2025-04-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.14478" target="_blank">https://arxiv.org/abs/2504.14478</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System Architecture of ApexNav. Before the episode, an LLM offline generates a similar object list. The agent bu</em></p></div>
 <p>ApexNav는 의미론적 정보의 환경 분포를 분석하여 강한 의미론적 신호가 있을 때는 의미 기반 탐색을, 약할 때는 기하학 기반 탐색으로 적응적으로 전환하고, target-centric semantic fusion을 통해 노이즈가 있는 탐지에도 강건한 zero-shot object navigation 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 환경의 의미론적 분포를 분석하여 탐색 전략을 적응적으로 전환하는 적응형 탐색 전략과, 다중 프레임 관측을 맥락 인식 신뢰도 가중치로 통합하는 target-centric semantic fusion 방법을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Real-world Demonstration of ApexNav. We test ApexNav on various</em></p></div>
 <ul>
 <li><strong>적응형 탐색 전략</strong>: 의미론적 신호가 강할 때와 약할 때를 구분하여 의미 기반 탐색과 기하학 기반 탐색을 동적으로 전환하고, frontier 선택을 Traveling Salesman Problem으로 모델링하여 탐욕적 선택의 한계를 극복</li>
 <li><strong>Target-centric semantic fusion</strong>: 목표 객체와 유사 객체의 장기 메모리를 유지하면서 다중 프레임 관측을 맥락 인식 신뢰도 가중치로 통합하여 노이즈가 있는 탐지에도 강건한 목표 식별 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실환경 검증</strong>: 다양한 실제 환경에서의 실험으로 실용성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System Architecture of ApexNav. Before the episode, an LLM offline generates a similar object list. The agent bu</em></p></div>
 <ul>
 <li>Frontier map을 2D probabilistic grid에서 raycasting으로 구성하고 PCA 클러스터링으로 단순화</li>
 <li>Semantic score map을 BLIP-2 VLM의 image-text matching 유사도로 구성</li>

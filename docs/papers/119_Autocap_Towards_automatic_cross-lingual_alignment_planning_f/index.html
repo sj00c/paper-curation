@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yongheng Zhang, Qiguang Chen, Min Li, Wanxiang Che, Libo Qin | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2406.13940" target="_blank">미제공</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>전통적 교차언어 자기일관성 프레임워크(a)와 제안 방법 AUTOCAP(b)의 비교. 기존 방법은 수동으로 언어와 가중치를 지정하지만, AUTOCAP은 자동으로 최적 언어와 가중치를 선택한다.</em></p></div>
 <p>본 논문은 다국어 Chain-of-Thought(CoT) 추론에서 언어 선택과 가중치 할당을 자동화하는 <strong>AUTOCAP(Automatic Cross-lingual Alignment Planning)</strong> 프레임워크를 제안한다. 기존 방법들의 수동 언어 지정과 동일 가중치 할당의 한계를 극복하여 영점 교차언어(zero-shot cross-lingual) 추론을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -80,12 +82,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM의 프롬프팅 능력을 활용하여 (1) 자동 언어 선택 프롬프팅과 (2) 자동 가중치 할당 프롬프팅의 두 가지 핵심 모듈 도입</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>AUTOCAP의 전체 워크플로우. 자동 언어 선택 프롬프팅(§3.1)과 자동 가중치 할당 프롬프팅(§3.2), 그리고 자동 교차언어 프롬프팅 일관성(§3.3)으로 구성</em></p></div>
 <ol>
 <li><strong>최첨단 성능 달성</strong>: MGSM 벤치마크에서 평균 78.6% 정확도로 이전 최고 방법(Cross-ToT, 약 84% 특정 언어)을 능가하는 종합 성능 달성 (표 1)</li>
 <li><strong>수동 노력 제거</strong>: 수동으로 언어를 선택한 기존 방법들(CLSP 75.5%)과 비교하여 자동화된 AUTOCAP(78.6%)이 더 우수한 성능 달성으로 인적 개입 불필요성 입증</li>
 <li><strong>일반화 능력 강화</strong>: 다양한 언어 조합과 벤치마크에서 강한 일반화 능력 시연</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>단일 라운드 AUTOCAP의 정확도 분석</em></p></div>
 <p><strong>자동 언어 선택 프롬프팅(ALSP, §3.1)</strong>:</p>
 <ul>
 <li>LLM이 주어진 쿼리, 원문 언어, 언어 정보(언어족, 언어지족, 학습 데이터 비율)를 기반으로 N개의 최적 언어 자동 선택</li>

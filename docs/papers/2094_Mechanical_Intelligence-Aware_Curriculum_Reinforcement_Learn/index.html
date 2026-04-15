@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yusuke Tanaka, Alvin Zhu, Quanyou Wang, Yeting Liu, Dennis Hong | <strong>날짜</strong>: 2025-06-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.00273" target="_blank">https://arxiv.org/abs/2507.00273</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: BRUCE [2] hardware with three distinct parallel mechanisms, which</em></p></div>
 <p>본 논문은 병렬 구동 메커니즘을 완전히 시뮬레이션하여 학습한 RL 정책을 휴머노이드 로봇 BRUCE에 배포하며, 기존의 직렬 근사 방식과 달리 폐곡선 운동학 제약을 GPU 가속 MJX로 네이티브 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: differential pulley, five-bar linkage, four-bar linkage 세 가지 병렬 메커니즘에 대해 soft equality constraint를 사용한 일반 수학 공식화를 제시하고, 이를 GPU 가속 MJX에서 네이티브로 구현한 후 curriculum RL로 엔드-투-엔드 보행 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: BRUCE [2] hardware with three distinct parallel mechanisms, which</em></p></div>
 <ul>
 <li><strong>폐곡선 운동학 시뮬레이션</strong>: soft equality constraint를 이용해 세 가지 병렬 메커니즘(differential pulley, 5-bar linkage, 4-bar linkage)을 MJX에서 폐곡선 제약을 완전하게 시뮬레이션하여 특이점과 구동기-출력 토크 매핑을 정확히 표현</li>
 <li><strong>Curriculum RL 기반 정책 학습</strong>: BRUCE 휴머노이드 로봇을 위해 완전한 병렬 메커니즘을 포함한 시뮬레이션에서 curriculum RL을 통해 엔드-투-엔드 보행 정책을 학습</li>
 <li><strong>실제 하드웨어 검증</strong>: 학습된 정책을 실제 BRUCE 로봇에 zero-shot 배포하여 MPC 기반 컨트롤러와 비교했을 때 더 나은 지표면 일반화와 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Generic topology definitions of the BRUCE’s parallel mechanisms.</em></p></div>
 <ul>
 <li>Differential pulley: 구동 pulley의 각속도로부터 roll/pitch 관절 속도 매핑을 기어 비 ρ를 사용한 선형 변환으로 공식화 (Eq. 1)</li>
 <li>5-bar linkage: 두 개의 직렬 체인의 끝점이 일치하도록 폐곡선 제약을 설정하고, 5가지 운동학 해 중 적절한 초기 구성을 선택</li>

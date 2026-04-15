@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xue Bin Peng, Yunrong Guo, Lina Halper, Sergey Levine, Sanja Fidler | <strong>날짜</strong>: 2022-05-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2205.01906" target="_blank">https://arxiv.org/abs/2205.01906</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Our framework enables physically simulated characters to learn versatile and reusable skill embeddings from larg</em></p></div>
 <p>대규모 비정형 모션 데이터셋으로부터 adversarial imitation learning과 unsupervised reinforcement learning을 결합하여 물리 시뮬레이션 캐릭터의 재사용 가능한 스킬 임베딩을 학습하는 데이터 기반 프레임워크를 제시한다. 학습된 스킬 임베딩은 다양한 새로운 과제에 효과적으로 전이되며 자연스러운 행동을 합성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 정보 최대화(information maximization) 목표를 통해 다양한 스킬 습득을 장려하는 low-level latent variable 모델을 adversarial imitation learning으로 사전 학습하고, 이를 high-level policy의 추상 행동 공간으로 활용하여 새로운 과제를 수행한다. Isaac Gym의 대규모 병렬 GPU 시뮬레이터를 활용하여 십 년분의 시뮬레이션 경험으로부터 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Our framework is used to learn skill embeddings for a 37 degrees-of-</em></p></div>
 <ul>
 <li><strong>대규모 스킬 습득</strong>: 100개 이상의 다양한 모션 클립으로부터 task-specific annotation 없이 자동으로 일반화된 다목적 motor skill들을 학습</li>
 <li><strong>높은 전이 성능</strong>: 단일 사전 학습 모델이 diverse한 새로운 과제에 효과적으로 적용되며 자연스럽고 기민한 행동 합성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>간단한 reward 함수 인터페이스</strong>: 사용자가 간단한 reward function으로 과제를 지정하면 시스템이 복잡하고 자연스러운 전략을 자동 합성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. The ASE framework consists of two stages: pre-training and transfer.</em></p></div>
 <ul>
 <li>Information maximization objective를 포함한 adversarial imitation learning으로 latent variable 모델 사전 학습</li>
 <li>Unsupervised reinforcement learning을 통해 비정형 모션 데이터셋의 다양한 특성을 반영한 skill diversity 증대</li>

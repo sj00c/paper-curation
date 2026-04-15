@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>:  | <strong>URL</strong>: <a href="https://la.disneyresearch.com/publication/robot-motion-diffusion-model-motion-generation-for-robotic-characters/" target="_blank">https://la.disneyresearch.com/publication/robot-motion-diffusion-model-motion-generation-for-robotic-characters/</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Flexible motion in-betweening given a text prompt and spatio-temporally sparse keyframes. From left to right: </em></p></div>
 <p>본 논문은 diffusion model을 기반으로 한 Conditional Motion Diffusion In-betweening (CondMDI)를 제안하여, 텍스트 프롬프트와 희소한 키프레임 제약 조건을 유연하게 수용하면서 고품질의 다양한 모션을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 무작위로 샘플링된 키프레임과 관절, 마스킹 토큰을 포함한 조건부 diffusion model을 훈련하여, 추론 시간에 임의의 sparse/dense 키프레임 배치와 partial 키프레임 제약을 유연하게 수용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Flexible motion in-betweening given a text prompt and spatio-temporally sparse keyframes. From left to right: </em></p></div>
 <ul>
 <li><strong>통합된 유연한 모션 in-betweening 모델</strong>: Temporal하게 희소한 키프레임, 부분적 포즈 스펙 피케이션, 텍스트 프롬프트를 동시에 지원하는 단일 unified model 개발</li>
 <li><strong>고품질 다양한 모션 생성</strong>: HumanML3D 데이터셋에서 키프레임 제약을 정확히 준수하면서도 다양한 모션 생성 능력 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>inference-time 조건화의 유연성</strong>: imputation 및 reconstruction guidance 방법과의 비교를 통해 diffusion model의 조건화 장점 분석</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Conditional Motion Diffusion In-betweening (CondMDI) overview. The model is fed a noisy motion sequence x𝑡,</em></p></div>
 <ul>
 <li>Masked conditional diffusion model 훈련: 무작위로 샘플링된 시간적 위치의 키프레임과 무작위로 선택된 관절 부분집합으로 학습</li>
 <li>유연한 마스킹 전략: 관찰된 키프레임과 피처를 나타내는 마스크를 사용하여 다양한 in-betweening 시나리오 커버</li>

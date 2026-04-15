@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kaizhe Hu, Haochen Shi, Yao He, Weizhuo Wang, C. Karen Liu, Shuran Song | <strong>날짜</strong>: 2025-08-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.12252" target="_blank">https://arxiv.org/abs/2508.12252</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Robot Trains Robot (RTR). We pro-</em></p></div>
 <p>로봇 팔(teacher)이 휴머노이드 로봇(student)을 지원하고 가이드하는 Robot-Trains-Robot(RTR) 프레임워크를 제안하여, 안전하고 효율적인 실제 환경에서의 휴머노이드 학습을 가능하게 한다. Dynamics-encoded latent variable 최적화를 통한 sim-to-real 전이 방법을 함께 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 로봇 팔(UR5)을 teacher로 활용하여 탄성 로프를 통해 휴머노이드에게 능동적 지지와 힘 피드백을 제공하고, F/T 센서로부터 실시간 보상 신호를 획득하며, 자동 커리큘럼과 perturbation을 적용한다. 추가로 도메인 랜덤화된 dynamics-aware 정책을 시뮬레이션에서 학습한 후, 범용 latent vector를 최적화하고 실제 환경에서 이 latent를 PPO로 미세조정하는 3단계 sim-to-real 파이프라인을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Walking Ablation. This experiment aims to evaluate the effectiveness of arm feedback</em></p></div>
 <ul>
 <li><strong>종합적 실제 환경 학습 시스템</strong>: 안전 보호, 학습 커리큘럼, 자동 리셋, perturbation, 실시간 보상 신호 제공 등 휴머노이드 실제 환경 학습에 필요한 모든 기능을 통합한 RTR 시스템 구축</li>
 <li><strong>효율적 sim-to-real 미세조정 알고리즘</strong>: Dynamics-encoded latent variable 최적화를 통해 안정적이고 빠른 실제 환경 적응 가능 (기존 context-based meta-RL을 휴머노이드에 실용적으로 적용)</li>
 <li><strong>실제 환경 실험 검증</strong>: Walking 태스크에서 20분의 실제 환경 학습으로 zero-shot 성능 대비 속도 2배 향상, Swing-up 태스크에서 15분 이내에 처음부터 학습 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: System Setup. We illustrate the system architecture and component interactions. The</em></p></div>
 <ul>
 <li><strong>Hardware 설계</strong>: UR5 로봇 팔과 ATI mini45 F/T 센서를 사용하여 탄성 로프를 통해 휴머노이드 어깨에 능동적 지지력 제공, Compliance control을 통해 안전하고 부드러운 힘 전달</li>
 <li><strong>Reward 설계</strong>: F/T 센서 측정값으로부터 proxy reward signal 도출 (예: 글로벌 속도 대신 힘 기반 신호 활용)</li>

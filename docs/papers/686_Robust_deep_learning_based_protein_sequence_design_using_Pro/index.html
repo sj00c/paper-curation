@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: J. Dauparas, I. Anishchenko, N. Bennett, H. Bai, R. Ragotte | <strong>날짜</strong>: 2022 | <strong>DOI</strong>: <a href="https://doi.org/10.1126/science.add2187" target="_blank">10.1126/science.add2187</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>ProteinMPNN 아키텍처: 메시지 패싱 신경망(MPNN) 기반의 순서-비의존적 자가회귀 모델로, 다중 체인 및 대칭성을 고려한 위치 결합 설계 가능</em></p></div>
 <p><strong>깊은 신경망 기반 단백질 서열 설계 방법 ProteinMPNN을 개발하여, 기존의 물리 기반 방법(Rosetta)보다 우수한 성능을 보이며 다양한 단백질 설계 문제에 광범위하게 적용 가능함을 입증했다.</strong></p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -94,6 +96,8 @@ a { color: #A62018; }
 </ul>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>ProteinMPNN의 전산 평가: (A) Rosetta 대비 월등한 서열 복구율(52.4% vs 32.9%), (B) 모노머(52%), 호모머(55%), 헤테로머(51%) 중위 서열 복구율, (C) 백본 노이즈 추가 학습의 영향, (E) 단일 서열 AlphaFold 예측에서 ProteinMPNN 서열의 우수한 구조 부호화</em></p></div>
 <ol>
 <li><strong>높은 서열 복구율</strong>: 네이티브 단백질 백본에서 52.4% 서열 복구율로 Rosetta(32.9%)를 60% 이상 능가하며, 단백질 핵심에서 표면까지 모든 영역에서 일관되게 우수한 성능</li>
 <li><strong>광범위한 적용성</strong>:
@@ -107,6 +111,8 @@ a { color: #A62018; }
 <li><strong>계산 효율성</strong>: 100개 잔기당 1.2초(ProteinMPNN) vs 4.3분(Rosetta) - 약 200배 빠른 속도</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>ProteinMPNN 모델 아키텍처의 주요 개선 사항</em></p></div>
 <p><strong>아키텍처 개선</strong>:</p>
 <ul>
 <li>입력 특징: Cα-Cα 거리, 상대 방향(relative orientation), 백본 이면각에서 <strong>N, Cα, C, O 및 가상 Cβ 원자 간 거리</strong>로 확장 (41.2% → 49.0% 복구율)</li>

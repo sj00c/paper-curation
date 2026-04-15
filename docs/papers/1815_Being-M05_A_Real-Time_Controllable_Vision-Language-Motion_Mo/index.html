@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Bin Cao, Sipeng Zheng, Ye Wang, Lujie Xia, Qianshan Wei, Qin Jin, Jing Liu, Zongqing Lu | <strong>날짜</strong>: 2025-08-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.07863" target="_blank">https://arxiv.org/abs/2508.07863</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Leveraging our million-scale dataset HuMo100M, we present Being-M0.5, the first real-time, control-</em></p></div>
 <p>Being-M0.5는 HuMo100M이라는 백만 규모의 대규모 데이터셋을 기반으로 한 최초의 실시간 제어 가능 vision-language-motion model로, part-aware residual quantization을 통해 신체 각 부위에 대한 세밀한 제어를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Being-M0.5는 5백만 개의 motion sequence와 1억 개의 다중 작업 지시 인스턴스를 포함하는 HuMo100M 데이터셋을 구축하고, part-level annotation과 long-form motion, text-aligned visual clip을 제공하며, part-aware residual quantization을 통해 신체 부위별 독립적인 제어를 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Comparison with previous SoTAs across nine</em></p></div>
 <ul>
 <li><strong>HuMo100M 데이터셋</strong>: 5백만 motion sequence와 100백만 다중 작업 지시 인스턴스를 포함한 최대 규모의 다중 모달 motion dataset 구축</li>
 <li><strong>part-level annotation</strong>: 신체 부위별 세밀한 감독 신호를 제공하여 부위별 제어를 가능하게 함</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다양한 벤치마크에서 SOTA</strong>: diverse motion generation task에서 최첨단 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Model Illustration. Being-M0.5 supports multi-modal inputs/outputs, built on a 7B LLM</em></p></div>
 <ul>
 <li>Visual encoder를 통해 다중 모달 입력(이미지, 텍스트, motion) 처리</li>
 <li>Part-aware residual quantization (PRQ)를 통해 전체 신체 motion feature를 해부학적으로 의미 있는 joint grouping으로 분해하고 discrete part-level code로 양자화</li>

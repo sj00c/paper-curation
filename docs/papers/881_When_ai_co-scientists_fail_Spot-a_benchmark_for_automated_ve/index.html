@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Guijin Son, Jiwoo Hong, Honglu Fan, Heejeong Nam, Hyunwoo Ko, Seungwon Lim, Jinyeop Song, Jinhang Choi, Gonçalo Paulo, Youngjae Yu, Stella Biderman | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: Overview of SPOT">
+<p class="fig-caption"><em>SPOT 벤치마크의 구축 과정: 시드 수집(녹색)부터 검증, 정규화를 거쳐 평가 단계(파란색)까지 LLM 출력을 기준 오류와 비교</em></p></div>
 <p>대규모 언어모델(LLM)이 과학 논문의 오류를 자동으로 검증할 수 있는가를 묻는 본 논문은 83개 출판 논문과 91개의 검증된 오류로 구성된 SPOT 벤치마크를 제시하며, 최신 LLM들도 21.1% 이하의 재현율(recall)에 머물러 신뢰성 있는 학술 검증 자동화는 아직 불가능함을 보여준다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 10개 학문 분야에 걸친 83개 최신 논문(2024년 이후 발표)에서 91개의 검증된 오류를 수집하고, 저자 확인 및 인간 주석가 교차검증을 거쳐 SPOT 벤치마크 구성</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2: Distribution of annotated errors by research domain and error type">
+<p class="fig-caption"><em>오류의 학문 분야별, 유형별 분포: 수학/물리/컴퓨터과학은 수식/증명 오류에 집중, 생물학은 그림 중복에 편향</em></p></div>
 <ol>
 <li><strong>벤치마크 품질 확보</strong>: 자동 필터링(2단계) → 저자 검증 → 인간 검증(2단계) → 정규화(GPT-4o + 수동 감사) 파이프라인으로 높은 신뢰도의 오류 데이터셋 구축. 평균 12,877개 토큰, 17.5개 이미지로 장문맥·다중모드 벤치마크 실현</li>
 <li><strong>성능 급 부족 입증</strong>: OpenAI o3(최고 성능 모델)도 pass@1에서 18.4% 수준의 성능만 달성. 8회 독립 시행에서 모델의 신뢰도(confidence)는 거의 0에 가까우며 일관된 오류 재현에 실패</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>오류 분석</strong>: 수학, 재료과학 전문가와의 사례 연구에서 모델이 웹 데이터에 부족한 장꼬리 지식(long-tail knowledge), 초장문맥 처리, 도메인 특정 관례 부재로 인한 학생 수준의 오류 반복</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3: 오류 탐지 과정">
+<p class="fig-caption"><em>TP/FP/FN 분류: 모델이 정확한 위치의 오류를 발견하면 TP, 벤치마크에 없는 오류를 지적하면 FP, 실제 오류를 놓치면 FN</em></p></div>
 <p><strong>데이터 수집 및 정규화:</strong></p>
 <ul>
 <li>WithdraxIV(철회 논문 14,000편)와 PubPeer(사후 익명 동료평가 사이트)에서 시드 수집</li>

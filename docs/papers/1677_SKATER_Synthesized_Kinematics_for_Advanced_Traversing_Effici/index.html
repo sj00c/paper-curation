@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junchi Gu, Feiyang Yuan, Weize Shi, Tianchen Huang, Haopeng Zhang, Xiaohu Zhang, Yu Wang, Wei Gao, Shiwu Zhang | <strong>날짜</strong>: 2026-01-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.04948" target="_blank">https://arxiv.org/abs/2601.04948</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The SKATER system: a humanoid robot equipped</em></p></div>
 <p>휴머노이드 로봇의 발에 4개의 수동 바퀴를 장착하고 Deep Reinforcement Learning을 통해 롤러스케이팅 스위즐 보행을 학습시켜 전통적인 보행 대비 충격력 75.86%, 에너지 소비 63.34% 감소를 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: implicit gait reward function과 multi-stage curriculum learning을 적용한 DRL 프레임워크를 개발하고, domain randomization을 통해 sim-to-real transfer를 실현하여 SKATER 로봇에서 스위즐 스케이팅을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Comparison of foot contact force profiles: (a) roller skating locomotion with continuous ground contact and stab</em></p></div>
 <ul>
 <li><strong>SKATER 로봇 개발</strong>: 33 DoF 휴머노이드 로봇에 4개의 수동 인라인 바퀴 장착으로 롤러스케이팅 가능 플랫폼 구현</li>
 <li><strong>DRL 제어 프레임워크</strong>: implicit gait reward function과 multi-stage curriculum learning을 통합한 스위즐 스케이팅 학습 시스템 구축</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>부드러운 운동</strong>: 롤러스케이팅의 연속적인 슬라이딩 특성으로 관절 운동 매끄러움 증가</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Deep reinforcement learning control framework for SKATER. The policy network processes proprioceptive and</em></p></div>
 <ul>
 <li>SKATER 하드웨어: 25 DoF 휴머노이드 로봇에 각 발 밑에 4개의 수동 휠 탑재</li>
 <li>DRL 프레임워크: policy network가 자체감각 및 외적감각 센서 데이터 처리 → 관절 수준 명령 생성</li>

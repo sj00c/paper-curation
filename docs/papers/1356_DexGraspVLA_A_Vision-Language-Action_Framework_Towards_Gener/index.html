@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yifan Zhong, Xuchuan Huang, Ruochong Li, Ceyao Zhang, Zhang Chen, Tianrui Guan, Fanlian Zeng, Ka Num Lui, Yuyao Ye, Yitao Liang, Yaodong Yang, Yuanpei Chen | <strong>날짜</strong>: 2025-02-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.20900" target="_blank">https://arxiv.org/abs/2502.20900</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of DexGraspVLA. A pre-trained VLM-based high-level planner (purple) decomposes prompts into object-</em></p></div>
 <p>DexGraspVLA는 Vision-Language model을 고수준 계획자로, diffusion 기반 저수준 행동 컨트롤러를 학습하는 계층적 VLA 프레임워크로, foundation model을 통해 언어·시각 입력을 도메인 불변 표현으로 변환하여 모방 학습의 일반화를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DexGraspVLA는 사전학습 VLM을 고수준 계획자로 활용하여 도메인 불변 affordance 신호를 생성하고, 저수준 컨트롤러는 vision foundation model로 multimodal 입력을 정제한 후 diffusion 기반 action head로 폐루프 행동을 생성하는 계층적 구조를 채택한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We propose DexGraspVLA, a hierarchical VLA</em></p></div>
 <ul>
 <li><strong>Unseen cluttered scenario 일반화</strong>: 1,287개의 unseen object, 조명, 배경 조합에서 90.8%의 grasping 성공률 달성</li>
 <li><strong>단일 객체 성능</strong>: 98.6% 성공률로 원본 시각 입력 학습 기준선 대비 48% 이상 성능 향상</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>일반성 확장</strong>: Nonprehensile grasping으로 확장 적용 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of DexGraspVLA. A pre-trained VLM-based high-level planner (purple) decomposes prompts into object-</em></p></div>
 <ul>
 <li>Pre-trained VLM을 high-level planner로 frozen 활용하여 prompt를 object 수준 grasping instruction과 bounding box로 분해</li>
 <li>Vision foundation model (예: SAM 등)로 target object mask 추출 및 RGB, mask, proprioception을 multimodal 입력으로 인코딩</li>

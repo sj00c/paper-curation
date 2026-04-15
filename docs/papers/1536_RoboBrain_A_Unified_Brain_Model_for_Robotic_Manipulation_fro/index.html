@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuheng Ji, Huajie Tan, Jiayu Shi, Xiaoshuai Hao, Yuan Zhang, Hengyuan Zhang, Pengwei Wang, Mengdi Zhao, Yao Mu, Pengju An, Xinda Xue, Qinghang Su, Huaihai Lyu, Xiaolong Zheng, Jiaming Liu, Zhongyuan Wang, Shanghang Zhang | <strong>날짜</strong>: 2025-02-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.21257" target="_blank">https://arxiv.org/abs/2502.21257</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of RoboBrain. RoboBrain consists of three key robotic capabilities: planning capability, affordance p</em></p></div>
 <p>RoboBrain은 로봇 조작을 위해 Planning Capability, Affordance Perception, Trajectory Prediction의 세 가지 핵심 능력을 갖춘 통합 MLLM 모델이며, 이를 학습하기 위해 ShareRobot이라는 대규모 고품질 이질 데이터셋을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ShareRobot 데이터셋을 구축하여 task planning, object affordance, end-effector trajectory에 대한 다차원 정보를 라벨링하고, 이를 바탕으로 LLaVA 기반 MLLM인 RoboBrain을 다단계 학습 전략과 장시간 비디오, 고해상도 이미지를 활용하여 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. The performance of our model RoboBrain on the OpenEQA, ShareRobot, and RoboVQA benchmarks. RoboBrain surpassed</em></p></div>
 <ul>
 <li><strong>ShareRobot 데이셋 개발</strong>: 로봇 조작 작업을 위해 task planning, affordance, trajectory를 포함하는 다차원 정보가 세밀하게 라벨링된 대규모 이질 데이터셋 제시</li>
 <li><strong>RoboBrain 모델</strong>: Planning, Affordance Perception, Trajectory Prediction 세 가지 핵심 능력을 통합한 통일된 MLLM 개발</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 개선</strong>: RoboVQA, OpenEQA 등 여러 로봇 벤치마크에서 최첨단 성능 달성 및 affordance, trajectory 예측에서도 경쟁력 있는 결과 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. The generation procession of our ShareRobot dataset. Our dataset labels multi-dimensional information, includi</em></p></div>
 <ul>
 <li>ShareRobot 데이터셋: Open X-Embodiment에서 고품질 데이터 추출 후 원자적 작업으로 분해하고 질문-응답 쌍으로 증강</li>
 <li>데이터 라벨링: 세 명의 인간 주석자가 task planning (세부 단계별 분해), affordance (상호작용 가능 영역 좌표), trajectory (말단 장치 경로점) 라벨링</li>

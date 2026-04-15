@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Huayi Wang, Wentao Zhang, Runyi Yu, Tao Huang, Junli Ren, Feiyu Jia, Zirui Wang, Xiaojie Niu, Xiao Chen, Jiahe Chen, Qifeng Chen, Jingbo Wang, Jiangmiao Pang | <strong>날짜</strong>: 2025-10-13 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.11072" target="_blank">10.48550/arXiv.2510.11072</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of PhysHSI. (a) Dataset Preparation: Human motions from a MoCap dataset are retargeted to humanoid moti</em></p></div>
 <p>PhysHSI는 humanoid 로봇이 실제 환경에서 물체 운반, 앉기, 누우기 등 다양한 상호작용을 자연스럽고 일반화 가능하게 수행할 수 있도록 하는 통합 시스템으로, simulation 기반 AMP 정책 학습과 실시간 LiDAR-camera 기반 객체 인식 모듈을 결합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Simulation에서 AMP 기반 정책 학습으로 retargeted MoCap 데이터로부터 natural하고 generalizable한 policy를 학습하고, 실세계 배포에서는 LiDAR odometry와 camera-based AprilTag detection을 결합한 coarse-to-fine localization 모듈로 robust scene perception을 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our system PhysHSI enables humanoid robots to perform diverse real-world interactions indoors and outdoors with </em></p></div>
 <ul>
 <li><strong>통합 실세계 시스템</strong>: AMP 기반 simulation 학습과 LiDAR-camera 기반 인식을 통합하여 실제 Unitree G1 로봇에서 box carrying, sitting, lying, standing up 등 4가지 주요 작업 성공</li>
 <li><strong>자연스러운 동작</strong>: Adversarial motion prior을 활용하여 human MoCap 데이터로부터 학습한 lifelike behavior를 달성하며, stylized locomotion 학습도 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Robust 객체 인식</strong>: Coarse (LiDAR odometry) + Fine (camera AprilTag) 방식으로 long-horizon task 중 객체 시야 벗어남 상황 처리 및 정밀 위치 추정</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of PhysHSI. (a) Dataset Preparation: Human motions from a MoCap dataset are retargeted to humanoid moti</em></p></div>
 <ul>
 <li><strong>Data Preparation</strong>: AMASS/SAMP 데이터셋의 human motion을 최적화 기반 retargeting으로 humanoid 동작으로 변환하고, manual annotation을 통해 key contact frame과 객체 궤적 정보를 augment</li>
 <li><strong>AMP 기반 정책 학습</strong>: Discriminator가 reference motion과 policy 생성 motion을 구별하도록 adversarial training하여 natural style 유지하면서 task completion 달성, stage conditioning (ϕ1 pickup, ϕ2 placement)으로 multi-phase task 지원</li>

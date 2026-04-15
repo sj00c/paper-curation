@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haozhuo Zhang, Jingkai Sun, Michele Caprio, Jian Tang, Shanghang Zhang, Qiang Zhang, Wei Pan | <strong>날짜</strong>: 2026-03-05 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2508.16943" target="_blank">10.48550/arXiv.2508.16943</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of LHM-Humanoid. Our system solves long-horizon loco-manipulation tasks</em></p></div>
 <p>LHM-Humanoid는 다양한 혼란스러운 환경에서 장시간 인간형 로봇이 복수 객체를 반복적으로 집기, 운반, 배치하는 작업을 단일 통합 정책으로 수행하는 벤치마크와 학습 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 개의 목표 조건부 RL 교사 정책을 학습하여 DAgger를 통해 단일 end-to-end 학생 정책으로 증류하고, 추가로 egocentric RGB와 자연언어로 조건화된 VLA 모델로 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of LHM-Humanoid. Our system solves long-horizon loco-manipulation tasks</em></p></div>
 <ul>
 <li><strong>LHM-Humanoid 벤치마크</strong>: 4가지 방 유형(침실, 거실, 주방, 창고)에 걸쳐 350개의 다양한 혼란스러운 장면/작업, 79개 객체(25개 이동 가능 대상)를 포함한 벤치마크 구성</li>
 <li><strong>이중 교사 증류 프레임워크</strong>: 첫 번째 fetch-carry-place 주기를 완료하는 Teacher 1과 비표준 종료 상태에서 시작하는 Teacher 2를 통해 중간 리셋 없이 장시간 에피소드 처리</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 우수성</strong>: Isaac Gym에서 end-to-end RL 베이스라인 및 기존 인간형 로코-조작 방법을 보이지 않은 장면에서도 상회하며 강력한 장시간 견고성과 교차 장면 일반화 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the LHM-Humanoid learning framework. The pipeline consists of three</em></p></div>
 <ul>
 <li>350개 다양한 장면으로 전체 정책을 공동 학습하여 교차 장면 일반화 추구</li>
 <li>Teacher 1: 단일 객체 작업에 대한 사전 훈련으로 초기화 후 AMP 스타일 보상을 통해 인간 유사 모션 유도</li>

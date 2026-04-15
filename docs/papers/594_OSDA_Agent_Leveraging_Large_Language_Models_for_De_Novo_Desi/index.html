@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siyuan Guo, Cheng Deng, Ying Wen, Hechang Chen, Yi Chang, Jun Wang | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2402.17453" target="_blank">arXiv:2402.17453</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>DS-Agent의 CBR 기반 구조: (a) 개발 단계와 배포 단계의 개요 (b) 반복 단계에 따른 성능 개선</em></p></div>
 <p>LLM 기반 에이전트를 케이스 기반 추론(Case-Based Reasoning, CBR)과 결합하여 자동화된 데이터 과학 작업(ML 모델 설계, 학습, 검증)을 수행하는 프레임워크이다. Kaggle의 전문가 지식을 활용하고 실행 피드백을 통한 반복적 개선으로 기존 LLM 에이전트의 낮은 성공률 문제를 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Kaggle의 풍부한 전문가 솔루션 데이터베이스를 CBR 프레임워크로 구조화하여 LLM 에이전트에 통합하고, 피드백 기반의 반복적 수정을 통해 성능을 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1b">
+<p class="fig-caption"><em>반복 단계 증가에 따른 DS-Agent의 일관된 성능 개선</em></p></div>
 <ol>
 <li><strong>개발 단계 성능</strong>: GPT-4 사용 시 12개 작업에서 100% 성공률 달성</li>
 <li><strong>배포 단계 성능</strong>:
@@ -88,6 +92,8 @@ a { color: #A62018; }
 <li><strong>확장성</strong>: 30개 데이터 과학 작업에서 성능 검증, 텍스트/시계열/테이블 형식 데이터 모두 처리</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>RAG 기반 LLM과 CBR 기반 LLM의 구조 비교</em></p></div>
 <h3>개발 단계 (Development Stage)</h3>
 <p><strong>1. 인간 통찰 케이스 수집 (Human Insight Case Collection)</strong></p>
 <ul>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yilun Du, Mengjiao Yang, Bo Dai, Hanjun Dai, Ofir Nachum, Joshua B. Tenenbaum, Dale Schuurmans, Pieter Abbeel | <strong>날짜</strong>: 2023-01-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2302.00111" target="_blank">https://arxiv.org/abs/2302.00111</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Text-Conditional Video Generation as Universal Policies. Text-conditional video generations</em></p></div>
 <p>텍스트 조건부 video generation을 사용하여 다양한 환경에서 작동하는 범용 정책을 학습하는 방법을 제안하며, 현재 이미지와 텍스트 목표 설명으로부터 미래 프레임 시퀀스를 생성한 후 inverse dynamics model로 액션을 추출한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Unified Predictive Decision Process (UPDP)라는 새로운 추상화를 제안하여 이미지를 환경 간 범용 인터페이스로, 텍스트를 작업 지정자로 사용하고, video diffusion 모델을 통해 텍스트 조건부 video generation을 수행한 후 액션을 회귀한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Combinatorial Video Generation. Generated videos for unseen language goals at test time.</em></p></div>
 <ul>
 <li><strong>조합적 일반화</strong>: 텍스트의 조합적 특성을 활용하여 미학습한 새로운 객체 배치와 기하학적 관계에 일반화 가능</li>
 <li><strong>다중 작업 학습</strong>: video prediction으로 다양한 언어 조건부 작업 간 학습이 가능하며 테스트 시간에 파인튜닝 없이 새로운 작업에 일반화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>인터넷 규모 지식 전이</strong>: 대규모 텍스트-비디오 데이터셋으로 사전학습된 model을 통해 현실적인 로봇 동작 합성 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Given an input observation and text instruction, we</em></p></div>
 <ul>
 <li>UPDP 추상화 도입: 이미지 공간 X, 텍스트 공간 C, 수평선 H, 조건부 video generator ρ(·|x₀, c)로 정의</li>
 <li>Video diffusion 모델 활용: 현재 이미지 프레임과 텍스트 목표 설명을 조건으로 하여 H-step 이미지 시퀀스 생성</li>

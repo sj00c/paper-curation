@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lasse Hohmeyer, Mihaela Popescu, Ivan Bergonzani, Dennis Mronga, Frank Kirchner | <strong>날짜</strong>: 2025-11-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.16306" target="_blank">https://arxiv.org/abs/2511.16306</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>InEKFormer는 Invariant Extended Kalman Filter(InEKF)와 Transformer 네트워크를 결합한 하이브리드 상태 추정 방법으로, 인간형 로봇의 floating base 상태를 정확하게 추정한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: InEKF의 propagation과 correction 단계를 유지하면서 Transformer 네트워크를 사용하여 Kalman gain을 학습함으로써, 상태 및 관측 차이의 히스토리로부터 필요한 정보를 암묵적으로 추출한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>InEKFormer 알고리즘</strong>: InEKF와 Transformer를 내부적으로 결합한 새로운 하이브리드 상태 추정 방법 제안</li>
 <li><strong>RH5 데이터셋</strong>: 모션 캡처 데이터와 고유감각 측정을 포함한 인간형 로봇 데이터셋 생성 및 공개</li>
 <li><strong>광범위한 비교</strong>: InEKF, KalmanNet과의 비교를 통해 Transformer의 잠재력을 입증하고 고차원 문제에서의 autoregressive 학습의 중요성 강조</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>InEKF의 state propagation: IMU 측정과 strapdown IMU 모델을 이용한 상태 전이</li>
 <li>Transformer 기반 Kalman gain 학습: 과거 상태와 관측 차이의 시퀀스로부터 Kalman gain 추정</li>

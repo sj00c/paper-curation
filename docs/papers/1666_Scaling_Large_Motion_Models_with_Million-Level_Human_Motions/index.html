@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ye Wang, Sipeng Zheng, Bin Cao, Qianshan Wei, Weishuai Zeng, Qin Jin, Zongqing Lu | <strong>날짜</strong>: 2024-10-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.03311" target="_blank">https://arxiv.org/abs/2410.03311</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: TOP: While existing models perform well on</em></p></div>
 <p>LLM의 성공에 영감을 받아 백만 단위 규모의 대규모 모션 데이터셋 MotionLib를 구축하고, 이를 기반으로 Being-M0 모델을 훈련하여 대규모 모션 생성 모델의 확장성을 입증하는 연구이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 체계적인 데이터 수집 파이프라인을 통해 120만 개 이상의 모션 시퀀스를 포함하는 MotionLib를 구축하고, 계층적 텍스트 설명을 추가하였다. MotionBook이라는 새로운 모션 인코딩 방식(2D-LFQ)을 제안하여 정보 손실을 최소화하고 코드북 용량을 확대한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: TOP: While existing models perform well on</em></p></div>
 <ul>
 <li><strong>MotionLib 데이터셋</strong>: 기존 데이터셋 대비 최소 15배 규모의 120만 개 이상 모션 시퀀스와 계층적 텍스트 주석을 포함하는 첫 번째 백만 규모 모션 생성 데이셋을 구축했다.</li>
 <li><strong>Being-M0 모델</strong>: MotionLib를 활용하여 훈련된 대규모 모션 모델로서 미지의 활동을 포함한 광범위한 인간 활동에 대해 강건한 성능을 입증했다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>MotionBook 인코딩</strong>: 손실이 없는 컴팩트한 모션 특성 표현과 2D lookup-free 모션 tokenizer(2D-LFQ)를 제안하여 모션 코드북을 최소 100배 이상 확대하고 세부 모션 특성을 보존했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Comparison with different motion quantization on Motion-X (left) and MotionLib (right). We only show MPJPE</em></p></div>
 <ul>
 <li>대규모 모션 데이터셋 구축: Motion-X, HumanML3D 기존 데이터셋에 새로운 수집 데이터(93%)를 추가하여 MotionLib 구성</li>
 <li>계층적 텍스트 주석: 단순 텍스트 설명 대신 상세한 계층적 텍스트 설명(상체, 하체 등) 추가로 표현 능력 강화</li>

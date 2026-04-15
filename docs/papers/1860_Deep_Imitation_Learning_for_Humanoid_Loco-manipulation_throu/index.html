@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mingyo Seo, Steve Han, Kyutae Sim, Seung Hyeon Bang, Carlos Gonzalez, Luis Sentis, Yuke Zhu | <strong>날짜</strong>: 2023-09-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2309.01952" target="_blank">https://arxiv.org/abs/2309.01952</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of TRILL. TRILL addresses the challenge of learning</em></p></div>
 <p>본 논문은 VR 텔레오퍼레이션을 통해 수집한 인간 시연 데이터로부터 humanoid 로봇의 loco-manipulation 능력을 deep imitation learning으로 학습하는 TRILL 프레임워크를 제시한다. Whole-body control 기반의 계층적 정책 구조를 통해 높은 자유도 humanoid의 복잡한 동작을 데이터 효율적으로 학습할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 VR 인터페이스를 통한 직관적 시연 수집, whole-body control 기반의 task-space 명령 변환, high-level action abstraction을 통한 hierarchical policy 학습의 세 가지 핵심 요소를 결합했다. High-level visuomotor policy πH이 task-space 명령을 생성하고 low-level whole-body controller πL이 이를 joint-torque 액션으로 변환하는 두 수준의 계층 구조를 도입했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Timelapse of deploying TRILL in simulation. We present the deployment of policies trained through our method acr</em></p></div>
 <ul>
 <li><strong>시뮬레이션 성능</strong>: 자유 공간 이동 96%, 조작 80%, loco-manipulation 92%의 성공률 달성</li>
 <li><strong>우수한 성과</strong>: state-of-the-art imitation learning baseline 대비 28% 높은 성공률</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>선도적 성과</strong>: Humanoid 로봇에서 deep imitation learning을 이용한 복잡한 manipulation 작업의 첫 성공적 구현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model architecture of TRILL. The trained policies generate the target task-space command ut at 20 Hz from the on</em></p></div>
 <ul>
 <li>VR 기반 텔레오퍼레이션 인터페이스로 직관적인 인간 시연 데이터 수집</li>
 <li>Whole-body control (Inverse Hierarchical Whole-Body Control, IHWBC) 기반의 task-space 명령을 joint-torque로 변환</li>

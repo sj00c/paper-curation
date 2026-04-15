@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chetan Borse, Zhixian Xie, Wei-Cheng Huang, Wanxin Jin | <strong>날짜</strong>: 2026-03-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.12185" target="_blank">https://arxiv.org/abs/2603.12185</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Performance overview of the ComFree-Sim. In the second row, it shows 2–3× higher throughput than MuJoCo Warp</em></p></div>
 <p>ComFree-Sim은 여집합-자유(complementarity-free) 접촉 모델링을 기반으로 한 GPU 병렬화 접촉 물리 엔진으로, 폐쇄형 해석해를 통해 접촉 임펄스를 계산하여 접촉 수에 대해 선형적 계산 복잡도를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ComFree 접촉 모델링의 폐쇄형 해석해 구조를 활용하되, 이를 6D 통합 모델로 확장(접선, 토크, 구름마찰)하고 dual cone impedance heuristic을 도입한 후, GPU 커널에 자연스럽게 매핑되는 분산 계산 구조로 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Performance overview of the ComFree-Sim. In the second row, it shows 2–3× higher throughput than MuJoCo Warp</em></p></div>
 <ul>
 <li><strong>6D 통합 접촉 모델</strong>: 기존 point contact 모델을 확장하여 접선, 토크, 구름마찰을 포함한 완전한 6차원 마찰 접촉 해석 프레임워크 개발</li>
 <li><strong>선형 시간 복잡도</strong>: 접촉 수에 대해 거의 선형적 런타임 확장을 달성하며 MJWarp 대비 2-3배 높은 처리량 시현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Drop-in 호환성</strong>: MuJoCo 호환 인터페이스로 MJWarp의 직접 대체 백엔드로 제공되어 기존 시스템과 통합 용이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Different contact modes captured by ComFree-Sim.</em></p></div>
 <ul>
 <li>Dual cone of Coulomb friction 공간에서 impedance-style prediction-correction 업데이트를 통한 폐쇄형 접촉 임펄스 계산</li>
 <li>접촉 해석이 접촉 쌍 간에 완전히 분리(decouple)되고 원뿔 facet 간에 분리 가능하도록 수식화하여 GPU 병렬화에 최적화</li>

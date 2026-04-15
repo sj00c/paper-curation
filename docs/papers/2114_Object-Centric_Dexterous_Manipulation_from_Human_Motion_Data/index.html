@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuanpei Chen, Chen Wang, Yaodong Yang, C. Karen Liu | <strong>날짜</strong>: 2024-11-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2411.04005" target="_blank">https://arxiv.org/abs/2411.04005</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of our framework. (A) Training: Firstly, we use human motion capture data to</em></p></div>
 <p>인간의 손 모션 캡처 데이터를 활용하여 로봇 다지털 조작을 학습하는 계층적 정책 학습 프레임워크를 제안한다. 고수준의 손목 궤적 생성 모델과 저수준의 손가락 제어기를 조합하여 embodiment gap을 극복한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Human wrist 모션은 embodiment에 덜 민감하다는 관찰을 기반으로, 고수준 planner에서 인간 데이터로부터 손목 궤적을 생성하고 저수준 controller에서 RL을 통해 손가락 제어를 학습한다. 두 컴포넌트를 통해 시뮬레이션에서 학습하고 실세계로 전이한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Our system uses human hand motion capture data and deep reinforcement learning to train</em></p></div>
 <ul>
 <li><strong>계층적 정책 학습 프레임워크</strong>: Embodiment gap을 극복하기 위해 wrist 궤적 생성과 finger 제어를 분리하여 각각 imitation learning과 reinforcement learning으로 학습</li>
 <li><strong>다양한 객체에 대한 일반화</strong>: 10개의 가정용 객체에서 superior performance 달성하고 novel object geometry와 goal state에 대한 일반화 능력 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>대규모 인간 모션 데이터 활용</strong>: ARCTIC 데이터셋(51시간)을 활용하여 확장 가능한 학습 환경 구성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of our framework. (A) Training: Firstly, we use human motion capture data to</em></p></div>
 <ul>
 <li>High-level planner: Transformer 기반의 generative model을 사용하여 ARCTIC 모션 캡처 데이터로부터 객체 궤적 조건의 dual wrist 궤적 생성</li>
 <li>Low-level controller: Deep RL을 통해 생성된 wrist 궤적을 따르면서 손가락 제어(a_F)와 residual wrist 제어(Δa_W)를 동시에 학습</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Agrim Gupta, Linxi Fan, Surya Ganguli, Li Fei-Fei | <strong>날짜</strong>: 2022-03-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2203.11931" target="_blank">https://arxiv.org/abs/2203.11931</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: MetaMorph. We ﬁrst process an arbitrary robot by creating a 1D sequence of tokens</em></p></div>
 <p>Transformer 기반의 MetaMorph을 제안하여 모듈식 로봇 설계 공간에서 다양한 로봇 형태에 대해 일반화 가능한 범용 제어기를 학습한다. 로봇의 형태정보를 Transformer의 조건화 모달리티로 취급하여 조합적 일반화와 제로샷 일반화를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Transformer 아키텍처를 사용하여 로봇 모듈의 proprioceptive 정보와 형태정보를 결합한 토큰 시퀀스를 입력으로 받는다. 대규모 사전학습과 동적 재생 버퍼 균형화(dynamic replay buffer balancing)를 통해 다양한 로봇 형태에서의 학습을 최적화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Joint pre-training of modular robots. Mean reward progression of 100 robots from the</em></p></div>
 <ul>
 <li><strong>범용 제어기 학습</strong>: 고제어복잡도(15-20 DoFs)의 UNIMAL 설계 공간에서 수백 개의 다양한 로봇 형태를 단일 정책으로 제어 가능</li>
 <li><strong>제로샷 일반화</strong>: 미학습 dynamics 변동(관절 감쇠, 질량), kinematics 변동(자유도, 형태 매개변수)에 대해 일반화 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Motor synergies 발견</strong>: Attention mask 분석을 통해 신경생물학의 motor synergies 개념이 Transformer 제어기에서 자연스럽게 출현함을 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: MetaMorph. We ﬁrst process an arbitrary robot by creating a 1D sequence of tokens</em></p></div>
 <ul>
 <li>UNIMAL 설계 공간을 사용하여 구 및 원통 모듈의 조합으로 로봇 형태 표현</li>
 <li>각 로봇의 kinematic tree를 1D 토큰 시퀀스로 변환하며, 각 토큰은 해당 모듈의 proprioceptive 정보(관절 각도, 속도)와 형태 매개변수(길이, 반지름, 밀도)를 포함</li>

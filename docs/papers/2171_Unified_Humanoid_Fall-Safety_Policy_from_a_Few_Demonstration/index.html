@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhengjie Xu, Ye Li, Kwan-yee Lin, Stella X. Yu | <strong>날짜</strong>: 2025-11-10 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.07407" target="_blank">10.48550/arXiv.2511.07407</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>휴머노이드 로봇이 균형을 잃었을 때 안전하게 넘어지고 빠르게 일어날 수 있도록, 스파스한 인간 시연과 reinforcement learning, diffusion 기반 메모리를 결합하여 낙상 예방·충격 완화·회복을 통합하는 단일 정책을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 시연을 희소 키프레임으로 수집·재타겟팅한 후 RL로 확장하여 안전한 스킬 사전을 구축하고, 이를 diffusion policy로 증류하여 경량 adapter와 함께 실시간 적응 제어를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>통합 정책</strong>: 낙상 예방, 충격 완화, 신속한 회복을 단일 정책으로 통합하여 재훈련 없이 세 가지 작업에 적용 가능</li>
 <li><strong>안전한 스킬 획득</strong>: 스파스한 인간 시연(모션 캡처)에서 밀집된 반응 궤적을 생성하고 RL 기반 확장과 호환 가능한 모션 스티칭으로 다양한 낙상 변형 학습</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>시뮬레이션-현실 전이</strong>: Unitree G1에서 견고한 sim-to-real 전이 달성, 낮은 충격력과 다양한 방해에 걸친 일관되고 빠른 회복 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>인간 모노큘러 비디오에서 희소 키프레임을 수집하고 G1 로봇 형태로 재타겟팅</li>
 <li>Reinforcement learning으로 키프레임을 밀집된 궤적으로 확장하여 RL 기반 낙상 방지 시드 생성</li>

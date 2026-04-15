@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sirui Chen, Yufei Ye, Zi-Ang Cao, Jennifer Lew, Pei Xu, C. Karen Liu | <strong>날짜</strong>: 2025-08-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.03068" target="_blank">https://arxiv.org/abs/2508.03068</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: System overview: HEAD consists of a high-level policy with two modules, navigation</em></p></div>
 <p>인간 모션 캡처와 에고센트릭 비전 데이터로부터 휴머노이드 로봇의 네비게이션, 로코모션, 리칭 능력을 학습하는 HEAD 프레임워크를 제안한다. 고수준 정책이 손과 눈의 목표 위치를 명령하고 저수준 whole-body controller가 추적하는 모듈식 접근법을 채택한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모듈식 설계로 고수준 정책(hand-eye 위치 명령)과 저수준 controller(whole-body 모션 추적)를 분리하고, GAN 기반 RL을 통해 대규모 human motion capture 데이터에서 학습한다. 여러 데이터 소스(대규모 인간 탐색 데이터, 목표 환경의 중규모 시연, 소량의 로봇 경험)를 활용하여 도메인 시프트를 완화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Hardware setup and test environments.</em></p></div>
 <ul>
 <li><strong>Whole-body controller 학습</strong>: GAN 기반 RL 프레임워크로 눈과 양손의 위치/방향 추적을 학습하며, 상체와 하체를 위한 별도의 discriminator로 독립적인 보상과 조화로운 협력을 동시에 달성</li>
 <li><strong>3D 네비게이션 능력</strong>: 2D 추상화를 벗어나 3차원 공간에서 다양한 높이의 장애물을 회피하며 네비게이션과 리칭을 동시에 수행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>도메인 적응</strong>: 대규모 human 데이터와 소규모 robot 데이터를 혼합하여 embodiment gap과 perception domain shift를 효과적으로 완화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: System overview: HEAD consists of a high-level policy with two modules, navigation</em></p></div>
 <ul>
 <li>High-level policy: Aria glasses에서 수집한 에고센트릭 비전 데이터로부터 카메라(head) 위치/방향 궤적과 손 위치를 예측</li>
 <li>Low-level whole-body controller: 5시간의 정제된 human motion capture 데이터를 GAN 기반 RL로 학습</li>

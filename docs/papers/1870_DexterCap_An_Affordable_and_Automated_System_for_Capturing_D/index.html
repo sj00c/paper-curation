@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yutong Liang, Shiyi Xu, Yulong Zhang, Bowen Zhan, He Zhang, Libin Liu | <strong>날짜</strong>: 2026-01-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.05844" target="_blank">https://arxiv.org/abs/2601.05844</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: DexterCap captures dexterous manipulation of a Rubik’s Cube. Top: raw multi-camera footage showing character-c</em></p></div>
 <p>DexterCap는 문자 코드화된 마커 패치를 사용하는 저비용 광학 모션 캡처 시스템으로, 심한 자기 폐색 상황에서도 손가락의 섬세한 조작 동작을 정확하게 추적하며 최소한의 수동 작업으로 자동 재구성 파이프라인을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 밀집된 문자 코드화 마커 패치를 손과 물체에 부착하고, 마커 검출-모서리-태그를 계단식으로 수행하는 3단계 이미지 처리 파이프라인으로 다중 스케일 폐색 하에서 강건한 추적을 달성하며, MANO 형태 모델을 활용한 자동 캘리브레이션 및 포즈 복원을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Our marker system: (a) Markers are attached to rigid</em></p></div>
 <ul>
 <li><strong>저비용 하드웨어 기반 시스템</strong>: 고가의 상용 모션 캡처 장비 대신 저비용 카메라로 구성된 실용적인 광학 캡처 시스템 구현</li>
 <li><strong>자동화 파이프라인</strong>: 초기 라벨링 후 누적 학습을 통해 후속 세션에서 완전 자동 처리 가능하도록 설계하여 수동 작업 최소화</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>코드 및 데이터 공개</strong>: 처리 파이프라인, 학습된 모델, 전체 데이터셋을 오픈소스로 공개하여 후속 연구 지원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Image processing pipeline for marker detection. (a) Raw input image with character-coded checkerboard markers.</em></p></div>
 <ul>
 <li>문자 코드화된 마커 패치 설계: 각 마커에 고유한 2D 바코드 패턴을 인쇄하여 개별 식별 가능</li>
 <li>3단계 이미지 처리 파이프라인: (1) 마커 검출, (2) 마커 모서리 추적, (3) 바코드 태그 디코딩 순서로 강건성 확보</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tianxing Chen, Zanxin Chen, Baijun Chen, Zijian Cai, Yibin Liu, Zixuan Li, Qiwei Liang, Xianliang Lin, Yiheng Ge, Zhenyu Gu, Weiliang Deng, Yubin Guo, Tian Nian, Xuanbing Xie, Qiangyu Chen, Kailun Su, Tianling Xu, Guodong Liu, Mengkang Hu, Huan-ang Gao, Kaixuan Wang, Zhixuan Liang, Yusen Qin, Xiaokang Yang, Ping Luo, Yao Mu | <strong>날짜</strong>: 2025-06-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.18088" target="_blank">https://arxiv.org/abs/2506.18088</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of RoboTwin 2.0. RoboTwin 2.0 is a scalable framework for bimanual manipu-</em></p></div>
 <p>RoboTwin 2.0는 MLLM 기반 자동 코드 생성과 시뮬레이션 인루프 피드백을 활용하여 대규모 이원팔 조작 데이터를 생성하는 확장 가능한 프레임워크이며, 구조화된 domain randomization을 통해 sim-to-real 전이를 크게 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MLLM 코드 생성 에이전트와 VLM 옵저버로 이루어진 폐루프 피드백 시스템을 구성하고, RoboTwin-OD(731개 객체, 147개 카테고리) 자산 라이브러리 위에서 5축 domain randomization을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of RoboTwin 2.0. RoboTwin 2.0 is a scalable framework for bimanual manipu-</em></p></div>
 <ul>
 <li><strong>자동 전문가 데이터 생성</strong>: MLLM과 simulation-in-the-loop 피드백으로 코드 생성 성공률 10.9% 향상 달성</li>
 <li><strong>대규모 객체 라이브러리</strong>: 731개 객체 인스턴스와 manipulation-relevant 주석 포함한 RoboTwin-OD 구축</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다중 체구 지원</strong>: 50개 이원팔 작업에 5개 로봇 플랫폼 지원 및 100k+ 궤적 데이터셋 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: RoboTwin 2.0 Pipeline. Built on RoboTwin-OD and a skill API, the framework uses</em></p></div>
 <ul>
 <li>MLLM 기반 코드 생성 에이전트가 자연어 명령으로부터 작업 프로그램 합성</li>
 <li>VLM 옵저버가 시뮬레이션 실행 모니터링 및 실패 감지, 수정 제안으로 폐루프 피드백 제공</li>

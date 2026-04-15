@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziwon Yoon, Lawrence Y. Zhu, Jingxi Lu, Lu Gan, Ye Zhao | <strong>날짜</strong>: 2025-06-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.01046" target="_blank">https://arxiv.org/abs/2506.01046</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overall diagram of the proposed traversability estimation and the navigation framework. A transformer-based bi</em></p></div>
 <p>이족 로봇의 불안정성을 예측하는 TravFormer 신경망을 개발하고, 안정성 기반 명령 속도를 traversability로 정의하여 거친 지형에서의 안전하고 효율적인 네비게이션을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Body-to-stance-foot angle (BSFA)을 자감독 신호로 사용하여 이족 불안정성과의 상관관계를 검증하고, Transformer 기반 TravFormer 네트워크를 학습시켜 지형과 명령 속도로부터 불안정성을 예측한다. 예측된 불안정성 값 자체가 아닌 안정성 임계값 이하를 유지하는 최대 명령 속도를 traversability로 정의하여 계층적 TravRRT*-MPC 플래너에 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overall diagram of the proposed traversability estimation and the navigation framework. A transformer-based bi</em></p></div>
 <ul>
 <li><strong>이족 불안정성 특성 식별</strong>: 다양한 보행 특성 중 BSFA가 이족 낙상 위험을 가장 잘 반영하는 자감독 신호임을 입증</li>
 <li><strong>TravFormer 개발</strong>: 불확실성을 포함하여 이족 불안정성을 예측하는 첫 학습 기반 traversability 추정기 제시</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실증 검증</strong>: MuJoCo 시뮬레이션 및 Digit 로봇의 실제 실험을 통해 다양한 지형에서의 안정성, 시간 효율성, 강건성 향상 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: TravFormer architecture combines convolutional feature extraction</em></p></div>
 <ul>
 <li>Digit 로봇을 MuJoCo에서 다양한 거친 지형(경사, 범프, 표면 거칠기)에서 실행하고 varying linear/angular velocities로 보행 데이터 수집</li>
 <li>수집한 데이터를 gait cycle로 파싱하고 다양한 보행 특성(ground reaction wrench, foothold scores, traction, IMU variance 등)의 RMS 값 계산</li>

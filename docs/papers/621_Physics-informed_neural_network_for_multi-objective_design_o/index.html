@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ines Sorrentino, Giulio Romualdi, Lorenzo Moretti, Silvio Traversaro, Daniele Pucci | <strong>날짜</strong>: 2025-07-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.10105" target="_blank">https://arxiv.org/abs/2507.10105</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Block diagram of the multi-layer torque control architecture implemented on the ergoCub humanoid robot. The</em></p></div>
 <p>본 논문은 Physics-Informed Neural Networks (PINNs)와 Unscented Kalman Filter (UKF)를 결합하여 휴머노이드 로봇의 관절 토크 센서 없이 전신 토크 제어를 수행하는 프레임워크를 제시한다. 이 방식은 마찰 모델링과 토크 추정을 통합하여 실시간 토크 제어 아키텍처를 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PINNs는 모터 및 관절 속도 버퍼를 입력으로 사용하여 비선형 정적 및 동적 마찰을 추정하고, UKF는 PINN 기반 마찰 추정값을 직접 측정 입력으로 활용하여 floating-base 시스템의 관절 토크를 실시간으로 추정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: CoM tracking comparison: RNEA-PINN (left) vs. UKF-PINN (right). Green rectangles indicate external contacts.</em></p></div>
 <ul>
 <li><strong>개선된 토크 추적 정확도</strong>: RNEA 대비 토크 추적 RMSE가 감소하고 동적 밸런싱 실험에서 우수한 외란 거부 특성을 달성</li>
 <li><strong>에너지 효율 향상</strong>: RNEA 대비 향상된 에너지 효율을 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>비교 우위</strong>: 위치 제어와의 비교 분석에서 제안된 토크 제어 접근법의 장점 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Block diagram of the multi-layer torque control architecture implemented on the ergoCub humanoid robot. The</em></p></div>
 <ul>
 <li>모터 및 관절 속도 버퍼를 입력으로 하는 PINN 아키텍처 설계로 정적 마찰 캡처</li>
 <li>관절 인코더 해상도 제약을 극복하기 위해 smoothing Kalman Filter를 활용한 속도 추정</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: J. Wei, Zhiqing Sun, Spencer Papay, Steve McKinney, Jeffrey S. Han, Isa Fulford, Hyung Won Chung, Alex Tachard Passos, William Fedus, Amelia Glaese | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 테스트 시 계산량(browsing effort)에 따른 OpenAI Deep Research의 BrowseComp 성능. 정확도가 계산량에 비례하여 증가</em></p></div>
 <p>웹 에이전트의 능력을 평가하기 위해 1,266개의 어려운 질문으로 구성된 BrowseComp 벤치마크를 제시한다. 이 벤치마크는 깊이 있는 웹 탐색과 창의적인 검색 능력을 요구하면서도 답변이 짧고 검증이 용이한 특징을 갖는다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 트레이너가 수동으로 10분 이내에 단순 구글 검색으로는 풀 수 없고, 기존 모델(GPT-4o, Claude 등)도 풀지 못하는 1,266개의 질문과 짧은 답변을 수집하여 벤치마크 구성</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: BrowseComp의 주제 분포. TV/영화(16.2%), 과학기술(13.7%), 미술(10.0%) 등 다양한 영역 커버</em></p></div>
 <ol>
 <li><strong>벤치마크 품질 검증</strong>: 인간 트레이너가 1,255개 문제 중 367개(29.2%)만 2시간 내 해결 가능하며, 이 중 86.4%가 참조 답변과 일치—벤치마크의 높은 난이도 입증</li>
 <li><strong>포괄적 평가 커버리지</strong>: 10개 카테고리(TV/영화, 과학기술, 미술, 역사, 스포츠, 음악 등) 1,266개 문제로 다양한 도메인의 지식 검색 능력 측정</li>
 <li><strong>스케일 가능한 성능 곡선</strong>: OpenAI Deep Research가 테스트 시 계산량 증가에 따라 부드러운 성능 향상을 보여 모델 개선을 정량화할 수 있는 감도 있는 벤치마크임을 입증</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: 인간이 문제를 해결한 시간 분포(좌)와 포기한 시간 분포(우). 해결된 문제는 1시간부터 3시간까지 분산, 포기된 경우 대부분 2시간 근처</em></p></div>
 <p><strong>데이터 수집 및 검증 방법론:</strong></p>
 <ul>
 <li><strong>역제곱 방식(Inverted Question Design)</strong>: 실제 사실에서 시작하여 검증은 쉽지만 발견은 어려운 질문으로 변환. 예) 특정 학회에서 특정 대학 출신 특정 저자로 논문 찾기</li>

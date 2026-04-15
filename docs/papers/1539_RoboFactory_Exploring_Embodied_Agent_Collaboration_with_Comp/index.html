@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yiran Qin, Li Kang, Xiufeng Song, Zhenfei Yin, Xiaohong Liu, Xihui Liu, Ruimao Zhang, Lei Bai | <strong>날짜</strong>: 2025-03-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.16408" target="_blank">https://arxiv.org/abs/2503.16408</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. When performing the task “Grab the steak and use the camera to photograph it with 4 embodied agents”, collabor</em></p></div>
 <p>본 논문은 다중 구체화 에이전트(embodied multi-agent) 시스템의 협력을 위해 논리적, 공간적, 시간적 제약을 조합한 compositional constraints 개념을 제시하고, 이를 기반으로 자동화된 데이터 수집 프레임워크 RoboFactory를 개발하여 다중 에이전트 조작 벤치마크를 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM 기반 RoboBrain이 global task를 compositional constraints(논리, 공간, 시간 제약)로 변환하고, RoboChecker가 이를 실행 가능한 제약 인터페이스로 구현하여 안전하고 효율적인 다중 에이전트 궤적을 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboFactory. Given the global task description, prior information, and observations, RoboBrain gen</em></p></div>
 <ul>
 <li><strong>Compositional Constraints 개념 도입</strong>: 논리적(interaction rules), 공간적(collision avoidance), 시간적(scheduling efficiency) 제약을 체계화하여 다중 에이전트 협력 문제를 구조화</li>
 <li><strong>RoboFactory 벤치마크 구축</strong>: 첫 번째 embodied multi-agent manipulation 벤치마크로, 자동화된 데이터 수집과 다양한 협력 시나리오 제공</li>
 <li><strong>다중 에이전트 Imitation Learning 평가</strong>: diffusion policy 기반 다중 에이전트 시스템의 아키텍처 및 학습 전략 탐색으로 safe and efficient embodied multi-agent systems 구축 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboFactory. Given the global task description, prior information, and observations, RoboBrain gen</em></p></div>
 <ul>
 <li>LLM(GPT)을 활용한 RoboBrain이 global task description, prior information, observations로부터 sub-goal 생성 및 textual compositional constraints 출력</li>
 <li>Motion primitives를 호출하여 unconstrained trajectory sequences 생성</li>

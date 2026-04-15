@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: I-Tak Ieong, Hao Tang | <strong>날짜</strong>: 2025-04-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.15643" target="_blank">https://arxiv.org/abs/2504.15643</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Timeline of the historical development of navigation tasks and their representative approaches. Different colors</em></p></div>
 <p>이 논문은 자율 네비게이션을 위한 멀티모달 인식 기법들을 inference domain이라는 통합 관점에서 조직화하고 분석하는 포괄적인 서베이로, 약 200개의 관련 논문을 검토하여 시각, 언어, 음향 정보를 활용한 네비게이션 접근법들의 공통 원리와 차이를 체계적으로 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 논문은 inference domain이라는 개념을 중심으로 navigation 방법들을 6가지 범주(latent map-based, implicit representation, graph-based, linguistic, embedding-based, diffusion model-based)로 조직화하고, 각 네비게이션 과제(PointNav, ObjectNav, ImageNav, AudioGoalNav)에서 이들 domain이 어떻게 나타나는지 분석한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Timeline of the historical development of navigation tasks and their representative approaches. Different colors</em></p></div>
 <ul>
 <li><strong>inference domain 기반 분석틀 제시</strong>: 목표 지향 네비게이션 방법들을 6가지 주요 inference domain으로 분류하고, 기하학적 추론에서 의미적 이해로의 진화 과정을 체계화</li>
 <li><strong>cross-task 통찰력 도출</strong>: latent map-based 방법이 기하학적 일관성을 유지하고, implicit representation이 end-to-end 학습을 지원하며, linguistic domain이 상식 지식을 활용하는 등 각 domain의 distinctive strengths 식별</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>멀티모달 통합의 과제와 기회 조사</strong>: visual, linguistic, acoustic 정보의 융합 가능성과 implementation 도전과제 분석</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Timeline of the historical development of navigation tasks and their representative approaches. Different colors</em></p></div>
 <ul>
 <li>수학적 framework를 통한 통일된 문제 정의: 상태공간 S, 관측공간 O, 행동공간 A, 목표공간 G로 모든 네비게이션 과제 형식화</li>
 <li>각 inference domain별 computational foundations 분석: latent map-based는 differentiable projections를 이용한 2D/3D mapping, implicit representation은 RNN/transformer를 이용한 internal state representation 등</li>

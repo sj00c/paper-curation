@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Alexander Kirillov, Eric Mintun, Nikhila Ravi, Hanzi Mao, Chloe Rolland, Laura Gustafson, Tete Xiao, Spencer Whitehead, Alexander C. Berg, Wan-Yen Lo, Piotr Dollár, Ross Girshick | <strong>날짜</strong>: 2023-04-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2304.02643" target="_blank">https://arxiv.org/abs/2304.02643</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We aim to build a foundation model for segmentation by introducing three interconnected components: a prompt-</em></p></div>
 <p>이미지 분할을 위한 기초 모델 SAM(Segment Anything Model)과 11M 이미지의 1B 마스크로 구성된 SA-1B 데이터셋을 소개하며, 프롬프트 기반의 제로샷 전이 학습이 가능한 범용 분할 시스템을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 프롬프트 가능한 분할 작업을 정의하고, 이미지 인코더와 경량 마스크 디코더로 구성된 SAM 아키텍처를 설계한 후, 모델-기반 루프를 통한 데이터 엔진(assisted-manual, semi-automatic, fully automatic 3단계)으로 대규모 다양한 분할 마스크 데이터셋을 자동 수집한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Example images with overlaid masks from our newly introduced dataset, SA-1B. SA-1B contains 11M diverse,</em></p></div>
 <ul>
 <li><strong>대규모 고품질 데이터셋</strong>: SA-1B는 11M 개의 라이센스 보유 프라이버시 보호 이미지에서 1B 이상의 마스크를 포함하여 기존 분할 데이터셋 대비 400배 이상의 규모를 달성했다.</li>
 <li><strong>제로샷 전이 성능</strong>: 23개의 다양한 분할 데이터셋에서 SAM은 단일 포그라운드 포인트로도 높은 품질의 마스크를 생성하며, 기존 완전 감독 학습 결과와 경쟁력있거나 우월한 성능을 보인다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>공개 공개</strong>: SAM 모델과 SA-1B 데이터셋을 Apache 2.0 라이선스로 공개하여 분할 기반 모델 연구에 기여한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We aim to build a foundation model for segmentation by introducing three interconnected components: a prompt-</em></p></div>
 <ul>
 <li><strong>Promptable Segmentation Task 정의</strong>: 포그라운드/배경 포인트, 박스, 마스크, 자유형 텍스트 등 다양한 형태의 프롬프트를 받아 유효한 분할 마스크를 반환하도록 작업을 설계한다.</li>
 <li><strong>SAM 아키텍처 설계</strong>: 무거운 이미지 인코더(ViT 기반), 프롬프트 인코더, 경량 마스크 디코더의 삼단계 구조로 설계하여 이미지 임베딩 재사용과 빠른 추론을 가능하게 한다.</li>

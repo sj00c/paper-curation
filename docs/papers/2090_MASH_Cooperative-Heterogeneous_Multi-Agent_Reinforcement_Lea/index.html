@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qi Liu, Xiaopeng Zhang, Mingshan Tan, Shuaikang Ma, Jinliang Ding, Yanjie Li | <strong>날짜</strong>: 2025-08-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.10423" target="_blank">https://arxiv.org/abs/2508.10423</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. MARL model for a single humanoid robot’s locomotion</em></p></div>
 <p>단일 인간형 로봇의 보행을 위해 각 팔다리를 독립 에이전트로 모델링하여 Cooperative-Heterogeneous MARL을 적용하는 MASH 프레임워크를 제안한다. 이는 전역 비평가를 공유하며 협력학습을 통해 전신 조화 능력을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 각 팔다리(양팔, 양다리)를 독립적인 에이전트로 취급하되 서로 다른 행동 공간을 탐색하면서 전역 비평가(global critic)를 공유하는 cooperative-heterogeneous MARL 구조를 설계하였다. 경험 공유 및 협력 정책 학습을 통해 전신 조화 보행을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Reward growth trends for (a) leg training and (b) whole-body training, comparing MASH with the Single Agent PPO </em></p></div>
 <ul>
 <li><strong>훈련 수렴 가속화</strong>: MASH이 기존 단일 에이전트 RL 방법 대비 더 빠른 수렴 속도를 달성하여 샘플 효율성을 개선하였다.</li>
 <li><strong>전신 조화 능력 향상</strong>: 각 팔다리 간 협력을 통해 보행 실행(gait execution) 품질이 향상되고 최종 성능이 우수해졌다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>MARL-인간형 로봇 제어 통합</strong>: MARL 원칙을 단일 인간형 로봇 제어에 효과적으로 적용한 새로운 패러다임을 제시하였다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. The framework of MASH</em></p></div>
 <ul>
 <li>Cooperative-heterogeneous MARL 알고리즘 적용: 각 팔다리를 독립 에이전트로 정의하되, 서로 다른 행동 공간(heterogeneous)을 가지면서도 공동 목표(보행) 달성을 위해 협력(cooperative)</li>
 <li>공유 전역 비평가(shared global critic) 구조: 모든 에이전트가 단일 가치 함수를 공유하여 전신 상태 정보를 반영하고 에이전트 간 정보 흐름 증대</li>

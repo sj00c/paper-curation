@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wandong Sun, Yongbo Su, Leoric Huang, Alex Zhang, Dwyane Wei, Mu San, Daniel Tian, Ellie Cao, Finn Yan, Ethan Xie, Zongwu Xie | <strong>날짜</strong>: 2026-02-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.06382" target="_blank">https://arxiv.org/abs/2602.06382</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. Our end-to-end vision-based humanoid locomotion policy enables robust traversal across diverse challen</em></p></div>
 <p>Raw 깊이 이미지로부터 end-to-end 휴머노이드 로봇 보행을 학습하기 위해, 현실적인 depth 센서 시뮬레이션과 vision-aware behavior distillation, 그리고 terrain-specific multi-critic/multi-discriminator 학습을 결합한 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 학습 파이프라인을 제시한다: (1) height scan으로 multi-critic/multi-discriminator RL을 사용해 privileged policy 학습, (2) 현실적인 depth 센서 시뮬레이션과 vision-aware behavior distillation을 통해 depth 이미지 기반 deployment policy로 distill.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. Our end-to-end vision-based humanoid locomotion policy enables robust traversal across diverse challen</em></p></div>
 <ul>
 <li><strong>현실적 Depth 센서 시뮬레이션</strong>: Stereo matching artifacts, depth-dependent noise, optical distortions, calibration uncertainties를 재현하는 8단계 augmentation 파이프라인 개발</li>
 <li><strong>Vision-aware Behavior Distillation</strong>: Latent space alignment과 noise-invariant auxiliary tasks를 결합하여 privileged height map에서 noisy depth 관찰로의 효과적인 지식 전이 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Cross-Platform 검증</strong>: 서로 다른 stereo depth 카메라가 장착된 두 휴머노이드 로봇에서 실제 배포 검증, 극한 terrain과 fine-grained 작업 모두 성공적으로 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Method Overview. Our framework consists of two stages: (1)</em></p></div>
 <ul>
 <li>Stereo depth fusion을 시뮬레이션하여 occlusion과 textureless 영역의 hole pattern 재현</li>
 <li>Depth-dependent noise, optical distortion (radial/tangential), calibration uncertainty를 순차적으로 적용하는 augmentation 파이프라인 구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: TianChen Huang, Runchen Xu, Yu Wang, Wei Gao, Shiwu Zhang | <strong>날짜</strong>: 2025-08-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.20661" target="_blank">https://arxiv.org/abs/2508.20661</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. The proposed framework uses 3D-LIPM</em></p></div>
 <p>이 논문은 humanoid 로봇이 좁은 경로를 안전하게 통과하도록 하는 두 단계 reinforcement learning 프레임워크를 제안하며, physics-기반 LIPM foothold planner와 RL 기반 foothold tracker/modifier를 결합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Stage-I에서는 flat ground에서 LIPM 기반 planner의 foothold를 robustly track하는 low-level policy를 학습하고, Stage-II에서는 narrow path에서 body-frame residual을 생성하여 foothold를 안전하게 수정하는 high-level policy를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. The proposed framework uses 3D-LIPM</em></p></div>
 <ul>
 <li><strong>Two-stage curriculum learning framework</strong>: Physics-guided foot placement learning으로 LIPM foothold를 bounded body-frame residual로 refine하는 구조</li>
 <li><strong>Minimal sensing requirement</strong>: Compact anterior terrain height map과 onboard IMU/joint signal만으로 sim-to-real transfer 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 우월성</strong>: Template-기반 또는 RL-기반 baseline 대비 success rate, centerline adherence, safety margin에서 우수한 성능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The proposed framework for humanoid robot traversing narrow paths. A two-stage training curriculum is designed</em></p></div>
 <ul>
 <li>3D-LIPM을 이용한 초기 foothold target 계획으로 physics-based guidance 제공</li>
 <li>Stage-I: Flat ground에서 intentional target disturbance를 통해 robust foothold tracker 학습</li>

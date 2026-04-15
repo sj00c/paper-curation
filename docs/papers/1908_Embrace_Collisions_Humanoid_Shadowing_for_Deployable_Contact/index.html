@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziwen Zhuang, Hang Zhao | <strong>날짜</strong>: 2025-02-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.01465" target="_blank">https://arxiv.org/abs/2502.01465</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We present a unified humanoid motion interface and a zero-shot sim-to-real reinforcement learning framework, so </em></p></div>
 <p>본 논문은 휴머노이드 로봇이 온몸의 모든 신체 부위를 사용하여 환경과 상호작용하는 접촉-무관(contact-agnostic) 동작을 수행할 수 있도록 하는 통합 제어 프레임워크를 제안한다. GPU 가속 rigid-body simulator와 reinforcement learning을 활용하여 시뮬레이션에서 학습한 정책을 실제 로봇에 zero-shot으로 배포할 수 있음을 시연한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Transformer 기반 motion command encoder, key-frame 기반 motion command 표현, advantage mixing 기법을 통해 sparse task reward와 dense regularization reward를 균형있게 처리하고, 새로운 termination condition을 설계하여 extreme rotation 상황에 대응한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Training Framework: We build an extreme-action dataset from AMASS dataset and internet videos using 4D-Human [14</em></p></div>
 <ul>
 <li><strong>통합 동작 인터페이스</strong>: robot base frame에서 모든 동작 목표를 표현하여 standing과 lying down 등 다양한 자세 간 전환을 일관되게 처리</li>
 <li><strong>극단 동작 데이터셋</strong>: AMASS에서 극단적인 roll/pitch 방향성을 가진 extreme-action dataset 구성으로 training 데이터 확충</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Hardware-safe 정책</strong>: Advantage mixing으로 energy efficiency와 torque minimization 같은 regularization 보상을 task 신호와 균형있게 통합</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: To handle a variable of input motion command, the</em></p></div>
 <ul>
 <li>Transformer 기반 multi-headed self-attention encoder로 가변 개수의 motion command input 처리 가능하게 구성</li>
 <li>Key-frame 기반 motion command로 future motion expectation 정보 제공</li>

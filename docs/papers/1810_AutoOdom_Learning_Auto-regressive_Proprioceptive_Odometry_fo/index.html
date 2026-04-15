@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Changsheng Luo, Yushi Wang, Wenhan Cai, Mingguo Zhao | <strong>날짜</strong>: 2025-11-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.18857" target="_blank">https://arxiv.org/abs/2511.18857</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Overview of the AutoOdom system.</em></p></div>
 <p>AutoOdom은 자동회귀 학습을 기반으로 하는 2단계 훈련 패러다임으로 다리 로봇의 고유감각 주행거리 추정 성능을 크게 향상시킨 시스템이다. 대규모 시뮬레이션 데이터로 비선형 동역학을 학습하고 제한된 실제 데이터로 sim-to-real 갭을 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 자동회귀 학습을 도입하여 모델이 자신의 예측으로부터 학습하도록 하고, 2단계 훈련으로 (1) 시뮬레이션에서 복잡한 동역학 학습, (2) 실제 데이터로 autoregressive enhancement를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Trajectory comparison between AutoOdom and Legolas on some test sequences. Blue: ground truth, orange: AutoOdom,</em></p></div>
 <ul>
 <li><strong>성능 개선</strong>: Legolas 베이스라인 대비 절대 궤적 오차 57.2%, Umeyama 정렬 오차 59.2%, 상대 자세 오차 36.2% 개선</li>
 <li><strong>효율적 sim-to-real 전환</strong>: 제한된 실제 데이터로도 시뮬레이션 기반 모델의 sim-to-real 갭을 효과적으로 해소</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>포괄적 검증</strong>: Booster T1 휴머노이드 로봇에서 광범위한 ablation 연구를 통해 센서 양식 선택과 시간적 모델링에 대한 통찰 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Overview of the AutoOdom system.</em></p></div>
 <ul>
 <li><strong>다중 센서 입력</strong>: 접촉 상태 At, 명령 속도 vcmd_t, 각속도 ωt, IMU 가속도 at, 관절 위치 qt, 관절 속도 q̇t, 회전 행렬 Rt, 위치 변화 Δpt를 통합</li>
 <li><strong>Stage 1 시뮬레이션 훈련</strong>: Booster Gym 플랫폼의 대규모 데이터로 비선형 동역학과 빠르게 변하는 접촉 상태 학습</li>

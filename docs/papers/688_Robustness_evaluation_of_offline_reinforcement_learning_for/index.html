@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shingo Ayabe, Takuto Otomo, Hiroshi Kera, Kazuhiko Kawamoto (Chiba University) | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2412.18781" target="_blank">arXiv:2412.18781</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>오프라인 RL의 견고성 평가 개요: 다양한 품질의 오프라인 데이터셋에서 학습한 모델을 정상, 랜덤, 적대적 행동 섭동 조건에서 평가</em></p></div>
 <p>본 논문은 오프라인 강화학습(Offline RL)이 로봇 제어에서 행동 공간의 섭동(action perturbations)에 대해 얼마나 취약한지를 체계적으로 평가하고, 기존의 온라인 RL 방법보다 더 큰 약점을 가짐을 실증적으로 증명한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MuJoCo 시뮬레이터에서 Hopper, HalfCheetah, Ant 다리 로봇에 대해 BCQ, TD3+BC, IQL 등 기존 오프라인 RL 방법들을 평가한다. 차분 진화(differential evolution) 알고리즘으로 생성한 적대적 섭동(adversarial perturbations)과 랜덤 섭동을 적용하여 견고성을 측정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>세 가지 다리 로봇에서 적대적 섭동 강도 변화에 따른 테스트 시간 견고성 평가 결과</em></p></div>
 <ol>
 <li><strong>오프라인 RL의 심각한 취약성</strong>: 기존 오프라인 RL 방법들은 행동 공간 섭동에 매우 취약하며, 온라인 RL 방법들보다 훨씬 큰 성능 저하를 보인다. 예를 들어 적대적 섭동 하에서 보상이 30-70% 감소한다.</li>
 <li><strong>데이터셋 커버리지의 중요성</strong>: 테스트 시간 견고성은 훈련 데이터셋의 상태-행동 커버리지에 크게 의존한다. Expert 데이터셋이 Medium 데이터셋보다 일관되게 더 높은 견고성을 나타낸다.</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Eunju Kwon, Seungwon Oh, In-Chang Baek, Yucheon Park, Gyungbo Kim, JaeYoung Moon, Yunho Choi, Kyung-Joong Kim | <strong>날짜</strong>: 2025-10-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.25725" target="_blank">https://arxiv.org/abs/2510.25725</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>인형로봇의 시각-촉각-행동 다중모달 데이터셋을 제시하여 접촉 기반 조작, 특히 부드러운 물체 조작을 위한 로봇 학습을 지원한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 원격 조종 방식으로 Inspire Hand(1,062개 고해상도 센서)와 egocentric 비전 카메라를 장착한 인형로봇을 통해 타올과 스펀지 같은 부드러운 물체를 강한 압력/약한 압력 조건에서 조작하는 데이터를 수집하였다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3(a) visualizes the tactile signals collected across the four</em></p></div>
 <ul>
 <li><strong>첫 인형로봇 촉각-비전-행동 데이터셋</strong>: 부드러운 물체를 다양한 제어 조건 하에서 캡처한 101.9K 프레임의 다중모달 데이터셋을 제시</li>
 <li><strong>고밀도 촉각 융합 아키텍처</strong>: 밀집된 촉각 정보의 효율적 융합을 위한 신경망 구조 도입으로 접촉 기반 조작 성능 향상</li>
 <li><strong>촉각 신호 특성 분석</strong>: 부드러운 물체 조작 시 촉각 신호의 시간 변동 분포가 경직된 물체와 본질적으로 다르며, 고밀도 센싱이 필수임을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Comparison of tactile signal distributions captured from the dexter-</em></p></div>
 <ul>
 <li>Unitree 워크플로우 확장을 통한 인형로봇 원격 조종 시스템 구축 (head-mounted camera 848×480, third-person RealSense D435, piezo-resistive tactile carpet)</li>
 <li>2,124개 고밀도 센서와 42개 저밀도 센서(sparse representation) 간 비교 분석을 통해 고해상도 촉각 신호의 중요성 검증</li>

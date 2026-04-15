@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiaoyi Hu, Qiao Sun, Bailin He, Haojie Liu, Xueyi Zhang, Chunpeng lu, Jiangwei Zhong | <strong>날짜</strong>: 2025-03-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.01255" target="_blank">https://arxiv.org/abs/2503.01255</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>정적 마찰이 로봇 강화학습의 Sim2Real 성능에 미치는 영향을 체계적으로 분석하고, Static friction-aware domain randomization을 제안하여 복잡한 지형에서의 로봇 적응 능력을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 제어 이론적 관절 모델 개발과 체계적인 매개변수 식별을 통해 로봇 관절의 마찰-토크 비율을 분석하고, 이를 기반으로 Static friction-aware domain randomization을 구현하여 학습 복잡도를 줄이는 방법을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>Static friction의 영향 규명</strong>: 매개변수 식별 및 비교 실험을 통해 robotic reinforcement learning에서 static friction의 영향을 처음으로 체계적으로 입증</li>
 <li><strong>제어 모델 기반 분석</strong>: 2차 제어 모델을 개발하여 domain randomization에서 제외 가능한 매개변수를 분석</li>
 <li><strong>실제 로봇 구현</strong>: Saturn Lite 육각형 로봇에서 방법을 적용하여 기존 방식 대비 우수한 적응 능력과 계단 통과 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>Control-theoretic joint model을 개발하여 모터 동역학 분석</li>
 <li>Systematic parameter identification을 통해 실제 로봇 관절의 friction-torque ratio 측정</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jialong Li, Xuxin Cheng, Tianshu Huang, Shiqi Yang, Ri-Zhao Qiu, Xiaolong Wang | <strong>날짜</strong>: 2025-05-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.03738" target="_blank">https://arxiv.org/abs/2505.03738</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. The system is decomposed into four stages: 1. AMO module training by collecting AMO dataset</em></p></div>
 <p>AMO는 sim-to-real RL과 trajectory optimization을 결합하여 29-DoF 인형로봇의 실시간 적응형 전신 제어를 구현하며, hybrid dataset 구성과 O.O.D. 명령에 대한 강건한 일반화를 통해 기존 방법의 운동 공간 제한을 극복한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: AMO는 MoCap 팔 궤적과 확률적으로 샘플링된 몸통 방향을 융합하여 hybrid 상위체 명령을 생성하고, dynamics-aware trajectory optimizer로 전신 참조 운동을 생성한 후, 연속 매핑 가능한 AMO network를 훈련하여 O.O.D. 명령에 강건한 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: AMO enables hyper-dexterous whole-body movements for humanoid robots. (a): The robot picks and places a can on</em></p></div>
 <ul>
 <li><strong>Hybrid Motion Synthesis</strong>: MoCap 데이터와 확률적 샘플링된 몸통 방향(SO(3) + Height)을 결합하여 운동학적 편향을 제거하고 dynamics-aware trajectory optimization으로 동력학적 실행 가능성을 보장하는 첫번째 인형로봇 민첩 조작용 AMO dataset 구성</li>
 <li><strong>O.O.D. Generalization</strong>: 연속 입력 공간에서의 강건한 보간을 통해 기존 방법이 달성하지 못한 O.O.D. 원격 조작 명령에 대한 강건한 성능 입증</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Autonomous Task Execution</strong>: 모방 학습 기반 autonomous policy 훈련으로 일관된 성능 유지 및 시스템 다재다능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. The system is decomposed into four stages: 1. AMO module training by collecting AMO dataset</em></p></div>
 <ul>
 <li><strong>AMO Dataset Construction</strong>: MoCap 팔 궤적에서 상위체 목표를 추출하고 확률적으로 샘플링된 몸통 방향(RPY + Height)과 베이스 속도를 결합하여 hybrid 명령 생성</li>
 <li><strong>Trajectory Optimization</strong>: whole-body reference motion을 생성하는 dynamics-aware trajectory optimizer 설계로 운동학적 실행 가능성과 동력학적 제약 동시 만족</li>

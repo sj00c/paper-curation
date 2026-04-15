@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Pascal Strauch, David Müller, Sammy Christen, Agon Serifi, Ruben Grandia, Espen Knoop, Moritz Bächer | <strong>날짜</strong>: 2025-11-13 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.10635" target="_blank">10.48550/arXiv.2511.10635</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method Overview. We leverage reinforcement learn-</em></p></div>
 <p>이 논문은 양족 로봇의 낙하 현상 자체에 초점을 맞춰, 충격을 최소화하면서 사용자가 지정한 목표 자세에 도달하도록 하는 강화학습 기반 낙하 정책을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 로봇 범용적 보상 함수를 설계하여 영향 최소화, 목표 자세 추적, 중요 부품 보호를 균형있게 조정한다. 초기 및 종료 자세의 시뮬레이션 기반 샘플링 전략을 도입하여 다양한 낙하 조건과 미지 자세에 대한 견고한 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Impact Analysis. Comparison of maximal (left) and mean (right) impact forces across body parts between standard</em></p></div>
 <ul>
 <li><strong>다목적 낙하 정책</strong>: 충격 최소화와 사용자 정의 목표 자세를 동시에 달성하며, 예술적 제어와 회복 용이성을 제공</li>
 <li><strong>범용적 샘플링 전략</strong>: 초기 및 종료 자세의 포괄적 샘플링으로 추론 시 미지의 임의 자세 지정 가능</li>
 <li><strong>실제 시연</strong>: 양족 로봇의 제어된 부드러운 낙하를 시뮬레이션 및 현실 실험으로 입증하며, 기존 전략 대비 정량적 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method Overview. We leverage reinforcement learn-</em></p></div>
 <ul>
 <li>PPO(Proximal Policy Optimization)를 사용하여 정책 π(a_t|s_t, g_t) 학습</li>
 <li>보상 함수를 충격 최소화, 자세 추적, 로봇 부품 민감도 가중치로 구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zelin Tao, Zeran Su, Peiran Liu, Jingkai Sun, Wenqiang Que, Jiahao Ma, Jialin Yu, Jiahang Cao, Pihai Sun, Hao Liang, Gang Han, Wen Zhao, Zhiyuan Xu, Jian Tang, Qiang Zhang, Yijie Guo | <strong>날짜</strong>: 2026-03-31 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2603.27756" target="_blank">10.48550/arXiv.2603.27756</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Heracles synthesizes diverse, anthropomorphic recovery motions via state-conditioned diffusion. In</em></p></div>
 <p>Heracles는 state-conditioned diffusion 미들웨어를 통해 정밀한 모션 추적과 생성적 적응을 통합하여 휴머노이드 로봇이 극단적인 외부 교란 상황에서도 자연스러운 복구 동작을 수행하도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: state-conditioned diffusion 미들웨어를 high-level reference motion과 low-level physics tracker 사이의 중간층으로 배치하여, 로봇의 실시간 상태에 따라 암묵적으로 behavior를 적응시킨다. state가 reference에 가까우면 identity map으로 작동하고, significant deviation 시 생성적 복구 궤적을 합성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Heracles synthesizes diverse, anthropomorphic recovery motions via state-conditioned diffusion. In</em></p></div>
 <ul>
 <li><strong>생성적 제어 미들웨어 패러다임</strong>: state-conditioned diffusion을 기반으로 정밀 추적과 생성적 합성을 유기적으로 결합하는 새로운 미들웨어 아키텍처 제시</li>
 <li><strong>일반적 목적 제어를 위한 향상된 아키텍처</strong>: 기저 physics tracker와 전체 제어 프레임워크를 개선하여 고충실도 추적 특성을 유지하면서 생성적 사전 지식을 통합</li>
 <li><strong>강건한 자연스러운 복구 및 모션 일반화</strong>: 물리적 휴머노이드 로봇에서 극단적인 out-of-distribution 교란 상황 하에서 창발적이고 인간다운 복구 행동을 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the Heracles framework. (a) A flow matching model ^𝐷𝜃learns to synthesize feasible keyframe</em></p></div>
 <ul>
 <li>Flow matching 기반 diffusion model을 real-time 로봇 상태에 대해 조건화하여 reference motion을 적응적으로 변환</li>
 <li>State alignment 정도에 따라 diffusion process가 암묵적으로 identity map 또는 생성적 synthesizer로 동작하도록 설계</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Weiji Xie, Jinrui Han, Jiakun Zheng, Huanyu Li, Xinzhe Liu, Jiyuan Shi, Weinan Zhang, Chenjia Bai, Xuelong Li | <strong>날짜</strong>: 2025-06-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.12851" target="_blank">https://arxiv.org/abs/2506.12851</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of PBHC that includes three core components: (a) motion extraction from</em></p></div>
 <p>본 논문은 물리 기반 인간형 로봇 제어 프레임워크(PBHC)를 제안하여 쿵푸, 댄싱 등 고도로 동적인 인간 행동을 모방하도록 학습하는 방법을 제시한다. 다단계 모션 처리와 적응형 모션 추적을 통해 기존 방법보다 현저히 낮은 추적 오차를 달성하고 실제 로봇에 배포된다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 프레임워크를 도입한다: (1) 모션 처리 단계에서 HMR 모델로 SMPL 포맷 추출, 물리 기반 필터링(CoM-CoP 안정성), 접촉 마스크 기반 보정, IK 기반 리타겟팅을 수행하고 (2) 모션 모방 단계에서 bi-level optimization으로 추적 팩터를 동적 조정하는 적응형 커리큘럼을 구성하며, 비대칭 actor-critic 아키텍처로 정책을 훈련한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of PBHC that includes three core components: (a) motion extraction from</em></p></div>
 <ul>
 <li><strong>물리 기반 모션 필터링</strong>: CoM과 CoP의 거리 기반 안정성 판별과 접촉 마스크 추출을 통해 물리적으로 불가능한 모션을 사전에 제거하여 데이터셋 품질 향상</li>
 <li><strong>적응형 모션 추적 메커니즘</strong>: Bi-level optimization 기반의 추적 팩터 σ를 동적으로 조정하여 어려운 모션에 대한 합리적인 허용도 설정 및 온라인 추정을 통한 폐루프 제어</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>낮은 추적 오차</strong>: 기존 방법(ExBody, ExBody2, ASAP 등) 대비 현저히 낮은 추적 오차 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of PBHC that includes three core components: (a) motion extraction from</em></p></div>
 <ul>
 <li>GVHMR으로 단안 비디오로부터 SMPL 포맷 모션 추정 (중력 정렬 및 발 미끄럼 감소)</li>
 <li>CoM(center of mass)과 CoP(center of pressure)의 투영 거리를 계산하여 프레임별 안정성 평가 (Equation 1)</li>

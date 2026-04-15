@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Humphrey Munn, Brendan Tidd, Peter Böhm, Marcus Gallagher, David Howard | <strong>날짜</strong>: 2024-10-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.05681" target="_blank">https://arxiv.org/abs/2410.05681</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our robot throwing policies demonstrated on real hardware (top) and in simulation (bottom) showing complex full-</em></p></div>
 <p>다리가 있는 로봇의 전신 동역학을 활용하여 강화학습 기반의 3D 목표지점으로의 정확한 투척을 학습하는 방법을 제시하고, 시뮬레이션에서 학습한 정책을 실제 휴머노이드 로봇으로 전이시켰다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PPO 알고리즘 기반 deep RL을 Isaac Lab에서 학습하며, 투척 정확도와 안정성을 최적화하는 적응형 커리큘럼(adaptive curriculum)을 도입하고, 희소 보상(sparse-reward) 환경에서의 효율적 학습을 위한 맞춤형 RL 환경을 설계했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Throwing error (metres) between robot throw and target for the</em></p></div>
 <ul>
 <li><strong>3D 투척 일반화</strong>: 2D 평면에 제한되던 기존 연구와 달리 임의의 3D 공간 목표지점으로의 투척을 가능하게 함</li>
 <li><strong>전신 동역학 활용</strong>: 신체 모멘텀, counter-balancing, 전신 동역학을 활용하여 arm-only 방식 대비 범위, 정확도, 안정성 개선</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Sim2Real 전이</strong>: 시뮬레이션 학습 정책을 실제 휴머노이드 로봇에 성공적으로 전이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Policy Evaluation and Real-world deployment architecture.</em></p></div>
 <ul>
 <li>Isaac Lab 환경에서 병렬화된 PPO 구현을 활용한 joint-level 제어기 학습</li>
 <li>극좌표(polar coordinates)로 표현된 3D 투척 목표를 정책 입력으로 제공</li>

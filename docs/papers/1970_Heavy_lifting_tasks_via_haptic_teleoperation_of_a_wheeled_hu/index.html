@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Amartya Purushottam, Jack Yan, Christopher Yu, Joao Ramos | <strong>날짜</strong>: 2025-05-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.19530" target="_blank">https://arxiv.org/abs/2505.19530</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>휠형 휴머노이드 로봇의 Dynamic Mobile Manipulation을 위해 햅틱 피드백을 통한 원격 조종 프레임워크를 제시하며, 인간의 전신 모션을 로봇에 재타겟팅하여 무거운 물체 들어올리기를 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간의 pitch와 각속도를 기반으로 DCM dynamic similarity를 통한 모션 재타겟팅을 적용하고, 페이로드로 인한 외부 모멘트를 추정하여 로봇의 원하는 pitch 각도를 자동으로 조정하며, 이를 햅틱 피드백 또는 컨트롤러 보상으로 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>높이 조절 기능 추가</strong>: 고정 높이에서 벗어나 로봇의 높이를 동적으로 변경하는 모션 재타겟팅 전략 개발</li>
 <li><strong>자동 pitch 보상</strong>: 알려진 객체 질량을 기반으로 페이로드 유도 외부 모멘트를 보상하는 새로운 desired pitch 각도 계산 방법 제시</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>비교 평가</strong>: 조종사 보상 vs 로봇 컨트롤러 보상 두 가지 disturbance rejection 방식을 2.5kg 물체 들어올리기 실험으로 비교</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3.</em></p></div>
 <ul>
 <li>Wheeled inverted pendulum 모델로 인간과 로봇을 표현하여 DCM (Divergent Component of Motion) 기반 동적 유사성 구현</li>
 <li>Human-Machine Interface를 통해 인간의 arm 모션, 높이, pitch, center of pressure를 측정 및 캡처</li>

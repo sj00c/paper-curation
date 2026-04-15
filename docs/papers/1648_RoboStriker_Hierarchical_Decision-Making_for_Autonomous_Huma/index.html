@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kangning Yin, Zhe Cao, Wentao Dong, Weishuai Zeng, Tianyi Zhang, Qiang Zhang, Jingbo Wang, Jiangmiao Pang, Ming Zhou, Weinan Zhang | <strong>날짜</strong>: 2026-01-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2601.22517" target="_blank">10.48550/arXiv.2601.22517</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboStriker. Stage I pretrains a motion tracker to produce physically plausible humanoid behaviors</em></p></div>
 <p>RoboStriker는 인간 수준의 경쟁력 있는 휴머노이드 권투를 위해 높은 수준의 전략 추론과 낮은 수준의 물리적 실행을 분리하는 3단계 계층적 프레임워크를 제안한다. Motion capture 데이터로부터 학습된 동작 라이브러리를 구조화된 잠재 공간으로 압축한 후, Latent-Space NFSP를 통해 다중 에이전트 경쟁 학습을 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RoboStriker는 motion capture 데이터로부터 학습한 물리적으로 실행 가능한 동작 라이브러리를 Gaussian-parameterized 분포를 단위 초구에 투영하여 구조화된 잠재 공간으로 압축한다. 그 후 Latent-Space NFSP를 통해 에이전트들이 원시 모터 공간이 아닌 잠재 동작 공간 내에서 경쟁 전술을 학습하도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Real-world clips of humanoid boxing using RoboStriker,</em></p></div>
 <ul>
 <li><strong>물리적-전략적 이중성 해결</strong>: 물리적 실행 가능성과 비정상적 학습, 전략 진화와 시스템 안정성 간의 내재적 모순을 공식적으로 특성화하고 해결</li>
 <li><strong>계층적 분해 프레임워크</strong>: 높은 수준의 전략 추론과 낮은 수준의 물리적 실행을 분리하여 동적 격투 행동의 진화를 위한 안정적 경로 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화된 구조</strong>: embodied multi-agent 경쟁을 위한 일반적 레시피 제공으로 추상 게임에서 물리 기반 로봇 시스템으로의 MARL 확장 가능성 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboStriker. Stage I pretrains a motion tracker to produce physically plausible humanoid behaviors</em></p></div>
 <ul>
 <li><strong>Stage I - 동작 추적기 학습</strong>: DeepMimic 기반 tracking policy를 human motion capture 데이터로 훈련하여 다양한 물리적으로 실행 가능한 권투 기술 습득</li>
 <li><strong>Stage II - 동작 인코딩</strong>: Encoder-Decoder 구조로 학습된 동작들을 구조화된 잠재 공간으로 압축하며, KL divergence 제약과 함께 Gaussian 분포를 단위 초구에 투영하여 물리적으로 가능한 동작의 부분공간에 탐색 제한</li>

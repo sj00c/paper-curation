@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jesse Zhang, Jiahui Zhang, Karl Pertsch, Ziyi Liu, Xiang Ren, Minsuk Chang, Shao-Hua Sun, Joseph J. Lim | <strong>날짜</strong>: 2023-10-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2310.10021" target="_blank">https://arxiv.org/abs/2310.10021</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: BOSS learns to execute a large set of useful, long-horizon skills with minimal supervision</em></p></div>
 <p>BOSS는 기본 primitive 스킬 세트로부터 LLM의 지도를 받아 스킬 체이닝을 통해 복잡한 장기 작업을 수행할 수 있는 스킬 라이브러리를 자동으로 구축하는 방법론이다. 최소한의 감독으로 환경과의 상호작용을 통해 의미 있는 스킬 조합을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: BOSS는 두 단계로 구성된다: (1) 기본 primitive 스킬 정책을 IQL 오프라인 강화학습으로 사전학습, (2) 스킬 부트스트래핑 단계에서 LLM이 가이드하는 의미 있는 스킬 체인을 샘플링하고 환경 상호작용으로 학습하면서 새로운 스킬을 라이브러리에 추가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: BOSS learns to execute a large set of useful, long-horizon skills with minimal supervision</em></p></div>
 <ul>
 <li><strong>LLM 기반 스킬 부트스트래핑</strong>: LLM이 실행된 스킬 체인을 보고 다음 의미 있는 스킬을 샘플링하도록 가이드하여 무작위 탐색보다 훨씬 효율적인 스킬 학습 달성</li>
 <li><strong>최소 감독 학습</strong>: 기본 primitive 스킬 세트만으로 시작하여 추가 인간 감독 없이 수백 개의 장기 작업 수행 능력 확보</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: 시뮬레이션 환경뿐만 아니라 실제 로봇에서도 방법론의 효과성 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: BOSS learns to execute a large set of useful, long-horizon skills with minimal supervision</em></p></div>
 <ul>
 <li><strong>언어 조건부 정책 사전학습</strong>: 스파스 보상 함수와 언어 주석을 포함한 데이터셋 D_L에 대해 IQL을 사용하여 π(a|s, z) 형태의 언어 조건부 primitive 스킬 정책 학습</li>
 <li><strong>초기 스킬 샘플링</strong>: 현재 상태에서 의미 있는 초기 스킬을 선택하기 위해 LLM 활용 (논문에서 구체적 방법 명시 필요)</li>

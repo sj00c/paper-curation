@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jingkai Sun, Gang Han, Pihai Sun, Wen Zhao, Jiahang Cao, Jiaxu Wang, Yijie Guo, Qiang Zhang | <strong>날짜</strong>: 2025-10-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.07152" target="_blank">https://arxiv.org/abs/2510.07152</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of the proposed teacher–student distillation framework for humanoid perceptive locomotion. (A) The stud</em></p></div>
 <p>휴머노이드 로봇의 깊이 이미지만을 사용한 지형 인식 보행을 위해, 현실적인 깊이 합성과 cross-attention transformer를 결합하여 사전 학습된 blind policy를 기반으로 효율적인 정책 학습을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: blind backbone policy에 vision-based modulator를 통합하는 teacher-student 구조와, 자기 occlusion을 고려한 ray casting 및 noise 모델링으로 현실적인 깊이 이미지를 합성하며, multi-modal cross-attention transformer로 노이즈 있는 깊이 이미지로부터 지형 기하학을 재구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Ablation study of the proposed framework across four challenging terrains:</em></p></div>
 <ul>
 <li><strong>다단계 학습 프레임워크</strong>: 사전 학습된 정책을 기반으로 외부 localization 없이 end-to-end fine-tuning을 가능하게 하여 training 효율성을 대폭 향상시킴</li>
 <li><strong>현실적 깊이 합성</strong>: self-occlusion-aware ray casting과 noise-aware 모델링으로 깊이 재구성 오류를 30% 이상 감소</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: 실제 크기 humanoid 로봇에서 경사, 계단, 갭, 불균등한 야외 지면 등 다양한 지형에서 agile하고 adaptive한 보행 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: The figure illustrates our physically grounded noise pipeline applied to synthetic</em></p></div>
 <ul>
 <li>Terrain-aware locomotion policy: proprioceptive 피드백(각속도, 관절 위치/속도, 중력, 선속도), 1.0m × 1.0m heightmap (5cm 해상도), 명령 입력, periodic gait 신호를 결합한 observation space 설계</li>
 <li>Teacher-student 구조: pretrained blind policy와 vision-based modulator를 학생/교사 정책에 통합하여 시각 정보 없이도 안정적 보행 제공</li>

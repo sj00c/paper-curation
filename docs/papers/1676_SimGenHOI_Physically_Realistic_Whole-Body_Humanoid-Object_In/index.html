@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuhang Lin, Yijia Xie, Jiahong Xie, Yuehao Huang, Ruoyu Wang, Jiajun Lv, Yukai Ma, Xingxing Zuo | <strong>날짜</strong>: 2025-08-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.14120" target="_blank">https://arxiv.org/abs/2508.14120</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Our proposed framework uses a diffusion model for key action generation and reinforcement learning to train</em></p></div>
 <p>SimGenHOI는 Diffusion Transformers 기반의 생성 모델과 강화학습 기반의 접촉-인식 제어 정책을 결합하여 물리적으로 현실적인 인간형 로봇-객체 상호작용을 생성하는 통합 프레임워크이다. 상호 미세조정 전략을 통해 생성 모델과 제어 정책이 반복적으로 서로를 개선하여 장기 조작 과제의 성공률을 높인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Key action 예측을 통한 diffusion 기반 생성 모델과 접촉-인식 whole-body 제어 정책을 설계하고, 두 컴포넌트가 서로를 반복적으로 개선하는 상호 미세조정 전략을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: With the condition of text prompt, object geometry,</em></p></div>
 <ul>
 <li><strong>물리적 현실성 확보</strong>: DiT 기반 생성 모델과 RL 기반 제어 정책의 결합으로 관통, 발 미끄러짐 등의 물리적 인공물을 효과적으로 제거하고 추적 성공률을 현저히 향상</li>
 <li><strong>Key action 기반 생성 패러다임</strong>: 밀집된 동작 시퀀스 대신 필수 상호작용 동역학을 포착하는 key action을 생성하여 자연스럽게 장기 HOI 생성을 지원</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장된 과제 범위</strong>: 단순한 객체 이동을 넘어 다양한 조작 과제를 지원하는 contact-aware whole-body 제어 정책 설계</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Our proposed framework uses a diffusion model for key action generation and reinforcement learning to train</em></p></div>
 <ul>
 <li>Diffusion Transformers 모델을 사용하여 텍스트 프롬프트, 객체 기하학, 희소 객체 waypoint, 초기 인간형 포즈를 조건으로 key action 예측</li>
 <li>예측된 key action을 부드러운 동작 궤적으로 보간하여 HOI 정책이 추적할 수 있는 참조 궤적 생성</li>

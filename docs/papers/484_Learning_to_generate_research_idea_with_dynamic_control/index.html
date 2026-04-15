@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ruochen Li, Liqiang Jing, Chi Han, Jiawei Zhou, Xinya Du | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: 3가지 차원에 걸친 동적 제어를 포함한 학습 프레임워크. 생성된 연구 아이디어는 각 차원에 대한 점수를 제공하는 보상 모델로 평가되며, 이는 강화학습 미세조정 과정 중에 아이디어 제안자와 차원별 제어 파라미터를 최적화하도록 안내</em></p></div>
 <p>대규모 언어모델(LLM)을 활용하여 연구 아이디어 생성을 자동화하되, 참신성(novelty), 실현성(feasibility), 효과성(effectiveness)의 세 가지 핵심 차원 간의 균형을 동적으로 조정하는 두 단계 학습 프레임워크를 제시한다. 감독학습(SFT)과 제어 가능한 강화학습(RL)을 결합하여 차원별 보상 모델을 통해 미세한 피드백으로 최적화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,10 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 학습(SFT → 제어 가능한 RL)과 차원별 보상 모델링, 그리고 문장 수준의 디코더를 통한 동적 제어를 도입하여 맥락 인식적 강조를 가능하게 함.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 연구 논문으로부터의 연구 아이디어 생성. 각 아이디어는 참신성, 실현성, 효과성 차원으로 측정됨</em></p></div>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: 디코딩 RNN이 균형잡힌 맥락 인식적 생성을 위해 차원을 동적으로 조정함</em></p></div>
 <ol>
 <li><strong>차원별 제어 프레임워크</strong>: 두 단계 미세조정을 통해 차원별 보상 모델이 참신성, 실현성, 효과성에 대한 세분화된 피드백을 제공하여 생성 과정을 체계적으로 최적화.</li>
 <li><strong>동적 디코딩 메커니즘</strong>: 문장 수준의 RNN 디코더가 각 부분(방법론 vs. 실험 계획)에 따라 차원별 가중치를 동적으로 조정하여 맥락별로 적절한 강조를 실현. 예를 들어 방법론 부분에서는 참신성을, 실험 계획에서는 실현성을 우선시.</li>
@@ -82,6 +88,8 @@ a { color: #A62018; }
 <li><strong>포괄적 평가</strong>: 제안 방법이 최적화되고 제어 가능한 연구 아이디어 생성에서 효과성을 입증하는 광범위한 실험 결과 제시.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: 정규화된 문장에 대한 차원별 변화</em></p></div>
 <ul>
 <li><strong>Supervised Fine-Tuning (SFT) 단계</strong>:
 <ul>

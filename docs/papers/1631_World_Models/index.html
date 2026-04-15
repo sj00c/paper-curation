@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: David Ha, Jürgen Schmidhuber | <strong>날짜</strong>: 2018-03-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/1803.10122" target="_blank">https://arxiv.org/abs/1803.10122</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. In this work, we build probabilistic generative models of</em></p></div>
 <p>환경의 생성형 신경망 world model을 비지도학습으로 학습한 후, 추출된 특징으로 간단한 policy를 훈련하여 강화학습 문제를 해결하는 방법을 제시한다. 심지어 world model이 생성한 상상의 환경에서 훈련한 policy를 실제 환경에 전이 가능함을 보인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 에이전트를 VAE 기반 비전 모듈(V), MDN-RNN 기반 메모리 모듈(M), 선형 컨트롤러(C) 세 부분으로 분해하여, V와 M은 비지도학습으로 world model을 학습하고 C는 이 표현을 이용해 간단하게 훈련한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Our agent consists of three components that work closely</em></p></div>
 <ul>
 <li><strong>모듈화된 아키텍처</strong>: VAE로 공간 정보를, MDN-RNN으로 시간 정보를 각각 압축하여 효율적인 표현 학습</li>
 <li><strong>확장 가능한 모델</strong>: 전체 1천만 개 파라미터 규모로 확장하면서도 credit assignment 문제를 선형 컨트롤러로 단순화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>간단한 policy</strong>: 비지도 학습된 world model 특징만으로도 복잡한 task를 해결하는 최소한의 linear controller로 충분</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. Flow diagram of a Variational Autoencoder (VAE).</em></p></div>
 <ul>
 <li>VAE encoder로 각 프레임을 잠재 벡터 z로 압축</li>
 <li>MDN-RNN으로 P(z_{t+1} | a_t, z_t, h_t) 형태로 다음 상태의 확률 분포 모델링</li>

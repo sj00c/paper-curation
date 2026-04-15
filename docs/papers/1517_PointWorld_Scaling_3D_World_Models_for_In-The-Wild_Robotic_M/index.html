@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wenlong Huang, Yu-Wei Chao, Arsalan Mousavian, Ming-Yu Liu, Dieter Fox, Kaichun Mo, Li Fei-Fei | <strong>날짜</strong>: 2026-01-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.03782" target="_blank">https://arxiv.org/abs/2601.03782</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of POINTWORLD. Given calibrated RGB-D,</em></p></div>
 <p>PointWorld는 RGB-D 입력과 로봇 동작을 3D point flow로 통일하여 표현하고, 이를 통해 전체 장면의 3D 포인트 변위를 예측하는 대규모 사전학습 3D 월드 모델이다. 단일 체크포인트로 실제 로봇이 다양한 조작 작업을 수행할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 상태와 동작을 모두 3D point flow로 통일 표현하여 체화에 무관한 공유 표현공간을 만들고, 2M 궤적과 500시간 규모의 대규모 데이터셋으로 사전학습하며, MPC 프레임워크와 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. POINTWORLD is a large pre-trained 3D world model that predicts full-scene 3D point flows from a static point c</em></p></div>
 <ul>
 <li><strong>대규모 통합 표현</strong>: 상태(RGB-D로부터의 point cloud)와 동작(robot URDF로부터의 3D point trajectory)을 3D point flow로 통일하여 체화 무관성 달성</li>
 <li><strong>고품질 3D 데이터셋</strong>: DROID, BEHAVIOR-1K에서 metric depth, camera pose, point tracking 기술을 활용하여 2M 궤적, 500시간 규모의 3D 동역학 데이터셋 구축</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실시간 성능과 일반화</strong>: 0.1초의 real-time 추론 속도로 MPC 통합 가능하며, 단일 checkpoint로 실제 Franka 로봇이 고정체 pushing, 변형체, articulated object, tool use를 in-the-wild 단일 이미지로 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of POINTWORLD. Given calibrated RGB-D,</em></p></div>
 <ul>
 <li>RGB-D 입력으로부터 metric depth와 camera pose estimation을 통해 calibrated point cloud 구성</li>
 <li>robot URDF와 joint action으로부터 robot 기하학과 kinematics를 이용해 robot point trajectory (robot flows) 생성</li>

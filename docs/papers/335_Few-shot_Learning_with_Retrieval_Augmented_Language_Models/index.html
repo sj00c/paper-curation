@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gautier Izacard, Patrick Lewis, M. Lomeli, Lucas Hosseini, F. Petroni | <strong>날짜</strong>: 2022 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Atlas는 사전학습과 미세조정 단계 모두에서 검색을 활용하는 검색 증강 언어 모델로, 지식 기반 작업에서 강력한 few-shot 성능을 보임</em></p></div>
 <p>본 논문은 매개변수 메모리에 의존하지 않고 외부 지식 소스를 활용하는 검색 증강 언어 모델(Atlas)을 제시하여, 550억 개 매개변수 모델보다 50배 적은 매개변수(110억)로 우수한 few-shot 학습 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 검색 증강 아키텍처를 활용하되, 사전학습 단계에서 retriever와 언어 모델을 함께 학습하고, 네 가지 novel한 retriever 학습 목적 함수(ADist, EMDR2, PDist, Margin-MSE)를 제시하여 few-shot 성능을 최적화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: KILT 벤치마크의 다양한 작업(사실 검증, 질의응답, 엔티티 링킹)에 대한 쿼리-출력 쌍의 예시</em></p></div>
 <ol>
 <li><strong>Few-shot 성능 우수성</strong>: NaturalQuestions에서 64개 예시만으로 42.4% 정확도 달성 (PaLM 540B 대비 3% 우수), Wikipedia 인덱스만 사용 시 45.1% 달성</li>
 <li><strong>Full-dataset 성능 최고 성과</strong>: NaturalQuestions (+8.1%), TriviaQA (+9.3%), FEVER, KILT의 5개 작업에서 새로운 최고 성능 기록</li>

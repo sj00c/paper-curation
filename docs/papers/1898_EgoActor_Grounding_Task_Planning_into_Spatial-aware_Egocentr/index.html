@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yu Bai, MingMing Yu, Chaojie Li, Ziyi Bai, Xinlong Wang, Börje F. Karlsson | <strong>날짜</strong>: 2026-02-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.04515" target="_blank">https://arxiv.org/abs/2602.04515</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of EgoActor, which can control a humanoid robot by jointly predicting movement, active perception,</em></p></div>
 <p>EgoActor는 VLM 기반의 통합 모델로서 고수준 자연어 명령어를 휴머노이드 로봇의 저수준 공간 인식 동작(보행, 조작, 지각, 인간-로봇 상호작용)으로 직접 변환하는 EgoActing 태스크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: EgoActor는 실제 시연, 공간 추론 QA, 시뮬레이션 데이터를 활용한 광범위한 감시 학습을 통해 이동 원시 동작, 헤드 움직임, 조작 명령, 인간-로봇 상호작용을 통합 예측하는 VLM을 구축하며, 8B와 4B 모델 모두 1초 이내의 추론 지연으로 실시간 제어를 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Visualization of EgoActor’s working procedure for a given task: “Approach and pick up the orange on the desk”. T</em></p></div>
 <ul>
 <li><strong>새로운 태스크 정의</strong>: EgoActing이라는 태스크를 제안하여 자연어 명령어를 에고센트릭 관찰 기반의 실행 가능한 동작 시퀀스로 직접 변환하는 문제를 형식화함</li>
 <li><strong>통합 동작 예측</strong>: 보행 원시 동작(전진, 회전, 측면 이동, 높이 변경), 헤드 움직임, 조작, 인간-로봇 상호작용을 단일 VLM 내에서 통일적으로 예측</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 공개</strong>: 코드, 모델, 데이터셋, 벤치마크를 공개하여 재현성과 향후 연구를 촉진</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Example natural language actions (NLA) in EgoActing.</em></p></div>
 <ul>
 <li>VLM의 추론 능력을 활용하면서 공간 이해를 강화하여 저수준 동작을 자연어 형태로 직접 예측</li>
 <li>실제 세계 비디오 시연, 공간 추론 궤적, 동작 타이밍 주석, 가상 환경 예제를 포함한 다양한 감시 신호로 학습</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junli Ren, Tao Huang, Huayi Wang, Zirui Wang, Qingwei Ben, Junfeng Long, Yanchao Yang, Jiangmiao Pang, Ping Luo | <strong>날짜</strong>: 2025-02-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.14814" target="_blank">https://arxiv.org/abs/2502.14814</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. VB-Com enables humanoid robots (move direction in orange arrorw) to traverse dynamic terrains and obst</em></p></div>
 <p>VB-Com은 휴머노이드 로봇이 시각 정보의 결손에 대응하기 위해 시각 기반 정책과 고유감각 기반의 맹목 정책을 동적으로 전환하는 복합 제어 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 비전 정책과 맹목 정책 두 개를 독립적으로 훈련하고, return estimator를 통해 각 정책의 미래 성능을 예측하여 현재 고유감각 상태에 기반해 두 정책 중 하나를 선택하도록 하는 방식이다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. VB-Com enables humanoid robots (move direction in orange arrorw) to traverse dynamic terrains and obst</em></p></div>
 <ul>
 <li><strong>비전 및 맹목 정책 개발</strong>: 간격 통과, 허들 회피, 장애물 회피가 가능한 두 개의 독립적 휴머노이드 로봇 운동 정책 구현</li>
 <li><strong>하드웨어 배포 가능한 Return Estimator</strong>: 고유감각 상태만으로 미래 return을 예측하는 학습 가능한 추정기 개발</li>
 <li><strong>적응형 정책 합성 시스템</strong>: 지각 결손 상황에서 동적으로 정책을 전환하여 Unitree G1, H1에서 동적 장애물과 지형 통과 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our framework: In VB-Com, we develop two locomotion policies—one perceptive and one non-perceptive—t</em></p></div>
 <ul>
 <li>PPO를 사용하여 외부 시각 정보를 입력받는 비전 정책과 고유감각만 사용하는 맹목 정책을 별도로 훈련</li>
 <li>각 정책의 value function을 통해 현재 상태에서 달성 가능한 기대 return을 추정하는 return estimator 학습</li>

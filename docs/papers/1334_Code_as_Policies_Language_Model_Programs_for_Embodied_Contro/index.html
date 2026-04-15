@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jacky Liang, Wenlong Huang, Fei Xia, Peng Xu, Karol Hausman, Brian Ichter, Pete Florence, Andy Zeng | <strong>날짜</strong>: 2022-09-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2209.07753" target="_blank">https://arxiv.org/abs/2209.07753</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Given examples (via few-shot prompting), robots can use code-writing</em></p></div>
 <p>Large Language Model(LLM)을 활용하여 자연어 명령을 로봇 정책 코드로 직접 변환하는 "Code as Policies" 방식을 제안하며, few-shot prompting과 hierarchical code-gen을 통해 복잡한 로봇 행동을 실시간으로 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Code-writing LLM에 few-shot prompt로 예제 명령과 대응하는 정책 코드를 제공하여, 새로운 명령에 대해 perception API(객체 감지)와 control primitive API를 조합한 Python 코드를 자동으로 생성하게 한다. Hierarchical code-gen을 통해 미정의 함수를 재귀적으로 정의하여 복잡도를 증가시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Code as Policies can follow natural language instructions across diverse domains and robots: table-top manipulat</em></p></div>
 <ul>
 <li><strong>Code as Policies 방식론</strong>: LMP(Language Model Programs)를 로봇 정책 표현으로 사용하여 reactive policy(impedance controller)와 waypoint-based policy(vision-based pick and place, trajectory control) 모두 표현 가능</li>
 <li><strong>Hierarchical code-gen</strong>: 재귀적 함수 정의를 통해 더 복잡한 코드 생성이 가능하며, HumanEval 벤치마크에서 39.8% P@1 달성으로 기존 최고 성능 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>로봇 특화 벤치마크</strong>: 로봇 코드 생성 문제 평가를 위한 새로운 벤치마크 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Given examples (via few-shot prompting), robots can use code-writing</em></p></div>
 <ul>
 <li>Few-shot prompting: 자연어 명령을 주석 형태로, 대응하는 정책 코드를 예제로 제공하여 in-context learning 활성화</li>
 <li>Perception-Action 연결: detect_objects(), is_empty() 등 perception API와 robot.set_velocity(), pick_place() 등 control primitive API를 Python 코드에서 조합</li>

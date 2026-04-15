@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhixuan Liang, Yizhuo Li, Tianshuo Yang, Chengyue Wu, Sitong Mao, Tian Nian, Liuao Pei, Shunbo Zhou, Xiaokang Yang, Jiangmiao Pang, Yao Mu, Ping Luo | <strong>날짜</strong>: 2025-08-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.20072" target="_blank">https://arxiv.org/abs/2508.20072</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Paradigm comparison. Continuous diffusion over action chunks (left) versus discrete</em></p></div>
 <p>Vision-Language-Action (VLA) 모델에 discrete diffusion을 적용하여 action token을 적응적으로 디코딩하는 unified transformer 정책을 제시한다. 이를 통해 자동회귀 방식의 순서 제약을 극복하고 분리된 decoder 구조의 문제를 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Discretized action token에 대해 masked token denoising을 통한 discrete diffusion을 단일 transformer 내에서 수행한다. 적응적 디코딩 순서와 secondary re-masking을 통해 불확실한 예측을 재검토하여 일관성과 오류 정정을 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Benchmarks and tasks. We evaluate Discrete Diffusion VLA across three robot set-</em></p></div>
 <ul>
 <li><strong>Unified Architecture</strong>: Vision, language, action 생성을 단일 transformer에서 수행하면서 VLM backbone의 사전학습된 능력 보존</li>
 <li><strong>Adaptive Decoding</strong>: 'easy-then-hard' 철학으로 쉬운 action 요소부터 우선 해결하고 secondary re-masking으로 불확실한 token 재방문", '<strong>성능 개선</strong>: LIBERO 96.3%, SimplerEnv-Fractal 71.2% visual matching, SimplerEnv-Bridge 54.2% 달성 (π0 대비 +14.7%, π0-FAST 대비 +6.4%)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화</strong>: LIBERO-OOD 벤치마크에서 out-of-distribution 능력 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 outlines our Discrete Diffusion VLA. We cast action decoding as discrete diffusion via</em></p></div>
 <ul>
 <li>연속 control dimension을 binning 방식으로 discrete token으로 변환하고 고정 길이 action chunk으로 구성</li>
 <li>Discrete diffusion의 Markov chain을 적용하여 각 token을 mask token으로 독립적으로 손상</li>

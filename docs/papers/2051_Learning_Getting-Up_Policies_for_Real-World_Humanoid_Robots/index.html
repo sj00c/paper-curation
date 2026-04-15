@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xialin He, Runpei Dong, Zixuan Chen, Saurabh Gupta | <strong>날짜</strong>: 2025-02-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.12152" target="_blank">https://arxiv.org/abs/2502.12152</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: HUMANUP system overview. Our getting-up policy (Sec. III-A) is trained in simulation using two-stage RL training</em></p></div>
 <p>휴머노이드 로봇의 낙상 복구를 위해 두 단계 강화학습 프레임워크(HUMANUP)를 제시하여 다양한 자세와 지형에서 일어나는 동작을 학습하고 실제 G1 로봇에 배포했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Stage I에서는 제약 없이 일어나기 궤적을 발견하고, Stage II에서는 발견된 궤적을 추적하는 방식으로 배포 가능한 정책으로 변환하는 커리큘럼 학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HUMANUP provides a simple and general two-stage training method for humanoid getting-up tasks, which can be</em></p></div>
 <ul>
 <li><strong>실제 로봇 배포 성공</strong>: G1 휴머노이드 로봇이 supine(누운 상태)과 prone(엎드린 상태) 자세에서 6가지 지형(평탄, 변형 가능, 미끄러운 표면, 경사)에서 일어나기에 성공</li>
 <li><strong>제조사 컨트롤러 능력 확대</strong>: 기존 G1의 수동 설계 컨트롤러(평탄면 supine만 가능)보다 훨씬 넓은 범위의 자세와 지형 지원</li>
 <li><strong>인간 규모 로봇의 첫 번째 사례</strong>: 인간 규모 휴머노이드 로봇에서 학습된 일어나기 정책의 첫 번째 성공적 실제 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: HUMANUP system overview. Our getting-up policy (Sec. III-A) is trained in simulation using two-stage RL training</em></p></div>
 <ul>
 <li><strong>Stage I (Discovery Policy)</strong>: 최소한의 제약(부드러움, 속도/토크 제한 없음)으로 task reward를 통해 일어나기 궤적 발견, 단순화된 충돌 기하학과 정규화된 초기 자세 사용</li>
 <li><strong>Stage II (Deployable Policy)</strong>: Stage I에서 발견한 궤적의 느린 버전을 추적하도록 강한 제어 정규화(control regularization) 하에서 학습, 다양한 지형과 초기 자세로 domain randomization 적용</li>

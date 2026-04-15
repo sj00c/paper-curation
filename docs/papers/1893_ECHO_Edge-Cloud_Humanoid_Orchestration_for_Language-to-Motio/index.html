@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haozhe Jia, Jianfei Song, Yuan Zhang, Honglei Jin, Youcheng Fan, Wenshuo Chen, Wei Zhang, Yutao Yue | <strong>날짜</strong>: 2026-03-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.16188" target="_blank">https://arxiv.org/abs/2603.16188</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>ECHO는 자연어 명령으로 휴머노이드 로봇을 제어하는 엣지-클라우드 프레임워크로, 클라우드의 diffusion 기반 text-to-motion 생성기와 엣지의 RL 트래커를 로봇 네이티브 38차원 표현으로 연결하여 실시간 폐루프 실행을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 생성(cloud diffusion 모델)과 실행(edge RL tracker)을 strictly 분리하고, robot-native 38D 운동 표현으로 두 모듈을 연결하여 inference-time retargeting을 제거하고 실시간 streaming 추적을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>Edge-Cloud 아키텍처</strong>: 클라우드의 CLIP-conditioned 1D convolutional UNet diffusion 생성기가 ~1초 내 모션을 생성하고, 엣지의 teacher-student RL 트래커가 폐루프로 실시간 실행</li>
 <li><strong>Robot-Native 표현</strong>: 38D velocity 기반 표현(joint angles 29D + root planar velocity 2D + root height 1D + 6D continuous root rotation)으로 retargeting 제거 및 PD 제어와 직접 호환</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>평가 메트릭</strong>: Motion Safety Score(MSS)와 Root Trajectory Consistency(RTC)라는 robot-centric 메트릭으로 hardware 제약 준수와 궤적 충실도 정량화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>Text-to-Motion 생성</strong>: CLIP 인코더로 자연어를 임베딩하고, 1D convolutional UNet에 cross-attention으로 조건화하여 DDIM sampling(10 denoising steps)으로 50 FPS 모션 생성</li>
 <li><strong>Motion 표현</strong>: 각 프레임을 38차원 벡터(관절각 + root 속도 + root 높이 + root 회전)로 인코딩하여 global 위치 제거로 drift 감소</li>

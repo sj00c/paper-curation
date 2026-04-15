@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lizhi Yang, Blake Werner, Ryan K. Cosner, David Fridovich-Keil, Preston Culbertson, Aaron D. Ames | <strong>날짜</strong>: 2025-05-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.11494" target="_blank">https://arxiv.org/abs/2505.11494</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. A humanoid robot implementing the SHIELD architecture au-</em></p></div>
 <p>SHIELD는 학습 기반 휴머노이드 로봇 컨트롤러에 안전 계층을 추가하여 실시간 제약 조건 명시와 확률적 안전 보장을 동시에 제공하는 프레임워크이다. 동적 잔차 모델과 확률적 이산 시간 제어 배리어 함수(S-DTCBF)를 통해 기존 블랙박스 RL 정책을 재학습 없이 안전화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SHIELD는 세 단계로 구성된다: (1) 사용자가 안전 제약 수학적으로 명시, (2) 실제 하드웨어 데이터로 CVAE 기반 동역학 잔차 모델 학습, (3) 학습된 잔차 분포를 활용하여 S-DTCBF 제약을 만족하도록 참조 신호 생성.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. SHIELD enables real-world pedestrian avoidance with a humanoid robot, using a “general-purpose” RL policy. Top: </em></p></div>
 <ul>
 <li><strong>계층적 안전 아키텍처</strong>: 기존 autonomy stack 위에 비침습적(minimally-invasive) 안전 계층을 추가하여 재학습 없이 새로운 제약을 런타임에 명시 가능</li>
 <li><strong>확률적 안전 보장</strong>: S-DTCBF 공식을 통해 유한 시간 K 스텝 내 제약 위반 확률에 대한 형식적 보증 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 humanoid 검증</strong>: Unitree G1 로봇에서 실내/외부 환경에서의 장애물 회피 및 보행자 회피 성공 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Higher α = L(P, K = 10, h(x0) = 10, δ = 0.01, σ) values</em></p></div>
 <ul>
 <li>동역학을 full-order Φ(s, a)에서 reduced-order 모델로 근사: x_{k+1} ≈ F(x_k) + G(x_k)u_k + d_k</li>
 <li>조건부 변분 오토인코더(CVAE)로 동역학 잔차 분포 D 학습 (실제 하드웨어 롤아웃 데이터 활용)</li>

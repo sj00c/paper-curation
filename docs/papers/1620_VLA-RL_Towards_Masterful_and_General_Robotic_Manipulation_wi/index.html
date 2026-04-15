@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Guanxing Lu, Wenkai Guo, Chubin Zhang, Yuheng Zhou, Haonan Jiang, Zifeng Gao, Yansong Tang, Ziwei Wang | <strong>날짜</strong>: 2025-05-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.18719" target="_blank">https://arxiv.org/abs/2505.18719</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Previous VLAs focus on imitation learning that exploits the offline demonstrations, while VLA-RL ex-</em></p></div>
 <p>본 논문은 사전학습된 Vision-Language-Action(VLA) 모델을 강화학습(RL)으로 개선하여 로봇 조작 작업의 분포 외(OOD) 시나리오 대응력을 향상시키는 VLA-RL 프레임워크를 제시한다. 궤적 수준의 RL 공식화와 robotic process reward model을 통해 LIBERO 벤치마크에서 OpenVLA-7B의 성능을 4.5% 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLA-RL은 로봇 조작 궤적을 다중모달 다중턴 대화로 모델링하고, 자동 추출된 작업 세그먼트에서 생성된 의사 보상 레이블로 학습된 robotic process reward model을 통해 희소 보상 문제를 해결하며, 커리큘럼 선택, GPU 균형 환경, 배치 디코딩, critic warmup 등 구현 최적화를 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Test-time Scaling Curve. We evaluate the fine-tuned OpenVLA-7B every 2500 training steps on the</em></p></div>
 <ul>
 <li><strong>성능 향상</strong>: OpenVLA-7B를 LIBERO의 40개 도전적인 로봇 조작 작업에서 76.3%에서 81.0%로 4.5% 개선하여 π0-FAST 같은 상용 모델 수준 달성</li>
 <li><strong>테스트 타임 스케일링</strong>: 테스트 시 최적화 단계 증가에 따른 일관된 성능 향상(75%→85%)으로 로봇 도메인에서의 추론 스케일링 법칙 초기 증거 제시</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>안정적 구현</strong>: curriculum selection, GPU-balanced vectorized environments, batch decoding, critic warmup 등 실무적 개선사항으로 RL 훈련의 안정성 및 효율성 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The overall pipeline of VLA-RL, which is composed of a transformer-based policy, a homogeneous</em></p></div>
 <ul>
 <li>auto-regressive VLA(OpenVLA-7B 기반)의 trajectory-level RL 공식화로 로봇 조작을 다중모달 다중턴 대화로 모델링</li>
 <li>vision-language model을 fine-tuning한 robotic process reward model(rPRM) 구축으로 자동 추출 작업 세그먼트의 의사 보상 라벨로 희소 보상 문제 해결</li>

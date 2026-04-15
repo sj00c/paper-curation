@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhanxiang Cao, Liyun Yan, Yang Zhang, Sirui Chen, Jianming Ma, Tianyue Zhan, Shengcheng Fu, Yufei Jia, Cewu Lu, Yue Gao | <strong>날짜</strong>: 2026-02-06 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.06341" target="_blank">10.48550/arXiv.2602.06341</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>HiWET는 휴머노이드 로봇의 장기 조작 작업을 위해 세계 좌표계 기준 end-effector 추적을 명시적으로 수행하는 계층적 강화학습 프레임워크를 제안한다. Kinematic Manifold Prior를 통해 탐색 공간을 감소시키고 동역학적 안정성을 유지하면서 정밀한 추적을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HiWET는 고수준 정책이 세계 좌표계에서 subgoal(베이스 속도, 높이, end-effector 목표)을 생성하고 저수준 정책이 안정성 제약 하에서 이를 실행하는 계층적 구조를 채택한다. Kinematic Manifold Prior는 residual learning을 통해 운동학적으로 유효한 행동 공간을 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>계층적 world-frame 제어 스킴</strong>: 상체 조작과 하체 로컬로모션을 명시적 공간 인터페이스로 조정하여 베이스 이동과 높이 조절을 통한 world-frame 일관성 달성</li>
 <li><strong>Kinematic Manifold Prior 통합</strong>: residual action space 내에 고속 운동학 참조를 제공하여 조작 manifold에 정책을 고정하고 동적 적응성 보존</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: 물리 휴머노이드 플랫폼에서 zero-shot sim-to-real 전이 성공 및 다양한 사지 구성 하에서 안정적 로컬로모션 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>Semi-Markov Decision Process(Semi-MDP)로 계층적 RL 문제 공식화하여 장기 조작 목표와 순간적 안정성 제약 조화</li>
 <li>고수준 command policy는 K step마다 subgoal 업데이트, 저수준 tracking policy는 매 제어 스텝에서 고정된 고수준 명령에 조건부로 작용</li>

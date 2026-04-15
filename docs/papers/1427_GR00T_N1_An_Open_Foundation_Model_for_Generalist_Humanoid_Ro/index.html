@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-03-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.14734" target="_blank">https://arxiv.org/abs/2503.14734</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: GR00T N1 Model Overview. Our model is a Vision-Language-Action (VLA) model that adopts a</em></p></div>
 <p>GR00T N1은 Vision-Language-Action (VLA) 모델로서 VLM 기반 추론 모듈(System 2)과 Diffusion Transformer 기반 행동 생성 모듈(System 1)을 결합한 이중 시스템 아키텍처를 갖춘 휴머노이드 로봇용 오픈 파운데이션 모델이다. 웹 데이터, 인간 영상, 합성 데이터, 실제 로봇 궤적으로 구성된 데이터 피라미드를 통해 학습하여 단일 가중치로 다양한 로봇 구현체의 조작 행동을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: data pyramid 구조를 통해 웹 데이터/인간 영상 → 합성 데이터 → 실제 로봇 데이터로 계층화하고, action-less 데이터에 대해 latent-action codebook과 inverse dynamics model을 활용한 pseudo-action 추론으로 일관된 데이터셋을 구성한다. System 2 (Eagle-2 VLM)와 System 1 (DiT flow-matching)을 end-to-end로 함께 학습하여 추론과 행동 생성을 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Data Pyramid for Robot Foundation Model</em></p></div>
 <ul>
 <li><strong>이중 시스템 VLA 아키텍처</strong>: Vision-Language Model 기반 추론 모듈과 Diffusion Transformer 기반 행동 생성 모듈을 긴밀하게 결합하여 실시간 폐루프 제어(120Hz) 가능</li>
 <li><strong>다중 구현체 지원</strong>: 단일 모델 가중치로 single-arm, bimanual, humanoid 로봇의 조작 행동 생성 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈 소스 공개</strong>: 모델 체크포인트(GR00T-N1-2B), 학습 데이터, 시뮬레이션 벤치마크를 공개하여 커뮤니티 접근성 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: GR00T N1 Model Architecture. GR00T N1 is trained on a diverse set of embodiments ranging from</em></p></div>
 <ul>
 <li>Data pyramid 구조: 웹 데이터/인간 영상(대량) → 합성 데이터(중간) → 실제 로봇 데이터(소량, 구체적) 계층화</li>
 <li>Latent-action codebook 학습으로 action-less 데이터(인간 영상)로부터 action 정보 추출</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jingkai Sun, Qiang Zhang, Gang Han, Wen Zhao, Zhe Yong, Yan He, Jiaxu Wang, Jiahang Cao, Yijie Guo, Renjing Xu | <strong>날짜</strong>: 2025-03-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.08338" target="_blank">https://arxiv.org/abs/2503.08338</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of the Modular Humanoid Robot AI System. In this system, task instructions are processed by both a visi</em></p></div>
 <p>LLM, VLM, RL을 통합한 모듈식 인간형 로봇 AI 시스템 Trinity를 제안하여 복잡한 환경에서 효율적인 제어를 실현한다. 계층적 아키텍처를 통해 언어 이해, 시각 인식, 동작 제어를 조화롭게 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모듈식 계층 구조를 통해 LLM (의미론적 태스크 계획), VLM (환경 인식), RL (동작 제어)을 분리하고 상호작용하게 설계하여, 각 모듈의 독립적 최적화와 협력적 동작을 동시에 실현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Process of a humanoid robot opening a door. The humanoid robot begins</em></p></div>
 <ul>
 <li><strong>첫 통합 시스템</strong>: LLM, VLM, RL을 인간형 로봇에 처음 통합하여 실제 대형 로봇에서의 실행 가능성과 효과성을 입증했다.</li>
 <li><strong>모듈식 계층 설계</strong>: 복잡한 문제를 분해하고 교체 가능한 모델들로 처리하여 유연성과 확장성을 향상시켰다.</li>
 <li><strong>해석성과 안전성</strong>: 다중 모듈 간 상호작용을 통해 시스템 해석성을 보장하고 로봇 동작의 안전성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of the Modular Humanoid Robot AI System. In this system, task instructions are processed by both a visi</em></p></div>
 <ul>
 <li>LLM을 사용하여 자연어 지시사항으로부터 의미론적 이해와 장기 태스크 계획을 수행</li>
 <li>VLM으로 환경 인식과 객체 감지를 통해 조작 대상의 위치와 특성을 파악</li>

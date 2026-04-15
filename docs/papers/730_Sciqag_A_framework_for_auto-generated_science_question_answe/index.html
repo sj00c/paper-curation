@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuwei Wan, Yixuan Liu, Aswathy Ajith, Clara Grazian, Bram Hoex, Wenjie Zhang, Chunyu Kit, Tong Xie, Ian Foster | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2405.09939" target="_blank">arXiv:2405.09939</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>SciQAG 프레임워크: 과학 문헌으로부터 QA 생성 (점선은 선택적 미세조정)</em></p></div>
 <p>대규모 언어모델(LLM)을 활용하여 과학 논문으로부터 자동으로 고품질의 개방형 질의응답 쌍(188,042개 QA 쌍, 24개 과학 분야)을 생성하고, 세밀한 평가 지표(RACAR)로 품질을 필터링하는 SciQAG 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM 기반 QA 생성기(Generator)와 5차원 평가 지표(RACAR: Relevance, Agnosticism, Completeness, Accuracy, Reasonableness)를 갖춘 QA 평가기(Evaluator)로 구성된 자동화 프레임워크를 개발하여 비용 효율적인 대규모 데이터셋 구축을 추구한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>GPT-4 점수와 전문가 주석 점수 간의 Spearman/Pearson 상관계수</em></p></div>
 <ol>
 <li><strong>대규모 고품질 데이터셋 구축</strong>: 22,743개 과학 논문에서 188,042개의 QA 쌍을 생성하고, SciQAG-24D 벤치마크 구성 (24개 과학 분야 커버)</li>
 <li><strong>신뢰성 있는 평가 지표 개발</strong>: RACAR 지표와 GPT-4 기반 자동 평가가 도메인 전문가 평가와 높은 상관계수(Spearman/Pearson > 0.7)를 보임으로써 자동화 평가의 타당성 검증</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Alpár Cseke, Shashank Tripathi, Sai Kumar Dwivedi, Arjun Lakshmipathy, Agniv Chatterjee, Michael J. Black, Dimitrios Tzionas | <strong>날짜</strong>: 2025-04-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.17695" target="_blank">https://arxiv.org/abs/2504.17695</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We present PICO, a novel framework for joint human-object reconstruction in 3D. PICO includes PICO-db, a uniqu</em></p></div>
 <p>단일 이미지에서 신체-물체 접촉 정보를 활용하여 3D 인간-물체 상호작용을 복원하는 PICO 프레임워크를 제시하며, 이를 위해 신체와 물체 모두에 밀집된 3D 접촉 주석이 있는 PICO-db 데이터셋을 수집했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 신체 접촉 패치를 물체에 투영하기 위해 vision foundation model(OpenShape)을 활용한 물체 검색과 최소 인력(2 클릭)을 조합하여 PICO-db를 구축하고, render-and-compare 최적화 기반의 PICO-fit 방법으로 접촉 정보를 통해 3D 신체-물체 메시를 반복적으로 적합시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. PICO-db dataset annotations. Left to right: Color im-</em></p></div>
 <ul>
 <li><strong>PICO-db 데이터셋</strong>: 신체와 물체 양쪽의 3D 접촉 주석을 가진 첫 번째 자연 이미지 데이터셋으로, 이원 신체-물체 접촉 대응점을 포함한다.</li>
 <li><strong>일반화 능력</strong>: 이전에 다루지 못한 여러 물체 클래스(소파, 바나나, 프리스비 등)에 대해 작동하는 확장 가능한 방법을 제시한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>최소 주석 비용</strong>: 2 클릭만으로 신체 접촉을 물체에 투영하는 효율적인 주석 방법을 개발했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Overview of PICO-fit, a novel method for fitting interacting 3D body and object meshes to an image. It initial</em></p></div>
 <ul>
 <li>DAMON 데이터셋의 신체 접촉 패치를 시작점으로 PCA를 통해 자동 축 생성</li>
 <li>OpenShape foundation model을 활용하여 이미지에서 가장 유사한 3D 물체 메시를 Objaverse에서 검색</li>

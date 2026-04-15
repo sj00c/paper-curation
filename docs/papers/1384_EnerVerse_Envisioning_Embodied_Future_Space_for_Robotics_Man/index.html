@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siyuan Huang, Liliang Chen, Pengfei Zhou, Shengcong Chen, Zhengkai Jiang, Yue Hu, Yue Liao, Peng Gao, Hongsheng Li, Maoqing Yao, Guanghui Ren | <strong>날짜</strong>: 2025-01-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2501.01895" target="_blank">https://arxiv.org/abs/2501.01895</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of ENERVERSE. With camera ob-</em></p></div>
 <p>EnerVerse는 chunk-wise autoregressive video diffusion과 sparse memory를 활용하여 instruction으로부터 embodied future space를 예측하고, multi-view video generation과 4D Gaussian Splatting 기반 data flywheel을 통해 로봇 조작을 위한 generative foundation model을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Multi-view diffusion generator로 3D spatial prior를 학습하고, sparse context memory로 long-term reasoning을 가능하게 하며, 4DGS 기반 data flywheel로 geometry-consistent training data를 확보하여 4D world representation을 physical action으로 변환한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of ENERVERSE. With camera ob-</em></p></div>
 <ul>
 <li><strong>Chunk-wise Autoregressive Architecture</strong>: Sparse memory를 활용하여 약 80% frame drop에도 robust하게 작동하며 이론상 무한 길이 시퀀스 생성 가능</li>
 <li><strong>Multi-View Diffusion Generator</strong>: Ray direction map과 temporal attention으로 single camera 환경에서도 3D 사전 지식을 활용하여 rendered views를 생성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Computational Efficiency</strong>: Single RTX 4090에서 8-step action chunk당 약 280ms로 실시간 처리 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An overview of our chunk-wise autoregressive generation approach and multi-view diffusion</em></p></div>
 <ul>
 <li>VAE로 observed frames를 latent space에 인코딩하고 diffusion model의 noise prediction 대신 v-prediction 사용</li>
 <li>Chunk 단위로 autoregressive하게 다음 frame들을 생성하며, newly generated frames가 다음 iteration의 clean frames가 됨</li>

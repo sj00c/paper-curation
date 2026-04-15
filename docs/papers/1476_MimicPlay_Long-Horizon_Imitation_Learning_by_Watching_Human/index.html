@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chen Wang, Linxi Fan, Jiankai Sun, Ruohan Zhang, Li Fei-Fei, Danfei Xu, Yuke Zhu, Anima Anandkumar | <strong>날짜</strong>: 2023-02-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2302.12422" target="_blank">https://arxiv.org/abs/2302.12422</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Human is able to complete a long-horizon task much faster than a teleoperated robot. This</em></p></div>
 <p>MimicPlay는 저비용의 인간 플레이 데이터에서 고수준 계획을 학습하고 소량의 원격조종 데이터에서 저수준 제어 정책을 학습하는 계층적 모방 학습 프레임워크로, 장기 조작 작업의 데이터 효율성을 대폭 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D-인식 latent plan space를 중간 표현으로 활용하여 인간과 로봇 간의 embodiment gap을 연결한다. 인간 플레이 데이터(10분)에서 goal-conditioned latent planner를 학습하고, 소량의 로봇 원격조종 데이터(30분 미만)에서 이 계획에 따르는 저수준 controller를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Evaluation of multi-task policy</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 인간 플레이 데이터(10분) + 로봇 시연(30분 미만)으로 학습 가능하여 기존 4.5~6시간 플레이 데이터 수집 시간을 대폭 감소</li>
 <li><strong>우수한 성능</strong>: 14개 실제 장기 조작 작업에서 state-of-the-art 모방 학습 방법들을 능가하는 작업 성공률 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 인터페이스</strong>: 인간 비디오를 로봇 조작 작업의 '프롬프트'로 직접 사용 가능한 통합 latent plan space 구축</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of MIMICPLAY. (a) Training Stage 1: using cheap human play data to train a</em></p></div>
 <ul>
 <li><strong>Stage 1 - High-level Planner 학습</strong>: 인간 플레이 데이터로부터 goal image가 주어졌을 때 미래 3D 인간 손 궤적을 예측하는 goal-conditioned latent planner를 학습</li>
 <li><strong>Stage 2 - Low-level Controller 학습</strong>: 예측된 latent plan을 조건으로 하여 로봇 상태 정보를 통합해 최종 action을 생성하는 multi-task visuomotor controller를 소량의 원격조종 데이터로 학습</li>

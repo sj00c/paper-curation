@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yitang Li, Zhengyi Luo, Tonghe Zhang, Cunxi Dai, Anssi Kanervisto, Andrea Tirinzoni, Haoyang Weng, Kris Kitani, Mateusz Guzek, Ahmed Touati, Alessandro Lazaric, Matteo Pirotta, Guanya Shi | <strong>날짜</strong>: 2025-11-06 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.04131" target="_blank">10.48550/arXiv.2511.04131</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An overview of the BFM-Zero framework. After the pre-training stage, BFM-Zero forms a latent</em></p></div>
 <p>BFM-Zero는 unsupervised RL과 Forward-Backward 모델을 활용하여 휴머노이드 로봇의 다양한 제어 작업을 단일 정책으로 수행할 수 있는 promptable behavioral foundation model을 제시한다. 공유 잠재 공간에 모션, 목표, 보상을 임베딩하여 zero-shot 추론과 few-shot 적응을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: BFM-Zero는 motion capture 데이터로 정규화된 online off-policy unsupervised RL을 통해 공유 잠재 표현을 학습하고, domain randomization, history-dependent asymmetric learning, auxiliary reward shaping을 적용하여 sim-to-real 갭을 해소한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: BFM-Zero enables versatile and robust whole-body skills. (A-C) Diverse zero-shot inference</em></p></div>
 <ul>
 <li><strong>Zero-shot 추론 다중 인터페이스</strong>: motion tracking, goal reaching, reward optimization 등 다양한 downstream task를 재학습 없이 수행 가능</li>
 <li><strong>실제 로봇 검증</strong>: Unitree G1 휴머노이드에서 동적 댄싱, 복구, 다양한 자세 도달 등을 성공적으로 시연</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>첫 번째 off-policy unsupervised BFM</strong>: 휴머노이드 실제 배포에서 unsupervised RL 기반 foundation model의 첫 사례</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An overview of the BFM-Zero framework. After the pre-training stage, BFM-Zero forms a latent</em></p></div>
 <ul>
 <li>FB-CPR 알고리즘 기반: latent task feature φ, latent-conditioned policy πz, successor features Fz를 활용하여 공유 잠재 공간 학습</li>
 <li>Pre-training 단계: 온라인 reward-free 상호작용과 unlabeled motion capture 데이터를 결합하여 일반화된 표현 학습</li>

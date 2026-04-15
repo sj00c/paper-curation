@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Pawin Taechoyotin, Daniel Acuna | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>REMOR의 작동 방식: (A) 다중 차원 보상 함수(HPRR)를 통한 AI 리뷰 생성 시스템, (B) PeerRT 데이터셋을 이용한 감독 미세조정(SFT) 및 GRPO 학습 프로세스</em></p></div>
 <p>본 논문은 추론(reasoning) 기능을 갖춘 대형언어모델(LLM)과 다목적 강화학습(MORL)을 결합하여 인간 수준 이상의 깊이 있고 균형잡힌 학술 논문 심사평을 자동 생성하는 REMOR 시스템을 제안한다. 기존 AI 심사평의 얕은 분석과 과도한 칭찬 문제를 다목적 보상함수와 추론 능력으로 극복한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 추론 트레이스가 풍부한 고품질 심사평 데이터셋(PeerRT) 구축, (2) 인간 선호도 정렬 다중 차원 보상함수(HPRR) 설계, (3) Group Relative Policy Optimization(GRPO)으로 두 가지 모델(인간정렬 가중치 REMOR-H, 균일 가중치 REMOR-U) 학습.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>각 모델별 평균 보상 점수 비교: REMOR-U와 REMOR-H가 인간 리뷰 및 기존 AI 시스템 대비 2배 이상의 보상 달성</em></p></div>
 <ol>
 <li><strong>성능 우수성</strong>: REMOR-U와 REMOR-H가 인간 리뷰, 비추론 다중 에이전트 시스템, 상용 LLM 베이스라인 대비 평균 보상에서 2배 이상 달성. 최고 품질 AI 리뷰와 인간 리뷰가 비교 가능한 수준이나, REMOR은 저품질 인간 리뷰의 긴 꼬리 분포 회피.</li>
 <li><strong>다차원 평가 메커니즘</strong>: HPRR 함수가 비판(criticism), 예시(example), 중요도(importance), 제안(suggestion) 등 8개 차원을 종합적으로 평가하여 단순 정량 지표 이상의 통합적 품질 측정 가능.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>공개 자산</strong>: PeerRT 데이터셋, HPRR 함수, REMOR 모델 공개로 향후 연구 활성화 기반 제공.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>각 메트릭별 평균 보상: REMOR이 비판(criticism), 예시(example), 중요도(importance) 등에서 현저히 높은 점수 달성</em></p></div>
 <p><strong>데이터셋 구축</strong>:</p>
 <ul>
 <li>ICLR 2017-2020 공개 데이터 기반 16.8K 심사평 수집 (5.5K 제출물)</li>

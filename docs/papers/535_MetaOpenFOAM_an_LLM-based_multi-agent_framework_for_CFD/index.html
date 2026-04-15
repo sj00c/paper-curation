@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuxuan Chen, Xu Zhu, Hua Zhou, Zhuyin Ren | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2407.21320" target="_blank">10.48550/arXiv.2407.21320</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>MetaOpenFOAM의 다중 에이전트 프레임워크 구조: Architect, InputWriter, Runner, Reviewer의 역할 분담</em></p></div>
 <p>자연언어 입력만으로 CFD(전산유체역학) 시뮬레이션을 자동화하는 다중 에이전트 LLM 프레임워크로, MetaGPT의 조립라인 패러다임과 Langchain의 검색증강생성(RAG) 기술을 결합하여 메시 전처리부터 후처리까지 전체 CFD 작업흐름을 자동 처리한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MetaGPT의 조립라인 패러다임으로 역할 기반 에이전트 협업 구조를 구현하고, Langchain의 RAG 기술로 OpenFOAM 튜토리얼 데이터베이스를 통합하여 LLM의 전문성을 강화함.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>역할 및 액션별 절제 연구 결과: 각 에이전트와 RAG의 필요성 검증</em></p></div>
 <ol>
 <li><strong>높은 자동화 성공률</strong>: 8개의 CFD 시뮬레이션 벤치마크 테스트에서 85% pass@1 성공률 달성, 케이스당 평균 비용 $0.22로 경제성 확인</li>
 <li><strong>광범위한 물리 문제 커버</strong>: DNS, RANS, LES를 포함한 다양한 난류 모델, 압축성/비압축성 유동, 열전달, 연소 등 다차원 유동 문제 8가지에서 안정적 작동</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화 능력 입증</strong>: 사용자 요구사항의 주요 매개변수 식별 및 수정, 버그 자동 수정, 인간 참여를 통한 시뮬레이션 성능 향상 가능</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Langchain 기반 검색증강생성(RAG) 프로세스: OpenFOAM 튜토리얼 데이터베이스 구축 및 유사 사례 검색</em></p></div>
 <h3>프레임워크 구조</h3>
 <ul>
 <li><strong>Architect</strong>: 자연언어 요구사항을 해석하고, RAG를 통해 데이터베이스에서 유사 사례 검색, 입력 아키텍처 생성</li>

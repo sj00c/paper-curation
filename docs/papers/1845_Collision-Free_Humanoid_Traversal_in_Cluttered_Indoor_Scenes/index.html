@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Han Xue, Sikai Liang, Zhikai Zhang, Zicheng Zeng, Yun Liu, Yunrui Lian, Jilong Wang, Qingtao Liu, Xuesong Shi, Li Yi | <strong>날짜</strong>: 2026-01-23 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2601.16035" target="_blank">10.48550/arXiv.2601.16035</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall pipeline. We learn a visuomotor policy that maps diverse obstacle geometries and spatial layouts to</em></p></div>
 <p>인간형 로봇이 어수선한 실내 환경에서 장애물을 피하며 이동할 수 있도록 Humanoid Potential Field (HumanoidPF)를 제안하고, 하이브리드 장면 생성 방식과 RL 기반 학습으로 현실 세계에 성공적으로 전이시킨 연구이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: APF(Artificial Potential Field)를 인간형 로봇의 전신 이동에 맞게 재구성한 HumanoidPF를 제안하여 인식 표현과 보상 신호로 활용하고, 현실적인 3D 실내 장면 조각과 절차적으로 생성된 장애물을 결합한 하이브리드 장면 생성 방식으로 다양한 시나리오에서의 학습을 실현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Using a single generalist policy, our humanoid robot achieves collision-free traversal in cluttered indoor envir</em></p></div>
 <ul>
 <li><strong>HumanoidPF 제안</strong>: 인간형 로봇-장애물 관계를 collision-free motion direction의 연속 미분 가능한 gradient field로 인코딩하여, 정책이 raw 환경 정보가 아닌 명시적인 이동 방향 단서로부터 판단할 수 있게 함</li>
 <li><strong>Sim-to-real gap 최소화</strong>: HumanoidPF의 연속 field 공식이 자연스럽게 low-pass perceptual filter 역할을 하여 인식 artifacts를 평활화하고 robust한 현실 이전 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실세계 배포 성공</strong>: Click-and-Traverse(CAT) 텔레오퍼레이션 시스템으로 사용자 친화적인 실시간 이동 제어 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall pipeline. We learn a visuomotor policy that maps diverse obstacle geometries and spatial layouts to</em></p></div>
 <ul>
 <li>APF의 목표 위치(attractive pole)와 장애물(repulsive surface) 개념을 기반으로 하되, 인간형 로봇의 복수 key body part에서 쿼리하여 각 부분별 이동 방향을 지도</li>
 <li>HumanoidPF를 정책의 observation으로 직접 활용하여 고차원 raw 환경 정보 대신 저차원 방향 신호 제공</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tairan He, Zhengyi Luo, Xialin He, Wenli Xiao, Chong Zhang, Weinan Zhang, Kris Kitani, Changliu Liu, Guanya Shi | <strong>날짜</strong>: 2024-06-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.08858" target="_blank">https://arxiv.org/abs/2406.08858</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) OmniH2O enables teleoperating a full-size humanoid robot (Unitree H1) to complete tasks that</em></p></div>
 <p>OmniH2O는 kinematic pose를 통일된 인터페이스로 사용하여 VR, RGB 카메라, 음성 명령 등 다양한 입력 방식으로 전신 humanoid를 조종하고, RL 기반 sim-to-real 파이프라인으로 자율 제어도 가능하게 하는 학습 기반 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion imitation을 목표로 한 goal-conditioned RL(PPO)을 통해 teacher-student 증류 프레임워크로 학습하며, AMASS 데이터셋을 retargeting하고 standing/squatting 바이어스를 추가하여 데이터 분포를 조정한다. 이를 통해 sparse sensor input으로도 작동하는 실제 배포 가능 policy를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) OmniH2O enables teleoperating a full-size humanoid robot (Unitree H1) to complete tasks that</em></p></div>
 <ul>
 <li><strong>전신 dexterous loco-manipulation 제어</strong>: 스포츠 플레이, 물체 조작, 인간 상호작용 등 다양한 실제 전신 작업을 VR 조종 또는 자율 제어로 수행</li>
 <li><strong>통일된 제어 인터페이스</strong>: Kinematic pose 기반 인터페이스로 VR, RGB 카메라, GPT-4o 통합 등 다양한 입력 소스 호환</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>안정적 제어 정책 달성</strong>: 데이터 분포 편향, reward 설계, 상태 공간 설계 등 핵심 요소 식별으로 MoCap 없이도 안정적 조종 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: (a) OmniH2O retargets large-scale human motions and filters out infeasible motions for humanoids.</em></p></div>
 <ul>
 <li>AMASS 데이터셋에서 대규모 human motion을 humanoid 기하학에 맞게 retargeting 및 embodiment feasibility 필터링</li>
 <li>데이터 augmentation으로 고정된 하반신 동작을 포함한 standing/squatting 바이어스 추가로 안정성 강화</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chuan Wen, Xingyu Lin, John So, Kai Chen, Qi Dou, Yang Gao, Pieter Abbeel | <strong>날짜</strong>: 2023-12-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2401.00025" target="_blank">https://arxiv.org/abs/2401.00025</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Given a task instruction and the initial positions of any set of points in an image frame, our Any-point Traject</em></p></div>
 <p>Any-point Trajectory Modeling (ATM)은 액션 라벨이 없는 비디오에서 임의의 점들의 미래 궤적을 예측하도록 사전 학습된 궤적 모델을 활용하여, 최소한의 액션-라벨 데이터로도 강건한 visuomotor 정책 학습을 가능하게 하는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 임의의 점들의 2D 궤적을 카메라 좌표계에서 예측하도록 ATM을 사전 학습하고, 예측된 궤적을 정책 학습 시 부분 목표(subgoal)로 활용하여 최소한의 액션-라벨 데이터로 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: We compare with state-of-the-art video pre-training methods on language-conditioned manipulation tasks in the</em></p></div>
 <ul>
 <li><strong>성능 향상</strong>: 130개 이상의 언어-조건 조작 과제에서 63%의 성공률로 기존 비디오 사전 학습 방법 대비 평균 80% 향상</li>
 <li><strong>일반성</strong>: 임의의 점에 대해 작동하므로 과제 특화 구조를 필요로 하지 않으며 다양한 환경에 적용 가능</li>
 <li><strong>전이 학습</strong>: 인간 비디오 및 다른 로봇 형태의 비디오로부터 조작 기술의 효과적인 전이 학습 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our framework. (a) In the first stage, given an action-free video dataset, we first sample 2D points</em></p></div>
 <ul>
 <li>최근의 비전 모델(Tracking Any Point)을 활용하여 비디오에서 자동으로 점 궤적 생성 및 자기 감독 학습 데이터 구성</li>
 <li>Particle 기반 궤적 모델링으로 픽셀 변화 대신 물리적 동역학 충실히 모델링하며, 물체 항상성과 연속 운동 같은 귀납 편향 자연스럽게 포함</li>

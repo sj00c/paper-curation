@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Michał Zawalski, William Chen, Karl Pertsch, Oier Mees, Chelsea Finn, Sergey Levine | <strong>날짜</strong>: 2024-07-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2407.08693" target="_blank">https://arxiv.org/abs/2407.08693</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1:</em></p></div>
 <p>Vision-language-action (VLA) 모델에 embodied chain-of-thought 추론을 도입하여 로봇 정책이 행동 예측 전에 계획, 부작업, 움직임, 시각적 특징에 대해 다단계 추론을 수행하도록 훈련시킨다. 합성 데이터 생성 파이프라인을 통해 OpenVLA의 절대 성공률을 28% 향상시켰다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Embodied Chain-of-Thought (ECoT)는 VLA가 객체 경계상자, 엔드이펙터 위치 등 시각적으로 근거된 특징과 부작업 계획을 통합하여 다단계 추론을 수행하도록 훈련한다. 대규모 로봇 데이터셋에서 합성 훈련 데이터를 생성하는 확장 가능한 파이프라인을 설계했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Qualitative ECoT predictions from our model for two successful trajectories (left, middle) and</em></p></div>
 <ul>
 <li><strong>성능 향상</strong>: 추가 로봇 훈련 데이터 없이 OpenVLA의 절대 성공률을 28% 증가시켰으며, 새로운 객체, 장면, 시점, 지시사항에 대한 일반화 작업에서 입증됨</li>
 <li><strong>해석 가능성 및 상호작용성</strong>: 정책 실패가 더 해석 가능해지고 인간이 자연언어 피드백을 통해 추론 체인을 수정하여 행동을 대화형으로 정정할 수 있음</li>
 <li><strong>전이 학습</strong>: 모델이 보이지 않은 구체화(embodiments)와 작업에 ECoT 추론을 전이하는 능력을 학습함</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Our pipeline for generating synthetic embodied chain-of-thought data at scale for a given robot</em></p></div>
 <ul>
 <li>Pre-trained open-vocabulary object detector를 사용하여 객체 경계상자 추론 생성</li>
 <li>대규모 언어 모델(LLM)을 활용하여 작업 계획과 부작업 추론 자동 생성</li>

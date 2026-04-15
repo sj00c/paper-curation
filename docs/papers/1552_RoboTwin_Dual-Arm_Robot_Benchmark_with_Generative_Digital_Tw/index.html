@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yao Mu, Tianxing Chen, Shijia Peng, Zanxin Chen, Zeyu Gao, Yude Zou, Lunkai Lin, Zhiqiang Xie, Ping Luo | <strong>날짜</strong>: 2024-09-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.02920" target="_blank">https://arxiv.org/abs/2409.02920</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: RoboTwin Benchmark.</em></p></div>
 <p>RoboTwin은 3D generative foundation model과 LLM을 활용한 generative digital twin 프레임워크로, 2D 이미지로부터 다양한 3D 객체 모델을 생성하고 dual-arm 로봇 작업을 위한 synthetic 데이터셋과 real-world-aligned 벤치마크를 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: AIGC 기술(Deemos Rodin)을 이용해 단일 2D RGB 이미지에서 3D 모델을 생성하고, 객체의 functional part에 좌표축을 할당하여 grasp pose를 자동 계산한다. GPT4-V를 활용해 spatial relation-aware code generation으로 task decomposition과 robotic movement code를 자동 생성하고, COBOT Magic 플랫폼에서 수집한 real-world data와 synthetic data를 결합한 벤치마크를 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: AIGC & Expert Data Generation pipeline. Automatic extraction of object seg-</em></p></div>
 <ul>
 <li><strong>RoboTwin 벤치마크 데이터셋</strong>: Real-world teleoperated data와 high-fidelity synthetic data를 포함하며, dual-arm tool use와 human-robot interaction에 특화된 포괄적 벤치마크 제공</li>
 <li><strong>Real-to-simulation 파이프라인</strong>: 단일 RGB 이미지로부터 3D mesh, texture, functional axes를 자동 생성하는 cost-effective 방식으로 digital twin 구축</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 향상</strong>: Pre-trained 정책의 fine-tuning으로 single-arm 작업 70% 이상, dual-arm 작업 40% 이상의 success rate 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: AIGC & Expert Data Generation pipeline. Automatic extraction of object seg-</em></p></div>
 <ul>
 <li>2D 이미지 입력 → AIGC (Rodin)를 통해 3D geometry, surface normal, texture 생성</li>
 <li>객체의 functional part와 approach direction을 나타내는 좌표축 정의</li>

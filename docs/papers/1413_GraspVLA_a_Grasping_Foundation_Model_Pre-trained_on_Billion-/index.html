@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shengliang Deng, Mi Yan, Songlin Wei, Haixin Ma, Yuxin Yang, Jiayi Chen, Zhiqi Zhang, Taoyu Yang, Xuheng Zhang, Wenhao Zhang, Heming Cui, Zhizheng Zhang, He Wang | <strong>날짜</strong>: 2025-05-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.03233" target="_blank">https://arxiv.org/abs/2505.03233</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: GraspVLA is a grasping foundation model pre-trained exclusively on billion-scale syn-</em></p></div>
 <p>SynGrasp-1B라는 10억 프레임 규모의 합성 데이터셋을 기반으로 GraspVLA라는 Vision-Language-Action 기반 집기 모델을 제시하며, 합성 데이터만으로 사전학습하여 실세계에서 강력한 제로샷 일반화와 소수샷 적응성을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Progressive Action Generation이라는 통합 Chain-of-Thought 프로세스를 통해 자동회귀 지각 작업과 flow-matching 기반 행동 생성을 결합하고, 합성 데이터와 인터넷 데이터를 함께 학습하여 시뮬레이션-현실 간극을 완화하고 개방 어휘 일반화를 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: GraspVLA is a grasping foundation model pre-trained exclusively on billion-scale syn-</em></p></div>
 <ul>
 <li><strong>SynGrasp-1B 데이터셋</strong>: 240개 카테고리의 10,680개 객체를 포함한 전 세계 최초의 10억 프레임 규모 로봇 집기 데이터셋 구축</li>
 <li><strong>Progressive Action Generation</strong>: 지각 작업을 중간 단계로 취급하는 통합 Chain-of-Thought 프로세스로 합성 및 인터넷 데이터의 보완적 학습 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>소수샷 적응성</strong>: 사용자 선호도와 특화된 응용 시나리오(예: 컵 내부 회피, 밀집된 병 순차 집기)에 효율적으로 적응</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: GraspVLA consists of an autoregressive vision-language backbone and a flow-matching</em></p></div>
 <ul>
 <li>Objaverse의 LVIS 부분집합에서 10,680개 객체 메시를 선별하고 랜덤 스케일링 및 물리적 배치를 통해 다양한 장면 생성</li>
 <li>Grasp synthesis 알고리즘으로 안정적인 antipodal grasps 생성 및 CuRoB 운동 계획기를 사용한 충돌 없는 궤적 계획</li>

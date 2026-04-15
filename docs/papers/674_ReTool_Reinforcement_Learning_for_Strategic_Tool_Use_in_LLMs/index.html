@@ -75,12 +75,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 냉시작(Cold-start) SFT 데이터 생성 + 코드 실행 피드백이 통합된 RL 학습으로 모델이 도구 호출 전략을 자율적으로 발견하도록 유도.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>AIME 2024 & 2025에서 ReTool(CI-powered RL)과 텍스트 기반 RL 베이스라인의 성능 비교</em></p></div>
 <ol>
 <li><strong>우수한 성능</strong>: Qwen2.5-32B-Instruct 기반 ReTool이 AIME 2024에서 400 스텝으로 67.0% 달성 (텍스트 기반 RL은 1080 스텝에 40.0%). DeepSeek-R1-Distill-Qwen-32B 기반 72.5% 달성하여 o1-preview 초과.</li>
 <li><strong>훈련 효율성</strong>: 텍스트 기반 RL 대비 2.7배 빠른 수렴(400 vs 1080 스텝), 응답 길이 40% 감소로 토큰 효율성 개선.</li>
 <li><strong>창발 행동</strong>: 코드 자체 수정, 적응적 도구 선택, 동적 코드 호출 타이밍 조정 등 RL 학습 중 자동 발생.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>텍스트 기반 RL(a)과 ReTool의 인터리빙된 코드 실행 RL(b) 비교</em></p></div>
 <p><strong>1단계: 냉시작 SFT</strong></p>
 <ul>
 <li>OpenThoughts 등 다양한 수학 추론 데이터 수집 및 DeepSeek-R1 검증으로 초기 데이터셋 D_init 구성</li>

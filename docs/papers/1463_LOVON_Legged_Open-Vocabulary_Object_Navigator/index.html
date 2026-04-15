@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Daojie Peng, Jiahang Cao, Qiang Zhang, Jun Ma | <strong>날짜</strong>: 2025-07-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.06747" target="_blank">https://arxiv.org/abs/2507.06747</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of LOVON’s pipeline. First, the LLM task planner reconfigures the human’s task into basic instructions,</em></p></div>
 <p>LOVON은 LLM 기반 계층적 작업 계획과 open-vocabulary 시각 감지를 통합하여 동적이고 비구조화된 환경에서 legged robot의 장시간 객체 네비게이션을 가능하게 하는 통합 프레임워크이다. Laplacian Variance Filtering 등의 기법으로 실제 환경의 시각적 불안정성을 해결하고 여러 legged robot 플랫폼에서 검증되었다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM으로 장시간 작업을 세부 subtask로 분해하고, open-vocabulary 감지 모델로 실시간 객체 인식을 수행하며, language-to-motion model로 지시사항과 시각 피드백을 동작 벡터로 변환한다. Laplacian Variance Filtering으로 시각적 흔들림을 완화하고 robot execution logic으로 robust한 작업 완료를 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Object navigation of legged robots in diverse open-world scenarios.</em></p></div>
 <ul>
 <li><strong>통합 프레임워크 개발</strong>: LLM, open-vocabulary 감지, language-to-motion model을 통합하여 복잡한 장시간 네비게이션 작업 계획 및 실행이 가능하다.</li>
 <li><strong>시각 안정화 기법</strong>: Laplacian Variance Filtering을 통해 legged robot 운동으로 인한 동적 블러링과 시각 지터를 효과적으로 해결한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Plug-and-play 호환성</strong>: 여러 legged robot 플랫폼에 즉시 적용 가능한 모듈식 설계로 실제 로봇 응용의 실용성을 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of LOVON’s pipeline. First, the LLM task planner reconfigures the human’s task into basic instructions,</em></p></div>
 <ul>
 <li>LLM 기반 Task Planner: 사용자 지시사항을 구조화된 subtask와 구체적 명령어(속도, 목표 객체 등)로 분해</li>
 <li>Instruction Object Extractor (IOE): 각 subtask에서 목표 객체를 추출하여 detection 모델에 제공</li>

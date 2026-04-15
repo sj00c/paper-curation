@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shuang Li, Yihuai Gao, Dorsa Sadigh, Shuran Song | <strong>날짜</strong>: 2025-02-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.00200" target="_blank">https://arxiv.org/abs/2503.00200</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Unified Video Action Model. (a) UVA features a joint video-action latent representation and decoupled video-acti</em></p></div>
 <p>UVA는 비디오 생성과 액션 예측을 통합적으로 학습하는 모델로, 공유된 잠재 표현과 분리된 확산 헤드를 통해 높은 정확도와 빠른 추론 속도를 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: UVA는 비디오와 액션을 공유된 잠재 공간에서 학습하고, 두 개의 경량 diffusion 헤드를 사용해 비디오와 액션을 분리되게 디코딩하며, 마스크 기반 훈련으로 다양한 작업을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Unified Video Action Model. (a) UVA features a joint video-action latent representation and decoupled video-acti</em></p></div>
 <ul>
 <li><strong>통합 성능</strong>: PushT Multitask에서 기존 최고 성능 모델 대비 20% 높은 성공률, Libero10에서 5% 향상 달성</li>
 <li><strong>추론 속도</strong>: 분리된 diffusion 헤드로 비디오 생성을 생략하여 Diffusion Policy와 유사한 속도 유지</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>강건성</strong>: 마스크 훈련을 통해 비디오 감독이 제공되지 않는 데이터셋에서도 학습 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Network Architecture. Given historical observations {Ot−h+1, . . . , Ot} and corresponding action chunks {At−h, </em></p></div>
 <ul>
 <li><strong>통합 잠재 표현</strong>: 과거 관찰과 액션을 channel-wise로 연결하여 Transformer를 통해 미래의 공유된 잠재 토큰 생성</li>
 <li><strong>분리된 diffusion 디코딩</strong>: 동일한 잠재 표현에서 video diffusion 헤드와 action diffusion 헤드를 독립적으로 운영하여 비디오와 액션을 동시에 학습</li>

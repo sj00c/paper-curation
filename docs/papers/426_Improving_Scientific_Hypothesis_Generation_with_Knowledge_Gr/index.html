@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Guangzhi Xiong, Eric Xie, Amir Hassan Shariatmadari, Sikun Guo, Stefan Bekiranov | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2411.02382" target="_blank">10.48550/arXiv.2411.02382</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>KG-CoI 시스템의 개요: KG 기반 맥락 검색, KG 증강 아이디어 체인 생성, KG 기반 환각 감지 모듈로 구성</em></p></div>
 <p>LLM의 과학적 가설 생성 능력을 지식 그래프(Knowledge Graph)의 구조화된 정보와 통합하여 향상시키고, 생성 과정의 환각(hallucination)을 감지 및 완화하는 KG-CoI 시스템을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 검증된 과학적 정보를 담은 지식 그래프를 LLM의 추론 과정에 직접 통합하고, 단계적 추론 체인(Chain of Ideas)을 구성하며, 생성된 가설의 환각을 KG 기반으로 탐지한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>다양한 방법의 성능 비교: 자기 일관성(self-consistency) 설정에서 실행 횟수에 따른 성능 변화</em></p></div>
 <ol>
 <li><strong>가설 생성 정확도 향상</strong>: KG-CoI는 기존의 직접 프롬프팅(Direct prompting), 사고의 연쇄(Chain-of-Thought), RAG 방식 대비 가장 높은 정확도로 과학적 가설을 생성한다.</li>
 <li><strong>환각 감소 및 신뢰성 개선</strong>: KG 기반 환각 탐지 모듈을 통해 생성된 추론 단계들에서 사실적 오류를 식별하고, 시스템의 신뢰성을 크게 향상시킨다.</li>
 <li><strong>새로운 평가 데이터셋 구축</strong>: 지식 그래프 내의 링크를 마스킹하여 LLM의 가설 생성 능력을 정량적으로 평가할 수 있는 벤치마크 데이터셋을 구성하였다.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+</div>
 <p>KG-CoI는 세 가지 주요 모듈로 구성된다:</p>
 <h3>1. KG 기반 맥락 검색 (KG-guided Context Retrieval)</h3>
 <ul>

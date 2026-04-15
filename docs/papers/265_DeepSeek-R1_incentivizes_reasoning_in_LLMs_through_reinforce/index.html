@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: DeepSeek-AI, Daya Guo, Dejian Yang, Haowei Zhang, Jun-Mei Song | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/10.1038/s41586-025-09422-z" target="_blank">10.1038/s41586-025-09422-z</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: (a) RL 훈련 과정에서 DeepSeek-R1-Zero의 AIME 정확도. (b) RL 프로세스 중 응답의 평균 길이 증가.</em></p></div>
 <p>본 논문은 인간이 주석을 단 추론 궤적(reasoning trajectory) 없이 순수 강화학습(RL)을 통해 대형언어모델(LLM)의 추론 능력을 유도할 수 있음을 보여준다. RL 훈련 과정에서 모델은 자발적으로 자기 검증, 재검토, 동적 전략 적응 등의 고급 추론 패턴을 개발한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DeepSeek-V3-Base에 기반하여 Group Relative Policy Optimization (GRPO)을 사용한 순수 RL 훈련을 수행하되, SFT 단계를 건너뛰고 최종 예측의 정확성만을 보상 신호로 사용</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1a">
+<p class="fig-caption"><em>AIME 2024 벤치마크에서 Pass@1 15.6%에서 77.9%로, Self-consistency 적용 시 86.7%까지 달성</em></p></div>
 <ol>
 <li><strong>수학 문제 해결</strong>: AIME 2024에서 Pass@1 기준 77.9%, Self-consistency 적용 시 86.7% 정확도 달성 (인간 평균 수준 초과)</li>
 <li><strong>코딩 경쟁 및 STEM 분야 우수성</strong>: 코딩 경쟁(coding competitions) 및 대학원 수준의 생물, 물리, 화학 문제에서 탁월한 성능 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>모델 증류(Distillation)</strong>: 소형 모델로 증류된 버전들도 원래의 명령어 조정(instruction-tuned) 모델을 능가하는 추론 능력 보유</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>RL 프레임워크 개요</em></p></div>
 <ul>
 <li><strong>Group Relative Policy Optimization (GRPO)</strong>: PPO(Proximal Policy Optimization)의 단순화 버전으로, 각 질문에 대해 16개 출력을 샘플링한 후 정책 목적함수 최대화 (식 1-3 참고)</li>
 <li><strong>보상 설계</strong>: 규칙 기반 보상 시스템 활용

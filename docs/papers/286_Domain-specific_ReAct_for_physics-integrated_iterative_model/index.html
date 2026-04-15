@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tao Song, Yuwei Fan, Chen Feng, Keyu Song, Chao Liu | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2406.07572" target="_blank">10.48550/arXiv.2406.07572</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: 이중 에이전트 도구 호출 프로세스</em></p></div>
 <p>본 논문은 LLM(대규모 언어 모델)을 에너지·발전 공학 영역의 실제 문제 해결에 활용하기 위해 ReAct 프롬프팅과 도구 호출 메커니즘을 결합한 도메인 특화 프레임워크를 제시한다. 가스터빈의 가스 경로 분석(gas path analysis)을 사례로 하여 다양한 규모의 LLM들의 능력과 한계를 체계적으로 평가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 물리 기반 도구를 사전 정의하고 ReAct 기반 이중 에이전트 구조를 설계하여 LLM의 추론 능력과 도메인 지식을 통합한다. 다양한 규모(8B~70B+)의 모델을 비교 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: 가스터빈의 가스 경로 분석 개요</em></p></div>
 <ol>
 <li><strong>이중 에이전트 도구 호출 프로세스 개발</strong>: 기본 도구 호출을 지원하지 않는 모델들도 통일된 프레임워크에서 작동하도록 하는 구조 설계 성공. 에이전트 1은 ReAct 추론으로 행동 결정, 에이전트 2는 JSON 형식으로 도구 파라미터 추출.</li>
 <li><strong>모델 성능 차이 규명</strong>:

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Fanqi Lin, Ruiqian Nai, Yingdong Hu, Jiacheng You, Junming Zhao, Yang Gao | <strong>날짜</strong>: 2025-05-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.11917" target="_blank">https://arxiv.org/abs/2505.11917</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview. OneTwoVLA is a single unified vision-language-action model capable of both reasoning</em></p></div>
 <p>OneTwoVLA는 단일 통합 vision-language-action 모델로서 reasoning과 acting을 모두 수행하며, 작업 실행 중 critical moment에서는 explicit reasoning을, 그 외에는 reasoning 기반 action generation으로 adaptively switch한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: OneTwoVLA는 decision token([BOR]/[BOA])을 통해 reasoning vs acting을 adaptive하게 결정하는 unified model을 제안한다. 또한 embodied reasoning-centric vision-language data 합성 pipeline을 설계하여 robot data와 co-training한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Task completion times on Tomato-Egg.</em></p></div>
 <ul>
 <li><strong>Long-horizon task planning</strong>: flat VLA 대비 30%, dual-system VLA 대비 24% 성능 향상을 달성하며, novel task instruction에 대한 generalization 가능</li>
 <li><strong>Error detection and recovery</strong>: real-time 오류 감지 및 correction strategy 추론으로 agile recovery action 수행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Generalizable visual grounding</strong>: spatial relationships, object attributes, semantic features에 대한 superior understanding으로 robot training data 외 object로도 generalization</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Inference flow of OneTwoVLA in two modes.</em></p></div>
 <ul>
 <li>Unified model πθ가 two modes로 작동: reasoning mode (I1:n_t, I1:n_ref, ℓ, R을 입력으로 textual reasoning ˆR 생성), acting mode (추가로 st를 입력으로 action chunk At 생성)</li>
 <li>Algorithm 1의 inference pipeline: decide() → [BOR]이면 reason() 호출하여 R 업데이트, [BOA]이면 act() 호출하여 action 실행</li>

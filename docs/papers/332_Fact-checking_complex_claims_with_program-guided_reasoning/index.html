@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM의 인-컨텍스트 학습을 활용하여 복잡한 주장을 구조화된 프로그램 형식으로 분해하고, 각 단계를 전문화된 함수(질문 답변, 사실 검증, 논리 추론 등)에 위임하는 방식으로 설명 가능하면서도 데이터 효율적인 팩트 체킹을 구현.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: PROGRAMFC 모델 개요. 프로그램 생성 단계에서 Codex를 이용해 추론 프로그램을 생성하고, 프로그램 실행 단계에서 각 단계를 특화된 함수(QA 모델, Fact Checker, Logical Reasoner)에 위임">
+</div>
 <ol>
 <li><strong>다중 데이터셋에서 우수한 성능 달성</strong>: HOVER와 FEVEROUS라는 복잡한 주장 검증 데이터셋에서 7개의 파우 샷(few-shot) 기준 모델들을 능가하며, 특히 추론 깊이(reasoning depth)가 증가할수록 프로그램 가이드 추론의 효과가 증가함을 입증.</li>
 <li><strong>설명 가능한 추론 과정</strong>: 생성된 프로그램 자체가 명확한 단계별 추론 경로를 제시하므로, 사용자가 모델의 의사결정 과정을 이해하고 디버깅할 수 있음.</li>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>근거 검색 향상</strong>: 오픈 도메인 설정에서 추론 프로그램이 관련 근거의 검색 성능(retrieval)을 개선하는 효과를 확인.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: 프로그램 생성-실행 패러다임. S1-S4는 순차적 추론 단계를 나타내며, 각 단계는 특정 함수를 호출하고 결과를 변수에 저장">
+</div>
 <ul>
 <li><strong>프로그램 생성(Program Generation)</strong>:
 <ul>

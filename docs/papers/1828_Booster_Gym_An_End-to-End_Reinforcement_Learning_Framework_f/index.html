@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yushi Wang, Penghui Chen, Xinyu Han, Feng Wu, Mingguo Zhao | <strong>날짜</strong>: 2025-06-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.15132" target="_blank">https://arxiv.org/abs/2506.15132</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Training, testing, and deployment on Booster T1</em></p></div>
 <p>Booster Gym은 시뮬레이션에서 실제 로봇까지 humanoid robot locomotion을 위한 RL 기반 정책을 훈련하고 배포하는 end-to-end 프레임워크를 제시한다. 이 프레임워크는 domain randomization, 보상 함수 설계, parallel structures 처리 등을 포함하며 Booster T1 로봇에서 omnidirectional walking, disturbance resistance, terrain adaptability를 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Isaac Gym, MuJoCo, Webots 등 다중 시뮬레이터를 활용한 multi-simulator 전략을 채택하고, PPO 알고리즘을 사용한 asymmetric actor-critic 아키텍처를 구현했다. Domain randomization을 포괄적으로 적용하고 PD controller를 통해 액추에이터 명령을 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Training, testing, and deployment on Booster T1</em></p></div>
 <ul>
 <li><strong>완전한 end-to-end 파이프라인</strong>: 시뮬레이션 훈련부터 실제 로봇 배포까지 전체 과정을 다루는 통합 프레임워크 개발</li>
 <li><strong>포괄적인 domain randomization</strong>: 환경, 로봇, 액추에이터에 대한 체계적인 domain randomization으로 sim-to-real gap 감소</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 공개</strong>: 커뮤니티 자원으로서 GitHub에 코드 공개하여 재현 가능성 확보</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: An overview of the control architecture for training</em></p></div>
 <ul>
 <li>POMDP 기반 formulation으로 부분 관찰 문제 정의</li>
 <li>PPO 알고리즘과 asymmetric actor-critic 아키텍처 사용 (관찰 공간이 비대칭)</li>

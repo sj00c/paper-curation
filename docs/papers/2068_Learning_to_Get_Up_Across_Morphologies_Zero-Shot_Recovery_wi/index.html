@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jonathan Spraggett | <strong>날짜</strong>: 2025-12-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.12230" target="_blank">https://arxiv.org/abs/2512.12230</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Visual of diverse humanoid morphologies. Ordered by size (left: smallest, right:</em></p></div>
 <p>7개의 다양한 휴머노이드 로봇(높이 0.48-0.81m, 무게 2.8-7.9kg)에서 낙상 복구를 수행할 수 있는 단일 통합 DRL 정책을 제시하며, 로봇 특화 학습 없이 미학습 로봇에 86±7% 성공률로 제로샷 전이가 가능함을 보였다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 7개 휴머노이드 형태를 MuJoCo에서 학습하되, 명시적 형태 식별자 없이 통합 관찰/행동 공간과 형태-불가지론적 보상 함수를 설계하여 상태 역학만으로 형태 차이를 학습하도록 함. CrossQ 알고리즘으로 학습하고 광범위한 domain randomization을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Leave-one-out fall recovery heatmap. Rows: policies trained on six robots (held-</em></p></div>
 <ul>
 <li><strong>첫 통합 정책</strong>: 7개 휴머노이드 형태에 대한 첫 번째 단일 DRL 낙상 복구 정책 제시</li>
 <li><strong>제로샷 전이 성능</strong>: 미학습 형태에서 86±7% (95% CI [81, 89]) 성공률 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 공개</strong>: 소프트웨어를 GitHub에 공개하여 재현성과 활용성 확보</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Recovery sequence of the Bez2 robot in Mujoco over 2 seconds.</em></p></div>
 <ul>
 <li>7개 휴머노이드 로봇(Bez1, OP3-Rot, Bez2, Bez3, Sigmaban, Wolfgang, NUGUS)을 MuJoCo XML 형식(MJCF)으로 표준화하여 구축</li>
 <li>형태 간 일관성을 위해 관절 회전, 초기 관절각, 명명 규칙 정규화, IMU 및 발 프레임 참조점 추가</li>

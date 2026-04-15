@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yunshen Wang, Shaohang Zhu, Peiyuan Zhi, Yuhan Li, Jiaxin Li, Yong-Lu Li, Yuchen Xiao, Xingxing Wang, Baoxiong Jia, Siyuan Huang | <strong>날짜</strong>: 2026-02-27 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.23843" target="_blank">10.48550/arXiv.2602.23843</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Extreme whole-body humanoid control from our unified policy OMNIXTREME. (a) A quantitative comparison shows</em></p></div>
 <p>OmniXtreme는 flow-matching 기반의 생성형 정책과 actuation-aware residual RL을 결합하여 고동역 인간형 로봇의 다양한 극단적 동작을 고충실도로 추적할 수 있는 확장 가능한 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: OmniXtreme은 (1) specialist 정책들로부터 flow-matching을 통한 behavior cloning으로 표현 학습을 수행하고, (2) 실제 구동 제약을 고려한 residual RL 기반의 actuation-aware 후처리 단계를 추가하여 두 병목을 명시적으로 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Extreme whole-body humanoid control from our unified policy OMNIXTREME. (a) A quantitative comparison shows</em></p></div>
 <ul>
 <li><strong>확장 가능한 생성형 정책</strong>: Flow-matching과 고용량 아키텍처를 통해 multi-motion RL의 gradient interference 없이 표현 용량을 확장</li>
 <li><strong>Actuation-aware 실행 보장</strong>: 토크-속도 특성, 속도 의존 손실, 재생 전력 현상 등을 모델링한 residual RL로 실제 로봇에서의 물리적 실행 가능성 확보</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Fidelity-scalability trade-off 해결</strong>: 동작 다양성 증가에도 불구하고 높은 추적 충실도 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the OMNIXTREME. (a) Pretraining phase:</em></p></div>
 <ul>
 <li>Specialist 정책 학습: 각 동작 또는 동작 그룹에 대해 독립적인 RL 기반 specialist 정책 훈련</li>
 <li>Flow-matching을 이용한 통합 정책 사전학습: Specialist 정책들의 행동 데이터로부터 flow-matching 기반 생성형 정책을 behavior cloning으로 학습</li>

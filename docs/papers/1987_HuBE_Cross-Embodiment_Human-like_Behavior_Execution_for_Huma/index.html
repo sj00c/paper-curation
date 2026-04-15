@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shipeng Lyu, Fangyuan Wang, Weiwei Lin, Luhao Zhu, David Navarro-Alarcon, Guodong Guo | <strong>날짜</strong>: 2025-08-26 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2508.19002" target="_blank">10.48550/arXiv.2508.19002</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>HuBE는 인간 행동의 유사성(similarity)과 적절성(appropriateness)을 모두 만족하는 이족 로봇용 양단계 폐루프 프레임워크를 제안하며, 뼈 스케일링 기반 데이터 증강을 통해 이기종 로봇 간 교차-구현체(cross-embodiment) 적응을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HPose 데이터셋을 구축하여 세밀한 상황 주석을 포함시키고, 로봇 상태, 목표 포즈, 맥락 상황을 통합하는 폐루프 구조의 양단계 프레임워크를 설계하며, bone scaling 기반 데이터 증강을 통해 이기종 로봇 간 호환성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Overview of the whole algorithm. This algorithm includes three parts, i.e., building dataset, model training and</em></p></div>
 <ul>
 <li><strong>HPose 데이터셋</strong>: KIT, AMASS, Motion-X를 기반으로 LLM(GPT-4o)을 사용하여 세밀한 상황 설명(예: '상자 밑부분을 양손으로 잡고 머리 위로 들어올린다')을 추가한 컨텍스트 풍부 데이터셋 구축", '<strong>행동 유사성과 적절성 동시 달성</strong>: 폐루프 메커니즘과 암시적 스켈레탈 파라미터 적응을 통해 모션 생성과 로봇 제어의 통합적 연결로 구조 불일치 제거</li>
 <li><strong>교차-구현체 적응</strong>: Bone scaling 연산을 데이터 증강에 적용하여 밀리미터 수준의 정확도로 이기종 상용 로봇 플랫폼 간 배포 가능성 확보</li>
 <li><strong>성능 개선</strong>: 다중 상용 플랫폼 평가에서 모션 유사성, 행동 적절성, 계산 효율성 모두에서 기존 최첨단 방법 대비 현저한 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. The human skeletal system introduction. a) The composition of the</em></p></div>
 <ul>
 <li>HPose 데이터셋: 기존 오픈소스 모션 데이터셋(KIT, AMASS, Motion-X)에 LLM 기반 세밀한 상황 설명(long-form natural language annotation) 추가</li>
 <li>양단계 폐루프 프레임워크: (1) Behavior generation 모듈—모션 상황, 로봇 관측, 목표 포즈를 입력으로 하여 인간형 포즈 생성, (2) Behavior execution 모듈—생성된 포즈를 로봇의 물리적 특성에 맞게 매핑</li>

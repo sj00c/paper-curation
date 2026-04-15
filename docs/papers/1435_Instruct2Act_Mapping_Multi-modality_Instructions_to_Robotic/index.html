@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siyuan Huang, Zhengkai Jiang, Hao Dong, Yu Qiao, Peng Gao, Hongsheng Li | <strong>날짜</strong>: 2023-05-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2305.11176" target="_blank">https://arxiv.org/abs/2305.11176</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1:</em></p></div>
 <p>본 논문은 Large Language Model(LLM)을 활용하여 자연언어 및 시각적 지시사항을 로봇 조작 작업의 순차적 행동으로 매핑하는 Instruct2Act 프레임워크를 제안한다. SAM과 CLIP 같은 기초 모델들을 API로 활용하여 인식, 계획, 행동 루프를 구현하는 Python 프로그램을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM의 인컨텍스트 학습 능력을 활용하여 멀티모달 지시사항으로부터 중간 수준의 의사결정 행동을 생성한다. SAM으로 객체 위치를 파악하고 CLIP으로 분류한 후, 이 정보를 로봇 스킬과 결합하여 LLM이 결정-행동 코드를 생성하도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Evaluation task suite. We select six tabletop manipulation meta tasks to evaluate the pro-</em></p></div>
 <ul>
 <li><strong>일반적 목적의 로봇 시스템</strong>: LLM과 멀티모달 기초 모델을 활용한 유연한 로봇 시스템 구축으로 자연언어 및 시각적 지시사항을 모두 처리 가능</li>
 <li><strong>제로샷 성능 우수성</strong>: 학습 기반의 최신 정책들을 능가하는 성능을 달성하면서도 미세 조정(fine-tuning) 없이 동작</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 작업 영역 검증</strong>: 단순 객체 조작, 시각적 목표 도달, 시각적 추론 등 여러 도메인과 시나리오에서 VIMABench의 6개 메타-작업으로 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The paradigm of our proposed Instruct2Act framework. Starting with the task instruc-</em></p></div>
 <ul>
 <li>인식 단계: SAM API를 통해 이미지 분할로 후보 객체 탐지, CLIP을 이용한 객체 분류</li>
 <li>계획 단계: LLM이 인식 결과와 로봇 스킬(GetObsImage, PickPlace, RearrangeActions 등)을 활용한 Python 프로그램 생성</li>

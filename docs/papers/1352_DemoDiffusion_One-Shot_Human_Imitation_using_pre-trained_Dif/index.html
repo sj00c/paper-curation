@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sungjae Park, Homanga Bharadhwaj, Shubham Tulsiani | <strong>날짜</strong>: 2025-06-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.20668" target="_blank">https://arxiv.org/abs/2506.20668</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Retargeted human hand trajectory to closed-loop robot action sequence, for the task T : “shut down the</em></p></div>
 <p>DemoDiffusion은 단일 인간 시연으로부터 로봇이 조작 작업을 수행할 수 있도록 하는 방법으로, kinematic retargeting으로 얻은 궤적을 pre-trained diffusion policy를 이용해 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Kinematic retargeting으로 인간 손 궤적을 로봇 end-effector 궤적으로 변환한 후, pre-trained diffusion policy를 통해 노이즈 제거(denoising) 과정으로 이 궤적을 정제하여 plausible robot actions 분포 내에 머물도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Real-World Manipulation Tasks. Human demonstrations for the 8 evaluation tasks, shown as two frames per task.</em></p></div>
 <ul>
 <li><strong>실세계 성능</strong>: 8개의 다양한 조작 작업에서 83.8% 평균 성공률 달성 (pre-trained policy 13.8%, kinematic retargeting 52.5% 대비)</li>
 <li><strong>일반화 능력</strong>: Pre-trained generalist policy가 완전히 실패하는 작업에서도 성공하는 사례 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>단순성</strong>: Kinematic retargeting과 diffusion denoising의 직관적인 조합으로 구현 용이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Retargeted human hand trajectory to closed-loop robot action sequence, for the task T : “shut down the</em></p></div>
 <ul>
 <li>인간 시연으로부터 RGB-D 또는 multi-view 비디오 이용해 3D hand pose 추출</li>
 <li>Hand pose 궤적을 kinematic retargeting을 통해 로봇 end-effector 궤적으로 변환</li>

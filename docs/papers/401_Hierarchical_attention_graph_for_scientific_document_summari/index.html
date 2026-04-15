@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chenlong Zhao, Xiwen Zhou, Xiaopeng Xie, Yong Zhang | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>문서의 지역(local)과 전역(global) 관점에서의 모델링 예시: 단어-문장 간 관계(intra-sentence)와 문장 간 관계(inter-sentence)를 계층적으로 구분</em></p></div>
 <p>과학 논문 같은 장문서의 추출 요약을 위해 그래프 신경망을 활용하여 <strong>문장 내 관계(지역 수준)</strong>와 <strong>문장 간 고차 관계(전역 수준)</strong>를 계층적으로 동시에 모델링하는 HAESum 방법 제시.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 이질 그래프(heterogeneous graph)로 지역 수준의 문장-단어 관계를 학습한 후, 하이퍼그래프 자기주의(hypergraph self-attention) 레이어로 문장 간 고차 관계를 포착하는 두 단계 계층적 접근</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>HAESum 프레임워크 개요: (좌) 지역 수준 이질 그래프(HEGAT)에서 문장-단어 양방향 메시지 패싱, (우) 전역 수준 하이퍼그래프 자기주의(HGSAT)에서 고차 문장 관계 포착</em></p></div>
 <ol>
 <li><strong>첫 계층적 GNN 기반 추출 요약 모델</strong>: 기존과 달리 문장 내 관계와 문장 간 관계를 <strong>분리된 그래프에서 순차적으로</strong> 학습하는 방식으로 계층 구조를 효과적으로 활용</li>
 <li><strong>새로운 하이퍼그래프 자기주의 레이어</strong>: 노드뿐 아니라 <strong>하이퍼엣지(hyperedge)를 명시적으로</strong> 표현하여 고차 문장 관계를 포착. 사전훈련 모델에 의존하지 않아 저자원 언어 적용 가능</li>

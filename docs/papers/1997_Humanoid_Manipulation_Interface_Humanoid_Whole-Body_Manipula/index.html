@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ruiqian Nai, Boyuan Zheng, Junming Zhao, Haodong Zhu, Sicong Dai, Zunhao Chen, Yihang Hu, Yingdong Hu, Tong Zhang, Chuan Wen, Yang Gao | <strong>날짜</strong>: 2026-02-12 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.06643" target="_blank">10.48550/arXiv.2602.06643</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid Manipulation Interface (HuMI). Left: Our portable, robot-free data collection facilitates skill transfe</em></p></div>
 <p>HuMI는 로봇 없이 휴대용 하드웨어로 수집한 인간 전신 동작 데이터를 이용해 인형형 로봇에게 다양한 전신 조작 기술을 학습시키는 프레임워크이다. 계층적 학습 파이프라인과 IK 기반 적응을 통해 인간-로봇 간 신체형 차이를 극복하고 70% 성공률을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HTC Vive Ultimate Tracker를 이용한 골반, 손, 발 5지점의 전신 추적으로 인간 동작을 수집하고, 실시간 IK 미리보기 인터페이스로 타당성을 검증한 후, Diffusion Policy 기반 고수준 정책과 조작 중심의 저수준 컨트롤러를 계층적으로 학습시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humanoid Manipulation Interface (HuMI). Left: Our portable, robot-free data collection facilitates skill transfe</em></p></div>
 <ul>
 <li><strong>3배 향상된 데이터 수집 효율</strong>: 원격조종 대비 3배 높은 데이터 수집 처리량 달성</li>
 <li><strong>로봇 없는 휴대용 시스템</strong>: 백팩 하나에 들어가는 휴대용 하드웨어로 다양한 환경에서 데이터 수집 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>신체형 차이 극복</strong>: IK 적응과 조작 중심 컨트롤러로 인간-로봇 간 신체형 불일치 해결</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the HuMI data collection system. (a) Challenges: Relying solely on gripper poses under-specifies who</em></p></div>
 <ul>
 <li>5지점 전신 추적(pelvis, hands, feet)을 통해 그리퍼 궤적만으로는 부족한 전신 동작 정보 수집</li>
 <li>HTC Vive Ultimate Tracker 기반 base-station-free 독립형 추적으로 다양한 환경에서의 휴대성 확보</li>

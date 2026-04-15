@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hongjing Shao, Qian Luo, Jiayi Xia | <strong>날짜</strong>:  | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Processing pipeline for pretraining data. We collected data from GitHub and web archives.</em></p></div>
 <p>코드 LLM 사전학습 데이터를 자동으로 큐레이션하는 모델 중심 파이프라인을 제시하고, 이를 바탕으로 8B 규모의 Seed-Coder 모델 시리즈(base, instruct, reasoning)를 개발하여 동급 오픈소스 모델을 능가하는 성능을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM 기반 품질 스코어러를 사용하여 GitHub, 커밋, 웹 데이터를 자동 필터링하고 6조 토큰의 사전학습 코퍼스를 구성했으며, 지도 학습 미세조정과 DPO, LongCoT 강화학습을 통해 세 가지 모델 변형을 개발했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Benchmark performance of instruct and reasoning variants of Seed-Coder-8B.</em></p></div>
 <ul>
 <li><strong>자동 데이터 파이프라인</strong>: 최소한의 인간 개입으로 6조 토큰의 코드 사전학습 데이터를 구성하는 병렬 처리 가능한 모델 중심 파이프라인 개발</li>
 <li><strong>벤치마크 성능</strong>: BigCodeBench(55.8%), FullStack Bench(47.6%), SWE-bench Verified(50.9%) 등 다양한 코딩 태스크에서 동급 모델 능가 또는 최고 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 기여</strong>: 경량이면서도 강력한 8B 모델 시리즈를 공개하여 오픈소스 커뮤니티의 진전 촉진</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Processing pipeline for pretraining data. We collected data from GitHub and web archives.</em></p></div>
 <ul>
 <li>GitHub 데이터, 커밋 데이터, 코드 관련 웹 데이터에서 정확/근사 중복 제거 수행</li>
 <li>LLM 품질 스코어러를 활용한 자동 필터링으로 고품질 데이터 선별</li>

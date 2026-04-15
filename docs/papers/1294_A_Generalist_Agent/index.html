@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Scott Reed, Konrad Zolna, Emilio Parisotto, Sergio Gomez Colmenarejo, Alexander Novikov, Gabriel Barth-Maron, Mai Gimenez, Yury Sulsky, Jackie Kay, Jost Tobias Springenberg, Tom Eccles, Jake Bruce, Ali Razavi, Ashley Edwards, Nicolas Heess, Yutian Chen, Raia Hadsell, Oriol Vinyals, Mahyar Bordbar, Nando de Freitas | <strong>날짜</strong>: 2022-05-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2205.06175" target="_blank">https://arxiv.org/abs/2205.06175</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: A generalist agent. Gato can sense and act with diﬀerent embodiments across a wide range of</em></p></div>
 <p>Gato는 대규모 언어 모델의 접근 방식을 일반화하여 텍스트를 넘어 다양한 모달리티와 구체화(embodiment)를 처리할 수 있는 단일 신경망 기반의 범용 정책 에이전트이다. 동일한 가중치를 가진 하나의 모델로 Atari 게임, 이미지 캡셔닝, 대화, 로봇 제어 등 604개의 서로 다른 작업을 수행할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모든 데이터(텍스트, 이미지, 연속/이산 값)를 토큰 시퀀스로 직렬화하고 단일 1.2B 파라미터 transformer 디코더를 이용하여 다음 토큰을 예측하는 자기회귀 방식으로 훈련한다. 배포 시에는 토큰을 context에 따라 대화, 이미지 캡션, 버튼 입력, 관절 토크 등으로 변환한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: A generalist agent. Gato can sense and act with diﬀerent embodiments across a wide range of</em></p></div>
 <ul>
 <li><strong>단일 모델의 범용성</strong>: 동일한 가중치의 단일 모델이 Atari, 로봇 제어, 자연어 이해, 이미지 캡셔닝 등 604개 작업을 수행 가능</li>
 <li><strong>확장성</strong>: 1.2B 파라미터 규모에서도 실시간 로봇 제어가 가능하며, 모델 및 데이터 스케일링에 따라 성능 지속적 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 모달리티 처리</strong>: 텍스트, 이미지, 연속값, 이산값, proprioception 등 다양한 입출력 형식을 통일된 토큰 시퀀스로 처리</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Training phase of Gato. Data from diﬀerent tasks and modalities is serialized into a ﬂat sequence of</em></p></div>
 <ul>
 <li>모든 데이터를 통일된 토큰 시퀀스로 변환: 텍스트는 SentencePiece (32000 어휘), 이미지는 16×16 패치로 변환, 연속값은 mu-law 인코딩 후 1024 bin으로 이산화, 이산값은 row-major 순서로 정렬</li>
 <li>modality별 임베딩 함수 적용: 텍스트/이산/연속값은 lookup table으로, 이미지 패치는 ResNet 블록으로 임베딩 (위치 인코딩 추가)</li>

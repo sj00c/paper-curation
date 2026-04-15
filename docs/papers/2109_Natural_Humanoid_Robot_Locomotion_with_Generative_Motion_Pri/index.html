@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haodong Zhang, Liang Zhang, Zhenghan Chen, Lu Chen, Yue Wang, Rong Xiong | <strong>날짜</strong>: 2025-03-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.09015" target="_blank">https://arxiv.org/abs/2503.09015</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Illustration of different methods. (a) Pure RL only</em></p></div>
 <p>본 논문은 Generative Motion Prior (GMP)를 활용하여 인간의 자연스러운 보행 데이터로부터 휴머노이드 로봇의 자연스러운 보행을 학습하는 방법을 제안한다. 기존의 adversarial motion prior 대신 frozen generative model을 사용하여 fine-grained motion-level 감독을 제공함으로써 학습 안정성과 해석 가능성을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 연구는 (1) whole-body motion retargeting을 통해 인간 보행 데이터를 로봇으로 변환하고, (2) Conditional Variational Auto-encoder (CVAE) 기반 generative model을 오프라인에서 학습한 후, (3) 학습 중 frozen generative model을 온라인 motion generator로 사용하여 joint angles과 keypoint positions 수준의 fine-grained guidance를 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Qualitative comparison with representative baselines.</em></p></div>
 <ul>
 <li><strong>GMP 프레임워크 제안</strong>: Frozen generative model을 expert로 활용하는 혁신적 프레임워크로 robust하고 stable한 guidance 제공</li>
 <li><strong>Fine-grained motion guidance</strong>: Whole-body reference motion trajectories를 생성하고 motion guidance rewards를 설계하여 granular하고 interpretable한 RL policy 학습 실현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Learning stability 개선</strong>: Adversarial training을 제거함으로써 mode collapse 없이 안정적인 학습 실현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall framework. (a) First, we transform the human motion dataset to the robot reference motion dataset by who</em></p></div>
 <ul>
 <li>인간 보행 모션 캡처 데이터를 로봇의 kinematics에 맞게 whole-body motion retargeting 수행</li>
 <li>Retargeted robot motion dataset에 대해 CVAE 기반 motion generator를 conditional (현재 로봇 포즈와 사용자 속도 명령)으로 학습</li>

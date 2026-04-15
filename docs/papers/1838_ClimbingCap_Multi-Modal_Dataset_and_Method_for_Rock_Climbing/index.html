@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ming Yan, Xincheng Lin, Yuhua Luo, Shuqi Fan, Yudi Dai, Qixin Zhong, Lincai Zhong, Yuexin Ma, Lan Xu, Chenglu Wen, Siqi Shen, Cheng Wang | <strong>날짜</strong>: 2025-03-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.21268" target="_blank">https://arxiv.org/abs/2503.21268</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview. To address the challenging problem of global climbing motion recovery, we collect the dataset Ascend</em></p></div>
 <p>ClimbingCap은 RGB와 LiDAR 멀티모달 데이터를 활용하여 암벽 등반 동작을 글로벌 좌표계에서 정확하게 복원하는 방법을 제안하며, 대규모 도전적 등반 동작 데이터셋 AscendMotion을 구축했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RGB에서는 카메라 좌표의 포즈를, LiDAR 포인트 클라우드에서는 글로벌 좌표의 위치를 별도로 복원한 후 이들을 결합하고 최적화하는 separate coordinate decoding 전략을 채택하며, post-processing과 semi-supervised 학습으로 일관성과 성능을 향상시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. Qualitative Evaluation in the AscendMotion and CIMI4D dataset. The left and right areas show the results of Ca</em></p></div>
 <ul>
 <li><strong>AscendMotion 데이터셋</strong>: 412k 프레임의 RGB, LiDAR, IMU 데이터로 구성되며 22명의 숙련된 등반 코치의 12개 암벽에서의 동작을 포함하여 기존 데이터셋(CIMI4D 180k)보다 2배 이상 크고 난이도가 높다.</li>
 <li><strong>ClimbingCap 방법</strong>: Separate coordinate decoding, post-processing, semi-supervised training의 삼중 전략으로 글로벌 좌표계에서 연속적인 3D 등반 동작을 복원하며 기존 최첨단 방법들을 능가한다.</li>
 <li><strong>포괄적 검증</strong>: 다중 데이터셋에서 다양한 최첨단 방법들과의 광범위한 실험을 통해 ClimbingCap의 우수성을 입증했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of ClimbingCap. The arrows indicate the three stages of the ClimbingCap framework: separate coordinat</em></p></div>
 <ul>
 <li><strong>입력 및 특성 추출</strong>: RGB 이미지와 포인트 클라우드를 입력받으며, 포인트 클라우드를 extrinsic matrix로 월드 좌표에서 카메라 좌표로 변환한다.</li>
 <li><strong>Separate coordinate decoding</strong>: RGB 시퀀스에서 카메라 좌표 포즈를 추출하고 LiDAR 포인트 클라우드에서 글로벌 좌표 위치를 예측한다.</li>

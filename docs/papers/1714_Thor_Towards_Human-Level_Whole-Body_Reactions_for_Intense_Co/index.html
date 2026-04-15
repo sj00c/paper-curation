@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gangyang Li, Qing Shi, Youhao Hu, Jincheng Hu, Zhongyuan Wang, Xinlong Wang, Shaqi Luo | <strong>날짜</strong>: 2025-11-05 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.26280" target="_blank">10.48550/arXiv.2510.26280</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>Thor는 humanoid 로봇이 강한 접촉 상호작용 환경에서 인간 수준의 전신 반응을 생성하도록 하는 프레임워크로, force-adaptive torso-tilt (FAT2) 보상 함수와 decoupled reinforcement learning 아키텍처를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Thor는 상체, 허리, 하체로 decoupled된 actor-critic 네트워크를 설계하고, 인간 생체역학에서 영감을 받은 FAT2 보상 함수로 힘에 반응하는 자세 조정을 장려하며, 도메인 랜덤화와 curriculum learning을 통해 sim-to-real 전이를 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Humanoids performing tasks involving forceful interactions with the</em></p></div>
 <ul>
 <li><strong>Decoupled RL 아키텍처</strong>: 상체(14 DoF), 허리(3 DoF), 하체(12 DoF)를 독립적인 actor-critic 네트워크로 분리하여 high-dimensional humanoid 제어 문제를 완화</li>
 <li><strong>FAT2 보상 함수</strong>: 로봇의 힘 분석을 기반으로 설계되어 인간처럼 몸통을 적응적으로 기울이도록 유도하여 강력한 상호작용력 생성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>높은 빈도 추론</strong>: Decoupled 아키텍처로 제한된 온보드 자원에서 50Hz 고속 제어 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>상체, 허리, 하체의 세 가지 actor-critic 모듈을 설계하되, 각각 독립적인 정책 네트워크(π_u, π_w, π_l)와 가치 함수를 가짐</li>
 <li>모든 모듈이 전신 관찰(proprioception, motion command)을 공유하고 특권 정보(end-effector 힘의 크기와 방향)를 critic에만 제공</li>

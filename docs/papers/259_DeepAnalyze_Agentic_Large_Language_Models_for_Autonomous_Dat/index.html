@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shaolei Zhang, Ju Fan, Meihao Fan, Guoliang Li, Xiaoyong Du | <strong>날짜</strong>: 2025-10-19 | <strong>DOI</strong>: <a href="https://doi.org/" target="_blank">미제공</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>DeepAnalyze-8B: 데이터 소스에서 분석가급 리포트까지 엔드-투-엔드 자동 데이터 과학을 수행하는 에이전틱 LLM</em></p></div>
 <p>본 논문은 원시 데이터에서 분석가급 심층 연구 보고서까지 완전 자동화된 데이터 과학(autonomous data science)을 달성하는 최초의 에이전틱 LLM인 DeepAnalyze-8B를 제안한다. 단 8B 파라미터로 고급 독점 LLM 기반의 기존 워크플로우 에이전트를 능가하는 성능을 보여준다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 인간 데이터 과학자의 학습 궤적을 모방하는 커리큘럼 기반 에이전틱 훈련 패러다임(curriculum-based agentic training paradigm), (2) 고품질 훈련 데이터를 구성하는 데이터 기반 궤적 합성 프레임워크(data-grounded trajectory synthesis framework)</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>DeepAnalyze 아키텍처: 자율 조율(autonomous orchestration)과 적응형 최적화(adaptive optimization) 능력을 갖춘 에이전틱 시스템</em></p></div>
 <ol>
 <li><strong>엔드-투-엔드 자동화</strong>: 데이터 준비(data preparation), 분석(analysis), 모델링(modeling), 시각화(visualization), 리포트 생성까지 전체 파이프라인을 자동으로 완성</li>
 <li><strong>다양한 데이터 작업 지원</strong>: 데이터 질문 답변(data QA), 특화된 분석 작업(specialized analytics), 개방형 데이터 연구(open-ended data research) 등 광범위한 데이터 과학 작업 수행</li>
@@ -82,6 +86,10 @@ a { color: #A62018; }
 <li><strong>완전 공개</strong>: 모델, 코드, 훈련 데이터(DataScience-Instruct-500K) 전량 오픈소스 제공</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>에이전틱 강화학습(Agentic RL) 개요: 환경과의 상호작용을 통한 피드백 기반 학습</em></p></div>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>데이터 기반 궤적 합성 프레임워크: 고품질 훈련 데이터 구성 프로세스</em></p></div>
 <ul>
 <li><strong>커리큘럼 기반 훈련</strong>: 간단한 작업(데이터 QA)에서 복잡한 작업(개방형 연구)으로 점진적으로 난이도를 상향하여 LLM이 역량을 순차적으로 습득</li>
 <li><strong>자율 조율(Autonomous Orchestration)</strong>: 사용자 의도를 이해하고 복잡한 다단계 작업을 체계적으로 조율하는 능력</li>

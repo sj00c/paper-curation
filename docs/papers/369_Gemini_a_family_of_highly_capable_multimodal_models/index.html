@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Gemini Robotics Team, Rohan Anil, Sebastian Borgeaud, Jean-Baptiste Alayrac, Jiahui Yu, Radu Soricut, Johan Schalkwyk, Andrew M. Dai, Anja Hauth, Katie Millican, David M. Silver, Melvin Johnson, Ioannis Antonoglou, Julian Schrittwieser, Amelia Glaese, Jilin Chen, Emily Pitler, Timothy Lillicrap, Angeliki Lazaridou, Orhan Fırat | <strong>날짜</strong>: 2023 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Gemini 모델은 텍스트, 이미지, 오디오, 비디오의 인터리빙된 시퀀스를 입력으로 받아 텍스트와 이미지가 섞인 응답을 생성할 수 있다.</em></p></div>
 <p>Google이 개발한 Gemini는 이미지, 오디오, 비디오, 텍스트를 네이티브하게 처리하는 멀티모달 대규모 언어 모델 패밀리로, Ultra, Pro, Nano 세 가지 크기로 제공되며 30개의 32개 벤치마크 중에서 최첨단 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Transformer 디코더를 기반으로 하되 멀티모달 입력(텍스트, 이미지, 오디오, 비디오)을 처리하도록 설계하고, 32k 컨텍스트 길이를 지원하며, 대규모 TPU 인프라를 활용하여 세 가지 크기(Ultra, Pro, Nano)의 모델을 동시에 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Gemini 모델이 학생의 물리 문제 풀이를 검증하는 예시로, 필기 인식, 문제 이해, LaTeX 생성 능력을 보여준다.</em></p></div>
 <ol>
 <li><strong>벤치마크 성능 우위</strong>: Gemini Ultra가 평가된 32개 벤치마크 중 30개에서 최첨단 성능 달성
 <ul>
@@ -92,6 +96,8 @@ a { color: #A62018; }
 <li><strong>효율적인 모델 계열</strong>: 온디바이스 배포용 Nano 모델(1.8B~3.25B 파라미터)도 크기 대비 뛰어난 성능 제공</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>다양한 모달리티의 입력이 인터리빙된 형태로 처리되는 구조</em></p></div>
 <ul>
 <li><strong>아키텍처</strong>: Transformer 디코더 기반으로 멀티쿼리 어텐션(multi-query attention) 등 효율성 개선 기법 적용</li>
 <li><strong>멀티모달 인코딩</strong>:

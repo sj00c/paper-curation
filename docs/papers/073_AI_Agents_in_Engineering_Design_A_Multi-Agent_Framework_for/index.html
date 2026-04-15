@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mohamed Elrefaie, Janet Qian, Raina Wu, Qian Chen, Angela Dai, Faez Ahmed | <strong>날짜</strong>: 2025-03-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2503.23315" target="_blank">10.48550/arXiv.2503.23315</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: AI 설계 에이전트 프레임워크로 자동차 설계 프로세스 가속화. VLM(비전-언어 모델), 기하 딥러닝, LLM을 통합하고 AutoGen으로 에이전트 간 협업 조율</em></p></div>
 <p>본 논문은 자동차 설계 분야에 AI 설계 에이전트(Design Agents)를 도입하여, 스케칭부터 공기역학 시뮬레이션까지 전 설계 주기를 수 주일에서 수 분으로 단축하는 다중 에이전트 프레임워크를 제시한다. VLM, LLM, 기하 딥러닝 기법을 활용한 전문화된 에이전트들이 엔지니어와 디자이너와 협력하여 설계 창의성과 효율성을 대폭 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DrivAerNet++ 데이터셋(8,000개 산업 표준 자동차 설계)을 기반으로 4개의 전문화된 AI 에이전트(스타일링, CAD, 메싱, 시뮬레이션 에이전트)를 AutoGen으로 조율하는 다중 에이전트 프레임워크 개발.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: 다중 에이전트 시스템의 상호작용 흐름. 2D 스케치 입력 → 스타일링 렌더링 → CAD 검색/생성 → 메시 생성 → 공기역학 예측</em></p></div>
 <ol>
 <li><strong>설계 사이클 가속화</strong>: 개념 설계부터 공기역학 평가까지의 과정을 주 단위에서 분 단위로 단축하여 수십 배의 효율성 향상 달성</li>
 <li><strong>통합형 멀티모달 프레임워크</strong>: 2D 스케칭, 3D 형상 생성, CFD 메싱, 고충실도 공기역학 시뮬레이션을 일관되게 연결하는 최초의 엔드-투-엔드 시스템 구축</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>설계 공간 탐색</strong>: t-SNE 기반 비선형 차원 축소로 DrivAerNet++ 고차원 설계 공간의 고성능 설계 클러스터 식별</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: AI 다중 에이전트 시스템 사용 사례. 디자이너가 2D 스케치를 입력하면 다양한 스타일 옵션의 고해상도 렌더링 생성</em></p></div>
 <p><strong>핵심 방법론:</strong></p>
 <ul>
 <li><strong>스타일링 에이전트(Styling Agent)</strong>: Stable Diffusion XL, ControlNet, DALL·E를 활용하여 설계자 프롬프트에 기반한 고해상도 렌더링 생성 및 미적 개선</li>

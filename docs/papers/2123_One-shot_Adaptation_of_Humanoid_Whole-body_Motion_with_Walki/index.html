@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hao Huang, Geeta Chandra Raju Bethala, Shuaihang Yuan, Congcong Wen, Mengyu Wang, Anthony Tzes, Yi Fang | <strong>날짜</strong>: 2026-04-07 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.25241" target="_blank">10.48550/arXiv.2510.25241</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Given a sequence of walking motion pose skeletons and a target sequence comprising non-walking motions, we emp</em></p></div>
 <p>단일 비보행 대상 샘플과 보행 사전 지식을 활용하여 휴머노이드 전신 운동을 원샷 적응하는 데이터 효율적 방법을 제안한다. Order-preserving optimal transport를 통해 보행과 비보행 시퀀스 간 거리를 계산하고 geodesic 보간으로 중간 포즈를 생성한 후 강화학습으로 정책을 적응한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 사전학습된 보행 기반 모델과 단일 대상 모션 클립으로부터 order-preserving optimal transport를 이용해 중간 포즈 골격을 생성하고, manifold 최적화로 충돌 회피를 보장한 후 강화학습으로 미세조정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Sampled frames from motion sequences of a humanoid (Unitree H1) performing four distinct actions in sim-to-sim</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 단일 비보행 샷만으로 새로운 휴머노이드 운동에 적응 가능하며, 대량 모션 데이터 수집의 필요성을 제거</li>
 <li><strong>경량 생성 방식</strong>: 신경망 훈련 없이 order-preserving optimal transport와 manifold 최적화만으로 합성 학습 샘플 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>견고성</strong>: Isaac Gym에서 MuJoCo로의 시뮬레이터 간 전이(sim-to-sim transfer) 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Given a sequence of walking motion pose skeletons and a target sequence comprising non-walking motions, we emp</em></p></div>
 <ul>
 <li>Base Model: 약 130개의 보행 모션 클립으로 보행 기반 정책 사전학습 (PPO)</li>
 <li>OPOT 거리 계산: Order-preserving optimal transport로 보행과 대상 시퀀스 간 Wasserstein 거리 계산하여 시간적 일관성 보존</li>

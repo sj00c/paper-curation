@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuhui Fu, Feiyang Xie, Chaoyi Xu, Jing Xiong, Haoqi Yuan, Zongqing Lu | <strong>날짜</strong>: 2025-10-13 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.11258" target="_blank">10.48550/arXiv.2510.11258</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of DemoHLM. For each task, we collect a single demonstration via VR teleoperation</em></p></div>
 <p>DemoHLM은 단일 시뮬레이션 데모로부터 합성 데이터를 생성하여 휴머노이드 로봇의 일반화된 로코-매니퓰레이션 정책을 학습하는 프레임워크이다. 계층적 제어 구조를 통해 저수준 전신 제어기와 고수준 조작 정책을 통합하여 실제 로봇에 시뮬레이션-현실 전이를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MimicGen의 객체 중심 행동 재생 개념을 휴머노이드에 확장하되, RL 기반 전신 제어기를 도입하여 균형 유지 문제를 해결하고, 단일 데모로부터 수백~수천 개의 합성 궤적을 생성한 후 behavior cloning으로 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Loco-manipulation Tasks. We evaluate DemoHLM on ten tasks in both simulation and the real</em></p></div>
 <ul>
 <li><strong>확장 가능한 데이터 생성</strong>: 단일 시뮬레이션 데모로부터 다양한 로봇 및 객체 초기 상태를 갖는 수백~수천 개의 성공 궤적을 자동 생성하는 파이프라인 개발</li>
 <li><strong>계층적 제어 구조</strong>: 저수준 RL 기반 전신 제어기(torque 명령)와 고수준 조작 정책(상위신체 관절 목표 및 토르소 동작 명령)의 효과적인 통합</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>데이터 효율성</strong>: 합성 데이터 양과 정책 성능 간의 양의 상관관계 입증, 다양한 behavior cloning 알고리즘에서 일관된 효과 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of DemoHLM. For each task, we collect a single demonstration via VR teleoperation</em></p></div>
 <ul>
 <li>단일 VR 텔레오퍼레이션 데모 수집: 휴머노이드 인간 포즈를 VR 장치로 캡처하여 시뮬레이션에서 수행</li>
 <li>데모 분할: 수집된 궤적을 로코모션, 사전-매니퓰레이션, 매니퓰레이션 세 단계로 구분</li>

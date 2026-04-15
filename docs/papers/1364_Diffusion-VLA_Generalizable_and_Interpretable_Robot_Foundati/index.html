@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junjie Wen, Minjie Zhu, Yichen Zhu, Zhibin Tang, Jinming Li, Zhongyi Zhou, Chengmeng Li, Xiaoyu Liu, Yaxin Peng, Chaomin Shen, Feifei Feng | <strong>날짜</strong>: 2024-12-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.03293" target="_blank">https://arxiv.org/abs/2412.03293</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Our proposed DiffusionVLA model unifies autoregressive and diffusion modeling to enable self-reasoning and rob</em></p></div>
 <p>DiffusionVLA는 autoregressive 모델의 추론 능력과 diffusion 모델의 견고한 행동 생성을 결합한 로봇 foundation 모델로, reasoning injection 모듈을 통해 자가 생성된 추론을 정책 학습에 직접 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Reasoning injection 모듈을 통해 pre-trained VLM의 autoregressive 추론 출력을 diffusion 기반 정책 헤드에 직접 임베딩함으로써 추론과 행동 생성을 긴밀히 연결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Experimental Results for Factory Sorting. We compared our DiVLA with Diffusion Policy, Octo, TinyVLA, and Open</em></p></div>
 <ul>
 <li><strong>시각적 일반화</strong>: 학습되지 않은 객체를 자가 생성 추론으로 인식하고 분류하며, 102개의 미학습 객체에 대해 zero-shot bin picking에서 63.7% 정확도 달성</li>
 <li><strong>해석 가능성</strong>: Reasoning injection 모듈이 정책의 의사결정 과정을 명시적으로 가시화하여 장애 분석 및 실패 원인 파악 지원</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>확장성</strong>: 2B에서 72B 파라미터로 스케일링 시 일반화 및 성능 향상 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Our proposed DiffusionVLA model unifies autoregressive and diffusion modeling to enable self-reasoning and rob</em></p></div>
 <ul>
 <li>Pre-trained Vision-Language Model을 기반으로 autoregressive 추론 능력 유지</li>
 <li>Diffusion model을 정책 헤드로 적용하여 noise-denoising 과정으로 행동 시퀀스 생성</li>

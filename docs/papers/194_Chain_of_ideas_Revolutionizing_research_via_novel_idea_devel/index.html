@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Long Li, Weiwen Xu, Jiayan Guo, Ruochen Zhao, Xingxuan Li 외 (DAMO Academy, Alibaba Group; Zhejiang University) | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2410.13185" target="_blank">arXiv:2410.13185</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: Vanilla RAG 기반 연구 에이전트와 Chain-of-Ideas 에이전트의 비교. CoI는 관련 논문들을 체계적 체인으로 조직하여 논리적 일관성 있는 아이디어 생성</em></p></div>
 <p>LLM 기반 에이전트가 과학 문헌을 체인 구조로 조직하여 연구 분야의 진화 과정을 명확히 반영함으로써, 인간 연구자 수준의 참신한 연구 아이디어 생성을 자동화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 연구자가 기초 논문부터 최신 연구까지 진화 과정을 추적하며 아이디어를 개발하는 방식에 영감을 받아, 체계적으로 선택된 논문들을 체인 구조로 조직하는 CoI 에이전트 제안.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: CoI 에이전트의 3단계 프레임워크 - CoI 구성, 아이디어 생성, 실험 설계</em></p></div>
 <ol>
 <li><strong>CoI 에이전트의 우수성</strong>: AI 분야 아이디어 생성 태스크에서 모든 자동화 베이스라인을 능가하며, 2위 방법보다 56 ELO 점수 우수. 인간 전문가 수준의 참신성(novelty) 달성.</li>
 <li><strong>비용 효율성</strong>: 1개의 후보 아이디어와 실험 설계를 생성하는 최소 비용이 $0.50으로 매우 경제적.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>핵심 발견</strong>: 아이디어의 참신성을 위해서는 관련 문헌의 '양'보다 명확한 발전 추세 분석이 더 중요함을 규명.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+</div>
 <p><strong>Stage 1: CoI 구성 (CoI Construction)</strong></p>
 <ul>
 <li>주어진 연구 주제에 대해 LLM이 K개의 서로 다른 관점의 쿼리 생성</li>

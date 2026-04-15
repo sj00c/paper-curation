@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhi Hou, Tianyi Zhang, Yuwen Xiong, Hengjun Pu, Chengyang Zhao, Ronglei Tong, Yu Qiao, Jifeng Dai, Yuntao Chen | <strong>날짜</strong>: 2024-10-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.15959v4" target="_blank">https://arxiv.org/abs/2410.15959v4</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Illustrations of different robot policy architectures. (a) is the common robot transformer architecture with d</em></p></div>
 <p>Diffusion Transformer Policy는 큰 멀티모달 diffusion transformer를 사용하여 연속 action sequence를 직접 denoising함으로써, 작은 action head 대신 transformer의 scaling 능력을 활용하는 generalist robot policy이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Diffusion Transformer Policy는 in-context conditional diffusion transformer 아키텍처를 통해 action chunks를 직접 denoising한다. 각 historical image observation patch에 조건화되어 visual detail을 보존하면서 transformer의 scalability를 유지하는 causal transformer 기반 구조를 사용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1.</em></p></div>
 <ul>
 <li><strong>다중 벤치마크 우수성</strong>: ManiSkill2, Libero, Calvin, SimplerEnv 등 시뮬레이션 벤치마크와 실제 Franka arm에서 OpenVLA, Octo 대비 일관되게 우수한 성능 달성</li>
 <li><strong>Calvin ABC→D 작업 SOTA</strong>: 단일 third-view camera만으로 completed tasks 평균을 5에서 3.6으로 개선</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Continuous action 처리</strong>: Discretization 없이 연속 7D end-effector action을 효과적으로 모델링</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Illustrations of different robot policy architectures. (a) is the common robot transformer architecture with d</em></p></div>
 <ul>
 <li>Frozen CLIP으로 언어 instruction tokenization</li>
 <li>DINOv2로 image patch feature 추출 후 end-to-end joint optimization</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Alexander Robey, Zachary Ravichandran, Vijay Kumar, Hamed Hassani, George J. Pappas | <strong>날짜</strong>: 2024-10-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.13691" target="_blank">https://arxiv.org/abs/2410.13691</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Jailbreaking LLM-controlled robots.</em></p></div>
 <p>LLM 기반 로봇 제어 시스템의 보안 취약점을 조사하기 위해 RoboPAIR 알고리즘을 제안하며, 이는 채팅봇 jailbreak와 달리 실제 물리적 해로운 행동을 유도하는 최초의 공격 방식이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RoboPAIR 알고리즘을 설계하여 white-box, gray-box, black-box 세 가지 협박 모델에서 LLM 제어 로봇에 대한 jailbreak 공격을 수행하고, 새로운 유해 로봇 행동 벤치마크 데이터셋을 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Jailbreaking elicits harmful robotic actions. When directly prompted, LLM-controlled</em></p></div>
 <ul>
 <li><strong>최초의 LLM 로봇 jailbreak 알고리즘</strong>: RoboPAIR을 제시하여 실제 물리적 해로운 행동을 유도할 수 있음을 입증</li>
 <li><strong>다양한 협박 시나리오에서의 성공</strong>: NVIDIA Dolphins, Clearpath Robotics Jackal UGV, Unitree Robotics Go2에서 100% 공격 성공률 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>포괄적인 벤치마크 구성</strong>: 폭탄 해체, 비밀 감시, 무기 식별, 인간 충돌 등 세 개의 유해 로봇 행동 데이터셋 개발</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Jailbreaking the Unitree Go2.</em></p></div>
 <ul>
 <li>PAIR 챗봇 jailbreak 알고리즘을 기반으로 하여 로봇 제어 도메인으로 확장</li>
 <li>White-box 설정에서는 NVIDIA Dolphins LLM에 대한 전체 접근권을 활용</li>

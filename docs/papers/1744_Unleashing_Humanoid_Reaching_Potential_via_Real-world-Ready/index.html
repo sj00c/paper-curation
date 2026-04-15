@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhikai Zhang, Chao Chen, Han Xue, Jilong Wang, Sikai Liang, Yun Liu, Zongzhang Zhang, He Wang, Li Yi | <strong>날짜</strong>: 2025-05-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.10918" target="_blank">https://arxiv.org/abs/2505.10918</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: (a) The humanoid showcases multiple real-world-ready primitive skills, including locomotion and body-pose-adjust</em></p></div>
 <p>휴머노이드 로봇의 대규모 도달 공간 확보를 위해 사전 학습된 원시 스킬들을 통합하는 Real-world-Ready Skill Space (R2S2)를 제안하며, CVAE 기반의 통일된 신경 스킬 표현을 통해 효율적이고 sim2real 전이 가능한 전신 제어를 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 원시 스킬 라이브러리 구축 → 이질적 스킬 통합(heterogeneous skill ensembling)을 통한 CVAE 기반 통일 표현 학습 → R2S2로부터 샘플링하는 고수준 계획기 훈련으로 목표 도달 태스크 실현.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: (a) The humanoid showcases multiple real-world-ready primitive skills, including locomotion and body-pose-adjust</em></p></div>
 <ul>
 <li><strong>R2S2 프레임워크 제안</strong>: 사전학습된 원시 스킬로부터 지식을 상속받으면서 통일된 신경 스킬 표현으로 확장하는 구조적 스킬 사전을 개발</li>
 <li><strong>최소 보상 엔지니어링</strong>: 기존 AMO, HOMIE와 달리 복잡한 보상 설계나 인간 시연 없이 RL 탐색 활용</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Zero-shot Sim2Real 전이</strong>: 광범위한 현실 세계 실험을 통해 강한 전이 가능성 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: We present R2S2, a structural skill prior that helps autonomous WBC task execution in an efficient and sim2real</em></p></div>
 <ul>
 <li>원시 스킬 라이브러리 구축: locomotion, body-pose-adjustment, end-effector 제어 등 개별 스킬을 실제 배포 가능하도록 별도 튜닝 및 sim2real 평가</li>
 <li>이질적 스킬 통합: heterogeneous skill training environment에서 Imitation Learning과 Reinforcement Learning을 동적으로 조합</li>

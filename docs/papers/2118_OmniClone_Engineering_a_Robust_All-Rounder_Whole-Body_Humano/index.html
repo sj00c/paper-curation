@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yixuan Li, Le Ma, Yutang Lin, Yushi Du, Mengya Liu, Kaizhe Hu, Jieming Cui, Yixin Zhu, Wei Liang, Baoxiong Jia, Siyuan Huang | <strong>날짜</strong>: 2026-03-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.14327" target="_blank">https://arxiv.org/abs/2603.14327</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: OmniClone achieves well-balanced, high-fidelity whole-body tracking across all MPJPE dimensions on OmniBench whi</em></p></div>
 <p>OmniClone은 단일 소비자 GPU에서 전신 휴머노이드 텔레오퍼레이션을 실현하는 시스템으로, OmniBench 진단 벤치마크를 통해 기존 시스템의 동작별 성능 격차를 노출하고 이를 바탕으로 최적화된 정책과 시스템 기술을 통합하여 MPJPE를 66% 이상 감소시켰다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: OmniBench라는 진단 벤치마크를 개발하여 18개의 계층화된 동작 범주별로 성능을 평가하고, 이러한 진단 정보를 바탕으로 데이터 균형 최적화와 제어원 무관(control-source-agnostic) 단일 통합 정책을 설계하며, subject-agnostic retargeting과 robust communication을 통해 실세계 배포의 불확실성을 처리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: OmniClone achieves well-balanced, high-fidelity whole-body tracking across all MPJPE dimensions on OmniBench whi</em></p></div>
 <ul>
 <li><strong>OmniBench 진단 벤치마크</strong>: 동작 범주와 난이도별로 계층화된 첫 포괄적 평가 스위트를 제안하여 기존 시스템의 좁은 전문성을 노출하고 실질적 개선 방향을 제시</li>
 <li><strong>높은 성능 개선</strong>: 기존 SOTA 기준(GMT, Twist2)과 비교하여 모든 MPJPE 차원에서 66% 이상의 오차 감소를 달성</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>자율 학습 검증</strong>: OmniClone 수집 데이터로 학습한 VLA 정책이 Pick-and-Place 85.71%, Squat to Pick-and-Place 80.00%의 성공률 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Overview of the OmniClone framework, comprising model training (top) and system infrastructure (bottom). Top: a </em></p></div>
 <ul>
 <li><strong>OmniBench 설계</strong>: 18개 계층화 범주(Loco High/Med/Low, Manip High/Med/Low, Squat/Walk/Run/Jump 각 3단계)로 미학습 모션에 대해 평가</li>
 <li><strong>데이터 레시피 최적화</strong>: 진단 벤치마크 결과를 바탕으로 동적 동작과 안정적 조작 간의 데이터 균형을 조정하여 학습 데이터 구성 개선</li>

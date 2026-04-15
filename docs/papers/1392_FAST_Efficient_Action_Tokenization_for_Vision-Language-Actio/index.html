@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Karl Pertsch, Kyle Stachowicz, Brian Ichter, Danny Driess, Suraj Nair, Quan Vuong, Oier Mees, Chelsea Finn, Sergey Levine | <strong>날짜</strong>: 2025-01-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2501.09747" target="_blank">https://arxiv.org/abs/2501.09747</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Left: FAST tokenization enables training of autoregres-</em></p></div>
 <p>Robot action tokenization을 위해 discrete cosine transform (DCT) 기반의 FAST 방식을 제안하여, 고주파 고정밀 로봇 제어 작업에서 autoregressive VLA를 효과적으로 학습할 수 있게 함.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Action sequence를 DCT 기반 time-series compression을 통해 tokenize하여 연속 신호 간의 상관관계를 줄임. 1M 개의 실제 로봇 trajectory로 학습한 범용 tokenizer FAST+를 제공함.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We propose FAST, a simple yet effective approach</em></p></div>
 <ul>
 <li><strong>고주파 제어 작업 해결</strong>: FAST tokenization으로 표준 binning 방식이 완전히 실패하는 고주파(20Hz 이상) dexterous 작업에서 autoregressive VLA 학습 성공</li>
 <li><strong>DROID 데이터셋 적용</strong>: 처음으로 대규모 multitask 로봇 조작 데이터셋 DROID에서 효율적인 VLA 학습 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>대규모 학습</strong>: 10k 시간의 로봇 데이터로 scaling 가능함을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Overview of the FAST action tokenization pipeline. Given a normalized chunk of actions, we apply discrete cosine</em></p></div>
 <ul>
 <li>Action sequence에서 시간 상관관계를 제거하기 위해 discrete cosine transform (DCT)를 적용하여 frequency domain으로 변환</li>
 <li>DCT 계수를 quantization하여 action sequence를 discrete token으로 변환</li>

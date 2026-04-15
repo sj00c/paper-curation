@@ -75,12 +75,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 과도한 수정을 별도의 텍스트 재작성 작업으로 분리하여, 원문과 GEC 시스템 출력만을 입력받아 두 텍스트의 적절한 조합을 생성하는 단일 경량 모델 개발</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: 과도한 수정 문제의 예시로, 원문에서 올바른 부분(파란색)까지 변경하는 것을 보여주고, LM-Combiner가 이를 필터링하는 과정 표시">
+</div>
 <ol>
 <li><strong>정확도 대폭 개선</strong>: FCGEC 데이터셋에서 기준 모델 대비 정확도(Precision) +18.2점 향상, F0.5 +5.8점 개선으로 SOTA 수준 달성</li>
 <li><strong>재현율 유지</strong>: 높은 정확도 개선에도 불구하고 재현율(Recall)을 일정하게 유지하여 실용성 확보</li>
 <li><strong>경량성과 효율성</strong>: 소규모 파라미터와 제한된 훈련 데이터(천 단위)로도 우수한 성능 달성, ChatGPT 같은 블랙박스 시스템의 과도한 수정 완화에 활용 가능</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2: 수정-재작성 프레임워크의 플로우차트로, 훈련 단계에서 K-fold 교차 추론으로 과도 수정 문장 생성 후 학습, 추론 단계에서 원문과 GEC 출력만으로 재작성">
+</div>
 <h3>데이터 레벨</h3>
 <ul>
 <li><strong>K-fold 교차 추론(K-fold Cross Inference)</strong>: 훈련 집합을 K개로 분할하여 각 분할마다 나머지 데이터로 모델을 학습한 후 해당 분할에 추론 수행. 이를 통해 자연스러운 과도 수정 문장 구성</li>

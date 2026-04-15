@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yan Liu, Tao Yu, Haolin Song, Hongbo Zhu, Nianzong Hu, Yuzhi Hao, Xiuyong Yao, Xizhe Zang, Hua Chen, Jie Zhao | <strong>날짜</strong>: 2026-01-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.10365" target="_blank">https://arxiv.org/abs/2601.10365</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>FastStair는 model-based foothold planner와 model-free RL을 통합하여 humanoid robot의 고속 계단 등반을 실현하는 다단계 학습 프레임워크이다. DCM 기반 planner로 탐색을 안내하고 speed-specialized experts와 LoRA를 통해 보수성을 완화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Parallel DCM 기반 foothold planner를 RL 루프에 통합하여 안전 영역으로 탐색을 편향시키고, 속도별 experts 학습과 LoRA 기반 통합으로 보수성을 완화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>고속 계단 등반 달성</strong>: 명령된 속도 1.65 m/s까지 안정적인 계단 등반 실현 및 33단계 나선형 계단(계단 높이 17 cm)을 12초에 완주</li>
 <li><strong>병렬 최적화 고속화</strong>: Discrete search 기반 reformulation으로 RL 훈련 속도를 약 25배 가속화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 배포</strong>: Oli humanoid robot에 배포하여 Canton Tower Robot Run Up Competition 우승</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>DCM(Divergent Component of Motion) 기반 foothold planner를 병렬 discrete search로 reformulate하여 GPU 병렬 계산에 최적화</li>
 <li>Pre-training 단계에서 planner가 생성한 feasible footholds를 foothold-tracking reward로 사용하여 안전한 기본 정책 학습</li>

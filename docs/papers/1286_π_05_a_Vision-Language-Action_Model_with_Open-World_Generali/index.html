@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Physical Intelligence, Kevin Black, Noah Brown, James Darpinian, Karan Dhabalia, Danny Driess, Adnan Esmail, Michael Equi, Chelsea Finn, Niccolo Fusai, Manuel Y. Galliker, Dibya Ghosh, Lachy Groom, Karol Hausman, Brian Ichter, Szymon Jakubczak, Tim Jones, Liyiming Ke, Devin LeBlanc, Sergey Levine, Adrian Li-Bell, Mohith Mothukuri, Suraj Nair, Karl Pertsch, Allen Z. Ren, Lucy Xiaoyang Shi, Laura Smith, Jost Tobias Springenberg, Kyle Stachowicz, James Tanner, Quan Vuong, Homer Walke, Anna Walling, Haohuan Wang, Lili Yu, Ury Zhilinsky | <strong>날짜</strong>: 2025-04-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.16054" target="_blank">https://arxiv.org/abs/2504.16054</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The π0.5 model transfers knowledge from a heterogeneous range of data sources, including other robots, high-leve</em></p></div>
 <p>π0.5는 heterogeneous한 다중 데이터 소스(다양한 로봇, 웹 데이터, 의미론적 예측)에서 co-training하여 실제 가정에서 장시간의 복잡한 조작 작업을 수행할 수 있는 Vision-Language-Action 모델이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: π0.5는 2단계 학습 방식을 사용한다: (1) 웹 데이터, 다양한 로봇 데이터, 의미론적 예측을 포함한 heterogeneous 데이터로 사전학습, (2) 고수준 의미론적 부작업 예측과 저수준 로봇 액션을 함께 fine-tuning하는 계층적 구조로 설계되었다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: π0.5 cleaning a new kitchen. The robot is tasked with cleaning a kitchen in a home that was not in the training </em></p></div>
 <ul>
 <li><strong>실제 가정에서의 장시간 작업 수행</strong>: 훈련 데이터에 없는 새로운 가정에서 10-15분 길이의 주방·침실 청소 같은 복합 조작 작업을 수행 가능</li>
 <li><strong>Heterogeneous 데이터 활용의 효과 증명</strong>: 전체 훈련 데이터의 97.6%가 모바일 조작 데이터가 아님에도 불구하고 효과적 학습을 달성</li>

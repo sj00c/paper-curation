@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Huayi Wang, Zirui Wang, Junli Ren, Qingwei Ben, Tao Huang, Weinan Zhang, Jiangmiao Pang | <strong>날짜</strong>: 2025-02-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.10363" target="_blank">https://arxiv.org/abs/2502.10363</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our proposed framework, BEAMDOJO, enables agile and robust humanoid locomotion across challenging sparse foothol</em></p></div>
 <p>BeamDojo는 샘플링 기반의 다각형 발 보상 함수와 이중 critic 아키텍처를 결합한 2단계 강화학습 프레임워크로, 휴머노이드 로봇이 디딤돌과 같은 드문 디딤점을 가진 복잡한 지형에서 민첩하고 정밀한 보행을 학습하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: BeamDojo는 2단계 접근법으로, 첫 번째 단계에서 평탄한 지형에서 과제 지형 정보를 제공하며 훈련하고, 두 번째 단계에서 실제 과제 지형에서 정책을 미세 조정하며, LiDAR 기반 고도 맵을 통해 실세계 배포를 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our proposed framework, BEAMDOJO, enables agile and robust humanoid locomotion across challenging sparse foothol</em></p></div>
 <ul>
 <li><strong>샘플링 기반 다각형 발 보상</strong>: 다각형 발의 안전 영역과의 겹침을 평가하는 새로운 보상 함수 설계로 기존 점 발 기반 방법의 한계 극복</li>
 <li><strong>이중 critic 아키텍처</strong>: 밀집 보행 보상과 드문 디딤점 보상을 별도로 학습하여 학습 과정 안정화</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>강건한 성능</strong>: 외부 교란과 추가 하중 하에서도 높은 성공률 유지 및 미학습 지형에 대한 영점샷 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Overview of BEAMDOJO. (a) Training in Simulation: In stage 1, proprioceptive and perceptive information, locomot</em></p></div>
 <ul>
 <li>발 아래에서 n개 지점을 샘플링하고 안전 영역과의 접촉 여부로 다각형 발의 배치 평가</li>
 <li>PPO 기반 강화학습에서 locomotion reward와 foothold reward를 이중 critic으로 분리 학습</li>

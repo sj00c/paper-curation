@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Cheng Chi, Zhenjia Xu, Siyuan Feng, Eric Cousineau, Yilun Du, Benjamin Burchfiel, Russ Tedrake, Shuran Song | <strong>날짜</strong>: 2023-03-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.04137" target="_blank">https://arxiv.org/abs/2303.04137</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Policy Representations. a) Explicit policy with different types of action representations. b) Implicit policy </em></p></div>
 <p>Robot 조작 작업을 위한 visuomotor policy를 conditional denoising diffusion process로 표현하는 Diffusion Policy를 제안하며, 4개 벤치마크의 15개 작업에서 평균 46.9% 성능 향상을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Diffusion Policy는 robot action을 DDPM의 denoising process로 모델링하여 noise prediction network가 action-score gradient를 학습하고, stochastic Langevin dynamics를 통해 iterative refinement를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Diffusion Policy Overview a) General formulation. At time step t, the policy takes the latest To steps of obse</em></p></div>
 <ul>
 <li><strong>Multimodal action distribution 표현</strong>: Score function의 gradient 학습을 통해 arbitrary normalizable distribution을 정확하게 모델링할 수 있다.</li>
 <li><strong>High-dimensional action space 확장성</strong>: 단일 action이 아닌 action sequence 예측이 가능하여 temporal consistency를 개선한다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>기술적 기여</strong>: Receding horizon control, visual conditioning (FiLM), transformer-based architecture를 통해 실제 robot 적용을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Diffusion Policy Overview a) General formulation. At time step t, the policy takes the latest To steps of obse</em></p></div>
 <ul>
 <li>Denoising Diffusion Probabilistic Model (DDPM)을 robot action space에 적용하여 xK ~ N(0,I)에서 시작하는 K iteration의 denoising process로 action sequence를 생성</li>
 <li>Noise schedule (α, γ, σ)을 iteration step k의 함수로 정의하여 gradient descent의 learning rate scheduling으로 해석</li>

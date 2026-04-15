@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zihan Zhao, Da Ma, Lu Chen, Liangtai Sun, Zihao Li | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.1016/j.xcrp.2025.102523" target="_blank">10.1016/j.xcrp.2025.102523</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>화학 분야 LLM 개발을 위한 일반 영역 LLM에 화학 도메인 지식을 통합하는 개념도</em></p></div>
 <p>화학 분야의 다양한 작업을 처리할 수 있는 대규모 언어 모델 ChemDFM을 개발했으며, GPT-4를 능가하는 성능을 달성하면서도 화학 분야의 자유로운 대화형 AI 조수 역할을 수행할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLaMA-13B 기반으로 두 단계 훈련을 통해 화학 지식을 통합한다: (1) 도메인 사전 훈련(Domain Pre-training)으로 화학 논문과 교과서에서 지식을 획득하고, (2) 명령어 튜닝(Instruction Tuning)으로 화학 언어 패턴과 분자 표기법에 익숙하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>ChemDFM의 두 단계 훈련 절차와 지원하는 다양한 작업</em></p></div>
 <ol>
 <li><strong>포괄적 화학 능력</strong>: 분자 인식, 분자 설계, 분자 성질 예측, 반응 분석, 수율 예측, 역합성 등 다양한 화학 작업을 처리할 수 있으며, 미지의 상황에서의 추론과 오류 수정도 가능하다.</li>
 <li><strong>우수한 성능</strong>: ChemDFM-13B가 대부분의 오픈소스 LLM을 능가하며, 모델 크기의 현저한 차이에도 불구하고 많은 화학 작업에서 GPT-4의 성능을 초과한다.</li>
 <li><strong>실제 시나리오 적응성</strong>: 최신 화학 논문 기반의 미지의 상황(unseen scenarios)에서도 더 정확하고 관련성 높은 답변을 생성하여 데이터 누수를 방지하면서도 실무 적용성을 입증한다.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>명령어 튜닝에 사용된 화학 반응 완성 작업의 예시</em></p></div>
 <ul>
 <li><strong>도메인 사전 훈련 데이터</strong>:
 <ul>

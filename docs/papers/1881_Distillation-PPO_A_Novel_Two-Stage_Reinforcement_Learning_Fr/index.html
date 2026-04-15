@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiang Zhang, Gang Han, Jingkai Sun, Wen Zhao, Chenghao Sun, Jiahang Cao, Jiaxu Wang, Yijie Guo, Renjing Xu | <strong>날짜</strong>: 2025-03-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.08299" target="_blank">https://arxiv.org/abs/2503.08299</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The training framework of Distillation-PPO adopts a symmetric structure for both the teacher and student network</em></p></div>
 <p>인문형 로봇의 지각 기반 보행을 위해 교사 정책과 강화학습을 결합한 2단계 프레임워크 Distillation-PPO (D-PPO)를 제안하며, 시뮬레이션에서의 안정성과 실제 로봇의 강건성을 동시에 확보한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: D-PPO는 1단계에서 완전 관측 가능 MDP 환경에서 교사 정책을 훈련하고, 2단계에서 부분 관측 가능 POMDP 환경에서 교사의 감독 신호와 PPO 기반 강화학습 보상을 결합하여 학생 정책을 훈련한다. 이를 통해 교사의 정규화 효과를 유지하면서도 학생이 독립적으로 학습할 수 있게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We demonstrate the walking capabilities of the humanoid robot Tien Kung on</em></p></div>
 <ul>
 <li><strong>통합 학습 프레임워크</strong>: 교사 정책의 감독 신호(정규화 역할)와 강화학습 보상(상한선 향상)을 결합하여 2단계 방식의 한계를 극복</li>
 <li><strong>시뮬레이션 성능</strong>: 시뮬레이션 환경에서 기존 방식 대비 높은 훈련 효율성과 수렴 안정성 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장 가능성</strong>: 인문형 로봇뿐만 아니라 다리 로봇 전반으로의 확장 가능성 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The training framework of Distillation-PPO adopts a symmetric structure for both the teacher and student network</em></p></div>
 <ul>
 <li>대칭적 구조의 교사-학생 네트워크 설계로 가중치 상속을 통한 효율적 초기화</li>
 <li>역사 정보(History)를 활용하여 부분 관측 상태에서의 추정 개선</li>

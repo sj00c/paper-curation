@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hanzhen Wang, Jiaming Xu, Yushun Xiang, Jiayi Pan, Yongkang Zhou, Yong-Lu Li, Guohao Dai | <strong>날짜</strong>: 2025-09-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.05614" target="_blank">https://arxiv.org/abs/2509.05614</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of SpecPrune-VLA. We prune the visual tokens with global and local information with a lightweight act</em></p></div>
 <p>SpecPrune-VLA는 Vision-Language-Action 모델의 LLM 추론을 가속화하기 위해 시간-공간 일관성을 활용한 액션-인식 자체-추측 토큰 프루닝 기법을 제안한다. 두 단계 프루닝(액션 레벨 정적 프루닝과 레이어 레벨 동적 프루닝)과 액션-인식 컨트롤러를 통해 최대 1.70배 속도 향상을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 연속된 액션 생성 단계 간 입력 이미지의 높은 유사성(spatial-temporal consistency)을 활용하여 전역 정보와 로컬 정보를 결합한 토큰 선택 전략을 제안한다. 계층별 주의 패턴 분석을 통해 어떤 정보가 실제로 중요한지 파악하고, 이를 기반으로 두 단계 프루닝과 액션-인식 컨트롤러를 설계한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Insight 1: (a) Layers of different depth focus on different information. (b)(c)(d) In pick and place task, ran</em></p></div>
 <ul>
 <li><strong>액션 레벨 정적 프루닝</strong>: 이전 생성 단계의 전역 주의 정보를 재사용하면서 프레임 비교와 자체-추측 토큰 선택으로 강화하여 LLM 포워드 초기에 60-70%의 시각 토큰 감소</li>
 <li><strong>레이어 레벨 동적 프루닝</strong>: 각 깊이에서 토큰 중요도를 재평가하여 문맥 이해가 성숙함에 따라 계산을 적응적으로 정제하고 추가 20% 계산 감소</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 달성</strong>: LIBERO 시뮬레이션에서 OpenVLA-OFT 대비 최대 1.57배, π0 대비 1.31배 속도 향상, 실제 로봇 작업에서 1.70배 속도 향상, 무시할 수 있는 수준의 성공률 손실</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of SpecPrune-VLA. We prune the visual tokens with global and local information with a lightweight act</em></p></div>
 <ul>
 <li>계층별 주의 패턴 분석: 얕은 층은 배경과 관련 없는 영역, 중간 층은 의미있는 객체, 깊은 층은 액션-중심 토큰에 집중하는 패턴 발견</li>
 <li>공간-시간 일관성 활용: 연속된 액션 생성 단계 간 전역 중요 토큰 집합의 높은 유사성(recall score) 확인</li>

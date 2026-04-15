@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chen Tessler, Yunrong Guo, Ofir Nabati, Gal Chechik, Xue Bin Peng | <strong>날짜</strong>: 2024-09-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.14393" target="_blank">https://arxiv.org/abs/2409.14393</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We present MaskedMimic, a versatile control model that enables physically simulated characters to generate diver</em></p></div>
 <p>MaskedMimic은 motion inpainting 문제로 physics-based character control을 재정의하여, 마스킹된 keyframe, text, object 등 다양한 partial 조건으로부터 통합된 단일 모델이 전신 물리 기반 애니메이션을 생성할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion capture 데이터를 활용해 랜덤하게 마스킹된 motion sequence를 입력받아 원본 unmasked motion을 예측하도록 단일 unified controller를 학습하는 motion inpainting 프레임워크를 제안하고, goal-engineering이라는 prompt-engineering 유사 기법으로 다양한 control constraints를 정의한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We present MaskedMimic, a versatile control model that enables physically simulated characters to generate diver</em></p></div>
 <ul>
 <li><strong>Unified multi-modal control framework</strong>: 단일 MaskedMimic 모델이 full-body tracking, VR tracking, object interaction, terrain traversal, text-to-motion, joystick steering 등 8가지 이상의 서로 다른 control modality를 지원</li>
 <li><strong>Generalization to novel scenarios</strong>: 학습 중 보지 못한 novel terrain, novel objects, text-style combinations에 대해 일반화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Cross-task positive transfer</strong>: 통합 학습으로 인해 task-specific 방법들보다 VR tracking 등에서 더 우수한 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. The MaskedMimic framework: The first phase produces a fully-</em></p></div>
 <ul>
 <li>Motion capture dataset에서 kinematic trajectories, text descriptions, scene information 등 multi-modal 정보 활용</li>
 <li>Training phase: random masking을 적용한 motion sequences 입력 → masked condition에서 original unmasked motion 예측하도록 학습</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yufei Xue, YunFeng Lin, Wentao Dong, Yang Tang, Jingbo Wang, Jiangmiao Pang, Ming Zhou, Minghuan Liu, Weinan Zhang | <strong>날짜</strong>: 2026-02-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.05791" target="_blank">https://arxiv.org/abs/2602.05791</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Training framework of XHugWBC. (a) Data generation: physics-consistent morphological randomization produces di</em></p></div>
 <p>XHugWBC는 물리적으로 일관성 있는 형태학적 랜덤화, 의미론적으로 정렬된 관찰-행동 공간, 그래프 기반 정책 아키텍처를 통해 단일 정책으로 다양한 인간형 로봇에 대한 제로샷 제너럴화를 실현하는 교차-신체 전신 제어 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: XHugWBC는 (1) 물리 법칙 기반 형태 파라미터 리파라미터화를 통한 일관성 있는 랜덤화, (2) 전역 관절 공간으로의 상태-행동 정규화, (3) 로봇 토폴로지 기반 GCN/Transformer 기반 정책 아키텍처를 결합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Zero-shot generalization and real-world humanoid capabilities enabled by XHugWBC’s generalist policy. First ro</em></p></div>
 <ul>
 <li><strong>제로샷 제너럴화</strong>: 단일 정책이 다양한 운동학, 역학, 형태를 가진 7개 실제 인간형 로봇에서 강건하게 작동</li>
 <li><strong>시뮬레이션 확장성</strong>: 12개 시뮬레이션 인간형에서 specialist 성능의 약 85% 달성, 파인튜닝 후 specialist 초과 10%</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>통합 표현</strong>: 운동학적 이질성을 극복하는 의미론적 상태-행동 정렬 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Training framework of XHugWBC. (a) Data generation: physics-consistent morphological randomization produces di</em></p></div>
 <ul>
 <li>Template URDF에서 형태 파라미터 κ = [κ_link, κ_joint]로 인간형 로봇의 공유 구조 캡처</li>
 <li>질량, 질량 중심, 회전 관성, 관절 위치, 방향, 동작축, 운동 제약을 포함하는 10+13 차원 파라미터 공간 정의</li>

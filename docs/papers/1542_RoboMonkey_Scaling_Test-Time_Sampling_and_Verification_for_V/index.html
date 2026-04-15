@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jacky Kwok, Christopher Agia, Rohan Sinha, Matt Foutter, Shulu Li, Ion Stoica, Azalia Mirhoseini, Marco Pavone | <strong>날짜</strong>: 2025-06-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.17811" target="_blank">https://arxiv.org/abs/2506.17811</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Inference-Time Scaling Law: We observe that action error consistently decreases as we</em></p></div>
 <p>Vision-Language-Action (VLA) 모델의 테스트 시간 성능을 향상시키기 위해 샘플링과 검증을 통한 스케일링 방법을 제시하며, action error가 생성 샘플 수에 따라 지수 거듭제곱 법칙을 따른다는 inference-time scaling law를 발견했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLA에서 여러 action을 샘플링한 후 Gaussian perturbation과 majority voting으로 action proposal distribution을 구성하고, VLM 기반 verifier로 최적 action을 선택하는 RoboMonkey 프레임워크를 제안했다. 합성 데이터 생성 파이프라인으로 verifier를 학습시켰다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Scaling test-time compute significantly improves the precision and robustness of generalist robot</em></p></div>
 <ul>
 <li><strong>Inference-time scaling law 발견</strong>: action error와 샘플 수 간의 지수 거듭제곱 법칙을 CogACT, Octo, OpenVLA, SpatialVLA 등 다양한 VLA에서 실증했다.</li>
 <li><strong>RoboMonkey 프레임워크</strong>: 기존 VLA에 test-time scaling을 적용하여 out-of-distribution 작업에서 25% 절대 성능 향상, in-distribution 작업에서 9% 성능 향상을 달성했다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>적응 학습 효과</strong>: 새로운 로봇 셋업 적응 시 VLA와 action verifier를 함께 fine-tuning하면 VLA만 fine-tuning할 때보다 7% 추가 성능 향상을 얻을 수 있음을 보였다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Stage 1: Training the Action Verifier. Given an imitation learning dataset, we sample N</em></p></div>
 <ul>
 <li>Bridge V2 Dataset에서 1,000개의 (s, a*, I) 튜플을 샘플링하여 10,000개 action 생성</li>
 <li>Random sampling, policy sampling, Gaussian perturbation 세 가지 샘플링 방식 비교 평가</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Simar Kareer, Dhruv Patel, Ryan Punamiya, Pranay Mathur, Shuo Cheng, Chen Wang, Judy Hoffman, Danfei Xu | <strong>날짜</strong>: 2024-10-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.24221" target="_blank">https://arxiv.org/abs/2410.24221</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: EgoMimic unlocks human embodiment data—egocentric videos paired with 3D hand tracks—as a new scalable data sourc</em></p></div>
 <p>EgoMimic은 Project Aria 안경을 통해 수집한 인간의 일인칭 시점 비디오와 3D 손 추적 데이터를 로봇 조작 학습에 활용하는 전체 스택 프레임워크로, 인간과 로봇 데이터를 동등한 embodied demonstration으로 취급하여 통합 정책을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: EgoMimic은 Project Aria 안경으로 인간 데이터를 수집하고, kinematic 갭을 최소화하는 저비용 이족 로봇을 설계하며, cross-domain data alignment 기법과 shared vision encoder를 통해 인간과 로봇 데이터를 통합 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: We evaluate EgoMimic across three real world, long-horizon manipulation tasks. See Sec. IV-A for description.</em></p></div>
 <ul>
 <li><strong>성능 향상</strong>: 연속 object-in-bowl, 옷 접기, 식료품 포장 등 장기간 조작 작업에서 로봇만 사용 대비 34-228% 상대 성능 개선</li>
 <li><strong>일반화 능력</strong>: 인간 데이터에서만 나타난 새로운 객체와 장면으로 일반화 가능</li>
 <li><strong>데이터 효율성</strong>: 추가 1시간의 hand 데이터가 1시간의 로봇 데이터보다 현저히 더 가치 있음을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Our human data system uses Aria glasses to capture Egocentric RGB and uses its side SLAM cameras to localize the</em></p></div>
 <ul>
 <li>Project Aria 안경을 이용하여 일인칙 RGB 영상, 3D 손 추적, 장치 SLAM을 동시 수집</li>
 <li>Viper X follower arms와 WidowX leader arms로 구성된 이족 로봇 설계, 로봇의 메인 센서로도 Aria 안경 사용하여 camera-to-camera 갭 최소화</li>

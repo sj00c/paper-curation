@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 초기 가설 생성 → (2) 훈련 예제에 대한 반복적 평가 및 보상 업데이트 → (3) 잘못 분류된 예제들을 수집하는 "틀린 예제 은행(wrong example bank)" 구축 → (4) 은행의 예제들로부터 새로운 가설 생성 및 통합 → (5) 여러 추론 전략을 통한 해석 가능한 예측</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1 설명: HypoGeniC의 update 단계에서 상위 k개 가설을 새 훈련 예제에 평가하고, 보상을 예측 정확성에 따라 업데이트한다. 잘못된 예제가 임계값을 초과하면 틀린 예제 은행에 추가되고, 은행이 최대 크기에 도달하면 이를 기반으로 새 가설을 생성한다.">
+</div>
 <ol>
 <li><strong>분류 성능 향상</strong>: 합성 데이터에서 31.7%, 실제 데이터에서 13.9%, 3.3%, 24.9% 정확도 개선 (few-shot 대비). DECEPTIVE REVIEWS와 TWEET POPULARITY 작업에서 RoBERTa, Llama-2-7B 등 감독학습(supervised learning) 방식을 12.1%, 11.6% 초과 달성</li>
 <li><strong>모델 간 교차 호환성</strong>: GPT-3.5-turbo로 생성한 가설을 Mixtral 등 다른 LLM으로도 효과적으로 활용 가능하며, 분포 외(out-of-distribution) 데이터셋에서도 미세조정된 RoBERTa를 능가</li>

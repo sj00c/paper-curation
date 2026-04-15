@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jin Wang, Weijie Wang, Boyuan Deng, Heng Zhang, Rui Dai, Nikos Tsagarakis | <strong>날짜</strong>: 2025-08-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.04931" target="_blank">https://arxiv.org/abs/2508.04931</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: INTENTION enables the humanoid robot to learn, plan,</em></p></div>
 <p>INTENTION은 Vision-Language Models 기반의 Intuitive Perceptor와 Memory Graph를 통합하여 휴머노이드 로봇이 상호작용 경험으로부터 직관적 물리 이해를 학습하고 새로운 조작 작업에 자율적으로 적응하는 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM 기반 Intuitive Perceptor로 시각 장면에서 공간-기하학적 정보와 의미론적 속성을 추출하고, 상호작용 이력을 저장하는 Memory Graph (MemoGraph) 구조를 구성하여, 새로운 작업 시나리오에서 과거 경험과의 유사성 기반 행동 선택을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the Framework. (a) Intuitive Perceptor takes the RGB image and human instruction as input, extractin</em></p></div>
 <ul>
 <li><strong>VLM 기반 직관적 지각</strong>: Intuitive Perceptor가 작업 시나리오에서 공간 기하학과 의미론적 관찰을 추출하여 그래프 구조 표현으로 변환</li>
 <li><strong>Memory Graph 구축</strong>: 인간-로봇 상호작용 및 환경 상호작용으로부터 의미론적 정보를 누적하는 위상 그래프 구조로 어포던스 기반 행동 선택 지원</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 시스템 검증</strong>: 다양한 작업 시나리오에서 로봇의 자율적 적응 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Graph Construction and Matching</em></p></div>
 <ul>
 <li>Vision-Language Model을 통해 RGB 이미지로부터 3D 특징, 객체 관계, 의미론적 속성을 추출</li>
 <li>그래프 구조화된 표현(semantic state attributes + geometric relationships)으로 장면 정보 인코딩</li>

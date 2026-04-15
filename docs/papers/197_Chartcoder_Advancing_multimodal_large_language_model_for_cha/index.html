@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xuanle Zhao, Xianzhen Luo, Qi Shi, Chi Chen, Shuo Wang, Zhiyuan Liu, Maosong Sun | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2501.06598" target="_blank">arXiv:2501.06598v3</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 기존 MLLM과 ChartCoder의 성능 비교. 차트-코드 생성 작업에서 기존 오픈소스 MLLM은 차트 타입 불일치와 크기 오류를 범하지만, ChartCoder는 정확한 코드를 생성한다.</em></p></div>
 <p>본 논문은 차트 이미지를 코드로 변환하는 전문화된 멀티모달 대형언어모델(MLLM)인 ChartCoder를 제안하며, 이를 위해 대규모 차트-코드 데이터셋(Chart2Code-160k)과 단계적 생각(Snippet-of-Thought, SoT) 방법론을 소개한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) Code LLM을 언어 백본으로 활용하여 코드 생성에 최적화된 MLLM 구축, (2) 대규모 다양한 차트-코드 데이터셋 자동 생성, (3) 핵심 정보를 강조하는 단계적 생성 방법론 도입</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Chart2Code 데이터셋 생성 과정과 ChartCoder의 2단계 학습 프로세스. 단계1은 차트/이미지-텍스트 정렬, 단계2는 차트-코드 지시사항 튜닝.</em></p></div>
 <ol>
 <li><strong>모델 성능</strong>: 7B 파라미터만 사용하면서 기존 모든 오픈소스 MLLM을 차트-코드 벤치마크에서 능가하는 우수한 차트 복원 능력과 코드 실행 가능성 달성</li>
 <li><strong>데이터셋 구축</strong>: 27가지 차트 타입에 걸친 160,000개의 고품질 차트-코드 쌍으로 구성된 첫 대규모 차트-코드 데이터셋(Chart2Code-160k) 제공</li>
 <li><strong>방법론 효과성</strong>: Snippet-of-Thought(SoT) 방법으로 모델의 추론 능력과 세부 정보 포착 능력 향상 입증</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>ChartCoder의 2단계 학습 구조와 데이터셋 생성 파이프라인</em></p></div>
 <h3>Dataset 생성 (Chart2Code-160k)</h3>
 <ul>
 <li><strong>Step 1</strong>: LLM을 이용하여 특정 도메인 내 키워드 생성 및 관련 시뮬레이션 데이터 생성</li>

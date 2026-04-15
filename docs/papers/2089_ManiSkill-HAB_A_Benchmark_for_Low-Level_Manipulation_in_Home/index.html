@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Arth Shukla, Stone Tao, Hao Su | <strong>날짜</strong>: 2024-12-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.13211" target="_blank">https://arxiv.org/abs/2412.13211</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Interact benchmark comparing MS-HAB (ours) with Habitat. Each data point is annotated</em></p></div>
 <p>MS-HAB는 GPU 가속화된 Home Assistant Benchmark의 구현으로, 현실적인 저수준 조작과 빠른 시뮬레이션 속도(4300 SPS)를 지원하며 대규모 데이터셋 생성을 위한 자동화된 궤적 필터링 시스템을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ManiSkill3 기반의 GPU 가속화 구현으로 HAB를 재구성하고, RL 및 IL 기반선을 훈련한 후, 시뮬레이터의 특권 정보를 활용한 자동화된 사건 라벨링 및 궤적 분류 시스템을 개발하여 제어된 데이터 생성을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4 shows the RL and IL policies’ progressive completion rate. We provide an optimistic upper</em></p></div>
 <ul>
 <li><strong>GPU 가속화 시뮬레이션</strong>: Habitat 2.0 대비 3배 이상 빠른 4300 SPS 달성하면서 현실적인 저수준 제어 지원</li>
 <li><strong>광범위한 기반선</strong>: 150개의 RL 정책(3개 시드, 50개/시드)을 1.83억 개의 환경 샘플로 훈련하고 IL 기반선 제공</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>저수준 조작 개선</strong>: 객체별 특화 정책 훈련으로 일반화 정책보다 높은 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Renders of low-level, whole-body control policies solving Pick, Place, Open, and Close</em></p></div>
 <ul>
 <li>ManiSkill3 프레임워크를 기반으로 HAB의 3개 장기 수평 작업(TidyHouse, PrepareGroceries, SetTable)을 GPU 환경에서 재구현</li>
 <li>Fetch 모바일 매니퓨레이터에 대해 Pick, Place, Open/Close Fridge/Drawer, Navigate 등의 매개변수화된 스킬과 해당 부작업 정의</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Dujun Nie, Xianda Guo, Yiqun Duan, Ruijun Zhang, Long Chen | <strong>날짜</strong>: 2025-03-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.02247" target="_blank">https://arxiv.org/abs/2503.02247</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The WMNav framework. After acquiring the RGB-D panoramic image and pose information at step t, the</em></p></div>
 <p>Vision-Language Model을 기반으로 한 world model을 설계하여 Object Goal Navigation 작업에서 미래 상태를 예측하고 메모리를 통해 정책을 개선하는 WMNav 프레임워크를 제안한다. Curiosity Value Map이라는 온라인 유지 메모리 구조와 두 단계 행동 제안 전략으로 VLM의 hallucination을 완화하면서 탐색 효율성을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM의 광범위한 실내 배치 및 공간 관계 지식을 활용하여 world model로 구성하고, Curiosity Value Map을 통해 목표 객체 존재 가능성을 정량적으로 예측한다. 두 단계 행동 제안 전략(광범위 탐색 → 정밀 위치 파악)으로 탐색 효율성을 극대화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The WMNav framework. After acquiring the RGB-D panoramic image and pose information at step t, the</em></p></div>
 <ul>
 <li><strong>World Model 기반 Navigation</strong>: VLM을 활용한 최초의 world model 기반 object navigation 프레임워크 제안으로 새로운 연구 방향 제시</li>
 <li><strong>Curiosity Value Map</strong>: 예측된 환경 상태를 온라인으로 유지하면서 목표 객체 존재 가능성을 동적으로 구성하는 혁신적 메모리 전략 설계</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 향상</strong>: HM3D에서 SR +3.2%, SPL +3.2% 개선, MP3D에서 SR +13.5%, SPL +1.1% 개선으로 zero-shot 벤치마크 초과 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The WMNav framework. After acquiring the RGB-D panoramic image and pose information at step t, the</em></p></div>
 <ul>
 <li>PredictVLM이 panoramic 이미지에서 각 방향 및 지역의 목표 객체 존재 가능성을 정량적으로 예측</li>
 <li>이전 단계의 Curiosity Value Map과 현재 예측을 병합하여 online 유지되는 메모리 구조 구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiaxin Huang, Shixiang Gu, Le Hou, Yuexin Wu, Xuezhi Wang, Hongkun Yu, Jiawei Han | <strong>날짜</strong>: 2022 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: 방법의 개요. Chain-of-Thought 예시를 활용하여 언어모델이 여러 개의 CoT 추론 경로를 생성하고, 다수결 투표(Majority Voting)로 고신뢰도 답변을 선택한 후, 이를 파인튜닝 데이터로 활용">
+<p class="fig-caption"><em>그림 1: 방법의 개요. Chain-of-Thought 예시를 활용하여 언어모델이 여러 개의 CoT 추론 경로를 생성하고, 다수결 투표(Majority Voting)로 고신뢰도 답변을 선택한 후, 이를 파인튜닝 데이터로 활용</em></p></div>
 <p>대규모 언어모델(LLM)이 레이블 없는 데이터만으로 자기 생성 고신뢰도 추론(reasoning) 경로를 통해 자가 개선(self-improve)할 수 있음을 입증한 논문이다. Chain-of-Thought 프롬팅과 자기 일관성(self-consistency)을 활용하여 감독 신호 없이 모델의 추론 능력을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -81,6 +83,8 @@ a { color: #A62018; }
 <li><strong>상태 추적 능력</strong>: 신뢰도 척도(confidence measure)가 실제 정확도와 높은 상관관계를 보임(Figure 2). 모델이 자신의 신뢰도를 정확히 평가할 수 있음을 시사</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3: PaLM-540B에서 다중 경로 샘플링을 사용한 GSM8K 테스트 집합에서의 정확도 결과">
+<p class="fig-caption"><em>그림 3: PaLM-540B에서 다중 경로 샘플링을 사용한 GSM8K 테스트 집합에서의 정확도 결과</em></p></div>
 <ul>
 <li><strong>다중 경로 디코딩(Multiple Path Decoding)</strong>: 각 질문 x_i에 대해 샘플링 온도 T > 0으로 m개의 CoT 추론 경로 {r_i1, r_i2, ..., r_im} 생성</li>
 <li><strong>다수결 투표 기반 필터링(Majority Voting Filtering)</strong>: 생성된 경로들의 최종 답변 {y_i1, y_i2, ..., y_im}에 대해 다수결 투표로 가장 일관성 있는 답변 ỹ_i 선택. 반드시 정답일 필요는 없지만 여러 경로가 합의한 답변</li>

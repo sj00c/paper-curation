@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Andrea Tirinzoni, Ahmed Touati, Jesse Farebrother, Mateusz Guzek, Anssi Kanervisto, Yingchen Xu, Alessandro Lazaric, Matteo Pirotta | <strong>날짜</strong>: 2025-04-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.11054" target="_blank">https://arxiv.org/abs/2504.11054</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 META MOTIVO is the first behavioral foundation model for humanoid agents that can solve whole-body control task</em></p></div>
 <p>본 논문은 unlabeled 행동 데이터셋으로 unsupervised RL을 정규화하여 zero-shot 전신 휴머노이드 제어를 가능하게 하는 FB-CPR 알고리즘과 이를 기반으로 한 첫 번째 휴머노이드 behavioral foundation model인 Meta Motivo를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Forward-Backward representations를 사용하여 unlabeled trajectory와 policy를 동일한 latent space에 임베딩하고, latent-conditional discriminator를 통해 policy가 데이터셋의 상태를 '커버'하도록 정규화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 META MOTIVO is the first behavioral foundation model for humanoid agents that can solve whole-body control task</em></p></div>
 <ul>
 <li><strong>FB-CPR 알고리즘</strong>: Forward-Backward 표현을 unlabeled 행동 모방으로 정규화하여 zero-shot 일반화 능력을 유지하면서 데이터셋과 정렬된 정책 학습을 가능하게 함</li>
 <li><strong>Meta Motivo 모델</strong>: AMASS motion capture 데이터로 사전학습된 첫 번째 휴머노이드 behavioral foundation model로, motion tracking, goal reaching, reward optimization을 zero-shot으로 해결</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화 우수성</strong>: State-of-the-art unsupervised RL 및 model-based baseline을 능가하는 성능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Illustration of the main components of FB-CPR: the discriminator is trained to estimate the ratio between the l</em></p></div>
 <ul>
 <li>Successor measure의 low-rank decomposition을 이용한 FB 표현으로 상태-액션 진화를 모델링</li>
 <li>Unlabeled trajectory를 forward-backward embedding으로 같은 latent space에 임베딩</li>

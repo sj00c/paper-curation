@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziyu Zhang, Sergey Bashkirov, Dun Yang, Yi Shi, Michael Taylor, Xue Bin Peng | <strong>날짜</strong>: 2025-05-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.04961" target="_blank">https://arxiv.org/abs/2505.04961</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We propose an adversarial multi-objective optimization technique that enables physically simulated characters to</em></p></div>
 <p>Physics-based 캐릭터 애니메이션을 위해 Adversarial Differential Discriminator (ADD)를 통해 수동 보상 함수 설계 없이 다중 목표 최적화를 자동으로 수행하는 방법을 제시한다. 단일 positive sample(영점 벡터)만으로도 효과적으로 여러 목표를 동적으로 균형잡아 고난도 동작을 모방할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Discriminator가 objective 값의 차이를 나타내는 differential vector를 입력받아 이상적 해(영점 벡터)와의 분류를 학습하게 함으로써, 학습 과정에서 여러 목표를 자동으로 동적 균형잡는 GAN 기반 프레임워크를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Snapshots of the simulated humanoid characters trained using ADD performing various skills. ADD enables characte</em></p></div>
 <ul>
 <li><strong>자동 목표 균형</strong>: 수동 가중치 선택 없이 목표들을 동적으로 균형잡으며, 선형 가중합보다 비선형 관계 포착 가능</li>
 <li><strong>높은 품질의 동작 모방</strong>: Humanoid와 로봇이 곡예 및 민첩한 기술을 포함한 다양한 동작을 정확히 복제하여 최신 방법과 동등한 수준 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반성</strong>: Motion tracking 외 다양한 다중 목표 RL 문제에 광범위하게 적용 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4 compares the learning curves of humanoid characters</em></p></div>
 <ul>
 <li>Differential vector는 각 목표에서 모델 성능과 이상적 성능 간의 차이를 표현</li>
 <li>Discriminator는 differential vector가 이상적 해(영점)인지 아닌지 분류하도록 학습</li>

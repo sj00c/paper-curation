@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zibo Zhou, Yue Hu, Lingkai Zhang, Zonglin Li, Siheng Chen | <strong>날짜</strong>: 2025-05-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.06487" target="_blank">https://arxiv.org/abs/2506.06487</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: BeliefMapNav pipeline: The agent initializes with a 360° rotation. During exploration,</em></p></div>
 <p>본 논문은 3D voxel 기반 belief map을 활용하여 zero-shot object navigation에서 LLM의 의미론적 추론과 계층적 공간 정보를 통합함으로써 로봇이 사전 학습이나 사전 구축 맵 없이 자연어로 지정된 대상을 미지의 환경에서 찾을 수 있도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 계층적 공간 의미론과 LLM 기반 상식을 3D voxel space에 통합하는 belief map을 구축하고, frontier 관찰 belief 추정 및 확률 기반 경로 계획을 통해 효율적인 네비게이션을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Visualization of the prior belief map, visibility map, and the posterior belief map, with an</em></p></div>
 <ul>
 <li><strong>3D Voxel-Based Belief Map</strong>: 계층적 공간 구조와 LLM 의미론적 priors, 실시간 관찰을 통합하여 3D 공간에서 대상 위치의 정확한 prior 및 posterior 분포 추정</li>
 <li><strong>BeliefMapNav 시스템</strong>: belief map 기반 frontier 관찰 belief 추정과 기댓값 거리 최소화를 통한 순차적 경로 계획으로 효율적인 탐색 달성</li>
 <li><strong>State-of-the-Art 성능</strong>: HM3D에서 SR 5.86%, SPL 46.4% 개선, MP3D 및 HSSD에서도 27.8~46.4% 성능 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: BeliefMapNav pipeline: The agent initializes with a 360° rotation. During exploration,</em></p></div>
 <ul>
 <li>LLM에 대상과 prompt를 입력하여 target-adaptive semantic cues 생성</li>
 <li>RGB-D 센서 입력과 agent 포즈를 기반으로 3D hierarchical semantic map 구성</li>

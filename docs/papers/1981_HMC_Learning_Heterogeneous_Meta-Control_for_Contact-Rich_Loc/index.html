@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lai Wei, Xuanbin Peng, Ri-Zhao Qiu, Tianshu Huang, Xuxin Cheng, Xiaolong Wang | <strong>날짜</strong>: 2025-11-18 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.14756" target="_blank">10.48550/arXiv.2511.14756</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. HMC-Controller accepts inputs from either a VR-based teleoperation system or HMC-Policy</em></p></div>
 <p>로봇의 접촉이 많은 조작 작업을 위해 위치, 임피던스, 하이브리드 힘-위치 제어를 적응적으로 혼합하는 HMC(Heterogeneous Meta-Control) 프레임워크를 제안하며, mixture-of-experts 라우팅을 통해 대규모 위치 데이터와 미세한 힘 인식 시연으로부터 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HMC-Controller를 통해 토크 공간에서 여러 제어 프로파일을 연속적으로 혼합하고, HMC-Policy가 soft mixture-of-experts 라우팅으로 여러 제어기의 예측을 가중합하는 이질적 아키텍처를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Rolling out HMC for contact-rich tasks on a humanoid robot. Compared to na¨ıve position-only policies [5, 26,</em></p></div>
 <ul>
 <li><strong>HMC-Controller 인터페이스</strong>: 위치, 임피던스, 하이브리드 힘-위치 제어기로부터의 토크 명령을 토크 공간에서 연속적으로 혼합하여 원격조종과 정책 배포 모두 지원</li>
 <li><strong>HMC-Policy 이질적 설계</strong>: soft MoE 라우팅을 통해 대규모 위치 전용 시연과 미세한 힘 인식 시연을 통합 학습하며 전문가 붕괴 방지</li>
 <li><strong>실제 로봇 성능</strong>: 테이블 닦기, 서랍 열기 등 접촉 많은 작업에서 기준선 대비 50% 이상 상대적 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System overview. HMC-Controller accepts inputs from either a VR-based teleoperation system or HMC-Policy</em></p></div>
 <ul>
 <li>세 가지 primitive 제어기 구현: 표준 PD 위치 제어기(식 1), joint-space 임피던스 제어기(식 2), Cartesian-space 임피던스 제어기</li>
 <li>soft routing 메커니즘으로 예측된 가중치를 사용하여 여러 전문가 제어기의 토크 출력을 선형 결합</li>

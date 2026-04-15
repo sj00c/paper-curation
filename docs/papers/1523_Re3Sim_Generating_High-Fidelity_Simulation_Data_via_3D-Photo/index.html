@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiaoshen Han, Minghuan Liu, Yilun Chen, Junqiu Yu, Xiaoyang Lyu, Yang Tian, Bolun Wang, Weinan Zhang, Jiangmiao Pang | <strong>날짜</strong>: 2025-02-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.08645" target="_blank">https://arxiv.org/abs/2502.08645</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Illustration of RE3SIM. a) RE3SIM allows zero-shot policy transfer on various tasks. b) The system pipeline to</em></p></div>
 <p>RE3SIM은 3D 재구성과 신경 렌더링 기술을 활용하여 실제 환경을 고충실도로 복제한 후, 물리 기반 시뮬레이터 내에서 로봇 조작 정책을 학습하는 real-to-sim-to-real 파이프라인이다. 순수 시뮬레이션 데이터만으로 평균 58% 이상의 성공률로 zero-shot sim-to-real 전이를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: multi-view stereo(MVS)를 사용한 메시 재구성과 3D Gaussian splatting(3DGS)을 통한 배경 렌더링, 그리고 메시 기반 객체 렌더링을 결합하여 하이브리드 시각 렌더링을 구현한다. ArUco 마커를 사용하여 실세계 좌표와 시뮬레이션 공간을 정렬하고, 특권 정보(privileged information)를 활용하여 시뮬레이션에서 전문가 시연 데이터를 효율적으로 수집한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Visual comparison between real and simulation. Rendering results from our hybrid rendering method compared</em></p></div>
 <ul>
 <li><strong>고충실도 재구성 및 시각화</strong>: MVS 기반 메시 재구성과 3DGS 렌더링으로 기하학적 및 시각적 sim-to-real 갭을 크게 감소</li>
 <li><strong>빠른 장면 재구성</strong>: 3분 이내의 수동 설정으로 새로운 장면 재구성 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>대규모 확장성</strong>: 대규모 시뮬레이션 데이터셋 생성으로 다양한 객체에 일반화되는 강건한 정책 구축</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Illustration of the proposed real-to-sim-to-real system, RE3SIM. It leverages 3D reconstruction and a physics-</em></p></div>
 <ul>
 <li><strong>메시 재복구</strong>: 구조-동작(structure-from-motion) 접근 방식(COLMAP)을 사용하여 카메라 자세 및 희소 포인트 클라우드 추정</li>
 <li><strong>MVS 기반 재구성</strong>: 다중 시점 입체 기술으로 배경 메시 재구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiongyi Cai, Ri-Zhao Qiu, Geng Chen, Lai Wei, Isabella Liu, Tianshu Huang, Xuxin Cheng, Xiaolong Wang | <strong>날짜</strong>: 2025-11-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.15704" target="_blank">https://arxiv.org/abs/2511.15704</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. This paper investigates large-scale pre-training and post-training with egocentric human data. We curate a lar</em></p></div>
 <p>이 논문은 1,000시간 이상의 in-the-wild 에고센트릭 데이터와 on-task 데이터를 결합하여 대규모 휴머노이드 조작 정책 Human0을 학습하고, domain adaptation을 통해 인간과 로봇 간의 도메인 갭을 최소화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: unified human-centric state-action space를 정의하고 PHSD 데이터셋을 구성한 후, flow matching 기반의 language-conditioned 정책을 학습하며, domain adaptation 기법으로 인간-휴머노이드 간의 도메인 갭을 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. This paper investigates large-scale pre-training and post-training with egocentric human data. We curate a lar</em></p></div>
 <ul>
 <li><strong>PHSD 데이터셋 구축</strong>: 1,000시간 이상의 diverse in-the-wild 데이터와 20시간 이상의 on-task 데이터를 통합한 대규모 physical human-humanoid 데이터셋 구성</li>
 <li><strong>Language Following</strong>: 로봇 훈련 데이터에 없는 unseen instruction을 따르는 능력 획득</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Robustness Improvement</strong>: on-task 데이터 활용으로 실제 업무 환경(예: 패스트푸드 워커)에서 정책 성능 대폭 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Method overview. Our approach follows a two-stage training recipe: (1) pre-training on large-scale in-the-wild</em></p></div>
 <ul>
 <li>Unified human-centric state-action space 설계: 머리(Thead), 양손(T_l_wrist, T_r_wrist), 손가락 keypoints를 포함하는 표준화된 상태-행동 공간</li>
 <li>IK/FK 및 hand retargeting 소프트웨어 스위트 개발로 다양한 로봇과 인간 데이터를 통일 공간으로 변환</li>

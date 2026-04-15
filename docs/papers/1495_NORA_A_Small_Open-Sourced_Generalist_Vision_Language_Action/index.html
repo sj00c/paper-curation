@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chia-Yu Hung, Qi Sun, Pengfei Hong, Amir Zadeh, Chuan Li, U-Xuan Tan, Navonil Majumder, Soujanya Poria | <strong>날짜</strong>: 2025-04-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.19854" target="_blank">https://arxiv.org/abs/2504.19854</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The overall architecture and inference flow of NORA.</em></p></div>
 <p>NORA는 3B 파라미터의 경량 Vision-Language-Action 모델로, 기존 7B 이상의 대규모 VLA 모델보다 계산 효율을 크게 개선하면서도 실시간 로봇 제어 성능을 유지한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Qwen-2.5-VL-3B를 backbone으로 하는 3B 파라미터 모델을 제안하고, FAST+ tokenizer를 통해 효율적인 action sequence 생성을 구현하며, 970k의 실제 로봇 시연 데이터로 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Experimental results on different categories of real-world robot tasks.</em></p></div>
 <ul>
 <li><strong>모델 크기 감소</strong>: 7B 이상의 기존 모델 대비 3B 파라미터로 60% 이상 축소</li>
 <li><strong>성능 유지/향상</strong>: 계산 오버헤드 감소에도 불구하고 기존 대규모 VLA 모델 대비 우수한 작업 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>오픈 소스 공개</strong>: 모델 체크포인트, 학습 전략, 평가 프로토콜 전체 공개로 재현성과 후속 연구 촉진</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: (a) Training Loss Curve; (b) Gradient Norm Curve.</em></p></div>
 <ul>
 <li>Qwen-2.5-VL-3B를 backbone으로 채택하여 우수한 시각-의미 이해 활용</li>
 <li>FAST+ tokenizer를 통해 DCT(Discrete Cosine Transform)와 BPE(Byte-Pair Encoding)로 action token 압축</li>

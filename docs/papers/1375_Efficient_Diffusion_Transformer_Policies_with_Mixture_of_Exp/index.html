@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Moritz Reuss, Jyothish Pari, Pulkit Agrawal, Rudolf Lioutikov | <strong>날짜</strong>: 2024-12-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.12953" target="_blank">https://arxiv.org/abs/2412.12953</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The proposed MoDE architecture (left) uses a transformer with causal masking, where each</em></p></div>
 <p>MoDE는 Mixture-of-Experts 아키텍처를 Diffusion Policy에 적용하여 noise-conditioned routing과 noise-conditioned self-attention을 통해 매개변수는 40% 감소시키면서 90% 적은 FLOPs로 더 높은 성능을 달성하는 효율적인 Imitation Learning 정책이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MoDE는 noise 레벨에 따라 expert를 동적으로 할당하는 noise-conditioned routing과 noise-conditional self-attention 메커니즘을 결합하여, denoising 과정의 다단계 특성을 효율적으로 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: After training MoDE, the router is noise-conditioned, allowing pre-computation of the</em></p></div>
 <ul>
 <li><strong>성능 우수성</strong>: CALVIN ABC에서 4.01, LIBERO-90에서 0.95를 달성하며 4개 벤치마크에서 CNN 기반 및 Transformer Diffusion Policies보다 평균 57% 성능 향상</li>
 <li><strong>계산 효율성</strong>: Dense Transformer 아키텍처 대비 90% 적은 FLOPs와 40% 감소된 활성 매개변수를 사용하면서도 expert caching을 통해 추론 비용 90% 절감</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>상세한 분석</strong>: routing 전략, noise-injection 기법, expert 분포 등 MoDE 구성 요소에 대한 포괄적인 ablation study 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The proposed MoDE architecture (left) uses a transformer with causal masking, where each</em></p></div>
 <ul>
 <li><strong>Noise-conditioned Routing</strong>: Router가 현재 noise 레벨을 기반으로 토큰을 expert에 할당하여 denoising 과정의 다단계 특성 활용</li>
 <li><strong>Noise-conditional Self-Attention</strong>: Self-attention 메커니즘에 noise 정보를 직접 주입하여 다양한 noise 레벨에서의 효과적인 denoising 지원</li>

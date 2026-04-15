@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sirui Xu, Hung Yu Ling, Yu-Xiong Wang, Liang-Yan Gui | <strong>날짜</strong>: 2025-02-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.20390" target="_blank">https://arxiv.org/abs/2502.20390</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Our two-stage pipeline: (i) training each teacher pol-</em></p></div>
 <p>InterMimic은 교사-학생 증류 및 RL 미세조정을 통해 불완전한 MoCap 데이터로부터 다양한 동적 객체와의 전신 상호작용을 학습할 수 있는 물리 기반 제어 정책 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 먼저 소규모 데이터 부분집합에서 주제별 교사 정책을 훈련하여 MoCap을 보정하고, 이들을 단일 학생 정책으로 증류한 후 RL 미세조정으로 정책을 개선하는 curriculum 기반 두 단계 프레임워크를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. InterMimic enables physically simulated humans to perform interactions with dynamic and diverse objects. It su</em></p></div>
 <ul>
 <li><strong>첫 번째 전신 loco-manipulation 프레임워크</strong>: 다양하고 동적인 객체와의 복잡한 전신 상호작용을 물리 기반 시뮬레이션으로 구현한 첫 사례를 제시</li>
 <li><strong>교사-학생 증류 전략</strong>: retargeting과 refining 문제를 통합적으로 해결하며 공간-시간 트레이드오프를 통한 확장 가능한 학습 방식 개발</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>영점 샷 일반화 및 생성 능력</strong>: 학습된 정책이 kinematic generators와 결합되어 상호작용 예측, 텍스트-상호작용 생성 등 다양한 downstream tasks 지원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Our two-stage pipeline: (i) training each teacher pol-</em></p></div>
 <ul>
 <li>여러 주제별 교사 정책을 병렬로 훈련하여 작은 데이터 부분집합에서 imitation과 retargeting 목표를 동시에 최적화</li>
 <li>Contact-guided reward를 도입하여 MoCap의 접촉 오류를 감지하고 보정하도록 유도</li>

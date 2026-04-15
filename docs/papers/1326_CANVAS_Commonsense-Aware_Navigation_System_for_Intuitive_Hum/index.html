@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Suhwan Choi, Yongjun Cho, Minchan Kim, Jaeyoon Jung, Myunchul Joe, Yubeen Park, Minseo Kim, Sungwoong Kim, Sungjae Lee, Hwiseong Park, Jiwan Chung, Youngjae Yu | <strong>날짜</strong>: 2024-10-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.01273" target="_blank">https://arxiv.org/abs/2410.01273</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Humans often give abstract navigation directions using simple instruction, relying on the recipient’s commonsens</em></p></div>
 <p>CANVAS는 모호하거나 잡음이 있는 인간의 언어 및 시각적 지시(스케치, 텍스트)를 다중모드 입력으로 받아 상식적 이해를 바탕으로 로봇이 인간의 기대에 맞게 네비게이션을 수행하도록 하는 임베딩 러닝 기반 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,11 +77,15 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CANVAS는 비전-언어 모델의 상식 지식을 활용하여 시각(스케치)과 언어 지시를 점진적 네비게이션 목표로 변환하며, 임베딩 러닝을 통해 인간 시연으로부터 학습한다. 동시에 COMMAND 데이터셋(48시간, 219km의 인간 주석 네비게이션 데이터)을 제시하여 모델 훈련을 지원한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Data collection pipeline for COMMAND dataset. (a) First, we create diverse navigation environments and extract m</em></p></div>
 <p><strong>ROS NavStack 대비 성능 우위</strong>: 모든 환경에서 ROS NavStack을 능가하며, 특히 과수원 환경에서 ROS NavStack이 0% 성공률을 기록할 때 67% 성공률 달성</p>
 <p><strong>대규모 고품질 데이터셋</strong>: COMMAND는 48시간의 주행 데이터로 GoStanford의 약 3배 규모이며 3개 환경(사무실, 거리, 과수원)에서 3,343개의 인간 주석 네비게이션 결과 제공</p>
 <p><strong>강력한 Sim2Real 전이</strong>: 시뮬레이션만으로 훈련되었으나 실제 로봇 배포에서 69% 성공률로 우수한 성능 입증</p>
 <p><strong>상식 제약 준수</strong>: 인간 시연과 유사한 궤적을 따르며 상식 제약 위반이 적음을 정량적으로 입증</p></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Data collection pipeline for COMMAND dataset. (a) First, we create diverse navigation environments and extract m</em></p></div>
 <ul>
 <li>K-means clustering을 이용하여 연속 웨이포인트를 128개의 이산 웨이포인트 토큰으로 양자화하여 다중모드 동작 분포 모델링 강화</li>
 <li>비전-언어 모델을 통해 스케치(이미지 상의 궤적)와 텍스트 설명을 입력으로 하여 점진적 네비게이션 목표 생성</li>

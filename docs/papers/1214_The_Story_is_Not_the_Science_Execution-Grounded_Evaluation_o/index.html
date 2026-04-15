@@ -66,6 +66,8 @@ a { color: #1856A0; }
 <blockquote><p><strong>저자</strong>: Xiaoyan Bai, Alex Baumgartner, Haojia Sun, Ari Holtzman, Chenhao Tan | <strong>날짜</strong>: 2026 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.18458" target="_blank">10.48550/arXiv.2602.18458</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. (a) Execution-grouned evaluation uncovers failures that narrative-alone review misses. In this example, Failur</em></p></div>
 <p>논문 내러티브만으로는 감지할 수 없는 연구의 문제점을 발견하기 위해, 코드와 데이터를 함께 검증하는 execution-grounded evaluation 프레임워크를 제안하고 MechEvalAgent를 구현했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #1856A0; }
 <li><strong>Approach</strong>: mechanistic interpretability를 테스트 대상으로 하여 plan, report, code, data, walkthrough로 구성된 표준화된 연구 산출물을 정의하고, coherence, reproducibility, generalizability의 세 가지 차원에서 평가하는 MechEvalAgent를 개발했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. (a) Execution-grouned evaluation uncovers failures that narrative-alone review misses. In this example, Failur</em></p></div>
 <ul>
 <li><strong>Execution-grounded evaluation framework</strong>: 내러티브와 실행 자원을 결합하여 plan-implementation 일관성, 코드 실행 가능성, 결과 재현성, 일반화 가능성을 체계적으로 검증하는 첫 프레임워크</li>
 <li><strong>MechEvalAgent 구현</strong>: 인간 전문가와 80% 이상의 일치도를 달성하며 인간 리뷰어가 놓친 51개의 추가 문제를 식별</li>
@@ -82,6 +86,8 @@ a { color: #1856A0; }
 <li><strong>효율성 증대</strong>: 인간 리뷰어의 평균 2.2시간 대비 더 빠른 평가 속도 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of the MechEvalAgent framework. Re-</em></p></div>
 <ul>
 <li><strong>표준화된 연구 산출물</strong>: 인간 작성 논문에서 plan과 report를 추출하고, AI 생성 결과물에서는 연구 trace까지 포함하는 unified standard 정의</li>
 <li><strong>Coherence 평가</strong>: consistency와 instruction following 체크로 내부 일관성 검증 (9개 체크리스트 항목)</li>

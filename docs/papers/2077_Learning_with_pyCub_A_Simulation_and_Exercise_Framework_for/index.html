@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lukas Rustler, Matej Hoffmann | <strong>날짜</strong>: 2025-06-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.01756" target="_blank">https://arxiv.org/abs/2506.01756</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. An example of the simulation environment showing the iCub humanoid robot,</em></p></div>
 <p>pyCub는 humanoid robot iCub의 Python 기반 physics 시뮬레이션 프레임워크로, YARP 미들웨어 없이 학생들이 humanoid robotics의 기초를 배울 수 있는 교육용 연습 문제들을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PyBullet physics engine을 기반으로 iCub의 전체 articulation, 4000개의 tactile sensor, 양쪽 카메라를 Python으로 구현했다. 난이도별 연습 문제와 .yaml 설정 파일을 통한 환경 커스터마이제이션을 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. An example of the simulation environment showing the iCub humanoid robot,</em></p></div>
 <ul>
 <li><strong>완전한 iCub 시뮬레이션</strong>: 53개의 DoF, 4000개의 tactile receptor, 양쪽 eye camera를 포함한 완전한 humanoid robot 모델 구현</li>
 <li><strong>Python 친화적 설계</strong>: YARP 미들웨어 제거하고 순수 Python으로 제어 가능하여 프로그래밍 경험이 적은 사용자도 접근 가능</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>실제 교육 검증</strong>: 2번의 humanoid robotics 과정 운영을 통해 프레임워크 평가 및 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Schematic of the simulation package and interconnections between individual</em></p></div>
 <ul>
 <li>PyBullet engine을 physics backbone으로 사용하여 multi-platform, open-source, 저 리소스 요구 달성</li>
 <li>Open3D library를 이용한 커스터마이징 가능한 GUI 개발 (PyBullet 내장 GUI의 단점 극복)</li>

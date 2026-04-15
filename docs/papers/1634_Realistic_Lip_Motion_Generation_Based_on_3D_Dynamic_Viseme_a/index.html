@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-03-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2604.01756" target="_blank">https://arxiv.org/abs/2604.01756</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>인간-로봇 상호작용을 위해 3D 동적 비셈(viseme)과 공명음현상(coarticulation) 모델링 기반의 입술 운동 생성 프레임워크를 제안하며, 고차원 공간 입술 운동을 14-DOF 로봇 입술 구동 시스템으로 변환한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ARKit 표준 52개 블렌드셰이프 중 27개 핵심 기저를 추출하여 3D 동적 비셈 라이브러리를 구성하고, 중국어 음성학의 초성-운모(Shengmu-Yunmu) 분리와 에너지 조절을 통해 공명음현상을 해결한 후, 운동 맵핑과 하이브리드 캘리브레이션으로 로봇 배포를 실현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>3D 동적 비셈 라이브러리</strong>: 14개 범주의 3D 동적 비셈 시퀀스를 구성하여 기존 2D 정적 매핑의 한계를 극복하고 비선형 입술 궤적을 재현</li>
 <li><strong>초성-운모 분리 기반 공명음현상 모델</strong>: 중국어의 독특한 음절 특성에 맞춘 融合 알고리즘으로 인접 음소 간 운동 충돌을 해결하고 자연스러운 동적 긴장감 구현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>정량적 검증</strong>: Pearson Correlation Coefficient(PCC)와 Mean Absolute Jerk(MAJ) 메트릭을 이용한 절제 실험으로 효율성과 정확도 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3.</em></p></div>
 <ul>
 <li>ARKit 표준의 52개 얼굴 블렌드셰이프 중 jawOpen, mouthFunnel 등 입술 운동과 강한 상관성을 가진 27개 핵심 기저 추출</li>
 <li>중국어 음성학 구조에 따라 21개 초성과 39개 운모로 구성된 60개 이상 병음 조합을 시각적 형태학적 특성에 기반하여 14개 비셈으로 차원 축소</li>

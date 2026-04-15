@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Arthur Allshire, Hongsuk Choi, Junyi Zhang, David McAllister, Anthony Zhang, Chung Min Kim, Trevor Darrell, Pieter Abbeel, Jitendra Malik, Angjoo Kanazawa | <strong>날짜</strong>: 2025-05-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.03729" target="_blank">https://arxiv.org/abs/2505.03729</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: VideoMimic Real-to-Sim. A casually captured phone video provides the only input. We first</em></p></div>
 <p>VIDEOMIMIC는 단순한 휴대폰 영상에서 인간-환경 4D 기하학을 공동 재구성하고, 이를 시뮬레이션에서 RL 정책으로 학습한 후 실제 휴머노이드 로봇에 배포하는 real-to-sim-to-real 파이프라인이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 모노큘러 RGB 영상에서 VIMO, ViTPose, BSTRO, MegaSaM/MonST3R 등 사전학습 모델들로 인간 자세와 장면 포인트클라우드를 추출한 후, 메트릭 스케일과 joint 정렬을 위해 인간 높이 prior를 활용하여 공동 최적화하고, 최종적으로 retarget된 모션과 메시로 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: The policy performing various skills on the real robot: traversing complex terrain, standing, and</em></p></div>
 <ul>
 <li><strong>실제 로봇 배포</strong>: Unitree G1 휴머노이드에서 계단 등하강, 의자/벤치 앉기/일어나기 등 robust하고 반복 가능한 contextual control 달성</li>
 <li><strong>단일 통합 정책</strong>: 환경(height-map)과 root direction으로 조건화된 단일 policy로 명시적 task labeling 없이 행동 선택 및 실행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Unseen environment 일반화</strong>: 학습하지 않은 환경에서도 높이맵 정보만으로 적절한 행동 생성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: VideoMimic Real-to-Sim. A casually captured phone video provides the only input. We first</em></p></div>
 <ul>
 <li><strong>전처리</strong>: Grounded SAM2로 인간 detection/association, VIMO로 SMPL 파라미터 추출, ViTPose로 2D keypoint 검출, BSTRO로 발 contact 회귀, MegaSaM/MonST3R로 장면 포인트클라우드 획득</li>
 <li><strong>Joint 최적화</strong>: 인간의 global translation/orientation, local pose, 그리고 장면 스케일 α를 동시에 최적화하며, SMPL 인간 높이 prior를 메트릭 참조로 활용</li>

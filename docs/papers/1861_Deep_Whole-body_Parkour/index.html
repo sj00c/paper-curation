@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziwen Zhuang, Shaoting Zhu, Mengjie Zhao, Hang Zhao | <strong>날짜</strong>: 2026-01-12 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2601.07701" target="_blank">10.48550/arXiv.2601.07701</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Data-driven whole-body control framework. Real-world environment scans and human demonstrations are processed an</em></p></div>
 <p>본 연구는 외부 센싱(depth perception)을 whole-body motion tracking에 통합하여 인간형 로봇이 불규칙한 지형에서 vaulting, dive-rolling 등의 동적 parkour 움직임을 수행하도록 하는 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: optical motion capture로 human parkour 동작을 기록하고 LiDAR로 환경을 동시에 스캔하여 motion-terrain 쌍을 생성한 뒤, depth observation을 포함한 reinforcement learning으로 single policy를 훈련하여 다양한 terrain에서 적응적 행동이 가능하도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Deep Whole-Body Parkour. Our framework enables a humanoid robot to autonomously traverse challenging obstacles</em></p></div>
 <ul>
 <li><strong>다중 패러다임 통합</strong>: perceptive locomotion과 general motion tracking을 통합하여 환경 인식이 가능한 whole-body 제어 달성</li>
 <li><strong>강건한 적응 제어</strong>: depth 기반 폐쇄루프 제어로 로봇 초기 위치/각도 변화에 대한 강건성 확보</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>sim-to-real 전이</strong>: custom dataset 기반 training으로 실제 로봇(Unitree G1)에서 동작 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Data-driven whole-body control framework. Real-world environment scans and human demonstrations are processed an</em></p></div>
 <ul>
 <li><strong>Dataset 구성</strong>: optical motion capture system으로 human expert의 parkour 동작 기록 + LiDAR-enabled iPad Pro로 동시에 환경 스캔하여 spatially aligned motion-terrain 쌍 생성</li>
 <li><strong>Motion Retargeting</strong>: GMR framework 활용하여 human motion을 Unitree G1 robot으로 retarget, optimization-based kinematic filtering 및 manual keyframe adjustment로 물리적 가능성 보장</li>

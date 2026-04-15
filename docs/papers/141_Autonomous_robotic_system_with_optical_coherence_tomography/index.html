@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jesse Haworth, Rishi Biswas, Justin Opfermann, Michael Kam, Yaning Wang, Desire Pantalone, Francis X. Creighton, Robin Yang, Jin U. Kang, Axel Krieger | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2410.07493" target="_blank">arXiv:2410.07493</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: µSTAR 시스템 개요 - LBR Med 로봇팔, 혈관 위치 결정 시스템(MAPS), OCT 광섬유 및 마이크로카메라 장착 봉합 도구</em></p></div>
 <p>본 논문은 혈관 문합(vascular anastomosis)을 자율적으로 수행하는 최초의 로봇 시스템인 마이크로 스마트 조직 자율 로봇(µSTAR)을 개발했으며, OCT 기반 실시간 조직 감지와 신경망 기반 봉합 오류 감지를 통해 경험 많은 외과의들과 경쟁 가능한 수준의 성능을 ex vivo 조직에서 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) OCT 광섬유 센서와 마이크로카메라 통합 봉합 도구 설계, (2) OCT 기반 고도화된 조직 분류 알고리즘, (3) 봉합 오류 자동 감지 신경망, (4) 멀티모달 영상 기반 자율 수술 제어기 및 워크플로우 개발.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: µSTAR의 봉합 워크플로우 - (A) 오른쪽 혈관에 needle outside-inside 진입, (B) 왼쪽 혈관에 inside-outside 진출, (C) 완성된 문합 봉합</em></p></div>
 <ol>
 <li><strong>첫 자율 혈관 문합 달성</strong>: 실제 조직(ex vivo)에서 혈관 문합을 자율적으로 수행한 최초의 로봇 시스템 개발. 90%의 봉합을 인간 개입 없이 완료.</li>
 <li><strong>수술의 정확성과 일관성 입증</strong>: 누출 압력(leak pressure), 관강 감소(lumen reduction), 봉합 배치 변동성(suture placement variation) 측면에서 경험 많은 외과의들과 동등한 수준의 성능 달성.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>자동 오류 감지 및 보정</strong>: 신경망 기반으로 놓친 봉합(missed suture)을 자율적으로 식별, 수정, 검증하는 기능으로 기존 자율 시스템의 한계 극복.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>그림 4: µSTAR 시스템 소프트웨어 아키텍처 - 다중 센서 데이터 통합 및 실시간 제어 흐름도</em></p></div>
 <p><strong>하드웨어 구성:</strong></p>
 <ul>
 <li>LBR Med 7-DOF (7자유도) 의료용 로봇팔 (KUKA)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shenyuan Gao, William Liang, Kaiyuan Zheng, Ayaan Malik, Seonghyeon Ye, Sihyun Yu, Wei-Cheng Tseng, Yuzhu Dong, Kaichun Mo, Chen-Hsuan Lin, Qianli Ma, Seungjun Nah, Loic Magne, Jiannan Xiang, Yuqi Xie, Ruijie Zheng, Dantong Niu, You Liang Tan, K. R. Zentner, George Kurian, Suneel Indupuru, Pooya Jannaty, Jinwei Gu, Jun Zhang, Jitendra Malik, Pieter Abbeel, Ming-Yu Liu, Yuke Zhu, Joel Jang, Linxi "Jim" Fan | <strong>날짜</strong>: 2026-02-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.06949" target="_blank">https://arxiv.org/abs/2602.06949</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: DreamDojo overview. DreamDojo acquires comprehensive physical knowledge from large-scale</em></p></div>
 <p>44k시간의 대규모 인간 비디오에서 학습한 기초 로봇 세계 모델 DreamDojo를 제시하며, continuous latent actions를 통해 라벨 부족 문제를 해결하고 실시간 추론이 가능한 distillation 파이프라인을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 비디오의 임베디먼트 갭에도 불구하고 기본 물리학이 일관되다는 점을 활용하여 44k시간의 대규모 egocentric 인간 비디오 데이터셋을 구축하고, continuous latent actions를 통합 프록시 액션으로 도입하여 라벨 없는 비디오에서 지식 전이를 강화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: DreamDojo overview. DreamDojo acquires comprehensive physical knowledge from large-scale</em></p></div>
 <ul>
 <li><strong>DreamDojo-HV 데이터셋</strong>: 44k시간의 egocentric 인간 비디오로 구성된 현재까지 가장 규모 있고 다양한 세계 모델 학습용 데이터 코퍼스 (기존 공개 데이터셋 대비 96배 많은 스킬, 2000배 많은 장면)</li>
 <li><strong>Foundation world model</strong>: Continuous latent actions를 활용한 통합 프록시로 미본 객체와 새로운 환경에 대한 제로샷 일반화 능력을 갖춘 최초의 일반 목적 로봇 세계 모델</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 응용</strong>: Live teleoperation, policy evaluation, model-based planning 등 다수의 다운스트림 애플리케이션에서 1분 이상 실시간 상호작용 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Latent action model. [Left]: The information bottleneck design of our latent action model enforces</em></p></div>
 <ul>
 <li>Cosmos-Predict2.5 기반 latent video diffusion model을 기초로 WAN2.2 tokenizer의 연속 잠재 공간에서 작동</li>
 <li>Flow matching loss를 사용한 denoiser 학습으로 텍스트, 조건부 프레임, 액션 조건을 통합</li>

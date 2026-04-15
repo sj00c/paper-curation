@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zixuan Chen, Xialin He, Yen-Jen Wang, Qiayuan Liao, Yanjie Ze, Zhongyu Li, S. Shankar Sastry, Jiajun Wu, Koushil Sreenath, Saurabh Gupta, Xue Bin Peng | <strong>날짜</strong>: 2024-10-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.11825" target="_blank">https://arxiv.org/abs/2410.11825</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Lipschitz continuity is a method of quantifying the</em></p></div>
 <p>본 논문은 Reinforcement Learning으로 훈련한 humanoid robot의 locomotion policy에 Lipschitz 제약을 부여하여 smooth behavior를 자동으로 유도하는 Lipschitz-Constrained Policies (LCP) 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Policy의 gradient norm을 제한하는 gradient penalty 형태의 Lipschitz 제약을 통해 미분 가능하고 자동 미분 프레임워크에 쉽게 통합 가능한 smoothness 강제 기법을 개발했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Lipschitz-constrained policies (LCP) provide a simple and general method for training policies to produce smooth</em></p></div>
 <ul>
 <li><strong>일반적 적용성</strong>: 여러 humanoid robot 플랫폼에 쉽게 적용 가능하며 수동 튜닝 최소화</li>
 <li><strong>미분 가능성</strong>: Gradient penalty 형태로 구현되어 기존 RL 프레임워크와 자동 미분으로 완전 통합 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>재현성</strong>: 모든 simulation 및 deployment 코드, checkpoint 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Gradient of policies trained with and without smooth-</em></p></div>
 <ul>
 <li>Lipschitz continuity의 정의를 이용하여 ||∇_x f(x)|| ≤ K 제약이 smooth behavior를 보장함을 활용</li>
 <li>Gradient penalty L_gp = (||∇_s π(s)||_2 - K)^2 형태로 policy의 gradient norm 제한</li>

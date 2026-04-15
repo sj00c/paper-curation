@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jingyun Yang, Isabella Huang, Brandon Vu, Max Bajracharya, Rika Antonova, Jeannette Bohg | <strong>날짜</strong>: 2025-05-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.23692" target="_blank">https://arxiv.org/abs/2505.23692</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Introducing policy mobilization. (a) Assume a visuomotor policy π trained from one or a set of limited camera </em></p></div>
 <p>모바일 로봇에서 제한된 관점으로 학습된 조작 정책을 배포할 때 발생하는 분포 외 문제를 해결하기 위해, 정책과 호환되는 로봇 베이스 포즈를 찾는 '정책 모빌라이제이션' 문제를 제시하고 3D Gaussian Splatting과 샘플링 기반 최적화를 통해 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D Gaussian Splatting으로 장면을 표현하고 미분 가능한 렌더링을 통해 후보 포즈의 분포 적합성을 평가하며, 샘플링 기반 최적화로 가장 적합한 로봇 베이스 위치를 식별한다. 또한 정책 모빌라이제이션의 난이도를 정량화하는 메트릭과 RoboCasa 기반 시뮬레이션 벤치마크를 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: A suite of simulated tasks for benchmarking performance of policy mobilization methods. We pick five single-st</em></p></div>
 <ul>
 <li><strong>정책 모빌라이제이션 문제 정의</strong>: 네비게이션과 조작을 분리하면서도 정책 인식적(policy-aware) 베이스 포즈 선택 문제를 명확히 정의</li>
 <li><strong>통합 방법론</strong>: 3D Gaussian Splatting, 점수 함수, 샘플링 기반 최적화를 결합하여 in-distribution 베이스 포즈 발견</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실험 검증</strong>: 시뮬레이션과 실제 환경에서 비정책 인식 기준선 및 정책 인식 기준선보다 우수한 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of our proposed proof-of-concept method. The goal of our method is to find a proper robot pose p for </em></p></div>
 <ul>
 <li>3D Gaussian Splatting을 사용하여 단일 또는 제한된 관점에서 새로운 카메라 포즈에 대한 novel view synthesis 수행</li>
 <li>점수 함수를 설계하여 후보 베이스 포즈가 (1) 정책의 훈련 분포와 일치하는지, (2) 작업 관련 객체의 가시성을 제공하는지, (3) 충돌을 피하는지 평가</li>

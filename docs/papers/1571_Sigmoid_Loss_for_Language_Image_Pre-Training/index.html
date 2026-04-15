@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiaohua Zhai, Basil Mustafa, Alexander Kolesnikov, Lucas Beyer | <strong>날짜</strong>: 2023-03-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.15343" target="_blank">https://arxiv.org/abs/2303.15343</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Efﬁcient loss implementation demonstrated via a mock setup with 3 devices and a global batch size of 12. There</em></p></div>
 <p>Language-Image Pre-training을 위해 softmax 정규화 대신 pairwise sigmoid loss를 제안하며, 이는 배치 크기와 무관하게 작동하여 메모리 효율성을 개선하고 작은 배치 크기에서 더 나은 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Sigmoid loss는 각 image-text 쌍을 독립적으로 처리하여 전역 정규화를 제거하고, 이를 Locked-image Tuning(LiT)과 결합하여 SigLiT 모델을 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The effect of pre-training batch size. Left: SigLiT results, trained for 18B seen examples. Sigmoid loss outpe</em></p></div>
 <ul>
 <li><strong>효율성</strong>: 4개 TPUv4 칩으로 2일 내에 ImageNet 84.5% zero-shot 정확도 달성</li>
 <li><strong>배치 크기 유연성</strong>: 작은 배치 크기(< 16k)에서 softmax보다 현저히 우수한 성능을 보이며, 동시에 백만 단위의 극단적 배치 크기 확장 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장성 분석</strong>: 배치 크기 증가에 따른 성능 포화 지점을 규명하여 합리적인 배치 크기(32k) 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Efﬁcient loss implementation demonstrated via a mock setup with 3 devices and a global batch size of 12. There</em></p></div>
 <ul>
 <li>Image encoder f(·)와 text encoder g(·)의 L2 정규화된 임베딩에 대해 element-wise sigmoid 손실 적용</li>
 <li>Sigmoid loss: -Σ log_sigmoid(labels * logits) / n 형태로, labels는 대각선이 1이고 나머지가 -1인 행렬</li>

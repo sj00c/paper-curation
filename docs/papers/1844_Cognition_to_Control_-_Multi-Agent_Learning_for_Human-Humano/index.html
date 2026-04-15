@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hao Zhang, Ding Zhao, H. Eric Tseng | <strong>날짜</strong>: 2026-03-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.03768" target="_blank">https://arxiv.org/abs/2603.03768</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: The proposed hierarchical HRC framework for humanoid-object coordination, partitioning decision-making into thre</em></p></div>
 <p>인간-휴머노이드 협업 운반을 위한 3계층 Cognition-to-Control 프레임워크로, VLM 기반 의미론적 추론, Markov potential game 기반 MARL 조정, 전신 제어를 통합하여 역할의 자동 형성과 강건한 협업을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM을 통한 의미론적 공간 앵커 생성, Markov potential game으로 공식화된 MARL을 통한 자동 역할 형성, 그리고 Interaction-aware Whole-Body Control을 통한 고주파 물리 실행을 3계층 구조로 명시적으로 연결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Demonstration of human-robot collaboration via cognition-to-control hierarchy: (a) the humanoid and human partne</em></p></div>
 <ul>
 <li><strong>계층적 아키텍처</strong>: VLM 기반 인지층, MARL 기반 기술층, WBC 제어층으로 의미론적 추론과 물리적 실행 사이의 단절을 체계적으로 해소</li>
 <li><strong>역할 자동 형성</strong>: 명시적 역할 할당 없이 leader-follower 역할이 작업 구조로부터 자발적으로 나타남</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일관된 조정</strong>: 좁은 통로 통과, 개체 운반 등 공간 제약이 있는 복잡한 작업에서 안정적인 협업 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: The proposed hierarchical HRC framework for humanoid-object coordination, partitioning decision-making into thre</em></p></div>
 <ul>
 <li><strong>VLM 기반 의미론적 앵커 생성</strong>: 시각 입력으로부터 'where to go' 수준의 고수준 목표를 생성하되, 저주파 의사결정만 담당", '<strong>Markov potential game MARL</strong>: 공유 potential function으로 작업 진행도를 인코딩하고, 각 에이전트가 독립적 정책을 학습하면서 자동으로 상호적응</li>
 <li><strong>Residual Policy 학습</strong>: 명목상 제어기(nominal controller) 대비 잔차 정책으로 학습하여 인간 파트너의 동역학을 암시적으로 내재화</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Heyu Guo, Shanmu Wang, Ruichun Ma, Shiqi Jiang, Yasaman Ghasempour, Omid Abari, Baining Guo, Lili Qiu | <strong>날짜</strong>: 2025-11-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.01210" target="_blank">https://arxiv.org/abs/2511.01210</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System Overview. OmniVLA processes diverse sensor data into image-like 2D spatial representations, and then</em></p></div>
 <p>OmniVLA는 RGB, 적외선, mmWave 레이더, 음향 마이크로폰 등 다중 센서를 통합하는 최초의 VLA 모델로, 센서-마스크된 이미지라는 통일된 표현을 통해 물리적 정보가 포함된 로봇 조작을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RGB 이미지에 다양한 센서 정보를 공간적으로 정렬된 마스크 형태로 오버레이하는 센서-마스크된 이미지 표현을 제안하고, 사전학습된 VLA 백본을 확장하여 경량의 센서별 projection 레이어를 추가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: Examples of Robotic Manipulation Task Completion</em></p></div>
 <ul>
 <li><strong>다중 센서 VLA의 최초 구현</strong>: RGB, 적외선, mmWave 레이더, 음향 마이크로폰을 통합하는 첫 VLA 모델 개발</li>
 <li><strong>우수한 성능</strong>: RGB 전용 기준 대비 59% 향상, 원본 센서 입력 기준 대비 28% 향상하여 평균 84% 작업 성공률 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>강한 일반화 능력</strong>: 세 가지 미학습 작업에서 RGB 전용 및 원본 센서 모델을 각각 59%, 28% 상회</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: System Overview. OmniVLA processes diverse sensor data into image-like 2D spatial representations, and then</em></p></div>
 <ul>
 <li>mmWave 레이더와 음향 배열 데이터를 beamforming 처리하여 2D 히트맵 형태의 센서 이미지로 변환</li>
 <li>VLM과 Grounded SAM을 이용한 의미 기반 분할로 관심 객체의 마스크 생성</li>

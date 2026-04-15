@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yiyang Lu, Yufeng Tian, Zhecheng Yuan, Xianbang Wang, Pu Hua, Zhengrong Xue, Huazhe Xu | <strong>날짜</strong>: 2025-05-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.07819" target="_blank">https://arxiv.org/abs/2505.07819</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of H3DP. H3DP integrates three hierarchical design principles across the</em></p></div>
 <p>H³DP는 RGB-D 입력의 depth-aware layering, 다중 스케일 visual representation, 그리고 hierarchically conditioned diffusion process를 통합하여 visuomotor policy learning에서 시각 인지와 행동 생성 간의 coupling을 강화하는 방법론이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RGB-D 입력을 depth 값에 따라 여러 레이어로 분해하고, 다중 스케일 visual encoder를 통해 coarse-to-fine 특징을 추출한 후, diffusion process의 각 denoising 단계를 해당 시각 특징 스케일과 정렬시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: H3DP can not only achieve superior performance across 44 tasks on 5 simulation bench-</em></p></div>
 <ul>
 <li><strong>시뮬레이션 성능</strong>: 5개 벤치마크의 44개 작업에서 baseline 대비 평균 +27.5% 상대 성능 개선 달성</li>
 <li><strong>실제 로봇 성능</strong>: cluttered 환경의 4개 bimanual 조작 작업에서 Diffusion Policy 대비 +32.3% 성능 향상</li>
 <li><strong>계층적 설계의 유효성</strong>: depth-aware layering이 foreground-background 분리를 명시적으로 수행하여 occlusion과 distraction 억제</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of H3DP. H3DP integrates three hierarchical design principles across the</em></p></div>
 <ul>
 <li><strong>Depth-Aware Layering</strong>: Linear-increasing discretization 수식(Eq. 1)을 사용하여 RGB-D 입력을 depth 값에 따라 N개의 레이어로 분할하고, 작업 공간에 더 집중하도록 설계</li>
 <li><strong>Multi-Scale Visual Representation</strong>: 구체적 방법론은 단락이 끝나지 않아 자세한 내용 미제시되었으나, 다양한 granularity의 특징을 여러 스케일에서 추출하는 구조</li>

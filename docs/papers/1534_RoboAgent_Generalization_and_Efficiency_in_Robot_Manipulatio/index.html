@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Homanga Bharadhwaj, Jay Vakil, Mohit Sharma, Abhinav Gupta, Shubham Tulsiani, Vikash Kumar | <strong>날짜</strong>: 2023-09-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2309.01918" target="_blank">https://arxiv.org/abs/2309.01918</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Two stage framework: [Left] Semantic augmentation stage diversifies the robot data offline us-</em></p></div>
 <p>RoboAgent는 semantic augmentation과 action chunking을 활용하여 7,500개의 데모만으로 12개의 조작 스킬을 수행하는 범용 로봇 조작 에이전트를 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: semantic augmentation으로 오프라인 데이터를 증강하고, MT-ACT(Multi-Task Action-Chunking Transformers) 아키텍처를 통해 action chunking과 multimodal 데이터를 효과적으로 처리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: A glimpse of the diverse manipulation capabilities of RoboAgent– a single agent capable of 12 ma-</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 기존 대규모 방법(135K)의 약 1/18 규모인 7,500개 데모만으로 12개 스킬 학습</li>
 <li><strong>일반화 성능</strong>: 보이지 않은 환경에서 기존 방법 대비 40% 이상의 성능 향상 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 기여</strong>: 98,050개의 데모를 포함한 RoboSet을 공개하여 로봇 학습 커뮤니티에 기여</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Two stage framework: [Left] Semantic augmentation stage diversifies the robot data offline us-</em></p></div>
 <ul>
 <li>Semantic augmentation: foundation model 기반 inpainting을 사용한 오프라인 데이터 증강으로 데이터 다양성 확보</li>
 <li>Action chunking: 시간적 상관성을 활용하여 per-step 대신 action chunk 예측으로 covariate shift 완화</li>

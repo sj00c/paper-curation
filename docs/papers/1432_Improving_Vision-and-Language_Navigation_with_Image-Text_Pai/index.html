@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Arjun Majumdar, Ayush Shrivastava, Stefan Lee, Peter Anderson, Devi Parikh, Dhruv Batra | <strong>날짜</strong>: 2020-04-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2004.14973" target="_blank">https://arxiv.org/abs/2004.14973</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We propose a compatibility model (right) for path selection in vision-and-</em></p></div>
 <p>웹에서 수집한 대규모 이미지-텍스트 쌍으로 사전학습한 VLN-BERT 모델을 제안하여, 시각-언어 네비게이션 작업에서 객체 참조의 시각적 기초(grounding)를 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: BERT 기반 transformer 아키텍처를 경로-지시 쌍의 호환성 점수 모델로 개발하고, 언어 사전학습(Wikipedia/BooksCorpus) → 웹 이미지-텍스트 쌍(Conceptual Captions) → embodied 경로-지시 쌍의 3단계 학습 커리큘럼을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Images from the Conceptual Captions (CC) [24] (top) and Matterport3D</em></p></div>
 <ul>
 <li><strong>경로 선택 성능 향상</strong>: 단일 모델에서 success rate를 4.6 percentage point 증가, 앙상블 모델에서 3.0 percentage point 증가시켜 VLN 리더보드에서 73% 달성</li>
 <li><strong>웹 이미지-텍스트 사전학습의 효과</strong>: Conceptual Captions 사전학습만으로 9.2 percentage point의 성능 향상 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>시각적 기초 학습의 정성적 증거</strong>: 그래디언트 기반 시각화로 모델이 합리적으로 객체 참조를 학습함을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. We propose VLN-BERT (top), a visiolinguistic transformer-based model similar</em></p></div>
 <ul>
 <li>VLN-BERT: 경로의 panoramic RGB 이미지 시퀀스와 네비게이션 지시를 입력받는 joint visiolinguistic transformer 모델</li>
 <li>3단계 학습 커리큘럼: (1) BERT의 masked language modeling으로 언어 표현 학습, (2) ViLBERT 기반 웹 이미지-텍스트 쌍으로 시각-언어 기초 학습, (3) VLN 데이터셋의 경로-지시 쌍으로 fine-tuning</li>

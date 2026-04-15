@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zixuan Chen, Mazeyu Ji, Xuxin Cheng, Xuanbin Peng, Xue Bin Peng, Xiaolong Wang | <strong>날짜</strong>: 2025-06-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.14770" target="_blank">https://arxiv.org/abs/2506.14770</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: An overview of GMT. Here gt denotes the motion target frame, ot denotes proprioceptive</em></p></div>
 <p>GMT는 humanoid 로봇이 다양한 전신 모션을 추적할 수 있도록 하는 통합 정책을 학습하는 프레임워크로, Adaptive Sampling 전략과 Motion Mixture-of-Experts 아키텍처를 핵심 요소로 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GMT는 teacher-student 훈련 프레임워크 내에서 Adaptive Sampling으로 데이터 분포 불균형을 해결하고, Motion MoE 아키텍처로 모델 표현력을 향상시키며, 부분 관찰성과 하드웨어 제약을 체계적으로 처리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We deploy the general unified motion tracking policy on a medium-sized humanoid robot.</em></p></div>
 <ul>
 <li><strong>Adaptive Sampling 전략</strong>: 어려운 모션 세그먼트에 대한 샘플링 비율을 자동으로 증가시켜 AMASS 데이터셋의 불균형 문제를 해결</li>
 <li><strong>Motion MoE 아키텍처</strong>: 모션 manifold의 다른 영역에 대한 전문화를 강화하여 단일 정책의 표현력과 일반화 능력 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>State-of-the-art 성능</strong>: 8925개 필터링된 motion clips를 사용하여 기존 방법들(ExBody2, HumanPlus, OmniH2O)을 능가하는 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: An overview of GMT. Here gt denotes the motion target frame, ot denotes proprioceptive</em></p></div>
 <ul>
 <li>Teacher-student 훈련 프레임워크 도입: privileged information을 활용한 teacher policy를 PPO로 학습한 후 DAgger를 통해 student policy에 지식 이전</li>
 <li>Adaptive Sampling 구현: 각 motion clip의 tracking error를 추적하고 어려운 세그먼트의 샘플링 확률을 동적으로 조정</li>

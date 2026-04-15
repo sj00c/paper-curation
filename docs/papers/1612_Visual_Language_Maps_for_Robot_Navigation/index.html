@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chenguang Huang, Oier Mees, Andy Zeng, Wolfram Burgard | <strong>날짜</strong>: 2022-10-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2210.05714" target="_blank">https://arxiv.org/abs/2210.05714</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: VLMaps is a spatial map representation in which pretrained visual-</em></p></div>
 <p>시각-언어 모델의 특징을 3D 재구성과 융합하여 공간 정보를 갖춘 의미론적 지도(VLMaps)를 구축하고, 이를 통해 로봇이 자연어 명령으로 공간 관계를 포함한 복잡한 네비게이션 작업을 수행할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LSeg 같은 사전훈련된 VLM으로 RGB-D 비디오에서 픽셀 단위 임베딩을 추출하고, 깊이 정보와 시각 운동 정보를 이용해 이를 3D 지도로 역투영하여 공간-의미론적 지도를 구축한 뒤, LLM과 결합하여 자연어 명령을 공간 목표 시퀀스로 변환한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: VLMaps enables a robot to perform complex zero-shot spatial goal navigation tasks given natural language command</em></p></div>
 <ul>
 <li><strong>VLMaps 구축</strong>: 추가 라벨링 없이 사전훈련 VLM 특징과 3D 재구성을 융합한 공간 의미론적 지도 표현 개발</li>
 <li><strong>공간 관계 이해</strong>: '소파와 TV 사이</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>영점 학습 성능</strong>: 추가 데이터 수집이나 모델 미세조정 없이 기존 방법보다 복잡한 자연어 지시를 따르는 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: System overview. A VLMap is created by fusing pretrained visual-language features into the reconstruction of the</em></p></div>
 <ul>
 <li>RGB-D 카메라로부터 각 프레임의 깊이 픽셀을 역투영하여 로컬 포인트 클라우드 생성: Pk = D(u)K⁻¹ũ</li>
 <li>시각 운동(visual odometry)을 이용한 카메라 포즈 변환으로 로컬 포인트 클라우드를 월드 좌표계로 변환: PW = TWkPk</li>

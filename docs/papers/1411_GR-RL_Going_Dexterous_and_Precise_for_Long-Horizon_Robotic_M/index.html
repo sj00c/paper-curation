@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yunfei Li, Xiao Ma, Jiafeng Xu, Yu Cui, Zhongren Cui, Zhigang Han, Liqun Huang, Tao Kong, Yuxiao Liu, Hao Niu, Wanli Peng, Jingchao Qiao, Zeyu Ren, Haixin Shi, Zhi Su, Jiawen Tian, Yuyang Xiao, Shenyu Zhang, Liwei Zheng, Hang Li, Yonghui Wu | <strong>날짜</strong>: 2025-12-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.01801" target="_blank">https://arxiv.org/abs/2512.01801</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 GR-RL performs long-horizon, dexterous, and high-precision manipulation, in the task of shoe lacing, by</em></p></div>
 <p>GR-RL은 일반적인 vision-language-action (VLA) 정책을 다단계 학습 파이프라인(데이터 필터링, 형태 대칭 증강, 온라인 RL)을 통해 장기 복잡 조작을 위한 고정밀 전문가 정책으로 변환하는 로봇 학습 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GR-RL은 offline RL을 통해 학습된 task progress 함수로 부분최적 시연을 필터링하고, 양방향 로봇의 형태 대칭성을 이용한 행동 증강, 그리고 latent space noise predictor를 학습하는 온라인 RL을 결합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5 Left: the success rate of our multi-stage training recipe. Data filtering, mirror augmentation, and online</em></p></div>
 <ul>
 <li><strong>신발끈 꿰기 자동화</strong>: 83.3% 성공률로 신발끈을 여러 개의 고리를 통해 꿰는 최초의 학습 기반 정책 달성</li>
 <li><strong>데이터 필터링 효과</strong>: 부분최적 인간 시연을 식별하여 제거함으로써 정책 성능 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>학습-배포 불일치 해소</strong>: 온라인 RL을 통해 시스템 최적화와의 불일치 완화 및 고정밀 제어 성능 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2</em></p></div>
 <ul>
 <li>Offline RL (TD3+BC)로 sparse reward를 사용하여 distributional critic 학습</li>
 <li>예측된 Q-값의 평균값을 task progress ρ로 계산하여 모든 시연 전이(transition) 평가</li>

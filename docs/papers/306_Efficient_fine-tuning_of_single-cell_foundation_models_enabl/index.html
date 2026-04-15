@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sepideh Maleki, Jan-Christian Huetter, Kangway V. Chuang, David Richmond, Gabriele Scalia, Tommaso Biancalani (Genentech) | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>scDCA 아키텍처: scGPT의 각 transformer 블록에 drug-conditional adapter를 통합하여 분자 임베딩으로 동적으로 down-projection과 up-projection 계층의 편향을 조정</em></p></div>
 <p>단일세포 기초 모델(foundation model)을 약물 조건부 어댑터(drug-conditional adapter)로 효율적으로 미세조정하여, 미래 약물에 대한 세포 반응 예측 및 미보유 세포주(unseen cell line)에 대한 제로샷 일반화를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,11 +77,15 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 기초 모델의 각 트랜스포머 블록에 약물 조건부 어댑터를 삽입하여, 분자 임베딩으로 어댑터 파라미터를 동적으로 제어. 전체 모델 파라미터의 1% 미만만 학습하여 과적합 방지 및 기초 모델의 지식 보존.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>다양한 베이스라인(ChemCPA, Biolord, SAMS-VAE)과의 성능 비교에서 scDCA는 모든 설정에서 최고 성능</em></p></div>
 <ol>
 <li><strong>미보유 약물 및 세포주 예측 성능 향상</strong>: 기존 방법 대비 특히 미보유 세포주에 대한 few-shot 및 zero-shot 일반화에서 현저한 성능 개선 달성. ChemCPA, Biolord, SAMS-VAE 등 기존 최고 성능 방법들을 모든 평가 설정에서 초월.</li>
 <li><strong>매개변수 효율성과 생물학적 지식 보존의 이중성 달성</strong>: 전체 기초 모델 파라미터 중 1% 미만만 학습 가능하게 하여 제한된 데이터셋에서의 과적합 방지. 동시에 사전학습된 transformer 가중치를 동결함으로써 수천만 세포에서 학습한 풍부한 생물학적 표현 유지.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Drug-conditional adapter 모듈의 상세 구조</em></p></div>
 <ul>
 <li><strong>기본 프레임워크</strong>: scGPT(또는 다른 트랜스포머 기반 단일세포 기초 모델)의 각 계층에 drug-conditional adapter 모듈 삽입. 어댑터는 다운-프로젝션(down-projection)과 업-프로젝션(up-projection) 계층의 편향(bias)을 분자 임베딩에 의존적으로 조정.</li>
 <li><strong>분자 조건화 메커니즘</strong>: 약물의 화학 구조를 임베딩 공간으로 인코딩. 이 분자 임베딩이 adapter의 파라미터를 동적으로 제어하여, 약물-특이적 신호를 기초 모델에 주입하되 원본 가중치는 동결.</li>

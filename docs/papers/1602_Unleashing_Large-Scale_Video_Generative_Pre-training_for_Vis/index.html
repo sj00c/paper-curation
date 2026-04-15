@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hongtao Wu, Ya Jing, Chilam Cheang, Guangzeng Chen, Jiafeng Xu, Xinghang Li, Minghuan Liu, Hang Li, Tao Kong | <strong>날짜</strong>: 2023-12-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2312.13139" target="_blank">https://arxiv.org/abs/2312.13139</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of GR-1. GR-1 is first pre-trained on the task of video prediction with a large-</em></p></div>
 <p>GR-1은 대규모 비디오 생성 사전학습을 활용하여 멀티태스크 언어-조건부 시각 로봇 조작을 학습하는 GPT-스타일 transformer 모델이다. 로봇은 언어 지시, 관찰 이미지, 로봇 상태를 입력받아 로봇 액션과 미래 이미지를 end-to-end 방식으로 예측한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GR-1은 먼저 대규모 비디오 데이터셋에서 video prediction 작업으로 사전학습한 후, 로봇 데이터로 fine-tuning된다. 모델은 unified GPT-스타일 transformer 아키텍처를 유지하여 두 단계가 seamless하게 연결된다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: CALVIN Benchmark Results. We show examples of multi-task learning trained on</em></p></div>
 <ul>
 <li><strong>CALVIN 벤치마크 성능</strong>: 성공률을 88.9%에서 94.9%로 개선, 평균 길이(5개 연속 작업 중 완료된 작업 수)를 3.06에서 4.21로 향상</li>
 <li><strong>데이터 효율성</strong>: 전체 데이터의 10% 사용 시 77.8% 성공률 달성 (최고 기준 모델 66.8%)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: 객체 이동 및 관절 객체 조작 작업에서 기준 모델보다 우수한 성능을 보이며 분포 외(out-of-distribution) 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of GR-1. GR-1 is first pre-trained on the task of video prediction with a large-</em></p></div>
 <ul>
 <li>Language encoder를 통해 자연언어 지시를 인코딩</li>
 <li>Robot state encoder로 로봇 상태를 처리</li>

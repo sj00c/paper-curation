@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mingyu Zhang, Lifeng Zhuo, Tianxi Tan, Guocan Xie, Xian Nie, Yan Li, Renjie Zhao, Zizhu He, Ziyu Wang, Jiting Cai, Yong-Lu Li | <strong>날짜</strong>: 2025-11-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.15407" target="_blank">https://arxiv.org/abs/2511.15407</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. IPR training pipeline. Stage 1: PhysCode pre-training. Video clips with optical flow and action semantics are </em></p></div>
 <p>Interactive Physical Reasoner (IPR)는 VLM의 정책을 world model의 롤아웃으로 강화하여 상호작용을 통해 물리 추론 능력을 학습하는 에이전트이다. PhysCode라는 물리 중심 액션 코드를 도입하여 의미론적 의도와 역학을 정렬하고, 1,000+ 게임으로 사전학습되어 물리 직관부터 목표 지향 추론까지 견고한 성능을 보인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: IPR은 (1) PhysCode라는 물리 중심 액션 코드 공간을 통해 VLM의 정책과 world model의 예측을 정렬하고, (2) world model의 롤아웃을 통해 VLM의 정책을 점수 매기고 강화하며, (3) Latent World Model 패러다임에 기반하여 본질적인 잠재 역학만을 모델링한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Three-level evaluation inspired by Maslow’s hierarchy of needs. We organize tasks into a pyramid of Survival, </em></p></div>
 <ul>
 <li><strong>Game-to-Unseen (G2U) 벤치마크</strong>: 시각적 도메인 격차가 있는 1,000+개의 이질적 게임으로 구성된 평가 벤치마크를 구축하고 기존 방법의 강점과 약점을 진단했다.</li>
 <li><strong>세 수준 평가 프레임워크</strong>: Maslow의 위계설에 영감을 받아 Survival, Curiosity, Utility 세 수준으로 평가하여 물리 직관부터 목표 지향 추론까지 포괄적으로 측정했다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>PhysCode 액션 공간</strong>: 의미론적 의도와 시각적 역학을 융합하여 예측과 추론을 위한 공유 액션 공간을 제공했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. IPR training pipeline. Stage 1: PhysCode pre-training. Video clips with optical flow and action semantics are </em></p></div>
 <ul>
 <li>PhysCode 사전학습 단계: 비디오 클립을 통해 물리 중심 액션 코드를 학습하여 시각적 역학과 행동 의미를 정렬한다.</li>
 <li>VLM 정책 훈련: PhysCode 공간에서 VLM이 정책을 생성하도록 학습한다.</li>

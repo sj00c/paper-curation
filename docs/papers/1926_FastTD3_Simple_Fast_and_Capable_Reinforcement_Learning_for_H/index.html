@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Younggyo Seo, Carmelo Sferrazza, Haoran Geng, Michal Nauman, Zhao-Heng Yin, Pieter Abbeel | <strong>날짜</strong>: 2025-05-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.22642" target="_blank">https://arxiv.org/abs/2505.22642</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Summary of results. FastTD3 is a simple, fast, and capable RL algorithm that significantly</em></p></div>
 <p>FastTD3는 병렬 시뮬레이션, 대배치 업데이트, 분포 기반 크리틱 등의 간단한 수정을 통해 TD3를 최적화하여 humanoid 로봇 제어 태스크를 단일 A100 GPU에서 3시간 이내에 학습하는 빠르고 효율적인 오프-정책 강화학습 알고리즘을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: TD3에 병렬 환경, 대배치 업데이트, distributional critic (C51), 신중하게 튜닝된 hyperparameter를 결합하여 오프-정책 학습의 이점을 유지하면서 훈련 속도를 대폭 가속화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Results on a selected set of tasks. Learning curves on selected individual tasks from</em></p></div>
 <ul>
 <li><strong>빠른 학습</strong>: HumanoidBench의 39개 태스크를 단일 A100 GPU에서 평균 3시간 이내에 해결하며, MuJoCo Playground와 IsaacLab에서도 PPO보다 우수한 성능을 달성</li>
 <li><strong>오프-정책 RL의 강점 유지</strong>: 샘플 효율성, demonstration 초기화, 실세계 배포 중 fine-tuning이 가능한 오프-정책 알고리즘의 이점을 활용</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실세계 검증</strong>: 최초로 MuJoCo Playground에서 학습한 오프-정책 RL 정책을 Booster T1 full-size humanoid 로봇에 성공적으로 sim-to-real 전이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Effect of design choices (1 / 2). We investigate the effect of (a) parallel environments,</em></p></div>
 <ul>
 <li><strong>병렬 환경 활용</strong>: 결정적 정책 그래디언트 알고리즘의 약점인 탐색을 병렬 환경의 다양성으로 보완하면서 값 함수 활용 능력 강화</li>
 <li><strong>대배치 학습</strong>: 배치 크기 32,768을 사용하여 각 그래디언트 업데이트에서 높은 데이터 다양성을 보장하고 안정적인 학습 신호 제공</li>

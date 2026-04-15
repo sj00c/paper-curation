@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yara Mahmoud, Jeffrin Sam, Nguyen Khang, Marcelino Fernando, Issatay Tokmurziyev, Miguel Altamirano Cabrera, Muhammad Haris Khan, Artem Lykov, Dzmitry Tsetserukou | <strong>날짜</strong>: 2025-11-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.23300" target="_blank">https://arxiv.org/abs/2511.23300</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Egocentric perception and semantic-to-safety</em></p></div>
 <p>SafeHumanoid는 Vision Language Model(VLM)과 Retrieval-Augmented Generation(RAG)을 활용하여 휴머노이드 로봇의 임피던스와 속도를 동적으로 조정하는 시스템으로, 인간-로봇 상호작용 시 안전성과 작업 완료를 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 자중심 비전으로 장면을 캡처하고 VLM 프롬프트로 의미론적 정보를 추출한 후, FAISS 기반 RAG를 통해 검증된 시나리오 데이터베이스에서 임피던스 파라미터(Kp, Kd, v)를 검색하고 역운동학으로 관절 명령으로 변환한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: SafeHumanoid pipeline architecture. The onboard PC streams egocentric frames and executes impedance control at</em></p></div>
 <ul>
 <li><strong>VLM-RAG 제어 파이프라인</strong>: 자중심 비전과 구조화된 VLM 프롬프트를 활용하여 실시간으로 맥락 인식 임피던스 및 속도 파라미터를 선택</li>
 <li><strong>실제 시스템 통합</strong>: Unitree G1 휴머노이드 로봇에서 고수준 의미론적 추론과 저수준 상체 제어의 완전한 통합 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>표준 준수</strong>: ISO/TS 15066과 ISO 13855 같은 협력 로봇 안전 표준을 고려한 파라미터 선택</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: SafeHumanoid pipeline architecture. The onboard PC streams egocentric frames and executes impedance control at</em></p></div>
 <ul>
 <li>자중심 카메라에서 egocentric frames 획득</li>
 <li>구조화된 VLM 프롬프트를 사용한 Molmo VLM으로 장면 의미론적 분석</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Stone Tao, Fanbo Xiang, Arth Shukla, Yuzhe Qin, Xander Hinrichsen, Xiaodi Yuan, Chen Bao, Xinsong Lin, Yulin Liu, Tse-kai Chan, Yuan Gao, Xuanlin Li, Tongzhou Mu, Nan Xiao, Arnav Gurha, Viswesh Nagaswamy Rajesh, Yong Woo Choi, Yen-Ru Chen, Zhiao Huang, Roberto Calandra, Rui Chen, Shan Luo, Hao Su | <strong>날짜</strong>: 2024-10-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.00425" target="_blank">https://arxiv.org/abs/2410.00425</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Multiple distinct task categories are displayed, ranging from room-scale tasks to humanoid interactions and draw</em></p></div>
 <p>ManiSkill3는 GPU 병렬화된 로봇 시뮬레이션 및 렌더링 프레임워크로, 접촉이 풍부한 물리 엔진과 다양한 조작 작업을 지원하여 시뮬레이션 속도를 10-1000배 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ManiSkill3는 SAPIEN 병렬 렌더링 시스템과 PhysX GPU 시뮬레이션을 활용하여 최소한의 Python/PyTorch 오버헤드로 설계했으며, 이질적 시뮬레이션을 지원하기 위해 데이터 지향적 시스템 아키텍처를 도입했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: GPU Simulation+Rendering speeds of various tasks</em></p></div>
 <ul>
 <li><strong>최고 성능 GPU 병렬 시뮬레이션+렌더링</strong>: 30,000+ FPS 달성, 기타 플랫폼 대비 2-3배 낮은 GPU 메모리 사용으로 장시간 학습이 시간 단위로 단축</li>
 <li><strong>가장 포괄적인 작업 환경</strong>: 테이블탑 조작, 모바일 조작, 방 규모 장면, 휴머노이드, 손가락 민첩 조작 등 12개 카테고리와 20+개 로봇 구현체 제공</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>통합 API 및 기준선</strong>: 도메인 무작위화, 궤적 재생, 컨트롤러 변환, PPO 등 RL 및 learning-from-demonstrations 기준선 포함</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: GPU Simulation+Rendering of RGB speeds of the Cartpole environment with different camera setups ManiSkill3 and</em></p></div>
 <ul>
 <li>PhysX 기반 GPU 시뮬레이션 엔진으로 병렬화된 물리 계산 수행</li>
 <li>SAPIEN 병렬 렌더링 시스템으로 동시에 여러 환경의 시각 정보 생성</li>

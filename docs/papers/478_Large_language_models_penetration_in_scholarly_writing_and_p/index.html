@@ -75,12 +75,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 저술과 LLM 생성 콘텐츠로 구성된 큐레이션된 데이터셋(ScholarLens)을 구축하고, 언어학적 특성 분석과 의미적 유사성 측정을 결합한 다차원 평가 프레임워크(LLMetrica)를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>파이프라인 개요: (1) ScholarLens 큐레이션, (2) LLMetrica 프레임워크, (3) 학술 저술 및 피어 프로세스의 LLM 침투율 평가</em></p></div>
 <ol>
 <li><strong>ScholarLens 데이터셋 구축</strong>: ICLR 2019년 이전 2,831개 논문의 초록, 리뷰, 메타-리뷰로 구성된 큐레이션 데이터셋 개발. GPT-4o, Gemini-1.5, Claude-3 Opus 등 3개의 최신 LLM으로 생성된 대응 텍스트 포함.</li>
 <li><strong>LLMetrica 프레임워크 개발</strong>: 10개의 일반 언어학적 특성 지표(어휘 길이, 문장 복잡도, 가독성 등)와 4개의 전문 의미론적 특성 지표(의미적 유사성, 문장 수준 특수성)를 통합한 종합 평가 도구 개발.</li>
 <li><strong>ScholarDetect 탐지기</strong>: ScholarLens를 기반으로 학술 영역 특화 LLM 탐지 모델 개발로 높은 정확도의 LLM 생성 콘텐츠 식별 달성.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>ScholarLens의 일반 특성에 기반한 인간 저술과 LLM 생성 텍스트 비교</em></p></div>
 <p><strong>규칙 기반 지표(Rule-Based Metrics)</strong>:</p>
 <ul>
 <li><strong>일반 언어학적 특성</strong>: 평균 단어 길이(AWL), 장어 비율(LWR), 정지어 비율(SWR), 유형-토큰 비율(TTR), 평균 문장 길이(ASL), 의존성 관계 다양성(DRV), 종속절 밀도(SCD), Flesch Reading Ease(FRE), 감정 극성(PS), 감정 주관성(SS) 등 10개 지표</li>

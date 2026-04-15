@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Liang Pan, Zeshi Yang, Zhiyang Dou, Wenjia Wang, Buzhen Huang, Bo Dai, Taku Komura, Jingbo Wang | <strong>날짜</strong>: 2025-03-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.19901" target="_blank">https://arxiv.org/abs/2503.19901</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Introducing TokenHSI, a unified model that enables physics-based characters to perform diverse human-scene int</em></p></div>
 <p>TokenHSI는 transformer 기반의 통합 정책으로 humanoid 고유감각을 공유 토큰으로 모델링하고 task 토큰과 masking mechanism으로 결합하여 다양한 인간-장면 상호작용(HSI) 기술을 단일 네트워크에서 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: proprioception tokenizer를 통해 캐릭터 상태를 공유 토큰으로 모델링하고, 다양한 task tokenizer들과 transformer의 masking mechanism으로 결합하여 다중 기술을 학습한 후, 변수 길이 입력을 지원하는 아키텍처로 새로운 작업에 효율적으로 적응한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Introducing TokenHSI, a unified model that enables physics-based characters to perform diverse human-scene int</em></p></div>
 <ul>
 <li><strong>다중 기술 통합</strong>: following, sitting, climbing, carrying 등 4가지 대표적 HSI 기술을 단일 transformer 네트워크에서 동시 학습</li>
 <li><strong>효율적 정책 적응</strong>: 기초 기술 학습 후 task tokenizer와 adapter layer만 추가하여 새로운 작업에 빠르게 적응 가능</li>
 <li><strong>포괄적 일반화</strong>: 기술 합성, 물체/지형 형태 변화, 장기 작업 완성 등 다양한 HSI 벤치마크에서 기존 방법 대비 성능 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. TokenHSI consists of two stages: (left) foundational skill learning and (right) policy adaptation. Through mul</em></p></div>
 <ul>
 <li><strong>Proprioception tokenizer</strong>: 캐릭터 상태를 독립적인 공유 토큰으로 인코딩하여 모든 작업에서 재사용</li>
 <li><strong>Task tokenizer</strong>: 각 작업의 관찰값을 표준화된 길이로 변환</li>

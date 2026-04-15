@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Filip Bjelonic, Fabian Tischhauser, Marco Hutter | <strong>날짜</strong>: 2025-09-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.06342" target="_blank">https://arxiv.org/abs/2509.06342</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Comparison of real and simulated robot trajectories</em></p></div>
 <p>이족 로봇의 시뮬레이션-실제 전이 문제를 해결하기 위해 강화학습과 영구자석 동기 전동기(PMSM)의 물리 기반 에너지 모델을 통합한 프레임워크를 제안하며, 최소한의 파라미터로 현실성을 확보하면서 에너지 효율성을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Bottom-up 동적 파라미터 식별을 통해 액추에이터 레벨에서 시작하여 전체 로봇 시스템으로 확대하고, PMSM의 전기적·기계적 손실을 물리 원칙에 기반한 4항 보상 함수로 모델링한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Comparison of real and simulated robot trajectories</em></p></div>
 <ul>
 <li><strong>Sim-to-real 파이프라인</strong>: 액추에이터 및 시스템 모델을 RL 훈련에 통합하는 오픈소스 모델링 파이프라인 개발</li>
 <li><strong>Bottom-up 성능 분석</strong>: 단일 액추에이터부터 전체 로봇 로컬로모션까지 다단계 평가 및 최신 블랙박스 방법과의 비교</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>에너지 효율성 개선</strong>: ANYMAL의 전체 수송 비용(Cost of Transport) 32% 감소 달성 (값: 1.27)</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of the proposed Precise Adaptation through Continuous Evolution (PACE) pipeline with policy training.</em></p></div>
 <ul>
 <li>PMSM의 전기적 손실과 기계적 손실을 분리하여 모델링하고 물리 기반 에너지 공식 도입</li>
 <li>최소 파라미터 집합으로 시뮬레이션-현실 간격을 포착하는 간결한 4항 보상 함수 설계 (각 항의 물리적 해석 유지)</li>

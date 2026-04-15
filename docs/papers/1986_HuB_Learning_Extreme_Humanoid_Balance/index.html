@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tong Zhang, Boyuan Zheng, Ruiqian Nai, Yingdong Hu, Yen-Jen Wang, Geng Chen, Fanqi Lin, Jiongye Li, Chuye Hong, Koushil Sreenath, Yang Gao | <strong>날짜</strong>: 2025-05-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.07294" target="_blank">https://arxiv.org/abs/2505.07294</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: HuB Overview. To tackle the challenges of extreme balance tasks on humanoids, HuB integrates</em></p></div>
 <p>HuB는 휴머노이드 로봇이 제한된 한 발로 서기나 높은 킥과 같은 극도의 준정적 균형 작업을 수행할 수 있도록 하는 통합 프레임워크이며, 참조 동작 정제, 균형 인식 정책 학습, sim-to-real 강건성 훈련의 세 가지 구성 요소로 이루어져 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,11 +77,15 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HuB는 참조 동작의 품질 향상을 위해 SMPL 기반 초기화와 후처리 기법을 적용하고, 균형 인식 정책 학습을 위해 추적 목표를 완화하며 균형 형성 보상을 도입하고, sim-to-real 강건성을 위해 IMU 중심 섭동, 국소화된 참조 추적, 고주파 외부 충격을 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Extreme Balance Tasks. HuB enables humanoids to perform extreme quasi-static balance tasks</em></p></div>
 <ul>
 <li><strong>극한 균형 작업 실현</strong>: Swallow Balance(수평 확장 자세), Bruce Lee's Kick(1.5m 이상의 높은 발차기), Ne Zha Pose 등 준정적 극한 자세들을 Unitree G1 휴머노이드 로봇에서 안정적으로 수행", '<strong>강건한 외부 교란 내성</strong>: 강력한 축구공 충격 등의 물리적 교란에도 정책이 안정적으로 유지되며 10번의 연속 수행을 단일 롤아웃 내에서 성공</li>
 <li><strong>기준선 대비 우수한 성능</strong>: 추적 기반 baseline 방법들이 균형 상실로 낙하하거나 한 발 동작을 포기하는 반면, HuB는 이러한 극한 작업들을 완수</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: HuB Overview. To tackle the challenges of extreme balance tasks on humanoids, HuB integrates</em></p></div>
 <ul>
 <li><strong>참조 동작 정제</strong>: SMPL 신체 모델 기반 초기화를 통한 수렴 가속화, 발 슬라이딩 제거를 위한 착지 발 보정, 무게 중심 필터링 및 전환 안정화로 물리적 타당성 향상</li>
 <li><strong>균형 인식 정책 학습</strong>: 완벽한 추적 대신 참조 궤적 근처에서의 탐색을 허용하는 완화된 추적, 무게 중심 위치, 발 접촉 불일치, 발 근접도 등에 대한 형성 보상 도입</li>

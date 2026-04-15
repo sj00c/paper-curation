@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Dechen Gao, Boqi Zhao, Andrew Lee, Ian Chuang, Hanchu Zhou, Hang Wang, Zhe Zhao, Junshan Zhang, Iman Soltani | <strong>날짜</strong>: 2025-07-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.13231" target="_blank">https://arxiv.org/abs/2507.13231</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: A comparison between VITA and conventional flow matching and diffusion policies. Unlike</em></p></div>
 <p>VITA는 시각 표현에서 잠재 행동으로 직접 흐르는 noise-free flow matching 정책으로, 기존의 반복적인 시각 조건화 모듈을 제거하여 추론 속도와 메모리 효율성을 획기적으로 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Action autoencoder를 통해 raw action을 시각 잠재 벡터와 정렬된 구조화된 잠재 공간으로 매핑하고, flow latent decoding을 제안하여 ODE 해결 단계를 통해 행동 재구성 손실을 역전파함으로써 end-to-end 학습을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Autonomous rollouts of VITA on five challenging real-world tasks, including two bimanual</em></p></div>
 <ul>
 <li><strong>추론 속도 향상</strong>: 기존 conditioning 모듈 방식 대비 1.5×-2× 빠른 추론 속도 달성</li>
 <li><strong>메모리 효율성</strong>: 18.6%-28.7% 낮은 메모리 사용량으로 동일한 모델 크기에서 우수한 성능 구현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>학습 안정성</strong>: 빠른 수렴과 높은 정밀도를 유지하면서 안정적인 학습 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An overview of the VITA architecture: The vision encoder maps observations into a source</em></p></div>
 <ul>
 <li>시각 인코더로 카메라 이미지를 latent image 분포로 변환</li>
 <li>Action autoencoder를 통해 raw action을 structured latent action space로 인코딩</li>

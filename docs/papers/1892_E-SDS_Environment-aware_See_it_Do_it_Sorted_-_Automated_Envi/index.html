@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Enis Yalcin, Joshua O'Hara, Maria Stamatopoulou, Chengxu Zhou, Dimitrios Kanoulas | <strong>날짜</strong>: 2025-12-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.16446" target="_blank">https://arxiv.org/abs/2512.16446</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. E-SDS pipeline showing the automated reward generation and refinement.</em></p></div>
 <p>E-SDS는 Vision-Language Model과 실시간 지형 센서 분석을 통합하여 휴머노이드 로봇의 환경 인식 보행 정책을 자동으로 학습할 수 있는 프레임워크를 제시한다. 환경 통계 기반 보상 함수 자동 생성으로 수동 엔지니어링 시간을 대폭 단축하면서도 더 강건한 보행 정책을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: E-SDS는 VLM 기반 SUS 프롬팅을 확장하여 Environment Analysis Agent를 도입하고, 시뮬레이션 내 1000개 로봇을 배치하여 수집한 지형 통계(장애물 밀도, 갭 비율 등)를 프롬팅에 통합함으로써 환경 인식 보상 함수를 자동 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Velocity tracking error between E-SDS (red), Foundation (green), Baseline</em></p></div>
 <ul>
 <li><strong>계단 하강 성공</strong>: E-SDS는 유일하게 계단 하강을 완료했으며, 수동 설계 또는 비지각형 자동 기준선은 실패했다.</li>
 <li><strong>속도 추적 오차 감소</strong>: 모든 지형에서 51.9-82.6% 속도 추적 오차 감소를 달성했다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 지형 평가</strong>: 단순, 갭, 장애물, 계단 등 4개 지형에서 평가하여 일반화 능력을 입증했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. E-SDS pipeline showing the automated reward generation and refinement.</em></p></div>
 <ul>
 <li>Grid-Frame Prompting으로 동영상을 프레임 그리드로 인코딩한다.</li>
 <li>SUS(See it, Understand it, Sorted) 프롬팅 전략으로 Contact Sequence, Gait, Task Requirement를 추출한다.</li>

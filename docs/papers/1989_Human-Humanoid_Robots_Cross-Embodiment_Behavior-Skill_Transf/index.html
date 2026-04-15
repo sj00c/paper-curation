@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junjia Liu, Zhuo Li, Minghao Yu, Zhipeng Dong, Sylvain Calinon, Darwin Caldwell, Fei Chen | <strong>날짜</strong>: 2024-12-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.15166" target="_blank">https://arxiv.org/abs/2412.15166</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Schematic overview of the cross-embodiment loco-manipulation skill transfer framework. 1) Human embodiment</em></p></div>
 <p>Unified Digital Human (UDH) 모델을 공통 프로토타입으로 사용하여 인간 시연에서 행동 원시 요소를 학습하고, 분해된 adversarial imitation learning과 kinematic motion retargeting을 통해 다양한 휴머노이드 로봇 플랫폼으로 로코-매니퓰레이션 스킬을 효율적으로 전이한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: UDH를 인간 시연의 공통 프로토타입으로 사용하여 embodiment 독립적인 행동 원시 요소를 추출하고, 복잡한 제어 문제를 functional components로 분해하여 독립적으로 adversarial imitation learning으로 학습한 뒤, human-object interaction graph를 활용해 이들을 동적으로 조율하며, kinematic motion retargeting과 embodiment 특화 fine-tuning으로 다양한 휴머노이드에 전이한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Human can serve as the prototype of diverse humanoid robots, efficiently learning generalized loco-manipulation </em></p></div>
 <ul>
 <li><strong>다중 플랫폼 검증</strong>: 5개의 서로 다른 구성의 휴머노이드 로봇에서 안정적인 로코-매니퓰레이션 능력을 입증</li>
 <li><strong>데이터 효율성</strong>: Unified Digital Human 모델을 통해 데이터 병목을 감소시키고 새 로봇 플랫폼마다 재학습할 필요성을 제거</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>전신 협응</strong>: 분해된 functional components의 동적 조율로 높은 DoF 휴머노이드의 복잡한 전신 운동 생성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Schematic overview of the cross-embodiment loco-manipulation skill transfer framework. 1) Human embodiment</em></p></div>
 <ul>
 <li>Motion capture 시스템으로 인간 시연을 캡처하여 UDH에 retarget하고 다양한 휴머노이드에 재-retarget</li>
 <li>휴머노이드의 높은 DoF를 functional parts (다리, 팔, 손 등)로 분해하여 각각 partial demonstration으로 adversarial imitation learning 학습</li>

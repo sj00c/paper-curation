@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuan Chang, Ziyue Li, Hengyuan Zhang, Yuanbo Kong, Yanru Wu, Hayden Kwok-Hay So, Zhijiang Guo, Liya Zhu, Ngai Wong | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>TreeReview 프레임워크 개요: (A) 하향식 질문 생성 단계에서 계층적 질문 분해, (B) 상향식 답변 집계 단계에서 최종 리뷰 생성</em></p></div>
 <p>본 논문은 긴 학술 논문의 동료평가(peer review)를 효율적이면서도 깊이 있게 수행하기 위해 질문-답변 트리 구조를 활용하는 TreeReview 프레임워크를 제안한다. 계층적 질문 분해와 동적 질문 확장 메커니즘을 통해 LLM 기반 과학 논문 검토에서 종합성, 기술적 깊이, 전문가 정렬성을 향상시키면서 토큰 사용량을 80%까지 감소시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -81,6 +83,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 리뷰어가 탐색적 질문을 통해 리뷰를 수행하는 인지 패턴에 영감을 받아, 논문 리뷰를 계층적 질문-답변 트리 구조로 모델링하는 TreeReview 제안.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>다양한 품질 차원에 걸친 LLM 평가 점수 비교</em></p></div>
 <ol>
 <li><strong>전체 리뷰 생성 태스크에서 우수한 성능</strong>:
 <ul>
@@ -104,6 +108,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+</div>
 <p>TreeReview는 두 가지 단계로 작동:</p>
 <p><strong>1단계: 하향식(Top-Down) 질문 생성</strong></p>
 <ul>

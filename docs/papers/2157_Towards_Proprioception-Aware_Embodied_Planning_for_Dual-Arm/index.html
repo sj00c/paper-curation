@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Boyu Li, Siyuan He, Hang Xu, Haoqi Yuan, Xinrun Xu, Yu Zang, Liwei Hu, Junpeng Yue, Zhenxiong Jiang, Pengbo Hu, Börje F. Karlsson, Yehui Tang, Zongqing Lu | <strong>날짜</strong>: 2025-10-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.07882" target="_blank">https://arxiv.org/abs/2510.07882</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: DualTHOR is a novel simulator specifically tai-</em></p></div>
 <p>이 논문은 이중팔 휴머노이드 로봇의 장기 계획을 위해 DualTHOR 시뮬레이터와 고유감각(proprioception)을 인식하는 Proprio-MLLM을 제안하며, 기존 MLLM의 구현화 인식 부족을 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DualTHOR이라는 새로운 이중팔 휴머노이드 시뮬레이터를 개발하여 연속 상태 전환과 우발 상황 메커니즘을 제공하고, Proprio-MLLM을 제안하여 고유감각 정보, motion-based position embedding, cross-spatial encoder를 통해 구현화 인식을 강화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: The framework of Proprio-MLLM. By incorporating proprioceptive information, we propose a multimodal</em></p></div>
 <ul>
 <li><strong>DualTHOR 시뮬레이터</strong>: AI2-THOR을 기반으로 한 이중팔 휴머노이드 로봇 전용 시뮬레이션 플랫폼으로, 연속 제어, 우발 상황 메커니즘, 다양한 가정용 이중팔 작업 스위트를 제공</li>
 <li><strong>Proprio-MLLM 모델</strong>: 고유감각 정보를 통합하여 구현화 인식을 향상시킨 multimodal alignment MLLM으로, motion-based position embedding과 cross-spatial encoder를 도입</li>
 <li><strong>성능 개선</strong>: 기존 MLLMs 대비 평균 19.75% 계획 성능 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: The framework of Proprio-MLLM. By incorporating proprioceptive information, we propose a multimodal</em></p></div>
 <ul>
 <li>Unity 엔진 기반의 물리 엔진으로 정밀한 이중팔 상호작용 시뮬레이션</li>
 <li>연속 상태 전환을 통한 물리적으로 현실적인 로봇 동작 모델링</li>

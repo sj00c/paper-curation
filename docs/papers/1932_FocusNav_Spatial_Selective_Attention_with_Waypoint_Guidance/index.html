@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yang Zhang, Jianming Ma, Liyun Yan, Zhanxiang Cao, Yazhou Zhang, Haoyang Li, Yue Gao | <strong>날짜</strong>: 2026-01-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.12790" target="_blank">https://arxiv.org/abs/2601.12790</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Overview of the FocusNav framework. (a) Multi-modal perception encoder fuses spatially aligned LiDAR and depth</em></p></div>
 <p>FocusNav는 인간형 로봇의 국소 항법을 위해 Waypoint-Guided Spatial Cross-Attention (WGSCA)와 Stability-Aware Selective Gating (SASG) 모듈을 결합한 공간 선택적 주의 프레임워크를 제안한다. 예측된 무충돌 경로점을 기준으로 환경 지각을 동적으로 조정하여 불안정 시 원거리 정보를 제거함으로써 동적·복잡한 환경에서의 견고한 항법을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 생물학적 PPA 패러다임에서 영감을 받아, GuideOracle이라는 특권 정책으로 최적의 경로점 추적 신호를 생성한 후, WGSCA 메커니즘으로 시각 기반 항법 정책이 예측된 경로점을 기준으로 환경 특징을 집계하도록 유도한다. SASG 모듈은 실시간 안정성을 감지하여 불안정 시 원거리 정보를 제거함으로써 보행 안정성을 우선시한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Snapshots of dynamic obstacle avoidance on stairs.</em></p></div>
 <ul>
 <li><strong>Waypoint-Guided Spatial Cross-Attention (WGSCA) 메커니즘</strong>: 예측된 무충돌 경로점을 기준으로 환경 특징 집계를 공간적으로 앵커링하여 의도된 동작 궤적과 정렬된 지각을 보장</li>
 <li><strong>Stability-Aware Selective Gating (SASG) 모듈</strong>: 로봇의 동적 안정성을 실시간 모니터링하여 불안정 감지 시 원거리 정보를 동적으로 제거, 즉각적인 발판 안전성 우선시</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>복잡한 환경 적응</strong>: 계단, 불규칙 지형, 동적 장애물이 있는 시나리오에서 안정적인 항법 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Overview of the FocusNav framework. (a) Multi-modal perception encoder fuses spatially aligned LiDAR and depth</em></p></div>
 <ul>
 <li>GuideOracle 특권 정책을 통해 시뮬레이션 환경의 완전한 관찰성을 활용하여 정밀한 지역 맵과 목표 좌표 접근으로 최적 감독 신호 생성</li>
 <li>WGSCA: 경로점 시퀀스를 환경 특징 인코더와의 spatial cross-attention을 통해 특징 집계를 경로 계획에 정렬</li>

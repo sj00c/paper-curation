@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: J.A. Rodríguez, David Vázquez, Issam Laradji, Marco Pedersoli, Pau Rodríguez | <strong>날짜</strong>: 2023 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2306.00800" target="_blank">arXiv:2306.00800</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Paper2Fig100k 테스트 셋의 캡션으로부터 생성된 모델의 샘플들</em></p></div>
 <p>텍스트 설명으로부터 과학 논문의 도형(scientific figure)을 생성하는 새로운 문제를 제시하고, 확산 모델(diffusion model) 기반의 FigGen을 제안한 초기 탐색 연구이다. 자연 이미지와 달리 과학 도형은 이산적 컴포넌트(상자, 화살표, 텍스트)와 높은 기술적 복잡성을 포함하므로 새로운 도전과제를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Paper2Fig100k 데이터셋(논문-도형 쌍 81,194개)을 활용하여 잠재 확산 모델(latent diffusion model)을 훈련하고, 텍스트-도형 간 관계 학습을 시도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: 다양한 Classifier-Free Guidance(CFG) 스케일에서 생성된 FigGenBase 샘플들</em></p></div>
 <ol>
 <li><strong>새로운 문제 정의</strong>: 텍스트-과학 도형 생성(text-to-figure generation)을 명확히 정의하고 주요 도전과제(텍스트 길이 가변성, 다양한 도형 스타일, 종횡비 변화, 텍스트 렌더링 품질)를 식별했다.</li>
 <li><strong>모델 및 데이터셋 공개</strong>: 코드와 사전 훈련된 모델을 GitHub에 공개하여 커뮤니티의 추가 연구를 지원한다.</li>

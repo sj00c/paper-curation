@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Marah Abdin, Jyoti Aneja, Harkirat Behl, Sébastien Bubeck, Ronen Eldan, Suriya Gunasekar, Michael R. Harrison, Russell J. Hewett, Mojan Javaheripi, Piero Kauffmann, James R. Lee, Yin Tat Lee, Yuanzhi Li, Weishung Liu, Caio César Teodorio Mendes, Anh Nguyen, Eric Price, Gustavo de Rosa, Olli Saarikivi, Adil Salim | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2412.08905" target="_blank">arXiv:2412.08905</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 2024년 11월 AMC-10/12 시험에서 다양한 모델의 평균 성능 비교</em></p></div>
 <p>Phi-4는 140억 개 파라미터의 언어 모델로, 고품질 합성 데이터 중심의 학습 레시피를 통해 개발되었으며, 교사 모델인 GPT-4o를 STEM 기반 질의응답 벤치마크에서 능가하는 성능을 달성했다. 특히 추론 관련 작업에서 훨씬 큰 모델들과 비슷하거나 우수한 성능을 보인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 다양한 기법(다중 에이전트 프롬프팅, 자가 수정 워크플로우, 지시 역변환)을 통한 합성 데이터 생성, (2) 고품질 유기적 데이터의 큐레이션과 필터링, (3) 거절 샘플링(rejection sampling)과 새로운 직접 선호도 최적화(DPO) 기법을 포함한 포스트트레이닝 혁신</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Phi-4의 경쟁 수학 문제(AMC-10/12) 성능 비교</em></p></div>
 <ol>
 <li><strong>벤치마크 성능 우수성</strong>: Phi-4는 GPQA(대학원 수준 STEM 질의응답)에서 56.1점, MATH(수학 경시 문제)에서 80.4점을 달성하여 교사 모델 GPT-4o를 능가했다. HumanEval에서 82.6점, ArenaHard에서 75.4점 등 다양한 추론 벤치마크에서 우수한 성능을 보였다.</li>
 <li><strong>신선한 데이터셋 검증</strong>: 2024년 11월 AMC-10/12 경시대회(학습 데이터 수집 이후)에서 평균 91.8점을 기록하여, 훨씬 큰 모델들(GPT-4o-mini 78.2점, Llama-3.3 70B 66.4점)을 크게 상회했다. 이는 오버피팅이나 데이터 오염이 없음을 증명한다.</li>

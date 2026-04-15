@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhikai Zhang, Haofei Lu, Yunrui Lian, Ziqing Chen, Yun Liu, Chenghuai Lin, Han Xue, Zicheng Zeng, Zekun Qi, Shaolin Zheng, Qing Luan, Jingbo Wang, Junliang Xing, He Wang, Li Yi | <strong>날짜</strong>: 2026-03-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.12686" target="_blank">https://arxiv.org/abs/2603.12686</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Overview of LATENT. (a) We pre-train a motion tracker on collected imperfect human motion data. (b) We construc</em></p></div>
 <p>LATENT는 불완전한 인간 모션 데이터(5시간 분량의 테니스 프리미브)로부터 수정 가능한 잠재 행동 공간을 구성하고, 고수준 정책으로 이를 보정·합성하여 휴머노이드 로봇이 인간과의 멀티샷 테니스 랠리를 수행하도록 학습하는 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 세 단계 파이프라인으로, 첫째 compact motion capture로 5명의 선수로부터 5시간의 프리미티브 스킬 데이터를 수집하고, 둘째 수정 가능한 latent action space를 motion tracker와 variational information bottleneck으로 구성한 후, 셋째 latent action barrier를 통해 high-level policy가 task 성능과 자연스러운 동작을 균형있게 학습하도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 (a) The humanoid performs multi-shot rallies with a human player using different stroke types across various co</em></p></div>
 <ul>
 <li><strong>Correctable latent space</strong>: 불완전한 모션 데이터에서 high-level policy의 보정을 가능하게 하는 latent action space 설계</li>
 <li><strong>Latent action barrier (LAB)</strong>: state-based action distribution prior를 이용해 RL 탐색을 제약하며 task 성능과 motion style adherence의 균형을 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Real-world demonstration</strong>: Unitree G1 humanoid에서 인간 플레이어와 안정적인 멀티샷 랠리 수행, 최고 15 m/s 이상의 고속 공 타격 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Overview of LATENT. (a) We pre-train a motion tracker on collected imperfect human motion data. (b) We construc</em></p></div>
 <ul>
 <li>Motion capture: 3m×5m의 compact 시스템에서 5명의 선수로부터 forehand, backhand, lateral shuffle, crossover step 등의 프리미티브 스킬 수집</li>
 <li>Motion retargeting: LocoMuJoCo를 사용해 인간 모션을 humanoid 모션으로 변환</li>

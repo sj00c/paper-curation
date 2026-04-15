@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoyu Zhen, Xiaowen Qiu, Peihao Chen, Jincheng Yang, Xin Yan, Yilun Du, Yining Hong, Chuang Gan | <strong>날짜</strong>: 2024-03-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.09631" target="_blank">https://arxiv.org/abs/2403.09631</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of our 3D-VLA pipeline. The left part shows our goal-generation capability. Our model can imagine the</em></p></div>
 <p>3D-VLA는 3D 인식, 추론, 행동을 생성형 월드 모델로 통합하는 embodied foundation model이며, 3D LLM 위에 interaction token과 diffusion model을 결합하여 로봇의 목표 이미지/포인트 클라우드 생성과 행동 예측을 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D LLM 기반 아키텍처에 scene, object, action token을 도입하고, pretrain된 embodied diffusion model들을 projector를 통해 정렬하여 목표 이미지/포인트 클라우드 생성을 수행한다. 기존 로봇 데이터셋에서 2M의 3D-language-action 쌍을 추출한 대규모 instruction tuning 데이터셋을 구축한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Examples from our 3D Embodied Instruction Tuning Dataset.</em></p></div>
 <ul>
 <li><strong>3D 기반 월드 모델</strong>: 3D perception, reasoning, action을 unified 아키텍처로 통합하고 multimodal goal generation(RGB-D 이미지, depth, point cloud) 능력을 제공</li>
 <li><strong>대규모 3D embodied 데이터셋</strong>: 2M의 3D-language-action 데이터 쌍으로 구성된 데이터셋 구축으로 기존 embodied 데이터셋의 3D 정보 부족 문제 해결</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 task 지원</strong>: task captioning, action prediction, localization, multimodal goal generation, robot planning, embodied question answering 등 다양한 embodied task 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of our 3D-VLA pipeline. The left part shows our goal-generation capability. Our model can imagine the</em></p></div>
 <ul>
 <li>3D LLM(Hong et al., 2023)을 기반으로 하여 scene, object, action 등의 interactive token을 LLM 어휘에 추가</li>
 <li>RGBD-to-RGBD와 point-to-point generation을 위한 embodied diffusion model을 사전학습</li>

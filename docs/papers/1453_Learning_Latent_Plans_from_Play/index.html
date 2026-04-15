@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Corey Lynch, Mohi Khansari, Ted Xiao, Vikash Kumar, Jonathan Tompson, Sergey Levine, Pierre Sermanet | <strong>날짜</strong>: 2019-03-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/1903.01973" target="_blank">https://arxiv.org/abs/1903.01973</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Play-LMP: A single model that self-supervises control from play data, then generalizes to a wide</em></p></div>
 <p>인간의 비지도 원격조종 플레이 데이터로부터 자기감독 학습을 통해 잠재 계획 공간에서 행동을 조직화하고 재사용하여 다양한 조작 작업을 수행할 수 있는 Play-LMP 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Play-LMP는 플레이 데이터에서 행동 시퀀스 윈도우를 샘플링하여 plan recognition과 plan proposal 두 확률적 인코더로 잠재 계획 공간을 형성하고, 정책은 현재/목표 상태와 샘플된 잠재 계획으로 조건화되어 액션을 예측한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The continuum of skills and its coverage. We advocate for learning the full continuum of skills</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 동일한 수집 시간 대비 플레이 데이터가 전문가 시연보다 약 4.2배, 무작위 탐색보다 14.4배 많은 상호작용 공간을 커버함을 실증적으로 입증</li>
 <li><strong>작업 성능</strong>: 라벨이 없는 플레이로 자기감독된 모델이 18개의 시각 조작 작업에서 개별 전문가 정책을 크게 능가</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>자동 구조화</strong>: 작업 레이블을 사용하지 않았음에도 불구하고 에이전트의 잠재 계획 공간이 기능적 작업 주변으로 자동 조직화됨</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Play-LMP: A single model that self-supervises control from play data, then generalizes to a wide</em></p></div>
 <ul>
 <li>플레이 데이터 메모리에서 무작위 시간 윈도우 샘플링</li>
 <li>Plan recognition 인코더: 전체 시퀀스(현재, 목표, 액션)를 받아 정확히 실행된 행동을 인식하는 분포 출력</li>

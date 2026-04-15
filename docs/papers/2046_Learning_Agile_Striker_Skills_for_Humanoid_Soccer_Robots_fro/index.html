@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zifan Xu, Myoungkyu Seo, Dongmyeong Lee, Hao Fu, Jiaheng Hu, Jiaxun Cui, Yuqian Jiang, Zhihan Wang, Anastasiia Brund, Joydeep Biswas, Peter Stone | <strong>날짜</strong>: 2025-12-10 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2512.06571" target="_blank">10.48550/arXiv.2512.06571</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Left: The network architectures for the teacher and the student network; Right: Multi-stage training framework: </em></p></div>
 <p>이 논문은 reinforcement learning 기반의 4단계 학습 프레임워크를 통해 인간형 로봇이 노이즈가 있는 센서 입력에서도 강건한 볼 킹킹 기술을 습득하도록 하는 시스템을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: teacher-student 프레임워크를 확장하여, teacher는 ground-truth 상태 정보로 학습하고 student는 noisy perception으로부터 mimic하는 구조에, 4단계 curriculum 학습(ball chasing → directional kicking → policy distillation → constrained RL adaptation)을 추가했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Left: The network architectures for the teacher and the student network; Right: Multi-stage training framework: </em></p></div>
 <ul>
 <li><strong>4단계 curriculum 학습 프레임워크</strong>: long-distance chasing, directional kicking, DAgger 기반 policy distillation, N-P3O를 통한 online adaptation을 순차적으로 수행</li>
 <li><strong>현실적 지각 모델링</strong>: velocity-dependent noise, delayed updates, frame drops를 포함하여 sim-to-real gap 감소</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>포괄적 ablation 연구</strong>: constrained RL, noise modeling, adaptation stage의 필요성을 실증적으로 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Left: The network architectures for the teacher and the student network; Right: Multi-stage training framework: </em></p></div>
 <ul>
 <li>Stage 1 (Teacher policy chasing): privileged ground-truth ball position을 사용하여 long-distance ball chasing 학습, aggressive domain randomization(external pushes)으로 imperfect state recovery 유도</li>
 <li>Stage 2 (Teacher policy kicking): teacher policy를 확장하여 directional kicking 학습, reward function은 ball-goal alignment와 kick strength 포함</li>

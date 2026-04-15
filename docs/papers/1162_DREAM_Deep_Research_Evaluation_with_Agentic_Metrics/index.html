@@ -66,6 +66,8 @@ a { color: #1856A0; }
 <blockquote><p><strong>저자</strong>: E. Avraham, Changhao Li, R. Dorfman, Roy Ganz, Oren Nuriel, Amir Dudai, Aviad Aberdam, Noah R. Flynn, Elman Mansimov, Aditya Kalyanpur, Ron Litman | <strong>날짜</strong>: 2026 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.18940" target="_blank">10.48550/arXiv.2602.18940</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Capturing Overlooked Dimensions of Research Quality. DREAM actively verifies the reasoning of</em></p></div>
 <p>Deep Research Agents가 생성한 분석가급 보고서 평가의 핵심 문제인 'Mirage of Synthesis'를 식별하고, 능력 균형 원칙에 기반한 DREAM 프레임워크를 제안하여 agentic evaluation으로 시간 민감도와 사실성을 효과적으로 검증한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #1856A0; }
 <li><strong>Approach</strong>: Capability parity 원칙에 기반하여 평가 프로세스 자체를 agentic하게 만들어, tool-calling agent가 독립적으로 정보를 검색·검증하고 구조화된 평가 프로토콜(query-agnostic 메트릭과 적응형 메트릭 결합)을 통해 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Capturing Overlooked Dimensions of Research Quality. DREAM actively verifies the reasoning of</em></p></div>
 <ul>
 <li><strong>Mirage of Synthesis 현상 식별</strong>: 기존 벤치마크들이 표면적 유창성과 인용 정렬에 속아 사실성, 시간 유효성, 논리적 결함을 간과하는 문제를 체계화</li>
 <li><strong>통합 택소노미 제안</strong>: Presentation Quality, Task Compliance, Analytical Depth, Source Quality의 4개 수직축으로 기존 DRE 벤치마크들을 분류하고 그들의 한계를 진단</li>
@@ -82,6 +86,8 @@ a { color: #1856A0; }
 <li><strong>세 가지 agentic 메트릭 검증</strong>: Key-Information Coverage, Reasoning Quality, Factuality 메트릭이 기존 벤치마크보다 temporal degradation과 factual error에 훨씬 더 민감함을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: DREAM Overview. Our framework operates in two phases. Left: Protocol Creation, where query-</em></p></div>
 <ul>
 <li>Protocol Creation: 주어진 쿼리에 대해 agent가 tool-calling을 통해 독립적으로 연구를 수행하고 핵심 정보, 추론 기준, 검증 대상을 식별하여 평가 프로토콜 생성</li>
 <li>Protocol Execution: 생성된 보고서에 대해 LLM 기반 정적 메트릭(Writing Quality)과 agent 기반 동적 메트릭(Key-Information Coverage, Reasoning Quality, Factuality)을 병렬 실행</li>

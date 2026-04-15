@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yunfeng Lin, Minghuan Liu, Yufei Xue, Ming Zhou, Yong Yu, Jiangmiao Pang, Weinan Zhang | <strong>날짜</strong>: 2025-11-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.00971" target="_blank">https://arxiv.org/abs/2512.00971</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method overview. a) The policy is pretrained by learning on a diverse set of humanoid embodiments through</em></p></div>
 <p>H-Zero는 다양한 휴머노이드 로봇 embodiment에서 사전학습된 일반화된 이동 정책을 학습하여 미지의 로봇으로의 제로샷 및 소수샷 전이를 가능하게 하는 파이프라인이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 통일된 제어 의미론(unified control semantics)을 통해 다양한 embodiment의 입출력을 표준화하고, 물리 parameter 무작위화, 다양한 관찰, 다양한 환경 rollout 및 탐색 학습 전략을 포함한 cross-embodiment 다양성을 통해 일반화된 기본 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Left: We propose a locomotion pretraining pipeline for humanoids by mixing multiple randomized embodiments</em></p></div>
 <ul>
 <li><strong>통일된 제어 인터페이스</strong>: 상태 변환(state transformation)을 통해 diverse humanoid embodiment 간의 정책 입출력을 표준화하는 hardware-agnostic joint state space 개발</li>
 <li><strong>제로샷 전이 성능</strong>: 미지의 로봇에서 사전학습된 정책이 전체 episode duration의 최대 81% 유지</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>현실 세계 전이</strong>: 시뮬레이션에서 학습한 사전학습 및 미세조정된 정책이 실제 로봇에서도 일관된 성능 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method overview. a) The policy is pretrained by learning on a diverse set of humanoid embodiments through</em></p></div>
 <ul>
 <li>통일된 제어 의미론: 각 로봇의 물리 joint를 hardware-agnostic unified environment space로 매핑하는 bidirectional transformation M 정의</li>
 <li>Kinematic alignment: joint direction 조정 s와 중립 위치 offset b를 통해 diverse morphology 간의 일관된 motion 보장</li>

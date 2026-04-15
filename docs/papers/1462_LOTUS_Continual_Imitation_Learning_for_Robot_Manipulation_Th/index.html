@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Weikang Wan, Yifeng Zhu, Rutav Shah, Yuke Zhu | <strong>날짜</strong>: 2023-11-03 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2311.02058" target="_blank">https://arxiv.org/abs/2311.02058</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Method Overview. LOTUS is a continual imitation learning</em></p></div>
 <p>LOTUS는 물리 로봇이 인간 시연으로부터 계속 새로운 조작 과제를 학습하도록 하는 지속적 모방 학습 알고리즘으로, open-vocabulary vision model을 이용한 비지도 기술 발견과 메타-컨트롤러 기반의 기술 합성을 통해 시각 기반 조작을 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Open-vocabulary vision model을 사용하여 비분할 시연에서 반복 패턴으로 기술을 추출하고, 증분 기술 클러스터링으로 기존 기술 업데이트와 새 기술 추가를 동적으로 관리하며, 메타-컨트롤러가 기술을 구성하여 새로운 과제를 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Method Overview. LOTUS is a continual imitation learning</em></p></div>
 <ul>
 <li><strong>성공률 향상</strong>: 상태 최고 기준 방법 대비 평균 11% 이상의 높은 성공률 달성</li>
 <li><strong>효과적인 지식 전이</strong>: forward transfer와 backward transfer를 모두 달성하는 기술 기반 접근법 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>지속적 기술 발견</strong>: 기술 라이브러리가 새로운 과제를 통해 지속적으로 성장하며 catastrophic forgetting 회피</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: LOTUS consists of two processes: continual skill discovery with open-world perception and hierarchical policy le</em></p></div>
 <ul>
 <li>Open-vocabulary vision model을 활용하여 시연 영상에서 반복되는 패턴을 기술로 추출</li>
 <li>증분 기술 클러스터링 프로세스로 새 시연 세그먼트가 기존 기술과 유사한지 판단하여 기술 추가 또는 업데이트 결정</li>

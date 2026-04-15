@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Asad Ali Shahid, Francesco Braghin, Loris Roveda | <strong>날짜</strong>: 2025-07-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.11498" target="_blank">https://arxiv.org/abs/2507.11498</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Overview of the Robot Drummer: Starting from a raw MIDI drum track (left), each note-onset is first mapped to a</em></p></div>
 <p>본 논문은 인문형 로봇이 MIDI 악보를 기반으로 드럼을 연주하는 기술을 제시하며, Rhythmic Contact Chain 표현과 temporal decomposition을 활용한 reinforcement learning 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 드럼 연주를 시간이 정해진 접촉 이벤트의 순차적 수행으로 공식화하고, 이를 Rhythmic Contact Chain으로 변환한다. 장시간 음악 공연을 고정 길이 segment로 분해하여 단일 policy로 병렬 학습함으로써 exploration 효율성을 높인다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The humanoid robot demonstrates expressive drumming skills across three songs: In the top row, the robot plays j</em></p></div>
 <ul>
 <li><strong>다양한 장르의 곡 연주</strong>: 30개 이상의 rock, metal, jazz 트랙에서 높은 F1 score 달성</li>
 <li><strong>신흥 인간형 연주 전략</strong>: cross-arm strikes와 adaptive stick assignments 같은 자발적 인간형 드럼 기술 발현</li>
 <li><strong>장시간 temporal coordination</strong>: 분 단위 길이의 복잡한 리듬 패턴을 정밀하게 수행하는 능력 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Overview of the Robot Drummer: Starting from a raw MIDI drum track (left), each note-onset is first mapped to a</em></p></div>
 <ul>
 <li>MIDI 파일에서 드럼 채널을 추출하고 각 note를 물리적 드럼으로 매핑</li>
 <li>시간 인덱싱된 드럼 시퀀스를 one-hot 벡터로 인코딩하여 Rhythmic Contact Chain 구성</li>

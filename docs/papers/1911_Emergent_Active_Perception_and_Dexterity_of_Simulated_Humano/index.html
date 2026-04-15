@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhengyi Luo, Chen Tessler, Toru Lin, Ye Yuan, Tairan He, Wenli Xiao, Yunrong Guo, Gal Chechik, Kris Kitani, Linxi Fan, Yuke Zhu | <strong>날짜</strong>: 2025-05-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.12278" target="_blank">https://arxiv.org/abs/2505.12278</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Perceptive Dexterous Control (PDC) enables a humanoid equipped with egocentric vision to search for, reach, gr</em></p></div>
 <p>본 논문은 egocentric vision만을 사용하여 simulated humanoid가 복잡한 household tasks를 수행하도록 하는 Perceptive Dexterous Control (PDC) 프레임워크를 제안하며, visual perception을 task specification의 인터페이스로 활용하여 active search 등의 emergent behaviors를 유도한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Control priors를 motion capture data로부터 학습하고, visual cues (object masks, 3D markers)를 통한 perception-as-interface 패러다임으로 task를 지정하여 RL을 통해 단일 정책으로 다중 tasks를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Perceptive Dexterous Control (PDC) enables a humanoid equipped with egocentric vision to search for, reach, gr</em></p></div>
 <ul>
 <li><strong>Vision-driven whole-body dexterous control 실현</strong>: RGB, RGB-D, Stereo 등 다양한 visual modalities에서 naturalistic household environments에서의 humanoid 제어 달성</li>
 <li><strong>Perception-based task specification</strong>: Predefined state variables 없이 visual cues만으로 object selection, target placement, skill specification을 가능하게 하는 task-agnostic paradigm 제안</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Visual modality별 성능 비교</strong>: Stereo vision이 RGB 대비 9% 더 높은 success rate 달성 등 systematic evaluation 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Kitchens: Our agent is trained in parallel on a large set of (randomly) procedurally generated kitchens. Each </em></p></div>
 <ul>
 <li>Large-scale motion capture 데이터로부터 control priors 학습을 통한 humanoid의 기본 운동 능력 확보</li>
 <li>Egocentric vision (RGB/RGB-D/Stereo)과 proprioception을 policy input으로 사용</li>

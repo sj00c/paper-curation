@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Frank Joublin, Antonello Ceravola, Pavel Smirnov, Felix Ocker, Joerg Deigmoeller, Anna Belardinelli, Chao Wang, Stephan Hasler, Daniel Tanneberg, Michael Gienger | <strong>날짜</strong>: 2023-10-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2310.07263" target="_blank">https://arxiv.org/abs/2310.07263</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>CoPAL은 LLM 기반의 계층적 로봇 작업 및 모션 플래닝 시스템으로, 물리적·논리적·의미론적 오류를 처리하는 폐루프 재계획 메커니즘을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 4층 계층 구조(사용자 상호작용, 고수준 계획, 중간수준 계획, 저수준 계획)로 분해하여 각 레벨의 피드백을 LLM 기반 에이전트(Alex, Travi, Ropa)에 통합하는 폐루프 재계획 전략을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>폐루프 재계획 아키텍처</strong>: 다층 피드백 루프를 통해 물리적, 논리적, 의미론적 오류를 처리하는 CoPAL 시스템 구축</li>
 <li><strong>실증적 평가</strong>: blocks world, barman, pizza preparation 시뮬레이션 및 실제 로봇 환경에서 실행 가능성(executability), 정확성(correctness), 시간 복잡도 개선 입증</li>
 <li><strong>명확한 역할 분담</strong>: LLM 에이전트들의 캡슐화와 specialization을 통해 안정적이고 확장 가능한 아키텍처 구현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>User Interaction Layer에서 Alex가 자연어 요청을 해석하고 대화 이력을 유지</li>
 <li>High-Level Planner의 Travi가 chain-of-thought 방식으로 목표, 필요 객체, 환경 상태를 명시화한 고수준 계획 생성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Bowen Gao, Yanwen Huang, Yiqiao Liu, Wenxuan Xie, Wei-Ying Ma, Ya-Qin Zhang, Yanyan Lan | <strong>날짜</strong>: 2025년 3월 31일 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2503.22164v2" target="_blank">arXiv:2503.22164v2</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Virtual Pharma (PharmAgents)는 약물 발견 타겟 발굴부터 전임상 평가까지의 전체 과정을 시뮬레이션한다.</em></p></div>
 <p>PharmAgents는 대규모 언어 모델(LLM) 기반의 다중 에이전트 협력 시스템으로, 신약 개발의 전체 워크플로우—타겟 발굴, 리드 화합물 식별, 최적화, 전임상 평가—를 자동화하고 투명하게 수행한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM의 광범위한 지식과 추론 능력에 특화된 머신러닝 모델과 계산 도구를 결합하고, 역할 기반(role-based) 에이전트 구조로 신약 개발 파이프라인을 모듈화하여 협력 체계 구축</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>PharmAgents의 전체 워크플로우: 질병 정보 입력부터 최종 후보 약물 평가까지의 4개 주요 모듈</em></p></div>
 <ol>
 <li><strong>타겟 발굴의 정확성</strong>: 18개 중 16개 타겟이 인간 전문가에 의해 적절하다고 평가됨. 질병 맥락에서 오차 누적 없이 신뢰할 수 있는 타겟과 리간드 결합 위치 확인</li>
 <li><strong>분자 생성 및 최적화 성능</strong>: SOTA 방법 대비 성공률을 15.72%에서 37.94%로 향상, 동일 타겟에서 질병별 맥락을 반영하여 상충하는 성질의 화합물 설계 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>자기진화 능력</strong>: 과거 경험을 학습하여 향후 설계를 개선하며 성공률을 30%에서 36%로 증가</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>타겟 발굴 모듈의 워크플로우와 예시 결과</em></p></div>
 <h3>4개 모듈 구조:</h3>
 <ul>
 <li><strong>Target Discovery (타겟 발굴)</strong>:
@@ -93,11 +99,15 @@ a { color: #A62018; }
 </li>
 <li><strong>Lead Identification (리드 화합물 식별)</strong>:</li>
 </ul>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>리드 화합물 식별 모듈의 워크플로우와 예시 결과</em></p></div>
 <ul>
 <li>타겟 정보, 질병 맥락, 포켓 구조 기반으로 가능성 있는 리드 화합물 생성</li>
 </ul>
 </li>
 <li><strong>Lead Optimization (리드 최적화)</strong>:</li>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>리드 최적화 모듈의 워크플로우와 예시 결과</em></p></div>
 <ul>
 <li>결합 친화력(binding affinity) 및 약물 유사성(drug-likeness) 성질 개선</li>
 </ul>

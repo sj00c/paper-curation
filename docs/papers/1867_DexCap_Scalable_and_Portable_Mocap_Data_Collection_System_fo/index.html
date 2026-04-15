@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chen Wang, Haochen Shi, Weizhuo Wang, Ruohan Zhang, Li Fei-Fei, C. Karen Liu | <strong>날짜</strong>: 2024-03-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.07788" target="_blank">https://arxiv.org/abs/2403.07788</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: DEXCAP facilitates the in-the-wild collection of high-quality human hand motion capture data and 3D observations</em></p></div>
 <p>DexCap은 SLAM과 전자기장을 활용한 휴대용 손 모션캡처 시스템이며, DexIL은 이 데이터로부터 역운동학과 point cloud 기반 모방학습을 통해 로봇이 손가락 조작을 직접 학습하도록 하는 알고리즘이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DexCap은 mocap 장갑, SLAM 카메라, RGB-D LiDAR 카메라를 통합한 휴대용 시스템이고, DexIL은 역운동학으로 retargeting한 후 Diffusion Policy 기반 point cloud behavior cloning으로 정책을 학습하며, 필요시 human-in-the-loop 보정 메커니즘을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Details of the human system. (a) Our setup includes a 3D-printed rack on a chest harness, featuring a Realsense</em></p></div>
 <ul>
 <li><strong>DexCap 시스템</strong>: 60Hz 실시간 추적, occlusion 저항성, 6-DoF 손목 자세 및 손가락 관절 추적, 휴대 가능한 설계로 in-the-wild 데이터 수집 가능</li>
 <li><strong>DexIL 알고리즘</strong>: 인간 mocap 데이터를 역운동학으로 로봇에 retarget하고 point cloud 기반 imitation learning으로 6가지 복잡한 조작 작업 수행</li>
 <li><strong>Human-in-the-Loop 메커니즘</strong>: 정책 롤아웃 중 인간이 개입하여 motion correction 데이터를 수집하고 정책을 fine-tuning할 수 있는 메커니즘 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Algorithm overview. (a) DEXIL first retargets the DEXCAP data to the robot embodiment by first constructing 3D</em></p></div>
 <ul>
 <li><strong>하드웨어 구성</strong>: Rokoko EMF 장갑으로 손가락 관절 추적, 손등 장착 Intel Realsense T265 카메라로 SLAM 기반 손목 6-DoF 자세 추적, 가슴 장착 Realsense L515 LiDAR 카메라로 환경 3D 관찰</li>
 <li><strong>Data retargeting</strong>: 인간의 손가락 끝점과 로봇 손가락 끝점을 동일 3D 위치로 맞추기 위해 역운동학(IK) 사용, 손목 6-DoF 자세로 IK 초기화</li>

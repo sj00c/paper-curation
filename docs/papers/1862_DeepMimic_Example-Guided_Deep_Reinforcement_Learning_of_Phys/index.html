@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xue Bin Peng, Pieter Abbeel, Sergey Levine, Michiel van de Panne | <strong>날짜</strong>: 2018-04-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/1804.02717" target="_blank">https://arxiv.org/abs/1804.02717</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Highly dynamic skills learned by imitating reference motion capture clips using our method, executed by physical</em></p></div>
 <p>Motion capture 데이터를 활용한 example-guided reinforcement learning으로 물리 기반 캐릭터 애니메이션을 학습하는 방법을 제안하며, 모션 모방과 task 목표를 결합하여 강건하고 다양한 기술을 수행하는 제어 정책을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion capture 데이터에 기반한 reference state imitation reward와 task objective를 결합한 RL 프레임워크를 구성하며, phase-aware policy를 사용하여 reference motion과 유사한 물리 기반 행동을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Highly dynamic skills learned by imitating reference motion capture clips using our method, executed by physical</em></p></div>
 <ul>
 <li><strong>Motion quality와 robustness의 결합</strong>: Reference motion capture 데이터를 활용하여 prior deep RL 방법보다 훨씬 자연스럽고 품질 높은 모션을 생성하면서도 perturbation에 강건한 제어 정책을 달성</li>
 <li><strong>다양한 동적 기술 학습</strong>: Cartwheel, spinkick 등 매우 동적인 acrobatic 기술부터 locomotion, martial arts까지 광범위한 기술을 단일 프레임워크로 학습</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Ablation study</strong>: Reference state initialization과 early termination이 highly dynamic skill 학습에 critical한 요소임을 규명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Schematic illustration of the visuomotor policy network. The</em></p></div>
 <ul>
 <li>Reference motion capture 데이터로부터 target state trajectory를 추출하고, imitation reward를 통해 학습 정책이 reference motion을 따르도록 유도</li>
 <li>Phase-aware policy network를 사용하여 motion의 cyclic nature를 명시적으로 모델링</li>

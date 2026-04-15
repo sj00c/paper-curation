@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Puyue Wang, Jiawei Hu, Yan Gao, Junyan Wang, Yu Zhang, Gillian Dobbie, Tao Gu, Wafa Johal, Ting Dang, Hong Jia | <strong>날짜</strong>: 2026-02-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.04412" target="_blank">https://arxiv.org/abs/2602.04412</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Framework overview. Two-stage teacher–student learning pipeline for robust humanoid control under partial obse</em></p></div>
 <p>HoRD는 history-conditioned reinforcement learning과 online distillation을 결합한 두 단계 학습 프레임워크로, 휴머노이드 로봇이 도메인 시프트 상황에서 강건한 제어를 수행하도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HoRD는 (1) HCDR이라는 history-기반 모듈을 통해 최근 state-action 궤적에서 잠재 동역학 맥락을 추론하는 teacher 정책을 RL로 학습하고, (2) 이를 sparse keypoint 명령을 처리하는 transformer 기반 student로 distill한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Results of HoRD on six representative motions, while red markers indicate ground-truth skeleton joints. Qualit</em></p></div>
 <ul>
 <li><strong>History-Conditioned Dynamics Representation (HCDR)</strong>: 최근 궤적으로부터 온라인 동역학 적응을 가능하게 하여 미관찰 도메인에 대한 zero-shot 전이 성능 향상</li>
 <li><strong>Standardized Sparse-Joint Representation (SSJR)</strong>: 서로 다른 skeleton 정의와 시간 해상도를 가진 이질적인 모션 데이터 소스를 통합하는 표준화된 인터페이스</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>대규모 데이터셋</strong>: 100+ 시간의 7,000+ 다양한 휴머노이드 모션 궤적 데이터셋 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Framework overview. Two-stage teacher–student learning pipeline for robust humanoid control under partial obse</em></p></div>
 <ul>
 <li>Stage I: 특권화된 full-state 관찰과 dense future motion intent를 활용하여 PPO로 teacher 정책 π* 학습, 도메인 randomization ψ(e)를 적용하여 다양한 동역학 커버</li>
 <li>Stage II: 희소한 proprioception과 sparse motion 명령만 받는 student 정책 학습, HCDR 모듈이 teacher와 student 모두에서 interaction history Ht를 temporal memory embedding mt으로 인코딩</li>

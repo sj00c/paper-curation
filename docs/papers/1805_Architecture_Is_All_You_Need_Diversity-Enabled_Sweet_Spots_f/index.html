@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Blake Werner, Lizhi Yang, Aaron D. Ames | <strong>날짜</strong>: 2025-10-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.14947" target="_blank">https://arxiv.org/abs/2510.14947</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Training and Deployment Overview: both actor and critic are two-stage architectures each with their own percepti</em></p></div>
 <p>휴머노이드 로봇의 견고한 보행을 위해 빠른 고주파 안정화 제어기와 느린 저주파 지각 정책을 분리하는 계층화 제어 구조(LCA)가 단일 end-to-end 설계보다 우월함을 보였다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: blind stabilizer pretraining 단계에서 고유수용성 피드백만으로 안정화 제어기를 학습한 후, perceptual fine-tuning 단계에서 heightmap 기반 지각 정책을 추가하는 2단계 커리큘럼 학습을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Layered verses monolithic architectures: while the network archi-</em></p></div>
 <ul>
 <li><strong>아키텍처 우월성</strong>: 동일한 네트워크 복잡도 하에서 계층화 구조(LCA)가 end-to-end 단일단계 설계를 크게 능가함을 검증</li>
 <li><strong>최소 구성 달성</strong>: 복잡한 월드 모델, mixed-integer 최적화, 복잡한 인코더 없이도 stairs, ledge 등 복잡한 지형에서 성공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>최적화 분석</strong>: 2단계 최적화가 sensitivity를 감소시킨다는 수학적 분석 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Training and Deployment Overview: both actor and critic are two-stage architectures each with their own percepti</em></p></div>
 <ul>
 <li><strong>2단계 학습</strong>: 첫 번째 단계에서 지각 입력을 0으로 설정하여 pure proprioceptive stabilizer 학습, 두 번째 단계에서 고정된 stabilizer 위에서 perception policy 학습</li>
 <li><strong>최소 LCA 인스턴스화</strong>: 고속 저수준 stabilizer (joint-space tracking with standard RL rewards)와 저속 navigation policy (compact local heightmap 기반)의 두 개 레이어만 구성</li>

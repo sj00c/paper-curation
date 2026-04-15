@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Dani Valevski, Yaniv Leviathan, Moab Arar, Shlomi Fruchter | <strong>날짜</strong>: 2024-08-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2408.14837" target="_blank">https://arxiv.org/abs/2408.14837</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Method overview (see Section 3).</em></p></div>
 <p>GameNGen은 diffusion model을 기반으로 한 신경망 게임 엔진으로, DOOM을 실시간(20 FPS)으로 실행하면서 사람과 구별하기 어려운 수준의 시각적 품질과 게임 상태 일관성을 유지한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 학습 방식을 채택했다: (1) RL agent가 게임을 플레이하며 학습 궤적 기록, (2) 과거 프레임과 action 시퀀스에 조건화된 diffusion model이 다음 프레임을 예측한다. 특히 noise augmentation으로 auto-regressive drift를 완화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: GameNGen compared to prior simulations of DOOM: World Models Ha & Schmid-</em></p></div>
 <ul>
 <li><strong>실시간 게임 엔진 실현</strong>: 단일 TPU에서 20 FPS로 DOOM을 실시간 실행하면서 수 분 이상 안정적으로 유지</li>
 <li><strong>높은 시각 품질</strong>: PSNR 29.4 달성(손실 JPEG 압축 수준), 5분 auto-regressive 생성 후에도 인간이 구별 거의 불가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>기술적 기여</strong>: text-to-image diffusion model의 interactive 환경 적응, noise augmentation을 통한 auto-regressive drift 완화, decoder fine-tuning으로 시각 품질 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Auto-regressive drift. Top: we present every 10th frame of a simple trajectory with 50</em></p></div>
 <ul>
 <li>RL agent 학습: 환경 특화 보상 함수로 다양한 게임플레이 시나리오 커버하는 agent 훈련</li>
 <li>학습 데이터 수집: agent 훈련 과정 전체의 action-observation 궤적을 Tagent 데이터셋으로 기록</li>

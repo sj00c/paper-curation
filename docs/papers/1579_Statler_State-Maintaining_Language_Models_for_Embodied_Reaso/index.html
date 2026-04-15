@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Takuma Yoneda, Jiading Fang, Peng Li, Huanyu Zhang, Tianchong Jiang, Shengjie Lin, Ben Picker, David Yunis, Hongyuan Mei, Matthew R. Walter | <strong>날짜</strong>: 2023-06-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2306.17840" target="_blank">https://arxiv.org/abs/2306.17840</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our Statler framework enables robots to carry out complex tasks specified in natural language that require reaso</em></p></div>
 <p>Statler는 로봇 계획 작업에서 LLM이 세계 상태를 명시적으로 유지하고 추적하도록 하는 모델 기반 프레임워크로, 상태 기반 의사결정을 통해 장기 계획 능력을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Statler는 world-state reader와 world-state writer 두 개의 prompted LLM으로 구성되어, reader가 현재 상태를 읽고 행동을 생성하면 writer가 행동에 따른 상태 전이를 업데이트하는 방식으로 작동한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model accuracies on the three-cups-and-a-ball shell</em></p></div>
 <ul>
 <li><strong>세계 상태 유지의 효과성</strong>: 삼개-컵-공 게임에서 LLM+State 방식이 기존 LLM과 Chain-of-Thought 방법보다 현저히 높은 정확도를 달성하며, 스왑 횟수가 증가할수록 성능 격차가 확대됨</li>
 <li><strong>Code-as-Policies 대비 성능 향상</strong>: 로봇 시뮬레이션 작업에서 Statler가 Code-as-Policies 같은 강력한 기존 방법들을 크게 능가함</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반성</strong>: 프롬프트가 도메인 불가지론적(domain-agnostic)으로 설계되어 다양한 분야에 적용 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our Statler framework enables robots to carry out complex tasks specified in natural language that require reaso</em></p></div>
 <ul>
 <li>초기 상태를 JSON 형식의 객체 지향 표현으로 정의</li>
 <li>world-state reader가 사용자 쿼리와 현재 상태를 입력받아 실행 가능한 코드(예: 파이썬 스니펫) 생성</li>

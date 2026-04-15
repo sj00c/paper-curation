@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Milo Carroll, Tianhu Peng, Lingfan Bao, Chengxu Zhou, Zhibin Li | <strong>날짜</strong>: 2026-03-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.09574" target="_blank">https://arxiv.org/abs/2603.09574</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Sensor-Conditioned Diffusion Policies (SCDP) architecture and training framework. The state-action diffusion</em></p></div>
 <p>온보드 센서만으로 휴머노이드 보행을 학습하기 위해 mixed-observation distillation을 사용하는 SCDP(Sensor-Conditioned Diffusion Policies)를 제안하며, diffusion model이 센서 이력에 조건화되면서 privileged 미래 상태-행동 궤적을 예측하도록 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Mixed-observation training으로 센서 이력(Ot)에만 조건화하면서 privileged state(st)를 감독 신호로 사용하여, 모델이 암묵적으로 부분 관찰에서 전역 동역학을 추론하도록 강제한다. Restricted denoising, context distribution alignment, context-aware attention masking 등의 기법으로 implicit state estimation을 유도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Deployment of Sensor-Conditioned Diffusion Policies</em></p></div>
 <ul>
 <li><strong>시뮬레이션 성능</strong>: Velocity control에서 99-100% 성공률, AMASS test set에서 93% tracking 성공률 달성하며 privileged baseline과 비교 가능한 수준</li>
 <li><strong>실로봇 배포</strong>: 외부 센싱이나 state estimation 없이 Unitree G1에서 50Hz로 강건한 보행 수행</li>
 <li><strong>방법론 일반성</strong>: Velocity-commanded locomotion과 motion reference tracking 모두에서 검증되어 다양한 작업에 적용 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Sensor-Conditioned Diffusion Policies (SCDP) architecture and training framework. The state-action diffusion</em></p></div>
 <ul>
 <li>Mixed-observation training: 조건(conditioning)은 onboard sensor history Ot를 사용하되, 감독(supervision)은 privileged state trajectory st+1:t+H를 대상으로 함</li>
 <li>Restricted denoising: Pelvis linear velocity vpelvis를 denoising input에서 제외하고 supervision target에만 포함하여, 모델이 context에서 velocity를 추론하도록 강제</li>

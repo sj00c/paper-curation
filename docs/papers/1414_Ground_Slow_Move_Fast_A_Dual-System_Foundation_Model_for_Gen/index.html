@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Meng Wei, Chenyang Wan, Jiaqi Peng, Xiqian Yu, Yuqiang Yang, Delin Feng, Wenzhe Cai, Chenming Zhu, Tai Wang, Jiangmiao Pang, Xihui Liu | <strong>날짜</strong>: 2025-12-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.08186" target="_blank">https://arxiv.org/abs/2512.08186</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The proposed dual-system framework decouples high-level reasoning from low-level con-</em></p></div>
 <p>DualVLN은 Vision-Language Navigation을 위해 고수준 추론(System 2)과 저수준 제어(System 1)를 분리한 최초의 dual-system foundation model으로, VLM 기반 global planner와 Diffusion Transformer 기반 policy의 비동기 협력을 통해 실시간 제어와 동적 장애물 회피를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: System 2는 VLM(Qwen-VL-2.5)을 통해 image-grounded pixel goal을 예측하고, System 1은 lightweight Diffusion Transformer policy로 pixel goal과 latent goal features를 활용하여 smooth trajectory를 생성하는 비동기 구조를 채택한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The proposed dual-system framework decouples high-level reasoning from low-level con-</em></p></div>
 <ul>
 <li><strong>State-of-the-art 벤치마크 성능</strong>: VLN-CE와 VLN-PE 벤치마크에서 모든 기존 방법을 상회하는 성능 달성 (VLN-CE에서 64.3%)</li>
 <li><strong>실시간 제어 및 동적 회피</strong>: 30Hz로 작동하는 System 1이 200Hz low-level controller와 협력하여 실시간 장애물 회피 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>효율적 decoupled training</strong>: System 2의 generalization을 보존하면서 System 1은 저수준 goal reaching 데이터만으로 학습 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of DualVLN. System 2 takes as input a sequence of egocentric images and the</em></p></div>
 <ul>
 <li>System 2: Qwen-VL-2.5 기반 farthest pixel goal grounding으로 mid-term waypoint 예측, view adjustment action을 통해 occlusion 처리</li>
 <li>System 1: Multi-modal conditioning Diffusion Transformer으로 현재 RGB 관찰과 latent goal embedding을 입력받아 noised trajectory에서 깨끗한 궤적 생성</li>

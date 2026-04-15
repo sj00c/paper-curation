@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yunfan Jiang, Agrim Gupta, Zichen Zhang, Guanzhi Wang, Yongqiang Dou, Yanjun Chen, Li Fei-Fei, Anima Anandkumar, Yuke Zhu, Linxi Fan | <strong>날짜</strong>: 2022-10-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2210.03094" target="_blank">https://arxiv.org/abs/2210.03094</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Multimodal prompts for task specification. We observe that many robot manipulation tasks can be expressed as</em></p></div>
 <p>멀티모달 프롬프트(텍스트와 이미지 혼합)를 사용하여 다양한 로봇 조작 작업을 통일된 시퀀스 모델링 문제로 표현하고, 이를 처리할 수 있는 transformer 기반 로봇 에이전트 VIMA를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 멀티모달 프롬프트로 표현 가능한 6가지 작업 카테고리를 정의하고, 이에 대응하는 VIMA-BENCH 벤치마크와 encoder-decoder transformer 기반 VIMA 모델을 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Scaling model and data. Top: We compare performance of different methods with model sizes ranging from 2M</em></p></div>
 <ul>
 <li><strong>멀티모달 프롬프트 정식화</strong>: 간단한 객체 조작, 시각적 목표 도달, 새로운 개념 학습, 비디오 모방, 시각적 제약 만족, 시각적 추론 등 6가지 작업 유형을 통일된 프롬프트 형식으로 표현</li>
 <li><strong>VIMA-BENCH 벤치마크</strong>: 600K+ 전문가 궤적, 17가지 기본 작업으로부터 수천 개의 절차적으로 생성된 인스턴스, 4단계 평가 프로토콜(객체 배치 → 새로운 조합 → 새로운 객체 → 새로운 작업) 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>모델 확장성</strong>: 2M에서 200M 파라미터 범위의 7가지 모델에서 일관된 성능 향상 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: VIMA Architecture. We encode the multimodal prompts with a pre-trained T5 model, and condition the</em></p></div>
 <ul>
 <li>Pre-trained 언어 모델로 멀티모달 프롬프트(텍스트와 이미지 토큰의 교차) 인코딩</li>
 <li>객체 중심 접근: 이미지를 객체 단위로 파싱하여 객체 토큰 시퀀스로 변환 (off-the-shelf 및 도메인 미세조정 detector 사용)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hao Luo, Ye Wang, Wanpeng Zhang, Sipeng Zheng, Ziheng Xi, Chaoyi Xu, Haiweng Xu, Haoqi Yuan, Chi Zhang, Yiqing Wang, Yicheng Feng, Zongqing Lu | <strong>날짜</strong>: 2026-01-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.12993" target="_blank">https://arxiv.org/abs/2601.12993</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Being-H0.5 at a Glance. We scale human-centric robot learning with Being-H0.5 toward</em></p></div>
 <p>Being-H0.5는 인간 중심 학습 패러다임과 통합 액션 공간을 활용하여 다양한 로봇 플랫폼 간 일반화를 가능하게 하는 기초 Vision-Language-Action 모델이다. 35,000시간 이상의 멀티모달 데이터로 구성된 UniHand-2.0을 통해 30개의 로봇 플랫폼에서 강력한 cross-embodiment 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 상호작용 데이터를 물리 세계의 '모국어'로 취급하는 인간 중심 학습 패러다임을 제안하고, 이질적 로봇 제어를 의미론적으로 정렬된 슬롯으로 매핑하는 Unified Action Space를 도입한다. Mixture-of-Flow (MoF) 아키텍처로 공유 motor primitives와 체화 특화 전문가를 분리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Being-H0.5 at a Glance. We scale human-centric robot learning with Being-H0.5 toward</em></p></div>
 <ul>
 <li><strong>대규모 멀티모달 데이터 구축</strong>: UniHand-2.0 (35,000+ 시간, 120억 tokens, 400백만 샘플) 구성으로 30개 로봇 플랫폼 아우르는 최대 규모 체화 사전학습 데이터셋 제공</li>
 <li><strong>시뮬레이션 벤치마크 SOTA 달성</strong>: LIBERO에서 98.9%, RoboCasa에서 53.9% 성능 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>데이터 수집 시스템</strong>: UniCraftor 시스템 개발으로 깊이 정보, 키프레임 이벤트, 카메라 외재성 통합한 200+ 시간 데이터 큐레이션</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of UniHand 2.0. UniHand 2.0 is our large-scale pre-training recipe for human-centric</em></p></div>
 <ul>
 <li><strong>UniHand-2.0 구성</strong>: 16,000시간 자아중심(egocentric) 인간 비디오 + 14,000시간 로봇 조작 + 5,000시간 시각-언어 이해 데이터 통합</li>
 <li><strong>Unified Action Space 설계</strong>: 이질적 로봇 제어를 공유 물리 어휘의 토큰으로 표현하여 다양한 형태의 로봇을 통합 잠재 공간으로 정렬</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuqing Du, Olivia Watkins, Zihan Wang, Cédric Colas, Trevor Darrell, Pieter Abbeel, Abhishek Gupta, Jacob Andreas | <strong>날짜</strong>: 2023-02-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2302.06692" target="_blank">https://arxiv.org/abs/2302.06692</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: ELLM uses a pretrained large language model</em></p></div>
 <p>ELLM은 대규모 언어모델(LLM)을 활용하여 RL 에이전트의 탐색을 인간의 상식적 지식으로 안내하는 방법을 제안한다. 현재 상태에 기반해 LLM이 제시하는 목표 달성을 보상함으로써 의미 있는 행동 학습을 유도한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ELLM은 GPT-3을 통해 에이전트의 현재 상태를 기술한 프롬프트로부터 실행 가능한 목표들을 제시받고, SentenceBERT 임베딩을 사용하여 에이전트의 실제 행동과 제시된 목표 간의 유사도를 내재적 보상으로 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Ground truth achievements unlocked per episode</em></p></div>
 <ul>
 <li><strong>상식적 행동 커버리지</strong>: ELLM으로 학습한 에이전트는 사전학습 단계에서 일반적인 상식 행동에 대해 더 높은 커버리지를 달성한다</li>
 <li><strong>다운스트림 성능</strong>: Crafter 게임 환경과 Housekeep 로봇 시뮬레이터에서 다양한 다운스트림 작업에 대해 기존 baseline과 동등하거나 우수한 성능을 보인다</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>재현성</strong>: 코드를 공개하여 결과 재현을 지원한다</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: ELLM uses GPT-3 to suggest adequate exploratory goals and SentenceBERT embeddings to compute the similarity</em></p></div>
 <ul>
 <li>LLM 프롬프팅: 현재 관찰을 자연어로 변환한 텍스트 설명을 GPT-3에 입력하여 추천 목표 리스트를 생성</li>
 <li>캡션 생성: 에이전트의 상태-행동-다음상태 전이(transition)를 자연어로 설명하는 캡션 생성 (예: 'Chop tree')", '유사도 기반 보상: SentenceBERT를 통해 생성된 캡션과 LLM 제시 목표들의 임베딩을 계산하고 코사인 유사도를 내재적 보상으로 사용</li>

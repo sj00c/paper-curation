@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Albert Q. Jiang, Sean Welleck, Jin Zhou, Wenda Li, Jiacheng Liu, Mateja Jamnik, Timothée Lacroix, Yuhuai Wu, Guillaume Lample | <strong>날짜</strong>: 2022 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2210.12283" target="_blank">미기재</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Draft, Sketch, and Prove 프레임워크. 비형식적 명제에서 형식적 증명까지 도달하는 3단계 과정</em></p></div>
 <p>본 논문은 <strong>비형식적 증명(informal proofs)을 형식적 증명 스케치(formal proof sketches)로 변환하여 자동 정리 증명기(automated theorem prover)를 유도하는 혁신적 방법론</strong>을 제시한다. 이는 풍부한 수학 텍스트 데이터를 활용하면서도 형식 시스템의 논리적 엄밀성을 보장한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3단계 파이프라인 - (1) 비형식적 증명 작성(또는 생성), (2) LLM을 통해 형식적 증명 스케치로 매핑, (3) 자동 정리 증명기로 미증명 추측(open conjectures) 해결.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Isabelle의 증명 스케치 예시. 비형식적 증명 세그먼트(빨간색)와 형식적 상대물의 정렬</em></p></div>
 <ol>
 <li><strong>성능 향상</strong>: miniF2F 데이터셋에서 자동 정리 증명기의 성공률을 <strong>20.9%에서 38.9%(LLM 생성 증명)~39.3%(인간 작성 증명)로 증대</strong>.</li>
 <li><strong>구조화된 스케치 생성</strong>: 대규모 언어 모델이 비형식적 증명과 동일한 추론 단계를 따르는 <strong>잘 구조화된 형식적 스케치를 생성 가능함을 입증</strong>.</li>
 <li><strong>데이터셋 구축</strong>: miniF2F 데이터셋과 정렬된 <strong>수동 큐레이션된 비형식적 명제 및 증명 데이터셋 구축</strong>.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>자동형식화 시도 횟수에 따른 miniF2F 해결 문제 수</em></p></div>
 <p><strong>3단계 파이프라인:</strong></p>
 <ul>
 <li><strong>단계 1 - 비형식적 증명 작성(Drafting)</strong>:

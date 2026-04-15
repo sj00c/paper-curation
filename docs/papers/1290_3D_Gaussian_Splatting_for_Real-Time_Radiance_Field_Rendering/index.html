@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler, George Drettakis | <strong>날짜</strong>: 2023-08-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2308.04079" target="_blank">https://arxiv.org/abs/2308.04079</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Our method achieves real-time rendering of radiance fields with quality that equals the previous method with the</em></p></div>
 <p>3D Gaussian Splatting은 3D 가우시안 표현과 실시간 렌더링 알고리즘을 결합하여 고품질의 novel-view synthesis를 1080p 해상도에서 30fps 이상으로 달성하는 방법이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D Gaussian을 사용한 scene 표현으로 연속적 volumetric 성질을 유지하면서 빈 공간 계산을 피하고, 최적화 중 density control을 수행하며, visibility-aware anisotropic splatting 렌더링 알고리즘을 개발했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Our method achieves real-time rendering of radiance fields with quality that equals the previous method with the</em></p></div>
 <ul>
 <li><strong>실시간 렌더링</strong>: 1080p 해상도에서 >= 30fps의 실시간 렌더링 달성 (93-135fps)</li>
 <li><strong>최고 품질</strong>: Mip-NeRF360과 동등하거나 우수한 PSNR (25.2 vs 24.3)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>효율적 표현</strong>: 1-5백만 개의 컴팩트한 3D Gaussian으로 scene 표현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Optimization starts with the sparse SfM point cloud and creates a set of 3D Gaussians. We then optimize and adap</em></p></div>
 <ul>
 <li>SfM sparse point cloud로부터 3D Gaussian 초기화</li>
 <li>3D position, opacity α, anisotropic covariance, spherical harmonic 계수 최적화</li>

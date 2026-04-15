@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chunxin Zheng, Kai Chen, Zhihai Bi, Yulin Li, Liang Pan, Jinni Zhou, Haoang Li, Jun Ma | <strong>날짜</strong>: 2025-09-16 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.13534" target="_blank">10.48550/arXiv.2509.13534</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>본 논문은 인간의 동작 사전(human motion prior)과 neural signed distance field(NSDF)를 통합한 강화학습 프레임워크를 제안하여 휴머노이드 로봇이 팔과 몸통을 조율해 부피가 큰 물체를 전신으로 포용하고 운반할 수 있도록 하는 방법을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Teacher-student 아키텍처를 통해 대규모 인간 모션 데이터(AMASS)에서 생물학적으로 타당한 운동학적 분포를 추출하고, NSDF를 이용해 정확한 기하학적 인지와 접촉 인식을 제공하며, 이 두 요소를 RL 정책 학습에 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>첫 휴머노이드 WBM RL 프레임워크</strong>: 휴머노이드 로봇이 팔과 몸통을 동시에 활용해 물체를 포용하는 최초의 강화학습 프레임워크 제안</li>
 <li><strong>수렴성 향상</strong>: 인간 모션 사전을 도입해 다중 접촉 및 장기 지평선 작업에서 정책 학습의 수렴 속도를 가속화하고 인간형(anthropomorphic) 기술 습득 촉진</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>높은 적응성 및 현실 이전</strong>: 다양한 형태와 크기의 물체에 우수한 적응성을 보이며 시뮬레이션에서 현실로의 전이(sim-to-real transfer) 성공 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>AMASS 모션 캡처 데이터셋에서 시작하여 MaskedMimic을 사용해 운동학적 제약 위반(자기 충돌, 발 미끄러짐) 시퀀스 제거</li>
 <li>필터링된 모션을 로봇 형태로 재표적화(retarget)하여 로봇 참조 궤적 수집</li>

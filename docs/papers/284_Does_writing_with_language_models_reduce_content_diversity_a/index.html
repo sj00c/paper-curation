@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Vishakh Padmakumar, He He | <strong>날짜</strong>: 2023 | <strong>DOI</strong>: 미제공</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>세 그룹(Solo, GPT3, InstructGPT)이 작성한 에세이의 내용 다양성 측정. InstructGPT로 공동 작성한 에세이가 가장 유사하고 어휘 및 내용 다양성이 낮음</em></p></div>
 <p>인간 피드백으로 미세조정된 언어모델(InstructGPT)을 사용한 협력 글쓰기가 통계적으로 유의미하게 내용 다양성을 감소시키는지를 제어된 실험을 통해 측정한 연구이다. 기본 모델(GPT3)은 유의미한 영향을 보이지 않았다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,11 +77,15 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 제어된 실험 설계를 통해 세 조건(모델 없음, 기본 GPT3, 미세조정된 InstructGPT)에서 사용자들이 작성한 논설문을 비교하고 다양성 메트릭스 개발</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>세 그룹의 동질화(homogenization) 점수 비교. InstructGPT 그룹이 유의미하게 높은 점수를 나타냄</em></p></div>
 <ol>
 <li><strong>동질화 효과 입증</strong>: InstructGPT로 작성한 에세이가 다른 두 그룹 대비 저자 간 유사도가 통계적으로 유의미하게 높음. 특히 모델이 기여한 주요 포인트가 이러한 동질화의 주요 원인</li>
 <li><strong>다양성 감소 확인</strong>: InstructGPT 그룹의 에세이들이 (1) 어휘 다양성(lexical diversity) 감소, (2) 반복되는 고차 n-그램(higher-order n-grams) 증가, (3) 고유한 주요 포인트 수 감소를 보임</li>
 <li><strong>모델 종류별 차이</strong>: 미세조정되지 않은 기본 GPT3는 유사한 수준의 모델 기여도에도 불구하고 유의미한 다양성 감소 효과를 보이지 않음. 인간 피드백 강화학습(RLHF)이 모델 출력의 다양성을 감소시키는 것으로 해석</li>
-</ol></div>
+</ol>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>상위 50개 단어(a)와 5-gram(b)의 분포. InstructGPT 그룹에서 더 큰 집중도를 보임</em></p></div></div>
 <div class="section-box"><h2>How</h2>
 <ul>
 <li><strong>데이터 수집</strong>: Upwork에서 모집한 38명의 영어 모국어 사용자가 New York Times Student Opinion 시리즈의 10개 주제에 대해 약 300단어의 논설문 작성 (총 300편)</li>

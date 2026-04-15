@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wenxuan Song, Jiayi Chen, Pengxiang Ding, Yuxin Huang, Han Zhao, Donglin Wang, Haoang Li | <strong>날짜</strong>: 2025-06-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.13725" target="_blank">https://arxiv.org/abs/2506.13725</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Acceleration effect of CEED-VLA on OpenVLA and LLaVA-VLA. Left: Comparison</em></p></div>
 <p>Vision-Language-Action (VLA) 모델의 추론 속도를 향상시키기 위해 consistency distillation과 early-exit decoding을 결합한 CEED-VLA를 제안하며, 4배 이상의 가속화를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: consistency distillation을 통해 학생 모델이 각 반복에서 여러 토큰을 예측하도록 학습하고, mixed-label supervision으로 오류 누적을 완화하며, early-exit decoding으로 비효율적인 반복을 제거한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Acceleration effect of CEED-VLA on OpenVLA and LLaVA-VLA. Left: Comparison</em></p></div>
 <ul>
 <li><strong>4배 이상 추론 가속화</strong>: OpenVLA에서 3.6배, LLaVA-VLA에서 2.0배 이상의 speedup을 달성하면서 조작 성능 유지</li>
 <li><strong>높은 작업 성공률</strong>: 시뮬레이션 및 실제 로봇 작업에서 comparable 또는 improved success rates 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>범용적 가속 패러다임</strong>: 서로 다른 VLA baseline에 적용 가능한 일반적인 방법론 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of our proposed CEED-VLA. Our proposed framework first runs the pretrained</em></p></div>
 <ul>
 <li><strong>Consistency distillation</strong>: teacher 모델의 Jacobi trajectory 상의 임의 지점을 fixed point로 직접 매핑하도록 학생 모델 학습</li>
 <li><strong>Auxiliary AR loss</strong>: 학생 모델의 native autoregressive 능력 보존을 위해 teacher의 next-token 분포와의 alignment 유지</li>

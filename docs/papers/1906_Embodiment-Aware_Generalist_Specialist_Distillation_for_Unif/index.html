@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Quanquan Peng, Yunfeng Lin, Yufei Xue, Jiangmiao Pang, Weinan Zhang | <strong>날짜</strong>: 2026-02-27 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.02960" target="_blank">10.48550/arXiv.2602.02960</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method Overview. (a) Unified command interface. The command vector ct comprises task commands vt (linear</em></p></div>
 <p>EAGLE는 다양한 휴머노이드 로봇을 단일 정책으로 제어하기 위한 embodiment-aware generalist-specialist distillation 프레임워크로, 반복적인 전문가 미세조정과 일반화 정책으로의 지식 증류를 통해 여러 이종 로봇에서 보행, 스쿼팅, 기울임 등 다양한 whole-body 제어를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: generalist 정책에서 embodiment별 specialist를 분기하여 각 로봇에서 미세조정한 후, DAgger 기반 distillation으로 새로운 기술을 generalist로 역증류하는 반복 사이클을 구성했다. 통합된 고차원 명령 인터페이스(선형/각속도, 높이, 몸통 pitch)로 다양한 행동을 single policy로 지원한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: In this work, we propose a distillation framework that yields a single whole-body controller that runs on hetero</em></p></div>
 <ul>
 <li><strong>Cross-embodiment generalization</strong>: Unitree H1, G1, Fourier N1, Booster T1, PNDbotics Adam 등 5개 시뮬레이션 환경과 4개 실제 로봇에서 검증된 단일 통합 정책 개발</li>
 <li><strong>Rich behavior support</strong>: 보행, 스쿼팅, 기울임, 기본 높이 조절 등 고차원 명령을 단일 정책으로 지원</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Scalability</strong>: fleet-level humanoid control을 위한 확장 가능한 프레임워크 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method Overview. (a) Unified command interface. The command vector ct comprises task commands vt (linear</em></p></div>
 <ul>
 <li>Unified command interface 설계: 작업 명령(vx, vy, ω)과 행동 명령(h, p) 분리로 5차원 명령 벡터 구성</li>
 <li>Embodiment-aware observation 구성: K=5 프레임의 proprioception(관절 위치/속도, base angular velocity, projected gravity)과 gait clock function 추가</li>

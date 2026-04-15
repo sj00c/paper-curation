@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuxuan Wang, Ming Yang, Ziluo Ding, Yu Zhang, Weishuai Zeng, Xinrun Xu, Haobin Jiang, Zongqing Lu | <strong>날짜</strong>: 2025-06-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.12779" target="_blank">https://arxiv.org/abs/2506.12779</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the BumbleBee framework. The left section illustrates the data curation stage, which</em></p></div>
 <p>BumbleBee는 motion clustering과 sim-to-real adaptation을 결합하여 humanoid robot의 일반적인 whole-body control을 달성하는 expert-generalist 학습 프레임워크이다. 여러 motion cluster에서 전문가 정책을 훈련한 후 이를 통합 generalist controller로 distill한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Autoencoder 기반 clustering으로 motion feature와 text description을 이용해 behaviorally similar motion을 그룹화하고, 각 cluster에서 expert policy를 훈련한 후 delta action modeling으로 sim-to-real gap을 해결한 뒤 knowledge distillation으로 통합 generalist를 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Evaluation of expert vs. generalist models in MuJoCo, measured by success rate.</em></p></div>
 <ul>
 <li><strong>Expert-to-Generalist Framework</strong>: Motion clustering을 통해 conflicting gradient 문제를 완화하고 각 motion type의 specialized control을 가능하게 함</li>
 <li><strong>Auto-regressive Clustering Method</strong>: Leg-specific motion feature와 text description을 결합하여 semantic과 kinematic 특성을 모두 반영한 clustering 달성</li>
 <li><strong>State-of-the-art Performance</strong>: 시뮬레이션과 실제 humanoid robot에서 superior agility, robustness, generalization을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the BumbleBee framework. The left section illustrates the data curation stage, which</em></p></div>
 <ul>
 <li>SMPL 형식의 human motion을 robot-specific representation으로 retargeting하고 PHC filtering으로 데이터 품질 확보</li>
 <li>Self-supervised autoencoder를 사용하여 kinematic feature (joint 3D coordinate, foot velocity 포함)와 HumanML3D의 text annotation으로 motion clustering 수행</li>

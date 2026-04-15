@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-03-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.29452" target="_blank">https://arxiv.org/abs/2603.29452</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>CReF는 cross-modal attention과 gated residual fusion을 활용하여 raw depth 입력으로부터 직접 locomotion-relevant 특징을 학습하는 단일 단계 depth-conditioned humanoid locomotion 프레임워크로, 명시적 기하학적 중간 표현 없이 zero-shot sim-to-real transfer를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CReF는 proprioception-queried cross-modal attention으로 proprioception과 depth tokens를 결합하고, gated residual fusion block으로 표현을 fuse한 후, GRU와 highway-style output gate를 통해 temporal integration을 수행한다. 추가로 terrain-aware foothold placement reward가 foot-end point-cloud samples로부터 supportable foothold candidates를 추출하고 touchdown을 guide한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>단일 단계 프레임워크</strong>: 명시적 기하학적 중간 표현이나 multi-stage supervision 없이 raw depth와 proprioception으로부터 직접 joint position targets 생성</li>
 <li><strong>강건한 지형 횡단</strong>: 20회 이상 연속 계단 횡단, 40cm 높은 플랫폼, 80cm 갭, 20cm rise/26cm tread 실제 계단 등 다양한 지형에서 안정적 성능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>개선된 내려오기 성능</strong>: Terrain-aware foothold placement reward를 통해 계단 내려오기에서 특히 substantial gains 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>Cross-modal attention</strong>: Proprioception tokens이 depth tokens를 query하여 modalities 간 상호작용 실현</li>
 <li><strong>Gated residual fusion</strong>: Linear + ELU와 sigmoid gate를 통해 fusion된 depth 특징 조정</li>

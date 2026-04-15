@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haozhe Xie, Beichen Wen, Jiarui Zheng, Zhaoxi Chen, Fangzhou Hong, Haiwen Diao, Ziwei Liu | <strong>날짜</strong>: 2026-01-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.22153" target="_blank">https://arxiv.org/abs/2601.22153</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of DynamicVLA. (a) A 0.4B-parameter VLA architecture couples a lightweight backbone with an action</em></p></div>
 <p>DynamicVLA는 동적 객체 조작을 위한 compact 0.4B VLA 모델로, Continuous Inference와 Latent-aware Action Streaming을 통해 지각-실행 간의 지연을 제거하고 실시간 폐루프 제어를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: compact 0.4B 매개변수 VLA에 convolutional vision encoder를 적용하여 공간 효율성을 확보하고, Continuous Inference로 추론과 실행을 겹치게 하며, Latent-aware Action Streaming으로 시간 정렬된 행동 실행을 강제한다. 또한 자동화된 데이터 수집 파이프라인으로 200K 합성 에피소드와 2K 실제 에피소드를 포함한 Dynamic Object Manipulation (DOM) 벤치마크를 구축한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: (a) Current VLA models face perception–execution (P.E.) gaps and inter-chunk waiting, causing delayed reactions </em></p></div>
 <ul>
 <li><strong>Compact 모델 설계</strong>: ConvNet 기반 vision encoder를 사용하여 0.4B 매개변수로 빠른 multimodal 추론 가능</li>
 <li><strong>Continuous Inference</strong>: 추론과 실행을 파이프라인화하여 inter-chunk waiting 제거 및 지연 감소</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>성능 향상</strong>: 응답 속도, 지각, 일반화 측면에서 기존 모델 대비 현저한 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of DynamicVLA. (a) A 0.4B-parameter VLA architecture couples a lightweight backbone with an action</em></p></div>
 <ul>
 <li>FastViT 기반의 convolutional vision encoder로 효율적 spatial compression 및 구조 보존</li>
 <li>SmolLM2-360M의 처음 16 레이어와 별도 Action Expert 레이어 16개로 구성된 경량 아키텍처</li>

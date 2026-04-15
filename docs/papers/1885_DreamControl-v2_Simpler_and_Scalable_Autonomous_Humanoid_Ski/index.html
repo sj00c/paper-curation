@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-03-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2604.00202" target="_blank">https://arxiv.org/abs/2604.00202</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: DreamControl-v2 Overview. Our four-stage pipeline enables humanoid whole-body manipulation: (1) large-scale huma</em></p></div>
 <p>humanoid 로봇의 복잡한 manipulation 작업을 위해 guided diffusion 모델을 로봇의 motion space에 직접 학습하여, 다양한 인간과 로봇 데이터를 통합하고 RL 정책을 자동으로 생성하는 확장 가능한 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: robot space에 직접 학습된 humanoid diffusion prior를 훈련하기 위해 AMASS, HumanML3D, GRAB, Nymeria 등 다양한 human motion 데이터셋을 GPU 기반 retargeting으로 Unitree-G1 embodiment으로 사전 변환하고, 자동화된 trajectory filtering을 통해 RL 훈련용 reference 궤적을 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: DreamControl-v2 enables scalable and autonomous humanoid skill acquisition. We demonstrate diverse real-world sk</em></p></div>
 <ul>
 <li><strong>Spatial constraint 보존</strong>: robot space에서 직접 spatial conditioning을 수행하여 retargeting 후에도 spatio-temporal 제약 조건이 유지되어 trial-and-error 튜닝 제거</li>
 <li><strong>확장성 향상</strong>: 다양한 데이터셋 통합과 자동화된 filtering으로 task-specific IK와 수동 개입 불필요</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>자동 파이프라인</strong>: 간소화되고 자동화된 생성 파이프라인으로 practitioner의 개입 최소화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: DreamControl-v2 Overview. Our four-stage pipeline enables humanoid whole-body manipulation: (1) large-scale huma</em></p></div>
 <ul>
 <li>다양한 human motion 데이터셋(AMASS, HumanML3D, GRAB, Nymeria)을 GPU 기반 retargeting으로 Unitree-G1 형태로 사전 변환하여 robot-space dataset 구성</li>
 <li>robot-space dataset을 사용하여 text와 spatio-temporal constraint에 조건화된 guided diffusion 모델을 직접 훈련</li>

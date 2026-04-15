@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhen Fang, Zhuoyang Liu, Jiaming Liu, Hao Chen, Yu Zeng, Shiting Huang, Zehui Chen, Lin Chen, Shanghang Zhang, Feng Zhao | <strong>날짜</strong>: 2025-11-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.22134" target="_blank">https://arxiv.org/abs/2511.22134</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. DUALVLA first constructs a sparse, information-dense embodied reasoning dataset by combining video event predi</em></p></div>
 <p>DualVLA는 Vision-Language-Action 모델에서 추론 능력을 추가할 때 발생하는 행동 성능 저하(action degeneration)를 해결하기 위해, 이중층 데이터 프루닝과 이중 교사 적응형 증류 전략을 통해 추론과 행동을 부분적으로 분리하는 접근법을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DualVLA는 두 가지 주요 기법을 활용한다: (1) video event prediction과 kinematic cues를 결합하여 중복적인 embodied reasoning을 제거하는 이중층 데이터 프루닝, (2) specialist VLA를 action teacher로, 추론 능력 유지를 위한 reasoning teacher를 활용하는 이중 교사 적응형 증류 전략.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. VLMs possess strong reasoning ability but lack action</em></p></div>
 <ul>
 <li><strong>행동 성능 개선</strong>: SimplerEnv에서 평균 61.0의 성공률 달성하여 specialist VLA 대비 행동 성능 저하 현상 완화</li>
 <li><strong>다중 모달 성능</strong>: 8개의 경쟁 벤치마크에서 평균 65.4점 달성으로 추론 능력과 행동 능력의 균형 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 실험</strong>: 시뮬레이션과 실제 로봇 환경 모두에서 일관된 성능 개선 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. DUALVLA first constructs a sparse, information-dense embodied reasoning dataset by combining video event predi</em></p></div>
 <ul>
 <li><strong>이중층 데이터 프루닝</strong>: embodiment 신호와 scene-level event 변화를 모두 활용하여 중복적인 embodied reasoning을 식별하고 제거하되, 행동-critical 콘텐츠는 유지</li>
 <li><strong>이중 교사 적응형 증류</strong>: specialist VLA를 action teacher로 활용하여 로봇 데이터에 대한 fine-grained supervision 제공, 동시에 reasoning teacher를 통해 multimodal 추론 능력 보존</li>

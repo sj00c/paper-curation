@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhiqiang Wang, Hao Zheng, Yunshuang Nie, Wenjun Xu, Qingwei Wang, Hua Ye, Zhe Li, Kaidong Zhang, Xuewen Cheng, Wanxi Dong, Chang Cai, Liang Lin, Feng Zheng, Xiaodan Liang | <strong>날짜</strong>: 2024-08-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2408.10899" target="_blank">https://arxiv.org/abs/2408.10899</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. All robots in one.</em></p></div>
 <p>ARIO는 로봇 embodied AI 에이전트 학습을 위한 통합 데이터 표준과 약 300만 에피소드의 대규모 데이터셋으로, 258개 로봇 시리즈와 5가지 감각 모달리티를 포함하여 범용적이고 강건한 로봇 에이전트 개발을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ARIO 표준은 collection-series-task-episode의 4계층 계층적 구조와 타임스탬프 기반 데이터 정렬을 도입하여 다양한 로봇 타입의 제어 및 모션 데이터를 통합 형식으로 표현한다. 이 표준을 바탕으로 실제 로봇 데이터 수집, 시뮬레이션(Habitat, MuJoCo, SeaWave), 기존 오픈소스 데이터셋 변환을 통해 약 300만 에피소드의 대규모 통합 데이터셋을 구축했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. All robots in one.</em></p></div>
 <ul>
 <li><strong>포괄적 감각 모달리티</strong>: 이미지, 3D point cloud, 음성, 텍스트, 촉각 등 5가지 감각 모달리티를 통합한 최초의 대규모 데이터셋 제공</li>
 <li><strong>통합 데이터 형식</strong>: series-task-episode 계층 구조와 타임스탬프 기반 동기화로 다양한 로봇 타입(bimanual, single-arm, navigational, humanoid)과 제어 객체를 표준화된 형식으로 표현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>표준화 및 정제</strong>: 기존 오픈소스 데이터셋들을 ARIO 표준으로 정제 및 변환하여 호환성과 사용성 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Collection pipeline of ARIO.</em></p></div>
 <ul>
 <li>4계층 계층적 데이터 구조(collection → series → task → episode) 설계로 조직적인 데이터 관리</li>
 <li>타임스탬프 메커니즘을 통한 다양한 센서 프레임률과 로봇 액션 빈도의 동기화</li>

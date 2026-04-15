@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Younggyo Seo, Carmelo Sferrazza, Juyue Chen, Guanya Shi, Rocky Duan, Pieter Abbeel | <strong>날짜</strong>: 2025-12-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.01996" target="_blank">https://arxiv.org/abs/2512.01996</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Summary of results. We introduce a simple recipe based on off-policy RL algorithms, i.e.,</em></p></div>
 <p>이 논문은 FastSAC와 FastTD3라는 off-policy RL 알고리즘을 기반으로 단일 RTX 4090 GPU에서 15분 이내에 humanoid 로봇의 보행 정책을 학습할 수 있는 실용적인 레시피를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: FastSAC와 FastTD3를 기반으로 joint-limit-aware action bounds, observation과 layer normalization, clipped double Q-learning 등의 신중히 조정된 설계 선택과 최소주의 보상 함수를 사용하여 massively parallel 환경에서 off-policy RL을 안정화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Summary of results. We introduce a simple recipe based on off-policy RL algorithms, i.e.,</em></p></div>
 <ul>
 <li><strong>빠른 훈련</strong>: 단일 RTX 4090 GPU에서 강력한 domain randomization (randomized dynamics, rough terrain, push perturbations) 포함하여 humanoid locomotion 정책을 15분 내에 학습</li>
 <li><strong>실제 배포</strong>: Unitree G1과 Booster T1 로봇에 대한 end-to-end sim-to-real 배포 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>알고리즘 개선</strong>: FastSAC를 이전 FastTD3 연구보다 향상시켜 maximum entropy learning으로 exploration 효율 증대</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: FastSAC: Analyses. We investigate the effect of (a) Clipped double Q-learning, (b) number</em></p></div>
 <ul>
 <li>FastSAC와 FastTD3 off-policy RL 알고리즘 적용 및 대규모 병렬 시뮬레이션 활용</li>
 <li>Joint-limit-aware action bounds를 통해 Tanh 정책의 action bound를 로봇 관절 한계에 기반하여 설정</li>

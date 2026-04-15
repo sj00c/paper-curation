@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhao-Heng Yin, Pieter Abbeel | <strong>날짜</strong>: 2025-11-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.07418" target="_blank">https://arxiv.org/abs/2511.07418</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Contact Field and Its Interaction with Objects. A contact field is a collection of vectors in</em></p></div>
 <p>Lightning Grasp는 Contact Field라는 새로운 데이터 구조를 도입하여 기하학적 계산과 최적화 과정을 분리함으로써 다지형 손을 위한 고속의 절차적 파지 합성을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Contact Field를 통해 파지 가능 영역을 효율적으로 표현하고, block-wise zeroth-order optimization과 iterative kinematic optimization을 조합하여 3단계 파지 합성을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Lightning Grasp is a high-performance procedural (analytical) grasp synthesis algorithm.</em></p></div>
 <ul>
 <li><strong>성능 향상</strong>: A100 GPU에서 1,000~10,000개의 다양한 유효 파지를 2~5초 내에 생성하여 기존 방법 대비 수십 배에서 수백 배 빠른 속도 달성</li>
 <li><strong>자동화</strong>: 수작업 초기화 템플릿과 민감한 목적 함수 가중치 튜닝 제거로 파지 합성 과정 단순화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>호환성</strong>: 레거시 GPU(TITAN X)에서도 실시간 추론 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: BVH Representation of Contact Field. (Left) We first decompose the hand link meshes into</em></p></div>
 <ul>
 <li>Contact Field 정의: 손 링크 메시 위의 점 p와 법선 벡터 n으로부터 FK를 통해 도달 가능한 3D 위치와 방향의 6D 집합 구성</li>
 <li>Contact Domain 검출: Contact Field를 물체 표면과 교차시켜 각 손가락의 접촉 가능 영역을 충돌 감지 문제로 환원</li>

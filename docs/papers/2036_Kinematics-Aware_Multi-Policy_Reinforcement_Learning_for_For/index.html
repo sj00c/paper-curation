@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Kaiyan Xiao, Zihan Xu, Cheng Zhe, Chengju Liu, Qijun Chen | <strong>날짜</strong>: 2025-11-26 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.21169" target="_blank">10.48550/arXiv.2511.21169</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. System architecture of the proposed training pipeline. The diagram illustrates the integration of the upper-body</em></p></div>
 <p>본 논문은 휴머노이드 로봇의 고부하 산업 작업 수행을 위해 kinematics 사전 정보를 활용한 휴리스틱 보상함수, force-based curriculum learning, delta-command 정책을 통합한 3단계 RL 기반 loco-manipulation 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: upper-body, lower-body, delta-command 정책으로 구성된 3단계 RL 파이프라인을 제안하며, forward kinematics를 암묵적으로 내장한 휴리스틱 보상함수로 상체 학습을 가속화하고, force-based curriculum learning으로 하체의 능동 힘 제어를 점진적으로 습득하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5. Position and orientation errors of the left end-effector during training</em></p></div>
 <ul>
 <li><strong>Kinematics-aware 휴리스틱 보상함수</strong>: forward kinematics 사전 정보를 암묵적으로 활용하여 upper-body 정책의 수렴 속도 및 성능을 향상</li>
 <li><strong>Force-based curriculum learning</strong>: 기본 보행에서 시작하여 목표 힘 추적으로 확대되는 순차적 학습으로 로봇의 능동 힘 제어 능력 획득</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>고부하 작업 수행</strong>: Unitree G1 로봇이 4kg 물체 운반 및 112.8kg 카트 푸시/풀링을 안정적으로 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. System architecture of the proposed training pipeline. The diagram illustrates the integration of the upper-body</em></p></div>
 <ul>
 <li>Upper-body 정책: joint-space 추적과 task-space 추적을 결합한 휴리스틱 보상함수로 학습</li>
 <li>Lower-body 정책: curriculum learning 전략으로 먼저 안정적 보행 학습 후 외부 교란(목표 힘의 반대 방향)을 점진적으로 도입</li>

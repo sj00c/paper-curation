@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>:  | <strong>URL</strong>: <a href="https://dl.acm.org/doi/abs/10.1145/3592447" target="_blank">https://dl.acm.org/doi/abs/10.1145/3592447</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>인간 학습에서의 외부 지원 개념을 로봇에 적용하여, A2CF(Adaptive Assistive Curriculum Force)라는 이중 에이전트 RL 프레임워크를 제안한다. 보조력 에이전트가 초기 학습 단계에서 상태 종속적 보조력을 제공하고 로봇의 숙련도 향상에 따라 점진적으로 감소시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>다중 과제 검증</strong>: bipedal walking, choreographed dancing, backflips 세 가지 벤치마크에서 일관된 개선</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>확장된 action space</strong>: motion 에이전트의 joint 위치 제어 action과 assistive force 에이전트의 6-D spatial force 제어 action 결합</li>
 <li><strong>Hypercube 기반 보조력 curriculum</strong>: 정규화된 보조력 크기 ||F_k||/||η_k||가 threshold 이하로 떨어지면 경계값 η_k를 감소시키고, skill acquisition 감지 시 추가 decay 적용</li>

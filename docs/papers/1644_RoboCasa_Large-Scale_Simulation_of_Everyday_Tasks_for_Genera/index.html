@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Soroush Nasiriany, Abhiram Maddukuri, Lance Zhang, Adeet Parikh, Aaron Lo, Abhishek Joshi, Ajay Mandlekar, Yuke Zhu | <strong>날짜</strong>: 2024-06-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.02523" target="_blank">https://arxiv.org/abs/2406.02523</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of RoboCasa. RoboCasa is a simulation framework for training generalist robot agents. Four pillars unde</em></p></div>
 <p>RoboCasa는 kitchen 환경에 중점을 둔 대규모 로봇 시뮬레이션 프레임워크로, 생성형 AI를 활용하여 다양한 3D 자산과 task를 확보하고 100K 이상의 synthetic trajectory로 generalist robot 학습을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RoboCasa는 MuJoCo 기반의 modular framework에 generative AI 도구(text-to-3D, text-to-image)를 활용하여 2,500+ 3D object, 120 kitchen scene, 100 task를 구축하고, human demonstration과 MimicGen을 통한 automated trajectory generation으로 dataset을 확대한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of RoboCasa. RoboCasa is a simulation framework for training generalist robot agents. Four pillars unde</em></p></div>
 <ul>
 <li><strong>Framework 구성</strong>: realistic kitchen scene, diverse interactable furniture/appliances, cross-embodiment support (mobile manipulator, humanoid, quadruped)를 갖춘 simulation framework 개발</li>
 <li><strong>AI 활용 asset/task 생성</strong>: text-to-3D, text-to-image, LLM 활용으로 2,500+ object (150+ category), 100 task (atomic 25 + composite 75) 구축</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Scaling 검증</strong>: synthetic data 증가에 따른 성능 향상을 실증하였고, real-world kitchen에서 simulation co-training의 effectiveness 증명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Kitchen Floor Plans. We consult home planning and architecture magazines and compile a list of common kitchen fl</em></p></div>
 <ul>
 <li>Kitchen 설계: architecture/home design magazine 참고하여 다양한 kitchen layout과 style 모델링</li>
 <li>Object asset: 2,500+ 3D object를 text-to-3D 모델로 생성하여 150+ category 확보</li>

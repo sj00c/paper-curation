@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siwei Chen, Anxing Xiao, David Hsu | <strong>날짜</strong>: 2023-11-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2311.17406" target="_blank">https://arxiv.org/abs/2311.17406</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: LLM-State Example. The proposed state representation is a mixture</em></p></div>
 <p>개방형 환경에서 LLM의 장기 작업 계획을 위해 객체 속성을 동적으로 추적하고 업데이트하는 하이브리드 상태 표현 LLM-State를 제안한다. 이는 구조화된 객체 중심 표현과 비구조화된 행동 이력 요약을 결합하여 장기간 상태 추적 및 실패 복구를 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM을 Attention, State Encoder, Policy의 세 역할로 활용하여 관련 객체를 선별하고 구조화된 객체-속성 표현을 자동으로 생성하며, 비구조화된 체인-오브-쏘트 기반 행동 이력 요약을 추가하여 속성 예측 정확도와 실패 복구 능력을 향상한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: LLM-State Example. The proposed state representation is a mixture</em></p></div>
 <ul>
 <li><strong>하이브리드 상태 표현</strong>: 구조화된 객체-속성 표현과 비구조화된 행동 요약을 결합하여 장기 작업의 정보 손실 문제를 완화한다.</li>
 <li><strong>동적 속성 확장</strong>: LLM의 맥락 이해 능력을 활용해 예측되지 않은 객체 속성을 자동으로 추적하고 업데이트한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>광범위한 실험 검증</strong>: VirtualHome 시뮬레이션 및 실제 환경에서 기존 방법 대비 유의미한 성능 향상을 입증한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the system framework. The task planner consists of three components: LLM as Encoder, LLM as State Es</em></p></div>
 <ul>
 <li>LLM as Attention: 장시간 관측 텍스트에서 작업 목표와 관련된 객체를 식별하여 입력 복잡도를 감소시킨다.</li>
 <li>LLM as State Encoder: 식별된 객체와 실행된 행동을 입력받아 객체의 새로운 속성을 출력하는 상태 업데이트를 수행한다.</li>

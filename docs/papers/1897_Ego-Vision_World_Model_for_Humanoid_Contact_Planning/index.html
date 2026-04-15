@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hang Liu, Yuman Gao, Sangli Teng, Yufeng Chi, Yakun Sophia Shao, Zhongyu Li, Maani Ghaffari, Koushil Sreenath | <strong>날짜</strong>: 2026-03-08 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.11682" target="_blank">10.48550/arXiv.2510.11682</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: World Model Training Pipeline. The pipeline begins with the offline data collection process shown in (a), where </em></p></div>
 <p>휴머노이드 로봇이 접촉을 활용하는 지능형 계획을 수립하기 위해 학습된 world model을 sampling-based MPC와 결합한 프레임워크를 제안하며, 오프라인 데이터셋으로부터 압축된 latent space에서 미래 결과를 예측한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 오프라인 데이터셋으로 world model과 surrogate value function을 동시에 학습한 후, value-guided sampling MPC를 통해 latent space에서 action sequence를 탐색하고 Cross-Entropy Method로 최적화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Real-World experiments validating the proposed framework. (a) A demonstration of sequential task execution and g</em></p></div>
 <ul>
 <li><strong>확장 가능한 시각 world model</strong>: demonstration-free 오프라인 데이터셋만으로 다양한 접촉 작업의 동역학을 포괄적으로 학습</li>
 <li><strong>값 기반 계획 프레임워크</strong>: surrogate value function을 통한 dense guidance로 sparse contact reward 문제 해결</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>샘플 효율성 및 다중 작업 능력</strong>: 단일 model로 여러 작업을 수행하면서 on-policy RL 대비 향상된 샘플 효율성 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: World Model Training Pipeline. The pipeline begins with the offline data collection process shown in (a), where </em></p></div>
 <ul>
 <li>저수준 controller는 high-level command [v, p_ee, h_body]를 tracking하여 proprioceptive 피드백만으로 모터 제어 수행</li>
 <li>오프라인 dataset D는 시뮬레이션에서 low-level policy에 무작위 high-level action을 적용하여 수집되며, 유한 차분으로 jittery 행동 제거</li>

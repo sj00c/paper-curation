@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ross Hartley, Maani Ghaffari, Ryan M. Eustice, Jessy W. Grizzle | <strong>날짜</strong>: 2019-04-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/1904.09251" target="_blank">https://arxiv.org/abs/1904.09251</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: A Cassie-series biped robot is used for both simulation and experimental results. The robot was developed by A</em></p></div>
 <p>Lie군 이론과 불변 관찰자 설계를 기반으로 IMU와 접촉 센서 데이터를 융합하는 Contact-Aided Invariant Extended Kalman Filter (InEKF)를 개발하여 이족 로봇의 자세와 속도를 추정한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Lie군 기반 불변 관찰자 설계 이론을 적용하여 접촉-관성 동역학과 순운동학 보정을 결합한 InEKF를 도출한다. 오류 동역학이 log-linear 자율 미분방정식을 만족함을 증명하여 우수한 수렴 특성을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: A quaternion-based extended Kalman ﬁlter (QEKF) and the proposed right-invariant extended Kalman ﬁlter (RIEKF)</em></p></div>
 <ul>
 <li><strong>Log-linear 오류 동역학</strong>: 오류 동역학이 log-linear 자율 미분방정식을 따르므로, 관측 가능한 상태 변수를 시스템 궤적에 무관한 수렴 영역으로 렌더링할 수 있다.</li>
 <li><strong>상태 독립성</strong>: 선형화된 오류 동역학과 관측 모델이 현재 상태 추정값에 의존하지 않아, QEKF 대비 개선된 수렴 특성과 비선형 시스템과 일치하는 국소 관측성 행렬을 획득한다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈소스 라이브러리</strong>: aided-inertial navigation을 위한 C++ 구현 라이브러리를 공개하여 재현성과 확산을 촉진한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: A typical walking gait that is used for ﬁlter comparisons. The Cassie bipedal robot is simulated using Simscap</em></p></div>
 <ul>
 <li>Lie군 SO(3)와 SE(3) 이론을 활용한 상태 공간 정의 및 group-affine 성질 증명</li>
 <li>Right-invariant 오류 정의를 통한 log-linear 오류 동역학 도출</li>

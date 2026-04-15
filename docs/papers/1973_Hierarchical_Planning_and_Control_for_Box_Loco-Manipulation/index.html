@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhaoming Xie, Jonathan Tseng, Sebastian Starke, Michiel van de Panne, C. Karen Liu | <strong>날짜</strong>: 2023-06-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2306.09532" target="_blank">https://arxiv.org/abs/2306.09532</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. System overview. We design four motion primitives for locomotion and manipulation which can be</em></p></div>
 <p>물리 기반 시뮬레이션 인간 캐릭터가 box rearrangement 작업을 수행하기 위해 계획, diffusion model, 강화학습을 계층적으로 조합하는 시스템을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 고수준의 A* planner로 경로를 계획하고, diffusion model로 현실적인 보행 궤적을 생성하며, 강화학습 기반 physics-controlled policy로 움직임을 모방한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. We develop loco-manipulation skills for box-carrying physics-based characters. This is achieved via a</em></p></div>
 <ul>
 <li><strong>계층적 제어 아키텍처</strong>: 추상화 수준에 따라 계획과 제어를 분리하여 다양한 배치 작업에 일반화 가능하게 함</li>
 <li><strong>Diffusion model 기반 locomotion 생성</strong>: bidirectional root representation을 도입하여 waypoint 조건을 만족하는 현실적인 보행 궤적 생성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 작업 수행</strong>: 장애물이 있는 클러터된 환경에서 상자를 픽업, 운반, 배치하는 완전 자동화된 작업 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. System overview. We design four motion primitives for locomotion and manipulation which can be</em></p></div>
 <ul>
 <li>고수준: A* pathfinding으로 pick-up과 place-down 위치 사이의 기본 경로 계획</li>
 <li>중간 수준: diffusion model에 bidirectional root control을 적용하여 waypoint 조건을 만족하는 kinematic locomotion 궤적 생성</li>

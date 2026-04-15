@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Michael Sun, Weize Yuan, Gang Liu, Wojciech Matusik, Jie Chen | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2505.22948" target="_blank">10.48550/arXiv.2505.22948</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>주요 FMG 알고리즘 모듈: 기저 클리크 추출부터 근 모티프 선택까지의 단계적 프로세스. MMFM이 의미 있는 부분구조 병합과 화학적 중요도 판단을 수행.</em></p></div>
 <p>다중 모달 기반 모델(MMFM)의 화학 지식을 활용하여 분자를 이미지와 텍스트로 표현하고, 계층적 분해 알고리즘과 연쇄 추론(chain-of-thought)을 결합해 해석 가능한 분자 그래프 문법(graph grammar)을 자동으로 학습하는 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 클리크 트리 분해(clique tree decomposition) 알고리즘을 기반으로 각 단계마다 MMFM의 의사결정 모듈을 통합하고, LLM 논쟁(debate) 메커니즘으로 화학적 타당성을 검증</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>FMG 파이프라인: (좌) 기저 클리크 초기화, (중좌) 클리크 그래프 삼각분할, (중앙) MMFM 기반 모티프 병합 결정, (중우) 중요도 낮은 상호작용 제거, (우) 근 모티프 선택.</em></p></div>
 <ol>
 <li><strong>데이터 효율성 및 다양성</strong>: 기존 SOTA 방법 대비 분자 생성 벤치마크에서 우수한 성능 달성 (합성 가능성, 다양성, 데이터 효율성 모두 개선)</li>
 <li><strong>내재적 해석성</strong>: 생성된 문법 규칙이 관능기(functional groups) 등 화학적으로 의미 있는 부분구조로 구성되며, 단계별 추론 과정을 "설계 내러티브(design narrative)"로 기록하여 투명성 확보</li>
 <li><strong>전문가 검증</strong>: LLM 판사 및 토너먼트 시스템을 통해 분해(decomposition)의 화학적 타당성을 자동 검증하고, 전문가 기준 레이블과 비교 검증</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+</div>
 <p><strong>알고리즘 단계:</strong></p>
 <ol>
 <li><strong>기저 클리크 추출(Base Clique Extraction)</strong>

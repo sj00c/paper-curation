@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Marion Lepert, Jiaying Fang, Jeannette Bohg | <strong>날짜</strong>: 2025-03-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.00779" target="_blank">https://arxiv.org/abs/2503.00779</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of learning from human videos. Our method enables training robot policies without collecting any robot </em></p></div>
 <p>로봇 하드웨어 없이 인간 비디오 데모만으로 로봇 정책을 학습하는 Phantom 방법을 제안하며, 데이터 편집 기법을 통해 인간-로봇 간의 embodiment gap을 극복하고 zero-shot 배포를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 비디오에서 hand pose estimator로 손 포즈를 추출하여 로봇 액션으로 변환하고, inpainting으로 인간의 손을 제거한 후 렌더링된 로봇 팔을 합성하여 데이터 편집을 수행한다. 이 augmented 데이터로 imitation learning 정책을 학습하고 실제 로봇에 zero-shot 배포한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of learning from human videos. Our method enables training robot policies without collecting any robot </em></p></div>
 <ul>
 <li><strong>로봇 데이터 완전 제거</strong>: 로봇 데이터 수집 없이도 6가지 작업에서 높은 성공률 달성</li>
 <li><strong>확장 가능한 데이터 수집</strong>: RGBD 카메라만으로 누구나 다양한 환경에서 데모 수집 가능</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>로봇 무관 데이터</strong>: 수집된 데이터를 다양한 로봇 플랫폼에 적용 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our data-editing pipeline for learning robot policies from human videos. During training, we first e</em></p></div>
 <ul>
 <li>HaMeR를 이용한 hand pose estimation으로 각 프레임의 손 포즈 추정</li>
 <li>Inpainting 기법으로 인간 손을 이미지에서 제거</li>

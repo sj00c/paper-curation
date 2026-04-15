@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lokesh Krishna, Sheng Cheng, Junheng Li, Naira Hovakimyan, Quan Nguyen | <strong>날짜</strong>: 2025-05-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.24068" target="_blank">https://arxiv.org/abs/2505.24068</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview of the proposed automated co-tuning approach for</em></p></div>
 <p>로봇 컨트롤러의 시뮬레이션-실제 환경 간 성능 격차를 해결하기 위해 differentiable simulator를 활용한 gradient 기반 co-tuning 프레임워크를 제안하며, 컨트롤러와 시뮬레이터 매개변수를 동시에 최적화하여 적은 시행횟수로 체계적인 도메인 전이를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DiffCoTune은 differentiable simulator와 controller를 활용하여 배포 도메인에서 수집한 롤아웃으로 시뮬레이터 매개변수 β와 컨트롤러 매개변수 θ를 교대로 최적화하는 multi-step objective 기반 최적화를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Sim-to-sim transfer of forward and yaw motion of</em></p></div>
 <ul>
 <li><strong>일반화된 co-tuning 프레임워크</strong>: 모델 기반 및 학습 기반 컨트롤러 모두에 적용 가능한 순수 gradient 기반의 자동화된 tuning 방법 개발</li>
 <li><strong>적은 시행횟수로의 효과적 전이</strong>: 배포 도메인에서 5회 미만의 시행으로 체계적인 도메인 전이 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 도메인 전이</strong>: 다양한 시뮬레이터와 실제 하드웨어 간의 sim-to-sim 및 sim-to-real 전이 모두 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Phase portraits of progressive tuning iterates of DiffCoTune</em></p></div>
 <ul>
 <li>Differentiable simulator f(x_t, u_t; β)를 통해 모든 상태, 입력, 매개변수에 대한 gradient 계산 가능</li>
 <li>System identification objective J_sysId를 통해 폐루프 동역학에서 모델과 실제 시스템의 불일치 정량화</li>

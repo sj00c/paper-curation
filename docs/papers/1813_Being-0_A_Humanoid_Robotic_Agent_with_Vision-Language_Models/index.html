@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoqi Yuan, Yu Bai, Yuhui Fu, Bohan Zhou, Yicheng Feng, Xinrun Xu, Yi Zhan, Börje F. Karlsson, Zongqing Lu | <strong>날짜</strong>: 2025-03-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.12533" target="_blank">https://arxiv.org/abs/2503.12533</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of the Being-0 framework. The humanoid agent framework, Being-0, comprises three key components: (1) </em></p></div>
 <p>Being-0는 Foundation Model, VLM 기반 Connector, 모듈식 스킬 라이브러리를 계층적으로 통합하여 인간형 로봇이 복잡한 장기 과제를 수행할 수 있도록 하는 프레임워크이다. Connector 모듈이 언어 기반 계획을 실행 가능한 스킬 명령으로 변환하고 보행과 조작을 동적으로 조율한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM 기반 Connector를 도입하여 FM의 계획과 모듈식 스킬 라이브러리 사이의 격차를 해소하고, 실시간 보행·조작 명령 생성과 동적 조율을 수행한다. 실내 네비게이션 데이터로 Connector를 학습시켜 embodied 지식을 경량 VLM에 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Workflow of Being-0 for the task “make a cup of coffee”. The figure illustrates the step-by-step execution of </em></p></div>
 <ul>
 <li><strong>계층적 프레임워크</strong>: FM은 클라우드에, Connector와 스킬 라이브러리는 온보드 계산 장치에 배포하여 효율적 실행 가능</li>
 <li><strong>높은 완수율</strong>: 네비게이션과 조작이 포함된 복잡한 장기 과제에서 평균 84.4% 완수율 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Connector의 기여 입증</strong>: 보행 명령 조정 및 조작과의 seamless 연결로 과제 성공률 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Workflow of Being-0 for the task “make a cup of coffee”. The figure illustrates the step-by-step execution of </em></p></div>
 <ul>
 <li><strong>모듈식 스킬 라이브러리</strong>: 보행 스킬은 조이스틱 명령 기반, 조작 스킬은 언어 설명과 함께 teleoperation과 imitation learning으로 학습</li>
 <li><strong>VLM 기반 Connector</strong>: 1인칭 실내 네비게이션 이미지와 언어 지시, 객체 레이블, bounding box 주석으로 학습</li>

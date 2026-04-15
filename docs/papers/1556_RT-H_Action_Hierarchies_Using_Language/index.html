@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Suneel Belkhale, Tianli Ding, Ted Xiao, Pierre Sermanet, Quon Vuong, Jonathan Tompson, Yevgen Chebotar, Debidatta Dwibedi, Dorsa Sadigh | <strong>날짜</strong>: 2024-03-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.01823" target="_blank">https://arxiv.org/abs/2403.01823</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Given a task in language like “close the pistachio jar” and an image of the scene, RT-H utilizes a Vision Langua</em></p></div>
 <p>RT-H는 로봇 모방 학습에서 언어 기반 행동 계층 구조를 제안하여, 고수준 작업 설명과 저수준 로봇 액션 사이의 중간 단계로 '언어 모션(language motion)'을 예측함으로써 다양한 작업 간 데이터 공유를 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RT-H는 vision-language model(VLM) 기반의 두 단계 계층 구조를 도입하여, 먼저 고수준 작업과 시각 관찰로부터 fine-grained한 언어 모션을 예측하고, 이 언어 모션을 추가 조건으로 하여 최종 로봇 액션을 예측한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Results on Diverse+Kitchen multi-task dataset, consisting of eight challenging evaluation tasks. 95% Wilson Scor</em></p></div>
 <ul>
 <li><strong>다양한 멀티태스크 데이터셋에서 성능 개선</strong>: RT-2 대비 15% 향상된 성공률 달성</li>
 <li><strong>언어 모션 기반 정정의 높은 효율성</strong>: 언어 모션 보정만으로도 거의 완벽한 성공률(near perfect success rates) 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>자동 언어 모션 추출</strong>: 로봇 고유감각(proprioception)으로부터 2500개 이상의 언어 모션을 수동 주석 없이 자동 추출</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: RT-H Overview. Left: Our method leverages language to create an action hierarchy for policy learning. We separat</em></p></div>
 <ul>
 <li>RT-2 VLM 백본을 기반으로 하는 end-to-end 프레임워크 구축</li>
 <li>단일 모델을 통해 언어 모션 쿼리와 액션 쿼리 모두 수행하여 인터넷 규모 지식 활용</li>

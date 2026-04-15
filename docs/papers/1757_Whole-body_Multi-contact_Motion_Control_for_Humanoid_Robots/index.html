@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Masaki Murooka, Kensuke Fukumitsu, Marwan Hamze, Mitsuharu Morisawa, Hiroshi Kaminaga, Fumio Kanehiro, Eiichi Yoshida | <strong>날짜</strong>: 2025-05-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.19580" target="_blank">https://arxiv.org/abs/2505.19580</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Control system for whole-body multi-contact motion in a humanoid robot.</em></p></div>
 <p>분산 촉각 센서를 장착한 휴머노이드 로봇의 팔꿈치, 무릎 등 중간 영역을 포함한 전신 다중 접촉 운동 제어 방법을 제시하고, 촉각 피드백 기반 안정화 제어로 외란에 대한 견고성을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 기존 다중 접촉 운동 제어 프레임워크를 확장하여, 유연한 시트형 분산 촉각 센서로 실시간 접촉 다각형을 측정하고, centroidal motion control과 limb motion control에 촉각 데이터를 통합한 피드백 제어를 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. RHP Kaleido with distributed tactile sensors mounted on one forearm</em></p></div>
 <ul>
 <li><strong>분산 촉각 센서 기반 접촉 감지</strong>: 시트형 분산 촉각 센서를 로봇 사지 표면에 장착하여 로봇 체형 변형 없이 전신 접촉력 측정 가능</li>
 <li><strong>실시간 접촉 다각형 업데이트</strong>: 예정 접촉 다각형과 측정값 간 유의미한 차이 시 접촉 영역 정점을 온라인 업데이트하여 불안정 제어 회피</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 실증</strong>: RHP Kaleido 휴머노이드로 팔뚝 접촉 보행, 다리 접촉 앉은 자세 균형 등 동적 전신 다중 접촉 운동 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Control system for whole-body multi-contact motion in a humanoid robot.</em></p></div>
 <ul>
 <li>분산 촉각 센서로부터 실제 접촉 영역(contact polygon)을 온라인 측정</li>
 <li>Equation (1)의 resultant wrench 정의식에서 촉각 측정값으로 접촉 다각형 정점 pi,j 실시간 업데이트</li>

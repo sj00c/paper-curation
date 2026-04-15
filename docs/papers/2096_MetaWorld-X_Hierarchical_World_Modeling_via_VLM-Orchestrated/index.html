@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yutong Shen, Hangxu Liu, Penghui Liu, Jiashuo Luo, Yongkang Zhang, Rex Morvley, Chen Jiang, Jianwei Zhang, Lei Zhang | <strong>날짜</strong>: 2026-03-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.08572" target="_blank">https://arxiv.org/abs/2603.08572</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: MetaWorld-X achieves natural humanoid control through the dynamic orchestration of expert policies guided by a</em></p></div>
 <p>휴머노이드 로봇의 복잡한 로코-매니퓰레이션 제어를 Specialized Expert Policy(SEP)와 VLM 기반 Intelligent Routing Mechanism(IRM)으로 분해-통합하는 계층적 프레임워크를 제안한다. 인간 모션 프라이어와 의미적 라우팅을 결합하여 자연스럽고 안정적인 동작을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SEP 모듈에서 인간 모션 프라이어를 활용한 imitation-constrained RL로 K개의 전문가 정책을 학습하고, IRM에서 Vision-Language Model(VLM)의 의미적 이해를 바탕으로 동적으로 전문가들을 라우팅한다. 에너지 기반 정렬 보상과 동적 가중치 조정으로 자연스러운 모션 생성을 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: MetaWorld-X achieves natural humanoid control through the dynamic orchestration of expert policies guided by a</em></p></div>
 <ul>
 <li><strong>Human-Motion-Informed SEP 학습</strong>: 에너지 기반 정렬 보상(energy-based alignment reward)과 동적 가중치 조정(dynamic reweighting)을 통해 생체역학적으로 일관되고 자연스러운 모션 원시요소(primitives)를 학습하며 스킬 간 gradient 간섭을 완화</li>
 <li><strong>VLM 기반 의미적 라우팅</strong>: Vision-Language Model을 감독 신호로 활용하여 복잡한 작업을 전문가 조성으로 분해하고 few-shot 의미적 전이(semantic transfer)로 zero-shot 조성 일반화를 지원</li>
 <li><strong>성능 향상</strong>: Humanoid-bench에서 TD-MPC2 대비 로코모션 및 매니퓰레이션 작업 전반에 걸쳐 return, 수렴 속도, 모션 품질에서 현저한 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: MetaWorld-X achieves natural humanoid control through the dynamic orchestration of expert policies guided by a</em></p></div>
 <ul>
 <li>Specialized Expert Policy(SEP) 모듈: K개의 전문가 정책 {π_i}를 인간 모션 데이터셋 D_human에서 정렬 연산자 A를 최소화하여 학습</li>
 <li>Motion Retargeting Pipeline: 인간 모션 캡처 데이터(AMASS 등)를 휴머노이드 로봇 동역학에 맞게 변환하여 동역학적 불일치 해소</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wandong Sun, Luying Feng, Baoshi Cao, Yang Liu, Yaochu Jin, Zongwu Xie | <strong>날짜</strong>: 2025-07-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.06905" target="_blank">https://arxiv.org/abs/2507.06905</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Diverse loco-manipulation capabilities enabled by ULC. The humanoid robot demonstrates various coordinated whole</em></p></div>
 <p>ULC는 인간형 로봇의 보행-조작을 위해 상체와 하체 제어를 통합한 단일 정책 프레임워크로, sequential skill acquisition, residual action modeling, 다항식 보간 등의 기술을 통해 추적 정확도, 넓은 작업 공간, 견고성을 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ULC는 진행적 커리큘럼 학습을 통해 복잡도를 단계적으로 증가시키고, residual action modeling으로 세밀한 제어 조정을, 다항식 보간과 random delay release로 배포 변동성에 대한 견고성을 확보하며, 대규모 병렬 reinforcement learning으로 단일 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Diverse loco-manipulation capabilities enabled by ULC. The humanoid robot demonstrates various coordinated whole</em></p></div>
 <ul>
 <li><strong>통합 제어 프레임워크</strong>: root velocity, root height, torso rotation, dual-arm joint position을 동시에 추적하는 단일 정책으로 전신 조율 달성</li>
 <li><strong>향상된 추적 성능</strong>: 분리된 방법 대비 더 나은 joint angle tracking 정확도 및 외부 부하 하에서의 정밀한 조작</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다양한 작업 검증</strong>: 냉장고에 물건 넣기, 상자 들기, 바닥에서 삽질, 악기 연주 등 10가지 이상의 복잡한 loco-manipulation 작업 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method overview of the Unified Loco-Manipulation Controller (ULC). Our approach employs massively parallel</em></p></div>
 <ul>
 <li><strong>Sequential skill acquisition</strong>: 간단한 보행 명령부터 시작하여 점진적으로 arm control, torso rotation 등을 추가하는 적응형 커리큘럼</li>
 <li><strong>Command space design</strong>: 실행 가능성을 고려한 factorized command space (보행, 몸통, 팔 제어 분리) 설계로 탐색 공간 축소</li>

@@ -75,12 +75,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 생물학 전문가 역할(Planner, Executor, Evaluator)을 LLM으로 구현하고, 계층적 의사결정 메커니즘과 자기반복 최적화 메커니즘을 도입하여 복잡한 분석 작업을 자동으로 계획하고 실행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Fig. 1 Schematic of the CellAgent Framework">
+<p class="fig-caption"><em>CellAgent의 다중 에이전트 협업 워크플로우: (a) 사용자 입력, (b) 작업 분해, (c) 세부 실행 및 최적화, (d) 최종 결과 생성 과정</em></p></div>
 <ol>
 <li><strong>높은 작업 완료율</strong>: 50개 이상의 단일세포 데이터셋(수십 개 조직, 수백 개 세포 유형 포함)에서 92%의 작업 완료율을 달성하여, GPT-4 직접 사용 대비 2배 이상 향상</li>
 <li><strong>우수한 분석 성능</strong>: 배치 효과 보정(batch correction), 세포 유형 주석(cell type annotation), 궤적 추론(trajectory inference) 등 핵심 분석 작업에서 기존 최고 도구들과 대등하거나 우수한 성능 달성</li>
 <li><strong>종합적 자동화</strong>: 전처리, 품질 관리, 정규화, 배치 효과 보정, 세포 유형 주석 등 전체 워크플로우의 엔드-투-엔드 자동 실행으로 인간 개입 제거</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Fig. 1 CellAgent Framework Architecture">
+<p class="fig-caption"><em>CellAgent의 핵심 구성 요소와 LLM 추론 프로세스</em></p></div>
 <ul>
 <li><strong>Planner 역할</strong>: 사용자의 자연어 지시를 정확히 이해하고, 데이터 특성을 파악한 후, 전체 분석 작업을 합리적인 순차 단계로 분해. 품질 관리, 고변수 유전자 선택, 정규화, 배치 보정, 세포 유형 주석 등의 필요 단계를 계획</li>
 <li><strong>Executor 역할</strong>: 분해된 각 세부 작업을 순차적으로 실행하며, 도구 문서 검색을 통해 적절한 방법론 선택 및 실행 가능한 코드 생성. 실행 예외 발생 시 재귀적으로 문제 해결</li>

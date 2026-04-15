@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hanbyel Cho, Sang-Hun Kim, Jeonguk Kang, Donghan Koo | <strong>날짜</strong>: 2026-03-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.23983" target="_blank">https://arxiv.org/abs/2603.23983</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <p>SafeFlow는 physics-guided rectified flow matching과 3단계 안전 게이팅을 결합하여 텍스트 명령 기반 휴머노이드 전신 제어에서 물리적으로 실현 불가능한 동작 생성 문제를 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Physics-Guided Rectified Flow Matching을 VAE latent space에서 수행하여 실행 가능한 모션을 생성하고, Reflow 증류로 실시간 추론을 가능하게 하며, Mahalanobis score, directional sensitivity discrepancy, kinematic constraint 기반의 3단계 safety gate를 도입한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>Physics-Guided Motion Generation</strong>: VAE latent space에서 physics-aware objectives(joint feasibility, self-collision avoidance, stability, smoothness)를 포함한 rectified flow matching으로 물리적으로 실현 가능한 모션 생성</li>
 <li><strong>Real-Time Acceleration</strong>: Reflow 증류를 통해 function evaluation 수를 대폭 감소시켜 실시간 제어 가능 (NFE=1)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Superior Performance</strong>: Unitree G1에서 success rate, physical compliance, inference speed 모두 기존 diffusion 기반 방법 대비 우수하면서 표현력 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li>VAE를 통해 고차원 모션을 저차원 latent space로 인코딩</li>
 <li>Physics-guided rectified flow matching으로 latent space에서 physics constraint를 고려한 샘플링 수행</li>

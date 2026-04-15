@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sherry Yang, Yilun Du, Kamyar Ghasemipour, Jonathan Tompson, Leslie Kaelbling, Dale Schuurmans, Pieter Abbeel | <strong>날짜</strong>: 2023-10-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2310.06114" target="_blank">https://arxiv.org/abs/2310.06114</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: A universal simulator (UniSim). The simulator of the real-world learns from broad data with diverse</em></p></div>
 <p>인터넷 데이터로부터 학습된 generative model을 기반으로 인간, 로봇 등의 상호작용에 대한 시각적 결과를 시뮬레이션하는 universal simulator (UniSim)를 제안한다. 다양한 데이터셋을 통합하여 언어 지시, 로봇 제어, 인간 활동 등 다양한 모달리티의 행동을 입력받아 일관성 있는 비디오를 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 다양한 데이터셋(로봇 데이터, 인간 활동, 파노라마 스캔, 텍스트-이미지 데이터 등)을 통합하기 위해 모든 행동을 T5 임베딩과 discretized 제어값으로 정규화하고, 이를 조건으로 하는 video diffusion model을 observation prediction 프레임워크로 학습한다. Autoregressive rollout을 통해 장기간 일관성 있는 시뮬레이션을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Action-rich simulations. UniSim can support manipulation actions such as “cut carrots”, “wash</em></p></div>
 <ul>
 <li><strong>다양한 데이터셋 통합</strong>: 이질적인 6가지 데이터 타입(시뮬레이션, 로봇, 인간활동, 파노라마, 텍스트-이미지)을 unified action-in-video-out 인터페이스로 통합하여 다중 모달 상호작용을 지원</li>
 <li><strong>장기 일관성 생성</strong>: Observation prediction model의 autoregressive rollout을 통해 비디오 생성 경계를 넘어 일관성 있는 8단계 이상의 장기 상호작용 시뮬레이션 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 응용 가능성</strong>: 드물거나 위험한 이벤트 생성, 비디오 캡셔닝 모델 학습 등 embodied learning 이외의 광범위한 활용 사례 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Training and inference of UniSim. UniSim is a video diffusion model trained to predict the</em></p></div>
 <ul>
 <li>각 데이터셋의 행동을 T5 language model 임베딩과 discretized control values로 변환하여 unified continuous action space 구성</li>
 <li>Panorama 스캔에서 camera pose 정보를 이용해 'turn left' 같은 행동 레이블 생성", '인간활동 비디오에서 분류 레이블을 텍스트 행동으로 변환하고 프레임 레이트 조정</li>

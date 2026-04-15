@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qingpeng Li, Chengrui Zhu, Yanming Wu, Xin Yuan, Zhen Zhang, Jian Yang, Yong Liu | <strong>날짜</strong>: 2025-09-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.20696" target="_blank">https://arxiv.org/abs/2509.20696</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the RuN framework. (a) Motion Retargeting: Raw human motions are converted into a kinematically feas</em></p></div>
 <p>RuN은 Conditional Motion Generator를 통한 운동학적 모션 프라이어와 강화학습 기반 residual policy를 분리하여, 인형로봇의 자연스러운 보행-달리기 전환을 실현하는 decoupled residual learning 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CMG를 통해 kinematically natural motion prior를 생성하고, 경량의 residual policy가 동역학적 상호작용을 보정하는 방식으로 제어 태스크를 분해한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: Performance comparison of different algorithms. This figure shows</em></p></div>
 <ul>
 <li><strong>Decoupled Residual Learning Framework</strong>: 운동 제어를 motion prior와 residual correction으로 분리하여 학습 공간을 대폭 축소</li>
 <li><strong>Conditional Motion Generator</strong>: 인간 모션 데이터셋으로 학습된 autoregressive 생성 모델로 보행-달리기 범위의 자연스러운 운동 생성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>학습 효율성 개선</strong>: 기존 방법 대비 훨씬 빠른 training 수렴</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the RuN framework. (a) Motion Retargeting: Raw human motions are converted into a kinematically feas</em></p></div>
 <ul>
 <li>대규모 인간 모션 데이터셋을 motion retargeting을 통해 kinematically feasible 참조 데이터로 변환</li>
 <li>변환된 데이터로 autoregressive CMG를 offline으로 학습하여 frozen motion prior 생성</li>

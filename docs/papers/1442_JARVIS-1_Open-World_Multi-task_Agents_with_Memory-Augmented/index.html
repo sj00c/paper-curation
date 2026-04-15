@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zihao Wang, Shaofei Cai, Anji Liu, Yonggang Jin, Jinbing Hou, Bowei Zhang, Haowei Lin, Zhaofeng He, Zilong Zheng, Yaodong Yang, Xiaojian Ma, Yitao Liang | <strong>날짜</strong>: 2023-11-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2311.05997" target="_blank">https://arxiv.org/abs/2311.05997</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 | How does JARVIS-1 unlock the technology tree of the Minecraft universe. JARVIS-1 can</em></p></div>
 <p>JARVIS-1은 multimodal language model과 multimodal memory를 결합하여 Minecraft의 오픈월드 환경에서 200개 이상의 다양한 작업을 수행할 수 있는 멀티태스크 에이전트이다. 특히 장기 작업(ObtainDiamondPickaxe)에서 기존 최신 에이전트 대비 5배 우수한 신뢰성을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MineCLIP과 GPT를 결합한 multimodal language model을 기반으로 시각 관찰과 텍스트 지시를 계획으로 변환하고, multimodal memory를 통해 과거 경험을 저장 및 retrieval하여 in-context learning으로 계획을 강화한다. Self-instruct 메커니즘으로 자율적 탐색과 경험 축적을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 | How does JARVIS-1 unlock the technology tree of the Minecraft universe. JARVIS-1 can</em></p></div>
 <ul>
 <li><strong>200개 이상 다양한 작업 수행</strong>: 단기 작업(나무 자르기)부터 장기 작업(다이아몬드 곡괭이 획득)까지 인간과 유사한 제어/관찰 공간으로 처리</li>
 <li><strong>5배 향상된 신뢰성</strong>: ObtainDiamondPickaxe 작업에서 기존 VPT(2.5%) 대비 12.5% 성공률 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>자율적 개선 능력</strong>: 자체 생성 작업(self-instruct)을 통한 탐색과 multimodal memory 활용으로 lifelong learning 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3 | Architecture of JARVIS-1 and its self-improving mechanism. (a) JARVIS-1 comprises a memory-</em></p></div>
 <ul>
 <li>MineCLIP(multimodal foundation model)과 GPT(LLM)를 체인으로 연결하여 multimodal language model (MLM) 구성</li>
 <li>시각 관찰과 현재 상황을 기반으로 한 situation-aware planning으로 동적 환경에 적응</li>

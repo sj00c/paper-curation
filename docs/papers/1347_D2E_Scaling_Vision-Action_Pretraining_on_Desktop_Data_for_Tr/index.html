@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Suhwan Choi, Jaeyoon Jung, Haebin Seong, Minchan Kim, Minyeong Kim, Yongjun Cho, Yoonshik Kim, Yubeen Park, Youngjae Yu, Yunsung Lee | <strong>날짜</strong>: 2025-10-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.05684" target="_blank">https://arxiv.org/abs/2510.05684</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of D2E framework. (1) The OWA Toolkit captures 335.6 hours of rich desktop demon-</em></p></div>
 <p>D2E는 데스크톱 환경(게임 등)에서 수집한 대규모 비전-액션 데이터를 사전학습 자료로 사용하여 로봇 조작 및 네비게이션 같은 구체화된 AI 작업으로 전이 학습하는 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 데스크톱 데이터 수집을 위한 OWA Toolkit, 다중 게임 일반화를 위한 timestamp 기반 NEP-τ를 사용하는 Generalist-IDM, 그리고 데스크톱 표현을 로봇 작업으로 전이하는 VAPT 세 가지 핵심 요소로 구성된 통합 파이프라임을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of D2E framework. (1) The OWA Toolkit captures 335.6 hours of rich desktop demon-</em></p></div>
 <ul>
 <li><strong>OWA Toolkit</strong>: 31개 게임에서 335시간의 동기화된 멀티모달 데이터(화면, 키보드, 마우스)를 수집하고, OWAMcap 형식으로 152배 압축을 달성하여 기존 형식 대비 효율성을 대폭 향상.</li>
 <li><strong>Generalist-IDM</strong>: timestamp 기반 이벤트 예측(NEP-τ)으로 미학습 게임에 강한 영점 사격 일반화를 달성하여 1,000시간 이상의 YouTube 게임플레이 영상의 자동 의사 레이블링 가능.</li>
 <li><strong>VAPT 기초 모델</strong>: 1.3K시간의 데스크톱 데이터로 사전학습된 10억 매개변수 모델이 LIBERO 조작 96.6% 성공률, CANVAS 네비게이션 83.3% 성공률을 달성하여 3.3B, 7B 모델을 능가.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: OWA Toolkit’s recording and storage architecture. (Left) ocap recorder captures perfectly</em></p></div>
 <ul>
 <li><strong>OWA Toolkit의 ocap 레코더</strong>: Windows API와 GStreamer 기반으로 화면(60 Hz FHD/QHD), 키보드, 마우스 이벤트를 나노초 정밀도로 동기화하여 멀티모달 스트림 기록</li>
 <li><strong>OWAMcap 포맷</strong>: MCAP 표준 컨테이너에 H.265 코덱 기반 비디오(217배 압축), PNG/JPEG 스크린샷, 메타데이터를 통합하여 저장소 효율성 극대화</li>

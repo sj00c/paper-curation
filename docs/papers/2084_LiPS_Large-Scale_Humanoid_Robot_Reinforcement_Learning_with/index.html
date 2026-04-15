@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiang Zhang, Gang Han, Jingkai Sun, Wen Zhao, Jiahang Cao, Jiaxu Wang, Hao Cheng, Lingfeng Zhang, Yijie Guo, Renjing Xu | <strong>날짜</strong>: 2025-03-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.08349" target="_blank">https://arxiv.org/abs/2503.08349</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Illustration of LiPS Simulation Training and Real-World Deployment Process.</em></p></div>
 <p>LiPS는 GPU 기반 병렬 훈련 환경에서 URDF 형식의 휴머노이드 로봇을 위한 강화학습 방법으로, 멀티-리지드바디 폐루프 동역학 모델링을 통해 시뮬레이션-현실 간 격차를 줄인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LiPS는 URDF 기반 시뮬레이션 환경에서 멀티-리지드바디 폐루프 동역학 모델링을 최적화하여 훈련 중부터 병렬 구조를 정확히 표현하고, 이를 통해 sim2real 변환 난이도를 감소시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Illustration of LiPS Simulation Training and Real-World Deployment Process.</em></p></div>
 <ul>
 <li><strong>대규모 병렬 훈련 지원</strong>: URDF 기반 복잡한 로봇의 GPU 병렬 강화학습 훈련을 효과적으로 지원하는 도구 제공</li>
 <li><strong>sim2real 격차 감소</strong>: 훈련 단계에서 동역학을 정확히 모델링하여 현실 배포 시 성능 저하 최소화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반화 가능성</strong>: URDF 기반 다양한 로봇에 쉽게 적용 가능한 범용 방법론 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Schematic Diagram of Ankle Dynamics Modeling</em></p></div>
 <ul>
 <li>URDF 모델 파일 형식의 기하학적 특성에 동적 특성을 추가로 모델링</li>
 <li>멀티-리지드바디 폐루프 동역학을 GPU 기반 IsaacGym 환경에 통합</li>

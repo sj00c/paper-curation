@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Michael Ahn, Anthony Brohan, Noah Brown, Yevgen Chebotar, Omar Cortes, Byron David, Chelsea Finn, Chuyuan Fu, Keerthana Gopalakrishnan, Karol Hausman, Alex Herzog, Daniel Ho, Jasmine Hsu, Julian Ibarz, Brian Ichter, Alex Irpan, Eric Jang, Rosario Jauregui Ruano, Kyle Jeffrey, Sally Jesmonth, Nikhil J Joshi, Ryan Julian, Dmitry Kalashnikov, Yuheng Kuang, Kuang-Huei Lee, Sergey Levine, Yao Lu, Linda Luu, Carolina Parada, Peter Pastor, Jornell Quiambao, Kanishka Rao, Jarek Rettinghouse, Diego Reyes, Pierre Sermanet, Nicolas Sievers, Clayton Tan, Alexander Toshev, Vincent Vanhoucke, Fei Xia, Ted Xiao, Peng Xu, Sichun Xu, Mengyuan Yan, Andy Zeng | <strong>날짜</strong>: 2022-04-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2204.01691" target="_blank">https://arxiv.org/abs/2204.01691</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: LLMs have not interacted with their environment and observed the outcome of their responses, and</em></p></div>
 <p>Large Language Models(LLM)의 의미론적 지식과 로봇의 실행 가능한 스킬을 결합하여, LLM을 affordance function으로 grounding함으로써 자연어 명령을 실제 로봇 행동으로 변환한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SayCan 방법으로, LLM이 p(ℓπ|i)(task-grounding)를 제공하고 pretrained skills의 value function이 p(cπ|s, ℓπ)(world-grounding)를 제공하여, 두 확률을 곱함으로써 각 스킬의 성공 가능성을 판단한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: The experiments were performed in an ofﬁce kitchen and a mock kitchen mirroring this setup, with 5</em></p></div>
 <ul>
 <li><strong>실세계 grounding의 필요성 입증</strong>: affordance function으로 LLM을 grounding하지 않은 baseline 대비 거의 2배 성능 향상</li>
 <li><strong>장기간 추상 명령 실행</strong>: 모바일 매니퓨레이터가 장기간(long-horizon), 추상적 자연어 명령을 zero-shot으로 실행 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>101개 실세계 작업 평가</strong>: 실제 주방 환경에서 다양한 로봇 작업을 통해 방법론 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: A value function module (a) is queried to form a value function space of action primitives based on</em></p></div>
 <ul>
 <li>LLM을 사용하여 각 available skill의 description ℓπ에 대해 p(ℓπ|i) 확률 계산 (task-grounding)</li>
 <li>각 skill π에 대해 RL로 학습된 language-conditioned value function으로 p(cπ|s, ℓπ) affordance function 획득 (world-grounding)</li>

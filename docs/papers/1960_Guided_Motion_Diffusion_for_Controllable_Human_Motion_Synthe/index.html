@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Korrawe Karunratanakul, Konpat Preechakul, Supasorn Suwajanakorn, Siyu Tang | <strong>날짜</strong>: 2023-05-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2305.12577" target="_blank">https://arxiv.org/abs/2305.12577</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. We tackle the problem of spatially conditioned motion</em></p></div>
 <p>Guided Motion Diffusion (GMD)는 자연어 설명과 공간적 제약(궤적, 키프레임, 장애물 회피)을 동시에 고려하여 인간의 모션을 합성하는 diffusion model 기반 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion representation 내에서 전역 방향 정보의 중요도를 증가시키는 emphasis projection과 sparse 신호를 dense 신호로 확장하는 dense signal propagation 기법을 제안하여 공간 제약 조건의 coherency를 향상시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Our proposed Guided Motion Diffusion (GMD) can generate high-quality and diverse motions given a text prompt a</em></p></div>
 <ul>
 <li><strong>Emphasis projection</strong>: 모션 representation에서 지역 자세와 전역 방향 간의 불균형을 해결하여 공간 정보의 중요도를 조정함으로써 spatial guidance 신호가 노이즈로 무시되는 문제를 완화</li>
 <li><strong>Dense signal propagation</strong>: Reinforcement Learning의 credit assignment 개념을 차용하여 sparse keyframe이나 궤적 점을 denoiser를 통해 인접 프레임으로 역전파함으로써 dense guidance 신호 생성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>SOTA 달성</strong>: 기존 텍스트 기반 모션 생성 방법 대비 유의미한 성능 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. We tackle the problem of spatially conditioned motion</em></p></div>
 <ul>
 <li><strong>두 단계 파이프라인</strong>: Stage 1에서 trajectory DPM으로 공간 궤적 생성, Stage 2에서 Motion DPM으로 최종 모션 생성</li>
 <li><strong>Emphasis projection</strong>: 모션 representation 벡터에서 전역 방향(4차원)과 지역 자세(259차원)의 불균형을 random matrix를 통한 feature projection으로 조정</li>

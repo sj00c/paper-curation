@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chengshu Li, Ruohan Zhang, Josiah Wong, Cem Gokmen, Sanjana Srivastava, Roberto Martín-Martín, Chen Wang, Gabrael Levine, Wensi Ai, Benjamin Martinez, Hang Yin, Michael Lingelbach, Minjune Hwang, Ayano Hiranaka, Sujay Garlanka, Arman Aydin, Sharon Lee, Jiankai Sun, Mona Anvari, Manasi Sharma, Dhruva Bansal, Samuel Hunter, Kyu-Young Kim, Alan Lou, Caleb R Matthews, Ivan Villa-Renteria, Jerry Huayang Tang, Claire Tang, Fei Xia, Yunzhu Li, Silvio Savarese, Hyowon Gweon, C. Karen Liu, Jiajun Wu, Li Fei-Fei | <strong>날짜</strong>: 2024-03-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.09227" target="_blank">https://arxiv.org/abs/2403.09227</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Developing a Human-Centered Benchmark for Embodied AI. Left: human preference score over</em></p></div>
 <p>BEHAVIOR-1K는 1,461명의 일반인 조사를 통해 도출한 1,000개의 일상 활동을 정의하고, 이를 realistic physics simulation과 rendering을 지원하는 OMNIGIBSON 환경에서 실행할 수 있는 embodied AI 벤치마크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Amazon Mechanical Turk에서 1,461명을 대상으로 2,090개 활동에 대한 선호도 조사를 수행하여 1,000개의 상위 활동을 선정하고, Nvidia Omniverse와 PhysX 5 기반의 OMNIGIBSON 환경에서 이들 활동을 rigid bodies, deformable bodies, liquids의 realistic physics simulation으로 구현했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Elements of BEHAVIOR-1K. Our benchmark comprises two elements: BEHAVIOR-1K DATASET</em></p></div>
 <ul>
 <li><strong>Human-Grounded Benchmark Design</strong>: 1,461명의 일반 대중 조사를 통해 인간의 실제 선호도에 기반한 1,000개 일상 활동 정의</li>
 <li><strong>BEHAVIOR-1K Dataset</strong>: 50개의 diverse scenes (주택, 정원, 레스토랑, 사무실 등)와 9,000+ 개의 rich physical/semantic annotations을 가진 3D 객체 모델 제공</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Difficulty Analysis</strong>: state-of-the-art RL 알고리즘들이 해결하기 어려운 long-horizon, complex manipulation 활동임을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Comparison of Visual Realism: We evaluate OMNIGIBSON’s visual realism against other simulation</em></p></div>
 <ul>
 <li>Time-use surveys와 WikiHow 기사에서 약 2,000개의 활동 소싱</li>
 <li>Amazon Mechanical Turk에서 1,461명 참여자를 대상으로 10-point Likert scale로 각 활동당 50개 응답 수집</li>

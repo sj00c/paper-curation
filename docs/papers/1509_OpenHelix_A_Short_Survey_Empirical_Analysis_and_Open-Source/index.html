@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Can Cui, Pengxiang Ding, Wenxuan Song, Shuanghao Bai, Xinyang Tong, Zirui Ge, Runze Suo, Wanqi Zhou, Yang Liu, Bofang Jia, Han Zhao, Siteng Huang, Donglin Wang | <strong>날짜</strong>: 2025-05-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.03912" target="_blank">https://arxiv.org/abs/2505.03912</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Key Design of Dual-System VLAs. It mainly includes: MMLM Selection, Policy Selection, Latent Feature Represent</em></p></div>
 <p>Dual-System VLA 아키텍처의 구조를 비교 분석하고 핵심 설계 요소를 경험적으로 평가하여 로봇 조작을 위한 오픈소스 dual-system VLA 모델을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Dual-process 이론에 기반하여 System 1(빠른 경량 모델)과 System 2(느린 대규모 모델)를 결합하는 아키텍처를 설계하고, 기존 dual-system VLA들의 구조적 차이를 분석하며 핵심 설계 요소에 대해 체계적으로 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Key Design of Dual-System VLAs. It mainly includes: MMLM Selection, Policy Selection, Latent Feature Represent</em></p></div>
 <ul>
 <li><strong>Dual-System VLA 아키텍처 분류</strong>: MLLM 선택, Policy 선택, Latent 특성 표현, 학습 전략, 통합 전략 등 7가지 핵심 설계 요소를 체계화하고 LCB, DP-VLA, HiRT, Robodual 등 기존 방법들을 비교 분석하는 종합 설문 제공</li>
 <li><strong>경험적 평가 프레임워크</strong>: 세 가지 평가 환경에서 MLLM 학습 전략, 계층적 추론, 기존 dual-system의 단점 등을 실증적으로 평가하는 방법론 제시</li>
 <li><strong>오픈소스 OpenHelix 모델</strong>: 저비용 구현이 가능한 실용적인 dual-system VLA 모델 공개 및 향후 성능 개선 계획 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Key Design of Dual-System VLAs. It mainly includes: MMLM Selection, Policy Selection, Latent Feature Represent</em></p></div>
 <ul>
 <li>Dual-process 이론을 로봇 제어에 적용하여 System 1과 System 2를 구분하고 서로 다른 주기로 업데이트되는 비동기 구조 설계</li>
 <li>MLLM(OpenVLA, LLaVA, InstructBLIP, Qwen2-VL 등)에서 추출한 latent representation이 경량 policy 모델(Transformer, DiT 등)을 가이드하는 정보 흐름 구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haorui Wang, Marta Skreta, C. Ser, Wenhao Gao, Lingkai Kong | <strong>날짜</strong>: 2024 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2406.16976" target="_blank">10.48550/arXiv.2406.16976</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>MOLLEO 프레임워크 개요: 초기 분자 풀에서 출발하여 LLM을 교차(crossover) 및 돌연변이(mutation) 연산자로 활용하는 진화 알고리즘</em></p></div>
 <p>대규모 언어모델(LLM)을 진화 알고리즘(EA)의 유전 연산자로 통합하여 화학 공간 탐색의 효율성을 획기적으로 향상시키는 MOLLEO 프레임워크를 제안한다. 이는 검은 상자 분자 최적화 문제에서 필요한 목적 함수 평가 횟수를 대폭 감소시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SMILES/SELFIES 표현을 통해 분자를 텍스트로 변환하고, 화학 지식으로 훈련된 LLM(GPT-4, BioT5, MoleculeSTM)을 EA의 유전 연산자로 활용하여 목적에 맞는 분자 제안을 생성.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1 (상세)">
+<p class="fig-caption"><em>LLM 기반 돌연변이/교차 연산: 텍스트 프롬프트를 통해 목적 함수 정보를 전달하고 개선된 분자 후보 생성</em></p></div>
 <ol>
 <li><strong>효율성 개선</strong>: 모든 단일-목적 및 다중-목적 최적화 과제에서 기준 EA, 강화학습(RL), 베이지안 최적화(BO) 방법 대비 우수한 성능 달성. 동일한 평가 예산 내에서 수렴 속도 가속화.</li>
 <li><strong>화학적 유효성</strong>: 단순 LLM 기반 분자 생성과 달리, EA 프레임워크와의 통합으로 유효한 SMILES 생성률 증가 및 물리적 접지(physical grounding) 향상.</li>
 <li><strong>실무 적용성</strong>: JNK3 억제제 최적화 사례에서 ZINC 250K 데이터베이스의 기존 최고 분자보다 개선된 후보 제시, 신약 발견 시나리오의 실현 가능성 입증.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1 (프로세스)">
+<p class="fig-caption"><em>반복적 진화: 분자 풀 선택 → LLM 기반 유전 연산 → 오라클 평가 → 풀 업데이트 → 종료 조건까지 반복</em></p></div>
 <ul>
 <li><strong>문제 정식화</strong>: 검은 상자 단일-목적 최적화 m* = argmax F(m)과 파레토 최적성 기반 다중-목적 최적화 지원.</li>
 <li><strong>LLM 통합 전략</strong>:

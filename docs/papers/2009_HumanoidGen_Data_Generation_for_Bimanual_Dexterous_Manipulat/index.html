@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhi Jing, Siyuan Yang, Jicong Ao, Ting Xiao, Yu-Gang Jiang, Chenjia Bai | <strong>날짜</strong>: 2025-07-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.00833" target="_blank">https://arxiv.org/abs/2507.00833</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The overview of HumanoidGen. It includes spatial annotations, scene generation, constraint</em></p></div>
 <p>HumanoidGen은 LLM 추론과 원자적 손 동작을 활용하여 휴머노이드 로봇의 양손 정교한 조작을 위한 시뮬레이션 데이터와 시연을 자동으로 생성하는 프레임워크이다. MCTS 기반 추론 강화를 통해 장시간 작업과 불충분한 주석에서의 계획 능력을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 공간 주석(키포인트와 키축)을 기반으로 LLM 플래너가 공간 제약 조건을 생성하고, MCTS 기반 내성적 탐색(introspective exploration)으로 LLM 추론을 강화하며, 제약 최적화 솔버를 통해 실행 가능한 궤적을 생성한다. 시뮬레이션에서 수집한 데이터로 diffusion policy를 학습하여 성능 향상을 검증한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The overview of HumanoidGen. It includes spatial annotations, scene generation, constraint</em></p></div>
 <ul>
 <li><strong>자동화된 작업 생성 및 시연 수집</strong>: LLM 기반 코드 생성을 통해 환경 설정과 성공 기준을 자동으로 작성하고, 공간 제약 기반 계획으로 양손 정교한 조작의 시연을 대규모로 수집</li>
 <li><strong>원자적 손 동작 기반 계획</strong>: grasp, pinch, press 등 원자적 동작의 공간 주석을 정의하여 복합 작업을 체계적으로 분해하고 실행 가능한 제약 조건을 생성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>스케일 기반 성능 향상</strong>: 생성된 데이터셋 규모 증가에 따라 2D/3D diffusion policy의 성능이 지속적으로 향상됨을 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The overview of HumanoidGen. It includes spatial annotations, scene generation, constraint</em></p></div>
 <ul>
 <li>공간 주석 설계: 자산과 손에 대한 키포인트(grasp point, pinch point 등)와 키축(approach axis, attach axis, parallel axis)을 정의하여 LLM이 기하학적 관계를 이해하도록 지원</li>
 <li>LLM 기반 장면 생성: 자산, 장면, 작업 설명을 입력하여 LLM이 환경 설정과 성공 기준을 코드 형태로 생성</li>

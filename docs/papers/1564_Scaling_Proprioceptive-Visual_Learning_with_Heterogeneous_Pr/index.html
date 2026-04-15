@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lirui Wang, Xinlei Chen, Jialiang Zhao, Kaiming He | <strong>날짜</strong>: 2024-09-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.20537" target="_blank">https://arxiv.org/abs/2409.20537</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The Heterogeneous Pre-training concept.</em></p></div>
 <p>HPT(Heterogeneous Pre-trained Transformers)는 embodiment-specific tokenizer(stem)와 shared transformer trunk를 통해 서로 다른 로봇 embodiment와 task에서 수집한 대규모 이종 데이터에서 사전 학습하여 일반화된 정책 표현을 학습하는 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HPT는 embodiment-specific stem으로 각 embodiment의 proprioception과 vision을 공유 token 시퀀스로 변환하고, shared transformer trunk에서 이 토큰들을 처리하여 task-agnostic하고 embodiment-agnostic한 표현을 학습한다. 52개 dataset과 1B parameters 규모로 사전 학습하고 새로운 embodiment에 fine-tuning한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: HPT architecture. HPT is modularized</em></p></div>
 <ul>
 <li><strong>Heterogeneous 데이터 정렬</strong>: embodiment-specific tokenizer를 통해 서로 다른 로봇 하드웨어, 센서, 환경의 proprioception과 vision 정보를 공유 latent space로 정렬하는 메커니즘 개발</li>
 <li><strong>대규모 사전 학습</strong>: 52개의 이종 dataset과 1B parameters 규모로 확장하여 실제 로봇, simulation, 인간 비디오 등 다양한 embodiment domain에서 사전 학습 시 scaling behavior 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>전이 학습의 효율성</strong>: 새로운 embodiment 적응 시 minimal 데이터와 학습만 필요한 효율적 전이 학습 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: HPT architecture. HPT is modularized</em></p></div>
 <ul>
 <li>Embodiment-specific stem: 각 embodiment별로 독립적인 proprioception tokenizer와 vision tokenizer를 설계하여 입력을 고정 개수의 token(예: 16개)으로 변환</li>
 <li>Shared transformer trunk: 모든 embodiment의 tokenized representation을 처리하는 공유 transformer를 supervised learning으로 사전 학습</li>

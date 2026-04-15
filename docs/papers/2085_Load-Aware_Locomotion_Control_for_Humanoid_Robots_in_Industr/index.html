@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lequn Fu, Yijun Zhong, Xiao Li, Yibin Liu, Zhiyuan Xu, Jian Tang, Shiqi Li | <strong>날짜</strong>: 2026-03-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.14308" target="_blank">https://arxiv.org/abs/2603.14308</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Overview of the proposed load-aware humanoid loco-manipulation framework. Upper-body manipulation is generated b</em></p></div>
 <p>산업용 휴머노이드 로봇의 다양한 하중 조건에서 안정적 보행을 위해 분리-협조 구조의 로코-매니퓰레이션 아키텍처를 제안하며, RL 기반 하체 제어와 상태 추정기를 통해 시뮬레이션 학습 후 실제 로봇에 파인튜닝 없이 배포 성공.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RL 정책이 운동학 기반 참조 궤적에 대한 잔차 조인트 액션을 생성하도록 하고, 히스토리 기반 상태 추정기가 기저 속도·높이와 하중-매니퓰레이션 외란을 학습하는 구조로 설계하여 부분 관측성을 해결.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Training convergence comparison of different offset and refer-</em></p></div>
 <ul>
 <li><strong>부분 관측성 처리</strong>: 히스토리 기반 상태 추정기가 기저 선형 속도, 기저 높이, 32차원 잠재 특성을 통해 하중·조작 외란을 콤팩트하게 인코딩</li>
 <li><strong>학습 효율 개선</strong>: 높이 조건화 조인트공간 오프셋과 운동학 참조로 구조화된 잔차 RL을 구현하여 수렴 속도 및 접촉 품질 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>무튜닝 실배포</strong>: 순수 시뮬레이션 학습으로 전사이즈 휴머노이드에 파인튜닝 없이 배포 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Multi-box detection and target 6D pose estimation. Blue boxes</em></p></div>
 <ul>
 <li>부동 기저 동역학 모델에서 상체는 IK 기반 매니퓰레이션 모듈이 제어, 하체는 RL 정책이 12개 조인트 제어</li>
 <li>관측 공간: 위상 입력, 투영 중력(gravity), 각속도, 27개 조인트 위치/속도, 명령, 이전 액션, 추정 기저 속도/높이, 32차원 잠재 특성 포함</li>

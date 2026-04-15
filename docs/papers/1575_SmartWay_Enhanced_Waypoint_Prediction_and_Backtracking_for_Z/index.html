@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xiangyu Shi, Zerui Li, Wenqi Lyu, Jiatong Xia, Feras Dayoub, Yanyuan Qiao, Qi Wu | <strong>날짜</strong>: 2025-03-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.10069" target="_blank">https://arxiv.org/abs/2503.10069</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Role of our proposed waypoint predictor and backtrack mechanism.</em></p></div>
 <p>SmartWay는 향상된 waypoint predictor와 MLLM 기반 navigator를 통합한 zero-shot VLN-CE 프레임워크로, occupancy-aware loss와 history-aware reasoning, backtracking 메커니즘을 통해 연속 환경에서의 네비게이션 성능을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DINOv2 vision encoder와 masked cross-attention 융합, occupancy-aware loss를 통해 waypoint predictor를 강화하고, MLLM을 기반으로 history-aware 프롬프팅과 adaptive path planning with backtracking을 도입하여 zero-shot VLN-CE를 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Role of our proposed waypoint predictor and backtrack mechanism.</em></p></div>
 <ul>
 <li><strong>Enhanced Waypoint Predictor</strong>: DINOv2 인코더, masked cross-attention 메커니즘, occupancy-aware loss를 통해 공간 인식 능력과 waypoint 품질을 개선</li>
 <li><strong>MLLM 기반 Zero-shot 네비게이션</strong>: History-aware Single-expert Prompt System으로 trajectory 정보를 효과적으로 통합하여 다중 모드 추론 능력 강화</li>

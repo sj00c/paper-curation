@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Alexander Khazatsky, Karl Pertsch, Suraj Nair, Ashwin Balakrishna, Sudeep Dasari, Siddharth Karamcheti, Soroush Nasiriany, Mohan Kumar Srirama, Lawrence Yunliang Chen, Kirsty Ellis, Peter David Fagan, Joey Hejna, Masha Itkina, Marion Lepert, Yecheng Jason Ma, Patrick Tree Miller, Jimmy Wu, Suneel Belkhale, Shivin Dass, Huy Ha, Arhan Jain, Abraham Lee, Youngwoon Lee, Marius Memmel, Sungjae Park, Ilija Radosavovic, Kaiyuan Wang, Albert Zhan, Kevin Black, Cheng Chi, Kyle Beltran Hatch, Shan Lin, Jingpei Lu, Jean Mercat, Abdul Rehman, Pannag R Sanketi, Archit Sharma, Cody Simpson, Quan Vuong, Homer Rich Walke, Blake Wulfe, Ted Xiao, Jonathan Heewon Yang, Arefeh Yavary, Tony Z. Zhao, Christopher Agia, Rohan Baijal, Mateo Guaman Castro, Daphne Chen, Qiuyu Chen, Trinity Chung, Jaimyn Drake, Ethan Paul Foster, Jensen Gao, Vitor Guizilini, David Antonio Herrera, Minho Heo, Kyle Hsu, Jiaheng Hu, Muhammad Zubair Irshad, Donovon Jackson, Charlotte Le, Yunshuang Li, Kevin Lin, Roy Lin, Zehan Ma, Abhiram Maddukuri, Suvir Mirchandani, Daniel Morton, Tony Nguyen, Abigail O'Neill, Rosario Scalise, Derick Seale, Victor Son, Stephen Tian, Emi Tran, Andrew E. Wang, Yilin Wu, Annie Xie, Jingyun Yang, Patrick Yin, Yunchu Zhang, Osbert Bastani, Glen Berseth, Jeannette Bohg, Ken Goldberg, Abhinav Gupta, Abhishek Gupta, Dinesh Jayaraman, Joseph J Lim, Jitendra Malik, Roberto Martín-Martín, Subramanian Ramamoorthy, Dorsa Sadigh, Shuran Song, Jiajun Wu, Michael C. Yip, Yuke Zhu, Thomas Kollar, Sergey Levine, Chelsea Finn | <strong>날짜</strong>: 2024-03-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.12945" target="_blank">https://arxiv.org/abs/2403.12945</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We introduce DROID (Distributed Robot Interaction Dataset), an “in-the-wild” robot manipulation dataset with 76k</em></p></div>
 <p>DROID는 북미, 아시아, 유럽의 564개 장면과 86개 작업에서 수집한 76k개의 시연 궤적(350시간)을 포함하는 대규모 다양한 로봇 조작 데이터셋이며, 이를 통해 훈련한 정책이 높은 성능과 일반화 능력을 보인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 18개 연구기관의 50명의 데이터 수집자가 12개월 동안 같은 Franka Panda 로봇 하드웨어 스택을 사용하여 52개 건물의 564개 장면에서 분산적으로 데이터를 수집하고, RGB 카메라 3개, 깊이 정보, 카메라 캘리브레이션, 자연언어 주석을 포함시켰다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We introduce DROID (Distributed Robot Interaction Dataset), an “in-the-wild” robot manipulation dataset with 76k</em></p></div>
 <ul>
 <li><strong>데이터셋 규모</strong>: 76k개의 시연 궤적(350시간)을 564개 장면과 86개 작업에서 수집하여 기존 데이터셋(Open X-Embodiment 311장면 제외시 최대 24장면)을 크게 초과</li>
 <li><strong>지리적 다양성</strong>: 북미, 아시아, 유럽의 52개 건물에서 수집하여 실제 세계의 in-the-wild 데이터 확보</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>개방성</strong>: 전체 데이터셋, 정책 학습 코드, 로봇 하드웨어 및 소프트웨어 설정 재현 가이드를 CC-BY 4.0 라이선스 하에 오픈소스 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The DROID robot platform. We use the same hardware</em></p></div>
 <ul>
 <li>동일한 하드웨어 스택(Franka Panda 로봇팔)을 기반으로 18개 연구기관에서 표준화된 설정으로 분산 데이터 수집</li>
 <li>사람 원격조종(human teleoperation)을 통해 실제 조작 데이터 수집</li>

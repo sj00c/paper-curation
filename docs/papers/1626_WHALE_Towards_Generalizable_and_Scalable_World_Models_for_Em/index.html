@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhilong Zhang, Ruifeng Chen, Junyin Ye, Yihao Sun, Pengyuan Wang, Jingcheng Pang, Kaiyuan Li, Tianshuo Liu, Haoxin Lin, Yang Yu, Zhi-Hua Zhou | <strong>날짜</strong>: 2024-11-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2411.05619" target="_blank">https://arxiv.org/abs/2411.05619</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Qualitative evaluation on Meta-World, Open X-Embodiment, and our real-world tasks.</em></p></div>
 <p>WHALE는 행동 조건화(behavior-conditioning)와 retracing-rollout 기법을 통해 embodied 환경에서 일반화 가능하고 확장 가능한 world model을 학습하는 프레임워크이며, 이를 기반으로 Whale-ST와 414M 파라미터의 Whale-X 모델을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 정책 분포 편차를 직접 해결하는 behavior-conditioning 기법과 모델 앙상블 없이 효율적인 불확실성 추정을 제공하는 retracing-rollout 기법을 핵심으로 제시한다. 이 두 기법은 spatial-temporal transformer 기반 Whale-ST와 대규모 사전학습된 Whale-X에 적용된다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Qualitative evaluation on Meta-World, Open X-Embodiment, and our real-world tasks.</em></p></div>
 <ul>
 <li><strong>Behavior-conditioning 기법</strong>: 정책 분포 편차를 직접 해결하여 world model의 일반화 오류를 감소시키고, policy-conditioned 학습에 기반한 보편적 기법</li>
 <li><strong>Retracing-rollout 기법</strong>: 모델 앙상블 없이 효율적인 불확실성 추정을 실현하여 오프라인 정책 최적화 성능 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Whale-X</strong>: Open X-Embodiment 데이터셋의 970K 궤적으로 학습한 414M 파라미터 world model로 시각, 움직임, 작업 측면에서 강력한 OOD 일반화 능력 및 확장성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Overall architecture of Whale-ST. The behavior-conditioning model encodes the observation and action</em></p></div>
 <ul>
 <li>Behavior-conditioning: 입력 시퀀스에 행동(behavior) 토큰을 조건으로 포함하여 다양한 정책에 대한 모델 적응성 향상</li>
 <li>Retracing-rollout: 롤아웃 과정에서 모델의 예측 오류를 추적하여 불확실성을 추정하는 방식으로, end-effector 포즈 제어에 적용 가능</li>

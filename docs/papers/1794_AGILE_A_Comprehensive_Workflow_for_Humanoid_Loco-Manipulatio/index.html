@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-03-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.20147" target="_blank">https://arxiv.org/abs/2603.20147</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of agile learning workflow. The workflow covers prepare-training, batch cloud training</em></p></div>
 <p>AGILE는 휴머노이드 로봇의 강화학습 정책 개발을 위한 엔드투엔드 워크플로우로, 환경 검증, 재현 가능한 학습, 통합 평가, 디스크립터 기반 배포의 4단계를 표준화하여 시뮬레이션-실세계 전이의 신뢰성을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Isaac Lab과 RSL-RL을 기반으로 네 단계 파이프라인을 구현하여: (1) interactive GUI를 통한 사전 검증, (2) 자동화된 하이퍼파라미터 스윕과 알고리즘 강화를 포함한 재현 가능한 학습, (3) deterministic scenario 테스트와 stochastic rollout을 결합한 통합 평가, (4) YAML I/O 디스크립터를 통한 일관된 정책 내보내기를 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of agile learning workflow. The workflow covers prepare-training, batch cloud training</em></p></div>
 <ul>
 <li><strong>구조화된 라이프사이클</strong>: 환경 검증부터 배포까지 4단계 워크플로우를 표준화하여 휴머노이드 RL을 체계적인 공학 프로세스로 전환</li>
 <li><strong>통합 평가 프레임워크</strong>: deterministic scenario 테스트와 stochastic rollout을 결합하며 joint jerk, limit violation 등의 배포 지향적 motion quality 메트릭을 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>알고리즘 강화 라이브러리</strong>: L2C2, reward normalization, value-bootstrapped terminations, symmetry augmentation, virtual harness 등 여러 sim-to-real transfer 기법을 ablation을 통해 검증하고 통합</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of agile learning workflow. The workflow covers prepare-training, batch cloud training</em></p></div>
 <ul>
 <li><strong>Prepare 단계</strong>: joint control, object manipulation, reward visualization용 interactive debug GUI로 모델 오류와 MDP 오설정을 GPU 학습 전에 빠르게 식별</li>
 <li><strong>Train 단계</strong>: Isaac Lab 기반 parallel GPU 시뮬레이션 환경에서 자동화된 hyperparameter sweep, experiment tracking, 토글 가능한 algorithmic enhancements 제공</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Songming Liu, Lingxuan Wu, Bangguo Li, Hengkai Tan, Huayu Chen, Zhengyi Wang, Ke Xu, Hang Su, Jun Zhu | <strong>날짜</strong>: 2024-10-10 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.07864" target="_blank">https://arxiv.org/abs/2410.07864</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of Robotics Diffusion Transformer with 1B-Parameters (RDT-1B), a</em></p></div>
 <p>bimanual manipulation을 위한 1.2B 파라미터 규모의 diffusion foundation model인 RDT를 제시하며, 다중 로봇 데이터셋 사전학습과 physically interpretable unified action space를 통해 높은 일반화 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: diffusion transformer를 backbone으로 하여 multi-modality를 표현하고, physically interpretable unified action space를 도입하여 서로 다른 로봇의 action representation을 통합한다. 46개 데이터셋으로 사전학습 후 6K+ 에피소드의 bimanual 데이터로 fine-tuning한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of Robotics Diffusion Transformer with 1B-Parameters (RDT-1B), a</em></p></div>
 <ul>
 <li><strong>Multi-modal Action 표현</strong>: diffusion model의 capacity를 활용하여 bimanual manipulation의 복잡한 action distribution을 효과적으로 모델링</li>
 <li><strong>확장성과 정확성</strong>: Transformer backbone과 MLP decoding, 개선된 normalization을 통해 high-frequency robotic data의 비선형 동역학을 포착</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>우수한 성능</strong>: 56% 성공률 개선, zero-shot 일반화, 1~5 shot few-shot learning, language instruction 이해 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: RDT framework. Heterogeneous action spaces of various robots are embedded into a</em></p></div>
 <ul>
 <li>Diffusion Transformer (DiT) backbone 기반으로 multi-modal input (text, vision, action)의 이질성 제거</li>
 <li>Robotic data의 특성 (temporal-spatial discontinuity, high-frequency changes, unstable numerical range)에 맞춘 개선: MLP decoding, improved normalization, alternate condition injection</li>

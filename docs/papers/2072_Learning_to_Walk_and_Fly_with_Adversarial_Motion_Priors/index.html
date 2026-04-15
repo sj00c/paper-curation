@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Giuseppe L'Erario, Drew Hanover, Angel Romero, Yunlong Song, Gabriele Nava, Paolo Maria Viceconte, Daniele Pucci, Davide Scaramuzza | <strong>날짜</strong>: 2023-09-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2309.12784" target="_blank">https://arxiv.org/abs/2309.12784</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The discriminator learns to distinguish between samples</em></p></div>
 <p>본 논문은 Adversarial Motion Priors(AMP)와 강화학습을 결합하여 항공 인형로봇(aerial humanoid robot)이 인간 같은 보행과 비행 사이를 자동으로 전환하도록 학습하는 방법을 제시한다. 복잡한 보상 함수 없이 동작 데이터셋을 모방하면서 과제를 수행하며, 환경 피드백에 따라 locomotion 모드가 자발적으로 전환된다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 AMP의 style reward와 task reward를 결합한 이중 보상 구조를 사용하여, discriminator가 데이터셋과 정책 생성 동작을 구별하도록 학습시키면서 동시에 고수준 과제(waypoint tracking)를 수행하도록 강화학습으로 정책을 훈련한다. 에너지 proxy 항을 보상함수에 포함시켜 자연스러운 mode-switching을 유도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Snapshots of the walking motion obtained using inverse</em></p></div>
 <ul>
 <li><strong>최초 자동 mode-switching 달성</strong>: trajectory optimization이나 state machine 없이 walking과 flying 사이의 smooth transitions를 자발적으로 학습</li>
 <li><strong>이중 데이터셋 활용</strong>: 인간 유사 보행 데이터셋과 trajectory optimization으로부터 생성된 비행 동작 데이터셋을 동시에 모방</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 모터 모델 적용</strong>: 이상적 thrust와 실제 jet-powered actuation 두 가지 경우 모두에서 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: The discriminator learns to distinguish between samples</em></p></div>
 <ul>
 <li>Floating-base formalism을 사용하여 항공 인형로봇의 동역학을 모델링 (Eq. 1)</li>
 <li>Markov Decision Process(MDP) 프레임워크 내에서 정책 πσ를 심층 신경망으로 표현</li>

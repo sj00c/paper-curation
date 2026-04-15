@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wenbo Zhang, Tianrun Hu, Hanbo Zhang, Yanyuan Qiao, Yuchu Qin, Yang Li, Jiajun Liu, Tao Kong, Lingqiao Liu, Xiao Ma | <strong>날짜</strong>: 2025-06-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.09990" target="_blank">https://arxiv.org/abs/2506.09990</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Chain-of-Action built on trajectory autoregressive modeling. The left part illustrates the network</em></p></div>
 <p>Chain-of-Action(CoA)은 역방향 궤적 자동회귀 모델링을 통해 로봇 조작 정책을 학습하는 새로운 시각-운동 정책 패러다임으로, 목표 상태부터 역순으로 행동 시퀀스를 생성하여 누적 오차를 완화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CoA는 keyframe 행동(목표 인코딩)부터 시작하여 역순으로 행동 토큰을 자동회귀적으로 생성하며, 이를 안정적으로 실현하기 위해 연속 행동 표현, 동적 정지, 역시간 앙상블, 다중 토큰 예측 등 4가지 핵심 설계를 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4 Success rate improvement on RLBench-60, sorted by improvement from high to low. The average success</em></p></div>
 <ul>
 <li><strong>RLBench 벤치마크 성능</strong>: 60개 작업에서 ACT 대비 16%, Diffusion Policy 대비 23% 성능 향상 달성</li>
 <li><strong>실제 로봇 조작</strong>: 8가지 실제 조작 작업에서 ACT를 15% 초과 성능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>구조적 단순성</strong>: ACT와 유사한 아키텍처를 사용하면서도 패러다임 변화만으로 성능 향상을 달성하여 접근법의 우수성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Chain-of-Action built on trajectory autoregressive modeling. The left part illustrates the network</em></p></div>
 <ul>
 <li>Transformer 인코더-디코더 구조로 시각(CNN + patchify) 및 고유수용성 입력을 처리</li>
 <li>학습 단계에서 행동 시퀀스를 역순으로 재배열하여 keyframe 행동 aT부터 a1까지 자동회귀적으로 생성</li>

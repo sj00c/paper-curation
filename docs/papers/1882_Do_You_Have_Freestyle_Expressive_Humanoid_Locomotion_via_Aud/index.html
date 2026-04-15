@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhe Li, Cheng Chi, Yangyang Wei, Boan Zhu, Tao Huang, Zhenguo Sun, Yibo Peng, Pengwei Wang, Zhongyuan Wang, Fangzhou Liu, Chang Xu, Shanghang Zhang | <strong>날짜</strong>: 2025-12-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.23650" target="_blank">https://arxiv.org/abs/2512.23650</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1.</em></p></div>
 <p>RoboPerform은 오디오를 직접 제어 신호로 사용하여 음악에 맞춰 춤을 추거나 음성에 맞춰 제스처를 생성하는 휴머노이드 로봇 제어 프레임워크로, 명시적 모션 재구성을 제거하여 저지연 및 고충실도를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: motion = content + style 원칙으로 오디오를 implicit style signal로 인코딩하고, ΔMoE teacher policy와 diffusion-based student policy를 통해 content latent와 audio-driven style latent를 분리하여 직접 모션을 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboPerform. We propose a two-stage approach: train an adaptor to inject kinematic information int</em></p></div>
 <ul>
 <li><strong>First unified audio-to-locomotion framework</strong>: 오디오를 암시적 제어 신호로 활용하는 첫 번째 통합 프레임워크로, 음악-춤과 음성-제스처 양쪽 작업을 지원한다.</li>
 <li><strong>ΔMoE 교사 정책</strong>: Residual mixture-of-experts 아키텍처로 다양한 모션 패턴을 특화된 전문가들이 처리하며, 동적 가중치 조정을 통해 견고한 모션 추적을 실현한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>물리적 타당성과 오디오 정렬</strong>: 광범위한 실험을 통해 물리적으로 그럴듯한 모션과 높은 오디오 시간 정렬을 동시에 달성함을 입증한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboPerform. We propose a two-stage approach: train an adaptor to inject kinematic information int</em></p></div>
 <ul>
 <li>Audio-motion alignment: InfoNCE loss를 사용하여 temporal attention augmented adaptor로 raw audio latents를 motion latents와 정렬</li>
 <li>ΔMoE teacher policy: 3D conditional inputs를 4개의 nested subspaces로 분할하고 gating network로 residual fusion을 통해 동적 가중치 조정</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Enshen Zhou, Qi Su, Cheng Chi, Zhizheng Zhang, Zhongyuan Wang, Tiejun Huang, Lu Sheng, He Wang | <strong>날짜</strong>: 2024-12-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.04455" target="_blank">https://arxiv.org/abs/2412.04455</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of Code-as-Monitor. Given task instructions and prior information, the Constraint Generator derives t</em></p></div>
 <p>VLM을 활용하여 spatio-temporal constraint satisfaction 문제로 로봇 실패를 정식화하고, constraint elements를 추상화하여 VLM 생성 코드로 실시간 모니터링하는 Code-as-Monitor(CaM) 패러다임을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Task instruction으로부터 constraint를 추출하고 constraint elements(점, 선, 면 등의 기하학적 추상화)를 시각적으로 표시한 후, VLM이 이를 기반으로 monitor code를 생성하여 추적된 constraint elements에 대해 실행하는 방식이다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. For the task “Move the pan with lobster to the stove without losing the lobster”, (a) reactive failure detecti</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 반응적 감지와 예방적 감지를 spatio-temporal constraint satisfaction 문제로 통합하는 최초의 시도</li>
 <li><strong>Constraint Elements</strong>: constraint 관련 entity/part를 콤팩트한 기하학적 요소로 추상화하여 추적 단순화 및 visual prompting 용이</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다중 환경 검증</strong>: CLIPort, Omnigibson, RL-Bench 시뮬레이터 및 실제 환경에서 일반화 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of Code-as-Monitor. Given task instructions and prior information, the Constraint Generator derives t</em></p></div>
 <ul>
 <li>Constraint Generator: Task instruction과 multi-view RGB-D observations으로부터 textual constraints 도출</li>
 <li>Constraint Painter: 학습된 ConSeg 모델과 off-the-shelf tracker(Co-Tracker)를 이용하여 constraint elements를 RGB 이미지에 시각적으로 표시</li>

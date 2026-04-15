@@ -75,12 +75,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: arXiv 논문의 그림-캡션 쌍을 다중선택 문제로 변환하고, 적대적 필터링(adversarial filtering)과 인간 검증을 통해 고품질 문제 집합 구성</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: SciFIBench 개요. 왼쪽: arXiv 논문에서 추출한 2000개의 다중선택형 과학 그림 해석 문제. 오른쪽: 28개 LMM 평가 프레임워크">
+</div>
 <ol>
 <li><strong>벤치마크 구축</strong>: arXiv에서 추출한 94k(CS) + 102k(일반) 그림-캡션 쌍으로부터 8개 범주의 2000개 고품질 문제 생성. 모든 문제에 대해 인간 검증 수행하여 응답 가능성 보장</li>
 <li><strong>포괄적 평가</strong>: GPT-4o, Gemini 1.5를 포함한 28개 LMM 평가로 현재 최고 성능 모델도 인간 기준선에 미치지 못함을 확인. 적대적 필터링이 문제 난이도 유의미하게 증가</li>
 <li><strong>충실성 분석</strong>: LLM(Gemini-Pro)을 활용한 자동 평가 방법 개발 및 모델의 추론 일관성(reasoning faithfulness) 프로빙 실시</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2: SciFIBench 문제의 그림 크기 및 캡션 길이 분포">
+</div>
 <p><strong>문제 구성 방법론</strong>:</p>
 <ul>
 <li><strong>임베딩 기반 선택</strong>: CLIP 기반 비전-언어 모델로 그림-캡션 쌍의 결합 임베딩(2048차원) 생성</li>

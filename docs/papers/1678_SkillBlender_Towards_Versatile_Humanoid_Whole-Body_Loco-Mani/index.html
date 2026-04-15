@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuxuan Kuang, Haoran Geng, Amine Elhafsi, Tan-Dzung Do, Pieter Abbeel, Jitendra Malik, Marco Pavone, Yue Wang | <strong>날짜</strong>: 2025-06-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.09366" target="_blank">https://arxiv.org/abs/2506.09366</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of SkillBlender. We first pretrain goal-conditioned primitive expert skills that are</em></p></div>
 <p>SkillBlender는 사전학습된 목표조건부 원시 기술들을 동적으로 혼합하여 휴머노이드 로봇이 복잡한 전신 조작-이동 작업을 최소한의 보상 엔지니어링으로 수행할 수 있게 하는 계층적 강화학습 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간의 운동 기술 발달에서 영감을 받아, 작업비특이적 원시 기술들을 먼저 사전학습한 후 고수준 제어기가 부분목표와 per-joint 가중치 벡터를 학습하여 이들 기술을 혼합하는 방식을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Qualitative comparison between different methods. Our SkillBlender not only achieves</em></p></div>
 <ul>
 <li><strong>SkillBlender 프레임워크</strong>: 목표조건부 원시 기술들을 동적으로 혼합하는 독특한 벡터화 가중치 메커니즘으로 더 유연하고 정확한 휴머노이드 행동을 생성</li>
 <li><strong>SkillBench 벤치마크</strong>: 병렬화 가능하고 3개의 신체형태, 4개의 원시 기술, 8개의 도전적 과제를 포함하며 정확도와 실현가능성을 모두 측정하는 평가 메트릭 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>광범위한 성능 향상</strong>: 모든 기준선을 능가하며 보상 해킹을 자연스럽게 방지하여 다양한 일상적 조작-이동 작업에서 더 정확하고 실현가능한 움직임 실현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of SkillBlender. We first pretrain goal-conditioned primitive expert skills that are</em></p></div>
 <ul>
 <li>사전학습 단계: 워킹, 리칭, 조작, 푸싱 등 4개의 목표조건부 원시 기술을 task-agnostic하게 학습</li>
 <li>고수준 제어기: 부분목표 생성과 per-joint 가중치 벡터를 학습하여 원시 기술들을 동적으로 혼합</li>

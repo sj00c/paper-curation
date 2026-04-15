@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jusheng Zhang, Jinzhou Tang, Sidi Liu, Mingyan Li, Sheng Zhang, Jian Wang, Keze Wang | <strong>날짜</strong>: 2025-05-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.00043" target="_blank">https://arxiv.org/abs/2506.00043</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. From motion to behavior. (a) Simple periodic motion patterns without complex, behavioral semantic meaning, (b)</em></p></div>
 <p>인간의 고수준 의도를 반영하는 계층적 행동 계획과 LLM을 결합하여 장기간의 물리적으로 타당한 인간 행동을 생성하는 통합 프레임워크 PHYLOMAN을 제시하고, 이를 위해 다층 텍스트 주석이 포함된 GBC-100K 대규모 데이터셋을 구축했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM을 활용한 고수준 행동 계획과 로봇공학의 TAMP 프레임워크를 통합하여 계층적 행동 분해를 구현하고, PoseScripts와 MotionScripts를 결합한 병렬 동작 생성 파이프라인과 시뮬레이터 기반 제어 정책으로 물리적 정교함을 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4. Qualitative Comparison of Motion Generation Meth-</em></p></div>
 <ul>
 <li><strong>GBC-100K 데이터셋</strong>: 약 100K개의 주석이 달린 비디오-SMPL 쌍으로 구성되며, 다층 계층적 텍스트 설명과 목표 지향적 주석을 포함하여 기존 벤치마크의 한계를 극복</li>
 <li><strong>PHYLOMAN 프레임워크</strong>: LLM 기반 계획과 물리 기반 제어를 통합하여 기존 방법 대비 10배 길이의 일관된 행동 생성 달성</li>
 <li><strong>정량적 성능 향상</strong>: GBC-100K와 HumanML3D에서 물리적 일관성과 의미론적 신뢰도 측면에서 기존 최첨단 방법 대비 유의미한 개선 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Introduction of our PHYLOMAN Framework. To</em></p></div>
 <ul>
 <li>LLM을 활용하여 고수준 지시사항을 계층적 행동 계획으로 분해</li>
 <li>PoseScripts와 MotionScripts를 통한 의미론적 정렬 동작 합성</li>

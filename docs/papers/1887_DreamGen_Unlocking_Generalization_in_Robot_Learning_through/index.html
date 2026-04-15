@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Joel Jang, Seonghyeon Ye, Zongyu Lin, Jiannan Xiang, Johan Bjorck, Yu Fang, Fengyuan Hu, Spencer Huang, Kaushil Kundalia, Yen-Chen Lin, Loic Magne, Ajay Mandlekar, Avnish Narayan, You Liang Tan, Guanzhi Wang, Jing Wang, Qi Wang, Yinzhen Xu, Xiaohui Zeng, Kaiyuan Zheng, Ruijie Zheng, Ming-Yu Liu, Luke Zettlemoyer, Dieter Fox, Jan Kautz, Scott Reed, Yuke Zhu, Linxi Fan | <strong>날짜</strong>: 2025-05-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.12705" target="_blank">https://arxiv.org/abs/2505.12705</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: DREAMGEN Overview. We begin by fine-tuning a video world model on teleoperated robot trajectories.</em></p></div>
 <p>DreamGen은 비디오 월드 모델(video world model)을 활용하여 최소한의 원격조종 데이터로부터 로봇 정책을 학습하는 4단계 파이프라인으로, 신규 행동과 환경에 대한 일반화를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 최신 image-to-video 생성 모델을 대상 로봇 embodiment에 맞게 fine-tuning한 후, 언어 명령과 초기 프레임으로부터 합성 로봇 비디오를 생성하고, Inverse Dynamics Model 또는 latent action model을 통해 pseudo-action을 추출하여 정책 학습에 사용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Scaling # of Neural Trajectories in RoboCasa. We vary the sizes of neural trajectories (x-axis) and</em></p></div>
 <ul>
 <li><strong>시뮬레이션 성능</strong>: RoboCasa에서 합성 데이터를 333배까지 확장하여 log-linear 성능 개선 달성</li>
 <li><strong>실세계 다중 embodiment 검증</strong>: Fourier GR1, Franka Emika, SO-100 로봇에서 평균 성공률 향상 (GR1: 37% → 46.4%, Franka: 23% → 37%, SO-100: 21% → 45.5%)</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>DreamGen Bench 도입</strong>: 비디오 생성 모델의 로봇 적응 성능을 평가하는 벤치마크로서 downstream 정책 성능과의 강한 상관관계 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3 shows the (a) architecture we use to train the IDM model and the (b) architecture that we use to train the</em></p></div>
 <ul>
 <li>비디오 월드 모델을 Low-Rank Adaptation(LoRA)을 활용하여 target robot 데이터에 fine-tuning</li>
 <li>Fine-tuned 모델로부터 다양한 초기 프레임과 언어 명령을 통해 대규모 synthetic robot 비디오 생성</li>

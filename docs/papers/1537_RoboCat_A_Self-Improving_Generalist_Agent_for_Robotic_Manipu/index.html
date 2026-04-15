@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Konstantinos Bousmalis, Giulia Vezzani, Dushyant Rao, Coline Devin, Alex X. Lee, Maria Bauza, Todor Davchev, Yuxiang Zhou, Agrim Gupta, Akhil Raju, Antoine Laurens, Claudio Fantacci, Valentin Dalibard, Martina Zambelli, Murilo Martins, Rugile Pevceviciute, Michiel Blokzijl, Misha Denil, Nathan Batchelor, Thomas Lampe, Emilio Parisotto, Konrad Żołna, Scott Reed, Sergio Gómez Colmenarejo, Jon Scholz, Abbas Abdolmaleki, Oliver Groth, Jean-Baptiste Regli, Oleg Sushkov, Tom Rothörl, José Enrique Chen, Yusuf Aytar, Dave Barker, Joy Ortiz, Martin Riedmiller, Jost Tobias Springenberg, Raia Hadsell, Francesco Nori, Nicolas Heess | <strong>날짜</strong>: 2023-06-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2306.11706" target="_blank">https://arxiv.org/abs/2306.11706</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The self-improvement process. RoboCat is a multi-task, multi-embodiment visual goal-conditioned</em></p></div>
 <p>RoboCat는 서로 다른 로봇과 작업 경험을 활용하여 다중 embodiment과 다중 작업을 처리할 수 있는 시각 기반 goal-conditioned decision transformer 기반의 자가 개선 로봇 조작 에이전트이다. 100-1000개의 예제만으로 새로운 작업과 로봇에 적응하며, 자체 생성 데이터를 이용한 반복적 개선이 가능하다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VQ-GAN 인코더를 사용하여 이미지를 토큰화하고, visual goal-conditioning을 통해 다양한 관측/action 차원을 다루며, autoregressive transformer 기반으로 π(at|ot, gt)를 학습한다. Hindsight goal을 활용하여 데이터 효율성을 높이고, fine-tuning 후 생성된 데이터를 다시 학습 데이터에 추가하는 반복 과정을 통해 자가 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: RoboCat compared to VFM baselines on training tasks. RoboCat performs better on the vast</em></p></div>
 <ul>
 <li><strong>다중 embodiment과 작업의 처리</strong>: 서로 다른 자유도, 관측, action space를 가진 실제 로봇 embodiment 3개 이상에서 다양한 조작 작업을 성공적으로 수행</li>
 <li><strong>효율적 적응</strong>: 목표 작업에 대해 단 100-1000개의 시연만으로 zero-shot 및 fine-tuning 기반 적응 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>cross-task transfer</strong>: 학습 데이터 확장 및 다양화에 따라 작업 간 전이 학습 성능과 새로운 작업 적응 효율이 개선됨을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The self-improvement process. RoboCat is a multi-task, multi-embodiment visual goal-conditioned</em></p></div>
 <ul>
 <li>VQ-GAN을 사용한 이미지 토큰화로 빠른 학습 가능</li>
 <li>Visual goal-conditioning 방식으로 임의의 trajectory 마지막 이미지를 goal로 활용</li>

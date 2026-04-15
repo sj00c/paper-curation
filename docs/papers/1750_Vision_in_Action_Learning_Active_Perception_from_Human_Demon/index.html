@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoyu Xiong, Xiaomeng Xu, Jimmy Wu, Yifan Hou, Jeannette Bohg, Shuran Song | <strong>날짜</strong>: 2025-06-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.15666" target="_blank">https://arxiv.org/abs/2506.15666</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Vision in Action (ViA) uses an active head</em></p></div>
 <p>ViA는 6-DoF 로봇 넥과 VR 텔레오퍼레이션 인터페이스를 통해 인간의 능동적 지각 전략을 직접 학습하여 이중팔 조작 로봇의 성능을 향상시키는 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 6-DoF 로봇 팔을 로봇 넥으로 활용하고, 3D 장면 표현을 중간 매개체로 사용하여 VR 텔레오퍼레이션에서 지연 시간을 최소화하며, 행동 복제를 통해 인간 시연으로부터 능동적 지각 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Policy Learning Camera Setup Comparison Results. We report stage-wise success rates across</em></p></div>
 <ul>
 <li><strong>유연한 6-DoF 로봇 넥</strong>: 기존 2-DoF 넥 대비 인간 상체 움직임을 효과적으로 재현</li>
 <li><strong>중간 3D 표현 기반 VR 인터페이스</strong>: RGB 직접 스트리밍 방식의 motion-to-photon 지연 문제를 해결하여 VR 멀미 제거</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>학습된 능동적 지각 전략</strong>: 탐색, 추적, 초점 조정 등 인간의 복잡한 지각 행동을 행동 복제로 자동 학습</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: VR Teleoperation Comparison. [Left] Traditional RGB streaming suffers from motion-to-photon</em></p></div>
 <ul>
 <li>ARX5 6-DoF 로봇 팔을 로봇 넥으로 설치하고 카메라를 엔드 이펙터에 장착</li>
 <li>RGB-D 데이터로부터 월드 프레임 포인트 클라우드 스트리밍</li>

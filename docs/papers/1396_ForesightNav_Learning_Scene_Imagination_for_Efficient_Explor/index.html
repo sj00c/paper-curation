@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hardik Shah, Jiaxu Xing, Nico Messikommer, Boyang Sun, Marc Pollefeys, Davide Scaramuzza | <strong>날짜</strong>: 2025-04-22 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.16062" target="_blank">https://arxiv.org/abs/2504.16062</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. ForesightNav proposes Imagination aided exploration</em></p></div>
 <p>ForesightNav는 로봇이 인간처럼 상상력을 활용하여 미탐사 지역의 점유 및 의미정보를 예측하고, 이를 기반으로 효율적인 장기 네비게이션 목표를 선택하는 탐색 전략을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 현재 및 과거 관찰로부터 점유 맵의 미탐사 영역을 예측하는 신경망 기반 Imagination Module을 제안하고, 이를 CLIP 기반의 의미 정보(GeoSem Maps)로 강화하여 장기 네비게이션 목표 선택을 지원한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of ForesightNav. At each timestep, we process the RGBD+Pose observations to update our current GeoSem</em></p></div>
 <ul>
 <li><strong>Imagination Module의 효과</strong>: Structured3D 검증 데이터셋에서 PointNav는 100% 완료율, ObjectNav는 67% SPL 달성</li>
 <li><strong>현실적 훈련 데이터 생성</strong>: 미탐사 점유 마스크 생성을 위해 2D 그리드 환경에서 에이전트를 시뮬레이션하는 독특한 방법 제안</li>
 <li><strong>포괄적 평가 벤치마크</strong>: 3,500개 실내 장면을 포함한 Structured3D 기반 ObjectNav 폐루프 평가 벤치마크 도입으로 일반화 능력 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of ForesightNav. At each timestep, we process the RGBD+Pose observations to update our current GeoSem</em></p></div>
 <ul>
 <li>RGBD 이미지와 포즈 정보를 시간에 따라 누적하여 부분 관찰 점유 맵 구성</li>
 <li>U-Net 스타일의 신경망을 이용해 부분 관찰로부터 전체 점유 맵 예측</li>

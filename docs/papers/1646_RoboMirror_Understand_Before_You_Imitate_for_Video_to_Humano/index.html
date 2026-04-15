@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhe Li, Cheng Chi, Boan Zhu, Yangyang Wei, Shuanghao Bai, Yuheng Ji, Yibo Peng, Tao Huang, Pengwei Wang, Zhongyuan Wang, S. -H. Gary Chan, Chang Xu, Shanghang Zhang | <strong>날짜</strong>: 2025-12-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.23649" target="_blank">https://arxiv.org/abs/2512.23649</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. RoboMirror makes humanoid understand before imitating. It acts like a mirror, which can not only infer and rep</em></p></div>
 <p>RoboMirror는 VLM을 활용하여 비디오에서 visual motion intent를 추출하고 diffusion-based policy로 직접 인간형 로봇의 보행을 제어하는 retargeting-free 프레임워크이다. 기존의 pose estimation-retargeting 파이프라인을 우회하고 egocentric/third-person 비디오로부터 시맨틱하게 정렬된 보행을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM을 사용하여 raw 비디오로부터 visual latent를 추출하고, 이를 motion latent로 매핑하는 연결층을 학습한다. 학습된 motion latent가 diffusion-based locomotion policy의 유일한 조건 신호로 작용하여 pose reconstruction 없이 직접 행동을 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Qualitative results in the IsaacGym and MuJoCo. The upper half presents the tracking performance of egocentric</em></p></div>
 <ul>
 <li><strong>Retargeting-free 아키텍처</strong>: pose estimation과 retargeting 파이프라인을 완전히 제거하여 inference 지연시간을 9.22초에서 1.84초로 80% 단축</li>
 <li><strong>향상된 제어 성능</strong>: 기존 baseline 대비 3.7% 절대값 task success rate 향상 및 낮은 tracking error 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>시맨틱 정렬</strong>: visual understanding을 기반으로 물리적으로 타당하면서도 의미론적으로 정렬된 보행 합성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of RoboMirror. It adopts a two-stage framework: initially, it leverages Qwen3-VL to process egocentri</em></p></div>
 <ul>
 <li>VLM (예: vision transformer 기반)으로 egocentric/third-person 비디오에서 visual latent representation 추출</li>
 <li>visual latent를 motion latent space로 매핑하는 재구성(reconstruction) 모듈 학습 (두 latent space 사이의 semantic bridging)</li>

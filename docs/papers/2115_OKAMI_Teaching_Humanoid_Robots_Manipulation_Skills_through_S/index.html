@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jinhan Li, Yifeng Zhu, Yuqi Xie, Zhenyu Jiang, Mingyo Seo, Georgios Pavlakos, Yuke Zhu | <strong>날짜</strong>: 2024-10-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.11792" target="_blank">https://arxiv.org/abs/2410.11792</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of OKAMI. OKAMI is a two-staged method that enables a humanoid robot to imitate a</em></p></div>
 <p>OKAMI는 단일 RGB-D 비디오 시연으로부터 인형 로봇의 조작 기술을 학습하도록 하는 방법으로, object-aware retargeting을 통해 인간의 움직임을 로봇 기구학에 맞게 변환하면서 테스트 시 객체 위치에 적응한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: OKAMI는 두 단계 파이프라인으로, 첫 단계에서 RGB-D 비디오로부터 reference manipulation plan을 생성하고, 두 번째 단계에서 object-aware retargeting을 통해 인간 동작을 로봇 동작으로 변환하며 테스트 시 객체 위치에 맞게 조정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: (a) Evaluation of OKAMI over all six tasks, including the success rates and the quantification of</em></p></div>
 <ul>
 <li><strong>Object-aware retargeting</strong>: vision foundation model(GPT4V)으로 작업 관련 객체를 자동 식별하고, 신체 동작과 손 포즈를 분리하여 retarget함으로써 객체 위치 변화에 적응</li>
 <li><strong>강한 일반화 능력</strong>: 다양한 공간 레이아웃, 배경, 새로운 객체 인스턴스에 걸쳐 71.7% 평균 성공률 달성, ORION 베이스라인 대비 58.3% 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 작업 지원</strong>: picking, placing, pushing, pouring 등 풍부한 객체 상호작용을 포함하는 다양한 작업 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of OKAMI. OKAMI is a two-staged method that enables a humanoid robot to imitate a</em></p></div>
 <ul>
 <li><strong>Human reconstruction</strong>: SMPL-H 모델을 사용하여 RGB-D 비디오에서 인간의 신체 자세와 손 포즈 복원</li>
 <li><strong>Reference plan generation</strong>: GPT4V를 통해 작업 관련 객체 식별, changepoint detection으로 keyframe 추출, 원본 및 타겟 객체 추적</li>

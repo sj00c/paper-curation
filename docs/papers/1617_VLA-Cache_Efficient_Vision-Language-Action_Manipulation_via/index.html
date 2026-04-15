@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siyu Xu, Yunke Wang, Chenghao Xia, Dihao Zhu, Tao Huang, Chang Xu | <strong>날짜</strong>: 2025-02-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.02175" target="_blank">https://arxiv.org/abs/2502.02175</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: During the inference of the VLA model, static</em></p></div>
 <p>VLA-Cache는 로봇 조작 작업에서 인접한 프레임 간의 시간적 중복성을 활용하여 정적 시각 토큰의 KV 표현을 캐싱하고 재사용함으로써 Vision-Language-Action 모델의 추론을 가속화하는 학습 불필요 방법이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLA-Cache는 adjacent frames 간 최소 변화를 보이는 토큰을 식별하여 캐싱된 KV 표현을 재사용하되, decoder attention scores 기반 필터링으로 작업 관련 토큰을 선별적으로 재계산한다. 추가로 layer-adaptive token reusing strategy로 decoder layer별 attention entropy에 따라 재사용 비율을 동적 조정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Visualization of VLA-Cache token reuse across settings. (a) LIBERO simulation with</em></p></div>
 <ul>
 <li><strong>추론 가속화</strong>: CUDA latency에서 최대 1.7배 속도 향상을 달성하고 제어 주파수를 15% 증가시켰다.</li>
 <li><strong>무시할 수 있는 성능 손실</strong>: 작업 성공률에 미미한 손실만 발생시키면서 속도 개선을 달성했다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다중 모델 호환성</strong>: OpenVLA, CogAct, OpenVLA-OFT 등 여러 최신 VLA 모델에 일관되게 적용된다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: VLA-Cache accelerates the VLA’s language decoding process across timesteps via the</em></p></div>
 <ul>
 <li><strong>정적 토큰 식별</strong>: adjacent frames 간 visual token의 변화도를 측정하여 최소 변화를 보이는 토큰을 정적으로 분류한다.</li>
 <li><strong>작업 관련성 필터링</strong>: 시각적으로는 정적이지만 그리퍼나 목표 물체 근처 등 의미적으로 중요한 토큰을 decoder attention scores로 식별하여 재사용 제외 목록에 추가한다.</li>

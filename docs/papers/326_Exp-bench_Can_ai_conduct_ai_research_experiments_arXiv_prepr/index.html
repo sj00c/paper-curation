@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Patrick Tser Jern Kon, Jiachen Liu, Xinyi Zhu, Qiuyi Ding, Jingjia Peng, Jiarong Xing, Yibo Huang, Yiming Qiu, Jayanth Srinivasa, Myungjin Lee, Mosharaf Chowdhury, Matei Zaharia, Ang Chen | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2505.24785" target="_blank">arXiv:2505.24785</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>EXP-Bench는 AI 에이전트가 동료 심사 논문에서 추출한 완전한 연구 실험을 수행할 수 있는지를 평가하는 벤치마크로, 연구 질문으로부터 가설 수립, 실험 설계, 구현, 실행, 결론 도출까지의 전체 과정을 평가한다.</em></p></div>
 <p>AI가 완전한 종료-대-종료(end-to-end) 연구 실험을 수행할 수 있는 능력을 체계적으로 평가하기 위해 EXP-Bench 벤치마크를 제시하며, NeurIPS/ICLR 논문 461개 작업에서 현재 AI 에이전트들이 0.5%의 완전 실험 성공률에 그치고 있음을 보였다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,10 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 영향력 있는 동료 심사 논문과 오픈소스 구현에서 추출한 461개의 실제 AI 연구 작업으로 구성된 벤치마크를 제안하되, 논문과 코드에서 산재된 실험 세부사항을 추출하는 반자동화 파이프라인(semi-automated curation pipeline)을 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>ICLR 2024 MogaNet 논문에서 추출한 단일 연구 작업의 예시로, 연구 질문, 고수준 방법 설명, 스타터 코드를 제공받는 형태를 보여준다.</em></p></div>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>EXP-Bench 데이터셋은 Deep Learning, Reinforcement Learning, Computer Vision, Generative Models 등 다양한 ML 연구 분야에서 균형잡힌 작업들로 구성되어 있으며, NeurIPS(53%)와 ICLR(47%)에서 추출되었다.</em></p></div>
 <ol>
 <li><strong>포괄적 벤치마크 구성</strong>: NeurIPS/ICLR 2024의 51개 논문에서 461개의 연구 작업(12,737개 세분화된 부분 작업)을 추출하여, 컴퓨터 비전, NLP, 강화학습 등 다양한 AI 하위분야를 포함한 벤치마크 구축</li>
 <li><strong>확장 가능한 반자동화 파이프라인</strong>: 소스 선택/필터링 → 실험 절차 추출 → 구현 추출의 3단계로 논문과 코드베이스에서 산재된 세부정보를 체계적으로 추출하며, 실행 기반 검증으로 기능성을 보장</li>
@@ -88,6 +94,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>EXP-Bench 반자동화 데이터셋 구축 파이프라인의 3단계 프로세스</em></p></div>
 <p><strong>Dataset Specification</strong>:</p>
 <ul>
 <li><strong>문제 설명</strong>: 연구 질문(research question), 고수준 방법(high-level method), 코드 저장소 접근성 제공</li>

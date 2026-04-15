@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiang Zhang, Jiahao Ma, Peiran Liu, Shuai Shi, Zeran Su, Zifan Wang, Jingkai Sun, Wei Cui, Jialin Yu, Gang Han, Wen Zhao, Pihai Sun, Kangning Yin, Jiaxu Wang, Jiahang Cao, Lingfeng Zhang, Hao Cheng, Xiaoshuai Hao, Yiding Ji, Junwei Liang, Jian Tang, Renjing Xu, Yijie Guo | <strong>날짜</strong>: 2026-02-17 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.15733" target="_blank">10.48550/arXiv.2602.15733</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: MeshMimic: monocular video-to-humanoid robots. From ordinary consumer monocular videos (no</em></p></div>
 <p>MeshMimic은 단일 모노큘러 비디오에서 3D 장면 재구성을 통해 휴머노이드 로봇이 복잡한 지형과의 상호작용을 학습할 수 있는 프레임워크이다. Kinematic Consistency Optimization과 contact-aware retargeting을 통해 모션-지형 결합 상호작용을 정확하게 전달한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D 비전 기반 모델을 활용하여 비디오에서 인간 궤적과 지형 기하학을 동시에 재구성한 후, Kinematic Consistency Optimization으로 노이즈를 제거하고, MeshRetarget 메커니즘으로 인간-환경 상호작용을 휴머노이드 형태에 맞게 재타게팅한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: MeshMimic Real-to-Sim. In-the-wild monocular videos yield long-horizon motions over complex</em></p></div>
 <ul>
 <li><strong>Terrain-Aware 모션 모방 프레임워크</strong>: 모노큘러 비디오로부터 직접 학습 가능하며, Kinematic Consistency Optimization을 통해 시각적 노이즈로부터 물리적으로 타당한 참조 궤적을 추출한다.</li>
 <li><strong>MeshRetarget 메커니즘</strong>: 형태학적 갭을 명시적으로 해결하면서 기하학적 상호작용 특성을 보존하여 다양한 신체 크기의 인간 모션을 다른 차원의 로봇에 효과적으로 매핑한다.</li>
 <li><strong>다양한 지형에서의 견고성</strong>: 복잡하고 불규칙한 지형에서 높은 동역학 성능을 달성하며, 소비자용 모노큘러 센서만으로도 복잡한 물리 상호작용 훈련이 가능함을 입증한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: MeshMimic Real-Sim-Real Pipeline. Starting from a monocular video, we reconstruct the scene</em></p></div>
 <ul>
 <li>SAM3D와 3DGS를 이용하여 비디오에서 인간 액터와 환경을 분리하고 각각의 3D 기하학을 복원한다.</li>
 <li>Depth-edge 기반 접촉 예측을 통해 인간과 지형 간의 접촉점을 식별한다.</li>

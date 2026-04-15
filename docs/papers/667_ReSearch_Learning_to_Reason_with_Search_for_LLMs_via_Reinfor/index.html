@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mingyang Chen, Tianpeng Li, Haoze Sun, Yijie Zhou, Chenzheng Zhu | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2503.19470" target="_blank">10.48550/arXiv.2503.19470</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: ReSearch와 기준선(baseline) 방법들의 벤치마크 성능 비교. 모든 기준선은 Qwen2.5-32B-Instruct 기반.</em></p></div>
 <p>ReSearch는 강화학습(RL)을 통해 대규모 언어모델(LLM)이 추론 과정 중 언제 어떻게 검색을 수행할지를 자동으로 학습하는 프레임워크이다. 감독 데이터 없이 검색 쿼리, 텍스트 기반 사고(thinking), 검색 결과를 통합한 추론 체인을 만들어 다중 홉(multi-hop) 질문 답변에서 8.9~22.4%의 성능 향상을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 강화학습(GRPO)을 활용하여 추론(thinking), 검색 쿼리(search), 검색 결과(result)를 하나의 통합 체인으로 취급하고, 최종 답변의 정확도만으로 보상 신호를 주어 감독 데이터 없이 학습.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: ReSearch와 기준선 방법들의 벤치마크 성능 비교</em></p></div>
 <ol>
 <li><strong>강력한 일반화 성능</strong>: 하나의 훈련 데이터셋에서만 학습했음에도 HotpotQA(63.6%), 2Wiki(54.2%), MuSiQue(33.4%), Bamboogle(54.4%) 등 여러 벤치마크에서 일관되게 기준선 대비 8.9~22.4%의 절대 성능 향상 달성.</li>
 <li><strong>모델 규모별 효과성</strong>: Qwen2.5-7B와 Qwen2.5-32B 양쪽 모두에서 성공적으로 훈련되어 방법론의 확장성 입증.</li>
 <li><strong>자동 추론 능력 도출</strong>: 강화학습 과정에서 사전 정의된 휴리스틱 없이 반성(reflection)과 자기 수정(self-correction) 같은 고급 추론 능력이 자연스럽게 발현됨.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: ReSearch의 훈련 개요. (a) GRPO 파이프라인. (b) 검색을 포함한 롤아웃 생성 프로세스의 세부사항</em></p></div>
 <h3>훈련 메커니즘</h3>
 <ul>
 <li><strong>GRPO 알고리즘</strong>: Group Relative Policy Optimization을 사용하여 별도의 비평 모델 없이 롤아웃 그룹에서 기준선을 추정하고, 정규화된 이점(normalized advantage)을 통해 정책을 최적화. KL 발산 페널티로 참조 정책으로부터의 편차를 제어.</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wei Wu, Fan Lu, Yunnan Wang, Shuai Yang, Shi Liu, Fangjing Wang, Qian Zhu, He Sun, Yong Wang, Shuailei Ma, Yiyu Ren, Kejia Zhang, Hui Yu, Jingmei Zhao, Shuai Zhou, Zhenqi Qiu, Houlong Xiong, Ziyu Wang, Zechen Wang, Ran Cheng, Yong-Lu Li, Yongtao Huang, Xing Zhu, Yujun Shen, Kecheng Zheng | <strong>날짜</strong>: 2026-01-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2601.18692" target="_blank">https://arxiv.org/abs/2601.18692</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of LingBot-VLA. We scale dual-arm robot data collected in the real world for pre-training. LingBot-VL</em></p></div>
 <p>LingBot-VLA는 약 20,000시간의 실제 로봇 데이터로 학습한 Vision-Language-Action 기초 모델로, 효율적인 학습과 다중 플랫폼 일반화 능력을 갖춘다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3,000시간에서 20,000시간으로 데이터를 확장하여 스케일링 거동을 조사하고, 3개 로봇 플랫폼에서 각각 100개 작업을 130 에피소드씩 수행하는 체계적인 벤치마킹을 실시하며, 최적화된 코드베이스로 훈련 처리량을 1.5~2.8배 향상시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Visualization of pre-training dataset used by LingBot-VLA.</em></p></div>
 <ul>
 <li><strong>스케일링 증거</strong>: 20,000시간까지 포화 현상 없이 데이터 증가에 따라 지속적이고 상당한 성공률 개선을 달성하여 실제 로봇 학습의 우호적 스케일링 특성을 처음으로 실증적 증거를 제공</li>
 <li><strong>다중 플랫폼 성능</strong>: 9개 로봇 구성에서 수집한 대규모 다양한 데이터로 학습한 LingBot-VLA가 3개 평가 플랫폼에서 경쟁 모델 대비 명확한 우월성과 강한 일반화 능력을 입증</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>오픈 소스 기여</strong>: 코드, 기초 모델, 벤치마크 데이터에 대한 공개 접근을 제공하여 커뮤니티 발전 촉진</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of LingBot-VLA. We scale dual-arm robot data collected in the real world for pre-training. LingBot-VL</em></p></div>
 <ul>
 <li>9개 서로 다른 dual-arm 로봇 구성(AgiBot G1, AgileX, Galaxea R1Lite, Galaxea R1Pro, Realman Rs-02, Leju KUAVO 4 Pro, Qinglong, ARX Lift2, Bimanual Franka)에서 원격 조종(VR 기반 및 isomorphic arms)으로 대규모 실제 데이터 수집</li>
 <li>자동 주석 처리와 인간 개선을 결합한 다층 데이터 라벨링: 영상 세그먼트 분해, atomic action 정의, 자연어 지시 생성</li>

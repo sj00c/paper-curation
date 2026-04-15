@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhe Li, Cheng Chi, Yangyang Wei, Boan Zhu, Yibo Peng, Tao Huang, Pengwei Wang, Zhongyuan Wang, Shanghang Zhang, Chang Xu | <strong>날짜</strong>: 2025-10-17 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.14952" target="_blank">10.48550/arXiv.2510.14952</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of RoboGhost. We propose a two-stage approach: a motion latent is first generated, then a</em></p></div>
 <p>RoboGhost는 언어 지시를 humanoid 로봇의 실행 가능한 동작으로 직접 변환하는 retargeting-free 프레임워크로, motion latent을 조건으로 하는 diffusion-based policy를 통해 기존의 다단계 파이프라인의 누적 오류와 지연을 제거한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Language-grounded motion latent을 semantic anchor로 활용하여 diffusion policy가 noise로부터 직접 executable action을 denoise하도록 하고, causal transformer-diffusion hybrid 구조로 장기적 coherence와 안정성을 동시에 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1:</em></p></div>
 <ul>
 <li><strong>배포 지연 단축</strong>: 기존 17.85초에서 5.84초로 단축하여 3배 이상의 속도 개선</li>
 <li><strong>성공률 및 추적 정확도 향상</strong>: retargeting 손실 회피로 5% 높은 성공률과 감소된 추적 오류 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>멀티모달 확장성</strong>: text 외 image, audio, music 등 다양한 input modality 지원 가능한 범용 프레임워크</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of RoboGhost. We propose a two-stage approach: a motion latent is first generated, then a</em></p></div>
 <ul>
 <li>Motion generator: Continuous autoregressive 모델과 causal autoencoder를 결합하여 text로부터 compact motion latent lref 생성</li>
 <li>Teacher policy: MoE(Mixture of Experts) 기반 oracle policy를 RL로 학습하여 diverse하고 physically plausible한 action 생성</li>

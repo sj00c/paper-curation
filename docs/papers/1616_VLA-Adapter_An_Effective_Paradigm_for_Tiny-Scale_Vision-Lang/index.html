@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yihao Wang, Pengxiang Ding, Lingxiao Li, Can Cui, Zirui Ge, Xinyang Tong, Wenxuan Song, Han Zhao, Wei Zhao, Pengxu Hou, Siteng Huang, Yifan Tang, Wenhui Wang, Ru Zhang, Jianyi Liu, Donglin Wang | <strong>날짜</strong>: 2025-09-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.09372" target="_blank">https://arxiv.org/abs/2509.09372</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Characteristics of VLA-Adapter. “↓” is that smaller</em></p></div>
 <p>VLA-Adapter는 경량 백본(0.5B 파라미터)을 사용하여 로봇 데이터 사전학습 없이 최첨단 Vision-Language-Action 모델을 학습할 수 있는 새로운 패러다임을 제시한다. Bridge Attention을 통해 비전-언어 표현을 행동 공간에 효과적으로 연결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 먼저 다양한 VL 조건이 행동 생성에 미치는 영향을 체계적으로 분석하고, Bridge Attention을 갖춘 경량 Policy 모듈을 제안하여 최적 조건을 자동으로 주입한다. 이를 통해 사전학습 없이도 고성능을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Characteristics of VLA-Adapter. “↓” is that smaller</em></p></div>
 <ul>
 <li><strong>체계적 분석</strong>: VL에서 A로의 다양한 브릿징 패러다임에 대한 첫 번째 체계적 분석 수행</li>
 <li><strong>경량 모델</strong>: 0.5B 파라미터 백본으로 기존 7B 모델(OpenVLA-OFT) 수준의 성능(LIBERO 97.3%) 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>배포 접근성</strong>: 로봇 데이터 사전학습 없이도 실제 및 시뮬레이션 로봇 벤치마크에서 최첨단 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: The proposed VLA framework. The key components are the effective condition explo-</em></p></div>
 <ul>
 <li>Prismatic-VLM 아키텍처 기반 VLM 구축 (DINOv2, SigLIP 시각 특성 추출)</li>
 <li>다양한 조건 비교 실험: (1) 단일 계층 Raw features, (2) 단일 계층 ActionQuery features, (3) 전체 계층 Raw features, (4) 전체 계층 ActionQuery features</li>

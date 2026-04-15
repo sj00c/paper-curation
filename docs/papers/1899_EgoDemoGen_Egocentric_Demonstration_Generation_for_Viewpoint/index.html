@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuan Xu, Jiabing Yang, Xiaofeng Wang, Yixiang Chen, Zheng Zhu, Bowen Fang, Guan Huang, Xinze Chen, Yun Ye, Qiang Zhang, Peiyan Li, Xiangnan Wu, Kai Wang, Bing Zhan, Shuo Lu, Jing Liu, Nianfeng Liu, Yan Huang, Liang Wang | <strong>날짜</strong>: 2025-09-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.22578" target="_blank">https://arxiv.org/abs/2509.22578</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of EgoDemoGen. Given source demonstrations from a standard egocentric viewpoint, we generate novel de</em></p></div>
 <p>EgoDemoGen은 egocentric viewpoint 변화에 대응하는 로봇 조작 정책의 일반화를 위해, 궤적 전송과 영상 합성을 통해 새로운 egocentric 관점에서 정렬된 observation-action 시연을 생성하는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: EgoTrajTransfer를 통해 동작 궤적을 새로운 egocentric 좌표계로 전송하고, EgoViewTransfer라는 조건부 video generation 모델로 전송된 궤적을 반영하는 photorealistic 영상을 합성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of EgoDemoGen. Given source demonstrations from a standard egocentric viewpoint, we generate novel de</em></p></div>
 <ul>
 <li><strong>EgoDemoGen 프레임워크</strong>: Egocentric viewpoint 변화 하에서 정렬된 observation-action 시연 쌍을 생성하여 정책 일반화 성능 향상</li>
 <li><strong>EgoTrajTransfer</strong>: Motion-skill segmentation, geometry-aware transformation, inverse kinematics feasibility filtering을 통해 새로운 egocentric 좌표계에 적응적인 로봇 궤적 전송</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실험 성과</strong>: 시뮬레이션에서 +24.6%, +16.9%, 실제 로봇에서 +16.0%, +23.0%의 정책 성공률 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of EgoDemoGen. Given source demonstrations from a standard egocentric viewpoint, we generate novel de</em></p></div>
 <ul>
 <li>Novel egocentric viewpoint를 로봇 base 변환(Δx, Δy, Δθ)으로 샘플링</li>
 <li>Source trajectory를 gripper 상태 기반 motion과 skill phase로 세분화</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Weiyu Li, Xuelin Chen, Peizhuo Li, Olga Sorkine-Hornung, Baoquan Chen | <strong>날짜</strong>: 2023-06-01 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2306.00378" target="_blank">https://arxiv.org/abs/2306.00378</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Multi-stage motion synthesis. Starting from the coarsest stage, the generative motion matching at each stage 𝑠ta</em></p></div>
 <p>GenMM은 단일 또는 소수의 예제 모션으로부터 다양한 모션을 생성하는 학습 불필요한 생성 모델로, Motion Matching의 품질을 유지하면서 Bidirectional similarity를 생성 비용 함수로 활용하여 다단계 프레임워크로 점진적으로 모션을 정제한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Motion Matching의 nearest neighbor 개념을 재해석하여 bidirectional visual similarity를 생성 비용 함수로 사용하고, 다단계 프레임워크에서 초기 랜덤 추측을 예제 모션 패치로 점진적으로 정제하며, 가장 낮은 해상도 단계에 노이즈를 입력하여 생성 다양성을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Our generative framework enables a variety of example-based motion synthesis tasks, that usually require long of</em></p></div>
 <ul>
 <li><strong>훈련 불필요한 고속 생성</strong>: 사전 훈련 없이 단 몇 분의 1초 내에 고품질 모션 생성 가능</li>
 <li><strong>Motion Matching 품질 유지</strong>: Motion Matching의 높은 품질과 충실도를 그대로 상속하면서 생성 능력 추가</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다중 예제 지원 용이성</strong>: 여러 모션 예제 입력을 자연스럽게 확장 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Multi-stage motion synthesis. Starting from the coarsest stage, the generative motion matching at each stage 𝑠ta</em></p></div>
 <ul>
 <li>Skeleton-aware motion patch extraction으로 복잡한 스켈레톤 구조를 효율적으로 처리</li>
 <li>Bidirectional similarity를 비용 함수로 사용하여 예제의 모든 모션 패치가 합성에 포함되고, 합성 결과가 예제의 패치 분포를 따르도록 강제</li>

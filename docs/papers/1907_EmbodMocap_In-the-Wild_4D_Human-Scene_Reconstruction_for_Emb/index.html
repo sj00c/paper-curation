@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wenjia Wang, Liang Pan, Huaijin Pi, Yuke Lou, Xuqian Ren, Yifan Wu, Zhouyingcheng Liao, Lei Yang, Rishabh Dabral, Christian Theobalt, Taku Komura | <strong>날짜</strong>: 2026-02-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.23205" target="_blank">https://arxiv.org/abs/2602.23205</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Introducing EmbodMocap, a portable and low-cost system for simultaneous 4D human and scene reconstruction, dep</em></p></div>
 <p>EmbodMocap은 두 개의 이동하는 iPhone을 사용하여 실외 환경에서 메트릭 스케일의 인간 동작과 3D 장면을 동시에 재구성하는 저비용 데이터 수집 파이프라인을 제안한다. 이 시스템은 모노큘러 재구성, 물리 기반 캐릭터 애니메이션, 로봇 제어 등 세 가지 embodied AI 작업을 지원한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 개의 이동하는 RGB-D iPhone을 동시에 사용하여 dual-view RGB-D 시퀀스를 캡처하고, 이들을 통합된 월드 좌표계에서 jointly calibrate하여 인간과 장면을 모두 재구성한다. Dual-view 설정이 depth ambiguity를 완화하면서도 메트릭 스케일 정확도를 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Our dual view vs. single view results in optical studio.</em></p></div>
 <ul>
 <li><strong>저비용 포터블 시스템</strong>: 웨어러블 센서, 멀티뷰 카메라 리그, 또는 LiDAR 스캐너 없이 두 개의 iPhone만으로 메트릭 스케일의 4D 인간-장면 재구성을 수행</li>
 <li><strong>고품질 데이터셋</strong>: 다양한 실외 환경에서 수집한 human-scene 상호작용 데이터 제공으로 embodied AI 모델 학습 지원</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 응용 검증</strong>: 모노큘러 재구성, physics-based character animation, sim-to-real humanoid control 세 가지 embodied AI 작업에서 효과성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. EmbodMocap: We propose an affordable dataset capture and processing system. From left to right, the four stage</em></p></div>
 <ul>
 <li>정적 장면을 단일 RGB-D 시퀀스에서 먼저 재구성하여 월드 스케일 정의</li>
 <li>동기화된 dual-view RGB-D 비디오로 인간 동작 캡처</li>

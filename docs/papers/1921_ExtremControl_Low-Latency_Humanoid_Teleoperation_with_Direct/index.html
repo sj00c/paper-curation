@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ziyan Xiong, Lixing Fang, Junyun Huang, Kashu Yamazaki, Hao Zhang, Chuang Gan | <strong>날짜</strong>: 2026-02-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2602.11321" target="_blank">https://arxiv.org/abs/2602.11321</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The humanoid robot (Unitree G1) demonstrates a diverse set of loco-manipulation tasks under teleoperation: (a) r</em></p></div>
 <p>ExtremControl은 SE(3) 포즈 기반의 직접 제어와 velocity feedforward 제어를 통해 humanoid teleoperation의 지연시간을 50ms까지 단축하는 저지연 전신 제어 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 링크 포즈를 Cartesian-space mapping을 통해 직접 휴머노이드 링크 목표치로 변환하고, velocity feedforward 제어를 저수준에서 적용하여 제어 응답성을 대폭 향상시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: The humanoid robot (Unitree G1) demonstrates a diverse set of loco-manipulation tasks under teleoperation: (a) r</em></p></div>
 <ul>
 <li><strong>저지연 달성</strong>: 기존 200ms 대비 50ms의 end-to-end 지연시간 달성 (약 4배 개선)</li>
 <li><strong>Velocity feedforward 제어</strong>: 저수준 제어 응답시간을 약 100ms 단축하는 velocity feedforward 항 도입</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실제 작업 검증</strong>: 탁구 발리, 저글링, 프리스비 캐칭 등 고속 반응이 필요한 실제 조작 작업 수행 증명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Tracking objectives for humans and humanoids under VR and</em></p></div>
 <ul>
 <li>선택된 추체(extremity) 링크 6개의 SE(3) 포즈를 tracking objectives로 정의</li>
 <li>anthropomorphic compensation, kinematic sufficiency, input modality compatibility를 원칙으로 Cartesian-space mapping operator M 설계</li>

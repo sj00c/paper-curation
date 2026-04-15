@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Toru Lin, Yu Zhang, Qiyang Li, Haozhi Qi, Brent Yi, Sergey Levine, Jitendra Malik | <strong>날짜</strong>: 2024-04-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2404.16823" target="_blank">https://arxiv.org/abs/2404.16823</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. An overview of our system setup and learned visuotactile skills on four tasks. (a) Our hardware and teleoperatio</em></p></div>
 <p>VR 기반 저가형 텔레오퍼레이션 시스템 HATO와 촉각 센서가 장착된 의족 손을 활용하여 양손 다중지 조작 로봇이 시각-촉각 데이터로부터 인간 수준의 민첩한 조작 기술을 학습하는 시스템을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 의료용 의족 손(Psyonic Ability Hand)을 연구용으로 재목적화하고, VR 컨트롤러(Meta Quest 2) 기반의 직관적 매핑을 통해 HATO 시스템을 개발했으며, 멀티모달 데이터 처리와 end-to-end 정책 학습을 수행했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Illustration of learned skills on four different tasks. Our learned policies complete long-horizon and high-prec</em></p></div>
 <ul>
 <li><strong>저가형 텔레오퍼레이션 시스템</strong>: Meta Quest 2의 VR 컨트롤러를 활용한 HATO로 30분~2시간의 데이터로 효과적인 정책 학습 가능</li>
 <li><strong>하드웨어 혁신</strong>: 촉각 센서 장착 의족 손을 로봇 연구용으로 재목적화하여 6개의 손가락 DoF와 6개의 fingertip 촉각 센서 제공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>ablation study</strong>: 촉각과 시각이 정책 성공률과 견고성을 크게 향상시키며, 수백 개의 시연만으로 효과적 학습 가능함을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Fingertip Tactile Sensor Layout. There are six tactile</em></p></div>
 <ul>
 <li>Meta Quest 2 컨트롤러 pose → UR5e 팔의 end-effector pose 매핑</li>
 <li>grip button → 4개 손가락 파워 그래스 제어, thumbstick → 엄지 2-DoF 관절 위치 제어</li>

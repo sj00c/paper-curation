@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shilong Liu, Zhaoyang Zeng, Tianhe Ren, Feng Li, Hao Zhang, Jie Yang, Qing Jiang, Chunyuan Li, Jianwei Yang, Hang Su, Jun Zhu, Lei Zhang | <strong>날짜</strong>: 2023-03-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.05499" target="_blank">https://arxiv.org/abs/2303.05499</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: The framework of Grounding DINO. We present the overall framework, a feature</em></p></div>
 <p>Grounding DINO는 Transformer 기반 detector DINO와 grounded pre-training을 결합하여 언어 입력(카테고리명 또는 referring expressions)으로 임의의 객체를 탐지하는 open-set object detector를 제시한다. 핵심은 언어와 비전 모달리티를 세 단계(feature enhancer, language-guided query selection, cross-modality decoder)에서 긴밀히 융합하는 것이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -82,6 +84,8 @@ a { color: #A62018; }
 <li><strong>실용적 응용</strong>: Stable Diffusion과 협업하여 image editing application 실현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Extending closed-set detectors to open-set scenarios.</em></p></div>
 <ul>
 <li>Feature enhancer: self-attention, text-to-image cross-attention, image-to-text cross-attention을 stacking하여 neck 단계(phase A)에서 feature 강화</li>
 <li>Language-guided query selection: 언어 정보를 활용한 query initialization (phase B)으로 detection head 입력 최적화</li>

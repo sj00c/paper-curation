@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zixing Lei, Zibo Zhou, Sheng Yin, Yueru Chen, Qingyao Xu, Weixin Li, Yunhong Wang, Bowei Tang, Wei Jing, Siheng Chen | <strong>날짜</strong>: 2025-10-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.01708" target="_blank">https://arxiv.org/abs/2510.01708</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Visual illustration of PolySim. The pink star denotes</em></p></div>
 <p>PolySim은 여러 이질적인 시뮬레이터를 병렬로 활용하여 훈련하는 플랫폼으로, 단일 시뮬레이터의 귀납적 편향을 완화하고 현실 세계로의 전이 갭을 줄인다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PolySim은 다중 시뮬레이터로부터 병렬 환경을 동시에 실행하여 dynamics 수준의 domain randomization을 구현하고, 훈련-시뮬레이션 분리 아키텍처와 unified simulator router를 통해 이질적 시뮬레이터를 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Success rate on seen and unseen simulators under</em></p></div>
 <ul>
 <li><strong>이론적 분석</strong>: PolySim이 매개변수 수준 무작위화보다 시뮬레이터 귀납적 편향에 대해 더 타이트한 상한을 제공함을 증명</li>
 <li><strong>Sim-to-sim 성능</strong>: MuJoCo 평가에서 IsaacSim 베이스라인 대비 52.8% 실행 성공률 개선</li>
 <li><strong>Zero-shot 현실 배포</strong>: 추가 fine-tuning 없이 실제 Unitree G1 humanoid에 성공적으로 배포</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: System overview of the proposed parallel multi-simulator RL framework (Mode III). Left (Training Framework):</em></p></div>
 <ul>
 <li>Training-Simulation Isolation: TrainClient와 SimServer를 분리하여 시뮬레이터와 RL 학습자를 독립적으로 실행하고 GPU 리소스 경쟁을 완화</li>
 <li>Simulator Router: 이질적 시뮬레이터의 장면 매개변수, API, 수치 규범을 통일하여 invariant semantics 제공</li>

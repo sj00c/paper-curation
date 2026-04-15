@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jean Pierre Sleiman, He Li, Alphonsus Adu-Bredu, Robin Deits, Arun Kumar, Kevin Bergamin, Mohak Bhardwaj, Scott Biddlestone, Nicola Burger, Matthew A. Estrada, Francesco Iacobelli, Twan Koolen, Alexander Lambert, Erica Lin, M. Eva Mungai, Zach Nobles, Shane Rozen-Levy, Yuyao Shi, Jiashun Wang, Jakob Welner, Fangzhou Yu, Mike Zhang, Alfred Rizzi, Jessica Hodgins, Sylvain Bertrand, Yeuhi Abe, Scott Kuindersma, Farbod Farshidian | <strong>날짜</strong>: 2026-01-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.00401" target="_blank">10.48550/arXiv.2602.00401</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Hardware deployment of ZEST across diverse data sources and robot morphologies. In order of appearance from top </em></p></div>
 <p>ZEST는 다양한 데이터 소스(모션캡처, 비디오, 애니메이션)에서 강화학습으로 정책을 훈련하여 휴머노이드 및 사족 로봇에 zero-shot 배포하는 동작 모방 프레임워크이다. 적응적 샘플링과 모델 기반 보조력(assistive wrench) 커리큘럼을 결합하여 복잡한 다중 접촉 동작을 학습할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ZEST는 적응적 샘플링으로 어려운 동작 세그먼트에 집중하고, model-based assistive wrench를 통한 자동 커리큘럼으로 장기 동작을 가능하게 하며, 중등도 domain randomization만으로 시뮬레이션 학습 후 하드웨어에 zero-shot 배포한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Hardware deployment of ZEST across diverse data sources and robot morphologies. In order of appearance from top </em></p></div>
 <ul>
 <li><strong>다양한 데이터 소스 통합</strong>: 고품질 MoCap, 노이즈 있는 모노큘러 비디오, 물리 제약 없는 애니메이션을 단일 프레임워크로 처리</li>
 <li><strong>복잡한 다중 접촉 기술</strong>: Atlas에서 army crawl, breakdancing 등 동적 다중 접촉 스킬을 MoCap으로 학습</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>단순화된 배포 파이프라인</strong>: 접촉 레이블, 참조/관측 윈도우, 상태 추정기, 광범위한 보상 설계 회피</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Overview of ZEST, which consists of three main stages. (1) Reference data: A diverse set of motions from MoCap, </em></p></div>
 <ul>
 <li><strong>적응적 샘플링(Adaptive Sampling)</strong>: 훈련 중 어려운 동작 세그먼트에 집중하여 샘플 효율성 향상</li>
 <li><strong>Model-based Assistive Wrench 커리큘럼</strong>: 정책 학습 초기 단계에서 모델 기반 보조력을 제공하여 점진적으로 난이도 상향</li>

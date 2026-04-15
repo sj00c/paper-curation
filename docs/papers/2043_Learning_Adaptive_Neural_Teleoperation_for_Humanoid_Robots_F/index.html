@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sanjar Atamuradov | <strong>날짜</strong>: 2025-11-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.12390" target="_blank">https://arxiv.org/abs/2511.12390</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Neural teleoperation policy architecture. The network takes VR controller poses (14-dim), joint states (28-</em></p></div>
 <p>VR 텔레오퍼레이션 시스템에서 기존의 IK+PD 파이프라인을 reinforcement learning으로 학습한 신경망 정책으로 대체하여, 외력 적응, 부드러운 궤적 생성, 사용자 선호도 적응을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: IK 시연으로부터의 행동 복제(behavioral cloning)로 초기화한 후, PPO를 사용하여 추적(tracking), 부드러움(smoothness), 에너지 정규화 보상과 함께 미세 조정하고, force curriculum을 적용하여 외력 강건성을 학습시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3 provides a detailed breakdown of performance</em></p></div>
 <ul>
 <li><strong>추적 오차 감소</strong>: IK 기준선 대비 34% 낮은 tracking error 달성</li>
 <li><strong>동작 부드러움 개선</strong>: 45% 더 부드러운 궤적 생성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다양한 작업 검증</strong>: pick-and-place, 문열기, bimanual coordination 등에서 성공적 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Neural teleoperation policy architecture. The network takes VR controller poses (14-dim), joint states (28-</em></p></div>
 <ul>
 <li>VR 입력 인코더: 초기 그립 자세 대비 상대 변환을 인코딩하여 VR 좌표계 독립성 확보</li>
 <li>Proprioception 인코더: 관절 위치, 속도, 이전 액션의 5-timestep 히스토리를 MLP로 처리</li>

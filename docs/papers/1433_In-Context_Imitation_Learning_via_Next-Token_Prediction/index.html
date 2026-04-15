@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Letian Fu, Huang Huang, Gaurav Datta, Lawrence Yunliang Chen, William Chung-Ho Panitch, Fangchen Liu, Hui Li, Ken Goldberg | <strong>날짜</strong>: 2024-08-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2408.15980" target="_blank">https://arxiv.org/abs/2408.15980</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: In-Context Robot Transformer (ICRT): A robot foundation model with in-context imitation learning capabilities. I</em></p></div>
 <p>로봇이 새로운 작업을 수행할 때 정책 파라미터 업데이트 없이 입력 단계에서 제공된 문맥 정보를 해석하는 In-Context Robot Transformer (ICRT)를 제안한다. ICRT는 감각-운동 궤적에 대한 자동회귀 다음-토큰 예측을 통해 훈련 없이 새로운 작업을 유연하게 실행할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ICRT는 긴 문맥 윈도우를 가진 인과 transformer를 사용하여 이미지 관찰, 로봇 상태, 액션으로 구성된 감각-운동 궤적에 대해 직접 다음-토큰 예측을 수행한다. 훈련 시간에 다중 작업 데이터셋과 동일한 초기 관찰에서 다양한 작업이 가능한 데이터 구성을 활용하여 문맥 내 학습을 유도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Example inference pipeline of ICRT on the task of picking</em></p></div>
 <ul>
 <li><strong>ICRT 모델 제안</strong>: 긴 문맥 윈도우와 간단한 다음-토큰 예측 손실만을 사용하여 실제 로봇에서 미세 조정 없는 문맥 내 학습을 달성</li>
 <li><strong>다중 작업 데이터셋 및 훈련 패러다임</strong>: 문맥 내 능력을 지원하는 새로운 로봇 데이터셋과 훈련 방법론 제공</li>
 <li><strong>일반화 성능</strong>: 프롬프트와 훈련 데이터와 다른 환경 구성에서도 미지 작업을 수행 가능하며, 다중 작업 환경에서 기존 최첨단 다음-토큰 예측 모델 (Octo, OpenVLA)을 크게 능가</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Method Overview: (Left) We encode camera observations with a pre-trained vision transformer. Additionally, we en</em></p></div>
 <ul>
 <li>Pre-trained vision model (예: CLIP 또는 유사 모델)을 이용한 카메라 관찰 인코딩</li>
 <li>인코딩된 이미지, 로봇 고유 상태(proprioceptive state), 액션을 토큰화하여 sequence 구성</li>

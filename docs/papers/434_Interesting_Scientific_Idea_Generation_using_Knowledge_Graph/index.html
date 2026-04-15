@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xuemei Gu, Mario Krenn | <strong>날짜</strong>: 2025-01-07 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2405.17044" target="_blank">10.48550/arXiv.2405.17044</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>SciMuse 시스템이 지식 그래프와 GPT-4를 활용한 연구 아이디어 생성 프로세스</em></p></div>
 <p>본 논문은 5,800만 개의 과학 논문으로부터 구축한 지식 그래프(Knowledge Graph)와 대규모언어모델(LLM)을 결합하여 개인화된 연구 아이디어를 생성하고, 100명 이상의 연구그룹리더들의 평가를 통해 AI가 생성한 연구 아이디어의 흥미도를 예측하는 SciMuse 시스템을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,11 +77,15 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 58백만 개 논문의 지식 그래프 구축, (2) 110명의 연구그룹리더를 대상으로 4,451개 개인화 아이디어 평가, (3) 지식 그래프 특성과 흥미도 간의 상관관계 분석, (4) 지도학습 신경망과 영점-샷(zero-shot) LLM 기반 흥미도 예측 모델 개발.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>막스플랑크 연구소의 110명 연구그룹리더들의 광범위한 평가 데이터</em></p></div>
 <ol>
 <li><strong>대규모 인적 평가 데이터 확보</strong>: 54개 막스플랑크 연구소의 110명 연구그룹리더(평균 60편 발표, 3,760회 인용)로부터 4,451개 평가 응답 수집 - 기존 평가 규모의 10배 이상.</li>
 <li><strong>흥미 있는 아이디어 생성 비율</strong>: 전체 아이디어의 약 25%가 4-5점(흥미 있음) 평가를 받았으며, 394개는 매우 흥미로운(5점) 것으로 평가됨.</li>
 <li><strong>높은 예측 정확도</strong>: 지식 그래프 특성만 사용한 지도학습 신경망과 텍스트 없이 수행한 GPT 영점-샷 예측 모두 유의미한 예측 성능을 달성하여, 인적 평가 데이터 접근 불가 상황에서도 유용함을 입증.</li>
-</ol></div>
+</ol>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>지식 그래프 특성과 연구자 흥미도 간의 상관관계 분석</em></p></div></div>
 <div class="section-box"><h2>How</h2>
 <ul>
 <li><strong>지식 그래프 구축</strong>: RAKE 알고리즘으로 244만 개 논문의 제목/초록에서 후보 개념 추출 → GPT, 위키피디아, 인간 주석을 통한 정제 → 총 123,128개 개념 확정 → 5,800만 개 논문에서 개념 간 동시 출현 정보를 통해 엣지(edge) 생성.</li>

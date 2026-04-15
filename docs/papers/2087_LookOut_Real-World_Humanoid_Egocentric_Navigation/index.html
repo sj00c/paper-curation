@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Boxiao Pan, Adam W. Harley, C. Karen Liu, Leonidas J. Guibas | <strong>날짜</strong>: 2025-08-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.14466" target="_blank">https://arxiv.org/abs/2508.14466</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Problem formulation. Given a posed egocentric video (black-outlined frustums, with frames shown in detail on t</em></p></div>
 <p>Project Aria 안경을 이용한 데이터 수집 파이프라인과 함께, 동적 장애물이 있는 실제 환경에서 egocentric 비디오로부터 미래의 6D 헤드 포즈(위치 및 회전)를 예측하는 LookOut 모델을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3D latent feature를 시간 축으로 집계하여 정적/동적 환경 제약을 모델링하는 LookOut 프레임워크를 제안하고, Project Aria 안경을 활용한 간편한 데이터 수집 파이프라인으로 4시간 분량의 Aria Navigation Dataset(AND)을 구축했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. LookOut architecture. Given a posed egocentric video, we obtain frame-wise DINO features with the pre-trained </em></p></div>
 <ul>
 <li><strong>6D 헤드 포즈 예측 과제 정의</strong>: 동적 장애물(보행자, 차량) 환경에서의 헤드 위치 및 회전 동시 예측 문제를 처음 정식화</li>
 <li><strong>LookOut 모델</strong>: DINO feature를 3D로 투영한 후 시간 축 집계를 통해 기하학적·의미론적 제약을 모델링, 대기/속도 저하/우회/주변 관찰 등 인간다운 네비게이션 행동 학습</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Aria Navigation Dataset(AND)</strong>: 18개 밀집 지역에서 4시간 분량의 현실 네비게이션 데이터, 다양한 상황과 네비게이션 행동 포함</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. LookOut architecture. Given a posed egocentric video, we obtain frame-wise DINO features with the pre-trained </em></p></div>
 <ul>
 <li>Per-frame DINO feature를 camera pose 정보와 함께 3D 공간으로 투영(unproject)</li>
 <li>시간에 따라 3D feature volume을 누적하여 동적 장면 인식 및 환경 제약 모델링</li>

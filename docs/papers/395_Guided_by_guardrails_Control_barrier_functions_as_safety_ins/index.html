@@ -75,6 +75,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: CBF의 이론적 안전 보장을 RL 프레임워크에 "가드레일(guardrail)"로 통합하여 안전 제약을 동적으로 강제</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: 세 가지 안전 가드레일 변형 - 필터(초록색), 보상 기반(주황색), 감쇠(파란색)</em></p></div>
 <ol>
 <li><strong>세 가지 CBF-RL 통합 방식 제안</strong>:
 <ul>
@@ -91,6 +93,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: 유니사이클 모델의 장애물 회피 CBF 구성 - 로봇 축을 따라 ε만큼 이동한 점 x'를 사용</em></p></div>
 <p><strong>기술적 구현</strong>:</p>
 <ul>
 <li><strong>CBF 공식화</strong>: 전통적 장애물 회피 CBF h = ||x-x₀||² - δ²의 상대 차수(relative degree) 문제를 해결하기 위해, 로봇 축을 따라 ε만큼 이동한 점 x'를 기준으로 h = ||x'-x₀||² - (δ+ε)² 형태로 개선</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Romerik Lokossou, Birhanu Shimelis Girma, Ozan K. Tonguz, Ahmed Biyabani | <strong>날짜</strong>: 2025-09-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.11388" target="_blank">https://arxiv.org/abs/2509.11388</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Return of Classical SAC versus Quantum SAC in the Walker2d-v4</em></p></div>
 <p>이 논문은 Soft Actor-Critic(SAC) 알고리즘을 parameterized quantum circuit으로 구현한 quantum deep reinforcement learning(QDRL)을 humanoid robot navigation 작업에 적용하여, 고차원 상태-행동 공간에서 고전적 RL보다 92% 더 적은 스텝으로 8% 높은 성능을 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Parameterized quantum circuit을 이용한 hybrid quantum-classical SAC 구조를 MuJoCo의 Humanoid-v4와 Walker2d-v4 환경에 구현하고, 고전적 SAC와의 성능 비교를 통해 quantum advantage를 검증했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Return of Classical SAC versus Quantum SAC in the Walker2d-v4</em></p></div>
 <ul>
 <li><strong>학습 효율성 향상</strong>: Quantum SAC가 classical SAC 대비 92% 더 적은 스텝(228.36 vs 246.40 평균 리턴)으로 8% 높은 성능 달성</li>
 <li><strong>고차원 환경 확장</strong>: 기존 wheeled robot/robotic arm에서 humanoid robot으로 QDRL 적용 범위 확대</li>
 <li><strong>Hybrid 아키텍처 검증</strong>: Parameterized quantum circuit과 classical deep RL의 결합이 복잡한 navigation 작업에서 실질적 이점 제공 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Quantum deep learning model with parametrized quantum circuit</em></p></div>
 <ul>
 <li>OpenAI Gym의 Walker2D-v4 및 Humanoid-v4 환경을 시뮬레이션 벤치마크로 사용</li>
 <li>Soft Actor-Critic(SAC) 알고리즘의 policy와 value network을 parameterized quantum circuit으로 구현</li>

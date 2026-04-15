@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Guangzhi Xiong, Eric Xie, Corey Williams, Myles Kim, Amir Hassan Shariatmadari | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/10.24963/ijcai.2025/873" target="_blank">10.24963/ijcai.2025/873</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>TruthHypo 벤치마크의 개요: 데이터셋 구성, 작업 공식화, 진실성 평가</em></p></div>
 <p>본 논문은 과학 가설 생성에서 대규모 언어모델(LLM)의 진실성을 평가하기 위한 TruthHypo 벤치마크와 환각(hallucination) 탐지를 위한 KnowHD 프레임워크를 제시한다. LLM이 그럴듯해 보이지만 과학적으로 부정확한 가설을 생성하는 문제를 체계적으로 연구하기 위한 포괄적 접근법을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 생의학 지식 그래프와 도메인 특화 코퍼스 기반의 TruthHypo 벤치마크 구축, (2) 생성 과정의 추론 단계를 분석하여 환각을 탐지하는 KnowHD 프레임워크 개발.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>KnowHD 환각 탐지 프레임워크 개요</em></p></div>
 <ol>
 <li><strong>TruthHypo 벤치마크</strong>: PubTator 3.0의 생의학 지식 그래프를 기반으로 3가지 관계 유형(Chemical & Gene, Disease & Gene, Gene & Gene)에 대해 2024년 이전/이후 데이터로 시간적 분할을 수행한 1,209~547개 인스턴스의 평가 데이터셋 구축. 실제 과학 발견의 시간 진행을 모의(simulate)함.</li>
 <li><strong>KnowHD 프레임워크</strong>: 가설과 추론 사슬을 원자적 주장(atomic claims)으로 분해하여 기존 지식과의 부합도를 세밀하게 평가. groundedness 점수가 진실한 가설을 필터링하는 효과적인 메트릭임을 입증.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>인간 평가 검증</strong>: 개방형 가설 생성 과제에서 KnowHD의 과학적 타당성 판별 능력과 과학 발견 가속화 효용을 인간 평가자가 확인.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>groundedness 수준에 따른 평균 정확도. 가설이 groundedness 점수별로 그룹화됨</em></p></div>
 <p><strong>데이터셋 구성</strong>:</p>
 <ul>
 <li>PubTator 3.0에서 추출한 생의학 지식 그래프의 관계 엣지(edge)를 사용</li>

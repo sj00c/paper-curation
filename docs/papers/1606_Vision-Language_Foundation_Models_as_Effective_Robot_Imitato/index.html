@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xinghang Li, Minghuan Liu, Hanbo Zhang, Cunjun Yu, Jie Xu, Hongtao Wu, Chilam Cheang, Ya Jing, Weinan Zhang, Huaping Liu, Hang Li, Tao Kong | <strong>날짜</strong>: 2023-11-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2311.01378" target="_blank">https://arxiv.org/abs/2311.01378</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Comparison among RoboFlamingo and existing vision-language manipulation solutions.</em></p></div>
 <p>RoboFlamingo는 공개 소스 VLM인 OpenFlamingo를 기반으로 하여 로봇 조작 정책을 구축하는 프레임워크로, 시각-언어 이해와 의사결정을 분리하고 최소한의 미세조정으로 높은 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RoboFlamingo는 사전학습된 VLM을 단계별 시각-언어 이해에만 활용하고, 명시적 정책 헤드를 통해 순차 정보를 모델링하며, 언어 조건부 조작 데이터셋에서만 모방 학습으로 미세조정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Ablation studies on the ABCD →D setting.</em></p></div>
 <ul>
 <li><strong>CALVIN 벤치마크 성과</strong>: 이전 최첨단 방법 대비 2배의 성능 향상을 달성</li>
 <li><strong>효율성</strong>: 단일 GPU 서버에서 훈련 및 평가 가능한 저비용 솔루션</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>인사이트</strong>: 다양한 사전학습된 VLM의 조작 작업 성능 비교 분석</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The illustration of the proposed RoboFlamingo framework. The Flamingo backbone models</em></p></div>
 <ul>
 <li>OpenFlamingo 기반의 사전학습된 비전 및 언어 인코더 활용</li>
 <li>각 의사결정 단계에서 관찰과 지시를 독립적으로 처리</li>

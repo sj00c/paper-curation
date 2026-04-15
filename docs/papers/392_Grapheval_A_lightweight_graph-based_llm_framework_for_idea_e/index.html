@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tao Feng, Yihang Sun, Jiaxuan You (UIUC, Peking University) | <strong>날짜</strong>: 2025 (ICLR 2025) | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2503.12600v2" target="_blank">arXiv:2503.12600v2</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>GraphEval는 아이디어를 관점(viewpoint) 노드로 분해하여 그래프 구조로 변환함으로써 LLM 기반 평가의 편향과 불안정성을 해결한다.</em></p></div>
 <p>복잡한 연구 아이디어를 이해 가능한 관점들로 분해하고 이를 그래프로 연결하여 라벨 전파(label propagation) 또는 그래프 신경망(GNN)을 통해 견고하고 편향 없는 아이디어 평가를 수행하는 경량 프레임워크다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 복잡한 아이디어를 LLM으로 분해하여 관점-노드를 생성하고, 관계 추출(relation extraction)과 BERT 유사도를 통해 노드를 연결하여 관점-그래프를 구성한 후, 라벨 전파 또는 GNN으로 평가를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>동일 아이디어에 대해 프롬프트 미세 변화만으로도 평가 점수가 78→85→75로 크게 변한다.</em></p></div>
 <ol>
 <li><strong>견고성 향상</strong>: 기존 LLM 방식 대비 F1 점수 최소 14% 향상, 프롬프트 민감도 제거</li>
 <li><strong>계산 효율성</strong>: 경량 모델 사용으로 낮은 계산 비용과 API 비용으로 고성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>공개 자원</strong>: 재현 가능성을 위해 코드 공개 (GitHub)</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>GraphEval의 전체 파이프라인: 아이디어 분해→관점-그래프 생성→라벨 전파/GNN 기반 평가</em></p></div>
 <h3>GraphEval-LP (Label Propagation)</h3>
 <ul>
 <li><strong>학습 불필요</strong>: 그래프 기반 라벨 전파 알고리즘으로 학습된 노드에서 미학습 노드로 품질 라벨 전파</li>

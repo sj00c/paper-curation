@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mohit Shridhar, Lucas Manuelli, Dieter Fox | <strong>날짜</strong>: 2022-09-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2209.05451" target="_blank">https://arxiv.org/abs/2209.05451</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. PERACT Overview. PERACT is a language-conditioned behavior-cloning agent trained with supervised learning to d</em></p></div>
 <p>본 논문은 Perceiver Transformer를 사용하여 voxelized 3D 관찰과 이산화된 행동으로 6-DoF 로봇 조작을 수행하는 언어 조건화 행동 복제 에이전트 PerAct를 제안한다. 이 formulation은 2D 이미지 기반 접근법보다 훨씬 효율적이고 강력한 구조적 prior를 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RGB-D voxel 패치의 sequence를 Perceiver Transformer로 인코딩하고, 다음 최선의 voxel 행동(이산화된 병진, 회전, gripper 상태)을 detection 문제로 해결한다. 언어 목표와 voxel 관찰을 함께 인코딩하여 multi-task 학습을 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Language-Conditioned Manipulation Tasks: PERACT is a language-conditioned multi-task agent capable of imitatin</em></p></div>
 <ul>
 <li><strong>시뮬레이션 성능</strong>: RLBench 18개 작업(249개 변형)에서 image-to-action 에이전트보다 34배, 3D ConvNet 기준선보다 2.8배 성능 향상</li>
 <li><strong>실제 로봇 검증</strong>: Franka Panda에서 7개 실제 작업(18개 변형)을 단 53개 시연으로 학습 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>단일 멀티태스크 모델</strong>: 명시적 segmentation, pose, memory 없이 다양한 조작 기술 학습</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. PERACT Overview. PERACT is a language-conditioned behavior-cloning agent trained with supervised learning to d</em></p></div>
 <ul>
 <li>RGB-D 카메라로부터 voxelized 3D 관찰 생성 (100×100×100 격자)</li>
 <li>언어 목표를 token sequence로 인코딩</li>

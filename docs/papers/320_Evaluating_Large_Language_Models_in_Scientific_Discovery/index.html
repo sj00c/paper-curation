@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, Henrique Pondé de Oliveira Pinto, Jared Kaplan, Harrison Edwards, Yuri Burda, Nicholas Joseph, Greg Brockman, Alex Ray, Raul Puri, Gretchen Krueger, Michael Petrov, Heidy Khlaaf, Girish Sastry, Pamela Mishkin, Brooke Chan, Scott Gray, Nick Ryder | <strong>날짜</strong>: 2021 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>HumanEval 데이터셋에서 모델 크기에 따른 통과율. 단일 샘플 생성 시 Codex-12B는 28.8%, 100개 샘플 생성 후 단위 테스트 통과 샘플 선택 시 77.5% 달성</em></p></div>
 <p>GitHub 코드로 미세조정된 GPT 기반의 Codex 모델을 제시하고, 새로운 벤치마크인 HumanEval을 통해 함수형 정확성(functional correctness) 기반의 평가 체계를 제안한 논문이다. Codex는 도큐스트링(docstring)으로부터 Python 함수를 생성하는 능력에서 기존 모델들을 크게 능가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 164개의 수작업 프로그래밍 문제로 구성된 HumanEval 벤치마크 제작, (2) 단위 테스트 통과 여부로 평가하는 pass@k 메트릭 제안, (3) GitHub 코드로 GPT 모델 미세조정하여 Codex 개발, (4) 안전한 코드 실행 환경(sandbox) 구축.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>HumanEval 데이터셋의 3개 문제 예시와 Codex-12B가 생성한 정답. 도큐스트링만으로 함수를 완전히 구현하는 예시 제시</em></p></div>
 <ol>
 <li><strong>성능 향상</strong>: 단일 샘플 기준 Codex-12B는 28.8% 해결률(GPT-3: 0%, GPT-J: 11.4%), 100개 샘플 생성 시 Codex-S는 77.5% 달성. 모델 크기 확대(300M → 12B)에 따른 성능 스케일링 확인.</li>
 <li><strong>메트릭 기여</strong>: pass@k 메트릭의 불편 추정량(unbiased estimator) 제안으로 샘플링 기반 평가의 분산(variance) 문제 해결. 함수형 정확성이 BLEU 점수보다 신뢰성 높음을 입증.</li>

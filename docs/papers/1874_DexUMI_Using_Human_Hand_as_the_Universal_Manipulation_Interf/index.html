@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>:  | <strong>URL</strong>: <a href="https://dex-umi.github.io/" target="_blank">https://dex-umi.github.io/</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We introduce UniDex, a robot foundation suite for heterogeneous dexterous hand embodiments. We first curate Un</em></p></div>
 <p>UniDex는 인간의 손 동영상으로부터 수집한 데이터를 기반으로 다양한 손가락 로봇 팔(dexterous hand)을 통일된 방식으로 제어하는 기초 모델 스위트(foundation suite)이다. UniDex-Dataset, FAAS 통일 행동 공간, UniDex-VLA 정책 모델, 그리고 human-robot 공동 학습을 지원하는 UniDex-Cap 캡처 시스템으로 구성된다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 egocentric RGB-D 동영상을 human-in-the-loop retargeting으로 로봇 실행 가능한 궤적으로 변환하여 UniDex-Dataset을 구축했다. FAAS 통일 행동 공간으로 이질적 손 구조를 매핑하고, 3D pointcloud 기반 VLA 정책을 pre-train 후 task-specific fine-tuning한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. We introduce UniDex, a robot foundation suite for heterogeneous dexterous hand embodiments. We first curate Un</em></p></div>
 <ul>
 <li><strong>UniDex-Dataset</strong>: 8종 dexterous hand(6-24 DoFs)에 걸친 9M 프레임, 50K+ 궤적의 통일된 대규모 사전학습 데이터셋 구축</li>
 <li><strong>FAAS & UniDex-VLA</strong>: 기능 중심의 통일 행동 공간으로 손 간 전이를 가능하게 하며, 실로봇 도구 사용 작업에서 81% 평균 진행도 달성(π0 대비 38%→81%)</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Human-Robot Co-training</strong>: UniDex-Cap 휴대용 캡처 시스템으로 변환된 인간 데이터가 로봇 데이터를 부분 대체하여 post-training 비용 감소 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. The figure illustrates the complete human–robot trans-</em></p></div>
 <ul>
 <li>Egocentric human video 기반 hand trajectory 추출 및 human-in-the-loop retargeting으로 fingertip 궤적 정렬(역기구학+대화형 조정)</li>
 <li>3D pointcloud 기반 표현으로 시각적 차이 최소화(인간 손 마스킹, 로봇 손 재부착)</li>

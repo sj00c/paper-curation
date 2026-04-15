@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: G. Brixi, Matthew G. Durrant, Jerome Ku, Michael Poli, Greg Brockman | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/10.1101/2025.02.18.638918" target="_blank">10.1101/2025.02.18.638918</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: 원핵생물 생명에 걸친 게놈 파운데이션 모델 사전학습. (A) 단일 뉴클레오타이드 해상도의 게놈 수열 모델은 규제 DNA 및 중심 원리의 다른 양식(단백질, 코딩 RNA, 논코딩 RNA) 내의 모든 정보를 학습할 수 있음. (B) StripedHyena는 장문 수열용 심층 신호 처리 아키텍처. (C) 박테리아 및 바이러스 게놈으로 사전학습된 70억 파라미터 Evo 모델.</em></p></div>
 <p>Evo는 131 킬로베이스(kb) 문맥 길이를 가진 70억 파라미터 게놈 파운데이션 모델로, 단일 뉴클레오타이드 해상도에서 분자 규모부터 전체 게놈 규모까지 DNA 수열의 예측 및 생성을 가능하게 한다. StripedHyena 아키텍처를 기반으로 하여 기존 방법보다 수백 배 긴 650 kb 길이의 코딩 수열을 생성할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,10 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 심층 신호 처리(deep signal processing) 기반 StripedHyena 하이브리드 아키텍처를 사용하여 (1) Hyena 층과 주의(attention) 층의 결합, (2) 바이트 레벨 단일 뉴클레오타이드 토큰화, (3) 2.7백만 개 원핵생물 및 박테리오파지 게놈 학습.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: Evo의 영-샷(zero-shot) 함수 예측 성능. 단백질, 논코딩 RNA, 규제 수열에 대한 예측.</em></p></div>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>그림 3: CRISPR-Cas 수열에 대한 미세조정으로 단백질-RNA 복합체의 생성적 설계 가능.</em></p></div>
 <ol>
 <li><strong>영-샷 함수 예측</strong>:
 <ul>
@@ -97,6 +103,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+</div>
 <ul>
 <li><strong>아키텍처</strong>: StripedHyena는 29개의 하이에나(Hyena) 층과 3개의 다중-헤드 주의(multi-head attention) 층의 하이브리드 구조
 <ul>

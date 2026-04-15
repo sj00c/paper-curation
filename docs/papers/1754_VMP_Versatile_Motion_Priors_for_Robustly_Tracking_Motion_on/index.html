@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>:  | <strong>URL</strong>: <a href="https://la.disneyresearch.com/publication/vmp-versatile-motion-priors-for-robustly-tracking-motion-on-physical-characters/" target="_blank">https://la.disneyresearch.com/publication/vmp-versatile-motion-priors-for-robustly-tracking-motion-on-physical-characters/</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of the proposed versatile humanoid control framework. (A) Scalable</em></p></div>
 <p>본 논문은 인간의 동작 시연으로부터 학습하여 휴머노이드 로봇이 자연스럽고 민첩한 동작을 수행하고, diffusion model 기반의 온라인 최적화를 통해 학습 중 보지 못한 다양한 작업을 제로샷으로 해결할 수 있는 BeyondMimic 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 첫째, 고전역학 기반의 신중한 로봇 제어 모델링과 최소한의 domain randomization으로 compact한 reward 함수(3개 정규화 항 + 통합 작업 reward)를 구성하여 scalable motion tracking을 달성한다. 둘째, 다양한 원자적 기술들을 diffusion model로 학습한 후 classifier guidance를 통해 테스트 시점에 새로운 목표에 대한 온라인 최적화를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Diverse motion tracking policies deployed on a real humanoid robot. We demonstrate</em></p></div>
 <ul>
 <li><strong>Scalable motion tracking</strong>: 단일 setup과 shared hyperparameters로 aerial cartwheel, spin-kick, flip-kick, sprinting 등 다양한 민첩한 동작을 human-like 성능으로 구현</li>
 <li><strong>Versatile task composition</strong>: state-action co-diffusion model을 활용하여 학습 중 보지 못한 waypoint navigation, joystick teleoperation, obstacle avoidance 등을 제로샷으로 해결</li>

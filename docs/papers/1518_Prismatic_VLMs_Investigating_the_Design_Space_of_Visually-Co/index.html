@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siddharth Karamcheti, Suraj Nair, Ashwin Balakrishna, Percy Liang, Thomas Kollar, Dorsa Sadigh | <strong>날짜</strong>: 2024-02-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2402.07865" target="_blank">https://arxiv.org/abs/2402.07865</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Prismatic VLMs.</em> Through rigorous experiments ex-*</p></div>
 <p>Visually-Conditioned Language Models (VLMs)의 설계 공간을 체계적으로 탐색하여 핵심 설계 결정이 모델 성능에 미치는 영향을 분석하고, 표준화된 평가 스위트와 최적화된 학습 코드, 그리고 InstructBLIP과 LLaVa v1.5를 능가하는 Prismatic VLMs를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 12개 벤치마크로 구성된 표준화된 평가 스위트(VQA, 객체 지역화, 환각 감지 등)를 구축하고, 최적화 절차, 시각 표현, 언어 모델, 학습 스케일 등 4개의 핵심 설계 축을 따라 VLM을 체계적으로 탐색한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Prismatic VLMs.</em> Through rigorous experiments ex-*</p></div>
 <ul>
 <li><strong>표준화된 평가 스위트</strong>: Visual Question Answering 4개, 객체 지역화 4개, 도전 과제 4개로 구성된 12개 벤치마크를 통해 VLM의 세밀한 능력을 평가할 수 있는 체계를 제공</li>
 <li><strong>최적화된 학습 코드베이스</strong>: PyTorch와 FSDP를 기반으로 한 모듈식 코드베이스로 20% 더 빠른 학습 속도를 달성하며, 시각 및 언어 백본을 쉽게 교체 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>설계 인사이트</strong>: 다단계 학습 절차 제거 가능(20-25% 계산 비용 감소), CLIP과 DINOv2 같은 다중 시각 백본 융합의 효과 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Exploring VLM Design Axes. We explore four key design axes for developing VLMs: 1) optimization procedure, 2) </em></p></div>
 <ul>
 <li>시각 표현(ViT, CLIP, DINOv2), 시각-언어 프로젝터, 언어 모델로 구성된 표준 VLM 아키텍처 채택</li>
 <li>LLaVa v1.5 데이터 혼합(558K 캡셔닝 + 665K 명령어 튜닝 샘플)을 사용하여 통제된 실험 수행</li>

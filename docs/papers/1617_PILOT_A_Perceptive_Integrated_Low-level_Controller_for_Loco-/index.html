@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xinru Cui, Linxi Feng, Yixuan Zhou, Haoqi Han, Zhe Liu, Hesheng Wang | <strong>날짜</strong>: 2026-01-24 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2601.17440" target="_blank">10.48550/arXiv.2601.17440</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Method overview of PILOT. We propose a unified single-stage reinforcement learning framework that seamlessly int</em></p></div>
 <p>PILOT는 humanoid robot의 loco-manipulation을 위한 통합 단계 RL 프레임워크로, 지각 기반 locomotion과 전신 제어를 단일 policy로 통합하여 비정형 지형에서 안정적인 작업 실행을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Cross-modal context encoder로 proprioceptive features와 LiDAR 기반 elevation map을 fusion하고, Mixture-of-Experts 구조로 다양한 motor skill을 조정하여 통합된 perceptive loco-manipulation controller를 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. Real-world Experiments. PILOT successfully executes object transport tasks across challenging terrains. The robo</em></p></div>
 <ul>
 <li><strong>통합 프레임워크</strong>: 단일 policy로 perception-aware locomotion과 large-workspace whole-body control을 seamlessly 통합</li>
 <li><strong>다중 모달 인식</strong>: Attention 기반 multi-scale perception encoder로 정확한 foot placement와 terrain awareness 강화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 성능</strong>: Unitree G1 humanoid robot에서 stairs와 high steps 같은 복잡 지형에서 superior stability와 command tracking precision 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Visualization of expert activation across six motion modes. The</em></p></div>
 <ul>
 <li>Robot-centric LiDAR 기반 elevation map으로 주변 지형 정보 캡처</li>
 <li>Prediction 기반 proprioceptive feature와 attention 기반 perceptive representation을 fusion하는 cross-modal context encoder 설계</li>

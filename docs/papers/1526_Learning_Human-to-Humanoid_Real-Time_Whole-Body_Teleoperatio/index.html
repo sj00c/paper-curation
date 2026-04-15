@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tairan He, Zhengyi Luo, Wenli Xiao, Chong Zhang, Kris Kitani, Changliu Liu, Guanya Shi | <strong>날짜</strong>: 2024-03-07 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.04436" target="_blank">https://arxiv.org/abs/2403.04436</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <p>RGB 카메라만을 이용하여 reinforcement learning 기반의 실시간 전신 텔레오퍼레이션을 humanoid 로봇에서 구현하는 H2O 프레임워크를 제시한다. 대규모 인간 동작 데이터셋을 sim-to-data 프로세스로 정제하여 시뮬레이션에서 학습한 후 제로샷 sim-to-real 전이로 실제 로봇에서 동작시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 먼저 SMPL 파라메트릭 인간 모델을 humanoid에 맞게 fitting하고, 역기구학으로 인간 동작을 humanoid 관절로 retargeting한 후, privileged 정보에 접근 가능한 motion imitator로 feasible한 동작만 필터링하는 sim-to-data 프로세스를 수행한다. 이후 광범위한 domain randomization으로 robust한 tracking 정책을 훈련하고 sim-to-real 전이를 통해 실제 로봇에 배포한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <ul>
 <li><strong>Sim-to-data 프로세스</strong>: Privileged motion imitator를 이용하여 대규모 인간 동작 데이터셋을 자동으로 정제하여 humanoid-compatible 모션 데이터셋을 생성</li>
 <li><strong>Whole-body tracking 정책</strong>: Domain randomization을 적용하여 걷기, 뛰기, 차기, 권투, 밀기, 손흔들기 등 다양한 동작을 추적하는 단일 RL 정책 학습</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>복합 작업 성공</strong>: 유모차 밀기, 상자 잡기 및 배치, 공 차기 등 상호작용 기반의 복합 작업 실시간 수행 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Overview of H2O: (a) Retargeting (Section IV): H2O first aligns the SMPL body model to a humanoid’s structure</em></p></div>
 <ul>
 <li>SMPL 인간 모델을 H1 humanoid 로봇의 joint 구조와 크기에 맞게 fitting하여 파라메트릭 표현 생성</li>
 <li>역기구학(IK)을 통해 SMPL의 인간 pose를 humanoid의 joint angles로 retargeting</li>

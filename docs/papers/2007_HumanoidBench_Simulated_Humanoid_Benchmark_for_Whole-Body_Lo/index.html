@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Carmelo Sferrazza, Dun-Ming Huang, Xingyu Lin, Youngwoon Lee, Pieter Abbeel | <strong>날짜</strong>: 2024-03-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.10506" target="_blank">https://arxiv.org/abs/2403.10506</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1:</em></p></div>
 <p>HumanoidBench는 이족 로봇의 전신 조작과 이동 능력을 평가하기 위한 시뮬레이션 벤치마크로, 손가락이 있는 손과 다양한 27개의 도전적인 작업을 포함한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MuJoCo 기반의 시뮬레이션 환경에서 Unitree H1 이족 로봇과 두 개의 Shadow Hand를 사용하여 15개의 조작 작업과 12개의 이동 작업을 포함한 벤치마크를 구축하고, 최신 RL 알고리즘과 계층적 학습 방식을 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: HumanoidBench manipulation task suite. We devise 15 benchmarking whole-body manipulation tasks that cover a</em></p></div>
 <ul>
 <li><strong>포괄적인 벤치마크 환경</strong>: 61차원 행동 공간과 75 DoF를 가진 고차원 이족 로봇의 전신 조작과 이동 작업을 통합한 첫 번째 벤치마크 제공</li>
 <li><strong>다양한 작업 스위트</strong>: 패키지 언로딩, 선반 재정렬, 미로 탐색 등 15개의 조작 작업과 12개의 이동 작업으로 로봇의 종합적인 능력을 평가</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>공개 소스 및 확장성</strong>: 여러 이족 로봇 모델(Unitree H1, G1, Agility Robotics Digit)과 다양한 엔드 이펙터를 지원하는 개방형 플랫폼 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Example egocentric visual (top-left) and whole-body</em></p></div>
 <ul>
 <li>MuJoCo 물리 엔진을 사용하여 정확한 역학 시뮬레이션 구현</li>
 <li>Unitree H1 모델을 기본으로 하고 Shadow Hand 2개를 부착하여 높은 DoF의 시스템 구성</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chilam Cheang, Sijin Chen, Zhongren Cui, Yingdong Hu, Liqun Huang, Tao Kong, Hang Li, Yifeng Li, Yuxiao Liu, Xiao Ma, Hao Niu, Wenxuan Ou, Wanli Peng, Zeyu Ren, Haixin Shi, Jiawen Tian, Hongtao Wu, Xin Xiao, Yuyang Xiao, Jiafeng Xu, Yichu Yang | <strong>날짜</strong>: 2025-07-21 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.15493" target="_blank">https://arxiv.org/abs/2507.15493</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 Overview. GR-3 is able to learn from three types of data: vision-language data, robot trajectory data,</em></p></div>
 <p>GR-3는 vision-language-action (VLA) 모델로, 웹 규모 vision-language 데이터와 로봇 궤적 데이터의 co-training을 통해 일반화 능력, 효율적 미세조정, 장기 지평 작업 수행 능력을 갖춘 범용 로봇 정책을 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: GR-3는 flow-matching을 이용한 action 예측, web-scale vision-language 데이터와의 co-training, task status auxiliary supervision, VR 기반 인간 궤적 데이터의 효율적 미세조정을 결합하며, ByteMini 양팔 모바일 로봇 플랫폼을 통해 실제 환경에서 검증한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 Capabilities. GR-3 strictly follows instructions and is capable of understanding unseen instructions involving</em></p></div>
 <ul>
 <li><strong>일반화 능력</strong>: 미학습 객체, 환경, 추상 개념(크기, 공간관계, 상식)을 포함한 out-of-distribution 지시사항을 정확히 따른다.</li>
 <li><strong>효율적 적응</strong>: 객체당 단 10개의 인간 궤적으로 신규 객체에 빠르고 비용 효율적으로 적응한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>우수한 성능</strong>: 기존 SOTA 기준 π₀를 다양한 도전적 작업에서 일관되게 초과 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3 The GR-3 Model. GR-3 is co-trained on both robot trajectories and vision-language data with a flow-matching</em></p></div>
 <ul>
 <li>Pre-trained VLM (Qwen2.5-VL-3B-Instruct)을 backbone으로 하고 action diffusion transformer를 통해 k-length action chunk를 flow-matching으로 예측</li>
 <li>RMSNorm을 attention/FFN 선형층 이후에 적용하여 training 안정성 및 언어 추종 능력 향상</li>

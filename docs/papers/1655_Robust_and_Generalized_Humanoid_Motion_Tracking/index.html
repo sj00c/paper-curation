@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yubiao Ma, Han Yu, Jiayin Xie, Changtai Lv, Qiang Luo, Chi Zhang, Yunpeng Yin, Boyang Xing, Xuemei Ren, Dongdong Zheng | <strong>날짜</strong>: 2026-01-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2601.23080" target="_blank">10.48550/arXiv.2601.23080</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed whole-body control pipeline. A history encoder extracts a dynamics embedding from</em></p></div>
 <p>휴머노이드 로봇의 일반적인 전신 제어를 위해 dynamics-conditioned command aggregation 프레임워크를 제안하며, 인과적 temporal encoder와 multi-head cross-attention을 결합하여 노이즈가 있는 참조 동작에 강건하게 대응한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -83,6 +85,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 배포</strong>: Unitree G1 휴머노이드 로봇에서 안정적인 장기간 추적 및 다운스트림 애플리케이션(조이스틱 구동 로코모션) 성공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed whole-body control pipeline. A history encoder extracts a dynamics embedding from</em></p></div>
 <ul>
 <li>Causal temporal encoder를 이용하여 recent proprioception ([gravity direction, angular velocity, joint positions/velocities, previous action])에서 compact dynamics embedding 추출</li>
 <li>Multi-head cross-attention 메커니즘으로 현재 dynamics embedding을 query로 하여 command window의 contextual reference targets을 동적으로 집계</li>

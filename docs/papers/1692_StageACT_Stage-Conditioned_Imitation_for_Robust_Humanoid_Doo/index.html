@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Moonyoung Lee, Dong Ki Kim, Jai Krishna Bandi, Max Smith, Aileen Liao, Ali-akbar Agha-mohammadi, Shayegan Omidshafiei | <strong>날짜</strong>: 2025-09-18 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.13200" target="_blank">10.48550/arXiv.2509.13200</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: The StageACT framework combines stage-level guidance with low-</em></p></div>
 <p>StageACT는 휴머노이드 로봇의 도어 오픈 작업을 위해 저수준 정책에 작업 단계(task stage) 정보를 조건으로 추가한 단계-조건부 모방 학습 프레임워크를 제안하며, 부분 관찰성 환경에서 강건성을 크게 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간의 직관적 전략에서 영감을 얻어 도어 오픈 작업을 접근, 악수, 래치 해제, 밀기 등의 단계로 분해하고, 저수준 정책을 이산적 작업 단계 입력으로 조건화하여 부분 관찰성을 해결한다. 단계 정보는 동일한 관찰로부터 다양한 행동을 구분하고 실패 시 이전 단계로의 복귀를 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Autonomous door opening by the G1 humanoid robot in a real-world office. Time-synchronized front (top) and back </em></p></div>
 <ul>
 <li><strong>첫 휴머노이드 자율 로코-조작</strong>: 외부 센싱이나 특권적 도어 정보 없이 인간 시연만으로 훈련된 휴머노이드 도어 오픈 정책의 최초 시연</li>
 <li><strong>성능 향상</strong>: 미시청 도어에서 55% 성공률을 달성하여 최고 기준선 대비 2배 이상 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>경량 메커니즘</strong>: 간단한 단계 조건화가 장 지평선 로코-조작에서 강력한 효과를 발휘함을 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the whole-body teleoperation setup for the G1 humanoid</em></p></div>
 <ul>
 <li>Apple Vision Pro 기반 전신 원격 조종으로 Unitree G1 휴머노이드에서 도어 오픈 시연 수집 (상체와 하체 분리 제어로 자연스러운 인터페이스 제공)</li>
 <li>각 시연을 approaching, grasping, unlatching, pushing 등의 이산 단계로 라벨링</li>

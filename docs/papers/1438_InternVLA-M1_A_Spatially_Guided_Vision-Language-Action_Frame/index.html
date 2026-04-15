@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xinyi Chen, Yilun Chen, Yanwei Fu, Ning Gao, Jiaya Jia, Weiyang Jin, Hao Li, Yao Mu, Jiangmiao Pang, Yu Qiao, Yang Tian, Bin Wang, Bolun Wang, Fangjing Wang, Hanqing Wang, Tai Wang, Ziqin Wang, Xueyuan Wei, Chao Wu, Shuai Yang, Jinhui Ye, Junqiu Yu, Jia Zeng, Jingjing Zhang, Jinyu Zhang, Shi Zhang, Feng Zheng, Bowen Zhou, Yangkun Zhu | <strong>날짜</strong>: 2025-10-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.13778" target="_blank">https://arxiv.org/abs/2510.13778</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. InternVLA-M1 integrates spatial grounding into the vision–language–action training pipeline.</em></p></div>
 <p>InternVLA-M1은 공간 그라운딩을 시각-언어-행동 학습의 중심 연결고리로 활용하여, 지시 따르기 로봇의 확장 가능한 일반 지능을 구현한 통합 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: InternVLA-M1은 2.3M 공간 추론 데이터로 '어디서' 행동할지 결정하는 VLM planner와 plug-and-play spatial prompting으로 '어떻게' 행동할지 결정하는 action expert를 이중 감독(dual-supervision) 방식으로 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of InternVLA-M1. InternVLA-M1 adopts a spatially guided two-stage training</em></p></div>
 <ul>
 <li><strong>SimplerEnv 벤치마크</strong>: Google Robot에서 +14.6%, WidowX에서 +17%의 성공률 향상을 달성하며 box, point, trace 예측에서 강력한 공간 추론 능력 입증</li>
 <li><strong>Pick-and-Place 확장성</strong>: 244K 합성 에피소드로 200개 작업과 3000+ 객체 대상 6.2% 평균 성능 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>장기 추론</strong>: reasoning-intensive 시나리오에서 기존 방법(GR00T, π₀) 대비 10% 이상 우월</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of InternVLA-M1. InternVLA-M1 adopts a spatially guided two-stage training</em></p></div>
 <ul>
 <li>Qwen2.5-VL-3B-instruct를 multimodal encoder로 활용하여 공간 prior를 학습하는 VLM planner 구성</li>
 <li>Diffusion Policy 기반 action expert(DINOv2 + state encoder)로 embodiment-specific 제어 신호 생성</li>

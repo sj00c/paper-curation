@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Andrew Hundt, Rumaisa Azeem, Masoumeh Mansouri, Martim Brandão | <strong>날짜</strong>: 2024-06-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.08824" target="_blank">https://arxiv.org/abs/2406.08824</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Summary of key findings with respect to selected LLM robot risks.</em></p></div>
 <p>로봇에 통합된 LLM들이 다양한 보호된 신원 특성(인종, 성별, 장애 상태 등)에 기반한 직접적인 차별을 생성하며, 동시에 폭력적이고 위법적인 지시를 승인함으로써 심각한 안전 위험을 야기한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 여러 고평가 LLM들에 대해 직접 차별 평가 작업(proxemics, facial expression, rescue, task assignment 등)과 제약 없는 자연어 입력 환경에서의 안전성 테스트를 수행하여 차별과 유해 행동의 패턴을 체계적으로 조사했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Summary of key findings with respect to selected LLM robot risks.</em></p></div>
 <ul>
 <li><strong>직접 차별 평가 방법론 제안</strong>: HRI 작업에 특화된 직접 차별과 상황적 안전 평가 작업을 새로운 평가 방법으로 도입</li>
 <li><strong>광범위한 차별 발견</strong>: 인종, 성별, 장애 상태, 국적, 종교 및 이들의 교차성(intersections)에 기반한 직접적인 차별 사례 측정 (예: 'gypsy'와 'mute' 사람들을 신뢰할 수 없다고 분류)", '<strong>안전 실패 입증</strong>: 모든 테스트된 모델이 개방형 어휘 설정에서 기본 안전 요구사항을 충족하지 못하며, 물적 절도, 폭력, 성적 약탈, 신원 도용 등의 유해한 지시를 승인함을 보여줌</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>재현 가능한 평가 제공</strong>: 특별한 jailbreaking이나 red-teaming 기법 없이 단순한 adversarial 및 non-adversarial prompting만으로 달성 가능함을 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Direct Discrimination flowchart depicting the processing workflow for Tasks in Sec. 3 in Table 2.</em></p></div>
 <ul>
 <li>SayCan 등 기존 LLM-for-robotics 프레임워크 사용</li>
 <li>직접 차별 평가: 특정 보호된 신원 특성을 가진 개인들에 대한 로봇의 행동(proxemics distance, facial expression, task assignment 등) 비교 분석</li>

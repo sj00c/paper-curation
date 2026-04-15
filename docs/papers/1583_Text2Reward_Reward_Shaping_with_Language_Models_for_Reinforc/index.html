@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tianbao Xie, Siheng Zhao, Chen Henry Wu, Yitao Liu, Qian Luo, Victor Zhong, Yanchao Yang, Tao Yu | <strong>날짜</strong>: 2023-09-20 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2309.11489" target="_blank">https://arxiv.org/abs/2309.11489</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of TEXT2REWARD of three stages: Expert Abstraction provides an abstraction</em></p></div>
 <p>LLM을 활용하여 자연어로 기술된 목표로부터 자동으로 dense reward function을 생성하고 형성하는 data-free 프레임워크 Text2Reward를 제시한다. 생성된 reward code는 해석 가능하고 실행 가능한 프로그램 형태로, 기존의 inverse RL이나 sparse reward 기반 방법들보다 넓은 범위의 작업을 지원한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM에 natural language instruction, 환경의 Pythonic 추상화 표현, background knowledge, few-shot examples을 입력하여 executable reward code를 생성한다. 코드 실행 피드백으로 구문/런타임 오류를 자동 수정하고, 정책 학습 후 human feedback으로 reward code를 반복 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Learning curves on MANISKILL2 under zero-shot and few-shot reward generation settings,</em></p></div>
 <ul>
 <li><strong>조작 작업 성능</strong>: ManiSkill2와 MetaWorld의 17개 작업 중 13개에서 생성된 reward code가 전문가 작성 코드와 동등하거나 우수한 성공률과 수렴 속도 달성</li>
 <li><strong>새로운 운동 행동 학습</strong>: MuJoCo 환경에서 6개의 새로운 locomotion behavior를 94% 이상의 성공률로 학습</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>높은 해석성</strong>: 생성된 reward가 코드 형태로 명확히 읽고 이해할 수 있음</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An overview of TEXT2REWARD of three stages: Expert Abstraction provides an abstraction</em></p></div>
 <ul>
 <li>Pythonic 클래스 기반 환경 추상화로 LLM이 객체 상태와 호출 가능 함수를 명확히 이해하도록 표현</li>
 <li>NumPy/SciPy 등 기존 패키지의 함수 정보와 사용 예시를 background knowledge로 제공</li>

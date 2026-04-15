@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhenyu Jiang, Yuqi Xie, Kevin Lin, Zhenjia Xu, Weikang Wan, Ajay Mandlekar, Linxi Fan, Yuke Zhu | <strong>날짜</strong>: 2024-10-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.24185" target="_blank">https://arxiv.org/abs/2410.24185</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: DexMimicGen Overview. DexMimicGen offers an efficient pipeline</em></p></div>
 <p>DexMimicGen은 소수의 인간 시연으로부터 simulation에서 자동으로 대규모 궤적 데이터를 생성하여 양손 dexterous 로봇 조작 학습을 위한 imitation learning 데이터 수집 병목을 해결하는 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DexMimicGen은 per-arm 기반 subtask 분할, 동기화 전략, 순서 제약 메커니즘을 도입하여 parallel, coordination, sequential 세 가지 유형의 양손 조작 subtask를 처리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: DexMimicGen Overview. DexMimicGen offers an efficient pipeline</em></p></div>
 <ul>
 <li><strong>자동 데이터 생성 시스템</strong>: 60개의 인간 시연으로부터 21K개의 생성된 데모를 9개의 simulation 환경에서 생성</li>
 <li><strong>양손 조정 메커니즘</strong>: Asynchronous per-arm 실행, 동기화, 순서 제약을 통해 independent, coordinated, sequential subtask 처리 가능</li>
 <li><strong>실제 배포 검증</strong>: Real-to-sim-to-real 파이프라인을 통해 can sorting 작업에서 90% 성공률 달성 (인간 시연만 사용시 0%)</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: DexMimicGen Workflow. Left: segment source demonstrations for each arm through manually defined heuristics or hu</em></p></div>
 <ul>
 <li>각 팔에 대해 독립적으로 subtask를 분할하는 per-arm 분할 전략 적용</li>
 <li>Coordination subtask에서 두 팔의 정렬을 위한 동기화 메커니즘 구현</li>

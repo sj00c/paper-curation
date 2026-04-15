@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ho Jae Lee, Se Hwan Jeon, Sangbae Kim | <strong>날짜</strong>: 2025-07-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.04140" target="_blank">https://arxiv.org/abs/2507.04140</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our limb-level multi-agent reinforcement learning framework with CAM regularization. Separate actor-</em></p></div>
 <p>인간의 팔 스윙 운동에서 영감을 받아, centroidal angular momentum (CAM) 추적 보상을 통해 다리와 팔을 별도의 에이전트로 취급하는 multi-agent RL 프레임워크를 제시하여 휴머노이드 로봇의 협응 제어를 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Centralized Training with Decentralized Execution (CTDE) 패러다임 하에서 팔과 다리 에이전트는 기저 상태와 CAM만 공유하는 분산형 배우를 가지며, 중앙화된 비평가는 전역 정보에 접근하여 CAM 추적 및 감쇠 보상으로 팔 운동을 명시적으로 유도한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: (a) Comparison of total vertical CAM between our method</em></p></div>
 <ul>
 <li><strong>CAM 기반 보상 설계</strong>: 생역학적 연구에 기초한 centroidal angular momentum 추적 및 감쇠 보상이 자연스러운 팔 스윙과 안정적인 보행을 유도한다.</li>
 <li><strong>Multi-agent RL 프레임워크</strong>: 팔과 다리를 별도 에이전트로 취급하면서 CAM을 통해 암묵적으로 결합하는 CTDE 기반 구조로 수렴 속도와 성능을 향상시킨다.</li>
 <li><strong>하드웨어 검증</strong>: 시뮬레이션과 실제 휴머노이드 플랫폼에서 평지 보행, 불규칙 지형, 계단 오르기 등 다양한 작업에서 강건한 성능을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our limb-level multi-agent reinforcement learning framework with CAM regularization. Separate actor-</em></p></div>
 <ul>
 <li>Centroidal momentum matrix (CMM)를 통해 전체 신체 동역학을 CAM과 centroidal linear momentum (CLM)으로 나타낸다.</li>
 <li>팔 에이전트와 다리 에이전트의 분리된 actor-critic 네트워크 구조를 구성하며, 각 actor는 로컬 관찰값만 사용한다.</li>

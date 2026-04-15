@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hongzhe Bi, Lingxuan Wu, Tianwei Lin, Hengkai Tan, Zhizhong Su, Hang Su, Jun Zhu | <strong>날짜</strong>: 2025-07-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.23523" target="_blank">https://arxiv.org/abs/2507.23523</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of H-RDT. A human-to-robotics diffusion transformer with two-stage training.</em></p></div>
 <p>H-RDT는 대규모 egocentric 인간 조작 데이터로 사전학습하고 모듈식 action encoder/decoder를 통해 다양한 로봇에 fine-tuning하는 두 단계 diffusion transformer 기반 접근법으로, 로봇 조작 학습을 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: H-RDT는 flow matching 기반 2B parameter diffusion transformer로 338k 인간 조작 에피소드에서 먼저 사전학습하고, 모듈식 action encoder/decoder를 통해 다양한 로봇에 cross-embodiment fine-tuning한다. 이를 통해 통일된 human embodiment에서 학습한 manipulation knowledge를 diverse robot platform으로 효과적으로 전이시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Cross-embodiment multi-task performance on</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: simulation에서 training from scratch 대비 13.9%, real-world에서 40.5% 성능 향상을 달성하여 인간 manipulation 사전학습의 효과를 입증</li>
 <li><strong>최신 기술 초과</strong>: π0와 RDT 포함 기존 state-of-the-art 방법들을 bimanual robotic manipulation에서 능가</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>모듈식 전이 구조</strong>: 모듈식 action encoder/decoder 설계로 humanoid-specific 가정 없이 임의의 로봇 morphology로 일반화</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: H-RDT framework. Our approach consists of two main stages: (1) pre-training on large-scale human manipulation</em></p></div>
 <ul>
 <li><strong>두 단계 학습</strong>: (1) 대규모 egocentric human manipulation video(EgoDex)에서 diffusion transformer 사전학습, (2) 모듈식 action encoder/decoder를 통한 robot-specific cross-embodiment fine-tuning</li>
 <li><strong>Flow matching</strong>: 기존 diffusion 대비 향상된 안정성과 효율성을 제공하는 training paradigm 적용</li>

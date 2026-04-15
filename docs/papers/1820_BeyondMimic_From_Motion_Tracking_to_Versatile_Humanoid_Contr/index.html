@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiayuan Liao, Takara E. Truong, Xiaoyu Huang, Yuman Gao, Guy Tevet, Koushil Sreenath, C. Karen Liu | <strong>날짜</strong>: 2025-08-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.08241" target="_blank">https://arxiv.org/abs/2508.08241</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview of the proposed versatile humanoid control framework. (A) Scalable</em></p></div>
 <p>BeyondMimic은 human motion tracking을 통해 humanoid robot이 다양한 민첩한 동작을 학습하고, diffusion model 기반의 classifier guidance를 활용하여 학습 중에 만나지 않은 새로운 작업을 온라인 최적화로 해결할 수 있는 통합 제어 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 첫째, 고전역학 원리에 기반한 정확한 액추에이션 모델링과 시스템 구현으로 compact하고 원칙적인 RL 보상 함수를 개발하여 모든 동작에서 공유 가능한 하이퍼파라미터를 달성한다. 둘째, state-action co-diffusion model을 학습하여 classifier guidance를 통해 test 시점의 온라인 최적화로 미지 작업을 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Diverse motion tracking policies deployed on a real humanoid robot. We demonstrate</em></p></div>
 <ul>
 <li><strong>다양한 민첩한 동작의 통일된 학습</strong>: aerial cartwheels, spin-kicks, flip-kicks, sprinting을 포함한 광범위한 동작을 단일 설정과 공유 하이퍼파라미터로 최첨단 인간 수준의 성능으로 학습</li>
 <li><strong>온라인 최적화 기반의 작업 적응</strong>: motion inpainting, joystick teleoperation, obstacle avoidance 등 학습 중 만나지 않은 작업을 classifier guidance를 통해 zero-shot으로 해결</li>

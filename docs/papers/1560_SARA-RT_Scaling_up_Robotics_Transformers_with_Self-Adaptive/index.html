@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Isabel Leal, Krzysztof Choromanski, Deepali Jain, Avinava Dubey, Jake Varley, Michael Ryoo, Yao Lu, Frederick Liu, Vikas Sindhwani, Quan Vuong, Tamas Sarlos, Ken Oslund, Karol Hausman, Kanishka Rao | <strong>날짜</strong>: 2023-12-04 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2312.01990" target="_blank">https://arxiv.org/abs/2312.01990</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Robotics Transformer policies obtained via Self-Adaptive Robust Attention (SARA) in action for three different m</em></p></div>
 <p>SARA-RT는 Robotics Transformer를 on-robot 배포에 적합하도록 선형 주의(linear attention)로 변환하는 up-training 방법을 제시하여, quadratic 복잡도의 모델을 high quality 유지하면서 효율화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SARA(Self-Adaptive Robust Attention)는 선형 주의 함수 ϕ_f를 Gaussian 행렬 G로 전처리하여 개선하고, up-training이라는 새로운 fine-tuning 방법을 통해 사전학습된 모델을 선형 주의 버전으로 변환한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: VR navigation via VL attention models on Matterport environments ([21]). The top-down view of the scene is in th</em></p></div>
 <ul>
 <li><strong>RT-2 가속화</strong>: 5B 파라미터 vision-language-action 모델(sequence length ~200)을 선형 주의로 변환하면서 high quality 유지</li>
 <li><strong>Point Cloud Transformer 최적화</strong>: 대규모 point cloud(L ∈ [800, 4000])를 처리하는 PCT 정책 가속화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Zero-shot navigation 개선</strong>: VR navigation 환경에서 Gaussian 전처리를 통해 ReLU 및 exp variant의 성능 향상</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: VR navigation via VL attention models on Matterport environments ([21]). The top-down view of the scene is in th</em></p></div>
 <ul>
 <li>커널화(kernelization) 관점에서 kernel function K(x, y) = exp(x^⊤y)를 bi-linearization 가능한 형태로 표현</li>
 <li>ϕ_rand_f(z) = f(Gz) 형식으로 Gaussian 행렬 G를 사용한 randomized feature map 적용</li>

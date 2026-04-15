@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Rutav Shah, Shuijing Liu, Qi Wang, Zhenyu Jiang, Sateesh Kumar, Mingyo Seo, Roberto Martín-Martín, Yuke Zhu | <strong>날짜</strong>: 2025-09-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.09769" target="_blank">https://arxiv.org/abs/2509.09769</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. MIMICDROID enables few-shot learning for humanoid manipulation by training solely on human play</em></p></div>
 <p>MimicDroid는 인간의 자유로운 상호작용 비디오(human play videos)만을 학습 데이터로 사용하여 휴머노이드 로봇이 In-Context Learning(ICL)을 통해 새로운 조작 작업을 효율적으로 수행하도록 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 play 비디오에서 유사한 조작 패턴을 가진 궤적 쌍을 추출하여 Meta-ICL 훈련을 수행하고, 운동학적 유사성을 활용한 손목 자세 재타겟팅과 random patch masking을 적용하여 embodiment 간극을 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Overview of our simulation benchmark. We introduce a simulation benchmark to evaluate few-shot learning for</em></p></div>
 <ul>
 <li><strong>human play videos 기반 ICL</strong>: 원격조종 데이터 없이 순수하게 인간의 자유로운 상호작용 비디오만으로 휴머노이드의 In-Context Learning 능력을 습득하도록 함</li>
 <li><strong>시뮬레이션 벤치마크 제시</strong>: 8시간의 play 데이터로 구성된 세 가지 일반화 수준의 오픈소스 휴머노이드 조작 벤치마크 구축</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장성 입증</strong>: 학습 데이터 확대(64k→320k 프레임)에 따라 20% 성능 향상으로 데이터 확장성 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Method Overview. MIMICDROID performs meta-training for in-context learning (Meta-ICL) by constructing context-</em></p></div>
 <ul>
 <li>Human play 비디오에서 유사한 관찰-행동 관계를 가진 궤적 쌍을 자동으로 추출하여 context-target 쌍 구성</li>
 <li>Long-context Transformer 기반 정책 모델로 Meta-ICL 훈련: 한 궤적의 action을 다른 궤적에 condition하여 패턴 학습</li>

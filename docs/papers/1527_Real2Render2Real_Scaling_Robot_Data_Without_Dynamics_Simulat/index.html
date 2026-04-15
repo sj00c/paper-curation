@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Justin Yu, Letian Fu, Huang Huang, Karim El-Refai, Rares Andrei Ambrus, Richard Cheng, Muhammad Zubair Irshad, Ken Goldberg | <strong>날짜</strong>: 2025-05-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.09601" target="_blank">https://arxiv.org/abs/2505.09601</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Real2Render2Real generating robot training data for the task of “Put the Mug on the Coffee Maker”.</em></p></div>
 <p>Real2Render2Real (R2R2R)은 스마트폰으로 촬영한 3D 객체 스캔과 단일 인간 시연 영상으로부터 동역학 시뮬레이션이나 로봇 하드웨어 없이 대규모 로봇 훈련 데이터를 생성하는 파이프라인이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: R2R2R은 3D Gaussian Splatting (3DGS)으로 객체 기하학과 외관을 재구성하고, 비디오에서 6-DoF 객체 궤적을 추출한 후, 역 기구학(differential inverse kinematics)과 도메인 랜덤화로 다양한 로봇 실행을 합성하여 IsaacLab을 순수 렌더링 엔진으로 활용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Data Generation Efficiency and Average Policy Performance Across Manipulation Tasks.</em></p></div>
 <ul>
 <li><strong>동역학 시뮬레이션 제거</strong>: IsaacLab을 운동학만 존중하고 충돌 모델링을 비활성화한 렌더링 엔진으로만 사용하여 물리 모델링의 복잡성을 회피</li>
 <li><strong>단일 시연으로 150배 데이터 효율성</strong>: 1명의 인간 시연으로부터 생성된 R2R2R 데이터로 학습한 정책이 150개의 인간 텔레오퍼레이션 시연으로 학습한 정책과 동등한 성능 달성</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>강체 및 관절 객체 지원</strong>: 부분 수준 분해로 회전 관절 객체까지 처리 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Real2Render2Real generating robot training data for the task of “Put the Mug on the Coffee Maker”.</em></p></div>
 <ul>
 <li>스마트폰 다중 시점 촬영으로 객체 3D 스캔 획득</li>
 <li>인간 시연 비디오에서 6-DoF 객체 궤적 추출 (pose tracking)</li>

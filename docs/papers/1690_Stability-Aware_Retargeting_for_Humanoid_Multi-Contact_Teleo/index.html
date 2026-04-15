@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Stephen McCrory, Romeo Orsolino, Dhruv Thanki, Luigi Penco, Robert Griffin | <strong>날짜</strong>: 2025-10-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.04353" target="_blank">https://arxiv.org/abs/2510.04353</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Robot performing a teleoperated manipulation task, in</em></p></div>
 <p>휴머노이드 로봇의 다중 접촉 텔레오퍼레이션 중 안정성을 향상시키기 위해 Centroidal stability 기반 retargeting을 제안하며, Linear Program 민감도 분석을 통해 효율적으로 안정성 여유 기울기를 계산한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Centroidal stability region과 actuation 제약을 결합한 Linear Program을 통해 안정성 여유를 정의하고, LP 민감도 분석으로 접촉점과 자세에 대한 기울기를 해석적으로 계산하여 공유 제어 기반의 retargeting을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Robot performing a teleoperated manipulation task, in</em></p></div>
 <ul>
 <li><strong>효율적 기울기 계산</strong>: Linear Program 민감도 분석을 적용하여 centroidal stability region의 해석적 기울기를 도출하고 kHz 실시간 속도로 계산 가능</li>
 <li><strong>공유 제어 기법</strong>: 안정성 여유가 자세에 민감한 상황에서만 자동으로 활성화되는 지능형 retargeting으로 사용자 제어와 로봇 안정성의 균형 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 상관성 증명</strong>: 높은 안정성 여유가 충격 복원력과 관절 토크 여유 개선과 직접적으로 상관됨을 실험적으로 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: The 2d stability region encodes both actuation and friction</em></p></div>
 <ul>
 <li>Quasi-static CoM stability region을 Linear Program으로 공식화하고, actuation 제약 조건 J(q)^T_c f을 포함하여 관절 토크 한계 모델링</li>
 <li>LP 민감도 분석 성질(Eq. 5)을 적용하여 안정성 영역 꼭짓점 a<em>_i에 대한 접촉점 위치 p_k와 전신 자세 q의 기울기 ∇a</em>_i(p_k), ∇a*_i(q) 도출</li>

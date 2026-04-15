@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tairan He, Wenli Xiao, Toru Lin, Zhengyi Luo, Zhenjia Xu, Zhenyu Jiang, Jan Kautz, Changliu Liu, Guanya Shi, Xiaolong Wang, Linxi Fan, Yuke Zhu | <strong>날짜</strong>: 2024-10-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2410.21229" target="_blank">https://arxiv.org/abs/2410.21229</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HOVER enables versatile humanoid control with a unified</em></p></div>
 <p>HOVER는 키네매틱 위치 추적, 조인트 각도 추적, 루트 추적을 포함한 15개 이상의 제어 모드를 지원하는 통합 신경망 제어기로, 정책 증류를 통해 다양한 제어 모드를 단일 정책으로 통합하여 휴머노이드 로봇의 다목적 전신 제어를 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 전신 키네매틱 모션 모방을 모든 제어 모드의 공통 추상화로 삼아 MoCap 데이터로 학습한 Oracle 정책에서 정책 증류(policy distillation)를 통해 다중 모드를 지원하는 통합 정책을 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Comparison between prior work specialists (blue) and our</em></p></div>
 <ul>
 <li><strong>통합 다중 모드 제어기</strong>: 루트 추적, 조인트 각도 추적, 키네매틱 위치 추적을 포함한 15개 이상의 제어 모드를 단일 정책으로 지원</li>
 <li><strong>성능 향상</strong>: 개별 학습된 전문가 정책들보다 다중 모드 generalist 정책이 모든 제어 모드에서 우수한 성능을 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>시뮬레이션 및 실제 로봇 검증</strong>: ExBody, HumanPlus, H2O, OmniH2O 등 다양한 로봇 플랫폼에서 유효성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of HOVER distillation process. The HOVER policy is distilled from the Oracle policy through propriocept</em></p></div>
 <ul>
 <li>Goal-conditioned RL 프레임워크로 Oracle 정책을 MoCap 인간 모션 데이터에 대해 학습</li>
 <li>Mode mask와 sparsity mask를 통해 상체와 하체의 제어 목표를 독립적으로 활성화</li>

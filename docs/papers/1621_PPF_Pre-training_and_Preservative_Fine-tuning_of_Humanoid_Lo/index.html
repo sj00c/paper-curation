@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hyunyoung Jung, Zhaoyuan Gu, Ye Zhao, Hae-Won Park, Sehoon Ha | <strong>날짜</strong>: 2025-04-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.09833" target="_blank">https://arxiv.org/abs/2504.09833</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>본 연구는 모델 기반 제어기의 모방학습(Pre-training)과 강화학습을 결합하되, 모델 가정이 성립하는 상태에서만 정규화하는 MAR(Model-Assumption-based Regularization)을 통해 인간형 로봇의 보행 정책을 학습하는 PPF 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 연구는 ALIP 모델 기반 제어기의 상태 가정(일정한 높이, 수직 속도 0)의 위반 여부를 감지하여, 가정이 성립할 때만 모델 기반 제어기 행동으로의 정규화 강도를 조정하는 적응적 MAR을 제안한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>MAR 기반 적응 정규화</strong>: 모델 가정 위반 정도를 측정하여 동적으로 정규화 가중치를 조정함으로써 재앙적 망각 완화</li>
 <li><strong>고속 보행 달성</strong>: 시뮬레이션 및 실제 로봇(Digit)에서 1.5 m/s의 전진 속도 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>성능 개선</strong>: 기준 방법들 대비 높은 속도 추적 성능을 uneven 및 sloped 지형에서 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3.</em></p></div>
 <ul>
 <li>Pre-training 단계: MBC(ALIP 기반 발 배치 제어기 + 전신 역동역학 제어기)의 행동을 신경망 정책으로 모방</li>
 <li>Fine-tuning 단계: 강화학습을 통해 정책을 개선하되, 모델 가정 위반도(z ≠ z̄ 또는 ż ≠ 0 등)를 계산</li>

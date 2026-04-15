@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Fabian Schramm, Pierre Fabre, Nicolas Perrin-Gilbert, Justin Carpentier | <strong>날짜</strong>: 2025-11-24 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2511.19204" target="_blank">https://arxiv.org/abs/2511.19204</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Our reference-free sampling-based MPC framework</em></p></div>
 <p>본 논문은 사전정의된 보행 패턴이나 접촉 시퀀스 없이 MPPI 기반의 샘플링 기반 MPC 프레임워크를 제안하여 emergent locomotion을 실현한다. Cubic Hermite spline 파라미터화를 통해 위치와 속도 제어점을 동시에 최적화하여 실시간 CPU 기반 제어를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 cubic Hermite spline을 사용하여 위치와 속도 제어점을 동시에 샘플링하고, diffusion 기반 noise annealing 스케줄을 적용하며, PD 컨트롤러를 통해 추적한다. 고수준 목표에 기반한 참조 없는 비용 함수로 emergent 움직임을 발현시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Sequence illustrating the discovered walking gait on the Go2 quadruped.</em></p></div>
 <ul>
 <li><strong>실시간 CPU 기반 제어</strong>: 30개 샘플만으로 50 Hz 제어 주기를 달성하여 GPU 가속 제거</li>
 <li><strong>Emergent locomotion 발현</strong>: 트로팅, 갤로핑, 수직 자세 유지, 점프 등 다양한 보행 패턴을 참조 없이 자동 발견</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: Go2 사족보행 로봇에서 점프 0.55m 높이 달성 및 다양한 보행 패턴 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Comparison of spline parameterizations for the same</em></p></div>
 <ul>
 <li>Cubic Hermite spline 파라미터화: 각 노드에서 위치 θ^q_k와 속도 θ^v_k를 제어 변수로 설정하여 동적 일관성 강화</li>
 <li>MPPI 프레임워크: 현재 시퀀스에 Gaussian noise를 가하고 비용 평가 후 importance-weighted 평균으로 업데이트</li>

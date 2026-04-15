@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jiyuan Shi, Xinzhe Liu, Dewei Wang, Ouyang Lu, Sören Schwertfeger, Chi Zhang, Fuchun Sun, Chenjia Bai, Xuelong Li | <strong>날짜</strong>: 2025-04-19 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.14305" target="_blank">https://arxiv.org/abs/2504.14305</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The overview of ALMI. (a) In updating the upper-body policy πu, we sample adversarial</em></p></div>
 <p>인간형 로봇의 상반신과 하반신의 서로 다른 역할을 분리하여 학습하는 대적적 학습 프레임워크 ALMI를 제안하고, 시뮬레이션과 실제 로봇에서 강건한 보행과 정확한 모션 추적을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 하반신을 agent로, 상반신을 adversary로 하는 two-player zero-sum Markov game 기반의 대적적 학습을 통해 각 부위가 서로 다른 목표를 추구하면서도 Nash equilibrium으로 수렴하는 coordinated control을 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: The sim-to-real comparison of humanoid robot in tracking various motions.</em></p></div>
 <ul>
 <li><strong>ALMI 프레임워크</strong>: 상반신과 하반신을 분리하여 대적적으로 학습하는 novel framework 제안, Theorem 3.1을 통해 ε-approximate Nash equilibrium 수렴 보장</li>
 <li><strong>ALMI-X 데이터셋</strong>: 80K 이상의 궤적 데이터와 언어 설명을 포함한 첫 번째 대규모 전신 제어 데이터셋 구축, foundation model 학습 기반 제공</li>
 <li><strong>실험 검증</strong>: Unitree H1-2 로봇에서 robust locomotion과 precise motion tracking 달성, 시뮬레이션과 실제 로봇 간 sim-to-real 성공 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The overview of ALMI. (a) In updating the upper-body policy πu, we sample adversarial</em></p></div>
 <ul>
 <li>State space S를 상반신과 하반신이 공유하되, 각각 distinct action space Al과 Au를 가지도록 설계</li>
 <li>Lower body policy πl은 velocity command following reward rl을 최대화하면서 upper body의 disturbance에 견디도록 학습</li>

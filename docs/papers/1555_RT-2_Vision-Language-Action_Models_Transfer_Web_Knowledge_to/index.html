@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Anthony Brohan, Noah Brown, Justice Carbajal, Yevgen Chebotar, Xi Chen, Krzysztof Choromanski, Tianli Ding, Danny Driess, Avinava Dubey, Chelsea Finn, Pete Florence, Chuyuan Fu, Montse Gonzalez Arenas, Keerthana Gopalakrishnan, Kehang Han, Karol Hausman, Alexander Herzog, Jasmine Hsu, Brian Ichter, Alex Irpan, Nikhil Joshi, Ryan Julian, Dmitry Kalashnikov, Yuheng Kuang, Isabel Leal, Lisa Lee, Tsang-Wei Edward Lee, Sergey Levine, Yao Lu, Henryk Michalewski, Igor Mordatch, Karl Pertsch, Kanishka Rao, Krista Reymann, Michael Ryoo, Grecia Salazar, Pannag Sanketi, Pierre Sermanet, Jaspiar Singh, Anikait Singh, Radu Soricut, Huong Tran, Vincent Vanhoucke, Quan Vuong, Ayzaan Wahid, Stefan Welker, Paul Wohlhart, Jialin Wu, Fei Xia, Ted Xiao, Peng Xu, Sichun Xu, Tianhe Yu, Brianna Zitkovich | <strong>날짜</strong>: 2023-07-28 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2307.15818" target="_blank">https://arxiv.org/abs/2307.15818</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 | RT-2 overview: we represent robot actions as another language, which can be cast into text tokens and</em></p></div>
 <p>인터넷 규모의 데이터로 학습한 vision-language 모델을 로봇 제어에 직접 통합하여 end-to-end 로봇 정책을 학습하는 RT-2 모델을 제안한다. 로봇 액션을 텍스트 토큰으로 표현하여 VLM의 사전학습 이점을 활용하면서도 저수준의 로봇 제어를 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 기존 vision-language 모델을 로봇 궤적 데이터와 VQA 등의 웹 규모 작업으로 공동 미세조정하며, 로봇 액션을 텍스트 토큰으로 인코딩하여 자연어와 동일하게 훈련 데이터에 포함시킨다. 이를 통해 사전학습된 VLM 가중치를 활용하면서 새로운 파라미터 추가 없이 로봇 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2 | RT-2 is able to generalize to a variety of real-world situations that require reasoning, symbol</em></p></div>
 <ul>
 <li><strong>6k 평가 시험을 통한 광범위한 검증</strong>: 6000회의 로봇 평가를 통해 제안된 방법의 성능과 일반화 능력을 체계적으로 입증했다.</li>
 <li><strong>미학습 객체에 대한 현저한 일반화 개선</strong>: 로봇 훈련 데이터에 없는 새로운 객체에 대해 RT-2가 기존 방법보다 훨씬 높은 성공률을 달성한다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>체인오브소트를 통한 다단계 추론</strong>: 대체 망치로 사용할 돌을 선택하거나 피로한 사람을 위해 에너지 음료를 추천하는 등의 복잡한 의미론적 추론을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 | RT-2 overview: we represent robot actions as another language, which can be cast into text tokens and</em></p></div>
 <ul>
 <li>Vision Transformer(ViT) 기반 비전 인코더와 대규모 언어 모델 백본으로 구성된 기존 vision-language 모델 활용</li>
 <li>로봇 액션(translation, rotation 등)을 정수 토큰 시퀀스로 인코딩하여 텍스트 토큰처럼 처리</li>

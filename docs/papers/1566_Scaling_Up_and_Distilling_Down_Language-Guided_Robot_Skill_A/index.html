@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Huy Ha, Pete Florence, Shuran Song | <strong>날짜</strong>: 2023-07-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2307.14535" target="_blank">https://arxiv.org/abs/2307.14535</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Language-guided Skill Acquisition enables scalable robot learning. In the data generation stage, a LLM takes</em></p></div>
 <p>LLM 기반 고수준 계획과 sampling-based robot planner를 활용하여 언어-레이블 로봇 데이터 생성을 확장하고, 이를 diffusion policy를 통해 다중 작업 언어-조건 visuo-motor 정책으로 증류하는 로봇 스킬 획득 프레임워크를 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: LLM을 데이터 수집 정책으로 사용하여 작업을 재귀적으로 분해하고 6DoF 탐색 프리미티브로 grounding한 후, LLM이 추론한 성공 조건으로 자동 라벨링하고, 성공 궤적만을 필터링하여 multi-task diffusion policy로 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Benchmark. We validate our approach on a new multi-task benchmark addressing challenging long-horizon</em></p></div>
 <ul>
 <li><strong>대규모 자동 데이터 생성</strong>: LLM 기반 계획과 sampling-based planner의 조합으로 전문가 시연 없이 diverse하고 rich한 조작 궤적을 자동으로 생성</li>
 <li><strong>다중 작업 언어-조건 diffusion policy</strong>: single-task diffusion policy를 multi-task 언어-조건 설정으로 확장하여 robust한 closed-loop 제어 정책 학습</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>종합 벤치마크 구축</strong>: 장기 horizon(~800 제어 사이클), 상식 추론, 도구 사용, 직관적 물리를 요구하는 5개 도메인 18개 작업으로 구성된 새로운 다중 작업 벤치마크 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Language-Driven Robot Data Generation takes as input the task description and simulation state, and outputs</em></p></div>
 <ul>
 <li><strong>작업 분해</strong>: LLM이 자연어 작업 설명을 계층적 작업 트리로 재귀적으로 분해하여 단순화</li>
 <li><strong>Grounding</strong>: 분해된 작업을 motion planner, grasp sampler 등 6DoF 탐색 프리미티브의 시퀀스로 grounding</li>

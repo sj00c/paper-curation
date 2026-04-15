@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Punith Reddy Vanteddu, Davide Gorbani, Giuseppe L'Erario, Hosameldin Awadalla Omer Mohamed, Fabio Bergonti, Daniele Pucci | <strong>날짜</strong>: 2025-09-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.14935" target="_blank">https://arxiv.org/abs/2509.14935</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: CAD assemblies of the links being modified. 1: Jetpack Turbine Angle; 2: Jetpack Turbine offset distance; 3: Jet</em></p></div>
 <p>CAD 기반 설계-제어 공동 최적화 프레임워크를 통해 제트 추진 휴머노이드 로봇의 형태와 MPC 제어 파라미터를 동시에 최적화하여 비행 가능한 구성을 도출한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Design of Experiments를 통해 5,000개의 CAD 기반 모델을 생성하고, K-means 클러스터링으로 계산 비용을 줄인 후, 최소 저크 궤적에서 linearized momentum-based MPC의 성능을 평가하여 NSGA-II 알고리즘으로 형태와 제어 가중치를 공동 최적화한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5: Pareto front showing trade-off between tracking error</em></p></div>
 <ul>
 <li><strong>5,000개 기하학적 변형 모델의 체계적 생성</strong>: Design of Experiments를 통해 관절 길이, 제트 인터페이스 기하(각도, 오프셋), 질량 분포를 변경한 기하학적으로 다양하고 기계적으로 실현 가능한 설계를 생성하였으며, FEM 분석으로 구조적 타당성 검증</li>
 <li><strong>CAD 기반 자동 특성 추출</strong>: CAD 조립으로부터 질량, 무게중심, 링크 관성 등을 자동으로 추출하여 동역학 모델에 직접 연결</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>비행 가능한 휴머노이드 구성의 도출</strong>: 검증된 제어 파라미터와 함께 실행 가능한 항공 휴머노이드 구성 집합을 제시하여 설계 선택의 체계적 방법 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Minimum jerk trajectory interpolated over spatially</em></p></div>
 <ul>
 <li>iRonCub-Mk3 베이스 모델로부터 8개 기하학적 매개변수(제트팩 터빈 각도, 오프셋, 높이, 전완길이, 어깨 너비, 엉덩이 거리, 발목 링크 높이, 발 길이)를 선정하여 Design of Experiments 통해 5,000개 설계 생성</li>
 <li>각 모델을 CAD 조립으로 구성하여 구조적 타당성 확보 및 시뮬레이션 도구와의 호환성 보장</li>

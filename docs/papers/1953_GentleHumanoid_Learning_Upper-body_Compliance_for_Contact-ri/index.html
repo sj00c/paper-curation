@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qingzhou Lu, Yao Feng, Baiyu Shi, Michael Piseno, Zhenan Bao, C. Karen Liu | <strong>날짜</strong>: 2025-11-06 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.04679" target="_blank">10.48550/arXiv.2511.04679</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: GentleHumanoid learns a universal whole-body control policy with upper-body compliance and tunable force limits.</em></p></div>
 <p>GentleHumanoid는 impedance control을 whole-body motion tracking 정책에 통합하여 humanoid 로봇의 상체 compliance를 학습하는 프레임워크이다. 이는 human motion data에서 샘플링한 spring-based formulation을 통해 resistive contact와 guiding contact를 통일적으로 모델링한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: unified spring-based formulation으로 driving force(motion tracking)와 interaction force(contact)를 결합하고, human motion dataset에서 샘플링한 완전한 posture를 이용하여 kinematically consistent interaction forces를 생성한다. Task-adjustable force thresholds를 통해 safety를 보장한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: GentleHumanoid learns a universal whole-body control policy with upper-body compliance and tunable force limits.</em></p></div>
 <ul>
 <li><strong>통합 impedance control 프레임워크</strong>: motion tracking과 compliance를 동시에 달성하는 whole-body humanoid 제어 정책 개발</li>
 <li><strong>Unified interaction force modeling</strong>: resistive contact(surface pressing)와 guiding contact(human push/pull)를 단일 spring-based formulation으로 통합</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Comprehensive evaluation</strong>: gentle hugging, sit-to-stand assistance, balloon handling 등 diverse tasks에서 baseline 대비 peak contact force 감소 및 task success 유지 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview framework. (a) Reference dynamics: impedance-based dynamics integrate driving forces (for motion</em></p></div>
 <ul>
 <li>Reference dynamics 모델: M¨xi = fdrive,i + finteract,i 형태로 각 link의 motion을 driving force와 interaction force의 합으로 표현</li>
 <li>Driving force: classical impedance control의 virtual spring-damper system으로 target motion을 추적</li>

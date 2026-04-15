@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Toru Lin, Kartik Sachdev, Linxi Fan, Jitendra Malik, Yuke Zhu | <strong>날짜</strong>: 2025-02-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.20396" target="_blank">https://arxiv.org/abs/2502.20396</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: A sim-to-real RL recipe for vision-based dexterous manipulation. We close the environment</em></p></div>
 <p>본 논문은 휴머노이드 로봇의 다중 손가락 손을 이용한 시각 기반 정교한 조작을 위해 sim-to-real RL을 적용하는 실용적인 레시피를 제시하며, 자동화된 실-시뮬레이션 튜닝, 일반화된 보상 설계, 분할-정복 정책 증류, 하이브리드 객체 표현을 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 네 가지 핵심 모듈을 통합한다: (1) 4분 미만의 실제 데이터로 파라미터를 자동 조정하는 real-to-sim 모듈, (2) 접촉 및 객체 목표 기반 일반화 보상, (3) 작업 인식 초기화와 divide-and-conquer 정책 증류를 통한 탐색 가속화, (4) sparse/dense 객체 표현과 modality-specific augmentation을 통한 도메인 이동 해결.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Overview. We train a humanoid robot with two multi-fingered hands to perform a range of contact-</em></p></div>
 <ul>
 <li><strong>높은 성공률</strong>: 보이지 않은 실제 객체에 대해 본 객체 90%, 미본 객체 60~80% 성공률 달성</li>
 <li><strong>다양한 작업 학습</strong>: grasp-and-reach, bimanual lift, bimanual handover 세 가지 정교한 조작 작업 성공</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>강건성</strong>: 외력 교란에 대한 견고하고 적응적인 정책 행동 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: A sim-to-real RL recipe for vision-based dexterous manipulation. We close the environment</em></p></div>
 <ul>
 <li><strong>Real-to-Sim 자동 튜닝</strong>: 200 스텝의 joint target 추적 오차 MSE를 최소화하는 파라미터 그리드 서치로 물리 파라미터 및 URDF 파라미터 조정</li>
 <li><strong>보상 설계</strong>: 접촉 마커 기반 접촉 목표와 3D 객체 중심 위치 기반 객체 목표를 결합하여 이중 손 협력 수행</li>

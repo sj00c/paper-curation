@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Junjie Wen, Yichen Zhu, Jinming Li, Zhibin Tang, Chaomin Shen, Feifei Feng | <strong>날짜</strong>: 2025-02-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.05855" target="_blank">https://arxiv.org/abs/2502.05855</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: DexVLA architecture and embodied curriculum learning. Our model employs a three-stage</em></p></div>
 <p>DexVLA는 billion 규모의 diffusion-based action expert를 plug-in 형태로 vision-language model에 통합하고, 3단계 embodied curriculum learning 전략을 통해 다양한 로봇 형태에서 복잡한 long-horizon task를 수행할 수 있는 VLA 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: DexVLA는 billion-parameter diffusion expert를 VLM과 분리 가능한 형태로 설계하고, 3단계 curriculum learning(cross-embodiment pre-training, embodiment-specific alignment, task-specific adaptation)을 통해 점진적으로 복잡도를 높여가며 학습한다. 또한 sub-step reasoning을 활용하여 VLA 모델이 직접 long-horizon task를 분해하고 수행할 수 있도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Dexterous skills in diverse tasks and scenarios. Our proposed DexVLA method enables generalized</em></p></div>
 <ul>
 <li><strong>Cross-embodiment 학습</strong>: Single-arm, bimanual, dexterous hand, mobile bimanual 등 다양한 로봇 형태에서 효과적으로 작동하며 일반화 성능을 시연</li>
 <li><strong>데이터 효율성</strong>: 100시간의 demonstration data만으로 학습하면서도 OpenVLA, Octo, π0 등 기존 SOTA 모델 대비 우수한 성능 달성</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>실시간 추론</strong>: 단일 Nvidia A6000 GPU에서 60Hz 속도로 동작하는 효율적인 추론</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: DexVLA architecture and embodied curriculum learning. Our model employs a three-stage</em></p></div>
 <ul>
 <li>Qwen2-VL을 base VLM으로 사용하고, image encoder로 로봇 관찰을 embedding space로 투영</li>
 <li>VLM의 출력을 reasoning tokens과 action tokens로 분리하여 action tokens를 projection module을 통해 diffusion expert input으로 변환</li>

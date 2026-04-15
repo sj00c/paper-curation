@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mingqi Yuan, Tao Yu, Haolin Song, Bo Li, Xin Jin, Hua Chen, Wenjun Zeng | <strong>날짜</strong>: 2026-03-11 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2512.13093" target="_blank">10.48550/arXiv.2512.13093</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. (a) PvP employs contrastive learning between proprioceptive and privileged states to learn compact and task-re</em></p></div>
 <p>PvP는 고유 감각(proprioceptive)과 특권 상태(privileged state) 사이의 대조 학습을 활용하여 휴머노이드 로봇의 전신 제어(WBC) 학습의 샘플 효율성을 크게 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: PvP는 시뮬레이터에서 접근 가능한 특권 상태와 실제 로봇에서 측정 가능한 고유 감각 상태 간의 대조 학습을 통해 정보적이고 컴팩트한 표현을 학습한다. 또한 SRL4Humanoid 프레임워크를 개발하여 다양한 SRL 방법을 체계적으로 평가한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. (a) PvP employs contrastive learning between proprioceptive and privileged states to learn compact and task-re</em></p></div>
 <ul>
 <li><strong>PvP 프레임워크</strong>: 손으로 제작한 데이터 증강(data augmentation) 없이 proprioceptive-privileged 대조 학습을 통해 안정적인 성능 향상을 달성</li>
 <li><strong>SRL4Humanoid 개발</strong>: 휴머노이드 로봇 학습을 위한 대표적 SRL 방법들의 고품질 구현을 제공하는 첫 번째 통합 프레임워크</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>체계적 연구</strong>: SRL-RL 통합 방식에 대한 실용적 인사이트 제공으로 데이터 효율적 휴머노이드 로봇 학습의 지침 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. An overview of the PvP approach. (a) The components</em></p></div>
 <ul>
 <li>Proprioceptive 인코더와 privileged 인코더를 shared weights로 구성하여 두 상태 공간의 표현을 학습</li>
 <li>Contrastive learning 목적 함수로 proprioceptive와 privileged 상태 쌍 간의 유사성을 최대화하고 부정 쌍을 분리</li>

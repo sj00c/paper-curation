@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zihan Zhang, Richard Liu, Kfir Aberman, Rana Hanocka | <strong>날짜</strong>: 2023-07-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2307.15042" target="_blank">https://arxiv.org/abs/2307.15042</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. Inspired by the gradual nature of the diffusion process along a diffusion time-axis (left), our approach (right)</em></p></div>
 <p>TEDi는 Denoising Diffusion Probabilistic Models (DDPM)의 점진적 생성 개념을 모션 시퀀스의 시간축에 적용하여, 두 축을 얽혀 있게(entangle) 함으로써 임의 길이의 장기 모션 생성을 가능하게 한다. 시간에 따라 변하는 노이즈 레벨을 가진 모션 버퍼를 반복적으로 제거하는 자동회귀 메커니즘을 통해 연속적인 프레임 스트림을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: TEDi는 diffusion 시간축과 모션 시간축을 얽혀 있게 함으로써, 각 diffusion 단계에서 시간에 따라 변하는 노이즈 레벨을 가진 모션 버퍼를 점진적으로 제거한다. 모션 프라이머(primer)로 초기화된 버퍼에서 깨끗한 프레임을 앞에서 제거하고 노이즈 프레임을 뒤에 추가하는 방식으로 자동회귀적 생성을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3. TEDi Recursive Generation. TEDi is capable of generating an</em></p></div>
 <ul>
 <li><strong>임의 길이 생성</strong>: 자동회귀 메커니즘을 통해 고정 길이 제한 없이 임의로 긴 모션 시퀀스 생성 가능</li>
 <li><strong>Stitching 아티팩트 제거</strong>: 연속적인 프레임 생성 방식으로 기존 모션 diffusion 모델의 stitching 문제 해결</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>자연스러운 전환</strong>: 모션 버퍼의 점진적 노이즈 감소로 자연스러운 모션 전환 및 계획적 조정 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. TEDi Training. We train our diffusion-based model to remove</em></p></div>
 <ul>
 <li><strong>Training phase</strong>: 깨끗한 모션 시퀀스에 시간에 따라 변하는 노이즈를 적용하여 supervised fashion으로 네트워크를 학습</li>
 <li><strong>모션 버퍼 구조</strong>: 인접한 프레임들이 연속적인 노이즈 레벨을 가지도록 구성된 K개 프레임의 버퍼 유지</li>

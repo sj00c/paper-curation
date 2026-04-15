@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhirui Liu, Kaiyang Ji, Ke Yang, Jingyi Yu, Ye Shi, Jingya Wang | <strong>날짜</strong>: 2026-04-10 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2511.22963" target="_blank">10.48550/arXiv.2511.22963</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. An illustration of Humanoid-LLA. Given a high-level</em></p></div>
 <p>자유형식 자연언어 명령을 인간형 로봇의 신체 전체 제어로 매핑하는 Large Language Action Model(Humanoid-LLA)을 제안하며, 통합 모션 어휘, 어휘-지향 컨트롤러 증류, 강화학습 기반 파인튜닝을 통해 언어 일반화와 물리적 타당성을 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간과 인간형 모션 원시 요소를 공유 이산 공간으로 정렬하는 통합 모션 어휘를 구성하고, 이를 기반으로 privileged policy로부터 증류된 어휘-지향 컨트롤러와 dynamics-aware reward를 통한 강화학습 파인튜닝을 결합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Real-world demonstrations on Unitree G1 and Booster T1. The tested prompts contain unseen terms (”soldier”, ”m</em></p></div>
 <ul>
 <li><strong>통합 모션 어휘(Unified Motion Vocabulary)</strong>: 양방향 교차-embodiment 재구성 감독을 통해 인간과 인간형 로봇 간 동일 토큰이 동일 모션 원시 요소를 나타내도록 보장하며, 인간 모션 데이터셋의 확장성을 활용하면서 데이터 부족을 완화</li>
 <li><strong>어휘-지향 액션 증류</strong>: Privileged tracking policy로부터 이산 모션 토큰 조건의 student controller로 증류하여 동적 강건성과 접촉 안정성을 유지하면서 밀집 궤적에서 컴팩트 토큰 시퀀스로 제어 패러다임 전환</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실세계 검증</strong>: Unitree G1, Booster T1 인간형 로봇에서 기존 언어-조건 컨트롤러 대비 모션 자연스러움, 안정성, 실행 성공률 우수성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. An overview of Humanoid-LLA. In stage one, we build a unified motion vocabulary leveraging a large-scale paire</em></p></div>
 <ul>
 <li>VQ-VAE 기반 교차-embodiment 토큰화로 인간과 인간형 로봇 모션의 공유 이산 어휘 학습</li>
 <li>Privileged teacher policy를 밀집 재타겟팅된 인간형 모션 참조로 학습하여 높은 물리적 충실도 달성</li>

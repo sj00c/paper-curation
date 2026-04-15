@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Thomas Carta, Clément Romac, Thomas Wolf, Sylvain Lamprier, Olivier Sigaud, Pierre-Yves Oudeyer | <strong>날짜</strong>: 2023-02-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2302.02662" target="_blank">https://arxiv.org/abs/2302.02662</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The GLAM method: we use an LLM as agent policy in an interactive textual RL</em></p></div>
 <p>본 논문은 Large Language Model(LLM)을 대화형 환경에서 agent policy로 사용하며 online Reinforcement Learning으로 점진적으로 업데이트하여 functional grounding을 달성하는 GLAM 방법을 제안한다. 텍스트 기반 BabyAI 환경에서 LLM의 표본 효율성, 일반화 능력, online learning의 영향을 실증적으로 검증한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -83,6 +85,8 @@ a { color: #A62018; }
 <li><strong>도구 공개</strong>: RL 연구자들이 LLM을 대규모로 활용하도록 지원하는 Lamorel 라이브러리 개발 및 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: The GLAM method: we use an LLM as agent policy in an interactive textual RL</em></p></div>
 <ul>
 <li>BabyAI 플랫폼을 텍스트 기반 환경(BabyAI-Text)으로 변환하여 시각 인식의 복잡성을 배제하고 순수 텍스트 관찰/행동만으로 spatial reasoning 능력을 평가</li>
 <li>FLAN-T5의 encoder를 이용하여 goal description과 observation을 포함한 prompt에서 각 가능한 action 토큰의 조건부 확률을 계산</li>

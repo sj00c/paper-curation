@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Bokui Shen, Fei Xia, Chengshu Li, Roberto Martín-Martín, Linxi Fan, Guanzhi Wang, Claudia Pérez-D'Arpino, Shyamal Buch, Sanjana Srivastava, Lyne P. Tchapmi, Micael E. Tchapmi, Kent Vainio, Josiah Wong, Li Fei-Fei, Silvio Savarese | <strong>날짜</strong>: 2020-12-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2012.02924" target="_blank">https://arxiv.org/abs/2012.02924</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Robot performs an interactive task in iGibson 1.0. It operates</em></p></div>
 <p>iGibson 1.0은 15개의 완전히 상호작용 가능한 현실적 실내 장면(108개 방)을 포함하는 로봇 시뮬레이션 환경으로, 대규모 장면에서 조작과 네비게이션을 포함한 대화형 작업을 학습할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 실제 세계의 3D 재구성을 기반으로 15개의 상호작용 가능한 장면을 생성하고, Physics-Based Rendering(PBR), 도메인 랜더마이제이션, 통합된 motion planner, 그리고 인간-로봇 인터페이스를 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Fifteen interactive iGibson 1.0 scenes modelled after real-world reconstructions, preserving layout, distributio</em></p></div>
 <ul>
 <li><strong>완전 상호작용 환경</strong>: 15개의 실제 가정을 모델링한 장면에서 108개의 방과 570개의 객체를 포함하며, 모든 객체가 물리 엔진을 통해 완전히 상호작용 가능</li>
 <li><strong>고품질 센서 신호</strong>: RGB, depth, segmentation, LiDAR, optical flow 등을 포함한 현실적인 가상 센서 신호 생성과 PBR을 통한 고충질 렌더링</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>실증적 성과</strong>: visual representation 학습이 downstream manipulation 작업 훈련을 가속화하고, navigation agent의 일반화 능력 향상 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Robot interacting in iGibson 1.0 (large picture: 3rd person</em></p></div>
 <ul>
 <li>실제 세계 3D 스캔의 정적 메시를 동적 scene graph로 변환하여 articulated object model 통합</li>
 <li>객체 모델에 재료 및 동역학 속성에 대한 주석 달기(metallic, roughness, normal maps)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tingxuan Leng, Yushi Wang, Tinglong Zheng, Changsheng Luo, Mingguo Zhao | <strong>날짜</strong>: 2025-10-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.10851" target="_blank">https://arxiv.org/abs/2510.10851</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Preference-conditioned locomotion: A single policy realizes behaviors from</em></p></div>
 <p>인간형 로봇의 명령 추적과 외력 순응을 동시에 달성하기 위해 선호도 조건부 MORL 프레임워크를 제안하며, 단일 정책으로 추적-순응 간의 연속적인 trade-off를 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Velocity-Resistance 모델을 통해 속도 명령과 외력을 일관된 물리적 공간에서 표현하고, preference 벡터를 통해 조건화된 MORL 프레임워크를 도입하여 단일 정책이 연속적인 trade-off를 학습하도록 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Policy training framework with auxiliary reconstruction of privileged observations: An asymmetric actor–critic a</em></p></div>
 <ul>
 <li><strong>Velocity-Resistance 모델</strong>: 외력을 등가 속도로 매핑하여 명령 추적과 외력 순응을 통일된 보상 함수로 설계 가능</li>
 <li><strong>Preference-Conditioned MORL</strong>: 단일 정책으로 경직된 추적에서 높은 순응성까지의 연속 스펙트럼을 커버하는 omnidirectional 보행 실현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실세계 검증</strong>: 시뮬레이션 및 Booster T1 인간형 로봇에서 안정적 학습과 배포 가능한 선호도 조건부 보행 확인</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Policy training framework with auxiliary reconstruction of privileged observations: An asymmetric actor–critic a</em></p></div>
 <ul>
 <li>Asymmetric actor-critic 아키텍처에 encoder-decoder 보조 모듈 추가하여 privilege observation 재구성</li>
 <li>선형 속도와 각속도에 대응하는 외력과 토크를 velocity-resistance 모델로 통합 표현</li>

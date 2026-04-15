@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wandong Sun, Baoshi Cao, Long Chen, Yongbo Su, Yang Liu, Zongwu Xie, Hong Liu | <strong>날짜</strong>: 2025-03-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2503.00692" target="_blank">https://arxiv.org/abs/2503.00692</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Training of Humanoid Perception Controller consists of two stages: (1) Oracle Policy Training generates referenc</em></p></div>
 <p>인간형 로봇이 소음이 있는 센서 데이터로부터 지형을 인식하고 거친 지형을 안정적으로 보행할 수 있도록, teacher-student distillation과 variational information bottleneck을 결합한 세계 모델 기반 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 학습 프레임워크를 제안한다: (1) 첫 단계에서는 노이즈 없는 privileged state로 oracle policy를 학습하고, (2) 두 번째 단계에서는 student policy가 VAE encoder-decoder로 구성된 world model을 학습하면서 동시에 oracle policy의 행동을 모방(imitation loss)하고 입력을 재구성(reconstruction loss)한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Deployment to outdoor environments. We deployed the model in outdoor challenging terrains. Our controller can</em></p></div>
 <ul>
 <li><strong>센서 노이즈 강건성</strong>: Variational information bottleneck을 통한 world model이 noisy 지형 정보를 효과적으로 디노이징하여, 신뢰할 수 없는 지형 추정 환경에서도 성능 저하를 최소화한다.</li>
 <li><strong>실제 환경 성능</strong>: 실제 실내 계단, 실외 눈, 풀, 거친 지형 등 다양한 환경에서 2 km의 지형을 추가 미세조정 없이 성공적으로 횡단한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>배포 효율성</strong>: 학습 후 decoder를 제거하고 encoder와 policy만 실제 로봇에 배포하여 계산 효율성을 유지한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Training of Humanoid Perception Controller consists of two stages: (1) Oracle Policy Training generates referenc</em></p></div>
 <ul>
 <li><strong>Stage 1 - Oracle Policy Training</strong>: Privileged state(노이즈 없는 root height, 위치, 회전, 속도, 지형 높이 맵 등)를 포함한 완전한 관찰값으로 PPO를 사용하여 최적 참조 정책을 학습한다.</li>
 <li><strong>Stage 2 - Student Policy Training</strong>: Noisy 관찰값을 입력으로 받는 VAE encoder와 terrain encoder를 통해 압축된 특징을 생성하고, 이를 locomotion controller에 입력한다.</li>

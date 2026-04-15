@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuanjie Ren, Jinzheng Li, Yidi Qi | <strong>날짜</strong>: 2026-02-18 | <strong>DOI</strong>: <a href="https://doi.org/" target="_blank">미제공</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>MerLean 아키텍처: LaTeX 논문에서 명제를 추출하고 Lean 4로 형식화한 후 다시 LaTeX로 변환하는 양방향 자동형식화 프레임워크</em></p></div>
 <p>본 논문은 양자계산 이론 논문을 자동으로 기계검증 가능한 Lean 4 코드로 변환하는 완전 자동화 에이전트 프레임워크 MerLean을 제시한다. 3개 양자계산 논문에서 114개 명제로부터 2,050개 Lean 선언을 생성하며 전체 논문의 자동형식화에 성공했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 완전 자동화된 에이전트 프레임워크로 LaTeX 논문에서 명제를 추출→형식화→검증하고, 역으로 형식화된 코드를 인간이 읽을 수 있는 자연언어로 변환하는 양방향 파이프라인 구축.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>명제별 컴파일 시도 횟수 분포: 대부분의 명제는 1-10회 시도로 해결되지만 장기 꼬리를 형성하는 '어려운' 명제들이 존재</em></p></div>
 <ol>
 <li><strong>완전 자동화 전체 논문 형식화</strong>: 3개 이질적 양자계산 논문(균형 곱 코드, 내결함 양자계산, 양자위상수학)에서 인간 개입 없이 114개 명제를 모두 형식화 성공. 특히 공개되지 않은 미발표 원고 포함으로 훈련 데이터 오염 완전 배제.</li>
 <li><strong>규모있는 형식화 결과</strong>: 총 42시간 내에 2,050개 Lean 선언 생성 (균형 곱 코드: 14,997행/730선언, 내결함 QC: 18,557행/923선언, 양자위상: 7,761행/397선언).</li>

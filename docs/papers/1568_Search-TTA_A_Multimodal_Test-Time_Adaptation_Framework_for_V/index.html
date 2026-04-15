@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Derek Ming Siang Tan, , Boyang Liu, Alok Raj, Qi Xuan Ang, Weiheng Dai, Tanishq Duhan, Jimmy Chiun, Yuhong Cao, Florian Shkurti, Guillaume Sartoretti | <strong>날짜</strong>: 2025-05-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.11350" target="_blank">https://arxiv.org/abs/2505.11350</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Search-TTA Framework. During inference, given a satellite image and query inputs of other modal-</em></p></div>
 <p>Search-TTA는 위성 이미지와 현장 센서 측정을 활용하여 VLM(Vision Language Model)의 예측을 실시간으로 개선하는 멀티모달 테스트타임 적응 프레임워크로, 야외 로봇 시각 탐색 성능을 30%까지 향상시킨다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 위성 이미지 인코더를 CLIP 인코더와 정렬하여 목표 존재 확률을 생성하고, Spatial Poisson Point Processes에서 영감을 받은 불확실성 가중 그래디언트 업데이트로 탐색 중 예측을 동적으로 개선한다. 동시에 380k 이미지를 포함한 AVS-Bench 데이터셋을 구축한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Multimodal Alignment</em></p></div>
 <ul>
 <li><strong>성능 개선</strong>: Search-TTA는 계획자 성능을 최대 30.0%, 확률 맵 분포를 8.5% 향상시키며, 특히 CLIP 예측이 부족한 경우에서 두드러진다.</li>
 <li><strong>멀티모달 정렬</strong>: 텍스트 및 음성 모달리티에 대해 추가 학습 없이 제로샷 일반화를 달성하며 emergent alignment를 시연한다.</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>새로운 벤치마크</strong>: 인터넷규모 생태계 데이터 기반 380k 학습 이미지와 8k 검증 이미지를 포함한 AVS-Bench 데이터셋을 공개한다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Search-TTA Framework. During inference, given a satellite image and query inputs of other modal-</em></p></div>
 <ul>
 <li>위성 이미지 인코더를 패치 레벨 대조 학습(contrastive learning)으로 CLIP 인코더와 정렬하여 다양한 모달리티 임베딩과의 코사인 유사도 기반 스코어 맵 생성</li>
 <li>탐색 중 수집한 측정값(온보드 센서 감지)을 기반으로 불확실성 가중 그래디언트 업데이트 수행</li>

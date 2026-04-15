@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Wei Cui, Haoyu Wang, Wenkang Qin, Yijie Guo, Gang Han, Wen Zhao, Jiahang Cao, Zhang Zhang, Jiaru Zhong, Jingkai Sun, Pihai Sun, Shuai Shi, Botuo Jiang, Jiahao Ma, Jiaxu Wang, Hao Cheng, Zhichao Liu, Yang Wang, Zheng Zhu, Guan Huang, Jian Tang, Qiang Zhang | <strong>날짜</strong>: 2025-07-27 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.20217" target="_blank">https://arxiv.org/abs/2507.20217</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Schematic diagram of the Humanoid Occupancy system.</em></p></div>
 <p>휴머노이드 로봇을 위한 일반화된 다중모달 occupancy 인식 시스템을 제시하며, 하드웨어 설계, 데이터셋 구축, 다중모달 fusion 네트워크를 통합한 완전한 환경 인식 프레임워크를 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 표준 3단계 시각 시스템 아키텍처(하드웨어 설계, 데이터셋 구축, 다중모달 fusion 네트워크)를 통해 occupancy 기반 표현을 활용하며, 휴머노이드 로봇의 구조적 특성을 고려한 센서 배치 전략과 temporal 정보 통합을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Equipment and Schematic</em></p></div>
 <ul>
 <li><strong>첫 번째 휴머노이드 로봇 특화 Panoramic Occupancy 데이터셋</strong>: 휴머노이드 로봇을 위한 벤치마크 자원을 제공하여 향후 연구의 기초를 마련했다.</li>
 <li><strong>다중모달 Fusion 기술</strong>: RGB, depth, LiDAR 등 이질적인 센서 정보를 통합하여 grid 기반의 occupancy 출력(occupancy 상태 및 의미론적 레이블 인코딩)을 생성한다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>시스템 통합 검증</strong>: Tienkung 휴머노이드 로봇 플랫폼에 통합 및 테스트하여 복잡한 환경에서의 우수한 환경 인식 및 네비게이션 성능을 입증했다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Structural visualization of humanoid occupancy hardware. We equipped the humanoid robot</em></p></div>
 <ul>
 <li>표준화된 하드웨어 컴포넌트 설계를 통해 다양한 센서(RGB, depth, LiDAR, panoramic camera)를 휴머노이드 로봇에 최적으로 배치</li>
 <li>Occupancy grid 표현을 기반으로 multi-modal feature fusion을 수행하여 의미론적 및 기하학적 정보를 통합</li>

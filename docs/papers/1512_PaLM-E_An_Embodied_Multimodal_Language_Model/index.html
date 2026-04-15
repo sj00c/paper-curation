@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Danny Driess, Fei Xia, Mehdi S. M. Sajjadi, Corey Lynch, Aakanksha Chowdhery, Brian Ichter, Ayzaan Wahid, Jonathan Tompson, Quan Vuong, Tianhe Yu, Wenlong Huang, Yevgen Chebotar, Pierre Sermanet, Daniel Duckworth, Sergey Levine, Vincent Vanhoucke, Karol Hausman, Marc Toussaint, Klaus Greff, Andy Zeng, Igor Mordatch, Pete Florence | <strong>날짜</strong>: 2023-03-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2303.03378" target="_blank">https://arxiv.org/abs/2303.03378</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: PaLM-E is a single general-purpose multimodal language model for embodied reasoning tasks, visual-language tas</em></p></div>
 <p>PaLM-E는 시각, 상태 추정, 텍스트 입력을 멀티모달 문장으로 인터리빙하여 LLM에 직접 통합하는 embodied multimodal language model이다. 이를 통해 로봇 조작 계획, VQA, 캡셔닝 등 다양한 embodied reasoning 작업을 수행할 수 있다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 사전학습된 LLM(PaLM)에 ViT와 같은 인코더를 주입하여 이미지와 상태 추정값을 텍스트 토큰과 동일한 잠재 임베딩 공간에 임베드한다. 멀티모달 문장을 Transformer의 self-attention으로 처리하고 end-to-end로 인코더를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: PaLM-E-562B can do zero-shot multimodal chain-of-thought reasoning, can tell visually-conditioned jokes given </em></p></div>
 <ul>
 <li><strong>확장 가능한 모델 성능</strong>: PaLM-E-562B는 OK-VQA 벤치마크에서 state-of-the-art 성능을 달성했으며, 로봇 작업 학습에서도 뛰어난 데이터 효율성을 보여줌</li>
 <li><strong>다중 도메인 양성 이전</strong>: 인터넷 규모의 언어, 시각, visual-language 데이터로 공동 학습하면 로봇 작업 성능이 향상되며 한두 개의 예시로도 새로운 객체에 일반화 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다중 구현(embodiment) 지원</strong>: 두 개의 실제 로봇을 포함한 여러 로봇 플랫폼에서 작동하며 순차적 의사결정 기능 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: PaLM-E is a single general-purpose multimodal language model for embodied reasoning tasks, visual-language tas</em></p></div>
 <ul>
 <li>사전학습된 540B PaLM LLM을 기반으로 22B ViT 인코더를 통합하여 이미지를 임베드</li>
 <li>멀티모달 입력(이미지, 상태 벡터, 텍스트)을 interleaved 시퀀스로 표현하여 LLM의 self-attention에 공급</li>

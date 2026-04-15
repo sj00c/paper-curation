@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hang Yin, Haoyu Wei, Xiuwei Xu, Wenxuan Guo, Jie Zhou, Jiwen Lu | <strong>날짜</strong>: 2025-09-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.10454" target="_blank">https://arxiv.org/abs/2509.10454</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Framework of GC-VLN. We construct a constraint library, containing all the spatial rela-</em></p></div>
 <p>GC-VLN은 자연언어 지시를 그래프 제약 최적화 문제로 재구성하여 연속 환경에서 학습 없이 작동하는 비전-언어 네비게이션 프레임워크를 제안한다. 공간 제약 라이브러리와 제약 솔버를 통해 zero-shot 환경 적응을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 지시를 directed acyclic graph로 분해하고 공간 관계 제약 라이브러리를 구성하여 그래프 제약을 구축한 후, 제약 솔버로 waypoint 좌표를 결정하는 그래프 제약 최적화 문제를 해결한다. 네비게이션 트리와 백트래킹으로 불확실한 해의 개수를 처리한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1:</em></p></div>
 <ul>
 <li><strong>Training-free 연속 환경 VLN</strong>: 시뮬레이터 학습 없이 연속 환경 R2R-CE, RxR-CE에서 작동 가능</li>
 <li><strong>향상된 성능</strong>: 기존 zero-shot VLN 방법 대비 success rate와 navigation efficiency에서 현저한 개선</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>해 불확실성 처리</strong>: navigation tree와 backtracking 메커니즘으로 no solution/multiple solutions 문제 해결</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Framework of GC-VLN. We construct a constraint library, containing all the spatial rela-</em></p></div>
 <ul>
 <li>자연언어 지시를 LLM으로 처리하여 multi-stage directed acyclic graph (DAG)로 분해</li>
 <li>6가지 유형(known distance, known angle, unknown angle/distance의 unary/multi-constraint)의 공간 제약으로 구성된 constraint library 구축</li>

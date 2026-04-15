@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Haoyang Weng, Yitang Li, Nikhil Sobanbabu, Zihan Wang, Zhengyi Luo, Tairan He, Deva Ramanan, Guanya Shi | <strong>날짜</strong>: 2025-09-27 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.16757" target="_blank">10.48550/arXiv.2509.16757</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: HDMI is a general framework for interactive skill learning. Monocular RGB videos are processed into a structured</em></p></div>
 <p>HDMI는 단일 모노큘러 RGB 비디오에서 인간의 상호작용을 추출하여 휴머노이드 로봇이 물체와의 전신 상호작용 기술을 학습하는 프레임워크이다. Robot-object co-tracking을 통해 강화학습 정책을 훈련하고 실제 로봇에 제로샷 배포한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HDMI는 (i) 포즈 추정 및 retargeting으로 비디오에서 인간과 물체 궤적을 추출하여 구조화된 데이터셋 구축, (ii) unified object representation, residual action space, general interaction reward를 포함한 RL 정책 훈련, (iii) 실제 휴머노이드에 학습된 정책 배포의 세 단계로 구성된다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: HDMI enables humanoid robots to acquire diverse whole-body interaction skills directly from human videos. (a)</em></p></div>
 <ul>
 <li><strong>일반성</strong>: 손/발 상호작용, 강체/관절 물체(고정/부유 기반) 등 다양한 상호작용 유형을 하나의 프레임워크로 처리</li>
 <li><strong>실제 로봇 성능</strong>: Unitree G1에서 67회 연속 문 개폐 및 통과, 6가지 구별되는 로코-조작 작업 성공</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>첫 성과</strong>: 인간 비디오로부터 직접 학습하는 일반적인 전신 휴머노이드-물체 상호작용 프레임워크의 첫 사례</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: HDMI is a general framework for interactive skill learning. Monocular RGB videos are processed into a structured</em></p></div>
 <ul>
 <li><strong>Video Processing</strong>: GVHMR와 LocoMujoco를 사용하여 SMPL 포즈 추정 및 retargeting으로 인간 및 물체 궤적 추출</li>
 <li><strong>Reference Dataset</strong>: 각 프레임에서 로봇과 물체의 상태, 관절 위치, 물체의 위치/방향, 관절 상태(관절형 물체) 및 이진 접촉 신호로 구성된 구조화된 reference motion 생성</li>

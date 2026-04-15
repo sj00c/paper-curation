@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yushi Du, Yixuan Li, Baoxiong Jia, Yutang Lin, Pei Zhou, Wei Liang, Yanchao Yang, Siyuan Huang | <strong>날짜</strong>: 2025-10-16 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.14293" target="_blank">10.48550/arXiv.2510.14293</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of COLA. Our Policy mainly consists of three steps: (i) We train a base whole-body control policy to pr</em></p></div>
 <p>COLA는 proprioception만을 사용하는 reinforcement learning 기반의 정책으로, humanoid 로봇이 인간과 협력하여 물체를 운반할 때 적응적이고 안정적인 whole-body coordination을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Three-step training framework를 제안한다: (1) whole-body control policy 학습, (2) privileged object-state information을 사용한 residual teacher policy 학습, (3) proprioception-only student policy로의 behavioral cloning 기반 distillation을 수행하여, 실제 배포 시 external sensor 없이 작동 가능하게 한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: COLA provides a proprioception-only policy that enables compliant human-humanoid collaboration for carrying dive</em></p></div>
 <ul>
 <li><strong>시뮬레이션 성능</strong>: 인간의 물리적 부담을 기존 방법 대비 24.7% 감소, 10.2 cm/s의 선형 속도 추적 오차와 0.1 rad/s의 각속도 추적 오차로 정밀한 조정 달성</li>
 <li><strong>실제 환경 검증</strong>: boxes, desks, stretchers 등 다양한 물체 유형과 straight-line, turning, slope climbing 등 다양한 이동 패턴에서 robust collaborative carrying 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실용성</strong>: External sensor나 복잡한 interaction model 없이 proprioception만으로 작동하는 실용적 솔루션 제시</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of COLA. Our Policy mainly consists of three steps: (i) We train a base whole-body control policy to pr</em></p></div>
 <ul>
 <li>Joint state offset을 interaction force 추정의 proxy로 활용하는 residual 학습 방식 도입</li>
 <li>Carried object의 state를 implicit collaboration constraint(안정성, 좌표)로 인코딩</li>

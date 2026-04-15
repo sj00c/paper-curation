@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Shuang Zeng, Dekang Qi, Xinyuan Chang, Feng Xiong, Shichao Xie, Xiaolong Wu, Shiyi Liang, Mu Xu, Xing Wei, Ning Guo | <strong>날짜</strong>: 2025-09-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2509.22548" target="_blank">https://arxiv.org/abs/2509.22548</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: JanusVLN, using RGB-only video, decouples visual semantics and spatial geometry to</em></p></div>
 <p>JanusVLN은 시각-언어 네비게이션에서 spatial-geometric과 visual-semantic 정보를 분리하여 dual implicit neural memory로 모델링하는 프레임워크를 제안한다. 3D 기하학적 선행 지식과 MLLM의 의미론적 이해를 결합하여 효율적이고 공간 인식적인 에이전트 네비게이션을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 뇌의 반구 특화(좌뇌 의미론, 우뇌 공간 인식)에 영감받아, 3D visual geometry foundation model(VGGT)로부터 spatial-geometric 정보를 추출하고, MLLM의 visual encoder로부터 visual-semantic 정보를 추출한다. 두 인코더의 key-value 캐시를 fixed-size dual implicit memory로 구성하고, initial window와 sliding window 방식으로 효율적으로 업데이트한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: JanusVLN, using RGB-only video, decouples visual semantics and spatial geometry to</em></p></div>
 <ul>
 <li><strong>SOTA 성능 달성</strong>: VLN-CE 벤치마크에서 20개 이상의 최근 방법을 능가하며, 다중 데이터타입 사용 방법 대비 10.5-35.5%, RGB만 사용하면서도 더 많은 훈련 데이터 사용 방법 대비 3.6-10.8% 성공률 향상</li>
 <li><strong>계산 효율성</strong>: 초기 및 슬라이딩 윈도우 방식으로 중복 계산을 제거하고 효율적인 incremental update 실현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>보조 데이터 불필요</strong>: depth나 point cloud 같은 별도의 3D 데이터 없이도 3D 기하학적 정보 추출 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: The framework of JanusVLN. Given an RGB-only video stream and navigation instruc-</em></p></div>
 <ul>
 <li>3D visual geometry foundation model(VGGT)을 통해 RGB로부터 depth와 point cloud 정보 추출</li>
 <li>MLLM의 visual semantic encoder와 VGGT의 spatial geometric encoder로부터 각각 key-value 캐시 추출</li>

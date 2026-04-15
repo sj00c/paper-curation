@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xi Chen, Josip Djolonga, Piotr Padlewski, Basil Mustafa, Soravit Changpinyo, Jialin Wu, Carlos Riquelme Ruiz, Sebastian Goodman, Xiao Wang, Yi Tay, Siamak Shakeri, Mostafa Dehghani, Daniel Salz, Mario Lucic, Michael Tschannen, Arsha Nagrani, Hexiang Hu, Mandar Joshi, Bo Pang, Ceslee Montgomery, Paulina Pietrzyk, Marvin Ritter, AJ Piergiovanni, Matthias Minderer, Filip Pavetic, Austin Waters, Gang Li, Ibrahim Alabdulmohsin, Lucas Beyer, Julien Amelot, Kenton Lee, Andreas Peter Steiner, Yang Li, Daniel Keysers, Anurag Arnab, Yuanzhong Xu, Keran Rong, Alexander Kolesnikov, Mojtaba Seyedhosseini, Anelia Angelova, Xiaohua Zhai, Neil Houlsby, Radu Soricut | <strong>날짜</strong>: 2023-05-29 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2305.18565" target="_blank">https://arxiv.org/abs/2305.18565</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: [Left] Comparing PaLI-X against PaLI on image-captioning and VQA benchmarks. [Right]</em></p></div>
 <p>PaLI-X는 시각 및 언어 컴포넌트를 균형있게 확장한 다국어 비전-언어 모델로, 25개 이상의 벤치마크에서 새로운 최첨단 성능을 달성하며 복잡한 계산과 다국어 객체 검출 같은 새로운 능력을 보여준다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ViT-22B 시각 인코더(OCR 사전훈련 포함)와 32B UL2 기반 인코더-디코더를 결합하여, mixture-of-objectives 훈련 전략(prefix-completion과 masked-token completion 혼합)으로 균형잡힌 용량 할당(약 40%-60% 분할)을 달성했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: [Left] Comparing PaLI-X against PaLI on image-captioning and VQA benchmarks. [Right]</em></p></div>
 <ul>
 <li><strong>벤치마크 성능</strong>: 이미지 캡셔닝, VQA, 문서 이해, 객체 탐지, 비디오 QA, 비디오 캡셔닝 등 25개 이상의 벤치마크에서 새로운 최첨단 성능 달성</li>
 <li><strong>Pareto frontier 개선</strong>: fine-tuning과 few-shot 성능 간의 Pareto frontier를 Flamingo, Kosmos-1과 비교하여 크게 개선</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다국어 이전학습</strong>: 이미지 내 텍스트 언어와 생성된 캡션 언어 간 전환, 비-영어 레이블을 사용한 객체 탐지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Visual input for videos: each frame is independently processed by ViT; patch embeddings</em></p></div>
 <ul>
 <li>ViT-22B를 JFT 분류 작업과 OCR 토큰 분류 작업의 혼합으로 사전훈련</li>
 <li>WebLI 데이터셋의 이미지에 GCP Vision API로 OCR 텍스트 주석 추가</li>

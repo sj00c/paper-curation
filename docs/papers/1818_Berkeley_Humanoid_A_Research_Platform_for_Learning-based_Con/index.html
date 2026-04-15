@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qiayuan Liao, Bike Zhang, Xuanyu Huang, Xiaoyu Huang, Zhongyu Li, Koushil Sreenath | <strong>날짜</strong>: 2024-07-31 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2407.21781" target="_blank">https://arxiv.org/abs/2407.21781</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Design, training, and sim-to-real deployment of our custom-built humanoid with a</em></p></div>
 <p>학습 기반 제어를 위해 특별히 설계된 저비용 중형 휴머노이드 로봇 플랫폼인 Berkeley Humanoid를 제시하며, 좁은 sim-to-real 갭과 높은 신뢰성으로 다양한 지형에서 동적 보행을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 학습 기반 제어에 최적화된 하드웨어 설계와 custom modular actuator, 낮은 시뮬레이션 복잡도, 경량 domain randomization을 활용하여 sim-to-real 갭을 최소화한다. Isaac Lab을 이용한 reinforcement learning 정책 학습으로 간단하면서도 견고한 제어를 실현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Omnidirectional Walking. (a-c) The robot walks forward, turns in place, and walks back-</em></p></div>
 <ul>
 <li><strong>저비용 중형 휴머노이드 플랫폼</strong>: 약 10,000 USD의 가격으로 fully electric 구동 및 6 DoF 다리를 갖춘 16kg의 로봇 개발</li>
 <li><strong>동적 보행 능력</strong>: 수백 미터 주행, 가파른 비포장 오솔길 보행, 단다리 및 양다리 hopping 등 다양한 지형에서의 견고한 동적 운동 실현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>전방향 운동</strong>: 방향 변화 및 외란 저항 능력을 갖춘 omnidirectional locomotion 지원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of design: (a) main components, (b) joints and key dimensions, (c) key actuators</em></p></div>
 <ul>
 <li>Custom modular actuator 설계: integrated transmission, hollow shaft, EtherCAT 통신을 통해 높은 토크 밀도와 낮은 복잡도 실현</li>
 <li>낮은 시뮬레이션 복잡도: 간단한 모터 모델과 actuator 모델링으로 학습 효율 향상</li>

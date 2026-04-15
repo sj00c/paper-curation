@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Riccardo Mereu, Aidan Scannell, Yuxin Hou, Yi Zhao, Aditya Jitta, Antonio Dominguez, Luigi Acerbi, Amos Storkey, Paul Chang | <strong>날짜</strong>: 2025-10-08 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2510.07092" target="_blank">https://arxiv.org/abs/2510.07092</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of the 1X World Model Challenges Left de-</em></p></div>
 <p>1X World Model Challenge에서 humanoid 로봇의 미래 상태 예측을 위해 Wan 2.2 TI2V-5B를 video-state-conditioned 프레임 예측으로 적응시키고, Spatio-Temporal Transformer를 압축 트랙용으로 훈련하여 두 트랙 모두에서 1위를 달성했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Sampling 트랙에서는 Wan 2.2 TI2V-5B의 masking을 수정하여 video-state-conditioned 예측을 구현하고 AdaLN-Zero와 LoRA를 적용했으며, Compression 트랙에서는 discrete token 예측을 위해 Spatio-Temporal Transformer를 처음부터 훈련했다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. Overview of the 1X World Model Challenges Left de-</em></p></div>
 <ul>
 <li><strong>Sampling 트랙 1위</strong>: 23.0 dB PSNR으로 미래 프레임 예측에서 우수한 성능 달성</li>
 <li><strong>Compression 트랙 1위</strong>: Top-500 CE 6.6386으로 discrete latent code 예측에서 최고 성능 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Architecture 적응</strong>: Text-image-to-video 모델을 video-state-conditioned 설정으로 효과적으로 재설계</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. State conditioning of DiT-Block. Wan2.2 TI2V-5B</em></p></div>
 <ul>
 <li>Sampling 트랙: Wan 2.2 TI2V-5B의 입력 latent masking을 확장하여 여러 프레임을 고정하는 video-to-video 조건화 구현</li>
 <li>State 조건화: 연속 각도와 속도 상태를 sinusoidal feature로 augment한 후 MLP로 projection하고, 1D convolution으로 temporal compression</li>

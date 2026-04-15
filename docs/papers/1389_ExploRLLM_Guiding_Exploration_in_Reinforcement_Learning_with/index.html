@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Runyu Ma, Jelle Luijkx, Zlatan Ajanovic, Jens Kober | <strong>날짜</strong>: 2024-03-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2403.09583" target="_blank">https://arxiv.org/abs/2403.09583</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Graphical overview of ExploRLLM.</em></p></div>
 <p>ExploRLLM은 대규모 언어 모델(LLM)이 생성한 정책 코드로 RL 에이전트의 탐색을 유도하면서, 잔차 RL 에이전트가 FM의 물리적 이해 부족을 보완하는 방식으로 로봇 조작 작업의 샘플 효율성과 수렴성을 개선한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: ExploRLLM은 LLM/VLM을 통해 관측 공간(object-centric 표현)과 행동 공간(residual action)을 축소하고, LLM 기반 탐색 전략으로 RL 에이전트가 의미 있는 행동 영역을 탐색하도록 유도하며, 잔차 RL 에이전트가 실제 환경에서의 미세한 조정을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Training curves for varying exploration rates in SH and LH tasks. ExploRLLM outperforms the exploration policies</em></p></div>
 <ul>
 <li><strong>LLM 기반 탐색 전략</strong>: 계층적 언어 모델 프로그램(high-level과 low-level 정책)을 생성하여 ϵ-greedy 기반 탐색을 확장하고 의미 있는 상태-행동 쌍 수집을 가속화</li>
 <li><strong>관측/행동 공간 축소</strong>: VLM의 affordance 인식을 통해 object-centric observation과 residual action space로 변환하여 RL의 탐색 공간 차원 축소</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Zero-shot Sim-to-Real 전이</strong>: 추가 학습 없이 시뮬레이션에서 학습한 정책이 실제 로봇에 성공적으로 전이</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Implementation structure of ExploRLLM for tabletop manipulation, combining the strengths of RL and FMs.</em></p></div>
 <ul>
 <li>LLM을 사용하여 자연언어 명령을 미리 정의된 템플릿으로 해석하고 객체 카테고리 강조</li>
 <li>VLM을 통해 이미지에서 관련 객체의 bounding box 추출 및 위치 정보 Xt와 image patches Mt 획득</li>

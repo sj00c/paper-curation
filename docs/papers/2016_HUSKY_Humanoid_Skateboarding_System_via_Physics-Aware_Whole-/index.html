@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jinrui Han, Dewei Wang, Chenyun Zhang, Xinzhe Liu, Ping Luo, Chenjia Bai, Xuelong Li | <strong>날짜</strong>: 2026-02-03 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2602.03205" target="_blank">10.48550/arXiv.2602.03205</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. (a) Our proposed framework HUSKY enables the humanoid robot to perform complete real-world skateboardi</em></p></div>
 <p>HUSKY는 humanoid 로봇이 skateboard 위에서 안정적으로 skating을 수행하기 위한 physics-aware whole-body control 프레임워크이며, lean-to-steer 제약과 hybrid contact dynamics를 명시적으로 모델링하여 AMP 기반 pushing과 physics-guided steering을 통합한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: HUSKY는 board tilt과 truck steering angle 간의 kinematic coupling (tan σ = tan λ sin γ) 을 명시적으로 모델링하고, hybrid dynamical system 프레임워크에서 AMP를 통한 human-like pushing 학습과 physics-guided lean-to-steer 전략, 그리고 trajectory planning 기반 phase transition mechanism을 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overview. (a) Our proposed framework HUSKY enables the humanoid robot to perform complete real-world skateboardi</em></p></div>
 <ul>
 <li><strong>Physics-informed System Modeling</strong>: Board tilt과 truck steering angle의 coupling relationship을 수식적으로 유도하여 non-holonomic skateboard dynamics를 tractable하게 분석</li>
 <li><strong>Hybrid Control Framework</strong>: Pushing과 steering 두 개의 distinct contact phases를 명시적으로 구성하여 각 phase의 역학과 제어 목표를 독립적으로 다룸</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Robustness and Generalization</strong>: 외부 disturbances에 대한 robustness와 다양한 skateboard types에 대한 generalization capability 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Framework of HUSKY. (a) We first analyze and model the humanoid–skateboard system, deriving a physics-inspired l</em></p></div>
 <ul>
 <li>Skateboard geometry를 분석하여 board tilt angle γ와 truck steering angle σ 간의 kinematic constraint equation (Eq. 1) 유도</li>
 <li>Humanoid skateboarding을 hybrid dynamical system으로 형식화하고, pushing phase (한 발은 skateboard에 접촉하여 balance 유지, 다른 발은 ground에 intermittent 접촉하여 propulsion 생성)와 steering phase (양발이 skateboard에 접촉하여 passive gliding 중 body lean으로 tilt 제어) 분리</li>

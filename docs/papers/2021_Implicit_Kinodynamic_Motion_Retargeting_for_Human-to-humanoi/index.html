@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xingyu Chen, Hanyu Wu, Sikai Wu, Mingliang Zhou, Diyun Xiang, Haodong Zhang | <strong>날짜</strong>: 2025-09-18 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.15443" target="_blank">10.48550/arXiv.2509.15443</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall pipeline for our proposed framework. We model motion retargeting as a sequence-to-sequence mapping from </em></p></div>
 <p>본 논문은 인간의 모션을 휴머노이드 로봇이 실행 가능한 모션으로 변환하는 Implicit Kinodynamic Motion Retargeting (IKMR) 프레임워크를 제안하며, 기존 frame-by-frame 방식의 비효율성을 극복하고 대규모 모션을 실시간으로 처리한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: IKMR은 dual encoder-decoder 아키텍처를 통한 kinematics-aware pretraining과 imitation learning을 결합한 dynamics-aware fine-tuning의 두 단계 접근법으로, motion topology 표현 학습과 physically feasible trajectory 생성을 동시에 달성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall pipeline for our proposed framework. We model motion retargeting as a sequence-to-sequence mapping from </em></p></div>
 <ul>
 <li><strong>효율성 및 Scalability</strong>: Neural network 기반 implicit retargeting으로 5000fps의 처리 속도 달성하여 기존 numeric 최적화 방식(21-64fps)을 획기적으로 상회</li>
 <li><strong>Kinematics-aware 전략</strong>: Skeleton-based graph convolutional encoder를 통한 unified motion topology 표현 학습으로 diverse motion에 robust한 처리 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실시간 배포</strong>: Retargeting된 모션으로부터 whole-body controller를 직접 학습 및 배포 가능하며, 시뮬레이션과 실제 휴머노이드 로봇(Unitree G1)에서 효과성 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overall pipeline for our proposed framework. We model motion retargeting as a sequence-to-sequence mapping from </em></p></div>
 <ul>
 <li>Skeleton tree의 hierarchical 구조를 graph로 모델링하고 graph convolutional encoder로 critical latent motion feature 추출</li>
 <li>Human과 humanoid robot의 paired motion sequence를 시간축 샘플링으로 학습하여 latent space alignment 수행</li>

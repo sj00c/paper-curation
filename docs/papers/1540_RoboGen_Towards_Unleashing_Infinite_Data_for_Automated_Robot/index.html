@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yufei Wang, Zhou Xian, Feng Chen, Tsun-Hsuan Wang, Yian Wang, Katerina Fragkiadaki, Zackory Erickson, David Held, Chuang Gan | <strong>날짜</strong>: 2023-11-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2311.01455" target="_blank">https://arxiv.org/abs/2311.01455</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 25 example tasks generated and corresponding skills learned by RoboGen. Readers are encouraged to visit our pr</em></p></div>
 <p>RoboGen은 생성형 모델을 활용하여 로봇이 자동으로 다양한 작업, 장면, 학습 감독을 생성하고 이를 통해 규모 있는 로봇 기술 학습을 가능하게 하는 자동화 파이프라인이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: RoboGen은 propose-generate-learn 순환 구조를 통해 foundation 모델에서 객체 의미론, affordance, 상식 지식을 추출하고 이를 이용해 시뮬레이션 환경을 구성한 후 적절한 학습 방법(RL, motion planning, trajectory optimization)을 자동으로 선택하여 로봇 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 25 example tasks generated and corresponding skills learned by RoboGen. Readers are encouraged to visit our pr</em></p></div>
 <ul>
 <li><strong>다양한 작업 생성</strong>: 강체 및 articulated 객체 조작, deformable 객체 조작, legged locomotion 등 25개 이상의 다양한 작업을 자동으로 생성하고 학습</li>
 <li><strong>최소한의 인적 개입</strong>: 몇 가지 프롬프트 설계와 in-context 예제만으로 인간이 수동으로 구성한 로봇 데이셋보다 더 높은 다양성 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>합리적인 foundation 모델 활용</strong>: 동역학과 물리 상호작용에 대한 이해가 부족한 foundation 모델의 한계를 인식하고 모델 능력 범위 내의 정보만 추출하여 활용</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: RoboGen consists of the following stages: A) task proposal, B) scene generation, C) training supervision gener</em></p></div>
 <ul>
 <li>Task Proposal: LLM을 사용하여 학습할 가치 있는 작업과 스킬을 자동으로 제안</li>
 <li>Scene Generation: 제안된 작업에 맞춰 관련 객체와 자산을 선택하고 생성하며 공간 구성 결정</li>

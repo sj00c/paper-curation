@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Rui Chen, Yifan Sun, Changliu Liu | <strong>날짜</strong>: 2025-02-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.02858" target="_blank">https://arxiv.org/abs/2502.02858</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Application of dexterous safe control for humanoids in cluttered environments. (a) A safe teleoperation task w</em></p></div>
 <p>인간형 로봇이 복잡한 환경에서 다중 충돌 회피를 수행할 때 발생하는 제어 제약의 불가능성 문제를 해결하기 위해 Projected Safe Set Algorithm (p-SSA)을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 여러 충돌 쌍에 대해 각각 에너지 함수를 설계하여 다중 제약 QP를 구성하되, QP 불가능성 발생 시 가중치 있는 슬랙 정규화로 제약을 완화하고, 이를 개선한 p-SSA에서 분리된 최적화를 통해 매개변수 튜닝 없이 최적 해를 찾는다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Comparison of safe control methods in G1FixedBase DO v0 task. Spheres and lines follow the convention in fig. </em></p></div>
 <ul>
 <li><strong>새로운 문제 정의</strong>: 밀집된 환경에서의 인간형 로봇 섬세한 안전 제어 문제를 정식화하고 다중 제약 환경에서의 불가능성 원인을 분석</li>
 <li><strong>p-SSA 알고리즘</strong>: 충돌하는 제약을 최소한의 위반으로 완화하는 혁신적 안전 제어 방법으로, 200개 이상의 제약을 포함한 고차원 문제에서도 계산 가능</li>
 <li><strong>실증 검증</strong>: Unitree G1 인간형 로봇의 실제 하드웨어에서 복잡한 충돌 회피 작업 수행 및 시뮬레이션 검증으로 무매개변수(zero parameter tuning) 일반화 가능성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Unitree G1 humanoid robot in MuJoCo simulation performing safe</em></p></div>
 <ul>
 <li>각 충돌 쌍(robot link-obstacle 및 robot link-robot link)에 대해 독립적인 에너지 함수를 정의하여 다중 제어 제약 생성</li>
 <li>QP가 불가능할 때 가중 슬랙 변수를 도입하는 Relaxed SSA (r-SSA) 제안</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Qinglun Zhang, Zhen Liu, Haoqiang Fan, Guanghui Liu, Bing Zeng, Shuaicheng Liu | <strong>날짜</strong>: 2024-12-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.04987" target="_blank">https://arxiv.org/abs/2412.04987</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overall pipeline. The top section visualizes FlowPolicy, where a straight-line flow enables the fastest data t</em></p></div>
 <p>FlowPolicy는 Consistency Flow Matching을 기반으로 3D point cloud 조건에서 로봇 조작 정책을 단일 추론 단계로 생성하는 프레임워크로, 속도를 7배 향상시키면서 경쟁력 있는 성능을 유지한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: FlowPolicy는 velocity field의 자기 일관성을 정규화하여 flow dynamics를 개선하고, 3D point cloud 조건에서 noise에서 로봇 action으로의 직선 흐름을 정의하는 consistency flow matching을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Comparison of FlowPolicy with the state-of-the-</em></p></div>
 <ul>
 <li><strong>단일 단계 생성</strong>: 완전한 3D 조건 정보를 활용하여 한 번의 forward pass로 고품질 로봇 행동 생성 가능</li>
 <li><strong>추론 속도 향상</strong>: Adroit과 Metaworld에서 최대 7배의 추론 시간 단축 달성</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>조건부 consistency flow matching의 첫 적용</strong>: 3D 로봇 조작 작업에서 처음으로 조건부 consistency flow matching 구현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overall pipeline. The top section visualizes FlowPolicy, where a straight-line flow enables the fastest data t</em></p></div>
 <ul>
 <li>3D point cloud를 compact 3D representation으로 인코딩하고 로봇 상태를 임베딩하여 조건부 정보 구성</li>
 <li>Velocity field의 자기 일관성을 정규화하여 서로 다른 시간 상태에서 같은 action space로의 직선 흐름 정의</li>

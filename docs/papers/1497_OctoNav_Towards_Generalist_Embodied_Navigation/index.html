@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chen Gao, Liankai Jin, Xingyu Peng, Jiazhao Zhang, Yue Deng, Annan Li, He Wang, Si Liu | <strong>날짜</strong>: 2025-06-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.09839" target="_blank">https://arxiv.org/abs/2506.09839</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: On the left, we present the large-scale OctoNav-Bench, which contains diverse instruction-</em></p></div>
 <p>자유형식의 멀티모달 멀티기능 지시를 따를 수 있는 일반화된 embodied navigation 에이전트를 위해 OctoNav-Bench 벤치마크와 OctoNav-R1 방법을 제안한다. Think-Before-Action 추론을 통해 복잡한 네비게이션 작업에서 향상된 성능을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 400+개 장면과 45k+개 자동 생성된 지시-궤적 쌍, 그리고 TBA-CoT 데이터셋을 포함하는 대규모 OctoNav-Bench를 구축한다. MLLM 기반의 VLA 모델인 OctoNav-R1을 Action-/TBA-SFT, Nav-GRPO, Online RL 세 단계의 Hybrid Training Paradigm으로 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: On the left, we present the large-scale OctoNav-Bench, which contains diverse instruction-</em></p></div>
 <ul>
 <li><strong>OctoNav-Bench 벤치마크</strong>: 400+개 연속 환경의 3D 장면에서 45k+개의 자유형식 멀티모달 멀티기능 지시-궤적 쌍과 10k+개의 TBA-CoT 데이터셋을 제공하는 대규모 통합 벤치마크 구축</li>
 <li><strong>OctoNav-R1 모델</strong>: 자유형식 멀티모달 멀티기능 지시를 따르고 2D 시각 관찰로부터 저수준 행동을 직접 생성하는 VLA 기반 navigation 에이전트 개발</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Sim2Real 일반화</strong>: 실제 로봇 배포에서 실제 환경 미세조정 없이 초기 sim-to-real 전이 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Overview of the HTP for training OctoNav-R1. The model takes multi-model instruction</em></p></div>
 <ul>
 <li>자동 annotation 파이프라인을 통해 HM3D, MP3D, Gibson, ProcTHOR 등 다양한 환경에서 자유형식 지시-궤적 쌍 생성</li>
 <li>Qwen-VL과 DeepSeek-R1을 활용하여 각 행동 뒤의 reasoning 과정을 포함하는 TBA-CoT 데이터셋 구축</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Susana Nunes, Tiago Guerreiro, Catia Pesquita | <strong>날짜</strong>: 2026-03-23 | <strong>DOI</strong>: <a href="https://doi.org/" target="_blank">미제공</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>페노피브레이트의 관상동맥질환 치료 관계에 대한 비적응형(REx)과 적응형(페르소나 조건부) 설명 예시</em></p></div>
 <p>본 논문은 지식그래프(Knowledge Graph) 기반 설명 생성에 <strong>에이전틱 페르소나(agentic personas)</strong>를 도입하여, 정적 사용자 모델의 한계를 극복하고 전문가의 다양한 인식론적 입장(epistemic stances)을 반영한 적응형 설명을 제공하는 강화학습 기반 접근법을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,18 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 제한된 전문가 피드백으로부터 파생된 <strong>구조화된 추론 전략 표현(agentic personas)</strong>을 대언어모델(LLM)로 구현하고, 이를 강화학습의 보상 함수에 통합하여 적응형 설명을 조건부로 생성하는 2단계 프레임워크 제시.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>적응형 설명성 접근법의 개요: Phase I은 전문가 피드백으로부터 에이전틱 페르소나 생성, Phase II는 페르소나 조건부 보상을 통한 강화학습</em></p></div>
 <ol>
 <li><strong>페르소나 기반 설명이 비적응형 기준선을 일관되게 능가</strong>: 22명 사용자 연구에서 적응형 페르소나 조건부 설명이 과학적 타당성, 관련성, 완성도 측면에서 일관되게 선호됨.</li>
 <li><strong>피드백 요구사항 대폭 감소</strong>: 페르소나 기반 학습이 직접적 인간 피드백 요구량을 <strong>2자리 수(약 100배) 감소</strong>시키면서도 최첨단 예측 성능 유지.</li>
 <li><strong>페르소나 일관성 검증</strong>: 생성된 페르소나들이 대응하는 전문가의 평가와 높은 일치도를 보이며, 페르소나가 실제 전문가 추론을 신뢰성 있게 모델링함을 입증.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>전문가 응답 임베딩의 t-SNE 투영 및 응집 클러스터링(k=2)</em></p></div>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>페르소나 내러티브 프로필의 예시</em></p></div>
 <h3>Phase I: 에이전틱 페르소나 구축</h3>
 <ul>
 <li><strong>전문가 연구 설계</strong>: 생명과학(n=4), CS/AI 바이오메디컬(n=5), 계산생물학(n=2) 배경의 11명 전문가를 대상으로 약물 재창출(DR), 약물-표적 상호작용(DTI) 과제에 대한 지식그래프 설명 평가</li>

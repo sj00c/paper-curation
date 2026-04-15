@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Songlin Wei, Hongyi Jing, Boqian Li, Zhenyu Zhao, Jiageng Mao, Zhenhao Ni, Sicheng He, Jie Liu, Xiawei Liu, Kaidi Kang, Sheng Zang, Weiduo Yuan, Marco Pavone, Di Huang, Yue Wang | <strong>날짜</strong>: 2026-03-12 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2603.12263" target="_blank">10.48550/arXiv.2603.12263</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model Training and Deployment: First, we pre-train the VLM on the EgoDex [20] dataset to autoregressively predic</em></p></div>
 <p>Ψ0는 인간의 egocentric 동영상으로 VLM을 사전학습한 후, 실제 humanoid 로봇 데이터로 flow-based action expert를 후학습하는 2단계 훈련 패러다임을 제안하여 humanoid loco-manipulation을 효율적으로 학습하는 오픈 foundation model이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM을 인간 egocentric 동영상으로 사전학습하여 시각-행동 표현을 학습하고, 이어서 MM-DiT 기반 action expert를 실제 humanoid 데이터로 후학습하는 decoupled multi-stage 패러다임을 도입한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model Training and Deployment: First, we pre-train the VLM on the EgoDex [20] dataset to autoregressively predic</em></p></div>
 <ul>
 <li><strong>데이터 효율성</strong>: 800시간의 인간 동영상과 30시간의 실제 로봇 데이터만으로 10배 이상의 데이터로 학습한 baseline을 40% 이상 상회하는 성공률 달성</li>
 <li><strong>이중 처리 아키텍처</strong>: VLM은 task-level motion priors를 학습하고, action expert는 embodiment-specific 역학을 학습하는 분리된 목표 설정</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>고품질 데이터 레시피</strong>: Noisy internet clips 대신 고품질 egocentric 인간 조작 데이터 활용의 중요성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Model Training and Deployment: First, we pre-train the VLM on the EgoDex [20] dataset to autoregressively predic</em></p></div>
 <ul>
 <li>Stage 1: Qwen3-VL 2B를 EgoDex 데이터셋의 egocentric 동영상으로 autoregressive하게 사전학습하여 unified human-robot action space에서 다음 action token 예측</li>
 <li>Stage 2: MM-DiT 기반 500M 파라미터 action expert를 humanoid 로봇 데이터로 post-train하여 joint space에서 action chunk 직접 예측</li>

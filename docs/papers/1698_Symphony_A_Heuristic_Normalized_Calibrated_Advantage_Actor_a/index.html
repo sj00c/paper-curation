@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Timur Ishuov, Michele Folgheraiter, Madi Nurmanov, Goncalo Gordo, Richárd Farkas, József Dombi | <strong>날짜</strong>: 2025-12-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2512.10477" target="_blank">https://arxiv.org/abs/2512.10477</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Swaddling Regularization with β as temperature.</em></p></div>
 <p>Symphony는 휴머노이드 로봇을 안전하게 훈련하기 위해 Swaddling 정규화, Fading Replay Buffer, Temporal Advantage를 결합한 결정론적 Actor-Critic 알고리즘이다. 제한된 parametric noise와 action strength 조절을 통해 sample efficiency, safety, smooth motion을 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 제한된 Gaussian noise (σ=1/e)와 action strength penalty를 통해 exploration을 제어하고, Fading Replay Buffer로 recent와 long-term memory를 균형있게 활용하며, Temporal Advantage를 통해 Actor-Critic 동시 업데이트를 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Swaddling Regularization with β as temperature.</em></p></div>
 <ul>
 <li><strong>Sample Efficiency</strong>: Update-to-Data ratio 3으로 높은 sample efficiency 달성</li>
 <li><strong>Safety</strong>: Continuous noise 대신 제한된 parametric noise와 action strength 조절로 mechanical safety 보장</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>Hardware-Aware Design</strong>: Motor/gearbox 손상을 고려한 heuristic 설계</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: a) x</em>tanh(x/2) - Rectified Huber Symmetric Error, b)*</p></div>
 <ul>
 <li>3개의 Critic network (각 128 nodes)를 연결하여 384-node distribution 생성</li>
 <li>Target Critic 출력에 hyperbolic tangent 기반 fixed weights 적용 (Table I)</li>

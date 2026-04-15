@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Rui Zhong, Yizhe Sun, Junjie Wen, Jinming Li, Chuang Cheng, Wei Dai, Zhiwen Zeng, Huimin Lu, Yichen Zhu, Yi Xu | <strong>날짜</strong>: 2025-10-03 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.03022" target="_blank">10.48550/arXiv.2510.03022</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. HumanoidExo, a wearable exoskeleton system that transfers human motion to whole-body humanoid data. HumanoidEx</em></p></div>
 <p>웨어러블 외골격(exoskeleton)을 통해 인간의 전신 동작을 휴머노이드 로봇 데이터로 변환하는 HumanoidExo 시스템을 제안하여, 휴머노이드 정책 학습을 위한 대규모 다양한 데이터셋 수집의 병목을 해결한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 인간 몸의 7 DoF 팔과 정렬된 외골격 장치와 백마운트 LiDAR을 통해 전신 동작을 캡처하고, motion retargeting 파이프라인으로 embodiment gap을 최소화한 후, HE-VLA(Vision-Language-Action 모델)에 imitation learning과 reinforcement learning을 결합하여 안정적인 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. Examples for PlaceToy (Task 1), Walk & PlaceToy (Task 2), and PlaceLaundry (Task 3). We designed three tasks t</em></p></div>
 <ul>
 <li><strong>일반화 능력</strong>: HumanoidExo 데이터를 통합하면 학습된 정책이 새로운 장면과 환경으로의 일반화가 효과적으로 이루어진다.</li>
 <li><strong>데이터 효율성</strong>: 단 5개의 실제 로봇 시연만으로도 복잡한 전신 제어 태스크를 학습할 수 있다.</li>
 <li><strong>신규 기능 습득</strong>: 실제 로봇 시연 없이 외골격 데이터만으로 walking과 같은 완전히 새로운 기능을 습득할 수 있다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Hardware overview for HumaniodExo. We integrated a Mid-360 LiDAR for acquiring exoskeleton motion odometry. Fo</em></p></div>
 <ul>
 <li><strong>외골격 하드웨어 설계</strong>: 인간의 7개 팔 관절과 정렬된 isomorphic 외골격을 설계하고 글레노휴머럼 관절에 2개 추가 DoF 추가</li>
 <li><strong>상지 포즈 정렬</strong>: Denavit-Hartenberg (DH) 파라미터와 forward kinematics를 이용하여 외골격 관절을 로봇 관절로 매핑</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chao Yang, Yingkai Sun, Peng Ye, Xin Chen, Chong Yu, Tao Chen | <strong>날짜</strong>: 2025-12-22 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2512.19043" target="_blank">10.48550/arXiv.2512.19043</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the EGM framework. First, large-scale Mocap datasets are retargeted to Humanoid, then a small</em></p></div>
 <p>EGM은 Bin-based Cross-motion Curriculum Adaptive Sampling과 Composite Decoupled Mixture-of-Experts 아키텍처를 통해 4.08시간의 소량 데이터로 49.25시간의 다양한 모션을 효율적으로 추적하는 일반화된 휴머노이드 제어 정책을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 데이터 품질과 다양성을 우선시하는 세 단계 curriculum learning framework를 제안하며, motion bin별 추적 오류에 기반한 적응형 샘플링과 신체 부위별로 분리된 Mixture-of-Experts 아키텍처를 통합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: We deploy a unified student policy trained with EGM in the simulation environment, achieving high robust</em></p></div>
 <ul>
 <li><strong>Bin-based Cross-motion Curriculum Adaptive Sampling (BCCAS)</strong>: motion bin의 추적 오류에 따라 동적으로 샘플링 확률을 조정하여 난이도와 지속시간이 다양한 모션들 간의 학습 균형을 효율적으로 달성</li>
 <li><strong>Composite Decoupled Mixture-of-Experts (CDMoE)</strong>: 상체와 하체의 expert를 독립적으로 그룹화하고, 전용 expert와 공유 expert를 분리하여 dedicated feature와 general feature를 효과적으로 처리</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>데이터 효율성</strong>: 4.08시간의 소량 학습 데이터로 49.25시간의 테스트 모션에서 robust하게 일반화되며, routine 및 highly dynamic task 모두에서 baseline 방법들을 능가</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of the EGM framework. First, large-scale Mocap datasets are retargeted to Humanoid, then a small</em></p></div>
 <ul>
 <li>AMASS 같은 대규모 mocap 데이터를 motion bin으로 분할하고 각 bin의 추적 오류를 모니터링하여 샘플링 확률을 동적으로 조정</li>
 <li>상체와 하체 제어의 다른 특성을 반영하여 CDMoE에서 신체 부위별 expert group을 분리</li>

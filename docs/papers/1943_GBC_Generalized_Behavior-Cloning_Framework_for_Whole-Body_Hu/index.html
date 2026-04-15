@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yifei Yao, Chengyuan Luo, Jiaheng Du, Wentao He, Jun-Guo Lu | <strong>날짜</strong>: 2025-08-13 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2508.09960" target="_blank">10.48550/arXiv.2508.09960</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. GBC data processing pipeline. MoCap data (angle-axis representation)</em></p></div>
 <p>GBC는 이질적인 휴머노이드 로봇들을 위한 통합 행동 모방 프레임워크로, differentiable IK 기반 데이터 파이프라인, DAgger-MMPPO 알고리즘, MMTransformer 아키텍처를 결합하여 인간 모션캡처 데이터를 다양한 로봇에 자동으로 재타겟팅하고 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MoCap 데이터를 처리하기 위한 differentiable IK 네트워크를 설계하고, 이를 바탕으로 RL과 IL을 결합한 DAgger-MMPPO 알고리즘과 MMTransformer 아키텍처를 제안하여, 여러 로봇 구성에서 통일된 워크플로우를 실현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1. GBC data processing pipeline. MoCap data (angle-axis representation)</em></p></div>
 <ul>
 <li><strong>실시간 differentiable IK 기반 데이터 파이프라인</strong>: MoCap 데이터를 다양한 로봇 구성에 자동으로 적응시켜 물리적으로 가능한 시연 데이터셋으로 변환</li>
 <li><strong>DAgger-MMPPO 알고리즘</strong>: 두 단계 RL을 통해 효율적 행동 모방을 달성하며, AMP 같은 다른 IL 방법들과 통합 가능</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>다중 로봇 검증</strong>: Unitree G1, Unitree H1-2, Fourier GR1, Turin 등 다양한 로봇 구성에서 일반화 및 전이 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5. MMTransformer architecture. MMTransformer follows a BERT style encoder design, and treats humanoid observations </em></p></div>
 <ul>
 <li>Differentiable IK 네트워크를 통해 인간 골격 구조를 로봇 구성에 매핑하고, 최적화 기반 후처리로 연속성과 물리적 가능성 보장</li>
 <li>MMTransformer 아키텍처에서 로봇 관찰 및 참조 모션을 다중 모달리티로 인코딩하여 상태 공간 사이의 맵핑 능력 강화</li>

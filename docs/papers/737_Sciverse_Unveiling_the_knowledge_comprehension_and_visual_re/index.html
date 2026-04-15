@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Z. J. Guo, Renrui Zhang, Hao Chen, Jialin Gao, Dongzhi Jiang, Jiaze Wang, Pheng‐Ann Heng | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/" target="_blank">미제공</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: 5가지 문제 버전과 과학적 CoT 평가 전략의 개요. 지식 수준을 달리하는 3가지 버전과 시각 정보 비중을 달리하는 2가지 버전, 그리고 단계별 평가 전략을 제시.</em></p></div>
 <p>SCIVERSE는 대규모 멀티모달 모델(LMM)의 과학 문제 해결 능력을 세밀하게 평가하기 위한 벤치마크로, 1,147개 문제를 5가지 버전으로 변환한 5,735개 테스트 인스턴스를 제공하며, 과학 지식 이해, 멀티모달 콘텐츠 해석, 연쇄적 사고(CoT) 추론이라는 세 가지 핵심 차원을 체계적으로 평가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 각 문제를 지식 수준에 따라 3가지 버전(Knowledge-free, -lite, -rich)으로, 시각-텍스트 정보 배분에 따라 2가지 버전(Vision-rich, Vision-only)으로 변환하고, GPT-4o를 활용한 과학적 CoT 평가 전략을 개발하여 단계별 지식 및 논리 오류를 분석한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: SCIVERSE의 주제 분포. 물리학 2,010개(35.0%), 화학 1,880개(32.2%), 생물학 1,845개(32.8%).</em></p></div>
 <ol>
 <li><strong>포괄적 벤치마크 구축</strong>: 1,147개의 고품질 과학 문제를 5가지 버전으로 변환하여 5,735개의 평가 인스턴스를 포함하는 SCIVERSE 데이터셋 구축. 물리, 화학, 생물학 3개 주요 학문을 21개 세부 주제로 구분하고 고등학교부터 대학 수준까지 다양한 난이도 포함.</li>
 <li><strong>세밀한 평가 틀</strong>: 과학 문제 해결의 세 가지 차원을 각각 평가할 수 있는 다층 구조 제시:
@@ -92,6 +96,8 @@ a { color: #A62018; }
 </ul>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1 (하단): 과학적 CoT 평가 전략. 단계별 분류, 지식 및 논리 점수 산출.</em></p></div>
 <h3>데이터 수집 및 변환</h3>
 <ul>
 <li>기존 공개 데이터셋(SceMQA, MMMU, CMMMU)에서 1,200개 문제 초수집</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zhikai Zhang, Jun Guo, Chao Chen, Jilong Wang, Chenghuai Lin, Yunrui Lian, Han Xue, Zhenrong Wang, Maoqi Liu, Jiangran Lyu, Huaping Liu, He Wang, Li Yi | <strong>날짜</strong>: 2025-09-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2509.13833" target="_blank">10.48550/arXiv.2509.13833</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: (a) The humanoid tracks diverse, highly dynamic, and contact-rich motions using a single policy. (b) The humanoi</em></p></div>
 <p>Any2Track는 휴머노이드 로봇이 다양한 동작을 추적하면서 동시에 지형, 외력, 물리적 성질 변화 등 실제 환경 교란에 적응할 수 있도록 하는 두 단계 강화학습 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Any2Track은 동역학 적응성을 기본 행동 실행 위의 추가 능력으로 재정의하며, 첫 번째 단계에서 AnyTracker로 일반적인 모션 추적 능력을 확보하고, 두 번째 단계에서 AnyAdapter를 통해 history 정보 기반의 온라인 적응을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: (a) The humanoid tracks diverse, highly dynamic, and contact-rich motions using a single policy. (b) The humanoi</em></p></div>
 <ul>
 <li><strong>통합 모션 추적 정책</strong>: 정규화된 행동 공간과 specialist-to-generalist 전략을 통해 LAFAN1과 AMASS 데이터셋의 다양한 동작을 단일 정책으로 추적 가능</li>
 <li><strong>온라인 동역학 적응</strong>: Dynamics-aware world model prediction을 보조 작업으로 사용하여 history 버퍼에서 추출한 동역학 임베딩을 통해 실시간 환경 적응</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Sim2real 성공</strong>: Unitree G1 하드웨어에 zero-shot 전이로 성공적으로 배포되어 실제 환경에서 우수한 성능 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of our method. Any2Track consists of two key components: AnyTracker and AnyAdapter. AnyTracker</em></p></div>
 <ul>
 <li><strong>AnyTracker 설계</strong>: 복잡한 행동 공간으로 인한 최적화 어려움을 해결하기 위해 canonicalized action space 도입 및 specialist-to-generalist 학습 전략 적용</li>
 <li><strong>Adapter 아키텍처</strong>: 기본 추적기의 파라미터 직접 미세조정 대신 adapter를 추가하여 동역학 임베딩을 입력으로 받아 행동을 적응적으로 조정</li>

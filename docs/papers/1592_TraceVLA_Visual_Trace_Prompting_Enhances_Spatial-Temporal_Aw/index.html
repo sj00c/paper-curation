@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ruijie Zheng, Yongyuan Liang, Shuaiyi Huang, Jianfeng Gao, Hal Daumé, Andrey Kolobov, Furong Huang, Jianwei Yang | <strong>날짜</strong>: 2024-12-13 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.10345" target="_blank">https://arxiv.org/abs/2412.10345</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: An illustration of our method. The first image shows the original robot’s observation, while the second</em></p></div>
 <p>Visual trace prompting 기법을 통해 VLA 모델의 spatial-temporal 인식을 향상시켜 로봇 조작 작업의 성능을 개선한 연구이다. 150K 로봇 조작 궤적 데이터셋을 수집하고 TraceVLA 모델을 개발하여 시뮬레이션과 실제 로봇 환경에서 우수한 성능을 입증했다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Co-Tracker를 사용하여 역사적 이미지 시퀀스에서 밀집 포인트 궤적을 추출하고, 이를 원본 관찰 이미지에 시각적으로 오버레이하여 visual trace를 생성한다. 이 visual trace와 원본 이미지를 separator token으로 구분하여 VLA 모델의 입력으로 제공한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: (Left): 7B TraceVLA vs. 7B OpenVLA. (Right): 4B TraceVLA-Phi3 vs. 4B OpenVLA-Phi3.</em></p></div>
 <ul>
 <li><strong>SimplerEnv 성능</strong>: OpenVLA 대비 10% 향상된 성능을 137개 환경 설정에서 달성</li>
 <li><strong>실제 로봇 성능</strong>: WidowX 로봇 4가지 작업에서 OpenVLA 대비 3.5배 우수한 성능 입증</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>데이터셋</strong>: 150K 로봇 조작 궤적 데이터셋 구성 및 공개</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: An illustration of visual trace generation. Given a sequence of historical image observations, we first</em></p></div>
 <ul>
 <li>Co-Tracker 알고리즘으로 시간 윈도우 N 범위 내의 역사적 이미지 시퀀스에서 K×K 그리드 기반 밀집 포인트 궤적 추출</li>
 <li>유의미한 움직임을 보이는 활성 포인트 궤적(active point trajectories)을 필터링하여 선택</li>

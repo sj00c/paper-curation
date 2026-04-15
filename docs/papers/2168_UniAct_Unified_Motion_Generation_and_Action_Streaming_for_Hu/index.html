@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nan Jiang, Zimo He, Wanhe Yu, Lexi Pang, Yunhao Li, Hongjie Li, Jieming Cui, Yuhan Li, Yizhou Wang, Yixin Zhu, Siyuan Huang | <strong>날짜</strong>: 2025-12-30 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2512.24321" target="_blank">10.48550/arXiv.2512.24321</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1. UniAct, a unified framework for multimodal motion generation and action streaming. UniAct enables humanoid rob</em></p></div>
 <p>UniAct는 MLLM과 causal streaming pipeline을 결합한 두 단계 프레임워크로, 인간형 로봇이 언어, 음악, 궤적 등 다양한 multimodal 명령을 sub-500ms 지연시간으로 실행할 수 있게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: UniAct는 FSQ를 통해 이질적 입력을 공유 discrete codebook으로 통합하여 cross-modal alignment를 확보하고, MLLM 기반 생성 단계와 causal decoder를 거쳐 robust motion tracker로 실행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. UA-Net dataset analysis. (a) Representative text descriptions of human motions from UA-Net. (b) Rendered motio</em></p></div>
 <ul>
 <li><strong>Unified multimodal framework</strong>: 언어, 음악, 궤적, reference 동작을 하나의 discrete token 공간으로 통합하여 seamless cross-modal translation 실현</li>
 <li><strong>Low-latency real-time execution</strong>: Sub-500ms 응답 지연으로 responsive humanoid assistant 구현</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>UA-Net benchmark</strong>: 20시간 규모의 multimodal 주석이 달린 고품질 인간형 로봇 동작 데이터셋 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Overview of UniAct and multimodal representations.</em></p></div>
 <ul>
 <li><strong>FSQ 기반 토큰화</strong>: 텍스트, 음악, 궤적, reference motion을 discrete token 표현으로 변환하여 입력 통일</li>
 <li><strong>MLLM 기반 생성</strong>: Fine-tuned MLLM이 multimodal 입력을 reasoning하여 motion token sequence 생성</li>

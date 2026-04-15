@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Niraj Pudasaini, Yutong Zhang, Jensen Lavering, Alessandro Roncone, Nikolaus Correll | <strong>날짜</strong>: 2026-03-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.08961" target="_blank">https://arxiv.org/abs/2603.08961</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed standing framework. During training (top), an upper-body dynamics encoder processes</em></p></div>
 <p>FAME는 양팔 조작 시 외부 손 힘으로 인한 균형 교란을 해결하기 위해, 상체 관절 구성과 양팔 상호작용 힘을 인코딩하는 latent context에 조건화된 RL 정책을 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 상체 dynamics encoder가 상체 관절 상태와 손 힘을 처리하여 latent context를 생성하고, 이것이 기본 서기 정책을 조건화한다. 훈련 중 spherically sampled 3D 힘과 상체 자세 curriculum을 적용하며, 배포 시 로봇 역학과 Jacobian으로 손목 힘을 추정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: FAME overview and real demonstration. Left: FAME conditions a standing policy on an upper-body context encoder t</em></p></div>
 <ul>
 <li><strong>확장된 조작 범위</strong>: 시뮬레이션에서 FAME이 73.84% 평균 성공률을 달성하여 기준선(51.40%)과 기본 정책(29.44%)보다 크게 개선</li>
 <li><strong>센서 불필요 배포</strong>: 손목 force/torque 센서 없이 joint torque와 상태에서 rigid-body dynamics를 통해 손목 상호작용 힘을 추정</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실세계 검증</strong>: Unitree H12 전체 규모 휴머노이드에서 비대칭 편측 당김(RE1)과 대칭 양팔 하중(RE2) 시나리오에서 강건성 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the proposed standing framework. During training (top), an upper-body dynamics encoder processes</em></p></div>
 <ul>
 <li>상체 context encoder: 상체 joint configuration(∈ℝ15)과 양팔 상호작용 힘([F_L, F_R] ∈ ℝ6)을 입력으로 받아 latent context ẑ_t 생성</li>
 <li>기본 정책: 하체 균형 제어를 위해 latent context에 조건화된 standing policy 학습</li>

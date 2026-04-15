@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Siheng Zhao, Yanjie Ze, Yue Wang, C. Karen Liu, Pieter Abbeel, Guanya Shi, Rocky Duan | <strong>날짜</strong>: 2025-10-08 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2510.05070" target="_blank">10.48550/arXiv.2510.05070</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Overview of ResMimic : (1) A general motion tracking policy is trained on large-scale human motion data to serve</em></p></div>
 <p>ResMimic는 일반 모션 추적(GMT) 정책을 기반으로 효율적인 잔차 정책(residual policy)을 학습하여 인간형 로봇의 정밀한 전신 이동-조작 능력을 실현하는 이단계 잔차학습 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 대규모 인간 모션 데이터로 훈련한 GMT 정책을 견고한 기초로 사용하고, 이 위에 작업별 잔차 정책을 학습하여 객체 추적 및 상호작용 정밀도를 개선한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We deploy ResMimic on a Unitree G1 humanoid to demonstrate diverse whole-body loco-manipulation capabilities.</em></p></div>
 <ul>
 <li><strong>이단계 잔차학습 프레임워크</strong>: 사전훈련된 GMT 정책과 작업별 정밀 잔차 정책의 결합으로 효율적이고 정확한 이동-조작을 실현</li>
 <li><strong>맞춤형 보상 설계</strong>: point-cloud 기반 객체 추적 보상, 신체-객체 접촉 보상, curriculum 기반 가상 객체 제어기로 훈련 효율성 및 sim-to-real 전이 향상</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>연구 가속 자산 공개</strong>: GPU 가속 시뮬레이션 인프라, sim-to-sim 평가 프로토타입, 모션 데이터 공개 예정</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: Overview of ResMimic : (1) A general motion tracking policy is trained on large-scale human motion data to serve</em></p></div>
 <ul>
 <li>Stage I: 대규모 인간-전용 모션 캡처 데이터로 GMT 정책(πGMT)을 훈련하여 인간형 전신 행동의 견고한 기초 확보</li>
 <li>Stage II: 훈련된 GMT 정책의 출력을 개선하는 작업별 잔차 정책(πRes)을 학습하여 로봇 상태(sr_t), 객체 상태(so_t), 참조 모션(ŝr_t), 객체 목표 상태(ŝo_t)를 조건으로 미세 조정</li>

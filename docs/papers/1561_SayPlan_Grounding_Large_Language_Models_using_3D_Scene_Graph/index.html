@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Krishan Rana, Jesse Haviland, Sourav Garg, Jad Abou-Chakra, Ian Reid, Niko Suenderhauf | <strong>날짜</strong>: 2023-07-12 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2307.06135" target="_blank">https://arxiv.org/abs/2307.06135</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: SayPlan Overview (top). SayPlan operates across two stages to ensure scalability: (left)</em></p></div>
 <p>SayPlan은 3D Scene Graph (3DSG) 표현을 활용하여 LLM 기반 대규모 로봇 태스크 계획을 확장 가능하게 만드는 접근법이다. 의미론적 검색, 고전적 경로 계획 통합, 반복 재계획 파이프라인을 통해 멀티룸, 멀티플로어 환경에서 실행 가능한 계획을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3DSG의 계층적 구조를 활용하여 LLM이 축약된 그래프 표현에서 의미론적 검색으로 관련 서브그래프를 찾도록 하고, 고전적 경로 계획자(Dijkstra)를 통합하며, 장면 그래프 시뮬레이터 피드백을 통한 반복 재계획으로 실행 불가능한 액션을 수정한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: SayPlan Overview (top). SayPlan operates across two stages to ensure scalability: (left)</em></p></div>
 <ul>
 <li><strong>확장 가능한 3DSG 처리</strong>: 의미론적 검색 파이프라인으로 전체 대규모 장면 표현을 최대 82.1% 축소하여 LLM이 파싱하도록 함</li>
 <li><strong>토큰 효율성</strong>: 계층적 3DSG 구조 활용으로 LLM 토큰 한계를 초과하지 않으면서 대규모 환경 계획 지원</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 시연</strong>: 모바일 매니퓨레이터 로봇에서의 실제 실행 비디오 데모 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: SayPlan Overview (top). SayPlan operates across two stages to ensure scalability: (left)</em></p></div>
 <ul>
 <li>3D Scene Graph를 JSON 표현으로 LLM에 입력</li>
 <li>축약된(collapsed) 3DSG를 시작점으로 사용하여 LLM의 초기 컨텍스트 크기 최소화</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Yuke Zhu, Josiah Wong, Ajay Mandlekar, Roberto Martín-Martín, Abhishek Joshi, Kevin Lin, Abhiram Maddukuri, Soroush Nasiriany, Yifeng Zhu | <strong>날짜</strong>: 2020-09-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2009.12293" target="_blank">https://arxiv.org/abs/2009.12293</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: System diagram of robosuite modules. An actor (e.g. a Policy or</em></p></div>
 <p>robosuite는 MuJoCo 물리 엔진을 기반으로 하는 모듈식 로봇 시뮬레이션 프레임워크로, 로봇 학습 연구를 위한 벤치마크 환경과 재현 가능한 실험 환경을 제공한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MuJoCo 물리 엔진을 핵심으로 하여 Modeling API와 Simulation API로 구분된 모듈식 아키텍처를 설계하고, Task, Robot, Arena, Object 클래스의 조합으로 절차적 환경 생성을 지원한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Procedurally generated robotic environments with robosuite APIs</em></p></div>
 <ul>
 <li><strong>모듈식 설계</strong>: 10개의 로봇 모델, 9개의 그리퍼 모델, 4개의 베이스 모델, 6개의 바디 파트 컨트롤러 모드로 구성되어 유연한 환경 구성을 지원</li>
 <li><strong>표준화된 작업</strong>: 9개의 표준 조작 작업과 다양한 복잡도를 제공하며 최신 알고리즘의 벤치마킹 결과 포함</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>휴먼 데모 수집</strong>: 키보드, 3D 마우스, GUI 등으로 휴먼 데모 수집 및 재현 기능 제공</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: System diagram of robosuite modules. An actor (e.g. a Policy or</em></p></div>
 <ul>
 <li>Modeling API: Task, RobotModel, GripperModel, RobotBaseModel, Object Model, Arena을 조합하여 MJCF 형식의 시뮬레이션 모델 생성</li>
 <li>Simulation API: OpenAI Gym 스타일의 인터페이스로 정책(Policy) 또는 I/O 디바이스에서 액션 입력을 받아 MuJoCo 물리 엔진으로 실행</li>

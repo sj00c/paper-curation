@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Anya Zorin, Irmak Guzey, Billy Yan, Aadhithya Iyer, Lisa Kondrich, Nikhil X. Bhattasali, Lerrel Pinto | <strong>날짜</strong>: 2025-04-17 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2504.13165" target="_blank">https://arxiv.org/abs/2504.13165</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: RUKA is a tendon-driven humanoid hand that is simple,</em></p></div>
 <p>RUKA는 3D 프린팅과 저가 부품으로 제작한 tendon-driven humanoid hand로, learning-based control을 통해 정밀성, 컴팩트성, 강도, 저비용을 동시에 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: MANUS motion-capture glove를 로봇 손에 장착하여 joint와 fingertip position 데이터를 수집하고, 이를 통해 joint-to-actuator 및 fingertip-to-actuator models를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: (A) A Venn diagram of a variety of robotic hands [1, 44, 43, 13, 24, 11] demonstrates RUKA’s unique combination </em></p></div>
 <ul>
 <li><strong>오픈소스 하드웨어 설계</strong>: $1,300 이하의 비용으로 제작 가능하며 7시간 내에 조립 가능한 완전 open-source tendon-driven hand 제공</li>
 <li><strong>Data-driven control approach</strong>: MANUS glove를 활용한 자동화된 데이터 수집으로 복잡한 tendon 비선형성을 학습 모델로 해결</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 응용 검증</strong>: Teleoperation 작업에서 dexterous movement 수행 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Fig. 3: (A) Joints enable 15 degrees of freedom of RUKA labeled with their corresponding joint names. (B) The splay of t</em></p></div>
 <ul>
 <li>MANUS motion-capture glove를 RUKA 손에 장착하여 encoder 없이도 정확한 joint 및 fingertip position 데이터 획득</li>
 <li>procedurally sampling을 통해 motor limits 내에서 actuation command를 자동으로 변화시켜 (actuator command, joint/fingertip position) 쌍 데이터 대규모 수집</li>

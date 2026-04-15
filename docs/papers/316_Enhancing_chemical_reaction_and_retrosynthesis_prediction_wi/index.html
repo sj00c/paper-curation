@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xuan Lin, Qingrui Liu, Hongxin Xiang, Daojian Zeng, Xiangxiang Zeng | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://arxiv.org/abs/2505.02639" target="_blank">arXiv:2505.02639</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>BRICS 기반 단편(fragment)과 반응물(reactant) 간의 유사성 분포(평균 66.5%) 및 이중 과제 학습을 통한 성능 향상(6.3% 개선)</em></p></div>
 <p>본 논문은 대규모 언어 모델(LLM)을 화학 반응 및 역합성 예측에 적용할 때 직면하는 데이터 부족과 과제 간 상관관계 무시 문제를 해결하기 위해, BRICS 기반 440만 개 분자 데이터셋과 이중 과제 학습 전략을 갖춘 ChemDual 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -80,12 +82,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) BRICS 기반 저비용 대규모 데이터셋(440만) 구축, (2) 다중 규모 토크나이저를 통한 원자·함수기·단편 수준의 분자 정보 캡처, (3) 단편 재조합 및 반응 예측을 동시에 최적화하는 이중 과제 학습 전략 도입</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 2">
+<p class="fig-caption"><em>ChemDual의 전체 구조: 데이터셋 구축, 다중 규모 토크나이저, 이중 과제 학습 모듈</em></p></div>
 <ol>
 <li><strong>성능 향상</strong>: Mol-Instruction 및 USPTO-50K 데이터셋에서 기존 단일 과제 접근법 및 일반 오픈소스 LLM을 능가하는 정확도 달성 (반응 예측에서 이중 과제 학습 적용 시 6.3% Exact Match Score 개선)</li>
 <li><strong>약물 설계 잠재력</strong>: 분자 도킹 분석 결과 ChemDual이 단백질 결합 친화도가 우수하고 다양한 화합물을 생성하여 신약 설계에 강한 응용 가능성 입증</li>
 <li><strong>효율적 데이터 구축</strong>: 20M SMILES 시퀀스로부터 440만 개의 학습용 지시문 자동 생성으로 데이터 획득 비용 대폭 절감</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 3">
+<p class="fig-caption"><em>지시문 세트 예시: 역합성(전방 과제)과 반응 예측(후방 과제)</em></p></div>
 <p><strong>Dataset Construction (3.1절)</strong></p>
 <ul>
 <li>ChEMBL-34 데이터베이스에서 20M 분자 SMILES 수집 → 중복 제거, 유효성 검증, 분자량 필터링 → 2.2M 분자 라이브러리 구축</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nehar Poddar, Stephen McCrory, Luigi Penco, Geoffrey Clark, Hakki Erhan Svil, Robert Griffin | <strong>날짜</strong>: 2026-03-09 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2603.08619" target="_blank">10.48550/arXiv.2603.08619</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>고전적 균형 제어 원리(capture point, center-of-mass, centroidal momentum)를 강화학습의 privileged critic 입력과 보상 형성에 직접 임베딩하여, 인간형 로봇의 낙상 회복을 위한 통합 정책을 학습한다. 단일 정책으로 발목/엉덩이 전략, 보정 스텝, 다중접촉 일어서기를 포괄하며 93.4% 회복률을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 비대칭 actor-critic 구조를 사용하여 actor는 proprioception만 입력받고, critic은 capture point, CoM 상태, centroidal momentum을 privileged 입력으로 받으며 이들 메트릭을 보상 형성에 직접 활용한다. 낙상 유도와 일어서기를 명시적으로 순환하는 curriculum을 통해 전체 회복 시퀀스를 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>통합 정책 범위</strong>: 발목/엉덩이 안정화, 스텝 회복, 순응형 낙상, 손/팔꿈치/무릎을 이용한 다중접촉 일어서기까지 전체 회복 스펙트럼을 단일 정책으로 구현</li>
 <li><strong>높은 성공률</strong>: Unitree H1-2에서 무작위 초기 자세와 예측 불가능한 낙상 구성에 대해 93.4% 회복률 달성</li>

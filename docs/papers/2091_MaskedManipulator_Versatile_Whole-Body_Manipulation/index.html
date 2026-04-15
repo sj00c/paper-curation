@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Chen Tessler, Yifeng Jiang, Erwin Coumans, Zhengyi Luo, Gal Chechik, Xue Bin Peng | <strong>날짜</strong>: 2025-05-25 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2505.19086" target="_blank">https://arxiv.org/abs/2505.19086</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: MaskedManipulator enables physics-based humanoids to perform intricate, object interactions from sparse spatio</em></p></div>
 <p>MaskedManipulator는 대규모 모션 캡처 데이터로 학습한 추적 컨트롤러에서 증류한 생성적 제어 정책으로, 사용자가 객체 포즈나 신체 포즈 같은 고수준 목표를 지정하여 물리 기반 전신 조작 행동을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 두 단계 학습 과정을 구조화한다: (1) MimicManipulator는 GRAB 데이터셋의 인간 조작 시연으로부터 정교한 추적 컨트롤러를 RL로 훈련하여 물리적 재구성을 보장하고, (2) MaskedManipulator는 이 추적기의 지식을 희소 spatio-temporal 목표에서 작동하는 생성 정책으로 증류한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: MaskedManipulator enables physics-based humanoids to perform intricate, object interactions from sparse spatio</em></p></div>
 <ul>
 <li><strong>MimicManipulator 추적기</strong>: GRAB 데이터셋의 다양한 전신 조작 시연을 정확히 추적하는 physics-based 모션 추적기로, RL을 통해 필요한 저수준 액션을 복구하고 동적 가능성을 보장한다.</li>
 <li><strong>MaskedManipulator 정책</strong>: 인간형의 신체 부분과 조작 객체 모두에 대한 spatio-temporal goal-conditioning을 지원하는 통일된 생성 제어 정책으로, 희소한 제약 조건에서 다양한 조작 행동을 생성한다.</li>
 <li><strong>유연성-정밀도 균형</strong>: 긴 시간 지평의 고수준 목표(예: '컵을 탁자에 놓으시오')부터 상세한 kinematic 목표(예: teleoperation)까지 다양한 제어 입력을 지원하는 통합 프레임워크를 달성한다.", '<strong>다용도 상호작용</strong>: 파지, 재파지, 손-대-손 이동 같은 복잡한 인간식 상호작용 전략을 물리적으로 타당하게 합성할 수 있다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Phased contact reward for precise manipulation.</em></p></div>
 <ul>
 <li><strong>Stage 1 – MimicManipulator 훈련</strong>: GRAB 모션 캡처 데이터에서 추출한 reference 운동학(ˆq_t, ˆθ_t) 및 접촉 정보(ˆc_t)에 대해 policy를 RL로 훈련. 완전 정보 설정(fully observable)에서 작동하여 정교한 조작 행동을 정확히 추적한다.</li>
 <li><strong>단계적 접촉 보상</strong>: Figure 2의 phased contact reward를 사용하여 manipulation 과정 중 정밀한 접촉 시퀀스(grasp → lift → place)를 학습한다.</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Sylvain Bertrand, Luigi Penco, Dexton Anderson, Duncan Calvert, Valentine Roy, Stephen McCrory, Khizar Mohammed, Sebastian Sanchez, Will Griffith, Steve Morfey, Alexis Maslyczyk, Achintya Mohan, Cody Castello, Bingyin Ma, Kartik Suryavanshi, Patrick Dills, Jerry Pratt, Victor Ragusila, Brandon Shrewsbury, Robert Griffin | <strong>날짜</strong>: 2024-09-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2409.04639" target="_blank">https://arxiv.org/abs/2409.04639</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>본 논문은 7개의 IMU 기반 캘리브레이션 무료 모션 캡처, low-latency kinematics streaming toolbox, 고대역폭 cycloidal actuator를 통합하여 휴머노이드 로봇의 고속 및 충격 강건 텔레오퍼레이션을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 본 논문은 최소한의 센서(7 IMU) 기반 칼리브레이션 무료 모션 리타게팅, 60Hz 입력을 1kHz 제어 대역폭으로 확장하는 filtering/estimation/prediction 기반 streaming 기법, 그리고 고대역폭 cycloidal actuator 통합을 통해 문제를 해결한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>최소 모션 캡처</strong>: 7개 IMU(VR headset 1개, 컨트롤러 2개, 추적기 4개)만 사용하여 full-body reference 생성 가능하며, 사전 캘리브레이션이나 신체 계측 불필요</li>
 <li><strong>저지연 kinematics streaming</strong>: filtering, state estimation, prediction을 통합한 KST로 60Hz 입력을 1kHz 제어 대역폭으로 실시간 처리</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>통합 프레임워크</strong>: motion retargeting, KST, whole-body controller, visual feedback(digital twin + stereo vision)을 통합하여 unprecedented 성능 시연</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2.</em></p></div>
 <ul>
 <li><strong>Pelvis retargeting</strong>: 사용자 waist tracker의 z축 움직임을 로봇 pelvis 높이 비율로 스케일링하고, 초기 대비 변위를 적용하여 pelvis pose 업데이트(식 1-3)</li>
 <li><strong>Hand retargeting</strong>: 헤드셋과 chest tracker 위치로부터 shoulder 위치 추정(식 4-5), 팔 길이 비율 스케일링(식 6), 사용자 손 움직임의 스케일된 리플렉션을 적용(식 7)</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Q. C. Dong, Zi-Xuan Su, Qing Huo Liu, Wen Chen, Zhizhang Chen | <strong>날짜</strong>: 2026-03-26 | <strong>DOI</strong>: <a href="https://doi.org/" target="_blank">미공개</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: 전자기 역산란 문제 해결을 위한 PINO 프레임워크. 정규화된 좌표 X, Y를 입력으로 하고, 신경 연산자의 출력은 예측된 유도 전류 Ĵ</em></p></div>
 <p>본 논문은 신경 연산자(Neural Operator)와 물리 정보를 결합한 PINO 프레임워크를 제안하여 전자기 역산란 문제를 신속하고 정확하게 해결한다. 학습 가능한 텐서로 유전율을 표현하고 하이브리드 손실 함수(state loss, data loss, TV 정규화)로 신경 연산자와 물질 특성을 동시에 최적화한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,12 +77,16 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: FNO, U-FNO, F-FNO 세 가지 신경 연산자 아키텍처를 비교하며, 좌표 주파수 인코딩(frequency encoding)으로 공간 표현 능력을 강화하고, 상태 손실(state loss)과 데이터 손실(data loss)을 결합한 완전 미분 가능한 프레임워크를 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: 2차원 TMz 산란 시나리오 모델링 설정</em></p></div>
 <ol>
 <li><strong>우수한 복원 정확도</strong>: 단일/다중 주파수 환경에서 노이즈(5%, 10%)가 있어도 기존 CSI 방법을 일관되게 능가하며, 위상 없는 데이터로도 안정적인 복원을 달성한다.</li>
 <li><strong>유연한 일반화</strong>: 하나의 신경 연산자로 여러 주파수에 대응 가능하고, 위상 정보 유무를 모두 처리할 수 있는 통일된 프레임워크를 제공한다.</li>
 <li><strong>아키텍처 비교</strong>: FNO, U-FNO, F-FNO의 성능 차이를 정량적으로 분석하여 각 신경 연산자의 장단점을 명확히 한다.</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+</div>
 <ul>
 <li><strong>주파수 인코딩</strong>: 공간 좌표 (X, Y)를 삼각함수 기저 함수로 인코딩하여 M=10까지의 고주파 정보를 표현 능력에 추가한다.</li>
 <li><strong>신경 연산자 구조</strong>: 선형 lifting 연산자 P로 인코딩된 입력을 고차원 특징 공간으로 투영하고, Fourier 변환 기반 kernel 연산자 K를 통해 반복적으로 특징 필드를 업데이트한다 (d₀ → d₁ → ... → dₙ).</li>

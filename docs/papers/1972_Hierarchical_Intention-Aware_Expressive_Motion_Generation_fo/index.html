@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lingfan Bao, Yan Pan, Tianhu Peng, Dimitrios Kanoulas, Chengxu Zhou | <strong>날짜</strong>: 2025-06-02 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.01563" target="_blank">https://arxiv.org/abs/2506.01563</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overall framework of the proposed work. (a) The high-level system architecture. Multimodal inputs XI = (Vin, Lin</em></p></div>
 <p>본 논문은 비전-언어 모델(VLM)의 의도 추론과 diffusion 기반 모션 생성을 계층적으로 결합하여, 휴머노이드 로봇이 인간의 사회적 의도와 정서 맥락을 이해하고 실시간으로 표현력 있는 제스처를 생성하는 HIAER 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: VLM을 이용한 in-context learning과 Chain-of-Thought 프롬팅으로 사회적 의도와 valence-arousal(V-A) 정서 맥락을 추론한 후, DART diffusion 모델에 조건부 텍스트 프롬프트를 제공하여 사회적으로 적절한 모션을 실시간 생성하고, RL 기반 whole-body controller로 물리 로봇에서 실행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Qualitative results across the six representative interaction scenarios. Each subfigure from (a) to (f) displays</em></p></div>
 <ul>
 <li><strong>계층적 의도-인식 프레임워크</strong>: VLM의 정교한 추론을 사회적 의도와 정서 맥락(V-A 모델)에 통합하여 휴머노이드 로봇이 맥락 인식 모션 생성 가능</li>
 <li><strong>V-A 파라미터화</strong>: 복잡한 사회적 의도를 valence와 arousal로 파라미터화하여 actionable parameter로 변환하고 표현력 있는 모션 선택 가이드</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: 물리 휴머노이드 플랫폼에서 실제 HRI 시나리오에서 저지연 맥락 적절 제스처 생성 능력 입증 및 사회적 지능성 평가 우수</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Overall framework of the proposed work. (a) The high-level system architecture. Multimodal inputs XI = (Vin, Lin</em></p></div>
 <ul>
 <li>입력 모달리티(비전 Vin, 언어 Lin)와 대화 이력 HI/O를 VLM 에이전트 πi에 입력</li>
 <li>사전 프롬프트 Lpre와 CoT 프롬팅 전략으로 장면 설명(d), 의도(i), 신뢰도(c), V-A 추정, 모션 원시(⟨m⟩) 포함한 구조화된 출력 O 생성</li>

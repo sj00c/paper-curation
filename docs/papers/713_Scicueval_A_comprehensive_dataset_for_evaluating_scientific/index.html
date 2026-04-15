@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Jing Yu, Yuqi Tang, Kehua Feng, Lei Liang, Qiang Zhang, Keyan Ding, Huajun Chen | <strong>날짜</strong>: 2025 | <strong>DOI</strong>: <a href="https://doi.org/10.48550/arXiv.2505.15094" target="_blank">10.48550/arXiv.2505.15094</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1: Overview of the SciCUEval dataset">
+<p class="fig-caption"><em>SciCUEval은 5개 과학 도메인, 3가지 데이터 모달리티, 4가지 질문 유형을 포함하는 포괄적 벤치마크</em></p></div>
 <p>본 논문은 대규모 언어모델(LLM)의 과학적 맥락 이해 능력을 평가하기 위한 포괄적 벤치마크 데이터셋 SciCUEval을 제안한다. 생물학, 화학, 물리학, 생의학, 재료과학 등 5개 도메인에 걸친 10개의 부분 데이터셋으로 구성되며, 비정형 텍스트, 구조화된 표, 지식 그래프 등 다양한 데이터 모달리티를 통합하여 LLM의 과학적 맥락 이해 능력을 체계적으로 평가한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -81,6 +83,8 @@ a { color: #A62018; }
 <li><strong>대규모 LLM 성능 분석</strong>: GPT-4, Claude, Gemini 등 최첨단 LLM의 강점과 한계를 세밀하게 분석하여 과학 도메인 LLM 개발 방향 제시</li>
 </ol></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 1에서 볼 수 있듯이 데이터 생성 파이프라인">
+<p class="fig-caption"><em>데이터 생성 과정: 과학 데이터 수집 → 질문 답변 생성 → 검증</em></p></div>
 <ul>
 <li><strong>데이터 수집</strong>: arXiv 논문, IAEA 핵데이터, Material Project, PubChem, PrimeKG, PharmKG 등 고품질 과학 소스에서 데이터 추출</li>
 <li><strong>데이터 모달리티 다양화</strong>:

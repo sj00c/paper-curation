@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Hongyu Wang, Chuyan Xiong, Ruiping Wang, Xilin Chen | <strong>날짜</strong>: 2025-06-09 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.07530" target="_blank">https://arxiv.org/abs/2506.07530</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We introduce BitVLA, the first fully native 1-bit vision-language-action (VLA) model for robotic manipulation, i</em></p></div>
 <p>로봇 조작을 위한 완전한 1-bit Vision-Language-Action 모델인 BitVLA를 제안하여 11.0배의 메모리 감소와 4.4배의 지연 시간 단축을 달성하면서도 full-precision 기준 모델과 비슷한 성능을 유지한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: BitNet b1.58 2B4T 1-bit LLM 백본과 full-precision vision encoder를 초기에 학습한 후, Quantize-then-Distill이라는 양자화 인식 학습 전략으로 vision encoder를 1.58-bit 가중치로 압축하면서 teacher 모델의 지도로 표현 정렬을 유지하고, 대규모 로봇 궤적에 대한 사전학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: We introduce BitVLA, the first fully native 1-bit vision-language-action (VLA) model for robotic manipulation, i</em></p></div>
 <ul>
 <li><strong>완전한 1-bit VLA 모델</strong>: 모든 파라미터가 ternary {-1, 0, 1}인 첫 번째 fully native 1-bit Vision-Language-Action 모델을 구축했다.</li>
 <li><strong>극적인 효율성 개선</strong>: 모델 메모리를 11.0배 감소(1.4GB)시키고 end-to-end 지연 시간을 4.4배 단축하면서도 성능 저하 최소화</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>Quantize-then-Distill 전략</strong>: Vision encoder를 1.58-bit 가중치로 압축하는 경량 양자화 인식 훈련 방법 제시로 표현 정렬 유지</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: Overview of the three-stage training pipeline in BitVLA. We first perform multimodal training with a 1-bit LLM</em></p></div>
 <ul>
 <li>BitNet b1.58 2B4T를 1-bit LLM 백본으로 사용하고 SigLIP-L을 224×224 해상도의 vision encoder로 채택</li>
 <li>LLaVA 훈련 패러다임을 따라 1-bit LLM과 full-precision vision encoder를 페어링하여 multimodal 훈련 수행</li>

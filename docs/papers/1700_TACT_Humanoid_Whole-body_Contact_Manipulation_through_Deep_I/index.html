@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Masaki Murooka, Takahiro Hoshi, Kensuke Fukumitsu, Shimpei Masuda, Marwan Hamze, Tomoya Sasaki, Mitsuharu Morisawa, Eiichi Yoshida | <strong>날짜</strong>: 2025-06-18 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2506.15146" target="_blank">https://arxiv.org/abs/2506.15146</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Humanoid control system for whole-body contact manipulation with tactile feedback.</em></p></div>
 <p>인간형 로봇이 촉각 센서를 활용한 모방 학습(imitation learning)을 통해 전신 접촉 조작을 수행할 수 있도록 하는 TACT(tactile-modality extended ACT) 제어 시스템을 제안하였다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Transformer 기반 정책인 ACT를 촉각 모달리티로 확장하여 다중 센서(관절 위치, 시각, 촉각) 입력을 처리하고, 모방 학습으로 인간 텔레오퍼레이션 데이터로부터 학습하며, 이를 모델 기반 재타겟팅 및 보행 제어와 통합하였다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Fig. 5. Experiment in which a humanoid holds up a paper box.</em></p></div>
 <ul>
 <li><strong>촉각 모달리티 통합</strong>: ACT를 확장하여 처음으로 분산된 촉각 센서 데이터를 직접 Transformer 기반 정책에 입력할 수 있도록 구현</li>
 <li><strong>다층 제어 아키텍처</strong>: 모델 기반 제어의 신뢰성과 학습 기반 제어의 유연성을 결합한 이층 구조 개발</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>센서 융합의 효과 검증</strong>: 시각과 촉각 모달리티의 동시 입력이 광범위하고 섬세한 접촉 조작의 견고성을 향상시킴을 실험으로 증명</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Model structure of TACT (tactile-modality extended ACT).</em></p></div>
 <ul>
 <li>인간 텔레오퍼레이션 데이터 수집: 포즈 추적기를 착용한 인간의 자세를 로봇으로 재타겟팅하며 수집</li>
 <li>TACT 정책 아키텍처: 촉각 센서 격자의 공간 구조를 Transformer를 통해 암시적으로 학습</li>

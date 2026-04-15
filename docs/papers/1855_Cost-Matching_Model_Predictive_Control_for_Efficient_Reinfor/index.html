@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>:  | <strong>날짜</strong>: 2026-03-30 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.28243" target="_blank">https://arxiv.org/abs/2603.28243</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Cost-Matching MPC-RL framework for humanoids.</em></p></div>
 <p>인간형 로봇 보행 제어를 위해 MPC를 RL로 학습할 때 반복적인 MPC 해결의 계산 부담을 제거하는 Cost-Matching MPC 방법을 제안한다. 매개변수화된 MPC의 비용-미래가치(cost-to-go)와 실제 측정된 리턴값의 불일치를 최소화하여 효율적으로 학습한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 실시간 MPC 해결 대신 기록된 폐루프 궤적을 따라 매개변수화된 예측 모델을 롤아웃하고 단계별 비용을 누적하여 MPC cost-to-go를 평가한다. 이 대리 비용과 실제 측정 리턴의 차이를 최소화하도록 gradient 기반 학습을 수행한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Simulation snapshots of the humanoid during locomo-</em></p></div>
 <ul>
 <li><strong>계산 효율성</strong>: MPC 해결-루프 제거로 학습 시간을 획기적으로 단축하면서 MPC-RL 프레임워크 보존</li>
 <li><strong>우수한 성능</strong>: 수동으로 조정된 기준선 대비 향상된 보행 성능과 모델 불일치 및 외부 외란에 대한 견고성 입증</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>일반적 프레임워크</strong>: Optimal Control Problem으로 정식화된 다양한 시스템에 적용 가능한 통용 가능한 방법론</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Cost-Matching MPC-RL framework for humanoids.</em></p></div>
 <ul>
 <li>Centroidal dynamics 기반 OCP 정식화: 질량 중심 운동량과 관절 각도로 상태 구성, 접촉 레ンch와 관절 속도를 제어 입력으로 설정</li>
 <li>다층 제약 조건 포함: 관절 한계, 발 충돌 회피(SDF 기반), 마찰 원뿔, 중심압(CoP), 접촉 강직성, 스윙 발의 수직 속도 추적</li>

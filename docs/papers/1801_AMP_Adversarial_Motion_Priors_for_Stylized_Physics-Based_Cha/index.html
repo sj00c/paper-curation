@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Xue Bin Peng, Ze Ma, Pieter Abbeel, Sergey Levine, Angjoo Kanazawa | <strong>날짜</strong>: 2021-04-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2104.02180" target="_blank">https://arxiv.org/abs/2104.02180</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Schematic overview of the system. Given a motion dataset defining a</em></p></div>
 <p>물리 기반 캐릭터 애니메이션에서 adversarial motion prior를 학습하여 비구조화된 모션 클립 데이터셋으로부터 자동으로 스타일을 추출하고, 간단한 보상 함수로 정의된 고수준 태스크 목표를 달성하면서도 자연스러운 움직임을 생성하는 방법을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: Adversarial discriminator를 통해 데이터셋의 모션과 학습된 정책의 모션을 구분하도록 훈련하여 motion prior를 학습하고, 이를 goal-conditioned reinforcement learning 프레임워크에 통합하여 스타일 보상과 태스크 보상을 결합한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4. Performance of Target Heading policies trained with different</em></p></div>
 <ul>
 <li><strong>자동 모션 선택 및 보간</strong>: Adversarial motion prior가 명시적 클립 선택이나 sequencing 메커니즘 없이 동적으로 적절한 모션을 선택하고 일반화할 수 있음을 입증</li>
 <li><strong>스킬 조합의 자동 출현</strong>: 모션 플래너나 task-specific annotation 없이 이질적인 동작들(예: 달리기, 점프, 구르기)이 자동으로 조합되어 복잡한 태스크 수행 가능</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>확장성</strong>: 비구조화된 대규모 모션 데이터셋을 효과적으로 수용 가능한 첫 번째 adversarial learning 기반 전신 모션 생성 시스템</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2. Schematic overview of the system. Given a motion dataset defining a</em></p></div>
 <ul>
 <li>Discriminator를 adversary로 하여 데이터셋 모션과 정책 생성 모션의 분포 차이를 학습</li>
 <li>Motion prior의 판별 확률을 style reward로 변환하여 RL 학습 신호로 활용</li>

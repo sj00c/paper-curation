@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Navid Rajabi, Jana Kosecka | <strong>날짜</strong>: 2025-02-11 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.07306" target="_blank">https://arxiv.org/abs/2502.07306</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Topological Map Construction</em></p></div>
 <p>Vision-Language Navigation 문제를 LLM과 VLM을 활용한 모듈식 접근으로 해결하며, 자연어 지시에서 landmark를 추출하고 topological map에서 경로를 검색하여 dynamic programming으로 정렬 점수를 계산한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 자연어 지시에서 LLama-3.1을 사용하여 landmark를 추출하고, SigLIP으로 최종 landmark 위치를 인식한 후, topological map에서 top-k 경로 가설을 생성하며, dynamic programming으로 panorama 시퀀스와 landmark 시퀀스 간의 정렬 점수를 계산한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. SigLIP vs. VLMaps Query Result for Last Landmark Indexing</em></p></div>
 <ul>
 <li><strong>VLMaps 대비 성능 우위</strong>: R2R-Habitat 데이터셋에서 occupancy map 기반 접근 대비 우수한 성능을 달성하였다.</li>
 <li><strong>Training-free 방식</strong>: 추가 학습 없이 사전 학습된 LLM과 VLM만으로 zero-shot 성능을 확보하였다.</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>모듈식 설계의 투명성</strong>: 각 sub-module의 기여도를 명확하게 구분하여 weakness와 strength를 체계적으로 파악하였다.</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5. Sequence Alignment for Path Ranking (Pano2Land)</em></p></div>
 <ul>
 <li><strong>LLM 기반 landmark 추출</strong>: LLama-3.1-8B-Instruct를 프롬프트하여 자연어 지시에서 landmark 시퀀스와 방문 순서를 추출한다.</li>
 <li><strong>Topological map 구성</strong>: 데이터셋의 모든 unique waypoint와 trajectory를 사용하여 각 노드가 360° 파노라마로 표현되는 그래프를 생성한다.</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Mingzhe Li, Mengyin Liu, Zekai Wu, Xincheng Lin, Junsheng Zhang, Ming Yan, Zengye Xie, Changwang Zhang, Chenglu Wen, Lan Xu, Siqi Shen, Cheng Wang | <strong>날짜</strong>: 2026-03-06 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2603.06181" target="_blank">https://arxiv.org/abs/2603.06181</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1.</em></p></div>
 <p>Motion Turing Test라는 개념을 제시하여 인간관찰자가 키네마틱 정보만으로 휴머노이드 로봇과 인간의 자세를 구분할 수 있는지를 평가하고, 이를 위해 1,000개의 모션 시퀀스로 구성된 HHMotion 데이터셋과 human-likeness 예측 기준선 모델을 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: SMPL-X를 이용하여 RGB 비디오에서 텍스처 정보를 제거한 skeleton 기반 표현을 추출하고, 30명의 평가자가 0-5 Likert scale로 1,000개 모션 클립을 평가하여 ground truth human-likeness score를 구축한다. 이를 바탕으로 PTR-Net이라는 회귀 기반 기준선 모델을 제안하여 VLM 기반 방법들을 능가함을 보인다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2. Action sources, types, and category distribution in the</em></p></div>
 <ul>
 <li><strong>HHMotion 데이터셋</strong>: 11개 휴머노이드 로봇 모델과 10명의 인간 피험자로부터 수집한 21.7시간 분량의 1,000개 모션 클립, 15개 액션 카테고리, 500시간 이상의 human-likeness 점수 주석으로 구성</li>
 <li><strong>Motion Turing Test 프레임워크</strong>: 모션의 human-likeness를 정량적으로 평가할 수 있는 체계적인 평가 기준 제시</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>공개 자원</strong>: 데이터셋, 코드, 벤치마크를 공개하여 향후 연구 지원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3. Overview of the human scoring pipeline, where all the humanoid robot and human motions are converted into SMPL</em></p></div>
 <ul>
 <li>RGB 비디오에서 SMPL-X 전신 모델 추정으로 visual appearance 영향 제거 및 순수 모션 정보만 추출</li>
 <li>Motion Turing Test를 0-5 Likert scale의 회귀 작업으로 재정의하여 human-likeness 점수 예측</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ruihan Yang, Qinxi Yu, Yecheng Wu, Rui Yan, Borui Li, An-Chieh Cheng, Xueyan Zou, Yunhao Fang, Xuxin Cheng, Ri-Zhao Qiu, Hongxu Yin, Sifei Liu, Song Han, Yao Lu, Xiaolong Wang | <strong>날짜</strong>: 2025-07-16 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2507.12440" target="_blank">https://arxiv.org/abs/2507.12440</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: EgoVLA. Our vision-language-action model learns manipulation skills from egocentric human</em></p></div>
 <p>egocentric human 비디오로부터 Vision-Language-Action (VLA) 모델을 학습하여 로봇 조작 정책을 획득하고, Inverse Kinematics과 retargeting을 통해 인간 행동을 로봇 행동으로 변환한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: NVILA-2B backbone 기반 VLA를 egocentric human manipulation 데이터셋에서 학습하고, unified action space (MANO hand parameters)를 통해 인간 행동을 로봇 행동으로 변환한 후, 소수의 로봇 시연으로 fine-tuning한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Figure 4: Unified Action Space: MANO hand parameters are used as a shared action space for humans and</em></p></div>
 <ul>
 <li><strong>대규모 egocentric human 데이터셋 구성</strong>: HOI4D, HOT3D, HoloAssist, TACO로부터 약 500,000개의 image-action pair를 통합하여 다양한 조작 작업 커버</li>
 <li><strong>Unified action space 설계</strong>: MANO hand parameters를 공유 표현으로 사용하여 인간과 로봇 간 행동 변환 가능하게 구현</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>상당한 성능 향상</strong>: baseline 대비 short-horizon 및 long-horizon 작업에서 유의미한 개선을 달성하고 visual observation과 spatial location에 걸친 일반화 능력 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: EgoVLA takes visual history, language instruction, and action query token as input. The latent fea-</em></p></div>
 <ul>
 <li>egocentric RGB observations, wrist poses, hand poses, camera poses를 포함한 인간 비디오 데이터셋 구성</li>
 <li>world-frame camera poses를 사용하여 future wrist positions를 현재 camera frame에 투영하여 일관성 있는 supervision 보장</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Tony Z. Zhao, Vikash Kumar, Sergey Levine, Chelsea Finn | <strong>날짜</strong>: 2023-04-23 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2304.13705" target="_blank">https://arxiv.org/abs/2304.13705</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: ALOHA</em></p></div>
 <p>저비용 하드웨어로 세밀한 양팔 조작 작업을 학습하기 위해 텔레오퍼레이션 시스템과 Action Chunking with Transformers (ACT) 알고리즘을 결합한 시스템을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 약 20,000달러 이하의 저비용 오프더쉘프 로봇 팔 두 쌍으로 텔레오퍼레이션 시스템을 구축하고, action chunking을 통해 다중 스텝 액션 시퀀스를 예측하는 Transformer 기반 CVAE 모델 ACT를 개발한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: ALOHA</em></p></div>
 <ul>
 <li><strong>저비용 시스템 개발</strong>: 3D 프린팅 부품과 오프더쉘프 로봇으로 구성된 ALOHA 시스템이 20,000달러 이하로 구축되며 정밀한 양팔 조작을 가능하게 함</li>
 <li><strong>우수한 학습 성능</strong>: 단 10분(50개 궤적)의 시연으로 6가지 세밀한 작업(뚜껑 열기, 배터리 슬롯팅 등)을 80-90% 성공률로 학습</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>다양한 작업 검증</strong>: 정밀도 높은 작업(지퍼타이 스레딩), 동적 작업(탁구공 저글링), 접촉 부자유로운 작업(NIST board 체인 조립) 등을 성공적으로 수행</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
+<p class="fig-caption"><em>Fig. 4: Architecture of Action Chunking with Transformers (ACT). We train ACT as a Conditional VAE (CVAE), which has an </em></p></div>
 <ul>
 <li><strong>텔레오퍼레이션 하드웨어</strong>: 두 세트의 저비용 ViperX 로봇 팔을 joint-space mapping으로 연결하고 역구동 가능성을 위해 3D 프린팅된 핸들과 사용자 정의 그리퍼 설계</li>
 <li><strong>다중 카메라 시각 피드백</strong>: 상단, 전면, 양쪽 손목에 각각 카메라를 배치하여 RGB 이미지를 정책 입력으로 사용</li>

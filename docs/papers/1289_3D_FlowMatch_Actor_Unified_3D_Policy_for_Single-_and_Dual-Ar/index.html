@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Nikolaos Gkanatsios, Jiahe Xu, Matthew Bronars, Arsalan Mousavian, Tsung-Wei Ke, Katerina Fragkiadaki | <strong>날짜</strong>: 2025-08-14 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.11002" target="_blank">https://arxiv.org/abs/2508.11002</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Top: 3DFA is a flow-matching policy built atop 3D Diffuser Actor [12]. It encodes the</em></p></div>
 <p>3D FlowMatch Actor (3DFA)는 flow matching을 사용한 trajectory prediction과 3D pretrained visual representation을 결합하여 단일 팔 및 양팔 로봇 조작을 위한 통합 정책을 제시하며, 이전 3D diffusion 기반 정책 대비 30배 이상 빠른 학습과 추론을 달성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 3DFA는 DDPM 기반 diffusion을 Rectified Flow로 대체하여 추론 단계를 100에서 5로 감소시키고, 빠른 토큰 샘플링, 최적화된 attention 구현, mixed-precision training 등의 시스템 수준 최적화를 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Ablation study on PerAct2. Left: 3DFA’s performance is stable even with as few as three</em></p></div>
 <ul>
 <li><strong>PerAct2 벤치마크 성능</strong>: 85.1% 성공률로 새로운 state-of-the-art 달성, π0 대비 41.4% 절대 마진 향상</li>
 <li><strong>효율성 개선</strong>: 학습 시간을 21일에서 16시간으로, 추론 속도를 0.5Hz에서 18.2Hz로 개선 (30배 이상 가속)</li>
@@ -83,6 +87,8 @@ a { color: #A62018; }
 <li><strong>범용성</strong>: sparse keypose 및 dense end-effector trajectory 예측 모두 지원, 단일/양팔 조작에 적용 가능</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Top: 3DFA is a flow-matching policy built atop 3D Diffuser Actor [12]. It encodes the</em></p></div>
 <ul>
 <li>Flow matching에서 Rectified Flow를 채택하여 최적 수송 문제를 해결하고 직선 경로로 noise를 action으로 변환</li>
 <li>3DDA 아키텍처 기반으로 양팔 조작을 위해 좌/우 팔 토큰 분리 및 각각의 velocity field 예측 (vθ,L, vθ,R)</li>

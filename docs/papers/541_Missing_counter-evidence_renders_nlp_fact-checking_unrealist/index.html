@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Max Glockner, Yufang Hou, Iryna Gurevych | <strong>날짜</strong>: 2022 | <strong>DOI</strong>: N/A</p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>그림 1: PolitiFact의 거짓 주장. 반박 증거를 찾기 어려운 경우, 사실확인자들은 주장의 근거가 된 가정을 반박함으로써 거짓을 증명한다.</em></p></div>
 <p>현재의 NLP 기반 사실확인(fact-checking) 접근법은 반박 증거(counter-evidence)의 존재를 가정하지만, 실제 미정보(misinformation)는 신뢰할 만한 증거가 부족한 환경에서 발생하기 때문에 현실적이지 않다. 본 논문은 기존 사실확인 데이터셋들이 모두 현실적 요구사항을 만족하지 못함을 보이고, 모델들이 누출된(leaked) 증거에 의존함을 실증한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: (1) 전문 사실확인자들의 검증 전략을 분석하여 현실적 사실확인의 조건 도출, (2) FCNLP가 이를 만족하지 못함을 보이고, (3) 기존 데이터셋들이 실제 조건을 위반함을 체계적으로 검토, (4) 모델이 누출된 증거에 의존하는 실험적 증거 제시.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>그림 2: PolitiFact의 연도별 판정 비율. 2016년 이후 거짓 주장에 대한 사실확인이 증가하는 추세를 보임.</em></p></div>
 <ol>
 <li><strong>두 가지 현실적 조건 도출</strong>: 전문 사실확인자들의 검증 과정 분석으로부터 (1) Source Guarantee—증거가 주장자의 근거를 구성하거나 그것을 지칭해야 함, (2) Context Availability—주장의 원본 환경을 파악할 수 있어야 함 등 두 가지 조건을 도출했다.</li>
 <li><strong>현존 데이터셋의 현실성 부재 입증</strong>: PolitiFact와 Snopes의 100개 미정보 주장을 분석한 결과, 65.3%가 Source Guarantee를 필요로 하는 검증 전략(Local Counter-Evidence 또는 Non-Credible Source)을 사용하나, 기존 FCNLP 기반 데이터셋들은 이를 만족하는 증거를 제공하지 못한다.</li>

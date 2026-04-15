@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Ryan M. Bena, Gilbert Bahati, Blake Werner, Ryan K. Cosner, Lizhi Yang, Aaron D. Ames | <strong>날짜</strong>: 2025-08-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2508.11129" target="_blank">https://arxiv.org/abs/2508.11129</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <p>본 논문은 Poisson safety function을 기반으로 한 geometry-aware predictive safety filter를 제안하며, CBF constrained MPC를 통해 humanoid 및 quadruped 로봇의 실시간 안전한 궤적 생성을 구현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 정적 Dirichlet 문제를 moving boundary value problem으로 재구성하여 시간-변화하는 safety function을 생성하고, Minkowski set operation을 이용해 configuration space에서 로봇 기하학을 반영한 Poisson safety function을 구성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li><strong>시간-변화하는 Poisson Safety Function</strong>: 정적 Dirichlet 문제를 parameterized moving boundary problem으로 재구성하여 미래 시간 구간에서 안전 집합의 진화를 외삽하는 safety function 개발</li>
 <li><strong>Configuration Space 확장</strong>: Minkowski set operation을 기반으로 로봇 점유도(occupancy)를 고려한 고차원 configuration space에서의 Poisson safety function 도출</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li><strong>실제 로봇 검증</strong>: Quadruped 및 humanoid 로봇을 이용한 다양한 안전-임계 시나리오에서 실험적 성능 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1.</em></p></div>
 <ul>
 <li>Poisson 방정식 ∇²h = 0을 moving boundary conditions와 함께 풀어 시간-종속 safety function h(x,t) 생성</li>
 <li>로봇의 기하학적 형태를 Minkowski sum 연산으로 표현하여 configuration space에 lift</li>

@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: An-Chieh Cheng, Yandong Ji, Zhaojing Yang, Zaitian Gongye, Xueyan Zou, Jan Kautz, Erdem Bıyık, Hongxu Yin, Sifei Liu, Xiaolong Wang | <strong>날짜</strong>: 2024-12-05 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2412.04453" target="_blank">https://arxiv.org/abs/2412.04453</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: NaVILA is a two-level framework combining high-level visual language understanding with low-level locomotion con</em></p></div>
 <p>NaVILA는 Vision-Language-Action 모델과 locomotion RL policy를 통합한 2-단계 프레임워크로, 인간 언어 명령을 legged 로봇의 저수준 관절 제어로 번역하여 복잡한 환경에서의 시각-언어 네비게이션을 실현한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: NaVILA는 VLM이 중수준 언어 액션(예: 'moving forward 75cm')을 생성하도록 fine-tuning하고, 이를 low-level visual locomotion RL policy가 실행하는 계층 분리 구조를 채택한다. VILA 기반 VLA 모델에는 내비게이션 특화 프롬프트, 역사 컨텍스트 통합, YouTube 인간 영상 데이터를 활용한 학습 전략을 적용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: Real-world demonstration of NaVILA: Upon receiving human instructions, NaVILA uses a vision-language model to pr</em></p></div>
 <ul>
 <li><strong>벤치마크 성능 향상</strong>: 기존 VLN 벤치마크에서 17% 이상 성공률 개선 달성</li>
 <li><strong>새로운 평가 기준 제시</strong>: IsaacLab 기반 VLN-CE-Isaac 벤치마크 개발으로 저수준 제어와 현실적 환경 반영</li>
@@ -84,6 +88,8 @@ a { color: #A62018; }
 <li><strong>인간 영상 학습</strong>: YouTube 인간 투어 영상으로 직접 학습하여 연속 환경 항법 개선을 최초로 입증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Fig. 2: NaVILA is a two-level framework combining high-level visual language understanding with low-level locomotion con</em></p></div>
 <ul>
 <li><strong>VILA 기반 VLM 선택</strong>: 이미지 기반 VLM으로 강력한 일반화 능력과 광범위한 지식 활용</li>
 <li><strong>계층적 프롬프트 설계</strong>: 현재 관찰과 역사 프레임을 구분하여 처리하는 내비게이션 특화 프롬프트 개발</li>

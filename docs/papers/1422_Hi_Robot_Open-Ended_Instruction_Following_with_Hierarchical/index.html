@@ -66,6 +66,8 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Lucy Xiaoyang Shi, Brian Ichter, Michael Equi, Liyiming Ke, Karl Pertsch, Quan Vuong, James Tanner, Anna Walling, Haohuan Wang, Niccolo Fusai, Adrian Li-Bell, Danny Driess, Lachy Groom, Sergey Levine, Chelsea Finn | <strong>날짜</strong>: 2025-02-26 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2502.19417" target="_blank">https://arxiv.org/abs/2502.19417</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Figure 1: Open-ended instruction following. Hi Robot enables robots to follow multi-stage instructions, adapt to real-ti</em></p></div>
 <p>Hi Robot는 계층적 vision-language model 구조를 통해 로봇이 복잡한 자연어 지시사항과 실시간 피드백을 처리하여 개방형 과제를 수행할 수 있도록 하는 시스템이다. 고수준 VLM이 복잡한 프롬프트를 해석하여 원자적 명령어를 생성하고, VLA 정책이 이를 실행하는 두 단계 계층 구조를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
@@ -75,6 +77,8 @@ a { color: #A62018; }
 <li><strong>Approach</strong>: 높은 수준의 VLM과 낮은 수준의 VLA 정책으로 구성된 계층적 구조를 설계하고, 기존 로봇 데이터셋에 대해 VLM을 사용하여 합성적으로 생성한 복잡한 프롬프트와 인간의 개입 예시를 추가하여 고수준 정책을 학습시킨다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
+<div class="review-fig"><img src="figures/fig5.webp" alt="Figure 5">
+<p class="fig-caption"><em>Figure 5: Comparisons to Prior Methods. Hi Robot outperforms GPT-4o and flat VLA on Table Bussing, Sandwich Making, and</em></p></div>
 <ul>
 <li><strong>다양한 로봇 플랫폼에서의 검증</strong>: 단팔, 양팔, 양팔 모바일 로봇 3가지 플랫폼에서 테이블 정리, 샌드위치 만들기, 식료품 쇼핑 등 다양한 과제를 성공적으로 수행</li>
 <li><strong>복잡한 프롬프트 처리</strong>: 기존 VLA 정책보다 훨씬 복잡한 다단계 지시사항, 조건부 명령, 사용자 제약을 이해하고 실행</li>
@@ -82,6 +86,8 @@ a { color: #A62018; }
 <li>그건 쓰레기가 아니야')을 동적으로 반영하여 행동 수정", '<strong>GPT-4o 및 평면 VLA 정책 초과</strong>: 비교 실험에서 API 기반 VLM과 평면 VLA 모델을 능가하는 인간 의도 정렬 및 과제 성공률 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Overview of hierarchical VLA. The policy consists</em></p></div>
 <ul>
 <li>고수준 VLM을 통해 현재 시각 관찰과 사용자 발화를 입력으로 받아 적절한 원자적 명령어(예: 'grasp the cup')와 언어 응답 생성", '저수준 VLA 정책은 생성된 원자적 명령어를 받아 실제 로봇 제어 신호(관절 각도, 그리퍼 명령 등)로 변환하여 실행</li>
 <li>합성 데이터 생성 방식: 기존 로봇 시연 데이터(관찰-행동 쌍)에 대해 VLM에게 그 행동을 유도했을 법한 복잡한 프롬프트와 인간의 개입을 역생성하도록 지시</li>
