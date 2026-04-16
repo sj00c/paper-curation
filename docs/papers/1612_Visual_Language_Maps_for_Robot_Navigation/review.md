@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "시각-언어 모델의 특징을 3D 재구성과 융합하여 공간 정보를 갖춘 의미론적 지도(VLMaps)를 구축하고, 이를 통해 로봇이 자연어 명령으로 공간 관계를 포함한 복잡한 네비게이션 작업을 수행할 수 있게 한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Visual_Language_Mapping"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2022_Visual Language Maps for Robot Navigation.pdf"
 ---
@@ -88,20 +90,29 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2022_Visual Language Maps f
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Visual Language Maps가 Vision-Language Navigation survey에서 다루는 spatial relationship navigation의 구체적인 구현 방법론을 제시
-- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — Visual Language Maps는 3D semantic mapping을, MapNav는 annotated semantic map을 통해 언어 기반 로봇 네비게이션을 구현하는 다른 접근법
-- 🔗 후속 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — Visual Language Maps의 2D 기반 접근법이 Multimodal Spatial Language Maps의 다중 모달 확장과 결합되어 더 풍부한 공간 이해를 달성할 수 있음
-- 🏛 기반 연구: [[papers/1319_BeliefMapNav_3D_Voxel-Based_Belief_Map_for_Zero-Shot_Object/review]] — Visual Language Maps는 BeliefMapNav의 3D voxel belief map에 대한 시각-언어 맵핑의 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — Visual Language Maps도 로봇의 공간 추론과 네비게이션을 위한 구조화된 표현을 제안한다.
-- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 시각 언어 맵의 기본 개념이 사전훈련된 모델들을 활용한 네비게이션의 공간적 표현 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 시각 언어 맵의 기본 개념이 annotated semantic map 기반 메모리 표현의 이론적 토대가 됩니다.
-- 🏛 기반 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — 시각 언어 맵의 기본 개념이 공간-의미 정보 분리의 이론적 토대가 됩니다.
-- 🔗 후속 연구: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — Visual Language Maps의 2D 접근법을 3D NeRF로 확장하여 더 풍부한 spatial-semantic representation을 제공합니다.
-- 🧪 응용 사례: [[papers/1486_Multimodal_Perception_for_Goal-oriented_Navigation_A_Survey/review]] — Visual Language Maps의 로봇 네비게이션 적용이 multimodal perception 기반 goal-oriented navigation의 실용적 구현을 보여준다.
-- 🔗 후속 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — 기본적인 시각 언어 맵을 멀티모달(언어, 이미지, 오디오) 쿼리가 가능한 공간 맵으로 발전시킨 형태입니다.
-- 🏛 기반 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — Visual Language Maps의 언어 기반 장면 표현이 NLMap의 개방형 어휘 쿼리 가능한 장면 표현의 기초 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — 로봇 네비게이션을 위한 시각 언어 맵의 top-view 공간 표현을 MLLM 기반 추론으로 발전시킨다.
-- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — VLN 분야 전반의 taxonomy가 Visual Language Maps의 특정 구현 방법이 전체 분야에서 차지하는 위치와 기여를 이해하는 기반
-- 🔄 다른 접근: [[papers/1402_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 둘 다 언어 기반 네비게이션을 다루지만 FocusNav는 공간 선택적 주의에, Visual Language Maps는 의미적 공간 매핑에 집중한다.
-- 🧪 응용 사례: [[papers/1544_Learning_to_Look_Seeking_Information_for_Decision_Making_via/review]] — Visual Language Maps의 로봇 내비게이션 방법론을 DISaM의 능동적 환경 탐색에 적용하여 공간 정보 활용을 개선할 수 있다.
-- 🏛 기반 연구: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — Visual Language Maps의 공간-언어 표현이 CorrectNav의 navigation error correction에 대한 기반 지식을 제공한다.
+- 🏛 기반 연구: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — CLIP-Fields의 weakly supervised semantic field가 visual language map의 기반 기술입니다.
+- 🔄 다른 접근: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — 로봇 공간 이해를 위한 서로 다른 접근법 - visual language map vs 3D scene graph입니다.
+- 🔗 후속 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — visual language map을 multimodal spatial language map으로 확장한 발전된 연구입니다.
+- 🔄 다른 접근: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — LERF는 VLMaps와 유사하게 언어를 3D 공간에 embedding하지만 radiance field 기반의 다른 접근법을 사용한다.
+- 🧪 응용 사례: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — Context-Aware Entity Grounding은 VLMaps가 구축한 3D semantic map에서 개체 grounding을 수행하는 구체적 응용이다.
+- 🧪 응용 사례: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser의 composable 3D value maps가 VLMaps의 semantic mapping을 robotic manipulation 작업에 직접 활용할 수 있게 한다.
+- 🏛 기반 연구: [[papers/1319_BeliefMapNav_3D_Voxel-Based_Belief_Map_for_Zero-Shot_Object/review]] — visual language map의 공간-언어 표현 개념이 3D voxel belief map 설계의 이론적 기반
+- 🏛 기반 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — Visual Language Maps의 공간-언어 매핑 개념을 동적 scene graph와 결합하여 embodied 추론으로 확장했다.
+- 🏛 기반 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — Visual Language Maps의 기본적인 vision-language navigation 개념을 웹 데이터 사전학습으로 확장한다.
+- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 시각적 언어 지도의 기본 개념이 LM-Nav의 언어 명령 기반 네비게이션에 적용되었다.
+- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — Vision-Language Navigation에서 메모리 표현 방법으로 Annotated Semantic Map vs Visual Language Map이라는 서로 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — JanusVLN이 Visual Language Maps의 공간-언어 매핑을 dual implicit memory로 발전시켜 더 효율적인 네비게이션을 실현한다.
+- 🏛 기반 연구: [[papers/1443_L3MVN_Leveraging_Large_Language_Models_for_Visual_Target_Nav/review]] — visual language maps의 기본 개념을 LLM 기반 navigation 시스템에 통합하는 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — 동일한 언어-공간 매핑 문제를 다른 접근법으로 해결한 대안적 방법
+- 🔗 후속 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — Visual Language Maps를 확장하여 오디오 모달리티까지 포함한 AVLMaps로 다중모달 spatial grounding을 실현했다.
+- 🏛 기반 연구: [[papers/1499_OmniVLA_An_Omni-Modal_Vision-Language-Action_Model_for_Robot/review]] — OmniVLA의 다중 모달리티 처리가 Visual Language Maps의 공간-언어 매핑 기술을 기반으로 확장된다.
+- 🏛 기반 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — visual language map의 기본 개념과 구현 방법을 제공하여 NLMap의 open-vocabulary queryable scene representation 구축에 핵심적인 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1507_OpenBench_A_New_Benchmark_and_Baseline_for_Semantic_Navigati/review]] — Visual Language Maps의 공간-언어 매핑 기술이 OpenBench의 OpenStreetMap과 VLM 결합 시스템의 이론적 기반이다.
+- 🔗 후속 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — Visual Language Maps의 시각-언어 네비게이션 기술이 RoboTron-Nav의 3D-aware history sampling과 결합되어 더 효과적인 네비게이션을 구현한다.
+- 🔄 다른 접근: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — 시각-언어 지도 대신 3D Scene Graph를 활용한 다른 접근법으로 로봇 공간 이해를 개선합니다.
+- 🏛 기반 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — 로봇 네비게이션을 위한 시각-언어 지도의 기본 개념을 제공하여 TopV-Nav의 top-view 지도 추론에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — Visual Language Maps의 로봇 내비게이션 연구가 VLM 기반 world model을 사용한 Object Goal Navigation의 기반 기술이 되었다.
+- 🏛 기반 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — vision-language navigation을 위한 visual language map의 기본 개념을 제공하여 VL-Nav의 추론 기반 네비게이션에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — Visual Language Maps의 로봇 네비게이션 기술은 CANVAS의 상식 기반 네비게이션 시스템에 공간 표현의 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — CLIP-Fields의 의미론적 공간 매핑 개념이 Visual Language Maps의 로봇 네비게이션 응용으로 확장된 형태입니다.
+- 🧪 응용 사례: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — Visual Language Maps가 NavFoM의 크로스-태스크 네비게이션을 공간 표현과 결합한 구체적인 적용 방법을 제공합니다.

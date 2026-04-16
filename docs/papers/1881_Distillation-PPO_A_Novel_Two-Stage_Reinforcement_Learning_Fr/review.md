@@ -1,3 +1,25 @@
+---
+title: "1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr"
+authors:
+  - "Qiang Zhang"
+  - "Gang Han"
+  - "Jingkai Sun"
+  - "Wen Zhao"
+  - "Chenghao Sun"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인문형 로봇의 지각 기반 보행을 위해 교사 정책과 강화학습을 결합한 2단계 프레임워크 Distillation-PPO (D-PPO)를 제안하며, 시뮬레이션에서의 안정성과 실제 로봇의 강건성을 동시에 확보한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Distillation-PPO A Novel Two-Stage Reinforcement Learning Framework for Humanoid Robot Perceptive L.pdf"
+---
+
 # Distillation-PPO: A Novel Two-Stage Reinforcement Learning Framework for Humanoid Robot Perceptive Locomotion
 
 > **저자**: Qiang Zhang, Gang Han, Jingkai Sun, Wen Zhao, Chenghao Sun, Jiahang Cao, Jiaxu Wang, Yijie Guo, Renjing Xu | **날짜**: 2025-03-11 | **URL**: [https://arxiv.org/abs/2503.08299](https://arxiv.org/abs/2503.08299)
@@ -64,3 +86,25 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 강화학습과 지식 증류의 강점을 결합한 균형잡힌 접근법으로, 시뮬레이션과 실제 로봇 양쪽에서 검증된 실질적 성과를 보여준다. 다만 이론적 분석이 부족하고 단일 로봇 플랫폼의 실험만 제시된 점이 아쉽지만, 인문형 로봇 보행 제어의 실질적 문제 해결에 기여하는 의미 있는 연구다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1818_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — Berkeley Humanoid의 학습 기반 제어 플랫폼이 Distillation-PPO의 2단계 강화학습 프레임워크를 효과적으로 검증하고 적용할 수 있다
+- 🏛 기반 연구: [[papers/1673_Sim-and-Real_Co-Training_A_Simple_Recipe_for_Vision-Based_Ro/review]] — sim-and-real co-training의 간단한 레시피가 D-PPO의 시뮬레이션과 실제 로봇 간 안정성 확보에 필요한 기초 방법론을 제공한다
+- 🔄 다른 접근: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 지각 기반 휴머노이드 보행을 distillation-PPO와 gait-adaptive perceptive learning이라는 서로 다른 학습 전략으로 구현한다
+- 🏛 기반 연구: [[papers/1621_PPF_Pre-training_and_Preservative_Fine-tuning_of_Humanoid_Lo/review]] — humanoid locomotion의 pre-training과 fine-tuning 방법론이 Distillation-PPO의 2단계 프레임워크 설계에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2056_Learning_Humanoid_Locomotion_over_Challenging_Terrain/review]] — perceptive internal model을 통한 humanoid locomotion 학습이 D-PPO의 지각 기반 보행을 더 정교한 내부 모델로 발전시킨다.
+- 🔄 다른 접근: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — 지각 기반 보행을 위한 다른 시뮬레이션-현실 전이 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — 교사 정책과 강화학습 결합의 기본 프레임워크를 제공합니다.
+- 🔄 다른 접근: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — 휴머노이드 학습의 안정성을 위해 서로 다른 아키텍처(Spectral Normalization vs 2단계 강화학습)를 통해 효율적인 정책 학습을 추구한다.
+- 🔗 후속 연구: [[papers/1639_Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Polic/review]] — Residual RL의 샘플 효율성이 Distillation-PPO의 이단계 강화학습 프레임워크와 결합되어 더 안정적인 정책 학습을 달성할 수 있다
+- 🔗 후속 연구: [[papers/1698_Symphony_A_Heuristic_Normalized_Calibrated_Advantage_Actor_a/review]] — Symphony의 안전한 Actor-Critic 기법을 Distillation-PPO의 두 단계 강화학습과 결합하면 더 안전하고 효율적인 휴머노이드 정책 학습이 가능합니다.
+- 🔄 다른 접근: [[papers/1621_PPF_Pre-training_and_Preservative_Fine-tuning_of_Humanoid_Lo/review]] — Model-based pre-training과 RL 결합을 two-stage distillation 접근법으로 해결
+- 🔗 후속 연구: [[papers/1627_PvP_Data-Efficient_Humanoid_Robot_Learning_with_Propriocepti/review]] — Distillation-PPO의 2단계 강화학습 프레임워크가 PvP의 대조학습 기반 효율적 학습을 더욱 체계화할 수 있음
+- 🔗 후속 연구: [[papers/1629_Quantum_deep_reinforcement_learning_for_humanoid_robot_navig/review]] — Quantum RL의 효율성을 two-stage learning framework에 적용 가능한 확장 연구
+- 🔗 후속 연구: [[papers/1818_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — Distillation-PPO의 2단계 학습 프레임워크가 Berkeley Humanoid의 sim-to-real transfer 성능을 더욱 향상시킬 수 있다
+- 🔄 다른 접근: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — 시뮬레이션-현실 전이를 위한 다른 학습 패러다임을 제시합니다.
+- 🏛 기반 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 frame-accelerated augmentation이 Distillation-PPO의 two-stage 강화학습 프레임워크에 데이터 증강 기법을 제공한다.
+- 🔄 다른 접근: [[papers/2059_Learning_Motion_Skills_with_Adaptive_Assistive_Curriculum_Fo/review]] — 복잡한 동작 학습에서 적응형 보조력 기반 이중 에이전트 대신 증류-PPO를 통한 2단계 강화학습 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — 증류 기반 강화학습의 발전된 형태로 PopArt의 멀티태스크 학습 원리를 두 단계 훈련으로 확장한다.
+- 🏛 기반 연구: [[papers/2153_Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distill/review]] — Distillation-PPO의 two-stage RL framework가 다중행동 증류와 강화학습 미세조정의 단계적 학습 구조의 기술적 토대를 제공합니다.

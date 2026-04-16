@@ -10,7 +10,8 @@ score: 4.0
 essence: "학술지의 시간변화 임베딩(diachronic embedding)을 개발하여 과학 구조의 진화를 추적하고, 물리-생명-보건 삼각형 매핑을 통해 학제간 과학 경관의 변화를 정량화한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Thematic_Network_Detection"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lyu and Ke_2025_Mapping the changing structure of science through diachronic periodical embeddings.pdf"
 ---
@@ -83,8 +84,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lyu and Ke_2025_Mapping the changing str
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 과학 매핑에서 시간적 진화 추적을 위한 임베딩 기반 접근법과 주제 진화 분석의 통합적 접근법을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/927_A_Dynamic_Network_Measure_of_Technological_Change/review]] — 기술 변화의 동적 네트워크 측정 방법론을 학술지 진화 분석에 적용하여 과학 구조 변화를 정량화하는 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미론적 신경망을 활용한 연구 동향 예측과 시간변화 임베딩을 결합하여 과학 발전의 미래 방향을 예측할 수 있다.
-- 🧪 응용 사례: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 과학 구조 변화의 통시적 매핑을 위한 구체적 적용 사례로 주제 진화 프레임워크를 활용할 수 있습니다.
-- 🔗 후속 연구: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 시간에 따른 과학 구조 변화를 통시적으로 매핑하는 방법론을 생명공학에 적용한다
+- 🏛 기반 연구: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — 복잡한 네트워크로 변화하는 과학 개념을 모델링한 기초 연구로, 시간변화 임베딩 개발에 필요한 이론적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 과학 매핑에서 주제 진화를 재고한 통합 접근법으로, 시간변화 임베딩과 다른 방법으로 과학 구조 변화를 분석하는 대안입니다.
+- 🔗 후속 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 과학 성장률의 문헌계량 분석에서 학술지 임베딩을 통한 과학 구조 진화 추적으로 방법론이 발전된다.
+- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑과 과학 지도 연구가 시간변화 학술지 임베딩을 통한 과학 구조 매핑의 이론적 기반이다.
+- 🧪 응용 사례: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 과학 지식 매핑과 주제 분석 방법론이 학술지 임베딩을 통한 과학 구조 변화 추적에 구체적 분석 도구를 제공한다.
+- 🏛 기반 연구: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 시간에 따른 과학 구조 변화를 지도화하는 기존 연구의 방법론적 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — 시간에 따른 과학 구조 변화 매핑 연구를 아카이브 데이터를 활용한 대규모 종단 분석으로 확장했기 때문
+- 🏛 기반 연구: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — 이시적(diachronic) 과학 구조 매핑이 복잡 네트워크를 통한 개념 변화 모델링의 방법론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 과학 구조의 시간적 변화 매핑을 개별 연구자의 인식론적 위치 매핑으로 확장하여 미시적 관점을 제공한다.
+- 🔗 후속 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 30년간의 종단 분석을 통한 과학 구조 변화 추적이 기존 diachronic 과학 구조 연구를 확장합니다.

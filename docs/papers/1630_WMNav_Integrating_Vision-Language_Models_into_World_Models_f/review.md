@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Vision-Language Model을 기반으로 한 world model을 설계하여 Object Goal Navigation 작업에서 미래 상태를 예측하고 메모리를 통해 정책을 개선하는 WMNav 프레임워크를 제안한다. Curiosity Value Map이라는 온라인 유지 메모리 구조와 두 단계 행동 제안 전략으로 VLM의 hallucination을 완화하면서 탐색 효율성을 향상시킨다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Symbolic_Navigation_Memory"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Action-Value_Reasoning_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nie et al._2025_WMNav Integrating Vision-Language Models into World Models for Object Goal Navigation.pdf"
 ---
@@ -90,8 +92,19 @@ Vision-Language Model을 기반으로 한 world model을 설계하여 Object Goa
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — WMNav는 VLM 기반 world model을, VL-Nav는 neuro-symbolic reasoning을 통해 복잡한 object goal navigation을 해결하는 다른 접근법
-- 🔗 후속 연구: [[papers/1311_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — WMNav의 world model 기반 예측이 ApexNav의 adaptive exploration과 결합되어 더 효율적인 object goal navigation을 달성할 수 있음
-- 🏛 기반 연구: [[papers/1419_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — WMNav의 VLM 기반 world model이 Generative World Modelling for Humanoids의 세계 모델 원리를 navigation 작업에 특화하여 구현
-- 🔄 다른 접근: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — WMNav의 world models 통합과 RoboTron-Nav의 multitask collaboration은 모두 네비게이션 성능 향상을 위한 서로 다른 접근법이다.
-- 🔄 다른 접근: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — VL-Nav는 neuro-symbolic approach를, WMNav는 world model 기반 접근법을 사용하여 복잡한 navigation reasoning을 구현하는 다른 방식
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — world model의 기본 개념이 VLM 기반 world model navigation의 이론적 기반입니다.
+- 🔄 다른 접근: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — object navigation에서 서로 다른 접근법 - world model prediction vs top-view spatial reasoning입니다.
+- 🔗 후속 연구: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — world model 기반 학습을 VLM과 통합한 object navigation 특화 확장입니다.
+- 🔄 다른 접근: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — 둘 다 world model을 사용하지만 WMNav는 navigation 특화 VLM 기반을, WHALE은 일반적 embodied 환경을 대상으로 한다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 로봇 내비게이션 연구가 VLM 기반 world model을 사용한 Object Goal Navigation의 기반 기술이 되었다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — NaVid의 비디오 기반 VLM 내비게이션을 world model과 메모리 구조를 통합하여 더 강건한 navigation 시스템으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1367_DivScene_Towards_Open-Vocabulary_Object_Navigation_with_Larg/review]] — 대규모 언어모델을 활용한 open-vocabulary 객체 내비게이션이 WMNav의 VLM 기반 Goal Navigation 설계에 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — World model 기반 embodied AI에 대한 포괄적인 이론적 배경과 survey를 제공한다.
+- 🔄 다른 접근: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — 동일한 world model 기반 접근법이지만 더 다양한 도메인에서의 mastery에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1319_BeliefMapNav_3D_Voxel-Based_Belief_Map_for_Zero-Shot_Object/review]] — WMNav의 메모리 기반 탐색 전략을 zero-shot object navigation으로 확장한 접근법이다.
+- 🔄 다른 접근: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — 미래 상태 예측을 통한 효율적 exploration이라는 동일한 목표를 scene imagination으로 달성한다.
+- 🔄 다른 접근: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — VLM을 World Model에 통합하는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — world model을 LLM 기반 navigation과 통합하여 더 정확한 환경 이해와 경로 계획을 달성할 수 있다.
+- 🔗 후속 연구: [[papers/1443_L3MVN_Leveraging_Large_Language_Models_for_Visual_Target_Nav/review]] — L3MVN의 LLM 기반 의미적 추론이 WMNav의 비전-언어 모델과 월드 모델 통합에서 더 정교한 추론 능력으로 확장됩니다.
+- 🔄 다른 접근: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — embodied navigation에서 perception-planning-prediction integration vs world model integration이라는 서로 다른 통합 아키텍처 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — top-view 공간 추론을 world model 기반 object navigation에 통합할 수 있습니다.

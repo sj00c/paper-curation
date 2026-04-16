@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VLA-RFT는 데이터 기반 world model을 시뮬레이터로 활용하여 vision-language-action 모델을 reinforcement learning으로 효율적으로 fine-tuning하는 프레임워크이다. 검증된 reward를 기반으로 GRPO 최적화를 수행하여 400 단계 이하의 fine-tuning으로 strong supervised baseline을 초과하는 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Diffusion_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_VLA-RFT Vision-Language-Action Reinforcement Fine-tuning with Verified Rewards in World Simulators.pdf"
 ---
@@ -91,10 +93,16 @@ VLA-RFT는 데이터 기반 world model을 시뮬레이터로 활용하여 visio
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1620_VLA-RL_Towards_Masterful_and_General_Robotic_Manipulation_wi/review]] — 둘 다 VLA 강화학습이지만 VLA-RFT는 world model 기반, VLA-RL은 direct RL로 다른 학습 패러다임이다
-- 🔗 후속 연구: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — ConRFT의 consistency 기반 fine-tuning을 world model과 결합하여 더 안정적인 VLA 학습을 구현했다
-- 🏛 기반 연구: [[papers/1368_EgoDemoGen_Egocentric_Demonstration_Generation_for_Viewpoint/review]] — DiWA의 world model adaptation 기법이 VLA-RFT에서 데이터 기반 world model 활용의 이론적 토대가 된다
-- 🧪 응용 사례: [[papers/1472_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig/review]] — Mastering Diverse Domains의 world model 기반 학습과 VLA-RFT의 효율적 fine-tuning을 결합한 범용 로봇 학습이 가능하다
-- 🏛 기반 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — Vision-Language-Action 강화학습 fine-tuning이 통합된 VLA RL 프레임워크의 구체적 구현 사례를 제공한다.
-- 🔗 후속 연구: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — VLA-RFT의 강화학습 기반 미세조정이 ConRFT의 consistency policy와 결합되어 더 안정적인 VLA 학습을 달성할 수 있다.
-- 🔗 후속 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — VLA reinforcement fine-tuning이 discrete diffusion VLA의 action decoding을 RL 관점에서 더욱 발전시킨다.
+- 🔄 다른 접근: [[papers/1573_SimpleVLA-RL_Scaling_VLA_Training_via_Reinforcement_Learning/review]] — VLA 강화학습 fine-tuning에 대한 서로 다른 접근법 - data-driven world model vs direct RL입니다.
+- 🔗 후속 연구: [[papers/1411_GR-RL_Going_Dexterous_and_Precise_for_Long-Horizon_Robotic_M/review]] — long-horizon robotic task를 reinforcement fine-tuning으로 해결하는 확장 연구입니다.
+- 🏛 기반 연구: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — contrastive reinforced fine-tuning이 VLA-RFT의 기반 방법론을 제공합니다.
+- 🔗 후속 연구: [[papers/1620_VLA-RL_Towards_Masterful_and_General_Robotic_Manipulation_wi/review]] — VLA-RL이 VLA-RFT의 강화 학습 파인튜닝 아이디어를 더 일반적이고 숙련된 로봇 조작으로 확장한다.
+- 🏛 기반 연구: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — World model 기반 학습의 이론적 토대를 제공하여 VLA-RFT의 데이터 기반 world model 활용 방법론을 뒷받침한다.
+- 🔄 다른 접근: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — 두 논문 모두 VLA 모델의 성능 향상을 위해 강화학습 기반 후처리를 활용하지만 구체적 방법론이 다르다.
+- 🔗 후속 연구: [[papers/1513_Parallels_Between_VLA_Model_Post-Training_and_Human_Motor_Le/review]] — 인간 운동 학습 관점의 VLA post-training을 reinforcement fine-tuning으로 실제 구현
+- 🏛 기반 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — VLA-RFT의 reinforcement fine-tuning 방법론이 RLinf-VLA의 통합 RL 프레임워크 설계의 이론적 기반이다.
+- 🔄 다른 접근: [[papers/1573_SimpleVLA-RL_Scaling_VLA_Training_via_Reinforcement_Learning/review]] — VLA 모델의 강화학습 기반 fine-tuning에 대한 서로 다른 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1620_VLA-RL_Towards_Masterful_and_General_Robotic_Manipulation_wi/review]] — 둘 다 VLA 모델의 강화학습 개선을 다루지만, VLA-RL은 OOD 대응력을, VLA-RFT는 world model 효율성에 집중한다.
+- 🔗 후속 연구: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — WHALE의 world model을 VLA fine-tuning의 시뮬레이터로 활용하여 더 효율적인 강화학습 프레임워크를 구축한다.
+- 🔗 후속 연구: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — VLA 모델의 강화학습 기반 파인튜닝에 대한 확장된 접근 방식을 제공합니다.
+- 🏛 기반 연구: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — VLA-RFT의 vision-language-action reinforcement fine-tuning 방법론이 Embodied-R1의 RFT 기반 훈련 접근법에 기초가 된다.

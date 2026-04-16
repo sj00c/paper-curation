@@ -1,3 +1,24 @@
+---
+title: "2131_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor"
+authors:
+  - "Muqun Hu"
+  - "Wenxi Chen"
+  - "Wenjing Li"
+  - "Falak Mandali"
+  - "Zijian He"
+date: "2026.03"
+doi: "10.48550/arXiv.2509.21690"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 휴머노이드 로봇의 탁구 경기를 위해 학습된 예측기와 물리 기반 보상을 결합한 end-to-end RL 프레임워크 PACE를 제안하여, 전신 협응 제어와 민첩한 풋워크를 동시에 달성한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2026_PACE Physics Augmentation for Coordinated End-to-end Reinforcement Learning toward Versatile Humano.pdf"
+---
+
 # PACE: Physics Augmentation for Coordinated End-to-end Reinforcement Learning toward Versatile Humanoid Table Tennis
 
 > **저자**: Muqun Hu, Wenxi Chen, Wenjing Li, Falak Mandali, Zijian He, Renhong Zhang, Praveen Krisna, Katherine Christian, Leo Benaharon, Dizhi Ma, Karthik Ramani, Yan Gu | **날짜**: 2026-03-21 | **DOI**: [10.48550/arXiv.2509.21690](https://doi.org/10.48550/arXiv.2509.21690)
@@ -67,3 +88,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 학습된 예측기와 physics-augmented 보상 설계를 통해 휴머노이드 탁구의 end-to-end RL을 성공적으로 구현한 강력한 작업이며, 시뮬레이션과 실제 하드웨어 모두에서 높은 성능을 입증하여 로봇 동적 제어의 실질적 진전을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2106_MorphoGuard_A_Morphology-Based_Whole-Body_Interactive_Motion/review]] — 둘 다 전신 접촉 제어를 다루지만, PACE는 물리 기반 보상과 RL의 결합에, MorphoGuard는 Material Point Method 기반 접촉 관리에 집중한다.
+- 🏛 기반 연구: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — HITTER의 계층적 계획 기반 휴머노이드 탁구 로봇 기술이 PACE의 탁구 경기를 위한 end-to-end RL 프레임워크 개발에 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — Humanoid Whole-Body Badminton의 다단계 강화학습을 탁구라는 더 빠른 반응이 필요한 스포츠로 확장하여 물리 증강 학습을 적용한 연구이다.
+- 🏛 기반 연구: [[papers/1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor/review]] — Cost-matching model predictive control이 PACE의 learned predictor와 physics-based reward 결합에서 예측 기반 제어의 이론적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — Learning athletic tennis skills의 imperfect human data 활용이 PACE의 탁구 경기 학습을 인간 시연 데이터의 불완전성을 고려한 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — physics augmentation을 통한 강화학습이 Heracles의 물리적으로 정확한 복구 동작 생성의 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/2106_MorphoGuard_A_Morphology-Based_Whole-Body_Interactive_Motion/review]] — 둘 다 전신 접촉 제어를 다루지만, MorphoGuard는 Material Point Method 기반 접촉 관리에, PACE는 물리 증강 RL에 중점을 둔다.

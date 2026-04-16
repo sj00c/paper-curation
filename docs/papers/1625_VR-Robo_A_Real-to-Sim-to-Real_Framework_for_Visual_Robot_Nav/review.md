@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "3D Gaussian Splatting을 활용하여 실제 환경을 포토리얼리스틱한 디지털 트윈으로 재구성하고, 이를 시뮬레이션에 통합하여 RL 기반 시각 네비게이션 정책을 학습한 후 실제 로봇에 무영점 전이하는 Real-to-Sim-to-Real 프레임워크를 제시한다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/GPU-Accelerated_Physics_Simulation"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhu et al._2025_VR-Robo A Real-to-Sim-to-Real Framework for Visual Robot Navigation and Locomotion.pdf"
 ---
@@ -87,7 +87,7 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhu et al._2025_VR-Robo A Real-to-Sim-to
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1412_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — GaussGym의 실시간 렌더링과 물리 시뮬레이션이 VR-Robo의 3D Gaussian Splatting 기반 접근법과 유사하지만 다른 구현을 보인다
-- 🔗 후속 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — Re³Sim의 3D 기반 고충실도 시뮬레이션 생성이 VR-Robo의 real-to-sim-to-real 파이프라인을 보완한다
-- ⚖️ 반론/비판: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — dynamics 시뮬레이션 없이 로봇 데이터를 확장하는 접근법이 VR-Robo의 물리 시뮬레이션 중심 방법론과 대조된다
-- 🏛 기반 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술이 VR-Robo의 포토리얼리스틱 환경 재구성의 핵심 기반이 된다
+- 🔄 다른 접근: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 시각 네비게이션 vs 정교한 손가락 조작으로 응용 도메인이 다릅니다.
+- 🏛 기반 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting은 VR-Robo의 포토리얼리스틱 디지털 트윈 구성을 위한 핵심 렌더링 기술을 제공합니다.
+- 🔗 후속 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — Real-World Humanoid Locomotion의 실제 로봇 배포 경험은 VR-Robo의 sim-to-real 프레임워크 검증에 중요한 참고사례입니다.
+- 🔄 다른 접근: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 손가락 조작 vs 시각 네비게이션으로 응용 영역이 다릅니다.

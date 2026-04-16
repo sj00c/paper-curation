@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Hume는 Vision-Language-Action 모델에 System-2 slow thinking을 도입한 dual-system 로봇 정책으로, value-guided 반복 샘플링과 cascaded action denoising을 통해 복잡한 로봇 제어 성능을 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Reasoning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Action-Value_Reasoning_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Song et al._2025_Hume Introducing System-2 Thinking in Visual-Language-Action Model.pdf"
 ---
@@ -91,11 +93,19 @@ Hume는 Vision-Language-Action 모델에 System-2 slow thinking을 도입한 dua
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — 둘 다 dual-system 구조이지만 Hume은 manipulation에, DualVLN은 navigation에 특화된 System-2 thinking을 구현합니다.
-- 🏛 기반 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — ThinkAct의 vision-language-action reasoning 체인이 Hume의 System-2 slow thinking 구현에 이론적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — RoboMonkey의 test-time sampling과 verification을 System-2 thinking에 통합하여 더 robust한 policy를 구현합니다.
-- 🔄 다른 접근: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — 둘 다 dual-system 아키텍처로 System-1과 System-2를 분리하지만 DualVLN은 navigation에, Hume은 manipulation에 특화된 접근방식을 제시합니다.
-- 🔗 후속 연구: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — System-2 thinking을 Reflective Planning의 test-time computation 프레임워크에 통합하여 추론 능력을 강화할 수 있다
-- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — 비전-언어-액션 모델의 시스템-2 사고와 시각 잠재 계획이 각각 다른 방식으로 고수준 추론을 구현한다.
-- 🏛 기반 연구: [[papers/1618_VLA-Reasoner_Empowering_Vision-Language-Action_Models_with_R/review]] — Hume의 System-2 thinking이 VLA-Reasoner의 test-time 추론 강화 아이디어의 인지과학적 기반을 제공한다
-- 🔗 후속 연구: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — System-2 thinking을 VLA에 도입한 Hume이 Embodied-R1의 reinforced reasoning을 더욱 체계적으로 확장한다.
+- 🔄 다른 접근: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — 둘 다 System-2 thinking을 VLA에 도입하지만 value-guided sampling vs global planner라는 다른 구현 방식을 사용한다.
+- 🏛 기반 연구: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — Embodied-Reasoner의 심층 추론 패러다임을 VLA 모델에 System-2 thinking으로 구체화했다.
+- 🔗 후속 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — RoboMonkey의 test-time sampling 개념을 System-2 thinking의 value-guided 방식으로 발전시켰다.
+- 🔗 후속 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — Hume의 System-2 사고 방식이 MEM의 다중 스케일 메모리 시스템과 결합되어 더욱 복잡한 장기 로봇 작업을 수행할 수 있다.
+- 🔄 다른 접근: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — 둘 다 VLA 모델의 추론 능력 향상에 초점을 맞추지만, Hume은 dual-system 접근법을, HybridVLA는 diffusion과 autoregressive 통합에 집중한다.
+- 🏛 기반 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — Hume의 System-2 thinking 개념이 ThinkAct의 강화된 시각적 추론 체인과 유사한 철학적 기반을 공유한다.
+- 🔗 후속 연구: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — RationalVLA의 rational reasoning을 System-2 slow thinking으로 구체화하여 더 체계적인 추론 과정을 제시한다.
+- 🔄 다른 접근: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — 두 논문 모두 VLA 모델에 System-2 스타일의 심층 추론을 도입하여 복잡한 로봇 제어를 개선하는 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — 둘 다 dual-system 아키텍처를 VLA에 도입하지만 global planner + policy vs value-guided sampling이라는 다른 구현 방식을 사용한다.
+- 🔗 후속 연구: [[papers/1503_OneTwoVLA_A_Unified_Vision-Language-Action_Model_with_Adapti/review]] — System-2 thinking을 adaptive reasoning과 결합하여 상황에 따라 추론 깊이를 조절하는 더 효율적인 VLA 시스템을 구축한다.
+- 🏛 기반 연구: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — Hume의 System-2 thinking 접근법이 SmartWay의 history-aware reasoning과 backtracking 메커니즘의 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — System-2 thinking의 deliberative reasoning 능력을 대규모 로봇 조작 벤치마크에서 실제로 평가하고 검증하는 구체적인 응용 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — Hume의 System-2 thinking 개념이 ThinkAct의 강화학습 기반 시각 잠재 계획과 결합되어 더 정교한 추론 시스템을 구축한다.
+- 🔄 다른 접근: [[papers/1618_VLA-Reasoner_Empowering_Vision-Language-Action_Models_with_R/review]] — VLA에서 추론 능력 강화를 위한 서로 다른 접근법 - MCTS vs system-2 thinking입니다.
+- 🔄 다른 접근: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — visual chain-of-thought와 system-2 thinking의 서로 다른 VLA 추론 능력 향상 접근법
+- 🔄 다른 접근: [[papers/1336_CogACT_A_Foundational_Vision-Language-Action_Model_for_Syner/review]] — cognition-action 분리 대신 system-2 thinking을 통한 다른 VLA 성능 향상 접근법

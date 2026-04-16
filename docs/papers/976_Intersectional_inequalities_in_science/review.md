@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "미국 과학 인력의 교차적 불평등(intersectional inequalities)을 대규모 서지계량 분석으로 검증하여, 과학자의 정체성(race, gender)과 연구주제 선택 간의 상관관계와 이것이 인용도에 미치는 영향을 규명했다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kozlowski et al._2022_Intersectional inequalities in science.pdf"
 ---
@@ -79,9 +81,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kozlowski et al._2022_Intersectional ine
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서의 성별 불평등 연구를 인종과 성별의 교차적 관점으로 확장하여 더 포괄적인 분석을 제공한다.
-- ⚖️ 반론/비판: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성이 과학적 영향력을 높인다는 주장과 교차적 불평등이 인용도에 미치는 부정적 영향을 대조적으로 분석한다.
-- 🏛 기반 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터 과학 분야의 체계적 성별 인용 불균형 연구의 교차적 분석 확장 기반을 제공한다.
-- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 온라인 과학의 교차적 불평등을 성별 격차의 다차원적 분석으로 확장한다
-- 🔗 후속 연구: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 체중 낙인화 연구의 국제 협력 네트워크 분석이 과학에서의 교차적 불평등 분석으로 확장될 수 있다.
-- 🔗 후속 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 과학에서의 교차성 불평등 연구가 장애인을 위한 보조기술 개발에서의 다층적 배제를 이해하는 틀을 확장한다.
+- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학에서 여성이 남성보다 적게 인정받는다는 연구로, 교차적 불평등 분석을 젠더 관점에서 확장할 수 있습니다.
+- 🔄 다른 접근: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터 과학의 체계적 젠더 인용 불균형을 분석한 연구로, 교차적 불평등을 다른 학문 분야에서 검증하는 대안적 접근법입니다.
+- 🏛 기반 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 과학에서 다양성-혁신 역설에 대한 이론적 배경을 제공하여 교차적 불평등의 복잡성을 이해할 수 있다.
+- ⚖️ 반론/비판: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 성별 다양성이 과학적 발견과 혁신에 긍정적 효과를 가진다는 상반된 관점을 제시한다.
+- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 분야 성별 불평등의 역사적 비교가 교차적 불평등 분석의 기본적 맥락을 제공한다.
+- 🔗 후속 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 과학 협력에서 인종 다양성 우월성 연구가 교차적 불평등 분석에서 다양성의 긍정적 측면을 보완한다.
+- 🔗 후속 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 학계의 계층적 불평등이 성별, 인종 등 교차적 불평등으로 확장되어 나타나는 양상을 보여줍니다.
+- 🏛 기반 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 성별 인용 불균형이 과학계의 더 광범위한 교차적 불평등 구조의 일부임을 보여줍니다.
+- 🏛 기반 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 교차적 불평등 관점에서 소수집단이 겪는 다양성-혁신 역설을 더 포괄적으로 이해할 수 있다.
+- 🏛 기반 연구: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 과학 분야 교차적 불평등 연구가 팬데믹이 여성과 특정 그룹 과학자에게 미친 불균등 영향의 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학에서의 불평등을 다루지만, 다중 교차적 불평등보다는 성별에 따른 업적 인정 격차에 특화하여 분석한다.
+- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학에서의 성별 불평등을 교차적 불평등의 더 넓은 관점으로 확장합니다.
+- 🔗 후속 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 글로벌 인용 불평등을 성별과 인종 등 교차적 불평등으로 확장하여 분석한다
+- 🔗 후속 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 성별 불평등 분석에서 인종과 성별의 교차적 불평등으로 연구 범위가 확장된다.
+- 🏛 기반 연구: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 체중 낙인 연구에서 교차적 불평등 관점을 적용하여 과학 분야 내 다층적 편견을 이해할 수 있다.
+- 🏛 기반 연구: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 우울증 낙인 연구에 교차적 불평등 이론을 적용하여 정신건강 편견의 다층적 구조를 분석할 수 있다.

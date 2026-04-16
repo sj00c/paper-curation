@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Embodied-R1은 '포인팅'을 통일된 embodiment-agnostic 중간 표현으로 정의하고, Reinforced Fine-tuning(RFT)으로 훈련된 3B VLM으로서 로봇 조작의 perception-action gap을 효과적으로 극복한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Reasoning_Systems"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yuan et al._2025_Embodied-R1 Reinforced Embodied Reasoning for General Robotic Manipulation.pdf"
 ---
@@ -91,6 +93,16 @@ Embodied-R1은 '포인팅'을 통일된 embodiment-agnostic 중간 표현으로 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — ThinkAct의 vision-language-action reasoning과 Embodied-R1의 포인팅 기반 reasoning이 서로 다른 embodied reasoning 접근을 제시한다.
-- 🔗 후속 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — System-2 thinking을 VLA에 도입한 Hume이 Embodied-R1의 reinforced reasoning을 더욱 체계적으로 확장한다.
-- 🏛 기반 연구: [[papers/1547_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — Embodied chain-of-thought reasoning이 Embodied-R1의 포인팅 기반 perception-action gap 극복에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO의 시각적 grounding 기법이 Embodied-R1의 포인팅 기반 중간 표현 설계의 핵심 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RLinf-VLA는 Embodied-R1의 RFT 훈련 방법을 다양한 VLA 모델로 확장하여 더 일반적인 강화 학습 프레임워크를 제공합니다.
+- 🧪 응용 사례: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — RoboPoint의 spatial affordance prediction이 Embodied-R1의 포인팅 기반 perception-action 연결의 구체적인 구현 방법을 제시합니다.
+- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — RationalVLA의 dual vision encoder와 Embodied-R1의 pointing-based representation은 VLM에서 perception-action gap을 서로 다르게 해결하는 접근법이다.
+- 🔗 후속 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — ThinkAct의 vision-language-action reasoning이 Embodied-R1의 reinforced fine-tuning을 통한 embodied reasoning으로 더욱 발전한 형태이다.
+- 🏛 기반 연구: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — VLA-RFT의 vision-language-action reinforcement fine-tuning 방법론이 Embodied-R1의 RFT 기반 훈련 접근법에 기초가 된다.
+- 🔄 다른 접근: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — IPR-1도 물리적 추론을 통해 로봇 조작을 개선하지만 world model 롤아웃을 통한 상호작용적 학습에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E는 Embodied-R1이 기반으로 하는 대규모 비전-언어 모델의 embodied AI 적용에 대한 초기 연구입니다.
+- 🏛 기반 연구: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — 강화학습 기반 embodied reasoning이 Gemini Robotics-ER 1.5의 추론 능력 구현에 기반이 된다.
+- 🔄 다른 접근: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — Embodied-R1도 물리적 추론을 로봇 조작에 적용하지만 포인팅 기반 중간 표현을 사용하는 반면, IPR-1은 상호작용적 학습에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — Neural Brain과 Embodied-R1 모두 embodied reasoning을 다루지만 신경과학적 접근과 강화학습 접근으로 차별화됩니다.
+- 🔄 다른 접근: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — embodied instruction following에서 서로 다른 추론 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — reinforced embodied reasoning을 neuro-symbolic 접근법과 결합할 수 있습니다.

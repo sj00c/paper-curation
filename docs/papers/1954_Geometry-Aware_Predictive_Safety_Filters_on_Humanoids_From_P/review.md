@@ -1,3 +1,23 @@
+---
+title: "1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P"
+authors:
+  - "Ryan M. Bena"
+  - "Gilbert Bahati"
+  - "Blake Werner"
+  - "Ryan K. Cosner"
+  - "Lizhi Yang"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Poisson safety function을 기반으로 한 geometry-aware predictive safety filter를 제안하며, CBF constrained MPC를 통해 humanoid 및 quadruped 로봇의 실시간 안전한 궤적 생성을 구현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bena et al._2025_Geometry-Aware Predictive Safety Filters on Humanoids From Poisson Safety Functions to CBF Constrai.pdf"
+---
+
 # Geometry-Aware Predictive Safety Filters on Humanoids: From Poisson Safety Functions to CBF Constrained MPC
 
 > **저자**: Ryan M. Bena, Gilbert Bahati, Blake Werner, Ryan K. Cosner, Lizhi Yang, Aaron D. Ames | **날짜**: 2025-08-15 | **URL**: [https://arxiv.org/abs/2508.11129](https://arxiv.org/abs/2508.11129)
@@ -66,3 +86,22 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 Poisson safety function을 시간-동적 환경과 로봇 기하학에 맞게 확장하고 MPC+CBF와 통합하여 실시간 안전한 자율 네비게이션을 실현한 우수한 연구이다. 이론적 확장과 실제 로봇 검증이 잘 균형을 이루고 있으며, 안전-임계 로봇 제어의 실질적 문제 해결에 기여한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — 둘 다 humanoid safety를 다루지만, Geometry-Aware는 Poisson safety function 기반 predictive filter를, SHIELD는 CBF expectation 기반 접근법을 사용합니다.
+- 🔗 후속 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — SPARK의 safe protective robot kit 연구를 geometry-aware predictive filtering과 MPC를 통한 더 정교한 안전 시스템으로 발전시켰습니다.
+- 🏛 기반 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — SafeFall의 protective control 연구가 Geometry-Aware의 실시간 안전한 궤적 생성에서 필요한 예방적 제어 전략의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — geometry-aware한 예측적 안전 필터를 확률적 제어 배리어 함수로 확장한다.
+- 🔗 후속 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 기하학적 예측 안전 필터의 개념을 포괄적인 벤치마크 프레임워크로 확장하여 다양한 안전 제어 알고리즘을 통합했다.
+- 🔗 후속 연구: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — 기하학 인식 예측 안전 필터가 SafeFlow의 3단계 안전 게이팅을 공간적 제약으로 확장한 형태
+- 🏛 기반 연구: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — Geometry-Aware Predictive Safety Filters의 예측적 안전 필터링 기법이 RAPT의 모델 예측 기반 OOD 감지의 기초가 됨
+- 🏛 기반 연구: [[papers/1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid/review]] — geometry-aware 예측 안전 필터 기술이 VIGOR의 넘어짐 방지 메커니즘에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1872_Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environmen/review]] — geometry-aware predictive safety filter가 복잡한 환경에서 p-SSA의 다중 충돌 회피 성능을 더욱 향상시키는 기하학적 기반을 제공한다
+- 🧪 응용 사례: [[papers/1914_End-to-End_Humanoid_Robot_Safe_and_Comfortable_Locomotion_Po/review]] — Geometry-Aware Predictive Safety Filters 연구가 end-to-end 정책의 P3O 안전 제약을 실제 휴머노이드 시스템에 적용하는 구체적인 구현 방법을 제공한다.
+- 🏛 기반 연구: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — geometry-aware predictive safety filters가 HuB의 극도의 준정적 균형 작업에서 안전성 보장을 위한 기초 이론을 제공한다.
+- 🏛 기반 연구: [[papers/2017_HWC-Loco_A_Hierarchical_Whole-Body_Control_Approach_to_Robus/review]] — 기하학적 예측 안전 필터가 HWC-Loco의 계층적 제어 구조에서 안전 복구 정책의 이론적 기반 제공
+- 🏛 기반 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — Learning Humanoid Arm Motion의 centroidal momentum 추적이 Geometry-Aware Predictive Safety Filters의 안전한 휴머노이드 제어에 필요한 동역학적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2062_Learning_Smooth_Humanoid_Locomotion_through_Lipschitz-Constr/review]] — 기하학적 인식과 예측 안전 필터를 결합하여 안전한 휴머노이드 제어를 확장한다.
+- 🔗 후속 연구: [[papers/2106_MorphoGuard_A_Morphology-Based_Whole-Body_Interactive_Motion/review]] — MorphoGuard의 형태학적 표현을 기하학 인식 예측 안전 필터로 확장하여 더 안전한 전신 제어를 달성할 수 있다.
+- 🧪 응용 사례: [[papers/2133_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — 학습된 포즈 분포를 기하학 인식 예측 안전 필터에 적용하여 휴머노이드의 안전한 동작을 보장한다.

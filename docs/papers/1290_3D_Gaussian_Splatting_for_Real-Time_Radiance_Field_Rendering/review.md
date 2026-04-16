@@ -11,8 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "3D Gaussian Splatting은 3D 가우시안 표현과 실시간 렌더링 알고리즘을 결합하여 고품질의 novel-view synthesis를 1080p 해상도에서 30fps 이상으로 달성하는 방법이다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/GPU-Accelerated_Physics_Simulation"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kerbl et al._2023_3D Gaussian Splatting for Real-Time Radiance Field Rendering.pdf"
 ---
@@ -88,14 +88,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kerbl et al._2023_3D Gaussian Splatting 
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1412_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 3D Gaussian Splatting을 로봇 학습 환경에 직접 적용한 실용적 구현이다
-- 🏛 기반 연구: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 고품질 실시간 렌더링이 필요한 시뮬레이션 환경 구축의 기반 기술이다
-- 🔗 후속 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 실시간 radiance field 렌더링을 물리 시뮬레이션과 결합한 발전된 응용이다
-- 🏛 기반 연구: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술이 GauDP의 RGB 이미지 기반 3D Gaussian 필드 구성의 핵심 기반 기술이다.
-- 🔗 후속 연구: [[papers/1384_EnerVerse_Envisioning_Embodied_Future_Space_for_Robotics_Man/review]] — 3D Gaussian Splatting 기술이 EnerVerse의 4D Gaussian Splatting 기반 data flywheel을 확장한다.
-- 🧪 응용 사례: [[papers/1412_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 3D Gaussian Splatting을 실제 로봇 학습 환경에 통합 구현한 사례다
-- 🏛 기반 연구: [[papers/1484_MuJoCo_Playground/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술이 MuJoCo Playground의 시각적 시뮬레이션 구현에 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1517_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_M/review]] — 3D Gaussian Splatting의 실시간 3D 렌더링이 PointWorld의 3D point flow 예측 모델의 기초 기술을 제공한다.
-- 🏛 기반 연구: [[papers/1552_RoboTwin_Dual-Arm_Robot_Benchmark_with_Generative_Digital_Tw/review]] — 3D Gaussian Splatting 기술을 활용하여 실시간으로 현실적인 dual-arm 로봇 작업을 위한 3D 객체 모델을 생성한다.
-- 🏛 기반 연구: [[papers/1625_VR-Robo_A_Real-to-Sim-to-Real_Framework_for_Visual_Robot_Nav/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술이 VR-Robo의 포토리얼리스틱 환경 재구성의 핵심 기반이 된다
-- 🏛 기반 연구: [[papers/1568_MeshMimic_Geometry-Aware_Humanoid_Motion_Learning_through_3D/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술이 모노큘러 비디오로부터 3D 장면 복원의 기반을 제공함
+- 🧪 응용 사례: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술을 ManiSkill3의 GPU 병렬 시뮬레이션에 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 고품질 3D 장면 렌더링 기술을 3D-photo guided 시뮬레이션 데이터 생성에 활용할 수 있습니다.
+- 🔄 다른 접근: [[papers/1430_iGibson_10_a_Simulation_Environment_for_Interactive_Tasks_in/review]] — 실시간 고품질 시각화에서 Gaussian Splatting과 iGibson의 물리 시뮬레이션이 다른 접근법을 제공합니다.
+- 🏛 기반 연구: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술을 다중 에이전트 협업을 위한 공유 표현으로 확장했다.
+- 🔗 후속 연구: [[papers/1384_EnerVerse_Envisioning_Embodied_Future_Space_for_Robotics_Man/review]] — 3D Gaussian Splatting을 4D로 확장하여 시공간적 embodied future space 생성에 적용했다.
+- 🏛 기반 연구: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — LERF의 언어 임베딩 방법론이 3D Gaussian Splatting의 실시간 렌더링과 결합되어 더 효율적인 3D 언어 필드를 구현할 수 있습니다.
+- 🔗 후속 연구: [[papers/1517_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_M/review]] — 3D Gaussian splatting의 실시간 렌더링 기술을 3D 포인트 변위 예측과 결합하여 더 정확하고 효율적인 장면 모델링을 달성한다.
+- 🔗 후속 연구: [[papers/1552_RoboTwin_Dual-Arm_Robot_Benchmark_with_Generative_Digital_Tw/review]] — 3D Gaussian Splatting의 실시간 3D 렌더링 기술이 RoboTwin의 generative digital twin 구현에 시각적 품질 향상을 제공한다.
+- 🔄 다른 접근: [[papers/1587_Time-Transient_Wireless_RF_Sensor_with_Differentiative_Detec/review]] — Time-Transient RF 센서와 3D Gaussian Splatting은 모두 실시간 환경 감지를 다루지만 무선 RF와 시각적 렌더링이라는 다른 센서 모달리티를 사용한다.
+- 🏛 기반 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — 3D Gaussian Splatting의 실시간 3D 장면 표현 기술이 VoxPoser의 3D value map 생성에 핵심적인 기반 기술을 제공한다
+- 🏛 기반 연구: [[papers/1625_VR-Robo_A_Real-to-Sim-to-Real_Framework_for_Visual_Robot_Nav/review]] — 3D Gaussian Splatting은 VR-Robo의 포토리얼리스틱 디지털 트윈 구성을 위한 핵심 렌더링 기술을 제공합니다.

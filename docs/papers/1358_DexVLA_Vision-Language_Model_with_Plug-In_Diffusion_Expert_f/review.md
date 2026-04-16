@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "DexVLA는 billion 규모의 diffusion-based action expert를 plug-in 형태로 vision-language model에 통합하고, 3단계 embodied curriculum learning 전략을 통해 다양한 로봇 형태에서 복잡한 long-horizon task를 수행할 수 있는 VLA 프레임워크를 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Compact_VLA_Models"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wen et al._2025_DexVLA Vision-Language Model with Plug-In Diffusion Expert for General Robot Control.pdf"
 ---
@@ -93,6 +95,12 @@ DexVLA는 billion 규모의 diffusion-based action expert를 plug-in 형태로 v
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — Hierarchical mixture-of-experts 아키텍처를 VLA에 적용하여 DexVLA의 plug-in diffusion expert와 다른 접근으로 일반화를 달성한다.
-- 🔗 후속 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — Massive human video 학습을 통한 universal humanoid policy가 DexVLA의 embodied curriculum learning을 확장한다.
-- 🏛 기반 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — Bimanual dexterous manipulation을 위한 자동 데이터 생성 기술이 DexVLA의 다양한 embodiment 학습에 필요한 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1287_π_0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Co/review]] — DexVLA의 diffusion expert 통합과 π0의 flow matching 행동 생성은 VLA 모델에서 행동 생성의 서로 다른 확률적 접근법이다.
+- 🔗 후속 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — DexVLA의 diffusion action expert와 RDT-1B의 diffusion foundation model은 양손 조작에서 diffusion 기반 정책의 발전을 보여준다.
+- 🏛 기반 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Efficient Diffusion Transformer의 혼합 전문가 모델은 DexVLA의 diffusion expert 통합에 효율적인 구조적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 오픈소스 VLA 아키텍처와 학습 방법론이 DexVLA의 billion 규모 diffusion expert 통합의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy의 기본 구조를 DexVLA가 VLA 프레임워크로 확장하고 embodied curriculum learning과 결합합니다.
+- 🔄 다른 접근: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — Unified Vision-Language-Action Model은 DexVLA와 유사한 통합 모델이지만 diffusion expert 없이 다른 통합 전략을 사용합니다.
+- 🔗 후속 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 대규모 VLA 모델의 구체적 구현과 embodied learning 전략을 제시합니다.
+- 🔄 다른 접근: [[papers/1287_π_0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Co/review]] — π0의 flow matching 기반 행동 생성과 DexVLA의 diffusion expert 접근법은 VLA 모델에서 행동 생성의 서로 다른 방법론이다.
+- 🔗 후속 연구: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — DexVLA의 plug-in diffusion expert와 DexGraspVLA의 diffusion 기반 저수준 컨트롤러는 모두 diffusion을 VLA에 통합하는 방향성을 공유한다.

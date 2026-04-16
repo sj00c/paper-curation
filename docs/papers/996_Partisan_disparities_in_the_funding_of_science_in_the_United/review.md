@@ -12,7 +12,7 @@ score: 4.0
 essence: "1980년부터 2020년까지 미국 연방정부의 과학 기금 배분을 분석한 결과, 공화당 의원들이 민주당보다 과학에 더 많은 자금을 지속적으로 제공했음을 보여준다. 이는 정당 간 과학 투자의 중요성을 강조한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_Funding"
+  - "sub/Public_Science_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Furnas et al._2025_Partisan disparities in the funding of science in the United States.pdf"
 ---
@@ -78,11 +78,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Furnas et al._2025_Partisan disparities 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 정당별 과학 펀딩 격차와 펀딩 영향 시각화는 모두 과학 투자 정책을 서로 다른 관점에서 분석한다.
-- 🏛 기반 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 과학의 공공 활용과 펀딩에 대한 이론적 논의가 정당별 펀딩 분석의 정책적 중요성을 뒷받침한다.
-- 🔗 후속 연구: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 팬데믹 시기 정책과 과학의 공진화 사례가 정당별 과학 펀딩 격차의 실제적 영향을 보여준다.
-- 🔗 후속 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 과학 연구비의 공공 활용 분석을 미국 정치적 양극화가 과학 자금 배분에 미치는 영향까지 확장하여 분석했다.
-- 🧪 응용 사례: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — LLM이 연구비 신청에 미치는 영향을 미국 과학 자금 배분의 정치적 양극화 맥락에서 분석할 수 있다.
-- 🧪 응용 사례: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 미국 과학 펀딩의 당파적 격차를 동료평가 패널의 선택 편향 분석에 적용할 수 있다
-- 🔄 다른 접근: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학 펀딩의 다차원적 영향 분석과 정당별 펀딩 격차 분석은 과학 투자 정책을 다른 관점에서 평가한다.
-- 🔗 후속 연구: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 미국 과학 펀딩의 정파적 격차 분석을 다국가 연구 평가 체계 비교로 확장하여 정치적 맥락이 과학 거버넌스에 미치는 영향을 탐구한다.
+- 🔗 후속 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 과학에 대한 공공 자금 지원과 활용에 대한 이론적 기반을 실제 정당별 자금 배분 데이터로 실증 분석한다.
+- 🧪 응용 사례: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 정당별 과학 자금 지원 차이가 실제로 어떤 연구 분야와 혁신적 성과에 영향을 미치는지 구체적으로 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 정치적 편향을 줄이기 위한 연구 자금 배분 방식으로 추첨 시스템을 제안하여 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 연구 자금 심사에서 정치적 요인이 작용할 수 있음을 보여주는 이론적 근거를 제공한다.
+- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 펀딩에서의 마태 효과와 정당별 펀딩 격차가 과학 투자의 불평등 구조를 다각도로 조명한다.
+- 🏛 기반 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 글로벌 과학 펀딩과 연구 출판물 연결 연구가 미국 정당별 과학 펀딩 분석의 방법론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 펀딩에서의 Matthew effect가 정치적 성향에 따른 차별적 지원으로까지 확장되어 나타나는 양상을 보여줍니다.
+- 🔗 후속 연구: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 당파적 과학 펀딩 격차를 물리학-정책 연계의 맥락에서 구체화하여, 정치적 편향이 학제간 지식의 정책 활용에 미치는 영향을 보여준다.
+- 🔗 후속 연구: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — NIH 동료평가 효과성 분석이 미국 과학 기금 배분의 정치적 편향성 문제로 확장되어 평가 시스템의 객관성을 검토합니다.
+- 🏛 기반 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 미국에서 과학 펀딩의 당파적 격차에 대한 이해를 제공하여 글로벌 펀딩 분석의 배경을 마련한다.
+- 🏛 기반 연구: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — 미국의 당파적 과학 지원 격차 연구가 제공하는 정치-경제적 맥락 분석 방법론을 인도네시아 VAT 정책 연구에 적용할 수 있다.

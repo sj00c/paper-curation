@@ -1,3 +1,23 @@
+---
+title: "2070_Learning_to_Look_Around_Enhancing_Teleoperation_and_Learning"
+authors:
+  - "Bipasha Sen"
+  - "Michelle Wang"
+  - "Nandini Thakur"
+  - "Aditya Agarwal"
+  - "Pulkit Agrawal"
+date: "2024.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간의 자연스러운 머리 움직임을 모방하는 5-DOF actuated neck을 원격 조종 시스템에 통합하여 작업자의 직관성 향상, 인지 부하 감소, 자율 정책 학습 개선을 달성하는 연구이다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sen et al._2024_Learning to Look Around Enhancing Teleoperation and Learning with a Human-like Actuated Neck.pdf"
+---
+
 # Learning to Look Around: Enhancing Teleoperation and Learning with a Human-like Actuated Neck
 
 > **저자**: Bipasha Sen, Michelle Wang, Nandini Thakur, Aditya Agarwal, Pulkit Agrawal | **날짜**: 2024-11-01 | **URL**: [https://arxiv.org/abs/2411.00704](https://arxiv.org/abs/2411.00704)
@@ -64,3 +84,13 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 인간의 자연스러운 지각 능력을 원격 조종 시스템에 구현한 혁신적 접근으로, 직관성 향상과 자율 정책 학습 개선에 대한 실증적 증거를 제시한다. 다만 평가 작업의 범위 확대와 기술적 한계 개선을 통해 더욱 강화될 수 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — Learning to Look Around의 능동적 머리 움직임이 Vision in Action의 인간 시연에서 배운 능동 인식 원리를 휴머노이드 텔레오퍼레이션에 적용한 것이다.
+- 🔗 후속 연구: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Learning to Look Around의 5-DOF actuated neck을 Open-TeleVision의 VR 기반 몰입형 시각 피드백과 결합하여 더 직관적인 원격 조종이 가능하다.
+- 🔄 다른 접근: [[papers/1879_DIJIT_A_Robotic_Head_for_an_Active_Observer/review]] — Learning to Look Around은 텔레오퍼레이션용 능동 목 제어, DIJIT은 일반적인 능동 관찰자용 로봇 헤드로 서로 다른 응용 목적을 가진다.
+- 🏛 기반 연구: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — 텔레오퍼레이션과 학습 향상에서 능동적 시각 탐색이 look-around 행동과 유사한 메커니즘을 사용한다.
+- 🏛 기반 연구: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — 텔레조작과 학습을 향상시키는 look-around 기술이 비전문가 GUI의 직관적인 인터페이스 설계에 필요한 시각적 피드백 기반을 제공한다
+- 🔄 다른 접근: [[papers/2071_Learning_to_Look_Seeking_Information_for_Decision_Making_via/review]] — 원격 조작과 학습을 위한 시각적 탐색 향상과 능동적 정보 탐색이라는 다른 접근법을 사용한다.
+- 🧪 응용 사례: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Learning to Look Around의 텔레오퍼레이션 향상 기법이 Open-TeleVision의 능동적 카메라 제어와 결합되어 더 효과적인 원격 조종을 가능하게 한다.

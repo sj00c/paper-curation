@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "MineDojo는 Minecraft 게임을 기반으로 수천 개의 개방형 작업, 인터넷 규모의 멀티모달 지식베이스(YouTube 영상, Wiki, Reddit), 그리고 사전학습된 비디오-언어 모델을 보상함수로 활용하는 에이전트 학습 알고리즘을 통합하여 일반화 능력을 갖춘 embodied agent를 개발하는 프레임워크이다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Foundation_Model_Agents"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Diffusion-Based_Robot_Control"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fan et al._2022_MineDojo Building Open-Ended Embodied Agents with Internet-Scale Knowledge.pdf"
 ---
@@ -94,11 +95,16 @@ MineDojo는 Minecraft 게임을 기반으로 수천 개의 개방형 작업, 인
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — MineDojo와 BOSS 모두 LLM을 활용한 개방형 환경 스킬 학습을 다루지만, 게임 기반 대규모 환경 vs 로봇 조작 스킬 체이닝이라는 서로 다른 도메인과 접근법을 사용한다
-- 🔗 후속 연구: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — MineDojo의 인터넷 규모 멀티모달 지식베이스가 GenSim의 LLM 기반 시뮬레이션 작업 생성을 더 대규모이고 다양한 환경으로 확장한 구현체이다
-- 🏛 기반 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — MineDojo의 대규모 개방형 환경이 GLAM의 LLM-RL 통합 방법론을 더 복잡하고 현실적인 환경에서 검증할 수 있는 플랫폼 기반을 제공한다
-- 🔄 다른 접근: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — GenSim과 MineDojo 모두 LLM을 활용한 대규모 작업 환경 구축을 다루지만, 로봇 시뮬레이션 vs 게임 환경이라는 서로 다른 도메인을 적용한다
-- 🔗 후속 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — MineDojo의 대규모 멀티모달 환경이 GLAM의 LLM-RL 통합 방법론을 더 복잡하고 개방적인 환경에서 검증할 수 있는 확장된 플랫폼을 제공한다
-- 🔗 후속 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — MineDojo의 인터넷 규모 데이터를 활용한 오픈엔드 에이전트 구축 방법론을 RoboGen의 대규모 로봇 데이터 생성에 적용할 수 있다.
-- 🔄 다른 접근: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — 오픈엔드 구체화 에이전트에서 Voyager의 Minecraft 환경과 MineDojo의 인터넷 규모 데이터 활용 방식을 자동 커리큘럼과 평생 학습 측면에서 비교할 수 있다.
-- 🔄 다른 접근: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — MineDojo와 BOSS 모두 LLM을 활용한 개방형 환경에서의 스킬 학습을 다루지만, 게임 환경 vs 로봇 조작이라는 서로 다른 도메인을 적용한다
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — MineDojo의 open-ended agent 개념을 Voyager에서 더 발전시킨 확장 연구
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — MineDojo가 활용하는 generative interactive environment의 기초 개념
+- 🔄 다른 접근: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Minecraft 기반 embodied agent에서 인터넷 지식 vs 다중모달 시스템의 다른 접근
+- 🔄 다른 접근: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — MineDojo는 Minecraft 환경에서 구체적인 embodied agent를 학습시키는 반면, Genie는 범용적인 가상 세계 생성에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — MineDojo의 오픈엔디드 환경 개념을 LLM 기반 로봇 시뮬레이션 작업 생성으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 인터넷 데이터로 학습된 embodied agent의 개념이 GLAM의 LLM agent 설계에 기반이 된다.
+- 🏛 기반 연구: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — MineDojo의 Minecraft 환경과 오픈월드 에이전트 개념이 JARVIS-1의 멀티태스크 학습 기반을 제공함
+- 🏛 기반 연구: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — MineDreamer의 Chain-of-Imagination이 MineDojo의 개방형 환경에서 제공되는 다양한 Minecraft 작업을 체계적으로 처리하는 방법론을 제시한다.
+- 🏛 기반 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Minecraft 환경에서의 embodied agent 개발을 위한 기초 플랫폼을 제공하여 MP5의 다중모듈 시스템 구현에 필요한 환경적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — MineDojo는 SIMA가 활용하는 게임 환경 기반 embodied AI 학습의 기반이 되는 오픈엔디드 환경을 제공한다.
+- 🏛 기반 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — MineDojo가 제공하는 Minecraft 환경과 태스크 프레임워크가 Voyager의 개발과 평가에 기반이 되었다
+- 🧪 응용 사례: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — DEPS의 대화형 계획 방식을 MineDojo 환경에서 실제로 적용하고 검증할 수 있는 플랫폼
+- 🔗 후속 연구: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — MineDojo의 인터넷 규모 데이터 개념을 3D 도시 환경으로 확장하여 더 현실적인 로봇 학습 환경을 구축한다.

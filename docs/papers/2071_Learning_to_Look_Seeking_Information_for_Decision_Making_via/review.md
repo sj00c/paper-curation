@@ -1,3 +1,25 @@
+---
+title: "2071_Learning_to_Look_Seeking_Information_for_Decision_Making_via"
+authors:
+  - "Shivin Dass"
+  - "Jiaheng Hu"
+  - "Ben Abbatematteo"
+  - "Peter Stone"
+  - "Roberto Martín-Martín"
+date: "2024.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "로봇이 조작 작업을 수행하기 위해 필요한 정보를 능동적으로 탐색하는 문제를 factorized Contextual MDP로 정의하고, 정보 탐색 정책과 정보 활용 정책으로 분리된 dual-policy 솔루션 DISaM을 제안한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dass et al._2024_Learning to Look Seeking Information for Decision Making via Policy Factorization.pdf"
+---
+
 # Learning to Look: Seeking Information for Decision Making via Policy Factorization
 
 > **저자**: Shivin Dass, Jiaheng Hu, Ben Abbatematteo, Peter Stone, Roberto Martín-Martín | **날짜**: 2024-10-24 | **URL**: [https://arxiv.org/abs/2410.18964](https://arxiv.org/abs/2410.18964)
@@ -67,3 +89,10 @@
 - Overall: 4/5
 
 **총평**: 정보 탐색과 조작의 분리를 통해 장지평 POMDP를 효율적으로 해결하는 우아한 솔루션을 제시하며, 광범위한 실험 검증으로 실용성을 입증한 강력한 논문이다. 다만 다단계 탐색 최적화와 완전 자동학습 가능성 탐색이 향후 과제이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2070_Learning_to_Look_Around_Enhancing_Teleoperation_and_Learning/review]] — 원격 조작과 학습을 위한 시각적 탐색 향상과 능동적 정보 탐색이라는 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — 대규모 자아중심적 시연으로부터 손재주 조작을 학습하는 확장된 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 야생에서의 휴머노이드 시각 탐색의 이론적 기반과 구현 방법을 제공한다.
+- 🔗 후속 연구: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — 인간 시연으로부터 능동적 인식 학습을 정보 탐색 정책으로 확장한 발전된 접근

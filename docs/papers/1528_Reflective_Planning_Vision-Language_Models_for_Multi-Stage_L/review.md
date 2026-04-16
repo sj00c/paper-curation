@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Vision-language models (VLMs)의 장기 지평 로봇 조작 능력을 향상시키기 위해 reflection 메커니즘과 diffusion 기반 dynamics 모델을 결합한 test-time computation 프레임워크를 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Reasoning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Action-Value_Reasoning_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Feng et al._2025_Reflective Planning Vision-Language Models for Multi-Stage Long-Horizon Robotic Manipulation.pdf"
 ---
@@ -89,8 +91,17 @@ Vision-language models (VLMs)의 장기 지평 로봇 조작 능력을 향상시
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — multi-stage 장기 지평 계획에서 reflection 메커니즘과 multi-scale 메모리는 서로 다른 접근이지만 상호 보완적이다
-- 🔗 후속 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — System-2 thinking을 Reflective Planning의 test-time computation 프레임워크에 통합하여 추론 능력을 강화할 수 있다
-- 🏛 기반 연구: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — 자기 수정 flywheel 메커니즘이 Reflective Planning의 reflection 기반 계획 수정에 핵심 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1618_VLA-Reasoner_Empowering_Vision-Language-Action_Models_with_R/review]] — 둘 다 multi-stage planning이지만 Reflective Planning은 언어 기반, VLA-Reasoner는 MCTS 기반의 다른 추론 방식이다
-- 🏛 기반 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — Reflective Planning의 multi-stage 계획 수립이 Chain-of-Action의 역방향 행동 시퀀스 생성에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — large-scale benchmark에서 평가되는 장기 지평선 조작을 reflective planning과 dynamics model을 통해 실제로 해결하는 구체적인 방법론을 제시한다.
+- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — VLM의 장기 지평선 능력 향상에서 reflection mechanism vs reinforced visual reasoning이라는 서로 다른 test-time computation 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — rational VLA model의 이론적 기반을 제공하여 reflective planning에서 사용되는 VLM의 추론 능력과 dynamics model 통합에 필요한 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — 장기 지평 로봇 조작에서 reflection 메커니즘과 chain-of-thought 추론이라는 서로 다른 계획 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 언어 기반 계획이 reflection 메커니즘과 결합되어 더욱 정교한 다단계 장기 계획을 수립할 수 있다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 두 논문 모두 VLM의 장기 계획 능력을 다루지만 reflection과 상태 유지의 접근법이 다르다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — World model 기반 embodied AI의 전반적 이해가 reflective planning 연구의 기초가 된다.
+- 🏛 기반 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — OctoNav의 Think-Before-Action 추론이 Reflective Planning의 단계별 시각-언어 계획 수립 방법론과 유사한 철학적 기반을 공유한다.
+- 🔄 다른 접근: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — 장기 계획 수립에서 embodied chain-of-thought는 다단계 추론을, reflection 메커니즘은 반성적 계획을 통해 문제를 해결한다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — Reflective Planning은 Statler의 상태 기반 추론을 다단계 계획에 적용하는 유사한 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1604_Video_Language_Planning/review]] — multi-stage 계획을 위한 서로 다른 접근법 - video planning vs reflective planning입니다.
+- 🔗 후속 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — 멀티스테이지 반성적 계획으로 CoPAL의 계층적 계획을 확장한다.
+- 🏛 기반 연구: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — Reflective Planning의 multi-stage 추론 개념이 CoT-VLA의 시각적 chain-of-thought 구조의 기초가 됩니다.
+- 🔄 다른 접근: [[papers/1379_Embodied-R_Collaborative_Framework_for_Activating_Embodied_S/review]] — Reflective Planning의 multi-stage task planning과 Embodied-R의 collaborative VLM-LM framework는 embodied reasoning에서 서로 다른 계획 수립 접근법이다.

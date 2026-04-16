@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이미지 분할을 위한 기초 모델 SAM(Segment Anything Model)과 11M 이미지의 1B 마스크로 구성된 SA-1B 데이터셋을 소개하며, 프롬프트 기반의 제로샷 전이 학습이 가능한 범용 분할 시스템을 제시한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kirillov et al._2023_Segment Anything.pdf"
 ---
@@ -92,7 +94,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kirillov et al._2023_Segment Anything.pd
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounded Pre-training과 결합된 DINO 모델이 SAM의 프롬프트 기반 분할 능력을 보완한다.
-- 🧪 응용 사례: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — 언어 임베딩된 방사 필드에서 SAM의 분할 능력이 3D 장면 이해와 로봇 조작에 활용된다.
-- 🔗 후속 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — 범용 로봇 시스템의 기반 모델로서 SAM이 다양한 로봇 응용에서 시각 인식 기반을 제공한다.
-- 🧪 응용 사례: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Segment Anything의 segmentation 기술과 결합하여 더 정밀한 grounded object detection을 구현할 수 있습니다.
+- 🔗 후속 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — SAM의 범용 분할 능력이 Grounding DINO의 개방형 어휘 객체 검출과 결합되어 더 정밀한 시각적 grounding을 구현한다.
+- 🏛 기반 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — SAM의 프롬프트 기반 제로샷 분할 기술이 RoboPoint의 공간 affordance 예측을 위한 시각적 이해 능력의 기반이 된다.
+- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — 자기 지도 학습 기반 시각 모델에서 SAM은 분할에, DINOv2는 robust visual feature 학습에 특화된 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — CLIP-Fields의 weakly supervised semantic field 개념을 확장하여 1B 마스크 데이터를 통한 더 강력한 범용 분할 시스템을 구축했다.
+- 🏛 기반 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — VITA의 vision-to-action flow matching이 SAM의 강력한 시각적 분할 능력을 로봇 조작 정책 학습의 기초로 활용한다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Segment Anything의 segmentation 기능과 결합하여 grounded pre-training을 통한 open-set object detection을 구현한다.
+- 🏛 기반 연구: [[papers/1462_LOTUS_Continual_Imitation_Learning_for_Robot_Manipulation_Th/review]] — segment anything의 open-vocabulary segmentation 능력을 continual manipulation learning의 object understanding에 활용하는 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — Segment Anything을 로봇 조작의 객체 인식 API로 활용하여 multimodal instruction을 action으로 매핑한다.
+- 🔗 후속 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — Segment Anything과 결합되어 zero-shot object detection과 segmentation의 기반 기술로 활용된다.
+- 🔗 후속 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — SAM의 범용 분할 능력과 RoboPoint의 affordance keypoint 예측을 결합하면 더 정밀한 로봇 행동 지점 예측이 가능하다.
+- 🧪 응용 사례: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — Segment Anything의 segmentation 기능을 CLIP과 결합하여 로봇의 3D 공간 이해와 의미론적 메모리 구축에 활용한 실용적 응용입니다.

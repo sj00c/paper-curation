@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "StyleLoco는 강화학습의 민첩성과 모션캡처 데이터의 자연스러움을 결합하기 위해 다중 discriminator를 활용한 Generative Adversarial Distillation (GAD) 프레임워크를 제안하여 인간형 로봇의 자연스러운 보행을 실현한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adversarial_Motor_Imitation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ma et al._2025_StyleLoco Generative Adversarial Distillation for Natural Humanoid Robot Locomotion.pdf"
 ---
@@ -80,3 +83,20 @@ StyleLoco는 강화학습의 민첩성과 모션캡처 데이터의 자연스러
 - Overall: 4/5
 
 **총평**: StyleLoco는 인간형 로봇 보행의 오랜 딜레마를 해결하는 창의적인 프레임워크를 제시하며, 다중 discriminator를 통한 이질적 소스의 결합과 실제 로봇에서의 성공적인 배포는 높은 실용 가치를 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — 두 논문 모두 자연스러운 휴머노이드 보행을 위한 residual learning을 다루지만, adversarial distillation과 조건부 생성기라는 다른 학습 방법을 사용한다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 스타일화된 물리 기반 캐릭터 제어를 위한 adversarial motion prior의 기초 개념을 제공한다.
+- 🔗 후속 연구: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — 자연스러운 휴머노이드 보행을 generative adversarial distillation으로 더 발전시켜 민첩성과 자연스러움을 동시에 달성한다.
+- 🔄 다른 접근: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — 휴머노이드의 자연스러운 움직임 생성에서 적대적 증류와 확산 모델이라는 서로 다른 생성 모델 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol/review]] — 적대적 학습을 통한 휴머노이드 제어에서 보행과 전반적인 locomotion/motion imitation이라는 보완적 응용을 다룬다.
+- 🔄 다른 접근: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — 확산 모델과 적대적 증류라는 서로 다른 생성 모델 접근법을 사용하여 휴머노이드의 자연스러운 움직임을 학습한다.
+- 🔗 후속 연구: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — StyleLoco의 자연스러운 보행 생성을 조건부 모션 생성기와 residual policy로 분리하여 더 발전시킨다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — StyleLoco의 generative adversarial distillation 기법이 AMP의 자연스러운 움직임 생성에 필요한 핵심 기술적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — StyleLoco의 자연스러운 humanoid locomotion 연구가 Gait-Conditioned의 서기-걷기-달리기 전환에서 필요한 스타일 일관성의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1928_Feature-Based_vs_GAN-Based_Learning_from_Demonstrations_When/review]] — Feature-based와 GAN-based 학습 분석을 StyleLoco의 생성적 적대 증류에 적용하여 더 나은 자연스러운 휴머노이드 보행을 달성할 수 있다.
+- 🔗 후속 연구: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 생성적 적대 증류를 통한 자연스러운 휴머노이드 보행의 확장된 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/2105_MoRE_Mixture_of_Residual_Experts_for_Humanoid_Lifelike_Gaits/review]] — StyleLoco의 GAD 기반 자연스러운 보행 생성이 MoRE의 다중 판별자 학습 프레임워크에 방법론적 기반을 제공했다
+- 🏛 기반 연구: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — StyleLoco의 생성형 적대 증류 기법이 Natural Humanoid의 Generative Motion Prior 개발에 핵심적인 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — StyleLoco의 GAN 기반 자연스러운 보행 생성과 Motion Turing Test의 인간 관찰자 기반 평가는 상호 보완적 접근법임

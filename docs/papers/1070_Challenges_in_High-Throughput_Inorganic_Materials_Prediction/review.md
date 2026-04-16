@@ -13,7 +13,8 @@ score: 4.0
 essence: "고처리량 무기재료 자동 합성 및 예측 시스템의 핵심 문제점들을 분석한 관점 논문으로, Szymanski et al.의 A-lab 연구에서 43개 신규 재료 발견 주장이 신뢰할 수 없음을 지적하고 자동화된 재료 발견의 개선 방향을 제시한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Scientific_Discovery_Automation"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/AI-Driven_Scientific_Discovery"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leeman et al._2024_Challenges in High-Throughput Inorganic Materials Prediction and Autonomous Synthesis.pdf"
 ---
@@ -78,8 +79,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leeman et al._2024_Challenges in High-Th
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 고처리량 재료 발견에서 무기재료와 산화물 전기촉매의 다른 접근법과 데이터셋임
-- 🏛 기반 연구: [[papers/1156_Correction_Enabling_transparent_research_evaluation_A_method/review]] — 투명한 연구 평가 방법론이 자동화된 재료 발견의 신뢰성 검증에 필요함
-- 🔄 다른 접근: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 과학 연구의 신뢰성 문제를 재료과학과 출판 부정행위의 다른 영역에서 다룸
-- ⚖️ 반론/비판: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 고처리량 재료 예측의 성공 사례와 달리 자동화의 한계와 문제점을 지적함
-- 🔄 다른 접근: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 고처리량 재료 예측에서 촉매 발견과 무기재료의 다른 접근법과 과제를 다룸
+- ⚖️ 반론/비판: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 자동화된 재료 발견의 한계를 지적하면서 오픈 촉매 데이터셋 접근법과 대조된다.
+- 🏛 기반 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — AI 예측의 한계를 이해하는 것이 재료 발견 자동화의 개선 방향 설정에 중요하다.
+- ⚖️ 반론/비판: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI Scientist 시스템의 급속한 발전에 대한 낙관적 전망과 달리, 자동화된 재료 발견의 신뢰성 문제와 개선 필요성을 구체적으로 지적한다.
+- 🔄 다른 접근: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 산화 상태 예측이라는 구체적 과제보다는 전반적인 무기재료 자동 합성 시스템의 방법론적 문제점을 비판적으로 분석한다.
+- 🧪 응용 사례: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 무기 재료 예측의 고처리량 방법론이 재료과학 문헌에서 추출한 잠재 지식을 실제 연구에 적용하는 사례이다.
+- 🔄 다른 접근: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 고처리량 무기 재료 예측이라는 동일한 목표를 다른 재료 시스템에 적용
+- 🔗 후속 연구: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 기반 자동화된 과학 발견의 구체적 한계 사례를 제시하여, AI Scientist 시스템이 극복해야 할 실제 문제점들을 보여준다.
+- 🏛 기반 연구: [[papers/1195_Mapping_the_Research_Landscape_of_Electronic_Properties_of_G/review]] — 고처리량 무기 재료 예측의 도전과제 연구가 그래핀 전자 특성 연구의 계산 복잡성과 예측 모델링 한계를 이해하는 데 중요한 배경을 제공한다.

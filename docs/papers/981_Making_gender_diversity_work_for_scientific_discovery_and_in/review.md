@@ -11,7 +11,7 @@ score: 4.0
 essence: "성별 다양성(gender diversity)을 연구팀 구성, 연구방법, 연구질문의 세 가지 차원에서 체계화하고, 이들이 연구팀·학문분야·연구기관·사회 네 개 영역에서 어떻게 작동하는지 분석하여 과학혁신을 극대화하는 프레임워크를 제시한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Gender_Research_Diversity"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nielsen et al._2018_Making gender diversity work for scientific discovery and innovation.pdf"
 ---
@@ -88,11 +88,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nielsen et al._2018_Making gender divers
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성의 정량적 성과 효과가 체계적 프레임워크 개발의 실증적 근거를 제공한다.
-- ⚖️ 반론/비판: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 성별 다양성 최적화 프레임워크와 다양성-혁신 역설은 다양성 효과에 대한 상반된 관점을 제시한다.
-- 🔗 후속 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 성별 다양성 프레임워크를 민족 다양성까지 확장하여 더 포괄적인 다양성 전략을 개발할 수 있다.
-- 🏛 기반 연구: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 과학에서 다양성의 중요성이 인간 모델링 AI 시스템의 이론적 근거가 됨
-- 🏛 기반 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 과학적 발견에서 인간 다양성의 중요성이 인간-인식 AI의 이론적 근거가 됨
-- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성의 정량적 성과 효과를 체계적인 프레임워크로 발전시켜 실제 적용 방안을 제시한다.
-- 🧪 응용 사례: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 성별 다양성이 과학적 발견에 미치는 영향을 팀 규모별로 분석하여 최적의 팀 구성 전략을 도출할 수 있다.
-- 🔗 후속 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 과학적 발견에서 성별 다양성의 효과가 도서관정보학 분야의 인용 다양성과 학문적 영향을 이해하는 데 확장된다.
+- 🏛 기반 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성 팀의 실증적 우위가 과학 발견을 위한 성별 다양성 프레임워크의 이론적 토대와 검증 근거를 제공한다.
+- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — STEM 분야 성별 불평등의 역사적 분석이 성별 다양성 프레임워크 구축의 실증적 배경과 필요성을 제공한다.
+- 🧪 응용 사례: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 과학 발견과 혁신을 위한 성별 다양성 활용 방안은 컴퓨터과학 분야 성별 인용 불균형을 해결하는 실질적 정책 방향을 제시합니다.
+- ⚖️ 반론/비판: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 샤페론 효과의 긍정적 측면과 성별 다양성이 과학 발견에 미치는 영향을 균형적으로 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 성별 다양성의 과학적 발견과 혁신에 대한 효과를 다루어, 다양성 일반이 과학에 미치는 긍정적 영향의 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — 다양성이 과학 발견에 미치는 영향을 AI 시대의 창의성 맥락으로 확장한 연구
+- 🏛 기반 연구: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 과학적 발견을 위한 인간-AI 협력의 기초 이론을 순차적 의사결정 시스템으로 발전
+- 🏛 기반 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 다양성이 과학적 발견에 미치는 영향의 이해가 인간 인식 AI의 설계 기반이 된다.
+- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 과학 발견을 위한 성별 다양성 프레임워크가 성별 다양성 팀의 혁신성 실증 결과를 체계적 이론으로 발전시킨다.
+- 🔗 후속 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 발견을 위한 성별 다양성 프레임워크가 역사적 성별 불평등 분석을 미래 지향적 전략으로 발전시킨다.
+- ⚖️ 반론/비판: [[papers/976_Intersectional_inequalities_in_science/review]] — 성별 다양성이 과학적 발견과 혁신에 긍정적 효과를 가진다는 상반된 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 노인 연구에서 성별 다양성이 D&I 이론의 효과적 적용과 혁신에 미치는 영향을 분석할 수 있다.
+- 🔗 후속 연구: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 과학 발견에서 성별 다양성 연구를 기업 거버넌스 분야로 확장한다

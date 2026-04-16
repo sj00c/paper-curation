@@ -1,3 +1,25 @@
+---
+title: "1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan"
+authors:
+  - "Wei Cui"
+  - "Haoyu Wang"
+  - "Wenkang Qin"
+  - "Yijie Guo"
+  - "Gang Han"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇을 위한 일반화된 다중모달 occupancy 인식 시스템을 제시하며, 하드웨어 설계, 데이터셋 구축, 다중모달 fusion 네트워크를 통합한 완전한 환경 인식 프레임워크를 제공한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cui et al._2025_Humanoid Occupancy Enabling A Generalized Multimodal Occupancy Perception System on Humanoid Robots.pdf"
+---
+
 # Humanoid Occupancy: Enabling A Generalized Multimodal Occupancy Perception System on Humanoid Robots
 
 > **저자**: Wei Cui, Haoyu Wang, Wenkang Qin, Yijie Guo, Gang Han, Wen Zhao, Jiahang Cao, Zhang Zhang, Jiaru Zhong, Jingkai Sun, Pihai Sun, Shuai Shi, Botuo Jiang, Jiahao Ma, Jiaxu Wang, Hao Cheng, Zhichao Liu, Yang Wang, Zheng Zhu, Guan Huang, Jian Tang, Qiang Zhang | **날짜**: 2025-07-27 | **URL**: [https://arxiv.org/abs/2507.20217](https://arxiv.org/abs/2507.20217)
@@ -66,3 +88,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 로봇의 독특한 구조적 도전과제를 해결하는 실질적이고 포괄적인 occupancy 기반 인식 시스템을 제시하며, 첫 번째 휴머노이드 로봇 특화 데이터셋 제공으로 해당 분야에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1999_Humanoid_Parkour_Learning/review]] — parkour learning과 달리 Humanoid Occupancy는 환경 인식을 위한 다중모달 perception system에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — HumanoidPano의 spherical panoramic-LiDAR fusion이 Humanoid Occupancy의 multimodal perception을 panoramic 환경 인식으로 확장할 수 있다.
+- 🏛 기반 연구: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — Gallant의 voxel grid-based locomotion이 Humanoid Occupancy의 occupancy perception system 구축을 위한 기초 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — Humanoid Occupancy의 multimodal fusion과 DPL의 depth-only 접근법은 humanoid 환경 인식을 위한 서로 다른 센서 융합 전략입니다.
+- 🏛 기반 연구: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — floor-aligned representation이 humanoid occupancy 인식에서 환경의 기하학적 구조를 정확히 파악하는 기반 기술을 제공합니다.
+- 🔗 후속 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — HAIC의 dynamics-aware world model이 multimodal occupancy perception으로 환경 인식을 확장합니다.
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 360도 visual search가 휴머노이드의 일반화된 환경 인식 시스템의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — Multimodal occupancy perception이 HAIC의 시각 blind spot 문제 해결을 보완합니다.
+- 🔄 다른 접근: [[papers/1999_Humanoid_Parkour_Learning/review]] — Humanoid Occupancy의 perception-focused approach와 달리 parkour learning은 end-to-end visual control에 집중한다.
+- 🏛 기반 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — 일반화된 multimodal occupancy 인식이 HumanoidPano의 파노라마-LiDAR 크로스모달 인식을 위한 기반 프레임워크를 제공합니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "웹에서 수집한 대규모 이미지-텍스트 쌍으로 사전학습한 VLN-BERT 모델을 제안하여, 시각-언어 네비게이션 작업에서 객체 참조의 시각적 기초(grounding)를 개선한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Majumdar et al._2020_Improving Vision-and-Language Navigation with Image-Text Pairs from the Web.pdf"
 ---
@@ -88,7 +90,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Majumdar et al._2020_Improving Vision-an
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1367_EgoActor_Grounding_Task_Planning_into_Spatial-aware_Egocentr/review]] — DivScene의 대규모 객체 범주가 VLN-BERT의 객체 참조 grounding을 확장한다.
-- 🏛 기반 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — NavFoM의 크로스-태스크 네비게이션이 VLN-BERT의 vision-language 사전학습에 기반한다.
-- 🔄 다른 접근: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation 서베이도 시각-언어 네비게이션의 전반적 발전을 다룬다.
-- 🏛 기반 연구: [[papers/1367_EgoActor_Grounding_Task_Planning_into_Spatial-aware_Egocentr/review]] — VLN-BERT의 vision-language 사전학습이 DivScene의 LVLM 기반 네비게이션의 기초가 된다.
+- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 웹 데이터로 사전학습한 vision-language grounding이 LM-Nav의 언어 명령 기반 네비게이션에 기반이 된다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 이미지-텍스트 사전학습을 비디오 기반 VLM으로 확장하여 네비게이션의 다음 단계 계획을 가능하게 했다.
+- 🔄 다른 접근: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — 둘 다 vision-language navigation이지만 VLN-BERT는 사전학습에, TRAVEL은 training-free 접근에 집중한다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 기본적인 vision-language navigation 개념을 웹 데이터 사전학습으로 확장한다.
+- 🔗 후속 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — CLIP의 대규모 이미지-텍스트 학습을 VLN 도메인에 특화하여 객체 참조의 시각적 기초를 강화한다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation 서베이에서 제시된 기본 개념들을 웹 데이터 활용으로 발전시킨다.
+- 🏛 기반 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — VLN-BERT의 시각-언어 사전학습 방법론이 PaLI-X의 다국어 비전-언어 모델 개발의 기초적인 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — VLN-BERT의 기본적인 vision-language navigation을 dual-system으로 발전시켜 더 정교한 계획과 제어를 분리한다.
+- 🔗 후속 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 웹 데이터 사전학습 기반 vision-language grounding을 실제 환경 네비게이션으로 확장 적용했다.
+- 🔗 후속 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — VLN-BERT의 기본적인 vision-language navigation을 dual implicit memory로 확장하여 공간-의미 분리를 구현한다.
+- 🔗 후속 연구: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — image-text 페어링을 topological map과 결합한 vision-language navigation의 확장입니다.
+- 🏛 기반 연구: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — image-text paired learning이 aerial VLN에서 계층적 의미 계획의 핵심 기반 기술

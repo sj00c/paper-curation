@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "인터넷 규모의 라벨 없는 비디오에서 로봇 행동을 학습하기 위해 VQ-VAE 기반 잠재 행동 양자화와 Vision-Language-Action 모델 사전학습을 결합한 비지도 학습 방법을 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Representation_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ye et al._2024_Latent Action Pretraining from Videos.pdf"
 ---
@@ -90,11 +90,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ye et al._2024_Latent Action Pretraining
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1433_In-Context_Imitation_Learning_via_Next-Token_Prediction/review]] — 둘 다 label 없는 데이터 활용이지만 Latent Action은 video pre-training에, ICRT는 in-context learning에 중점을 둡니다.
-- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — Self-Supervised Learning의 joint-embedding 방법론이 latent action space 구축의 핵심 기반 기술입니다.
-- 🔗 후속 연구: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — Play-LMP의 self-supervised play data 학습을 internet-scale video로 확장하여 더 일반화된 action representation을 학습합니다.
-- 🔄 다른 접근: [[papers/1433_In-Context_Imitation_Learning_via_Next-Token_Prediction/review]] — 둘 다 parameter update 없는 학습이지만 ICRT는 in-context learning에, Latent Action은 pre-training에 중점을 둡니다.
-- 🏛 기반 연구: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — self-supervised play data learning의 기본 아이디어가 internet-scale video에서의 latent action learning으로 확장됩니다.
-- 🏛 기반 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — Latent Action Pretraining의 잠재 행동 표현 학습이 VQ-VLA의 action tokenizer 설계 기반이 된다
-- 🏛 기반 연구: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — Latent Action Pretraining의 비디오 기반 사전학습 방법론이 ATM의 액션 라벨 없는 궤적 모델링의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — Latent Action Pretraining의 비디오 기반 사전학습이 CLAM의 continuous latent action space 학습을 더욱 강화할 수 있다.
+- 🔄 다른 접근: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — 둘 다 비디오에서 motion representation을 학습하지만 VQ-VAE 기반 양자화와 latent motion token의 접근법 차이를 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 대규모 비디오 생성 사전학습의 기본 방법론을 로봇 행동 학습에 적용하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — play 데이터에서의 잠재 계획 학습을 인터넷 규모 비디오 사전학습과 결합하여 더 일반적인 행동 표현을 학습할 수 있다.
+- 🔄 다른 접근: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — 둘 다 비지도 학습을 통한 행동 표현 학습을 다루지만 play data와 video data의 활용 방식 차이를 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — 비디오에서의 latent action pretraining 연구가 Moto의 motion token 학습 방법론의 이론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — Latent Action Pretraining은 SPRINT의 정책 사전학습을 위한 비디오 기반 사전 훈련 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1347_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr/review]] — 둘 다 비디오에서 action 학습을 다루지만 D2E는 데스크톱 데이터를, Latent Action Pretraining은 일반 비디오를 활용합니다.
+- 🏛 기반 연구: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — 비디오에서의 잠재 액션 사전 학습 개념이 임의 점 궤적 모델링의 핵심 아이디어를 제공

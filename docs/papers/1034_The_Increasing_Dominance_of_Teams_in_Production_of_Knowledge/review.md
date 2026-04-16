@@ -11,7 +11,8 @@ score: 4.0
 essence: "지난 50년간 1,990만 편의 논문과 210만 개의 특허를 분석하여 지식 생산에서 팀 기반 연구가 개인 저자를 압도하고 있으며, 팀이 생산한 연구가 더 높은 피인용도를 보이고 있음을 입증했다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Team_Dynamics"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wuchty et al._2007_The Increasing Dominance of Teams in Production of Knowledge.pdf"
 ---
@@ -84,14 +85,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wuchty et al._2007_The Increasing Domina
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식 축적으로 인한 전문화와 팀 작업 증가 이론이 실제 지식 생산에서 팀 기반 연구 우세의 근거를 제공한다.
-- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 팀 기반 연구의 우세를 대형 팀과 소형 팀이 각각 다른 방식으로 과학 발전에 기여한다는 세분화된 분석으로 확장했다.
-- 🧪 응용 사례: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 팀 기반 연구의 우세에도 불구하고 원격 협업이 혁신적 발견에는 한계가 있음을 보여주는 구체적 사례다.
-- ⚖️ 반론/비판: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 팀 연구의 우세를 보여주지만 원격 협업이 혁신적 발견에는 제약이 있음을 밝혀 팀 연구의 한계를 지적한다.
-- 🧪 응용 사례: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식 부담 증가로 인한 전문화와 팀 작업 증가 현상이 실제로 지식 생산에서 팀 기반 연구의 우세로 나타났다.
-- 🏛 기반 연구: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 과학 지식 생산에서 팀의 지배력 증가라는 현상을 제시하여 학제간 협력 프레임워크의 필요성을 뒷받침한다.
-- 🏛 기반 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 지식 생산에서 팀의 지배력 증가가 연구팀 형성과 진화 원리를 이해하는 배경을 제공한다.
-- 🏛 기반 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 팀 기반 지식 생산의 증가에 따라 다중저자 논문의 기여도 정량화 필요성이 증대한다
-- 🏛 기반 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 지식 생산에서 팀의 지배력 증가 현상이 팀 규모별 기능 분화에 미치는 영향의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 사회복지 분야의 협력 증대 현상을 지식 생산에서 팀의 지배력 증가라는 더 큰 맥락에서 이해할 수 있다.
-- 🧪 응용 사례: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 지식 생산에서 팀의 증가하는 지배력을 Collaborative Guideposts 프레임워크로 평가하는 구체적 적용 사례를 제공합니다.
+- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀과 소규모 팀의 차별적 역할 분석은 팀 기반 지식 생산의 증가가 혁신의 성격에 미치는 영향을 더 자세히 규명합니다.
+- 🧪 응용 사례: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 협력적 가이드포스트를 통한 팀 과학 지표 재고는 팀 중심 지식 생산 시대에 적합한 새로운 평가 방법론을 제시합니다.
+- 🏛 기반 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 과학 연구팀 형성과 진화의 원리는 지식 생산에서 팀 연구 증가 현상을 이해하는 이론적 메커니즘을 제공합니다.
+- 🏛 기반 연구: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식 생산에서 팀 중심 연구의 증가는 지식 부담으로 인한 전문화 필요성과 팀워크 증가를 뒷받침하는 실증적 근거를 제공합니다.
+- 🔗 후속 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 팀 연구의 중요성이 증가하는 맥락에서, 인종적 다양성이 협업의 영향력을 극대화하는 핵심 요소임을 실증적으로 보여준다.
+- 🔗 후속 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 팀 연구 중심으로의 지식 생산 변화가 개별 과학자당 논문 수 증가로 이어져, 출판 부담 심화의 구조적 원인을 설명한다.
+- 🔗 후속 연구: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 개별 과학자 협력에서 팀 기반 지식 생산으로의 변화가 협력 네트워크 구조 진화에 미치는 영향을 분석한다.
+- 🏛 기반 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 지식 생산에서 팀의 지배력 증가 연구가 연구팀 형성과 진화 원리의 역사적 맥락을 제공한다.
+- 🏛 기반 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 팀 기반 지식 생산에서 저자 수가 연구 성과에 미치는 영향의 이론적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 팀 과학의 증가 현상이 집단 신용 배분 시스템 개발의 배경을 제공한다
+- 🏛 기반 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 개별 과학자들의 네트워크가 점점 더 팀 기반 지식 생산으로 진화하는 현상의 초기 네트워크 구조를 보여줍니다.
+- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 팀 크기와 지식 생산 간의 관계를 더 깊이 탐구하여 팀 규모가 과학적 혁신에 미치는 영향을 확장 분석한다.
+- 🧪 응용 사례: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 과학 공동체 매핑 결과를 통해 팀 기반 지식 생산의 구조적 특성을 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 지식생산에서 팀 협력의 증가 현상에 대한 이론적 배경을 제공합니다.
+- 🏛 기반 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 팀 기반 지식생산의 증가 현상에 대한 이론적 배경을 평가 체계 설계에 반영합니다.

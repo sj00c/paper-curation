@@ -11,7 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "로봇 조작 작업에서 diffusion model 기반의 계층적 정책을 제안하며, 상위 정책은 접촉점을 예측하고 하위 정책은 접촉점으로 유도된 동작 수열을 생성하여 접촉이 풍부한 작업에서의 성능을 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
   - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_Hierarchical Diffusion Policy manipulation trajectory generation via contact guidance.pdf"
@@ -90,7 +91,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_Hierarchical Diffusion 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — H³DP의 hierarchical diffusion이 manipulation trajectory generation에서 hierarchical planning의 기반 구조를 제공합니다.
-- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 기본 Diffusion Policy를 hierarchical structure로 확장하여 contact-rich manipulation에 특화한 발전된 형태입니다.
-- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 둘 다 diffusion 기반이지만 hierarchical approach vs one-step approach로 서로 다른 속도-성능 트레이드오프를 제시합니다.
-- 🔄 다른 접근: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — Triply-hierarchical diffusion policy가 robotic manipulation을 위한 diffusion model의 다른 구조적 접근을 제시한다.
+- 🔄 다른 접근: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D Diffusion Policy도 로봇 조작에 diffusion을 적용하지만 3D 공간 표현에 특화된 반면, 계층적 접근법은 접촉점 기반 분해에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy는 계층적 확산 정책이 기반으로 하는 로봇 조작에서의 diffusion model 적용에 대한 기초 연구입니다.
+- 🔗 후속 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — H³DP는 계층적 diffusion policy를 삼중 계층으로 더 세분화하여 발전시킨 연구입니다.
+- 🔗 후속 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — 계층적 diffusion policy에서 depth-aware representation을 추가로 고려한 확장 연구입니다.
+- 🔗 후속 연구: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — hierarchical diffusion policy의 개념을 visual-tactile feedback과 결합하여 접촉 기반 조작 작업에서의 계층적 제어를 구현한다.
+- 🔗 후속 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 계층적 diffusion policy라는 구체적 응용사례를 통해 서베이 내용을 확장합니다.

@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Robot 조작 작업을 위한 visuomotor policy를 conditional denoising diffusion process로 표현하는 Diffusion Policy를 제안하며, 4개 벤치마크의 15개 작업에서 평균 46.9% 성능 향상을 달성했다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
   - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chi et al._2023_Diffusion Policy Visuomotor Policy Learning via Action Diffusion.pdf"
@@ -94,18 +96,37 @@ Robot 조작 작업을 위한 visuomotor policy를 conditional denoising diffusi
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — One-step diffusion policy가 original diffusion policy의 추론 속도 문제를 해결하여 실시간 visuomotor control을 가능하게 한다.
-- 🔄 다른 접근: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Flow-matching policy가 diffusion policy와 다른 생성 모델 접근으로 visuomotor policy learning을 구현한다.
-- 🔗 후속 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Vision-to-action flow matching이 diffusion policy의 action diffusion 개념을 flow matching으로 확장한다.
-- 🔗 후속 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — 기본 Diffusion Policy를 hierarchical structure로 확장하여 contact-rich manipulation에 특화한 발전된 형태입니다.
-- 🏛 기반 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — Diffusion Policy의 연속성과 HybridVLA의 diffusion 기반 action 예측이 직접적인 방법론적 연관성을 갖는다.
-- 🏛 기반 연구: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — Diffusion Policy의 기본 개념이 flow matching을 활용한 조작 정책의 이론적 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — Diffusion Policy의 visuomotor policy learning이 latent space에서의 diffusion policy 학습에 방법론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — slow-fast 계층 구조의 Reactive Diffusion Policy가 기본적인 Diffusion Policy의 visuomotor 학습 프레임워크를 기반으로 확장되었다.
-- 🔗 후속 연구: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — Diffusion Policy의 visuomotor 정책 학습을 다중 작업 언어 조건 환경으로 확장하여 더 복잡한 로봇 스킬 증류를 가능하게 한다.
-- 🏛 기반 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — 확산 정책의 기본 아이디어를 스트리밍 플로우로 단순화하여 실시간 액션 생성을 가능하게 한다.
-- 🔄 다른 접근: [[papers/1611_PhysDiff_Physics-Guided_Human_Motion_Diffusion_Model/review]] — visuomotor policy를 위한 diffusion 접근법이 PhysDiff의 human motion 중심 접근법과 다른 응용 영역을 보인다
-- 🏛 기반 연구: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — Diffusion Policy의 기본 diffusion 기반 정책 학습이 Diffusion-VLA의 이론적 기반이다.
-- 🏛 기반 연구: [[papers/1584_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — NoMaD가 기반으로 하는 diffusion policy의 원리와 구현 방법을 Diffusion Policy 논문에서 제시
-- 🏛 기반 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — Diffusion Policy의 확산 기반 정책 학습 방법론이 GPC의 diffusion 정책 조합 설계에 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — 둘 다 diffusion policy 기반이지만 Consistency Policy는 consistency distillation을, Diffusion Policy는 원본 diffusion을 사용한다.
+- 🔄 다른 접근: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — diffusion policy를 flow matching으로 대체하여 동일한 visuomotor 학습을 훨씬 빠르게 수행하는 개선된 접근법
+- 🏛 기반 연구: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D diffusion policy가 일반적인 diffusion policy를 3D 공간으로 확장한 기반 연구
+- 🏛 기반 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 로봇 조작을 위한 diffusion 모델들에 대한 포괄적인 조사와 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer 정책으로서 diffusion 기반 정책 학습을 확장합니다.
+- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 로봇 정책 학습에서 diffusion과 transformer 기반의 서로 다른 행동 모델링 접근법을 비교합니다.
+- 🏛 기반 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — 멀티태스크 transformer 구조가 diffusion policy의 조건부 생성을 위한 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — Diffusion Policy를 foundation model로 확장하여 일반화 가능한 로봇 조작으로 발전시킵니다.
+- 🏛 기반 연구: [[papers/1287_π_0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Co/review]] — 연속적 행동 생성을 위한 diffusion 기반 정책 학습의 기초 이론을 제공한다.
+- 🏛 기반 연구: [[papers/1395_FlowPolicy_Enabling_Fast_and_Robust_3D_Flow-based_Policy_via/review]] — Diffusion Policy의 기본 아키텍처를 Consistency Flow Matching으로 가속화한 개선 버전이다.
+- 🔗 후속 연구: [[papers/1406_Genie_Envisioner_A_Unified_World_Foundation_Platform_for_Rob/review]] — Diffusion Policy의 action diffusion 개념을 video generation 프레임워크로 확장하여 정책 학습과 평가를 통합한다.
+- 🏛 기반 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — Diffusion Policy는 계층적 확산 정책이 기반으로 하는 로봇 조작에서의 diffusion model 적용에 대한 기초 연구입니다.
+- 🏛 기반 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — Diffusion Policy의 action diffusion과 autoregressive VLM을 단일 모델에서 협력적으로 통합하는 새로운 패러다임을 제시한다.
+- 🏛 기반 연구: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — ManiFlow의 flow matching 기반 정책 학습이 기반으로 하는 diffusion policy 방법론
+- 🏛 기반 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — diffusion policy의 기본 아이디어가 latent action space에서의 cross-embodiment 정책 학습에 적용되었다.
+- 🏛 기반 연구: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — diffusion policy의 기본 이론과 visuomotor policy learning 방법론을 제공하여 NavDP의 trajectory generation 메커니즘 설계에 핵심적인 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — NavigateDiff가 사용하는 action diffusion의 기초가 되는 visuomotor policy learning 방법론을 제시한다.
+- 🏛 기반 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — Diffusion Policy의 visuomotor learning 방법론이 RDT-1B의 bimanual diffusion foundation model의 이론적 기반이다.
+- 🏛 기반 연구: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — diffusion policy의 기본 이론과 visuomotor learning 방법론을 제공하여 RDP의 slow-fast hierarchical diffusion policy 설계에 필수적인 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — Diffusion Policy의 핵심 개념을 OneDP가 단일 단계로 압축하여 효율성을 극대화한다.
+- 🔄 다른 접근: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — RVT-2와 Diffusion Policy는 모두 정밀한 로봇 조작을 위한 상이한 아키텍처 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Diffusion Policy의 action diffusion 기본 개념이 Streaming Flow Policy의 flow trajectory 기반 단순화된 접근법의 이론적 기초가 된다.
+- 🔄 다른 접근: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — Diffusion Policy가 VIMA와 다른 확산 모델 기반 접근법으로 로봇 조작 정책 학습 문제를 해결한다.
+- 🏛 기반 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Action diffusion의 기본 개념을 제공하여 VITA의 flow matching policy 설계에 핵심적인 이론적 토대를 마련한다.
+- 🏛 기반 연구: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — Diffusion Policy의 비주오모터 정책 학습은 Diffusion-VLA의 diffusion 기반 로봇 foundation model에 핵심적인 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — diffusion 기반 정책 학습의 기초적 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — 동일한 로봇 조작 문제를 diffusion 대신 flow matching으로 해결하여 훨씬 빠른 학습과 추론 속도를 제공
+- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Multi-modal 행동 학습에서 Transformer 기반 action discretization과 확산 모델 기반 연속 행동이 다른 접근법입니다.
+- 🔄 다른 접근: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — 둘 다 궤적 기반 로봇 정책이지만 Diffusion Policy는 순방향 확산 모델을, CoA는 역방향 자동회귀 모델링을 사용합니다.
+- 🏛 기반 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Action Diffusion을 통한 visuomotor 정책 학습의 원리적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — Diffusion Policy는 로봇 조작에서 diffusion model 적용의 핵심 원리와 방법론을 제시하여 survey의 중요한 기반 연구입니다.
+- 🔗 후속 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — 기존 Diffusion Policy의 작은 action head를 큰 transformer로 대체하여 scaling 능력을 향상시킵니다.
+- 🏛 기반 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Diffusion Policy의 기본 visuomotor learning 프레임워크가 MoDE에서 mixture-of-experts로 확장되는 diffusion policy의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1368_DiWA_Diffusion_Policy_Adaptation_with_World_Models/review]] — DiWA의 diffusion 정책 적응과 Diffusion Policy의 비주오모터 학습은 diffusion 기반 로봇 정책의 발전된 활용이다.
+- 🏛 기반 연구: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — Diffusion Policy의 action diffusion 개념을 3D 시각 표현과 결합하여 point cloud 기반으로 확장한 방법론입니다.

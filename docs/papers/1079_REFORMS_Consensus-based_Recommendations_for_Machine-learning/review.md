@@ -13,7 +13,7 @@ score: 4.0
 essence: "기계학습 기반 과학 연구의 타당성, 재현성, 일반화 가능성을 보장하기 위한 학제 간 합의 기반 체크리스트 REFORMS (32개 항목, 8개 모듈)을 제시한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/AI_Impact_on_Computer_Science"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kapoor et al._2024_REFORMS Consensus-based Recommendations for Machine-learning-based Science.pdf"
 ---
@@ -80,8 +80,6 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kapoor et al._2024_REFORMS Consensus-bas
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 재현성 위기라는 근본적 문제를 제기하여 기계학습 기반 과학 연구에서 엄격한 표준이 필요한 이유를 제공한다.
-- 🔗 후속 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 심리학에서의 재현성 평가 경험을 ML 기반 과학 연구로 확장하여 검증 체크리스트의 실용적 근거를 강화한다.
-- 🧪 응용 사례: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — REFORMS 체크리스트를 AI 연구 평가에 적용할 때 DREAM 프레임워크가 제공하는 자동화된 검증 도구로 활용할 수 있다.
-- 🧪 응용 사례: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 기계학습 기반 과학 연구의 검증을 위한 REFORMS 체크리스트를 AI 에이전트 평가에 적용할 수 있는 자동화 도구를 제공한다.
-- 🔗 후속 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 기계학습 모델의 표준화된 보고 지침을 방사선학 AI 모델 저장소에 적용할 수 있다.
+- 🏛 기반 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 재현성 위기 문제를 해결하기 위한 체계적인 체크리스트 솔루션을 제시한다.
+- 🧪 응용 사례: [[papers/1058_Why_Most_Published_Research_Findings_Are_False/review]] — 거짓 연구 결과 문제를 기계학습 연구에서 방지하기 위한 구체적인 가이드라인을 제공한다.
+- 🔗 후속 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 머신러닝 연구의 합의 기반 권고사항을 의료 분야로 확장한다

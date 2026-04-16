@@ -1,3 +1,25 @@
+---
+title: "2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G"
+authors:
+  - "Yiming Xie"
+  - "Varun Jampani"
+  - "Lei Zhong"
+  - "Deqing Sun"
+  - "Huaizu Jiang"
+date: "2023.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "OmniControl은 diffusion 기반 text-conditioned 인간 동작 생성 모델에 flexible spatial control signals을 통합하는 방법으로, 단일 모델로 임의의 관절을 임의의 시간에 제어할 수 있다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Text-Conditioned_Motion_Generation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xie et al._2023_OmniControl Control Any Joint at Any Time for Human Motion Generation.pdf"
+---
+
 # OmniControl: Control Any Joint at Any Time for Human Motion Generation
 
 > **저자**: Yiming Xie, Varun Jampani, Lei Zhong, Deqing Sun, Huaizu Jiang | **날짜**: 2023-10-12 | **URL**: [https://arxiv.org/abs/2310.08580](https://arxiv.org/abs/2310.08580)
@@ -64,3 +86,25 @@ OmniControl은 diffusion 기반 text-conditioned 인간 동작 생성 모델에 
 - Overall: 4/5
 
 **총평**: OmniControl은 기존 방법의 근본적 제약을 global coordinate 변환과 dual guidance로 해결하며, 단일 모델로 임의의 관절 제어를 가능하게 한 significant contribution이다. 실용적 응용성과 성능 면에서 human motion generation 분야의 중요한 진전을 이루었다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1917_Example-based_Motion_Synthesis_via_Generative_Motion_Matchin/review]] — 유연한 관절 제어와 예제 기반 모션 합성은 모두 세밀한 모션 제어를 제공하지만 서로 다른 제어 방식을 사용한다.
+- 🔗 후속 연구: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — 캐릭터 제어를 위한 확산 모델이 임의 관절 제어의 확장된 응용이다.
+- 🏛 기반 연구: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — 가이드된 모션 확산이 제어 가능한 인간 모션 합성의 기반 기술이다.
+- 🏛 기반 연구: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — MaskedMimic의 masked motion control이 OmniControl의 임의 관절 제어 개념에 방법론적 기반을 제공했다
+- 🔗 후속 연구: [[papers/1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f/review]] — Flexible Motion In-betweening의 diffusion model이 OmniControl의 text-conditioned spatial control로 더욱 정교하게 발전된 것이다
+- 🔄 다른 접근: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — 둘 다 flexible control이지만 OmniControl은 text-conditioned joint control에, MaskedManipulator는 object/pose goal에 중점을 둔다
+- 🔄 다른 접근: [[papers/2146_TEDi_Temporally-Entangled_Diffusion_for_Long-Term_Motion_Syn/review]] — TEDi의 temporally-entangled diffusion이 OmniControl의 spatial joint control과 보완적으로 시간축에서의 flexible motion generation을 제공합니다.
+- 🔗 후속 연구: [[papers/2035_Kimodo_Scaling_Controllable_Human_Motion_Generation/review]] — Kimodo의 controllable human motion generation이 OmniControl의 joint-level control을 더 확장된 whole-body motion synthesis로 발전시킨 형태입니다.
+- 🔗 후속 연구: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — 조건부 모션 생성의 개념을 관절별 세밀한 제어로 확장하여 사용자가 원하는 시점에 특정 관절을 제어할 수 있는 시스템을 구현했다.
+- 🔗 후속 연구: [[papers/1815_Being-M05_A_Real-Time_Controllable_Vision-Language-Motion_Mo/review]] — part-aware residual quantization을 확장하여 인간 모션의 모든 관절을 동시에 제어할 수 있는 omnidirectional 제어를 실현한다.
+- 🔗 후속 연구: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — BeyondMimic의 compact motion tracking이 OmniControl의 임의 관절 제어로 확장되어 더 세밀한 인간 모션 제어를 달성할 수 있다
+- 🔗 후속 연구: [[papers/1878_Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Model/review]] — MAGNet의 multi-agent diffusion framework가 OmniControl의 joint-level 제어로 확장되어 더 세밀한 상호작용 제어를 가능하게 한다.
+- 🔗 후속 연구: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — GMD의 텍스트 조건부 모션 생성을 OmniControl이 관절별 제어로 확장하여 더 세밀한 인간 모션 합성을 달성합니다.
+- 🔄 다른 접근: [[papers/1913_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe/review]] — OmniControl의 임의 관절 제어가 상체 동작에 특화된 EMP와는 다른 전신 관절 제어 접근 방식을 제시한다.
+- 🔄 다른 접근: [[papers/1917_Example-based_Motion_Synthesis_via_Generative_Motion_Matchin/review]] — 예제 기반 모션 합성과 유연한 관절 제어는 모두 모션 생성에서 세밀한 제어를 제공하지만 접근법이 다르다.
+- 🔄 다른 접근: [[papers/2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu/review]] — 인간 동작의 임의 관절 제어와 휴먼-휴머노이드 상호작용이라는 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — OmniControl의 flexible joint control이 MaskedManipulator의 다양한 고수준 목표 지정 방식으로 발전된 것이다
+- 🔗 후속 연구: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — OmniControl의 임의 관절 제어가 MaskedMimic의 masked motion inpainting으로 더욱 일반화된 형태다
+- 🔗 후속 연구: [[papers/2146_TEDi_Temporally-Entangled_Diffusion_for_Long-Term_Motion_Syn/review]] — TEDi의 시간축 모션 생성을 OmniControl의 임의 시점 관절 제어와 결합하면 더 정밀한 장기 모션 제어가 가능합니다.

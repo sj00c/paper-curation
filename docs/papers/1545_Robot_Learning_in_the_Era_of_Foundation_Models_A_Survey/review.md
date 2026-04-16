@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 Large Language Models(LLMs)과 multimodal foundation models를 로봇 학습에 적용하는 최신 기술을 체계적으로 조사하는 survey이며, manipulation, navigation, planning, reasoning의 네 가지 주요 영역에서 foundation model 기법의 적용 방식을 분석한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robotics_Foundation_Models"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiao et al._2023_Robot Learning in the Era of Foundation Models A Survey.pdf"
 ---
@@ -88,6 +90,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiao et al._2023_Robot Learning in the E
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — 로봇 분야의 foundation model 적용에 대한 포괄적 조사에서 서로 다른 관점과 체계를 제시한다.
-- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — foundation model 기반 로봇 연구에 대해 서로 다른 분류 체계와 분석 관점을 제공한다.
-- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — embodied AI를 위한 world model 조사 연구를 바탕으로 foundation model의 로봇 학습 적용 현황을 종합적으로 분석한다.
+- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation Models in Robotics와 함께 로봇 분야의 기초 모델을 조망하지만 이 연구는 LLM/multimodal 모델에, 다른 연구는 전반적 응용에 집중한다.
+- 🔗 후속 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — 범용 로봇을 위한 기초 모델 서베이를 확장하여 특히 언어 및 멀티모달 모델의 로봇 학습 적용에 집중한 전문적 조사를 제공한다.
+- 🏛 기반 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — Foundation models 시대의 로봇 학습 전반을 다룬 survey가 Pure VLA 모델들의 구체적 분류와 분석의 이론적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — 두 survey 모두 foundation model driven robotics를 다루지만 하나는 학습 중심, 다른 하나는 전반적 로봇 시스템 관점에서 접근한다.
+- 🏛 기반 연구: [[papers/1298_A_Survey_of_Embodied_Learning_for_Object-Centric_Robotic_Man/review]] — Robot Learning in the Era of Foundation Models 서베이의 기초 위에 object-centric robotic manipulation에 특화된 embodied learning 관점을 추가한 연구입니다.
+- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — foundation model 시대의 로봇 학습에 대한 기본적인 조망을 제공하는 선행 연구이다.
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation Models in Robotics와 Robot Learning in the Era of Foundation Models는 로봇틱스에서 foundation model 활용에 대한 상호 보완적인 종합 조사이다.
+- 🔄 다른 접근: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — Robot Learning in the Era of Foundation Models는 EMLMs와 유사한 주제를 다루지만 학습 관점에서 다른 분석 프레임워크를 제시합니다.
+- 🏛 기반 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — Robot Learning in the Era of Foundation Models의 기본 개념을 계층적/end-to-end 의사결정과 학습으로 체계화한다.
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — Pure VLA 모델들의 포괄적 분류가 foundation models 시대 로봇 학습 survey를 VLA 특화 관점으로 심화 확장한다.
+- 🏛 기반 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — foundation model 시대의 로봇 학습에 대한 포괄적 조사로 1590의 이론적 배경을 제공합니다.
+- 🔗 후속 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — Robot Learning in the Era of Foundation Models는 EIIR의 산업 특화 접근을 학습 관점에서 확장한 연구임

@@ -1,3 +1,24 @@
+---
+title: "1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw"
+authors:
+  - "Yingzhao Jian"
+  - "Zhongan Wang"
+  - "Yi Yang"
+  - "Hehe Fan"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "off-the-shelf VLM(GPT-4)을 humanoid agent의 제어에 활용하기 위해 embodied instruction compiler와 diffusion-based motion executor로 구성된 BiBo 프레임워크를 제안하고, 이를 통해 대규모 데이터 수집 없이 개방형 환경에서의 유연한 상호작용을 가능하게 함."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LLM_Physical_Motion_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jian et al._2025_Endowing GPT-4 with a Humanoid Body Building the Bridge Between Off-the-Shelf VLMs and the Physical.pdf"
+---
+
 # Endowing GPT-4 with a Humanoid Body: Building the Bridge Between Off-the-Shelf VLMs and the Physical World
 
 > **저자**: Yingzhao Jian, Zhongan Wang, Yi Yang, Hehe Fan | **날짜**: 2025-10-28 | **URL**: [https://arxiv.org/abs/2511.00041](https://arxiv.org/abs/2511.00041)
@@ -64,3 +85,26 @@ off-the-shelf VLM(GPT-4)을 humanoid agent의 제어에 활용하기 위해 embo
 - Overall: 4/5
 
 **총평**: 본 논문은 off-the-shelf VLM과 humanoid control을 연결하는 창의적인 프레임워크를 제시하고, structured representation과 LDM의 novel application을 통해 기술적 기여를 하였으며, 실제 데이터 수집의 병목을 해소하려는 실질적 의의가 있음. 다만 실제 물리 환경에서의 검증과 robustness 분석이 보강된다면 더욱 강력한 작업이 될 것으로 예상됨.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — GPT-4를 휴머노이드에 적용하는 것과 비전-언어 모델 기반 휴머노이드 에이전트는 유사한 목표를 다른 방식으로 달성한다.
+- 🔗 후속 연구: [[papers/2012_HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Con/review]] — 비전-언어 가이드 임피던스 제어가 off-the-shelf VLM을 물리적 제어로 연결하는 확장된 구현이다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 자유형식 언어 명령 처리가 GPT-4 기반 휴머노이드 제어의 기반 기술이다.
+- 🔗 후속 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — BiBo 프레임워크가 EMOTION의 LLM 기반 모션 생성을 확장하여 더 복잡한 개방형 환경 상호작용을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — 둘 다 VLM을 휴머노이드 제어에 활용하지만 BiBo는 GPT-4를, EgoVLA는 egocentric 데이터 기반 VLA를 사용한다.
+- 🧪 응용 사례: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — BiBo의 GPT-4 기반 embodied instruction compiler가 Trinity의 모듈형 휴머노이드 AI 시스템에 자연어 명령 처리 모듈로 통합될 수 있다.
+- 🔄 다른 접근: [[papers/1893_ECHO_Edge-Cloud_Humanoid_Orchestration_for_Language-to-Motio/review]] — BiBo의 통합 프레임워크와 ECHO의 엣지-클라우드 분산 구조는 GPT-4 기반 휴머노이드 제어의 서로 다른 아키텍처입니다.
+- 🔗 후속 연구: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — LangWBC의 언어 지향 전신 제어가 BiBo의 GPT-4 embodied instruction을 더욱 직접적인 제어 방식으로 발전시켰습니다.
+- 🔗 후속 연구: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — GPT-4와 휴머노이드 결합 연구를 VLM-RAG로 확장하여 더 안전하고 적응적인 상호작용을 실현한다.
+- 🔗 후속 연구: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — GPT-4와 휴머노이드 결합 연구가 VoxPoser의 LLM 기반 affordance 추론을 실제 로봇에 적용하는 발전된 형태
+- 🏛 기반 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — GPT-4에 휴머노이드 몸체를 부여하는 기초 연구가 Being-0의 언어-행동 연결 메커니즘에 활용된다.
+- 🏛 기반 연구: [[papers/1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — GPT-4에 인간형 신체를 부여하는 연구가 로봇과 AI 에이전트의 CPST 분류 프레임워크 개발에 핵심적인 실증 사례를 제공한다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — GPT-4와 인간형 로봇 연결의 기본 개념을 제공합니다.
+- 🔄 다른 접근: [[papers/1893_ECHO_Edge-Cloud_Humanoid_Orchestration_for_Language-to-Motio/review]] — ECHO의 엣지-클라우드 분산 구조와 BiBo의 통합 프레임워크는 LLM 기반 휴머노이드 제어의 서로 다른 아키텍처 접근법입니다.
+- 🏛 기반 연구: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — EgoVLA의 Vision-Language-Action 모델 구조가 GPT-4 기반 BiBo 프레임워크의 embodied instruction compiler 설계에 기반 이론을 제공한다.
+- 🔄 다른 접근: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — 둘 다 언어 지시 기반 humanoid 제어를 다루지만, FRoM-W1은 H-GPT와 H-ACT의 2단계 구조를, GPT-4 연구는 LLM과 물리적 embodiment 연결에 집중합니다.
+- 🏛 기반 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — EMOTION의 LLM 기반 모션 생성이 GPT-4를 휴머노이드 제어에 활용하는 BiBo 프레임워크의 기반 기술을 제공한다.
+- 🏛 기반 연구: [[papers/1968_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — GPT-4를 휴머노이드에 적용하는 기초 연구가 Harmon의 언어 기반 전신 동작 생성의 이론적 토대가 된다.
+- 🔗 후속 연구: [[papers/2025_INTENTION_Inferring_Tendencies_of_Humanoid_Robot_Motion_Thro/review]] — INTENTION의 직관적 물리 이해가 GPT-4 기반 휴머노이드 제어에 물리적 추론 능력을 추가하여 성능 향상 가능
+- 🏛 기반 연구: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — GPT-4에 휴머노이드 신체를 부여하는 연구가 LLM, VLM, RL을 통합한 모듈식 AI 시스템 구축의 이론적 기반이 됩니다.

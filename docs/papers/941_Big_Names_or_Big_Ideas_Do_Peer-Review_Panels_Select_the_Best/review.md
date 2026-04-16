@@ -10,7 +10,7 @@ score: 4.0
 essence: "NIH 동료평가(peer review) 점수가 실제로 연구의 미래 성과(논문, 인용, 특허)를 예측하는지 13만여 건의 R01 그랜트를 추적하여 검증한 연구이다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Peer_Review_Grant_Systems"
+  - "sub/Public_Science_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li and Agha_2015_Big Names or Big Ideas Do Peer-Review Panels Select the Best Science Proposals.pdf"
 ---
@@ -87,10 +87,10 @@ NIH 동료평가(peer review) 점수가 실제로 연구의 미래 성과(논문
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — NIH 동료평가의 한계를 해결하기 위해 복권 방식의 펀딩 시스템을 대안으로 제시한다
-- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 펀딩의 매튜 효과를 동료평가 시스템의 성과 예측력 분석으로 확장한다
-- 🧪 응용 사례: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 미국 과학 펀딩의 당파적 격차를 동료평가 패널의 선택 편향 분석에 적용할 수 있다
-- ⚖️ 반론/비판: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 저널 명성이 논문 질과 무관한 인용 편향을 야기한다는 관점과 peer-review에서 명성 vs 아이디어의 선택 기준을 대비합니다.
-- 🏛 기반 연구: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 기존 동료평가 시스템이 유명한 연구자보다는 혁신적 아이디어를 선별하는 데 한계가 있음을 보여주는 근거를 제공한다.
-- 🔄 다른 접근: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — 동료 검토 시스템의 선택 편향 문제를 질적 관점에서 다루어 AI 가속 글쓰기로 인한 양적 과부하 문제와 대조적 시각을 제공한다.
-- 🏛 기반 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — 동료 검토 패널이 빅 네임을 선호하는 기존 펀딩 시스템의 편향성을 입증하여 AI 혁신의 필요성을 뒷받침한다.
+- 🔗 후속 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — NIH 동료평가 효과성 분석이 미국 과학 기금 배분의 정치적 편향성 문제로 확장되어 평가 시스템의 객관성을 검토합니다.
+- 🏛 기반 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 기금 배분에서 Matthew 효과가 동료평가 점수와 실제 성과 간 관계에 미치는 영향을 이해하는 배경을 제공합니다.
+- 🏛 기반 연구: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 동료평가 패널이 큰 아이디어보다 유명한 연구자를 선호하는 경향은 추첨 기반 펀딩 시스템이 필요한 이유를 뒷받침하는 실증적 근거입니다.
+- ⚖️ 반론/비판: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 동료 심사에서 빅네임 효과가 샤페론 효과와 유사한 메커니즘으로 작동하는지 비교 분석이 필요하다.
+- 🏛 기반 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — 동료 심사 패널이 큰 아이디어보다 유명한 이름을 선호하는 문제를 기반으로, AI가 이러한 편향을 해결할 수 있는 가능성을 제시한다.
+- 🏛 기반 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 연구 자금 심사에서 정치적 요인이 작용할 수 있음을 보여주는 이론적 근거를 제공한다.
+- 🏛 기반 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 동료평가 시스템의 효과성 검증 연구가 LLM 기반 평가 시스템 도입을 위한 기준점을 제공합니다.

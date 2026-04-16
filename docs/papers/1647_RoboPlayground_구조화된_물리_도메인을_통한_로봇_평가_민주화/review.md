@@ -8,9 +8,12 @@ arxiv: ""
 score: 4.0
 essence: "자연어로 로봇 조작 작업을 정의하고 재현 가능한 작업 명세로 컴파일하는 RoboPlayground 프레임워크를 제안하며, 고정 벤치마크에서 드러나지 않는 일반화 실패를 언어 기반 작업 변형을 통해 발견한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Adaptive_Locomotion_Recovery"
   - "topic/humanoid"
-pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2604.05226.pdf"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_RoboPlayground 구조화된 물리 도메인을 통한 로봇 평가 민주화.pdf"
 ---
 
 # RoboPlayground: 구조화된 물리 도메인을 통한 로봇 평가 민주화
@@ -80,3 +83,25 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2604.05226.pdf"
 - Overall: 4/5
 
 **총평**: RoboPlayground는 로봇 평가의 민주화와 접근성을 크게 향상시키는 혁신적 접근법으로, 언어 기반 구조화된 작업 변형을 통해 고정 벤치마크가 놓치는 정책의 실제 약점을 드러낸다는 점에서 중요한 기여다. 다만 도메인 제한과 대규모 crowd-sourced 평가의 품질 관리가 실무 적용의 과제다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — AGILE의 표준화된 평가 프레임워크가 RoboPlayground의 언어 기반 작업 정의를 체계적 배포로 확장
+- 🏛 기반 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — Being-0의 모듈식 스킬 라이브러리가 자연어 작업 정의와 재현 가능한 명세 컴파일의 기반 구조
+- 🔄 다른 접근: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 구조화된 물리 도메인 평가와 Genie Sim의 포괄적 시뮬레이션은 로봇 성능 검증의 상호 보완적 접근
+- 🔗 후속 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — RoboPlayground의 자연어 기반 작업 정의와 SPARK의 안전 제어 프레임워크를 결합하면 더 포괄적인 로봇 평가 시스템을 구축할 수 있다
+- 🔄 다른 접근: [[papers/1706_TeleOpBench_A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexte/review]] — 둘 다 로봇 조작 벤치마크를 제공하지만 RoboPlayground는 언어 기반 작업 변형에, TeleOpBench는 텔레오퍼레이션에 초점을 맞춘다
+- 🏛 기반 연구: [[papers/2007_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo/review]] — HumanoidBench의 전신 로코-조작 벤치마크가 RoboPlayground의 구조화된 물리 도메인 평가 방법론의 기반이 된다
+- 🏛 기반 연구: [[papers/1613_PhysHSI_Towards_a_Real-World_Generalizable_and_Natural_Human/review]] — Structured evaluation을 위한 framework를 real-world scene interaction에 적용
+- 🔗 후속 연구: [[papers/2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — Language-based task specification을 hierarchical world modeling으로 확장
+- 🏛 기반 연구: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — GR00T N1의 다중 휴머노이드 지원 능력이 RoboPlayground의 구조화된 평가 환경에서 검증될 수 있다
+- 🔄 다른 접근: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 둘 다 로봇 제어 벤치마크를 제공하지만 SPARK는 안전 제어에, RoboPlayground는 작업 평가에 특화되어 있다
+- 🧪 응용 사례: [[papers/1613_PhysHSI_Towards_a_Real-World_Generalizable_and_Natural_Human/review]] — PhysHSI의 scene interaction 능력을 체계적으로 평가할 수 있는 벤치마크 프레임워크
+- 🔗 후속 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — RoboPlayground의 언어 기반 작업 정의를 Being-0의 Foundation Model 기반 장기 과제 수행으로 확장
+- 🔗 후속 연구: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — Booster Gym의 end-to-end 프레임워크가 RoboPlayground의 구조화된 평가 도메인으로 확장되어 더 체계적인 로봇 성능 평가를 제공할 수 있다
+- 🏛 기반 연구: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — RoboPlayground의 언어 기반 작업 정의가 AGILE의 표준화된 평가 및 배포 워크플로우의 기본 구조
+- 🏛 기반 연구: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — 구조화된 물리 도메인이 로코-조작 정책 학습의 기초가 됩니다.
+- 🏛 기반 연구: [[papers/2007_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo/review]] — RoboPlayground의 구조화된 평가 도메인이 HumanoidBench의 시뮬레이션 벤치마크 기반이 됩니다.
+- 🔄 다른 접근: [[papers/2077_Learning_with_pyCub_A_Simulation_and_Exercise_Framework_for/review]] — 두 논문 모두 휴머노이드 로보틱스 교육을 다루지만 pyCub는 Python 기반, RoboPlayground는 구조화된 물리 도메인을 제공한다.
+- 🧪 응용 사례: [[papers/2082_LHM-Humanoid_Learning_a_Unified_Policy_for_Long-Horizon_Huma/review]] — LHM-Humanoid의 장시간 조작 벤치마크는 RoboPlayground의 구조화된 평가 환경을 실제 복잡한 작업에 적용한 사례다
+- 🔗 후속 연구: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — MolmoSpaces의 대규모 실내 환경을 RoboPlayground의 구조화된 물리 도메인과 결합하여 더 체계적인 로봇 평가 민주화가 가능하다.

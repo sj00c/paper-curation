@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "Plan-Seq-Learn (PSL)은 LLM의 고수준 계획, motion planning의 시퀀싱, RL의 저수준 제어 학습을 통합하여 사전 정의된 스킬 라이브러리 없이 장시간 로봇 작업을 해결한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Hierarchical_Task_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dalal et al._2024_Plan-Seq-Learn Language Model Guided RL for Solving Long Horizon Robotics Tasks.pdf"
 ---
@@ -86,10 +88,21 @@ Plan-Seq-Learn (PSL)은 LLM의 고수준 계획, motion planning의 시퀀싱, R
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — 장기 로봇 작업 해결에서 PSL의 LLM-motion planning-RL 통합 방식과 언어 가이드 스킬 증류 방식의 차이점을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — 멀티모달 프롬프트 기반 로봇 조작을 통합 시퀀스 모델링으로 접근한 VIMA의 방법론이 PSL의 계층적 계획 수립에 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1604_Video_Language_Planning/review]] — VLP의 비디오 계획 생성 방법을 PSL의 고수준 계획 단계에서 활용하여 장기 작업의 시각적 계획을 개선할 수 있다.
-- 🧪 응용 사례: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 대화형 환경에서 LLM을 grounding하는 연구로 PSL의 LLM 기반 고수준 계획을 실제 환경에서 적용하는 방법론을 제시한다.
-- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — 장기 로봇 스킬 획득에서 언어 가이드 증류 방식과 PSL의 LLM-계획-RL 통합 방식을 데이터 효율성 관점에서 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1604_Video_Language_Planning/review]] — VLP의 비디오 계획 생성 방법론이 PSL의 고수준 계획 단계에서 시각적 계획 수립의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — 멀티모달 프롬프트를 통한 통합 시퀀스 모델링 접근법이 PSL의 LLM 기반 고수준 계획 수립에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — CoPAL과 함께 LLM 기반 로봇 계획을 다루지만 PSL은 RL과의 통합에, CoPAL은 교정적 계획에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — SayPlan의 LLM 기반 3D 장면 그래프 활용 기법이 PSL의 언어 모델 가이드 계획 수립의 핵심 기반 기술이 된다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 두 논문 모두 LLM을 활용한 장기 계획을 다루지만 RL 통합과 상태 유지의 접근법이 다르다.
+- 🏛 기반 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 언어 모델 기반 계획 개념을 motion planning과 RL로 확장한다.
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Voyager의 LLM 기반 스킬 학습을 구조화된 motion planning과 결합하여 발전시킨다.
+- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — PSL의 LLM 기반 high-level planning과 달리 Code as Policies는 언어 모델을 직접 executable code로 변환하여 embodied control을 수행한다.
+- 🏛 기반 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — PSL의 language model guided RL을 위한 language to rewards mapping과 skill synthesis의 이론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — Plan-Seq-Learn은 ELLM의 LLM 기반 탐색 가이드를 장기 계획 수립으로 발전시킨 연구입니다.
+- 🔗 후속 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — Language to Rewards의 자연어-보상 변환이 Plan-Seq-Learn의 언어 기반 계획 수립과 결합되어 더 복잡한 로봇 스킬 합성을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — 둘 다 long-horizon task learning을 다루지만 hierarchical imitation과 language model guided RL의 접근법 차이를 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — Plan-Seq-Learn은 언어 모델을 활용한 장기 계획 학습으로 스킬 획득과 유사한 목표를 다른 방법론으로 접근한다.
+- 🔄 다른 접근: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — RoboCerebra와 Plan-Seq-Learn 모두 장기간 로봇 계획을 다루지만 VLM 기반과 언어 모델 가이드 RL이라는 다른 접근법을 사용합니다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 두 논문 모두 LLM 기반 장기 계획을 다루지만 상태 유지와 RL 통합의 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Plan-Seq-Learn은 Text2Reward의 언어 기반 보상 생성을 장기 계획 학습과 결합한 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1620_VLA-RL_Towards_Masterful_and_General_Robotic_Manipulation_wi/review]] — language model guided RL의 기본 개념을 제공하여 VLA-RL의 언어 조건부 강화학습에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — language model guided RL이 CoPAL의 LLM 기반 계층적 플래닝의 핵심 이론적 기반
+- 🔄 다른 접근: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — Plan-Seq-Learn의 language model guided RL과 Do As I Can의 affordance function 접근은 언어와 로봇 행동 연결에서 서로 다른 학습 패러다임을 사용한다.
+- 🔗 후속 연구: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — BOSS의 LLM 기반 스킬 체이닝과 Plan-Seq-Learn의 언어 모델 가이드 RL은 모두 복잡한 장기 작업 해결의 계층적 접근법이다.

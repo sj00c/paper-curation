@@ -10,7 +10,8 @@ score: 4.0
 essence: "본 논문은 빅데이터를 기반으로 과학 연구의 패턴과 메커니즘을 분석하는 '과학의 과학(Science of Science)' 분야의 종합 개요를 제시하며, AI 기술이 과학 연구에 미치는 영향과 안전한 통합 방안을 탐구한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_and_Research_Dynamics"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 ---
 
@@ -75,11 +76,13 @@ tags:
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 분야의 전반적 개념과 방법론을 제시하여 AI 시대 과학 연구 분석의 이론적 기반을 마련한다.
-- 🔗 후속 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학을 위한 대규모 오픈 데이터 레이크를 제공하여 AI 기반 과학 연구 분석의 실용적 인프라를 구축한다.
-- 🧪 응용 사례: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — LLM이 과학의 과학 연구를 어떻게 강화할 수 있는지 구체적 활용 방안을 제시한다.
-- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 분야의 이론적 토대와 방법론적 프레임워크를 제시하여 후속 연구의 기초를 마련했다.
-- 🏛 기반 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — 과학의 과학 연구 분야에 LLM 기술을 통합하는 이론적이고 방법론적 토대를 공유한다.
-- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 데이터 기반 과학 예측의 이론적 토대를 제공하는 종합적 프레임워크임
-- 🔗 후속 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야의 이론적 토대와 실증적 방법론을 종합한 발전된 형태임
-- 🏛 기반 연구: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — 과학학의 전반적 이론과 방법론을 화학혁명이라는 구체적 역사 사례에 적용하여 개념 변화의 일반 원리를 검증한다.
+- 🔗 후속 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — Science Citation Index의 기본 아이디어를 빅데이터 시대의 포괄적 과학학 연구로 발전
+- 🔄 다른 접근: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — 과학학 연구에 AI 통합이라는 동일한 목표를 종합 개요와 자동화 프레임워크로 각각 접근
+- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — 과학학 분야의 기초 문헌으로서 AI 시대 과학학 연구 방향성을 제시하는 이론적 토대
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야의 데이터와 방법론에 대한 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — Science of Science 분야의 핵심 개념과 방법론을 체계적으로 정립한 기초 연구이다.
+- 🔗 후속 연구: [[papers/1042_The_Scholarly_Knowledge_Ecosystem_Challenges_and_Opportuniti/review]] — 과학의 과학 분야의 전반적 발전 방향을 제시하여, 해당 분야의 미래 연구 과제와 방법론적 혁신을 구체화한다.
+- 🏛 기반 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — 인용 색인 시스템이 현재의 과학학(Science of Science) 연구 전체의 기초 인프라를 제공
+- 🔗 후속 연구: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — 과학학 분야의 종합적 개요를 AI 자동화 기술로 구체화한 미래 지향적 프레임워크
+- 🏛 기반 연구: [[papers/952_Design_and_Update_of_a_Classification_System_The_UCSD_Map_of/review]] — 과학의 과학 연구를 위한 기본적인 분류 체계와 매핑 방법론의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 과학의 과학 연구의 기본 이론과 방법론을 제공하여 성장률 분석의 맥락을 이해할 수 있다.

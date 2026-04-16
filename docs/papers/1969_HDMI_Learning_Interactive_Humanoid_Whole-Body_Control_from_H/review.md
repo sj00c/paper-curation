@@ -1,3 +1,25 @@
+---
+title: "1969_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H"
+authors:
+  - "Haoyang Weng"
+  - "Yitang Li"
+  - "Nikhil Sobanbabu"
+  - "Zihan Wang"
+  - "Zhengyi Luo"
+date: "2025.09"
+doi: "10.48550/arXiv.2509.16757"
+arxiv: ""
+score: 4.0
+essence: "HDMI는 단일 모노큘러 RGB 비디오에서 인간의 상호작용을 추출하여 휴머노이드 로봇이 물체와의 전신 상호작용 기술을 학습하는 프레임워크이다. Robot-object co-tracking을 통해 강화학습 정책을 훈련하고 실제 로봇에 제로샷 배포한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Weng et al._2025_HDMI Learning Interactive Humanoid Whole-Body Control from Human Videos.pdf"
+---
+
 # HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos
 
 > **저자**: Haoyang Weng, Yitang Li, Nikhil Sobanbabu, Zihan Wang, Zhengyi Luo, Tairan He, Deva Ramanan, Guanya Shi | **날짜**: 2025-09-27 | **DOI**: [10.48550/arXiv.2509.16757](https://doi.org/10.48550/arXiv.2509.16757)
@@ -66,3 +88,16 @@ HDMI는 단일 모노큘러 RGB 비디오에서 인간의 상호작용을 추출
 - Overall: 4/5
 
 **총평**: HDMI는 휴머노이드 로봇의 전신 물체 상호작용을 위한 일반적이고 실용적인 프레임워크로, 인간 비디오 활용이라는 확장 가능한 데이터 소스와 함께 robot-object co-tracking이라는 우아한 문제 설정을 통해 실제 로봇에서 강력한 성능을 달성했으며, 휴머노이드 로보틱스 분야에 의미 있는 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 둘 다 물리적으로 현실적인 인간-물체 상호작용을 다루지만 HDMI는 단일 RGB 비디오를, SimGenHOI는 시뮬레이션 생성을 사용한다.
+- 🏛 기반 연구: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — egocentric 비디오에서의 hand-object interaction이 HDMI의 robot-object co-tracking에 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — HDMI의 단일 RGB 비디오 기반 접근법과 HumanX의 전체 스택 프레임워크는 인간 비디오로부터 상호작용 학습의 서로 다른 복잡도를 제시합니다.
+- 🏛 기반 연구: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — visual imitation을 통한 contextual humanoid 제어가 HDMI의 모노큘러 비디오 기반 상호작용 학습의 기반 기술입니다.
+- 🔗 후속 연구: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — VisualMimic의 visual tracking을 HDMI가 robot-object co-tracking으로 확장하여 더 복잡한 상호작용 시나리오를 처리합니다.
+- 🏛 기반 연구: [[papers/1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — EgoHumanoid의 1인칭 시점 로코-매니퓰레이션 학습 방법론이 HDMI의 단일 RGB 비디오 기반 상호작용 학습의 기반이 된다.
+- 🔄 다른 접근: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 인간 비디오에서 로봇 학습을 HDMI는 물체 상호작용 중심으로, EgoMimic은 광범위한 스킬 모방으로 접근한다.
+- 🔗 후속 연구: [[papers/1743_UniTracker_Learning_Universal_Whole-Body_Motion_Tracker_for/review]] — UniTracker의 전신 동작 추적 기술을 물체와의 상호작용 학습에 특화하여 발전시킨 HDMI의 확장 버전이다.
+- 🔄 다른 접근: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — HumanX의 전체 스택 프레임워크와 HDMI의 단일 비디오 기반 접근법은 인간 비디오로부터 상호작용 학습의 서로 다른 시스템 복잡도를 제시합니다.
+- 🔗 후속 연구: [[papers/2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu/review]] — HHI 데이터를 활용한 상호작용이 대화형 전신 제어 학습으로 확장되어 더 복잡한 상호작용을 가능하게 한다.

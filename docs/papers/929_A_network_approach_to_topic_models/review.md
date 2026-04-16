@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "텍스트 코퍼스를 문서-단어 이분 네트워크로 표현하여 토픽 모델링을 커뮤니티 탐지 문제로 재정의하고, 비모수 계층적 확률 블록 모델(hSBM)을 통해 LDA의 한계를 극복하는 통합 프레임워크를 제시한다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Knowledge_Graphs_and_Data_Integration"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gerlach et al._2018_A network approach to topic models.pdf"
 ---
@@ -88,8 +90,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gerlach et al._2018_A network approach t
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 문서-단어 네트워크를 통한 토픽 모델링이 서지결합 및 동시인용 분석의 이론적 기반을 확장한다.
-- 🔗 후속 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크 이론을 텍스트 코퍼스의 이분 네트워크 구조 분석에 적용한다.
-- 🧪 응용 사례: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 생의학 과학 지도 구축에 네트워크 기반 토픽 모델링 방법론을 적용할 수 있다.
-- 🏛 기반 연구: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 네트워크 접근법을 통한 주제 모델링이 이동 궤적에서 잠재 구조를 추출하는 방법론적 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 토픽 모델링을 위한 네트워크 접근법과 LLM 기반 지식 그래프 접근법이 서로 다른 연구 분야 매핑 방법을 제시한다.
+- 🔄 다른 접근: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 네트워크 기반 토픽 모델링과 의미 네트워크 구축이라는 유사한 접근법을 다른 목적에 적용
+- 🏛 기반 연구: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 문서-단어 네트워크의 커뮤니티 탐지 방법이 대규모 지식그래프 구축의 기초 이론 제공
+- 🔗 후속 연구: [[papers/948_Community_Detection_in_Graphs/review]] — 일반적인 커뮤니티 탐지 알고리즘을 텍스트 분석과 토픽 모델링에 특화하여 적용
+- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 네트워크 기반 토픽 모델링과 의미론적/신경망 기반 연구 동향 예측은 텍스트 마이닝을 통한 과학 지식 구조 분석의 서로 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 작은 세상 네트워크의 집단 역학 연구가 문서-단어 이분 네트워크에서의 커뮤니티 탐지와 토픽 형성 메커니즘 이해에 핵심적인 이론적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 과학 커뮤니티 매핑에서 토픽 모델링과 네트워크 기반 커뮤니티 탐지라는 서로 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 계층적 확률 블록 모델이 대규모 네트워크의 빠른 커뮤니티 언폴딩 알고리즘의 이론적 기초를 제공합니다.
+- 🔄 다른 접근: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 재료과학과 일반 과학 문헌에 각각 적용된 비지도 학습 방법들이 잠재 지식 추출의 서로 다른 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 주제 모델에 대한 네트워크 접근법이 텍스트 마이닝과 과학 지도화 결합의 방법론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 네트워크 기반 토픽 모델링의 방법론을 AI 연구 예측을 위한 대규모 의미 네트워크 구축에 적용
+- 🔄 다른 접근: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 주제 모델에 대한 네트워크 접근법을 통해 학제간 출현 식별의 다른 방법론을 제시한다.
+- 🏛 기반 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 주제 모델에 대한 네트워크 접근법이 연구자 위치 매핑의 방법론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 텍스트 마이닝과 네트워크 분석 결합 방법론이 Scito2M 데이터셋의 학제간 지식 교환 분석에 적용됩니다.

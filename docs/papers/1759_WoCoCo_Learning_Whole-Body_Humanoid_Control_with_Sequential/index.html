@@ -68,50 +68,54 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: An overview of WoCoCo and tasks. (A) We decompose the task into separate contact</em></p></div>
-<p>WoCoCo는 순차적 접촉(sequential contacts)을 포함하는 휴머노이드 로봇의 전신 제어를 학습하기 위한 통합 RL 프레임워크로, 작업을 접촉 단계로 자연스럽게 분해하여 일반화된 정책 학습을 가능하게 한다.</p></div>
+<p>WoCoCo는 순차적 접촉(sequential contacts)을 포함한 전신 휴머노이드 제어를 학습하기 위한 통합 RL 프레임워크로, 작업을 접촉 단계별로 분해하여 task-agnostic 보상 설계와 sim-to-real 파이프라인을 제시한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: 모델 기반 운동 계획(motion planning)은 접촉 수열이 필요한 로봇 작업을 해결할 수 있지만 시간이 많이 걸리고 단순화된 동역학 모델에 의존한다. Model-free RL은 견고성을 보여주었지만 접촉 수열 작업에서 긴 수평선 탐색 문제(long-horizon exploration issues)를 겪는다.</li>
-<li><strong>Gap</strong>: 기존 RL 방법은 특정 작업별로 별도의 튜닝과 상태 머신 설계가 필요하며, 다양한 접촉 수열을 가진 작업에 일반적으로 적용할 수 있는 체계적인 방법이 부재하다.</li>
-<li><strong>Why</strong>: 휴머노이드 로봇이 현실의 복잡한 상호작용(파쿠르 점프, 박스 조작, 춤, 절벽 등반)을 수행하려면 순차적 접촉을 효율적으로 처리할 수 있는 일반화된 제어 프레임워크가 필수적이다.</li>
-<li><strong>Approach</strong>: 작업을 접촉 목표(contact goal)와 작업 목표(task goal)로 정의되는 별도의 접촉 단계로 분해하고, 밀도 높은 접촉 보상(dense contact rewards), 단계 카운트 보상(stage count rewards), 호기심 보상(curiosity rewards)으로 구성된 task-agnostic WoCoCo 보상을 설계한다.</li>
+<li><strong>Known</strong>: Model-free RL은 강건한 휴머노이드 제어를 가능하게 했으나, 순차적 접촉이 필요한 작업에서는 task-specific 튜닝, 상태 머신 설계, 그리고 장기 탐색 문제를 겪고 있다. 반면 model-based 방법은 일반성은 있으나 시간이 오래 걸린다.</li>
+<li><strong>Gap</strong>: 기존 RL 기반 휴머노이드 제어 연구는 개별 작업별로 특화된 정책을 요구하며, 여러 접촉 시퀀스를 포함한 작업에 일관되게 적용할 수 있는 체계적이고 일반화된 방법이 부족하다.</li>
+<li><strong>Why</strong>: 순차적 접촉을 수반하는 파쿠르 점프, 박스 조작, 댄싱, 절벽 등반 등의 작업은 현실 로봇 운영에서 중요하며, 일반화 가능한 학습 프레임워크는 실제 배포의 효율성과 실용성을 크게 향상시킨다.</li>
+<li><strong>Approach</strong>: 작업을 접촉 목표(contact goal)와 작업 목표(task goal)로 정의된 별도의 접촉 단계로 자연스럽게 분해하고, task-agnostic WoCoCo 보상(접촉 보상, 단계 카운트 보상, 호기심 보상)과 domain randomization 기반 sim-to-real 파이프라인을 설계한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: An overview of WoCoCo and tasks. (A) We decompose the task into separate contact</em></p></div>
 <ul>
-<li><strong>통합 프레임워크</strong>: 접촉 단계 분해를 통해 다양한 휴머노이드 작업을 일관된 방식으로 처리하는 일반적인 RL 프레임워크 제시</li>
-<li><strong>현실 세계 성과</strong>: 파쿠르 점프(versatile parkour jumping), 박스 로코-조작(box loco-manipulation), 동적 박수-탭 춤(clap-and-tap dancing), 절벽 등반(cliffside climbing) 등 4가지 도전적인 작업을 실제 로봇에서 성공적으로 수행</li>
-<li><strong>확장성</strong>: 22-DoF 공룡 로봇(dinosaur robot)에 적용하여 휴머노이드 이상의 일반성 입증</li>
-<li><strong>최소한의 작업 특화 설정</strong>: 각 작업당 1-2개의 작업 관련 항목만 지정하면 되는 간단한 설정 요구</li>
+<li><strong>일반화된 프레임워크</strong>: 휴머노이드와 22-DoF 공룡 로봇까지 적용 가능한 통일된 RL 프레임워크 제시</li>
+<li><strong>현실 검증</strong>: 파쿠르 점프, 박스 로코-조작, 댄싱, 절벽 등반 등 4가지 도전적인 휴머노이드 작업을 end-to-end RL로 실제 로봇에서 성공 (각 작업의 첫 RL 기반 해결)</li>
+<li><strong>Task-agnostic 설계</strong>: 각 작업마다 1-2개의 task-specific 항만 지정하면 되는 최소한의 튜닝으로 다양한 접촉 시퀀스 대응</li>
+<li><strong>탐색 효율성 개선</strong>: 단계별 분해를 통해 긴 지평선 탐색 문제 완화 및 dense contact rewards로 접촉 기반 탐색 가이드</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Learned versatile jumping motions in simulation and the real world. Upper Row: The</em></p></div>
 <ul>
-<li>작업을 순차적 접촉 단계로 분해하여 탐색 부담을 각 단계별로 분산</li>
-<li>Dense contact rewards: 모든 올바른/올바르지 않은 접촉을 계산하여 0-1 보상보다 더 효과적인 지도 제공</li>
-<li>Stage count rewards: 완료된 접촉 단계 수 기반 보상으로 정책이 현재 단계에 머물러 탐색을 회피하는 문제 해결</li>
-<li>Task-agnostic curiosity rewards: 상태 공간 탐색 촉진</li>
-<li>3단계 훈련 커리큘럼: (1)도메인 랜더마이제이션 없음, (2)도메인 랜더마이제이션 적용, (3)정규화 보상 가중치 증가로 sim-to-real 전이 최적화</li>
-<li>PPO 최적화 + 대칭 데이터 증강(symmetry augmentation) + 저수준 PD 컨트롤러 기반 정책 학습</li>
-<li>End-to-end MLP 정책으로 proprioception, exteroception, 목표 관련 관찰 포함</li>
+<li><strong>접촉 단계 분해</strong>: 작업을 predefined 접촉 시퀀스 기반 다중 단계로 분해하여 MDP를 확장</li>
+<li><strong>Dense Contact Rewards (r_con)</strong>: 개별 접촉의 정확/오류를 세어서 0-1 보상보다 더 촘촘한 신호 제공</li>
+<li><strong>Stage Count Rewards (r_stage)</strong>: 완료된 단계 수에 따라 정책이 현 단계에만 머물러있는 단기적 행동 억제</li>
+<li><strong>Curiosity Rewards (r_curi)</strong>: Task-agnostic 호기심 보상으로 상태 공간 탐색 촉진</li>
+<li><strong>Curriculum-based Sim-to-Real</strong>: 비도메인 랜더마이제이션 → 도메인 랜더마이제이션 → 정규화 보상 증가의 3단계 커리큘럼으로 sim-to-real 전환 부담 완화</li>
+<li><strong>PPO + 대칭성 증강</strong>: PPO 알고리즘에 symmetry augmentation 적용하여 Isaac Gym에서 학습</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li>접촉 단계를 기반으로 한 작업 분해는 model-based 솔버의 장점(일반성)을 RL 프레임워크에 도입한 창의적 접근</li>
-<li>Dense contact rewards와 stage count rewards의 조합은 RL에서 희소 접촉 신호와 장기 탐색 문제를 체계적으로 해결</li>
-<li>Task-agnostic 보상 설계는 다양한 작업에 최소한의 튜닝으로 적용 가능한 일반성 제공</li>
-<li>현실 세계에서 여러 도전적 휴머노이드 작업을 단일 end-to-end 정책으로 처음 성공시킨 실증적 성과</li>
+<li><strong>자연스러운 작업 분해</strong>: 접촉 시퀀스 기반 단계 분해는 직관적이며 탐색을 체계적으로 단순화</li>
+<li><strong>Dense Contact Reward 메커니즘</strong>: 개별 접촉 이벤트를 세는 방식으로 sparse contact 문제를 효과적으로 해결</li>
+<li><strong>Stage Count Reward</strong>: RL 정책의 단기 이기주의적 행동을 명시적으로 억제하는 새로운 보상 설계</li>
+<li><strong>Task-agnostic + Minimal Task-specific 설계</strong>: 1-2개 task-specific 항으로 다양한 작업을 처리하는 우아한 일반화</li>
+<li><strong>검증된 현실 배포</strong>: 4가지 서로 다른 도전적 작업을 실제 로봇에서 최초로 성공시킴</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li>접촉 단계가 사전에 정의되어야 하며, 자동 접촉 계획은 고수준 플래너(예: [29])와의 통합에 의존</li>
-<li>현재 방법은 감지 센서 또는 인간 관찰에 의존하여 단계 전환을 검증하므로 자동화 수준에 제약</li>
-<li>도메인 랜더마이제이션에 의존하는 sim-to-real 전이는 여전히 현실 환경의 다양성에 완전히 강건하지 않을 가능성</li>
-<li>후속 연구: (1)자동 접촉 단계 생성 알고리즘 개발, (2)접촉 상태 자동 감지 메커니즘 강화, (3)더욱 다양한 실제 환경에서의 강건성 검증</li>
+<li><strong>사전 정의된 접촉 단계</strong>: 접촉 계획이 미리 정해져야 하며, 고수준 접촉 계획 생성기와의 완전 통합은 향후 과제</li>
+<li><strong>관찰 또는 센서 기반 단계 전환</strong>: 실제 로봇에서 단계 완료 판정이 수동 확인 또는 센서 기반이므로 완전 자동화 필요</li>
+<li><strong>Domain randomization의 범위</strong>: 현실 복잡도가 높아질 경우 sim-to-real 갭이 커질 수 있음</li>
+<li><strong>비교 분석 부재</strong>: Model-based 방법(예: Crocoddyl)과의 직접적인 성능 비교가 제시되지 않음</li>
+<li><strong>확장성</strong>: 더 긴 작업 지평선이나 더 복잡한 동역학 환경에서의 성능 평가 필요</li>
+<li><strong>일반화된 접촉 계획</strong>: 작업 구조가 크게 다를 때 프레임워크 적용의 일반성 검증 필요</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: WoCoCo는 순차적 접촉 제어라는 현실적 도전을 체계적으로 해결하며, 다양한 휴머노이드 작업을 실제 로봇에서 성공적으로 구현한 높은 학술적·실용적 기여도를 보여준다.</p></div>
+<p><strong>총평</strong>: WoCoCo는 순차적 접촉을 포함한 휴머노이드 제어 문제에 대해 개념적으로 우아하고 실용적인 RL 프레임워크를 제시하며, 4가지 도전적 작업의 현실 검증을 통해 높은 응용 가치를 입증한다. 다만 접촉 계획의 자동 생성 및 더 복잡한 작업 환경으로의 확장은 향후 연구 방향이다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

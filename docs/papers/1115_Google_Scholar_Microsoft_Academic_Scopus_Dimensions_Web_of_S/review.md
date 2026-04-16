@@ -12,7 +12,8 @@ score: 4.0
 essence: "Google Scholar, Microsoft Academic, Scopus, Dimensions, Web of Science, OpenCitations COCI 등 6개 주요 인용 데이터 소스의 인용 커버리지를 252개 학문 분야에서 체계적으로 비교 분석하였다."
 tags:
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Bibliometric_Measurement_Methods"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Martín-Martín et al._2021_Google Scholar, Microsoft Academic, Scopus, Dimensions, Web of Science, and OpenCitations’ COCI a m.pdf"
 ---
@@ -89,9 +90,15 @@ Google Scholar, Microsoft Academic, Scopus, Dimensions, Web of Science, OpenCita
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — OpenAlex라는 새로운 인용 데이터 소스의 메타데이터 품질을 평가하여 기존 6개 데이터베이스 비교를 보완한다.
-- 🏛 기반 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 인용 분석에서 데이터 품질 평가의 중요성과 방법론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — 주요 인용 데이터베이스들의 커버리지 비교 연구가 OpenAlex 메타데이터 품질 평가의 기준점을 제공한다.
-- 🏛 기반 연구: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 의료 분야 bibliometric 분석의 정확성을 위해 주요 학술 데이터베이스들의 비교 분석이 필요하다.
-- 🔄 다른 접근: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 종교학 연구평가에서 A&HCI의 한계와 Google Scholar, Scopus 등 다양한 학술 데이터베이스의 비교 분석이라는 대안적 접근법을 제시합니다.
-- 🏛 기반 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 다양한 학술 데이터베이스의 비교 분석이 Web of Science와 Crossref의 데이터 품질 평가를 위한 기준을 제공한다.
+- 🧪 응용 사례: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 표준화된 인용 지표 데이터베이스 구축에서 다중 인용 소스의 커버리지 비교가 핵심적 검증 방법을 제공한다.
+- 🔗 후속 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — OpenAlex의 메타데이터 품질 분석이 6개 주요 인용 데이터 소스 비교를 확장한 최신 연구이다.
+- 🔄 다른 접근: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex의 완전 오픈 인덱스가 기존 상업적 인용 데이터베이스들의 접근성 한계를 해결하는 대안을 제시한다.
+- 🔗 후속 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 인용 데이터베이스 품질 평가 방법론을 다양한 데이터소스 비교로 확장한다
+- 🔄 다른 접근: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — Google Scholar, Scopus 등 다양한 학술 데이터베이스 비교는 저널 명성 편향이 데이터베이스 선택에 따라 어떻게 다르게 나타나는지 분석할 수 있는 대안적 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 다중 인용 데이터 소스 비교가 표준화된 인용 지표 데이터베이스 구축의 방법론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — OpenAlex뿐만 아니라 다른 주요 학술 데이터베이스들의 메타데이터 품질을 종합적으로 비교 분석할 수 있다.
+- 🏛 기반 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — 학술 데이터베이스들 간의 비교 분석을 통해 OpenAlex 개발의 필요성과 방향성을 제시한다.
+- 🔄 다른 접근: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — Scopus와 Web of Science 통합과 여러 학술 데이터베이스 비교에서 서로 다른 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — PubMed 기반 생의학 과학 지도와 여러 학술 데이터베이스 비교는 서로 다른 데이터 소스 활용 접근법이다.
+- 🏛 기반 연구: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 여러 학술 데이터베이스의 비교 분석 방법론과 각 데이터베이스의 특성을 이해하는 데 필요하다.
+- 🏛 기반 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — Web of Science와 Crossref 외에 다른 주요 학술 데이터베이스들의 특성을 종합적으로 이해할 수 있다.

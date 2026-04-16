@@ -9,7 +9,9 @@ score: 5.0
 essence: "개인의 과학적 연구 성과를 정량화하기 위해 h-index를 제안한다. h-index는 h편 이상의 인용수를 가진 논문의 개수로 정의되며, 연구자의 생산성과 영향력을 동시에 반영하는 단일 지표이다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Academic_Career_Recognition"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hirsch_2005_An index to quantify an individual's scientific research output.pdf"
 ---
@@ -78,12 +80,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hirsch_2005_An index to quantify an indi
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — h-index의 실제 적용과 표준화된 인용 지표 데이터베이스 구축을 통해 개인 연구 성과 측정을 확장했다.
-- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — h-index와 달리 분야별 인용 패턴을 고려한 상대적 인용 비율로 연구자 성과를 측정하는 대안적 접근법이다.
-- 🔗 후속 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — h-index의 한계를 보완하여 높은 인용을 받은 논문에 더 큰 가중치를 부여하는 g-index를 제안했다.
-- 🏛 기반 연구: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 개별 연구자의 과학적 성과 측정 방법론이 public profile 분석의 이론적 기반이 됨
-- 🔗 후속 연구: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 개별 연구자의 과학적 성과를 정량화하는 h-지수를 다차원적 요소들을 통합한 종합적 평가 방식으로 확장합니다.
-- 🏛 기반 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 개별 연구자의 과학적 성과를 정량화하는 h-지수가 g-지수 개발의 직접적 기반이 됩니다.
-- 🧪 응용 사례: [[papers/928_A_General_Theory_of_Bibliometric_and_Other_Cumulative_Advant/review]] — 개인의 과학 연구 성과 정량화에 누적 우위 이론의 베타 함수 모델을 적용할 수 있다
-- 🧪 응용 사례: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — h-index를 포함한 표준화된 인용 지표들을 대규모 데이터베이스로 구축하여 개인 연구 성과 측정을 실용화했다.
-- 🏛 기반 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 개인 연구자의 과학적 산출물 정량화 지수가 인용 불평등 측정과 분석의 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — h-index의 한계를 극복하기 위해 출판량, 인용 영향력, 경력 기간, 저자 기여도를 통합한 더 포괄적인 성과 지표를 개발했습니다.
+- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — h-index가 학문 분야별 차이를 반영하지 못하는 문제를 해결하기 위해 공동인용 네트워크 기반의 정규화된 인용 지표를 제안합니다.
+- 🔗 후속 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — h-index를 보완하기 위해 개발된 g-index는 고인용 논문의 영향을 더 강하게 반영하는 대안적 지표입니다.
+- 🏛 기반 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 인용 분포의 보편성을 이해하는 것이 h-index와 같은 개별 연구자 평가 지표의 타당성을 뒷받침하는 이론적 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — h-지수 개발의 기본 철학이 NK 복합 지수 설계의 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — h-index의 학문 분야별 편향을 해결하기 위해 공동인용 네트워크 기반의 정규화된 대안 지표를 제시합니다.
+- 🏛 기반 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — h-지수 개발이 g-지수 설계의 직접적 이론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — h-지수와 관련 지표들이 표준화된 인용 지표 데이터베이스의 핵심 측정 도구로 활용된다.
+- 🔗 후속 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — h-지수 등 기존 인용 지표를 넘어서, 인용 네트워크의 사회구조적 경로를 분석하여 연구자의 인용 프로필을 더 세밀하게 분해한다.
+- 🔗 후속 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 인용 기반 평가를 저널 수준에서 개별 연구자 수준으로 확장한 h-index 개발의 기초
+- 🏛 기반 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 개별 연구자의 연구 성과 정량화가 인용 불평등 분석의 방법론적 기초를 제공한다

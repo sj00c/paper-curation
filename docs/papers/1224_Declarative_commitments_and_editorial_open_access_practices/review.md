@@ -9,9 +9,9 @@ arxiv: ""
 score: 4.0
 essence: "러시아 학술지 편집자 138명을 대상으로 한 설문조사를 통해 개방접근(Open Access)에 대한 선언적 지지와 실제 제도적 실행 사이의 간극을 실증적으로 규명한 연구이다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Open_Access_Publication_Analytics"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Scholarly_Publishing_Infrastructure"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Declarative commitments and editorial open access practices an empirical study o.pdf"
 ---
@@ -79,8 +79,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Declarative commitments and editorial op
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 연구 평가의 투명성과 실제 실행 사이의 간극을 측정하는 방법론적 기반을 제공한다.
-- 🧪 응용 사례: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 러시아 사례를 통해 개방접근 정책과 실행의 불일치 문제를 인도 연구 생태계 개선에 적용할 수 있다.
-- 🏛 기반 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 학술 출판의 디지털 시대 과점 구조가 러시아 편집자들의 Open Access 실행에 영향을 미친다
-- 🔗 후속 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — Open Access 보급률 분석을 러시아 학술지의 실제 편집 실무와 연결하여 확장한다
-- 🧪 응용 사례: [[papers/932_An_empirical_analysis_of_open_access_citation_advantages_in/review]] — Open Access 인용 이점의 실증 분석을 러시아 편집자들의 정책 결정에 적용할 수 있다
+- 🧪 응용 사례: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 개방접근의 전반적 현황과 확산 분석을 러시아 학술지 편집자의 실제 실행 사례로 구체화합니다.
+- 🔗 후속 연구: [[papers/1234_The_Open_Science_promise_vs_the_Author-pays_reality_The_Hidd/review]] — 저자 부담 중심의 개방과학 현실을 편집자의 제도적 실행 관점에서 확장하여 분석합니다.
+- 🔗 후속 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — OA에 대한 선언적 지지와 실제 인용/altmetric 이점 간의 관계를 실증적으로 분석합니다.
+- ⚖️ 반론/비판: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 편집자의 오픈액세스 실천과 출판사 과점은 학술 출판의 개방성과 독점성이라는 상반된 동향을 나타낸다.
+- ⚖️ 반론/비판: [[papers/1123_The_misalignment_of_incentives_in_academic_publishing_and_im/review]] — 편집진의 오픈액세스 선언과 실제 관행 차이가 출판 시스템 인센티브 불일치의 구체적 사례를 보여주기 때문
+- 🧪 응용 사례: [[papers/1156_Correction_Enabling_transparent_research_evaluation_A_method/review]] — 편집자의 오픈 액세스 실천과 선언적 약속에 대한 연구는 데이터 공개 명시 정정이 실제 학술 출판에서 갖는 의미를 구체적으로 적용한다.
+- 🏛 기반 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 편집자들의 OA 실천 현황이 OA 논문의 인용 이점 분석에 대한 맥락을 제공합니다.

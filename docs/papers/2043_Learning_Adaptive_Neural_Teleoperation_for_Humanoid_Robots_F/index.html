@@ -68,52 +68,54 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: Neural teleoperation policy architecture. The network takes VR controller poses (14-dim), joint states (28-</em></p></div>
-<p>VR 텔레오퍼레이션 시스템에서 기존의 IK+PD 파이프라인을 reinforcement learning으로 학습한 신경망 정책으로 대체하여, 외력 적응, 부드러운 궤적 생성, 사용자 선호도 적응을 달성한다.</p></div>
+<p>VR 텔레오퍼레이션에서 전통적인 IK+PD 파이프라인을 RL 기반 신경망 정책으로 대체하여 힘 적응, 궤적 부드러움, 사용자 적응을 동시에 달성하는 학습 기반 프레임워크를 제안한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: VR 텔레오퍼레이션은 인간형 로봇의 복잡한 조작 작업 제어에 유망한 접근법이며, 기존 시스템은 IK 솔버와 hand-tuned PD 컨트롤러를 사용한다.</li>
-<li><strong>Gap</strong>: 전통적인 IK+PD 방식은 외력을 처리하지 못하고, 사용자 적응이 불가능하며, 특이점 근처에서 실패하고 비자연스러운 움직임을 생성한다는 근본적 한계가 있다.</li>
-<li><strong>Why</strong>: 자동 보상 및 적응형 제어를 통해 텔레오퍼레이션 시스템의 자연스러움과 강건성을 크게 향상시킬 수 있으며, 이는 창고 물류, 제조, 재난 대응 등 실제 응용 분야의 성능 개선으로 이어진다.</li>
-<li><strong>Approach</strong>: IK 시연으로부터의 행동 복제(behavioral cloning)로 초기화한 후, PPO를 사용하여 추적(tracking), 부드러움(smoothness), 에너지 정규화 보상과 함께 미세 조정하고, force curriculum을 적용하여 외력 강건성을 학습시킨다.</li>
+<li><strong>Known</strong>: VR 텔레오퍼레이션은 복잡한 조작 작업에 유망한 접근법이며, RL 기반 로봇 제어는 동역학 처리와 외란 적응에서 성공을 거두었다.</li>
+<li><strong>Gap</strong>: 기존 IK+PD 파이프라인은 외부 힘 처리 불가, 사용자 적응 불능, 운동 인공물 발생 등의 근본적 한계가 있으며, 실시간 텔레오퍼레이션에 적합한 학습 기반 방법은 부족하다.</li>
+<li><strong>Why</strong>: 자연스럽고 견고한 휴머노이드 로봇 텔레오퍼레이션은 창고 물류, 재해 대응, 우주 탐사 등 실제 응용에 필수적이며, 학습 기반 접근은 성능과 적응성을 크게 향상시킬 수 있다.</li>
+<li><strong>Approach</strong>: IK 시연으로부터의 모방 학습 초기화, 부드러움과 힘 강건성을 위한 PPO 기반 RL 미세조정, 그리고 외부 힘 교과학습을 통해 VR 입력에서 로봇 관절 명령으로의 end-to-end 신경망 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
 <div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
 <p class="fig-caption"><em>Figure 3 provides a detailed breakdown of performance</em></p></div>
 <ul>
-<li><strong>추적 오차 감소</strong>: IK 기준선 대비 34% 낮은 tracking error 달성</li>
-<li><strong>동작 부드러움 개선</strong>: 45% 더 부드러운 궤적 생성</li>
-<li><strong>외력 적응 우수성</strong>: 외력 적응 측면에서 IK 기준선을 상회</li>
-<li><strong>실시간 성능 유지</strong>: 50Hz 제어 주파수로 실시간 성능 확보</li>
-<li><strong>다양한 작업 검증</strong>: pick-and-place, 문열기, bimanual coordination 등에서 성공적 수행</li>
+<li><strong>추적 오차 감소</strong>: IK 기선 대비 34% 더 낮은 추적 오차 달성</li>
+<li><strong>궤적 부드러움</strong>: 45% 더 부드러운 모션으로 에너지 효율성 및 기계 마모 감소</li>
+<li><strong>힘 적응</strong>: 외부 힘에 대한 암묵적 보상으로 IK 기선 대비 우월한 힘 적응 성능</li>
+<li><strong>실시간 성능</strong>: 50Hz 제어 주파수 유지로 배포 가능성 입증</li>
+<li><strong>다양한 작업</strong>: pick-and-place, door opening, 양팔 조정 등 복잡한 조작 작업 검증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: Neural teleoperation policy architecture. The network takes VR controller poses (14-dim), joint states (28-</em></p></div>
 <ul>
-<li>VR 입력 인코더: 초기 그립 자세 대비 상대 변환을 인코딩하여 VR 좌표계 독립성 확보</li>
-<li>Proprioception 인코더: 관절 위치, 속도, 이전 액션의 5-timestep 히스토리를 MLP로 처리</li>
-<li>LSTM 정책 헤드: 인코딩된 VR 입력과 proprioception을 결합하여 시간적 일관성과 smooth trajectory 생성</li>
-<li>3단계 학습: (1) IK 시연에서 behavioral cloning으로 초기화, (2) PPO로 smoothness/tracking/energy 보상 미세조정, (3) curriculum-based force randomization으로 외력 강건성 강화</li>
-<li>Domain randomization: 동역학 특성(링크 질량 ±10% 등) 및 sensor noise 무작위화로 sim-to-real 전이 개선</li>
+<li>VR 입력 인코더: 초기 그립 자세 대비 상대 변환으로 VR 좌표계 불변성 확보</li>
+<li>고유감각 인코더: 로봇 상태(관절 위치, 속도, 이전 액션)를 5 타임스텝 이력과 함께 MLP로 인코딩</li>
+<li>LSTM 정책 헤드: VR 입력과 고유감각을 결합하여 시간적 일관성 및 평활한 궤적 생성</li>
+<li>단계 1 모방 학습: IK 시연 데이터셋으로 behavioral cloning으로 초기화</li>
+<li>단계 2 PPO 미세조정: tracking reward, smoothness reward(가속도 및 jerk 페널티), energy regularization 조합</li>
+<li>단계 3 힘 적응 교과학습: 외부 힘 크기를 점진적으로 증가시키며 고유감각 기반 암묵적 보상 학습</li>
+<li>Sim-to-Real 전이: dynamics randomization(질량 ±10%)으로 시뮬레이션 갭 극복</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li>기존 IK+PD 텔레오퍼레이션 파이프라인을 end-to-end 학습된 신경망 정책으로 완전히 대체하는 첫 시도</li>
-<li>Proprioceptive feedback을 통한 암묵적 외력 보상 메커니즘 제시 - 기존 IK 솔버의 '힘 맹목성(force blindness)' 문제 해결", 'Relative transformation 인코딩으로 VR 좌표계 독립성 달성하는 새로운 설계 선택</li>
-<li>Force curriculum을 통한 점진적 외력 강건성 학습 전략</li>
-<li>Human-in-the-loop 실시간 텔레오퍼레이션을 위한 특화된 학습 설계 (FALCON 등 자율 제어 기반 선행연구와 차별화)</li>
+<li>VR 텔레오퍼레이션 분야에서 IK+PD 파이프라인을 완전히 대체하는 end-to-end 신경망 정책 제시</li>
+<li>모방 학습과 RL 미세조정의 계층적 결합으로 데이터 효율성과 성능 동시 달성</li>
+<li>힘 교과학습을 통한 암묵적 힘 적응 메커니즘으로 힘 센서나 haptic 피드백 없이 강건성 확보</li>
+<li>상대 좌표 인코딩으로 VR 좌표계 프레임 불변성 확보하여 배포 일반화 개선</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li>sim-to-real gap: 시뮬레이션 환경과 실제 로봇 환경의 불일치로 인한 성능 저하 가능성</li>
-<li>일반화 범위: 단일 로봇 플랫폼(Unitree G1)에서만 검증, 다른 인간형 로봇으로의 전이 가능성 미검증</li>
-<li>사용자 다양성: 제한된 사용자 샘플에서만 사용자 적응 특성 입증, 광범위한 사용자 그룹에서의 성능 미검증</li>
-<li>외력 보상의 한계: Curriculum 기반 학습이므로 훈련 중 제시된 외력 범위를 벗어난 극단적 상황에서 성능 저하 가능</li>
-<li><strong>후속연구</strong>: (1) 다중 로봇 플랫폼으로 확장, (2) 메타러닝을 통한 빠른 사용자 적응, (3) 모드 적응형(task-dependent) 정책 학습</li>
+<li>시뮬레이션 중심 검증으로 실제 Unitree G1 실험 결과 제시가 제한적임</li>
+<li>신경망 정책의 해석성 부족으로 긴급 상황 대응이나 safety guarantee 어려움</li>
+<li>LSTM 의존성으로 인한 메모리 상태 누적 오류 가능성 미분석</li>
+<li>VR 사용자의 다양한 조작 스타일에 대한 적응 정도 정량화 부족</li>
+<li>후속 연구로 safety-critical 작업을 위한 제약 조건부 RL, 다중 사용자 선호도 학습, 정책 설명가능성 개선이 필요</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: 기존 IK+PD 파이프라인의 근본적 한계를 end-to-end 학습으로 우아하게 해결하며, 강력한 실증 결과와 명확한 성과 지표를 제시한 견실한 연구이다. 다만 단일 플랫폼 검증과 제한된 사용자 다양성은 일반화 가능성에 대한 의문을 남긴다.</p></div>
+<p><strong>총평</strong>: 학습 기반 신경망 정책으로 VR 텔레오퍼레이션의 근본적 한계를 해결하고 명확한 성능 향상을 보여주는 실질적으로 가치 있는 연구이며, 모방 학습과 교과 학습의 조합 설계가 우수하다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

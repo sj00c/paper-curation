@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "RoboPoint는 언어 지시를 받아 로봇의 정확한 행동 지점(affordance keypoint)을 예측하는 Vision-Language Model로, 자동 합성 데이터 생성 파이프라인을 통해 실제 데이터 수집 없이 학습된다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Synthetic_Grasping_Datasets"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yuan et al._2024_RoboPoint A Vision-Language Model for Spatial Affordance Prediction for Robotics.pdf"
 ---
@@ -89,10 +91,22 @@ RoboPoint는 언어 지시를 받아 로봇의 정확한 행동 지점(affordanc
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep의 relational keypoint constraints가 RoboPoint의 spatial affordance prediction을 더 복잡한 관계형 제약으로 확장한다.
-- 🔄 다른 접근: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — GraspVLA의 대규모 파지 모델과 RoboPoint의 affordance keypoint 예측은 모두 로봇 파지를 위한 서로 다른 접근법이다.
-- 🏛 기반 연구: [[papers/1429_GraspSense_언어_기반_인지와_힘_맵을_활용한_손재주_로봇_파지_계획/review]] — GraspSense의 언어 기반 인지와 힘 맵이 RoboPoint의 언어 지시 기반 행동 지점 예측의 기초 방법론을 제공한다.
-- 🏛 기반 연구: [[papers/1468_ManipVQA_Injecting_Robotic_Affordance_and_Physically_Grounde/review]] — 공간적 affordance 예측이 물리적으로 그라운딩된 조작 이해의 핵심 구성 요소를 제공합니다.
-- 🏛 기반 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — RoboPoint의 spatial affordance prediction이 ReKep의 keypoint 기반 제약 조건 표현의 기초 방법론을 제공한다.
-- 🔄 다른 접근: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff는 3D constraints 기반으로, RoboPoint는 spatial affordance prediction으로 도구 사용과 객체 조작의 affordance를 다루는 다른 접근법
-- 🔄 다른 접근: [[papers/1301_A3VLM_Actionable_Articulation-Aware_Vision_Language_Model/review]] — RoboPoint는 A3VLM과 유사하게 공간적 affordance를 다루지만 Vision-Language 모델 기반의 다른 접근법을 사용한다
+- 🔄 다른 접근: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep과 함께 공간적 추론을 통한 로봇 조작을 다루지만 RoboPoint는 affordance keypoint에, ReKep은 관계형 키포인트에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1468_ManipVQA_Injecting_Robotic_Affordance_and_Physically_Grounde/review]] — ManipVQA의 로봇 affordance와 물리적 그라운딩 연구가 RoboPoint의 공간적 affordance 예측 방법론의 이론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO의 개방형 어휘 객체 검출 기술이 RoboPoint의 공간 affordance 예측을 위한 시각적 grounding 능력의 기반이 된다.
+- 🔗 후속 연구: [[papers/1569_Segment_Anything/review]] — SAM의 범용 분할 능력과 RoboPoint의 affordance keypoint 예측을 결합하면 더 정밀한 로봇 행동 지점 예측이 가능하다.
+- 🔄 다른 접근: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — 로봇의 공간 이해를 RoboPoint는 affordance keypoint로, VoxPoser는 3D value maps로 표현하는 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff의 통합된 affordance 표현 개념을 확장하여 언어 지시 기반의 정확한 행동 지점 예측으로 발전시켰다.
+- 🔄 다른 접근: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — ROSIE가 기존 데이터의 의미론적 증강에 중점을 두는 반면, RoboPoint는 완전히 합성된 데이터로부터 spatial affordance를 학습한다.
+- 🔗 후속 연구: [[papers/1298_A_Survey_of_Embodied_Learning_for_Object-Centric_Robotic_Man/review]] — 공간적 어포던스 예측을 통해 object-centric manipulation을 확장한다.
+- 🔗 후속 연구: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — RoboPoint의 spatial affordance prediction이 FSD에서 spatial relationship reasoning을 통한 visual aids 생성으로 더욱 발전한 형태이다.
+- 🔗 후속 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO의 언어 기반 객체 탐지가 RoboPoint의 공간 어포던스 예측에서 객체 인식 단계로 확장 활용됩니다.
+- 🏛 기반 연구: [[papers/1468_ManipVQA_Injecting_Robotic_Affordance_and_Physically_Grounde/review]] — 공간적 affordance 예측의 기본 개념을 VQA 형태로 발전시킨 기초
+- 🏛 기반 연구: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — RoboPoint의 spatial affordance prediction을 vision-language-action 학습의 중심 연결고리로 확장한다.
+- 🔗 후속 연구: [[papers/1517_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_M/review]] — 대규모 3D 월드 모델은 RoboPoint의 공간 어포던스 예측을 더 정확하고 일반화된 방식으로 구현할 수 있습니다.
+- 🔗 후속 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — RoboPoint의 spatial affordance prediction이 ReKep의 3D 키포인트 기반 제약을 더 정교한 공간 이해로 발전시킨다.
+- 🏛 기반 연구: [[papers/1569_Segment_Anything/review]] — SAM의 프롬프트 기반 제로샷 분할 기술이 RoboPoint의 공간 affordance 예측을 위한 시각적 이해 능력의 기반이 된다.
+- 🔗 후속 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — spatial affordance prediction을 tool usage와 articulated object manipulation으로 확장하여 더 포괄적인 affordance 모델을 제시합니다.
+- 🔗 후속 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — RoboPoint의 spatial affordance 예측을 3D value map 생성과 결합하면 더 정밀한 로봇 조작이 가능하다
+- 🔗 후속 연구: [[papers/1301_A3VLM_Actionable_Articulation-Aware_Vision_Language_Model/review]] — A3VLM의 물체 중심 관절 구조 인식과 RoboPoint의 공간 어포던스 예측은 물체 이해 기반 로봇 조작의 보완적 접근법이다.
+- 🧪 응용 사례: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — RoboPoint의 spatial affordance prediction이 Embodied-R1의 포인팅 기반 perception-action 연결의 구체적인 구현 방법을 제시합니다.

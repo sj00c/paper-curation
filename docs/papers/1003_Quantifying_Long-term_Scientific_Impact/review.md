@@ -11,6 +11,7 @@ score: 4.0
 essence: "논문은 인용 동역학(citation dynamics)의 보편적 메커니즘을 규명하여 서로 다른 저널과 학문 분야의 논문들을 단일 곡선으로 통합할 수 있음을 보여주고, 장기 과학적 영향력을 예측 가능하게 만드는 모델을 제시한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
+  - "cat/Science_Policy_and_Research_Dynamics"
   - "sub/Scholarly_Impact_Metrics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2013_Quantifying Long-term Scientific Impact.pdf"
@@ -88,11 +89,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2013_Quantifying Long-term S
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 장기 인용 영향력 예측 모델을 지식공간에서의 공간적-시간적 확산 메커니즘으로 확장하여 더 정교한 분석을 제공합니다.
-- 🏛 기반 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 인용 분포의 보편성이 장기 과학적 영향력 모델의 수학적 기반과 정규화 방법론을 제공합니다.
-- 🧪 응용 사례: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 장기 인용 영향력 예측 방법론을 늦게 인정받는 'Sleeping Beauty' 논문들의 발견과 식별에 적용할 수 있습니다.
-- 🧪 응용 사례: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 실제임상증거(RWE)의 장기적 과학적 영향력을 정량화하여 약가 협상에서의 과학적 근거의 지속성을 평가할 수 있다.
-- 🔗 후속 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 인용 분포의 보편성이 장기 과학적 영향력을 예측하는 모델의 수학적 기반과 분야 간 비교 방법론을 제공합니다.
-- 🔄 다른 접근: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 장기적 과학적 영향력을 측정하는 서로 다른 접근법을 제시하여 상호 보완적 관점을 제공한다.
-- 🔗 후속 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 핫스트릭 현상을 장기적 과학적 영향력 정량화 방법론과 결합하여 더 정교한 경력 평가가 가능하다.
-- 🏛 기반 연구: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — Javanese 철학을 통한 정책 분석의 장기적 영향을 측정하기 위해 과학적 영향력의 장기 정량화 방법이 필요하다.
+- 🏛 기반 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 인용 분포의 보편성에 대한 이해가 장기 과학적 영향력 예측 모델의 이론적 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 논문의 장기 영향력을 시간뿐만 아니라 지식공간에서의 공간적 확산까지 고려하여 더 세밀하게 분석합니다.
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학적 영향력의 예측 가능성을 주장하는 관점과 달리 과학의 파괴성이 시간에 따라 감소한다는 상반된 트렌드를 보여줍니다.
+- 🧪 응용 사례: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 잠자는 미인(Sleeping Beauty) 논문의 식별은 장기 과학적 영향력 예측 모델에서 지연된 인정을 받는 연구의 특성을 이해하는 데 중요합니다.
+- ⚖️ 반론/비판: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — disruption index의 인용 인플레이션 문제는 장기 영향력 예측에서 기존 인용 기반 지표들의 한계를 지적합니다.
+- 🔗 후속 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술, 문화, 과학 경력의 hot streak 분석은 장기 영향력 예측을 개별 논문에서 연구자 경력 전체로 확장합니다.
+- 🏛 기반 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 장기적 과학적 영향력 정량화의 필요성을 기반으로, 상위 성과 논문들의 인용을 더 잘 포착하는 지표 개발의 중요성을 보여준다.
+- 🔗 후속 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 장기적 과학적 영향력 정량화의 방법론을 학문분야 간 비교가 가능한 객관적 척도로 발전시킨다.
+- 🔗 후속 연구: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 과학적 영향력 측정을 개인화된 학습 경로 설계로 확장한다
+- 🔄 다른 접근: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 장기 과학적 영향력을 정량화하는 서로 다른 접근법들로 상호보완적인 영향력 측정 방법을 제공한다.
+- 🧪 응용 사례: [[papers/990_Networks_of_Scientific_Papers/review]] — 장기적 과학 영향 정량화가 인용 네트워크 패턴을 통한 연구 전면 특성 분석에 실제 적용된다.
+- 🔗 후속 연구: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 장기적 과학 임팩트를 정량화한 연구로, 인도 고분자 과학의 생산성을 임팩트 관점에서 확장 분석할 수 있습니다.
+- 🔄 다른 접근: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 과학적 영향력을 비전형적 조합과 장기적 영향력 정량화라는 서로 다른 관점에서 측정하고 분석합니다.
+- 🏛 기반 연구: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 장기적 과학적 영향력 정량화 방법론이 잠자는 미녀 현상의 늦은 인용 급증을 설명하는 기반이 됩니다.
+- 🔗 후속 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 과학 성장률 분석을 장기적 과학적 영향력 정량화로 확장하여 성장의 질적 측면을 평가한다.
+- 🧪 응용 사례: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 장기적 과학 영향 정량화 방법론이 예술-과학 경력의 핫스트릭 현상을 측정하고 예측하는 도구를 제공한다.

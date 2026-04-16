@@ -11,7 +11,8 @@ score: 4.0
 essence: "본 논문은 문서 표현 학습 알고리즘을 활용하여 지식공간(knowledge space)에서 개별 논문의 인용(citation)이 시간과 공간적으로 어떻게 확산되는지를 정량화한다. 초기 인용 확산 특성이 장기 인용 누적과 논문의 혁신성(novelty)·파괴성(disruptiveness)을 어떻게 결정하는지를 밝힌다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Quantifying spatial–temporal citation diffusion of individual papers in knowledge space.pdf"
 ---
@@ -75,7 +76,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Quantifying spatial–
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 지식공간에서의 인용 확산을 분석하기 위한 문서 표현 학습의 기반 기술로 Word embedding 방법론을 제공합니다.
-- 🔄 다른 접근: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 지식공간에서의 탐색을 개별 논문의 인용 확산이 아닌 과학자의 연구주제 선택 관점에서 분석하는 대안적 접근법입니다.
-- 🔗 후속 연구: [[papers/934_Are_disruptive_papers_more_likely_to_impact_technology_and_s/review]] — 인용 확산의 공간적-시간적 특성이 논문의 파괴적 특성과 기술사회적 영향력에 어떻게 연결되는지 확장 분석을 제공합니다.
-- 🔗 후속 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기 인용 영향력 예측 모델을 지식공간에서의 공간적-시간적 확산 메커니즘으로 확장하여 더 정교한 분석을 제공합니다.
+- 🏛 기반 연구: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 지식공간에서의 과학자 탐색 행동 모델링이 개별 논문의 인용 확산을 이해하는 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 연구 궤적의 잠재적 구조를 포착하는 비지도 임베딩 방법으로 인용 확산 패턴을 다른 관점에서 분석합니다.
+- 🧪 응용 사례: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 초기 인용 확산 특성을 활용하여 고영향 연구 주제를 예측하는 기계학습 모델에 적용할 수 있습니다.
+- 🏛 기반 연구: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 단어 임베딩이 지식의 잠재적 구조를 포착하는 능력은 지식공간에서 인용 확산을 정량화하는 방법론적 기반이 됩니다.
+- 🔗 후속 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 논문의 파괴성 감소 추세 분석은 개별 논문의 인용 확산과 혁신성 간의 관계를 거시적 관점에서 보완합니다.
+- 🧪 응용 사례: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 과학 연구를 지식 지도로 매핑하는 방법은 개별 논문의 공간적 인용 확산을 시각화하고 분석하는 도구를 제공합니다.
+- 🔗 후속 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 논문의 장기 영향력을 시간뿐만 아니라 지식공간에서의 공간적 확산까지 고려하여 더 세밀하게 분석합니다.
+- 🔗 후속 연구: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 지식공간에서의 과학자 탐색 행동 모델링을 개별 논문의 인용 확산 분석으로 확장 적용합니다.
+- 🔗 후속 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 개별 과학자의 공간-시간적 인용 확산과 인용 네트워크의 사회구조적 경로는 모두 인용의 확산 메커니즘을 분석한다.
+- 🔗 후속 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 인용 기반 유사성 분석을 공간-시간적 인용 확산 패턴 분석으로 확장하여 더 동적인 관점을 제공한다.
+- 🏛 기반 연구: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 인용의 시공간적 확산 분석이 잠자는 미녀 현상 이해의 이론적 토대를 제공한다
+- 🔗 후속 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 개별 논문의 시공간적 인용 확산 분석을 개방접근과 비개방접근 논문 비교로 확장합니다.
+- 🔗 후속 연구: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 개별 논문의 공간-시간적 인용 확산 패턴을 그래핀 연구 분야 전체의 지식 구조 발전과 연결하여 분석할 수 있다.

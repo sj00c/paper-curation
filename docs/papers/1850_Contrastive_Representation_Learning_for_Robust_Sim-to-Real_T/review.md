@@ -1,3 +1,24 @@
+---
+title: "1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T"
+authors:
+  - "Yidan Lu"
+  - "Rurui Yang"
+  - "Qiran Kou"
+  - "Mengting Chen"
+  - "Tao Fan"
+date: "2025.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Contrastive learning을 이용해 시뮬레이션의 특권 정보(terrain heightmap)를 순수 proprioceptive policy에 증류시켜 지각의 선견성을 얻으면서도 배포 시 지각 센서의 비용을 피한다. Adaptive gait clock을 통해 고정된 클럭 보행과 불안정한 자유 클럭 보행 사이의 근본적 trade-off를 해결한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Proprioceptive_Motor_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lu et al._2025_Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion.pdf"
+---
+
 # Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion
 
 > **저자**: Yidan Lu, Rurui Yang, Qiran Kou, Mengting Chen, Tao Fan, Peter Cui, Yinzhao Dong, Peng Lu | **날짜**: 2025-09-16 | **URL**: [https://arxiv.org/abs/2509.12858](https://arxiv.org/abs/2509.12858)
@@ -63,3 +84,27 @@ Contrastive learning을 이용해 시뮬레이션의 특권 정보(terrain heigh
 - Overall: 4/5
 
 **총평**: 이 논문은 contrastive learning을 통해 시뮬레이션 특권 정보를 proprioceptive policy에 효과적으로 증류하여 지각 센서 없이도 선견성 있는 제어를 달성하는 창의적 해결책을 제시한다. Zero-shot sim-to-real 전이로 극도로 도전적인 지형에서의 강건한 보행을 실증함으로써 인간형 로봇 실용화의 중요한 진전을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — sim-to-real 전이에서 contrastive learning은 지각 정보 증류, CReF는 depth 기반 직접 학습으로 서로 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1829_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — 액추에이터 동역학 학습과 지각 정보 증류를 결합하면 더 포괄적인 sim-to-real 전이 솔루션을 구성할 수 있다.
+- 🏛 기반 연구: [[papers/1780_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu/review]] — 높이맵 생성 기술이 지형 인식 정책 학습의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1658_RPL_Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challe/review]] — 도전적 지형에서의 강건한 지각 기반 보행을 더욱 발전시킵니다.
+- 🔄 다른 접근: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — 시뮬레이션-현실 전이를 위한 다른 학습 패러다임을 제시합니다.
+- 🔗 후속 연구: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — SPI-Active의 Fisher Information 기반 exploration이 Contrastive Representation Learning의 robust sim-to-real 전이와 결합되어 더 효율적인 domain adaptation을 달성할 수 있다
+- 🏛 기반 연구: [[papers/1652_Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_an/review]] — Contrastive Representation Learning의 robust sim-to-real 전이 기법이 RTR의 dynamics-encoded latent 최적화의 기초가 됨
+- 🏛 기반 연구: [[papers/1620_PolySim_Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_vi/review]] — Sim-to-real transfer를 위한 contrastive representation learning 방법론 제공
+- 🏛 기반 연구: [[papers/1627_PvP_Data-Efficient_Humanoid_Robot_Learning_with_Propriocepti/review]] — PvP의 고유감각-특권상태 대조 학습이 Contrastive Representation Learning의 robust sim-to-real 전이 방법론을 휴머노이드 WBC에 적용한 것이다
+- 🏛 기반 연구: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — Sim-to-real gap 해결을 위한 representation learning 기반 제공
+- 🔗 후속 연구: [[papers/1746_VB-Com_Learning_Vision-Blind_Composite_Humanoid_Locomotion_A/review]] — 강건한 sim-to-real 전이를 위한 대조적 표현 학습을 시각 결손 상황에서의 정책 전환이라는 구체적 메커니즘으로 확장했다.
+- 🔄 다른 접근: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — 강건한 sim-to-real 전이를 위해 서로 다른 접근(대규모 visual 프레임워크 vs 대조적 표현 학습)을 통해 현실 환경에서의 성능을 보장한다.
+- 🏛 기반 연구: [[papers/1829_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 UAN은 액추에이터 동역학, contrastive learning은 지각 정보에 집중하여 상호 보완적이다.
+- 🏛 기반 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — contrastive representation learning의 기초 이론이 robust sim-to-real transfer에 활용되어 휴머노이드 locomotion에 적용된다.
+- 🏛 기반 연구: [[papers/1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — raw depth 입력의 직접 학습과 지각 정보 증류는 모두 sim-to-real 전이에서 센서 데이터 처리의 다른 패러다임을 제시한다.
+- 🔄 다른 접근: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — 지각 기반 보행을 위한 다른 시뮬레이션-현실 전이 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1984_HoRD_Robust_Humanoid_Control_via_History-Conditioned_Reinfor/review]] — robust sim-to-real transfer를 위한 대조 표현 학습이 HoRD의 도메인 시프트 상황에서의 강건한 제어 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/2045_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — 대조 표현 학습이 Learning agile의 견고한 sim-to-real 전이에서 도메인 간 특징 정렬의 이론적 기반 제공
+- 🏛 기반 연구: [[papers/2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — sim-to-real 전이를 위한 대조적 표현 학습이 지형 인식 보행의 기반 제공
+- 🏛 기반 연구: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — 시뮬레이션-실제 전이에서 대조 표현 학습이 제공하는 견고성이 PMSM 에너지 모델 기반 전이 방법론의 이론적 기반이 됩니다.
+- 🏛 기반 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — contrastive representation learning이 RoboGauge의 sim-to-real 예측성 평가에서 robust feature 추출을 위한 이론적 기반을 제공함

@@ -1,3 +1,23 @@
+---
+title: "2087_LookOut_Real-World_Humanoid_Egocentric_Navigation"
+authors:
+  - "Boxiao Pan"
+  - "Adam W. Harley"
+  - "C. Karen Liu"
+  - "Leonidas J. Guibas"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Project Aria 안경을 이용한 데이터 수집 파이프라인과 함께, 동적 장애물이 있는 실제 환경에서 egocentric 비디오로부터 미래의 6D 헤드 포즈(위치 및 회전)를 예측하는 LookOut 모델을 제안한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Latent_Human_Motion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Pan et al._2025_LookOut Real-World Humanoid Egocentric Navigation.pdf"
+---
+
 # LookOut: Real-World Humanoid Egocentric Navigation
 
 > **저자**: Boxiao Pan, Adam W. Harley, C. Karen Liu, Leonidas J. Guibas | **날짜**: 2025-08-20 | **URL**: [https://arxiv.org/abs/2508.14466](https://arxiv.org/abs/2508.14466)
@@ -67,3 +87,19 @@ Project Aria 안경을 이용한 데이터 수집 파이프라인과 함께, 동
 - Overall: 4/5
 
 **총평**: 인간형 egocentric 네비게이션의 동적 환경 처리, 능동적 정보 수집 모델링, 그리고 실용적 데이터 수집 파이프라인을 종합적으로 해결한 포괄적 기여로, Project Aria를 활용한 혁신적 데이터 수집 방식과 현실성 높은 4시간 AND 데이터셋이 향후 연구에 큰 영향을 미칠 것으로 기대된다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 야생에서의 휴머노이드 시각 탐색의 이론적 기반과 구현 방법을 제공한다.
+- 🔄 다른 접근: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — 자아중심적 비전-언어-행동 모델과 실제 자아중심적 네비게이션이라는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 웨이포인트 가이드를 통한 공간 선택적 주의의 확장된 네비게이션 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — 둘 다 navigation을 위한 diffusion policy이지만 LookOut은 egocentric head pose 예측에, NoMaD는 goal masking 기반 탐색에 중점을 둔다
+- 🔗 후속 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 실제 환경에서의 휴머노이드 네비게이션을 360° 파노라마 시각 탐색으로 확장하여 복잡한 현실 환경에서의 능동적 물체 탐색을 실현했다.
+- 🧪 응용 사례: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — cluttered indoor scene에서의 collision-free traversal 기술이 real-world humanoid egocentric navigation에 실제 적용된다.
+- 🧪 응용 사례: [[papers/1902_EgoMI_Learning_Active_Vision_and_Whole-Body_Manipulation_fro/review]] — LookOut의 실제 환경 자아중심 내비게이션이 EgoMI의 능동 시각 및 전신 조작 학습을 실용적으로 적용한 사례입니다.
+- 🔗 후속 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — LookOut의 실제 환경 egocentric navigation 연구를 waypoint 안내와 안정성 인식이 결합된 더 정교한 프레임워크로 발전시켰습니다.
+- 🔗 후속 연구: [[papers/1966_Hand-Eye_Autonomous_Delivery_Learning_Humanoid_Navigation_Lo/review]] — HEAD의 humanoid navigation 학습을 LookOut이 실제 환경에서의 egocentric navigation으로 확장하여 실용성을 향상시킵니다.
+- 🏛 기반 연구: [[papers/2042_Learning_a_Vision-Based_Footstep_Planner_for_Hierarchical_Wa/review]] — LookOut의 실세계 에고센트릭 네비게이션이 Learning Vision-Based의 시각 기반 발걸음 계획에 실제 환경 인식 기반 제공
+- 🔗 후속 연구: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 인간 데이터 기반 내비게이션 학습을 실제 환경의 에고센트릭 내비게이션 시스템으로 확장하여 더 실용적인 구현을 달성할 수 있다.
+- 🧪 응용 사례: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — MolmoSpaces의 대규모 실내 환경 데이터셋이 LookOut의 egocentric 내비게이션 정책 학습에 훈련 환경으로 활용될 수 있다.
+- 🧪 응용 사례: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — NoMaD의 목표 지향 내비게이션과 탐색을 통합한 정책이 LookOut의 실세계 egocentric 내비게이션에 직접 적용될 수 있다.

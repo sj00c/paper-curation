@@ -11,7 +11,8 @@ score: 4.0
 essence: "본 논문은 지리정보시스템(GIS) 기법을 활용하여 과학자들의 연구주제 선택을 지식공간(knowledge space)에서의 탐색 과정으로 모델링하고, 과학자들이 주로 보수적으로 국소적 지식공간을 탐색하는 패턴을 실증적으로 규명한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Thematic_Network_Detection"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Science as exploration in a knowledge landscape tracing hotspots or seeking opportunity.pdf"
 ---
@@ -81,8 +82,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Science as exploration i
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 지식공간 탐색을 과학자의 연구주제 선택과 과학자 이동 궤적이라는 서로 다른 관점에서 분석하는 대안적 접근법입니다.
-- 🏛 기반 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 과학 연구 분야 매핑 방법론이 지식공간에서의 과학자 탐색 패턴을 분석하는 기술적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 주제 수준의 과학 매핑을 개별 과학자의 지식공간 탐색 행동으로 확장하여 미시적 관점을 추가합니다.
-- 🔄 다른 접근: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 지식공간에서의 탐색을 개별 논문의 인용 확산이 아닌 과학자의 연구주제 선택 관점에서 분석하는 대안적 접근법입니다.
-- 🔄 다른 접근: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 지식 지형에서 핫스팟 추적을 통해 생명공학 연구 전선의 변화를 다른 관점에서 분석할 수 있다
+- 🔄 다른 접근: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 과학자의 지식공간 탐색과 물리적 이동 궤적 분석이 서로 다른 관점에서 과학자 행동 패턴을 규명한다.
+- 🏛 기반 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 과학자의 경력 패턴과 지식공간 탐색 전략이 상호 연관되어 창의적 성과 창출 메커니즘을 이해하는 데 기여한다.
+- 🔗 후속 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 비정형적 조합을 통한 과학적 영향력과 지식공간에서의 탐색 패턴이 연결되어 혁신적 연구의 조건을 설명한다.
+- 🔗 후속 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 지식공간에서의 과학자 탐색 행동 모델링을 개별 논문의 인용 확산 분석으로 확장 적용합니다.
+- 🧪 응용 사례: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 지식공간 탐색 패턴 분석을 고영향 연구 주제 예측 모델에 적용할 수 있습니다.
+- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 지도 작성과 과학 맵의 기본 개념은 지식공간에서 과학자의 탐색 패턴을 GIS 기법으로 분석하는 방법론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 지식 그래프를 통한 과학 연구 매핑은 지식공간 탐색을 더 정교한 네트워크 구조로 분석할 수 있는 확장된 접근법을 제시합니다.
+- 🧪 응용 사례: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 과학의 과학 분야에서 학제간 출현 식별은 지식공간 탐색 패턴이 새로운 연구 영역 형성에 미치는 영향을 구체적으로 보여줍니다.
+- 🏛 기반 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 지식공간에서의 과학자 탐색 행동 모델링이 개별 논문의 인용 확산을 이해하는 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 과학자의 물리적 이동과 지식공간에서의 탐색이 서로 다른 차원에서 과학자 행동을 분석한다.

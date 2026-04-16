@@ -11,7 +11,8 @@ score: 4.0
 essence: "조기 경력 좌절(Early-career setback)이 NIH R01 그랜트 신청에서 자금 지원 직전에 떨어진 과학자들의 장기 커리어에 미치는 영향을 분석하여, 좌절이 이탈률을 증가시키면서도 남은 자들의 미래 성과를 향상시킨다는 역설적 결과를 제시한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Academic_Career_Trajectories"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2019_Early-career setback and future career impact.pdf"
 ---
@@ -90,14 +91,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2019_Early-career setback an
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 초기 좌절 후 성과 향상 패턴과 핫스트릭 현상은 모두 경력에서 나타나는 비선형적 성과 변화를 다룬다.
-- 🔄 다른 접근: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — NIH 그랜트 탈락과 코로나19 팬데믹 모두 과학자 경력에 미치는 외부 충격의 차별적 영향을 분석한다.
-- 🏛 기반 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 테뉴어 획득과 연구 궤도 변화는 초기 경력 좌절이 장기 성과에 미치는 영향을 이해하는 기초가 된다.
-- 🔄 다른 접근: [[papers/1000_Productivity_Prominence_and_the_Effects_of_Academic_Environm/review]] — 학술 환경의 긍정적 영향과 대조적으로 초기 경력 좌절이 미래 성과에 미치는 부정적 영향을 보여줍니다.
-- 🧪 응용 사례: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 실패 역학 모델을 개인 연구자의 초기 경력 좌절이 향후 성과에 미치는 영향 분석에 적용할 수 있다.
-- 🔄 다른 접근: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 코로나19 팬데믹과 NIH 그랜트 탈락은 모두 과학자 경력에 미치는 외부 충격의 불균등한 영향을 다룬다.
-- 🔗 후속 연구: [[papers/1121_Superstar_Extinctionsupsup/review]] — 초기 경력 좌절이 미래에 미치는 영향 분석을 슈퍼스타 상실로 인한 협업 네트워크 충격과 연결하여 과학 경력의 다층적 위험 요소를 이해한다.
-- 🔄 다른 접근: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 과학자의 조기사망이 분야에 미치는 긍정적 효과를 초기 경력 좌절의 부정적 영향과 대비하여 분석한다
-- 🏛 기반 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술가와 과학자의 핫스트릭 현상이 초기 좌절 후 성과 향상 패턴을 이해하는 이론적 배경을 제공한다.
-- 🔄 다른 접근: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 조직 간 이동의 긍정적 효과와 초기 경력 좌절의 부정적 영향이라는 상반된 관점을 제공한다.
-- 🔗 후속 연구: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 초기 경력 좌절의 미래 영향 연구가 MSME 기업의 파산 예측과 회복 경로를 이해하는 틀을 확장한다.
+- 🔄 다른 접근: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 저명 과학자 사망의 분야 활성화 효과와 조기 좌절의 성과 향상 효과가 모두 장애물이 혁신을 촉진하는 역설적 메커니즘을 보여준다.
+- 🔗 후속 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 종신재직권과 연구 궤적 분석이 조기 경력 좌절의 장기적 영향을 제도적 안정성 관점에서 보완적으로 설명한다.
+- 🔗 후속 연구: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 과학에서 초기 실패가 이후 성공으로 이어지는 메커니즘을 정량적으로 모델링한다.
+- 🏛 기반 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 초기 경력의 실패가 미래 성과에 미치는 영향이 종신교수제도 하에서 어떻게 작용하는지 이해하는 배경을 제공합니다.
+- 🏛 기반 연구: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 초기 경력 좌절이 샤페론 없는 연구자들의 출판 성공률에 미치는 장기적 영향을 보여준다.
+- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 초기 펀딩 실패가 미래 경력에 미치는 영향을 분석하여 Matthew effect의 시간적 차원을 확장한다.
+- 🔄 다른 접근: [[papers/1037_The_Misleading_Narrative_of_the_Canonical_Faculty_Productivi/review]] — 초기 커리어의 좌절이 미치는 영향과 다양한 생산성 패턴은 모두 전통적인 학술 커리어 서사의 한계를 보여준다.
+- 🔄 다른 접근: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 초기 경력 좌절과 팬데믹의 불균등 영향이 서로 다른 외부 충격이 과학자 경력에 미치는 영향을 비교 분석할 수 있다.
+- 🔄 다른 접근: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 과학 경력에 미치는 영향을 저명 과학자 사망과 초기 좌절이라는 다른 사건으로 분석한다
+- ⚖️ 반론/비판: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 연구자 이동의 긍정적 효과와 초기 경력 좌절의 부정적 영향이라는 상반된 관점을 제시한다.

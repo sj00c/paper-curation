@@ -1,3 +1,25 @@
+---
+title: "2021_Implicit_Kinodynamic_Motion_Retargeting_for_Human-to-humanoi"
+authors:
+  - "Xingyu Chen"
+  - "Hanyu Wu"
+  - "Sikai Wu"
+  - "Mingliang Zhou"
+  - "Diyun Xiang"
+date: "2025.09"
+doi: "10.48550/arXiv.2509.15443"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 인간의 모션을 휴머노이드 로봇이 실행 가능한 모션으로 변환하는 Implicit Kinodynamic Motion Retargeting (IKMR) 프레임워크를 제안하며, 기존 frame-by-frame 방식의 비효율성을 극복하고 대규모 모션을 실시간으로 처리한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_Implicit Kinodynamic Motion Retargeting for Human-to-humanoid Imitation Learning.pdf"
+---
+
 # Implicit Kinodynamic Motion Retargeting for Human-to-humanoid Imitation Learning
 
 > **저자**: Xingyu Chen, Hanyu Wu, Sikai Wu, Mingliang Zhou, Diyun Xiang, Haodong Zhang | **날짜**: 2025-09-18 | **DOI**: [10.48550/arXiv.2509.15443](https://doi.org/10.48550/arXiv.2509.15443)
@@ -66,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 motion retargeting에 implicit neural network을 처음 도입하여 scalability 문제를 혁신적으로 해결하고, kinematics과 dynamics를 체계적으로 통합함으로써 physically feasible한 대규모 모션 자동 변환을 실현한 의미 있는 기여이며, 실제 휴머노이드 로봇 배포 검증으로 실용성을 입증했다.
+
+## Related Papers
+
+- 🧪 응용 사례: [[papers/1644_RoboCasa_Large-Scale_Simulation_of_Everyday_Tasks_for_Genera/review]] — 대규모 로봇 시뮬레이션 환경에서 IKMR 프레임워크를 통한 인간-휴머노이드 모션 변환 기술을 검증할 수 있는 플랫폼을 제공한다.
+- 🔄 다른 접근: [[papers/2088_Make_Tracking_Easy_Neural_Motion_Retargeting_for_Humanoid_Wh/review]] — 인간 모션을 휴머노이드로 변환하는 문제에서 implicit kinodynamic 방식 대신 neural retargeting 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 일반적인 모션 추적 기법을 제공하여 IKMR의 기본 추적 메커니즘에 대한 이론적 기반을 마련한다.
+- 🏛 기반 연구: [[papers/1891_DynaRetarget_Dynamically-Feasible_Retargeting_using_Sampling/review]] — 동적 타당성을 고려한 모션 리타겟팅의 이론적 기반을 제공하는 샘플링 기반 방법론
+- 🔄 다른 접근: [[papers/1775_A_Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Hu/review]] — 둘 다 인간-휴머노이드 모션 리타게팅이지만 IKMR은 암시적 키노다이나믹, Closed-Form은 기하학적 접근
+- 🏛 기반 연구: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — 인간다운 동작 평가 메트릭이 IKMR의 모션 리타게팅 품질을 객관적으로 검증하는 기준 제공
+- 🏛 기반 연구: [[papers/1775_A_Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Hu/review]] — 인간-휴머노이드 간 암시적 운동 역학 리타겟팅의 이론적 기반을 SEW-Mimic의 기하학적 솔버에서 찾을 수 있습니다.
+- 🔗 후속 연구: [[papers/1891_DynaRetarget_Dynamically-Feasible_Retargeting_using_Sampling/review]] — implicit kinodynamic motion retargeting이 DynaRetarget의 sampling-based 접근법을 암시적 표현으로 발전시켜 더 효율적인 변환을 가능하게 한다.
+- 🔗 후속 연구: [[papers/2088_Make_Tracking_Easy_Neural_Motion_Retargeting_for_Humanoid_Wh/review]] — 인간-휴머노이드 운동학적 동작 리타겟팅의 확장된 구현을 보여준다.

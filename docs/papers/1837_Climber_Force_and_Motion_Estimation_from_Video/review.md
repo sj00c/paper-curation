@@ -1,3 +1,20 @@
+---
+title: "1837_Climber_Force_and_Motion_Estimation_from_Video"
+authors:
+  - "| **날짜**:"
+date: ""
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Coulomb 상호작용의 고조파 부분을 보정하여 남은 비선형 상호작용이 한 입자의 위치 잡음에 의해 다른 입자의 운동량을 일관성 있게 변위시키는 현상을 고전 및 양자 영역에서 관찰한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Text-Conditioned_Motion_Generation"
+  - "topic/humanoid"
+---
+
 # Climber Force and Motion Estimation from Video
 
 > **저자**:  | **날짜**:  | **URL**: [https://rihat99.github.io/climb_force/](https://rihat99.github.io/climb_force/)
@@ -64,3 +81,15 @@ Coulomb 상호작용의 고조파 부분을 보정하여 남은 비선형 상호
 - Overall: 4/5
 
 **총평**: 이 논문은 기본 물리력(Coulomb force)의 비선형 부분을 체계적으로 분리·강조하여 noise-driven coherent displacement라는 새로운 현상을 이론적으로 제시하며, 고전에서 양자 영역까지 보편적으로 관찰 가능함을 보인 의미 있는 기초 이론 연구이다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1838_ClimbingCap_Multi-Modal_Dataset_and_Method_for_Rock_Climbing/review]] — 암벽 등반의 다중 모달 데이터셋과 방법론이 클라이머의 힘과 운동 추정을 더욱 포괄적이고 실용적으로 확장한다
+- 🧪 응용 사례: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 야생에서의 확장 가능한 parkour 프레임워크가 클라이머 운동 추정 기술을 실제 험난한 지형에서 활용할 수 있는 응용 분야를 제공한다
+- 🏛 기반 연구: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — perceptive humanoid parkour의 동적 기술 연결이 클라이머 운동 분석에서 얻은 인사이트를 휴머노이드 제어에 적용하는 기반을 마련한다
+- 🏛 기반 연구: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — 비디오에서 force와 motion 추정의 기초 기술이 disturbance 하에서도 모션 추적을 가능하게 하는 발전된 시스템에 활용된다.
+- 🔗 후속 연구: [[papers/1646_RoboMirror_Understand_Before_You_Imitate_for_Video_to_Humano/review]] — 비디오에서의 motion 추정을 humanoid 전체 동작 모방을 위한 comprehensive understanding으로 확장한다.
+- 🔗 후속 연구: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — PICO의 물체와 접촉하는 3D 인간 복원 기술이 등반자와 암벽 간의 상호작용을 더 정확하게 모델링하는 데 활용될 수 있다.
+- 🧪 응용 사례: [[papers/1902_EgoMI_Learning_Active_Vision_and_Whole-Body_Manipulation_fro/review]] — EgoMI의 능동 시각과 전신 조작 학습이 등반 환경에서 시각-동작 통합을 위한 실용적 응용 사례를 제공한다.
+- 🔄 다른 접근: [[papers/1838_ClimbingCap_Multi-Modal_Dataset_and_Method_for_Rock_Climbing/review]] — 비디오 기반 동작 추정에서 하나는 암벽 등반의 multi-modal 접근, 다른 하나는 force와 motion의 general한 추정을 다룬다.
+- 🏛 기반 연구: [[papers/1907_EmbodMocap_In-the-Wild_4D_Human-Scene_Reconstruction_for_Emb/review]] — 비디오 기반 클라이밍 동작 및 힘 추정 연구가 EmbodMocap의 실외 환경 인간 동작 재구성을 위한 기본적인 비디오 분석 기술을 제공한다.

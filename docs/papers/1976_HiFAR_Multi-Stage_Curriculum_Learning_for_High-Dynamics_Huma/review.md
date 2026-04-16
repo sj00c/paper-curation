@@ -1,3 +1,23 @@
+---
+title: "1976_HiFAR_Multi-Stage_Curriculum_Learning_for_High-Dynamics_Huma"
+authors:
+  - "Penghui Chen"
+  - "Yushi Wang"
+  - "Changsheng Luo"
+  - "Wenhan Cai"
+  - "Mingguo Zhao"
+date: "2025.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "HiFAR는 다단계 커리큘럼 학습 프레임워크를 통해 휴머노이드 로봇의 자율적 낙상 회복을 학습하는 방법을 제시하며, 저차원 태스크에서 시작하여 고차원 배포 시나리오로 점진적으로 확장한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_HiFAR Multi-Stage Curriculum Learning for High-Dynamics Humanoid Fall Recovery.pdf"
+---
+
 # HiFAR: Multi-Stage Curriculum Learning for High-Dynamics Humanoid Fall Recovery
 
 > **저자**: Penghui Chen, Yushi Wang, Changsheng Luo, Wenhan Cai, Mingguo Zhao | **날짜**: 2025-02-27 | **URL**: [https://arxiv.org/abs/2502.20061](https://arxiv.org/abs/2502.20061)
@@ -66,3 +86,13 @@ HiFAR는 다단계 커리큘럼 학습 프레임워크를 통해 휴머노이드
 - Overall: 4/5
 
 **총평**: HiFAR은 다단계 커리큘럼 학습과 KSI, reward shaping을 효과적으로 결합하여 복잡한 고차원 낙상 회복 문제를 체계적으로 해결하며, 실제 로봇 검증을 통해 높은 실용성과 견고성을 입증한 우수한 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 휴머노이드 안전 제어를 HiFAR는 낙상 회복에, SafeFall은 보호적 낙상에 각각 특화하여 접근한다.
+- 🔗 후속 연구: [[papers/2051_Learning_Getting-Up_Policies_for_Real-World_Humanoid_Robots/review]] — 일어서기 정책 학습의 기초를 다단계 커리큘럼을 통한 낙상 회복까지 확장한 HiFAR의 발전된 형태다.
+- 🏛 기반 연구: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — 자기보호적 낙상 정책 발견 방법론이 HiFAR의 낙상 회복 학습 프레임워크의 핵심 기반이 된다.
+- 🏛 기반 연구: [[papers/1861_Deep_Whole-body_Parkour/review]] — 고역학적 humanoid를 위한 다단계 커리큘럼이 Deep Whole-body Parkour의 복잡한 동작 학습에 필요한 단계적 훈련 기반을 제공한다
+- 🔄 다른 접근: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — HiFAR의 multi-stage curriculum learning이 frame acceleration이 아닌 다른 방식으로 고역학 휴머노이드 제어 성능 향상을 달성하는 접근을 제시한다.
+- 🔄 다른 접근: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — 극단적 상황 대응을 Heracles는 외부 교란에, HiFAR은 낙상 회복에 각각 특화하여 접근한다.
+- 🧪 응용 사례: [[papers/2121_OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_H/review]] — HiFAR의 고동역 humanoid control을 위한 multi-stage curriculum이 OmniXtreme의 극단적 동작 추적을 단계적으로 학습하는 실제 적용 사례입니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Robotics Transformer (RT-1)는 대규모 다양한 실제 로봇 데이터(130k 에피소드, 700+ 태스크)를 학습하여 새로운 태스크와 환경에 대한 뛰어난 일반화 능력을 보이는 언어-조건부 로봇 제어 모델이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Robot_Foundation_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Brohan et al._2022_RT-1 Robotics Transformer for Real-World Control at Scale.pdf"
 ---
@@ -91,7 +93,21 @@ Robotics Transformer (RT-1)는 대규모 다양한 실제 로봇 데이터(130k 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1499_OmniVLA_An_Omni-Modal_Vision-Language-Action_Model_for_Robot/review]] — omni-modal VLA의 다중 조건화 방법을 LeVERB의 latent verb 인터페이스에 통합하여 명령 표현 능력을 강화할 수 있다
-- 🧪 응용 사례: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 오픈소스 VLA 모델의 효율적인 미세조정 방법이 RT-1의 대규모 로봇 데이터 학습에 직접 적용 가능하다
-- 🏛 기반 연구: [[papers/1249_A_Unified_and_General_Humanoid_Whole-Body_Controller_for_Ver/review]] — 통합된 휴머노이드 전신 제어 프레임워크가 LeVERB의 계층적 latent VLA 시스템에 핵심 제어 이론을 제공한다
-- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 대규모 로봇 시연 데이터 학습 방법론이 RT-1의 다양한 태스크 일반화 능력 구현에 핵심 이론적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2는 RT-1의 직접적인 후속 연구로 웹 지식을 로봇 제어에 통합하여 성능을 크게 향상시켰다.
+- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA는 RT-1과 유사한 대규모 로봇 데이터 학습 접근법을 취하지만 오픈소스 형태로 제공되는 차별점이 있다.
+- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment 데이터셋은 RT-1이 활용한 대규모 로봇 데이터의 핵심 구성 요소를 제공한다.
+- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo는 RT-1과 같은 일반화 가능한 로봇 정책을 목표로 하지만 더 광범위한 embodiment를 지원하는 차별점이 있다.
+- 🏛 기반 연구: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — RoboCat의 self-improving agent 개념이 RT-1의 대규모 학습과 일반화 능력 개발의 이론적 기반이다.
+- 🏛 기반 연구: [[papers/1286_π_05_a_Vision-Language-Action_Model_with_Open-World_Generali/review]] — π0.5는 RT-1의 Robotics Transformer 아키텍처를 확장하여 heterogeneous 데이터 소스로 확장한 발전된 형태입니다.
+- 🏛 기반 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — RT-1의 대규모 실제 로봇 데이터 학습 방법론이 RDT-1B의 bimanual manipulation foundation model 개발의 기반이 된다.
+- 🔗 후속 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RT-1과 같은 기존 VLA 모델들의 강화학습 훈련을 RLinf-VLA 프레임워크로 효율적으로 최적화할 수 있다.
+- 🔗 후속 연구: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — RT-1의 대규모 데이터 학습 방법론을 semantic augmentation으로 더 효율적으로 개선하여 적은 데모로도 범용 조작을 달성한다.
+- 🔗 후속 연구: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — RT-1의 로봇 제어 능력을 Planning, Affordance, Trajectory 예측의 통합 MLLM 모델로 확장하여 더 포괄적인 조작 시스템을 구축한다.
+- 🔗 후속 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — RT-1의 기본 로봇 제어에 3D 공간 이해 강화와 이질적 로봇 간 일반화 능력을 추가한 공간적으로 발전된 형태이다.
+- 🔗 후속 연구: [[papers/1546_Robot_Utility_Models_General_Policies_for_Zero-Shot_Deployme/review]] — RT-1의 로봇 제어 능력을 다양한 환경에서 수집한 대규모 데이터로 확장하여 zero-shot 일반화를 달성하는 발전된 형태이다.
+- 🏛 기반 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — RT-1의 실제 로봇 학습 방법론이 RoboTwin 2.0의 sim-to-real 전이 최적화에 중요한 실증적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-1의 대규모 로봇 데이터 학습 성과가 RT-2의 웹 지식 통합 아키텍처 설계의 직접적인 기반이 되었다.
+- 🔗 후속 연구: [[papers/1556_RT-H_Action_Hierarchies_Using_Language/review]] — RT-1의 기본 robotics transformer를 language motion 중간 표현으로 확장하여 더 효과적인 작업 간 데이터 공유와 계층적 제어를 달성한다.
+- 🏛 기반 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — Foundation model을 로봇 제어에 적용하는 선구적 연구로서 transfer learning 접근법의 이론적 근거를 제공한다.
+- 🏛 기반 연구: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — RT-1의 실제 제어를 위한 Robotics Transformer가 VLA-0의 간단한 텍스트 기반 액션 표현의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 두 스트림 아키텍처(what/where)는 RT-1의 실세계 로봇 제어를 위한 기초적인 설계 철학을 제공합니다.

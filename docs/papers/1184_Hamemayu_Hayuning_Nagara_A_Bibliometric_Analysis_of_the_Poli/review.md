@@ -10,9 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 2014-2024년 Scopus 데이터베이스의 856개 VAT 논문을 bibliometric 분석으로 검토하고, Javanese 철학인 Hamemayu Hayuning Nagara를 통해 VAT 정책을 국가 재정과 공공 복지의 조화로 해석한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kusumastuti et al._2026_Hamemayu Hayuning Nagara A Bibliometric Analysis of the Policy on Increasing the Value Added Tax Ra.pdf"
 ---
@@ -87,10 +87,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kusumastuti et al._2026_Hamemayu Hayunin
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — VAT 정책과 공공 복지 조화 분석이 과학 연구 자금 지원의 광범위한 영향 시각화로 확장될 수 있다.
-- 🏛 기반 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — Javanese 철학을 통한 정책 분석의 장기적 영향을 측정하기 위해 과학적 영향력의 장기 정량화 방법이 필요하다.
-- 🔄 다른 접근: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 회계 분야와 세무 정책 분야의 서로 다른 bibliometric 접근법을 비교하여 경제학 관련 연구 분석의 다양한 관점을 제공한다.
-- 🧪 응용 사례: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑 방법론을 VAT 정책 연구에 적용하고 Javanese 철학으로 해석하는 독특한 문화적 접근을 보여준다.
-- 🏛 기반 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 글로벌 과학 펀딩과 연구 결과의 연결 분석 방법론을 국가 재정 정책(VAT) 연구에 적용할 수 있는 기초를 제공한다.
-- 🔄 다른 접근: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — 고등교육 지식관리와 VAT 정책 연구 모두 조직 차원에서 지식과 정책의 조화를 추구하는 bibliometric 접근법을 사용한다.
-- 🏛 기반 연구: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 정치-문화 개념의 bibliometric 분석이 예술 관광의 문화적 진화 과정을 분석하는 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 둘 다 경제 정책(VAT vs MSME 파산)을 bibliometric 분석으로 연구하되 다른 철학적 접근을 취한다.
+- 🔗 후속 연구: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — VAT 정책과 기업 거버넌스를 연계하여 국가 재정과 기업 윤리의 조화로운 발전을 분석할 수 있다.
+- 🏛 기반 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — Javanese 철학에 기반한 정책 분석을 과학에서 집단적 신용 할당 이론으로 이해할 수 있다.
+- 🏛 기반 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 미국의 당파적 과학 지원 격차 연구가 제공하는 정치-경제적 맥락 분석 방법론을 인도네시아 VAT 정책 연구에 적용할 수 있다.
+- 🔗 후속 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 공공 자금 지원과 정책의 관계를 Javanese 철학으로 확장 해석한 연구입니다.
+- 🔄 다른 접근: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 둘 다 경제 정책(MSME 파산 vs VAT 정책)의 연구 동향을 bibliometric으로 분석한다.
+- 🧪 응용 사례: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 문화적 개념의 서지계량 분석 방법론을 다른 문화권에 적용한 사례다
+- 🔄 다른 접근: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 둘 다 경제 정책과 거버넌스(기업 거버넌스 vs VAT 정책)를 bibliometric으로 분석한다.

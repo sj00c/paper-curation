@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "다리가 있는 로봇의 전신 동역학을 활용하여 강화학습 기반의 3D 목표지점으로의 정확한 투척을 학습하는 방법을 제시하고, 시뮬레이션에서 학습한 정책을 실제 휴머노이드 로봇으로 전이시켰다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Munn et al._2024_Whole-Body Dynamic Throwing with Legged Manipulators.pdf"
 ---
@@ -87,3 +90,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Munn et al._2024_Whole-Body Dynamic Thro
 - Overall: 4/5
 
 **총평**: 본 논문은 전신 동역학을 활용한 3D 임의 목표 투척이라는 명확한 혁신과 적응형 커리큘럼이라는 기술적 기여로 로봇 조작 연구의 새로운 방향을 제시했으나, 실제 로봇 전이의 완전성 부족과 일반화 범위 제약이 실용적 임팩트를 다소 제한한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — 둘 다 전신 동역학 제어를 다루지만 MPC는 모델 예측 제어, 투척 논문은 강화학습을 사용합니다.
+- 🔗 후속 연구: [[papers/2001_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig/review]] — Complete Articulated Rigid Body를 활용한 acrobatics가 동적 투척 기술의 더 복잡한 응용을 보여줍니다.
+- 🧪 응용 사례: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 전신 투척 기술이 box loco-manipulation의 물체 던지기 단계에 직접 활용 가능합니다.
+- 🔄 다른 접근: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — 둘 다 전신 동역학 제어를 다루지만 하나는 MPC, 다른 하나는 RL 기반 투척 제어입니다.
+- 🧪 응용 사례: [[papers/2149_TOP_Time_Optimization_Policy_for_Stable_and_Accurate_Standin/review]] — 전신 동적 던지기 제어 기술을 서서하기 조작의 상체 동작 최적화에 실제 적용할 수 있다.

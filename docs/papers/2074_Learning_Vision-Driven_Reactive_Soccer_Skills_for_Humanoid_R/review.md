@@ -1,3 +1,25 @@
+---
+title: "2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R"
+authors:
+  - "Yushi Wang"
+  - "Changsheng Luo"
+  - "Penghui Chen"
+  - "Jianran Liu"
+  - "Weijian Sun"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.03996"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 시각 인식과 모션 제어를 직접 통합한 통합 강화학습 기반 컨트롤러를 통해 인형 로봇이 반응형 축구 기술을 습득할 수 있도록 하는 방법을 제시한다. Adversarial Motion Priors를 시각 기반 동적 제어 환경으로 확장하여 실제 RoboCup 경기에서 강력한 반응성을 보여준다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots.pdf"
+---
+
 # Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots
 
 > **저자**: Yushi Wang, Changsheng Luo, Penghui Chen, Jianran Liu, Weijian Sun, Tong Guo, Kechang Yang, Biao Hu, Yangang Zhang, Mingguo Zhao | **날짜**: 2025-11-06 | **DOI**: [10.48550/arXiv.2511.03996](https://doi.org/10.48550/arXiv.2511.03996)
@@ -69,3 +91,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 Adversarial Motion Priors를 시각 기반 동적 제어로 성공적으로 확장하여, 강화학습 기반 인형 로봇이 실세계 축구 환경에서 반응형 행동을 자동으로 습득할 수 있음을 처음으로 입증했다. RoboCup 2025 우승이라는 실제 경쟁 성과는 제시된 방법론의 실용성과 견고성을 강력하게 검증한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 적대적 동작 선험을 시각 기반 동적 제어 환경으로 확장하는 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2063_Learning_Soccer_Skills_for_Humanoid_Robots_A_Progressive_Per/review]] — 인식-행동 통합 의사결정과 시각-모션 제어 통합이라는 다른 접근법으로 축구 스킬을 학습한다.
+- 🔗 후속 연구: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — 계층적 의사결정을 통한 자율 휴머노이드 축구의 확장된 구현을 보여준다.
+- 🏛 기반 연구: [[papers/1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol/review]] — 적대적 학습을 통한 모션 모방이 시각 기반 반응형 축구 기술의 기반 제공
+- 🔄 다른 접근: [[papers/2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/review]] — 두 논문 모두 시각 기반 스포츠 기술을 다루지만 축구는 통합 강화학습을, 배드민턴은 모방-상호작용 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — 시각 기반 반응형 축구가 계층적 플래닝을 통한 탁구로 확장되어 더 정밀한 반응 제어를 보여준다.
+- 🔗 후속 연구: [[papers/1679_SkillMimic_Learning_Basketball_Interaction_Skills_from_Demon/review]] — 스포츠 기술 학습에서 농구와 축구라는 서로 다른 종목에 대한 휴머노이드 제어 접근법을 다룬다.
+- 🔗 후속 연구: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — 스포츠 로봇 제어에서 축구와 축구라는 동일 종목에 대한 end-to-end 학습과 시각 기반 반응 기술이라는 보완적 접근법을 다룬다.
+- 🔄 다른 접근: [[papers/2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/review]] — 배드민턴과 축구 모두 시각 기반 반응형 스포츠 기술이지만 배드민턴은 모방-상호작용, 축구는 통합 강화학습을 사용한다.
+- 🔄 다른 접근: [[papers/2063_Learning_Soccer_Skills_for_Humanoid_Robots_A_Progressive_Per/review]] — 시각 기반 반응형 축구 기술과 인식-행동 통합 프레임워크라는 다른 접근법으로 축구 스킬을 학습한다.

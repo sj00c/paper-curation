@@ -9,7 +9,8 @@ score: 4.0
 essence: "기술 진보에 따른 지식 축적이 혁신자들의 교육 부담을 증가시키며, 이로 인해 전문화와 팀 작업이 증가하는 '지식 부담 메커니즘(knowledge burden mechanism)'을 이론과 실증으로 분석한 연구이다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Interdisciplinary_Research_Collaboration"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jones_2009_The Burden of Knowledge and the “Death of the Renaissance Man” Is Innovation Getting Harder.pdf"
 ---
@@ -82,8 +83,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jones_2009_The Burden of Knowledge and t
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 부담 증가로 인한 전문화와 팀 작업 증가 현상이 실제로 지식 생산에서 팀 기반 연구의 우세로 나타났다.
-- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 지식 부담으로 인한 팀 연구 증가를 대형 팀과 소형 팀이 과학 발전에 미치는 차별적 영향으로 확장하여 분석했다.
-- ⚖️ 반론/비판: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 지식 부담 문제를 AI 기반 파운데이션 모델로 해결하여 과학 발견을 가속화하려는 대안적 접근법이다.
-- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 축적으로 인한 전문화와 팀 작업 증가 이론이 실제 지식 생산에서 팀 기반 연구 우세의 근거를 제공한다.
-- 🏛 기반 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 지식 부담의 증가가 혁신성 감소의 근본 원인 중 하나임을 이론적으로 뒷받침한다.
+- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 생산에서 팀 중심 연구의 증가는 지식 부담으로 인한 전문화 필요성과 팀워크 증가를 뒷받침하는 실증적 근거를 제공합니다.
+- 🧪 응용 사례: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — OLMo 언어모델 과학 가속화는 지식 부담 증가 문제를 AI 도구를 통해 해결하려는 현대적 접근법을 보여줍니다.
+- 🔗 후속 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI 시대의 인간 창의성 정의와 가치 재구성은 지식 부담으로 인한 전문화가 창의성에 미치는 영향을 현대적 맥락에서 재조명합니다.
+- 🔄 다른 접근: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — 지식 부담 증가와 AI 도구 과다 사용이라는 다른 메커니즘으로 과학적 혁신 감소 설명
+- 🔗 후속 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 지식의 부담과 르네상스맨의 죽음을 다룬 연구로, 과학 성장률 분석을 현대적 맥락에서 확장 해석할 수 있습니다.

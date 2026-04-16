@@ -1,3 +1,24 @@
+---
+title: "1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control"
+authors:
+  - "Mazeyu Ji"
+  - "Xuanbin Peng"
+  - "Fangchen Liu"
+  - "Jialong Li"
+  - "Ge Yang"
+date: "2024.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "ExBody2는 휴머노이드 로봇이 인간의 모션 캡처 데이터와 시뮬레이션 데이터를 학습하여 표현력 있는 전신 동작을 수행하도록 하는 프레임워크이며, 자동화된 데이터 필터링과 teacher-student 기반의 decoupled motion-velocity 제어 전략을 통해 실제 로봇에 배포 가능하게 함."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ji et al._2024_ExBody2 Advanced Expressive Humanoid Whole-Body Control.pdf"
+---
+
 # ExBody2: Advanced Expressive Humanoid Whole-Body Control
 
 > **저자**: Mazeyu Ji, Xuanbin Peng, Fangchen Liu, Jialong Li, Ge Yang, Xuxin Cheng, Xiaolong Wang | **날짜**: 2024-12-17 | **URL**: [https://arxiv.org/abs/2412.13196](https://arxiv.org/abs/2412.13196)
@@ -69,3 +90,18 @@ ExBody2는 휴머노이드 로봇이 인간의 모션 캡처 데이터와 시뮬
 - Overall: 4/5
 
 **총평**: ExBody2는 자동화된 데이터 필터링, generalist-specialist 파이프라인, decoupled motion-velocity 제어라는 세 가지 명확한 혁신을 통해 휴머노이드 로봇의 표현력 있는 전신 제어 문제를 체계적으로 해결하며, 실제 로봇에서의 다양한 동작 성공 시연으로 실질적 기여를 입증한 우수한 연구임.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 고역학 동작 제어 기법이 ExBody2의 표현력 있는 전신 동작 생성을 보완할 수 있다.
+- 🏛 기반 연구: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — BeyondMimic의 모션 추적에서 다양한 휴머노이드 제어로의 전환 기술이 ExBody2의 표현력 있는 전신 동작 구현을 위한 기반 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1968_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — Harmon의 전신 동작 생성이 모션 캡처 데이터 학습이 아닌 다른 방식으로 표현적 휴머노이드 제어를 달성하는 접근을 제시한다.
+- 🧪 응용 사례: [[papers/1775_A_Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Hu/review]] — 상체 휴머노이드를 위한 폐형식 기하학적 retargeting 솔버가 ExBody2의 decoupled motion-velocity 제어를 실제 로봇 배포에 적용하는 구체적인 방법을 제공한다.
+- 🧪 응용 사례: [[papers/1795_Agility_Meets_Stability_Versatile_Humanoid_Control_with_Hete/review]] — ExBody2의 고급 표현적 전신 제어 기법이 AMS의 민첩한 동작과 극한 밸런스 유지를 더욱 세밀하게 구현하는 데 활용될 수 있다.
+- 🔗 후속 연구: [[papers/1865_Design_and_Control_of_a_Bipedal_Robotic_Character/review]] — 고급 표현적 인간형 전신 제어로 발전됩니다.
+- 🏛 기반 연구: [[papers/1889_Dribble_Master_Learning_Agile_Humanoid_Dribbling_through_Leg/review]] — ExBody2의 teacher-student 기반 모션 추적 프레임워크가 드리블링 정책의 실제 로봇 전이를 위한 기술적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1913_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe/review]] — ExBody2의 advanced expressive whole-body control이 EMP의 상체 동작 모방을 더 포괄적이고 표현력 있는 전신 제어로 확장한다.
+- 🏛 기반 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — ExBody2의 teacher-student 프레임워크가 FARM의 residual mixture-of-experts 구조의 기반이 된다.
+- 🔗 후속 연구: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — ExBody2의 표현적 휴머노이드 제어를 사회적 의도와 감정 맥락까지 확장한 HIAER의 발전된 형태다.
+- 🧪 응용 사례: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 표현적 휴머노이드 전신 제어 기술을 엔터테인먼트 로봇의 미적 보행에 실제 적용한 사례이다.
+- 🔗 후속 연구: [[papers/2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — 표현적 휴머노이드 제어를 실제 애니메이션 캐릭터 구현으로 확장한 구체적 응용 사례이다.

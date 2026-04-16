@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "생성 모델과 최적화 방법을 결합하여 10억 개의 고품질 손가락 조작 시연을 생성한 Dex1B 데이터셋과 이를 활용하는 DexSimple 방법을 제시하여 손가락 조작 작업의 성능을 22% 향상시켰다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Synthetic_Grasping_Datasets"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Vision-Language_Object_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ye et al._2025_Dex1B Learning with 1B Demonstrations for Dexterous Manipulation.pdf"
 ---
@@ -89,13 +90,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ye et al._2025_Dex1B Learning with 1B De
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — GraspVLA도 10억 규모 합성 데이터로 집기 학습하는 유사한 접근법을 사용한다.
-- 🔗 후속 연구: [[papers/1356_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — DreamGen의 합성 데이터 생성 파이프라인이 Dex1B의 대규모 시연 데이터 활용에 도움이 된다.
-- 🏛 기반 연구: [[papers/1428_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — GraspDreamer의 생성형 시연 기반 학습이 Dex1B의 시연 데이터 생성 방법론과 연결된다.
-- 🏛 기반 연구: [[papers/1353_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — DreamControl의 whole-body humanoid control이 DreamControl-v2의 확장 가능한 기술 습득에 대한 기반 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — Dex1B의 대규모 합성 데이터 생성이 로봇 조작의 데이터 부족 문제 해결에 기여한다.
-- 🔄 다른 접근: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — Dex1B도 10억 규모 시연 데이터로 손가락 조작을 학습하는 유사한 접근법이다.
-- 🏛 기반 연구: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — 대규모 demonstration 학습의 원리를 적은 수의 시연으로도 효과적인 학습이 가능한 방법론으로 발전시킨다.
-- 🧪 응용 사례: [[papers/1442_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — DreamControl의 전신 제어 기법이 정밀한 추적과 생성형 합성의 실제 적용 사례를 보여줌
-- 🏛 기반 연구: [[papers/1575_Mobile-TeleVision_Predictive_Motion_Priors_for_Humanoid_Whol/review]] — 상체 조작을 위한 기반 기술로서 휴머노이드의 전신 제어에서 상체 정밀 조작 부분의 이론적 토대를 제공합니다.
-- 🔗 후속 연구: [[papers/1428_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — Dex1B의 대규모 시연 데이터가 GraspDreamer의 합성 영상 생성을 보완한다.
+- 🏛 기반 연구: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — 연속 잠재 행동 모델 CLAM이 Dex1B의 생성 모델 기반 시연 생성에 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — 의류 조작을 위한 양손 기민 조작과 10억 개 손가락 조작 시연을 결합하여 더 풍부한 학습을 달성할 수 있습니다.
+- 🧪 응용 사례: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — 모방 학습을 통한 손재주 조작 서베이가 Dex1B 데이터셋의 실제 적용 방향을 제시합니다.
+- 🔄 다른 접근: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 손가락 조작을 위한 합성 데이터(10억)와 실제 수집 데이터(7만6천)의 서로 다른 대규모 데이터 접근법입니다.
+- 🔗 후속 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — 자동화된 로봇 시연 생성을 통한 대규모 데이터 생성의 구체적 구현을 보여줍니다.
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 인간의 손가락 동작을 로봇이 모방하는 기본 원리를 제공합니다.
+- 🧪 응용 사례: [[papers/1298_A_Survey_of_Embodied_Learning_for_Object-Centric_Robotic_Man/review]] — object-centric manipulation을 dexterous manipulation이라는 구체적 영역에 적용한다.
+- 🔄 다른 접근: [[papers/1352_DemoDiffusion_One-Shot_Human_Imitation_using_pre-trained_Dif/review]] — 단일 시연과 10억 시연이라는 극단적으로 다른 데이터 규모에서의 모방학습 접근법을 비교합니다.
+- 🔗 후속 연구: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — Dex1B의 대규모 demonstration 학습 개념을 grasping 도메인에 합성 데이터로 확장했다.
+- 🔗 후속 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — RDT-1B의 bimanual manipulation diffusion 접근법이 Dex1B의 dexterous manipulation을 양손 조작으로 확장한 발전된 형태다.
+- 🔄 다른 접근: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — Dex1B가 대규모 시연 데이터에 중점을 두는 반면, Sim-to-Real RL은 시뮬레이션에서 실제로의 전이 문제를 중점적으로 다룬다.
+- 🔄 다른 접근: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — Dex1B는 RVT-2와 같은 정교한 조작을 10억 개 시연 데이터로 학습하는 다른 대규모 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — Dex1B의 대규모 양손 조작 데이터셋과 학습 방법론이 DexGarmentLab의 의류 조작 특화 환경 구축의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — 10억 개 시연으로 학습한 손재주 조작의 기초적인 대규모 데이터 접근법을 제공합니다.

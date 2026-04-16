@@ -1,3 +1,25 @@
+---
+title: "2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio"
+authors:
+  - "Yejin Kim"
+  - "Wilbert Pumacay"
+  - "Omar Rayyan"
+  - "Max Argus"
+  - "Winson Han"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "로봇 네비게이션과 매니퓰레이션을 위한 230k개 이상의 다양한 실내 환경, 130k개의 주석이 달린 객체 자산, 42M개의 안정적인 그래스프를 포함하는 대규모 오픈 에코시스템 MolmoSpaces를 제시하고, 이를 통해 로봇 정책의 일반화 능력을 평가할 수 있는 벤치마크를 구축했다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kim et al._2026_MolmoSpaces A Large-Scale Open Ecosystem for Robot Navigation and Manipulation.pdf"
+---
+
 # MolmoSpaces: A Large-Scale Open Ecosystem for Robot Navigation and Manipulation
 
 > **저자**: Yejin Kim, Wilbert Pumacay, Omar Rayyan, Max Argus, Winson Han, Eli VanderBilt, Jordi Salvador, Abhay Deshpande, Rose Hendrix, Snehal Jauhri, Shuo Liu, Nur Muhammad Mahi Shafiullah, Maya Guru, Ainaz Eftekhar, Karen Farley, Donovan Clay, Jiafei Duan, Arjun Guru, Piper Wolters, Alvaro Herrasti, Ying-Chun Lee, Georgia Chalvatzaki, Yuchen Cui, Ali Farhadi, Dieter Fox, Ranjay Krishna | **날짜**: 2026-02-11 | **URL**: [https://arxiv.org/abs/2602.11337](https://arxiv.org/abs/2602.11337)
@@ -69,3 +91,19 @@
 - Overall: 4/5
 
 **총평**: MolmoSpaces는 로봇 학습의 평가 기준이 되어 왔던 장면과 객체의 규모 제약을 크게 확장하며, simulator-agnostic 설계와 강한 시뮬-투-리얼 상관관계 검증으로 실무적 신뢰성을 확보한 중요한 오픈 인프라이다. 다만 task 복잡도와 시각적 현실성에서 아직 개선의 여지가 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2100_Mimicking-Bench_A_Benchmark_for_Generalizable_Humanoid-Scene/review]] — 둘 다 로봇을 위한 대규모 환경 데이터를 제공하지만, MolmoSpaces는 정적 환경과 그래스프에, Mimicking-Bench는 동적 인간-객체 상호작용에 초점을 둔다.
+- 🏛 기반 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — Genie Sim 3.0의 고품질 시뮬레이션 플랫폼이 MolmoSpaces의 230k 환경을 생성하고 검증하는 기술적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — MolmoSpaces의 대규모 실내 환경 데이터셋이 LookOut의 egocentric 내비게이션 정책 학습에 훈련 환경으로 활용될 수 있다.
+- 🔗 후속 연구: [[papers/1644_RoboCasa_Large-Scale_Simulation_of_Everyday_Tasks_for_Genera/review]] — RoboCasa의 everyday tasks 시뮬레이션이 MolmoSpaces의 대규모 실내 환경 생태계로 크게 확장된 것이다
+- 🔄 다른 접근: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 둘 다 manipulation benchmark이지만 MolmoSpaces는 대규모 환경 다양성에, MS-HAB는 저수준 조작과 빠른 시뮬레이션에 중점을 둔다
+- 🔗 후속 연구: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — MolmoSpaces의 대규모 실내 환경을 RoboPlayground의 구조화된 물리 도메인과 결합하여 더 체계적인 로봇 평가 민주화가 가능하다.
+- 🔄 다른 접근: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — MolmoSpaces는 대규모 시뮬레이션 환경, GaussGym은 real-to-sim 프레임워크로 서로 다른 방향의 로봇 학습 환경 구축을 제공한다.
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 대규모 로봇 네비게이션 생태계에서 360도 시각 탐색이 다양한 환경에서의 일반화 능력을 제공할 수 있다.
+- 🏛 기반 연구: [[papers/1868_DexHub_and_DART_Towards_Internet_Scale_Robot_Data_Collection/review]] — MolmoSpaces의 대규모 개방형 로봇 생태계가 DexHub의 클라우드 데이터베이스와 DART의 데이터 수집 플랫폼 구축에 필요한 인프라와 설계 원칙을 제공한다.
+- 🧪 응용 사례: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 인간 데이터 기반 내비게이션 학습을 대규모 로봇 내비게이션 생태계에 적용
+- 🔗 후속 연구: [[papers/2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — 대규모 개방형 생태계를 통한 로봇 네비게이션의 확장된 프레임워크를 제공한다.
+- 🔗 후속 연구: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — ManiSkill-HAB의 home manipulation 벤치마크가 MolmoSpaces의 대규모 실내 환경 생태계로 확장된 것으로 볼 수 있다
+- 🔄 다른 접근: [[papers/2100_Mimicking-Bench_A_Benchmark_for_Generalizable_Humanoid-Scene/review]] — 둘 다 로봇 내비게이션과 매니퓰레이션을 위한 대규모 데이터셋과 벤치마크를 제공하지만 Mimicking-Bench는 인간 모션 중심, MolmoSpaces는 환경 중심이다.

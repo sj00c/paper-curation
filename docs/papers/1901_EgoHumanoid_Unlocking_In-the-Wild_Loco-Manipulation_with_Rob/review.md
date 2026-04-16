@@ -1,3 +1,25 @@
+---
+title: "1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob"
+authors:
+  - "Modi Shi"
+  - "Shijia Peng"
+  - "Jin Chen"
+  - "Haoran Jiang"
+  - "Yinghui Li"
+date: "2026.02"
+doi: "10.48550/arXiv.2602.10106"
+arxiv: ""
+score: 4.0
+essence: "EgoHumanoid는 로봇 없이 수집한 대규모 인간 egocentric 시연과 제한된 로봇 데이터를 co-train하여 휴머노이드 로봇이 다양한 현실 환경에서 loco-manipulation을 수행하도록 하는 첫 번째 프레임워크이다. View alignment와 action alignment로 구성된 embodiment 정렬 파이프라인을 통해 인간-로봇 간의 신체 형태, 관점, 동역학의 차이를 극복한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2026_EgoHumanoid Unlocking In-the-Wild Loco-Manipulation with Robot-Free Egocentric Demonstration.pdf"
+---
+
 # EgoHumanoid: Unlocking In-the-Wild Loco-Manipulation with Robot-Free Egocentric Demonstration
 
 > **저자**: Modi Shi, Shijia Peng, Jin Chen, Haoran Jiang, Yinghui Li, Di Huang, Ping Luo, Hongyang Li, Li Chen | **날짜**: 2026-02-10 | **DOI**: [10.48550/arXiv.2602.10106](https://doi.org/10.48550/arXiv.2602.10106)
@@ -68,3 +90,20 @@ EgoHumanoid는 로봇 없이 수집한 대규모 인간 egocentric 시연과 제
 - Overall: 4/5
 
 **총평**: EgoHumanoid는 휴머노이드 loco-manipulation 분야에서 human egocentric data 활용의 새로운 가능성을 체계적으로 보여주는 획기적인 작업이다. Practical embodiment alignment pipeline, 현실 환경에서의 강력한 성능 개선(51%), 그리고 scalability 분석은 향후 humanoid 로봇 학습의 중요한 방향을 제시한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoMimic의 egocentric video 학습 프레임워크가 EgoHumanoid의 robot-free egocentric 시연 학습에 기본 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — EgoVLA가 egocentric human video를 VLA 모델로 확장하여 EgoHumanoid의 embodiment 정렬을 더 포괄적인 언어-비전-행동 모델로 발전시킨다.
+- 🔄 다른 접근: [[papers/2022_In-N-On_Scaling_Egocentric_Manipulation_with_in-the-wild_and/review]] — In-N-On이 egocentric manipulation을 in-the-wild와 on-robot 데이터로 확장하여 EgoHumanoid와 다른 데이터 통합 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — EgoHumanoid의 대규모 인간 시연 데이터는 VIRAL의 visual sim-to-real 프레임워크를 보완하여 실제 환경 적응력을 크게 향상시킬 수 있다.
+- 🔗 후속 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — 인간-휴머노이드 교차 embodiment 행동 기술 전이가 EgoHumanoid의 로봇 없는 학습을 더욱 일반화한 접근법입니다.
+- 🔄 다른 접근: [[papers/1871_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — EgoHumanoid가 robot-free egocentric 시연을 loco-manipulation으로 확장하여 AINA보다 더 포괄적인 embodiment 정렬을 다룬다.
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoHumanoid가 EgoMimic의 egocentric video 학습을 loco-manipulation으로 확장하여 더 포괄적인 humanoid 제어를 실현한다.
+- 🔄 다른 접근: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — EgoHumanoid가 같은 egocentric data를 humanoid loco-manipulation으로 접근하여 EgoVLA와 다른 embodiment 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1911_Emergent_Active_Perception_and_Dexterity_of_Simulated_Humano/review]] — 에고센트릭 비전 기반 로코-조작이 능동적 인식과 손재주 개발의 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1966_Hand-Eye_Autonomous_Delivery_Learning_Humanoid_Navigation_Lo/review]] — 손-눈 자율 배송과 야생 로코-조작은 모두 에고센트릭 비전 기반 학습이지만 서로 다른 작업에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1969_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — EgoHumanoid의 1인칭 시점 로코-매니퓰레이션 학습 방법론이 HDMI의 단일 RGB 비디오 기반 상호작용 학습의 기반이 된다.
+- 🔗 후속 연구: [[papers/2015_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — HUMOTO의 고충실도 모션캡처 데이터가 EgoHumanoid의 야생환경 로코-조작 학습에 정확한 참조 데이터 제공 가능
+- 🔄 다른 접근: [[papers/2081_LeVERB_Humanoid_Whole-Body_Control_with_Latent_Vision-Langua/review]] — 둘 다 egocentric video를 활용한 humanoid 조작 학습이지만 LeVERB는 vision-language instruction에 중점을 둔 차이가 있다
+- 🧪 응용 사례: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — ULTRA의 unified multimodal control을 EgoHumanoid의 야외 loco-manipulation 환경에 적용하여 더 자연스러운 egocentric 기반 전신 제어를 달성할 수 있습니다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "robosuite는 MuJoCo 물리 엔진을 기반으로 하는 모듈식 로봇 시뮬레이션 프레임워크로, 로봇 학습 연구를 위한 벤치마크 환경과 재현 가능한 실험 환경을 제공한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Reinforcement_Learning_Training_Acceleration"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Robot_Policy_Learning"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhu et al._2020_robosuite A Modular Simulation Framework and Benchmark for Robot Learning.pdf"
 ---
@@ -89,9 +90,15 @@ robosuite는 MuJoCo 물리 엔진을 기반으로 하는 모듈식 로봇 시뮬
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — 로봇 시뮬레이션 프레임워크에서 MuJoCo 기반과 다양한 환경 지원이라는 서로 다른 설계 철학을 제시한다.
-- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — robosuite의 모듈식 시뮬레이션 환경을 가정 내 조작이라는 특정 도메인으로 확장하여 현실적인 저수준 조작을 지원한다.
-- 🔗 후속 연구: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 기본적인 로봇 시뮬레이션 환경을 대규모 도시 환경에서의 일반적 로봇 시뮬레이션 플랫폼으로 확장한다.
-- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — 로봇 학습을 위한 시뮬레이션 프레임워크에서 MuJoCo 기반과 robosuite의 서로 다른 접근 방식을 보여준다.
-- 🔗 후속 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — robosuite의 기본 시뮬레이션 프레임워크를 가정 환경의 현실적인 저수준 조작 작업으로 특화하여 확장한다.
-- 🔗 후속 연구: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — robosuite의 modular simulation을 physics simulator의 포괄적 분석으로 확장하여 더 깊은 이해를 제공한다
+- 🔄 다른 접근: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — robosuite와 ManiSkill3 모두 로봇 학습을 위한 시뮬레이션 프레임워크이지만 GPU 병렬화의 차이가 있다.
+- 🔗 후속 연구: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — robosuite의 기본 시뮬레이션 개념을 MuBlE가 Blender와 결합하여 확장한다.
+- 🔄 다른 접근: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — 두 프레임워크 모두 로봇 학습 환경을 제공하지만 조작과 네비게이션의 다른 초점을 가진다.
+- 🔗 후속 연구: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — robosuite의 모듈식 프레임워크는 RLBench와 같은 더 복잡한 벤치마크 환경 구축의 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — robosuite의 기본적인 로봇 시뮬레이션 프레임워크를 가정용 로봇의 물체 재배치 작업에 특화하여 발전시킨다.
+- 🏛 기반 연구: [[papers/1430_iGibson_10_a_Simulation_Environment_for_Interactive_Tasks_in/review]] — robosuite의 모듈화된 시뮬레이션 프레임워크가 iGibson의 대규모 상호작용 환경 구축 기반이 됨
+- 🔗 후속 연구: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — ManiSkill3의 GPU 병렬화가 robosuite의 모듈형 시뮬레이션 프레임워크를 대규모 병렬 처리로 발전시켜 학습 속도를 획기적으로 향상시킨다.
+- 🏛 기반 연구: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — MuBlE는 robosuite의 MuJoCo 기반을 확장하여 Blender 렌더링을 추가한 발전된 시뮬레이션 환경입니다.
+- 🏛 기반 연구: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — robosuite의 물리 시뮬레이션 프레임워크에서 strain gradient 매개변수 식별이 중요한 요소이다.
+- 🏛 기반 연구: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench는 robosuite와 함께 로봇 학습 벤치마크의 표준을 제시하며 더 복잡한 태스크를 다룹니다.
+- 🏛 기반 연구: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — robosuite 시뮬레이션 프레임워크가 VLABench의 대규모 로봇 조작 벤치마크 구축의 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — 로봇 조작을 위한 모듈러 시뮬레이션 프레임워크로서 물리 시뮬레이터 연구의 기반이 됩니다.

@@ -12,7 +12,9 @@ score: 4.0
 essence: "논문은 공동인용 네트워크(co-citation network)를 활용하여 학문 분야를 정규화한 상대인용비율(RCR: Relative Citation Ratio)이라는 새로운 논문 영향력 측정 지표를 제안한다. 기존의 저널임팩트팩터(JIF)와 h-지수의 한계를 극복하기 위해 개별 논문 수준에서 인용 영향력을 측정할 수 있는 방법론을 제시한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hutchins et al._2016_Relative Citation Ratio A New Metric That Uses Citation Rates to Measure Influence at the Article L.pdf"
 ---
@@ -90,14 +92,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hutchins et al._2016_Relative Citation R
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 논문 영향력 측정에서 공동인용 기반 정규화와 인용 네트워크의 사회구조적 경로 분석이라는 서로 다른 접근법을 제시합니다.
-- 🔗 후속 연구: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — RCR의 개별 논문 영향력 측정을 연구자 전체의 종합적 성과 평가로 확장하는 NK 지수와 연결됩니다.
-- 🏛 기반 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 인용 분석에서 데이터 품질 평가가 RCR과 같은 새로운 인용 지표의 신뢰성을 보장하는 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 상대인용비율(RCR)의 분야 정규화 방법론이 NK 지수의 학문분야별 성과 비교를 위한 기술적 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 논문 영향력 측정에서 상위 논문의 인용 누적을 강조하는 g-지수와 분야 정규화된 상대인용비율이라는 다른 접근법을 제시합니다.
-- 🔄 다른 접근: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 인용 프로필 분석에서 사회구조적 경로 분해와 공동인용 기반 상대인용비율이라는 서로 다른 측정 접근법을 제시합니다.
-- 🔄 다른 접근: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index와 달리 분야별 인용 패턴을 고려한 상대적 인용 비율로 연구자 성과를 측정하는 대안적 접근법이다.
-- 🔄 다른 접근: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 상대 인용 비율이라는 새로운 메트릭을 통해 정형외과 논문의 인용 성과를 다른 방식으로 측정한다
-- 🔗 후속 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 전통적인 저널 평가 도구로서의 인용 분석을 상대 인용 비율이라는 새로운 메트릭으로 발전시킨다
-- 🔄 다른 접근: [[papers/1210_Scilit_with_the_Integrated_Impact_Indicator_Assessment/review]] — Relative Citation Ratio와 I3/I3N 지표가 모두 학제간 저널 평가에서 기존 지표의 한계를 극복하려는 대안적 접근이다.
-- 🏛 기반 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 역사적 RCR 데이터 추출 방법의 이론적 기반은 RCR 메트릭의 원래 개념과 적용에서 출발한다.
+- 🔄 다른 접근: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 논문 수준의 RCR과 연구자 수준의 NK 지수가 서로 다른 관점에서 학술 성과를 측정한다.
+- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 공동인용 분석 방법론을 활용하여 학문 분야를 정의하고 인용 영향력을 정규화하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 기존의 g-지수 등 인용 기반 지표를 발전시켜 분야별 정규화를 통한 더 정확한 영향력 측정을 가능하게 한다.
+- 🔄 다른 접근: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index의 학문 분야별 편향을 해결하기 위해 공동인용 네트워크 기반의 정규화된 대안 지표를 제시합니다.
+- ⚖️ 반론/비판: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 새로운 인용 지표의 유용성을 주장하는 반면, 기존 파괴성 지수가 인용 인플레이션으로 왜곡된다는 비판적 관점을 제시합니다.
+- 🔗 후속 연구: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 인용 추천 시스템에서 상대인용비율과 같은 정규화된 지표를 활용하여 더 정확한 추천 성능을 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 개별 논문 수준의 RCR 지표와 연구자 수준의 NK 지수가 상호 보완적으로 학술 성과를 평가할 수 있다.
+- 🔗 후속 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 상대 인용 비율이라는 새로운 지표가 g-지수와 함께 인용 기반 영향력 측정의 다양한 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 학문분야 간 인용 차이를 보정하는 방법을 다루지만, 상대적 인용 비율보다는 보편적 곡선으로의 수렴에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — RCR이 상대적 인용비를 통한 영향력 측정과 달리, 인용 네트워크의 사회구조적 경로를 분석하는 보완적 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index가 학문 분야별 차이를 반영하지 못하는 문제를 해결하기 위해 공동인용 네트워크 기반의 정규화된 인용 지표를 제안합니다.
+- 🏛 기반 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 상대적 인용 비율 지표가 정형외과 논문의 인용 성과 동인 분석에 보다 정확한 비교 기준을 제공합니다.
+- 🔄 다른 접근: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 저널 영향도 평가를 전통적 인용 분석과 상대적 인용 비율이라는 다른 지표로 각각 측정
+- 🔗 후속 연구: [[papers/1210_Scilit_with_the_Integrated_Impact_Indicator_Assessment/review]] — 상대인용비율(RCR) 개념을 확장하여 학제간 저널 평가에 특화된 지표로 발전시켰습니다.
+- 🏛 기반 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — NIH의 RCR 지표 개발과 역사적 데이터 추출의 이론적 기반을 제공한다.

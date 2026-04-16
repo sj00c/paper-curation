@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Robot action tokenization을 위해 discrete cosine transform (DCT) 기반의 FAST 방식을 제안하여, 고주파 고정밀 로봇 제어 작업에서 autoregressive VLA를 효과적으로 학습할 수 있게 함."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Action_Chunking_Methods"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Action_Tokenization_Methods"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Pertsch et al._2025_FAST Efficient Action Tokenization for Vision-Language-Action Models.pdf"
 ---
@@ -91,8 +92,15 @@ Robot action tokenization을 위해 discrete cosine transform (DCT) 기반의 FA
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — DCT 기반 action tokenization이 discrete diffusion VLA의 효율적인 action representation을 위한 구체적 구현을 제공한다.
-- 🔄 다른 접근: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 data-efficient approach가 FAST의 고주파 제어에 특화된 tokenization과 다른 효율성 접근을 제시한다.
-- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 vision-language-action model이 FAST의 효율적인 action tokenization을 적용할 수 있는 기반 모델이다.
-- 🔄 다른 접근: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — 둘 다 action tokenization이지만 VQ-VLA는 vector quantization, FAST는 효율적 토큰화로 다른 접근법이다
-- 🏛 기반 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — DCT 기반의 FAST action tokenization이 discrete diffusion VLA의 효율적인 action representation 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — Sigmoid Loss for Language Image Pre-Training의 효율적 학습 방법론이 FAST의 DCT 기반 action tokenization에서 고효율 VLA 학습을 위한 기초가 된다.
+- 🔄 다른 접근: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 fast data-efficient approach와 FAST의 DCT-based tokenization은 VLA 모델 효율성을 서로 다른 방향에서 접근한다.
+- 🔗 후속 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — VLA-Cache의 efficient manipulation via caching이 FAST의 efficient action tokenization과 함께 VLA 모델의 전반적 효율성 향상을 위한 상호 보완적 접근이다.
+- 🔄 다른 접근: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — robot action representation에서 DCT-based tokenization vs trajectory autoregressive modeling의 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — VLA 모델의 action tokenization을 vector quantization 방법으로 확장한 연구입니다.
+- 🔗 후속 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — FAST의 action tokenization을 diffusion과 autoregressive를 결합한 hybrid 방식으로 확장했다.
+- 🏛 기반 연구: [[papers/1450_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Ha/review]] — action tokenization의 효율적인 방법론을 양팔 조작 작업에 적용하는 기본 원리를 제공한다.
+- 🔄 다른 접근: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — action representation에서 real-time chunking vs efficient action tokenization이라는 서로 다른 행동 처리 및 최적화 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — efficient action tokenization 방법을 제공하여 UniVLA의 discrete token 통일 접근법에 핵심 기술적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — Action tokenization의 기본 개념을 제공하여 VQ-VLA의 vector quantization 기반 action tokenizer 설계에 핵심적인 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 액션 토큰화 연구를 구조 변경 없이 액션을 직접 텍스트로 표현하는 더 단순한 방법으로 발전시켰다.
+- 🔄 다른 접근: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — discrete diffusion 대신 efficient action tokenization을 통한 다른 VLA 액션 디코딩 최적화 방법

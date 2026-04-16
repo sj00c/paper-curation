@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "DROID는 북미, 아시아, 유럽의 564개 장면과 86개 작업에서 수집한 76k개의 시연 궤적(350시간)을 포함하는 대규모 다양한 로봇 조작 데이터셋이며, 이를 통해 훈련한 정책이 높은 성능과 일반화 능력을 보인다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
   - "sub/Robotic_Interaction_Datasets"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Khazatsky et al._2024_DROID A Large-Scale In-The-Wild Robot Manipulation Dataset.pdf"
@@ -93,20 +95,16 @@ DROID는 북미, 아시아, 유럽의 564개 장면과 86개 작업에서 수집
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — DROID 대규모 데이터셋을 활용하여 로봇 조작 학습의 데이터 스케일링 법칙 실증 검증
-- 🏛 기반 연구: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — DROID의 다양성 있는 대규모 데이터가 datamodels 기반 작업별 데이터 선택의 기반 자료
-- 🧪 응용 사례: [[papers/1272_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — 실제 로봇 조작 데이터셋 구축에서 증강현실 기반 수집 방법이 적용된다
-- 🔄 다른 접근: [[papers/1339_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — 인간 시연 데이터 수집에서 스마트 글래스 기반 접근과 대규모 다양성 기반 접근의 차이점 분석
-- 🔗 후속 연구: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — 대규모 실세계 조작 데이터셋을 VLM 기반 자동 데이터 생성으로 확장하여 더욱 풍부한 학습 데이터를 구축할 수 있습니다.
-- 🏛 기반 연구: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — 로봇 하드웨어 없이 인간 시연으로 학습하는 Phantom의 핵심 데이터셋 구축 철학이 EgoMimic의 egocentric 비디오 기반 모방학습과 일치한다.
-- 🧪 응용 사례: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — DROID의 대규모 실제 로봇 데이터가 R2R2R 파이프라인의 실제 적용 성과를 검증함
-- 🔗 후속 연구: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — DROID의 대규모 실제 조작 데이터셋이 RoboBrain의 ShareRobot 데이터셋을 더 광범위한 실제 환경으로 확장한다.
-- 🔄 다른 접근: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — 대규모 로봇 조작 데이터셋 구축에서 단일 플랫폼과 다중 embodiment라는 서로 다른 전략을 채택한다.
-- 🔄 다른 접근: [[papers/1634_ZeroMimic_Distilling_Robotic_Manipulation_Skills_from_Web_Vi/review]] — EgoMimic의 egocentric learning과 ZeroMimic의 web video distillation이 서로 다른 데이터 소스로 manipulation skill 학습
-- 🔗 후속 연구: [[papers/1403_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — egocentric video를 로봇 학습 데이터로 확장 활용하는 방법이다
-- 🧪 응용 사례: [[papers/1485_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — EgoMimic의 자기중심 영상 기반 모방 학습이 HumanX framework의 실제 구현 방법을 제시함
-- 🔗 후속 연구: [[papers/1440_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — EgoMimic의 egocentric 데이터 활용 방식을 HDMI가 물체 상호작용에 특화하여 확장했다
-- 🔄 다른 접근: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — 대규모 로봇 데이터셋을 각각 통합 표준과 in-the-wild manipulation이라는 다른 접근법으로 구축한다
-- 🔄 다른 접근: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 대규모 로봇 manipulation 데이터셋을 각각 저비용 공개 로봇과 in-the-wild 환경으로 다르게 수집한다
-- 🔗 후속 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — DROID와 같은 대규모 데이터셋에서 환경과 객체 다양성 중심의 효율적 데이터 활용 전략
-- 🧪 응용 사례: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — DROID와 같은 대규모 데이터셋에서 datamodels 패러다임을 활용한 작업별 데이터 선택
+- 🔗 후속 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment는 DROID와 같은 대규모 로봇 데이터셋들을 통합하여 더 큰 규모의 다중 실시화 데이터셋을 구축했습니다.
+- 🔄 다른 접근: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2도 대규모 로봇 조작 데이터셋이지만 특정 환경에 집중한 반면, DROID는 전 세계적 다양성에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 데이터 스케일링 법칙 연구는 DROID와 같은 대규모 데이터셋이 로봇 조작 성능에 미치는 영향을 이론적으로 분석합니다.
+- 🧪 응용 사례: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA는 DROID와 같은 대규모 다양한 데이터셋을 활용한 범용 VLA 모델의 실제 구현 사례임
+- 🔄 다른 접근: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — 로봇 조작 학습을 위한 데이터셋과 벤치마킹에서 다른 접근법을 제시
+- 🔗 후속 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — DROID와 같은 대규모 데이터셋은 Neural Scaling Laws가 제시하는 데이터 크기와 성능 관계를 실증하는 구체적 사례입니다.
+- 🔗 후속 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — DROID 데이터셋과 함께 Open X-Embodiment는 대규모 로봇 학습 데이터의 체계적 수집과 활용을 위한 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — DROID 데이터셋의 in-the-wild 수집 방식이 RoboMIND의 다중 embodiment 환경으로 확장되어 더 포괄적인 벤치마크를 구성한다.
+- 🔄 다른 접근: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 손가락 조작을 위한 합성 데이터(10억)와 실제 수집 데이터(7만6천)의 서로 다른 대규모 데이터 접근법입니다.
+- 🔄 다른 접근: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — 야생 환경 로봇 조작 데이터 DROID와 다양한 로봇 시리즈 포함 ARIO가 다른 데이터 수집 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 둘 다 대규모 로봇 조작 데이터셋이지만 DROID는 in-the-wild 환경에, BridgeData V2는 통제된 실험 환경에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — DROID 데이터셋을 활용한 데이터 스케일링 법칙의 실증적 검증을 위한 기반 연구입니다.
+- 🏛 기반 연구: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — 야생 환경 로봇 조작 데이터셋에서 데이터 선택을 위한 기초 데이터를 제공합니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "RoboTron-Nav는 perception, planning, prediction을 통합하는 embodied navigation 프레임워크로, multitask collaboration (navigation + EQA)과 adaptive 3D-aware history sampling을 통해 언어 기반 시각 네비게이션 성능을 향상시킨다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhong et al._2025_RoboTron-Nav A Unified Framework for Embodied Navigation Integrating Perception, Planning, and Pred.pdf"
 ---
@@ -88,7 +90,12 @@ RoboTron-Nav는 perception, planning, prediction을 통합하는 embodied naviga
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — EmbodiedVSR의 dynamic scene graph guided reasoning이 RoboTron-Nav의 perception, planning, prediction 통합을 더 동적인 추론으로 확장한다.
-- 🏛 기반 연구: [[papers/1304_ALFRED_A_Benchmark_for_Interpreting_Grounded_Instructions_fo/review]] — ALFRED의 grounded instruction interpretation이 RoboTron-Nav의 언어 기반 시각 네비게이션의 기초 방법론을 제공한다.
-- 🔄 다른 접근: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — WMNav의 world models 통합과 RoboTron-Nav의 multitask collaboration은 모두 네비게이션 성능 향상을 위한 서로 다른 접근법이다.
-- 🔗 후속 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — RoboTron-Nav의 통합 네비게이션 프레임워크가 NavFoM의 범용성을 확장한다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — vision-language navigation의 포괄적인 survey와 taxonomy를 제공하여 RoboTron-Nav의 unified embodied navigation framework 설계에 필요한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — embodied navigation에서 perception-planning-prediction integration vs world model integration이라는 서로 다른 통합 아키텍처 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — dynamic scene graph 기반 추론을 multitask collaboration과 adaptive sampling으로 확장하여 더 포괄적인 embodied navigation 시스템을 구축한다.
+- 🏛 기반 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — SIMA의 다양한 3D 환경에서의 embodied navigation 경험이 RoboTron-Nav의 통합 navigation 프레임워크 개발에 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 시각-언어 네비게이션 기술이 RoboTron-Nav의 3D-aware history sampling과 결합되어 더 효과적인 네비게이션을 구현한다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — vision-language navigation에서 RoboTron-Nav는 통합 프레임워크로, NaVid는 VLM 기반 단계별 계획으로 접근한다.
+- 🔄 다른 접근: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — 둘 다 embodied navigation에서 통합된 프레임워크를 다루지만 RoboTron-Nav는 multitask collaboration에, MEM은 multi-scale memory에 초점을 맞춘 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — RoboTron-Nav의 통합된 embodied navigation이 Statler의 상태 유지 언어 모델로 확장되어 더 정교한 추론 기반 네비게이션을 실현할 수 있습니다.
+- 🔗 후속 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — SIMA의 다양한 3D 환경 학습 경험이 RoboTron-Nav의 embodied navigation 통합 프레임워크로 구체화되어 적용된다.

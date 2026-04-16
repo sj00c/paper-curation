@@ -1,3 +1,24 @@
+---
+title: "1894_ECO_Energy-Constrained_Optimization_with_Reinforcement_Learn"
+authors:
+  - "Weidong Huang"
+  - "Jingwen Zhang"
+  - "Jiongye Li"
+  - "Shibowen Zhang"
+  - "Jiayang Wu"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "ECO는 에너지 소비를 보상 함수의 가중치가 아닌 명시적 부등식 제약 조건으로 reformulate한 constrained RL 프레임워크로, 휴머노이드 로봇의 에너지 효율적 보행을 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2026_ECO Energy-Constrained Optimization with Reinforcement Learning for Humanoid Walking.pdf"
+---
+
 # ECO: Energy-Constrained Optimization with Reinforcement Learning for Humanoid Walking
 
 > **저자**: Weidong Huang, Jingwen Zhang, Jiongye Li, Shibowen Zhang, Jiayang Wu, Jiayi Wang, Hangxin Liu, Yaodong Yang, Yao Su | **날짜**: 2026-02-06 | **URL**: [https://arxiv.org/abs/2602.06445](https://arxiv.org/abs/2602.06445)
@@ -68,3 +89,11 @@ ECO는 에너지 소비를 보상 함수의 가중치가 아닌 명시적 부등
 - Overall: 4/5
 
 **총평**: ECO는 에너지 최적화를 constrained RL로 reformulate한 novel한 접근법으로 휴머노이드 보행의 에너지 효율성에서 획기적 성과를 달성했으며, 실제 로봇 플랫폼 검증과 constrained RL에 대한 실증적 분석은 로봇 공학 및 최적 제어 커뮤니티에 중대한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1709_The_Duke_Humanoid_Design_and_Control_For_Energy_Efficient_Bi/review]] — 에너지 효율적인 휴머노이드 보행에서 constrained RL과 하드웨어 설계 최적화라는 서로 다른 에너지 효율성 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — ECO의 에너지 제약 조건 최적화가 symmetric and low-energy locomotion의 기본적인 에너지 효율성 원리와 일치한다.
+- 🏛 기반 연구: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — SHIELD의 CBF 기반 안전성 보장 방법론이 ECO의 에너지 제약 조건을 안전하게 강제하는 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — 다목적 강화학습을 통한 통합 제어 접근 방식으로, 에너지 효율성과 다른 목표들 간의 균형을 다른 관점에서 다룬다.
+- 🏛 기반 연구: [[papers/1677_SKATER_Synthesized_Kinematics_for_Advanced_Traversing_Effici/review]] — 에너지 효율적인 traversal이 에너지 제약 최적화 강화학습의 실제 적용 사례입니다.

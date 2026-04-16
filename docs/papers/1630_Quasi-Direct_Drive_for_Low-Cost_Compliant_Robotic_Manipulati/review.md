@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Quasi-Direct Drive 구동방식을 기반으로 한 저비용 7-DOF 로봇 팔 Blue를 제안하여 인간 환경에서 안전하고 힘 제어 가능한 조작을 가능하게 함."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Portable_Humanoid_Teleoperation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gealy et al._2019_Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation.pdf"
 ---
@@ -87,3 +89,15 @@ Quasi-Direct Drive 구동방식을 기반으로 한 저비용 7-DOF 로봇 팔 B
 - Overall: 4/5
 
 **총평**: 이 논문은 인간 환경에서 필요한 저비용 compliant 로봇의 설계 패러다임을 재정의하고 Quasi-Direct Drive 방식을 통해 이를 실현한 획기적 연구로, AI 기반 로봇 학습의 대규모 보급을 가능하게 하는 중요한 플랫폼을 제시함.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1773_A_21-DOF_Humanoid_Dexterous_Hand_with_Hybrid_SMA-Motor_Actua/review]] — Quasi-Direct Drive와 SMA-Motor 하이브리드 구동은 모두 저비용으로 컴플라이언트한 로봇 조작을 실현하는 서로 다른 구동 방식이다.
+- 🔗 후속 연구: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — 저비용 컴플라이언트 조작 기술이 ToddlerBot과 같은 ML 호환 플랫폼에 적용되어 더 안전한 학습 환경을 제공할 수 있다.
+- 🔗 후속 연구: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — Quasi-Direct Drive의 저비용 힘 제어와 RAPID Hand의 멀티모달 인지를 결합하면 완전한 저비용 조작 시스템을 구축할 수 있다
+- 🔄 다른 접근: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — 둘 다 저비용 로봇 하드웨어를 제안하지만 Blue는 7-DOF 팔에, RUKA는 tendon-driven hand에 초점을 맞춘다
+- 🏛 기반 연구: [[papers/1927_Fauna_Sprout_A_lightweight_approachable_developer-ready_huma/review]] — Fauna Sprout의 경량 휴머노이드 플랫폼이 Quasi-Direct Drive 구동방식의 실제 적용 대상이 될 수 있다
+- 🏛 기반 연구: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — ToddlerBot의 저비용 ML 플랫폼 설계가 Quasi-Direct Drive와 같은 저비용 구동 방식의 실제 적용과 검증에 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1851_Control_of_Humanoid_Robots_with_Parallel_Mechanisms_using_Di/review]] — 저비용 컴플라이언트 로봇 조작을 위한 quasi-direct drive가 Cassie 영감 병렬 구동 메커니즘의 효율적인 제어에 필요한 기초 기술을 제공한다
+- 🔄 다른 접근: [[papers/1773_A_21-DOF_Humanoid_Dexterous_Hand_with_Hybrid_SMA-Motor_Actua/review]] — SMA-DC모터 하이브리드와 Quasi-Direct Drive는 모두 컴플라이언트하고 저비용인 로봇 구동을 위한 서로 다른 혁신적 접근법이다.
+- 🔄 다른 접근: [[papers/2048_Learning_Bipedal_Locomotion_on_Gear-Driven_Humanoid_Robot_Us/review]] — Learning Bipedal Locomotion은 고기어비 액추에이터 사용, Quasi-Direct Drive는 저비용 컴플라이언트 구동으로 서로 다른 액추에이션 방식을 채택한다.

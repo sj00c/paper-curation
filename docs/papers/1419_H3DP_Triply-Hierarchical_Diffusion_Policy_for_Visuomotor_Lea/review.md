@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "H³DP는 RGB-D 입력의 depth-aware layering, 다중 스케일 visual representation, 그리고 hierarchically conditioned diffusion process를 통합하여 visuomotor policy learning에서 시각 인지와 행동 생성 간의 coupling을 강화하는 방법론이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Video_Action_Generation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Vision-Language-Action_Distillation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lu et al._2025_H$^3$DP Triply-Hierarchical Diffusion Policy for Visuomotor Learning.pdf"
 ---
@@ -86,13 +87,11 @@ H³DP는 RGB-D 입력의 depth-aware layering, 다중 스케일 visual represent
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 둘 다 대규모 멀티모달 데이터로 훈련하지만 1X는 future frame prediction에, InternVLA-A1은 action execution에 중점을 둡니다.
-- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — video foundation model을 활용한 world simulation 기법을 humanoid control에 실제 적용한 발전된 형태입니다.
-- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — large-scale video generative pre-training이 humanoid world model 구축의 핵심 기반 기술입니다.
-- 🔗 후속 연구: [[papers/1353_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — Generative World Modelling for Humanoids의 1X World Model이 DreamControl-v2의 guided diffusion을 더 포괄적인 세계 모델로 확장할 수 있다.
-- 🔄 다른 접근: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — 둘 다 대규모 인간 비디오를 활용한 humanoid world model을 제시하지만, DreamDojo는 44k시간 egocentric 데이터에 중점을 둔다.
-- 🔄 다른 접근: [[papers/1368_EgoDemoGen_Egocentric_Demonstration_Generation_for_Viewpoint/review]] — 1X World Model Challenge의 generative humanoid modeling이 DiWA의 world model 기반 정책 적응과 다른 접근을 제시한다.
-- 🏛 기반 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — H³DP의 hierarchical diffusion이 manipulation trajectory generation에서 hierarchical planning의 기반 구조를 제공합니다.
-- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 둘 다 understanding, generation, action을 통합하지만 InternVLA-A1은 MoT에, 1X는 video prediction에 중점을 둡니다.
-- 🔗 후속 연구: [[papers/1603_V-JEPA_2_Self-Supervised_Video_Models_Enable_Understanding_P/review]] — humanoid 전용 세계 모델링에 V-JEPA 2의 비디오 이해 능력을 특화 적용한 사례를 제시한다
-- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 둘 다 humanoid를 위한 generative world model이지만 3D-VLA는 3D LLM 기반을, 1X World Model은 다른 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — 둘 다 spatial representation을 VLA에 통합하지만 depth-aware layering vs explicit spatial reasoning이라는 다른 방법론을 사용한다.
+- 🏛 기반 연구: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D Diffusion Policy의 공간적 이해를 RGB-D 기반 hierarchical conditioning으로 더욱 정교화했다.
+- 🔗 후속 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy를 triply-hierarchical 구조로 확장하여 visuomotor learning을 향상시켰다.
+- 🔗 후속 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — 계층적 diffusion policy에서 depth-aware representation을 추가로 고려한 확장 연구입니다.
+- 🔗 후속 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — H³DP는 계층적 diffusion policy를 삼중 계층으로 더 세분화하여 발전시킨 연구입니다.
+- 🔄 다른 접근: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — 두 논문 모두 장기간 로봇 조작을 위한 계층적 접근법을 제안하지만 RoboCerebra는 VLM 기반 계획에, H3DP는 diffusion 정책에 중점을 둔다.
+- 🔄 다른 접근: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — 역방향 궤적 생성 대신 계층적 diffusion을 통한 다른 궤적 모델링 접근법으로 유사한 문제 해결
+- 🔗 후속 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — H³DP의 triply-hierarchical diffusion과 MoDE의 efficient expert routing은 모두 diffusion policy의 복잡성과 효율성을 개선하려는 방향이다.

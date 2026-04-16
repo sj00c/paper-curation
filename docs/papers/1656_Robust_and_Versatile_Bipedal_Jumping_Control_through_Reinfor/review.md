@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Reinforcement learning과 새로운 정책 구조를 활용하여 이족 로봇 Cassie가 다양한 착지 위치와 방향으로 점프하는 강건하고 다목적인 동적 점프 제어를 실현했다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2023_Robust and Versatile Bipedal Jumping Control through Reinforcement Learning.pdf"
 ---
@@ -84,3 +86,20 @@ Reinforcement learning과 새로운 정책 구조를 활용하여 이족 로봇 
 - Overall: 4/5
 
 **총평**: 이족 로봇의 동적 점프 제어에서 RL과 새로운 정책 구조를 결합하여 기존 방법을 크게 뛰어넘는 실제 세계 성과를 달성한 우수한 연구이며, 다목적 강건한 로봇 제어의 새로운 가능성을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1637_Reinforcement_Learning_for_Versatile_Dynamic_and_Robust_Bipe/review]] — 두 논문 모두 이족 로봇의 동적 운동을 강화학습으로 학습하지만, 점프와 일반적인 이족보행이라는 다른 태스크를 다룬다.
+- 🔗 후속 연구: [[papers/1925_FastStair_Learning_to_Run_Up_Stairs_with_Humanoid_Robots/review]] — 계단 오르기에 특화된 FastStair의 방법론을 다양한 점프 동작으로 확장한 연구이다.
+- 🏛 기반 연구: [[papers/2045_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — legged robot의 민첩한 운동 기술 학습에 대한 기초적인 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1677_SKATER_Synthesized_Kinematics_for_Advanced_Traversing_Effici/review]] — 점프 제어와 롤러스케이팅 모두 동적 locomotion이지만 공중 vs 지면 접촉이라는 대조적 방법입니다.
+- 🏛 기반 연구: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — 이족 보행의 기본이 되는 강건한 점프 제어가 복잡한 지형 보행의 토대가 됩니다.
+- 🔄 다른 접근: [[papers/1677_SKATER_Synthesized_Kinematics_for_Advanced_Traversing_Effici/review]] — 롤러스케이팅과 점프 제어 모두 동적 움직임이지만 연속적 vs 폭발적 동작이라는 대조적 특성입니다.
+- 🔗 후속 연구: [[papers/1637_Reinforcement_Learning_for_Versatile_Dynamic_and_Robust_Bipe/review]] — Robust and Versatile Bipedal Jumping의 강화학습 기반 점프 제어가 본 논문의 다양한 동적 보행 기술을 확장함
+- 🔗 후속 연구: [[papers/1711_The_MIT_Humanoid_Robot_Design_Motion_Planning_and_Control_Fo/review]] — 강건한 이족 점프 제어의 개념을 백플립, 전플립 등 고도의 아크로바틱 동작으로 확장하여 kino-dynamic 계획과 착지 제어를 통합했다.
+- 🏛 기반 연구: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — 강화학습을 통한 robust한 이족 점프 제어가 CLF-RL의 동적 달리기에 필요한 기초적인 동적 움직임 제어 기술을 제공한다
+- 🧪 응용 사례: [[papers/1920_Explosive_Output_to_Enhance_Jumping_Ability_A_Variable_Reduc/review]] — 강화학습을 통한 견고하고 다재다능한 이족 점프 제어가 EVRR-K 설계의 실제 제어 적용 사례입니다.
+- 🏛 기반 연구: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — 강화학습을 통한 강건하고 다목적인 이족 점프 제어가 HuB의 극도 균형 작업 수행의 핵심 토대가 된다.
+- 🏛 기반 연구: [[papers/2045_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — 강건하고 다양한 이족 점프 제어가 사족 로봇의 동적 운동 기술 학습에 기초적 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/2105_MoRE_Mixture_of_Residual_Experts_for_Humanoid_Lifelike_Gaits/review]] — Robust and Versatile Bipedal Jumping의 강화학습 기반 보행 제어 기법이 MoRE의 다중 전문가 시스템 설계에 이론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/2127_Optimizing_Bipedal_Locomotion_for_The_100m_Dash_With_Compari/review]] — Robust bipedal jumping control이 100m 대시의 보행 매개변수 최적화를 점프와 같은 다른 고속 동적 움직임으로 확장한 형태입니다.

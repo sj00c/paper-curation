@@ -1,3 +1,23 @@
+---
+title: "1780_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu"
+authors:
+  - "Dennis Bank"
+  - "Joost Cordes"
+  - "Thomas Seel"
+  - "Simon F. G. Ehlers"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인형로봇의 불규칙한 지형 보행을 위해 깊이 카메라와 LiDAR 데이터를 융합하여 높이맵을 생성하는 하이브리드 Encoder-Decoder 구조를 제시하며, CNN과 GRU를 결합한 신경망이 시간적 일관성을 유지하면서 공간 특성을 추출한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bank et al._2026_A Hybrid Autoencoder for Robust Heightmap Generation from Fused Lidar and Depth Data for Humanoid Ro.pdf"
+---
+
 # A Hybrid Autoencoder for Robust Heightmap Generation from Fused Lidar and Depth Data for Humanoid Robot Locomotion
 
 > **저자**: Dennis Bank, Joost Cordes, Thomas Seel, Simon F. G. Ehlers | **날짜**: 2026-02-05 | **URL**: [https://arxiv.org/abs/2602.05855](https://arxiv.org/abs/2602.05855)
@@ -59,3 +79,16 @@
 - Overall: 4/5
 
 **총평**: 인형로봇의 지형 인식과 보행 제어를 연결하는 실용적이고 체계적인 학습 기반 프레임워크로, 다중 센서 융합과 heightmap 표현의 최적화를 통해 명확한 성능 개선을 달성했다. 다만 실제 로봇에서의 검증과 지연 분석이 보충되면 산업 적용 가능성이 한층 높아질 것으로 예상된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — 지형 인식을 위해 LiDAR 데이터를 활용하는 유사한 접근이지만 하나는 높이맵 생성, 다른 하나는 attention 기반 맵 인코딩을 사용한다.
+- 🔗 후속 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — 관찰 노이즈에 강건한 representation learning으로 LiDAR 기반 높이맵의 노이즈 문제를 해결할 수 있는 발전된 접근법이다.
+- 🧪 응용 사례: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 실시간 지형 높이맵 생성 기술을 실제 인지적 휴머노이드 보행에 적용한 구체적 사례이다.
+- 🏛 기반 연구: [[papers/1802_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — 상용 VIO 시스템들의 성능 벤치마크가 LiDAR-카메라 융합 높이맵 생성에서 센서 선택의 기반 자료를 제공합니다.
+- 🔗 후속 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — 구형 파노라마-LiDAR 교차 모달 인식을 높이맵 기반 지형 탐지와 결합한 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1802_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — 4개 상용 VIO 시스템의 성능 평가가 LiDAR-깊이 카메라 융합에서 센서 선택과 비교의 기반 자료를 제공합니다.
+- 🔗 후속 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — LiDAR 기반 지형 인식의 노이즈 문제를 contractive representation learning으로 해결하여 더 강건한 시스템을 구현한다.
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — 높이맵 생성 기술이 지형 인식 정책 학습의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — 지형 인식을 위해 하나는 attention 기반 맵 인코딩, 다른 하나는 하이브리드 오토인코더를 사용하는 상호 보완적 접근법이다.
+- 🏛 기반 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 퓨전 기반 견고한 높이맵 생성의 하이브리드 오토인코더 기술이 실시간 지형 인식의 핵심 기반입니다.

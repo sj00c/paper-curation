@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "CLAM은 라벨이 없는 관찰 데이터로부터 로봇 정책을 학습하기 위해 continuous latent action space를 사용하며, action decoder를 jointly training하여 실제 환경 액션으로의 grounding을 보장하는 방법을 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Action_Chunking_Methods"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_CLAM Continuous Latent Action Models for Robot Learning from Unlabeled Demonstrations.pdf"
 ---
@@ -90,14 +90,9 @@ CLAM은 라벨이 없는 관찰 데이터로부터 로봇 정책을 학습하기
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 둘 다 continuous action learning이지만 CLAM은 latent action space를, BeT는 action discretization을 통한 multi-modal 학습을 사용한다.
-- 🏛 기반 연구: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — ATM의 라벨 없는 궤적 모델링이 CLAM의 관찰 데이터 기반 정책 학습에 대한 방법론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — Latent Action Pretraining의 비디오 기반 사전학습이 CLAM의 continuous latent action space 학습을 더욱 강화할 수 있다.
-- 🔗 후속 연구: [[papers/1275_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph/review]] — physics-based 동작 모방을 더 깊은 강화학습으로 발전시킨 연구다
-- 🧪 응용 사례: [[papers/1283_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — DeepMimic 기반 모션 모방에서 MDS를 통한 난이도 평가를 적용한다
-- 🔗 후속 연구: [[papers/1261_Agility_Meets_Stability_Versatile_Humanoid_Control_with_Hete/review]] — DeepMimic 기반 물리 시뮬레이션에 민첩성과 안정성 통합 개념을 확장 적용한다
-- 🔄 다른 접근: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — 둘 다 unsupervised learning이지만 Play-LMP는 plan space에, CLAM은 action sequence supervision에 중점을 둡니다.
-- 🏛 기반 연구: [[papers/1457_HuB_Learning_Extreme_Humanoid_Balance/review]] — DeepMimic의 physics-based 모방 학습이 HuB의 극단적 균형 학습의 기반이 된다
-- 🏛 기반 연구: [[papers/1517_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — 시뮬레이션에서 학습한 신경망 정책을 실제 로봇에 전이하는 방법론이 DeepMimic의 물리 기반 캐릭터 제어 프레임워크를 기반으로 한다.
-- 🏛 기반 연구: [[papers/1509_KungfuBot_Physics-Based_Humanoid_Whole-Body_Control_for_Lear/review]] — KungfuBot의 physics-based control은 DeepMimic의 example-guided deep RL 방법론에서 발전한다.
-- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 둘 다 continuous action space에서 multi-modal behavior 학습이지만 BeT는 action discretization을, CLAM은 continuous latent action을 사용한다.
+- 🏛 기반 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — Latent Action Diffusion의 latent action space 개념을 continuous space에서 unlabeled observation data로부터의 학습으로 확장한 방법론입니다.
+- 🔗 후속 연구: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — Learning Latent Plans from Play의 라벨 없는 학습 개념을 continuous latent action space와 joint training을 통한 실제 환경 grounding으로 발전시킨 연구입니다.
+- 🔄 다른 접근: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — 둘 다 latent action modeling을 다루지만 CLAM은 continuous latent space에, Moto는 latent motion token에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — 둘 다 연속적인 행동 학습이지만 Play-LMP는 잠재 계획에, CLAM은 연속 잠재 행동에 집중한다.
+- 🏛 기반 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 연속 잠재 행동 모델 CLAM이 Dex1B의 생성 모델 기반 시연 생성에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 연속 잠재 행동 모델 CLAM이 BeT의 action discretization에 이론적 기반을 제공합니다.

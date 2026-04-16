@@ -13,7 +13,7 @@ score: 4.0
 essence: "연구비 배분 초기 단계에 추첨(lottery)을 도입하여 기존의 편향된 동료평가(peer review) 기반 경쟁적 배분 시스템을 개선하고, GrantInq 시뮬레이션 앱을 통해 다양한 자금배분 시나리오의 비용, 다양성, 품질 효과를 비교 분석한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Peer_Review_Grant_Systems"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luebber et al._2023_Rethink Funding by Putting the Lottery First.pdf"
 ---
@@ -89,9 +89,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luebber et al._2023_Rethink Funding by P
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 기존 동료평가 시스템이 유명한 연구자보다는 혁신적 아이디어를 선별하는 데 한계가 있음을 보여주는 근거를 제공한다.
-- 🔄 다른 접근: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 연구비 배분의 효율성을 추첨으로 개선하려는 접근과 달리 공적 자금 활용의 실증적 분석을 통한 개선 방안이다.
-- ⚖️ 반론/비판: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 기존 연구비 배분에서 나타나는 매튜 효과의 불평등을 추첨 시스템으로 완화하려는 대안적 접근법이다.
-- ⚖️ 반론/비판: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 공적 자금의 효율적 배분을 위해 기존 동료평가 시스템 개선보다는 추첨 기반 배분을 제안하는 대안적 관점이다.
-- 🔄 다른 접근: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 펀딩에서 Matthew effect의 불평등을 해결하기 위한 대안적 접근법으로 추첨 기반 펀딩 시스템을 제안합니다.
-- 🔄 다른 접근: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — NIH 동료평가의 한계를 해결하기 위해 복권 방식의 펀딩 시스템을 대안으로 제시한다
+- 🏛 기반 연구: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 동료평가 패널이 큰 아이디어보다 유명한 연구자를 선호하는 경향은 추첨 기반 펀딩 시스템이 필요한 이유를 뒷받침하는 실증적 근거입니다.
+- 🔗 후속 연구: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 평가를 통한 과학 거버넌스의 글로벌 발견적 접근법은 추첨 기반 펀딩이 기존 평가 시스템을 어떻게 혁신할 수 있는지에 대한 정책적 맥락을 제공합니다.
+- 🧪 응용 사례: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서 편향의 메타 평가는 추첨 기반 펀딩 시스템이 기존 동료평가 편향을 얼마나 효과적으로 줄일 수 있는지 측정하는 프레임워크를 제공합니다.
+- 🔄 다른 접근: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 추첨 기반 펀딩 시스템은 Matthew effect로 인한 편향된 자금배분을 완화할 수 있는 혁신적 대안을 제시합니다.
+- 🔄 다른 접근: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 전통적인 연구 자금 지원 방식에 대한 대안적 접근법을 보여준다.
+- 🔗 후속 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — 펀딩에서 추첨 시스템을 우선시하자는 제안을 AI 기반 공정성 확보로 발전시켜, 기술적 해결책의 구체적 방향을 제시한다.
+- 🔄 다른 접근: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 정치적 편향을 줄이기 위한 연구 자금 배분 방식으로 추첨 시스템을 제안하여 다른 접근법을 제시한다.
+- ⚖️ 반론/비판: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 복권 방식의 연구비 지원을 제안한 연구로, 자금과 성과의 직접적 연결에 대해 근본적으로 다른 관점을 제시합니다.

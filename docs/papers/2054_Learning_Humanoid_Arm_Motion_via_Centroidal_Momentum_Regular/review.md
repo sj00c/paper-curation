@@ -1,3 +1,23 @@
+---
+title: "2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular"
+authors:
+  - "Ho Jae Lee"
+  - "Se Hwan Jeon"
+  - "Sangbae Kim"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간의 팔 스윙 운동에서 영감을 받아, centroidal angular momentum (CAM) 추적 보상을 통해 다리와 팔을 별도의 에이전트로 취급하는 multi-agent RL 프레임워크를 제시하여 휴머노이드 로봇의 협응 제어를 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lee et al._2025_Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning.pdf"
+---
+
 # Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Reinforcement Learning
 
 > **저자**: Ho Jae Lee, Se Hwan Jeon, Sangbae Kim | **날짜**: 2025-07-05 | **URL**: [https://arxiv.org/abs/2507.04140](https://arxiv.org/abs/2507.04140)
@@ -65,3 +85,18 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 centroidal dynamics의 물리적 의미와 생역학적 원리를 CTDE 기반 multi-agent RL과 효과적으로 결합하여, 휴머노이드 로봇의 자연스러운 팔 스윙과 향상된 균형 제어를 달성한 독창적이고 실용적인 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2032_JAEGER_Dual-Level_Humanoid_Whole-Body_Controller/review]] — 휴머노이드 전신 협응에서 centroidal momentum 기반 multi-agent 방식 대신 dual-level 제어 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 대칭성 등변을 활용한 협응 locomotion의 원리가 팔과 다리 간 균형잡힌 협응 제어에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — centroidal angular momentum 추적을 heterogeneous meta-control과 결합하여 더 정교한 접촉 기반 locomotion을 구현할 수 있다.
+- 🏛 기반 연구: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — Learning Humanoid Arm Motion의 centroidal momentum 추적이 Geometry-Aware Predictive Safety Filters의 안전한 휴머노이드 제어에 필요한 동역학적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — Learning Humanoid Arm Motion의 multi-agent RL 프레임워크를 MASH의 cooperative-heterogeneous 다중 에이전트 강화학습으로 확장하여 더 복잡한 협업 제어가 가능하다.
+- 🧪 응용 사례: [[papers/1853_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — Learning Humanoid Arm Motion의 팔-다리 분리 제어가 Coordinated Humanoid Manipulation의 choice policies에서 상하체 협응 최적화에 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — 인간의 팔 스윙에서 영감을 받은 제어가 근골격 시스템에서의 근육 특성 및 활용에 대한 이해를 기반으로 한다.
+- 🧪 응용 사례: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — centroidal momentum 추적을 통한 팔-다리 협응이 전신 운동 참조가 있는 휴머노이드 제어에 적용된다.
+- 🔗 후속 연구: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 팔 운동을 통한 협응 제어가 보행과 비행 사이의 자동 전환으로 확장되어 더 복잡한 다중 모드 제어를 보여준다.
+- 🏛 기반 연구: [[papers/1913_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe/review]] — centroidal momentum regularization이 EMP의 standing upper-body motion control에서 전체 몸의 운동량 관리에 대한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2032_JAEGER_Dual-Level_Humanoid_Whole-Body_Controller/review]] — 휴머노이드 전신 제어에서 dual-level 방식 대신 centroidal momentum을 활용한 multi-agent 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 보행과 비행 사이의 자동 전환이 centroidal momentum을 통한 팔-다리 협응 제어의 기반을 제공한다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "의류 조작을 위한 첫 번째 양손 기민한 손가락 조작 환경 DexGarmentLab을 제시하고, 단일 전문가 시연으로부터 자동 데이터 생성 및 Hierarchical gArment-manipuLation pOlicy (HALO)를 통해 다양한 의류 형상과 변형에 대한 일반화를 달성한다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/Contact-Preserving_Motion_Reconstruction"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_DexGarmentLab Dexterous Garment Manipulation Environment with Generalizable Policy.pdf"
 ---
@@ -88,12 +89,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_DexGarmentLab Dexterous
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1338_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — 정밀한 손가락 조작 캡처 기술을 의류 조작이라는 복잡한 태스크에 적용한다
-- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — dexterous manipulation을 다른 환경과 정책 학습 방법으로 접근한다
-- 🏛 기반 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — diffusion 기반 정책 구성의 기본 방법론을 의류 조작에 적용한다
-- 🔄 다른 접근: [[papers/1378_Embracing_Bulky_Objects_with_Humanoid_Robots_Whole-Body_Mani/review]] — 둘 다 복잡한 물체 조작을 다루지만 전자는 대형 물체 포용에, 후자는 정교한 garment 조작에 특화되어 있다.
-- 🧪 응용 사례: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — DexGarmentLab의 의류 조작 환경이 SKT의 VLM 활용 의류 조작 성능을 구체적인 실험 환경에서 적용한다.
-- 🔗 후속 연구: [[papers/1429_GraspSense_언어_기반_인지와_힘_맵을_활용한_손재주_로봇_파지_계획/review]] — force-aware grasping을 복잡한 조작 환경으로 확장한 응용이다
-- 🧪 응용 사례: [[papers/1487_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — DexGarmentLab의 정밀한 조작 환경이 4D 인간-객체 상호작용 데이터의 실제 활용 사례를 보여줌
-- 🔗 후속 연구: [[papers/1556_Lightning_Grasp_High_Performance_Procedural_Grasp_Synthesis/review]] — DexGarmentLab의 정교한 조작 환경이 Contact Field 기반 고성능 그래스프 생성의 확장된 적용 영역을 제시함
-- 🧪 응용 사례: [[papers/1548_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/review]] — 양손 visuotactile 기술 학습이 의복 조작과 같은 복잡한 정교 조작 환경에서 직접 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — Dex1B의 대규모 양손 조작 데이터셋과 학습 방법론이 DexGarmentLab의 의류 조작 특화 환경 구축의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1376_EgoScale_Scaling_Dexterous_Manipulation_with_Diverse_Egocent/review]] — EgoScale은 DexGarmentLab의 양손 조작 개념을 다양한 작업으로 확장하여 더 포괄적인 조작 학습 환경을 제공합니다.
+- 🔄 다른 접근: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — OmniH2O는 의류 조작과 유사한 복잡한 전신 조작을 다루지만 휴머노이드 로봇에 특화된 다른 접근법을 사용합니다.
+- 🧪 응용 사례: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — 모방 학습을 통한 손재주 조작이 의류 조작 환경에서 구체적으로 적용됩니다.
+- 🔗 후속 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 시각 기반 손재주 조작의 sim-to-real 강화학습을 의류 조작으로 확장할 수 있습니다.
+- 🏛 기반 연구: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — DexGarmentLab의 의류 조작 환경이 SKT의 state-aware keypoint trajectory 방법론 개발과 검증에 실험적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 의류 조작을 위한 양손 기민 조작과 10억 개 손가락 조작 시연을 결합하여 더 풍부한 학습을 달성할 수 있습니다.
+- 🧪 응용 사례: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — 의류 조작 환경에서 손재주 조작의 구체적인 적용 사례를 보여줍니다.

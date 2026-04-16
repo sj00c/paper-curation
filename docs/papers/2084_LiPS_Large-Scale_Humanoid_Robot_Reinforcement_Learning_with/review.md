@@ -1,3 +1,25 @@
+---
+title: "2084_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with"
+authors:
+  - "Qiang Zhang"
+  - "Gang Han"
+  - "Jingkai Sun"
+  - "Wen Zhao"
+  - "Jiahang Cao"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "LiPS는 GPU 기반 병렬 훈련 환경에서 URDF 형식의 휴머노이드 로봇을 위한 강화학습 방법으로, 멀티-리지드바디 폐루프 동역학 모델링을 통해 시뮬레이션-현실 간 격차를 줄인다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Parallel_Robot_Training"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_LiPS Large-Scale Humanoid Robot Reinforcement Learning with Parallel-Series Structures.pdf"
+---
+
 # LiPS: Large-Scale Humanoid Robot Reinforcement Learning with Parallel-Series Structures
 
 > **저자**: Qiang Zhang, Gang Han, Jingkai Sun, Wen Zhao, Jiahang Cao, Jiaxu Wang, Hao Cheng, Lingfeng Zhang, Yijie Guo, Renjing Xu | **날짜**: 2025-03-11 | **URL**: [https://arxiv.org/abs/2503.08349](https://arxiv.org/abs/2503.08349)
@@ -66,3 +88,14 @@ LiPS는 GPU 기반 병렬 훈련 환경에서 URDF 형식의 휴머노이드 로
 - Overall: 4/5
 
 **총평**: LiPS는 휴머노이드 로봇의 GPU 병렬 강화학습에서 sim2real 격차를 크게 줄이는 실질적이고 실용적인 방법으로, URDF 기반 복잡한 로봇 제어 연구에 중요한 기여를 한다. 다만 광범위한 실제 로봇 검증과 다양한 시뮬레이션 플랫폼으로의 확장 연구가 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2006_Humanoid-Gym_Reinforcement_Learning_for_Humanoid_Robot_with/review]] — 강화학습 기반 휴머노이드 훈련이라는 같은 목표를 다른 시뮬레이션 환경과 병렬화 방식으로 구현한 대안이다.
+- 🏛 기반 연구: [[papers/1846_ComFree-Sim_A_GPU-Parallelized_Analytical_Contact_Physics_En/review]] — GPU 기반 병렬 물리 시뮬레이션의 핵심 기술적 기반을 제공하여 LiPS의 대규모 훈련을 가능하게 한다.
+- 🔗 후속 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 실제-시뮬레이션 프레임워크를 GPU 병렬 환경으로 확장하여 더 효율적인 휴머노이드 학습을 실현한다.
+- 🧪 응용 사례: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — MoE 기반 로봇 제어의 시뮬레이션-현실 예측 가능성을 대규모 병렬 훈련으로 개선할 수 있다.
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 15분 내 시뮬레이션-현실 학습과 GPU 기반 병렬 훈련이라는 다른 접근법으로 빠른 휴머노이드 학습을 제시한다.
+- 🏛 기반 연구: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — 종단간 강화학습 프레임워크의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — PopArt의 multi-task 강화학습 정규화 기법이 LiPS의 병렬 훈련에서 다양한 휴머노이드 모델 간 학습 안정성을 향상시킨다.
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — GPU 기반 병렬 훈련을 통한 대규모 휴머노이드 강화학습의 다른 접근법을 제시한다.

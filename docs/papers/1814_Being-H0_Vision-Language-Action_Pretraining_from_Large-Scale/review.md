@@ -1,3 +1,25 @@
+---
+title: "1814_Being-H0_Vision-Language-Action_Pretraining_from_Large-Scale"
+authors:
+  - "Hao Luo"
+  - "Yicheng Feng"
+  - "Wanpeng Zhang"
+  - "Sipeng Zheng"
+  - "Ye Wang"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Being-H0는 대규모 인간 비디오로부터 학습한 민첩한 Vision-Language-Action 모델로, physical instruction tuning 패러다임을 통해 인간의 손 동작을 명시적으로 모델링하여 로봇 조작 작업으로 전이한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luo et al._2025_Being-H0 Vision-Language-Action Pretraining from Large-Scale Human Videos.pdf"
+---
+
 # Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos
 
 > **저자**: Hao Luo, Yicheng Feng, Wanpeng Zhang, Sipeng Zheng, Ye Wang, Haoqi Yuan, Jiazheng Liu, Chaoyi Xu, Qin Jin, Zongqing Lu | **날짜**: 2025-07-21 | **URL**: [https://arxiv.org/abs/2507.15597](https://arxiv.org/abs/2507.15597)
@@ -65,3 +87,19 @@ Being-H0는 대규모 인간 비디오로부터 학습한 민첩한 Vision-Langu
 - Overall: 4/5
 
 **총평**: Being-H0는 대규모 인간 비디오로부터 민첩한 로봇 조작을 학습하는 새로운 패러다임을 제시하며, physical instruction tuning과 part-level motion tokenization을 통해 기존 VLA의 데이터 부족 문제를 혁신적으로 해결한다. 명시적 동작 모델링 접근법과 UniHand 데이터셋은 로봇 공학 분야에 중요한 기여를 제공한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1815_Being-M05_A_Real-Time_Controllable_Vision-Language-Motion_Mo/review]] — Being-H0의 vision-language-action pretraining이 Being-M0.5의 controllable motion model 개발에 기반 기술을 제공한다.
+- 🔗 후속 연구: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오 학습 방법론에서 Being-H0가 제시한 physical instruction tuning이 universal policy 개발에 영향을 미쳤다.
+- 🔄 다른 접근: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — egocentric video 기반 imitation learning에서 하나는 인간 손 동작 모델링, 다른 하나는 일반적 모방 학습을 다룬다.
+- 🔗 후속 연구: [[papers/1806_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — Apple Vision Pro를 활용한 로봇 없는 데이터 수집 방식을 Being-H0의 대규모 인간 비디오 사전 훈련에 통합할 수 있습니다.
+- 🔄 다른 접근: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — 두 연구 모두 대규모 인간 동작 데이터를 활용하지만 Being-H0는 VLA 사전 훈련에, 다른 연구는 모션 모델 확장에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — 두 논문 모두 대규모 사전훈련 데이터를 활용한 범용 휴머노이드 기초모델을 제시하지만, GR00T N1은 이중 시스템 구조를, Being-H0는 통합 VLA 아키텍처를 사용함
+- 🔄 다른 접근: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — 두 논문 모두 대규모 데이터를 활용한 휴머노이드 학습을 다루지만, 모션 생성과 vision-language-action이라는 다른 모달리티를 다룬다.
+- 🔗 후속 연구: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 비전-언어-액션 사전 학습의 개념을 모션 캡처 데이터와 결합하여 42M 파라미터 규모의 휴머노이드 제어기로 확장했다.
+- 🔗 후속 연구: [[papers/1806_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — 대규모 인간 비디오 사전 훈련에 Apple Vision Pro를 활용한 로봇 없는 데이터 수집 방식을 통합할 수 있습니다.
+- 🔄 다른 접근: [[papers/1815_Being-M05_A_Real-Time_Controllable_Vision-Language-Motion_Mo/review]] — 동일한 Being 시리즈로 H0는 manipulation, M0.5는 motion generation에 특화되어 vision-language 모델의 다른 응용을 보여준다.
+- 🔗 후속 연구: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — 대규모 비전-언어-행동 사전학습이 VLA 모델의 실제 구현 사례로 확장될 수 있다.
+- 🔗 후속 연구: [[papers/2019_iCub3_Avatar_System_Enabling_Remote_Fully-Immersive_Embodime/review]] — iCub3의 완전 구현화가 대규모 인간 데이터 기반 vision-language-action 사전 훈련으로 발전할 수 있다.
+- 🔗 후속 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — 대규모 휴머노이드 데이터에서 학습한 VLA 모델을 궤적 전이를 통해 특정 로봇으로 부스팅하는 발전된 형태이다.

@@ -1,3 +1,22 @@
+---
+title: "1970_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu"
+authors:
+  - "Amartya Purushottam"
+  - "Jack Yan"
+  - "Christopher Yu"
+  - "Joao Ramos"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휠형 휴머노이드 로봇의 Dynamic Mobile Manipulation을 위해 햅틱 피드백을 통한 원격 조종 프레임워크를 제시하며, 인간의 전신 모션을 로봇에 재타겟팅하여 무거운 물체 들어올리기를 수행한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Laparoscopic_Teleoperation_Systems"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Purushottam et al._2025_Heavy lifting tasks via haptic teleoperation of a wheeled humanoid.pdf"
+---
+
 # Heavy lifting tasks via haptic teleoperation of a wheeled humanoid
 
 > **저자**: Amartya Purushottam, Jack Yan, Christopher Yu, Joao Ramos | **날짜**: 2025-05-26 | **URL**: [https://arxiv.org/abs/2505.19530](https://arxiv.org/abs/2505.19530)
@@ -65,3 +84,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 무거운 물체 들어올리기 작업을 위한 휠형 휴머노이드의 원격 조종에서 높이 조절, 자동 pitch 보상, 햅틱 피드백을 통합한 실질적이고 잘 설계된 시스템을 제시하며, 기존 연구의 명확한 한계를 극복한 의미 있는 기여이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1977_High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Ro/review]] — IMU 기반 고속 텔레오퍼레이션이 햅틱 기반 휠형 휴머노이드 제어와 다른 원격조종 방식을 제시합니다.
+- 🔗 후속 연구: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — TeleGate의 gated expert 기반 전신 텔레오퍼레이션이 햅틱 피드백 방식을 발전시킵니다.
+- 🏛 기반 연구: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — Whole-body dynamic throwing 기술이 무거운 물체 들어올리기의 동역학적 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — 무거운 물체 조작에서 다단계 매개변수 추정과 haptic teleoperation이라는 보완적 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1977_High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Ro/review]] — 햅틱 피드백 기반 원격조종이 IMU 기반 고속 텔레오퍼레이션과 다른 피드백 방식을 사용합니다.

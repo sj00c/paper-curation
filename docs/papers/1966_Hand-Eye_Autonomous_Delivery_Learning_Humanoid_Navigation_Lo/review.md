@@ -1,3 +1,25 @@
+---
+title: "1966_Hand-Eye_Autonomous_Delivery_Learning_Humanoid_Navigation_Lo"
+authors:
+  - "Sirui Chen"
+  - "Yufei Ye"
+  - "Zi-Ang Cao"
+  - "Jennifer Lew"
+  - "Pei Xu"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간 모션 캡처와 에고센트릭 비전 데이터로부터 휴머노이드 로봇의 네비게이션, 로코모션, 리칭 능력을 학습하는 HEAD 프레임워크를 제안한다. 고수준 정책이 손과 눈의 목표 위치를 명령하고 저수준 whole-body controller가 추적하는 모듈식 접근법을 채택한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_Hand-Eye Autonomous Delivery Learning Humanoid Navigation, Locomotion and Reaching.pdf"
+---
+
 # Hand-Eye Autonomous Delivery: Learning Humanoid Navigation, Locomotion and Reaching
 
 > **저자**: Sirui Chen, Yufei Ye, Zi-Ang Cao, Jennifer Lew, Pei Xu, C. Karen Liu | **날짜**: 2025-08-05 | **URL**: [https://arxiv.org/abs/2508.03068](https://arxiv.org/abs/2508.03068)
@@ -68,3 +90,16 @@
 - Overall: 4/5
 
 **총평**: HEAD는 모듈식 설계와 sparse 3-point tracking을 통해 휴머노이드 로봇의 통합적 navigation, locomotion, reaching을 효과적으로 학습하는 창의적인 접근을 제시하며, 실제 로봇에서의 동작 검증으로 실용성을 입증한다. 다만 human 데이터 의존성과 정제 비용, 환경 일반화 가능성에 대한 추가 분석이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — 손-눈 자율 배송과 야생 로코-조작은 모두 에고센트릭 비전 기반 학습이지만 서로 다른 작업에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 에고센트릭 비디오를 통한 모방 학습이 손-눈 학습 프레임워크의 확장된 형태이다.
+- 🏛 기반 연구: [[papers/1758_WHOLE_World-Grounded_Hand-Object_Lifted_from_Egocentric_Vide/review]] — 에고센트릭 비디오에서의 손-객체 상호작용이 손-눈 학습의 기반 기술이다.
+- 🏛 기반 연구: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — 대규모 egocentric 인간 데이터 활용이라는 공통 기반 위에서 HEAD는 navigation-locomotion-reaching을, Humanoid Policy는 manipulation을 중심으로 합니다.
+- 🔗 후속 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — HEAD의 humanoid navigation 학습을 LookOut이 실제 환경에서의 egocentric navigation으로 확장하여 실용성을 향상시킵니다.
+- 🔄 다른 접근: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — HEAD의 인간 모션 캡처 기반 접근법과 Vision in Action의 능동 인식 학습은 humanoid의 환경 인식과 행동을 위한 서로 다른 방법론입니다.
+- 🔗 후속 연구: [[papers/1853_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — Hand-Eye 자율 배송이 협조 조작의 Choice Policy를 내비게이션과 결합한 확장 응용
+- 🏛 기반 연구: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — egocentric 인간 데모를 cross-embodiment 학습에 활용하는 공통 기반 위에서 서로 다른 humanoid 기능에 특화된 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/2055_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — 시각 기반 객체 수집을 손-눈 협응 배달 시스템으로 확장한 종합적 접근
+- 🏛 기반 연구: [[papers/2103_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — Hand-Eye Autonomous Delivery의 navigation과 manipulation 통합이 MobileH2R의 베이스-암 협조 제어 설계에 기반이 되었다

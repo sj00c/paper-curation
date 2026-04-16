@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇의 시각 기반 장기 작업 수행 시, 선행 스킬의 실행으로 인한 관찰 공간 변화(Observation Space Shift, OSS)가 후속 스킬의 성능을 심각하게 저하시키는 문제를 식별하고, 이를 평가하기 위한 BOSS 벤치마크를 제안한다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Multi-Modal_Humanoid_Control"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Robotic_Policy_Scaling"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_BOSS Benchmark for Observation Space Shift in Long-Horizon Task.pdf"
 ---
@@ -90,4 +91,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_BOSS Benchmark for Obse
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1517_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — 강화학습 기반 민첩한 로봇 제어를 위한 효율적 모델 예측 제어 방식이 신경망 정책과 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — 메모리와 추론 능력을 강화한 VLA로 장기 작업의 OSS 문제를 해결한다.
+- 🏛 기반 연구: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — 장기 작업을 위한 오픈 월드 상태 표현의 기초 이론을 제공한다.
+- 🔄 다른 접근: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — 멀티스케일 메모리를 활용한 다른 장기 작업 해결 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1591_Towards_Diverse_Behaviors_A_Benchmark_for_Imitation_Learning/review]] — 모방학습에서 다양한 행동을 위한 벤치마크의 기초적인 평가 기준을 제공합니다.
+- 🔗 후속 연구: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — 평생 로봇 학습에서 지식 전이 벤치마크로서 관찰 공간 변화 문제를 확장합니다.

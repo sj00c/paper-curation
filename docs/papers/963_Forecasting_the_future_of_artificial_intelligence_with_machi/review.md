@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "143,000개의 AI 논문으로부터 64,000개 개념노드의 의미 네트워크를 구축하고, 머신러닝 기반 링크 예측을 통해 미래의 AI 연구 방향을 예측하는 Science4Cast 벤치마크를 제시한다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Trend_Forecasting_Techniques"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Krenn et al._2023_Forecasting the future of artificial intelligence with machine learning-based link prediction in an.pdf"
 ---
@@ -94,8 +95,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Krenn et al._2023_Forecasting the future
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — AI 연구 방향 예측을 위한 Science4Cast 벤치마크와 대규모 언어 모델이 과학의 과학을 강화하는 방법이 상호 보완적 발전을 이룹니다.
-- ⚖️ 반론/비판: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — AI 기술로 미래 연구 방향을 예측하는 연구와 대규모 언어 모델이 연구 참신성을 감소시킨다는 상반된 관점을 제시합니다.
-- 🧪 응용 사례: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 도입에서 위험 역할의 진화를 기계학습 기반 미래 예측 방법론을 통해 분석하고 전망할 수 있습니다.
-- 🔗 후속 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — AI 분야의 머신러닝 기반 예측 연구가 양자물리학 트렌드 예측 방법론을 AI 도메인으로 확장 적용한다.
-- 🔄 다른 접근: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — AI 연구 동향을 기계학습으로 예측하는 다른 접근법을 제시하여 scientometric 분석과 비교 연구할 수 있다.
+- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 네트워크 기반 토픽 모델링의 방법론을 AI 연구 예측을 위한 대규모 의미 네트워크 구축에 적용
+- 🔄 다른 접근: [[papers/1116_Harnessing_the_Power_of_Adversarial_Prompting_and_Large_Lang/review]] — AI를 활용한 미래 연구 예측을 머신러닝 기반 링크 예측과 적대적 프롬프팅으로 각각 접근
+- 🔗 후속 연구: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 머신러닝을 활용한 고영향 연구 주제 예측을 AI 분야로 특화하여 대규모로 확장한 연구
+- 🔗 후속 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — 대형 언어 모델이 과학의 과학 연구에 미치는 영향을 AI 연구 예측의 구체적 사례로 확장 분석한다.
+- 🏛 기반 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학에서 데이터 기반 예측 연구의 이론적 배경과 방법론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 파운데이션 모델이 과학적 발견을 가속화하는 방법을 AI 연구 예측의 실제 적용 사례로 보여준다.
+- 🏛 기반 연구: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 연구 예측과 AI 도입 위험 연구가 서로 연관되어 AI 기술 발전의 다면적 이해를 돕는다.
+- 🔄 다른 접근: [[papers/929_A_network_approach_to_topic_models/review]] — 네트워크 기반 토픽 모델링과 의미 네트워크 구축이라는 유사한 접근법을 다른 목적에 적용
+- 🧪 응용 사례: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 기계학습을 이용한 AI 미래 예측이 텍스트 마이닝과 과학 지도화를 결합한 서지학적 분석의 구체적 적용 사례이다.
+- 🏛 기반 연구: [[papers/1070_Challenges_in_High-Throughput_Inorganic_Materials_Prediction/review]] — AI 예측의 한계를 이해하는 것이 재료 발견 자동화의 개선 방향 설정에 중요하다.
+- 🔗 후속 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — AI 분야 예측에서 물리학 트렌드 예측 방법론을 확장 적용할 수 있다
+- 🔄 다른 접근: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 머신러닝을 활용한 AI 미래 예측 연구로, 지식그래프 대신 다른 접근법으로 연구 임팩트를 예측하는 대안적 방법론을 제시합니다.
+- 🏛 기반 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 사이버보안 분야 AI 트렌드 예측에 머신러닝 기반 미래 예측 방법론을 적용할 수 있다.

@@ -1,3 +1,23 @@
+---
+title: "1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L"
+authors:
+  - "Se Hwan Jeon"
+  - "Steve Heim"
+  - "Charles Khazoom"
+  - "Sangbae Kim"
+date: "2023.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 humanoid 로봇의 고차원 보행 학습에서 potential-based reward shaping (PBRS)과 direct reward shaping (DRS)을 벤치마크하여, PBRS가 수렴 속도에서는 한계적 이점만 제공하지만 보상 척도에 대해 훨씬 더 견고하다는 것을 실증적으로 입증한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jeon et al._2023_Benchmarking Potential Based Rewards for Learning Humanoid Locomotion.pdf"
+---
+
 # Benchmarking Potential Based Rewards for Learning Humanoid Locomotion
 
 > **저자**: Se Hwan Jeon, Steve Heim, Charles Khazoom, Sangbae Kim | **날짜**: 2023-07-19 | **URL**: [https://arxiv.org/abs/2307.10142](https://arxiv.org/abs/2307.10142)
@@ -62,3 +82,17 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 고차원 로보틱 시스템에서 PBRS의 실제 효과를 실증적으로 검증한 중요한 케이스 스터디로, 보상 함수 설계의 실무적 지침(특히 견고성 측면)을 제공한다. 다만 단일 태스크 벤치마크와 이론-실전 간 격차의 원인 분석이 보강된다면 더욱 강력한 기여가 될 것이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — 두 논문 모두 humanoid 학습의 벤치마킹을 다루지만 하나는 reward shaping, 다른 하나는 motion difficulty에 집중한다.
+- 🏛 기반 연구: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — PBRS 벤치마킹 결과가 Booster Gym의 reward 함수 설계에 중요한 가이드라인을 제공한다.
+- 🔗 후속 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — potential-based reward shaping이 PopArt과 결합된 multi-task RL에서 보상 척도 정규화 문제를 해결하는 데 확장될 수 있다
+- 🧪 응용 사례: [[papers/1805_Architecture_Is_All_You_Need_Diversity-Enabled_Sweet_Spots_f/review]] — PBRS의 보상 척도 견고성이 계층화 제어 구조에서 각 레벨의 보상 함수 설계에 실용적으로 적용될 수 있다
+- 🏛 기반 연구: [[papers/1624_PRIMAL_Physically_Reactive_and_Interactive_Motor_Model_for_A/review]] — PRIMAL의 두 단계 학습 패러다임이 Benchmarking Potential Based Rewards의 휴머노이드 학습 평가 방법론을 활용할 수 있다
+- 🏛 기반 연구: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — Potential Based Rewards 벤치마킹이 AMOR의 multi-objective 보상 설계 방법론에 중요한 기준을 제공합니다.
+- 🏛 기반 연구: [[papers/1805_Architecture_Is_All_You_Need_Diversity-Enabled_Sweet_Spots_f/review]] — 두 논문 모두 humanoid 보행 학습에서 reward shaping의 중요성을 다루지만 LCA는 아키텍처 관점에서 접근한다.
+- 🏛 기반 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — Motion Difficulty Score가 potential-based reward의 효과를 평가하는 객관적 지표로 활용될 수 있어 벤치마킹 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1917_Example-based_Motion_Synthesis_via_Generative_Motion_Matchin/review]] — GenMM의 Bidirectional similarity 기반 생성 비용 함수가 potential based rewards 설계에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1928_Feature-Based_vs_GAN-Based_Learning_from_Demonstrations_When/review]] — Feature-based vs GAN-based 비교 분석이 potential based rewards를 활용한 휴머노이드 학습의 방법론 선택 기준을 제공한다.
+- 🏛 기반 연구: [[papers/2137_PhysDiff_Physics-Guided_Human_Motion_Diffusion_Model/review]] — 물리 기반 보상을 통한 휴머노이드 학습의 벤치마킹이 PhysDiff의 물리 제약 효과를 평가하는 기준을 제공한다.

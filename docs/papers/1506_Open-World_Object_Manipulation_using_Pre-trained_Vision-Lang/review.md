@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Pre-trained vision-language model(VLM)을 로봇 정책과 인터페이싱하여 로봇이 직접 경험하지 못한 새로운 물체 카테고리에 대한 지시를 따를 수 있도록 하는 MOO(Manipulation of Open-World Objects) 방법을 제안한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robot_Foundation_Models"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Stone et al._2023_Open-World Object Manipulation using Pre-trained Vision-Language Models.pdf"
 ---
@@ -89,6 +91,17 @@ Pre-trained vision-language model(VLM)을 로봇 정책과 인터페이싱하여
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — Open-vocabulary 3D scene grounding이 pre-trained VLM을 활용한 물체 조작의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1569_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — Segment Anything의 범용 분할 능력과 pre-trained VLM의 물체 조작이 open-world understanding의 확장된 형태를 제시한다.
-- 🔄 다른 접근: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Pre-trained vision-language model을 로봇 모방 학습에 활용하는 서로 다른 접근 방식을 보여준다.
+- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Vision-Language Foundation Models의 로봇 모방 학습 활용 연구가 MOO의 pre-trained VLM 기반 객체 조작 방법론의 기초가 된다.
+- 🔄 다른 접근: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — Manipulate-Anything과 동일하게 개방형 객체 조작을 다루지만 MOO는 VLM 인터페이싱에, 다른 연구는 자동화에 집중한다.
+- 🔄 다른 접근: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — 두 논문 모두 VLM을 활용한 instruction-following 로봇 제어를 다루지만 물체 조작과 기술 습득의 관점이 다르다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E의 embodied multimodal language model 개념을 구체적인 물체 조작 작업에 적용한다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 언어 기반 제어 개념을 pre-trained VLM과 결합하여 발전시킨다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — MOO가 활용하는 open-vocabulary object detection과 grounding 기능의 기반이 되는 vision-language model을 제공한다.
+- 🔄 다른 접근: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — MOO의 open-world object manipulation과 달리 entity grounding을 통한 3D scene understanding 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — MOO의 open-world object manipulation을 tool usage와 affordance understanding으로 확장하여 더 복잡한 조작 작업을 수행할 수 있다.
+- 🔄 다른 접근: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — Open-World Object Manipulation의 pre-trained vision-language 활용과 FSD의 spatial relationship reasoning은 zero-shot 로봇 조작에서 서로 다른 접근 방식이다.
+- 🏛 기반 연구: [[papers/1462_LOTUS_Continual_Imitation_Learning_for_Robot_Manipulation_Th/review]] — open-vocabulary vision model을 활용한 객체 조작이 LOTUS의 기술 발견에 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — Open-World Object Manipulation의 사전 훈련된 VLM 활용 방법론이 Manipulate-Anything의 기술적 기반임
+- 🏛 기반 연구: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — Open-World Object Manipulation의 기본 개념을 LLM과 foundation model API로 구현하는 구체적 프레임워크를 제시한다.
+- 🔄 다른 접근: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — 두 논문 모두 VLM을 활용한 instruction-following을 다루지만 데이터 증강과 실시간 적용의 접근법이 다르다.
+- 🏛 기반 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — Open-World Object Manipulation은 기초 모델을 활용한 일반화 가능한 로봇 조작의 이론적 배경을 제시합니다.

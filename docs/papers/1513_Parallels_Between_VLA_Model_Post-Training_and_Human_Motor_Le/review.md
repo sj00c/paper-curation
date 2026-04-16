@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Vision-Language-Action (VLA) 모델의 post-training 방법을 인간의 운동 학습 이론(Newell의 제약 주도 이론)의 관점에서 종합적으로 분석하고, 환경 지각, 신체 인식, 작업 이해, 다중 요소 통합의 4가지 범주로 체계화한 설문 논문이다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Foundation_Models"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Embodied_Language_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiang et al._2025_Parallels Between VLA Model Post-Training and Human Motor Learning Progress, Challenges, and Trends.pdf"
 ---
@@ -86,7 +88,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiang et al._2025_Parallels Between VLA 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1522_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오로부터의 humanoid policy 학습이 VLA 모델 post-training과 인간 운동 학습의 연관성에 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1476_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — Humanoid World Model과 VLA 모델 post-training이 인간과 유사한 학습 과정의 확장된 이해를 제시한다.
-- 🔄 다른 접근: [[papers/1460_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — Human-humanoid behavior-skill transfer와 VLA post-training의 인간 운동 학습 관점이 서로 다른 접근 방식을 보여준다.
-- 🧪 응용 사례: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — VLA 모델의 사후 훈련과 인간 운동 학습의 유사성 연구를 SPRINT의 offline RL 기반 사전학습 방법론과 연결하여 더 효과적인 학습 전략을 개발할 수 있다.
+- 🧪 응용 사례: [[papers/1573_SimpleVLA-RL_Scaling_VLA_Training_via_Reinforcement_Learning/review]] — 인간 운동학습 이론의 관점에서 분석한 VLA post-training 방법들이 SimpleVLA-RL의 강화학습 기반 훈련에 실제 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — Neural Scaling Laws가 VLA 모델의 post-training 효과를 정량적으로 이해하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — Human2Robot의 인간-로봇 학습 패러다임이 Newell의 제약 주도 이론을 실제 로봇 학습으로 확장한 구체적 사례다.
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — VLA post-training 분석이 참조하는 인간 운동 학습의 실제 적용 사례인 humanoid imitation
+- 🔗 후속 연구: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — 인간 운동 학습 관점의 VLA post-training을 reinforcement fine-tuning으로 실제 구현
+- 🔄 다른 접근: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — VLA 모델 구축에서 human motor learning vs engineering optimization의 다른 관점
+- 🏛 기반 연구: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — VLA 모델 post-training 방법론은 VLA 모델 전반의 개념과 응용을 이해하는 데 필수적입니다.
+- 🔄 다른 접근: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — 운동 학습 이론 기반 접근과 ConRFT의 강화된 fine-tuning은 서로 다른 VLA 개선 방법론을 제시합니다.
+- 🏛 기반 연구: [[papers/1573_SimpleVLA-RL_Scaling_VLA_Training_via_Reinforcement_Learning/review]] — VLA 모델의 강화학습 확장이 인간 운동학습 이론에서 분석된 post-training 방법들을 실제 구현으로 발전시킨다.

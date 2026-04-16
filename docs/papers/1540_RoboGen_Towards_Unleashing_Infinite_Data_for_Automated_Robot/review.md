@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "RoboGen은 생성형 모델을 활용하여 로봇이 자동으로 다양한 작업, 장면, 학습 감독을 생성하고 이를 통해 규모 있는 로봇 기술 학습을 가능하게 하는 자동화 파이프라인이다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/LLM_Skill_Acquisition"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Skill_Bootstrapping_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2023_RoboGen Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation.pdf"
 ---
@@ -89,9 +91,16 @@ RoboGen은 생성형 모델을 활용하여 로봇이 자동으로 다양한 작
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — 로봇 시뮬레이션 작업 생성에서 RoboGen의 생성형 모델 활용과 GenSim의 LLM 기반 접근 방식을 자동화 수준에서 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Text2Reward의 자연어 기반 reward function 자동 생성 방법론이 RoboGen의 자동 학습 감독 생성에 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 인터넷 규모 데이터를 활용한 오픈엔드 에이전트 구축 방법론을 RoboGen의 대규모 로봇 데이터 생성에 적용할 수 있다.
-- 🧪 응용 사례: [[papers/1551_Legged_Robot_State-Estimation_Through_Combined_Forward_Kinem/review]] — RoboTwin 2.0의 확장 가능한 데이터 생성 및 벤치마크 플랫폼이 RoboGen의 자동화된 로봇 학습 파이프라인을 실제 환경에서 검증하는 도구를 제공한다.
-- 🔗 후속 연구: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — RoboGen의 자동화된 로봇 데이터 생성이 GenSim의 시뮬레이션 작업 생성을 실제 로봇 궤적 데이터 생성으로 확장한 구현체이다
-- 🔗 후속 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Text2Reward의 자연어 기반 dense reward 생성 방법론을 RoboGen의 자동화된 학습 감독 생성에 통합하여 더 정교한 보상 설계를 가능하게 한다.
+- 🔄 다른 접근: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — GenSim과 함께 생성형 모델을 활용한 로봇 학습을 다루지만 RoboGen은 전체 파이프라인 자동화에, GenSim은 시뮬레이션 태스크 생성에 집중한다.
+- 🏛 기반 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — Re³Sim의 3D 생성 기반 고품질 시뮬레이션 데이터 생성 기술이 RoboGen의 자동 데이터 생성 파이프라인에 핵심 기술을 제공한다.
+- 🔗 후속 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — RoboGen의 자동화 개념을 RoboTwin 2.0이 이원팔 조작과 sim-to-real로 발전시킨다.
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Genie의 생성형 환경 모델링 개념이 RoboGen의 자동화 파이프라인 기초가 된다.
+- 🔄 다른 접근: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — DreamDojo가 현실 데이터에서 꿈을 통해 로봇 학습을 확장하는 반면, RoboGen은 생성 모델을 통해 완전히 합성된 학습 환경을 제공한다.
+- 🔗 후속 연구: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — Real2Render2Real의 시뮬레이션 데이터 생성 개념을 확장하여 작업과 장면까지 자동 생성하는 완전한 자동화 시스템을 구축했다.
+- 🔗 후속 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — RoboGen의 무한 데이터 생성 개념이 Genie의 인터넷 비디오 기반 환경 생성을 로봇 특화 작업으로 확장합니다.
+- 🔄 다른 접근: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — 둘 다 자동화된 로봇 데이터 생성을 다루지만 시뮬레이션 작업 생성 vs 전반적인 데이터 생성이라는 범위 차이가 있다.
+- 🔗 후속 연구: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — RoboGen은 Manipulate-Anything의 자동 시연 데이터 생성을 무한한 데이터 생성으로 확장한 연구임
+- 🔄 다른 접근: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — RoboGen이 완전히 새로운 데이터 생성에 중점을 두는 반면, ROSIE는 기존 데이터의 의미론적 변형을 통한 증강에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — 대규모 로봇 데이터 생성에서 RoboTwin 2.0은 시뮬레이션 기반으로, RoboGen은 자동화된 로봇 데이터 생성에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 자동화된 로봇 시연 생성을 통한 대규모 데이터 생성의 구체적 구현을 보여줍니다.
+- 🔗 후속 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — RoboGen은 AutoRT의 대규모 데이터 수집을 자동화된 로봇 생성과 결합하여 더 확장한 개념입니다.

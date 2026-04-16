@@ -1,3 +1,21 @@
+---
+title: "2001_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig"
+authors:
+  - "Gerald Brantner"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "고도화된 동적 동작을 수행하는 휴머노이드 로봇을 위해 완전한 articulated rigid body dynamics를 기반으로 하는 제어 아키텍처를 제시하며, trajectory optimization과 whole-body control을 model abstraction으로 중개하여 아크로바틱 동작을 실현한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Tactile_Contact_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Brantner_2025_Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics.pdf"
+---
+
 # Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics
 
 > **저자**: Gerald Brantner | **날짜**: 2025-07-17 | **URL**: [https://arxiv.org/abs/2508.08258](https://arxiv.org/abs/2508.08258)
@@ -66,3 +84,17 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇의 고도 동적 제어에 대한 개념적·이론적 기여도가 높고 control architecture가 체계적이나, 시뮬레이션 검증에 한정되고 optimization 방법론 세부사항이 부족하여 실질적 영향력에는 제약이 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — Control Lyapunov Function 기반 안정성 추적이 아크로바틱 동작의 완전한 강체 역학 제어에 필요한 기초를 제공한다.
+- 🧪 응용 사례: [[papers/2037_KungfuBot_Physics-Based_Humanoid_Whole-Body_Control_for_Lear/review]] — 완전한 articulated dynamics가 쿵푸 기반 전신 제어의 물리적 기반을 강화할 수 있다.
+- 🔄 다른 접근: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — Impedance control 기반 compliance가 complete articulated dynamics와 다른 방식으로 contact를 처리합니다.
+- 🔗 후속 연구: [[papers/2016_HUSKY_Humanoid_Skateboarding_System_via_Physics-Aware_Whole-/review]] — HUSKY의 physics-aware whole-body control이 acrobatic dynamics를 스케이트보딩으로 확장합니다.
+- 🏛 기반 연구: [[papers/1778_A_Hierarchical_Model-Based_System_for_High-Performance_Human/review]] — Hierarchical model-based system이 complete articulated dynamics control의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1691_Stabilizing_Humanoid_Robot_Trajectory_Generation_via_Physics/review]] — 물리학 기반 궤적 안정화 기술이 완전한 강체 역학 기반 아크로바틱 동작 제어의 핵심 토대가 된다.
+- 🔄 다른 접근: [[papers/1865_Design_and_Control_of_a_Bipedal_Robotic_Character/review]] — 이족 로봇 캐릭터 제어를 이 논문은 아크로바틱에, Design and Control은 일반적 설계에 특화한다.
+- 🏛 기반 연구: [[papers/2137_PhysDiff_Physics-Guided_Human_Motion_Diffusion_Model/review]] — PhysDiff의 물리 기반 인간 동작 확산 모델이 휴머노이드 아크로바틱 동작의 이론적 기반이 된다.
+- 🔗 후속 연구: [[papers/1711_The_MIT_Humanoid_Robot_Design_Motion_Planning_and_Control_Fo/review]] — MIT 휴머노이드의 고동역학 운동과 완전 관절 강체 역학 활용 곡예를 결합하면 더 극한의 운동이 가능하다
+- 🔗 후속 연구: [[papers/1757_Whole-Body_Dynamic_Throwing_with_Legged_Manipulators/review]] — Complete Articulated Rigid Body를 활용한 acrobatics가 동적 투척 기술의 더 복잡한 응용을 보여줍니다.
+- 🔄 다른 접근: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — Complete articulated rigid body dynamics 접근법이 impedance control과는 다른 방식으로 동적 contact를 처리합니다.

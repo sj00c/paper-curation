@@ -1,3 +1,25 @@
+---
+title: "2025_INTENTION_Inferring_Tendencies_of_Humanoid_Robot_Motion_Thro"
+authors:
+  - "Jin Wang"
+  - "Weijie Wang"
+  - "Boyuan Deng"
+  - "Heng Zhang"
+  - "Rui Dai"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "INTENTION은 Vision-Language Models 기반의 Intuitive Perceptor와 Memory Graph를 통합하여 휴머노이드 로봇이 상호작용 경험으로부터 직관적 물리 이해를 학습하고 새로운 조작 작업에 자율적으로 적응하는 프레임워크를 제안한다."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/LLM_Physical_Motion_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_INTENTION Inferring Tendencies of Humanoid Robot Motion Through Interactive Intuition and Grounded.pdf"
+---
+
 # INTENTION: Inferring Tendencies of Humanoid Robot Motion Through Interactive Intuition and Grounded VLM
 
 > **저자**: Jin Wang, Weijie Wang, Boyuan Deng, Heng Zhang, Rui Dai, Nikos Tsagarakis | **날짜**: 2025-08-06 | **URL**: [https://arxiv.org/abs/2508.04931](https://arxiv.org/abs/2508.04931)
@@ -64,3 +86,14 @@ INTENTION은 Vision-Language Models 기반의 Intuitive Perceptor와 Memory Grap
 - Overall: 4/5
 
 **총평**: INTENTION은 VLM 기반 지각과 상호작용 메모리를 결합하여 휴머노이드 로봇의 적응형 조작을 혁신적으로 제시하는 연구로, 개념과 설계는 우수하나 실험적 검증과 기술적 세부 구현의 엄밀성 강화가 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — 상호작용 경험 기반 직관적 물리 학습과 에고 비전 월드 모델은 모두 접촉 계획을 위한 물리 이해를 다루지만 접근법이 다르다.
+- 🔗 후속 연구: [[papers/1849_Contact-Aided_Invariant_Extended_Kalman_Filtering_for_Robot/review]] — 접촉 보조 상태 추정이 상호작용 기반 물리 이해의 확장된 응용이다.
+- 🔄 다른 접근: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — 언어 기반 휴머노이드 제어에서 FRoM-W1은 더 일반화된 접근을 제시
+- 🔗 후속 연구: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — 언어 지향 휴머노이드 제어에서 end-to-end 학습을 통한 발전된 접근
+- 🔄 다른 접근: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 둘 다 언어-행동 모델이지만 INTENTION은 직관적 물리 이해 중심, SENTINEL은 end-to-end 언어-행동 매핑 중심
+- 🔗 후속 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — INTENTION의 직관적 물리 이해가 GPT-4 기반 휴머노이드 제어에 물리적 추론 능력을 추가하여 성능 향상 가능
+- 🏛 기반 연구: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — HYPERmotion의 하이브리드 행동 계획이 INTENTION의 VLM 기반 직관적 물리 학습에 계획 프레임워크 제공
+- 🏛 기반 연구: [[papers/1692_StageACT_Stage-Conditioned_Imitation_for_Robust_Humanoid_Doo/review]] — 휴머노이드 모션의 의도 추론 개념을 작업 단계라는 명시적 조건으로 확장하여 부분 관찰 환경에서의 강건성을 달성했다.

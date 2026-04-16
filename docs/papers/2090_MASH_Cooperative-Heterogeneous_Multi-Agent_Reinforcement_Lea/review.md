@@ -1,3 +1,24 @@
+---
+title: "2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea"
+authors:
+  - "Qi Liu"
+  - "Xiaopeng Zhang"
+  - "Mingshan Tan"
+  - "Shuaikang Ma"
+  - "Jinliang Ding"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "단일 인간형 로봇의 보행을 위해 각 팔다리를 독립 에이전트로 모델링하여 Cooperative-Heterogeneous MARL을 적용하는 MASH 프레임워크를 제안한다. 이는 전역 비평가를 공유하며 협력학습을 통해 전신 조화 능력을 향상시킨다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Force_Disturbance_Compensation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_MASH Cooperative-Heterogeneous Multi-Agent Reinforcement Learning for Single Humanoid Robot Locomot.pdf"
+---
+
 # MASH: Cooperative-Heterogeneous Multi-Agent Reinforcement Learning for Single Humanoid Robot Locomotion
 
 > **저자**: Qi Liu, Xiaopeng Zhang, Mingshan Tan, Shuaikang Ma, Jinliang Ding, Yanjie Li | **날짜**: 2025-08-14 | **URL**: [https://arxiv.org/abs/2508.10423](https://arxiv.org/abs/2508.10423)
@@ -66,3 +87,15 @@
 - Overall: 4/5
 
 **총평**: MASH는 MARL 원칙을 단일 인간형 로봇에 창의적으로 적용하여 전신 조화 보행 학습을 효과적으로 개선한 의미 있는 기여이다. 다만 실제 로봇 검증과 알고리즘 세부사항 명확화가 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 대칭 등변성을 통한 조정된 휴머노이드 로봇 보행의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — 접촉이 풍부한 보행을 위한 이질적 메타 제어와 협력적 이질적 다중 에이전트 강화학습이라는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 인간-휴머노이드 인지를 위한 다중 에이전트 학습의 확장된 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — PopArt의 multi-task 학습 정규화가 MASH의 cooperative-heterogeneous 다중 에이전트 학습에서 에이전트 간 협력을 안정화한다.
+- 🔗 후속 연구: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — 협력적 이종 다중 에이전트 학습을 원시 기술 혼합으로 확장하여 더 복잡한 조작-이동 작업을 수행한다.
+- 🏛 기반 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — cooperative-heterogeneous multi-agent RL의 기초 방법론이 인간-휴머노이드 협업 시스템에 적용된다.
+- 🔗 후속 연구: [[papers/1934_From_Experts_to_a_Generalist_Toward_General_Whole-Body_Contr/review]] — BumbleBee의 expert-generalist 학습을 다중 에이전트 환경으로 확장하여 MASH의 cooperative-heterogeneous 학습이 가능하다.
+- 🔗 후속 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — Learning Humanoid Arm Motion의 multi-agent RL 프레임워크를 MASH의 cooperative-heterogeneous 다중 에이전트 강화학습으로 확장하여 더 복잡한 협업 제어가 가능하다.
+- 🔄 다른 접근: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — 협력적 다중 에이전트 학습이라는 다른 방식으로 복잡한 멀티태스크 문제를 해결하는 대안적 접근법이다.

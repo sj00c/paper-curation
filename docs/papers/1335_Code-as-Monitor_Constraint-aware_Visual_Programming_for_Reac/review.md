@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VLM을 활용하여 spatio-temporal constraint satisfaction 문제로 로봇 실패를 정식화하고, constraint elements를 추상화하여 VLM 생성 코드로 실시간 모니터링하는 Code-as-Monitor(CaM) 패러다임을 제안한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Automated_Policy_Evaluation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhou et al._2024_Code-as-Monitor Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure Dete.pdf"
 ---
@@ -89,12 +91,11 @@ VLM을 활용하여 spatio-temporal constraint satisfaction 문제로 로봇 실
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1359_DualTHOR_A_Dual-Arm_Humanoid_Simulation_Platform_for_Conting/review]] — VLM 기반 constraint monitoring을 dual-arm humanoid 환경에서 contingency 메커니즘과 함께 확장 적용
-- 🔄 다른 접근: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — 로봇 정책 평가를 constraint satisfaction으로 접근하는 것과 시뮬레이션 기반 평가의 상호보완적 방법론
-- 🧪 응용 사례: [[papers/1238_A_21-DOF_Humanoid_Dexterous_Hand_with_Hybrid_SMA-Motor_Actua/review]] — 21-DOF 손재주 손의 정밀한 조작 능력을 GUI 기반 원격조작 시스템에 적용하여 비전문가도 사용할 수 있습니다.
-- 🧪 응용 사례: [[papers/1359_DualTHOR_A_Dual-Arm_Humanoid_Simulation_Platform_for_Conting/review]] — dual-arm humanoid 시뮬레이션에서 constraint-aware monitoring을 contingency 상황에 적용
-- 🔗 후속 연구: [[papers/1338_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — mocap 데이터 수집을 더 확장 가능하고 포터블한 시스템으로 발전시켰다
-- 🧪 응용 사례: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — DexCap의 data collection system이 VLA 모델의 real-world deployment에서 필수적인 데이터 수집 인프라를 제공
-- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 기본 개념을 constraint-aware programming으로 발전시켜 더 안전하고 제약을 고려한 정책 생성을 가능하게 한다
-- 🔗 후속 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — 시뮬레이션 기반 정책 평가가 constraint-aware monitoring과 결합하여 더 robust한 평가 체계 구축
-- 🏛 기반 연구: [[papers/1587_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — DexCap의 손 동작 캡처 시스템에서 수집한 데이터를 로봇 손의 실제 조작 정책 학습에 적용한다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 정책 생성을 제약 조건 모니터링으로 확장하여 더 안전한 로봇 실행 보장
+- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — VLM 기반 코드 모니터링 대신 dual thinking을 통한 합리적 추론으로 로봇 안전성 확보
+- 🔗 후속 연구: [[papers/1553_RoBridge_A_Hierarchical_Architecture_Bridging_Cognition_and/review]] — 인지와 행동을 연결하는 계층적 아키텍처로 constraint-aware programming을 확장한다.
+- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 언어 모델을 활용한 보상 설계의 기초 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — VLM 기반 제약 모니터링과 LLM 기반 계획 오류 탐지가 로봇 실패 처리에서 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — Code-as-Monitor의 constraint-aware programming 개념이 SPRINT의 cross-trajectory skill chaining을 위한 논리적 구조 설계의 기초가 된다.
+- 🔄 다른 접근: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — LLM 기반 계획 오류 탐지와 VLM 기반 제약 모니터링이 로봇 실행 감시에서 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 제약 인식 시각 프로그래밍이 Code as Policies의 코드 생성에 이론적 기반을 제공합니다.

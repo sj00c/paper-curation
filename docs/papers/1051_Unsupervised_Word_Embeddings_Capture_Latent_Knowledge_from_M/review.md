@@ -13,7 +13,9 @@ score: 4.0
 essence: "비지도 학습 방식의 Word2vec를 재료과학 문헌 330만 개 초록에 적용하여 화학적 지식을 명시적으로 부여하지 않고도 주기율표 구조와 물성-구조 관계 등 잠재 지식을 포착할 수 있음을 보여줌."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Knowledge_Graphs_and_Data_Integration"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tshitoyan et al._2019_Unsupervised Word Embeddings Capture Latent Knowledge from Materials Science Literature.pdf"
 ---
@@ -90,10 +92,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tshitoyan et al._2019_Unsupervised Word 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — 공개된 언어 모델 연구를 통해 재료과학 임베딩의 메커니즘을 더 잘 이해할 수 있음
-- 🔗 후속 연구: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 재료과학 텍스트 마이닝과 촉매 발견 데이터셋을 결합하여 더 강력한 AI 모델 개발 가능
-- 🔄 다른 접근: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야의 지식 체계화에서 임베딩 기반 접근법과 전통적 분류 체계의 대안적 방법론임
-- 🏛 기반 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 지식공간에서의 인용 확산을 분석하기 위한 문서 표현 학습의 기반 기술로 Word embedding 방법론을 제공합니다.
-- 🔄 다른 접근: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — 과학 개념 변화 추적을 위한 복잡 네트워크와 비지도 워드 임베딩이라는 서로 다른 방법론적 접근을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 과학 논문에서 데이터 보안 관련 잠재 지식을 무감독 임베딩으로 추출하는 방법으로 확장될 수 있다.
-- 🏛 기반 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — LLM이 과학적 도형에서 잠재 지식을 추출하고 조작하는 능력의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 재료과학 특화 임베딩을 생의학 분야 대규모 지식 그래프로 확장하여 적용한다.
+- 🏛 기반 연구: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야 지식 체계화의 이론적 기반이 도메인별 임베딩 학습에 적용된다.
+- 🔄 다른 접근: [[papers/929_A_network_approach_to_topic_models/review]] — 재료과학과 일반 과학 문헌에 각각 적용된 비지도 학습 방법들이 잠재 지식 추출의 서로 다른 접근법을 보여준다.
+- 🧪 응용 사례: [[papers/1070_Challenges_in_High-Throughput_Inorganic_Materials_Prediction/review]] — 무기 재료 예측의 고처리량 방법론이 재료과학 문헌에서 추출한 잠재 지식을 실제 연구에 적용하는 사례이다.
+- 🏛 기반 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 단어 임베딩이 지식의 잠재적 구조를 포착하는 능력은 지식공간에서 인용 확산을 정량화하는 방법론적 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 의학 문헌에서 잠재 지식을 추출하는 워드 임베딩 기법을 지식그래프 구조로 확장 발전시켰기 때문
+- 🏛 기반 연구: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 비지도 임베딩 기법을 교육용 지식그래프 구축에 응용한다.
+- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 의학 지식에서 잠재적 패턴 발견을 다루지만, 단어 임베딩보다는 대규모 지식 네트워크를 활용한 가설 생성에 특화된다.
+- ⚖️ 반론/비판: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — LLM 임베딩과 복잡 네트워크 기반 접근법은 과학 지식 변화 포착에서 상반된 방법론적 선택이다.

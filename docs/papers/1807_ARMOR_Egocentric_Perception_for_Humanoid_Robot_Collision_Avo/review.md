@@ -1,3 +1,24 @@
+---
+title: "1807_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo"
+authors:
+  - "Daehwa Kim"
+  - "Mario Srouji"
+  - "Chen Chen"
+  - "Jian Zhang"
+date: "2024.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 팔과 손에 분산 배치된 ToF 센서 기반의 자아중심 지각 시스템 ARMOR과 transformer 기반 모방학습 정책을 제시하여 밀집 환경에서의 충돌 회피 및 동작 계획을 수행한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kim et al._2024_ARMOR Egocentric Perception for Humanoid Robot Collision Avoidance and Motion Planning.pdf"
+---
+
 # ARMOR: Egocentric Perception for Humanoid Robot Collision Avoidance and Motion Planning
 
 > **저자**: Daehwa Kim, Mario Srouji, Chen Chen, Jian Zhang | **날짜**: 2024-11-30 | **URL**: [https://arxiv.org/abs/2412.00396](https://arxiv.org/abs/2412.00396)
@@ -67,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇의 지각-계획 문제를 분산 ToF 센서와 인간 중심의 imitation learning으로 창의적으로 해결하며, 실제 배포와 의미 있는 성능 향상으로 실용성 높은 연구이다. 다만 센서 배치 최적화와 sim-to-real gap 논의 강화가 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 두 논문 모두 밀집 환경에서의 충돌 회피를 다루지만 ARMOR은 ToF 센서 기반, HumanoidPF는 potential field 기반 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — Omni-Perception과 함께 전방향 충돌 회피 시스템의 완성된 형태를 보여주며 센서 융합의 중요성을 입증한다.
+- 🏛 기반 연구: [[papers/1871_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — 분산 센서를 활용한 dexterous manipulation의 기초 기술이 전신 충돌 회피 시스템에 응용된다.
+- 🔄 다른 접근: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 밀집 환경에서 충돌 회피를 위해 ToF 센서 기반 자아중심 지각 vs 시각적 지각 파쿠르 프레임워크라는 다른 센서 모달리티를 비교할 수 있다
+- 🏛 기반 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 충돌 회피를 위한 공간적 선택적 주의 메커니즘이 ARMOR의 transformer 기반 지각 정책의 이론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1746_VB-Com_Learning_Vision-Blind_Composite_Humanoid_Locomotion_A/review]] — 둘 다 humanoid의 인식 기반 충돌 회피를 다루지만 ARMOR은 egocentric 접근법을 사용합니다.
+- 🔄 다른 접근: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 밀집 환경에서의 충돌 회피를 다루지만 HumanoidPF는 potential field, ARMOR은 ToF 센서 기반으로 서로 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1911_Emergent_Active_Perception_and_Dexterity_of_Simulated_Humano/review]] — 에고센트릭 비전을 통한 충돌 회피가 능동적 인식 프레임워크의 확장된 응용이다.
+- 🔗 후속 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — ARMOR의 egocentric 충돌 회피를 HumanoidPano가 spherical panoramic vision으로 확장하여 360도 환경 인식을 달성합니다.

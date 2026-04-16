@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "PubMed의 모든 초록을 이용한 대규모 생의학 지식그래프(iKraph)를 구축하고, 확률론적 의미 추론(PSR)을 통해 간접 인과관계를 식별하여 약물 재위치 지정(drug repurposing)에 적용했다."
 tags:
-  - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Knowledge_Graphs_and_Data_Integration"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_A comprehensive large-scale biomedical knowledge graph for AI-powered data-driven biomedical researc.pdf"
 ---
@@ -93,10 +95,13 @@ PubMed의 모든 초록을 이용한 대규모 생의학 지식그래프(iKraph)
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 생의학 가설 생성을 MEDLINE 네트워크에서 포괄적 지식그래프로 발전시킴
-- 🔄 다른 접근: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 대규모 지식그래프 구축에서 생의학과 컴퓨터과학의 다른 도메인 접근법임
-- 🧪 응용 사례: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 생의학 지식그래프의 약물 재위치 지정이 제약 분야 화이트 스페이스 분석의 구체적 적용임
-- 🔄 다른 접근: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 대규모 지식그래프에서 컴퓨터과학과 생의학 도메인의 다른 구축 방법론임
-- 🔗 후속 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 생의학 가설 생성에서 MEDLINE 기반 접근법을 더 포괄적인 지식그래프로 발전시킴
-- 🔗 후속 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — PubMed 기반 생의학 과학 지도를 AI 연구를 위한 포괄적 대규모 생의학 지식 그래프로 확장하여 더욱 풍부한 응용을 가능하게 합니다.
-- 🔄 다른 접근: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 생의학 지식 그래프와 달리 방사선학 특화 AI 모델 저장소로 도메인별 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 생의학 가설 생성이라는 동일한 목표를 지식그래프 기반과 자동화 시스템으로 각각 접근
+- 🔗 후속 연구: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 컴퓨터과학 분야 지식그래프의 방법론을 생의학 분야로 확장 적용한 사례
+- 🏛 기반 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 생의학 연구 매핑의 기초 방법론을 대규모 지식그래프로 발전시킨 연구
+- 🔗 후속 연구: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 의학 문헌에서 잠재 지식을 추출하는 워드 임베딩 기법을 지식그래프 구조로 확장 발전시켰기 때문
+- 🔗 후속 연구: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 재료과학 특화 임베딩을 생의학 분야 대규모 지식 그래프로 확장하여 적용한다.
+- 🔄 다른 접근: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 지식그래프 구축을 컴퓨터과학과 생의학 분야에서 각각 다른 접근법으로 수행
+- 🏛 기반 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 포괄적 생의학 지식 그래프가 과학 연구 매핑에서 지식 그래프 활용의 기반적 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — MEDLINE 기반 가설 생성을 더 포괄적인 생의학 지식 그래프로 확장하여 발전시켰다.
+- 🔗 후속 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 생의학 과학 지도를 포괄적인 생의학 지식 그래프로 확장하여 AI 응용을 위한 더 풍부한 구조를 제공한다.
+- 🔗 후속 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 의료 AI 분야의 지식 그래프를 방사선학 특화 AI 모델로 확장한 접근이다

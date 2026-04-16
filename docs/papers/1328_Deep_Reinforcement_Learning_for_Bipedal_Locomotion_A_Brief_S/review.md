@@ -11,8 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 bipedal robot의 locomotion을 위한 Deep Reinforcement Learning(DRL) 기반 프레임워크를 체계적으로 분류, 비교, 분석하는 survey이며, end-to-end와 hierarchical 제어 방식으로 구분하여 각 프레임워크의 구성, 강점, 한계를 평가한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bao et al._2024_Deep Reinforcement Learning for Bipedal Locomotion A Brief Survey.pdf"
 ---
@@ -88,8 +88,6 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bao et al._2024_Deep Reinforcement Learn
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1295_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — bipedal locomotion의 DRL 프레임워크가 휴머노이드 강화학습의 이론적 기초를 제공한다
-- 🔄 다른 접근: [[papers/1534_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 휴머노이드 locomotion 학습을 각각 체계적 분류와 15분 빠른 학습이라는 다른 접근법으로 해결한다
-- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — 실세계 DRL 연구를 bipedal locomotion이라는 구체적 도메인으로 특화하여 발전시킨다
-- 🔗 후속 연구: [[papers/1295_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — 이족 보행의 deep RL 접근법을 end-to-end 프레임워크로 통합하여 더 완전한 시스템을 구현한다
-- 🏛 기반 연구: [[papers/1534_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — Deep RL 기반 이족보행의 기본 원리를 바탕으로 극도로 빠른 학습을 가능하게 하는 최적화 방법을 개발한다.
+- 🧪 응용 사례: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — 강화학습을 휴머노이드 로코모션이라는 구체적 영역에 적용한 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — 로봇공학을 위한 DRL의 실제 응용으로 이족 보행을 확장한다.
+- 🏛 기반 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 강화학습에서 언어 모델을 활용한 사전학습 가이드의 기초를 제공한다.

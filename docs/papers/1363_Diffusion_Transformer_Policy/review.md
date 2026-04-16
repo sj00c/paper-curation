@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "Diffusion Transformer Policy는 큰 멀티모달 diffusion transformer를 사용하여 연속 action sequence를 직접 denoising함으로써, 작은 action head 대신 transformer의 scaling 능력을 활용하는 generalist robot policy이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Transformer_Policies"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hou et al._2024_Diffusion Transformer Policy.pdf"
 ---
@@ -94,9 +94,18 @@ Diffusion Transformer Policy는 큰 멀티모달 diffusion transformer를 사용
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 오픈소스 vision-language-action model이 diffusion transformer policy 연구의 기반 모델 역할을 한다.
-- 🔄 다른 접근: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — SpecPrune을 통한 VLA 모델 가속화가 diffusion transformer의 scaling 문제를 다른 관점에서 접근한다.
-- 🔗 후속 연구: [[papers/1475_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — Universal controller를 위한 transformer 기반 MetaMorph가 diffusion transformer policy의 일반화 능력을 확장한다.
-- 🔗 후속 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Diffusion Transformer Policy가 BeT의 transformer 기반 multi-modal action learning을 diffusion 기법으로 더욱 발전시킨다.
-- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Diffusion Transformer Policy의 scaling approach가 MoDE의 efficiency 중심 접근과 대조된다.
-- 🏛 기반 연구: [[papers/1432_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — Diffusion Transformer Policy의 기본 구조를 human-enhanced bimanual manipulation에 적용한 구체적 사례입니다.
+- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 기존 Diffusion Policy의 작은 action head를 큰 transformer로 대체하여 scaling 능력을 향상시킵니다.
+- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Diffusion transformer의 효율성을 위한 MoE와 단일 large transformer의 서로 다른 접근법입니다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 오픈소스 generalist robot policy의 기본 구조와 원리를 제공합니다.
+- 🔗 후속 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — HybridVLA의 diffusion 기반 action 예측이 Diffusion Transformer Policy의 방법론을 VLM과 통합하여 확장한 형태이다.
+- 🔗 후속 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — Diffusion Transformer Policy를 triply-hierarchical 구조로 확장하여 visuomotor learning을 향상시켰다.
+- 🏛 기반 연구: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — diffusion transformer의 기본 아키텍처를 consistency flow training에 적용하는 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — diffusion transformer의 기본 아키텍처를 navigation diffusion policy에 적용하는 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — Diffusion Transformer Policy와 RDT의 diffusion foundation model은 transformer 구조 활용 방식에서 다른 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Diffusion Transformer Policy가 transformer 기반 diffusion에 중점을 두는 반면, Streaming Flow Policy는 flow-matching의 단순화와 실시간 스트리밍에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Diffusion Transformer Policy는 VITA가 대안으로 제시하는 기존 diffusion 기반 정책의 기반 연구다.
+- 🏛 기반 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — Diffusion Transformer Policy의 기본 구조를 여러 정책의 조합으로 확장한 접근방식을 제시합니다.
+- 🔗 후속 연구: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — Diffusion Transformer Policy의 기본 구조를 DexVLA가 VLA 프레임워크로 확장하고 embodied curriculum learning과 결합합니다.
+- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Transformer 정책으로서 diffusion 기반 정책 학습을 확장합니다.
+- 🏛 기반 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — Diffusion Transformer Policy의 기본 아키텍처가 Discrete Diffusion VLA에서 action token 디코딩에 적용되는 transformer-diffusion 결합의 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Diffusion Transformer Policy의 기본 아키텍처를 MoE로 확장하여 효율성을 개선한 연구입니다.

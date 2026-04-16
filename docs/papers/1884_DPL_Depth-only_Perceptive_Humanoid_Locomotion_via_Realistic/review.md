@@ -1,3 +1,24 @@
+---
+title: "1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic"
+authors:
+  - "Jingkai Sun"
+  - "Gang Han"
+  - "Pihai Sun"
+  - "Wen Zhao"
+  - "Jiahang Cao"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 깊이 이미지만을 사용한 지형 인식 보행을 위해, 현실적인 깊이 합성과 cross-attention transformer를 결합하여 사전 학습된 blind policy를 기반으로 효율적인 정책 학습을 가능하게 한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sun et al._2025_DPL Depth-only Perceptive Humanoid Locomotion via Realistic Depth Synthesis and Cross-Attention Ter.pdf"
+---
+
 # DPL: Depth-only Perceptive Humanoid Locomotion via Realistic Depth Synthesis and Cross-Attention Terrain Reconstruction
 
 > **저자**: Jingkai Sun, Gang Han, Pihai Sun, Wen Zhao, Jiahang Cao, Jiaxu Wang, Yijie Guo, Qiang Zhang | **날짜**: 2025-10-08 | **URL**: [https://arxiv.org/abs/2510.07152](https://arxiv.org/abs/2510.07152)
@@ -67,3 +88,18 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 humanoid 로봇의 깊이 기반 보행에서 sim-to-real gap과 효율성 문제를 체계적으로 해결하는 통합 프레임워크를 제시하며, self-occlusion-aware 깊이 합성, cross-modal transformer, end-to-end fine-tuning의 조합으로 높은 독창성과 실용성을 달성했다. 실제 로봇 검증과 명확한 기술 기여가 돋보이는 우수한 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — 깊이 정보만을 사용한 지형 인식과 cross-modal fusion을 통한 접근법이 센서 데이터 활용에서 서로 다른 전략을 보여준다.
+- 🧪 응용 사례: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — DPL의 현실적인 깊이 합성 기술이 polygonal semantic mapping과 결합되어 휴머노이드의 실내 네비게이션 성능을 향상시킬 수 있다.
+- 🔄 다른 접근: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 실시간 지형 추정을 통한 다른 지각적 인간형 보행 방식을 제시합니다.
+- 🔗 후속 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — 하이브리드 구형 파노라마-LiDAR 교차 모달 지각으로 발전됩니다.
+- 🏛 기반 연구: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 깊이 전용 지각적 보행의 기본 개념과 방법론을 제공합니다.
+- 🏛 기반 연구: [[papers/1658_RPL_Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challe/review]] — RPL의 depth 카메라 기반 transformer 정책이 DPL의 depth-only perceptive locomotion 방법론을 확장한 것이다
+- 🧪 응용 사례: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — depth-only perceptive locomotion 기법이 AME-2의 elevation mapping 파이프라인을 더 효율적이고 실용적으로 만드는 데 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — 깊이 정보를 활용한 지형 인식 보행에서 cross-modal fusion과 depth-only 접근법의 서로 다른 센서 융합 전략을 비교한다.
+- 🔄 다른 접근: [[papers/1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — Humanoid Occupancy의 multimodal fusion과 DPL의 depth-only 접근법은 humanoid 환경 인식을 위한 서로 다른 센서 융합 전략입니다.
+- 🔗 후속 연구: [[papers/2042_Learning_a_Vision-Based_Footstep_Planner_for_Hierarchical_Wa/review]] — 깊이 인식 휴머노이드 보행의 계층적 제어로의 확장된 접근
+- 🔗 후속 연구: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 깊이 기반 지각을 통해 극한 제약 조건에서도 환경 적응 보행을 가능하게 하는 확장된 방법론이다.
+- 🏛 기반 연구: [[papers/2112_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro/review]] — DPL의 depth-only 지각 기반 보행 학습 기법이 Now You See That의 raw depth 이미지 기반 end-to-end 학습에 방법론적 기반을 제공한다.

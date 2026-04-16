@@ -1,3 +1,25 @@
+---
+title: "2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob"
+authors:
+  - "Tianyang Wu"
+  - "Hanwei Guo"
+  - "Yuhang Wang"
+  - "Junshu Yang"
+  - "Xinyang Sui"
+date: "2026.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Mixture-of-Experts (MoE) 기반 사족 로봇 이동 정책과 sim-to-real 전이 가능성을 정량화하는 RoboGauge 평가 프레임워크를 통합하여 신뢰할 수 있는 시뮬레이션-실제 간 갭을 해소하는 통합 프레임워크를 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2026_Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion.pdf"
+---
+
 # Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion
 
 > **저자**: Tianyang Wu, Hanwei Guo, Yuhang Wang, Junshu Yang, Xinyang Sui, Jiayi Xie, Xingyu Chen, Zeyang Liu, Xuguang Lan | **날짜**: 2026-01-31 | **URL**: [https://arxiv.org/abs/2602.00678](https://arxiv.org/abs/2602.00678)
@@ -67,3 +89,26 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 MoE 기반 정책과 RoboGauge 평가 프레임워크를 통합하여 sim-to-real 갭 문제를 체계적으로 해결하고, 극한 지형에서 4 m/s의 견고한 이동 성능을 입증함으로써 사족 로봇 이동 제어 분야에 유의미한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — GaussGym의 real-to-sim 프레임워크가 RoboGauge의 sim-to-real 예측 가능성 평가를 위한 기반 시뮬레이션 환경을 제공합니다.
+- 🔄 다른 접근: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — RoboGauge는 MoE 기반 사족 로봇에 집중하고 systematic sim-to-real transfer는 이족 로봇의 PMSM 에너지 모델을 사용하는 서로 다른 접근법입니다.
+- 🧪 응용 사례: [[papers/1829_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — RoboGauge의 신뢰성 평가 프레임워크를 athletic loco-manipulation의 sim-to-real 전이 검증에 적용하여 성능 예측 정확도를 높일 수 있습니다.
+- 🔄 다른 접근: [[papers/1620_PolySim_Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_vi/review]] — MoE 기반 접근법 대신 diffusion 기반 방법으로 sim-to-real 문제를 해결하는 다른 관점을 제시함
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — contrastive representation learning이 RoboGauge의 sim-to-real 예측성 평가에서 robust feature 추출을 위한 이론적 기반을 제공함
+- 🔗 후속 연구: [[papers/1675_Sim-to-Real_of_Humanoid_Locomotion_Policies_via_Joint_Torque/review]] — joint torque 기반 sim-to-real 접근법에 MoE와 RoboGauge 평가를 통합하면 더 신뢰할 수 있는 전이 성능 예측 가능
+- 🏛 기반 연구: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — Robot crash course의 soft falling learning이 MoE 기반 robust locomotion에서 예외 상황 처리와 recovery 능력의 기술적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 frame-accelerated mixture-of-experts가 MoE 기반 robust quadruped locomotion과 다른 가속화 접근법으로 전문가 네트워크를 활용합니다.
+- 🔗 후속 연구: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — MoE 기반 로봇 제어의 sim-to-real 예측가능성을 샘플링 기반 시스템 식별로 더 정확하게 만든다.
+- 🔄 다른 접근: [[papers/1620_PolySim_Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_vi/review]] — Multi-simulator training의 안정성을 MoE 기반 접근법으로 개선한 연구
+- 🔄 다른 접근: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — OOD detection을 MoE-based robustness로 해결하는 상호 보완적 접근법
+- 🏛 기반 연구: [[papers/1746_VB-Com_Learning_Vision-Blind_Composite_Humanoid_Locomotion_A/review]] — MoE 기반 로봇 제어의 sim-to-real 예측가능성 개념을 시각 정보 결손이라는 구체적 문제에 적용하여 복합 제어 프레임워크를 개발했다.
+- 🔗 후속 연구: [[papers/1829_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — UAN의 액추에이터 모델링이 MoE 기반 로봇 sim-to-real 예측 가능성 향상에 확장되어 더 신뢰할 수 있는 전이를 달성할 수 있다
+- 🏛 기반 연구: [[papers/1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C/review]] — MoE-based robot control의 신뢰성 있는 sim-to-real 예측이 DiffCoTune의 도메인 전이 최적화 방법론에 이론적 근거를 제공한다.
+- 🔗 후속 연구: [[papers/1984_HoRD_Robust_Humanoid_Control_via_History-Conditioned_Reinfor/review]] — MoE-based robot의 sim-to-real predictability 향상 방법이 HoRD의 online distillation 단계에서 강건성을 더욱 개선할 수 있다.
+- 🏛 기반 연구: [[papers/2031_Iterative_Closed-Loop_Motion_Synthesis_for_Scaling_the_Capab/review]] — MoE 기반 로봇 제어의 신뢰성 있는 sim-to-real 전이가 CLAIMS의 반복적 능력 확장에 실세계 적용 기반 제공
+- 🔗 후속 연구: [[papers/2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — MoE 기반 로봇 제어의 sim-to-real 예측 가능성을 지형 보행으로 확장
+- 🧪 응용 사례: [[papers/2084_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with/review]] — MoE 기반 로봇 제어의 시뮬레이션-현실 예측 가능성을 대규모 병렬 훈련으로 개선할 수 있다.
+- 🔗 후속 연구: [[papers/2154_Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and/review]] — MoE 기반 로봇 정책의 sim-to-real 예측 가능성을 더 안정적으로 보장하는 발전된 접근법이다.
+- 🔄 다른 접근: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — PMSM 에너지 모델은 이족 로봇의 물리 기반 접근을 사용하고 MoE-based Robust Quadruped은 사족 로봇의 혼합 전문가 모델을 사용하는 서로 다른 전이 방법입니다.

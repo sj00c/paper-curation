@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "ManiFlow는 flow matching과 consistency training을 결합하여 1-2 inference step으로 고품질의 dexterous action을 생성하는 visuomotor imitation learning policy이다. DiT-X 아키텍처를 통해 visual, language, proprioceptive 입력을 효율적으로 조건화하며 실제 로봇 환경에서 우수한 성능을 보인다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yan et al._2025_ManiFlow A General Robot Manipulation Policy via Consistency Flow Training.pdf"
 ---
@@ -92,8 +93,11 @@ ManiFlow는 flow matching과 consistency training을 결합하여 1-2 inference 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — 두 논문 모두 시각-언어-행동 통합을 다루지만, 하나는 flow matching 기반 생성에, 다른 하나는 공간 그라운딩에 집중합니다.
-- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 기본 개념이 flow matching을 활용한 조작 정책의 이론적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1522_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — RDT의 diffusion 기반 양팔 조작을 flow matching과 consistency training으로 더욱 효율화한 발전된 형태입니다.
-- 🧪 응용 사례: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — flow-based 정책 개선 방법론이 일관성 훈련을 통한 고품질 행동 생성에 적용될 수 있습니다.
-- 🔄 다른 접근: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — 두 논문 모두 시각-언어-행동 통합을 다루지만, 하나는 공간 그라운딩에, 다른 하나는 flow matching 기반 행동 생성에 집중합니다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — ManiFlow의 flow matching 기반 정책 학습이 기반으로 하는 diffusion policy 방법론
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 고품질 visuomotor policy 생성에서 consistency training vs diffusion의 다른 접근
+- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Streaming 환경에서의 flow policy 간소화를 통한 ManiFlow 개념의 실용적 확장
+- 🔗 후속 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — consistency policy를 flow matching과 결합하여 더 안정적이고 빠른 visuomotor policy를 구현할 수 있다.
+- 🏛 기반 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — diffusion transformer의 기본 아키텍처를 consistency flow training에 적용하는 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — Flow-based 정책을 단일 모델로 학습하는 것과 달리 사전학습된 정책들의 조합으로 접근합니다.
+- 🏛 기반 연구: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — ManiFlow의 flow matching 기반 manipulation policy 개념을 3D 시각 표현과 결합하여 단일/양팔 통합 정책으로 발전시킨 연구입니다.
+- 🔗 후속 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — ManiFlow의 consistency model을 역방향 궤적 생성으로 발전시켜 누적 오차 문제를 해결한 접근법입니다.

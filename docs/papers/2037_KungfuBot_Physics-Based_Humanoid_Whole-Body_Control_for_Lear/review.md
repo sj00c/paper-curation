@@ -1,3 +1,24 @@
+---
+title: "2037_KungfuBot_Physics-Based_Humanoid_Whole-Body_Control_for_Lear"
+authors:
+  - "Weiji Xie"
+  - "Jinrui Han"
+  - "Jiakun Zheng"
+  - "Huanyu Li"
+  - "Xinzhe Liu"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 물리 기반 인간형 로봇 제어 프레임워크(PBHC)를 제안하여 쿵푸, 댄싱 등 고도로 동적인 인간 행동을 모방하도록 학습하는 방법을 제시한다. 다단계 모션 처리와 적응형 모션 추적을 통해 기존 방법보다 현저히 낮은 추적 오차를 달성하고 실제 로봇에 배포된다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xie et al._2025_KungfuBot Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills.pdf"
+---
+
 # KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills
 
 > **저자**: Weiji Xie, Jinrui Han, Jiakun Zheng, Huanyu Li, Xinzhe Liu, Jiyuan Shi, Weinan Zhang, Chenjia Bai, Xuelong Li | **날짜**: 2025-06-15 | **URL**: [https://arxiv.org/abs/2506.12851](https://arxiv.org/abs/2506.12851)
@@ -73,3 +94,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 물리 기반 모션 처리, 적응형 bi-level optimization 커리큘럼, 비대칭 actor-critic 구조를 결합한 포괄적 프레임워크로 고도로 동적인 인간형 로봇 제어 문제를 체계적으로 해결한다. 실제 로봇 배포 성공과 기존 방법 대비 현저한 성능 향상은 강력한 기술적 기여를 입증하며, 인간형 로봇의 동적 행동 학습 분야에서 중요한 진전을 이룬다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2038_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — KungfuBot의 고도로 동적인 행동 학습을 다양한 모션 기술로 확장하여 더 범용적인 휴머노이드 제어 시스템을 구현한다.
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 물리 기반 캐릭터 제어를 위한 강화학습의 기본 원리가 쿵푸 동작 모방 학습의 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1999_Humanoid_Parkour_Learning/review]] — 고도로 동적인 인간 행동 모방에서 쿵푸/댄싱 대신 파쿠르 기술을 학습하는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1649_Robot_Crash_Course_Learning_Soft_and_Stylized_Falling/review]] — 둘 다 동적 인간 동작 모방이지만 KungfuBot은 쿵푸 등 고동적 행동, Robot Crash Course는 낙하 기술 중심
+- 🔗 후속 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — KungfuBot의 물리 기반 고동적 행동 학습이 테니스 기술 학습의 운동 기반을 제공하여 더 정확한 스포츠 모션 구현 가능
+- 🏛 기반 연구: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — AMOR의 다목적 강화학습이 KungfuBot의 고동적 인간 행동 모방에서 스타일과 성능을 동시에 최적화하는 기반 제공
+- 🧪 응용 사례: [[papers/2001_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig/review]] — 완전한 articulated dynamics가 쿵푸 기반 전신 제어의 물리적 기반을 강화할 수 있다.
+- 🏛 기반 연구: [[papers/2038_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — KungfuBot의 단일 동작 학습 방법론이 VMS의 다중 동작 통합 시스템을 위한 기본적인 물리 기반 제어 원리를 제공한다.

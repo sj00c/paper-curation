@@ -12,7 +12,7 @@ arxiv: ""
 score: 4.0
 essence: "Action trajectory를 flow trajectory로 취급하여 diffusion/flow-matching 정책을 단순화하고, 흐름 샘플링 중 실시간으로 로봇에 action을 스트리밍할 수 있는 streaming flow policy를 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
   - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2025_Streaming Flow Policy Simplifying diffusionflow-matching policies by treating action trajectories.pdf"
@@ -88,11 +88,15 @@ Action trajectory를 flow trajectory로 취급하여 diffusion/flow-matching 정
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 확산 정책의 기본 아이디어를 스트리밍 플로우로 단순화하여 실시간 액션 생성을 가능하게 한다.
-- 🧪 응용 사례: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — 실시간 액션 청킹 플로우 정책 실행에서 스트리밍 플로우가 지연 시간을 크게 개선한다.
-- 🔄 다른 접근: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — 일관성 정책과 스트리밍 플로우 정책이 각각 다른 방식으로 확산 모델의 추론 속도를 개선한다.
-- 🔗 후속 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — 실시간 action chunking 실행 알고리즘을 MEM의 단기 메모리 기반 제어에 통합하여 지연 시간을 최소화할 수 있다
-- 🔗 후속 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — streaming flow policy의 실시간 처리 프레임워크를 OneDP의 단일 단계 추론과 결합하여 지연 시간을 더욱 단축할 수 있다
-- 🏛 기반 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Streaming Flow Policy가 VITA의 vision-to-action flow matching 구조의 이론적 기반을 제공한다
-- 🔗 후속 연구: [[papers/1618_VLA-Reasoner_Empowering_Vision-Language-Action_Models_with_R/review]] — Streaming Flow Policy의 온라인 계획을 MCTS 기반 추론으로 확장하여 장기 지평 문제 해결 능력을 강화했다
-- 🔄 다른 접근: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Flow-matching policy가 diffusion policy와 다른 생성 모델 접근으로 visuomotor policy learning을 구현한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 action diffusion 기본 개념이 Streaming Flow Policy의 flow trajectory 기반 단순화된 접근법의 이론적 기초가 된다.
+- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — Real-Time Execution of Action Chunking의 실시간 정책 실행 개념을 flow sampling 중 실시간 스트리밍이 가능한 더 발전된 형태로 확장했다.
+- 🔄 다른 접근: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy가 transformer 기반 diffusion에 중점을 두는 반면, Streaming Flow Policy는 flow-matching의 단순화와 실시간 스트리밍에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — 물리적 상식과 추론 능력이 Streaming Flow Policy의 실시간 로봇 제어에 필요한 기초적 이해를 제공합니다.
+- 🔗 후속 연구: [[papers/1395_FlowPolicy_Enabling_Fast_and_Robust_3D_Flow-based_Policy_via/review]] — flow-based policy의 실시간 실행을 위한 streaming 방식으로 FlowPolicy를 더욱 실용화했다.
+- 🔗 후속 연구: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — Streaming 환경에서의 flow policy 간소화를 통한 ManiFlow 개념의 실용적 확장
+- 🏛 기반 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — OneDP가 개선하고자 하는 기존 diffusion/flow-matching policy의 streaming 방법론과 성능 한계를 제시한다.
+- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — streaming flow policy의 개념을 action chunking과 결합하여 더 효율적이고 연속적인 로봇 제어 시스템을 구축한다.
+- 🔄 다른 접근: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Streaming Flow Policy는 VITA의 flow matching과 유사한 flow 기반 정책이지만 streaming 방식으로 단순화한다.
+- 🔄 다른 접근: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — 스트리밍 flow 정책이라는 다른 diffusion/flow 기반 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Flow-based 정책의 streaming 구현을 위한 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — Streaming Flow Policy의 단순화된 diffusion/flow matching과 Discrete Diffusion VLA는 모두 기존 diffusion policy의 복잡성을 해결하려는 방향성을 공유한다.

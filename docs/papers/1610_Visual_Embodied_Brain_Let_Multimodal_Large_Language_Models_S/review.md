@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "VeBrain은 멀티모달 대형 언어 모델(MLLM)을 지각, 추론, 제어 기능으로 통합하는 프레임워크이며, 로봇 제어 작업을 2D 시각 공간의 텍스트 기반 MLLM 작업으로 재구성합니다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robotic_Manipulation_and_Simulation"
   - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luo et al._2025_Visual Embodied Brain Let Multimodal Large Language Models See, Think, and Control in Spaces.pdf"
@@ -88,7 +89,12 @@ VeBrain은 멀티모달 대형 언어 모델(MLLM)을 지각, 추론, 제어 기
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — Visual Embodied Brain은 2D 시각 공간 기반 제어를, Helix는 3D world model 기반 제어를 통해 multimodal LLM의 embodied control을 구현하는 다른 방식
-- 🔗 후속 연구: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — VeBrain의 통합 프레임워크가 다른 VLA 모델들과 결합되어 더 포괄적인 vision-language-action 시스템을 구성할 수 있음
-- 🏛 기반 연구: [[papers/1437_Hand-Eye_Autonomous_Delivery_Learning_Humanoid_Navigation_Lo/review]] — VeBrain의 multimodal integration이 InternVLA-A1의 unified understanding과 generation 능력을 embodied control에 적용하는 기반을 제공
-- 🧪 응용 사례: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — 체화된 시각 브레인 개념이 멀티모달 AI 에이전트의 시각-언어 능력을 실제 로봇에 적용하는 방법을 제시합니다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — embodied multimodal language model의 기본 개념을 제공하여 VeBrain의 MLLM 기반 통합 프레임워크에 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — 둘 다 로봇 조작을 위한 통합된 brain model을 제시하지만 RoboBrain은 별도의 brain model에, VeBrain은 MLLM 통합에 집중합니다.
+- 🔗 후속 연구: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — embodied chain-of-thought reasoning을 MLLM 기반 지각-추론-제어 통합으로 확장하여 더 포괄적인 embodied reasoning을 제시합니다.
+- 🔄 다른 접근: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — VeBrain과 CoT-VLA는 모두 MLLM의 시각적 추론을 로봇 제어에 활용하지만 통합 vs 연쇄 사고 접근이 다릅니다.
+- 🔗 후속 연구: [[papers/1587_Time-Transient_Wireless_RF_Sensor_with_Differentiative_Detec/review]] — 무선 RF 센서는 VeBrain의 멀티모달 지각 능력을 물리적 환경 감지로 확장할 수 있는 추가 센싱 모달리티입니다.
+- 🏛 기반 연구: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — Neural Brain의 신경과학적 설계 원리가 Visual Embodied Brain의 멀티모달 대규모 언어 모델 아키텍처에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E의 embodied reasoning을 visual embodied brain으로 확장한 MLLM 발전
+- 🧪 응용 사례: [[papers/1587_Time-Transient_Wireless_RF_Sensor_with_Differentiative_Detec/review]] — 무선 RF 센서 기술은 VeBrain의 물리적 환경 인식 능력을 향상시킬 수 있는 센싱 모듈로 활용 가능합니다.
+- 🔗 후속 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual Embodied Brain은 LLaVA의 시각-언어 통합을 embodied AI의 뇌 구조로 발전시킨 확장 연구다.

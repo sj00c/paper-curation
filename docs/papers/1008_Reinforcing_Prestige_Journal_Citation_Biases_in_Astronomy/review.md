@@ -13,7 +13,8 @@ score: 4.0
 essence: "천문학 분야 255,000개 논문을 분석한 결과, 다학제 저널(Nature, Science)이 출판량 대비 9배까지 높은 인용을 받으며, 저널 자체의 명성이 논문의 질과 무관하게 인용 편향을 야기함을 보여줌."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Publisher_Citation_Bias"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Adibekyan et al._2026_Reinforcing Prestige Journal Citation Biases in Astronomy.pdf"
 ---
@@ -88,10 +89,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Adibekyan et al._2026_Reinforcing Presti
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 저널 명성에 따른 인용 편향이 과학 출판량 급증과 함께 출판 시스템의 구조적 문제를 심화시키는 배경을 제공합니다.
-- 🔗 후속 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 저널 인용 편향이 학술 출판사들의 과점 구조와 어떻게 연결되어 출판 생태계의 불평등을 강화하는지 확장 분석합니다.
-- ⚖️ 반론/비판: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 저널 명성이 논문 질과 무관한 인용 편향을 야기한다는 관점과 peer-review에서 명성 vs 아이디어의 선택 기준을 대비합니다.
-- 🧪 응용 사례: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 천문학 저널 인용 편향 분석을 정형외과 분야의 저자 수와 Open Access 효과 연구에 적용할 수 있다
-- 🧪 응용 사례: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 천문학 저널의 인용 편향 분석에 초기 인용 분석 방법론을 적용할 수 있다
-- 🧪 응용 사례: [[papers/1210_Scilit_with_the_Integrated_Impact_Indicator_Assessment/review]] — 새로운 영향력 지표가 천문학 분야의 저널 인용 편향 문제 해결에 적용될 수 있다.
-- 🔗 후속 연구: [[papers/1151_Citation_Analysis_of_DESIDOC_Journal_of_Information_Technolo/review]] — 도서관정보학 분야 학술지의 인용 분석과 천문학 분야의 학술지 인용 편향 연구가 서로 다른 학문 분야의 인용 패턴을 비교 분석할 수 있게 합니다.
+- 🔗 후속 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 출판사 독점이 저널 명성 기반 인용 편향을 구조적으로 강화하는 메커니즘을 설명한다.
+- 🏛 기반 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 글로벌 인용 불평등 증가 현상이 저널 명성에 따른 인용 편향의 근본적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 샤페론 효과가 개별 연구자 수준에서 나타나는 저널 출판 편향을 보여주는 미시적 관점을 제공한다.
+- 🔗 후속 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 천문학 분야의 저널 명성 편향이 컴퓨터과학의 성별 인용 불균형과 함께 학술계의 체계적 편향을 보여줍니다.
+- 🏛 기반 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 저널의 명성이 인용에 미치는 편향 효과의 배경이 되는 과학계의 전반적인 성별 격차를 보여줍니다.
+- 🔗 후속 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 저자 정보, 제목, 오픈액세스가 인용에 미치는 영향 분석은 저널 명성 편향 외에도 논문 인용에 영향을 주는 다른 요인들을 포괄적으로 다룹니다.
+- 🔄 다른 접근: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — Google Scholar, Scopus 등 다양한 학술 데이터베이스 비교는 저널 명성 편향이 데이터베이스 선택에 따라 어떻게 다르게 나타나는지 분석할 수 있는 대안적 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터과학의 성별 인용 불균형과 천문학의 저널 명성 편향이 함께 학술계의 체계적 편향을 보여줍니다.
+- 🔄 다른 접근: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 저널 명성 기반 인용 편향이 개별 연구자 수준에서 나타나는 샤페론 효과의 거시적 맥락을 제공한다.
+- 🏛 기반 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 출판사 독점이 천문학 분야 저널 명성 기반 인용 편향을 구조적으로 강화하는 메커니즘을 설명한다.
+- 🔗 후속 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 1972년 저널 평가를 위한 인용 분석이 천문학 분야 저널 인용 편향 분석으로 구체적으로 확장됩니다.
+- 🔄 다른 접근: [[papers/1151_Citation_Analysis_of_DESIDOC_Journal_of_Information_Technolo/review]] — 천문학에서 저널 인용 편향을 강화하는 연구로, DJLIT 인용 분석과 다른 학문 분야의 인용 패턴을 분석하는 대안적 접근법입니다.

@@ -1,3 +1,24 @@
+---
+title: "2066_Learning_to_Ball_Composing_Policies_for_Long-Horizon_Basketb"
+authors:
+  - "Pei Xu"
+  - "Zhen Wu"
+  - "Ruocheng Wang"
+  - "Vishnu Sarukkai"
+  - "Kayvon Fatahalian"
+date: "2025.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "농구 동작과 같은 다단계 장기 과제에서 정의되지 않은 중간 상태를 가진 이질적인 스킬들을 seamlessly 합성하기 위해 policy integration framework와 soft routing을 제안한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Character_Motion_Policy_Transfer"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2025_Learning to Ball Composing Policies for Long-Horizon Basketball Moves.pdf"
+---
+
 # Learning to Ball: Composing Policies for Long-Horizon Basketball Moves
 
 > **저자**: Pei Xu, Zhen Wu, Ruocheng Wang, Vishnu Sarukkai, Kayvon Fatahalian, Ioannis Karamouzas, Victor Zordan, C. Karen Liu | **날짜**: 2025-09-26 | **URL**: [https://arxiv.org/abs/2509.22442](https://arxiv.org/abs/2509.22442)
@@ -69,3 +90,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 ill-defined 중간 subtask를 다루기 위한 혁신적인 policy integration framework를 제시하며, soft routing과 adaptive fine-tuning을 통해 다단계 장기 과제에서 이질 스킬의 seamless 합성을 실현한다. 실시간 사용자 명령 기반의 자유로운 농구 플레이와 높은 슈팅 정확도는 제안 방법의 유효성을 강력히 입증하나, 시뮬레이션 환경 한정과 방법의 일반화 가능성이 향후 과제이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — 다목적 강화학습을 통한 캐릭터 제어의 이론적 기반을 제공하며, 농구와 같은 복합 스킬 학습에 적용 가능하다.
+- 🔄 다른 접근: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — 마스킹된 모션 생성을 통해 농구 동작의 중간 상태 문제를 다른 방식으로 해결할 수 있는 대안적 접근법이다.
+- 🔗 후속 연구: [[papers/1679_SkillMimic_Learning_Basketball_Interaction_Skills_from_Demon/review]] — 농구 동작 학습을 위한 데모 기반 스킬 모방 방법론을 확장하여 장기 시퀀스 합성에 적용할 수 있다.
+- 🧪 응용 사례: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — 언어 기반 제어를 통해 농구 동작의 고수준 명령을 자연어로 지시할 수 있는 실용적 응용이다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — 다단계 강화학습을 통한 휴머노이드 배드민턴으로 스포츠 스킬의 확장된 적용을 보여준다.
+- 🏛 기반 연구: [[papers/1883_DoublyAware_Dual_Planning_and_Policy_Awareness_for_Temporal/review]] — 이중 계획과 정책 인식을 통한 시간적 추상화의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1679_SkillMimic_Learning_Basketball_Interaction_Skills_from_Demon/review]] — 농구 스킬 학습의 기초 연구를 장기간 농구 정책 구성으로 확장한다.
+- 🧪 응용 사례: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — 농구공 다루기와 같은 복합적 볼 조작 작업에 동적 투척 기술을 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/2016_HUSKY_Humanoid_Skateboarding_System_via_Physics-Aware_Whole-/review]] — HUSKY의 physics-aware 제어 프레임워크가 농구 기술 학습의 동적 균형 제어에 응용 가능

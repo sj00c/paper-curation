@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 NLP와 CV 분야의 foundation models를 로봇 공학에 적용하여 범용 로봇 시스템 개발을 가능하게 하는 방법을 탐구하는 종합 설문조사이며, 기존 vision/language foundation models의 활용과 robotics-specific foundation models의 설계를 다룬다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2023_Toward General-Purpose Robots via Foundation Models A Survey and Meta-Analysis.pdf"
 ---
@@ -94,9 +96,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2023_Toward General-Purpose Ro
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1585_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro/review]] — 휴머노이드 충돌 회피의 다른 접근법으로 LiDAR 기반과 원본 픽셀 기반 인식을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1273_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — 휴머노이드 충돌 회피를 위한 이고센트릭 인식의 기반이 되는 충돌 감지 시스템을 제공한다.
-- 🔗 후속 연구: [[papers/1449_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 지각적 파쿠르 프레임워크를 omnidirectional 충돌 회피로 특화하여 발전시킨다.
-- 🔗 후속 연구: [[papers/1268_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — Omni-Perception의 omnidirectional 충돌 회피 시스템이 VIO 평가 결과를 바탕으로 더 robust한 perception을 구현한다.
-- 🔗 후속 연구: [[papers/1569_Segment_Anything/review]] — 범용 로봇 시스템의 기반 모델로서 SAM이 다양한 로봇 응용에서 시각 인식 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1585_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro/review]] — 옴니 방향 충돌 회피에서 end-to-end 시각 기반 보행이 LiDAR 기반 방법을 보완한다.
+- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation Models in Robotics는 동일한 로봇 foundation model 주제를 다루지만 응용과 도전 과제에 더 집중하는 다른 관점을 제공한다.
+- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — Foundation Model Driven Robotics는 foundation model 기반 로봇공학에 대한 또 다른 종합적 리뷰를 제공한다.
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — Pure VLA Models Survey는 foundation model 서베이를 VLA 모델에 특화하여 확장한 더 구체적인 연구 조사다.
+- 🏛 기반 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — Multimodal Fusion Survey는 로봇 foundation model의 핵심 구성 요소인 다중모달 융합에 대한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — 둘 다 VLA 모델에 대한 종합적 설문이지만 1608은 VLA에 특화된 반면 1590은 더 넓은 foundation model 관점을 제시합니다.
+- 🏛 기반 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — foundation model 시대의 로봇 학습에 대한 포괄적 조사로 1590의 이론적 배경을 제공합니다.
+- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — General-Purpose Robots Survey는 foundation model driven robotics와 유사한 범위를 다루지만 범용 로봇 관점에서 다른 분석 틀을 제시합니다.
+- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — 로봇틱스 foundation model 응용과 foundation model 기반 범용 로봇은 동일한 기술의 현재 상태와 미래 비전을 다루는 서로 다른 관점이다.
+- 🧪 응용 사례: [[papers/1404_Gemini_Robotics_Bringing_AI_into_the_Physical_World/review]] — 범용 로봇을 위한 foundation model 서베이는 Gemini Robotics가 제시한 AI의 물리 세계 적용 비전을 체계화함
+- 🏛 기반 연구: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — General-Purpose Robots Survey가 EMLMs 리뷰의 foundation model 기반 로봇 개발 동향 분석의 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — 둘 다 embodied AI의 포괄적 조사이지만, 대규모 모델 서베이는 의사결정에, General-Purpose Robots 서베이는 foundation model 전반에 초점을 둔다.
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — 범용 로봇을 위한 foundation model 동향을 VLA 모델 관점에서 구체화한다.
+- 🔗 후속 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — 범용 로봇을 위한 기초 모델 서베이를 확장하여 특히 언어 및 멀티모달 모델의 로봇 학습 적용에 집중한 전문적 조사를 제공한다.
+- 🏛 기반 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — foundation model 기반 범용 로봇에 대한 종합적 조사가 VLA 모델 연구의 이론적 배경과 발전 방향을 제시한다.
+- 🔗 후속 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — General-Purpose Robots 조사가 EIIR의 산업 특화 프레임워크를 더 넓은 범용 로봇 관점으로 확장합니다.
+- 🔄 다른 접근: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — Foundation Model을 통한 범용 로봇 개발이라는 유사한 목표를 다른 관점에서 접근한다.

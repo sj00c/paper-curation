@@ -1,3 +1,25 @@
+---
+title: "2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm"
+authors:
+  - "Boyu Li"
+  - "Siyuan He"
+  - "Hang Xu"
+  - "Haoqi Yuan"
+  - "Xinrun Xu"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 이중팔 휴머노이드 로봇의 장기 계획을 위해 DualTHOR 시뮬레이터와 고유감각(proprioception)을 인식하는 Proprio-MLLM을 제안하며, 기존 MLLM의 구현화 인식 부족을 해결한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Proprioceptive_Motor_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots.pdf"
+---
+
 # Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots
 
 > **저자**: Boyu Li, Siyuan He, Hang Xu, Haoqi Yuan, Xinrun Xu, Yu Zang, Liwei Hu, Junpeng Yue, Zhenxiong Jiang, Pengbo Hu, Börje F. Karlsson, Yehui Tang, Zongqing Lu | **날짜**: 2025-10-09 | **URL**: [https://arxiv.org/abs/2510.07882](https://arxiv.org/abs/2510.07882)
@@ -65,3 +87,15 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 이중팔 휴머노이드 로봇의 장기 계획을 위한 체계적인 시뮬레이션 플랫폼과 고유감각 기반 MLLM을 제시함으로써 구현화 AI 분야에 중요한 기여를 한다. 실제 로봇에서의 성능 검증과 더 복잡한 협력 작업 확장이 이루어진다면 더욱 영향력 있는 연구가 될 것이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — Hierarchical Vision-Language Planning의 다단계 계획 기법이 dual-arm 휴머노이드의 고유감각 인식 구현화 계획을 위한 기반 방법론을 제공합니다.
+- 🔄 다른 접근: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — Proprio-MLLM은 고유감각 인식에 집중하고 Trinity는 모듈러 휴머노이드 AI 시스템을 통한 서로 다른 embodied intelligence 접근법입니다.
+- 🔗 후속 연구: [[papers/1992_Humanoid_Agent_via_Embodied_Chain-of-Action_Reasoning_with_M/review]] — 고유감각 인식 MLLM을 Humanoid Agent의 chain-of-action reasoning과 결합하면 더 정확한 embodied planning과 실행이 가능합니다.
+- 🏛 기반 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 고충실도 종합 시뮬레이션 플랫폼이 이중팔 휴머노이드의 고유감각 인식 계획에 필요한 시뮬레이션 환경을 제공한다.
+- 🔄 다른 접근: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 고유감각 인식 MLLM 대신 자유 형식 언어를 통한 휴머노이드 명령 방식으로 구현화 문제를 다룬다.
+- 🧪 응용 사례: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 고유감각 인식 계획 기술이 가정 환경에서의 이중팔 저수준 조작 작업 수행에 직접 적용된다.
+- 🔄 다른 접근: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — 둘 다 고유감각을 활용한 휴머노이드 제어를 다루지만 이 논문은 이중팔 계획에, Ego-Vision World Model은 접촉 계획에 특화됩니다.
+- 🔗 후속 연구: [[papers/2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — VLM 기반 계층적 세계 모델링 기법이 이중팔 휴머노이드의 고유감각 인식 계획 능력을 더욱 향상시킬 수 있습니다.
+- 🏛 기반 연구: [[papers/1946_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — proprioception-aware embodied planning이 RGMP-S의 기하학적 선행 정보 활용에 이론적 기반을 제공한다.

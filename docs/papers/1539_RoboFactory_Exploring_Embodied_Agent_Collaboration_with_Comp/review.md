@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 다중 구체화 에이전트(embodied multi-agent) 시스템의 협력을 위해 논리적, 공간적, 시간적 제약을 조합한 compositional constraints 개념을 제시하고, 이를 기반으로 자동화된 데이터 수집 프레임워크 RoboFactory를 개발하여 다중 에이전트 조작 벤치마크를 제공한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robotic_Interaction_Datasets"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qin et al._2025_RoboFactory Exploring Embodied Agent Collaboration with Compositional Constraints.pdf"
 ---
@@ -87,6 +88,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qin et al._2025_RoboFactory Exploring Em
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — diffusion/flow 기반 정책 구성 방법론을 바탕으로 농구와 같은 장기 과제에서의 정책 통합을 해결한다.
-- 🔄 다른 접근: [[papers/1565_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — 복잡한 전신 제어를 위해 정책 구성과 마스킹 기반 모션 생성이라는 서로 다른 접근법을 사용한다.
-- 🔗 후속 연구: [[papers/1439_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — 전신 동작 생성의 기본 원리를 농구라는 특정 스포츠 영역에서의 장기 과제 해결로 확장한다.
+- 🔄 다른 접근: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — RoboFactory의 compositional constraints와 GauDP의 Gaussian Process 협력은 다중 에이전트 로봇 시스템에서 서로 다른 협력 모델링 접근법이다.
+- 🏛 기반 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — BEHAVIOR-1K의 human-centered embodied AI 벤치마크가 RoboFactory의 다중 에이전트 조작 태스크 설계의 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — 분산 Gaussian Process 학습의 trust 메커니즘이 RoboFactory의 다중 에이전트 협력을 더 신뢰성 있는 시스템으로 발전시킨다.
+- 🏛 기반 연구: [[papers/1279_BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Mani/review]] — 다중 에이전트 조작 시스템은 BEHAVIOR Robot Suite의 전신 조작 기술을 다중 로봇 환경으로 확장한 응용입니다.
+- 🔗 후속 연구: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — RoboFactory의 embodied agent collaboration이 GauDP의 3D Gaussian 기반 다중 에이전트 시스템을 더 복잡한 협업 시나리오로 확장합니다.
+- 🔗 후속 연구: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — RoboFactory의 embodied agent 협력을 신뢰도 기반 선택적 학습으로 확장하여 분산 환경에서의 효율성을 개선한다.

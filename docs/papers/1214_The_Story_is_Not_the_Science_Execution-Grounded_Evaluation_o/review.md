@@ -13,7 +13,9 @@ score: 4.0
 essence: "논문 내러티브만으로는 감지할 수 없는 연구의 문제점을 발견하기 위해, 코드와 데이터를 함께 검증하는 execution-grounded evaluation 프레임워크를 제안하고 MechEvalAgent를 구현했다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Research_Evaluation_and_Metrics"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bai et al._2026_The Story is Not the Science Execution-Grounded Evaluation of Mechanistic Interpretability Research.pdf"
 ---
@@ -88,8 +90,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bai et al._2026_The Story is Not the Sci
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 과학 연구의 재현성 문제를 해결하기 위한 실행 기반 검증의 필요성을 뒷받침한다.
-- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 연구 부정행위 탐지를 위해 논문 서술뿐만 아니라 코드와 데이터까지 검증하는 포괄적 접근을 제시한다.
-- 🔄 다른 접근: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — 텍스트 스타일 분석 대신 실행 가능한 코드와 데이터를 통한 연구 평가의 대안적 접근법을 제공한다.
-- 🔄 다른 접근: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 과학 연구 평가에서 NLP 기반 텍스트 분석과 실행 기반 평가라는 서로 다른 접근법을 비교할 수 있다.
-- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 연구 평가에서 에이전트 기반 메트릭과 실행 기반 평가의 다른 접근법임
+- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 논문 검증을 LLM 기반 텍스트 분석과 코드/데이터 실행 검증이라는 상호 보완적 방법으로 수행
+- 🏛 기반 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 실행 기반 평가가 에이전트 기반 연구 평가 시스템의 핵심 검증 메커니즘으로 활용
+- 🧪 응용 사례: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 재현성 위기 문제를 해결하기 위해 코드와 데이터 실행 검증이라는 구체적 솔루션 제시
+- 🔗 후속 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — 코드와 데이터 검증 기반 평가와 LLM-native figures의 기계 판독성을 결합하면 과학 연구의 투명성과 재현성을 획기적으로 향상시킬 수 있다.
+- 🏛 기반 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 심리학의 재현성 평가 연구가 제공하는 실험 검증 방법론이 execution-grounded evaluation 프레임워크 설계에 핵심적인 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 논문 품질 검증을 LLM 기반 비판적 검토와 실행 기반 평가라는 서로 다른 접근법으로 수행
+- 🔗 후속 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 실행 기반 평가의 한계를 에이전트 기반 메트릭으로 보완하여 더 포괄적인 연구 평가 제시
+- 🔗 후속 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — LLM-native figures의 기계 판독성과 execution-grounded evaluation의 코드 검증 기능을 결합하여 과학 재현성을 크게 향상시킬 수 있다.

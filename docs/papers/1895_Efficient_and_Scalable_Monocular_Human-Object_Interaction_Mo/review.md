@@ -1,3 +1,24 @@
+---
+title: "1895_Efficient_and_Scalable_Monocular_Human-Object_Interaction_Mo"
+authors:
+  - "Boran Wen"
+  - "Ye Lu"
+  - "Sirui Wang"
+  - "Keyan Wan"
+  - "Jiahong Zhou"
+date: "2025.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "단안 비디오에서 4D 인간-물체 상호작용(HOI) 데이터를 효율적으로 추출하기 위해 sparse contact annotation paradigm과 human-in-the-loop 데이터 엔진을 제안하고, 4DHOISolver 최적화 프레임워크를 통해 시공간적으로 일관성 있는 재구성을 수행한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wen et al._2025_Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction.pdf"
+---
+
 # Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction
 
 > **저자**: Boran Wen, Ye Lu, Sirui Wang, Keyan Wan, Jiahong Zhou, Junxuan Liang, Xinpeng Liu, Bang Xiao, Ruiyang Liu, Yong-Lu Li | **날짜**: 2025-11-30 | **URL**: [https://arxiv.org/abs/2512.00960](https://arxiv.org/abs/2512.00960)
@@ -61,3 +82,12 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 단안 비디오에서 4D HOI 데이터 수집의 annotation 병목을 sparse contact point와 human-in-the-loop 엔진으로 혁신적으로 해결하고, 4DHOISolver를 통해 시공간적 일관성을 유지하면서 대규모 고품질 데이터셋 Open4DHOI를 구축했다. 로봇 학습의 데이터 병목을 실질적으로 해결하는 높은 실용성과 완성도로 컴퓨터 비전 및 로봇 학습 분야에 중대한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1857_CRISP_Contact-Guided_Real2Sim_from_Monocular_Video_with_Plan/review]] — 단안 비디오 기반 인간-물체 상호작용 재구성에서 4D HOI 최적화와 planar primitive 기반 접근법의 서로 다른 기하학적 모델링 전략을 비교한다.
+- 🔗 후속 연구: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — 4DHOISolver의 시공간적 일관성 재구성이 TokenHSI의 unified human-scene interaction synthesis로 발전하여 더 포괄적인 상호작용 모델링을 제공한다.
+- 🔄 다른 접근: [[papers/1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — CReF의 깊이 조건부 cross-modal fusion 방법이 단안 비디오 기반 HOI 재구성에 대한 다른 기술적 접근을 제시한다.
+- 🔗 후속 연구: [[papers/2022_In-N-On_Scaling_Egocentric_Manipulation_with_in-the-wild_and/review]] — In-N-On의 실제 환경 egocentric 조작 스케일링 연구가 4D HOI 재구성 데이터를 실제 로봇 학습에 활용하는 확장 방향을 제시한다.
+- 🔗 후속 연구: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — 효율적이고 확장 가능한 단안 인간-객체 상호작용 모델링을 휴머노이드 제어로 확장하여 단순한 휴대폰 영상에서 복잡한 맥락적 제어를 실현했다.
+- 🔄 다른 접근: [[papers/1857_CRISP_Contact-Guided_Real2Sim_from_Monocular_Video_with_Plan/review]] — 단안 비디오에서의 human-scene reconstruction에서 planar primitive 기반 접근법과 4D HOI 재구성의 서로 다른 기하학적 표현 방법을 제시한다.

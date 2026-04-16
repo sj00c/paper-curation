@@ -10,9 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "Pharmakon Neuroscience Research Network라는 위조 연구 집단의 사례 분석을 통해 학술 출판 시스템에 내재된 취약점을 노출하고, 논문 철회를 넘어 부정행위를 적극적으로 탐지하기 위한 forensic scientometrics 기법을 제시한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Research_Reproducibility_Crisis"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/McIntosh et al._2026_Beyond Retractions Forensic Scientometrics Techniques to Identify Research Misconduct, Citation Lea.pdf"
 ---
@@ -87,11 +88,10 @@ Pharmakon Neuroscience Research Network라는 위조 연구 집단의 사례 분
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 과학적 부정행위가 철회의 대부분을 차지한다는 연구가 forensic scientometrics의 필요성을 뒷받침한다.
-- 🏛 기반 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 심리학에서의 재현성 평가가 더 광범위한 연구 부정행위 탐지 시스템의 방법론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 과학의 파괴적 혁신 감소에 대한 견고한 증거와 연구 부정행위 탐지 모두 과학 품질 저하 문제를 다른 관점에서 다룬다.
-- 🔗 후속 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 재현성 위기를 넘어 적극적 부정행위 탐지로 과학적 무결성 확보 방법을 확장한다.
-- 🔄 다른 접근: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서 편향 평가를 위한 메타 분석적 접근과 부정행위 탐지를 위한 forensic 접근을 비교 연구할 수 있다.
-- 🔄 다른 접근: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — 과학 연구의 질 평가에서 AI 환상과 법의학적 과학계량 기법의 대안적 접근법임
-- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 논문 철회 분석을 철회 이전 단계에서 부정행위를 탐지하는 포렌식 기법으로 발전시킨다.
-- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 연구 품질 평가에서 LLM 기반과 법의학적 과학계량 기법의 다른 접근법임
+- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 논문 철회를 넘어 연구 부정행위의 탐지로 확장된 관점에서 학술 출판의 무결성을 다룬다.
+- 🏛 기반 연구: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 학술 출판에서 동료 검토의 영향과 한계를 이해하여 부정행위 탐지 맥락을 제공한다.
+- ⚖️ 반론/비판: [[papers/1045_The_strain_on_scientific_publishing/review]] — 학술 출판 시스템의 압박과 forensic scientometrics의 필요성을 상호 보완적으로 분석한다.
+- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서 편향성 메타평가 연구가 학술 출판 시스템의 부정행위 탐지 연구에 방법론적 기초를 제공하기 때문
+- 🧪 응용 사례: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 재현가능성 문제를 다룬 1500명 과학자 연구가 학술 부정행위 탐지의 실제적 필요성을 보여주는 사례이기 때문
+- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 철회를 넘어선 법의학적 사이언토메트릭스 기법이 부정행위 탐지의 진화된 방법론을 제시한다.
+- 🔗 후속 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 철회논문 분석을 포렌식 서지계량학 관점으로 확장한다

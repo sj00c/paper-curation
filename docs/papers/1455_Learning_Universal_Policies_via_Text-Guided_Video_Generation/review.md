@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "텍스트 조건부 video generation을 사용하여 다양한 환경에서 작동하는 범용 정책을 학습하는 방법을 제안하며, 현재 이미지와 텍스트 목표 설명으로부터 미래 프레임 시퀀스를 생성한 후 inverse dynamics model로 액션을 추출한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Language-Guided_Motion_Generation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Du et al._2023_Learning Universal Policies via Text-Guided Video Generation.pdf"
 ---
@@ -90,8 +92,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Du et al._2023_Learning Universal Polici
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — 텍스트 조건부 비디오 생성의 범용 정책 학습 방법론이 HARMON의 언어 기반 휴머노이드 동작 생성에 멀티모달 접근법을 적용한 구체적 사례이다
-- 🔗 후속 연구: [[papers/1604_Video_Language_Planning/review]] — Video Language Planning이 텍스트 가이드 비디오 생성의 범용 정책 개념을 실제 로봇 계획과 실행이 가능한 수준으로 확장한다
-- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 텍스트 가이드 비디오 생성과 GAIA-1 모두 언어-비디오 통합 생성을 다루지만, 범용 정책 vs 자율주행 특화라는 서로 다른 응용 범위를 가진다
-- 🏛 기반 연구: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — 텍스트 가이드 비디오 생성의 범용 정책 학습 방법론이 HARMON의 언어 설명 기반 동작 생성에 멀티모달 학습의 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1604_Video_Language_Planning/review]] — 장기 작업 계획에서 VLP의 비디오 기반 계획과 text-guided video generation을 통한 범용 정책 학습 방식을 시각적 표현 측면에서 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 둘 다 text-guided video generation을 통한 정책 학습이지만 범용적 접근 vs 자율주행 특화라는 다른 범위를 가진다.
+- 🏛 기반 연구: [[papers/1604_Video_Language_Planning/review]] — Video Language Planning의 개념을 text-conditioned video generation으로 구체적으로 구현한 사례이다.
+- 🔗 후속 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — large-scale video generative pre-training을 text-guided universal policy learning으로 활용한 응용이다.
+- 🔗 후속 연구: [[papers/1598_Unified_Video_Action_Model/review]] — 텍스트 가이드 비디오 생성을 unified video action model로 더 체계화하고 일반화했다.
+- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 텍스트 기반 비디오 생성을 통한 정책 학습이 비디오 foundation model의 물리적 추론 능력을 로봇 제어에 직접 활용하는 방식으로 발전한다.
+- 🔄 다른 접근: [[papers/1406_Genie_Envisioner_A_Unified_World_Foundation_Platform_for_Rob/review]] — 둘 다 생성 모델을 통한 로봇 행동 합성에 초점을 맞추지만, Universal Policies는 비디오 생성을, Genie Envisioner는 통합 플랫폼에 집중한다.
+- 🏛 기반 연구: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — Learning Universal Policies via Text-Guided Video Generation의 비디오 생성을 통한 정책 학습이 ForesightNav의 scene imagination 기반 탐색에 기초가 된다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 둘 다 video generation을 통한 정책 학습을 다루지만 자율주행 특화 vs 범용적 접근이라는 차이가 있다.
+- 🔗 후속 연구: [[papers/1604_Video_Language_Planning/review]] — text-guided video generation을 로봇 작업의 상세한 계획 생성으로 확장한 응용입니다.

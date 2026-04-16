@@ -9,7 +9,9 @@ score: 4.0
 essence: "과학 지도(Science Maps)는 학술 지식의 구조와 동역학을 시각적으로 표현하는 방법론으로, 인용 네트워크(Citation Networks)와 용어 공동 출현(Term Co-occurrence) 기반의 다양한 매핑 기법들을 체계적으로 소개한다."
 tags:
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Bibliometric_Mapping_Tools"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Bibliometric_Science_Mapping"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Petrovich_2021_Science Mapping and Science Maps.pdf"
 ---
@@ -85,19 +87,23 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Petrovich_2021_Science Mapping and Scien
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 과학 지도 작성의 이론적 배경을 제공하며 VOSviewer 같은 매핑 도구의 방법론적 기반이 된다.
-- 🔗 후속 연구: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 기존 과학 지도 방법론을 확장하여 새로운 개념적 구조 분석과 비교 과학 매핑 기법을 제시한다.
-- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 전통적인 인용 기반 과학 지도 대신 LLM과 지식 그래프를 활용한 새로운 연구 분야 매핑 방법을 제안한다.
-- 🔗 후속 연구: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 기본적인 과학 지도 작성 방법론을 시간적 주제 진화를 통합한 구조적 프레임워크로 확장합니다.
-- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 과학 지도 이론을 실제 구현한 소프트웨어 도구로서 bibliometric 매핑의 실용적 적용을 제공한다.
-- 🏛 기반 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 기본적인 과학 지도 작성과 과학 지도의 원리가 텍스트 마이닝과 결합된 서지학적 분석의 방법론적 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학 매핑과 지식 지도화 방법론이 과학의 과학 실증 연구의 핵심 도구임
-- 🏛 기반 연구: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 메타데이터 기반 개념 구조 분석의 혁신적 과학 매핑 기법 개발에 과학 매핑과 과학 지도의 이론적 기반이 필요합니다.
-- 🧪 응용 사례: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 과학 지식 지도 작성에 효율적인 커뮤니티 탐지 알고리즘을 적용하여 학문 분야 구조를 시각화한다.
-- 🧪 응용 사례: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 과학 매핑 기법을 활용하여 D&I 이론들의 적용 패턴과 의미 있는 활용 사례를 시각적으로 분석한다.
-- 🧪 응용 사례: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — 과학 매핑 방법론을 고등교육 지식관리 연구에 구체적으로 적용하여 특정 분야의 연구 동향과 미래 방향을 제시한다.
-- 🧪 응용 사례: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — 과학 매핑 방법론을 VAT 정책 연구에 적용하고 Javanese 철학으로 해석하는 독특한 문화적 접근을 보여준다.
-- 🔄 다른 접근: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — 과학 지식 매핑의 다른 접근법으로 e-commerce 연구 동향을 분석할 수 있다
-- 🏛 기반 연구: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — 과학 매핑의 기본 개념과 방법론을 제공하여 AI 기반 모바일 의사결정 연구의 scientometric 분석 기법을 뒷받침한다.
-- 🧪 응용 사례: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 과학 매핑 방법론을 발달장애 보조기술이라는 특수 도메인에 구체적으로 적용한 실증 사례를 제공한다.
-- 🧪 응용 사례: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 과학 매핑 방법론을 회계 분야의 기업지배구조 연구에 적용하여 특정 주제의 지적 구조 변화를 추적한다.
+- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer가 과학 지도 구성과 시각화를 위한 실용적 도구로서 이론적 매핑 기법을 구현한다.
+- 🔗 후속 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 텍스트 마이닝과 과학 지도화의 결합이 전통적 인용 기반 매핑을 확장한 방법론적 발전을 보여준다.
+- 🏛 기반 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 주제 수준 분석이 과학 지도의 지식 구조 표현에서 핵심적 방법론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 기본적인 과학 지도 작성 방법론을 시간적 차원을 포함한 통합 프레임워크로 발전시킨다.
+- 🔗 후속 연구: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 비교 과학 지도 작성이라는 새로운 개념적 구조로 기존 과학 지도 방법론을 확장합니다.
+- 🔗 후속 연구: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 기존 과학 지도 작성 방법론을 발전시켜 주제 탐지와 시간적 추적을 통합한 프레임워크를 제시한다.
+- 🏛 기반 연구: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 과학 지도 작성과 과학 맵의 기본 개념은 지식공간에서 과학자의 탐색 패턴을 GIS 기법으로 분석하는 방법론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 과학 지도 이론이 VOSviewer의 시각화 알고리즘과 매핑 기법의 개념적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — 인용 데이터를 시각화하여 과학 지식의 구조를 매핑하는 구체적 응용
+- 🧪 응용 사례: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 과학 매핑 기법을 컴퓨터과학 분야에 특화하여 대규모로 적용한 사례다.
+- 🔗 후속 연구: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 기본적인 과학 지도 작성 방법론을 인용 맥락 정보를 활용한 더 정교한 매핑 기법으로 발전시킨다.
+- 🏛 기반 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 과학 지도화의 기본 원리가 지식 그래프 기반 분야 매핑의 이론적 토대가 된다.
+- 🏛 기반 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 전통적 과학 지도화 이론이 텍스트 마이닝과 결합된 서지학적 분석의 개념적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 과학 매핑 방법론을 기반으로 하여, 인용 관계의 네트워크 구조를 시각화하고 분석하는 도구를 개발했다.
+- 🏛 기반 연구: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 매핑과 과학 지도 연구가 시간변화 학술지 임베딩을 통한 과학 구조 매핑의 이론적 기반이다.
+- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 과학 매핑의 기본 원리와 방법론에 대한 종합적 이해를 제공하여 인용 분석 방법들의 맥락을 파악할 수 있다.
+- 🏛 기반 연구: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 과학 매핑의 이론적 기반과 다양한 방법론을 제공하여 개념 구조 분석의 맥락을 이해할 수 있다.
+- 🏛 기반 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 과학 매핑과 과학 지도의 기본 개념을 다룬 기초 연구로, 생의학 과학 지도 개발에 필요한 이론적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — 과학 지식 시각화를 정적 매핑과 동적 LLM 기반 인터페이스라는 다른 접근법으로 구현
+- 🔄 다른 접근: [[papers/1236_Weaning_from_mechanical_ventilation_in_ICU_patients_research/review]] — 의학 분야 연구 핫스팟 파악을 CiteSpace/VOSviewer와 Science Mapping이라는 다른 방법으로 수행합니다.

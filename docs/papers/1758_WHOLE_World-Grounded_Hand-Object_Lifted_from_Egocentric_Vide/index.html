@@ -68,52 +68,53 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Figure 2. Reconstruction Using the Generative Motion Prior. Given a metric-SLAMed egocentric videos, and the object temp</em></p></div>
-<p>WHOLE는 egocentric 비디오에서 손과 물체의 상호작용을 joint generative prior를 통해 world space에서 holistically 재구성하는 방법이다.</p></div>
+<p>WHOLE는 손잡이와 물체의 상호작용을 joint generative motion prior를 통해 이용하여 egocentric 비디오에서 world space로의 hand-object 궤적을 holistically 재구성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: 기존 방법들은 hand pose estimation과 object pose estimation을 독립적으로 수행하거나 hand-object interaction을 단기 클립에서만 처리한다. Egocentric 비디오는 occlusion과 camera motion으로 인해 매우 challenging하다.</li>
-<li><strong>Gap</strong>: 손과 물체의 motion을 jointly reasoning하지 않아 inconsistent hand-object relations를 초래하고, out-of-sight cases를 처리하지 못한다. 또한 global 3D world frame에서 장시간 interaction을 reconstruct하는 방법이 부족하다.</li>
-<li><strong>Why</strong>: Egocentric video에서 손과 물체의 정확한 3D reconstruction은 robot learning, AR/VR 등 downstream applications에 필수적이며, 인간의 공간 reasoning 능력을 computer vision에 구현하는 핵심 과제이다.</li>
-<li><strong>Approach</strong>: Diffusion-based generative motion prior를 학습하여 hand-object interaction의 joint dynamics를 모델링하고, test time에 visual observations와 VLM-derived contact cues로 이를 guided generation하여 globally consistent 3D trajectories를 생성한다.</li>
+<li><strong>Known</strong>: 기존 방법들은 hand pose estimation과 object pose estimation을 독립적으로 수행하거나, short temporal window에서 상세한 기하학을 복원하는 데 초점을 맞춘다.</li>
+<li><strong>Gap</strong>: 손과 물체의 상호작용을 joint으로 모델링하면서 global 3D world frame에서 장시간의 coherent 궤적을 복원하는 통합적 접근이 부재하다.</li>
+<li><strong>Why</strong>: egocentric manipulation 이해는 robot learning from demonstrations 및 AR/VR 환경 등 downstream applications에 필수적이며, 손과 물체의 관계적 일관성을 확보해야 정확한 interaction modeling이 가능하다.</li>
+<li><strong>Approach</strong>: diffusion 기반 generative motion prior를 학습하여 hand-object interaction의 mutual dynamics를 모델링하고, test time에 visual observations와 VLM-derived contact cues로 guided generation을 수행하여 globally consistent trajectories를 생성한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1. Given a metric-SLAMed egocentric video of a person interacting with the scene and the corresponding object tem</em></p></div>
 <ul>
-<li><strong>Joint Generative Reconstruction</strong>: Hand와 object motion을 jointly reasoning하는 diffusion model을 통해 inconsistent predictions를 해결하고 out-of-sight cases를 처리</li>
-<li><strong>State-of-the-art Performance</strong>: Hand motion estimation, 6D object pose estimation, relative interaction reconstruction에서 모두 SOTA 달성</li>
-<li><strong>VLM-based Contact Detection</strong>: Spatially grounded visual prompts로 VLM을 enhance하여 cluttered scenes에서도 robust한 contact localization 실현</li>
-<li><strong>Long Sequence Reconstruction</strong>: Fixed-length window 기반으로 장시간 interaction sequences를 global 3D space에서 coherent하게 reconstruction</li>
+<li><strong>Joint Generative Prior</strong>: hand와 object의 상호의존적 동작을 jointly reason하는 diffusion-based motion prior 학습으로 separate prediction의 inconsistency 문제 해결</li>
+<li><strong>VLM-enhanced Contact Detection</strong>: spatially grounded visual prompts로 enhanced vision-language model이 cluttered scenes에서도 robust contact localization 달성</li>
+<li><strong>State-of-the-art Performance</strong>: hand motion estimation, 6D object pose estimation, interaction reconstruction 모두에서 baseline methods를 크게 초과하는 성능</li>
+<li><strong>Global 4D Motion Reconstruction</strong>: metric-SLAM을 활용하여 world coordinate frame에서 long temporal sequences의 coherent hand-object trajectories 복원</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Figure 2. Reconstruction Using the Generative Motion Prior. Given a metric-SLAMed egocentric videos, and the object temp</em></p></div>
 <ul>
-<li>Diffusion model을 conditional generative prior로 사용하여 hand-object motion의 joint distribution p(H, T, C | O, H̄)을 학습</li>
-<li>Off-the-shelf hand estimator로부터 approximate hand trajectory H̄를 얻고 object template O와 함께 diffusion model의 conditioning input으로 활용</li>
-<li>Denoising process에서 alternating 방식으로 diffusion step과 guidance step을 수행하여 video observations와 일치하도록 refinement</li>
-<li>Gravity-aware local coordinate frame에서 motion prior를 학습하고 test time에 SLAM poses를 통해 world space로 변환</li>
-<li>VLM에 spatial visual prompts를 설계하여 hand-object contact를 automatically annotate하고 이를 guidance objective에 포함</li>
-<li>2D segmentation masks와 contact cues를 guidance objectives로 하여 reconstructed trajectories가 video observations를 conform하도록 최적화</li>
+<li>Diffusion model을 gravity-aware local frame에서 hand-object motion의 conditional distribution p(H, T, C | O, H̄)로 학습</li>
+<li>Off-the-shelf hand estimator로부터 approximate hand trajectory H̄을 초기 조건으로 활용</li>
+<li>Test time에 diffusion과 guidance step을 번갈아 수행하여 iterative refinement</li>
+<li>2D segmentation masks를 visual observation으로 하여 reprojection guidance objective 구성</li>
+<li>VLM (vision-language model)에 spatial prompt engineering을 적용하여 자동 contact label 생성</li>
+<li>Contact labels를 binary indicator Ct=1:T로 모델링하여 interaction constraint로 활용</li>
+<li>Fixed-length time window (T=120)에서 처리하여 computational efficiency 확보</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li>Hand와 object motion을 independent하게 처리하는 기존 접근에서 벗어나 joint generative model로 interdependency를 명시적으로 모델링</li>
-<li>Egocentric video에서 world frame reconstruction을 hand-object interaction의 맥락에서 addressing한 첫 시도로, global 4D motion capture를 실현</li>
-<li>VLM을 spatial grounding으로 enhance하는 novel approach로 contact detection의 automatic annotation 실현</li>
-<li>Gravity-aware local frame에서의 motion prior learning과 test-time guidance를 결합한 새로운 framework</li>
+<li>Hand-object interaction을 joint generative prior로 모델링하는 novel formulation - 기존 isolated pose estimation과 차별화</li>
+<li>Guided generation framework를 통해 generative prior를 test-time observation으로 condition하는 새로운 inference strategy</li>
+<li>VLM의 spatial grounding capability를 강화하는 visual prompt design로 자동 contact annotation 가능하게 함</li>
+<li>Global 4D world-space trajectory reconstruction에 joint interaction modeling을 처음 체계적으로 적용</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li>Object template 제공이 필수적이어서 template-free scenarios에 적용 불가</li>
-<li>Metric SLAM poses에 의존하므로 SLAM failure 시 reconstruction quality 저하 가능</li>
-<li>Fixed-length time window (T=120) 제약으로 인한 장시간 interaction handling의 제한</li>
-<li>VLM contact annotation의 정확도가 ground truth에 비해 약간 떨어지는 경우 존재</li>
-<li>후속 연구: template-free object reconstruction 통합, online SLAM with reconstruction, longer sequences handling, more diverse interaction types 확대</li>
+<li>Object template 제공이 필수 requirement - template-free approaches에 비해 제약이 있음</li>
+<li>Metric-SLAM 입력에 의존하므로 camera localization 오류가 누적될 수 있음</li>
+<li>T=120 fixed-length window로 인한 temporal flexibility 제약 - 매우 길거나 복잡한 interaction sequence 처리 어려움</li>
+<li>VLM 기반 contact labeling의 robustness가 visual complexity에 따라 변할 수 있음</li>
+<li>후속 연구: template-free object reconstruction 통합, sliding window를 이용한 arbitrary length sequence 처리, more sophisticated temporal modeling (e.g., Transformer-based prior)</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 4/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: WHOLE는 hand-object interaction을 joint generative model로 접근하는 paradigm shift를 제시하며, egocentric video에서 global 3D world frame reconstruction이라는 challenging 문제를 elegant하게 해결한 매우 우수한 연구이다.</p></div>
+<p><strong>총평</strong>: WHOLE는 hand-object interaction을 joint generative prior로 모델링하여 egocentric video에서 globally consistent world-space trajectories를 복원하는 혁신적 접근으로, 기존 isolated method들의 inconsistency 문제를 근본적으로 해결하며 practical application에 중요한 기여를 한다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

@@ -13,7 +13,8 @@ score: 4.0
 essence: "과학 논문을 정책 문서로 변환하는 LLM의 능력을 평가하고 개선하기 위해 벤치마크(Sci2Pol-Bench)와 학습 데이터셋(Sci2Pol-Corpus)을 제시한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/LLM_Applications_in_Science"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2025_Sci2Pol Evaluating and Fine-tuning LLMs on Scientific-to-Policy Brief Generation.pdf"
 ---
@@ -92,10 +93,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2025_Sci2Pol Evaluating and Fi
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 과학 지식의 정책적 활용에서 선택적 사용 패턴을 분석한 다른 접근법임
-- 🏛 기반 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 공공 자금으로 지원된 과학연구의 공공적 활용이라는 기본 전제를 공유함
-- 🔗 후속 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 과학의 과학 분야에서 인간-AI 협력을 통한 정책 문서 생성으로 확장됨
-- 🔗 후속 연구: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 과학 지식의 정책 활용을 AI를 통한 과학-정책 번역 자동화라는 기술적 해결 방안으로 확장했다.
-- 🔗 후속 연구: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 과학-정책 번역을 위한 LLM 평가와 미세조정을 팬데믹 시기 정책-과학 공진화 분석으로 확장한다
-- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학-정책 연결 평가 모델을 LLM을 활용한 자동화된 분석으로 확장하여 더 효율적인 영향 추적이 가능하다.
-- 🔄 다른 접근: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 과학-정책 번역을 위한 LLM 파인튜닝과 달리 연구 평가를 위한 RAG 아키텍처 최적화에 중점을 둔 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 과학 지식이 정책에 선별적으로 활용되는 현상을 LLM을 통해 개선하려는 실용적 접근이다.
+- 🏛 기반 연구: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 과학과 사회 간 정보 경로의 이해가 과학-정책 변환의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — 대규모 언어 모델에 의한 과학의 과학 분야 강화는 과학-정책 브리프 생성에서 LLM 활용의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 인간 인식 인공지능으로 과학 가속화하기는 과학-정책 변환에서 인간-AI 협력의 더 넓은 응용 가능성을 보여줍니다.
+- 🧪 응용 사례: [[papers/942_Bridging_the_gap_between_science_and_society_Mapping_librari/review]] — 과학과 사회 간 격차 해소를 위한 도서관 역할 매핑은 LLM 기반 과학-정책 브리프가 실제 지식 전달 생태계에서 어떤 역할을 할 수 있는지 보여줍니다.
+- 🔗 후속 연구: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 과학적 증거를 정책에 적용하는 과정을 AI를 활용하여 자동화하고 개선하는 방향으로 확장합니다.
+- 🔄 다른 접근: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 과학 지식의 정책 활용을 다루지만, LLM을 활용한 과학-정책 변환보다는 물리학 지식의 선택적 정책 진입 과정에 집중한다.
+- 🧪 응용 사례: [[papers/942_Bridging_the_gap_between_science_and_society_Mapping_librari/review]] — 과학-정책 연결에서 도서관의 중개 역할과 유사하게 과학 연구를 정책으로 변환하는 AI 시스템을 제시한다.
+- 🔗 후속 연구: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 과학-정책 상호작용 분석을 팬데믹에서 일반적인 과학-정책 번역 평가로 확장
+- 🔗 후속 연구: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 과학-정책 변환 평가에서 온라인 과학 커뮤니케이션 경로 분석으로 연구 영역이 확장된다.
+- 🔄 다른 접근: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 과학 텍스트를 정책 언어로 변환하는 LLM 평가와 RAG 기반 연구 평가 시스템은 모두 과학 지식의 자동화된 처리와 평가를 다루는 대안적 접근법이다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VLM을 활용하여 RGB-D 관찰과 자연어 지시로부터 keypoint 기반 reward 함수(IKER)를 동적으로 생성하고, real-to-sim-to-real 루프를 통해 로봇 조작 정책을 학습 및 배포하는 프레임워크이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/3D_Keypoint_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Patel et al._2025_A Real-to-Sim-to-Real Approach to Robotic Manipulation with VLM-Generated Iterative Keypoint Rewards.pdf"
 ---
@@ -94,7 +96,14 @@ VLM을 활용하여 RGB-D 관찰과 자연어 지시로부터 keypoint 기반 re
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep의 관계적 키포인트 제약 추론이 VLM 기반 키포인트 생성의 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — SKT는 키포인트 궤적을 Vision-Language-Action 모델과 통합하는 다른 접근 방식을 제시한다
-- 🔗 후속 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — CRISP는 단안 비디오에서 접촉 기반 Real2Sim을 통해 VLM 생성 보상의 물리적 검증을 확장한다
-- 🧪 응용 사례: [[papers/1498_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-/review]] — 양팔 원격조종 시스템이 InterMimic의 전신 상호작용 학습 검증에 실제적인 테스트 환경을 제공한다
+- 🔄 다른 접근: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — keypoint 기반 접근법 대신 대규모 그래스핑 데이터로 사전 학습된 foundation model을 활용하는 다른 조작 방법론
+- 🏛 기반 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep의 관계형 keypoint 개념이 VLM 기반 keypoint reward 함수 설계의 핵심 이론적 기반
+- 🔗 후속 연구: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — 상태 인식 keypoint 궤적과 VLM 생성 keypoint reward를 결합하여 더 강력한 조작 정책을 개발할 수 있습니다.
+- 🏛 기반 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — 3D value map 기반 조작이 VLM 생성 keypoint reward의 공간적 표현 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 vision-language 결합 개념을 keypoint 기반 reward 함수 생성과 real-to-sim-to-real 학습으로 확장한 방법론입니다.
+- 🔄 다른 접근: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — 둘 다 multimodal instruction을 로봇 행동으로 매핑하지만 IKER는 keypoint 기반 reward에, Instruct2Act는 직접적인 action mapping에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — 정적 마찰 분석이 Real-to-Sim-to-Real 프레임워크에서 물리적 현실성을 높이는 핵심 요소로 작용한다.
+- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — Re3Sim의 3D-photorealistic 접근법과 기존 real-to-sim-to-real 방법들은 시뮬레이션 충실도 향상의 다른 전략을 제시한다.
+- 🔗 후속 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 what/where pathway 개념이 VLM 기반 keypoint reward 생성과 real-to-sim-to-real 학습의 기초가 된 발전적 연구입니다.
+- 🔄 다른 접근: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — Real-to-Sim-to-Real 접근법으로 시뮬레이션 갭 문제를 다른 방식으로 해결한다.
+- 🔄 다른 접근: [[papers/1309_An_Real-Sim-Real_RSR_Loop_Framework_for_Generalizable_Roboti/review]] — Real-to-Sim-to-Real 접근법의 다른 구현 방식을 제시한다.

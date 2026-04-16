@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Voyager는 GPT-4를 활용한 첫 번째 구체화된 평생 학습 에이전트로, Minecraft에서 자동 커리큘럼, 지속 가능한 스킬 라이브러리, 반복적 프롬프팅 메커니즘을 통해 인간의 개입 없이 지속적으로 탐험하고 새로운 기술을 획득한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Continual_Skill_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Dexterous_Robot_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2023_Voyager An Open-Ended Embodied Agent with Large Language Models.pdf"
 ---
@@ -87,10 +89,21 @@ Voyager는 GPT-4를 활용한 첫 번째 구체화된 평생 학습 에이전트
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — Voyager의 지속 가능한 스킬 라이브러리 구축과 평생 학습 메커니즘이 RoboAgent의 12개 조작 스킬 확장과 연속적 학습에 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — 오픈엔드 구체화 에이전트에서 Voyager의 Minecraft 환경과 MineDojo의 인터넷 규모 데이터 활용 방식을 자동 커리큘럼과 평생 학습 측면에서 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1478_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo/review]] — MineDreamer의 chain-of-imagination을 통한 명령 따르기 학습을 Voyager의 자동 커리큘럼과 반복적 프롬프팅에 통합하여 더 정교한 탐험 전략을 개발할 수 있다.
-- 🧪 응용 사례: [[papers/1462_LOTUS_Continual_Imitation_Learning_for_Robot_Manipulation_Th/review]] — LOTUS의 연속 모방 학습 방법론을 Voyager의 평생 학습 스킬 획득에 적용하여 실제 로봇 환경에서의 지속적 기술 발전을 가능하게 한다.
-- 🧪 응용 사례: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — 개방형 체화 에이전트의 탐험과 학습 방법론이 Minecraft에서 능동적 인식을 구현하는 데 활용됩니다.
-- 🔗 후속 연구: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — Voyager의 평생 학습 스킬 라이브러리 구축 방법론을 RoboAgent의 12개 조작 스킬 학습에 적용하여 지속적 스킬 확장을 가능하게 한다.
-- 🔗 후속 연구: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — Voyager는 DEPS의 개념을 열린 세계에서 대규모 언어 모델을 가진 열린 구체화 에이전트로 확장한다
+- 🔗 후속 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — Scaling Instructable Agents의 다중 시뮬레이션 환경 확장 접근법이 Voyager의 Minecraft 환경을 넘어선 일반화에 활용될 수 있다
+- 🏛 기반 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo가 제공하는 Minecraft 환경과 태스크 프레임워크가 Voyager의 개발과 평가에 기반이 되었다
+- 🔗 후속 연구: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — MineDreamer의 chain-of-imagination 접근법이 Voyager의 자동 커리큘럼과 결합되면 더 효과적인 학습이 가능하다
+- 🏛 기반 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 대규모 언어모델을 활용한 강화학습 가이드 방법론이 Voyager의 GPT-4 기반 학습 메커니즘의 이론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — 둘 다 LLM 기반 embodied agent이지만 Voyager는 Minecraft에서의 자동 커리큘럼에, ThinkBot은 instruction following에 집중합니다.
+- 🔗 후속 연구: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — open-world multi-task agent의 개념을 memory-augmented 시스템으로 확장하여 Voyager의 평생 학습을 더 체계화합니다.
+- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — MP5가 Voyager의 Minecraft 구체화된 시스템을 다중 모달 오픈엔디드 시스템으로 발전시켰다.
+- 🔗 후속 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — Voyager는 GLAM의 온라인 RL을 통한 LLM 개선을 Minecraft 환경에서 구체적으로 구현한 확장 연구입니다.
+- 🔄 다른 접근: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — 둘 다 오픈월드 멀티태스크 에이전트이지만 JARVIS-1은 Minecraft에, Voyager는 일반적인 환경에 집중한다.
+- 🔗 후속 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 open-ended agent 개념을 Voyager에서 더 발전시킨 확장 연구
+- 🏛 기반 연구: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — MineDreamer가 구현한 지시 추종의 기반이 되는 open-ended embodied agent 개념
+- 🔄 다른 접근: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Voyager와 같이 Minecraft에서 개방형 태스크를 다루지만 MP5는 active perception과 다중모듈 시스템으로 차별화된다.
+- 🔗 후속 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — Voyager의 open-ended 탐색 개념을 구체적인 네비게이션 작업으로 특화하여 발전시킨다.
+- 🔗 후속 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — Voyager의 LLM 기반 스킬 학습을 구조화된 motion planning과 결합하여 발전시킨다.
+- 🔄 다른 접근: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — Voyager는 SIMA와 같은 embodied agent이지만 Minecraft 환경에서 자율적 탐험과 기술 학습에 특화된 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — 두 논문 모두 LLM을 활용한 지속적 학습과 추론 능력을 다루지만 Voyager는 Minecraft 환경에서의 자동 커리큘럼 학습에 집중합니다.
+- 🏛 기반 연구: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — Voyager의 오픈엔디드 에이전트 개념이 DEPS 대화형 계획 시스템의 설계 기반
+- 🔄 다른 접근: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — BOSS의 스킬 라이브러리 자동 구축과 Voyager의 오픈엔디드 에이전트는 자율적 스킬 획득의 서로 다른 방법론이다.

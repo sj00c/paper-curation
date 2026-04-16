@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "VLA-Reasoner는 Vision-Language-Action 모델에 test-time MCTS를 통합하여 장기 지평 로봇 조작 작업에서 누적 편차를 해결하고 미래 상태를 예측하는 플러그인 프레임워크이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Reasoning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Robot_Policy_Learning"
+  - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Guo et al._2025_VLA-Reasoner Empowering Vision-Language-Action Models with Reasoning via Online Monte Carlo Tree Se.pdf"
 ---
@@ -89,9 +90,11 @@ VLA-Reasoner는 Vision-Language-Action 모델에 test-time MCTS를 통합하여 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Streaming Flow Policy의 온라인 계획을 MCTS 기반 추론으로 확장하여 장기 지평 문제 해결 능력을 강화했다
-- 🔄 다른 접근: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — 둘 다 multi-stage planning이지만 Reflective Planning은 언어 기반, VLA-Reasoner는 MCTS 기반의 다른 추론 방식이다
-- 🏛 기반 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — Hume의 System-2 thinking이 VLA-Reasoner의 test-time 추론 강화 아이디어의 인지과학적 기반을 제공한다
-- 🧪 응용 사례: [[papers/1352_DemoDiffusion_One-Shot_Human_Imitation_using_pre-trained_Dif/review]] — DreamControl-v2의 autonomous skill learning과 VLA-Reasoner의 추론 능력을 결합한 지능형 로봇 제어가 가능하다
-- 🔗 후속 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — VLA 추론 능력 향상에서 강화된 시각 잠재 계획이 VLA-Reasoner의 추론 메커니즘을 보완한다.
-- 🔗 후속 연구: [[papers/1373_DualVLA_Building_a_Generalizable_Embodied_Agent_via_Partial/review]] — VLA-Reasoner의 reasoning 능력 강화가 DualVLA의 추론과 행동 분리 접근을 더욱 발전시킨다.
+- 🏛 기반 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — test-time sampling and verification이 VLA에서 MCTS 기반 reasoning의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — VLA에서 추론 능력 강화를 위한 서로 다른 접근법 - MCTS vs system-2 thinking입니다.
+- 🔗 후속 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — reinforcement learning framework를 test-time MCTS와 결합할 수 있습니다.
+- 🏛 기반 연구: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — Embodied Chain-of-Thought가 VLA-Reasoner의 추론 기반 로봇 제어의 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — ThinkAct가 VLA-Reasoner와 다른 강화 비전-언어-행동 추론 방식으로 로봇의 사고와 행동을 통합한다.
+- 🔗 후속 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — VLA-Reasoner의 vision-language-action reasoning이 EmbodiedVSR에서 scene graph와 결합되어 더욱 정교한 공간 추론으로 발전했다.
+- 🔄 다른 접근: [[papers/1556_RT-H_Action_Hierarchies_Using_Language/review]] — VLA-Reasoner는 RT-H의 언어 기반 계층과 유사한 추론 능력을 VLA 모델에 통합하는 대안적 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — VLA 모델의 추론 능력을 더욱 체계적인 reasoning 프레임워크로 발전시킵니다.

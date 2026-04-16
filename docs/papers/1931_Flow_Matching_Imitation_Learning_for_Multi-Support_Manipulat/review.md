@@ -1,3 +1,24 @@
+---
+title: "1931_Flow_Matching_Imitation_Learning_for_Multi-Support_Manipulat"
+authors:
+  - "Quentin Rouxel"
+  - "Andrea Ferrari"
+  - "Serena Ivaldi"
+  - "Jean-Baptiste Mouret"
+date: "2024.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Flow Matching 생성 모델을 활용하여 휴머노이드 로봇이 팔을 추가 지지점으로 사용하는 다중 접촉 조작 작업을 모방 학습으로 학습할 수 있는 통합 접근법을 제시한다. Talos 로봇에서 상자 밀기 및 식기세척기 문 닫기 작업을 성공적으로 수행하며, 공유 자율성 모드를 통해 인간 조작자를 지원한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Rouxel et al._2024_Flow Matching Imitation Learning for Multi-Support Manipulation.pdf"
+---
+
 # Flow Matching Imitation Learning for Multi-Support Manipulation
 
 > **저자**: Quentin Rouxel, Andrea Ferrari, Serena Ivaldi, Jean-Baptiste Mouret | **날짜**: 2024-07-17 | **URL**: [https://arxiv.org/abs/2407.12381](https://arxiv.org/abs/2407.12381)
@@ -66,3 +87,17 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 Flow Matching을 실제 휴머노이드 로봇의 다중 접촉 조작 학습에 처음 적용한 혁신적 연구로, 이론적 기여와 실제 구현이 잘 결합되어 있다. 공유 자율성 모드를 통한 실용적 응용 가치와 생성 모델의 로봇 적용 가능성을 명확히 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C/review]] — Flow Matching과 확산 기반 공동 튜닝은 모두 생성 모델을 활용한 모방 학습이지만 서로 다른 생성 메커니즘을 사용한다.
+- 🔗 후속 연구: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — 전신 양손 원격조작이 다중 지지점 조작의 실제 적용으로 확장될 수 있다.
+- 🏛 기반 연구: [[papers/1700_TACT_Humanoid_Whole-body_Contact_Manipulation_through_Deep_I/review]] — 전신 접촉 조작이 다중 지지점 조작 학습의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — 전신 다중접촉 동작 제어의 이론적 기반이 Flow Matching 모방학습의 다중 지지 조작에 필수적입니다.
+- 🔄 다른 접근: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — 둘 다 humanoid의 force-adaptive manipulation을 다루지만, FALCON은 RL 기반 접근법을, Flow Matching은 생성 모델 기반 모방 학습을 사용합니다.
+- 🔗 후속 연구: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — Flow Matching의 다중 접촉 조작 기법을 인간-휴머노이드 협력 시나리오로 확장하여 적용한 사례입니다.
+- 🏛 기반 연구: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — GentleHumanoid의 compliance learning 연구가 Flow Matching의 다중 접촉 조작에서 필요한 유연한 상호작용의 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 접촉이 풍부한 조작 작업에서 강화학습 기반 접촉 인식 제어와 플로우 매칭 기반 모방 학습이 상호 보완적이다.
+- 🏛 기반 연구: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — Flow Matching의 다중 접촉 조작 기법이 H2-COMPACT의 인간-휴머노이드 협력 물체 운반에서 필요한 복잡한 접촉 상호작용 처리의 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/2121_OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_H/review]] — Flow matching을 통한 multi-support manipulation이 OmniXtreme의 flow-matching 기반 생성형 정책 구현의 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/2123_One-shot_Adaptation_of_Humanoid_Whole-body_Motion_with_Walki/review]] — 둘 다 운동 적응을 다루지만, One-shot Adaptation은 보행 사전 지식 기반 원샷 학습에, Flow Matching은 다중 지지 조작을 위한 flow matching에 집중한다.

@@ -1,3 +1,25 @@
+---
+title: "2081_LeVERB_Humanoid_Whole-Body_Control_with_Latent_Vision-Langua"
+authors:
+  - "Haoru Xue"
+  - "Xiaoyu Huang"
+  - "Dantong Niu"
+  - "Qiayuan Liao"
+  - "Thomas Kragerud"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "LeVERB는 humanoid 로봇의 전신 제어를 위해 vision-language 입력을 latent action 공간으로 인코딩하는 계층적 프레임워크를 제안하며, 150개 이상의 task로 구성된 첫 번째 sim-to-real 준비 벤치마크를 제시한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xue et al._2025_LeVERB Humanoid Whole-Body Control with Latent Vision-Language Instruction.pdf"
+---
+
 # LeVERB: Humanoid Whole-Body Control with Latent Vision-Language Instruction
 
 > **저자**: Haoru Xue, Xiaoyu Huang, Dantong Niu, Qiayuan Liao, Thomas Kragerud, Jan Tommy Gravdahl, Xue Bin Peng, Guanya Shi, Trevor Darrell, Koushil Sreenath, Shankar Sastry | **날짜**: 2025-06-16 | **URL**: [https://arxiv.org/abs/2506.13751](https://arxiv.org/abs/2506.13751)
@@ -70,3 +92,14 @@ LeVERB는 humanoid 로봇의 전신 제어를 위해 vision-language 입력을 l
 - Overall: 4/5
 
 **총평**: LeVERB는 humanoid WBC를 위한 vision-language 제어에서 중요한 진전을 이루었으며, 첫 latent instruction-following framework와 comprehensive sim-to-real 벤치마크를 제시하여 이 분야의 기초를 다졌다. 다만 실제 배포 성능의 추가 개선과 더 광범위한 task 평가를 통한 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — 언어 기반 일반 휴머노이드 전신 제어와 시각-언어 지시사항 통합이라는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 완전한 종단간 언어-행동 모델의 확장된 구현을 보여준다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 자유 형식 언어를 통한 휴머노이드 명령의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — 둘 다 egocentric video를 활용한 humanoid 조작 학습이지만 LeVERB는 vision-language instruction에 중점을 둔 차이가 있다
+- 🏛 기반 연구: [[papers/1886_DreamControl_Human-Inspired_Whole-Body_Humanoid_Control_for/review]] — DreamControl의 whole-body humanoid control 기법이 LeVERB의 계층적 전신 제어 프레임워크 설계에 기반이 되었다
+- 🔄 다른 접근: [[papers/2093_Masquerade_Learning_from_In-the-wild_Human_Videos_using_Data/review]] — 인간 비디오로부터 로봇 조작 정책을 학습하는 다른 접근법으로, 데이터 편집과 latent 인코딩의 차이점을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — LeVERB의 latent vision-language embedding을 실제 언어 지시문 처리와 안정적인 로봇 실행이 결합된 완전한 시스템으로 발전시켰습니다.
+- 🔗 후속 연구: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — LeVERB의 latent vision-language control에 ULTRA의 egocentric 시각 인지를 통합하면 더 자연스러운 whole-body control 가능

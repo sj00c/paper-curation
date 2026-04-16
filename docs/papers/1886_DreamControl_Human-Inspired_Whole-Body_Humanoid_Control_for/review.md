@@ -1,3 +1,24 @@
+---
+title: "1886_DreamControl_Human-Inspired_Whole-Body_Humanoid_Control_for"
+authors:
+  - "Dvij Kalaria"
+  - "Sudarshan S. Harithas"
+  - "Pushkal Katara"
+  - "Sangkyung Kwak"
+  - "Sarthak Bhagat"
+date: "2025.09"
+doi: "10.48550/arXiv.2509.14353"
+arxiv: ""
+score: 4.0
+essence: "DreamControl은 human motion 기반 diffusion prior를 RL과 결합하여 humanoid robot의 whole-body 조작 작업을 학습하는 방법론을 제안한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kalaria et al._2025_DreamControl Human-Inspired Whole-Body Humanoid Control for Scene Interaction via Guided Diffusion.pdf"
+---
+
 # DreamControl: Human-Inspired Whole-Body Humanoid Control for Scene Interaction via Guided Diffusion
 
 > **저자**: Dvij Kalaria, Sudarshan S. Harithas, Pushkal Katara, Sangkyung Kwak, Sarthak Bhagat, Shankar Sastry, Srinath Sridhar, Sai Vemprala, Ashish Kapoor, Jonathan Chung-Kuan Huang | **날짜**: 2025-09-30 | **DOI**: [10.48550/arXiv.2509.14353](https://doi.org/10.48550/arXiv.2509.14353)
@@ -66,3 +87,13 @@ DreamControl은 human motion 기반 diffusion prior를 RL과 결합하여 humano
 - Overall: 4/5
 
 **총평**: DreamControl은 human motion diffusion prior와 RL의 장점을 효과적으로 결합하여 humanoid robot의 whole-body manipulation을 학습하는 창의적이고 실용적인 방법론을 제시하며, 실제 로봇에서의 다양한 작업 수행으로 그 가치를 입증했다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1885_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — DreamControl-v2가 DreamControl의 human-inspired whole-body control을 더 단순하고 확장 가능한 형태로 발전시킨 후속 연구이다.
+- 🏛 기반 연구: [[papers/2146_TEDi_Temporally-Entangled_Diffusion_for_Long-Term_Motion_Syn/review]] — temporally-entangled diffusion이 DreamControl의 whole-body manipulation 작업을 위한 long-term motion synthesis 능력을 강화한다.
+- 🔄 다른 접근: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — diffusion model을 character control에 적용하는 다른 접근법을 제시하여 DreamControl과 상호 보완적인 관점을 제공한다.
+- 🔗 후속 연구: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — 민첩하고 일반화 가능한 인간형 상호작용으로 발전됩니다.
+- 🧪 응용 사례: [[papers/2168_UniAct_Unified_Motion_Generation_and_Action_Streaming_for_Hu/review]] — 통합 모션 생성과 행동 스트리밍의 실제 구현 사례를 보여줍니다.
+- 🏛 기반 연구: [[papers/1885_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — DreamControl의 diffusion-based motion generation이 DreamControl-v2의 더 단순하고 확장 가능한 프레임워크 개발을 위한 직접적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2081_LeVERB_Humanoid_Whole-Body_Control_with_Latent_Vision-Langua/review]] — DreamControl의 whole-body humanoid control 기법이 LeVERB의 계층적 전신 제어 프레임워크 설계에 기반이 되었다

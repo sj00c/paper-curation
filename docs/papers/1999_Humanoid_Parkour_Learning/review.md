@@ -1,3 +1,23 @@
+---
+title: "1999_Humanoid_Parkour_Learning"
+authors:
+  - "Ziwen Zhuang"
+  - "Shenzhe Yao"
+  - "Hang Zhao"
+date: "2024.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 시각 기반 end-to-end 제어 정책을 통해 인간형 로봇이 모션 프리어 없이 다양한 파쿠르 기술(점프, 허들 뛰기, 갭 넘기 등)을 수행할 수 있도록 학습하는 통합 프레임워크를 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhuang et al._2024_Humanoid Parkour Learning.pdf"
+---
+
 # Humanoid Parkour Learning
 
 > **저자**: Ziwen Zhuang, Shenzhe Yao, Hang Zhao | **날짜**: 2024-06-15 | **URL**: [https://arxiv.org/abs/2406.10759](https://arxiv.org/abs/2406.10759)
@@ -70,3 +90,18 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 모션 프리어 없이 인간형 로봇이 다양한 파쿠르 기술을 통합적으로 학습하고 실제 배포할 수 있게 하는 혁신적 프레임워크를 제시하며, fractal noise를 통한 자연스러운 보행 유도와 효율적인 vision 정책 증류 기법으로 로봇 운동 능력의 경계를 의미 있게 확장한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1861_Deep_Whole-body_Parkour/review]] — 두 논문 모두 파쿠르 기술을 다루지만 시각 기반 end-to-end vs 전신 파쿠르 접근법이 다르다.
+- 🔗 후속 연구: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 시각 기반 파쿠르 학습이 지각 기반 동적 인간 기술 연결로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — Humanoid Occupancy의 perception-focused approach와 달리 parkour learning은 end-to-end visual control에 집중한다.
+- 🏛 기반 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — scalable perceptive parkour framework의 wild environment navigation이 parkour learning의 시각 기반 제어 정책 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1804_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — 지형 적응을 Humanoid Parkour는 파쿠르 기술로, APEX는 고플랫폼 횡단으로 각각 접근한다.
+- 🏛 기반 연구: [[papers/1804_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — Humanoid Parkour Learning의 기본 기술들이 APEX의 climb-up, climb-down 등 전문화된 기술 개발의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1861_Deep_Whole-body_Parkour/review]] — 같은 humanoid parkour 문제를 다른 학습 접근법으로 해결하여 비교 연구가 가능하다.
+- 🏛 기반 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Humanoid Parkour Learning의 시각 기반 파쿠르 기술이 실제 비정형 지형 이동의 기초 방법론이 된다.
+- 🔄 다른 접근: [[papers/1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — parkour learning과 달리 Humanoid Occupancy는 환경 인식을 위한 다중모달 perception system에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/2016_HUSKY_Humanoid_Skateboarding_System_via_Physics-Aware_Whole-/review]] — 스케이트보드와 파쿠어는 모두 동적 균형이 필요한 스포츠지만, HUSKY는 lean-to-steer 제약을, Humanoid Parkour Learning은 복잡한 장애물 회피를 중점적으로 다룬다.
+- 🔄 다른 접근: [[papers/2037_KungfuBot_Physics-Based_Humanoid_Whole-Body_Control_for_Lear/review]] — 고도로 동적인 인간 행동 모방에서 쿵푸/댄싱 대신 파쿠르 기술을 학습하는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 둘 다 휴머노이드 파쿠르를 다루지만, Perceptive Humanoid Parkour는 motion matching 기반 인간 기술 체이닝에, Humanoid Parkour Learning은 RL 기반 학습에 집중한다.

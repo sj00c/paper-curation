@@ -10,7 +10,8 @@ score: 4.0
 essence: "3,000개 이상의 과학상(Scientific Prize)과 10,455명의 수상자 데이터를 분석하여 과학상 네트워크(Prize Network)가 과학의 경계를 확장하는 과학자들을 예측할 수 있음을 보여준다. 과학상의 집중도 증가와 학제 간 연결성이 과학의 엘리트 계층화와 지식 전파 경로를 드러낸다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scientific_Prize_Networks"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ma and Uzzi_2018_Scientific prize network predicts who pushes the boundaries of science.pdf"
 ---
@@ -83,8 +84,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ma and Uzzi_2018_Scientific prize networ
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 과학상 네트워크가 예측하는 과학 엘리트가 교수 채용의 위계 구조와 어떻게 연결되어 학계 불평등을 형성하는지 확장 분석합니다.
-- 🏛 기반 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술, 문화, 과학 분야의 hot streak 현상이 과학상 수상과 과학적 돌파 사이의 관계를 이해하는 기반을 제공합니다.
-- 🧪 응용 사례: [[papers/1121_Superstar_Extinctionsupsup/review]] — 과학상 네트워크로 예측된 슈퍼스타 과학자들의 영향력 소멸 과정을 분석하는 구체적 적용 사례를 제공합니다.
-- 🏛 기반 연구: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 과학상 네트워크가 경계 돌파를 예측하는 원리를 제약 분야의 미충족 수요 발굴에 응용할 수 있는 이론적 토대를 제공한다.
-- 🧪 응용 사례: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 생명공학 분야의 혁신 경계를 탐지하는 데 과학상 네트워크 분석을 적용할 수 있다
+- 🔗 후속 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 학계의 계층적 채용 네트워크가 과학상 네트워크로 확장되어 엘리트 과학자 예측에 활용됩니다.
+- 🏛 기반 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 과학자 경력에서 나타나는 핫스트릭 현상이 과학상 수상 패턴의 이론적 배경을 제공합니다.
+- ⚖️ 반론/비판: [[papers/1121_Superstar_Extinctionsupsup/review]] — 과학상 네트워크가 엘리트를 예측한다는 관점과 슈퍼스타 과학자의 영향력이 사후에 감소한다는 상반된 관점을 보여줍니다.
+- 🔗 후속 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 과학계 다양성-혁신 역설은 과학상 수상자 예측에서 소수집단의 혁신적 기여가 어떻게 과소평가되는지 보완적 관점을 제공합니다.
+- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학상 수상 네트워크 분석을 통해 과학 발전 예측의 새로운 지표를 제시한다.
+- 🔄 다른 접근: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 과학상 네트워크를 통한 경계 돌파 예측과 인용 네트워크 구조를 통한 돌파구 예측은 서로 다른 접근법이다.

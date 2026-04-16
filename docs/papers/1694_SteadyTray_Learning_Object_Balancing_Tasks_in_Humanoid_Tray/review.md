@@ -12,9 +12,11 @@ arxiv: ""
 score: 4.0
 essence: "ReST-RL은 사전학습된 이족 보행 정책에 잔차 모듈을 추가하여 휴머노이드 로봇이 동적 보행 중 트레이 위의 불안정한 물체를 안정적으로 운반할 수 있도록 하는 계층적 강화학습 아키텍처이다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
-pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2026_SteadyTray Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Le.pdf"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2026_SteadyTray Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Le 1.pdf"
 ---
 
 # SteadyTray: Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Learning
@@ -83,3 +85,17 @@ ReST-RL은 사전학습된 이족 보행 정책에 잔차 모듈을 추가하여
 - Overall: 4/5
 
 **총평**: ReST-RL은 보행 안정성을 보존하면서 payload 안정화를 분리 학습하는 우아한 설계로, 휴머노이드 로봇의 실제 서비스 응용(식음료 배송, 의료 기구 운반)에 필수적인 신뢰성 높은 물체 운반을 처음 성공적으로 시연했다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1682_SMASH_Mastering_Scalable_Whole-Body_Skills_for_Humanoid_Ping/review]] — 둘 다 휴머노이드 동적 기술을 다루지만 SteadyTray는 균형 유지에, SMASH는 스트라이킹에 초점을 맞춘다
+- 🔗 후속 연구: [[papers/1696_Success_in_Humanoid_Reinforcement_Learning_under_Partial_Obs/review]] — 트레이 운반의 잔차 강화학습과 부분 관찰 하에서의 안정적 학습을 결합하면 더 견고한 동적 조작이 가능하다
+- 🏛 기반 연구: [[papers/1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff/review]] — Hold My Beer의 부드러운 운반 제어가 SteadyTray의 불안정한 물체 균형에 필요한 제어 기술을 제공한다
+- 🔗 후속 연구: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 순응적 전신 제어의 개념을 동적 보행 중 트레이 운반이라는 구체적 작업으로 확장하여 불안정한 물체의 안정적 운반을 실현했다.
+- 🧪 응용 사례: [[papers/2085_Load-Aware_Locomotion_Control_for_Humanoid_Robots_in_Industr/review]] — 트레이 운반 기술을 산업 환경에서의 부하 인식 이동 제어로 확장하여 실제 작업장에서 활용 가능한 휴머노이드 시스템을 구현했다.
+- 🏛 기반 연구: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 일반적인 모션 트래킹 기술을 트레이 운반이라는 특정 작업으로 확장하여 ReST-RL 아키텍처를 통한 계층적 제어를 실현했다.
+- 🔗 후속 연구: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 외부 힘에 순응하는 제어 개념을 동적 보행 중 트레이 운반이라는 구체적 작업으로 확장하여 물체 균형 유지를 실현했다.
+- 🔄 다른 접근: [[papers/1696_Success_in_Humanoid_Reinforcement_Learning_under_Partial_Obs/review]] — 둘 다 잔차 학습을 사용하지만 부분 관찰 환경에서의 일반적 학습 vs 특정 균형 작업으로 적용 범위가 다르다
+- 🔄 다른 접근: [[papers/1909_Embracing_Bulky_Objects_with_Humanoid_Robots_Whole-Body_Mani/review]] — 부피가 큰 물체 전신 포용과 SteadyTray의 객체 균형은 휴머노이드 객체 조작의 서로 다른 접근 방식입니다.
+- 🔄 다른 접근: [[papers/1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff/review]] — 물체 안정화 제어를 Hold My Beer는 음료 운반에, SteadyTray는 트레이 균형에 각각 특화하여 접근한다.
+- 🏛 기반 연구: [[papers/2149_TOP_Time_Optimization_Policy_for_Stable_and_Accurate_Standin/review]] — 휴머노이드 트레이 균형 작업의 객체 밸런싱 기술이 서서하기 조작의 안정성 제어에 기반을 제공한다.

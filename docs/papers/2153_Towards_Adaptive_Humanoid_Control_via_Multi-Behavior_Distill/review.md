@@ -1,3 +1,24 @@
+---
+title: "2153_Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distill"
+authors:
+  - "Yingnan Zhao"
+  - "Xinmiao Wang"
+  - "Dewei Wang"
+  - "Xinzhe Liu"
+  - "Dan Lu"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.06371"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 다양한 이족보행 행동(서기, 걷기, 뛰기, 점프)을 학습할 수 있도록 다중행동 증류(multi-behavior distillation)와 강화학습 미세조정을 통해 적응형 제어기를 개발한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2025_Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning.pdf"
+---
+
 # Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning
 
 > **저자**: Yingnan Zhao, Xinmiao Wang, Dewei Wang, Xinzhe Liu, Dan Lu, Qilong Han, Peng Liu, Chenjia Bai | **날짜**: 2025-11-11 | **DOI**: [10.48550/arXiv.2511.06371](https://doi.org/10.48550/arXiv.2511.06371)
@@ -67,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 다중행동 증류와 강화학습 미세조정을 결합한 2단계 프레임워크는 휴머노이드 로봇의 적응형 제어라는 중요한 문제에 대한 실용적이고 효과적인 해결책을 제시하며, 시뮬레이션과 실로봇 실험을 통해 그 타당성을 입증했다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — Humanoid World Models의 개방형 세계 기반 모델이 다중행동 학습을 위한 환경 이해와 적응형 제어기 개발의 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — 다중행동 증류는 여러 행동을 하나의 정책으로 통합하고 SkillBlender는 다양한 스킬을 조합하는 서로 다른 휴머노이드 제어 접근법입니다.
+- 🔗 후속 연구: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — FRAME의 avatar motion 기법을 다중행동 증류와 결합하면 더 자연스럽고 다양한 휴머노이드 행동 생성이 가능합니다.
+- 🏛 기반 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — Distillation-PPO의 two-stage RL framework가 다중행동 증류와 강화학습 미세조정의 단계적 학습 구조의 기술적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — Gait-conditioned RL with multi-phase curriculum가 다중행동 증류와 다른 curriculum 접근법으로 다양한 이족보행 행동 학습을 달성합니다.
+- 🔗 후속 연구: [[papers/1936_From_Motion_to_Behavior_Hierarchical_Modeling_of_Humanoid_Ge/review]] — From motion to behavior의 hierarchical gait modeling이 adaptive humanoid control의 다중행동 학습을 계층적 행동 모델링으로 확장한 형태입니다.
+- 🔗 후속 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 residual MoE 구조를 multi-behavior distillation과 결합하면 더 적응적인 휴머노이드 제어가 가능하다.
+- 🏛 기반 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — 다중 행동 증류를 통한 적응형 humanoid 제어가 H-Zero의 cross-embodiment 전이 학습의 이론적 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — 멀티 행동 증류를 통한 적응형 휴머노이드 제어에 PopArt의 불균형 해결 방법론을 적용할 수 있다.

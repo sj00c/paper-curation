@@ -1,3 +1,25 @@
+---
+title: "1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning"
+authors:
+  - "Hang Liu"
+  - "Yuman Gao"
+  - "Sangli Teng"
+  - "Yufeng Chi"
+  - "Yakun Sophia Shao"
+date: "2026.03"
+doi: "10.48550/arXiv.2510.11682"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 접촉을 활용하는 지능형 계획을 수립하기 위해 학습된 world model을 sampling-based MPC와 결합한 프레임워크를 제안하며, 오프라인 데이터셋으로부터 압축된 latent space에서 미래 결과를 예측한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2026_Ego-Vision World Model for Humanoid Contact Planning.pdf"
+---
+
 # Ego-Vision World Model for Humanoid Contact Planning
 
 > **저자**: Hang Liu, Yuman Gao, Sangli Teng, Yufeng Chi, Yakun Sophia Shao, Zhongyu Li, Maani Ghaffari, Koushil Sreenath | **날짜**: 2026-03-08 | **DOI**: [10.48550/arXiv.2510.11682](https://doi.org/10.48550/arXiv.2510.11682)
@@ -66,3 +88,17 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드의 접촉 활용 계획을 위해 world model과 value-guided MPC를 효과적으로 결합하여 샘플 효율성과 다중 작업 능력을 동시에 달성한 우수한 연구로, 실제 로봇 배포를 통해 실용성을 입증했으나 계획 수평선 제약과 시뮬-현실 갭에 대한 추가 분석이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1949_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — generative world model의 기본 원리가 ego-vision world model for contact planning의 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — reference-free sampling-based MPC가 ego-vision world model의 contact planning을 더 자유로운 제어 방식으로 확장한다.
+- 🔄 다른 접근: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — whole-body MPC with multiple contacts가 learned world model 없이도 contact planning 문제를 해결하는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — 휴머노이드 계획에서 learned world model 기반 접촉 계획과 video world model을 통한 generalization의 서로 다른 world modeling 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — Ego-Vision World Model의 접촉 계획 프레임워크가 Humanoid World Models의 open world foundation으로 확장되어 더 일반적인 휴머노이드 AI를 구축할 수 있다.
+- 🔄 다른 접근: [[papers/2026_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-/review]] — InterMimic의 universal whole-body control이 world model 기반이 아닌 다른 방식으로 접촉 계획 문제를 해결하는 대안적 접근을 제시한다.
+- 🏛 기반 연구: [[papers/1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid/review]] — 휴머노이드 접촉 계획을 위한 ego-vision 월드 모델의 개념을 넘어짐 안전성이라는 특정 목표로 확장하여 teacher-student 증류 방식을 적용했다.
+- 🏛 기반 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — ego-vision world model이 HAIC의 proprioception 기반 dynamics 예측과 시각 blind spot 보완에 필요한 기반 기술을 제공합니다.
+- 🔄 다른 접근: [[papers/2025_INTENTION_Inferring_Tendencies_of_Humanoid_Robot_Motion_Thro/review]] — 상호작용 경험 기반 직관적 물리 학습과 에고 비전 월드 모델은 모두 접촉 계획을 위한 물리 이해를 다루지만 접근법이 다르다.
+- 🧪 응용 사례: [[papers/2044_Learning_Aerodynamics_for_the_Control_of_Flying_Humanoid_Rob/review]] — Learning Aerodynamics의 공기역학 모델이 Ego-Vision World Model의 휴머노이드 접촉 계획에서 공중 단계 예측 정확도를 향상시킬 수 있다.
+- 🔄 다른 접근: [[papers/2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm/review]] — 둘 다 고유감각을 활용한 휴머노이드 제어를 다루지만 이 논문은 이중팔 계획에, Ego-Vision World Model은 접촉 계획에 특화됩니다.

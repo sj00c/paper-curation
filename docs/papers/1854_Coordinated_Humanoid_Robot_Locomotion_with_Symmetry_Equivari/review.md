@@ -1,3 +1,25 @@
+---
+title: "1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari"
+authors:
+  - "Buqing Nie"
+  - "Yang Zhang"
+  - "Rongjun Jin"
+  - "Zhanxiang Cao"
+  - "Huangxuan Lin"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간의 신경계에서 영감을 받은 Symmetry Equivariant Policy (SE-Policy)를 제안하여, 휴머노이드 로봇의 형태적 대칭성을 DRL 프레임워크에 엄격하게 임베딩함으로써 조정되고 균형잡힌 보행을 실현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nie et al._2025_Coordinated Humanoid Robot Locomotion with Symmetry Equivariant Reinforcement Learning Policy.pdf"
+---
+
 # Coordinated Humanoid Robot Locomotion with Symmetry Equivariant Reinforcement Learning Policy
 
 > **저자**: Buqing Nie, Yang Zhang, Rongjun Jin, Zhanxiang Cao, Huangxuan Lin, Xiaokang Yang, Yue Gao | **날짜**: 2025-08-02 | **URL**: [https://arxiv.org/abs/2508.01247](https://arxiv.org/abs/2508.01247)
@@ -64,3 +86,16 @@
 - Overall: 4/5
 
 **총평**: SE-Policy는 휴머노이드 로봇의 형태적 대칭성을 엄격한 네트워크 제약으로 구현하여 추가 하이퍼파라미터 없이 40% 성능 향상을 달성한 혁신적인 방법이며, 실제 로봇 배포를 통해 실용성을 입증했다는 점에서 높은 기여도를 가진다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — 고전적인 balance control 원리를 RL에 임베딩하는 것과 신경계 영감의 대칭성 임베딩이 모두 생체 모방적 제어 설계라는 공통점을 가진다.
+- 🔗 후속 연구: [[papers/1692_StageACT_Stage-Conditioned_Imitation_for_Robust_Humanoid_Doo/review]] — StageACT의 stage-conditioned imitation과 함께 대칭성 기반 정책이 robust한 humanoid control을 위한 완전한 프레임워크를 구성한다.
+- 🔄 다른 접근: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — 휴머노이드 보행의 대칭성 활용에서 Symmetry Equivariant Policy와 Multi-Objective Reinforcement Learning의 서로 다른 수학적 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — 대칭성 기반 정책 학습이 에너지 효율적이고 균형잡힌 보행 패턴 생성으로 확장되는 자연스러운 발전 과정을 보여준다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 적대적 모션 사전이 대칭성 기반 정책의 이론적 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — 립시츠 제약 정책이 대칭 등변 제어의 안정성을 보장합니다.
+- 🧪 응용 사례: [[papers/1967_HandX_Scaling_Bimanual_Motion_and_Interaction_Generation/review]] — 양손 동작 생성에서 대칭성 원리가 직접 적용됩니다.
+- 🏛 기반 연구: [[papers/1938_Full-Order_Sampling-Based_MPC_for_Torque-Level_Locomotion_Co/review]] — 대칭성을 고려한 locomotion control 연구가 DIAL-MPC의 full-order 사족 로봇 제어에서 효율적인 샘플링 전략의 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — 대칭성 등변을 활용한 협응 locomotion의 원리가 팔과 다리 간 균형잡힌 협응 제어에 대한 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — 대칭 등변성을 통한 조정된 휴머노이드 로봇 보행의 이론적 기반을 제공한다.

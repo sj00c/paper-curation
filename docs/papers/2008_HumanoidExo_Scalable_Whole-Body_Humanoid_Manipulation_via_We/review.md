@@ -1,3 +1,24 @@
+---
+title: "2008_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We"
+authors:
+  - "Rui Zhong"
+  - "Yizhe Sun"
+  - "Junjie Wen"
+  - "Jinming Li"
+  - "Chuang Cheng"
+date: "2025.10"
+doi: "10.48550/arXiv.2510.03022"
+arxiv: ""
+score: 4.0
+essence: "웨어러블 외골격(exoskeleton)을 통해 인간의 전신 동작을 휴머노이드 로봇 데이터로 변환하는 HumanoidExo 시스템을 제안하여, 휴머노이드 정책 학습을 위한 대규모 다양한 데이터셋 수집의 병목을 해결한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhong et al._2025_HumanoidExo Scalable Whole-Body Humanoid Manipulation via Wearable Exoskeleton.pdf"
+---
+
 # HumanoidExo: Scalable Whole-Body Humanoid Manipulation via Wearable Exoskeleton
 
 > **저자**: Rui Zhong, Yizhe Sun, Junjie Wen, Jinming Li, Chuang Cheng, Wei Dai, Zhiwen Zeng, Huimin Lu, Yichen Zhu, Yi Xu | **날짜**: 2025-10-03 | **DOI**: [10.48550/arXiv.2510.03022](https://doi.org/10.48550/arXiv.2510.03022)
@@ -66,3 +87,14 @@
 - Overall: 4/5
 
 **총평**: HumanoidExo는 웨어러블 외골격을 통한 전신 휴머노이드 데이터 수집의 첫 성공적 사례로, 기존 방법의 상지 집중 문제를 극복하고 embodiment gap을 최소화한 혁신적 접근이다. 실험 결과가 제한적이고 기술적 깊이가 다소 부족하지만, 휴머노이드 정책 학습의 데이터 병목 문제 해결이라는 실질적 기여와 높은 실용성으로 인해 로보틱스 분야에 의미 있는 진전을 제시한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — HOMIE의 isomorphic exoskeleton teleoperation을 HumanoidExo가 scalable data collection을 위한 wearable system으로 발전시켰다.
+- 🔄 다른 접근: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — HumDex의 IMU-based tracking과 달리 HumanoidExo는 full-body exoskeleton을 통한 comprehensive motion capture 방식을 사용한다.
+- 🏛 기반 연구: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — OSMO의 tactile glove system이 HumanoidExo의 wearable interface에서 hand manipulation data 수집을 위한 기초 기술을 제공한다.
+- 🔗 후속 연구: [[papers/1786_ACE_A_Cross-Platform_Visual-Exoskeletons_System_for_Low-Cost/review]] — ACE의 cross-platform visual-exoskeleton이 HumanoidExo의 웨어러블 시스템을 확장합니다.
+- 🔗 후속 연구: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — HumanoidExo의 wearable exoskeleton 데이터 수집 방법이 HOMIE의 원격조종 시스템에서 학습 데이터 확보를 위해 활용될 수 있다.
+- 🔄 다른 접근: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — HumanoidExo의 full-body exoskeleton과 달리 HumDex는 IMU-based tracking에 집중한 경량화된 teleoperation 방식을 제안한다.
+- 🏛 기반 연구: [[papers/2113_NuExo_A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM_for/review]] — NuExo의 상지 모션 데이터 수집이 HumanoidExo의 scalable whole-body manipulation에서 상체 제어 정책 학습에 필요한 데이터 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — 웨어러블 외골격을 통한 확장 가능한 휴머노이드 조작이 TrajBooster의 전이학습 접근법을 실제 인간-로봇 협업으로 발전시킬 수 있습니다.

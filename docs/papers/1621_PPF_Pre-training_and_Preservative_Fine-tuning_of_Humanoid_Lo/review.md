@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 모델 기반 제어기의 모방학습(Pre-training)과 강화학습을 결합하되, 모델 가정이 성립하는 상태에서만 정규화하는 MAR(Model-Assumption-based Regularization)을 통해 인간형 로봇의 보행 정책을 학습하는 PPF 프레임워크를 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jung et al._2025_PPF Pre-training and Preservative Fine-tuning of Humanoid Locomotion via Model-Assumption-based Reg.pdf"
 ---
@@ -83,3 +84,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jung et al._2025_PPF Pre-training and Pr
 - Overall: 4/5
 
 **총평**: 본 논문은 모델 기반과 학습 기반 제어의 장점을 결합하면서 재앙적 망각을 완화하는 MAR이라는 창신적 정규화 기법을 제안하며, 실제 인간형 로봇에서 1.5 m/s의 고속 보행과 다양한 지형 강건성을 달성하여 실용적 가치가 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — Model-based pre-training과 RL 결합을 two-stage distillation 접근법으로 해결
+- 🏛 기반 연구: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — Classical control principles를 RL에 통합하는 방법론적 기반 제공
+- 🏛 기반 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — humanoid locomotion의 pre-training과 fine-tuning 방법론이 Distillation-PPO의 2단계 프레임워크 설계에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1916_Evolutionary_Continuous_Adaptive_RL-Powered_Co-Design_for_Hu/review]] — 둘 다 하드웨어와 제어 정책의 동시 최적화를 다루지만 EA-CoRL은 진화 알고리즘을, PPF는 사전학습을 사용한다.
+- 🔗 후속 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — PPF의 pre-training과 fine-tuning 개념을 cross-humanoid에서 few-shot novel embodiment로의 일반화까지 확장한 포괄적인 프레임워크입니다.

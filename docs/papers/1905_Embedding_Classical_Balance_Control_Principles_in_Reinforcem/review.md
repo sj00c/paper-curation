@@ -1,3 +1,25 @@
+---
+title: "1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem"
+authors:
+  - "Nehar Poddar"
+  - "Stephen McCrory"
+  - "Luigi Penco"
+  - "Geoffrey Clark"
+  - "Hakki Erhan Svil"
+date: "2026.03"
+doi: "10.48550/arXiv.2603.08619"
+arxiv: ""
+score: 4.0
+essence: "고전적 균형 제어 원리(capture point, center-of-mass, centroidal momentum)를 강화학습의 privileged critic 입력과 보상 형성에 직접 임베딩하여, 인간형 로봇의 낙상 회복을 위한 통합 정책을 학습한다. 단일 정책으로 발목/엉덩이 전략, 보정 스텝, 다중접촉 일어서기를 포괄하며 93.4% 회복률을 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Poddar et al._2026_Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery 1.pdf"
+---
+
 # Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery
 
 > **저자**: Nehar Poddar, Stephen McCrory, Luigi Penco, Geoffrey Clark, Hakki Erhan Svil, Robert Griffin | **날짜**: 2026-03-09 | **DOI**: [10.48550/arXiv.2603.08619](https://doi.org/10.48550/arXiv.2603.08619)
@@ -68,3 +90,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 고전적 균형 제어 원리를 강화학습에 체계적으로 임베딩하는 creative한 접근으로, ablation을 통해 이 구조의 필수성을 입증하고 93.4% 회복률로 강력한 실증 결과를 제시한다. 다만 하드웨어 검증 규모와 다양한 환경에서의 일반화 평가가 보강되면 더욱 설득력 있을 것이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — 같은 humanoid 낙상 회복 문제를 고전적 제어 원리와 deep RL의 조합으로 접근하여 self-protective falling과 상호 보완적 해결책을 제시한다.
+- 🔗 후속 연구: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — HuB의 extreme humanoid balance 학습이 고전적 균형 제어 원리를 더 극한 상황으로 확장하여 포괄적인 균형 제어를 실현한다.
+- 🏛 기반 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — SafeFall의 protective control 방법론이 고전적 균형 원리를 강화학습에 임베딩하는 기본 아이디어를 제공한다.
+- 🏛 기반 연구: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — Control Lyapunov Function을 통한 안정성 추적 연구가 고전적 균형 제어 원리의 수학적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2051_Learning_Getting-Up_Policies_for_Real-World_Humanoid_Robots/review]] — 실제 휴머노이드 로봇의 일어서기 정책 학습 연구가 낙상 회복의 다중접촉 일어서기 능력을 실제 환경에서 확장 적용할 수 있는 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1621_PPF_Pre-training_and_Preservative_Fine-tuning_of_Humanoid_Lo/review]] — Classical control principles를 RL에 통합하는 방법론적 기반 제공
+- 🏛 기반 연구: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — 고전적인 균형 제어 원리가 CLF-RL에서 안정성 조건을 강화학습 보상에 임베딩하는 이론적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 고전적인 balance control 원리를 RL에 임베딩하는 것과 신경계 영감의 대칭성 임베딩이 모두 생체 모방적 제어 설계라는 공통점을 가진다.
+- 🔗 후속 연구: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — 고전적 균형 제어 원리를 강화학습에 임베딩한 방법이 self-protective falling의 이론적 기반을 더욱 견고하게 만든다.

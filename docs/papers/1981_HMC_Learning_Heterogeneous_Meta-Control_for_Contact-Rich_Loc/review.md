@@ -1,3 +1,24 @@
+---
+title: "1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc"
+authors:
+  - "Lai Wei"
+  - "Xuanbin Peng"
+  - "Ri-Zhao Qiu"
+  - "Tianshu Huang"
+  - "Xuxin Cheng"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.14756"
+arxiv: ""
+score: 4.0
+essence: "로봇의 접촉이 많은 조작 작업을 위해 위치, 임피던스, 하이브리드 힘-위치 제어를 적응적으로 혼합하는 HMC(Heterogeneous Meta-Control) 프레임워크를 제안하며, mixture-of-experts 라우팅을 통해 대규모 위치 데이터와 미세한 힘 인식 시연으로부터 학습한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wei et al._2025_HMC Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation.pdf"
+---
+
 # HMC: Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation
 
 > **저자**: Lai Wei, Xuanbin Peng, Ri-Zhao Qiu, Tianshu Huang, Xuxin Cheng, Xiaolong Wang | **날짜**: 2025-11-18 | **DOI**: [10.48550/arXiv.2511.14756](https://doi.org/10.48550/arXiv.2511.14756)
@@ -63,3 +84,17 @@
 - Overall: 4/5
 
 **총평**: HMC는 실제 접촉이 많은 조작 작업의 도전을 체계적으로 해결하는 실용적이고 혁신적인 프레임워크로, 통합된 제어 인터페이스와 이질적 정책 설계가 50% 이상의 성능 향상을 달성하며 로코-조작 분야에 의미 있는 기여를 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — HiWET의 kinematic-focused approach와 달리 HMC는 force/impedance control을 중심으로 한 접촉 조작 방식을 제안한다.
+- 🔗 후속 연구: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — FALCON의 force-adaptive learning이 HMC의 heterogeneous meta-control에서 힘 인식 제어 부분을 강화할 수 있다.
+- 🏛 기반 연구: [[papers/1849_Contact-Aided_Invariant_Extended_Kalman_Filtering_for_Robot/review]] — contact-aided invariant EKF의 접촉 상태 추정 기법이 HMC의 contact-rich manipulation을 위한 기초 이론을 제공한다.
+- 🔄 다른 접근: [[papers/1700_TACT_Humanoid_Whole-body_Contact_Manipulation_through_Deep_I/review]] — 접촉 기반 조작을 HMC는 heterogeneous meta-control로, TACT는 깊은 RL 기반 접촉으로 접근한다.
+- 🏛 기반 연구: [[papers/1923_FAME_Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelo/review]] — FAME의 힘 적응 RL 기술이 HMC의 접촉이 많은 조작 작업에서의 적응적 제어 혼합의 기반이 된다.
+- 🔗 후속 연구: [[papers/1984_HoRD_Robust_Humanoid_Control_via_History-Conditioned_Reinfor/review]] — HoRD의 강건한 제어를 접촉이 풍부한 조작 상황에서의 heterogeneous meta-control로 확장한 발전된 형태다.
+- 🔄 다른 접근: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — HMC의 heterogeneous meta-control과 HiWET의 hierarchical tracking은 모두 정밀한 조작을 위한 다른 계층적 제어 방식이다.
+- 🏛 기반 연구: [[papers/2040_LapSurgie_Humanoid_Robots_Performing_Surgery_via_Teleoperate/review]] — LapSurgie의 원격 중심 운동 제약을 HMC의 heterogeneous meta-control이 접촉이 풍부한 환경에서 처리할 수 있는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — centroidal angular momentum 추적을 heterogeneous meta-control과 결합하여 더 정교한 접촉 기반 locomotion을 구현할 수 있다.
+- 🔄 다른 접근: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — 접촉이 풍부한 보행을 위한 이질적 메타 제어와 협력적 이질적 다중 에이전트 강화학습이라는 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — HMC의 heterogeneous meta-control 기법이 ULTRA의 unified multimodal controller에서 서로 다른 제어 모드를 통합하는 기반 방법론을 제공합니다.

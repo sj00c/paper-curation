@@ -13,7 +13,9 @@ score: 4.0
 essence: "Word2vec 신경망 임베딩 모델을 이용하여 이동 궤적(migration trajectories)으로부터 지역 간의 잠재적 구조를 비지도학습으로 추출하고, 중력 모델(gravity model of mobility)과의 수학적 동치성을 증명한다. 과학자 300만 명의 이동 데이터에 적용하여 문화, 언어, 위신 등 다층적 요인을 포함한 과학 마이그레이션의 복잡한 구조를 효과적으로 인코딩할 수 있음을 보여준다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Mathematical_Topology_Indexing"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Thematic_Network_Detection"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Murray et al._2023_Unsupervised embedding of trajectories captures the latent structure of scientific migration.pdf"
 ---
@@ -90,9 +92,14 @@ Word2vec 신경망 임베딩 모델을 이용하여 이동 궤적(migration traj
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 경제 발전과 학자 이동의 전 지구적 패턴이 과학 마이그레이션의 다층적 요인을 이해하는 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 기관 간 이동이 과학적 성과에 미치는 영향을 이동 궤적의 잠재 구조 분석으로 확장하여 더 깊이 이해할 수 있습니다.
-- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 네트워크 접근법을 통한 주제 모델링이 이동 궤적에서 잠재 구조를 추출하는 방법론적 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 지식공간 탐색을 과학자의 연구주제 선택과 과학자 이동 궤적이라는 서로 다른 관점에서 분석하는 대안적 접근법입니다.
-- 🔄 다른 접근: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 경력 궤도의 잠재 구조를 비지도 학습으로 포착하는 것이 핫스트릭 탐지의 다른 접근법이 될 수 있다.
-- 🔄 다른 접근: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 연구자 위치 매핑을 위한 주제 모델링과 궤적 임베딩이라는 서로 다른 기하학적 접근법을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 과학자의 물리적 이동과 지식공간에서의 탐색이 서로 다른 차원에서 과학자 행동을 분석한다.
+- 🧪 응용 사례: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 과학자 이동 궤적 분석 방법론을 국가 간 과학 협력 변화 패턴 연구에 적용할 수 있다.
+- 🏛 기반 연구: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 글로벌 학자 이동 패턴의 기초적 분석 틀을 제공하여 경제 발전과의 연관성을 이해할 수 있게 한다.
+- 🏛 기반 연구: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 기관 간 이동이 과학적 성과에 미치는 영향 연구가 학자 이주 궤적 분석의 실증적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1000_Productivity_Prominence_and_the_Effects_of_Academic_Environm/review]] — 연구자 궤적의 잠재적 구조를 무감독 학습으로 분석하는 방법은 기관 환경 효과를 더 정교하게 측정할 수 있게 합니다.
+- 🔄 다른 접근: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 연구 궤적의 잠재적 구조를 포착하는 비지도 임베딩 방법으로 인용 확산 패턴을 다른 관점에서 분석합니다.
+- 🔄 다른 접근: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 과학자의 지식공간 탐색과 물리적 이동 궤적 분석이 서로 다른 관점에서 과학자 행동 패턴을 규명한다.
+- 🏛 기반 연구: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 과학자 이동 궤적 분석 방법론을 국가 간 과학 협력 패턴 변화를 이해하는 데 적용할 수 있다.
+- 🔄 다른 접근: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학자들의 이동 궤적 분석을 통해 협력 네트워크와 다른 관점에서 과학 커뮤니티 구조를 파악한다.
+- 🧪 응용 사례: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 연구 궤적의 잠재 구조를 포착하는 비지도 임베딩 방법이 학술-산업 이동의 복잡한 영향을 분석하는 도구를 제공한다.
+- 🔄 다른 접근: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 궤적의 비지도학습 임베딩으로 잠재 구조를 포착하는 연구로, 주제 모델링과 다른 접근법으로 연구자 위치를 파악하는 대안적 방법입니다.

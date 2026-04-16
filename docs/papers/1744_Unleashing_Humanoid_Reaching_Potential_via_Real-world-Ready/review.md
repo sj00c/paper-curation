@@ -1,3 +1,24 @@
+---
+title: "1744_Unleashing_Humanoid_Reaching_Potential_via_Real-world-Ready"
+authors:
+  - "Zhikai Zhang"
+  - "Chao Chen"
+  - "Han Xue"
+  - "Jilong Wang"
+  - "Sikai Liang"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 대규모 도달 공간 확보를 위해 사전 학습된 원시 스킬들을 통합하는 Real-world-Ready Skill Space (R2S2)를 제안하며, CVAE 기반의 통일된 신경 스킬 표현을 통해 효율적이고 sim2real 전이 가능한 전신 제어를 실현한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Parallel_Robot_Training"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Unleashing Humanoid Reaching Potential via Real-world-Ready Skill Space.pdf"
+---
+
 # Unleashing Humanoid Reaching Potential via Real-world-Ready Skill Space
 
 > **저자**: Zhikai Zhang, Chao Chen, Han Xue, Jilong Wang, Sikai Liang, Yun Liu, Zongzhang Zhang, He Wang, Li Yi | **날짜**: 2025-05-16 | **URL**: [https://arxiv.org/abs/2505.10918](https://arxiv.org/abs/2505.10918)
@@ -66,3 +87,16 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 휴머노이드 로봇의 대규모 도달 공간 실현이라는 중요한 문제를 실용적 관점에서 해결하며, 이질적 스킬 통합과 CVAE 기반 신경 스킬 표현이라는 참신한 기술을 통해 보상 엔지니어링 최소화와 강한 sim2real 전이를 동시에 달성한 우수한 연구이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — R2S2의 CVAE 기반 스킬 표현이 PyRoki의 모션 리타게팅 최적화에서 고차원 운동학 문제 해결에 기반 기술을 제공한다.
+- 🔄 다른 접근: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — 원시 스킬 통합과 교차-신체 제너럴화는 모두 범용 휴머노이드 제어를 위한 서로 다른 일반화 전략이다.
+- 🔄 다른 접근: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 대규모 휴머노이드 제어를 위해 서로 다른 접근(사전 학습된 원시 스킬 조합 vs 42M 파라미터 통합 모델)으로 확장성과 일반화를 추구한다.
+- 🏛 기반 연구: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — 통합된 다양한 손재주 처리를 위한 로봇 기반 스위트의 개념을 휴머노이드 도달 공간으로 확장하여 Real-world-Ready Skill Space를 구현했다.
+- 🔗 후속 연구: [[papers/1934_From_Experts_to_a_Generalist_Toward_General_Whole-Body_Contr/review]] — 전문가에서 일반가로의 전신 제어 개념을 사전 학습된 원시 스킬들의 통합을 통해 구체화하여 CVAE 기반 통일 표현을 실현했다.
+- 🔄 다른 접근: [[papers/1906_Embodiment-Aware_Generalist_Specialist_Distillation_for_Unif/review]] — 휴머노이드의 범용성을 위해 서로 다른 접근(스킬 공간 기반 vs embodiment-aware distillation)을 통해 효율적이고 sim2real 전이 가능한 제어를 구현한다.
+- 🔄 다른 접근: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — XHugWBC의 교차-신체 제어와 R2S2의 원시 스킬 통합은 모두 일반화 가능한 휴머노이드 제어를 추구하는 상호 보완적 접근법이다.
+- 🔄 다른 접근: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 대규모 휴머노이드 제어를 위해 서로 다른 접근(42M 파라미터 통합 모델 vs 사전 학습된 원시 스킬 조합)으로 확장성과 일반화를 추구한다.
+- 🧪 응용 사례: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — PyRoki의 모션 리타게팅과 궤적 최적화 기능이 R2S2의 전신 제어 스킬 학습에 직접 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1913_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe/review]] — real-world-ready humanoid reaching이 EMP와 다른 접근으로 humanoid 상체 제어의 실용적 구현을 제시한다.

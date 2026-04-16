@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "UCSD Map of Science의 설계 및 업데이트를 통해 과학 분류 체계(classification system)를 구축하고, 원본 5년 데이터에서 10년 데이터로 확장하여 저널 매핑 정확도와 사용성을 향상시켰다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Research_Infrastructure_Platforms"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Börner et al._2012_Design and Update of a Classification System The UCSD Map of Science.pdf"
 ---
@@ -93,6 +95,13 @@ UCSD Map of Science의 설계 및 업데이트를 통해 과학 분류 체계(cl
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — UCSD 과학 지도의 분류 체계 구축과 지식 그래프를 활용한 과학 연구 매핑이 서로 다른 접근법의 과학 분류 시스템을 제시합니다.
-- 🔗 후속 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 일반적인 과학 분류 체계인 UCSD Map을 생의학 특화 영역으로 확장한 개방형 생의학 과학 지도로 발전시킬 수 있습니다.
-- 🏛 기반 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 생의학 특화 과학 지도 개발을 위해 UCSD Map of Science의 분류 체계 설계 및 업데이트 방법론이 기반이 됩니다.
+- 🔄 다른 접근: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 과학 분류 체계 설계에서 UCSD 지도와 지식 조직 체계가 서로 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1195_Mapping_the_Research_Landscape_of_Electronic_Properties_of_G/review]] — UCSD 과학 지도의 분류 체계가 그래핀 전자 특성 연구의 학문적 위치 파악 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 과학 분류 체계를 딥러닝 기반으로 자동화하여 UCSD 맵의 수동 분류 한계를 극복한다.
+- 🧪 응용 사례: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 생의학 분야에 특화된 과학 지도를 구축하여 일반적인 과학 분류 체계의 구체적 적용을 보여준다.
+- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 연구를 위한 기본적인 분류 체계와 매핑 방법론의 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 과학 분류 시스템의 설계 원리를 실제 연구 분야 매핑에 적용한 구체적 사례이다
+- 🔄 다른 접근: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 과학 분류 체계 구축에서 UCSD 지도와 지식 조직 체계가 서로 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — 과학 분류 체계 설계 원리가 오픈 언어 모델 개발의 체계적 접근에 적용된다.
+- 🔄 다른 접근: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — UCSD 과학 지도 분류 시스템 설계 연구로, 계층적 분류와 다른 접근법으로 학문 분야를 체계화하는 대안적 방법론입니다.
+- 🏛 기반 연구: [[papers/1195_Mapping_the_Research_Landscape_of_Electronic_Properties_of_G/review]] — 과학 분류 체계와 저널 매핑 방법론이 그래핀 전자 특성 연구의 학문적 위치를 파악하는 기반이 됩니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "자유형식의 멀티모달 멀티기능 지시를 따를 수 있는 일반화된 embodied navigation 에이전트를 위해 OctoNav-Bench 벤치마크와 OctoNav-R1 방법을 제안한다. Think-Before-Action 추론을 통해 복잡한 네비게이션 작업에서 향상된 성능을 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Multimodal_Navigation_Benchmarks"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Semantic_Task_Generalization"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gao et al._2025_OctoNav Towards Generalist Embodied Navigation.pdf"
 ---
@@ -90,6 +92,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gao et al._2025_OctoNav Towards Generali
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — INTENTION의 Intuitive Perceptor와 유사하게 Humanoid Locomotion as Next Token Prediction에서 언어 모델 기반 모션 생성 패러다임을 확장하여 구현한다.
-- 🏛 기반 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — Cosmos-Reason1의 물리 상식 추론과 INTENTION의 직관적 물리 이해 학습이 모두 embodied AI의 물리적 세계 이해 능력을 다룬다.
-- 🔄 다른 접근: [[papers/1422_Hi_Robot_Open-Ended_Instruction_Following_with_Hierarchical/review]] — Hi Robot의 hierarchical instruction following과 INTENTION의 Memory Graph 기반 경험 학습은 모두 복잡한 조작 작업 수행을 위한 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1463_LOVON_Legged_Open-Vocabulary_Object_Navigator/review]] — OctoNav의 일반화된 네비게이션이 LOVON의 다리 로봇 개방형 어휘 객체 네비게이션과 결합되어 더 복잡한 지형에서의 네비게이션을 실현한다.
+- 🔄 다른 접근: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — 둘 다 목표 지향 네비게이션에 초점을 맞추지만, OctoNav는 멀티모달 지시를, UniGoal은 제로샷 범용성에 집중한다.
+- 🏛 기반 연구: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — OctoNav의 Think-Before-Action 추론이 Reflective Planning의 단계별 시각-언어 계획 수립 방법론과 유사한 철학적 기반을 공유한다.
+- 🔄 다른 접근: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — 두 논문 모두 vision-language 네비게이션에서 자기교정 메커니즘을 활용하지만 적용 도메인이 다르다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation 분야의 전반적 동향을 이해하는 데 필요한 기초 서베이이다.
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Voyager의 open-ended 탐색 개념을 구체적인 네비게이션 작업으로 특화하여 발전시킨다.
+- 🏛 기반 연구: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — OctoNav의 spatial understanding 능력을 평가하기 위한 embodied navigation benchmark와 평가 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — OctoNav의 Think-Before-Action과 달리 adaptive exploration strategy를 통한 zero-shot object navigation 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — OctoNav의 generalist navigation을 다양한 시뮬레이션 환경에서 확장하여 instructable agents로 발전시킬 수 있다.
+- 🔗 후속 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — OctoNav의 generalist navigation을 더 크고 포괄적인 cross-embodiment foundation model로 확장 발전
+- 🔗 후속 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — 범용적 embodied navigation으로 LLM 기반 네비게이션을 확장한다.
+- 🔗 후속 연구: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — ApexNav의 적응적 탐색 전략은 OctoNav의 일반화된 embodied navigation 프레임워크에서 활용될 수 있는 핵심 기술입니다.

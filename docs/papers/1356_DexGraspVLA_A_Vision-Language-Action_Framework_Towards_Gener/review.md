@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "DexGraspVLA는 Vision-Language model을 고수준 계획자로, diffusion 기반 저수준 행동 컨트롤러를 학습하는 계층적 VLA 프레임워크로, foundation model을 통해 언어·시각 입력을 도메인 불변 표현으로 변환하여 모방 학습의 일반화를 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhong et al._2025_DexGraspVLA A Vision-Language-Action Framework Towards General Dexterous Grasping.pdf"
 ---
@@ -87,3 +88,14 @@ DexGraspVLA는 Vision-Language model을 고수준 계획자로, diffusion 기반
 - Overall: 4/5
 
 **총평**: DexGraspVLA는 foundation model과 imitation learning의 상보적 강점을 계층적으로 통합하여 cluttered real-world scenario에서 unprecedented 90+% 일반화 성능을 달성한 의미 있는 기여이며, 장기 task, adversarial robustness, failure recovery를 동시 달성함으로써 실용적 dexterous grasping 로봇의 실현 가능성을 크게 높였다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — diffusion 기반 bimanual manipulation과 VLA 프레임워크 기반 dexterous grasping은 서로 다른 접근법으로 복잡한 로봇 조작을 해결한다.
+- 🔗 후속 연구: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — DexVLA의 plug-in diffusion expert와 DexGraspVLA의 diffusion 기반 저수준 컨트롤러는 모두 diffusion을 VLA에 통합하는 방향성을 공유한다.
+- 🏛 기반 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo의 generalist robot policy 개념은 DexGraspVLA가 추구하는 일반적인 dexterous manipulation을 위한 기초 모델 아키텍처를 제공한다.
+- 🏛 기반 연구: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — 대규모 그립 데이터로 사전학습된 foundation model이 손가락 그립 VLA의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — Vision-Language model을 활용한 계층적 그립 제어의 구체적 구현을 제시합니다.
+- 🏛 기반 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — 다국어 비전-언어 모델이 도메인 불변 표현 학습의 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1413_GraspVLA_a_Grasping_Foundation_Model_Pre-trained_on_Billion-/review]] — 둘 다 grasping VLA 모델이지만 billion-scale synthetic data vs plug-in diffusion expert라는 다른 학습 전략을 사용한다.
+- 🔄 다른 접근: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — DexGraspVLA는 VLM과 keypoint 기반 접근법을 정교한 조작에 적용하는 유사하지만 다른 방법론을 제공한다.

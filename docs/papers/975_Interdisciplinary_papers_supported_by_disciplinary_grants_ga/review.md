@@ -12,7 +12,8 @@ score: 4.0
 essence: "350,000개 그랜트와 1.3백만 논문을 분석한 결과, 학제간 그랜트보다 학문 분야별(disciplinary) 그랜트가 지원한 학제간 논문이 더 높은 인용도를 보인다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Park et al._2026_Interdisciplinary papers supported by disciplinary grants garner deep and broad scientific impact.pdf"
 ---
@@ -88,6 +89,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Park et al._2026_Interdisciplinary paper
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 학제간 연구의 그랜트 전략을 제약업계의 화이트스페이스 분석에 적용하여 연구개발 투자 최적화 방안을 모색할 수 있다.
-- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 연구 자금 지원의 시각화와 광범위한 영향 분석을 통해 학제간 그랜트 전략의 효과를 더 깊이 이해할 수 있다.
-- 🏛 기반 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 글로벌 과학 자금과 연구 출판의 연결 분석을 통해 그랜트 유형별 효과 차이의 구조적 배경을 파악할 수 있다.
+- 🔄 다른 접근: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 제약 분야 백색공간 분석과 그랜트-논문 학제간성 분석은 연구 기회 식별의 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 북유럽 연구 자금-성과 매핑에서 학제간 그랜트의 효과성이라는 더 구체적 주제로 확장된다.
+- 🏛 기반 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 과학의 공공 이용과 공공 자금 지원 관계 연구가 그랜트 유형별 효과 분석의 이론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 펀딩 영향 시각화 시스템에서 학제간 연구의 학문별 그랜트 지원 효과가 중요한 분석 사례로 활용된다.
+- 🏛 기반 연구: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 학제간 연구가 받는 펀딩 지원의 한계를 보여주어, 학제간 물리학이 정책 영향력으로 이어지지 않는 구조적 배경을 설명한다.
+- 🧪 응용 사례: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 학제간 논문이 분야별 지원금으로도 높은 성과를 낸다는 증거가 IFISC 모델의 실효성을 뒷받침하기 때문
+- 🧪 응용 사례: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — 학제간 논문의 지원 메커니즘 분석이 30년간 학제간 지식 교류 패턴 이해에 실증적 기초를 제공한다.
+- 🧪 응용 사례: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 학제간 논문의 학문별 그랜트 지원 효과 분석이 펀딩 영향 시각화에서 학제성의 구체적 메커니즘을 보여준다.
+- 🔗 후속 연구: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 학제간 논문이 받는 지원에 대한 분석을 학제간 지식 결합의 출현 식별로 확장한다.
+- 🔄 다른 접근: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 지역별 자금-성과 관계와 그랜트 유형별 학제간 논문 효과는 서로 다른 펀딩 분석 관점이다.

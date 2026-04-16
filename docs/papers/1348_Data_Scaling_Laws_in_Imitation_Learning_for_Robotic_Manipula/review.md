@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇 조작 학습에서 데이터 스케일링 법칙을 실증적으로 규명하고, 환경과 객체 다양성이 절대적 데이터 양보다 중요함을 보여주었으며 이를 기반으로 효율적인 데이터 수집 전략을 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Cross-Domain_Robot_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Broad_Task_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2024_Data Scaling Laws in Imitation Learning for Robotic Manipulation.pdf"
 ---
@@ -92,12 +93,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2024_Data Scaling Laws in Imit
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — 로봇 학습에서 데이터 스케일링 법칙이 datamodels 기반 데이터 선택 전략의 이론적 근거 제공
-- 🔗 후속 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID와 같은 대규모 데이터셋에서 환경과 객체 다양성 중심의 효율적 데이터 활용 전략
-- 🏛 기반 연구: [[papers/1339_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — 스마트 글래스 영상만으로 정책 학습하는 데 필요한 데이터 효율성과 다양성의 스케일링 법칙
-- 🏛 기반 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — 로봇공학에서 데이터 스케일링 법칙이 imitation learning의 데이터 크기 영향 분석의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — 로봇 모방 학습에서 데이터 스케일링 법칙 연구가 SPRINT의 대규모 정책 사전학습에서 데이터 효율성의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1591_Towards_Diverse_Behaviors_A_Benchmark_for_Imitation_Learning/review]] — data scaling laws 연구의 원리를 인간 행동의 다양성을 정량화하고 평가하는 벤치마크로 적용한다.
-- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — imitation learning의 데이터 scaling law가 BridgeData V2 같은 대규모 데이터셋 설계에 이론적 기초를 제공한다
-- 🔄 다른 접근: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — 대규모 데이터에서 작업별 최적 서브셋 선택과 데이터 다양성 확보라는 상호보완적 접근법
-- 🧪 응용 사례: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID 대규모 데이터셋을 활용하여 로봇 조작 학습의 데이터 스케일링 법칙 실증 검증
+- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — 대규모 로봇 학습 데이터셋과 RT-X 모델의 데이터 스케일링 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — 로봇 공학에서 신경망 스케일링 법칙에 대한 포괄적인 확장 연구입니다.
+- 🏛 기반 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID 데이터셋을 활용한 데이터 스케일링 법칙의 실증적 검증을 위한 기반 연구입니다.
+- 🔗 후속 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 데이터를 활용한 스케일링 법칙의 구체적 분석을 제시합니다.
+- 🏛 기반 연구: [[papers/1394_FLaRe_Achieving_Masterful_and_Adaptive_Robot_Policies_with_L/review]] — 모방 학습에서의 데이터 스케일링 법칙은 FLaRe의 대규모 다중 작업 BC 사전학습의 이론적 근거를 제공합니다.
+- 🏛 기반 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — 로봇공학의 신경망 스케일링 법칙이 Data Scaling Laws in Imitation Learning의 모방 학습 스케일링 연구에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — 모방학습에서의 데이터 스케일링 법칙이 RoboAgent의 효율적인 7,500개 데모 학습 전략 설계에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — Data Scaling Laws를 테스트 시간의 추론 스케일링 법칙으로 확장한다.
+- 🔗 후속 연구: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — Data Scaling Laws의 모방 학습에서의 데이터 스케일링 법칙을 instruction relabeling을 통해 실용적으로 구현하는 방법론으로 확장했다.
+- 🔗 후속 연구: [[papers/1591_Towards_Diverse_Behaviors_A_Benchmark_for_Imitation_Learning/review]] — imitation learning에서 데이터 스케일링 법칙을 연구한 기존 연구를 다중 모드 행동 다양성 평가로 확장한다.
+- 🏛 기반 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — 대규모 데이터에서의 학습 효과에 대한 이론적 근거를 제공하여 VQ-VLA의 100배 규모 데이터셋 활용 방법론을 뒷받침한다.
+- 🔗 후속 연구: [[papers/1347_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr/review]] — 로봇 조작 모방 학습의 데이터 스케일링 법칙을 D2E의 대규모 사전훈련으로 확장할 수 있습니다.
+- 🔗 후속 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — 로봇 모방 학습에서 데이터 스케일링 법칙을 ARIO 데이터셋으로 확장 연구한다.
+- 🔄 다른 접근: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 둘 다 imitation learning을 위한 데이터 스케일링을 다루지만 BridgeData V2는 실제 수집 데이터에, Data Scaling Laws는 이론적 분석에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — 로봇 모방학습에서 데이터 스케일링을 datamodels로 확장한다.
+- 🏛 기반 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 데이터 스케일링 법칙 연구는 DROID와 같은 대규모 데이터셋이 로봇 조작 성능에 미치는 영향을 이론적으로 분석합니다.

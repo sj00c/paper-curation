@@ -1,3 +1,24 @@
+---
+title: "1896_EGM_Efficiently_Learning_General_Motion_Tracking_Policy_for"
+authors:
+  - "Chao Yang"
+  - "Yingkai Sun"
+  - "Peng Ye"
+  - "Xin Chen"
+  - "Chong Yu"
+date: "2025.12"
+doi: "10.48550/arXiv.2512.19043"
+arxiv: ""
+score: 4.0
+essence: "EGM은 Bin-based Cross-motion Curriculum Adaptive Sampling과 Composite Decoupled Mixture-of-Experts 아키텍처를 통해 4.08시간의 소량 데이터로 49.25시간의 다양한 모션을 효율적으로 추적하는 일반화된 휴머노이드 제어 정책을 학습한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_EGM Efficiently Learning General Motion Tracking Policy for High Dynamic Humanoid Whole-Body Contro.pdf"
+---
+
 # EGM: Efficiently Learning General Motion Tracking Policy for High Dynamic Humanoid Whole-Body Control
 
 > **저자**: Chao Yang, Yingkai Sun, Peng Ye, Xin Chen, Chong Yu, Tao Chen | **날짜**: 2025-12-22 | **DOI**: [10.48550/arXiv.2512.19043](https://doi.org/10.48550/arXiv.2512.19043)
@@ -66,3 +87,11 @@ EGM은 Bin-based Cross-motion Curriculum Adaptive Sampling과 Composite Decouple
 - Overall: 4/5
 
 **총평**: EGM은 Bin-based adaptive sampling과 CDMoE 아키텍처의 새로운 조합으로 humanoid motion tracking의 데이터 효율성과 dynamic motion 성능을 획기적으로 개선하며, 소량 데이터 학습의 실용성을 입증하는 강력한 기여를 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — 일반화된 모션 추적에서 bin-based curriculum learning과 전통적인 motion tracking 접근법의 서로 다른 학습 효율성 전략을 비교한다.
+- 🔗 후속 연구: [[papers/1743_UniTracker_Learning_Universal_Whole-Body_Motion_Tracker_for/review]] — EGM의 효율적인 일반 모션 추적 정책이 UniTracker의 universal whole-body motion tracking으로 확장되어 더 포괄적인 동작 추적을 실현한다.
+- 🏛 기반 연구: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — SkillBlender의 다양한 loco-manipulation 기술 블렌딩 방법론이 EGM의 일반화된 모션 추적 정책 학습을 위한 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — 센서 기반 모션 트래킹을 다루며, SCDP의 센서-조건 확산 정책이 EGM의 일반적 모션 트래킹 정책의 특수한 형태로 볼 수 있다.
+- 🏛 기반 연구: [[papers/1988_HuMam_Humanoid_Motion_Control_via_End-to-End_Deep_Reinforcem/review]] — EGM의 efficient general motion tracking이 HuMam의 end-to-end learning에서 motion tracking 부분의 기초 방법론을 제공한다.

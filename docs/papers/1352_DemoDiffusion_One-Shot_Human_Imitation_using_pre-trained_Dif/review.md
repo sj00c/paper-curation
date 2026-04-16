@@ -10,8 +10,8 @@ arxiv: ""
 score: 4.0
 essence: "DemoDiffusion은 단일 인간 시연으로부터 로봇이 조작 작업을 수행할 수 있도록 하는 방법으로, kinematic retargeting으로 얻은 궤적을 pre-trained diffusion policy를 이용해 개선한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Adversarial_Robot_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Park et al._2025_DemoDiffusion One-Shot Human Imitation using pre-trained Diffusion Policy.pdf"
 ---
@@ -88,10 +88,7 @@ DemoDiffusion은 단일 인간 시연으로부터 로봇이 조작 작업을 수
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1245_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu/review]] — 둘 다 humanoid depth perception이지만 DPL은 depth-only 접근법을, 하이브리드 오토인코더는 LiDAR+depth 융합을 사용한다.
-- 🏛 기반 연구: [[papers/1323_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — CReF의 cross-modal fusion 기법이 DPL의 depth-only 지형 인식에서 더 robust한 특징 학습의 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1411_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — Gallant의 voxel grid 기반 navigation이 DPL의 depth 기반 지형 재구성을 실제 locomotion 제어에 활용하는 방법을 제시한다.
-- 🔄 다른 접근: [[papers/1245_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu/review]] — 둘 다 humanoid 로봇의 지형 인식을 다루지만 하이브리드 오토인코더는 LiDAR+depth 융합을, DPL은 depth-only 접근법을 사용한다.
-- 🔗 후속 연구: [[papers/1323_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — DPL의 depth-only 접근법이 CReF의 cross-modal depth fusion 기법과 결합되어 더 robust한 지형 인식을 구현할 수 있다.
-- 🧪 응용 사례: [[papers/1618_VLA-Reasoner_Empowering_Vision-Language-Action_Models_with_R/review]] — DreamControl-v2의 autonomous skill learning과 VLA-Reasoner의 추론 능력을 결합한 지능형 로봇 제어가 가능하다
-- 🔄 다른 접근: [[papers/1585_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro/review]] — 깊이 인식 휴머노이드 보행의 다른 접근법으로 원본 픽셀과 깊이 전용 인식을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 단일 시연과 10억 시연이라는 극단적으로 다른 데이터 규모에서의 모방학습 접근법을 비교합니다.
+- 🏛 기반 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 인간-로봇 쌍 데이터를 통한 모방학습이 단일 시연 학습의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — 인간 시연을 통한 모방학습에서 장기간 작업에 대한 구체적 해결책을 제시합니다.
+- 🏛 기반 연구: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — DemoDiffusion의 적은 시연으로부터 학습하는 one-shot 모방 학습 개념이 RVT-2의 few-shot demonstration 학습 방법론의 기초가 된다.

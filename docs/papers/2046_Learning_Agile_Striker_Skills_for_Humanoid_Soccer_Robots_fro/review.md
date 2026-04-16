@@ -1,3 +1,24 @@
+---
+title: "2046_Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_fro"
+authors:
+  - "Zifan Xu"
+  - "Myoungkyu Seo"
+  - "Dongmyeong Lee"
+  - "Hao Fu"
+  - "Jiaheng Hu"
+date: "2025.12"
+doi: "10.48550/arXiv.2512.06571"
+arxiv: ""
+score: 4.0
+essence: "이 논문은 reinforcement learning 기반의 4단계 학습 프레임워크를 통해 인간형 로봇이 노이즈가 있는 센서 입력에서도 강건한 볼 킹킹 기술을 습득하도록 하는 시스템을 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2025_Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input.pdf"
+---
+
 # Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input
 
 > **저자**: Zifan Xu, Myoungkyu Seo, Dongmyeong Lee, Hao Fu, Jiaheng Hu, Jiaxun Cui, Yuqian Jiang, Zhihan Wang, Anastasiia Brund, Joydeep Biswas, Peter Stone | **날짜**: 2025-12-10 | **DOI**: [10.48550/arXiv.2512.06571](https://doi.org/10.48550/arXiv.2512.06571)
@@ -68,3 +89,15 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 noisy perception 환경에서 인간형 로봇의 복잡한 동적 기술을 학습하는 현실적이고 체계적인 프레임워크를 제시하며, 4단계 curriculum, 현실적 지각 모델링, constrained RL 적응의 조합으로 sim-to-real gap을 효과적으로 감소시켰다. 실제 로봇 실험 결과와 포괄적 ablation 연구는 제안 방법의 타당성을 잘 입증하고 있으나, 단일 로봇 플랫폼 평가와 66.7% 성공률이 실무 적용성을 위해서는 추가 개선이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — 휴머노이드 축구에서 강화학습 기반 킥킹 대신 계층적 의사결정을 통한 자율 축구 로봇 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2063_Learning_Soccer_Skills_for_Humanoid_Robots_A_Progressive_Per/review]] — 노이즈 센서 입력에서의 강건한 킥킹 기술을 점진적 학습을 통한 포괄적인 축구 기술로 확장할 수 있다.
+- 🏛 기반 연구: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — end-to-end 휴머노이드 축구 기술 학습의 기본 원리가 강건한 볼 킥킹 시스템 구현에 대한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — 둘 다 휴머노이드 스포츠 기술이지만 Learning Agile Striker는 축구 킥킹, HITTER는 탁구 기술 중심
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — Learning Agile Striker의 강건한 볼 킥킹 기술이 배드민턴 전신 제어의 다단계 학습과 결합되어 더 다양한 스포츠 기술 달성 가능
+- 🔗 후속 연구: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — 인간 시연으로부터 축구 스킬을 학습하는 기초 연구를 transformer diffusion으로 end-to-end 학습하도록 발전시킨다.
+- 🧪 응용 사례: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — Learning Agile Striker Skills의 축구 스트라이커 기술 학습이 RoboStriker의 계층적 권투 프레임워크를 다른 스포츠에 적용한 사례임
+- 🔗 후속 연구: [[papers/1778_A_Hierarchical_Model-Based_System_for_High-Performance_Human/review]] — 불완전한 인간 데이터에서 학습하는 스트라이커 기술을 완전 통합된 축구 시스템으로 확장한 연구입니다.
+- 🔄 다른 접근: [[papers/1889_Dribble_Master_Learning_Agile_Humanoid_Dribbling_through_Leg/review]] — 동일한 스포츠 도메인에서 축구 스킬 학습을 다루므로, 휴머노이드의 운동 기능 학습에 대한 비교 연구가 가능하다.

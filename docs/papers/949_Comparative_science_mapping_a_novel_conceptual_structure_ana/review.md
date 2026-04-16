@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 메타데이터(저자, 기관, 지역 등)를 활용하여 과학 논문의 개념 구조(conceptual structure)를 분석하는 혁신적인 과학 매핑(science mapping) 기법을 제안하고, 이탈리아 학술의료센터(AMCs)의 종양학 연구를 비교 분석한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Bibliometric_Mapping_Tools"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Aria et al._2024_Comparative science mapping a novel conceptual structure analysis with metadata.pdf"
 ---
@@ -90,7 +91,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Aria et al._2024_Comparative science map
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 메타데이터 기반 개념 구조 분석의 혁신적 과학 매핑 기법 개발에 과학 매핑과 과학 지도의 이론적 기반이 필요합니다.
-- 🔄 다른 접근: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 이탈리아 의료센터 종양학 연구의 비교 과학 매핑과 토픽 수준에서의 연구 자금 및 성과 매핑이 다른 관점의 과학 매핑을 제시합니다.
-- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 기존 과학 지도 방법론을 확장하여 새로운 개념적 구조 분석과 비교 과학 매핑 기법을 제시한다.
-- 🔄 다른 접근: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 서지학적 분석에서 새로운 개념 구조 분석과 비교 과학 지도화라는 서로 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 과학 커뮤니티 매핑 방법론이 이탈리아 학술의료센터의 개념 구조 분석 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 과학 매핑에서 주제 분석과 메타데이터 기반 개념 구조 분석이 서로 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑의 이론적 기반과 다양한 방법론을 제공하여 개념 구조 분석의 맥락을 이해할 수 있다.
+- 🧪 응용 사례: [[papers/1195_Mapping_the_Research_Landscape_of_Electronic_Properties_of_G/review]] — 그래핀의 전자 특성 연구라는 구체적 과학 분야에 매핑 기법을 적용한 실제 사례를 보여준다.
+- 🔄 다른 접근: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 과학 매핑에서 주제 진화를 메타데이터 기반과 통합적 접근으로 다르게 분석한다
+- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 비교 과학 지도 작성이라는 새로운 개념적 구조로 기존 과학 지도 방법론을 확장합니다.
+- 🔄 다른 접근: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 비교 과학 지도화가 VOSviewer의 정적 시각화와 다른 개념적 구조 분석 접근법을 제시한다.

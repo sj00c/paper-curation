@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "LLM3는 대규모 언어모델(LLM)을 기반으로 한 Task and Motion Planning 프레임워크로, 모션 계획 실패에 대한 추론을 통해 기호적 계획과 연속 모션 생성을 통합한다. 도메인 특화 인터페이스 대신 LLM의 추론 능력을 활용하여 작업 계획과 행동 매개변수를 제안하고 반복적으로 개선한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Robot_Policy_Learning"
   - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_LLM3Large Language Model-based Task and Motion Planning with Motion Failure Reasoning.pdf"
@@ -90,10 +91,10 @@ LLM3는 대규모 언어모델(LLM)을 기반으로 한 Task and Motion Planning
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — 두 논문 모두 LLM 기반 장기 계획을 다루지만, 하나는 모션 계획 실패 추론에, 다른 하나는 상태 표현에 집중합니다.
-- 🏛 기반 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — 대화형 계획과 언어 모델의 결합이 작업과 모션 계획의 통합적 접근법의 기초를 제공합니다.
-- 🧪 응용 사례: [[papers/1444_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 계층적 계획과 제어 방법론이 LLM 기반 작업-모션 계획을 실제 로봇 시스템에 적용하는 데 필요합니다.
-- 🔗 후속 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — 3D 장면 그래프와 언어 그라운딩을 통해 작업 계획의 공간적 추론 능력을 더욱 향상시킬 수 있습니다.
-- 🔄 다른 접근: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — 두 논문 모두 LLM을 사용한 작업 계획을 다루지만, 하나는 언어 피드백 기반이고 다른 하나는 모션 계획 실패 추론에 집중합니다.
-- 🔗 후속 연구: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — 객체 중심 상태 표현을 task and motion planning과 결합하여 더욱 체계적인 장기 작업 수행을 달성할 수 있습니다.
-- 🧪 응용 사례: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — UniSkill의 cross-embodiment transfer가 Human-Humanoid Cross-Embodiment 연구의 실제 구현체로서 humanoid 로봇 정책 학습에 직접 활용 가능
+- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 동일한 LLM 기반 작업 계획 문제에 대해 코드 생성 vs 모션 계획 실패 추론이라는 서로 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — 3D 장면 그래프를 활용한 LLM 기반 계획의 기초 연구로서, LLM3의 모션 계획 실패 추론에 필요한 공간 이해 능력을 제공한다.
+- 🔗 후속 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — LLM 기반 작업 계획의 오류 수정 메커니즘을 다루어 LLM3의 모션 계획 실패 추론과 반복적 개선 과정을 보완한다.
+- 🏛 기반 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 언어 기반 계획 및 추론은 LLM3가 구현하는 Task and Motion Planning의 기본적인 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — LLM3는 Inner Monologue의 언어 기반 추론을 Task and Motion Planning으로 확장하여 더 복잡한 계획 문제를 해결합니다.
+- 🔗 후속 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — LLM3는 SayPlan의 3D 장면 이해를 바탕으로 작업-동작 계획을 더욱 정교하게 통합한 발전된 형태입니다.
+- 🏛 기반 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — LLM 기반 태스크 및 모션 계획의 기초 방법론을 제공한다.

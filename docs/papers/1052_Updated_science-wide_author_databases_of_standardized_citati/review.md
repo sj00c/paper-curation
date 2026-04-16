@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "Scopus 데이터를 기반으로 전 과학 분야의 상위 인용 과학자들에 대한 표준화된 인용 지표 데이터베이스를 2019년까지 업데이트하여 공개한 논문이다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Citation_Index_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ioannidis et al._2020_Updated science-wide author databases of standardized citation indicators.pdf"
 ---
@@ -82,8 +84,13 @@ Scopus 데이터를 기반으로 전 과학 분야의 상위 인용 과학자들
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index를 포함한 표준화된 인용 지표들을 대규모 데이터베이스로 구축하여 개인 연구 성과 측정을 실용화했다.
-- 🔗 후속 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 표준화된 인용 지표 데이터베이스를 인용 분포의 보편성과 객관적 측정이라는 이론적 맥락으로 확장했다.
-- 🔄 다른 접근: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — Scopus 기반 인용 지표 데이터베이스와는 다른 접근으로 OpenAlex의 출판물 유형과 접근성 메타데이터 품질을 분석한다.
-- 🔗 후속 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index의 실제 적용과 표준화된 인용 지표 데이터베이스 구축을 통해 개인 연구 성과 측정을 확장했다.
-- 🔗 후속 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 표준화된 저자 데이터베이스 업데이트 작업을 RCR 메타데이터 추출로 확장하여 연구 평가 투명성을 높인다.
+- 🔄 다른 접근: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — OpenAlex의 메타데이터 품질 분석이 Scopus 기반 인용 지표 데이터베이스의 품질 검증에 보완적 관점을 제공한다.
+- 🏛 기반 연구: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — 다중 인용 데이터 소스 비교가 표준화된 인용 지표 데이터베이스 구축의 방법론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-지수와 관련 지표들이 표준화된 인용 지표 데이터베이스의 핵심 측정 도구로 활용된다.
+- 🧪 응용 사례: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 표준화된 인용 지표 데이터베이스를 활용하여 NK 복합 지수의 유효성을 검증하고 비교 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 연구에서 필요한 대규모 표준화된 데이터셋의 구체적 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 연구를 위한 대규모 오픈 데이터 구축의 연장선에서, 인용 지표에 특화된 표준화된 데이터베이스를 제공한다.
+- 🧪 응용 사례: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 표준화된 인용 지표 데이터베이스를 활용하여 NK 지수의 유효성을 검증하고 벤치마킹할 수 있다.
+- 🧪 응용 사례: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — 표준화된 인용 지표 데이터베이스 구축에서 다중 인용 소스의 커버리지 비교가 핵심적 검증 방법을 제공한다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 표준화된 저자 데이터베이스가 Science of Science 연구의 실증적 방법론 구현에 필수적이다.
+- 🧪 응용 사례: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — 표준화된 저자 데이터베이스 구축 경험을 서지 데이터 통합에 적용한 사례이다

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "MuJoCo Playground는 MJX 기반의 오픈소스 로봇 학습 프레임워크로, GPU에서 빠른 정책 훈련과 다양한 로봇 플랫폼으로의 제로샷 sim-to-real 전이를 가능하게 한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Goal-Conditioned_Manipulation_Policies"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zakka et al._2025_MuJoCo Playground.pdf"
 ---
@@ -89,8 +91,12 @@ MuJoCo Playground는 MJX 기반의 오픈소스 로봇 학습 프레임워크로
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — 로봇 학습을 위한 시뮬레이션 프레임워크에서 MuJoCo 기반과 robosuite의 서로 다른 접근 방식을 보여준다.
-- 🏛 기반 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술이 MuJoCo Playground의 시각적 시뮬레이션 구현에 기반을 제공한다.
-- 🧪 응용 사례: [[papers/1534_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 빠른 정책 훈련과 sim-to-real 전이를 가능하게 하는 프레임워크가 실제 humanoid locomotion 학습에 적용된다.
-- 🔄 다른 접근: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — 로봇 시뮬레이션 프레임워크에서 MuJoCo 기반과 다양한 환경 지원이라는 서로 다른 설계 철학을 제시한다.
-- 🔄 다른 접근: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — 로봇 시뮬레이션 환경을 각각 physics simulator와 MuJoCo playground라는 다른 관점에서 조사한다
+- 🔄 다른 접근: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — ManiSkill3도 GPU 기반 로봇 시뮬레이션을 제공하지만 더 복잡한 접촉 물리와 렌더링에 특화된 반면, MuJoCo Playground는 단순성과 속도에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — MuJoCo Playground의 제로샷 sim-to-real 능력은 시각 기반 손재주 조작의 sim-to-real 연구를 더욱 효율적으로 만듭니다.
+- 🏛 기반 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — MuJoCo 기반의 실제 휴머노이드 로코모션 연구는 MuJoCo Playground가 제공하는 시뮬레이션 환경의 실용성을 검증합니다.
+- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — MuJoCo Playground와 Octo 모두 범용 로봇 정책 학습을 위한 프레임워크이지만 서로 다른 접근 방식을 사용합니다.
+- 🔗 후속 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — MuJoCo Playground의 빠른 정책 훈련은 AutoRT의 대규모 로봇 오케스트레이션에 필요한 효율적인 학습 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — MJX 기반의 GPU 가속 학습은 OpenVLA와 같은 대규모 VLA 모델의 효율적인 훈련을 가능하게 합니다.
+- 🔄 다른 접근: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — 둘 다 사족 로봇 시뮬레이션을 다루지만 MuJoCo playground와 forward dynamics model의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — 둘 다 로봇 시뮬레이션 환경이지만, ManiSkill3는 GPU 병렬화에, MuJoCo Playground는 다양한 시뮬레이션 실험에 초점을 둔다.
+- 🔄 다른 접근: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — 둘 다 사족 로봇을 위한 시뮬레이션 기반 접근법이지만 forward dynamics model과 MuJoCo 기반 학습의 차이점을 비교할 수 있다.

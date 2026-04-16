@@ -1,3 +1,25 @@
+---
+title: "2122_One_Policy_but_Many_Worlds_A_Scalable_Unified_Policy_for_Ver"
+authors:
+  - "Yahao Fan"
+  - "Tianxiang Gui"
+  - "Kaiyang Ji"
+  - "Shutong Ding"
+  - "Chixuan Zhang"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "DreamPolicy는 Humanoid Motion Imagery (HMI)를 생성하는 terrain-aware autoregressive diffusion planner와 HMI-conditioned RL policy를 결합하여, 단일 정책으로 다양한 지형에서 humanoid 로봇의 이동을 학습하고 미지의 시나리오로 zero-shot 일반화를 달성하는 통합 프레임워크이다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fan et al._2025_One Policy but Many Worlds A Scalable Unified Policy for Versatile Humanoid Locomotion.pdf"
+---
+
 # One Policy but Many Worlds: A Scalable Unified Policy for Versatile Humanoid Locomotion
 
 > **저자**: Yahao Fan, Tianxiang Gui, Kaiyang Ji, Shutong Ding, Chixuan Zhang, Jiayuan Gu, Jingyi Yu, Jingya Wang, Ye Shi | **날짜**: 2025-05-24 | **URL**: [https://arxiv.org/abs/2505.18780](https://arxiv.org/abs/2505.18780)
@@ -65,3 +87,17 @@ DreamPolicy는 Humanoid Motion Imagery (HMI)를 생성하는 terrain-aware autor
 - Overall: 4/5
 
 **총평**: DreamPolicy는 offline data와 diffusion-based trajectory synthesis를 통합하여 humanoid 이동의 확장성 문제를 창의적으로 해결하고, 실제 로봇 응용에 실질적 가치를 제공하는 강력한 프레임워크이다. 다만 sim-to-real 검증과 computational 효율성 분석이 보완되면 더욱 견고한 기여가 될 것이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2121_OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_H/review]] — 둘 다 생성형 정책을 사용하지만, One Policy는 지형 다양성과 zero-shot 일반화에, OmniXtreme은 고동역 극단적 동작 추적에 특화된다.
+- 🏛 기반 연구: [[papers/1760_X-Loco_Towards_Generalist_Humanoid_Locomotion_Control_via_Sy/review]] — X-Loco의 일반화된 휴머노이드 로코모션 제어 기술이 One Policy의 다양한 지형에서 단일 정책으로 작동하는 통합 시스템 개발에 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — DreamGen의 로봇 학습 일반화 기법을 terrain-aware autoregressive diffusion planner를 통한 지형별 특화 학습으로 발전시킨 연구이다.
+- 🏛 기반 연구: [[papers/1878_Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Model/review]] — Diffusion Forcing의 multi-agent sequence modeling이 DreamPolicy의 terrain-aware autoregressive diffusion planner 설계에 방법론적 기반을 제공했다
+- 🔄 다른 접근: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 둘 다 unified policy for versatile control이지만 DreamPolicy는 terrain-aware planning에, General Humanoid는 pretraining과 adaptation에 중점을 둔다
+- 🔄 다른 접근: [[papers/1885_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — DreamControl-v2의 autonomous skill learning이 DreamPolicy의 HMI-based terrain adaptation과 다른 접근법으로 humanoid의 다양한 환경 적응을 달성합니다.
+- 🔗 후속 연구: [[papers/2103_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — MobileH2R의 generalizable learning이 DreamPolicy의 zero-shot generalization을 mobile platform과 hand manipulation으로 확장한 형태입니다.
+- 🏛 기반 연구: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — Gallant의 voxel grid-based locomotion이 DreamPolicy의 terrain-aware planning에서 3D 환경 표현과 navigation의 기술적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — 하나의 정책으로 다양한 세계를 다루는 개념을 여러 휴머노이드 형태학으로 확장한다.
+- 🔗 후속 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — One Policy but Many Worlds의 확장 가능한 통합 정책이 H-Zero의 few-shot 전이를 보완할 수 있다.
+- 🔄 다른 접근: [[papers/2121_OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_H/review]] — 둘 다 생성형 정책을 활용하지만, OmniXtreme은 고동역 극단적 동작 추적에, One Policy는 다양한 지형에서의 통합 정책에 초점을 둔다.

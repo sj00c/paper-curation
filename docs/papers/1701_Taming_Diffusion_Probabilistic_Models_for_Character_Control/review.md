@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Transformer 기반 Conditional Autoregressive Motion Diffusion Model (CAMDM)을 제안하여 사용자의 동적 제어 신호에 실시간으로 반응하면서 고품질의 다양한 캐릭터 애니메이션을 생성한다."
 tags:
-  - "cat/Other"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Character_Motion_Policy_Transfer"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2024_Taming Diffusion Probabilistic Models for Character Control.pdf"
 ---
@@ -84,3 +87,31 @@ Transformer 기반 Conditional Autoregressive Motion Diffusion Model (CAMDM)을 
 - Overall: 4/5
 
 **총평**: Diffusion model을 실시간 캐릭터 컨트롤에 적용하기 위한 체계적이고 실용적인 해결책을 제시한 우수한 논문으로, 별도 조건 토큰화와 classifier-free guidance의 novel한 조합이 다양성과 제어 안정성을 동시에 달성하며, 단일 모델의 다중 스타일 지원은 산업 응용 가치가 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — CAMDM의 실시간 동적 제어와 드럼 연주의 temporal decomposition은 모두 시간적 조건부 모션 생성을 다루는 상호 보완적 접근법이다.
+- 🧪 응용 사례: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — Transformer 기반 diffusion model이 도어 통과와 같은 복잡한 행동 시퀀스의 실시간 애니메이션 생성에 직접 적용될 수 있다.
+- 🔄 다른 접근: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — 사용자 제어 신호에 반응하는 캐릭터 모션 생성에서 autoregressive diffusion과 guided diffusion이라는 서로 다른 확산 모델 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1930_Flexible_Motion_In-betweening_with_Diffusion_Models/review]] — 모션 생성에서 실시간 사용자 제어와 유연한 in-betweening이라는 보완적 기능을 제공하는 확산 모델 접근법을 다룬다.
+- 🔄 다른 접근: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 사용자 제어 신호에 반응하는 캐릭터 애니메이션을 위해 서로 다른 접근(Conditional Autoregressive vs streaming 자연어)을 통해 실시간 제어를 구현한다.
+- 🏛 기반 연구: [[papers/1712_The_Role_of_Domain_Randomization_in_Training_Diffusion_Polic/review]] — 전신 제어를 위한 Diffusion Policies의 역할을 캐릭터 제어라는 특정 도메인으로 확장하여 Transformer 기반 조건부 모델을 개발했다.
+- 🔗 후속 연구: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — 조건부 모션 생성의 개념을 관절별 세밀한 제어로 확장하여 사용자가 원하는 시점에 특정 관절을 제어할 수 있는 시스템을 구현했다.
+- 🏛 기반 연구: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — Rhythmic Contact Chain과 temporal decomposition 기법이 실시간 캐릭터 제어를 위한 CAMDM의 조건부 생성 메커니즘에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1653_RobotDancing_Residual-Action_Reinforcement_Learning_Enables/review]] — Taming Diffusion Probabilistic Models의 캐릭터 제어 기법이 RobotDancing의 고역동 춤 동작 추적의 확률적 모델링 기초를 제공함
+- 🏛 기반 연구: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — 캐릭터 제어를 위한 diffusion model 기법의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 실시간 모션 제어를 위해 서로 다른 접근(streaming 자연어 vs Conditional Autoregressive diffusion)을 통해 동적 명령 수정을 지원한다.
+- 🏛 기반 연구: [[papers/1712_The_Role_of_Domain_Randomization_in_Training_Diffusion_Polic/review]] — Diffusion Policies를 캐릭터 제어에 적용한 기반 연구를 휴머노이드 전신 제어로 확장하여 Domain Randomization의 중요성을 체계적으로 분석했다.
+- 🔄 다른 접근: [[papers/1624_PRIMAL_Physically_Reactive_and_Interactive_Motor_Model_for_A/review]] — PRIMAL과 Taming Diffusion 모두 물리적으로 반응성 있는 캐릭터 제어를 다루지만 전자는 generative motion model에, 후자는 확산 모델에 기반한다
+- 🔄 다른 접근: [[papers/1836_CHIP_Adaptive_Compliance_for_Humanoid_Control_through_Hindsi/review]] — CHIP의 perturbation 기반 적응과 확률적 확산 모델 기반 캐릭터 제어는 동적 환경에서의 적응성을 달성하는 서로 다른 방법론이다.
+- 🏛 기반 연구: [[papers/1841_CLoSD_Closing_the_Loop_between_Simulation_and_Diffusion_for/review]] — diffusion 모델을 캐릭터 제어에 적용하는 기본 개념이 CLoSD의 physics-diffusion 폐쇄루프 설계에 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — Behavior Tree 기반 행동 조정 시스템이 실시간 캐릭터 제어를 위한 diffusion model의 조건부 생성 구조에 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1883_DoublyAware_Dual_Planning_and_Policy_Awareness_for_Temporal/review]] — 캐릭터 제어를 위한 확산 확률 모델 길들이기의 실제 적용을 보여줍니다.
+- 🔄 다른 접근: [[papers/1886_DreamControl_Human-Inspired_Whole-Body_Humanoid_Control_for/review]] — diffusion model을 character control에 적용하는 다른 접근법을 제시하여 DreamControl과 상호 보완적인 관점을 제공한다.
+- 🔄 다른 접근: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — Guided Motion Diffusion과 Taming Diffusion은 모두 diffusion model을 캐릭터 제어에 적용하되 서로 다른 조건부 생성 전략을 사용합니다.
+- 🔗 후속 연구: [[papers/1930_Flexible_Motion_In-betweening_with_Diffusion_Models/review]] — CondMDI의 keyframe 제약 기반 모션 인-비트위닝을 diffusion 확률 모델 제어와 결합하면 더 정밀한 캐릭터 제어가 가능하다.
+- 🔄 다른 접근: [[papers/2067_Learning_to_Control_Physically-simulated_3D_Characters_via_G/review]] — 확률적 모델을 이용한 캐릭터 제어에서 diffusion과 재투영 기반의 다른 접근법
+- 🏛 기반 연구: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — 확산 모델을 캐릭터 제어에 적용하는 기본 방법론을 제공하여 마스킹된 모션 생성의 토대가 된다.
+- 🔄 다른 접근: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — 둘 다 diffusion 기반 제어를 다루지만, NoMaD는 goal masking을 통한 내비게이션에, Taming Diffusion은 캐릭터 제어에 특화된다.
+- 🔗 후속 연구: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — 캐릭터 제어를 위한 확산 모델이 임의 관절 제어의 확장된 응용이다.
+- 🔄 다른 접근: [[papers/2146_TEDi_Temporally-Entangled_Diffusion_for_Long-Term_Motion_Syn/review]] — temporally-entangled diffusion 대신 캐릭터 제어에 특화된 diffusion 확률 모델을 통해 모션 생성을 다룬다.

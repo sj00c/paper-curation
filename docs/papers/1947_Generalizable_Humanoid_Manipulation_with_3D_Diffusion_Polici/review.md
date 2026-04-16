@@ -1,3 +1,25 @@
+---
+title: "1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici"
+authors:
+  - "Yanjie Ze"
+  - "Zixuan Chen"
+  - "Wenhao Wang"
+  - "Tianyi Chen"
+  - "Xialin He"
+date: "2024.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 단일 장면에서 수집한 데이터만으로 휴머노이드 로봇이 다양한 미지의 실제 환경에서 자율적으로 조작 작업을 수행하도록 하는 3D Diffusion Policy 기반 시스템을 제시한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ze et al._2024_Generalizable Humanoid Manipulation with 3D Diffusion Policies.pdf"
+---
+
 # Generalizable Humanoid Manipulation with 3D Diffusion Policies
 
 > **저자**: Yanjie Ze, Zixuan Chen, Wenhao Wang, Tianyi Chen, Xialin He, Ying Yuan, Xue Bin Peng, Jiajun Wu | **날짜**: 2024-10-14 | **URL**: [https://arxiv.org/abs/2410.10803](https://arxiv.org/abs/2410.10803)
@@ -65,3 +87,23 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 휴머노이드 로봇의 장면 일반화 조작이라는 미해결 문제를 최초로 해결하며, 개선된 3D Diffusion Policy와 완전한 실제 환경 시스템을 통해 단일 장면 데이터만으로 다양한 미지 환경에서의 자율 작동을 달성한 의미 있는 기여를 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C/review]] — 둘 다 3D 환경에서의 diffusion 기반 정책을 다루지만 Generalizable Humanoid는 조작에, DiffCoTune은 cross-domain 튜닝에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1876_DIAL_Distilling_Intent-Aware_Latents_for_Vision-Language-Act/review]] — vision-language-action 모델의 latent 표현이 3D diffusion policy의 기반이 된다.
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 3D Diffusion Policy를 EgoMimic의 egocentric 시연 데이터와 결합하면 더 다양한 환경에서의 일반화 가능한 조작이 가능하다.
+- 🧪 응용 사례: [[papers/2125_Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Po/review]] — 3D Diffusion Policy 기반 시스템을 sim-to-real humanoid pixel-to-action에 적용하여 더 robust한 실제 환경 조작이 가능하다.
+- 🏛 기반 연구: [[papers/1883_DoublyAware_Dual_Planning_and_Policy_Awareness_for_Temporal/review]] — 3D Diffusion Policy의 단일 장면 일반화가 DoublyAware의 dual planning and policy awareness에 diffusion 기반 구현을 제공한다.
+- 🔗 후속 연구: [[papers/1869_DexMimicGen_Automated_Data_Generation_for_Bimanual_Dexterous/review]] — DexMimicGen의 bimanual dexterous manipulation 데이터 생성 연구를 단일 장면 데이터로부터 다양한 환경에서 작동하는 3D diffusion policy로 발전시켰습니다.
+- 🔄 다른 접근: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — 둘 다 large-scale 데이터를 활용한 humanoid manipulation을 다루지만, 3D Diffusion Policy는 단일 장면 일반화에, EgoDex는 egocentric 대규모 데이터에 집중합니다.
+- 🔗 후속 연구: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — 3D Diffusion Policy의 일반화 가능한 조작 능력을 더 민첩하고 일반화된 humanoid 상호작용 시스템으로 확장했습니다.
+- 🔗 후속 연구: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 일반화 가능한 휴머노이드 조작을 diffusion transformer와 강화학습으로 결합하여 더 발전시킨다.
+- 🔄 다른 접근: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — 두 논문 모두 일반화 가능한 휴머노이드 조작을 다루지만 RGMP는 기하학적 prior에, Generalizable Humanoid Manipulation은 3D diffusion policy에 집중한다
+- 🏛 기반 연구: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — 3D diffusion policy가 VoxPoser의 3D value map 구성에 대한 생성 모델 기반 대안을 제시한다
+- 🔗 후속 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — Generalizable Humanoid Manipulation의 3D diffusion policy가 본 논문의 LDM 기반 조작 계획을 3차원 공간으로 확장함
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoMimic의 egocentric 시연 데이터를 3D Diffusion Policy와 결합하면 더 일반화 가능한 휴머노이드 조작 시스템을 구축할 수 있다.
+- 🔗 후속 연구: [[papers/2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — 미분 가능한 도달성 맵을 활용한 최적화가 3D diffusion 정책 기반의 일반화 가능한 조작으로 확장될 수 있다.
+- 🔗 후속 연구: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — 3D 확산 정책을 통해 전신 조작의 일반화 가능한 기하학적 이해를 확장한 방법론이다.
+- 🏛 기반 연구: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — 3D diffusion policies가 ULTRA의 physics-based neural retargeting에서 복잡한 동작 생성의 핵심 기술적 토대가 됨
+- 🔗 후속 연구: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — Generalizable humanoid manipulation with 3D diffusion이 TokenHSI의 unified HSI policy를 3D diffusion을 통한 일반화 가능한 manipulation으로 확장한 형태입니다.

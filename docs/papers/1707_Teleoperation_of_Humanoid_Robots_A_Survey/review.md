@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 인간형 로봇의 원격 조종(teleoperation) 분야에 대한 포괄적인 서베이로, 시스템 아키텍처, 기술 및 방법론적 진전, 실제 응용 분야를 종합적으로 분석한다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Portable_Humanoid_Teleoperation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Darvish et al._2023_Teleoperation of Humanoid Robots A Survey.pdf"
 ---
@@ -88,3 +90,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Darvish et al._2023_Teleoperation of Hum
 - Overall: 4/5
 
 **총평**: 이 서베이는 humanoid robot teleoperation의 포괄적이고 최신의 개요를 제공하며, 복잡한 시스템을 명확한 아키텍처로 정리하고 다양한 기술적 도전과 솔루션을 체계적으로 분석한다. 해당 분야의 연구자와 실무자들에게 매우 유용한 참고 자료이지만, 구체적인 기술 혁신보다는 기존 연구의 종합과 정리에 초점을 두고 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — 휴머노이드 텔레오퍼레이션 서베이가 다중 접촉 안정성 제어와 같은 고급 텔레오퍼레이션 기법의 이론적 배경과 분류 체계를 제공한다.
+- 🔗 후속 연구: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — 텔레오퍼레이션 기술 동향이 ToddlerBot과 같은 ML 호환 플랫폼에서 인간-로봇 상호작용 방식의 설계 지침을 제공한다.
+- 🔗 후속 연구: [[papers/1706_TeleOpBench_A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexte/review]] — 휴머노이드 텔레오퍼레이션의 포괄적 서베이가 TeleOpBench의 통합 벤치마크 프레임워크에 이론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — 포괄적 서베이와 구체적인 TeleGate 시스템이 휴머노이드 텔레오퍼레이션의 이론과 실제를 상호 보완한다
+- 🧪 응용 사례: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — Centroidal stability 기반 retargeting 기술이 휴머노이드 텔레오퍼레이션의 핵심 안정성 보장 메커니즘으로 직접 활용된다.
+- 🏛 기반 연구: [[papers/1706_TeleOpBench_A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexte/review]] — 휴머노이드 텔레오퍼레이션 서베이가 TeleOpBench의 4가지 텔레오퍼레이션 모달리티 선정에 이론적 근거를 제공한다
+- 🧪 응용 사례: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — 오픈소스 ML 플랫폼이 텔레오퍼레이션 기술의 접근성 향상과 연구 민주화에 직접적으로 기여한다.
+- 🔗 후속 연구: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — 휴머노이드 로봇 텔레조작 설문 연구가 FIRA HuroCup용 비전문가 GUI 개발을 더욱 포괄적이고 체계적인 관점에서 확장한다
+- 🏛 기반 연구: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — 휴머노이드 로봇 텔레오퍼레이션 서베이가 ExtremControl의 저지연 전신 제어 기술의 포괄적 이론적 배경을 제공합니다.
+- 🏛 기반 연구: [[papers/2011_Humanoids_in_Hospitals_A_Technical_Study_of_Humanoid_Robot_S/review]] — Teleoperation survey가 의료용 휴머노이드 원격조종의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/2043_Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots_F/review]] — 휴머노이드 로봇 텔레오퍼레이션에 대한 포괄적인 이론적 배경과 기술적 현황을 제공한다.
+- 🏛 기반 연구: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — 휴머노이드 로봇 원격조작 서베이가 전신 모방 시스템의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — 원격조종 휴머노이드 로봇의 전반적인 설계 원칙과 기술적 과제를 포괄적으로 다루는 기초 연구이다.

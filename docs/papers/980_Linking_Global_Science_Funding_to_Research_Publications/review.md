@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "7.4백만 개의 펀딩 인정(funding acknowledgment) 문자열을 체계적으로 정규화하고 1.9백만 개를 표준 조직 식별자에 매칭하여 글로벌 과학 펀딩과 연구 출판물을 연결하는 대규모 데이터셋을 구축했다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dalsgaard et al._2026_Linking Global Science Funding to Research Publications.pdf"
 ---
@@ -92,10 +94,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dalsgaard et al._2026_Linking Global Sci
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 글로벌 과학 펀딩과 연구 출판물 연결과 토픽 수준에서의 연구 자금 및 성과 매핑이 서로 다른 규모와 접근법으로 펀딩-연구 관계를 분석합니다.
-- 🧪 응용 사례: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 펀딩 인정 문자열의 체계적 정규화 데이터셋을 과학 연구의 광범위한 영향 시각화 연구에 실제 적용할 수 있습니다.
-- 🔄 다른 접근: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 과학 연구와 자금 지원의 연결에서 촉매 데이터셋과 글로벌 자금-출판 매핑의 다른 접근법임
-- 🏛 기반 연구: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 연구 자금과 연구 결과물 연결의 중요성을 학습분석 데이터셋 공개와 활용 맥락에서 이해할 수 있다.
-- 🏛 기반 연구: [[papers/975_Interdisciplinary_papers_supported_by_disciplinary_grants_ga/review]] — 글로벌 과학 자금과 연구 출판의 연결 분석을 통해 그랜트 유형별 효과 차이의 구조적 배경을 파악할 수 있다.
-- 🏛 기반 연구: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 글로벌 과학 자금과 연구 출판의 연결 분석 방법론을 북유럽 지역 사례에 적용하여 지역별 특성을 파악할 수 있다.
-- 🏛 기반 연구: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — 글로벌 과학 펀딩과 연구 결과의 연결 분석 방법론을 국가 재정 정책(VAT) 연구에 적용할 수 있는 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 제약 분야 백색 공간 분석을 통해 펀딩-연구 연결과 유사한 전략적 분석의 다른 도메인 적용을 제시한다.
+- 🔗 후속 연구: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 오픈 연구 정보 인프라 평가를 통해 글로벌 과학 펀딩 연결을 더 체계적인 인프라 관점에서 확장한다.
+- 🏛 기반 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 미국에서 과학 펀딩의 당파적 격차에 대한 이해를 제공하여 글로벌 펀딩 분석의 배경을 마련한다.
+- 🧪 응용 사례: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 글로벌 과학 펀딩-출판물 연결 데이터셋이 북유럽 지역 연구 자금-성과 매핑의 구체적 적용 사례가 된다.
+- 🔗 후속 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 과학의 공공 자금 지원 연구에서 펀딩-출판물 연결의 체계적 데이터화로 발전된다.
+- 🏛 기반 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학 펀딩의 광범위한 영향 시각화 연구가 펀딩-출판물 연결 데이터셋 구축의 이론적 동기를 제공한다.
+- 🏛 기반 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 글로벌 과학 펀딩과 연구 출판물 간의 연계 분석은 공적 자금과 공중 필요의 정렬성을 평가하는 방법론적 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학 펀딩과 연구 성과 연결 방법론이 SciSci 실증 연구의 구체적 적용 사례가 된다.
+- 🏛 기반 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 글로벌 과학 펀딩과 연구 출판물 연결 연구가 미국 정당별 과학 펀딩 분석의 방법론적 기초를 제공한다.
+- 🔄 다른 접근: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — 펀딩 정보 정규화와 매칭이라는 유사한 데이터 통합 문제를 다른 도메인에서 해결한 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 글로벌 과학 펀딩과 연구 성과 연결 분석이 시각화 시스템 개발의 데이터적 기초를 제공한다
+- 🏛 기반 연구: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 글로벌 과학 펀딩-출판물 연결 연구가 북유럽 지역 연구 자금-성과 매핑의 데이터 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 신경근 섬유화 연구의 글로벌 펀딩과 출판 패턴을 과학 연구비 분석 방법론으로 이해할 수 있다.

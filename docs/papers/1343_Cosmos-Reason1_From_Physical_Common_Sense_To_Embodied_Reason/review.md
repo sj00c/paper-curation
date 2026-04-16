@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "NVIDIA에서 제시한 Cosmos-Reason1은 비디오를 입력으로 받아 물리적 상식과 구체화된 추론(embodied reasoning)을 통해 자연언어로 신체적 의사결정을 생성하는 멀티모달 LLM입니다. 계층적 온톨로지 기반 데이터 큐레이션과 Physical AI SFT 및 RL 학습으로 물리적 AI 추론 능력을 강화합니다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Multimodal_Reasoning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/NVIDIA et al._2025_Cosmos-Reason1 From Physical Common Sense To Embodied Reasoning.pdf"
 ---
@@ -87,8 +89,15 @@ NVIDIA에서 제시한 Cosmos-Reason1은 비디오를 입력으로 받아 물리
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1584_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — ThinkAct는 Cosmos-Reason1과 유사한 추론 기반 접근법이지만 강화된 시각-언어-행동 추론에 특화되어 있다
-- 🏛 기반 연구: [[papers/1439_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — IPR-1은 Cosmos-Reason1의 물리적 추론을 위한 상호작용적 물리 추론기 기반을 제공한다
-- 🔗 후속 연구: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — Neural Brain은 Cosmos-Reason1의 구체화된 추론을 신경과학 영감 프레임워크로 확장한다
-- 🏛 기반 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — Cosmos-Reason1의 물리 상식 추론과 INTENTION의 직관적 물리 이해 학습이 모두 embodied AI의 물리적 세계 이해 능력을 다룬다.
-- 🏛 기반 연구: [[papers/1379_Embodied-R_Collaborative_Framework_for_Activating_Embodied_S/review]] — Cosmos-Reason1의 물리적 상식 추론이 Embodied-R의 spatial reasoning 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — Cosmos-Reason1의 물리적 상식 추론과 CoT-VLA의 시각적 chain-of-thought는 모두 VLA 모델의 추론 능력 강화를 위한 보완적 접근법이다.
+- 🔄 다른 접근: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — Cosmos-Reason1의 물리적 AI 추론과 Diffusion-VLA의 추론-행동 통합은 VLA 모델에서 추론 능력 구현의 서로 다른 방법론이다.
+- 🏛 기반 연구: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — IPR-1의 인터랙티브 물리적 추론은 Cosmos-Reason1의 구체화된 추론 능력에 기초적인 물리 이해 프레임워크를 제공한다.
+- 🏛 기반 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — 물리적 상식과 추론 능력이 Streaming Flow Policy의 실시간 로봇 제어에 필요한 기초적 이해를 제공합니다.
+- 🔗 후속 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — Physical AI SFT와 RL 학습 방법론이 embodied reasoning 능력을 강화하는 새로운 훈련 패러다임을 제시합니다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — 구체화된 멀티모달 언어 모델의 기초적인 개념과 접근법을 제공합니다.
+- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — 비전-언어-액션 추론을 위한 다른 강화 시각적 추론 접근 방식입니다.
+- 🔄 다른 접근: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — 둘 다 물리 추론을 다루지만 interactive world model vs common sense reasoning이라는 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — physical common sense reasoning이 neuro-symbolic VLN의 추론 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — CoT-VLA의 시각적 chain-of-thought와 Cosmos-Reason1의 물리적 추론은 VLA 모델의 단계별 추론 능력을 상호 보완적으로 강화한다.
+- 🔄 다른 접근: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — Diffusion-VLA의 reasoning injection과 Cosmos-Reason1의 물리적 추론은 VLA 모델 추론 능력 구현의 서로 다른 방법론이다.
+- 🔄 다른 접근: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — embodied AI의 공간 추론 능력을 physical common sense 관점에서 평가하는 다른 접근법입니다.

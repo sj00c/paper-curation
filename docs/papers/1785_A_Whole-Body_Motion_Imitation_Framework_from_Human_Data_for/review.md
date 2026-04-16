@@ -1,3 +1,25 @@
+---
+title: "1785_A_Whole-Body_Motion_Imitation_Framework_from_Human_Data_for"
+authors:
+  - "Zhenghan Chen"
+  - "Haodong Zhang"
+  - "Dongqi Wang"
+  - "Jiyu Yu"
+  - "Haocheng Xu"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "전신 동작 모방을 위해 contact-aware 전신 모션 리타겟팅과 비선형 중심 MPC를 결합한 휴머노이드 로봇 제어 프레임워크를 제안한다. 실제 휴머노이드 로봇에서 인간의 다양한 전신 동작을 정확하고 안정적으로 모방할 수 있음을 입증한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Tactile_Contact_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot.pdf"
+---
+
 # A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot
 
 > **저자**: Zhenghan Chen, Haodong Zhang, Dongqi Wang, Jiyu Yu, Haocheng Xu, Yue Wang, Rong Xiong | **날짜**: 2025-08-01 | **URL**: [https://arxiv.org/abs/2508.00362](https://arxiv.org/abs/2508.00362)
@@ -65,3 +87,17 @@
 - Overall: 4/5
 
 **총평**: Contact-aware motion retargeting과 nonlinear centroidal MPC를 체계적으로 결합하여 실제 휴머노이드 로봇에서 정확하고 안정적인 전신 모션 모방을 달성한 강력한 연구이다. 실제 로봇 플랫폼에서의 광범위한 검증은 실용적 가치를 높이나, 고속 동작 확장 및 강건성 분석에서 추가 개선이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — DeepMimic의 motion capture 기반 모방 학습 방법론이 인간 데이터로부터 전신 동작을 학습하는 핵심 기반을 제공한다
+- 🔗 후속 연구: [[papers/2095_MeshMimic_Geometry-Aware_Humanoid_Motion_Learning_through_3D/review]] — 3D 형태 정보를 활용한 기하학적 인식 방법이 contact-aware 모션 리타겟팅의 정확성을 더욱 향상시킬 수 있다
+- 🔄 다른 접근: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 동일한 whole-body motion tracking 목표를 ResNet 기반 geometric prior와 contact-aware MPC라는 다른 방법으로 달성한다
+- 🏛 기반 연구: [[papers/2088_Make_Tracking_Easy_Neural_Motion_Retargeting_for_Humanoid_Wh/review]] — 신경망 기반 모션 리타겟팅 기술이 contact-aware 전신 모션 리타겟팅의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — 정확한 추적과 생성적 합성을 연결하는 Heracles의 접근법을 전신 동작 모방 프레임워크로 확장할 수 있습니다.
+- 🔄 다른 접근: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — 둘 다 인간 데이터 기반 동작 모방을 다루지만 하나는 전신 동작에, 다른 하나는 보행에 특화되어 있다.
+- 🔗 후속 연구: [[papers/2120_OmniRetarget_Interaction-Preserving_Data_Generation_for_Huma/review]] — OmniRetarget의 상호작용 보존 데이터 생성이 contact-aware 전신 모션 리타겟팅의 정확성과 안정성을 향상시킬 수 있다.
+- 🧪 응용 사례: [[papers/1775_A_Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Hu/review]] — closed-form 기하학적 리타겟팅 solver가 전신 동작 모방의 상반신 제어 정밀도를 향상시키는 데 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — 둘 다 인간 동작 데이터 기반 모방을 다루지만 Adam은 보행에, 다른 연구는 전신 동작에 초점을 둔다.
+- 🔄 다른 접근: [[papers/1860_Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_throu/review]] — VR 텔레오퍼레이션을 통한 휴머노이드 loco-manipulation 학습에서 deep imitation learning과 whole-body motion imitation의 서로 다른 데이터 활용 방식을 제시한다.
+- 🔗 후속 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 전신 동작 모방 프레임워크가 DeepMimic의 motion capture 기반 학습을 실제 휴머노이드 로봇에 적용할 수 있는 구체적인 구현 방법을 제공한다

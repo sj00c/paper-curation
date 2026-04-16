@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "AI 시대에 인간 창의성의 정의를 재구성하며, 전통적 창의성 평가 기준이 인간과 AI의 창의성 구분에 부적절함을 지적하고 3차원 창의성 평가 모델(보간형, 외삽형, 도약형)을 제안한다."
 tags:
+  - "cat/Science_Policy_and_Research_Dynamics"
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ke et al._2025_Definition and Value Reconstruction of Human Creativity in the AI Era.pdf"
 ---
@@ -74,8 +76,13 @@ AI 시대에 인간 창의성의 정의를 재구성하며, 전통적 창의성 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — AI 시대 인간 역할을 과학 발견 예측과 창의성 재정의로 다르게 접근함
-- 🔗 후속 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술과 과학 경력의 핫스트릭 분석을 AI 시대 창의성 평가 모델로 확장함
-- 🏛 기반 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성이 혁신적 과학을 촉진한다는 발견이 인간 창의성 재정의의 배경이 됨
-- 🔄 다른 접근: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 과학에서 인간의 역할을 AI 예측 향상과 창의성 재정의로 다르게 접근함
-- 🔗 후속 연구: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 투어 가이딩 기술의 발전이 AI 시대에서 인간 창의성의 정의와 가치 재구성으로 확장될 수 있다.
+- ⚖️ 반론/비판: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 창의성을 감소시킨다는 우려에 대해 인간 창의성 재정의로 대응하는 관점 제시
+- 🏛 기반 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 시대 창의성 재정의가 AI 가속화된 글쓰기의 문제점 해결을 위한 이론적 기반 제공
+- 🔗 후속 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 다양성이 과학 발견에 미치는 영향을 AI 시대의 창의성 맥락으로 확장한 연구
+- 🏛 기반 연구: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI가 인간의 이해에 미치는 영향에 대한 이론적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 도입에서 위험의 역할을 인간 창의성의 재정의라는 맥락에서 확장하여 이해합니다.
+- 🔗 후속 연구: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — AI 시대의 인간 창의성 정의와 가치 재구성은 지식 부담으로 인한 전문화가 창의성에 미치는 영향을 현대적 맥락에서 재조명합니다.
+- 🧪 응용 사례: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 인간-인식형 AI 시스템의 이론적 프레임워크가 AI 시대 인간 창의성 재정의에 구체적 구현 방안 제시
+- 🔗 후속 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 시대 창의성 재정의 논의를 출판 시스템의 구조적 문제로 확장하여 분석
+- 🏛 기반 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — AI 시대 인간 창의성의 정의와 가치 재구성이 기초 모델을 활용한 과학 발견의 철학적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구 새로움을 감소시킨다는 실증 결과가 AI 시대 창의성 재정의 논의의 경험적 근거 제공

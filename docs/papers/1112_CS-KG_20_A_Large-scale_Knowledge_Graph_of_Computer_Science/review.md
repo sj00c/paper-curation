@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "150만 개의 컴퓨터과학 논문에서 자동 추출한 2,500만 개 엔티티와 6,700만 개 관계로 구성된 CS-KG 2.0 지식그래프를 제시하며, 이를 통해 연구 트렌드 분석, 가설 생성, 지능형 문헌 검색 등을 지원한다."
 tags:
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Computational_Bibliometric_Analysis"
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Knowledge_Graphs_and_Data_Integration"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dessí et al._2025_CS-KG 2.0 A Large-scale Knowledge Graph of Computer Science.pdf"
 ---
@@ -91,9 +93,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dessí et al._2025_CS-KG 2.0 A Large-sca
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 대규모 지식그래프에서 컴퓨터과학과 생의학 도메인의 다른 구축 방법론임
-- 🔗 후속 연구: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 컴퓨터과학 지식그래프가 AI 교육용 지식그래프 구축의 기반 데이터가 됨
-- 🏛 기반 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기계학습 응용의 과학계량학적 조사가 CS-KG 지식그래프 구축의 이론적 배경임
-- 🔄 다른 접근: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 대규모 지식그래프 구축에서 생의학과 컴퓨터과학의 다른 도메인 접근법임
-- 🏛 기반 연구: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 컴퓨터과학 지식그래프가 AI 교육용 지식그래프 구축의 기반 데이터를 제공함
-- 🏛 기반 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 컴퓨터 과학 분야의 대규모 지식 그래프인 CS-KG가 과학 연구 매핑을 위한 구조화된 지식의 모델을 제공한다.
+- 🔄 다른 접근: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 지식그래프 구축을 컴퓨터과학과 생의학 분야에서 각각 다른 접근법으로 수행
+- 🧪 응용 사례: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — CS-KG 2.0의 지식그래프가 GoAI의 교육용 지식그래프 구축에 직접 활용 가능
+- 🔗 후속 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 과학 연구 매핑을 위한 지식그래프 접근법을 컴퓨터과학 분야로 특화하여 확장
+- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 학술 코퍼스 구축과 처리 방법론의 기반을 제공한다
+- 🔄 다른 접근: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — 학제간 과학 데이터셋 구축에서 CS 특화와 범용 접근법의 차이를 보여준다
+- 🧪 응용 사례: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑 기법을 컴퓨터과학 분야에 특화하여 대규모로 적용한 사례다.
+- 🔗 후속 연구: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 컴퓨터과학 분야 지식그래프의 방법론을 생의학 분야로 확장 적용한 사례
+- 🏛 기반 연구: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — CS-KG 2.0의 지식그래프 데이터를 GoAI의 교육용 학습경로 생성에 직접 활용
+- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 문서-단어 네트워크의 커뮤니티 탐지 방법이 대규모 지식그래프 구축의 기초 이론 제공
+- 🧪 응용 사례: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 지식 조직 체계의 원리를 컴퓨터 과학 분야 지식 그래프 구축에 구체적으로 적용한다
+- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 일반 과학 분야와 컴퓨터 과학 특화 지식 그래프 구축에서 서로 다른 접근 방식을 사용한다.
+- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 과학 분야별 지식 그래프 구축과 트렌드 분석에서 물리학과 컴퓨터과학의 접근법을 비교한다
+- 🧪 응용 사례: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 컴퓨터 과학 분야의 대규모 지식 그래프 구축에 계층적 분류 시스템을 적용한 구체적 사례를 제시한다.

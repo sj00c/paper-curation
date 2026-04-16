@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "로봇이 새로운 작업을 수행할 때 정책 파라미터 업데이트 없이 입력 단계에서 제공된 문맥 정보를 해석하는 In-Context Robot Transformer (ICRT)를 제안한다. ICRT는 감각-운동 궤적에 대한 자동회귀 다음-토큰 예측을 통해 훈련 없이 새로운 작업을 유연하게 실행할 수 있다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Action_Chunking_Methods"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Semantic_Task_Generalization"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_In-Context Imitation Learning via Next-Token Prediction.pdf"
 ---
@@ -89,8 +89,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_In-Context Imitation Lear
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — 둘 다 parameter update 없는 학습이지만 ICRT는 in-context learning에, Latent Action은 pre-training에 중점을 둡니다.
-- 🏛 기반 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Behavior Transformers의 다중 모드 cloning 방법론이 ICRT의 in-context imitation learning에 기반 아이디어를 제공합니다.
-- 🔗 후속 연구: [[papers/1598_Unified_Video_Action_Model/review]] — Unified Video Action Model의 구조를 in-context learning으로 확장하여 parameter update 없는 adaptation을 가능하게 합니다.
-- 🔄 다른 접근: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — 둘 다 label 없는 데이터 활용이지만 Latent Action은 video pre-training에, ICRT는 in-context learning에 중점을 둡니다.
-- 🔗 후속 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — in-context learning을 통한 모방 학습으로 RoboFlamingo의 few-shot 학습 능력을 이론적으로 뒷받침한다
+- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 멀티모달 행동 생성을 위한 Transformer 기반 접근법으로 in-context learning과 behavior cloning의 차이점을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — trajectory autoregressive modeling을 in-context learning에 적용하여 더 긴 시퀀스의 맥락 정보 활용 가능성을 탐구할 수 있다.
+- 🏛 기반 연구: [[papers/1294_A_Generalist_Agent/review]] — generalist agent의 기본 개념과 next-token prediction을 통한 일반화 능력의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — In-Context Imitation Learning은 SPRINT의 cross-trajectory 학습과 유사한 효율성을 next-token prediction으로 달성한다.
+- 🔄 다른 접근: [[papers/1349_DataMIL_Selecting_Data_for_Robot_Imitation_Learning_with_Dat/review]] — next-token prediction을 통한 다른 모방학습 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 다음 토큰 예측을 통한 맥락 내 모방 학습과 Behavior Transformer의 multi-modal 행동 학습을 결합할 수 있습니다.

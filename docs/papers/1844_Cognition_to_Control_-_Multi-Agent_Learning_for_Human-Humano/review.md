@@ -1,3 +1,23 @@
+---
+title: "1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano"
+authors:
+  - "Hao Zhang"
+  - "Ding Zhao"
+  - "H. Eric Tseng"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간-휴머노이드 협업 운반을 위한 3계층 Cognition-to-Control 프레임워크로, VLM 기반 의미론적 추론, Markov potential game 기반 MARL 조정, 전신 제어를 통합하여 역할의 자동 형성과 강건한 협업을 실현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Proprioceptive_Motor_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2026_Cognition to Control - Multi-Agent Learning for Human-Humanoid Collaborative Transport.pdf"
+---
+
 # Cognition to Control - Multi-Agent Learning for Human-Humanoid Collaborative Transport
 
 > **저자**: Hao Zhang, Ding Zhao, H. Eric Tseng | **날짜**: 2026-03-04 | **URL**: [https://arxiv.org/abs/2603.03768](https://arxiv.org/abs/2603.03768)
@@ -65,3 +85,18 @@
 - Overall: 4/5
 
 **총평**: 인간-로봇 협업의 근본적인 인지-제어 단절 문제를 3계층 구조로 체계적으로 해결하고, Markov potential game MARL을 통해 명시적 역할 할당 없이 협업 역할이 자동 형성되는 novel 접근법을 제시한다. 실험 결과는 강건성과 유효성을 잘 보여주지만, 작업 다양성 및 환경 조건 범위 확대가 필요하다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — Being-0의 모듈식 스킬 조율을 다중 에이전트 협업으로 확장한 인간-휴머노이드 협업 프레임워크
+- 🔄 다른 접근: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — VLM 기반 3계층 프레임워크와 인간-휴머노이드 협업 학습은 협업 운반의 서로 다른 인지-제어 접근법
+- 🏛 기반 연구: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — 인간-휴머노이드 상호작용 전신 제어가 3계층 Cognition-to-Control 협업 프레임워크의 기본 제어 구조
+- 🏛 기반 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — cooperative-heterogeneous multi-agent RL의 기초 방법론이 인간-휴머노이드 협업 시스템에 적용된다.
+- 🔄 다른 접근: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — 인간-휴머노이드 협업을 위해 3계층 인지-제어 프레임워크 vs 적응적 접촉 기반 co-manipulation이라는 서로 다른 협업 패러다임을 비교할 수 있다
+- 🏛 기반 연구: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — 인간-로봇 협업 제어가 Cognition-to-Control에서 MARL 기반 조정과 전신 제어 통합의 기술적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — RoboStriker의 multi-agent 경쟁 학습이 Cognition to Control의 human-humanoid learning과 결합되어 더 지능적인 대전 시스템을 구축할 수 있다
+- 🏛 기반 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — 다중 에이전트 학습의 계층적 프레임워크가 Being-0의 모듈식 스킬 조율을 위한 기본 협업 구조
+- 🧪 응용 사례: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — 인간-로봇 협업 방법론이 다중 에이전트 학습을 통한 인간-휴머노이드 인지 제어로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — It Takes Two는 로봇-로봇 학습, Cognition to Control은 인간-휴머노이드 학습으로 서로 다른 주체 간 상호작용 학습을 다룬다.
+- 🔗 후속 연구: [[papers/2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu/review]] — 인간-휴머노이드 협력 학습을 다중 에이전트 환경으로 확장한 발전된 접근
+- 🔗 후속 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — 인간-휴머노이드 인지를 위한 다중 에이전트 학습의 확장된 접근법을 보여준다.

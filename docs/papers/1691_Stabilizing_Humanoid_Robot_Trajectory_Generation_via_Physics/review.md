@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "인간형 로봇의 궤적 생성에 물리 기반 학습과 제어 기반 보정을 결합하여 모방학습의 안정성을 향상시키는 방법을 제안한다. Physics-informed loss와 PI 제어기를 통해 물리 법칙 위반을 줄이고 실제 로봇에서의 안정성을 개선한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/D'Elia et al._2025_Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning and Control-Informed.pdf"
 ---
@@ -86,3 +88,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/D'Elia et al._2025_Stabilizing Humanoid 
 - Overall: 4/5
 
 **총평**: 본 논문은 물리 기반 학습과 제어 이론을 효과적으로 결합하여 인간형 로봇 궤적 생성의 실제 안정성을 향상시키는 실질적이고 모듈식의 접근법을 제시한다. 특히 미분가능한 물리 제약 인코딩과 추론 단계의 PI 제어 보정은 구현이 간단하면서도 실증적 효과가 크며, 실제 로봇 검증으로 산업 적용 가능성을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1615_Physics-Based_Motion_Imitation_with_Adversarial_Differential/review]] — 두 논문 모두 물리 기반 모방 학습을 다루지만, 물리 정보 기반 안정화와 adversarial differential privacy라는 다른 접근을 사용한다.
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 예시 기반 깊은 강화학습의 물리 기반 캐릭터 제어 기초를 제공한다.
+- 🔗 후속 연구: [[papers/2137_PhysDiff_Physics-Guided_Human_Motion_Diffusion_Model/review]] — 물리 기반 인간 모션 diffusion을 physics-informed learning으로 안정화하는 방향으로 발전시킨다.
+- 🔄 다른 접근: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 휴머노이드의 안정적 제어를 위해 서로 다른 접근(물리 기반 궤적 보정 vs 순응적 동작 생성)을 통해 물리 법칙과 안정성을 보장한다.
+- 🔗 후속 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — 모션 트래킹의 기본 개념을 물리 기반 학습과 제어 기반 보정으로 확장하여 모방학습의 안정성을 크게 향상시켰다.
+- 🔄 다른 접근: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 휴머노이드의 안정적 제어를 위해 서로 다른 접근(순응적 동작 생성 vs 물리 기반 궤적 보정)을 통해 물리 법칙과 안정성을 보장한다.
+- 🔗 후속 연구: [[papers/1858_cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_D/review]] — physics-based trajectory stabilization과 dynamics-aware motion generation이 함께 안전하고 안정적인 로봇 운동 생성의 완전한 솔루션을 구성한다.
+- 🏛 기반 연구: [[papers/2001_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig/review]] — 물리학 기반 궤적 안정화 기술이 완전한 강체 역학 기반 아크로바틱 동작 제어의 핵심 토대가 된다.
+- 🏛 기반 연구: [[papers/2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — 물리 유도 궤적 안정화가 최적화 기반 인간형 모션 생성의 기반이다.
+- 🏛 기반 연구: [[papers/2133_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — Physics-constrained trajectory generation이 PDF-HR의 pose distance field에서 로봇 포즈의 물리적 plausibility 평가의 기술적 기반을 제공합니다.

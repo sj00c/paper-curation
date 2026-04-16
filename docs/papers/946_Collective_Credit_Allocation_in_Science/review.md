@@ -10,7 +10,8 @@ score: 4.0
 essence: "다중저자 논문에서 각 저자의 기여도를 정량화하기 위해 인용 패턴 기반의 학제 독립적 신용 배분 알고리즘을 개발했다. 이 방법은 과학 커뮤니티의 비공식적 집단 신용 배분 과정을 수학적으로 모델링한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Team_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shen and Barabási_2014_Collective credit allocation in science.pdf"
 ---
@@ -86,8 +87,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shen and Barabási_2014_Collective credi
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학에서 여성의 낮은 신용 배분 문제에 집단 신용 배분 알고리즘을 적용하여 공정성을 개선할 수 있다
-- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 기반 지식 생산의 증가에 따라 다중저자 논문의 기여도 정량화 필요성이 증대한다
-- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성 팀의 성과 측정에 개별 저자 기여도 배분 방법을 확장하여 적용한다
-- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성에 대한 개별적 기여 과소인정 문제를 과학계의 집단 기여 배분 시스템 전반의 문제로 확장하여 분석했다.
-- 🏛 기반 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 팀 과학 평가에서 개별 기여도 정량화 방법론이 Collaborative Guideposts 프레임워크의 기반이 된다
+- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 개별 저자 기여도 분석을 팀 구성의 다양성 효과 연구로 확장한 접근이다
+- 🧪 응용 사례: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 과학 협력에서 신용 배분 원리를 민족적 다양성의 우수성 분석에 적용한다
+- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 과학의 증가 현상이 집단 신용 배분 시스템 개발의 배경을 제공한다
+- ⚖️ 반론/비판: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 글로벌 인용 불평등 증가 현상이 집단 신용 배분 알고리즘의 공정성 목표와 대조되는 현실적 도전을 제시한다.
+- 🔗 후속 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 과학에서의 집단적 신용 배분 연구가 연구팀 형성 모델에서 기여도 인정 메커니즘을 보완한다.
+- 🔗 후속 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 국제 과학 협력의 시각적 매핑이 과학에서 집단적 신용 배분 메커니즘을 지리적 차원에서 이해하는 데 기여합니다.
+- 🏛 기반 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 과학에서의 집단적 크레딧 할당 이론이 정형외과 논문의 저자 수와 인용 성과 관계를 설명하는 기반이 됩니다.
+- 🏛 기반 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력 네트워크의 집단적 신용 할당 메커니즘이 우선적 부착 현상의 사회적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 집단 신용 배분 시스템이 팀 다양성 효과 분석의 방법론적 토대를 제공한다
+- ⚖️ 반론/비판: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 집단 신용 배분의 공정성 추구가 증가하는 글로벌 인용 불평등 현실과 대조되어 이상과 현실 간 괴리를 보여준다.
+- 🏛 기반 연구: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — Javanese 철학에 기반한 정책 분석을 과학에서 집단적 신용 할당 이론으로 이해할 수 있다.

@@ -1,3 +1,24 @@
+---
+title: "1865_Design_and_Control_of_a_Bipedal_Robotic_Character"
+authors:
+  - "Ruben Grandia"
+  - "Espen Knoop"
+  - "Michael A. Hopkins"
+  - "Georg Wiedebach"
+  - "Jared Bishop"
+date: "2025.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 표현력 있는 예술적 동작과 강건한 동적 이동성을 결합한 이족 로봇 캐릭터의 설계 및 제어 시스템을 제시한다. Reinforcement Learning 기반 제어 구조와 실시간 애니메이션 엔진을 통해 로봇이 연극적 성능을 수행할 수 있도록 한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Grandia et al._2025_Design and Control of a Bipedal Robotic Character.pdf"
+---
+
 # Design and Control of a Bipedal Robotic Character
 
 > **저자**: Ruben Grandia, Espen Knoop, Michael A. Hopkins, Georg Wiedebach, Jared Bishop, Steven Pickles, David Müller, Moritz Bächer | **날짜**: 2025-01-09 | **URL**: [https://arxiv.org/abs/2501.05204](https://arxiv.org/abs/2501.05204)
@@ -72,3 +93,13 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 이족 로봇의 표현성과 동적 능력을 통합하는 혁신적인 설계 및 제어 파이프라인을 제시하며, 애니메이션과 로봇 공학의 교점에서 새로운 패러다임을 제안한다. 엔터테인ment 로보틱스와 휴먼-로봇 상호작용 분야에 중요한 기여를 하면서도 실제 시스템 구현을 통해 실용성을 입증했다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — Design and Control of Bipedal Robotic Character와 EMOTION 모두 휴머노이드의 표현적 동작을 다루지만 연극적 성능 vs 감정적 동작 시퀀스로 서로 다른 예술적 목표를 추구한다.
+- 🔗 후속 연구: [[papers/1882_Do_You_Have_Freestyle_Expressive_Humanoid_Locomotion_via_Aud/review]] — 이족 로봇 캐릭터의 표현적 동작이 Do You Have Freestyle의 자율적 표현형 휴머노이드 로코모션으로 확장되어 더 자유로운 동작 표현을 가능하게 한다.
+- 🏛 기반 연구: [[papers/2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — Olaf의 애니메이션 캐릭터를 물리적 세계로 구현하는 기술이 이족 로봇 캐릭터의 표현적 동작과 강건한 제어 시스템 설계에 기초적 프레임워크를 제공한다.
+- 🔄 다른 접근: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — 이족 로봇 캐릭터의 연극적 성능과 계층적 의도 인식 표현 동작 생성은 휴머노이드의 감정적 표현에서 서로 다른 제어 아키텍처를 사용한다.
+- 🔗 후속 연구: [[papers/1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — 고급 표현적 인간형 전신 제어로 발전됩니다.
+- 🔄 다른 접근: [[papers/1882_Do_You_Have_Freestyle_Expressive_Humanoid_Locomotion_via_Aud/review]] — 표현적 인간형 운동을 위한 다른 실시간 제어 방식을 제시합니다.
+- 🔄 다른 접근: [[papers/2001_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig/review]] — 이족 로봇 캐릭터 제어를 이 논문은 아크로바틱에, Design and Control은 일반적 설계에 특화한다.

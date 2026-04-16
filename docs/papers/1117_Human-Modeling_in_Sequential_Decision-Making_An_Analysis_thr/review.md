@@ -11,7 +11,9 @@ score: 4.0
 essence: "본 논문은 '인간-인식형 AI(Human-Aware AI)' 시스템의 개념을 정의하고, 순차적 의사결정(Sequential Decision-Making) 분야의 최근 연구를 체계적으로 분석하여 인간 모델링의 현황과 연구 공백을 파악한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tulli et al._2024_Human-Modeling in Sequential Decision-Making An Analysis through the Lens of Human-Aware AI.pdf"
 ---
@@ -84,7 +86,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tulli et al._2024_Human-Modeling in Sequ
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 인간-인식 AI를 과학 발견에서 순차적 의사결정 전반으로 확장한 이론적 분석임
-- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학에서 다양성의 중요성이 인간 모델링 AI 시스템의 이론적 근거가 됨
-- 🔄 다른 접근: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 팀 과학에서 인간 모델링과 협력 가이드포스트의 다른 접근법임
-- 🔗 후속 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 인간 중심 AI에서 과학 발견을 넘어 순차적 의사결정 전반으로 확장된 연구임
+- 🧪 응용 사례: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — 인간-인식형 AI 시스템의 이론적 프레임워크가 AI 시대 인간 창의성 재정의에 구체적 구현 방안 제시
+- 🔗 후속 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 인간-인식형 AI의 개념을 순차적 의사결정 분야로 특화하여 체계적으로 분석
+- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학적 발견을 위한 인간-AI 협력의 기초 이론을 순차적 의사결정 시스템으로 발전
+- 🧪 응용 사례: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀과 소규모 팀의 혁신 방식 차이가 인간-AI 협력에서 팀 구성 전략에 실용적 시사점을 제공하기 때문
+- 🧪 응용 사례: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 도입 위험 분석에 인간 행동 모델링 기법을 적용할 수 있다.

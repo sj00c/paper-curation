@@ -12,7 +12,9 @@ arxiv: ""
 score: 3.0
 essence: "Symphony는 휴머노이드 로봇을 안전하게 훈련하기 위해 Swaddling 정규화, Fading Replay Buffer, Temporal Advantage를 결합한 결정론적 Actor-Critic 알고리즘이다. 제한된 parametric noise와 action strength 조절을 통해 sample efficiency, safety, smooth motion을 동시에 달성한다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ishuov et al._2025_Symphony A Heuristic Normalized Calibrated Advantage Actor and Critic Algorithm in application for.pdf"
 ---
@@ -90,3 +92,11 @@ Symphony는 휴머노이드 로봇을 안전하게 훈련하기 위해 Swaddling
 - Overall: 3/5
 
 **총평**: Symphony는 실제 휴머노이드 로봇 훈련의 실질적 문제들(safety, efficiency, smoothness)을 종합적으로 해결하는 창의적인 heuristic 알고리즘이다. 그러나 이론적 기초와 실증적 검증이 부족하여 학술적 엄밀성과 재현성 면에서 개선이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — Symphony는 안전한 훈련에 특화된 결정론적 Actor-Critic을 제안하고 FastTD3는 빠르고 유능한 강화학습을 추구하는 서로 다른 알고리즘 접근법입니다.
+- 🏛 기반 연구: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — SHIELD의 CBF 기반 안전 제어가 Symphony의 안전한 휴머노이드 훈련을 위한 theoretical safety guarantee 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — Symphony의 안전한 Actor-Critic 기법을 Distillation-PPO의 두 단계 강화학습과 결합하면 더 안전하고 효율적인 휴머노이드 정책 학습이 가능합니다.
+- 🔄 다른 접근: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — 둘 다 휴머노이드 전신 제어를 다루지만 이 논문은 안전한 훈련을 위한 정규화된 Actor-Critic에, GMT는 일반적인 동작 추적에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — Symphony의 정규화된 calibrated advantage 방법이 AMOR의 다중 목표 정책 학습에서 더 안정적인 성능을 제공할 수 있다

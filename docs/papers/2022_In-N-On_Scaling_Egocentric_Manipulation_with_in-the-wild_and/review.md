@@ -1,3 +1,24 @@
+---
+title: "2022_In-N-On_Scaling_Egocentric_Manipulation_with_in-the-wild_and"
+authors:
+  - "Xiongyi Cai"
+  - "Ri-Zhao Qiu"
+  - "Geng Chen"
+  - "Lai Wei"
+  - "Isabella Liu"
+date: "2025.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 1,000시간 이상의 in-the-wild 에고센트릭 데이터와 on-task 데이터를 결합하여 대규모 휴머노이드 조작 정책 Human0을 학습하고, domain adaptation을 통해 인간과 로봇 간의 도메인 갭을 최소화한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cai et al._2025_In-N-On Scaling Egocentric Manipulation with in-the-wild and on-task Data.pdf"
+---
+
 # In-N-On: Scaling Egocentric Manipulation with in-the-wild and on-task Data
 
 > **저자**: Xiongyi Cai, Ri-Zhao Qiu, Geng Chen, Lai Wei, Isabella Liu, Tianshu Huang, Xuxin Cheng, Xiaolong Wang | **날짜**: 2025-11-19 | **URL**: [https://arxiv.org/abs/2511.15704](https://arxiv.org/abs/2511.15704)
@@ -67,3 +88,14 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 in-the-wild와 on-task 인간 데이터를 체계적으로 결합하는 새로운 data recipe를 제시하고, 대규모 PHSD 데이터셋과 Human0 모델을 통해 실제 휴머노이드 로봇에서 language following, few-shot learning, robustness 개선을 달성함으로써 로봇 조작 학습의 확장성에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 에고센트릭 비디오 기반 모방 학습을 Human0 정책의 학습 데이터 확장 방법론으로 활용할 수 있다.
+- 🔄 다른 접근: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오 데이터셋을 활용한 휴머노이드 제어에서 서로 다른 데이터 수집 및 학습 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — 에고센트릭 데이터를 통한 조작 학습의 기본 원리와 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — 시각 기반 휴머노이드 제어에서 같은 문제를 다르지만 보완적인 접근으로 해결
+- 🔗 후속 연구: [[papers/1895_Efficient_and_Scalable_Monocular_Human-Object_Interaction_Mo/review]] — In-N-On의 실제 환경 egocentric 조작 스케일링 연구가 4D HOI 재구성 데이터를 실제 로봇 학습에 활용하는 확장 방향을 제시한다.
+- 🔄 다른 접근: [[papers/1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — In-N-On이 egocentric manipulation을 in-the-wild와 on-robot 데이터로 확장하여 EgoHumanoid와 다른 데이터 통합 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오 데이터 활용에서 에고센트릭 조작 대신 범용 포즈 제어를 위한 다른 데이터 수집 및 학습 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1758_WHOLE_World-Grounded_Hand-Object_Lifted_from_Egocentric_Vide/review]] — egocentric manipulation에서 hand-object 궤적 재구성과 in-the-wild/on-table 조작이라는 보완적 데이터 활용 접근법을 다룬다.

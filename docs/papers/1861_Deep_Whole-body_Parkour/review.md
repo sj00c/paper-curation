@@ -1,3 +1,24 @@
+---
+title: "1861_Deep_Whole-body_Parkour"
+authors:
+  - "Ziwen Zhuang"
+  - "Shaoting Zhu"
+  - "Mengjie Zhao"
+  - "Hang Zhao"
+date: "2026.01"
+doi: "10.48550/arXiv.2601.07701"
+arxiv: ""
+score: 4.0
+essence: "본 연구는 외부 센싱(depth perception)을 whole-body motion tracking에 통합하여 인간형 로봇이 불규칙한 지형에서 vaulting, dive-rolling 등의 동적 parkour 움직임을 수행하도록 하는 프레임워크를 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhuang et al._2026_Deep Whole-body Parkour.pdf"
+---
+
 # Deep Whole-body Parkour
 
 > **저자**: Ziwen Zhuang, Shaoting Zhu, Mengjie Zhao, Hang Zhao | **날짜**: 2026-01-12 | **DOI**: [10.48550/arXiv.2601.07701](https://doi.org/10.48550/arXiv.2601.07701)
@@ -66,3 +87,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 두 상충하는 제어 패러다임을 창의적으로 통합하여 humanoid robot의 traversability를 획기적으로 확장했으며, custom motion-terrain dataset과 최적화된 ray-casting algorithm은 기술적 기여도 충실하다. sim-to-real gap 해소와 실제 동작 검증으로 실무적 가치가 높으나, dataset 확장성과 타 robot morphology 적용에 개선 여지가 있다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 야생에서의 확장 가능한 perceptive parkour 프레임워크가 Deep Whole-body Parkour의 실험실 환경을 실제 자연 환경으로 확장한다
+- 🔄 다른 접근: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 휴머노이드 parkour를 깊이 지각 기반 whole-body와 perceptive skill chaining이라는 서로 다른 접근법으로 구현한다
+- 🏛 기반 연구: [[papers/1976_HiFAR_Multi-Stage_Curriculum_Learning_for_High-Dynamics_Huma/review]] — 고역학적 humanoid를 위한 다단계 커리큘럼이 Deep Whole-body Parkour의 복잡한 동작 학습에 필요한 단계적 훈련 기반을 제공한다
+- 🏛 기반 연구: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — Control Lyapunov Function 기반 안정성 보장이 parkour의 동적 움직임 제어에 필수적인 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1999_Humanoid_Parkour_Learning/review]] — 같은 humanoid parkour 문제를 다른 학습 접근법으로 해결하여 비교 연구가 가능하다.
+- 🔗 후속 연구: [[papers/1908_Embrace_Collisions_Humanoid_Shadowing_for_Deployable_Contact/review]] — Deep Whole-body Parkour의 전신 파쿠어 기술이 접촉-무관 동작의 극한 형태로 환경 상호작용을 확장한 개념입니다.
+- 🔄 다른 접근: [[papers/1999_Humanoid_Parkour_Learning/review]] — 두 논문 모두 파쿠르 기술을 다루지만 시각 기반 end-to-end vs 전신 파쿠르 접근법이 다르다.
+- 🏛 기반 연구: [[papers/2162_TTT-Parkour_Rapid_Test-Time_Training_for_Perceptive_Robot_Pa/review]] — Deep Whole-body Parkour의 전신 파쿠어 기법이 TTT-Parkour의 빠른 테스트 시간 훈련을 위한 기본 파쿠어 기술 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — Deep whole-body parkour의 기본적인 parkour control이 Perceptive Parkour의 depth perception과 autonomous chaining으로 발전된 형태입니다.

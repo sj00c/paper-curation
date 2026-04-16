@@ -1,3 +1,25 @@
+---
+title: "1911_Emergent_Active_Perception_and_Dexterity_of_Simulated_Humano"
+authors:
+  - "Zhengyi Luo"
+  - "Chen Tessler"
+  - "Toru Lin"
+  - "Ye Yuan"
+  - "Tairan He"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 egocentric vision만을 사용하여 simulated humanoid가 복잡한 household tasks를 수행하도록 하는 Perceptive Dexterous Control (PDC) 프레임워크를 제안하며, visual perception을 task specification의 인터페이스로 활용하여 active search 등의 emergent behaviors를 유도한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Tactile_Contact_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luo et al._2025_Emergent Active Perception and Dexterity of Simulated Humanoids from Visual Reinforcement Learning.pdf"
+---
+
 # Emergent Active Perception and Dexterity of Simulated Humanoids from Visual Reinforcement Learning
 
 > **저자**: Zhengyi Luo, Chen Tessler, Toru Lin, Ye Yuan, Tairan He, Wenli Xiao, Yunrong Guo, Gal Chechik, Kris Kitani, Linxi Fan, Yuke Zhu | **날짜**: 2025-05-18 | **URL**: [https://arxiv.org/abs/2505.12278](https://arxiv.org/abs/2505.12278)
@@ -67,3 +89,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 egocentric vision을 유일한 정보원으로 하는 humanoid whole-body dexterous control의 실현이라는 도전적 문제를 perception-as-interface 패러다임과 hierarchical RL을 통해 창의적으로 해결하며, emergent active search behaviors의 명시적 입증을 통해 vision-driven control의 이점을 새롭게 조명한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — 능동적 인식 학습과 인간 시연 기반 활성 인식은 모두 시각적 인식을 통한 조작 학습을 다루지만 접근법이 다르다.
+- 🔗 후속 연구: [[papers/1807_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — 에고센트릭 비전을 통한 충돌 회피가 능동적 인식 프레임워크의 확장된 응용이다.
+- 🏛 기반 연구: [[papers/1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — 에고센트릭 비전 기반 로코-조작이 능동적 인식과 손재주 개발의 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — Omni-Perception의 전방향 충돌 회피가 PDC의 자아중심 시각 기반 능동 지각을 안전성 측면으로 확장한 형태입니다.
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 360° 시각적 탐색 연구가 PDC 프레임워크의 egocentric vision 기반 능동적 인식을 위한 기본적인 시각 탐색 기술을 제공한다.
+- 🔄 다른 접근: [[papers/2055_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — open-vocabulary 시각 조작을 위한 휴머노이드 말단 장치 제어가 household tasks가 아닌 다른 도메인에서 시각 기반 조작을 다루는 접근을 제시한다.
+- 🧪 응용 사례: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — ManiSkill-HAB의 가정 환경 저수준 조작 벤치마크가 PDC의 복잡한 household tasks 수행 능력을 평가하고 적용하는 구체적인 테스트베드를 제공한다.

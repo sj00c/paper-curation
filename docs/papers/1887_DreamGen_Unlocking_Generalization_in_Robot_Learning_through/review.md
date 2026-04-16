@@ -1,3 +1,24 @@
+---
+title: "1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through"
+authors:
+  - "Joel Jang"
+  - "Seonghyeon Ye"
+  - "Zongyu Lin"
+  - "Jiannan Xiang"
+  - "Johan Bjorck"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "DreamGen은 비디오 월드 모델(video world model)을 활용하여 최소한의 원격조종 데이터로부터 로봇 정책을 학습하는 4단계 파이프라인으로, 신규 행동과 환경에 대한 일반화를 달성한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jang et al._2025_DreamGen Unlocking Generalization in Robot Learning through Video World Models.pdf"
+---
+
 # DreamGen: Unlocking Generalization in Robot Learning through Video World Models
 
 > **저자**: Joel Jang, Seonghyeon Ye, Zongyu Lin, Jiannan Xiang, Johan Bjorck, Yu Fang, Fengyuan Hu, Spencer Huang, Kaushil Kundalia, Yen-Chen Lin, Loic Magne, Ajay Mandlekar, Avnish Narayan, You Liang Tan, Guanzhi Wang, Jing Wang, Qi Wang, Yinzhen Xu, Xiaohui Zeng, Kaiyuan Zheng, Ruijie Zheng, Ming-Yu Liu, Luke Zettlemoyer, Dieter Fox, Jan Kautz, Scott Reed, Yuke Zhu, Linxi Fan | **날짜**: 2025-05-19 | **URL**: [https://arxiv.org/abs/2505.12705](https://arxiv.org/abs/2505.12705)
@@ -69,3 +90,15 @@ DreamGen은 비디오 월드 모델(video world model)을 활용하여 최소한
 - Overall: 4/5
 
 **총평**: DreamGen은 비디오 월드 모델을 로봇 학습의 효율적인 데이터 생성 도구로 재정의하여, 최소한의 원격조종 데이터로 다양한 행동과 환경 일반화를 달성하는 혁신적이고 실용적인 접근법을 제시한다. 다중 embodiment 실세계 검증과 DreamGen Bench라는 체계적 평가 도구까지 제공하여 로봇 학습 확장의 새로운 방향을 제시한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1949_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — generative world model이 DreamGen의 video world model 기반 로봇 학습 파이프라인의 핵심 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — MetaWorld-X의 hierarchical world modeling이 DreamGen의 video world model을 VLM-orchestrated 계층 구조로 확장한다.
+- 🔄 다른 접근: [[papers/2102_Mobile-TeleVision_Predictive_Motion_Priors_for_Humanoid_Whol/review]] — Mobile-TeleVision이 predictive motion prior를 통해 DreamGen과 다른 방식으로 humanoid whole-body control의 일반화를 달성한다.
+- 🔄 다른 접근: [[papers/1869_DexMimicGen_Automated_Data_Generation_for_Bimanual_Dexterous/review]] — 최소한의 원격조종 데이터 활용과 대규모 시뮬레이션 데이터 생성이라는 정반대의 데이터 효율성 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1644_RoboCasa_Large-Scale_Simulation_of_Everyday_Tasks_for_Genera/review]] — 두 논문 모두 generalist robot 학습을 위한 대규모 데이터를 다루지만 RoboCasa는 시뮬레이션 trajectory에, DreamGen은 unlocking generalization에 집중한다
+- 🏛 기반 연구: [[papers/1869_DexMimicGen_Automated_Data_Generation_for_Bimanual_Dexterous/review]] — DreamGen의 video world model이 DexMimicGen의 자동 데이터 생성을 위한 더 강력한 생성 모델 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — 휴머노이드 계획에서 learned world model 기반 접촉 계획과 video world model을 통한 generalization의 서로 다른 world modeling 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/2015_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — HUMOTO의 고품질 인간-객체 상호작용 데이터가 DreamGen의 일반화 가능한 로봇 학습 정책 훈련에 활용될 수 있다.
+- 🔗 후속 연구: [[papers/2122_One_Policy_but_Many_Worlds_A_Scalable_Unified_Policy_for_Ver/review]] — DreamGen의 로봇 학습 일반화 기법을 terrain-aware autoregressive diffusion planner를 통한 지형별 특화 학습으로 발전시킨 연구이다.

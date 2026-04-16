@@ -1,3 +1,24 @@
+---
+title: "2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt"
+authors:
+  - "Matteo Hessel"
+  - "Hubert Soyer"
+  - "Lasse Espeholt"
+  - "Wojciech Czarnecki"
+  - "Simon Schmitt"
+date: "2018.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Multi-task Deep Reinforcement Learning에서 task 간의 reward scale과 sparsity 차이로 인한 불균형 문제를 PopArt 정규화를 통해 해결하여, 57개 Atari 게임을 단일 정책으로 인간 수준 이상의 성능으로 학습."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Character_Motion_Policy_Transfer"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hessel et al._2018_Multi-task Deep Reinforcement Learning with PopArt.pdf"
+---
+
 # Multi-task Deep Reinforcement Learning with PopArt
 
 > **저자**: Matteo Hessel, Hubert Soyer, Lasse Espeholt, Wojciech Czarnecki, Simon Schmitt, Hado van Hasselt | **날짜**: 2018-09-12 | **URL**: [https://arxiv.org/abs/1809.04474](https://arxiv.org/abs/1809.04474)
@@ -66,3 +87,19 @@ Multi-task Deep Reinforcement Learning에서 task 간의 reward scale과 sparsit
 - Overall: 4/5
 
 **총평**: PopArt를 multi-task RL에 적용한 실용적이고 효과적인 솔루션으로, 단일 정책이 다양한 task에서 인간 수준 성능을 달성한 것은 RL 분야의 중요한 이정표다. 명확한 문제 정의, 우아한 솔루션, 그리고 강력한 실험 결과로 높은 가치의 논문이다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — 증류 기반 강화학습의 발전된 형태로 PopArt의 멀티태스크 학습 원리를 두 단계 훈련으로 확장한다.
+- 🧪 응용 사례: [[papers/2153_Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distill/review]] — 멀티 행동 증류를 통한 적응형 휴머노이드 제어에 PopArt의 불균형 해결 방법론을 적용할 수 있다.
+- 🏛 기반 연구: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — 선호도 조건부 다목적 강화학습의 이론적 기반을 제공하여 태스크 간 보상 균형 문제를 해결한다.
+- 🔄 다른 접근: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — 협력적 다중 에이전트 학습이라는 다른 방식으로 복잡한 멀티태스크 문제를 해결하는 대안적 접근법이다.
+- 🔄 다른 접근: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — Multi-task 강화학습에서 PopArt 정규화와 adaptive multi-objective 접근법의 다른 관점을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — 다중 작업 deep RL을 Lipschitz 제약으로 확장하여 더 안정적인 학습을 달성한다.
+- 🔗 후속 연구: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — Multi-objective RL을 PopArt를 통한 multi-task learning으로 확장
+- 🏛 기반 연구: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — PopArt을 활용한 multi-task 강화학습이 AMOR의 다중 목표 최적화에서 발생하는 학습 안정성 문제를 해결하는 기초를 제공한다
+- 🔗 후속 연구: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — potential-based reward shaping이 PopArt과 결합된 multi-task RL에서 보상 척도 정규화 문제를 해결하는 데 확장될 수 있다
+- 🏛 기반 연구: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — multi-task 학습의 이론적 기반이 FastTD3의 다양한 태스크 처리에 도움이 된다.
+- 🏛 기반 연구: [[papers/2084_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with/review]] — PopArt의 multi-task 강화학습 정규화 기법이 LiPS의 병렬 훈련에서 다양한 휴머노이드 모델 간 학습 안정성을 향상시킨다.
+- 🏛 기반 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — PopArt의 multi-task 학습 정규화가 MASH의 cooperative-heterogeneous 다중 에이전트 학습에서 에이전트 간 협력을 안정화한다.
+- 🔗 후속 연구: [[papers/2145_TD-GRPC_Temporal_Difference_Learning_with_Group_Relative_Pol/review]] — Multi-task deep RL with PopArt이 TD-GRPC의 group relative policy optimization을 multi-task learning 환경으로 확장한 형태입니다.

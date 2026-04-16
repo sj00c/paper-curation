@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇공학 분야에서 신경망 스케일링 법칙을 처음으로 체계적으로 정량화한 메타분석 연구로, 327개 논문을 분석하여 데이터 크기, 모델 크기, 계산 자원이 로봇 작업 성능에 미치는 영향을 규명했다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sartor and Thompson_2024_Neural Scaling Laws in Robotics.pdf"
 ---
@@ -84,7 +86,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sartor and Thompson_2024_Neural Scaling 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇공학에서 데이터 스케일링 법칙이 imitation learning의 데이터 크기 영향 분석의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — BridgeData V2의 대규모 로봇 학습과 신경망 스케일링 법칙이 데이터 규모의 중요성에서 상호 보완적이다.
-- 🧪 응용 사례: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 대규모 비디오 생성 사전훈련과 로봇공학의 스케일링 법칙이 visuomotor policy에서 공통적으로 적용된다.
-- 🏛 기반 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — 로봇 학습의 신경 스케일링 법칙 연구를 바탕으로 VLA 모델에서 추론 시간 스케일링 법칙을 발견한다.
+- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇공학의 신경망 스케일링 법칙이 Data Scaling Laws in Imitation Learning의 모방 학습 스케일링 연구에 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — Neural Scaling Laws의 정량적 분석이 AutoRT의 대규모 로봇 시스템 설계에서 최적 모델 크기 결정에 실용적 지침을 제공한다.
+- 🔗 후속 연구: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — 로봇공학 스케일링 법칙이 Scaling Up and Distilling Down의 언어 기반 로봇 스킬 학습에서 효율적 스케일링 전략 수립에 활용된다.
+- 🧪 응용 사례: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — scaling law 분석을 multilingual vision-language model에 적용한 구체적 사례
+- 🔗 후속 연구: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — 로봇 스케일링 법칙을 vision-language-action model 구축에 적용한 확장 연구
+- 🔗 후속 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID와 같은 대규모 데이터셋은 Neural Scaling Laws가 제시하는 데이터 크기와 성능 관계를 실증하는 구체적 사례입니다.
+- 🔄 다른 접근: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment는 스케일링 법칙을 실제 다중 실시화 데이터로 검증하는 반면, Neural Scaling Laws는 이론적 분석에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1513_Parallels_Between_VLA_Model_Post-Training_and_Human_Motor_Le/review]] — Neural Scaling Laws가 VLA 모델의 post-training 효과를 정량적으로 이해하는 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — multilingual VLM scaling을 통해 neural scaling laws를 실증한 구체적 사례
+- 🏛 기반 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — Neural Scaling Laws의 이론적 기반을 VLA 모델의 테스트 시간 스케일링으로 확장한다.
+- 🏛 기반 연구: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — 로봇공학에서의 신경망 스케일링 법칙 연구가 VLA 모델의 데이터 활용과 아키텍처 스케일링 분석에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇 공학에서 신경망 스케일링 법칙에 대한 포괄적인 확장 연구입니다.
+- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — Neural Scaling Laws는 DRL 성공 사례 조사에서 제시된 스케일링 원칙을 이론적으로 확장하고 일반화합니다.
+- 🧪 응용 사례: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — GRUtopia가 제공하는 100k 규모의 상호작용 장면이 로봇공학에서 신경망 스케일링 법칙을 검증하는 실험 환경으로 활용된다.

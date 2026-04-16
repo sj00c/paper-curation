@@ -1,3 +1,24 @@
+---
+title: "2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars"
+authors:
+  - "Zhengyi Luo"
+  - "Jinkun Cao"
+  - "Alexander Winkler"
+  - "Kris Kitani"
+  - "Weipeng Xu"
+date: "2023.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Physics 기반 humanoid controller인 Perpetual Humanoid Controller (PHC)는 noisy input과 unexpected falls에 강건하면서 10,000개의 motion clips을 학습할 수 있으며, 새로운 Progressive Multiplicative Control Policy (PMCP)를 통해 catastrophic forgetting 없이 대규모 motion database에서 학습 가능하다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luo et al._2023_Perpetual Humanoid Control for Real-time Simulated Avatars.pdf"
+---
+
 # Perpetual Humanoid Control for Real-time Simulated Avatars
 
 > **저자**: Zhengyi Luo, Jinkun Cao, Alexander Winkler, Kris Kitani, Weipeng Xu | **날짜**: 2023-05-10 | **URL**: [https://arxiv.org/abs/2305.06456](https://arxiv.org/abs/2305.06456)
@@ -68,3 +89,15 @@ Physics 기반 humanoid controller인 Perpetual Humanoid Controller (PHC)는 noi
 - Overall: 4/5
 
 **총평**: 이 논문은 external force 제거와 PMCP라는 novel mechanism으로 physics-based motion imitation의 scalability 문제를 효과적으로 해결하며, natural fail-state recovery와 noisy input 강건성으로 실제 video 기반 avatar application에 처음으로 실용적인 solution을 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — 둘 다 인간 보행 데이터 기반 자연스러운 제어를 다루지만, PHC는 대규모 모션 클립 학습에, Natural Humanoid는 생성형 모션 사전에 집중한다.
+- 🏛 기반 연구: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — Scaling Large Motion Models의 대규모 인간 모션 데이터 처리 기법이 PHC의 10,000개 모션 클립 학습 능력 구현에 핵심적인 기술적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — MaskedMimic의 통합 물리 기반 캐릭터 제어를 실시간 시뮬레이션된 아바타 제어로 확장하여 더 강건한 입력 처리를 달성한 연구이다.
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — DeepMimic의 example-guided deep RL이 PHC의 대규모 motion clips 학습과 physics-based control의 기술적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — Humanoid Policy의 human-like behavior learning이 PHC의 10,000개 motion clips 학습을 더 human-centric한 정책 설계로 확장한 형태입니다.
+- 🔄 다른 접근: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 adversarial motion priors가 PHC의 PMCP와 다른 adversarial 접근법으로 robust physics-based character control을 달성합니다.
+- 🔗 후속 연구: [[papers/1624_PRIMAL_Physically_Reactive_and_Interactive_Motor_Model_for_A/review]] — PRIMAL의 reactive motor model을 real-time avatar control로 확장한 연구
+- 🔄 다른 접근: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — 둘 다 인간 보행 데이터를 활용한 자연스러운 휴머노이드 제어를 다루지만, Natural Humanoid는 생성형 모델에, PHC는 대규모 모션 클립 학습에 중점을 둔다.
+- 🔗 후속 연구: [[papers/2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — PHC의 대규모 motion clips 학습과 강건성 기법이 Olaf의 애니메이션 캐릭터 구현에서 다양한 동작과 예외 상황 처리를 위한 확장된 접근법입니다.

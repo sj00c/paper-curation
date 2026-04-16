@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "MuJoCo 물리엔진과 iterative LQR (iLQR) 알고리즘을 결합하여 사족 및 인형로봇의 전신 모델예측제어(MPC)를 실시간으로 수행하고, 간단한 방법으로도 현실 세계에 효과적으로 적용 가능함을 입증하는 연구이다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Whole-Body Model-Predictive Control of Legged Robots with MuJoCo.pdf"
 ---
@@ -87,3 +90,12 @@ MuJoCo 물리엔진과 iterative LQR (iLQR) 알고리즘을 결합하여 사족 
 - Overall: 4/5
 
 **총평**: 이 논문은 복잡한 최적화 이론 대신 표준 도구들의 조합으로 현실 세계 다리로봇 제어를 성공시킨 우수한 실증 연구이며, 공개된 코드와 상세한 구현 정보로 커뮤니티 연구 가속화에 큰 기여할 것으로 기대된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — iLQR 기반 전신 MPC와 MPPI 기반 샘플링 MPC는 모두 실시간 최적화 제어를 추구하는 상호 보완적인 최적화 알고리즘이다.
+- 🏛 기반 연구: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — MuJoCo 기반 실시간 MPC 구현이 PyRoki의 GPU 가속 최적화와 결합되어 더 효율적인 전신 제어가 가능하다.
+- 🔄 다른 접근: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — SN 기반 메모리 효율적 학습과 MuJoCo 기반 실시간 MPC는 모두 계산 효율성을 추구하는 상호 보완적 제어 접근법이다.
+- 🔄 다른 접근: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — MuJoCo 기반 실시간 전신 MPC와 GPU 가속 역기구학 최적화는 모두 효율적인 휴머노이드 제어를 위한 상호 보완적 접근법이다.
+- 🔄 다른 접근: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — MPPI 기반 샘플링 MPC와 iLQR 기반 전신 MPC는 모두 사전 정의된 패턴 없이 실시간 최적화 제어를 추구하는 상호 보완적 방법이다.
+- 🏛 기반 연구: [[papers/1784_A_Unified_and_General_Humanoid_Whole-Body_Controller_for_Ver/review]] — 다중 접촉 상황에서의 MPC 기반 전신 제어가 HugWBC의 versatile locomotion 구현에 필요한 기초 이론을 제공한다

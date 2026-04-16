@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "SafeHumanoid는 Vision Language Model(VLM)과 Retrieval-Augmented Generation(RAG)을 활용하여 휴머노이드 로봇의 임피던스와 속도를 동적으로 조정하는 시스템으로, 인간-로봇 상호작용 시 안전성과 작업 완료를 동시에 달성한다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Dexterous_Hand_Trajectory_Datasets"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mahmoud et al._2025_SafeHumanoid VLM-RAG-driven Control of Upper Body Impedance for Humanoid Robot.pdf"
 ---
@@ -85,3 +88,17 @@ SafeHumanoid는 Vision Language Model(VLM)과 Retrieval-Augmented Generation(RAG
 - Overall: 4/5
 
 **총평**: SafeHumanoid는 의미론적 추론과 임피던스 제어의 혁신적 결합으로 인간-로봇 협력의 안전성을 크게 향상시키는 제안이지만, 추론 지연시간과 실시간성은 실제 배포를 위해 해결해야 할 주요 과제이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2012_HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Con/review]] — 두 논문 모두 VLM을 활용한 휴머노이드 제어를 다루지만, 안전성 중심과 일반적인 임피던스 제어라는 다른 관점을 가진다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 자유형식 언어 명령을 통한 휴머노이드 제어의 기본 개념을 제공한다.
+- 🔗 후속 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — GPT-4와 휴머노이드 결합 연구를 VLM-RAG로 확장하여 더 안전하고 적응적인 상호작용을 실현한다.
+- 🔗 후속 연구: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — SafeHumanoid의 VLM-RAG 기반 안전 제어가 SHIELD의 CBF 기반 안전성 보장과 결합되어 더 포괄적인 human-robot interaction 안전 시스템을 구축할 수 있다
+- 🏛 기반 연구: [[papers/1802_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — SafeHumanoid의 VLM 활용 방식이 Empirical Evaluation of VLMs의 proprietary vision model 평가 결과를 기반으로 최적화될 수 있다
+- 🔗 후속 연구: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — SafeHumanoid의 VLM-RAG 기반 임피던스 조정과 다중 접촉 안정성 인식 retargeting을 결합하면 더 안전한 텔레오퍼레이션이 가능하다
+- 🔄 다른 접근: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 둘 다 휴머노이드 안전 제어를 다루지만 SafeHumanoid는 VLM-RAG 기반, SPARK는 CBF 기반 접근을 사용한다
+- 🏛 기반 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — SPARK의 모듈식 안전 제어 알고리즘이 SafeHumanoid의 VLM 기반 안전성 시스템에 기반 컨트롤러를 제공한다
+- 🔄 다른 접근: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — 둘 다 휴머노이드 안전성을 다루지만 물리적 안정성 기반 vs VLM-RAG 기반으로 접근 방식이 다르다
+- 🔗 후속 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — SafeHumanoid의 VLM-RAG driven control이 hierarchical VLM planning을 안전성 측면에서 확장합니다.
+- 🔄 다른 접근: [[papers/2012_HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Con/review]] — SafeHumanoid의 VLM-RAG driven control이 HumanoidVLM과 다른 방식으로 vision-language 기반 제어를 구현합니다.

@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "3D Diffusion Policy (DP3)는 점군(point cloud) 기반의 3D 시각 표현을 diffusion policy와 결합하여 로봇 모방 학습에서 적은 데이터로 높은 일반화 성능을 달성하는 방법을 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Diffusion_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ze et al._2024_3D Diffusion Policy Generalizable Visuomotor Policy Learning via Simple 3D Representations.pdf"
 ---
@@ -89,8 +89,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ze et al._2024_3D Diffusion Policy Gener
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1278_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — BFM-Zero는 프롬프트 기반 접근법으로 masked distillation과는 다른 방식의 행동 기초 모델을 구현한다
-- 🏛 기반 연구: [[papers/1257_Advancing_Humanoid_Locomotion_Mastering_Challenging_Terrains/review]] — DWL의 인코더-디코더 구조와 표현 학습의 이론적 기반을 제공한다
-- 🔗 후속 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 자유로운 플레이에서 조작 학습하는 MimicDroid가 대규모 인간 시연으로 행동 기반 모델을 사전훈련하는 BFM-Zero로 확장된다.
-- 🏛 기반 연구: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — ThinkBot의 행동 지시 생성이 BFM-Zero의 promptable behavior modeling 원리를 기반으로 발전된 형태
-- 🔄 다른 접근: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — BFM-Zero의 behavioral foundation model이 VLA와 다른 관점에서 generalist robot policy 문제에 접근
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 action diffusion 개념을 3D 시각 표현과 결합하여 point cloud 기반으로 확장한 방법론입니다.
+- 🔄 다른 접근: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — 둘 다 3D 시각 표현과 생성 모델을 결합하지만 DP3는 diffusion을, 3DFA는 flow matching을 사용하여 서로 다른 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — RVT의 3D object manipulation을 위한 view transformer 개념을 diffusion policy와 결합하여 모방 학습으로 발전시킨 연구입니다.
+- 🔄 다른 접근: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — 3D Diffusion Policy도 로봇 조작에 diffusion을 적용하지만 3D 공간 표현에 특화된 반면, 계층적 접근법은 접촉점 기반 분해에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — 3D Diffusion Policy의 공간적 이해를 RGB-D 기반 hierarchical conditioning으로 더욱 정교화했다.
+- 🔄 다른 접근: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — 3D visuomotor policy learning에서 voxelized observation vs 3D diffusion policy라는 서로 다른 3D 공간 표현 및 학습 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/1567_SE3-Equivariant_Robot_Learning_and_Control_A_Tutorial_Survey/review]] — 3D Diffusion Policy는 SE(3) equivariant 구조를 diffusion 기반 visuomotor 정책에 적용한 실제 구현 사례다.
+- 🔄 다른 접근: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — 3D Diffusion Policy가 diffusion 기반 접근법으로 3D 조작을 다루는 반면, RVT는 transformer 기반으로 동일한 문제를 해결한다.
+- 🏛 기반 연구: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — 3D diffusion policy의 기반 위에서 flow matching을 통한 30배 속도 개선을 달성한 후속 연구
+- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 둘 다 3D 공간 정보를 활용한 로봇 정책 학습이지만 3D-VLA는 generative world model 접근법을 취합니다.
+- 🧪 응용 사례: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 3D Diffusion Policy는 survey에서 제시된 diffusion 방법론을 3D 공간 이해와 결합한 구체적인 적용 사례입니다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 3D diffusion policy가 일반적인 diffusion policy를 3D 공간으로 확장한 기반 연구

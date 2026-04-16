@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 로봇 자동화 스택의 지각, 의사결정, 제어 전반에 걸쳐 foundation model의 응용을 포괄적으로 조사하며, 로봇 도메인 적용 시 데이터 부족, 실시간 성능, 안전성 보장 등의 주요 과제를 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robot_Foundation_Models"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Firoozi et al._2023_Foundation Models in Robotics Applications, Challenges, and the Future.pdf"
 ---
@@ -84,6 +86,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Firoozi et al._2023_Foundation Models in
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — feature-based와 GAN-based 학습 방법론 비교가 DRL 문제 공식화의 이론적 기초 제공
-- 🧪 응용 사례: [[papers/1409_GR-2_A_Generative_Video-Language-Action_Model_with_Web-Scale/review]] — demonstration learning 방법론 선택 기준이 GR-2와 같은 generative 모델 훈련에 적용
-- 🔄 다른 접근: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — 로봇 분야의 foundation model 적용에 대한 포괄적 조사에서 서로 다른 관점과 체계를 제시한다.
+- 🔗 후속 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Foundation Models in Robotics와 Robot Learning in the Era of Foundation Models는 로봇틱스에서 foundation model 활용에 대한 상호 보완적인 종합 조사이다.
+- 🔄 다른 접근: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — 로봇틱스 foundation model 응용과 foundation model 기반 범용 로봇은 동일한 기술의 현재 상태와 미래 비전을 다루는 서로 다른 관점이다.
+- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — Foundation Model Driven Robotics의 포괄적 리뷰는 로봇틱스 foundation model 응용 조사에 더 넓은 기술적 맥락과 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — Pure Vision Language Action Models의 VLA 특화 조사가 Foundation Models in Robotics의 더 광범위한 foundation model 응용 연구로 확장된 관계이다.
+- 🏛 기반 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — Multimodal Fusion and Vision-Language Models 서베이가 Foundation Models in Robotics에서 다루는 multimodal foundation model의 로봇 응용에 기초적 이론을 제공한다.
+- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — 둘 다 foundation model의 로봇공학 응용을 종합적으로 다루지만 LLM/VLM 중심 vs 전반적 foundation model로 범위가 다르다.
+- 🔄 다른 접근: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — Foundation model의 로봇 적용을 다각도로 분석한 서베이와 생성형 AI 중심의 다른 관점을 제시한다.
+- 🔗 후속 연구: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — Foundation Models in Robotics가 EMLMs의 체계적 분석을 로봇 응용의 구체적인 도전과 기회로 확장합니다.
+- 🔗 후속 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — 대규모 모델 기반 embodied AI 서베이가 Foundation Models in Robotics의 기초 연구를 의사결정과 학습 관점에서 심화 발전시킨다.
+- 🏛 기반 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — Foundation Models in Robotics의 전반적 분석이 VLA 모델 survey의 이론적 배경과 분류 체계를 제공한다.
+- 🔄 다른 접근: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Foundation Models in Robotics와 함께 로봇 분야의 기초 모델을 조망하지만 이 연구는 LLM/multimodal 모델에, 다른 연구는 전반적 응용에 집중한다.
+- 🔄 다른 접근: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — Foundation Models in Robotics는 동일한 로봇 foundation model 주제를 다루지만 응용과 도전 과제에 더 집중하는 다른 관점을 제공한다.
+- 🔗 후속 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — 로봇공학에서 foundation model의 일반적 응용을 VLA 모델의 구체적 개념과 진전으로 확장하여 심화 분석한다.
+- 🔗 후속 연구: [[papers/1300_A_Survey_on_Vision-Language-Action_Models_for_Autonomous_Dri/review]] — 자율주행용 VLA 모델 서베이는 로봇틱스 foundation model 종합 조사의 특정 도메인 확장판이다.
+- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — Foundation model 시대의 로봇 공학에서 강화학습의 역할과 발전방향을 제시합니다.
+- 🔗 후속 연구: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — Foundation model 시대에 손가락 조작 모방학습의 새로운 방향성을 제시합니다.
+- 🔄 다른 접근: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 로봇 조작에서 diffusion model과 foundation model의 서로 다른 관점의 종합적 리뷰를 제공합니다.

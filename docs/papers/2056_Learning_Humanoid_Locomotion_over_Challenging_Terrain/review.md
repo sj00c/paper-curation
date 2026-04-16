@@ -1,3 +1,25 @@
+---
+title: "2056_Learning_Humanoid_Locomotion_over_Challenging_Terrain"
+authors:
+  - "Junfeng Long"
+  - "Junli Ren"
+  - "Moji Shi"
+  - "Zirui Wang"
+  - "Tao Huang"
+date: "2024.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 안정적인 이동을 위해 온보드 elevation map을 기반으로 한 Perceptive Internal Model (PIM)을 제안하며, HIM을 확장하여 지각 정보를 통합한 단일 단계 학습 방법을 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Long et al._2024_Learning Humanoid Locomotion with Perceptive Internal Model.pdf"
+---
+
 # Learning Humanoid Locomotion with Perceptive Internal Model
 
 > **저자**: Junfeng Long, Junli Ren, Moji Shi, Zirui Wang, Tao Huang, Ping Luo, Jiangmiao Pang | **날짜**: 2024-11-21 | **URL**: [https://arxiv.org/abs/2411.14386](https://arxiv.org/abs/2411.14386)
@@ -65,3 +87,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 elevation map 기반 지각 모듈을 HIM과 통합하여 인간형 로봇의 복잡한 지형 네비게이션을 단일 단계로 효율적으로 학습하는 실질적이고 우수한 방법을 제시하며, 다양한 로봇과 지형에서의 광범위한 검증을 통해 실용성을 입증한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — PIM의 elevation map 기반 지각을 실시간 보행 적응과 결합하여 더 동적이고 반응적인 지형 내비게이션을 구현할 수 있다.
+- 🔄 다른 접근: [[papers/2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — 도전적 지형에서의 지각적 locomotion에서 내부 모델 기반 접근법 대신 직접적인 지각 학습 방법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 실제-시뮬레이션 학습 프레임워크가 PIM의 지각 기반 제어 정책을 현실 환경에 적용하기 위한 기본적인 변환 메커니즘을 제공한다.
+- 🔄 다른 접근: [[papers/1658_RPL_Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challe/review]] — 도전적 지형에서의 인식 기반 보행에서 RPL은 강건성에, PIM은 내부 모델에 집중
+- 🧪 응용 사례: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — 지각적 내부 모델이 다각형 의미 매핑을 통한 계단 보행에 직접 적용되어 실제 환경에서의 안정성을 보여준다.
+- 🔗 후속 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — perceptive internal model을 통한 humanoid locomotion 학습이 D-PPO의 지각 기반 보행을 더 정교한 내부 모델로 발전시킨다.
+- 🔄 다른 접근: [[papers/2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — 거친 지형에서의 지각적 보행에서 teacher-student는 증류 방법을, PIM은 내부 모델 접근법을 사용한다.

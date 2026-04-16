@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "SIMA는 키보드-마우스 인터페이스를 통해 자연어 명령을 따르는 embodied AI 에이전트를 다양한 3D 환경(연구용 환경 및 상업 비디오 게임)에서 학습시키는 프로젝트이다. 이는 언어를 지각과 구현된 행동에 그라운딩하여 일반적인 embodied AI 개발을 목표로 한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Team et al._2024_Scaling Instructable Agents Across Many Simulated Worlds.pdf"
 ---
@@ -89,6 +91,16 @@ SIMA는 키보드-마우스 인터페이스를 통해 자연어 명령을 따르
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1294_A_Generalist_Agent/review]] — A Generalist Agent가 SIMA의 embodied AI 에이전트를 더 일반화된 형태로 확장한다.
-- 🧪 응용 사례: [[papers/1477_Humanoid-Gym_Reinforcement_Learning_for_Humanoid_Robot_with/review]] — MineDojo의 internet-scale embodied agents가 SIMA의 다양한 3D 환경 학습을 마인크래프트 환경에서 구체적으로 구현한다.
-- 🔄 다른 접근: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — MP5의 Minecraft 기반 embodied system과 SIMA의 다양한 3D 환경은 모두 embodied AI를 위한 서로 다른 게임 환경 접근법이다.
+- 🔄 다른 접근: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Voyager는 SIMA와 같은 embodied agent이지만 Minecraft 환경에서 자율적 탐험과 기술 학습에 특화된 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — JARVIS-1은 SIMA와 유사한 다중 환경 instructable agent이지만 메모리 증강된 멀티태스크에 집중하는 차별점이 있다.
+- 🏛 기반 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo는 SIMA가 활용하는 게임 환경 기반 embodied AI 학습의 기반이 되는 오픈엔디드 환경을 제공한다.
+- 🔄 다른 접근: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — MP5는 SIMA와 같은 시뮬레이션 환경에서의 embodied AI이지만 Minecraft에서의 다중모달 시스템에 특화된다.
+- 🔗 후속 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — SIMA의 다양한 3D 환경 학습 경험이 RoboTron-Nav의 embodied navigation 통합 프레임워크로 구체화되어 적용된다.
+- 🔗 후속 연구: [[papers/1294_A_Generalist_Agent/review]] — A Generalist Agent와 SIMA는 모두 범용 AI 에이전트를 목표로 하되 SIMA가 더 다양한 3D 환경으로 확장했습니다.
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Genie의 생성형 환경 모델링은 SIMA의 다양한 시뮬레이션 환경 학습을 위한 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — 시뮬레이션 환경에서의 instructable agent를 Minecraft의 개방형 환경으로 확장하여 더 복잡한 장기 지평선 작업에서의 적용을 다룬다.
+- 🔗 후속 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — OctoNav의 generalist navigation을 다양한 시뮬레이션 환경에서 확장하여 instructable agents로 발전시킬 수 있다.
+- 🏛 기반 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — SIMA의 다양한 3D 환경에서의 embodied navigation 경험이 RoboTron-Nav의 통합 navigation 프레임워크 개발에 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Scaling Instructable Agents의 다중 시뮬레이션 환경 확장 접근법이 Voyager의 Minecraft 환경을 넘어선 일반화에 활용될 수 있다
+- 🔗 후속 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — 여러 시뮬레이션 세계에서의 지시 따르기 에이전트 스케일링을 BEHAVIOR-1K 벤치마크로 확장할 수 있습니다.
+- 🧪 응용 사례: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — Scaling Instructable Agents는 GRUtopia의 대규모 시뮬레이션 환경에서 확장 법칙을 탐구하는 실제 적용 사례임

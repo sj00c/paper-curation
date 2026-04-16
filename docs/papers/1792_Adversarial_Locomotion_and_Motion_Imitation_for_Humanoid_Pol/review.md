@@ -1,3 +1,23 @@
+---
+title: "1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol"
+authors:
+  - "Jiyuan Shi"
+  - "Xinzhe Liu"
+  - "Dewei Wang"
+  - "Ouyang Lu"
+  - "Sören Schwertfeger"
+date: "2025.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 상반신과 하반신의 서로 다른 역할을 분리하여 학습하는 대적적 학습 프레임워크 ALMI를 제안하고, 시뮬레이션과 실제 로봇에서 강건한 보행과 정확한 모션 추적을 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2025_Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning.pdf"
+---
+
 # Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning
 
 > **저자**: Jiyuan Shi, Xinzhe Liu, Dewei Wang, Ouyang Lu, Sören Schwertfeger, Chi Zhang, Fuchun Sun, Chenjia Bai, Xuelong Li | **날짜**: 2025-04-19 | **URL**: [https://arxiv.org/abs/2504.14305](https://arxiv.org/abs/2504.14305)
@@ -66,3 +86,16 @@
 - Overall: 4/5
 
 **총평**: 상반신과 하반신의 역할 분리를 adversarial learning으로 구현한 novel framework이며, 이론적 수렴 보장과 실제 로봇 구현의 성공이 결합되어 높은 실용성을 보유하고 있다. 대규모 dataset 공개로 향후 연구의 기반을 제공하는 점도 의미 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1795_Agility_Meets_Stability_Versatile_Humanoid_Control_with_Hete/review]] — 둘 다 휴머노이드 제어의 민첩성과 안정성을 다루지만 ALMI는 대적 학습에, AMS는 heterogeneous data 결합에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 adversarial motion prior 학습 방법론이 ALMI의 대적적 학습 프레임워크의 이론적 기반이 된다.
+- 🧪 응용 사례: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 계층적 계획과 제어 접근법이 ALMI의 상반신-하반신 분리 학습을 box manipulation 작업에 적용하는 데 활용될 수 있다.
+- 🔗 후속 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — 적대적 학습을 통한 휴머노이드 제어에서 보행과 전반적인 locomotion/motion imitation이라는 보완적 응용을 다룬다.
+- 🔗 후속 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 adversarial motion prior 학습이 ALMI의 대적적 휴머노이드 정책 학습에 방법론적 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1795_Agility_Meets_Stability_Versatile_Humanoid_Control_with_Hete/review]] — 둘 다 민첩성과 안정성을 추구하지만 AMS는 heterogeneous data 결합에, ALMI는 대적 학습에 중점을 둔다.
+- 🏛 기반 연구: [[papers/2045_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — 적대적 locomotion과 모션 모방의 기본 원리가 사족 로봇의 민첩한 제어 정책 학습에 대한 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 적대적 학습을 통한 모션 모방이 시각 기반 반응형 축구 기술의 기반 제공
+- 🔄 다른 접근: [[papers/2105_MoRE_Mixture_of_Residual_Experts_for_Humanoid_Lifelike_Gaits/review]] — 복잡한 지형에서의 인간다운 보행을 위한 다른 접근법으로, adversarial learning과 mixture of experts의 차이를 비교할 수 있다.
+- 🏛 기반 연구: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — 적대적 학습을 통한 동작 모방의 견고성 향상 기법이 다양한 교란 상황에서의 동작 추적 능력 개발의 이론적 토대가 됩니다.

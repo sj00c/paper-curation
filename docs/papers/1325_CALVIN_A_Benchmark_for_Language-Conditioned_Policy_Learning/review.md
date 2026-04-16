@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "CALVIN은 장기간 언어 조건부 로봇 조작 작업을 위한 오픈소스 시뮬레이션 벤치마크로, 자연어 명령을 따라 다단계 조작 작업을 수행하도록 학습하는 에이전트를 평가한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Hierarchical_Task_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multi-Task_Language_Benchmarks"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mees et al._2021_CALVIN A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tas.pdf"
 ---
@@ -89,11 +90,15 @@ CALVIN은 장기간 언어 조건부 로봇 조작 작업을 위한 오픈소스
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — ARNOLD와 함께 언어 조건부 로봇 벤치마크의 쌍을 이루며, 장기 작업 시퀀스 vs 연속적 객체 상태라는 상호 보완적 관점을 제공한다
-- 🔗 후속 연구: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — LIBERO가 CALVIN의 언어 조건부 정책 학습을 생애주기 학습과 지식 전이 관점으로 확장하여 더 포괄적인 평가를 가능하게 한다
-- 🏛 기반 연구: [[papers/1604_Video_Language_Planning/review]] — Video Language Planning의 비디오-언어 통합 방법론이 CALVIN의 언어 조건부 정책 학습에 멀티모달 기반을 제공한다
-- 🔗 후속 연구: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — LIBERO가 CALVIN의 언어 조건부 정책 학습을 생애주기 학습 관점으로 확장하여 지식 전이와 지속적 학습을 포괄적으로 다룬다
-- 🔄 다른 접근: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — 언어 조건 로봇 조작 평가에서 VLABench의 100개 대규모 과제와 CALVIN의 언어 조건 정책 학습 벤치마크를 평가 규모와 복잡성 측면에서 비교할 수 있다.
-- 🧪 응용 사례: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — CALVIN 벤치마크의 언어 조건 정책 학습 평가 방법론을 VIMA의 멀티모달 프롬프트 기반 로봇 에이전트 성능 검증에 활용할 수 있다.
-- 🔄 다른 접근: [[papers/1304_ALFRED_A_Benchmark_for_Interpreting_Grounded_Instructions_fo/review]] — CALVIN은 ALFRED와 유사한 언어 조건부 정책 학습 벤치마크이지만 다른 작업 설정을 사용한다
-- 🔄 다른 접근: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — CALVIN과 함께 언어 기반 로봇 조작 벤치마크의 대표적인 쌍으로, 연속적 객체 상태 vs 장기 작업 시퀀스라는 서로 다른 초점을 비교할 수 있다
+- 🔗 후속 연구: [[papers/1304_ALFRED_A_Benchmark_for_Interpreting_Grounded_Instructions_fo/review]] — CALVIN의 장기간 언어 조건부 조작과 ALFRED의 자연어 지시 매핑은 언어 기반 로봇 작업 학습 벤치마크의 발전 과정이다.
+- 🧪 응용 사례: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — LIBERO의 평생 로봇 학습 벤치마크는 CALVIN의 다단계 조작 작업을 지속적 학습 관점에서 확장한다.
+- 🏛 기반 연구: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — MimicPlay의 장기간 모방 학습은 CALVIN의 언어 조건부 장기 작업 수행에 학습 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench의 robot learning benchmark 개념을 language-conditioned policy learning과 장기간 조작 작업에 특화하여 발전시킨 연구입니다.
+- 🔄 다른 접근: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — 둘 다 장기간 로봇 작업을 위한 벤치마크이지만 CALVIN은 language conditioning에, RoboCerebra는 large-scale benchmark에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — 둘 다 언어 조건 정책 학습 벤치마크이지만 LIBERO는 생애주기 학습에, CALVIN은 일반적인 정책 학습에 집중한다.
+- 🔄 다른 접근: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench와 CALVIN 모두 언어 조건화된 로봇 학습 벤치마크이지만 태스크 복잡성과 평가 방식에서 차별화됩니다.
+- 🏛 기반 연구: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — language-conditioned policy learning의 기초 벤치마크를 제공하여 RoboCerebra의 장기간 로봇 조작 작업 평가에 필요한 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1591_Towards_Diverse_Behaviors_A_Benchmark_for_Imitation_Learning/review]] — CALVIN의 언어 조건부 정책 학습을 행동 다양성 평가로 확장한다.
+- 🔄 다른 접근: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — CALVIN과 같이 언어 조건부 정책 학습을 위한 벤치마크이지만, VLABench는 더 대규모이고 다양한 태스크를 제공한다
+- 🔗 후속 연구: [[papers/1304_ALFRED_A_Benchmark_for_Interpreting_Grounded_Instructions_fo/review]] — ALFRED의 자연어 지시 매핑과 CALVIN의 장기간 언어 조건부 조작은 모두 언어 기반 로봇 작업 학습 벤치마크의 발전이다.
+- 🔄 다른 접근: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — 언어 조건부 정책 학습을 위한 다른 벤치마크 접근법을 제시한다.

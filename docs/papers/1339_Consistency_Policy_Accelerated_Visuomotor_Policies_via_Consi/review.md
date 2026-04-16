@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "Consistency Policy는 Diffusion Policy를 Consistency Distillation을 통해 단일 스텝으로 빠르게 추론할 수 있도록 가속화한 로보틱 비주얼모터 정책으로, 자원 제약이 있는 로봇 시스템에서 저지연 의사결정을 가능하게 한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
   - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Prasad et al._2024_Consistency Policy Accelerated Visuomotor Policies via Consistency Distillation.pdf"
@@ -93,10 +94,15 @@ Consistency Policy는 Diffusion Policy를 Consistency Distillation을 통해 단
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — Consistency Policy의 single-step 가속화 기법이 CEED-VLA의 early-exit decoding 방법론에 대한 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 둘 다 diffusion policy 기반이지만 Consistency Policy는 consistency distillation을, Diffusion Policy는 원본 diffusion을 사용한다.
-- 🔗 후속 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — One-Step Diffusion Policy의 단일 스텝 생성이 Consistency Policy의 저지연 추론을 더욱 극단적으로 최적화할 수 있다.
-- 🏛 기반 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — consistency policy의 가속화 원리가 OneDP의 단일 단계 action generation 설계에 핵심 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — 일관성 정책과 스트리밍 플로우 정책이 각각 다른 방식으로 확산 모델의 추론 속도를 개선한다.
-- 🔗 후속 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Consistency Policy의 일관성 보장 원리를 flow matching 정책에서 noise-free 방식으로 발전시켰다
-- 🏛 기반 연구: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — Consistency Policy의 single-step 추론 가속화 기법이 CEED-VLA의 early-exit decoding 방법론의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Action Diffusion을 통한 visuomotor 정책 학습의 원리적 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — VLA 모델 가속화를 위한 구조적 가지치기의 구체적인 적용 사례입니다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — Diffusion policy의 속도 개선을 위한 또 다른 one-step 접근방식을 제시합니다.
+- 🏛 기반 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Flow-based 정책의 streaming 구현을 위한 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1391_Fast-in-Slow_A_Dual-System_Foundation_Model_Unifying_Fast_Ma/review]] — Consistency Policy의 단일 추론 단계 정책 생성 기법이 FiS의 System 1 고속 실행 설계 기반이 됨
+- 🔗 후속 연구: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — consistency policy를 flow matching과 결합하여 더 안정적이고 빠른 visuomotor policy를 구현할 수 있다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 두 논문 모두 diffusion 기반 정책의 추론 속도 개선을 목표로 하지만 distillation과 consistency model로 접근법이 다르다.
+- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — Consistency Policy의 가속화된 정책 실행 기법이 RTC의 실시간 chunking 성능을 더욱 향상시킬 수 있다.
+- 🔄 다른 접근: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — Consistency Policy가 확산 모델의 가속화에 중점을 두는 반면, RoboMonkey는 VLA 모델의 테스트 시간 샘플링과 검증을 통한 성능 향상에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Consistency Policy는 VITA와 같은 효율적인 visuomotor 정책이지만 consistency model을 활용하는 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — ConRFT의 consistency policy 구성요소가 Consistency Policy 방법론을 기반으로 합니다.
+- 🔗 후속 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — Consistency Policy는 diffusion model survey에서 다룬 sampling 속도 문제를 consistency model로 해결하는 발전된 접근법입니다.

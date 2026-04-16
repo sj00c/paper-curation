@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "대형 언어모델(LLM)을 활용하여 의미적 맵과 프론티어 선택을 통해 미지의 환경에서 시각적 목표 항법을 수행하는 프레임워크를 제안한다. Zero-shot과 feed-forward 두 가지 패러다임으로 상식적 추론을 이용한 효율적 탐색을 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Open-Vocabulary_Scene_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2023_L3MVN Leveraging Large Language Models for Visual Target Navigation.pdf"
 ---
@@ -88,11 +90,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2023_L3MVN Leveraging Large La
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 두 논문 모두 사전훈련된 언어 모델을 네비게이션에 활용하지만, 하나는 의미적 추론에, 다른 하나는 CLIP과의 조합에 집중합니다.
-- 🔗 후속 연구: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — 시각적 목표 네비게이션에서 LLM 기반 추론을 diffusion 기반 예측과 결합하여 더욱 발전시킨 접근법입니다.
-- 🏛 기반 연구: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — 제로샷 목표 지향 네비게이션의 기본 개념과 방법론이 LLM 기반 시각적 네비게이션의 토대가 됩니다.
-- 🧪 응용 사례: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — 오픈 어휘 장면 표현이 LLM 기반 의미적 추론을 실제 환경에서 구현하는 데 필요한 기술입니다.
-- 🔗 후속 연구: [[papers/1319_BeliefMapNav_3D_Voxel-Based_Belief_Map_for_Zero-Shot_Object/review]] — L3MVN은 BeliefMapNav의 개념을 대규모 언어 모델을 활용한 시각적 목표 네비게이션으로 확장한다
-- 🔄 다른 접근: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 두 논문 모두 사전훈련된 언어 모델을 네비게이션에 활용하지만, 접근 방식과 활용하는 모델 조합이 다릅니다.
-- 🔗 후속 연구: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — LLM 기반 시각적 목표 네비게이션을 diffusion 네트워크와 결합하여 더욱 정교한 미래 예측 기반 네비게이션을 구현합니다.
-- 🧪 응용 사례: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — UniGoal의 zero-shot goal navigation이 L3MVN의 large language model 기반 visual target navigation과 결합되어 더 강력한 목표 지향 시스템을 구성
+- 🔄 다른 접근: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — 둘 다 미탐사 영역 예측 네비게이션을 다루지만 LLM 기반 상식 추론 vs scene imagination이라는 다른 방법론을 사용한다.
+- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — LM-Nav의 large pre-trained model 활용을 시각적 목표 네비게이션에 LLM으로 확장한 발전 형태이다.
+- 🔗 후속 연구: [[papers/1367_DivScene_Towards_Open-Vocabulary_Object_Navigation_with_Larg/review]] — DivScene의 open-vocabulary object navigation을 LLM 기반 semantic mapping과 결합하여 더욱 발전시켰다.
+- 🔄 다른 접근: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — 둘 다 LLM을 활용한 로봇 네비게이션을 다루지만 L3MVN은 시각적 목표 탐색에, NLMap은 쿼리 가능한 장면 표현에 초점을 맞춘 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — L3MVN의 LLM 기반 의미적 추론이 WMNav의 비전-언어 모델과 월드 모델 통합에서 더 정교한 추론 능력으로 확장됩니다.
+- 🔗 후속 연구: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — adaptive exploration을 LLM 기반 navigation과 결합하여 zero-shot 성능을 더욱 향상시킬 수 있다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — visual language maps의 기본 개념을 LLM 기반 navigation 시스템에 통합하는 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — 둘 다 미탐사 영역 예측을 통한 효율적 네비게이션을 다루지만 scene imagination vs LLM 기반 추론이라는 다른 방법론을 사용한다.
+- 🔄 다른 접근: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 둘 다 LLM을 navigation에 활용하지만 일반적인 navigation과 visual target navigation의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1508_Openfly_A_comprehensive_platform_for_aerial_vision-language/review]] — OpenFly와 L3MVN 모두 항공 네비게이션을 다루지만 VLN과 시각적 타겟 네비게이션이라는 다른 접근법을 사용합니다.
+- 🔄 다른 접근: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — L3MVN은 TRAVEL과 유사하게 대규모 언어 모델을 시각적 네비게이션에 활용하지만 다른 접근 방식을 제시한다.
+- 🧪 응용 사례: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — L3MVN은 VLN 서베이에서 분류한 언어 기반 시각 네비게이션의 구체적인 구현 사례를 제시한다.
+- 🔄 다른 접근: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — 대규모 언어 모델을 활용한 다른 시각적 타겟 네비게이션 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1367_DivScene_Towards_Open-Vocabulary_Object_Navigation_with_Larg/review]] — 둘 다 LLM/VLM을 활용한 object navigation을 다루지만 DivScene은 대규모 데이터셋과 fine-tuning을, L3MVN은 zero-shot 추론을 강조하는 다른 접근법입니다.

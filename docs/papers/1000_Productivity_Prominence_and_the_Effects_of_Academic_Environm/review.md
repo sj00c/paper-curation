@@ -12,7 +12,8 @@ score: 4.0
 essence: "컴퓨터과학 분야 2,453명의 초기 경력 연구자를 대상으로 한 매칭 실험 설계를 통해, 박사 학위 취득 기관의 명성보다는 현재 근무 기관의 환경이 연구 생산성과 영향력을 결정하는 주요 요인임을 규명했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Way et al._2019_Productivity, prominence, and the effects of academic environment.pdf"
 ---
@@ -88,9 +89,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Way et al._2019_Productivity, prominence
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1037_The_Misleading_Narrative_of_the_Canonical_Faculty_Productivi/review]] — 학술 환경이 생산성에 미치는 영향을 개별 연구자의 다양한 생산성 궤적 패턴으로 확장하여 분석합니다.
-- 🏛 기반 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — tenure 시스템이 연구 궤적에 미치는 영향을 분석하여 학술 환경과 생산성 관계의 제도적 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 학술 환경의 긍정적 영향과 대조적으로 초기 경력 좌절이 미래 성과에 미치는 부정적 영향을 보여줍니다.
-- ⚖️ 반론/비판: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 교수 채용에서 박사 기관 명성의 영향력과 현재 근무 기관 환경의 중요성이라는 상반된 관점을 제시합니다.
-- ⚖️ 반론/비판: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — Matthew effect가 기관 명성의 영향을 보여주는 반면, 이 연구는 현재 환경이 과거 명성보다 중요함을 입증해 상반된 관점을 제시합니다.
-- 🏛 기반 연구: [[papers/1037_The_Misleading_Narrative_of_the_Canonical_Faculty_Productivi/review]] — 학술 환경이 연구 생산성에 미치는 영향이 개별 교수들의 다양한 생산성 궤적 패턴을 설명하는 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 연구자의 현재 기관 환경이 성과에 미치는 영향을 종신교수제라는 제도적 요인까지 확장하여 분석합니다.
+- 🏛 기반 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 박사 학위 기관의 명성보다 현재 환경이 중요하다는 발견의 배경이 되는 학계 채용 시장의 계층적 구조를 보여줍니다.
+- 🧪 응용 사례: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 연구자의 기관 이동이 성과에 미치는 영향에 대한 이해를 국제적 인재 이동 패턴 분석에 적용합니다.
+- 🧪 응용 사례: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 연구자 궤적의 잠재적 구조를 무감독 학습으로 분석하는 방법은 기관 환경 효과를 더 정교하게 측정할 수 있게 합니다.
+- 🏛 기반 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 박사 학위 기관보다 현재 환경이 중요하다는 발견의 배경이 되는 학계 채용 시장의 계층적 구조를 보여줍니다.
+- 🔗 후속 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 연구자의 현재 기관 환경이 성과에 미치는 영향을 종신교수제라는 제도적 차원으로 확장하여 분석합니다.
+- 🏛 기반 연구: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 학술 환경이 생산성과 명성에 미치는 영향에 대한 이론적 배경을 제공하여 학자 이동의 동기를 이해할 수 있다.
+- 🔄 다른 접근: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 학술 환경이 생산성에 미치는 영향을 기관 이동과 환경적 요인이라는 서로 다른 관점에서 분석한다.

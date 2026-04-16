@@ -1,3 +1,23 @@
+---
+title: "1779_A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Ma"
+authors:
+  - "Eunju Kwon"
+  - "Seungwon Oh"
+  - "In-Chang Baek"
+  - "Yucheon Park"
+  - "Gyungbo Kim"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인형로봇의 시각-촉각-행동 다중모달 데이터셋을 제시하여 접촉 기반 조작, 특히 부드러운 물체 조작을 위한 로봇 학습을 지원한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kwon et al._2025_A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation.pdf"
+---
+
 # A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation
 
 > **저자**: Eunju Kwon, Seungwon Oh, In-Chang Baek, Yucheon Park, Gyungbo Kim, JaeYoung Moon, Yunho Choi, Kyung-Joong Kim | **날짜**: 2025-10-28 | **URL**: [https://arxiv.org/abs/2510.25725](https://arxiv.org/abs/2510.25725)
@@ -63,3 +83,17 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 접촉 기반 조작 연구의 중요한 격차를 메우기 위해 인형로봇 기반의 고밀도 시각-촉각-행동 데이터셋을 처음으로 제시하며, 고해상도 촉각 신호의 필요성을 명확하게 입증하는 가치 있는 기여다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — 두 연구 모두 접촉 기반 조작을 위한 다중모달 데이터를 다루지만 하나는 시각-촉각-행동을, 다른 하나는 object-centric 접근을 사용합니다.
+- 🏛 기반 연구: [[papers/1758_WHOLE_World-Grounded_Hand-Object_Lifted_from_Egocentric_Vide/review]] — egocentric 비디오에서 손-물체 상호작용을 학습하는 WHOLE의 기법이 시각-촉각-행동 데이터셋 구축에 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/2075_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/review]] — 두 개의 다중 손가락 손을 사용한 시각촉각 기술 학습에 휴머노이드 전신 데이터를 통합할 수 있습니다.
+- 🧪 응용 사례: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — RGMP의 geometric reasoning을 실제 manipulation dataset에 적용한 사례
+- 🔄 다른 접근: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — 둘 다 접촉 중심의 데이터셋을 제공하지만 PICO는 단일 이미지에서, HATD는 시각-촉각-행동 통합에 초점을 맞춘다
+- 🔗 후속 연구: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — 시각-촉각-행동 데이터셋의 접촉이 풍부한 조작 경험이 투척 동작의 정밀한 목표 달성에 활용될 수 있다.
+- 🧪 응용 사례: [[papers/1909_Embracing_Bulky_Objects_with_Humanoid_Robots_Whole-Body_Mani/review]] — 휴머노이드 시각-촉각-행동 데이터셋의 접촉이 풍부한 조작 연구가 부피가 큰 물체를 전신으로 다루는 실제 응용 사례를 제공한다.
+- 🧪 응용 사례: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — visual-tactile-action dataset이 HAIC의 proprioception 기반 물체 상호작용 제어를 실제 contact-rich manipulation에 적용할 데이터를 제공합니다.
+- 🔄 다른 접근: [[papers/2015_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — 인간-객체 상호작용 데이터셋 구축에서 HUMOTO는 모션캡처 기반, A Humanoid Visual-Tactile-Action Dataset은 시각-촉각 기반으로 서로 다른 센서 모달리티를 활용한다.
+- 🏛 기반 연구: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — 휴머노이드의 시각-촉각-행동 데이터셋을 제공하여 접촉이 많은 조작 작업의 학습 기반을 마련한다.
+- 🔗 후속 연구: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — OSMO 촉각 장갑으로 수집한 인간 시연 데이터를 contact-rich manipulation 학습에 활용할 수 있음

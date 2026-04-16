@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Large Language Model(LLM)을 대화형 환경에서 agent policy로 사용하며 online Reinforcement Learning으로 점진적으로 업데이트하여 functional grounding을 달성하는 GLAM 방법을 제안한다. 텍스트 기반 BabyAI 환경에서 LLM의 표본 효율성, 일반화 능력, online learning의 영향을 실증적으로 검증한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Task_Learning_Benchmarks"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/LLM-Based_Reward_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Carta et al._2023_Grounding Large Language Models in Interactive Environments with Online Reinforcement Learning.pdf"
 ---
@@ -88,10 +90,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Carta et al._2023_Grounding Large Langua
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — GLAM의 LLM 기반 interactive environment 학습이 ExploRLLM의 LLM 가이드 탐색을 온라인 강화학습 환경으로 확장하는 기반 방법론을 제공한다
-- 🔄 다른 접근: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — GLAM과 ELLM 모두 LLM을 RL에 통합하지만, 온라인 점진적 업데이트 vs 사전 지식 기반 탐색 안내라는 서로 다른 접근법을 사용한다
-- 🔗 후속 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 대규모 멀티모달 환경이 GLAM의 LLM-RL 통합 방법론을 더 복잡하고 개방적인 환경에서 검증할 수 있는 확장된 플랫폼을 제공한다
-- 🔗 후속 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — GLAM의 온라인 RL 업데이트가 ELLM의 LLM 가이드 사전훈련을 interactive environment에서 지속적으로 개선하는 방향으로 확장한다
-- 🏛 기반 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 대규모 개방형 환경이 GLAM의 LLM-RL 통합 방법론을 더 복잡하고 현실적인 환경에서 검증할 수 있는 플랫폼 기반을 제공한다
-- 🧪 응용 사례: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — 대화형 환경에서 LLM을 grounding하는 연구로 PSL의 LLM 기반 고수준 계획을 실제 환경에서 적용하는 방법론을 제시한다.
-- 🔗 후속 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — GLAM의 LLM 기반 interactive learning이 ExploRLLM의 LLM 가이드 탐색을 온라인 학습 환경으로 확장한 구현체로 볼 수 있다
+- 🔄 다른 접근: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 둘 다 LLM 기반 RL이지만 GLAM은 online learning에, ELLM은 탐색 가이던스에 집중한다.
+- 🔗 후속 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — RL에서 LLM 가이던스를 제공하는 GLAM의 접근법을 탐색 단계로 더 구체화한 방법이다.
+- 🏛 기반 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — 인터넷 데이터로 학습된 embodied agent의 개념이 GLAM의 LLM agent 설계에 기반이 된다.
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Voyager는 GLAM의 온라인 RL을 통한 LLM 개선을 Minecraft 환경에서 구체적으로 구현한 확장 연구입니다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — Statler는 LLM의 상태 유지를 통해 embodied 추론을 개선하는 반면, GLAM은 온라인 RL을 통한 점진적 개선에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue는 GLAM이 구현하는 LLM 기반 embodied agent의 환경 피드백 처리에 대한 기초 연구입니다.
+- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 언어 모델을 활용한 reward shaping의 기초적 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 둘 다 LLM을 RL에 활용하지만 ELLM은 탐색 가이던스에, GLAM은 online 업데이트에 중점을 둔다.
+- 🔗 후속 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — NLMap의 개방형 어휘 장면 표현이 대규모 언어모델의 대화형 환경 그라운딩에서 더 정교한 실세계 인식으로 확장됩니다.
+- 🔗 후속 연구: [[papers/1553_RoBridge_A_Hierarchical_Architecture_Bridging_Cognition_and/review]] — interactive environment에서의 LLM grounding을 IOR 기반 hierarchical architecture로 확장하여 더 체계적인 인지-실행 통합을 달성한다.
+- 🏛 기반 연구: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — 대화형 환경에서의 LLM 기반 계획 수립의 기본 원리와 방법론을 제공하여 DEPS의 이론적 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — 대형 언어 모델의 인터랙티브 환경 grounding은 Do As I Can의 affordance function 설계에 핵심적인 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — Grounding LLMs in Interactive Environments가 ExploRLLM에서 정책 코드 생성을 통한 실제 로봇 환경과의 상호작용으로 더욱 구체화되었다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — interactive environment에서의 LLM 기반 학습이 code as policies의 실시간 정책 생성 개념의 기반

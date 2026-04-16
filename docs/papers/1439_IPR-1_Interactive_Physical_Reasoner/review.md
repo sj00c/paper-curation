@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Interactive Physical Reasoner (IPR)는 VLM의 정책을 world model의 롤아웃으로 강화하여 상호작용을 통해 물리 추론 능력을 학습하는 에이전트이다. PhysCode라는 물리 중심 액션 코드를 도입하여 의미론적 의도와 역학을 정렬하고, 1,000+ 게임으로 사전학습되어 물리 직관부터 목표 지향 추론까지 견고한 성능을 보인다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Foundation_Model_Agents"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_IPR-1 Interactive Physical Reasoner.pdf"
 ---
@@ -91,9 +93,14 @@ Interactive Physical Reasoner (IPR)는 VLM의 정책을 world model의 롤아웃
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1406_From_Motion_to_Behavior_Hierarchical_Modeling_of_Humanoid_Ge/review]] — HARMON의 자연언어 기반 휴머노이드 동작 생성이 GBC의 계층적 행동 모델링에서 언어-동작 매핑 부분의 구체적인 구현 방법을 제공한다
-- 🔄 다른 접근: [[papers/1490_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — HARMON과 HYPERmotion 모두 언어 기반 휴머노이드 제어를 다루지만, 전신 동작 생성 vs 로코-매니퓰레이션이라는 서로 다른 작업 범위를 가진다
-- 🏛 기반 연구: [[papers/1455_Learning_Universal_Policies_via_Text-Guided_Video_Generation/review]] — 텍스트 가이드 비디오 생성의 범용 정책 학습 방법론이 HARMON의 언어 설명 기반 동작 생성에 멀티모달 학습의 이론적 기반을 제공한다
-- 🧪 응용 사례: [[papers/1455_Learning_Universal_Policies_via_Text-Guided_Video_Generation/review]] — 텍스트 조건부 비디오 생성의 범용 정책 학습 방법론이 HARMON의 언어 기반 휴머노이드 동작 생성에 멀티모달 접근법을 적용한 구체적 사례이다
-- 🏛 기반 연구: [[papers/1406_From_Motion_to_Behavior_Hierarchical_Modeling_of_Humanoid_Ge/review]] — HARMON의 자연언어 기반 동작 생성 방법론이 GBC의 LLM 기반 행동 계획 단계에 필요한 기반 기술을 제공한다
-- 🔗 후속 연구: [[papers/1490_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — HYPERmotion의 로코-매니퓰레이션이 HARMON의 전신 동작 생성을 이동과 조작이 통합된 더 복잡한 작업으로 확장한다
+- 🔄 다른 접근: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — 둘 다 물리 추론을 다루지만 interactive world model vs common sense reasoning이라는 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1359_Diffusion_for_World_Modeling_Visual_Details_Matter_in_Atari/review]] — Diffusion for World Modeling의 개념을 물리 중심 상호작용 학습으로 특화하여 발전시켰다.
+- 🔗 후속 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — Mastering Diverse Domains through World Models의 개념을 interactive physical reasoning으로 구체화했다.
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — World Models의 기본 개념을 VLM 정책과 결합하여 상호작용 기반 물리 추론을 구현한다.
+- 🔗 후속 연구: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — Learning Interactive Real-World Simulators의 개념을 PhysCode를 통한 물리 중심 추론으로 발전시킨다.
+- 🔄 다른 접근: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — NORA-1.5와 다르게 world model rollout을 통한 물리 추론에 특화된 interactive reasoner를 제안한다.
+- 🔄 다른 접근: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — Embodied-R1도 물리적 추론을 로봇 조작에 적용하지만 포인팅 기반 중간 표현을 사용하는 반면, IPR-1은 상호작용적 학습에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 what-where 경로 분리는 IPR-1의 의미론적 의도와 물리적 역학 정렬 아이디어의 초기 구현입니다.
+- 🏛 기반 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — IPR-1의 인터랙티브 물리적 추론은 Cosmos-Reason1의 구체화된 추론 능력에 기초적인 물리 이해 프레임워크를 제공한다.
+- 🔗 후속 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — IPR-1은 DreamerV3의 world model 기술을 물리적 추론 학습에 특화하여 적용한 연구입니다.
+- 🔄 다른 접근: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — IPR-1도 물리적 추론을 통해 로봇 조작을 개선하지만 world model 롤아웃을 통한 상호작용적 학습에 중점을 둡니다.

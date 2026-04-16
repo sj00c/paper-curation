@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇에 통합된 LLM들이 다양한 보호된 신원 특성(인종, 성별, 장애 상태 등)에 기반한 직접적인 차별을 생성하며, 동시에 폭력적이고 위법적인 지시를 승인함으로써 심각한 안전 위험을 야기한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/LLM_Safety_Representations"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hundt et al._2024_LLM-Driven Robots Risk Enacting Discrimination, Violence, and Unlawful Actions.pdf"
 ---
@@ -92,10 +94,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hundt et al._2024_LLM-Driven Robots Risk
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — LLM 기반 로봇의 안전성 문제에 대한 상호 보완적인 분석으로, jailbreaking과 차별/폭력의 다른 측면을 다룬다.
-- 🔄 다른 접근: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 제어 로봇의 취약성에 대한 서로 다른 관점으로, 사회적 위험과 기술적 취약성을 각각 다룬다.
-- ⚖️ 반론/비판: [[papers/1550_Learning_with_pyCub_A_Simulation_and_Exercise_Framework_for/review]] — 로봇의 악성 고정관념 실행과 LLM 기반 로봇의 차별/폭력 위험이라는 관련된 사회적 문제를 제기한다.
-- 🔗 후속 연구: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — LLM 기반 로봇의 차별과 폭력 위험을 구체적으로 분석하여 jailbreak의 실제 사회적 파급효과를 보여준다
-- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — 로봇의 안전성 문제에서 rational reasoning과 discrimination/violence 위험이라는 서로 다른 접근 방식을 보여준다.
-- 🔄 다른 접근: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 기반 로봇의 안전성 문제에서 입력 취약성과 사회적 차별/폭력이라는 서로 다른 위험 측면을 다룬다.
-- 🔗 후속 연구: [[papers/1286_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — 로봇의 사회적 분류를 넘어 실제 차별과 폭력 행동의 구체적 위험성을 분석한다
+- 🔗 후속 연구: [[papers/1550_Robots_Enact_Malignant_Stereotypes/review]] — LLM 기반 로봇의 차별과 폭력 위험이 Robots Enact Malignant Stereotypes 연구에서 제기된 편향 문제를 더욱 구체적으로 확장한다.
+- 🏛 기반 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM 로봇의 차별 위험이 LLM/VLM 제어 로봇의 취약성 연구에서 제기된 안전성 문제의 사회적 측면을 보여준다.
+- 🔄 다른 접근: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — 둘 다 LLM 제어 로봇의 안전성 문제를 다루지만, 차별 연구는 사회적 편향을, Jailbreaking은 악의적 조작에 초점을 둔다.
+- 🔄 다른 접근: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — LLM 기반 로봇의 차별과 폭력 위험을 다른 관점에서 분석한다.
+- 🔗 후속 연구: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — LLM 기반 로봇의 차별과 폭력 위험성 연구를 확장하여 실행 불가능한 지시 거부 능력까지 포함한 종합적 안전성을 다룬다.
+- 🏛 기반 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 로봇의 입력 취약성이 LLM 기반 로봇의 차별과 폭력 위험 연구에서 제기된 안전성 문제의 기술적 원인을 설명한다.
+- 🔗 후속 연구: [[papers/1550_Robots_Enact_Malignant_Stereotypes/review]] — 로봇이 악성 고정관념을 재현한다는 발견이 LLM 기반 로봇의 차별과 폭력 위험으로 확장되어 더 광범위한 AI 안전성 문제를 드러낸다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VLA-Adapter는 경량 백본(0.5B 파라미터)을 사용하여 로봇 데이터 사전학습 없이 최첨단 Vision-Language-Action 모델을 학습할 수 있는 새로운 패러다임을 제시한다. Bridge Attention을 통해 비전-언어 표현을 행동 공간에 효과적으로 연결한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Compact_VLA_Models"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_VLA-Adapter An Effective Paradigm for Tiny-Scale Vision-Language-Action Model.pdf"
 ---
@@ -89,7 +91,13 @@ VLA-Adapter는 경량 백본(0.5B 파라미터)을 사용하여 로봇 데이터
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 둘 다 경량 VLA 모델이지만 VLA-Adapter는 0.5B 파라미터, BitVLA는 1-bit 양자화로 다른 효율성 접근법이다
-- 🔗 후속 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 소형 모델 설계 철학을 adapter 기반 학습으로 더욱 발전시킨 접근법이다
-- ⚖️ 반론/비판: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — SpecPrune-VLA가 기존 모델 압축을, VLA-Adapter가 처음부터 경량 설계를 추구하는 대조적 효율화 전략이다
-- 🧪 응용 사례: [[papers/1633_X-VLA_Soft-Prompted_Transformer_as_Scalable_Cross-Embodiment/review]] — X-VLA의 cross-embodiment 확장성을 경량 모델로 구현하여 실용적 배포 가능성을 높였다
+- 🔄 다른 접근: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — 둘 다 경량 VLA 모델을 제안하지만 VLA-Adapter는 Bridge Attention을, TinyVLA는 diffusion policy decoder를 핵심으로 사용한다.
+- 🔗 후속 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 경량 VLA 모델의 효율성을 1-bit 양자화로 더 극한까지 추진하여 tiny-scale 모델의 발전 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1503_OneTwoVLA_A_Unified_Vision-Language-Action_Model_with_Adapti/review]] — OneTwoVLA의 적응형 아키텍처 설계가 VLA-Adapter의 Bridge Attention 기반 연결 방법론의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — Perceiver-Actor의 multi-task transformer 아키텍처가 VLA-Adapter의 경량 백본 설계에 구조적 영감을 제공했다.
+- 🧪 응용 사례: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — 경량 VLA 모델의 실시간 실행 가능성을 실증하여 VLA-Adapter의 효율성 장점을 실제 배포 환경에서 검증합니다.
+- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 둘 다 효율적인 VLA 구현을 목표로 하지만, VLA-Adapter는 adapter 기반을, VLA-0는 zero modification을 추구한다.
+- 🔄 다른 접근: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — 둘 다 경량 백본을 사용한 효율적인 VLA 모델을 제안하지만 TinyVLA는 diffusion decoder를, VLA-Adapter는 Bridge Attention을 사용한다.
+- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 둘 다 효율적인 VLA 모델을 목표로 하지만, VLA-0는 구조 단순화를, VLA-Adapter는 경량 백본과 adapter를 사용한다.
+- 🔗 후속 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — 소규모 VLA를 위한 어댑터 기반 효율적 패러다임으로 확장한다.
+- 🏛 기반 연구: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — VLA-Adapter의 효율적인 파라미터 조정 기법이 DeeR-VLA의 동적 크기 조절 아이디어의 기반을 제공합니다.

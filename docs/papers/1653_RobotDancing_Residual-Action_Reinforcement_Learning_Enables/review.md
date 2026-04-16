@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "RobotDancing은 잔차 동작(residual action) 강화학습을 통해 인간형 로봇이 장기간 고역동 춤 동작을 추적할 수 있도록 하는 프레임워크로, 모델-실제 간의 동역학 불일치를 명시적으로 보정한다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sun et al._2025_RobotDancing Residual-Action Reinforcement Learning Enables Robust Long-Horizon Humanoid Motion Tra.pdf"
 ---
@@ -84,3 +86,13 @@ RobotDancing은 잔차 동작(residual action) 강화학습을 통해 인간형 
 - Overall: 4/5
 
 **총평**: RobotDancing은 잔차 동작 학습과 이원 샘플링 전략을 통해 인간형 로봇의 장기 고역동 모션 추적 문제를 우아하게 해결하며, 실제 로봇으로의 영점 전달 성공은 실무적 가치가 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1653_RobotDancing_Residual-Action_Reinforcement_Learning_Enables/review]] — RobotDancing의 잔차 동작 RL과 같은 카테고리의 다른 논문들이 residual learning을 다른 방식으로 활용하여 동역학 불일치를 해결함
+- 🔗 후속 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 residual mixture-of-experts 접근법이 RobotDancing의 잔차 동작 강화학습을 더욱 정교하게 확장할 수 있음
+- 🏛 기반 연구: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — Taming Diffusion Probabilistic Models의 캐릭터 제어 기법이 RobotDancing의 고역동 춤 동작 추적의 확률적 모델링 기초를 제공함
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — residual action 기반 접근법을 고역동 춤 추적과 자연스러운 보행-달리기 전환에 각각 적용합니다.
+- 🏛 기반 연구: [[papers/1679_SkillMimic_Learning_Basketball_Interaction_Skills_from_Demon/review]] — 농구 skill learning의 기초가 되는 동적 동작 추적 및 모델-실제 간 불일치 보정 방법론입니다.
+- 🔗 후속 연구: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — 리듬감과 접촉 제어가 춤 동작의 beat matching에도 적용될 수 있는 확장 가능성을 보여줍니다.
+- 🔄 다른 접근: [[papers/1882_Do_You_Have_Freestyle_Expressive_Humanoid_Locomotion_via_Aud/review]] — RobotDancing이 음악과 움직임의 연결을 residual-action RL로 접근하여 RoboPerform과 다른 기술적 해결책을 제시한다.

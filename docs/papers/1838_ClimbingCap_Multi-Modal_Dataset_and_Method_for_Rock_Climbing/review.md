@@ -1,3 +1,25 @@
+---
+title: "1838_ClimbingCap_Multi-Modal_Dataset_and_Method_for_Rock_Climbing"
+authors:
+  - "Ming Yan"
+  - "Xincheng Lin"
+  - "Yuhua Luo"
+  - "Shuqi Fan"
+  - "Yudi Dai"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "ClimbingCap은 RGB와 LiDAR 멀티모달 데이터를 활용하여 암벽 등반 동작을 글로벌 좌표계에서 정확하게 복원하는 방법을 제안하며, 대규모 도전적 등반 동작 데이터셋 AscendMotion을 구축했다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yan et al._2025_ClimbingCap Multi-Modal Dataset and Method for Rock Climbing in World Coordinate.pdf"
+---
+
 # ClimbingCap: Multi-Modal Dataset and Method for Rock Climbing in World Coordinate
 
 > **저자**: Ming Yan, Xincheng Lin, Yuhua Luo, Shuqi Fan, Yudi Dai, Qixin Zhong, Lincai Zhong, Yuexin Ma, Lan Xu, Chenglu Wen, Siqi Shen, Cheng Wang | **날짜**: 2025-03-27 | **URL**: [https://arxiv.org/abs/2503.21268](https://arxiv.org/abs/2503.21268)
@@ -65,3 +87,13 @@ ClimbingCap은 RGB와 LiDAR 멀티모달 데이터를 활용하여 암벽 등반
 - Overall: 4/5
 
 **총평**: ClimbingCap은 미개발 분야인 등반 동작 캡처에 대해 대규모 고품질 데이터셋과 멀티모달 별도 좌표 복원 방식의 창의적 방법론을 제시하여 높은 독창성과 실질적 기여도를 보여준다. 광범위한 실험 검증과 공개 예정인 데이터셋·코드는 커뮤니티 기여도 높으나, 환경 일반화와 단일 모달 방식의 개발이 후속 과제다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1837_Climber_Force_and_Motion_Estimation_from_Video/review]] — 비디오 기반 동작 추정에서 하나는 암벽 등반의 multi-modal 접근, 다른 하나는 force와 motion의 general한 추정을 다룬다.
+- 🔗 후속 연구: [[papers/1907_EmbodMocap_In-the-Wild_4D_Human-Scene_Reconstruction_for_Emb/review]] — RGB와 LiDAR를 활용한 climbing motion 복원을 in-the-wild 4D human-scene reconstruction으로 확장하여 더 일반적인 환경에 적용한다.
+- 🧪 응용 사례: [[papers/2015_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — multi-modal climbing motion dataset이 4D mocap human object interaction 데이터셋의 특수한 케이스로 활용된다.
+- 🧪 응용 사례: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — ClimbingCap에서 구축한 등반 동작 데이터셋이 Perceptive Humanoid Parkour의 동적 인간 기술 체이닝에 실제 적용될 수 있는 도전적 동작 데이터를 제공한다.
+- 🏛 기반 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Hiking in the Wild의 지각적 파쿠어 프레임워크가 ClimbingCap의 복잡한 지형에서의 동작 분석과 복원에 필요한 환경 인식 기술을 제공한다.
+- 🏛 기반 연구: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — DexterCap의 동작 캡처 시스템이 ClimbingCap에서 복잡한 등반 동작의 정확한 3D 복원을 위한 기술적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1837_Climber_Force_and_Motion_Estimation_from_Video/review]] — 암벽 등반의 다중 모달 데이터셋과 방법론이 클라이머의 힘과 운동 추정을 더욱 포괄적이고 실용적으로 확장한다

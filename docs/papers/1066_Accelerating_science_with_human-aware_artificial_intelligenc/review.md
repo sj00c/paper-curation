@@ -10,7 +10,9 @@ score: 4.0
 essence: "과학자들의 전문성 분포를 AI 모델에 통합하면 미래 과학적 발견을 예측하는 능력이 최대 400% 향상되며, 이는 콘텐츠 기반 AI만으로는 놓치는 인간 중심의 과학 발전 메커니즘을 포착한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Scientific_Discovery_Automation"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/AI-Driven_Scientific_Discovery"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sourati and Evans_2023_Accelerating science with human-aware artificial intelligence.pdf"
 ---
@@ -84,8 +86,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sourati and Evans_2023_Accelerating scie
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 인간 중심 AI에서 과학 발견을 넘어 순차적 의사결정 전반으로 확장된 연구임
-- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학적 발견에서 인간 다양성의 중요성이 인간-인식 AI의 이론적 근거가 됨
-- 🔄 다른 접근: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — 과학에서 인간의 역할을 AI 예측 향상과 창의성 재정의로 다르게 접근함
-- 🔄 다른 접근: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI 시대 인간 역할을 과학 발견 예측과 창의성 재정의로 다르게 접근함
-- 🔗 후속 연구: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 인간-인식 AI를 과학 발견에서 순차적 의사결정 전반으로 확장한 이론적 분석임
+- 🔄 다른 접근: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 인간 인식 통합 AI와 협력 가이드포스트 메트릭이라는 서로 다른 팀 과학 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 다양성이 과학적 발견에 미치는 영향의 이해가 인간 인식 AI의 설계 기반이 된다.
+- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학에서 데이터 기반 예측의 한계를 인간 전문성 통합을 통해 극복하여, 예측 성능을 400% 향상시키는 구체적 방법을 제시한다.
+- 🔄 다른 접근: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 과학 발견을 위한 AI 활용을 다루지만, 기반 모델보다는 인간 과학자의 전문성 분포를 AI에 통합하는 접근법에 집중한다.
+- 🏛 기반 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀과 소규모 팀의 과학 발전 메커니즘 차이를 이해하여, 인간 중심 AI가 포착해야 할 과학적 발견의 사회적 역학을 제공한다.
+- 🔗 후속 연구: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 인간 인식 인공지능으로 과학 가속화하기는 과학-정책 변환에서 인간-AI 협력의 더 넓은 응용 가능성을 보여줍니다.
+- 🧪 응용 사례: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 인간-인식형 AI 개념을 교육용 개인화 학습 시스템으로 구체화한 실제 응용 사례
+- 🔗 후속 연구: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 인간-인식형 AI의 개념을 순차적 의사결정 분야로 특화하여 체계적으로 분석
+- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 데이터 기반 과학 예측의 한계를 인간 중심 AI로 극복하여, 과학자의 전문성을 통합한 예측 모델의 성능 향상을 보여준다.
+- ⚖️ 반론/비판: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — 인간을 고려한 AI의 과학 가속화 가능성과 이해의 환상이라는 위험은 AI의 과학적 활용에 대한 상반된 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 인간-인식형 AI 시스템 개발을 위한 현재 AI 활용 현황의 기초 데이터를 제공한다.

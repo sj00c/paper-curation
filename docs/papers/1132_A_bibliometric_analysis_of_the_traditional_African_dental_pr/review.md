@@ -9,8 +9,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 영아 경구 절제(Infant Oral Mutilation, IOM)에 관한 1969년부터 2024년까지의 62개 출판물을 bibliometric 분석하여 이 전통 의료 관행의 학술적 기여도, 지역적 분포, 그리고 주요 연구 주제들을 체계적으로 파악했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shukla and Panda_2026_A bibliometric analysis of the traditional African dental practice of infant oral mutilation.pdf"
 ---
@@ -86,10 +87,6 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shukla and Panda_2026_A bibliometric ana
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 둘 다 특정 의료 분야의 bibliometric 분석이지만 1132는 전통 치과 관행, 1138은 종교학 연구 평가를 다룬다.
-- 🏛 기반 연구: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 구강 관련 임상연구의 bibliometric 분석이 전통 아프리카 구강 치료 관행 연구의 방법론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서의 성별 불평등 역사적 비교가 전통 의료 관행 연구에서의 지역별 기여도 차이를 이해하는 틀을 확장한다.
-- 🏛 기반 연구: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 의료 분야 전통 관행의 bibliometric 분석이 종교학 연구 평가의 문화적 맥락을 이해하는 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 둘 다 의학 분야의 특정 주제에 대한 bibliometric 분석이지만 서로 다른 의학 영역을 다룬다.
-- 🏛 기반 연구: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 전통 아프리카 치과 관행의 bibliometric 분석이 구강 점막하 섬유증 RCT 분석의 구강 의학 연구 맥락을 제공한다.
-- 🔄 다른 접근: [[papers/926_A_bibliometric_analysis_of_bouldering_and_climbing_research/review]] — 볼더링/클라이밍 연구의 서지분석과 아프리카 전통 치과 실습 연구 분석이 모두 특정 도메인에 특화된 서지계량학적 접근을 보여줍니다.
+- 🔄 다른 접근: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 의학 분야에서 특정 치료법에 대한 서지계량학적 분석의 다른 사례를 보여준다.
+- 🧪 응용 사례: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 서지계량학적 영향 매핑 기법을 전통 의료 관행 연구에 적용한다.
+- 🔄 다른 접근: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 의학 분야 임상연구에 대한 서지계량학적 분석의 다른 사례를 제시한다.

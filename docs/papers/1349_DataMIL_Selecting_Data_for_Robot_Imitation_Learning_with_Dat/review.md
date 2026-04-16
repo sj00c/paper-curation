@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "DataMIL은 datamodels 패러다임을 로봇 모방학습에 적용하여 대규모 사전 데이터셋에서 작업별 성능을 직접 최적화하는 정책 기반 데이터 선택 프레임워크를 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Automated_Policy_Evaluation"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Robotic_Policy_Evaluation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dass et al._2025_DataMIL Selecting Data for Robot Imitation Learning with Datamodels.pdf"
 ---
@@ -87,7 +88,7 @@ DataMIL은 datamodels 패러다임을 로봇 모방학습에 적용하여 대규
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 대규모 데이터에서 작업별 최적 서브셋 선택과 데이터 다양성 확보라는 상호보완적 접근법
-- 🧪 응용 사례: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID와 같은 대규모 데이터셋에서 datamodels 패러다임을 활용한 작업별 데이터 선택
-- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇 학습에서 데이터 스케일링 법칙이 datamodels 기반 데이터 선택 전략의 이론적 근거 제공
-- 🏛 기반 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID의 다양성 있는 대규모 데이터가 datamodels 기반 작업별 데이터 선택의 기반 자료
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 로봇 학습을 위한 대규모 데이터셋의 기초 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇 모방학습에서 데이터 스케일링을 datamodels로 확장한다.
+- 🔄 다른 접근: [[papers/1433_In-Context_Imitation_Learning_via_Next-Token_Prediction/review]] — next-token prediction을 통한 다른 모방학습 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 야생 환경 로봇 조작 데이터셋에서 데이터 선택을 위한 기초 데이터를 제공합니다.

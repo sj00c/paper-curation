@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 학술 분야의 지식 조직 체계(Knowledge Organization Systems, KOS) 45개를 scope, structure, curation, usage, links 등 5가지 차원으로 분석하여 현황을 파악하고 통합 솔루션의 필요성을 제시한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Research_Infrastructure_Platforms"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Salatino et al._2025_A Survey on Knowledge Organization Systems of Research Fields Resources and Challenges.pdf"
 ---
@@ -90,9 +91,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Salatino et al._2025_A Survey on Knowled
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — 연구 분야의 지식 조직 체계 분석에 필요한 대규모 학술 메타데이터를 OpenAlex가 완전 개방형으로 제공하는 기반 인프라 역할을 합니다.
-- 🔗 후속 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 지식 조직 체계의 통합 솔루션 필요성을 제시한 연구와 과학의 과학을 위한 대규모 개방 데이터 레이크 구축이 상호 보완적 관계에 있습니다.
-- 🔄 다른 접근: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 연구 분야의 지식 체계화에서 임베딩 기반 접근법과 전통적 분류 체계의 대안적 방법론임
-- 🔄 다른 접근: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 연구 분야 분류를 위한 딥러닝 기반 접근법과 전통적 지식 조직 시스템의 차이점과 장단점을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 연구 분야의 지식 조직 시스템에 대한 이론적 기반을 방사선학 AI 모델 분류에 적용했다.
-- 🏛 기반 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 연구 분야의 지식 조직 체계에 대한 이해를 바탕으로 보조기술 연구의 체계적 분류와 매핑을 수행한다.
+- 🔄 다른 접근: [[papers/952_Design_and_Update_of_a_Classification_System_The_UCSD_Map_of/review]] — 과학 분류 체계 구축에서 UCSD 지도와 지식 조직 체계가 서로 다른 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 지식 그래프를 활용한 과학 연구 매핑을 지식 조직 체계의 구체적 구현으로 확장합니다.
+- 🔄 다른 접근: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 연구 분야 분류를 위한 다른 접근법으로 딥러닝 기반 계층적 분류 시스템을 제안한다.
+- 🧪 응용 사례: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 제약 분야에서 백색 공간 분석을 위한 지식 조직 체계의 실제 적용 방법을 보여준다.
+- 🧪 응용 사례: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 지식 조직 체계의 원리를 컴퓨터 과학 분야 지식 그래프 구축에 구체적으로 적용한다
+- 🏛 기반 연구: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — 연구 분야 지식 체계화의 이론적 기반이 도메인별 임베딩 학습에 적용된다.
+- 🔄 다른 접근: [[papers/952_Design_and_Update_of_a_Classification_System_The_UCSD_Map_of/review]] — 과학 분류 체계 설계에서 UCSD 지도와 지식 조직 체계가 서로 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 연구 분야 지식 조직 체계에 대한 포괄적 분석이 특화 분야 저장소 구축의 기반을 제공한다
+- 🏛 기반 연구: [[papers/926_A_bibliometric_analysis_of_bouldering_and_climbing_research/review]] — 연구 분야의 지식 조직 체계가 고등교육 지식관리 연구 분류의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1150_Characterization_of_a_Workload_Generator_for_Content-based_P/review]] — 연구 분야 지식 조직 시스템에 대한 이론적 기반을 제공한다.

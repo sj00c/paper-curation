@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "Language-Image Pre-training을 위해 softmax 정규화 대신 pairwise sigmoid loss를 제안하며, 이는 배치 크기와 무관하게 작동하여 메모리 효율성을 개선하고 작은 배치 크기에서 더 나은 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhai et al._2023_Sigmoid Loss for Language Image Pre-Training.pdf"
 ---
@@ -88,9 +90,11 @@ Language-Image Pre-training을 위해 softmax 정규화 대신 pairwise sigmoid 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — 자연어 감독을 통한 시각 모델 학습의 기반이 되는 언어-이미지 사전학습 손실 함수를 제공한다.
-- 🔗 후속 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — 다국어 비전-언어 모델 확장에서 효율적인 pairwise sigmoid loss가 배치 크기 제약을 해결한다.
-- 🧪 응용 사례: [[papers/1611_Visual_Instruction_Tuning/review]] — 비주얼 인스트럭션 튜닝에서 효율적인 언어-이미지 사전학습이 멀티모달 학습 성능을 향상시킨다.
-- 🔄 다른 접근: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — 둘 다 vision-language pre-training이지만 CLIP는 contrastive에, Sigmoid Loss는 다른 loss function에 중점을 둡니다.
-- 🏛 기반 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — 언어-이미지 사전학습을 위한 sigmoid loss 최적화 기법이 PaLI-X의 다국어 비전-언어 모델 학습에 직접 적용 가능하다
-- 🏛 기반 연구: [[papers/1634_ZeroMimic_Distilling_Robotic_Manipulation_Skills_from_Web_Vi/review]] — Sigmoid Loss의 language-image pre-training이 ZeroMimic의 비디오-로봇 정책 매핑에 필요한 multimodal 학습 기반
+- 🔗 후속 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — CLIP의 기본 language-image pre-training을 sigmoid loss로 개선하여 메모리 효율성과 작은 배치에서의 성능을 향상시킨다.
+- 🔄 다른 접근: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — 대규모 vision-language 모델에서 Sigmoid Loss는 효율적인 pre-training에, PaLI-X는 multilingual scaling에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — Sigmoid Loss의 효율적인 vision-language pre-training 기법이 Prismatic VLMs의 설계 공간 탐구에 훈련 효율성 측면의 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Sigmoid Loss의 메모리 효율적인 언어-이미지 학습이 Vision-Language Foundation Models의 효과적인 로봇 모방 학습에서 활용될 수 있습니다.
+- 🏛 기반 연구: [[papers/1331_CLASS_Contrastive_Learning_via_Action_Sequence_Supervision_f/review]] — CLASS의 contrastive learning via action sequence supervision이 sigmoid loss의 pairwise learning 접근법의 로봇 학습 적용 기초가 된다.
+- 🔗 후속 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual Instruction Tuning의 vision-language 학습을 sigmoid loss를 통해 더 효율적이고 메모리 친화적인 방향으로 개선했다.
+- 🏛 기반 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — Sigmoid Loss for Language Image Pre-Training의 효율적 학습 방법론이 FAST의 DCT 기반 action tokenization에서 고효율 VLA 학습을 위한 기초가 된다.
+- 🔄 다른 접근: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — Sigmoid Loss for Language Image Pre-Training과 다르게 contrastive learning을 통한 이미지-텍스트 학습의 다른 접근법을 제시한다.

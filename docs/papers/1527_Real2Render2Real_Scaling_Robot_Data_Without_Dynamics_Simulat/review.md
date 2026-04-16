@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "Real2Render2Real (R2R2R)은 스마트폰으로 촬영한 3D 객체 스캔과 단일 인간 시연 영상으로부터 동역학 시뮬레이션이나 로봇 하드웨어 없이 대규모 로봇 훈련 데이터를 생성하는 파이프라인이다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/GPU-Accelerated_Physics_Simulation"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2025_Real2Render2Real Scaling Robot Data Without Dynamics Simulation or Robot Hardware.pdf"
 ---
@@ -94,9 +94,13 @@ Real2Render2Real (R2R2R)은 스마트폰으로 촬영한 3D 객체 스캔과 단
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 둘 다 real-to-sim-to-real을 다루지만 1527은 스마트폰 기반 간편한 방법으로, 1523은 3D 재구성 기반 고충실도 방법으로 접근함
-- 🏛 기반 연구: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — MuBlE의 현실적인 시각-물리 통합 환경이 스마트폰 스캔 기반 데이터 생성의 기반을 제공함
-- 🧪 응용 사례: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID의 대규모 실제 로봇 데이터가 R2R2R 파이프라인의 실제 적용 성과를 검증함
-- 🔗 후속 연구: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — MuBlE의 시각-물리 통합 환경을 실제 객체 스캔 데이터로 확장하여 더 현실적인 시뮬레이션을 구현함
-- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 둘 다 real-to-sim-to-real 파이프라인을 사용하지만 1523은 3D 재구성 기반으로, 1527은 스마트폰 스캔 기반으로 접근함
-- ⚖️ 반론/비판: [[papers/1625_VR-Robo_A_Real-to-Sim-to-Real_Framework_for_Visual_Robot_Nav/review]] — dynamics 시뮬레이션 없이 로봇 데이터를 확장하는 접근법이 VR-Robo의 물리 시뮬레이션 중심 방법론과 대조된다
+- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — R2R2R과 Re3Sim 모두 로봇 데이터 생성을 위한 real-to-sim 접근법이지만 동역학 시뮬레이션 필요성에서 차별화됩니다.
+- 🏛 기반 연구: [[papers/1552_RoboTwin_Dual-Arm_Robot_Benchmark_with_Generative_Digital_Tw/review]] — 스마트폰 기반 3D 스캔 데이터 생성은 RoboTwin의 generative digital twin 프레임워크와 상호 보완적입니다.
+- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 비디오 기반 데이터 생성은 비디오 파운데이션 모델을 활용한 물리적 AI 월드 시뮬레이션과 연결됩니다.
+- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — Re3Sim과 R2R2R 모두 real-to-sim 데이터 생성을 다루지만 3D 재구성과 렌더링이라는 다른 핵심 기술을 사용합니다.
+- 🔗 후속 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — Real2Render2Real의 시뮬레이션 데이터 생성 개념을 확장하여 작업과 장면까지 자동 생성하는 완전한 자동화 시스템을 구축했다.
+- 🔗 후속 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — Real2Render2Real의 데이터 확장 개념을 MLLM 기반 자동 생성으로 발전시킨다.
+- 🔗 후속 연구: [[papers/1552_RoboTwin_Dual-Arm_Robot_Benchmark_with_Generative_Digital_Tw/review]] — 3D generative foundation model은 R2R2R의 스마트폰 기반 3D 스캔과 결합하여 더 효율적인 데이터 생성 파이프라인을 구축할 수 있습니다.
+- 🔗 후속 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — Real2Render2Real의 실제-시뮬레이션-실제 파이프라인이 SIMPLER의 실세계 성능 상관관계 달성 방법을 확장합니다.
+- 🔄 다른 접근: [[papers/1293_A_Distributional_Treatment_of_Real2Sim2Real_for_Object-Centr/review]] — Real2Sim2Real에서 물리 파라미터 추정 방식과 동역학 시뮬레이션 없는 데이터 스케일링이 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1309_An_Real-Sim-Real_RSR_Loop_Framework_for_Generalizable_Roboti/review]] — 동역학 시뮬레이션 없이 로봇 데이터를 스케일링하는 방법으로 RSR 루프를 확장한다.

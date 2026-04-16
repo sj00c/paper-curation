@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "I-JEPA는 손으로 만든 데이터 증강 없이 이미지의 문맥 블록으로부터 대상 블록의 표현을 예측하여 의미론적 이미지 표현을 학습하는 Joint-Embedding Predictive Architecture 기반의 자기 지도 학습 방법이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Assran et al._2023_Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture.pdf"
 ---
@@ -91,11 +93,13 @@ I-JEPA는 손으로 만든 데이터 증강 없이 이미지의 문맥 블록으
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — Joint-Embedding Predictive Architecture의 다른 구현체로 멀티모달 특징 학습에서 비교할 수 있는 접근법을 제시한다.
-- 🏛 기반 연구: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — 운동 제어를 위한 마스크 비주얼 사전학습의 기반이 되는 자기지도학습 표현 학습 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — DINOv2의 감독 없는 시각 특징 학습을 발전시켜 Joint-Embedding 예측 아키텍처로 확장한다.
-- 🏛 기반 연구: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — Self-supervised joint-embedding 방법론이 motor control을 위한 visual representation learning의 기반 기술입니다.
-- 🏛 기반 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — Self-Supervised Learning의 joint-embedding 방법론이 latent action space 구축의 핵심 기반 기술입니다.
-- 🏛 기반 연구: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — V-JEPA의 joint-embedding predictive architecture가 MC-JEPA의 motion-content learning에 핵심 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — joint-embedding 자기지도 학습 방법론이 R3M의 Ego4D 기반 시각 표현 학습에 핵심 이론적 기반을 제공한다
-- 🏛 기반 연구: [[papers/1603_V-JEPA_2_Self-Supervised_Video_Models_Enable_Understanding_P/review]] — V-JEPA 2의 자기지도학습 기반인 Joint-Embedding Predictive Architecture의 이론적 토대를 제공한다
+- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — 자기 지도 학습에서 I-JEPA는 joint-embedding predictive로, DINOv2는 supervision 없는 robust feature로 서로 다른 방식을 사용한다.
+- 🔗 후속 연구: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — I-JEPA의 joint-embedding 아키텍처가 MC-JEPA의 self-supervised video understanding으로 확장되어 시간적 정보까지 다룬다.
+- 🏛 기반 연구: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — I-JEPA의 자기 지도 학습 방법론이 로봇 제어를 위한 masked visual pre-training 기법 개발에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — Learning Transferable Visual Models의 자연어 감독 기반 시각 모델 학습이 I-JEPA의 self-supervised 표현 학습 방법론의 기초가 된다.
+- 🏛 기반 연구: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — self-supervised learning의 기본 원리인 joint-embedding을 motor control을 위한 visual representation learning에 적용하는 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — Self-Supervised Learning의 joint-embedding 개념을 자연언어 감독 학습으로 확장하여 전이 가능한 모델을 구현한다.
+- 🏛 기반 연구: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — MC-JEPA가 확장한 self-supervised learning의 joint-embedding 기초 방법론
+- 🏛 기반 연구: [[papers/1603_V-JEPA_2_Self-Supervised_Video_Models_Enable_Understanding_P/review]] — 이미지에서의 joint-embedding 자기지도학습 방법론을 제공하여 V-JEPA 2의 비디오 자기지도학습에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1331_CLASS_Contrastive_Learning_via_Action_Sequence_Supervision_f/review]] — Self-Supervised Learning from Images의 joint-embedding 개념을 action sequence 유사성 기반의 supervised contrastive learning으로 로봇 조작에 적용한 연구입니다.
+- 🔗 후속 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — JEPA의 joint-embedding predictive architecture는 DINOv2의 self-supervised learning을 더 발전시킨 representation learning 방법론이다.

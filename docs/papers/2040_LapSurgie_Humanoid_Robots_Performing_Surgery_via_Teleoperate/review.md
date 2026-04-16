@@ -1,3 +1,23 @@
+---
+title: "2040_LapSurgie_Humanoid_Robots_Performing_Surgery_via_Teleoperate"
+authors:
+  - "Zekai Liang"
+  - "Xiao Liang"
+  - "Soofiyan Atar"
+  - "Sreyan Das"
+  - "Zoe Chiu"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "LapSurgie는 인문형 로봇이 원격 조종을 통해 상용 복강경 수술 도구를 직접 조작할 수 있게 하는 최초의 텔레오퍼레이션 프레임워크로, 원격 중심 운동(RCM) 제약을 만족하는 역매핑 전략과 스테레오 비전 피드백을 통합한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_LapSurgie Humanoid Robots Performing Surgery via Teleoperated Handheld Laparoscopy.pdf"
+---
+
 # LapSurgie: Humanoid Robots Performing Surgery via Teleoperated Handheld Laparoscopy
 
 > **저자**: Zekai Liang, Xiao Liang, Soofiyan Atar, Sreyan Das, Zoe Chiu, Peihan Zhang, Calvin Joyce, Florian Richter, Shanglei Liu, Michael C. Yip | **날짜**: 2025-10-03 | **URL**: [https://arxiv.org/abs/2510.03529](https://arxiv.org/abs/2510.03529)
@@ -67,3 +87,11 @@ LapSurgie는 인문형 로봇이 원격 조종을 통해 상용 복강경 수술
 - Overall: 4/5
 
 **총평**: LapSurgie는 인문형 로봇을 수술 영역에 처음 적용하고 RCM 제약 기반 역매핑 제어를 통해 상용 복강경 도구의 직관적 조작을 실현한 혁신적 연구로, 의료 자원 부족 지역에서의 로봇 수술 접근성 확대에 중요한 기여를 한다. 다만 임상 수준의 검증과 기술적 성숙도 향상이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — LapSurgie의 원격 중심 운동 제약을 HMC의 heterogeneous meta-control이 접촉이 풍부한 환경에서 처리할 수 있는 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — LapSurgie는 의료용 특화 텔레오퍼레이션, Open-TeleVision은 범용 VR 기반으로 서로 다른 응용 분야와 인터페이스를 제공한다.
+- 🔗 후속 연구: [[papers/1977_High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Ro/review]] — LapSurgie의 정밀 수술 텔레오퍼레이션을 High-Speed and Impact Resilient Teleoperation의 고속 충격 복원 기술과 결합하여 더 견고한 의료 로봇 시스템을 구현할 수 있다.
+- 🔗 후속 연구: [[papers/1781_A_Rapid_Instrument_Exchange_System_for_Humanoid_Robots_in_Mi/review]] — 일반적인 복강경 수술 원격조작을 휴머노이드 로봇 플랫폼으로 확장하여 기구 교환 시스템을 통합한 연구입니다.
+- 🔄 다른 접근: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Open-TeleVision은 VR 기반 범용 시스템, LapSurgie는 의료 특화 텔레오퍼레이션으로 서로 다른 응용 분야와 특화 수준을 가진다.

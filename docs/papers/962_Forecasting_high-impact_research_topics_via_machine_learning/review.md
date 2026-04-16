@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "21백만 개 과학논문으로부터 구축한 진화하는 지식그래프(evolving knowledge graph)와 머신러닝을 활용하여, 아직 발표되지 않은 새로운 연구 아이디어의 미래 임팩트를 미리 예측하는 방법을 개발했다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Trend_Forecasting_Techniques"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gu and Krenn_2025_Forecasting high-impact research topics via machine learning on evolving knowledge graphs.pdf"
 ---
@@ -78,12 +80,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gu and Krenn_2025_Forecasting high-impac
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 진화하는 지식그래프와 머신러닝을 통한 고임팩트 연구 주제 예측과 의미-신경망 네트워크 기반 연구 동향 예측이 상호 보완적 접근을 제시합니다.
-- 🧪 응용 사례: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 머신러닝 기반 미래 임팩트 예측 방법론을 과학적 돌파구 예측의 구조적 역학 연구에 실제 적용할 수 있는 사례를 보여줍니다.
-- 🔄 다른 접근: [[papers/1116_Harnessing_the_Power_of_Adversarial_Prompting_and_Large_Lang/review]] — 연구 주제 예측에서 적대적 프롬프팅과 기계학습의 다른 방법론적 접근법임
-- 🔄 다른 접근: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 과학적 발견과 연구 예측에서 기초 모델과 기계학습의 다른 접근법임
-- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 둘 다 머신러닝을 활용한 연구 트렌드 예측이지만 1076은 물리학, 962는 고영향 토픽 예측에 특화되어 있다.
-- 🔄 다른 접근: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 영향력 높은 연구 주제 예측을 위한 머신러닝과 인용 네트워크의 동적 구조라는 서로 다른 예측 접근법을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 기계학습을 통한 연구 동향 예측 방법을 투어 가이딩 기술 분야에 적용할 수 있다
-- 🧪 응용 사례: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — 기계 학습을 통한 연구 동향 예측에 인터랙티브 도형 인터페이스를 활용할 수 있다.
-- 🧪 응용 사례: [[papers/1236_Weaning_from_mechanical_ventilation_in_ICU_patients_research/review]] — 기계학습을 통한 연구 동향 예측 방법을 ICU 기계환기 이탈 분야의 핫스팟 분석에 적용한다
+- 🔄 다른 접근: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 머신러닝을 활용한 AI 미래 예측 연구로, 지식그래프 대신 다른 접근법으로 연구 임팩트를 예측하는 대안적 방법론을 제시합니다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미론적 및 신경망 네트워크로 연구 트렌드를 예측하는 기초 방법론으로, 지식그래프 기반 임팩트 예측의 이론적 토대가 됩니다.
+- 🔗 후속 연구: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 구조적 역학 기반 과학적 돌파구 예측을 기계학습과 지식그래프로 확장한 고도화된 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학학에서 데이터 기반 예측을 구체적인 연구 주제 임팩트 예측으로 발전시킨다
+- 🔄 다른 접근: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 인용 추천에서 머신러닝 기반 접근법과 인간 행동 패턴 기반 접근법의 차이를 보여준다.
+- 🧪 응용 사례: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 초기 인용 확산 특성을 활용하여 고영향 연구 주제를 예측하는 기계학습 모델에 적용할 수 있습니다.
+- 🔄 다른 접근: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 기계학습 기반 연구 주제 예측과 달리 네트워크 기반 구조적 접근으로 주제 진화를 분석한다.
+- 🧪 응용 사례: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 지식공간 탐색 패턴 분석을 고영향 연구 주제 예측 모델에 적용할 수 있습니다.
+- 🧪 응용 사례: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 기계학습을 통한 고영향 연구 주제 예측 방법론을 촉매 연구에 적용할 수 있다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 머신러닝을 이용한 연구 트렌드 예측의 기본 방법론적 토대를 제공한다
+- 🏛 기반 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 머신러닝을 이용한 연구 주제 예측 방법론이 AI 활용도 측정의 기술적 기반이 된다.
+- 🏛 기반 연구: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 기계학습을 통한 고영향 연구 주제 예측이 인용 구조 기반 과학 돌파구 예측의 방법론적 기반이다.
+- 🔗 후속 연구: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 참신한 연구의 사회적 관심을 머신러닝을 통한 미래 임팩트 예측으로 발전시킨다
+- 🔗 후속 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 머신러닝을 활용한 고영향 연구 주제 예측을 AI 분야로 특화하여 대규모로 확장한 연구

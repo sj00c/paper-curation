@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "자연언어 지시를 로봇의 물리적 행동으로 변환하는 language-conditioned robot manipulation 분야를 체계적으로 조사한 종합 서베이 논문으로, 언어가 로봇 시스템에 통합되는 4가지 주요 방식을 분류하고 최신 기술을 분석한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Language_Model_Vulnerabilities"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yao et al._2023_Bridging Language and Action A Survey of Language-Conditioned Robot Manipulation.pdf"
 ---
@@ -88,12 +90,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yao et al._2023_Bridging Language and Ac
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — language-conditioned manipulation의 기초 이론을 LLM 기반 embodied navigation으로 확장 적용한다
-- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 언어와 로봇 행동의 연결을 각각 종합적 조사와 코드 생성이라는 다른 방식으로 접근한다
-- 🏛 기반 연구: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — multi-modal instruction mapping의 구체적 구현이 language-conditioned manipulation의 실제 적용을 보여준다
-- 🔗 후속 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — BridgeData V2의 대규모 로봇 학습과 신경망 스케일링 법칙이 데이터 규모의 중요성에서 상호 보완적이다.
-- 🏛 기반 연구: [[papers/1511_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — 언어 조건부 정책 학습 분야의 전반적인 이론적 배경과 방법론적 토대를 제공함
-- 🔗 후속 연구: [[papers/1605_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor/review]] — 단안 비디오에서 접촉 가이드된 실제-시뮬레이션 변환이 PACE의 물리 가이드된 보상 설계를 위한 현실적인 데이터 확장 방법을 제공합니다.
-- 🔗 후속 연구: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — CRISP는 단안 비디오에서 접촉 기반 Real2Sim을 통해 VLM 생성 보상의 물리적 검증을 확장한다
-- 🏛 기반 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — language-conditioned robot manipulation의 기초 이론이 LLM 기반 navigation의 언어 이해에 토대를 제공한다
-- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 언어 명령을 로봇 행동으로 변환하는 방식을 각각 직접 코드 생성과 language-conditioned learning으로 다르게 접근한다
+- 🔗 후속 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — language-conditioned manipulation을 LLM 기반 navigation으로 확장하여 더 넓은 embodied AI 영역을 포괄
+- 🧪 응용 사례: [[papers/1336_CogACT_A_Foundational_Vision-Language-Action_Model_for_Syner/review]] — 언어 조건부 조작의 이론적 체계가 CogACT의 cognition-action 분리 설계에 실제 적용
+- 🔗 후속 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — 언어를 보상으로 변환하는 로봇 스킬 합성으로 language-conditioned manipulation을 확장한다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — 언어와 행동을 연결하는 embodied 언어 모델의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1436_InstructVLA_Vision-Language-Action_Instruction_Tuning_from_U/review]] — 인스트럭션 튜닝을 통한 다른 언어-행동 연결 방법을 제시한다.
+- 🏛 기반 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — Vision-Language-Action 모델의 개념과 진전이 언어 조건부 로봇 조작 서베이의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — 로보틱스를 위한 다중모드 융합과 VLM 서베이가 언어-행동 연결 서베이를 확장합니다.
+- 🔄 다른 접근: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — 순수 VLA 모델 포괄 서베이와 언어 조건부 조작 서베이가 다른 범위의 분석을 제공합니다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — language-conditioned control의 포괄적 서베이가 VLN 분야의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — language-conditioned manipulation 서베이가 LLM 기반 네비게이션 연구의 언어 처리 방법론적 기반을 제공

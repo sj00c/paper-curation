@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 과학 연구 평가 체계(Research Evaluation Regimes, RES)를 거버넌스의 관점에서 이론적으로 반성하고, 글로벌 비교 분석을 위한 4가지 차원의 휴리스틱을 제시한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_Funding"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cramer and Reinhart_2026_Governing Science through Evaluation A Global Heuristic of Research Evaluation Regimes.pdf"
 ---
@@ -74,9 +76,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cramer and Reinhart_2026_Governing Scien
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 연구 평가 체계의 글로벌 비교 휴리스틱을 인도의 구체적 사례에 적용하여 RRA 도입 가능성을 체계적으로 평가한다.
-- 🏛 기반 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM 기반 연구 평가의 책임 있는 적용을 위해 필요한 거버넌스 관점의 이론적 프레임워크를 제공한다.
-- 🔗 후속 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 미국 과학 펀딩의 정파적 격차 분석을 다국가 연구 평가 체계 비교로 확장하여 정치적 맥락이 과학 거버넌스에 미치는 영향을 탐구한다.
-- 🧪 응용 사례: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 연구 평가 체계의 글로벌 비교 분석을 위해 NIH의 RCR 데이터 추출 방법을 다른 국가 시스템에 적용할 수 있다.
-- 🧪 응용 사례: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 연구 평가 거버넌스의 글로벌 비교 프레임워크를 LLM 시대의 새로운 평가 방식에 적용한다.
-- 🔗 후속 연구: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 글로벌 연구 평가 체계 비교 휴리스틱을 인도라는 특정 국가 사례에 구체적으로 적용하여 RRA 도입의 현실적 과제를 분석한다.
+- 🔄 다른 접근: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 글로벌 연구 평가 체계와 인도의 연구 평가 생태계 모두 과학 거버넌스와 평가 시스템의 개혁 필요성을 다루는 상호 보완적 관점을 제공한다.
+- 🏛 기반 연구: [[papers/1123_The_misalignment_of_incentives_in_academic_publishing_and_im/review]] — 학술 출판의 인센티브 불일치 문제 분석이 연구 평가 체계의 구조적 문제점 이해와 개선 방향 설정에 핵심적인 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학 평가에서 편견의 메타 평가 연구가 평가 체계 설계의 기초를 제공합니다.
+- 🧪 응용 사례: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 연구 평가 시스템의 글로벌 발견적 접근법에서 새로운 복합 성과 지표가 활용될 수 있습니다.
+- 🔗 후속 연구: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 평가를 통한 과학 거버넌스의 글로벌 발견적 접근법은 추첨 기반 펀딩이 기존 평가 시스템을 어떻게 혁신할 수 있는지에 대한 정책적 맥락을 제공합니다.
+- 🔗 후속 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 연구 평가 체계의 글로벌 비교 분석을 위한 실증적 사례를 제공합니다.
+- 🧪 응용 사례: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 글로벌 연구 평가 휴리스틱을 인도 특수 상황에 적용한 구체적 사례 연구입니다.
+- 🔄 다른 접근: [[papers/1156_Correction_Enabling_transparent_research_evaluation_A_method/review]] — 평가를 통한 과학 거버넌스의 글로벌 휴리스틱은 개별 논문의 데이터 투명성 정정과는 다른 시스템 차원의 연구 평가 투명성 접근법이다.
+- 🔄 다른 접근: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 연구 평가 시스템의 문제점을 인문학과 전체 과학 거버넌스 관점에서 다르게 접근한다
+- 🏛 기반 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 연구 평가 거버넌스 이론이 의료 인증 시스템 분석의 기반이 된다

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "MoLe-VLA는 Mixture-of-Layers 아키텍처와 Spatial-Temporal Aware Router(STAR)를 통해 LLM의 불필요한 레이어를 동적으로 스킵하여 로봇 조작 작업의 계산 효율을 5.6배 향상시키면서 8% 성능 개선을 달성한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_MoLe-VLA Dynamic Layer-skipping Vision Language Action Model via Mixture-of-Layers for Efficient Ro.pdf"
 ---
@@ -88,7 +89,10 @@ MoLe-VLA는 Mixture-of-Layers 아키텍처와 Spatial-Temporal Aware Router(STAR
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — VLA 모델의 계산 효율성 향상에 대한 서로 다른 접근법으로, layer-skipping과 mixture of experts를 각각 활용한다.
-- 🔗 후속 연구: [[papers/1577_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — SpecPrune-VLA의 모델 가속화 기술과 MoLe-VLA의 동적 layer-skipping이 상호 보완적인 효율성 향상 방법이다.
-- 🧪 응용 사례: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — 실시간 VLA 실행의 필요성과 동적 layer-skipping을 통한 계산 효율성 향상이 직접적으로 연결된다.
-- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — VLA 모델의 추론 효율성 향상에서 스트리밍 기법과 동적 layer-skipping이라는 다른 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — VLA 모델의 효율성 향상에서 dynamic layer-skipping vs mixture of experts라는 서로 다른 계산 최적화 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — VLA 모델 가속화 기법을 pruning과 layer-skipping을 결합하여 더 포괄적인 효율성 최적화 솔루션을 제공한다.
+- 🧪 응용 사례: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — real-time VLA 실행의 실제 요구사항을 MoLe-VLA의 동적 레이어 스킵핑 기법으로 해결하여 실시간 로봇 제어에 적용한다.
+- 🔗 후속 연구: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — 계층적 구조를 VLA 모델의 dynamic layer-skipping으로 확장한 연구입니다.
+- 🔄 다른 접근: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — 둘 다 VLA 모델의 계산 효율성 향상에 중점을 두지만, HybridVLA는 생성 패러다임 통합을, MoLe-VLA는 동적 레이어 스킵에 집중한다.
+- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — MoLe-VLA는 동적 layer-skipping을 통해 VLA 모델의 추론 속도를 향상시키는 다른 최적화 전략을 제공한다.
+- 🔄 다른 접근: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — DeeR-VLA의 동적 추론과 MoLe-VLA의 동적 레이어 스킵핑은 VLA 모델 효율성 향상의 서로 다른 구조적 접근법이다.

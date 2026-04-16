@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "오픈월드 환경(예: Minecraft)에서 장기 태스크를 수행하는 멀티태스크 에이전트를 위해, LLM 기반의 대화형 계획 방식 DEPS(Describe, Explain, Plan and Select)를 제안하여 복잡한 의존성과 상태 의존적 실행 가능성 문제를 해결한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
   - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2023_Describe, Explain, Plan and Select Interactive Planning with Large Language Models Enables Open-Wor.pdf"
@@ -91,8 +93,7 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2023_Describe, Explain, Plan
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — CoPAL은 DEPS와 유사한 LLM 기반 계획이지만 로봇 행동의 수정적 계획에 특화되어 있다
-- 🏛 기반 연구: [[papers/1416_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — Grounding Large Language Models는 DEPS의 오픈월드 환경에서 LLM 기반 대화형 계획의 이론적 토대를 제공한다
-- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Voyager는 DEPS의 개념을 열린 세계에서 대규모 언어 모델을 가진 열린 구체화 에이전트로 확장한다
-- 🏛 기반 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — VL-Nav의 reasoning 기반 planning이 Describe, Explain, Plan and Select의 interactive planning 원리를 네비게이션 도메인에 특화하여 적용
-- 🔄 다른 접근: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — DEPS는 CoPAL과 유사한 LLM 기반 계획이지만 오픈월드 환경에서 대화형 계획에 특화되어 있다
+- 🧪 응용 사례: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — DEPS의 대화형 계획 방식을 MineDojo 환경에서 실제로 적용하고 검증할 수 있는 플랫폼
+- 🏛 기반 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — Voyager의 오픈엔디드 에이전트 개념이 DEPS 대화형 계획 시스템의 설계 기반
+- 🏛 기반 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 대화형 환경에서의 LLM 기반 계획 수립의 기본 원리와 방법론을 제공하여 DEPS의 이론적 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 대규모 언어 모델의 상호작용적 환경 가이드 개념이 DEPS의 LLM 기반 대화형 계획의 기초가 됩니다.

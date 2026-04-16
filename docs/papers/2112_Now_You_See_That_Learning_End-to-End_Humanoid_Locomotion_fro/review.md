@@ -1,3 +1,25 @@
+---
+title: "2112_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro"
+authors:
+  - "Wandong Sun"
+  - "Yongbo Su"
+  - "Leoric Huang"
+  - "Alex Zhang"
+  - "Dwyane Wei"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Raw 깊이 이미지로부터 end-to-end 휴머노이드 로봇 보행을 학습하기 위해, 현실적인 depth 센서 시뮬레이션과 vision-aware behavior distillation, 그리고 terrain-specific multi-critic/multi-discriminator 학습을 결합한 프레임워크를 제시한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sun et al._2026_Now You See That Learning End-to-End Humanoid Locomotion from Raw Pixels.pdf"
+---
+
 # Now You See That: Learning End-to-End Humanoid Locomotion from Raw Pixels
 
 > **저자**: Wandong Sun, Yongbo Su, Leoric Huang, Alex Zhang, Dwyane Wei, Mu San, Daniel Tian, Ellie Cao, Finn Yan, Ethan Xie, Zongwu Xie | **날짜**: 2026-02-06 | **URL**: [https://arxiv.org/abs/2602.06382](https://arxiv.org/abs/2602.06382)
@@ -68,3 +90,12 @@ Raw 깊이 이미지로부터 end-to-end 휴머노이드 로봇 보행을 학습
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 로봇의 vision-based 보행에서 sim-to-real gap과 다양한 terrain 통합 학습의 근본적인 두 과제를 체계적으로 해결하며, 현실적인 센서 모델링과 behavior distillation, terrain-specific 학습을 결합한 창의적인 프레임워크를 제시한다. 두 개의 실제 로봇 플랫폼에서 극한 장애물부터 fine-grained 작업까지 광범위한 성능 검증을 통해 학술적·실무적 가치가 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — 둘 다 지각 기반 end-to-end 학습을 다루지만, Now You See That은 깊이 이미지 기반 보행에, Omni-Perception은 LiDAR 기반 충돌 회피에 초점을 둔다.
+- 🏛 기반 연구: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — DPL의 depth-only 지각 기반 보행 학습 기법이 Now You See That의 raw depth 이미지 기반 end-to-end 학습에 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — HumanoidPano의 하이브리드 구형 파노라마-LiDAR 교차 모달 지각을 단순한 깊이 센서만으로 달성하려는 연구이다.
+- 🔄 다른 접근: [[papers/2095_MeshMimic_Geometry-Aware_Humanoid_Motion_Learning_through_3D/review]] — 둘 다 복잡한 지형에서의 locomotion이지만 Now You See That은 raw pixel input에, MeshMimic은 3D reconstruction에 중점을 둔다
+- 🔄 다른 접근: [[papers/2095_MeshMimic_Geometry-Aware_Humanoid_Motion_Learning_through_3D/review]] — 둘 다 복잡한 지형에서의 humanoid locomotion이지만 MeshMimic은 3D scene reconstruction에, Now You See That은 raw depth perception에 중점을 둔다
+- 🔄 다른 접근: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — 둘 다 센서 기반 end-to-end 학습을 다루지만, Omni-Perception은 LiDAR 기반 충돌 회피에, Now You See That은 깊이 이미지 기반 보행에 특화된다.

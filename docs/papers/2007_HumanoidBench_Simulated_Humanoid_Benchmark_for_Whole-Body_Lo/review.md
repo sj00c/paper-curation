@@ -1,3 +1,25 @@
+---
+title: "2007_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo"
+authors:
+  - "Carmelo Sferrazza"
+  - "Dun-Ming Huang"
+  - "Xingyu Lin"
+  - "Youngwoon Lee"
+  - "Pieter Abbeel"
+date: "2024.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "HumanoidBench는 이족 로봇의 전신 조작과 이동 능력을 평가하기 위한 시뮬레이션 벤치마크로, 손가락이 있는 손과 다양한 27개의 도전적인 작업을 포함한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sferrazza et al._2024_HumanoidBench Simulated Humanoid Benchmark for Whole-Body Locomotion and Manipulation.pdf"
+---
+
 # HumanoidBench: Simulated Humanoid Benchmark for Whole-Body Locomotion and Manipulation
 
 > **저자**: Carmelo Sferrazza, Dun-Ming Huang, Xingyu Lin, Youngwoon Lee, Pieter Abbeel | **날짜**: 2024-03-15 | **URL**: [https://arxiv.org/abs/2403.10506](https://arxiv.org/abs/2403.10506)
@@ -68,3 +90,19 @@ HumanoidBench는 이족 로봇의 전신 조작과 이동 능력을 평가하기
 - Overall: 4/5
 
 **총평**: HumanoidBench는 이족 로봇의 전신 제어 문제를 포괄적으로 다루는 첫 번째 벤치마크로서, 로봇 학습 커뮤니티에 중요한 평가 플랫폼을 제공하며, 계층적 학습 접근법의 효과성을 입증하여 향후 이족 로봇 알고리즘 연구의 방향을 제시한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2006_Humanoid-Gym_Reinforcement_Learning_for_Humanoid_Robot_with/review]] — Humanoid-Gym의 locomotion-focused training을 HumanoidBench가 whole-body manipulation과 27개 challenging task로 확장한다.
+- 🔄 다른 접근: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — ManiSkill-HAB의 home manipulation과 달리 HumanoidBench는 general whole-body locomotion과 manipulation을 포괄적으로 벤치마킹한다.
+- 🏛 기반 연구: [[papers/1824_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — BiGym의 demo-driven mobile manipulation benchmark가 HumanoidBench의 humanoid manipulation task 설계 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1706_TeleOpBench_A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexte/review]] — TeleOpBench의 dual-arm dexterous 벤치마크가 HumanoidBench와 다른 관점에서 조작을 평가합니다.
+- 🏛 기반 연구: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — RoboPlayground의 구조화된 평가 도메인이 HumanoidBench의 시뮬레이션 벤치마크 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1627_PvP_Data-Efficient_Humanoid_Robot_Learning_with_Propriocepti/review]] — PvP의 고유수용감각 기반 학습 방법이 HumanoidBench의 전신 로코모션 평가에 핵심적인 기반 기술
+- 🏛 기반 연구: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — HumanoidBench의 전신 로코-조작 벤치마크가 RoboPlayground의 구조화된 물리 도메인 평가 방법론의 기반이 된다
+- 🔗 후속 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — HumanoidBench와 함께 humanoid 학습 평가의 표준화를 위한 complementary한 벤치마킹 프레임워크를 구성한다.
+- 🏛 기반 연구: [[papers/1824_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — HumanoidBench가 제공하는 전신 로코-매니퓰레이션 벤치마크 프레임워크가 BiGym의 이족 조작 작업 설계에 기초가 된다.
+- 🏛 기반 연구: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — end-to-end RL 프레임워크의 기초가 되는 simulated humanoid benchmark를 제공하여 표준화된 평가를 가능하게 한다.
+- 🔗 후속 연구: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — HumanoidBench의 시뮬레이션 벤치마크가 AGILE의 통합 평가와 표준화된 학습 파이프라인을 보완하고 확장할 수 있다.
+- 🔗 후속 연구: [[papers/2006_Humanoid-Gym_Reinforcement_Learning_for_Humanoid_Robot_with/review]] — HumanoidBench의 comprehensive benchmark가 Humanoid-Gym의 기본적인 locomotion training을 whole-body manipulation까지 확장한다.
+- 🔄 다른 접근: [[papers/2100_Mimicking-Bench_A_Benchmark_for_Generalizable_Humanoid-Scene/review]] — 둘 다 humanoid benchmark이지만 Mimicking-Bench는 scene interaction에, HumanoidBench는 whole-body locomotion에 특화되어 있다

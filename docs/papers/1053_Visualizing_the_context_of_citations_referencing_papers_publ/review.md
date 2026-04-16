@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "Eugene Garfield의 논문들을 인용한 문헌들의 인용 맥락(citation context)을 이용하여 키워드 동시출현 네트워크(keyword co-occurrence network)를 구성하는 새로운 유형의 계량분석 방법론을 제시하고, 이를 제목/초록 기반 네트워크와 비교 분석한다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Citation_Analysis_Methods"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bornmann et al._2018_Visualizing the context of citations referencing papers published by Eugene Garfield a new type of.pdf"
 ---
@@ -80,9 +82,12 @@ Eugene Garfield의 논문들을 인용한 문헌들의 인용 맥락(citation co
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 맥락 분석을 위한 새로운 방법론이 인용 정당화 관점에서 인용 분석을 이해하는 이론적 토대를 제공한다.
-- 🔗 후속 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — Citation-Constellation 방법론이 인용 맥락 기반 키워드 네트워크 분석을 더욱 발전시킨 접근법이다.
-- 🏛 기반 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 인용 데이터의 품질 평가가 인용 맥락 분석의 신뢰성을 확보하는 데 필수적인 기반을 제공한다.
-- 🧪 응용 사례: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — SCI가 제시한 인용 색인의 원리를 시각화 기술과 결합하여 인용 맥락 분석의 실용적 도구로 발전시켰다.
-- 🏛 기반 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 논문 인용 맥락의 시각화가 인용 네트워크의 사회구조적 경로를 분석하는 Citation-Constellation 도구의 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 인용 분석의 데이터 품질 평가가 인용 맥락 시각화 방법론의 신뢰성을 확보하는 데 필수적이다.
+- 🔄 다른 접근: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 인용 맥락 분석이 실제임상증거 논문의 인용 패턴을 텍스트 수준에서 깊이 분석하는 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 정당화 관점에서 인용 분석을 바라보는 이론적 틀이 인용 맥락 시각화의 개념적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 전통적 동시인용 분석을 인용 맥락의 키워드 동시출현으로 확장한 혁신적 접근법을 보여준다.
+- 🧪 응용 사례: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 텍스트 마이닝과 과학 지도화 결합 방법론을 인용 맥락 분석이라는 구체적 사례로 적용하여 보여준다.
+- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 기본적인 과학 지도 작성 방법론을 인용 맥락 정보를 활용한 더 정교한 매핑 기법으로 발전시킨다.
+- 🔄 다른 접근: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 인용 맥락 분석이 실제임상증거 논문의 인용 패턴을 더 깊이 이해하는 보완적 접근법을 제공한다.
+- 🏛 기반 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 인용 맥락 분석과 같은 구체적 텍스트 마이닝 응용이 텍스트 마이닝과 과학 지도화 결합의 실증 사례가 된다.
+- 🏛 기반 연구: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 온라인에 게시된 논문 인용 맥락 시각화가 Twitter 기관 계정의 학술 커뮤니케이션 분석의 이론적 기반이다.
+- 🏛 기반 연구: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 인용 맥락 시각화 기법을 오픈 연구 인프라 평가에 확장 적용한다.

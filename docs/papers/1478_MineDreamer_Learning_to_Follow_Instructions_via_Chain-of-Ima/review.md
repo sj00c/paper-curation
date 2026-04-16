@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "MineDreamer는 Chain-of-Imagination(CoI) 메커니즘을 통해 MLLM과 diffusion model을 활용하여 Minecraft에서 자연어 지시를 단계별로 상상하고 실행하는 embodied agent이다. CoI는 현재 상태에 맞춘 시각적 프롬프트를 반복적으로 생성하여 지시 추종 능력을 크게 향상시킨다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Multimodal_Reasoning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhou et al._2024_MineDreamer Learning to Follow Instructions via Chain-of-Imagination for Simulated-World Control.pdf"
 ---
@@ -88,9 +89,11 @@ MineDreamer는 Chain-of-Imagination(CoI) 메커니즘을 통해 MLLM과 diffusio
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — 두 논문 모두 Minecraft 환경에서 멀티모달 에이전트를 다루지만, 하나는 상상 기반 지시 따르기에, 다른 하나는 메모리 증강에 집중합니다.
-- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Chain-of-Imagination을 능동적 인식과 결합하여 더욱 포괄적인 Minecraft 에이전트를 구현할 수 있습니다.
-- 🧪 응용 사례: [[papers/1477_Humanoid-Gym_Reinforcement_Learning_for_Humanoid_Robot_with/review]] — MineDojo 환경에서 개발된 학습 방법론이 상상 기반 지시 따르기 에이전트의 훈련에 활용됩니다.
-- 🏛 기반 연구: [[papers/1360_Diffusion_Models_Are_Real-Time_Game_Engines/review]] — 실시간 게임 엔진으로서의 diffusion 모델이 Chain-of-Imagination의 시각적 생성 능력을 뒷받침합니다.
-- 🔄 다른 접근: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — 두 논문 모두 Minecraft 환경에서 멀티모달 에이전트를 다루지만, 하나는 메모리 증강에, 다른 하나는 상상 기반 지시 따르기에 집중합니다.
-- 🔄 다른 접근: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — 두 논문 모두 Minecraft에서 장기 작업을 다루지만, 하나는 능동적 인식에, 다른 하나는 상상 기반 실행에 집중합니다.
+- 🏛 기반 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDreamer의 Chain-of-Imagination이 MineDojo의 개방형 환경에서 제공되는 다양한 Minecraft 작업을 체계적으로 처리하는 방법론을 제시한다.
+- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — MineDreamer가 MP5의 멀티모달 Minecraft 환경에서 Chain-of-Imagination을 통해 더욱 정교한 지시 추종 능력을 구현한다.
+- 🔄 다른 접근: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — 둘 다 시각적 추론 체인을 활용하지만, MineDreamer는 상상 기반 계획을, CoT-VLA는 추론 체인 기반 행동 생성에 집중한다.
+- 🔄 다른 접근: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — Minecraft에서 instruction following을 위한 chain-of-imagination vs thought chain의 다른 방법
+- 🏛 기반 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — MineDreamer가 구현한 지시 추종의 기반이 되는 open-ended embodied agent 개념
+- 🏛 기반 연구: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — MineDreamer의 chain-of-imagination을 multimodal memory와 결합하여 더 안정적인 장기 작업 수행을 구현한다.
+- ⚖️ 반론/비판: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Minecraft에서 active perception vs imagination-based reasoning의 대조적 방법론
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — MineDreamer의 chain-of-imagination 접근법이 Voyager의 자동 커리큘럼과 결합되면 더 효과적인 학습이 가능하다

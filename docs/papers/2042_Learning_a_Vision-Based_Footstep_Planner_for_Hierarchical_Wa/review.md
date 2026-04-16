@@ -1,3 +1,23 @@
+---
+title: "2042_Learning_a_Vision-Based_Footstep_Planner_for_Hierarchical_Wa"
+authors:
+  - "Minku Kim"
+  - "Brian Acosta"
+  - "Pratik Chaudhari"
+  - "Michael Posa"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 단일 깊이 카메라와 reinforcement learning 기반의 계층적 제어 프레임워크를 통해 쌍족 로봇이 비정형 지형에서 실시간 발걸음 계획을 수행하도록 하는 시각 기반 발걸음 계획기를 제시한다. Angular Momentum Linear Inverted Pendulum 모델을 활용하여 저차원 상태 표현을 구성하고 상위 레벨의 RL 발걸음 계획기와 하위 레벨의 Operational Space Controller를 통합한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kim et al._2025_Learning a Vision-Based Footstep Planner for Hierarchical Walking Control.pdf"
+---
+
 # Learning a Vision-Based Footstep Planner for Hierarchical Walking Control
 
 > **저자**: Minku Kim, Brian Acosta, Pratik Chaudhari, Michael Posa | **날짜**: 2025-08-09 | **URL**: [https://arxiv.org/abs/2508.06779](https://arxiv.org/abs/2508.06779)
@@ -68,3 +88,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 RL 기반 발걸음 계획을 ALIP 모델과 깊이 카메라 vision으로 통합한 실질적인 계층적 제어 프레임워크를 제시하며, 실제 로봇 하드웨어에서의 검증을 통해 실용성을 입증한다. 다만 ALIP 모델의 표현력 한계와 복잡한 지형에서의 성능 저하가 명확하게 드러나 향후 더 정교한 모델이나 end-to-end 학습 접근의 필요성을 시사한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1693_STATE-NAV_Stability-Aware_Traversability_Estimation_for_Bipe/review]] — 지형 인식 보행에서 STATE-NAV는 안정성 중심, 본 연구는 시각 기반 발걸음 계획 중심
+- 🔗 후속 연구: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 깊이 인식 휴머노이드 보행의 계층적 제어로의 확장된 접근
+- 🔗 후속 연구: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — Learning Vision-Based의 시각 기반 발걸음 계획이 Gallant의 복셀 그리드 기반 로코모션과 결합되어 더 정밀한 지형 인식 탐색 가능
+- 🏛 기반 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — LookOut의 실세계 에고센트릭 네비게이션이 Learning Vision-Based의 시각 기반 발걸음 계획에 실제 환경 인식 기반 제공
+- 🔗 후속 연구: [[papers/1892_E-SDS_Environment-aware_See_it_Do_it_Sorted_-_Automated_Envi/review]] — vision-based footstep planner가 E-SDS의 환경 인식 보행을 hierarchical walking으로 확장하여 더 정교한 지형 대응을 가능하게 한다.

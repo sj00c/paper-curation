@@ -8,8 +8,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 Web of Science 데이터베이스에서 465개의 학술 논문을 수집하여 보건의료 인증기구(ABIH)의 인증 프로세스 기여도를 bibliometric analysis를 통해 분석한다. Co-citation, co-occurrence, co-authorship 분석을 수행하여 의료 인증 분야의 주요 주제 클러스터와 지식 구조를 규명한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Orhan_2026_Contributions of accreditation organizations in health services to the accreditation process a bibl.pdf"
 ---
@@ -87,6 +88,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Orhan_2026_Contributions of accreditatio
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 인도의 연구 평가 생태계 재고찰이 보건의료 인증기구의 품질 기여도 평가 방법론의 맥락을 제공한다.
-- 🔗 후속 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 협력적 가이드포스트를 통한 팀 과학 메트릭 재고찰이 보건의료 인증에서의 협력 네트워크 분석으로 확장된다.
-- 🧪 응용 사례: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — Co-citation, co-occurrence, co-authorship 분석 기법이 보건의료 인증 분야의 지식 구조 규명에 적용된다.
+- 🔄 다른 접근: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 둘 다 보건의료 분야의 이론/모델/프레임워크(인증 vs D&I TMFs)를 bibliometric으로 분석한다.
+- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 보건의료 인증 연구의 co-citation과 co-authorship 분석 방법론의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 의료 인증과 특정 치료법 연구를 연계하여 의료 품질 관리의 종합적 관점을 제공한다.
+- 🔗 후속 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 의료 기술에서 의료 인증 시스템으로 연구 범위를 확장한다
+- 🏛 기반 연구: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 연구 평가 거버넌스 이론이 의료 인증 시스템 분석의 기반이 된다
+- 🔗 후속 연구: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 체중 낙인 해결 전략 분석이 보건의료 인증 과정에서 환자 안전과 품질 개선으로 확장될 수 있기 때문
+- 🔗 후속 연구: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 보건 서비스에서 인증 기관의 기여도 분석은 의료 정책 결정에서 과학적 증거가 어떻게 활용되는지에 대한 보완적 시각을 제공합니다.
+- 🔄 다른 접근: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 둘 다 보건의료 분야의 이론적 프레임워크(D&I TMFs vs 인증 프로세스)를 bibliometric으로 분석한다.

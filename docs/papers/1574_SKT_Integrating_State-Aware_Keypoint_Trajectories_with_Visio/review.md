@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Vision-Language Model(VLM)을 활용한 State-aware Keypoint Trajectories(SKT)를 제안하여 다양한 의류 상태에서 로봇의 의류 조작 성능을 향상시킨다. 합성 데이터셋을 통해 단일 모델로 여러 의류 유형을 처리할 수 있는 통합 접근법을 구현한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Foundation_Models_for_Robotics"
   - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2024_SKT Integrating State-Aware Keypoint Trajectories with Vision-Language Models for Robotic Garment M.pdf"
@@ -90,9 +92,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2024_SKT Integrating State-Awa
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep의 relational keypoint constraints가 SKT의 state-aware keypoint trajectories의 기초 방법론을 제공한다.
-- 🧪 응용 사례: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — DexGarmentLab의 의류 조작 환경이 SKT의 VLM 활용 의류 조작 성능을 구체적인 실험 환경에서 적용한다.
-- 🔗 후속 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — Prismatic VLMs의 체계적 VLM 설계가 SKT의 Vision-Language Model 활용을 더 최적화된 모델로 확장한다.
-- 🔗 후속 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — SKT의 state-aware keypoint trajectories가 ReKep의 relational keypoint constraints를 의류 조작 특화 상황으로 확장한다.
-- 🔄 다른 접근: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — SKT는 키포인트 궤적을 Vision-Language-Action 모델과 통합하는 다른 접근 방식을 제시한다
-- 🔄 다른 접근: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — SKT는 CLIPort와 유사하게 공간적 정보와 의미론적 이해를 결합하지만 키포인트 궤적 기반 접근법을 사용한다
+- 🔄 다른 접근: [[papers/1468_ManipVQA_Injecting_Robotic_Affordance_and_Physically_Grounde/review]] — ManipVQA는 VLM을 활용한 로봇 조작에서 affordance와 물리적 grounding을 다루는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — DexGraspVLA는 VLM과 keypoint 기반 접근법을 정교한 조작에 적용하는 유사하지만 다른 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser는 3D value map을 통해 의류 조작과 유사한 복잡한 조작 작업을 해결하는 대안적 접근법이다.
+- 🏛 기반 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff의 통합된 affordance 표현은 의류 조작에서 상태 인식 keypoint의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — 로봇의 의류 조작에서 SKT는 state-aware keypoint trajectory로, RoboBrain은 통합 MLLM으로 서로 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — VLM 기반 keypoint trajectory 방법이 다양한 의류 상태 처리를 위한 더 정교한 state-aware 시스템으로 발전할 수 있다.
+- 🏛 기반 연구: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — DexGarmentLab의 의류 조작 환경이 SKT의 state-aware keypoint trajectory 방법론 개발과 검증에 실험적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — SKT의 state-aware keypoint trajectories 기술이 ReKep의 spatio-temporal keypoint constraints 설계의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — keypoint trajectory를 VLA와 통합하는 기본 개념을 제공하여 TraceVLA의 시공간 추적 메커니즘에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff의 통합된 affordance 표현은 SKT의 상태 인식 키포인트 추적을 위한 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — 상태 인식 keypoint 궤적과 VLM 생성 keypoint reward를 결합하여 더 강력한 조작 정책을 개발할 수 있습니다.

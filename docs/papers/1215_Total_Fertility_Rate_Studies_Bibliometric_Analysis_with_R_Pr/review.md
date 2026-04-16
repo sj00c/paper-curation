@@ -9,8 +9,9 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 2001-2025년 Web of Science 데이터베이스의 779개 영어 논문을 Bibliometrix R 패키지와 Biblioshiny 인터페이스를 활용하여 Total Fertility Rate 연구의 구조적, 시간적, 주제적 진화를 종합적으로 분석한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Baş and Coşan_2026_Total Fertility Rate Studies Bibliometric Analysis with R Program.pdf"
 ---
@@ -90,5 +91,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Baş and Coşan_2026_Total Fertility Rat
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 출산율 연구의 성장 패턴을 이해하기 위해 현대 과학의 성장률에 대한 bibliometric 분석이 기반이 된다.
-- 🧪 응용 사례: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 출산율 연구의 국제 협력 분석이 1971-2020년 과학 협력 아틀라스에서 실제 적용될 수 있다.
+- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학 분야 성별 격차 분석을 인구학 연구 영역의 구체적 지표(출산율) 분석으로 확장합니다.
+- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서의 성별 불평등 역사적 비교 연구가 출산율 연구의 성별 관련 맥락을 이해하는 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 출산율 연구와 투어 가이딩 기술 모두 사회 변화와 기술 발전이 인간 행동에 미치는 영향을 bibliometric으로 분석하는 유사한 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 현대 과학의 성장률 분석이 제공하는 bibliometric 데이터의 시간적 변화 패턴 분석 방법론을 출산율 연구 동향 분석에 적용할 수 있다.
+- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 출산율 연구와 디지털마케팅 연구 모두 R Bibliometrix 패키지를 활용한 분석 방법론을 공유합니다.
+- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 전세계 과학 분야 성별 격차를 출산율 연구의 성별 관련 패턴 분석으로 구체화합니다.
+- 🔄 다른 접근: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 투어 가이딩 기술과 출산율 연구 모두 기술 발전이 사회 행동에 미치는 영향을 장기간에 걸쳐 bibliometric으로 분석하는 공통된 연구 틀을 가진다.

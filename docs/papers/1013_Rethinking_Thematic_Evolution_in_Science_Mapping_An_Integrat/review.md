@@ -12,6 +12,7 @@ score: 4.0
 essence: "과학 지도 작성(Science Mapping)에서 종단 분석을 위한 구조적으로 통합된 프레임워크를 제시하여, 주제 탐지와 시간적 추적을 동일한 가중 관계형 네트워크 아키텍처 내에서 모델링한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
+  - "cat/Computational_Bibliometric_Analysis"
   - "sub/Thematic_Network_Detection"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Aria et al._2026_Rethinking Thematic Evolution in Science Mapping An Integrated Framework for Longitudinal Analysis.pdf"
@@ -85,7 +86,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Aria et al._2026_Rethinking Thematic Evo
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 과학 지도 작성에서 텍스트 마이닝과 결합된 서지학적 분석이 주제 진화 추적의 방법론적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 기본적인 과학 지도 작성 방법론을 시간적 주제 진화를 통합한 구조적 프레임워크로 확장합니다.
-- 🧪 응용 사례: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 구조 변화의 통시적 매핑을 위한 구체적 적용 사례로 주제 진화 프레임워크를 활용할 수 있습니다.
-- 🔄 다른 접근: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 매핑에서 시간적 진화 추적을 위한 임베딩 기반 접근법과 주제 진화 분석의 통합적 접근법을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 기존 과학 지도 작성 방법론을 발전시켜 주제 탐지와 시간적 추적을 통합한 프레임워크를 제시한다.
+- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer와 같은 기존 도구를 보완하여 종단적 주제 진화 분석을 위한 새로운 시각화 접근법을 제공한다.
+- 🔄 다른 접근: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 기계학습 기반 연구 주제 예측과 달리 네트워크 기반 구조적 접근으로 주제 진화를 분석한다.
+- 🏛 기반 연구: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 시간에 따른 과학 구조 변화를 지도화하는 기존 연구의 방법론적 기초를 제공합니다.
+- 🔄 다른 접근: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 도입 연구의 주제 진화를 분석하여 통합적 주제 진화 프레임워크의 실제 적용 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 기본적인 과학 지도 작성 방법론을 시간적 차원을 포함한 통합 프레임워크로 발전시킨다.
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 기존 시각화 도구의 한계를 극복하기 위한 종단적 주제 진화 분석 프레임워크 개발의 기반이 된다.
+- 🔄 다른 접근: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 매핑에서 주제 진화를 재고한 통합 접근법으로, 시간변화 임베딩과 다른 방법으로 과학 구조 변화를 분석하는 대안입니다.
+- 🔄 다른 접근: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 과학 매핑에서 주제 진화를 메타데이터 기반과 통합적 접근으로 다르게 분석한다

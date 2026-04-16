@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "FSD는 Vision-Language Model에 spatial relationship reasoning을 통한 중간 표현(visual aids) 생성을 추가하여, 로봇 조작에서 zero-shot 일반화 성능을 획기적으로 향상시키는 모델이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yuan et al._2025_From Seeing to Doing Bridging Reasoning and Decision for Robotic Manipulation.pdf"
 ---
@@ -89,7 +91,11 @@ FSD는 Vision-Language Model에 spatial relationship reasoning을 통한 중간 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — DoReMi의 계획-실행 제약조건이 FSD의 spatial relationship reasoning 활용에 기반한다.
-- 🔗 후속 연구: [[papers/1422_Hi_Robot_Open-Ended_Instruction_Following_with_Hierarchical/review]] — Hi Robot의 복잡한 지시사항 처리가 FSD의 zero-shot 일반화를 발전시킨다.
-- 🔄 다른 접근: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — Manipulate-Anything도 vision model을 통한 로봇 조작의 일반화를 다룬다.
-- 🔗 후속 연구: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — FSD의 spatial reasoning을 통한 제약조건 생성이 DoReMi의 실행 제약조건 감지를 발전시킨다.
+- 🔄 다른 접근: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — 둘 다 공간 추론을 통한 VLA 모델이지만 FSD는 visual aids 생성에, InternVLA-M1은 공간 그라운딩에 집중한다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 spatial affordance 예측과 pixel-level manipulation이 FSD의 visual aids 생성에 기반이 된다.
+- 🔗 후속 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — FSD의 visual reasoning을 더 발전시켜 reinforced visual thinking으로 확장한 모델이다.
+- 🔄 다른 접근: [[papers/1506_Open-World_Object_Manipulation_using_Pre-trained_Vision-Lang/review]] — Open-World Object Manipulation의 pre-trained vision-language 활용과 FSD의 spatial relationship reasoning은 zero-shot 로봇 조작에서 서로 다른 접근 방식이다.
+- 🔗 후속 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — RoboPoint의 spatial affordance prediction이 FSD에서 spatial relationship reasoning을 통한 visual aids 생성으로 더욱 발전한 형태이다.
+- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Vision-Language Foundation Models as Robot Imitators의 기본 VLM 활용법이 FSD의 spatial reasoning을 통한 zero-shot generalization에 기초가 된다.
+- 🔗 후속 연구: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — visual reasoning에서 spatial relationship을 활용한 접근법을 chain-of-thought로 확장한 연구입니다.
+- 🔄 다른 접근: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — 둘 다 공간 기반 VLA이지만 InternVLA-M1은 공간 그라운딩에, FSD는 visual aids 생성에 집중한다.

@@ -9,6 +9,7 @@ score: 4.0
 essence: "통계적 유의성(p < 0.05)만을 기준으로 발표되는 대부분의 연구 결과는 실제로는 거짓일 수 있으며, 이는 낮은 통계력, 편향, 그리고 다중 독립 연구팀의 반복 검증 부재로 인해 발생한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
   - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ioannidis_2005_Why Most Published Research Findings Are False.pdf"
@@ -84,8 +85,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ioannidis_2005_Why Most Published Resear
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 대부분의 연구 결과가 거짓일 수 있다는 주장을 1500명 과학자의 재현성 위기 경험으로 확장하여 실증적으로 검증했다.
-- 🧪 응용 사례: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 발표된 연구 결과의 거짓 가능성을 심리학 실험의 재현가능성 추정이라는 구체적 분야에서 검증했다.
-- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 연구 결과의 거짓 가능성 문제를 연구 부정행위가 논문 철회의 주요 원인이라는 구체적 사례로 확장했다.
-- 🔄 다른 접근: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — 과학 연구의 신뢰성 문제를 AI 도구와 연구 방법론의 다른 관점에서 접근함
-- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 대부분의 발표된 연구 결과가 거짓이라는 주장이 과학 편향 메타분석의 이론적 출발점을 제공한다.
+- 🔗 후속 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 연구 재현성 문제의 이론적 분석을 대규모 실증 조사로 확장하여 검증한다.
+- 🧪 응용 사례: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 심리학 분야에서 재현성 위기를 실제 실험을 통해 검증하여 이론을 실증한다.
+- 🔄 다른 접근: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 연구의 재현가능성을 다루지만, 실험적 재검증보다는 통계적 논리를 통해 발표된 연구 결과의 신뢰성 문제를 이론적으로 분석한다.
+- ⚖️ 반론/비판: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 대부분의 연구 결과가 거짓이라는 관점에서 RWE 기반 정책 결정의 신뢰성 문제를 제기한다.
+- 🧪 응용 사례: [[papers/1079_REFORMS_Consensus-based_Recommendations_for_Machine-learning/review]] — 거짓 연구 결과 문제를 기계학습 연구에서 방지하기 위한 구체적인 가이드라인을 제공한다.
+- ⚖️ 반론/비판: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 연구 결과의 거짓 양성과 편향 문제를 다른 각도에서 접근하여 과학적 신뢰성 문제의 다면적 이해를 돕는다.
+- 🏛 기반 연구: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 연구 결과의 거짓 가능성에 대한 이론적 분석이 실증적 재현성 연구의 기초를 제공한다
+- 🧪 응용 사례: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 거짓 연구 결과 문제를 데이터 품질 관점에서 해결하는 실용적 접근법이다

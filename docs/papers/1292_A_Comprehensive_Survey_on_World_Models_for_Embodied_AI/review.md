@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Embodied AI를 위한 World Models에 대한 포괄적 조사로, Functionality, Temporal Modeling, Spatial Representation의 세 축 분류체계를 제안하여 환경 동역학을 캡처하고 예측하는 내부 시뮬레이터를 체계적으로 정리한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/LLM_Safety_Representations"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_A Comprehensive Survey on World Models for Embodied AI.pdf"
 ---
@@ -93,11 +95,29 @@ Embodied AI를 위한 World Models에 대한 포괄적 조사로, Functionality,
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1247_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — embodied AI를 위한 모델 설계에서 world model과 행동 기초 모델이라는 서로 다른 접근법을 제시한다
-- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — interactive environment 생성의 기초 모델이 world model의 환경 시뮬레이션 능력에 이론적 토대를 제공한다
-- 🔗 후속 연구: [[papers/1631_World_Models/review]] — 일반적인 world model 개념을 embodied AI의 구체적 요구사항에 맞게 발전시킨다
-- 🔄 다른 접근: [[papers/1247_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — embodied AI를 위한 모델 설계에서 행동 기초 모델과 world model이라는 다른 접근법을 제시한다
-- 🔄 다른 접근: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — Embodied AI에서 world model의 역할에 대한 서로 다른 관점과 체계적 분석을 제공한다.
-- 🏛 기반 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — embodied AI를 위한 world model 조사 연구를 바탕으로 foundation model의 로봇 학습 적용 현황을 종합적으로 분석한다.
-- 🏛 기반 연구: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — world model의 이론적 틀이 physics simulator 기반 로봇 학습의 환경 모델링에 기초를 제공한다
-- 🔗 후속 연구: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — world model과 multi-modal large model의 결합을 embodied AI의 포괄적 관점으로 발전시킨다
+- 🏛 기반 연구: [[papers/1294_A_Generalist_Agent/review]] — Gato의 다중 모달리티 처리 개념이 embodied AI를 위한 world model 설계의 중요한 이론적 기반을 제공
+- 🧪 응용 사례: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Genie의 생성형 환경 모델이 본 서베이에서 제시한 world model 분류체계의 실제 구현 사례
+- 🧪 응용 사례: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — World Model을 자율주행이라는 구체적 도메인에 적용한 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — World Model을 활용한 다양한 도메인 마스터링 방법론을 제시한다.
+- 🔄 다른 접근: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — VLM을 World Model에 통합하는 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — World Models의 기본 개념과 이론적 토대를 embodied AI 맥락에서 체계적으로 정리한 확장 연구입니다.
+- 🔄 다른 접근: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — 세계 모델 학습에서 인간 동영상과 3D 표현을 각각 활용하는 서로 다른 접근법입니다.
+- 🏛 기반 연구: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — embodied AI의 world model과 multimodal foundation model의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — DreamerV3의 world model 접근법은 embodied AI를 위한 세계 모델 연구의 핵심 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — World Models for Embodied AI 서베이가 대규모 모델 기반 embodied AI의 의사결정과 학습에 필요한 세계 모델 이론을 제공함
+- 🏛 기반 연구: [[papers/1481_Motus_A_Unified_Latent_Action_World_Model/review]] — embodied AI를 위한 world model의 포괄적인 이론적 기반을 제공하여 Motus의 unified latent action world model 설계에 필수적인 배경지식을 제공한다.
+- 🏛 기반 연구: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — 신경과학 기반 Neural Brain은 embodied AI를 위한 월드 모델의 생물학적 영감을 제공합니다.
+- 🏛 기반 연구: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — world model 기반 학습의 이론적 기초와 embodied AI에서의 world model 활용 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — World model 기반 embodied AI의 전반적 이해가 reflective planning 연구의 기초가 된다.
+- 🏛 기반 연구: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — embodied AI를 위한 world model의 포괄적 이해를 제공하는 기반 서베이 연구입니다.
+- 🏛 기반 연구: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — World model 기반 embodied AI에 대한 포괄적인 이론적 배경과 survey를 제공한다.
+- 🔗 후속 연구: [[papers/1631_World_Models/review]] — World Models for Embodied AI 서베이가 World Models의 기본 개념을 embodied AI 전반으로 확장하여 최신 발전사항을 종합적으로 다룬다
+- 🔗 후속 연구: [[papers/1603_V-JEPA_2_Self-Supervised_Video_Models_Enable_Understanding_P/review]] — World Model 서베이에서 제시된 개념들을 V-JEPA 2가 비디오 기반으로 실현한다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — World Models for Embodied AI의 포괄적 조사가 VLN taxonomy의 이론적 배경과 미래 발전 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1313_Aspects_of_entanglement_with_background_electric_and_magneti/review]] — 양자장론적 entanglement 개념이 World Model의 시공간 표현 이론에 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1387_EWMBench_Evaluating_Scene_Motion_and_Semantic_Quality_in_Emb/review]] — Embodied AI를 위한 world model 서베이는 EWMBench가 벤치마킹하는 EWM 기술들의 포괄적인 이론적 배경을 제공합니다.
+- 🔗 후속 연구: [[papers/1359_Diffusion_for_World_Modeling_Visual_Details_Matter_in_Atari/review]] — Atari에서 검증된 diffusion world model을 더 복잡한 3D 환경으로 확장할 수 있는 방향을 제시합니다.
+- 🔗 후속 연구: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — Embodied AI를 위한 World Model 서베이와 물리 시뮬레이터 서베이가 상호 보완적인 관점을 제공합니다.
+- 🔗 후속 연구: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — Embodied AI를 위한 World Model 포괄 서베이와 사이버-물리 연결 서베이가 상호 보완적 관점을 제공합니다.
+- 🧪 응용 사례: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA는 World Models 서베이에서 제시된 3D spatial representation과 generative modeling 개념을 실제 로봇 시스템에 구현한 사례입니다.
+- 🏛 기반 연구: [[papers/1368_DiWA_Diffusion_Policy_Adaptation_with_World_Models/review]] — World model을 활용한 policy adaptation의 기본 개념과 구조를 제공합니다.

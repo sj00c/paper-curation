@@ -1,3 +1,24 @@
+---
+title: "1934_From_Experts_to_a_Generalist_Toward_General_Whole-Body_Contr"
+authors:
+  - "Yuxuan Wang"
+  - "Ming Yang"
+  - "Ziluo Ding"
+  - "Yu Zhang"
+  - "Weishuai Zeng"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "BumbleBee는 motion clustering과 sim-to-real adaptation을 결합하여 humanoid robot의 일반적인 whole-body control을 달성하는 expert-generalist 학습 프레임워크이다. 여러 motion cluster에서 전문가 정책을 훈련한 후 이를 통합 generalist controller로 distill한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Teacher-Student_Policy_Distillation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_From Experts to a Generalist Toward General Whole-Body Control for Humanoid Robots.pdf"
+---
+
 # From Experts to a Generalist: Toward General Whole-Body Control for Humanoid Robots
 
 > **저자**: Yuxuan Wang, Ming Yang, Ziluo Ding, Yu Zhang, Weishuai Zeng, Xinrun Xu, Haobin Jiang, Zongqing Lu | **날짜**: 2025-06-15 | **URL**: [https://arxiv.org/abs/2506.12779](https://arxiv.org/abs/2506.12779)
@@ -65,3 +86,18 @@ BumbleBee는 motion clustering과 sim-to-real adaptation을 결합하여 humanoi
 - Overall: 4/5
 
 **총평**: BumbleBee는 motion clustering과 expert-generalist distillation을 통해 humanoid robot의 일반적인 whole-body control 문제를 효과적으로 해결하며, sim-to-real adaptation과 결합하여 실제 세계에서 agile하고 robust한 control을 달성한 우수한 연구이다. 기술적 창의성과 실험적 검증이 뛰어나고 robotics 분야에 의미 있는 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — 둘 다 전문가 정책을 일반화하지만 BumbleBee는 motion clustering을, FARM은 frame acceleration과 MoE를 사용한다.
+- 🔗 후속 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — BumbleBee의 expert-generalist 학습을 다중 에이전트 환경으로 확장하여 MASH의 cooperative-heterogeneous 학습이 가능하다.
+- 🏛 기반 연구: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — BumbleBee의 motion clustering 기반 일반화가 cross-humanoid 학습의 scalable whole-body control에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — 둘 다 motion tracking에서 일반화된 whole-body control로의 전환을 다루지만, BumbleBee는 expert-generalist 프레임워크를, BeyondMimic은 versatile control 접근법을 사용합니다.
+- 🔄 다른 접근: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 둘 다 일반적인 whole-body control을 추구하지만, BumbleBee는 motion clustering 기반 expert 통합을, FAST는 대규모 사전학습과 residual adaptation을 사용합니다.
+- 🏛 기반 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — H-Zero의 cross-humanoid pretraining 개념이 BumbleBee의 generalist controller 학습에 필요한 다양성과 일반화 능력의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1744_Unleashing_Humanoid_Reaching_Potential_via_Real-world-Ready/review]] — 전문가에서 일반가로의 전신 제어 개념을 사전 학습된 원시 스킬들의 통합을 통해 구체화하여 CVAE 기반 통일 표현을 실현했다.
+- 🔄 다른 접근: [[papers/1760_X-Loco_Towards_Generalist_Humanoid_Locomotion_Control_via_Sy/review]] — 둘 다 범용 전신 제어를 목표로 하지만 X-Loco는 정책 증류로, From Experts는 전문가 통합으로 접근한다.
+- 🔄 다른 접근: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 둘 다 일반적인 whole-body control을 추구하지만, FAST는 대규모 사전학습과 residual adaptation을, BumbleBee는 expert-generalist distillation을 사용합니다.
+- 🔄 다른 접근: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — 둘 다 전문가-일반가 학습을 다루지만 FARM은 frame acceleration과 MoE를, BumbleBee는 motion clustering을 사용한다.
+- 🏛 기반 연구: [[papers/1985_HOVER_Versatile_Neural_Whole-Body_Controller_for_Humanoid_Ro/review]] — experts to generalist의 whole-body control 일반화 방법론이 HOVER의 정책 증류를 통한 제어 모드 통합 기법의 기초를 제공한다.
+- 🏛 기반 연구: [[papers/2136_PHUMA_Physically-Grounded_Humanoid_Locomotion_Dataset/review]] — From experts to generalist control의 일반화 접근법이 PHUMA의 대규모 인터넷 비디오 데이터로부터 일반적인 humanoid locomotion 학습의 기술적 토대를 제공합니다.

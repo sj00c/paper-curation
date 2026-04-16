@@ -9,9 +9,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 2010-2024년 Scopus 데이터베이스의 bibliometric 및 scientometric 분석을 통해 사이버보안 분야에서 machine learning의 역할과 emerging trends를 체계적으로 파악한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Trend_Forecasting_Techniques"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Razzaq and Shah_2026_Emerging Trends in Cybersecurity Machine Learning as a Game-Changer in Next-Generation Cybersecurit.pdf"
 ---
@@ -84,10 +84,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Razzaq and Shah_2026_Emerging Trends in 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 도입의 사이버보안 분야 적용이 위험과 AI 도입의 일반적 과학계량 분석을 확장함
-- 🔄 다른 접근: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기계학습 응용 분야에서 사이버보안과 전반적 과학계량 조사의 다른 범위 접근법임
-- 🔄 다른 접근: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 특정 분야의 연구 동향 분석에서 사이버보안과 우울증 관련 낙인의 다른 주제 접근법임
-- 🔗 후속 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 사이버보안에서 머신러닝의 emerging trends가 데이터 프라이버시와 클라우드 보안 연구로 자연스럽게 확장된다.
-- 🏛 기반 연구: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — 사이버보안에서 기계학습의 게임체인징 역할이 AI 도입에서 위험 관리의 기술적 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기계학습이 의료 분야에서 게임 체인저 역할을 한다는 관점의 심혈관질환 특화 실증 분석을 제공한다.
-- 🏛 기반 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 사이버보안에서 머신러닝의 게임체인징 역할 분석이 발달장애 지원 기술 발전의 기술적 맥락을 제공한다.
+- 🏛 기반 연구: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 과학계량학적 분석 방법이 LLM 기반 비판적 검토 시스템의 평가 기준 설정에 기초 제공
+- 🔄 다른 접근: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 서지계량학적 분석을 사이버보안과 성별 격차라는 다른 주제에 각각 적용하여 트렌드 파악
+- 🧪 응용 사례: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 지식그래프를 활용한 과학 연구 매핑 방법을 사이버보안 분야의 트렌드 분석에 구체적으로 적용
+- 🔄 다른 접근: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — 같은 기간 동안 머신러닝과 AI의 영향을 각각 사이버보안과 비즈니스 의사결정 분야에서 분석한다.
+- 🔗 후속 연구: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — 사이버보안에서 머신러닝의 역할을 AI 채택의 위험과 기회 관점에서 확장 분석할 수 있다.
+- 🏛 기반 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 사이버보안 분야 AI 트렌드 예측에 머신러닝 기반 미래 예측 방법론을 적용할 수 있다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — bibliometric 분석의 방법론적 기초를 제공하는 과학계량학 연구입니다.
+- 🧪 응용 사례: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 과학계량학적 접근법을 사이버보안 분야 문헌의 품질 검사에 구체적으로 적용하는 사례
+- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 디지털 기술 동향을 서로 다른 관점(마케팅 vs 사이버보안)에서 bibliometric 분석으로 접근합니다.
+- 🔗 후속 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 사이버보안에서 머신러닝의 새로운 트렌드를 다룬 연구로, 심혈관 연구의 머신러닝 응용을 다른 분야로 확장할 수 있습니다.
+- 🔄 다른 접근: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — 같은 기간 동안 AI와 ML의 영향을 각각 비즈니스와 사이버보안 분야에서 분석한 평행 연구다.

@@ -1,3 +1,20 @@
+---
+title: "2035_Kimodo_Scaling_Controllable_Human_Motion_Generation"
+authors:
+  - "| **날짜**: 2026-03-29"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "NVIDIA의 Kimodo는 700시간의 광학 모션캡처 데이터로 학습한 kinematic motion diffusion model로, 텍스트 프롬프트 및 포괄적인 운동학 제약 조건을 통해 고품질 인간 모션을 생성한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Text-Conditioned_Motion_Generation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_Kimodo Scaling Controllable Human Motion Generation 1.pdf"
+---
+
 # Kimodo: Scaling Controllable Human Motion Generation
 
 > **저자**:  | **날짜**: 2026-03-29 | **URL**: [https://arxiv.org/abs/2603.15546](https://arxiv.org/abs/2603.15546)
@@ -60,3 +77,13 @@ NVIDIA의 Kimodo는 700시간의 광학 모션캡처 데이터로 학습한 kine
 - Overall: 4/5
 
 **총평**: Kimodo는 대규모 모션캡처 데이터와 혁신적인 두 단계 diffusion 아키텍처를 결합하여 현실적이고 제어 가능한 인간 모션 생성을 달성한 중요한 기여이며, 로봇공학과 콘텐츠 생성 분야에서 실질적인 응용 가치를 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1952_GENMO_A_GENeralist_Model_for_Human_MOtion/review]] — 대규모 인간 모션 생성에서 GENMO는 일반화된 접근을, Kimodo는 제어 가능성에 집중
+- 🏛 기반 연구: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — 백만 수준의 인간 모션 데이터 스케일링에 대한 기본적인 학습 방법론 제공
+- 🔄 다른 접근: [[papers/1745_Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level/review]] — 둘 다 대규모 데이터로 학습한 모션 생성이지만 Kimodo는 텍스트 제어, Unveiling은 데이터 스케일링 영향 분석 중심
+- 🏛 기반 연구: [[papers/1996_Humanoid_Locomotion_as_Next_Token_Prediction/review]] — Next Token Prediction 기반 휴머노이드 로코모션이 Kimodo의 텍스트 조건부 모션 생성에 언어 모델 기반 아키텍처 제공
+- 🔗 후속 연구: [[papers/1952_GENMO_A_GENeralist_Model_for_Human_MOtion/review]] — Kimodo의 제어 가능한 인간 동작 생성이 GENMO의 generalist 모델을 확장할 수 있다.
+- 🔗 후속 연구: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — Kimodo의 controllable human motion generation이 OmniControl의 joint-level control을 더 확장된 whole-body motion synthesis로 발전시킨 형태입니다.
+- 🔗 후속 연구: [[papers/2146_TEDi_Temporally-Entangled_Diffusion_for_Long-Term_Motion_Syn/review]] — Kimodo의 controllable motion generation이 TEDi의 장기 motion synthesis를 더 정교한 제어 가능성으로 확장한 형태입니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "LLM을 활용하여 자연어로 기술된 목표로부터 자동으로 dense reward function을 생성하고 형성하는 data-free 프레임워크 Text2Reward를 제시한다. 생성된 reward code는 해석 가능하고 실행 가능한 프로그램 형태로, 기존의 inverse RL이나 sparse reward 기반 방법들보다 넓은 범위의 작업을 지원한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Foundation_Model_Agents"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/LLM-Based_Reward_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xie et al._2023_Text2Reward Reward Shaping with Language Models for Reinforcement Learning.pdf"
 ---
@@ -93,9 +95,21 @@ LLM을 활용하여 자연어로 기술된 목표로부터 자동으로 dense re
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — Text2Reward의 자연어 기반 dense reward 생성 방법론을 RoboGen의 자동화된 학습 감독 생성에 통합하여 더 정교한 보상 설계를 가능하게 한다.
-- 🧪 응용 사례: [[papers/1444_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — Language to Rewards 연구의 로봇 스킬 합성 방법론에 Text2Reward의 자동 보상 함수 생성을 적용하여 더 다양한 스킬 학습을 가능하게 한다.
-- 🏛 기반 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 대규모 언어 모델을 활용한 강화학습 가이드 연구가 Text2Reward의 LLM 기반 보상 형성에 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 자연어를 통한 로봇 제어에서 Text2Reward의 보상 생성 방식과 Code as Policies의 프로그램 생성 방식을 해석가능성 측면에서 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — Text2Reward의 언어 기반 보상 설계가 ELLM의 LLM 목표 제시 방법론에 보상 함수 자동 생성이라는 이론적 기반을 제공한다
-- 🏛 기반 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — Text2Reward의 자연어 기반 reward function 자동 생성 방법론이 RoboGen의 자동 학습 감독 생성에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — SPRINT는 Text2Reward와 유사하게 LLM을 활용하지만 보상 생성 대신 instruction relabeling에 집중하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — Language to Rewards는 Text2Reward와 동일한 언어-보상 변환 문제를 다른 방법론으로 접근한다.
+- 🧪 응용 사례: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — ExploRLLM은 Text2Reward가 생성한 언어 기반 보상을 강화학습 탐험에 실제 적용하는 구체적 사례다.
+- 🧪 응용 사례: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — Guiding Pretraining with LLM은 Text2Reward의 언어 기반 보상 형성을 사전훈련 과정에 적용하는 응용 사례다.
+- 🔗 후속 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — 언어 기반 보상 형성 개념이 instruction augmentation의 이론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — Plan-Seq-Learn은 Text2Reward의 언어 기반 보상 생성을 장기 계획 학습과 결합한 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1408_GenSim_Generating_Robotic_Simulation_Tasks_via_Large_Languag/review]] — Text2Reward의 언어 기반 보상 설계를 시뮬레이션 작업 자동 생성으로 확장한 응용이다.
+- 🏛 기반 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 언어 모델을 활용한 reward shaping의 기초적 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 둘 다 LLM을 활용한 RL 보상 설계를 다루지만 탐색 가이드 vs 직접적 보상 생성이라는 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — 언어를 보상으로 변환하는 개념을 reward shaping으로 더 체계화하고 일반화한 접근법이다.
+- 🏛 기반 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — Text2Reward의 언어 기반 보상 설계가 DIAL의 자연어 명령어 생성과 언어 조건부 정책 학습의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — Text2Reward는 SPRINT와 유사하게 LLM을 활용하지만 instruction relabeling 대신 자동 보상 함수 생성에 집중한다.
+- 🔄 다른 접근: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — 개인화 학습을 위해 TidyBot은 LLM의 요약 능력을, Text2Reward는 reward shaping을 활용하는 서로 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — Text2Reward의 언어를 통한 reward shaping 개념이 Do As I Can에서 제시된 언어 기반 로봇 행동 grounding의 기초적 아이디어를 제공한다.
+- 🔄 다른 접근: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — Text2Reward는 LLM을 활용하되 ExploRLLM과 달리 보상 shaping을 통해 RL 성능을 개선하는 다른 접근법을 사용합니다.
+- 🧪 응용 사례: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Text2Reward의 언어 모델 기반 보상 설계는 Code as Policies의 자연어-코드 변환을 강화학습에 구체적으로 적용한다.
+- 🏛 기반 연구: [[papers/1335_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reac/review]] — 언어 모델을 활용한 보상 설계의 기초 방법론을 제공한다.
+- 🧪 응용 사례: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — 언어 모델을 사용한 보상 형성의 구체적인 강화학습 적용 사례입니다.

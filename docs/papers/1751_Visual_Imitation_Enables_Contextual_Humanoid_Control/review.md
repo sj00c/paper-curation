@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VIDEOMIMIC는 단순한 휴대폰 영상에서 인간-환경 4D 기하학을 공동 재구성하고, 이를 시뮬레이션에서 RL 정책으로 학습한 후 실제 휴머노이드 로봇에 배포하는 real-to-sim-to-real 파이프라인이다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Allshire et al._2025_Visual Imitation Enables Contextual Humanoid Control.pdf"
 ---
@@ -85,3 +88,23 @@ VIDEOMIMIC는 단순한 휴대폰 영상에서 인간-환경 4D 기하학을 공
 - Overall: 4/5
 
 **총평**: 이 논문은 일상 영상으로부터 휴머노이드 로봇의 문맥-인식 제어를 가능하게 하는 실용적이고 확장 가능한 파이프라인을 제시하며, 공동 4D 재구성과 RL 기반 정책 증류의 조합으로 높은 독창성을 보인다. 실제 로봇 배포 성공은 연구의 가치를 크게 높이나, 환경 표현의 제한성과 동역학 정확도 측면에서 개선 여지가 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — 둘 다 인간 영상에서 humanoid 제어를 학습하지만 VisualMimic은 hierarchical control에 더 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoMimic의 egocentric video 모방 학습이 VIDEOMIMIC의 휴대폰 영상 처리 기술의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — ResMimic의 일반적인 모션 추적이 VIDEOMIMIC의 4D 기하학 재구성 접근법을 보완합니다.
+- 🔄 다른 접근: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — real-to-sim-to-real과 simulation-pretrained latent space라는 서로 다른 시뮬레이션-실제 연결 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — 휴머노이드 loco-manipulation에서 4D 기하학 재구성과 visual sim-to-real이라는 보완적 시각 처리 접근법을 다룬다.
+- 🏛 기반 연구: [[papers/1857_CRISP_Contact-Guided_Real2Sim_from_Monocular_Video_with_Plan/review]] — monocular video에서 contact-guided real2sim과 4D 기하학 재구성이라는 관련된 실제-시뮬레이션 연결 방법론을 사용한다.
+- 🔗 후속 연구: [[papers/1895_Efficient_and_Scalable_Monocular_Human-Object_Interaction_Mo/review]] — 효율적이고 확장 가능한 단안 인간-객체 상호작용 모델링을 휴머노이드 제어로 확장하여 단순한 휴대폰 영상에서 복잡한 맥락적 제어를 실현했다.
+- 🔄 다른 접근: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — 물리적 인간-장면 상호작용을 위해 서로 다른 접근(단순 영상 기반 모방 vs 통합된 토큰 기반 합성)을 통해 자연스러운 휴머노이드 행동을 생성한다.
+- 🔄 다른 접근: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — 전신 조작 학습에서 잠재 행동 공간과 4D 기하학 재구성이라는 서로 다른 표현 학습 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1646_RoboMirror_Understand_Before_You_Imitate_for_Video_to_Humano/review]] — Visual Imitation Enables Contextual Control의 맥락적 휴머노이드 제어가 RoboMirror의 VLM 기반 의도 추출을 더욱 정교하게 확장함
+- 🏛 기반 연구: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — visual sim-to-real 접근법에서 RGB 기반 정책과 4D 기하학 재구성이라는 보완적 시각 처리 방법을 사용한다.
+- 🔄 다른 접근: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — 둘 다 비전 기반 humanoid 제어지만 VIDEOMIMIC은 real-to-sim-to-real, VisualMimic은 hierarchical 접근법을 사용합니다.
+- 🔗 후속 연구: [[papers/1885_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — visual imitation을 통한 contextual humanoid control이 DreamControl-v2의 guided diffusion 접근법을 시각적 맥락으로 확장한다.
+- 🔄 다른 접근: [[papers/1902_EgoMI_Learning_Active_Vision_and_Whole-Body_Manipulation_fro/review]] — Visual Imitation의 맥락적 휴머노이드 제어가 egocentric 데이터 없이도 시각 기반 제어를 가능하게 하는 다른 접근 방식을 제시한다.
+- 🏛 기반 연구: [[papers/1969_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — visual imitation을 통한 contextual humanoid 제어가 HDMI의 모노큘러 비디오 기반 상호작용 학습의 기반 기술입니다.
+- 🔄 다른 접근: [[papers/1975_Hierarchical_visuomotor_control_of_humanoids/review]] — 계층적 시각운동 제어와 시각적 모방 기반 문맥적 제어는 모두 시각 정보를 활용한 휴머노이드 제어이지만 접근법이 다르다.
+- 🔄 다른 접근: [[papers/2022_In-N-On_Scaling_Egocentric_Manipulation_with_in-the-wild_and/review]] — 시각 기반 휴머노이드 제어에서 같은 문제를 다르지만 보완적인 접근으로 해결

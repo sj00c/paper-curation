@@ -12,7 +12,9 @@ score: 4.0
 essence: "과학의 과학(science of science) 분야에서 대규모 데이터셋, 측정 방법론, 실증적 연구 방법론을 종합적으로 리뷰하여 과학의 작동 방식과 과학적 진전을 이해하기 위한 실증적 접근법을 제시한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Research_Evaluation_and_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2023_Data, measurement and empirical methods in the science of science.pdf"
 ---
@@ -89,10 +91,25 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2023_Data, measurement and em
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑과 지식 지도화 방법론이 과학의 과학 실증 연구의 핵심 도구임
-- 🔗 후속 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 연구를 위한 대규모 오픈 데이터 플랫폼으로 확장됨
-- 🔗 후속 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 분야의 이론적 토대와 실증적 방법론을 종합한 발전된 형태임
-- 🏛 기반 연구: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 과학의 과학 분야의 실증적 방법론이 인용 추천 시스템 평가에 필수적임
-- 🏛 기반 연구: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 정책 의사결정에서 과학적 데이터와 측정 방법론이 어떻게 활용되는지에 대한 실증적 근거를 제공한다.
-- 🏛 기반 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 대규모 논문 분석을 통한 학문 분야 진화 연구의 방법론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 과학의 과학 분야에서 데이터 측정과 실증 방법론의 발전을 보여준다
+- 🏛 기반 연구: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 표준화된 저자 데이터베이스가 Science of Science 연구의 실증적 방법론 구현에 필수적이다.
+- 🧪 응용 사례: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 과학 펀딩과 연구 성과 연결 방법론이 SciSci 실증 연구의 구체적 적용 사례가 된다.
+- 🧪 응용 사례: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — S2ORC와 같은 대규모 학술 데이터셋이 과학의 과학 연구에서 실증적 분석의 핵심 데이터 인프라를 제공한다.
+- 🔗 후속 연구: [[papers/1042_The_Scholarly_Knowledge_Ecosystem_Challenges_and_Opportuniti/review]] — 과학의 과학 분야의 방법론적 기반이 학술 지식 생태계 연구로 확장되어 더 포괄적 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 분야의 데이터와 방법론적 기반을 체계적으로 정리하여 연구 분야 발전의 토대를 마련한다.
+- 🔄 다른 접근: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학 분야를 다루지만, 예측 가능성보다는 데이터, 측정, 실증 방법론의 종합적 분석에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 연구를 위한 대규모 오픈 데이터 구축이 실증적 연구 방법론 발전의 핵심 인프라임을 보여준다.
+- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 학술 코퍼스가 과학의 과학 연구에서 데이터 기반 실증 분석의 핵심 인프라를 제공한다.
+- 🔗 후속 연구: [[papers/1019_Science_of_science/review]] — SciSci의 이론적 토대 위에 구체적인 데이터 측정 방법론과 실증적 접근법을 발전시켰다.
+- 🏛 기반 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 분야에서 데이터, 측정, 실증적 방법론의 중요성을 보여주는 이론적 배경을 제공합니다.
+- 🏛 기반 연구: [[papers/1042_The_Scholarly_Knowledge_Ecosystem_Challenges_and_Opportuniti/review]] — 학술 지식 생태계 연구의 데이터, 측정, 실증 방법론적 기반을 제공하여 체계적 분석을 가능하게 한다.
+- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 분야의 데이터와 방법론에 대한 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 과학의 과학 연구에서 필요한 대규모 표준화된 데이터셋의 구체적 사례를 제공한다.
+- 🏛 기반 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 과학의 과학 분야의 데이터와 실증 방법론에 대한 체계적 이해가 텍스트 마이닝과 과학 지도화 결합의 이론적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학 분야의 데이터와 방법론에 대한 종합적 분석이 과학적 발견의 예측 가능성 연구의 방법론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — 과학계량학의 데이터 측정 및 실증 방법론이 서지 데이터 통합 도구 설계의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 과학학 분야의 데이터와 실증 방법론에 대한 포괄적 기초를 제공한다
+- 🧪 응용 사례: [[papers/977_Introducing_multiverse_analysis_to_bibliometrics_The_case_of/review]] — 과학학 분야의 실증 방법론 연구에서 다중우주분석이 실제 적용될 수 있는 구체적 사례를 보여준다.
+- 🏛 기반 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — bibliometric 분석의 방법론적 기초를 제공하는 과학계량학 연구입니다.
+- 🏛 기반 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 과학계량학의 데이터 측정 및 실증 방법론이 Scito2M 데이터셋 설계의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 과학의과학 분야의 데이터와 측정 방법론이 인용 분석 데이터 품질 평가의 이론적 토대를 제공하기 때문
+- 🧪 응용 사례: [[papers/1150_Characterization_of_a_Workload_Generator_for_Content-based_P/review]] — 과학학 연구의 데이터 측정 방법론을 content-based 시스템의 워크로드 분석에 구체적으로 적용

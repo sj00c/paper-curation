@@ -8,7 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "이 연구는 음성 입력으로부터 의미론적으로 적절한 제스처를 생성하고 실시간으로 휴머노이드 로봇에 배포하는 end-to-end 프레임워크를 제시한다. LLM과 Motion-GPT를 활용한 제스처 생성과 imitation learning 기반의 MotionTracker 제어 정책을 통합하여 의미 있는 비언어적 소통을 실현한다."
 tags:
-  - "cat/Other"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LLM_Physical_Motion_Planning"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang_2025_Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoid Robots.pdf"
 ---
@@ -83,3 +86,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang_2025_Semantic Co-Speech Gesture Sy
 - Overall: 4/5
 
 **총평**: 이 논문은 음성 기반 의미론적 제스처 생성과 실시간 로봇 배포를 통합한 의미 있는 연구로, LLM, Motion-GPT, imitation learning을 창의적으로 결합하여 완전한 end-to-end 파이프라인을 실현했다. 다만 평가의 정량성 강화와 다양한 환경에서의 robustness 검증이 필요하다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — SignBot의 수화 상호작용이 음성-제스처 생성을 시각적 언어로 확장한 포괄적 소통 시스템
+- 🏛 기반 연구: [[papers/1634_Realistic_Lip_Motion_Generation_Based_on_3D_Dynamic_Viseme_a/review]] — 입술 운동 생성의 3D 동적 모델링이 음성 기반 제스처 생성의 다중 모달 표현 기반
+- 🔄 다른 접근: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — 계층적 의도 인식 표현 생성과 LLM 기반 의미론적 제스처는 휴머노이드 표현의 서로 다른 접근법
+- 🔄 다른 접근: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — LLM을 활용한 언어-행동 모델링에서 제스처 생성과 전신 제어라는 서로 다른 응용 영역을 다룬다.
+- 🏛 기반 연구: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 실시간 언어-모션 변환이라는 공통 과제를 다루며, TextOp의 상호작용적 접근법이 Semantic Co-Speech의 실시간 제어에 기여할 수 있다.
+- 🏛 기반 연구: [[papers/1968_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — Harmon의 전신 모션 생성 기술이 제스처와 조화된 휴머노이드 전체 움직임 생성에 필요한 기반이다
+- 🏛 기반 연구: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — 음성-제스처 생성의 다중 모달 프레임워크가 SignBot의 수화 인식/생성을 위한 기본 상호작용 구조
+- 🔗 후속 연구: [[papers/1646_RoboMirror_Understand_Before_You_Imitate_for_Video_to_Humano/review]] — Visual motion intent를 semantic gesture synthesis로 확장한 응용 연구
+- 🔄 다른 접근: [[papers/1624_PRIMAL_Physically_Reactive_and_Interactive_Motor_Model_for_A/review]] — PRIMAL의 generative motion model과 제스처 생성의 LLM+Motion-GPT는 서로 다른 인간형 실시간 애니메이션 접근법
+- 🏛 기반 연구: [[papers/1634_Realistic_Lip_Motion_Generation_Based_on_3D_Dynamic_Viseme_a/review]] — 음성-제스처 생성 시스템이 입술 운동의 3D 동적 비셈 모델링을 포함한 종합적인 인간-로봇 상호작용 기반
+- 🏛 기반 연구: [[papers/1882_Do_You_Have_Freestyle_Expressive_Humanoid_Locomotion_via_Aud/review]] — semantic co-speech gesture synthesis가 audio-controlled humanoid locomotion의 음성-동작 매핑에 대한 기본 원리를 제공한다.
+- 🔄 다른 접근: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — LLM 기반 표현적 모션 생성과 의미적 공동 발화 제스처 합성은 모두 자연스러운 인간형 표현을 목표로 한다.
+- 🔄 다른 접근: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — 계층적 의도 인식 표현 생성과 의미적 공동 발화 제스처는 모두 사회적 상호작용을 위한 표현적 모션을 다룬다.

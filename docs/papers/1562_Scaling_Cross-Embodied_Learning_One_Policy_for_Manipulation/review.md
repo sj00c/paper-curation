@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "CrossFormer는 20개의 서로 다른 로봇 embodiment에서 900K 궤적으로 학습된 단일 transformer 기반 정책으로, 관찰 및 행동 공간의 수동 정렬 없이 조작, 네비게이션, 보행, 항공 로봇을 모두 제어할 수 있다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Cross-Domain_Robot_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Broad_Task_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Doshi et al._2024_Scaling Cross-Embodied Learning One Policy for Manipulation, Navigation, Locomotion and Aviation.pdf"
 ---
@@ -89,11 +91,23 @@ CrossFormer는 20개의 서로 다른 로봇 embodiment에서 900K 궤적으로 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — robosuite의 기본 시뮬레이션 프레임워크를 가정 환경의 현실적인 저수준 조작 작업으로 특화하여 확장한다.
-- 🏛 기반 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — BEHAVIOR-1K의 인간 중심 embodied AI 벤치마크를 로봇 조작에 특화된 저수준 제어가 가능한 환경으로 구현한다.
-- 🧪 응용 사례: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — generalist robot policy의 성능을 가정 내 재배치라는 구체적이고 현실적인 환경에서 평가하고 개선한다.
-- 🏛 기반 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — Cross-embodied learning의 일반적 원리가 latent action space를 통한 cross-embodiment 조작의 기반이 된다.
-- 🔄 다른 접근: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — 다양한 로봇 형태에 대한 범용 정책 학습에서 Transformer와 cross-embodied learning의 서로 다른 접근법을 보여준다.
-- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Cross-embodiment learning의 이론적 기반이 다중 로봇 플랫폼 데이터 통합에 방법론적 근거를 제공한다.
-- 🏛 기반 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — robosuite의 모듈식 시뮬레이션 환경을 가정 내 조작이라는 특정 도메인으로 확장하여 현실적인 저수준 조작을 지원한다.
-- 🧪 응용 사례: [[papers/1546_Robot_Utility_Models_General_Policies_for_Zero-Shot_Deployme/review]] — cross-embodiment 학습의 일반 원리를 manipulation, navigation, locomotion 등 다양한 로봇 태스크에 적용한다.
+- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — CrossFormer의 cross-embodied 학습은 Open X-Embodiment가 제공하는 다양한 로봇 데이터셋을 활용한다.
+- 🔄 다른 접근: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — MetaMorph는 CrossFormer와 유사하게 다양한 형태의 로봇을 제어하지만 transformer 기반 universal controller에 집중한다.
+- 🏛 기반 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — All Robots in One은 CrossFormer가 달성하려는 통합된 다중 embodiment 제어를 위한 표준화된 데이터셋을 제공한다.
+- 🏛 기반 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — Cross-Platform Scaling 연구는 CrossFormer의 다중 embodiment 학습이 가능한 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — cross-embodiment manipulation의 이론적 기반이 CrossFormer의 다중 로봇 제어에 적용된다.
+- 🔄 다른 접근: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — HPT가 embodiment-specific tokenizer를 사용하는 반면, CrossFormer는 수동 정렬 없이 cross-embodied 학습을 달성한다.
+- 🔗 후속 연구: [[papers/1628_WholeBodyVLA_Towards_Unified_Latent_VLA_for_Whole-Body_Loco-/review]] — WholeBodyVLA의 whole-body locomotion 개념을 확장하여 조작, 네비게이션, 보행, 항공까지 포괄하는 더 광범위한 embodiment를 다룬다.
+- 🧪 응용 사례: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — Cross-Embodied Learning의 정책 공유 방법이 GauDP의 공유 3D Gaussian 표현을 실제 다중 로봇 시스템에 적용하는 방법을 제시합니다.
+- 🔄 다른 접근: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — Cross-embodied learning에서 단일 정책과 다르게 MoE로 다양한 embodiment를 명시적으로 처리한다.
+- 🔄 다른 접근: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — 둘 다 cross-embodiment 학습이지만 Latent Action Diffusion은 latent space에, Scaling 논문은 정책 통합에 집중한다.
+- 🔄 다른 접근: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — Cross-embodiment 학습에서 MetaMorph는 모듈식 로봇에, 다른 연구는 일반적 조작에 초점을 맞춘 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo의 cross-embodiment learning을 더욱 확장하여 single policy로 다양한 manipulation 작업을 처리하는 방법을 제시한다.
+- 🧪 응용 사례: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Cross-embodied learning 정책이 Open X-Embodiment 데이터셋의 다양한 로봇 플랫폼 데이터를 실제 활용하는 구체적인 응용 사례다.
+- ⚖️ 반론/비판: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — CrossFormer가 embodiment 간 수동 정렬 없이 학습하는 반면, HPT는 embodiment-specific tokenizer를 통한 명시적 구조화를 추구한다.
+- 🔄 다른 접근: [[papers/1546_Robot_Utility_Models_General_Policies_for_Zero-Shot_Deployme/review]] — 새로운 환경에서의 로봇 배포를 RUM은 zero-shot으로, Scaling Cross-Embodied Learning은 하나의 정책으로 해결하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1633_X-VLA_Soft-Prompted_Transformer_as_Scalable_Cross-Embodiment/review]] — cross-embodiment learning에서 서로 다른 접근법 - soft prompt vs unified policy입니다.
+- 🔄 다른 접근: [[papers/1302_Adapt3R_Adaptive_3D_Scene_Representation_for_Domain_Transfer/review]] — 둘 다 cross-embodiment learning을 다루지만 Adapt3R는 3D scene representation에, Scaling Cross-Embodied는 unified policy에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Cross-Embodied Learning의 단일 정책 조작은 Being-H0.5의 30개 로봇 플랫폼 일반화에 핵심 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — cross-embodied learning의 통합 정책 개념이 navigation foundation model의 핵심 설계 기반
+- 🧪 응용 사례: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — ARIO의 통합 데이터 표준이 cross-embodied learning 연구에서 실제로 활용될 수 있는 데이터 기반을 제공합니다.

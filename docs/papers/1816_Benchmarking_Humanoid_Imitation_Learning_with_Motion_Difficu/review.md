@@ -1,3 +1,25 @@
+---
+title: "1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu"
+authors:
+  - "Zhaorui Meng"
+  - "Lu Yin"
+  - "Xinrui Chen"
+  - "Anjun Chen"
+  - "Shihui Guo"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 인간형 로봇의 동작 모방 학습에서 정책 성능과 동작 난이도를 분리하여 평가하기 위해 Motion Difficulty Score (MDS)를 제안하며, 이를 통해 실패가 학습 부족인지 본질적으로 어려운 동작인지를 구분할 수 있게 한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Meng et al._2025_Benchmarking Humanoid Imitation Learning with Motion Difficulty.pdf"
+---
+
 # Benchmarking Humanoid Imitation Learning with Motion Difficulty
 
 > **저자**: Zhaorui Meng, Lu Yin, Xinrui Chen, Anjun Chen, Shihui Guo, Yipeng Qin | **날짜**: 2025-12-08 | **URL**: [https://arxiv.org/abs/2512.07248](https://arxiv.org/abs/2512.07248)
@@ -65,3 +87,19 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 동작 모방 학습에서 오래된 문제(정책 성능 vs 동작 난이도의 혼동)를 처음으로 명확히 정의하고 수학적으로 해결하는 창의적인 접근을 제시하며, MD-AMASS 구성과 광범위한 실증 검증을 통해 실용적 가치를 입증한다. 다만 실제 로봇 환경으로의 확장과 일반화 가능성에 대한 추가 검증이 요구된다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — Motion Difficulty Score가 potential-based reward의 효과를 평가하는 객관적 지표로 활용될 수 있어 벤치마킹 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/2007_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo/review]] — HumanoidBench와 함께 humanoid 학습 평가의 표준화를 위한 complementary한 벤치마킹 프레임워크를 구성한다.
+- 🏛 기반 연구: [[papers/1809_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph/review]] — adversarial imitation learning의 기초 위에서 동작 난이도를 정량화하여 정책 성능과 본질적 어려움을 분리한다.
+- 🔗 후속 연구: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — Motion Difficulty Score를 확장하여 휴머노이드 모션의 human-likeness를 평가하는 motion turing test로 발전시킨다.
+- 🧪 응용 사례: [[papers/1635_Reduced-Order_Model-Guided_Reinforcement_Learning_for_Demons/review]] — motion difficulty 평가 방법론이 reduced-order model 기반 demonstration learning에 실제 적용되어 학습 효율성을 향상시킨다.
+- 🔗 후속 연구: [[papers/2136_PHUMA_Physically-Grounded_Humanoid_Locomotion_Dataset/review]] — Motion Difficulty Score가 PHUMA 데이터셋의 물리 기반 휴머노이드 동작 평가에 확장되어 데이터셋 품질 평가에 활용될 수 있다
+- 🏛 기반 연구: [[papers/1809_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph/review]] — 대규모 모션 데이터셋으로부터 adversarial skill learning의 기초 방법론이 motion difficulty 평가에 활용된다.
+- 🔄 다른 접근: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — 두 논문 모두 humanoid 학습의 벤치마킹을 다루지만 하나는 reward shaping, 다른 하나는 motion difficulty에 집중한다.
+- 🏛 기반 연구: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — 인간과 휴머노이드 보행의 생체역학적 차이 분석이 Motion Difficulty Score의 인간 동작 모방 난이도 평가에 필요한 기준점을 제공한다
+- 🏛 기반 연구: [[papers/1917_Example-based_Motion_Synthesis_via_Generative_Motion_Matchin/review]] — 모션 난이도 벤치마킹이 예제 기반 모션 합성의 품질 평가 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2031_Iterative_Closed-Loop_Motion_Synthesis_for_Scaling_the_Capab/review]] — 모션 난이도 평가와 커리큘럼 학습에 대한 벤치마킹 기반 제공
+- 🏛 기반 연구: [[papers/2100_Mimicking-Bench_A_Benchmark_for_Generalizable_Humanoid-Scene/review]] — Benchmarking Humanoid Imitation Learning의 motion difficulty 평가 방법이 Mimicking-Bench의 종합 벤치마크 설계에 기반이 되었다
+- 🏛 기반 연구: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — 모션 난이도 벤치마킹이 Motion Turing Test에서 human-likeness를 평가하는 기준 설정에 필요한 기초를 제공한다.

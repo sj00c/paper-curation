@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 로봇 공학에서의 실제 성공 사례들을 중심으로 Deep Reinforcement Learning(DRL)의 현황을 종합적으로 조사하며, 로봇 역량, 문제 공식화, 해결 방법, 실세계 성공 수준의 네 가지 축으로 이루어진 새로운 분류 체계를 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robotics_Foundation_Models"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tang et al._2024_Deep Reinforcement Learning for Robotics A Survey of Real-World Successes.pdf"
 ---
@@ -89,11 +91,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tang et al._2024_Deep Reinforcement Lear
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — DRL 실세계 성공사례 분석이 foundation model 기반 로봇공학의 강화학습 적용 방향성 제시
-- 🔗 후속 연구: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — DRL 분류체계가 embodied multimodal 모델의 강화학습 통합 연구로 발전
-- 🏛 기반 연구: [[papers/1260_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — 실세계 강화학습 연구의 포괄적 조사가 AGILE 워크플로우 설계의 이론적 기초를 제공한다
-- 🔗 후속 연구: [[papers/1328_Deep_Reinforcement_Learning_for_Bipedal_Locomotion_A_Brief_S/review]] — 실세계 DRL 연구를 bipedal locomotion이라는 구체적 도메인으로 특화하여 발전시킨다
-- 🔗 후속 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — DRL 실세계 성공사례를 foundation model 통합 관점에서 종합적으로 확장 분석
-- 🏛 기반 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — feature-based와 GAN-based 학습 방법론 비교가 DRL 문제 공식화의 이론적 기초 제공
-- 🏛 기반 연구: [[papers/1582_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — 표현적 휴머노이드 보행의 기반이 되는 자율적 다양한 locomotion 생성 방법론을 제공한다.
-- 🏛 기반 연구: [[papers/1589_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — 표현적 휴머노이드 보행을 위한 자율적 디자인 접근법이 애니메이션 캐릭터 구현을 위한 움직임 생성의 이론적 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — AutoRT는 DRL 정책을 실제 로봇에 대규모로 배포하는 orchestration 프레임워크로, 실세계 성공 사례 조사의 핵심 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — Neural Scaling Laws는 DRL 성공 사례 조사에서 제시된 스케일링 원칙을 이론적으로 확장하고 일반화합니다.
+- 🔄 다른 접근: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RLinf-VLA는 DRL 대신 VLA 모델에 RL을 통합하는 새로운 접근법으로 로봇 학습의 대안적 패러다임을 제시합니다.
+- 🔗 후속 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — LLM을 활용한 강화학습 사전 훈련 가이드로서 DRL의 실세계 적용을 확장합니다.
+- 🧪 응용 사례: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 언어 모델을 사용한 보상 형성의 구체적인 강화학습 적용 사례입니다.
+- 🔄 다른 접근: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — 로보틱스에서 강화학습의 실제 적용사례를 종합적으로 정리한 대표적인 서베이 논문입니다.
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation model 시대의 로봇 공학에서 강화학습의 역할과 발전방향을 제시합니다.
+- 🏛 기반 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — World model을 통한 강화학습이 로봇 분야 적용의 중요한 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1328_Deep_Reinforcement_Learning_for_Bipedal_Locomotion_A_Brief_S/review]] — 로봇공학을 위한 DRL의 실제 응용으로 이족 보행을 확장한다.
+- 🔗 후속 연구: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — real-world robotics의 DRL 응용을 learned dynamics model과 결합하여 안전한 네비게이션으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — real-world humanoid locomotion을 위한 deep reinforcement learning의 이론적 기초와 실제 적용 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1567_SE3-Equivariant_Robot_Learning_and_Control_A_Tutorial_Survey/review]] — Deep RL for Robotics Survey의 강화학습 접근법을 SE(3) 동형성을 명시적으로 고려한 기하학적 관점으로 확장했다.
+- 🏛 기반 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — Deep RL for Robotics 서베이는 sim-to-real RL의 이론적 배경과 실제 적용 사례를 포괄적으로 제시합니다.
+- 🧪 응용 사례: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — 실제 로봇 응용을 위한 심층 강화학습 서베이와 물리 시뮬레이터 역할 분석이 실용적 관점을 제공합니다.

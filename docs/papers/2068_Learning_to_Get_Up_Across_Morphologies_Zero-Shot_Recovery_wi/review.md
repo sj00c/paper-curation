@@ -1,3 +1,20 @@
+---
+title: "2068_Learning_to_Get_Up_Across_Morphologies_Zero-Shot_Recovery_wi"
+authors:
+  - "Jonathan Spraggett"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "7개의 다양한 휴머노이드 로봇(높이 0.48-0.81m, 무게 2.8-7.9kg)에서 낙상 복구를 수행할 수 있는 단일 통합 DRL 정책을 제시하며, 로봇 특화 학습 없이 미학습 로봇에 86±7% 성공률로 제로샷 전이가 가능함을 보였다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Spraggett_2025_Learning to Get Up Across Morphologies Zero-Shot Recovery with a Unified Humanoid Policy.pdf"
+---
+
 # Learning to Get Up Across Morphologies: Zero-Shot Recovery with a Unified Humanoid Policy
 
 > **저자**: Jonathan Spraggett | **날짜**: 2025-12-13 | **URL**: [https://arxiv.org/abs/2512.12230](https://arxiv.org/abs/2512.12230)
@@ -69,3 +86,14 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 휴머노이드 낙상 복구라는 구체적 과제에서 형태-불가지론적 다중 로봇 제어의 실현 가능성을 처음 입증하며, 포괄적 실험과 높은 제로샷 성능으로 일반화된 로봇 제어의 기초를 마련한다. 다만 시뮬레이션 기반 검증과 실제 전이 실험이 부재한 점이 한계이지만, 오픈소스 공개와 체계적 분석은 해당 분야에 실질적 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1961_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — 다양한 휴머노이드 형태에서 범용적인 낙상 복구와 교차 휴머노이드 보행 사전 훈련이라는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — 소수의 시연으로부터 통합된 휴머노이드 낙상 안전 정책을 학습하는 확장된 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — 교차 휴머노이드 학습을 위한 확장 가능한 전신 제어의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2051_Learning_Getting-Up_Policies_for_Real-World_Humanoid_Robots/review]] — 단일 로봇 낙상 복구에서 여러 형태의 로봇에서 작동하는 통합 정책으로 일반화되어 범용성을 보여준다.
+- 🔄 다른 접근: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — 두 논문 모두 교차 휴머노이드 일반화를 다루지만 통합 복구 정책은 낙상에, H-Zero는 보행에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid/review]] — 다양한 형태에서의 zero-shot 회복 능력이 VIGOR의 통합된 넘어짐 안전 접근법과 관련된다.
+- 🔗 후속 연구: [[papers/2051_Learning_Getting-Up_Policies_for_Real-World_Humanoid_Robots/review]] — 단일 로봇의 낙상 복구에서 여러 형태의 로봇에서 작동하는 통합 정책으로의 일반화를 보여준다.
+- 🔗 후속 연구: [[papers/2058_Learning_Humanoid_Standing-up_Control_across_Diverse_Posture/review]] — 다양한 자세에서의 일어서기 학습을 morphology 간 zero-shot recovery로 확장하여 더 일반화된 회복 능력을 구현할 수 있다.

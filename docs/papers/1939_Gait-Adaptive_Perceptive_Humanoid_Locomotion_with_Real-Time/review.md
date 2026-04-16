@@ -1,3 +1,25 @@
+---
+title: "1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time"
+authors:
+  - "Haolin Song"
+  - "Hongbo Zhu"
+  - "Tao Yu"
+  - "Yan Liu"
+  - "Mingqi Yuan"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 복잡한 지형 보행을 위해 하향식 깊이 카메라로 촬영한 영상을 U-Net으로 높이맵으로 재구성하고, 이를 통합 정책에 입력하여 관절 제어와 보행 주기를 동시에 적응시키는 지각 기반 보행 프레임워크를 제시한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Song et al._2025_Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction.pdf"
+---
+
 # Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction
 
 > **저자**: Haolin Song, Hongbo Zhu, Tao Yu, Yan Liu, Mingqi Yuan, Wengang Zhou, Hua Chen, Houqiang Li | **날짜**: 2025-12-08 | **URL**: [https://arxiv.org/abs/2512.07464](https://arxiv.org/abs/2512.07464)
@@ -65,3 +87,27 @@
 - Overall: 4/5
 
 **총평**: 인간형 로봇의 복잡 지형 보행이라는 중요한 문제를 하향식 깊이 카메라와 U-Net 기반 높이맵 재구성, 통합 적응형 정책의 조합으로 창의롭게 해결하였으며, 실제 로봇에서 계단 오르내림과 갭 횡단을 성공적으로 시연하여 높은 실용적 가치를 보인다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — 둘 다 지각 기반 휴머노이드 보행을 다루지만 Gait-Adaptive는 하향식 깊이 카메라를, Gallant는 LiDAR 기반 voxel grid를 사용한다.
+- 🏛 기반 연구: [[papers/1914_End-to-End_Humanoid_Robot_Safe_and_Comfortable_Locomotion_Po/review]] — Gait-Adaptive의 통합 정책 기반 보행 적응이 End-to-End 안전 보행 정책의 실시간 제어 구현에 기반 기술을 제공한다.
+- 🔗 후속 연구: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — Gait-Adaptive의 지각 기반 보행을 dynamic human skills chaining과 결합하면 더 복잡한 parkour 동작이 가능하다.
+- 🔄 다른 접근: [[papers/1619_PolygMap_A_Perceptive_Locomotion_Framework_for_Humanoid_Robo/review]] — 실시간 하향식 깊이 기반 높이맵 재구성과 PolygMap의 다각형 지각 프레임워크는 서로 다른 지형 인식 방법입니다.
+- 🏛 기반 연구: [[papers/1780_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu/review]] — 퓨전 기반 견고한 높이맵 생성의 하이브리드 오토인코더 기술이 실시간 지형 인식의 핵심 기반입니다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 복잡한 지형에서의 perceptive parkour 연구를 하향식 카메라와 통합 정책을 통한 보다 세밀한 gait adaptation으로 발전시켰습니다.
+- 🔄 다른 접근: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — 둘 다 LiDAR와 카메라 융합을 통한 humanoid 인식을 다루지만, Gait-Adaptive는 깊이 기반 높이맵에, HumanoidPano는 panoramic cross-modal 접근법에 집중합니다.
+- 🔄 다른 접근: [[papers/1658_RPL_Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challe/review]] — depth camera와 LiDAR라는 서로 다른 센서를 사용한 지형 인식 기반 locomotion 접근법입니다.
+- 🏛 기반 연구: [[papers/1693_STATE-NAV_Stability-Aware_Traversability_Estimation_for_Bipe/review]] — 지형 인식 기반 휴머노이드 보행의 개념을 안정성 예측과 traversability 정의로 확장하여 거친 지형에서의 안전한 이동을 실현했다.
+- 🔗 후속 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 실시간 지형 인식을 통한 보행 제어에 360도 환경 인식 기능을 통합할 수 있습니다.
+- 🏛 기반 연구: [[papers/1613_PhysHSI_Towards_a_Real-World_Generalizable_and_Natural_Human/review]] — Gait-Adaptive Perceptive Humanoid의 실시간 지각 기반 locomotion 기술이 PhysHSI의 실시간 환경 인식 모듈의 기초가 됨
+- 🧪 응용 사례: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — 실시간 다각형 맵핑 기술이 Gait-Adaptive Perceptive Locomotion의 실시간 지형 인식에 직접 적용될 수 있다
+- 🔄 다른 접근: [[papers/1746_VB-Com_Learning_Vision-Blind_Composite_Humanoid_Locomotion_A/review]] — 지형 인식 휴머노이드 보행을 위해 서로 다른 접근(시각 결손 대응 vs 실시간 지형 감지)을 통해 도전적인 환경에서의 안정적 이동을 달성한다.
+- 🧪 응용 사례: [[papers/1780_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu/review]] — 실시간 지형 높이맵 생성 기술을 실제 인지적 휴머노이드 보행에 적용한 구체적 사례이다.
+- 🔄 다른 접근: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — 지각 기반 휴머노이드 보행을 distillation-PPO와 gait-adaptive perceptive learning이라는 서로 다른 학습 전략으로 구현한다
+- 🔄 다른 접근: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 실시간 지형 추정을 통한 다른 지각적 인간형 보행 방식을 제시합니다.
+- 🔄 다른 접근: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — 둘 다 3D 지형 인식을 다루지만 Gallant는 LiDAR voxel grid를, Gait-Adaptive는 깊이 카메라 높이맵을 사용한다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Gait-Adaptive의 지각적 보행을 복잡한 비정형 지형에서의 고속 이동으로 확장한 발전된 형태다.
+- 🔗 후속 연구: [[papers/2056_Learning_Humanoid_Locomotion_over_Challenging_Terrain/review]] — PIM의 elevation map 기반 지각을 실시간 보행 적응과 결합하여 더 동적이고 반응적인 지형 내비게이션을 구현할 수 있다.
+- 🔗 후속 연구: [[papers/2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — 실시간 지형 인식과 적응적 보행을 결합한 확장된 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2160_Traversing_Narrow_Paths_A_Two-Stage_Reinforcement_Learning_F/review]] — 보행 적응형 지각적 이동의 실시간 계획 기법이 좁은 경로에서의 발판 계획 및 추적 방법론의 기반이 됩니다.

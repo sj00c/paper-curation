@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "NORA-1.5는 flow-matching 기반 action expert를 추가하여 VLA 모델의 성능을 향상시키고, world model 및 action-based reward를 이용한 DPO 기반 post-training으로 실제 로봇 환경에서의 신뢰성과 일반화 능력을 개선한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Foundation_Model_Agents"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/LLM-Based_Reward_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hung et al._2025_NORA-1.5 A Vision-Language-Action Model Trained using World Model- and Action-based Preference Rewa.pdf"
 ---
@@ -89,8 +90,11 @@ NORA-1.5는 flow-matching 기반 action expert를 추가하여 VLA 모델의 성
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — VLA 모델 구축에서 NORA-1.5의 복잡한 flow-matching 방식 대비 VLA-0의 단순한 텍스트 액션 표현 방식을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1359_Diffusion_for_World_Modeling_Visual_Details_Matter_in_Atari/review]] — world model 기반 학습에서 시각적 세부사항의 중요성을 다룬 연구로 NORA-1.5의 world model 훈련 방법론에 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1287_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — π_0의 vision-language-action flow model을 기반으로 NORA-1.5가 flow-matching 방식을 action expert에 적용하여 성능을 향상시켰다.
-- ⚖️ 반론/비판: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — NORA-1.5의 복잡한 아키텍처와 달리 Octo는 오픈소스 범용 로봇 정책으로 단순성과 접근성을 강조한다.
-- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — VLA 모델 구축에서 VLA-0의 단순한 텍스트 액션 표현과 NORA-1.5의 복잡한 flow-matching 방식을 설계 철학과 성능 측면에서 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 VLM 기반 로봇 제어 아키텍처를 NORA-1.5가 flow-matching과 world model로 확장한다.
+- 🔄 다른 접근: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — 두 논문 모두 VLA 모델의 성능 향상을 위해 강화학습 기반 후처리를 활용하지만 구체적 방법론이 다르다.
+- 🔗 후속 연구: [[papers/1287_π_0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Co/review]] — π₀의 flow-based action 생성 아키텍처를 NORA-1.5가 world model과 결합하여 발전시킨다.
+- 🔗 후속 연구: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — NORA-1.5의 성능을 실제 배포에 활용하기 위해 model compression과 RL 기반 성능 복구 방법을 적용할 수 있다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — world model 기반 학습의 이론적 기초와 embodied AI에서의 world model 활용 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — NORA-1.5의 general world model과 달리 autonomous driving에 특화된 generative world model 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — NORA-1.5와 다르게 world model rollout을 통한 물리 추론에 특화된 interactive reasoner를 제안한다.
+- 🔗 후속 연구: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — world model 기반 학습을 VLM과 통합한 object navigation 특화 확장입니다.

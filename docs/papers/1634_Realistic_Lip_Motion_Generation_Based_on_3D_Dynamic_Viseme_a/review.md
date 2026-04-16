@@ -8,9 +8,12 @@ arxiv: ""
 score: 4.0
 essence: "인간-로봇 상호작용을 위해 3D 동적 비셈(viseme)과 공명음현상(coarticulation) 모델링 기반의 입술 운동 생성 프레임워크를 제안하며, 고차원 공간 입술 운동을 14-DOF 로봇 입술 구동 시스템으로 변환한다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Text-Conditioned_Motion_Generation"
   - "topic/humanoid"
-pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2604.01756.pdf"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_Realistic Lip Motion Generation Based on 3D Dynamic Viseme and Coarticulation Modeling for Human-Rob 1.pdf"
 ---
 
 # Realistic Lip Motion Generation Based on 3D Dynamic Viseme and Coarticulation Modeling for Human-Robot Interaction
@@ -79,3 +82,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2604.01756.pdf"
 - Overall: 4/5
 
 **총평**: 본 연구는 3D 동적 비셈과 중국어 언어학적 특성을 결합하여 입술 동기화의 근본적 한계를 해결한 학제적 기여로, 경량하고 실용적인 로봇 배포 프레임워크를 통해 인간-로봇 상호작용의 자연성을 크게 향상시킨다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1669_Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_f/review]] — 음성-제스처 생성 시스템이 입술 운동의 3D 동적 비셈 모델링을 포함한 종합적인 인간-로봇 상호작용 기반
+- 🔗 후속 연구: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — SignBot의 수화 인식/생성이 입술 운동 생성을 포함한 다중 모달 소통 시스템으로 확장된 형태
+- 🏛 기반 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — H-RDT의 인간 시연 기반 조작 학습이 입술 운동의 coarticulation 모델링에 필요한 인간 발화 패턴 이해를 제공한다
+- 🏛 기반 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — EMOTION의 표현적 모션 생성 기술이 입술 운동의 감정적 표현력을 향상시키는 기반이 된다
+- 🏛 기반 연구: [[papers/1669_Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_f/review]] — 입술 운동 생성의 3D 동적 모델링이 음성 기반 제스처 생성의 다중 모달 표현 기반
+- 🔗 후속 연구: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — 입술 운동 생성을 포함한 SignBot의 수화 시스템이 전체적인 인간-휴머노이드 소통으로 확장

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "CANVAS는 모호하거나 잡음이 있는 인간의 언어 및 시각적 지시(스케치, 텍스트)를 다중모드 입력으로 받아 상식적 이해를 바탕으로 로봇이 인간의 기대에 맞게 네비게이션을 수행하도록 하는 임베딩 러닝 기반 프레임워크이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Choi et al._2024_CANVAS Commonsense-Aware Navigation System for Intuitive Human-Robot Interaction.pdf"
 ---
@@ -91,8 +93,10 @@ CANVAS는 모호하거나 잡음이 있는 인간의 언어 및 시각적 지시
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — VL-Nav는 CANVAS와 유사하게 시각-언어 네비게이션을 다루지만 신경-기호적 추론 접근법을 사용한다
-- 🔗 후속 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — CoPAL은 CANVAS의 상식적 이해를 대규모 언어 모델 기반 수정 계획으로 확장한다
-- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation 조사 논문이 CANVAS의 직관적 인간-로봇 상호작용에 대한 이론적 배경을 제공한다
-- 🏛 기반 연구: [[papers/1537_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — CANVAS의 상식 기반 내비게이션 시스템이 사회적 내비게이션에서 인간과의 상호작용을 이해하는 이론적 배경을 제공함
-- 🏛 기반 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — CANVAS는 CoPAL의 수정적 계획에 필요한 상식적 이해 기반을 제공한다
+- 🔗 후속 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — CANVAS의 상식 기반 네비게이션과 LM-Nav의 대형 사전훈련 모델 기반 로봇 네비게이션은 언어 이해 기반 이동의 보완적 접근법이다.
+- 🔄 다른 접근: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — CANVAS의 다중모드 지시 처리와 GC-VLN의 그래프 제약 기반 네비게이션은 인간-로봇 네비게이션 인터페이스의 서로 다른 방식이다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 로봇 네비게이션 기술은 CANVAS의 상식 기반 네비게이션 시스템에 공간 표현의 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — Context-Aware Entity Grounding의 open-vocabulary 개념을 모호한 인간 지시 처리로 확장한 응용입니다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 상식 인식 네비게이션에서 스케치/텍스트 다중모드 입력과 비디오 기반 VLM 계획이 다른 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — 향상된 경로점 예측과 백트래킹을 CANVAS의 상식 인식 네비게이션에 통합할 수 있습니다.
+- 🧪 응용 사례: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — CANVAS는 TidyBot의 개인화된 정리 능력을 직관적 인간-로봇 네비게이션에 적용하는 구체적 사례다.

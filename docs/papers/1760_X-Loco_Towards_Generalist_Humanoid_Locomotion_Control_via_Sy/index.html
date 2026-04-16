@@ -68,51 +68,55 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Fig. 2: Overview of X-Loco. (a) X-Loco integrates the capabilities of three specialist policies into a vision-based gene</em></p></div>
-<p>X-Loco는 시너지 정책 증류(Synergetic Policy Distillation)를 통해 세 개의 전문가 정책(직립 보행, 낙상 복구, 전신 협응)을 하나의 범용 시각 기반 정책으로 통합하는 휴머노이드 보행 제어 프레임워크이다.</p></div>
+<p>X-Loco는 시너지 정책 증류를 통해 세 개의 전문가 정책(upright locomotion, fall recovery, whole-body coordination)을 단일 비전 기반 범용 정책으로 통합하여, 속도 명령만으로 다양한 휴머노이드 보행 스킬을 수행하는 프레임워크이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: 최근 휴머노이드 로봇은 직립 보행, 낙상 복구, 전신 협응 등 개별 기술에서 뛰어난 성능을 보였으나, 이들을 단일 정책으로 통합하거나 시각 기반 자율 제어는 실현하지 못했다.</li>
-<li><strong>Gap</strong>: 기존 방법들은 특정 보행 기술에 집중되어 있어 복합 시나리오(낙상 후 보행 재개 등)를 처리하지 못하며, 참조 동작 없이 전신 협응과 시각 기반 제어를 함께 달성하는 것이 미해결 과제이다.</li>
-<li><strong>Why</strong>: 범용 휴머노이드 보행 제어는 인간형 로봇의 자율성과 다용도성을 크게 향상시키며, 복잡한 실환경에서 안전하고 효율적인 로봇 운용을 가능하게 한다.</li>
-<li><strong>Approach</strong>: X-Loco는 케이스 적응형 전문가 선택(CASS), 전문가 어닐링 롤아웃(SAR), 확률적 낙상 주입(SFI) 메커니즘을 통해 세 전문가 정책의 지식을 증류하며, 깊이 이미지 기반 시각 입력과 속도 명령만으로 작동한다.</li>
+<li><strong>Known</strong>: 기존 연구들은 개별 휴머노이드 스킬(upright locomotion, fall recovery, whole-body coordination)에서 강력한 성능을 보였으나, 이들을 통합한 단일 정책 학습은 서로 다른 역학과 충돌하는 제어 목표로 인해 어려웠다.</li>
+<li><strong>Gap</strong>: 비전 기반으로 upright locomotion, whole-body coordination, fall recovery를 동시에 통합하면서 reference motion이나 teleoperation 없이 순전히 속도 명령으로 작동하는 일반화된 휴머노이드 로콜로모션 컨트롤러는 아직 개발되지 않았다.</li>
+<li><strong>Why</strong>: 자율적으로 다양한 지형을 횡단하고 낙상에서 복구하며 전신 협응 동작을 수행할 수 있는 범용 휴머노이드 제어기는 로봇의 실제 배포와 자율성을 위해 필수적이며, 이는 현실의 복잡한 환경에서 휴머노이드 로봇의 활용성을 크게 확대할 수 있다.</li>
+<li><strong>Approach</strong>: X-Loco는 세 개의 특화된 전문가 정책을 학습한 후, Case-Adaptive Specialist Selection (CASS) 메커니즘으로 상태와 지형에 따라 가장 적절한 전문가를 동적으로 선택하여 학생 정책에 지도 신호를 제공하는 synergetic policy distillation 방식을 채택한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
-<div class="review-fig"><img src="figures/fig4.webp" alt="Figure 4">
-<p class="fig-caption"><em>Fig. 4: Top: Testing the generalist policy on hybrid, challeng-</em></p></div>
+<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
+<p class="fig-caption"><em>Fig. 1: X-Loco achieves vision-based generalist humanoid locomotion control. Relying solely on velocity commands without</em></p></div>
 <ul>
-<li><strong>통합 범용 정책</strong>: 직립 보행, 낙상 복구, 전신 협응(계단 오르내리기, 박스 등반, 전방 구르기)을 단일 비전 기반 정책으로 통합한 최초 프레임워크</li>
-<li><strong>시너지 정책 증류 패러다임</strong>: 복수 전문가 정책의 지식을 효과적으로 융합하면서 다양한 보행 기술 간 간섭 완화</li>
-<li><strong>학습 효율성 향상</strong>: SAR를 통한 적응형 롤아웃 혼합과 SFI를 통한 낙상 상황 노출로 전문 지식 내재화 및 강건성 증대</li>
-<li><strong>실제 로봇 검증</strong>: Unitree G1에서 다양한 지형과 도전적 시나리오에서 우수한 성능과 안정성 입증</li>
+<li><strong>통합된 다중 스킬</strong>: upright locomotion, fall recovery, whole-body coordination (rolling, box climbing)을 reference motion 없이 단일 시각 기반 정책으로 통합</li>
+<li><strong>CASS 메커니즘</strong>: 로봇의 상태와 주변 지형에 기반하여 전문가 정책을 동적으로 선택하는 적응형 specialist selection 구현</li>
+<li><strong>SAR 및 SFI</strong>: Specialist Annealing Rollout로 효율적인 학습을 달성하고, Stochastic Fall Injection으로 다양한 낙상 시나리오에 강건한 정책 개발</li>
+<li><strong>실제 로봇 배포</strong>: Unitree G1에서 검증되어 시뮬레이션-현실 전이 가능성 입증</li>
+<li><strong>우수한 성능</strong>: fall recovery와 terrain traversal 작업에서 기존 방법 대비 우수한 성능 및 안정성 달성</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Fig. 2: Overview of X-Loco. (a) X-Loco integrates the capabilities of three specialist policies into a vision-based gene</em></p></div>
 <ul>
-<li>세 개의 전문가 정책 학습: PPO와 GAE를 활용하여 각각 직립 보행, 낙상 복구, 전신 협응에 특화된 정책 훈련</li>
-<li>Case-Adaptive Specialist Selection (CASS): 로봇 상태와 환경 지형에 기반하여 동적으로 가장 관련성 높은 전문가 정책 선택</li>
-<li>Specialist Annealing Rollout (SAR): 학습 초기 전문가 롤아웃 비율을 높이다 수렴에 따라 감소시켜 노이즈 감소 및 자율 탐색 촉진</li>
-<li>Stochastic Fall Injection (SFI): 보행 중 능동적 외부 교란 적용으로 예기치 못한 균형 상실 상황에 대응하고 보행과 낙상 복구 간의 전환 유도</li>
-<li>독립적 깊이 렌더링: 병렬 환경 간 빠른 카메라 렌더링으로 시각 기반 정책 학습 효율성 향상</li>
-<li>통일된 행동 공간: 세 전문가가 동일한 행동 공간을 공유하여 증류 과정 단순화</li>
+<li>세 개의 specialist 정책(upright locomotion, fall recovery, whole-body coordination) 각각을 PPO와 GAE를 사용하여 학습</li>
+<li>Case-Adaptive Specialist Selection (CASS)을 통해 현재 로봇 상태와 환경 정보에 기반하여 전문가 정책을 선택</li>
+<li>Specialist Annealing Rollout (SAR)으로 전문가 정책의 데이터 비율을 점진적으로 감소시켜 학생 정책의 exploration 촉진</li>
+<li>Stochastic Fall Injection (SFI)으로 학습 중 외부 교란을 적용하여 낙상과 보행 간의 전환 능력 개발</li>
+<li>깊이 카메라 렌더링과 독립적 병렬 렌더링으로 효율적인 시각 기반 정책 학습 지원</li>
+<li>Velocity command 기반 제어로 reference motion이나 인간 개입 없이 자율적 로콜로모션 달성</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li><strong>최초의 통합 접근</strong>: 직립 보행, 낙상 복구, 전신 협응을 참조 동작 없이 단일 비전 기반 정책으로 통합</li>
-<li><strong>케이스 적응형 메커니즘</strong>: 정적 혼합이 아닌 상태 및 환경 기반 동적 전문가 선택으로 유연한 스킬 활용</li>
-<li><strong>SAR 및 SFI의 혁신</strong>: 단순한 데이터 혼합을 넘어 동적 비율 감쇠와 능동적 낙상 주입을 통한 정교한 학습 전략</li>
-<li><strong>실제 로봇 검증</strong>: 시뮬레이션에서 실제 Unitree G1로의 성공적 전이</li>
+<li><strong>최초의 통합 프레임워크</strong>: upright locomotion, whole-body coordination, fall recovery를 비전 기반으로 동시 통합하는 첫 시도</li>
+<li><strong>CASS 메커니즘</strong>: 상태 적응형 specialist 선택으로 기존 혼합 전문가(MoE) 방식을 넘어선 동적 선택 구현</li>
+<li><strong>SAR와 SFI</strong>: ratio-based 데이터 수집 전략과 능동적 낙상 주입으로 training efficiency와 robustness 동시 달성</li>
+<li><strong>Reference motion 제거</strong>: motion tracking 패러다임에서 벗어나 순수 exteroceptive 정보와 velocity command만으로 작동</li>
+<li><strong>Real-world validation</strong>: Unitree G1에서의 실제 배포로 sim-to-real transferability 입증</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li><strong>계산 복잡도</strong>: 세 전문가 정책을 동시에 유지하고 CASS 메커니즘을 실시간 적용하는 데 따른 연산 오버헤드 미분석</li>
-<li><strong>일반화 범위</strong>: 특정 로봇 형태(Unitree G1)에서만 검증되었으며 다른 휴머노이드 플랫폼으로의 확장성 미검토</li>
-<li><strong>환경 제한</strong>: 훈련 및 평가 지형이 특정 유형으로 제한될 가능성 및 극도로 복잡한 지형에서의 성능 미보고</li>
-<li><strong>후속 연구 방향</strong>: (1) 더 복잡한 조작 작업과의 통합, (2) 온라인 적응 학습 메커니즘 추가, (3) 다양한 로봇 플랫폼으로의 일반화, (4) 실시간 성능 최적화 및 전문가 수 증가에 따른 확장성 연구</li>
+<li>현재 세 가지 specialist 정책으로 제한되어 있으며, 추가적인 복잡한 전신 협응 동작(예: 옆으로 구르기, 더 난이도 높은 조작 작업)의 통합 필요</li>
+<li>CASS의 specialist 선택 메커니즘이 휴리스틱 기반일 가능성이 있어 더욱 학습 가능한 selection module 필요</li>
+<li>깊이 카메라(64×64)만 사용하므로 매우 먼 거리의 지형 인식 제한 가능성</li>
+<li>Sim-to-real transfer 시 환경 변동성(light, texture, camera noise)에 대한 추가 강건화 필요</li>
+<li>계산 복잡도 분석 및 실시간 성능(inference latency) 관련 상세 정보 부재</li>
+<li>추가 specialist 정책의 확장성과 컴퓨팅 리소스 증가에 대한 분석 필요</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: X-Loco는 정책 증류를 창의적으로 활용하여 휴머노이드 보행 제어의 오랜 과제인 다중 기술 통합을 최초로 달성했으며, 동적 전문가 선택과 적응형 학습 전략으로 실제 로봇에서 우수한 성능을 입증함으로써 휴머노이드 로봇의 자율성과 강건성을 크게 향상시켰다.</p></div>
+<p><strong>총평</strong>: X-Loco는 policy distillation을 통해 다양한 휴머노이드 로콜로모션 스킬을 효과적으로 통합하는 혁신적인 접근법을 제시하며, CASS, SAR, SFI 등의 설계 요소들이 이론적으로 잘 동기부여되고 실제 로봇 배포로 검증되어 휴머노이드 로봇 제어 분야에 중요한 기여를 한다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

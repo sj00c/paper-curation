@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇이 실행 불가능한 지시를 거부할 수 있는 능력을 갖춘 RationalVLA 모델을 제안하며, 이를 평가하기 위해 6가지 차원의 결함 있는 지시를 포함한 RAMA 벤치마크를 도입한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Language_Model_Vulnerabilities"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Robot_Foundation_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Song et al._2025_RationalVLA A Rational Vision-Language-Action Model with Dual System.pdf"
 ---
@@ -87,7 +89,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Song et al._2025_RationalVLA A Rational 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 로봇의 취약성 문제와 결함 있는 지시 거부 능력이 안전한 로봇 제어의 상호 보완적 측면이다.
-- 🔄 다른 접근: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — 로봇의 안전성 문제에서 rational reasoning과 discrimination/violence 위험이라는 서로 다른 접근 방식을 보여준다.
-- 🏛 기반 연구: [[papers/1584_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — ThinkAct의 reinforced vision-language-action reasoning이 rational VLA의 dual system 사고 과정에 방법론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — 로봇 시스템의 취약성 문제와 실행 불가능한 지시 거부 능력이 안전한 로봇 제어의 상호 보완적 측면이다.
+- 🔗 후속 연구: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — LLM 기반 로봇의 차별과 폭력 위험성 연구를 확장하여 실행 불가능한 지시 거부 능력까지 포함한 종합적 안전성을 다룬다.
+- 🔄 다른 접근: [[papers/1509_OpenHelix_A_Short_Survey_Empirical_Analysis_and_Open-Source/review]] — Dual-system VLA 아키텍처에서 OpenHelix는 구조 분석에, RationalVLA는 합리적 판단 능력에 초점을 맞춘 서로 다른 접근이다.
+- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — 로봇이 실행 불가능한 지시를 처리하는 rational 능력을 다룬 두 논문으로, 하나는 dual system으로 다른 하나는 unified MLLM으로 접근한다.
+- 🔗 후속 연구: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — RationalVLA의 rational reasoning 능력이 embodied chain-of-thought 추론과 결합되면 더욱 강력한 로봇 의사결정 시스템을 구축할 수 있다.
+- 🏛 기반 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — ThinkAct의 dual system 아키텍처가 RationalVLA의 rational 의사결정 메커니즘 설계에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — 실행 불가능한 지시를 거부하는 능력은 LLM/VLM 로봇의 취약성 문제에 대한 직접적인 해결책을 제시합니다.
+- 🔄 다른 접근: [[papers/1391_Fast-in-Slow_A_Dual-System_Foundation_Model_Unifying_Fast_Ma/review]] — RationalVLA와 Fast-in-Slow 모두 dual system 접근법을 사용하지만 안전성과 효율성이라는 다른 목표를 추구합니다.
+- 🔄 다른 접근: [[papers/1391_Fast-in-Slow_A_Dual-System_Foundation_Model_Unifying_Fast_Ma/review]] — RationalVLA와 FiS 모두 dual-system 접근을 취하지만 합리적 추론 vs 속도-정확도 균형에서 다른 초점을 가짐
+- 🔗 후속 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — RationalVLA의 rational reasoning을 System-2 slow thinking으로 구체화하여 더 체계적인 추론 과정을 제시한다.
+- 🏛 기반 연구: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — rational VLA model의 이론적 기반을 제공하여 reflective planning에서 사용되는 VLM의 추론 능력과 dynamics model 통합에 필요한 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — 로봇의 지능적 의사결정을 RoboBrain은 통합 MLLM으로, RationalVLA는 dual system으로 구현하는 서로 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — ThinkAct의 dual system 프레임워크가 RationalVLA의 rational 의사결정과 시스템 2 사고 구현에 아키텍처적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — RationalVLA는 Diffusion-VLA와 유사하게 추론 능력을 통합하지만 dual 구조를 통해 다른 접근 방식을 사용합니다.
+- 🔄 다른 접근: [[papers/1335_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reac/review]] — VLM 기반 코드 모니터링 대신 dual thinking을 통한 합리적 추론으로 로봇 안전성 확보
+- 🔄 다른 접근: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — RationalVLA의 dual vision encoder와 Embodied-R1의 pointing-based representation은 VLM에서 perception-action gap을 서로 다르게 해결하는 접근법이다.

@@ -12,7 +12,8 @@ score: 4.0
 essence: "여성 과학자들은 남성과 달리 학제 간 경계를 넘나드는 혁신 (context novelty)을 더 많이 생산하지만, 과학계의 보상 구조가 이를 과소평가하여 동등한 혁신에도 낮은 저널 게재와 적은 인용을 받는 역설을 실증적으로 보여준다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Innovation_Patent_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Biliotti et al._2026_The Innovation Recognition Paradox How Science Undervalues the Boundary-Crossing Work Women Produce.pdf"
 ---
@@ -90,9 +91,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Biliotti et al._2026_The Innovation Reco
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 과학계 다양성-혁신 역설을 성별 관점에서 구체화하여 여성의 학제간 혁신이 과소평가되는 메커니즘을 분석했다.
-- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성 과학자의 기여 과소인정 문제를 혁신 인정에서의 성별 격차라는 구체적 맥락으로 확장하여 분석했다.
-- 🏛 기반 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 비전형적 조합이 과학적 영향력을 증대시킨다는 이론이 여성의 맥락적 참신성 혁신의 가치를 뒷받침한다.
-- 🧪 응용 사례: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 여성 과학자의 혁신적 기여가 과소평가되는 현상을 컴퓨터과학 분야의 성별 인용 불균형에서도 확인할 수 있다.
-- 🧪 응용 사례: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 다양성-혁신 역설을 성별 관점에서 구체화하여 여성 과학자의 학제간 혁신이 과소평가되는 현상을 분석했다.
-- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성 과학자의 기여 과소인정 문제가 여성의 학제간 혁신이 과소평가되는 메커니즘의 근본 원인을 설명한다.
+- 🔄 다른 접근: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 여성 과학자와 소수집단 모두 혁신적 기여를 과소평가받는다는 공통된 패턴을 보여준다.
+- 🏛 기반 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터과학 분야의 체계적 성별 인용 불균형이 여성의 경계 넘나드는 혁신이 과소평가되는 메커니즘을 구체적으로 보여준다.
+- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성 과학자의 업적이 체계적으로 과소평가받는다는 근본적 문제의식을 공유하며, 본 연구의 혁신 인정 격차를 뒷받침하는 기초 증거를 제공한다.
+- ⚖️ 반론/비판: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성이 혁신과 영향력을 높인다는 긍정적 관점과 달리, 여성의 혁신이 과소평가받는 구조적 문제를 드러낸다.
+- 🔗 후속 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 여성 과학자의 혁신 과소평가 문제와 소수집단의 다양성-혁신 역설은 과학계의 체계적 편향을 보여주는 연결된 현상이다.
+- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성 과학자의 업적이 체계적으로 과소평가받는다는 기본 현상을 규명하여, 혁신 인정 격차 연구의 실증적 토대를 제공한다.

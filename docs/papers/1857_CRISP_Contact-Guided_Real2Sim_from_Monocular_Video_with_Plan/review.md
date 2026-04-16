@@ -1,3 +1,24 @@
+---
+title: "1857_CRISP_Contact-Guided_Real2Sim_from_Monocular_Video_with_Plan"
+authors:
+  - "Zihan Wang"
+  - "Jiashun Wang"
+  - "Jeff Tan"
+  - "Yiwen Zhao"
+  - "Jessica Hodgins"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "단안 비디오에서 planar primitive 기반 scene geometry 복원과 human motion 추정을 통해 물리 시뮬레이션 가능한 human-scene reconstruction을 수행하는 real-to-sim 파이프라인을 제안한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_CRISP Contact-Guided Real2Sim from Monocular Video with Planar Scene Primitives.pdf"
+---
+
 # CRISP: Contact-Guided Real2Sim from Monocular Video with Planar Scene Primitives
 
 > **저자**: Zihan Wang, Jiashun Wang, Jeff Tan, Yiwen Zhao, Jessica Hodgins, Shubham Tulsiani, Deva Ramanan | **날짜**: 2025-12-16 | **URL**: [https://arxiv.org/abs/2512.14696](https://arxiv.org/abs/2512.14696)
@@ -68,3 +89,14 @@
 - Overall: 4/5
 
 **총평**: CRISP는 planar primitive 기반의 간단하면서도 효과적인 real-to-sim 파이프라인으로, 기존 human-scene reconstruction의 근본적 문제(simulation incompatibility)를 physics 기반 검증으로 해결하며, substantial empirical improvement와 in-the-wild generalization을 통해 embodied AI 분야에 실질적 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1895_Efficient_and_Scalable_Monocular_Human-Object_Interaction_Mo/review]] — 단안 비디오에서의 human-scene reconstruction에서 planar primitive 기반 접근법과 4D HOI 재구성의 서로 다른 기하학적 표현 방법을 제시한다.
+- 🔗 후속 연구: [[papers/1907_EmbodMocap_In-the-Wild_4D_Human-Scene_Reconstruction_for_Emb/review]] — CRISP의 real-to-sim 파이프라인이 EmbodMocap의 in-the-wild 4D 재구성과 결합되어 더 포괄적인 실제 환경 시뮬레이션을 가능하게 한다.
+- 🏛 기반 연구: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — 인간-객체 접촉 재구성이 실제-시뮬레이션 변환의 기초가 됩니다.
+- 🔗 후속 연구: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — 토큰화된 인간-장면 상호작용 합성으로 발전됩니다.
+- 🔄 다른 접근: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — 바닥 정렬 표현을 통한 다른 모션 재구성 방식을 제시합니다.
+- 🏛 기반 연구: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — monocular video에서 contact-guided real2sim과 4D 기하학 재구성이라는 관련된 실제-시뮬레이션 연결 방법론을 사용한다.
+- 🔄 다른 접근: [[papers/1895_Efficient_and_Scalable_Monocular_Human-Object_Interaction_Mo/review]] — 단안 비디오 기반 인간-물체 상호작용 재구성에서 4D HOI 최적화와 planar primitive 기반 접근법의 서로 다른 기하학적 모델링 전략을 비교한다.
+- 🏛 기반 연구: [[papers/2095_MeshMimic_Geometry-Aware_Humanoid_Motion_Learning_through_3D/review]] — CRISP의 contact-guided real2sim 기법이 MeshMimic의 contact-aware retargeting 방법론에 핵심 아이디어를 제공했다

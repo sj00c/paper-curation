@@ -13,7 +13,9 @@ score: 4.0
 essence: "Paper Circle는 학술 문헌 발견과 분석을 위한 다중 에이전트 LLM 기반 프레임워크로, Discovery Pipeline과 Analysis Pipeline을 통해 논문 검색, 평가, 구조화된 지식 그래프 생성을 자동화한다."
 tags:
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Research_Infrastructure_Platforms"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Academic_Language_Model_Evaluation"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kumar et al._2026_Paper Circle An Open-source Multi-agent Research Discovery and Analysis Framework.pdf"
 ---
@@ -92,11 +94,15 @@ Paper Circle는 학술 문헌 발견과 분석을 위한 다중 에이전트 LLM
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — S2ORC 같은 대규모 학술 코퍼스를 Paper Circle의 다중 에이전트 시스템이 효과적으로 활용할 수 있다.
-- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 둘 다 LLM과 지식 그래프로 과학 연구를 분석하지만 Paper Circle은 다중 에이전트 파이프라인을 특징으로 한다.
-- 🏛 기반 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — MOLIERE의 자동 생물의학 가설 생성 시스템이 Paper Circle의 다중 에이전트 연구 발견 접근법의 선행 모델이다.
-- 🧪 응용 사례: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — Paper Circle의 다중 에이전트 시스템이 S2ORC 같은 대규모 학술 코퍼스를 활용하여 논문 발견과 분석을 자동화한다.
-- 🔄 다른 접근: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — AI 기반 연구 도구로서 SciSciGPT와 유사하게 다중 에이전트를 활용한 연구 발견 시스템인 Paper Circle을 제안한다.
-- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 둘 다 LLM과 지식 그래프를 활용하여 과학 연구를 분석하지만 Paper Circle은 다중 에이전트 접근법을 사용한다.
-- 🔗 후속 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 과학 커뮤니티 매핑을 다중 에이전트 연구 발견 시스템과 결합하여 더 동적이고 지능적인 연구 네트워크 분석을 구현할 수 있다.
-- 🔗 후속 연구: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 다중 에이전트 연구 발견 시스템에 양자 모듈을 통합하여 더 정교한 연구 평가가 가능하다.
+- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 다중 에이전트 기반 연구 발견과 에이전트 기반 연구 평가라는 유사한 접근법을 다른 목적에 적용
+- 🔗 후속 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — LLM 기반 연구 분석 도구에 기계 판독 가능한 도형 생성 기능을 추가하여 시각화 확장
+- 🧪 응용 사례: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 다중 에이전트 시스템이 과학학 연구에서 인간-AI 협력을 구현하는 구체적 사례
+- 🧪 응용 사례: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM 기반 연구 평가의 실제 구현과 적용 사례를 보여준다
+- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 자동 연구 발견에서 단일 시스템과 멀티에이전트 접근법의 차이를 비교한다
+- 🔗 후속 연구: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — AI 학생들의 학습 경로 개선 연구가 다중 에이전트 기반 연구 발견 시스템으로 확장 적용될 수 있기 때문
+- 🏛 기반 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 지식 그래프를 활용한 과학 연구 매핑 방법론이 Paper Circle의 구조화된 지식 그래프 생성에 기반을 제공하기 때문
+- 🔄 다른 접근: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 연구 발견을 위한 다중 에이전트 시스템이라는 다른 접근법으로 인용 추천 문제를 해결하려고 시도합니다.
+- 🔄 다른 접근: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — SciSci 특화 AI 시스템과 일반적인 다중 에이전트 연구 발견 시스템의 접근법 차이를 보여준다.
+- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 자동 가설 생성과 논문 발견 시스템에서 멀티에이전트 접근법의 차이를 비교할 수 있다
+- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 에이전트 기반 시스템을 연구 발견과 연구 평가라는 다른 목적으로 각각 설계하여 적용
+- 🏛 기반 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — 다중 에이전트 연구 분석 시스템에 LLM 네이티브 도형 생성 기능을 통합하여 시각화 향상

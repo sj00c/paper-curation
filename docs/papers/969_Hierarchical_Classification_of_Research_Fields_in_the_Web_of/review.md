@@ -11,7 +11,9 @@ score: 4.0
 essence: "본 논문은 Microsoft Academic Graph의 1.6억 개 논문 초록을 이용하여 심층 신경망 기반의 계층적 분류 시스템을 개발하여 학술 출판물을 44개 학문분야(discipline), 718개 분야(field), 1,485개 세부분야(subfield)로 자동 분류하는 시스템을 제시한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Thematic_Network_Detection"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Rao et al._2024_Hierarchical Classification of Research Fields in the Web of Science Using Deep Learning.pdf"
 ---
@@ -89,7 +91,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Rao et al._2024_Hierarchical Classificat
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야 분류를 위한 딥러닝 기반 접근법과 전통적 지식 조직 시스템의 차이점과 장단점을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 계층적 분야 분류 시스템을 기반으로 개별 연구자의 학문적 위치를 더 정밀하게 매핑할 수 있다.
-- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 학술 말뭉치 구축과 처리를 위한 핵심 인프라와 방법론적 토대를 제공한다.
-- 🏛 기반 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 계층적 분야 분류 시스템을 활용하여 연구자의 학문적 위치 매핑을 더욱 정밀하게 수행할 수 있다.
+- 🔄 다른 접근: [[papers/952_Design_and_Update_of_a_Classification_System_The_UCSD_Map_of/review]] — UCSD 과학 지도 분류 시스템 설계 연구로, 계층적 분류와 다른 접근법으로 학문 분야를 체계화하는 대안적 방법론입니다.
+- 🏛 기반 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 지식 그래프를 활용한 과학 연구 매핑의 기초 방법론으로, 계층적 분류 시스템 개발에 필요한 이론적 토대를 제공합니다.
+- 🧪 응용 사례: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 컴퓨터 과학 분야의 대규모 지식 그래프 구축에 계층적 분류 시스템을 적용한 구체적 사례를 제시한다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미 및 신경 네트워크를 활용한 연구 트렌드 예측의 기본 방법론을 분류 시스템에 적용할 수 있다.
+- 🧪 응용 사례: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 계층적 분류 시스템이 연구자의 인식론적 위치를 규명하는 좌표계 개발에 직접 활용될 수 있다.
+- 🔄 다른 접근: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야 분류를 위한 다른 접근법으로 딥러닝 기반 계층적 분류 시스템을 제안한다.
+- 🔗 후속 연구: [[papers/952_Design_and_Update_of_a_Classification_System_The_UCSD_Map_of/review]] — 과학 분류 체계를 딥러닝 기반으로 자동화하여 UCSD 맵의 수동 분류 한계를 극복한다.
+- 🏛 기반 연구: [[papers/982_Mapping_Knowledge_Topic_Analysis_of_Science_Locates_Research/review]] — 계층적 연구 분야 분류 시스템이 연구자의 인식론적 위치 좌표계 개발의 기본 토대를 제공한다.

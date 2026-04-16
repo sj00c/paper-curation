@@ -1,3 +1,24 @@
+---
+title: "1811_BeamDojo_Learning_Agile_Humanoid_Locomotion_on_Sparse_Footho"
+authors:
+  - "Huayi Wang"
+  - "Zirui Wang"
+  - "Junli Ren"
+  - "Qingwei Ben"
+  - "Tao Huang"
+date: "2025.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "BeamDojo는 샘플링 기반의 다각형 발 보상 함수와 이중 critic 아키텍처를 결합한 2단계 강화학습 프레임워크로, 휴머노이드 로봇이 디딤돌과 같은 드문 디딤점을 가진 복잡한 지형에서 민첩하고 정밀한 보행을 학습하게 한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_BeamDojo Learning Agile Humanoid Locomotion on Sparse Footholds.pdf"
+---
+
 # BeamDojo: Learning Agile Humanoid Locomotion on Sparse Footholds
 
 > **저자**: Huayi Wang, Zirui Wang, Junli Ren, Qingwei Ben, Tao Huang, Weinan Zhang, Jiangmiao Pang | **날짜**: 2025-02-14 | **URL**: [https://arxiv.org/abs/2502.10363](https://arxiv.org/abs/2502.10363)
@@ -68,3 +89,16 @@ BeamDojo는 샘플링 기반의 다각형 발 보상 함수와 이중 critic 아
 - Overall: 4/5
 
 **총평**: BeamDojo는 휴머노이드 로봇의 다각형 발 기하학을 명시적으로 처리하고 2단계 훈련으로 표본 효율성을 높인 혁신적인 프레임워크로, 시뮬레이션과 실제 로봇 실험을 통해 sparse foothold에서의 민첩한 보행 능력을 입증하여 로봇 보행 제어 분야에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 복잡한 지형에서의 이동을 다루지만 BeamDojo는 sparse foothold, HumanoidPF는 cluttered scene에 특화되어 상호 보완적이다.
+- 🔗 후속 연구: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — Perceptive Humanoid Parkour와 함께 복잡한 지형에서의 민첩한 이동을 위한 지각 기반 제어의 완성된 형태를 보여준다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — BeamDojo의 드문 디딤점 보행이 복잡한 지형에서의 파쿠르 프레임워크로 확장되어 더 도전적인 환경에서 적용될 수 있다
+- 🏛 기반 연구: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — 의미론적 매핑이 BeamDojo의 다각형 발 보상 함수 설계에서 발판 인식 및 계획에 필요한 기반 기술이다
+- 🔄 다른 접근: [[papers/1804_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — 둘 다 특수한 지형 traversal을 다루지만 APEX는 high-platform에, BeamDojo는 sparse foothold에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 복잡한 지형에서의 이동이라는 공통 도전과제에서 BeamDojo의 sparse foothold와 HumanoidPF의 cluttered scene이 상호 보완적이다.
+- 🧪 응용 사례: [[papers/1789_Adapting_Humanoid_Locomotion_over_Challenging_Terrain_via_Tw/review]] — Transformer 기반 사전훈련이 BeamDojo의 sparse foothold에서의 agile locomotion 학습을 가속화합니다.
+- 🔄 다른 접근: [[papers/1925_FastStair_Learning_to_Run_Up_Stairs_with_Humanoid_Robots/review]] — 둘 다 humanoid 로봇의 제한된 발판 공간에서의 민첩한 이동을 다루지만, BeamDojo는 sparse foothold에서의 일반적인 locomotion에 집중하는 반면 FastStair는 계단이라는 특수 지형에 특화되었습니다.
+- 🔗 후속 연구: [[papers/2004_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — BeamDojo의 sparse foothold 학습을 좁은 경로와 예상 못한 장애물까지 확장한 발전된 형태다.
+- 🔄 다른 접근: [[papers/2160_Traversing_Narrow_Paths_A_Two-Stage_Reinforcement_Learning_F/review]] — 두 논문 모두 까다로운 지형에서의 이동을 다루지만 이 논문은 좁은 경로에, BeamDojo는 희소한 발판에서의 민첩한 이동에 집중합니다.

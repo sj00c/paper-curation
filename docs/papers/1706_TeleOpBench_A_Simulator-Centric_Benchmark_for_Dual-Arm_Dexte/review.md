@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "TeleOpBench는 쌍팔 민첩한 텔레오퍼레이션을 위한 시뮬레이터 기반 벤치마크로, 30개의 고충실도 작업 환경과 4가지 대표적 텔레오퍼레이션 모달리티(MoCap, VR, 외골격, 비전)를 통합 프레임워크로 제공하며 시뮬레이션과 실제 하드웨어 간의 강한 상관관계를 검증한다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_TeleOpBench A Simulator-Centric Benchmark for Dual-Arm Dexterous Teleoperation.pdf"
 ---
@@ -84,3 +85,14 @@ TeleOpBench는 쌍팔 민첩한 텔레오퍼레이션을 위한 시뮬레이터 
 - Overall: 4/5
 
 **총평**: TeleOpBench는 텔레오퍼레이션 연구의 장기적인 병목인 표준화된 평가 환경의 부재를 해결하는 중요한 기여로, 실제 하드웨어와의 상관관계 검증을 통해 실용성을 입증한 의미 있는 연구이다. 다만 더 많은 로봇 플랫폼 통합과 정성적 사용성 지표 추가로 영향력을 확대할 수 있을 것으로 예상된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — 둘 다 민첩한 조작을 다루지만 TeleOpBench는 벤치마킹에, RAPID Hand는 하드웨어 개발에 초점을 맞춘다
+- 🏛 기반 연구: [[papers/1707_Teleoperation_of_Humanoid_Robots_A_Survey/review]] — 휴머노이드 텔레오퍼레이션 서베이가 TeleOpBench의 4가지 텔레오퍼레이션 모달리티 선정에 이론적 근거를 제공한다
+- 🔗 후속 연구: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — TeleOpBench의 쌍팔 벤치마크와 전신 양방향 텔레오퍼레이션을 결합하면 더 포괄적인 조작 평가가 가능하다
+- 🔗 후속 연구: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — 안정성 인식 retargeting과 쌍팔 민첩한 텔레오퍼레이션을 결합하면 복잡한 다중 접촉 조작이 안전하게 가능하다
+- 🔄 다른 접근: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — 둘 다 로봇 조작 벤치마크를 제공하지만 RoboPlayground는 언어 기반 작업 변형에, TeleOpBench는 텔레오퍼레이션에 초점을 맞춘다
+- 🔗 후속 연구: [[papers/1707_Teleoperation_of_Humanoid_Robots_A_Survey/review]] — 휴머노이드 텔레오퍼레이션의 포괄적 서베이가 TeleOpBench의 통합 벤치마크 프레임워크에 이론적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — RAPID Hand의 고품질 조작 데이터 수집 능력이 TeleOpBench의 쌍팔 민첩한 텔레오퍼레이션 벤치마크에 필요한 데이터를 제공한다
+- 🔄 다른 접근: [[papers/2007_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo/review]] — TeleOpBench의 dual-arm dexterous 벤치마크가 HumanoidBench와 다른 관점에서 조작을 평가합니다.

@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 감소된 차수의 발판 계획기와 Control Lyapunov Function (CLF) 기반 보상을 통해 물리학 기반 구조로 강화학습을 안내하여, 제한된 발판에서 인간형 로봇의 정밀한 보행을 달성한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Terrain_Foothold_Planning"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dai et al._2026_Walk the PLANC Physics-Guided RL for Agile Humanoid Locomotion on Constrained Footholds.pdf"
 ---
@@ -82,3 +83,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dai et al._2026_Walk the PLANC Physics-G
 - Overall: 4/5
 
 **총평**: 본 논문은 물리 기반 구조와 강화학습을 효과적으로 결합하여 stepping-stone 보행의 정밀성과 강건성 문제를 우아하게 해결하였으며, 하드웨어 검증과 오픈소스 공개를 통해 높은 실용적 가치를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1789_Adapting_Humanoid_Locomotion_over_Challenging_Terrain_via_Tw/review]] — 둘 다 challenging terrain 보행을 다루지만 PLANC는 물리학 기반 구조로, Transformer 접근법은 sequence modeling으로 해결한다.
+- 🔗 후속 연구: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — AME-2의 attention 기반 맵 인코딩과 불확실성 인식 elevation mapping이 PLANC의 발판 계획 정확도를 향상시킬 수 있다.
+- 🧪 응용 사례: [[papers/2162_TTT-Parkour_Rapid_Test-Time_Training_for_Perceptive_Robot_Pa/review]] — TTT-Parkour의 실시간 적응형 parkour 기법이 PLANC의 제한된 발판 보행을 더 복잡한 지형으로 확장하는 데 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1789_Adapting_Humanoid_Locomotion_over_Challenging_Terrain_via_Tw/review]] — 둘 다 challenging terrain 보행을 다루지만 Transformer는 sequence modeling에, PLANC는 physics-guided RL에 중점을 둔다.
+- 🔄 다른 접근: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — 둘 다 민첩하고 일반화된 지형 보행을 다루지만 AME-2는 attention 기반에, PLANC는 physics-guided RL에 중점을 둔다.
+- 🔄 다른 접근: [[papers/2004_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — 민첩한 보행을 이 논문은 좁은 지형에, Walk the PLANC는 물리 가이드 RL로 각각 접근한다.

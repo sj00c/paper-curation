@@ -1,3 +1,22 @@
+---
+title: "1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H"
+authors:
+  - "Nikita Boguslavskii"
+  - "Lorena Maria Genua"
+  - "Zhi Li"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "원격 제어되는 모바일 휴머노이드 로봇의 몸통-팔 협력 제어를 위해 인간-로봇 협업(HRC) 방법들을 제안하고, 사용자 연구(N=17)를 통해 자동 및 수동 제어 방식의 효과를 비교 평가한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Tactile_Contact_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Boguslavskii et al._2025_Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots with Torso-Arm Coordinati.pdf"
+---
+
 # Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots with Torso-Arm Coordination
 
 > **저자**: Nikita Boguslavskii, Lorena Maria Genua, Zhi Li | **날짜**: 2025-05-09 | **URL**: [https://arxiv.org/abs/2505.05773](https://arxiv.org/abs/2505.05773)
@@ -64,3 +83,18 @@
 - Overall: 4/5
 
 **총평**: 원격 조종 휴머노이드 로봇의 몸통-팔 협력 문제에 대한 체계적이고 실용적인 HRC 솔루션을 제시하며, 사용자 중심의 평가를 통해 상황별 최적 제어 방식을 제공하는 의의 있는 연구이다. 다만 표본 크기와 실제 환경 검증의 확대가 필요하다.
+
+## Related Papers
+
+- 🧪 응용 사례: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 인간-로봇 협업 방법론이 다중 에이전트 학습을 통한 인간-휴머노이드 인지 제어로 확장될 수 있다.
+- 🔗 후속 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 원격 제어 협업이 직접적인 인간-휴머노이드 협력적 객체 조작으로 발전할 수 있다.
+- 🔄 다른 접근: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — H2-COMPACT의 adaptive contact trajectory가 human-robot collaboration과 다른 방식으로 협력 제어를 구현합니다.
+- 🏛 기반 연구: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — Intuitive GUI for teleoperation이 human-robot collaboration의 사용자 인터페이스 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — mobile humanoid의 원격 제어에서 물체 조작과 인간-로봇 협력이라는 관련 연구 영역을 다룬다.
+- 🔗 후속 연구: [[papers/1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — CPST 기반 분류가 인간-로봇 협업에서 로봇의 자율성 수준과 인간의 제어 권한을 명확히 구분하는 데 확장될 수 있다
+- 🏛 기반 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 인간-로봇 협업 제어가 Cognition-to-Control에서 MARL 기반 조정과 전신 제어 통합의 기술적 기반을 제공한다
+- 🧪 응용 사례: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — 모바일 휴머노이드 원격 제어를 위한 인간-로봇 협업 기술이 비전문가 텔레조작 GUI를 실제 협업 시나리오에서 활용할 수 있다
+- 🔄 다른 접근: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — Human-robot collaboration 방법론이 인간-휴머노이드 협력 운반에서 다른 제어 전략을 제시합니다.
+- 🧪 응용 사례: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — Harmanoid의 접촉 인식 motion retargeting 기술이 Human-Robot Collaboration의 모바일 휴머노이드 원격 제어에서 안전한 협업을 가능하게 한다.
+- 🧪 응용 사례: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 고유감각 기반 협업 제어가 모바일 휴머노이드의 원격 제어 상황에서 실제 적용될 수 있다.
+- 🧪 응용 사례: [[papers/2103_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — Human-Robot Collaboration의 이론적 프레임워크를 모바일 로봇과 인간 간 물체 전달이라는 구체적 시나리오에 적용한 사례이다.

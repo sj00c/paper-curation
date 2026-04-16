@@ -10,7 +10,8 @@ arxiv: ""
 score: 4.0
 essence: "개방형 환경에서 LLM의 장기 작업 계획을 위해 객체 속성을 동적으로 추적하고 업데이트하는 하이브리드 상태 표현 LLM-State를 제안한다. 이는 구조화된 객체 중심 표현과 비구조화된 행동 이력 요약을 결합하여 장기간 상태 추적 및 실패 복구를 개선한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
   - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2023_LLM-State Open World State Representation for Long-horizon Task Planning with Large Language Model.pdf"
@@ -88,10 +89,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2023_LLM-State Open World St
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — LLM의 내적 독백을 통한 추론이 장기 작업에서 상태 표현과 결합될 때 더욱 효과적인 계획 수립이 가능합니다.
-- 🔗 후속 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — 객체 중심 상태 표현을 task and motion planning과 결합하여 더욱 체계적인 장기 작업 수행을 달성할 수 있습니다.
-- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 두 논문 모두 상태 유지형 언어 모델을 다루지만, 하나는 객체 중심 표현에, 다른 하나는 체화된 추론에 집중합니다.
-- 🧪 응용 사례: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — 3D 장면 그래프를 이용한 언어 그라운딩이 객체 중심 상태 표현을 실제 환경에서 구현하는 데 활용됩니다.
-- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — LLM의 내적 독백을 통한 추론 방식을 장기 작업 계획에서 상태 표현과 결합하여 더욱 강화할 수 있습니다.
-- 🔄 다른 접근: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — 두 논문 모두 LLM 기반 장기 계획을 다루지만, 하나는 모션 계획 실패 추론에, 다른 하나는 상태 표현에 집중합니다.
-- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 로봇의 상태 관리를 위해 Statler는 명시적 상태 추적을, LLM-State는 개방형 세계 상태 표현을 사용하는 서로 다른 접근법
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 둘 다 장기 작업을 위한 상태 추적을 다루지만 hybrid object-centric representation vs state-maintaining language model이라는 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — JARVIS-1의 memory-augmented multi-task agent 개념을 장기 작업 계획의 상태 표현으로 발전시켰다.
+- 🔗 후속 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — MEM의 multi-scale embodied memory 개념을 LLM 기반 장기 작업 계획의 상태 추적으로 확장했다.
+- 🔄 다른 접근: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — 장기간 로봇 작업을 위한 메모리 시스템에서 multi-scale embodied memory vs LLM-based state representation이라는 서로 다른 상태 관리 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 장기 지평 작업을 위한 상태 표현과 추적의 기반이 되는 open-world state representation 연구입니다.
+- 🏛 기반 연구: [[papers/1322_BOSS_Benchmark_for_Observation_Space_Shift_in_Long-Horizon_T/review]] — 장기 작업을 위한 오픈 월드 상태 표현의 기초 이론을 제공한다.

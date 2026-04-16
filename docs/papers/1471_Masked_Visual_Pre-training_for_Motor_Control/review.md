@@ -11,8 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "실제 이미지에서 자기감독학습(self-supervised learning)으로 시각 표현을 사전학습한 후, 동결된 인코더 위에서 강화학습으로 모터 제어 정책을 학습하는 방법을 제시하며, 지도학습 기반 인코더를 크게 능가한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Representation_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiao et al._2022_Masked Visual Pre-training for Motor Control.pdf"
 ---
@@ -89,8 +89,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiao et al._2022_Masked Visual Pre-train
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — 둘 다 self-supervised visual pre-training이지만 Masked Visual은 motor control에, MC-JEPA는 motion-content learning에 특화됩니다.
-- 🔗 후속 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — DINOv2의 unsupervised visual learning을 motor control task에 특화하여 적용한 구체적 application 사례입니다.
-- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — Self-supervised joint-embedding 방법론이 motor control을 위한 visual representation learning의 기반 기술입니다.
-- 🔄 다른 접근: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — 둘 다 self-supervised visual learning이지만 MC-JEPA는 motion-content joint learning에, Masked Visual은 motor control에 특화됩니다.
-- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — 운동 제어를 위한 마스크 비주얼 사전학습의 기반이 되는 자기지도학습 표현 학습 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — 둘 다 self-supervised visual representation learning을 다루지만 masked pre-training과 DINOv2의 접근법 차이를 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — R3M의 universal visual representation을 masked visual pre-training과 결합하여 더 강력한 motor control을 위한 시각적 표현을 학습할 수 있다.
+- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — self-supervised learning의 기본 원리인 joint-embedding을 motor control을 위한 visual representation learning에 적용하는 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — 로봇 제어를 위한 visual pre-training에서 joint-embedding vs masked 방법의 차이
+- 🔄 다른 접근: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — R3M의 인간 비디오 기반 pre-training과 달리 masked visual pre-training을 통한 motor control representation learning 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — I-JEPA의 자기 지도 학습 방법론이 로봇 제어를 위한 masked visual pre-training 기법 개발에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — 모터 제어를 위한 masked visual pre-training이 분산 Gaussian process regression의 시각적 특징 학습 기반을 제공한다.

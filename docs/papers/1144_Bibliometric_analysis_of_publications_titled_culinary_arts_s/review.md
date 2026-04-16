@@ -8,8 +8,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 Web of Science 데이터베이스에 색인된 요리 예술(culinary arts) 관련 출판물을 VOSviewer 프로그램을 활용하여 bibliometric 분석을 수행했다. 공동 저자 분석, 키워드 분석, 인용 분석, 서지 매칭 분석, 공동 인용 분석 등을 통해 요리 예술 분야의 학술 네트워크 구조를 파악했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ödemiş_2026_Bibliometric analysis of publications titled culinary arts scanned in the Web of Science database.pdf"
 ---
@@ -87,7 +88,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ödemiş_2026_Bibliometric analysis of p
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer 프로그램을 요리 예술 분야 bibliometric 분석에 실제 적용한 구체적 사례를 제시한다.
-- 🏛 기반 연구: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 예술 관광의 개념적 진화 분석이 요리 예술의 학술적 발전 과정을 이해하는 문화적 맥락을 제공한다.
-- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 둘 다 특정 분야의 bibliometric 분석이지만 1144는 요리 예술, 1196은 디지털 마케팅을 다룬다.
-- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 요리 예술 분야 연구에서 VOSviewer를 활용한 서지계량 분석의 구체적 적용 사례를 보여준다.
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 요리 예술 분야 bibliometric 분석에 VOSviewer 프로그램의 핵심 기능과 방법론을 적용했다.
+- 🔄 다른 접근: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 둘 다 문화 관련 분야(요리 예술 vs 예술 관광)의 학술 네트워크 구조를 분석한다.
+- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 요리 예술 분야의 co-citation과 bibliographic coupling 분석의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 미디어와 디지털 마케팅 분야와 요리 예술 분야 모두 실용적 응용 분야의 bibliometric 분석을 수행했기 때문
+- 🔗 후속 연구: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 요리 예술 연구가 예술 관광의 하위 영역으로서 문화적 체험과 관광의 융합을 보여주기 때문

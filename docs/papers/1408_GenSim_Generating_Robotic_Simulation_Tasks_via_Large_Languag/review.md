@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "GenSim은 LLM의 코드 생성 능력을 활용하여 로봇 시뮬레이션 작업을 자동으로 생성하는 프레임워크로, 기존 10개의 수작업 작업을 100개 이상으로 확장하여 작업 수준의 일반화를 달성한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/LLM_Skill_Acquisition"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/LLM-Based_Reward_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2023_GenSim Generating Robotic Simulation Tasks via Large Language Models.pdf"
 ---
@@ -90,9 +92,13 @@ GenSim은 LLM의 코드 생성 능력을 활용하여 로봇 시뮬레이션 작
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — GenSim의 LLM 기반 시뮬레이션 작업 자동 생성이 BOSS의 스킬 체이닝 학습을 위한 다양한 환경과 작업을 제공하는 기반 인프라 역할을 한다
-- 🔗 후속 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — RoboGen의 자동화된 로봇 데이터 생성이 GenSim의 시뮬레이션 작업 생성을 실제 로봇 궤적 데이터 생성으로 확장한 구현체이다
-- 🔄 다른 접근: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — GenSim과 MineDojo 모두 LLM을 활용한 대규모 작업 환경 구축을 다루지만, 로봇 시뮬레이션 vs 게임 환경이라는 서로 다른 도메인을 적용한다
-- 🔗 후속 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 인터넷 규모 멀티모달 지식베이스가 GenSim의 LLM 기반 시뮬레이션 작업 생성을 더 대규모이고 다양한 환경으로 확장한 구현체이다
-- 🔄 다른 접근: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — 로봇 시뮬레이션 작업 생성에서 RoboGen의 생성형 모델 활용과 GenSim의 LLM 기반 접근 방식을 자동화 수준에서 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — GenSim의 LLM 기반 작업 생성이 BOSS의 스킬 체이닝 방법론을 시뮬레이션 환경에서 대규모로 확장할 수 있는 방법을 제시한다
+- 🔄 다른 접근: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — 둘 다 자동화된 로봇 데이터 생성을 다루지만 시뮬레이션 작업 생성 vs 전반적인 데이터 생성이라는 범위 차이가 있다.
+- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Text2Reward의 언어 기반 보상 설계를 시뮬레이션 작업 자동 생성으로 확장한 응용이다.
+- 🔗 후속 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 오픈엔디드 환경 개념을 LLM 기반 로봇 시뮬레이션 작업 생성으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — LLM의 코드 생성 능력을 로봇 제어에 활용하는 기본 아이디어가 GenSim의 시뮬레이션 작업 생성에 적용되었다.
+- 🔗 후속 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — GenSim의 자동 시뮬레이션 태스크 생성이 Re3Sim의 고충실도 환경을 활용한 더 다양한 학습 시나리오 구성으로 확장된다.
+- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — GenSim은 LLM을 활용한 로봇 시뮬레이션 작업 생성으로 스킬 확장과 유사한 목표를 다른 방식으로 달성한다.
+- 🔄 다른 접근: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — GenSim과 함께 생성형 모델을 활용한 로봇 학습을 다루지만 RoboGen은 전체 파이프라인 자동화에, GenSim은 시뮬레이션 태스크 생성에 집중한다.
+- 🏛 기반 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — MLLM 기반 자동 코드 생성은 GenSim의 대규모 언어 모델을 활용한 시뮬레이션 태스크 생성과 유사한 접근법입니다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — LLM의 코드 생성을 로봇 정책에서 시뮬레이션 태스크 생성으로 확장하여 더 넓은 활용 범위 제공
+- 🔄 다른 접근: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — 둘 다 로봇 학습을 위한 대규모 시뮬레이션 환경 생성에 초점을 맞추지만, GRUtopia는 도시 환경을, GenSim은 LLM 기반 작업 생성에 중점을 둔다.

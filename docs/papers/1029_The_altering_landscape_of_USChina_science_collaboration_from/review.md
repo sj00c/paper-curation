@@ -10,6 +10,7 @@ score: 4.0
 essence: "본 논문은 bibliometric 데이터를 활용하여 미국-중국 과학 협력의 장기적 변화를 추적하며, 초기의 수렴(convergence) 단계에서 최근의 발산(divergence) 단계로의 전환을 실증적으로 분석했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
   - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kitajima and Okamura_2025_The altering landscape of US–China science collaboration from convergence to divergence.pdf"
@@ -85,8 +86,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kitajima and Okamura_2025_The altering l
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 1971-2020년 과학 협력의 전반적 지도가 미중 과학협력 변화를 이해하는 역사적 맥락과 기반을 제공합니다.
-- 🧪 응용 사례: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 미중 과학협력의 발산이 물리학 지식의 정책적 선택적 활용에서 어떻게 나타나는지 구체적 사례를 제공합니다.
-- 🔗 후속 연구: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 팬데믹 동안 정책과 과학의 공진화가 미중 과학협력의 수렴에서 발산으로의 전환을 가속화시키는 메커니즘을 확장 분석합니다.
-- 🧪 응용 사례: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 미중 과학 협력의 변화하는 지형을 국제 협력 아틀라스의 구체적 사례로 분석할 수 있다
-- 🔗 후속 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학자 협력 네트워크의 기본 진화 메커니즘을 미중 과학협력의 구체적 사례로 확장하여 지정학적 변화까지 포함합니다.
+- 🏛 기반 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 글로벌 출판 부담 증가가 미중 과학 협력 변화의 구조적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 경제 발전에 따른 학자 이주 패턴이 미중 과학 협력의 수렴-발산 과정을 미시적 관점에서 설명한다.
+- 🏛 기반 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 교수 채용 네트워크의 체계적 불평등이 국가간 과학 협력에서 나타나는 구조적 격차의 이론적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 과학자 이동 궤적 분석 방법론을 국가 간 과학 협력 패턴 변화를 이해하는 데 적용할 수 있다.
+- 🔄 다른 접근: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 미중 과학 협력의 변화와 민족 다양성의 과학적 협력 효과가 서로 다른 관점에서 국제 협력을 조명한다.
+- 🏛 기반 연구: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 원격 협업의 혁신성 한계가 미국-중국 과학 협력의 수렴에서 발산으로의 전환을 이해하는 배경을 제공합니다.
+- 🧪 응용 사례: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력 네트워크 분석의 기본 방법론을 국제 협력 변화 추적에 구체적으로 적용한 사례입니다.
+- 🧪 응용 사례: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 원격 협업의 한계에 대한 연구가 미국-중국 과학 협력의 감소 추세를 이해하는 데 적용될 수 있습니다.
+- 🧪 응용 사례: [[papers/1045_The_strain_on_scientific_publishing/review]] — 글로벌 출판 부담이 미중 과학 협력의 수렴에서 발산으로의 전환에 영향을 미치는 구조적 요인이다.
+- 🧪 응용 사례: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 과학자 이동 궤적 분석 방법론을 국가 간 과학 협력 변화 패턴 연구에 적용할 수 있다.
+- 🔗 후속 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 미중 과학 협력 관계 변화를 전세계 과학 협력 아틀라스의 구체적 사례로 확장합니다.
+- 🧪 응용 사례: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력 네트워크 분석 방법론을 미국-중국 간 국제 협력의 변화 추적에 적용한 구체적 사례입니다.
+- 🔗 후속 연구: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 글로벌 학자 이동 분석을 미중 과학 협력이라는 구체적 사례로 심화한 연구이다

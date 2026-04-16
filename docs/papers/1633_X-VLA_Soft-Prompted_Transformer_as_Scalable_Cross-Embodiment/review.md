@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "X-VLA는 소프트 프롬프트(Soft Prompt) 기법을 도입하여 이질적인 로봇 플랫폼 간 cross-embodiment 학습을 효과적으로 처리하는 scalable Vision-Language-Action 모델이다. 0.9B 파라미터 규모로 6개 시뮬레이션 벤치마크와 3개 실로봇에서 SOTA 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Geometric_Language_Reasoning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2025_X-VLA Soft-Prompted Transformer as Scalable Cross-Embodiment Vision-Language-Action Model.pdf"
 ---
@@ -93,8 +94,8 @@ X-VLA는 소프트 프롬프트(Soft Prompt) 기법을 도입하여 이질적인
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — Cross-Platform Scaling의 다중 플랫폼 학습이 X-VLA의 cross-embodiment soft prompt 설계 기반이 된다
-- 🔗 후속 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — Human2Robot의 cross-embodiment 학습을 soft prompt 기법으로 더욱 효율적이고 확장 가능하게 발전시켰다
-- 🔄 다른 접근: [[papers/1562_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 둘 다 cross-embodiment이지만 Scaling Cross-Embodied Learning은 단일 정책, X-VLA는 soft prompt 기반의 다른 접근법이다
-- 🧪 응용 사례: [[papers/1475_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — MetaMorph의 universal controller와 X-VLA의 scalable cross-embodiment를 결합한 범용 로봇 제어가 가능하다
-- 🧪 응용 사례: [[papers/1616_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang/review]] — X-VLA의 cross-embodiment 확장성을 경량 모델로 구현하여 실용적 배포 가능성을 높였다
+- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — cross-embodiment learning의 기반이 되는 open x-embodiment dataset과 모델입니다.
+- 🔗 후속 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — cross-platform scaling을 soft-prompted transformer로 효율적으로 구현한 확장 연구입니다.
+- 🔄 다른 접근: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — cross-embodiment learning에서 서로 다른 접근법 - soft prompt vs unified policy입니다.
+- 🏛 기반 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — Cross-embodiment learning을 위한 통합 데이터셋과 표준화 방법론의 기본 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — Cross-embodiment manipulation을 latent action diffusion으로 해결하는 다른 접근법이다.

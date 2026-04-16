@@ -8,8 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "과학자들의 공저 관계로 구성된 협력 네트워크의 구조를 분석하여 과학 커뮤니티가 '작은 세상(small world)' 특성을 가짐을 보였다."
 tags:
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Collaboration_Networks"
+  - "sub/Bibliometric_Science_Mapping"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Newman_2001_The structure of scientific collaboration networks.pdf"
 ---
@@ -78,11 +80,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Newman_2001_The structure of scientific 
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크 이론을 과학자들의 실제 공저 협력 네트워크 구조 분석에 적용하여 실증적으로 검증했다.
-- 🔗 후속 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력 네트워크의 구조적 특성을 시간에 따른 사회 네트워크 진화 관점으로 확장하여 동적 분석을 제공한다.
-- 🧪 응용 사례: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 과학 협력 네트워크의 소규모 세계 특성을 대규모 과학 커뮤니티 매핑에 적용할 수 있는 방법론적 기초를 제공한다.
-- 🏛 기반 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 과학 협력 네트워크의 구조적 특성이 국제 협력 아틀라스 구축의 이론적 기반이 된다
-- 🧪 응용 사례: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크 이론을 과학자 협력 네트워크의 실제 구조 분석에 적용하여 실증적으로 검증했다.
-- 🏛 기반 연구: [[papers/948_Community_Detection_in_Graphs/review]] — 과학 협력 네트워크의 구조 분석에 커뮤니티 탐지 방법론이 핵심적인 기반을 제공한다
-- 🧪 응용 사례: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 선호적 부착 메커니즘을 과학자 협업 네트워크의 실제 구조 형성 과정에 적용하여 검증한다.
-- 🔄 다른 접근: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력 네트워크의 구조를 분석하는 다른 접근법과 시각을 제공하여 보완적 관점을 제시합니다.
+- 🏛 기반 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 공저 네트워크의 작은 세상 특성이 우선적 부착을 통한 스케일-프리 진화의 기반 구조를 제공한다.
+- 🧪 응용 사례: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 작은 세상 네트워크의 집합적 역학 이론을 과학 협력 네트워크에 구체적으로 적용한 사례이다.
+- 🔗 후속 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 개별 과학자 협력에서 팀 기반 지식 생산으로의 변화가 협력 네트워크 구조 진화에 미치는 영향을 분석한다.
+- 🔗 후속 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 과학 협력 네트워크의 기본 구조 분석을 대규모로 확장하여, 과학 커뮤니티 매핑의 방법론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 과학 협력 네트워크의 구조적 이해가 샤페론 효과의 사회적 네트워크 메커니즘을 설명하는 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 과학 협력 네트워크의 구조적 특성을 분석하되, 정적 구조보다는 동적 성장 과정에서의 커뮤니티별 차별화된 메커니즘에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 과학 협력 네트워크의 구조적 특성 이론이 1971-2020년 협력 아틀라스의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크의 이론적 기반을 실제 과학자 협력 네트워크 분석에 적용하여 확장한다.
+- 🧪 응용 사례: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 과학 협력 네트워크의 구조 분석에서 스케일-프리 성장과 선호적 부착 메커니즘이 핵심적 설명 원리로 작용한다.
+- 🔗 후속 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 공저자 네트워크의 구조적 특성을 더 깊이 분석하여 스케일-프리와 작은 세상 특성을 모두 규명한다.
+- 🏛 기반 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 과학 협력 네트워크의 구조 연구가 대규모 과학 공동체 매핑 방법론 개발의 이론적 토대를 제공한다.

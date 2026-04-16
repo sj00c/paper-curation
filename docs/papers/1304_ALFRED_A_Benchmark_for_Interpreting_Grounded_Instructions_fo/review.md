@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "ALFRED는 자연어 지시사항과 egocentric vision에서 가정용 작업을 위한 action sequence로의 매핑을 학습하기 위한 벤치마크로, 25k개의 자연어 지시문과 비가역적 상태 변화를 포함하여 실제 로봇 응용과의 간극을 줄인다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shridhar et al._2019_ALFRED A Benchmark for Interpreting Grounded Instructions for Everyday Tasks.pdf"
 ---
@@ -89,7 +91,12 @@ ALFRED는 자연어 지시사항과 egocentric vision에서 가정용 작업을 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — MP5는 ALFRED의 벤치마크 개념을 Minecraft 환경에서 멀티모달 구체화 시스템으로 확장한다
-- 🔄 다른 접근: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — CALVIN은 ALFRED와 유사한 언어 조건부 정책 학습 벤치마크이지만 다른 작업 설정을 사용한다
-- 🔗 후속 연구: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — VLABench는 ALFRED의 언어 기반 지시 해석 벤치마크를 대규모 언어 조건부 로봇 조작으로 확장한다
-- 🏛 기반 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — ALFRED의 grounded instruction interpretation이 RoboTron-Nav의 언어 기반 시각 네비게이션의 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — ALFRED의 자연어 지시 매핑과 CALVIN의 장기간 언어 조건부 조작은 모두 언어 기반 로봇 작업 학습 벤치마크의 발전이다.
+- 🔄 다른 접근: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — ALFRED의 가정용 작업과 ARNOLD의 연속적 객체 상태 이해는 언어 기반 조작 학습의 서로 다른 복잡도와 현실성을 다룬다.
+- 🏛 기반 연구: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — VLABench의 대규모 언어 조건부 로봇 벤치마크는 ALFRED의 언어 기반 작업 학습 개념을 확장한 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — LIBERO는 ALFRED의 언어 기반 instruction following을 lifelong learning 맥락으로 확장한 벤치마크입니다.
+- 🧪 응용 사례: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — Instruct2Act은 ALFRED와 같은 벤치마크에서 평가될 수 있는 multi-modal instruction mapping의 구체적 구현입니다.
+- 🏛 기반 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — Habitat 2.0의 home assistant training 환경을 egocentric vision과 자연어 지시사항 매핑 학습을 위한 구체적인 벤치마크로 발전시킨 연구입니다.
+- 🔄 다른 접근: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — 둘 다 로봇 학습 벤치마크이지만 ALFRED는 자연어 지시사항과 egocentric vision에, RLBench는 일반적인 로봇 학습 환경에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — ARNOLD의 연속적 객체 상태와 ALFRED의 비가역적 상태 변화는 언어 기반 조작 학습에서 상태 모델링의 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — CALVIN의 장기간 언어 조건부 조작과 ALFRED의 자연어 지시 매핑은 언어 기반 로봇 작업 학습 벤치마크의 발전 과정이다.

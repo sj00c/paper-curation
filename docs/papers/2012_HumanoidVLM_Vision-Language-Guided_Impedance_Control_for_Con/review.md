@@ -1,3 +1,22 @@
+---
+title: "2012_HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Con"
+authors:
+  - "Yara Mahmoud"
+  - "Yasheerah Yaqoot"
+  - "Miguel Altamirano Cabrera"
+  - "Dzmitry Tsetserukou"
+date: "2026.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "HumanoidVLM은 vision-language model과 retrieval-augmented generation을 결합하여 휴머노이드 로봇이 egocentric 이미지로부터 task-specific impedance parameters와 gripper configuration을 자동으로 선택하는 적응형 조작 프레임워크이다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mahmoud et al._2026_HumanoidVLM Vision-Language-Guided Impedance Control for Contact-Rich Humanoid Manipulation.pdf"
+---
+
 # HumanoidVLM: Vision-Language-Guided Impedance Control for Contact-Rich Humanoid Manipulation
 
 > **저자**: Yara Mahmoud, Yasheerah Yaqoot, Miguel Altamirano Cabrera, Dzmitry Tsetserukou | **날짜**: 2026-01-21 | **URL**: [https://arxiv.org/abs/2601.14874](https://arxiv.org/abs/2601.14874)
@@ -71,3 +90,11 @@ HumanoidVLM은 vision-language model과 retrieval-augmented generation을 결합
 - Overall: 4/5
 
 **총평**: 본 논문은 VLM과 RAG를 humanoid manipulation에 효과적으로 적용하여 semantic perception과 compliant control을 처음 체계적으로 연결했으며, 높은 retrieval 정확도와 실제 로봇 실험을 통해 타당성을 입증했다. 다만 고정된 database 규모와 sensor 제약이 향후 확장성을 제한하는 점이 개선 대상이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — SafeHumanoid의 VLM-RAG driven control이 HumanoidVLM과 다른 방식으로 vision-language 기반 제어를 구현합니다.
+- 🏛 기반 연구: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — EgoVLA의 vision-language-action learning이 HumanoidVLM의 adaptive manipulation framework 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1923_FAME_Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelo/review]] — FAME의 force-adaptive RL이 HumanoidVLM의 impedance parameter 선택을 강화학습으로 확장합니다.
+- 🔄 다른 접근: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — 두 논문 모두 VLM을 활용한 휴머노이드 제어를 다루지만, 안전성 중심과 일반적인 임피던스 제어라는 다른 관점을 가진다.
+- 🔗 후속 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — 비전-언어 가이드 임피던스 제어가 off-the-shelf VLM을 물리적 제어로 연결하는 확장된 구현이다.

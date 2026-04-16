@@ -1,3 +1,25 @@
+---
+title: "2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri"
+authors:
+  - "Haodong Zhang"
+  - "Liang Zhang"
+  - "Zhenghan Chen"
+  - "Lu Chen"
+  - "Yue Wang"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Generative Motion Prior (GMP)를 활용하여 인간의 자연스러운 보행 데이터로부터 휴머노이드 로봇의 자연스러운 보행을 학습하는 방법을 제안한다. 기존의 adversarial motion prior 대신 frozen generative model을 사용하여 fine-grained motion-level 감독을 제공함으로써 학습 안정성과 해석 가능성을 향상시킨다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Natural Humanoid Robot Locomotion with Generative Motion Prior.pdf"
+---
+
 # Natural Humanoid Robot Locomotion with Generative Motion Prior
 
 > **저자**: Haodong Zhang, Liang Zhang, Zhenghan Chen, Lu Chen, Yue Wang, Rong Xiong | **날짜**: 2025-03-12 | **URL**: [https://arxiv.org/abs/2503.09015](https://arxiv.org/abs/2503.09015)
@@ -65,3 +87,18 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 generative motion prior를 활용한 혁신적 접근으로 humanoid robot의 자연스러운 보행 학습 문제를 효과적으로 해결하며, adversarial training의 불안정성을 제거하고 fine-grained guidance를 제공함으로써 motion naturalness에서 SOTA 성능을 달성한다. 다만 real-world 실험 확대와 다양한 환경에서의 일반화 능력 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars/review]] — 둘 다 인간 보행 데이터를 활용한 자연스러운 휴머노이드 제어를 다루지만, Natural Humanoid는 생성형 모델에, PHC는 대규모 모션 클립 학습에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — StyleLoco의 생성형 적대 증류 기법이 Natural Humanoid의 Generative Motion Prior 개발에 핵심적인 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 adversarial motion prior를 frozen generative model 기반의 더 안정적인 fine-grained 감독으로 발전시킨 연구이다.
+- 🔗 후속 연구: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — RuN의 natural locomotion을 generative motion prior를 통해 더욱 정교하게 구현한 연구다
+- 🔄 다른 접근: [[papers/2058_Learning_Humanoid_Standing-up_Control_across_Diverse_Posture/review]] — 둘 다 generative model 기반이지만 Natural Humanoid는 locomotion에, Learning Humanoid Standing-up은 특정 동작에 중점을 둔다
+- 🏛 기반 연구: [[papers/1745_Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level/review]] — 대규모 사전학습과 모델 스케일링의 영향 연구가 GMP의 frozen generative model 활용의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — 자연스러운 휴머노이드 보행을 위한 generative motion prior의 기초적인 개념을 제공한다.
+- 🔗 후속 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — 자연스러운 휴머노이드 보행을 generative adversarial distillation으로 더 발전시켜 민첩성과 자연스러움을 동시에 달성한다.
+- 🔗 후속 연구: [[papers/1635_Reduced-Order_Model-Guided_Reinforcement_Learning_for_Demons/review]] — ROM-GRL의 4-DOF reduced model이 Natural Humanoid Locomotion의 generative motion prior와 결합되어 더 효율적인 gait 학습을 실현할 수 있다
+- 🔄 다른 접근: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — GDAF가 인간-로봇 보행의 차이를 분석하는 반면, Natural Humanoid Robot Locomotion은 생성적 모션 프라이어로 자연스러운 휴머노이드 보행을 달성하는 다른 접근을 제시한다.
+- 🏛 기반 연구: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — 미러 대칭 손실과 커리큘럼 학습이 생성적 모션 프라이어를 통한 자연스러운 보행의 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars/review]] — 둘 다 인간 보행 데이터 기반 자연스러운 제어를 다루지만, PHC는 대규모 모션 클립 학습에, Natural Humanoid는 생성형 모션 사전에 집중한다.

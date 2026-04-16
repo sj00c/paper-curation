@@ -1,3 +1,22 @@
+---
+title: "1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and"
+authors:
+  - "Huansheng Ning"
+  - "Jianguo Ding"
+date: "2026.04"
+doi: "10.48550/arXiv.2604.05568"
+arxiv: ""
+score: 4.0
+essence: "CPST(Cyber-Physical-Social-Thinking) 공간 이론에 기반한 로봇과 AI 에이전트의 분류 프레임워크를 제안하여, 기존의 '도구' vs '인격' 이분법적 법적 범주의 한계를 극복하고 비례적 거버넌스를 위한 온톨로지를 제시한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Computational_Optimization_and_Tools"
+  - "sub/Laparoscopic_Teleoperation_Systems"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ning and Ding_2026_Beyond Tools and Persons Who Are They Classifying Robots and AI Agents for Proportional Governance.pdf"
+---
+
 # Beyond Tools and Persons: Who Are They? Classifying Robots and AI Agents for Proportional Governance
 
 > **저자**: Huansheng Ning, Jianguo Ding | **날짜**: 2026-04-07 | **DOI**: [10.48550/arXiv.2604.05568](https://doi.org/10.48550/arXiv.2604.05568)
@@ -65,3 +84,15 @@ CPST(Cyber-Physical-Social-Thinking) 공간 이론에 기반한 로봇과 AI 에
 - Overall: 4/5
 
 **총평**: 본 논문은 AI 및 로봇 거버넌스의 근본적 온톨로지 문제를 CPST 이론으로 해결하려는 야심찬 시도로, 기존 위험도/안전성 중심의 규제에서 엔티티 특성 중심으로의 패러다임 전환을 제시한다. 다만 평가 지표의 정량화, 국제 표준화의 현실성, 신기술 추적 메커니즘에 대한 더 깊은 논의가 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — GPT-4에 인간형 신체를 부여하는 연구가 로봇과 AI 에이전트의 CPST 분류 프레임워크 개발에 핵심적인 실증 사례를 제공한다.
+- 🧪 응용 사례: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — Trinity 모듈식 인간형 로봇 AI 시스템이 제안된 CPST 공간 이론 기반 분류 프레임워크의 실제 적용 사례로 활용될 수 있다.
+- 🔗 후속 연구: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — GR00T N1의 범용 인간형 로봇 기반 모델이 CPST 분류 체계에서 제시한 비례적 거버넌스 온톨로지를 실제로 구현하는 확장 연구다.
+- 🧪 응용 사례: [[papers/1781_A_Rapid_Instrument_Exchange_System_for_Humanoid_Robots_in_Mi/review]] — CPST 기반 로봇 분류 프레임워크를 의료용 휴머노이드 로봇의 법적 지위와 거버넌스 정책 수립에 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/2011_Humanoids_in_Hospitals_A_Technical_Study_of_Humanoid_Robot_S/review]] — 병원 환경에서의 휴머노이드 로봇 기술 연구를 CPST 이론 기반의 분류 및 거버넌스 프레임워크로 확장할 수 있습니다.
+- 🏛 기반 연구: [[papers/2019_iCub3_Avatar_System_Enabling_Remote_Fully-Immersive_Embodime/review]] — 원격 완전 몰입형 embodiment 시스템의 법적 윤리적 분류에 CPST 공간 이론의 기반 프레임워크를 적용할 수 있습니다.
+- 🏛 기반 연구: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — CPST 이론 기반의 로봇 분류가 SENTINEL의 end-to-end 언어-행동 모델에서 AI 에이전트의 법적 지위 정의에 이론적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — CPST 기반 분류가 인간-로봇 협업에서 로봇의 자율성 수준과 인간의 제어 권한을 명확히 구분하는 데 확장될 수 있다
+- 🧪 응용 사례: [[papers/1781_A_Rapid_Instrument_Exchange_System_for_Humanoid_Robots_in_Mi/review]] — 로봇과 AI 에이전트 분류 프레임워크를 의료용 휴머노이드 로봇의 법적 지위와 거버넌스에 적용할 수 있습니다.

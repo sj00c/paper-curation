@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Vision-Language-Action (VLA) 모델을 자율주행에 적용하는 최초의 종합 서베이로, 20개 이상의 대표 모델을 분석하고 시각 인식, 자연어 이해, 제어를 통합하는 패러다임의 발전 과정을 추적한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2025_A Survey on Vision-Language-Action Models for Autonomous Driving.pdf"
 ---
@@ -93,7 +95,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2025_A Survey on Vision-Lan
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — VLA 모델의 구조적 분석이 자율주행 특화 VLA 모델 설계의 이론적 기초를 제공한다
-- 🔄 다른 접근: [[papers/1287_π_0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Co/review]] — VLA 모델을 각각 자율주행과 일반 로봇 제어라는 다른 도메인에 적용한다
-- 🧪 응용 사례: [[papers/1400_Flexible_Motion_In-betweening_with_Diffusion_Models/review]] — 생성형 world model이 자율주행 VLA의 환경 예측과 계획 능력에 구체적 적용을 제공한다
-- 🔗 후속 연구: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — 일반적인 VLA 구조 분석을 자율주행이라는 특화 도메인으로 확장하여 적용한다
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — 자율주행용 VLA 모델 서베이는 로봇틱스 foundation model 종합 조사의 특정 도메인 확장판이다.
+- 🧪 응용 사례: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — GAIA-1의 자율주행용 생성 세계 모델은 VLA 모델의 자율주행 적용 사례를 구체적으로 보여준다.
+- 🏛 기반 연구: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — VLA 모델의 모듈별 분석은 자율주행용 VLA 시스템 이해에 필수적인 구조적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — VLM 기반 네비게이션 계획을 자율주행에 확장 적용한다.
+- 🔄 다른 접근: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — 시각적 예측기를 활용한 제로샷 네비게이션이라는 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation의 전반적인 분류체계와 기초 개념을 제공합니다.
+- 🔄 다른 접근: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — 로봇 비전에서 multimodal fusion vs autonomous driving에 특화된 VLA 모델이라는 서로 다른 도메인별 접근법을 비교 분석한다.

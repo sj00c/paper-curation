@@ -11,7 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 Soft Actor-Critic(SAC) 알고리즘을 parameterized quantum circuit으로 구현한 quantum deep reinforcement learning(QDRL)을 humanoid robot navigation 작업에 적용하여, 고차원 상태-행동 공간에서 고전적 RL보다 92% 더 적은 스텝으로 8% 높은 성능을 달성했다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lokossou et al._2025_Quantum deep reinforcement learning for humanoid robot navigation task.pdf"
 ---
@@ -83,3 +85,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lokossou et al._2025_Quantum deep reinfo
 - Overall: 4/5
 
 **총평**: 이 논문은 humanoid robot navigation이라는 도전적 고차원 문제에 QDRL을 처음 적용한 의미 있는 연구로, 양자 컴퓨팅의 실용적 잠재력을 보여주지만, 시뮬레이션 환경 제한과 실제 양자 하드웨어 부재로 인해 근본적인 양자 이점의 증명은 아직 불완전하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — Spectral Normalization의 Lipschitz 제약 정책이 quantum deep RL에서 안정적인 학습과 수렴성 보장의 이론적 기초를 제공함
+- 🔄 다른 접근: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — Quantum DRL은 parameterized quantum circuit을, FastTD3는 간단하고 빠른 고전적 RL을 사용하여 휴머노이드 제어를 다르게 접근함
+- 🧪 응용 사례: [[papers/2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — Learning Social Navigation의 양음 시연 학습이 quantum DRL의 고차원 상태-행동 공간 학습을 사회적 내비게이션에 적용한 사례임
+- 🔄 다른 접근: [[papers/1629_Quantum_deep_reinforcement_learning_for_humanoid_robot_navig/review]] — Classical SAC를 quantum circuit으로 구현하여 효율성을 개선한 혁신적 접근법
+- 🔗 후속 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — Quantum RL의 효율성을 two-stage learning framework에 적용 가능한 확장 연구

@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "LOVON은 LLM 기반 계층적 작업 계획과 open-vocabulary 시각 감지를 통합하여 동적이고 비구조화된 환경에서 legged robot의 장시간 객체 네비게이션을 가능하게 하는 통합 프레임워크이다. Laplacian Variance Filtering 등의 기법으로 실제 환경의 시각적 불안정성을 해결하고 여러 legged robot 플랫폼에서 검증되었다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Multimodal_Navigation_Benchmarks"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Semantic_Navigation_Exploration"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Peng et al._2025_LOVON Legged Open-Vocabulary Object Navigator.pdf"
 ---
@@ -89,9 +90,9 @@ LOVON은 LLM 기반 계층적 작업 계획과 open-vocabulary 시각 감지를 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — 두 논문 모두 legged 로봇의 언어 기반 네비게이션을 다루지만, 하나는 open-vocabulary 객체 네비게이션에, 다른 하나는 VLA 모델에 집중합니다.
-- 🔗 후속 연구: [[papers/1311_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 적응적 탐색 전략을 legged 로봇의 객체 네비게이션에 적용하여 더욱 효율적인 탐색을 달성할 수 있습니다.
-- 🧪 응용 사례: [[papers/1277_BeamDojo_Learning_Agile_Humanoid_Locomotion_on_Sparse_Footho/review]] — 희박한 지지면에서의 민첩한 휴머노이드 로코모션 기술이 legged 로봇의 복잡한 환경 네비게이션에 적용됩니다.
-- 🏛 기반 연구: [[papers/1469_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 멀티모달 점유 인식 시스템이 legged 로봇의 환경 이해와 네비게이션을 위한 기본적인 인식 능력을 제공합니다.
-- 🏛 기반 연구: [[papers/1469_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 멀티모달 occupancy 인식이 legged 로봇의 객체 네비게이션에 필요한 기본적인 환경 이해 능력을 제공합니다.
-- 🔄 다른 접근: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — 두 논문 모두 legged 로봇의 언어 기반 네비게이션을 다루지만, 하나는 VLA 모델에, 다른 하나는 open-vocabulary 객체 네비게이션에 집중합니다.
+- 🔄 다른 접근: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — 동일한 open-vocabulary 객체 네비게이션 문제에 대해 legged robot vs wheeled robot 플랫폼에서의 서로 다른 구현 방식을 보여준다.
+- 🔗 후속 연구: [[papers/1367_DivScene_Towards_Open-Vocabulary_Object_Navigation_with_Larg/review]] — open-vocabulary 객체 네비게이션의 기본 개념을 동적 환경과 legged robot으로 확장하여 더 복잡한 실제 환경에서의 적용을 다룬다.
+- 🏛 기반 연구: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — legged robot의 vision-language-action 통합에 대한 이론적 기반을 제공하여 LOVON의 다중모달 통합 프레임워크 설계에 영감을 준다.
+- 🔗 후속 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — 강화학습 기반 휴머노이드 보행을 객체 네비게이션과 결합하여 legged robot의 장시간 탐색을 가능하게 했다.
+- 🧪 응용 사례: [[papers/1486_Multimodal_Perception_for_Goal-oriented_Navigation_A_Survey/review]] — 멀티모달 네비게이션의 이론적 프레임워크가 LOVON의 다리 로봇 개방형 어휘 객체 네비게이션에 실제 적용된다.
+- 🔗 후속 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — OctoNav의 일반화된 네비게이션이 LOVON의 다리 로봇 개방형 어휘 객체 네비게이션과 결합되어 더 복잡한 지형에서의 네비게이션을 실현한다.

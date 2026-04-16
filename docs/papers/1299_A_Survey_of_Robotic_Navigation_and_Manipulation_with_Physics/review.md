@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Embodied AI 시대에 로봇의 네비게이션과 조작 작업을 위한 Physics Simulator의 역할을 종합적으로 분석하고, sim-to-real 전이의 간극을 좁히기 위한 시뮬레이터 속성, 벤치마크, 평가 지표 및 최신 방법론을 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Foundation_Models"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wong et al._2025_A Survey of Robotic Navigation and Manipulation with Physics Simulators in the Era of Embodied AI.pdf"
 ---
@@ -92,6 +94,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wong et al._2025_A Survey of Robotic Nav
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — 로봇 시뮬레이션 환경을 각각 physics simulator와 MuJoCo playground라는 다른 관점에서 조사한다
-- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — world model의 이론적 틀이 physics simulator 기반 로봇 학습의 환경 모델링에 기초를 제공한다
-- 🔗 후속 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — robosuite의 modular simulation을 physics simulator의 포괄적 분석으로 확장하여 더 깊은 이해를 제공한다
+- 🧪 응용 사례: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — GPU 병렬화된 로봇 시뮬레이션의 구체적 구현 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 3D 기반 고품질 시뮬레이션 데이터 생성으로 physics simulator의 한계를 극복한다.
+- 🔄 다른 접근: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — Real-to-Sim-to-Real 접근법으로 시뮬레이션 갭 문제를 다른 방식으로 해결한다.
+- 🏛 기반 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — 로봇 조작을 위한 모듈러 시뮬레이션 프레임워크로서 물리 시뮬레이터 연구의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 로봇 조작을 위한 확산 모델 서베이가 물리 시뮬레이터와 sim-to-real 전이의 이론적 배경을 제공합니다.
+- 🔗 후속 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — Embodied AI를 위한 World Model 서베이와 물리 시뮬레이터 서베이가 상호 보완적인 관점을 제공합니다.
+- 🧪 응용 사례: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — 실제 로봇 응용을 위한 심층 강화학습 서베이와 물리 시뮬레이터 역할 분석이 실용적 관점을 제공합니다.

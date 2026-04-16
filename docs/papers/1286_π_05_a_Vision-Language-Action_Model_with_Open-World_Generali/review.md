@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "π0.5는 heterogeneous한 다중 데이터 소스(다양한 로봇, 웹 데이터, 의미론적 예측)에서 co-training하여 실제 가정에서 장시간의 복잡한 조작 작업을 수행할 수 있는 Vision-Language-Action 모델이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Robotic_Foundation_Generalization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Intelligence et al._2025_$π_{0.5}$ a Vision-Language-Action Model with Open-World Generalization.pdf"
 ---
@@ -86,7 +87,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Intelligence et al._2025_$π_{0.5}$ a Vi
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Being-H0.5는 인간 중심 학습에 특화된 반면 π0.5는 더 일반적인 다중 데이터 소스 활용에 중점을 둔다
-- 🏛 기반 연구: [[papers/1510_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — OpenVLA는 π0.5와 유사한 오픈소스 Vision-Language-Action 모델의 기초적 구현을 제공한다
-- 🔗 후속 연구: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — 일반적 로봇 조작을 위한 Vision-Language-Action 모델 구축에 대한 핵심 요소들을 분석하여 π0.5의 설계 원리를 뒷받침한다
-- 🔄 다른 접근: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — π0.5는 Being-H0.5와 유사한 Vision-Language-Action 모델이지만 일반적인 오픈월드 일반화에 더 중점을 둔다
+- 🏛 기반 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — π0.5는 RT-1의 Robotics Transformer 아키텍처를 확장하여 heterogeneous 데이터 소스로 확장한 발전된 형태입니다.
+- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 둘 다 오픈소스 Vision-Language-Action 모델이지만 π0.5는 heterogeneous 데이터 co-training에 특화되어 있습니다.
+- 🔗 후속 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Being-H0.5와 마찬가지로 cross-embodiment 일반화를 목표로 하지만 π0.5는 웹 데이터 활용에 더 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 웹 지식을 로봇 제어에 전이하는 아이디어를 확장하여 더 큰 규모의 heterogeneous 데이터로 발전시킨 VLA 모델입니다.
+- 🔄 다른 접근: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — 둘 다 cross-embodiment VLA 모델이지만 Being-H0.5는 인간 중심 학습에, π0.5는 heterogeneous 데이터 co-training에 특화됩니다.

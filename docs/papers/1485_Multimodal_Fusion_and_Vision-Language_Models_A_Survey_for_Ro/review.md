@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇 비전을 위한 멀티모달 융합 기법과 Vision-Language Model(VLM)의 응용을 체계적으로 리뷰하며, encoder-decoder, attention, graph neural network 등의 융합 전략과 SLAM, 3D 객체 감지, 네비게이션, 조작 등 핵심 로봇 태스크에서의 실제 구현을 분석한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Multimodal_Navigation_Benchmarks"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Han et al._2025_Multimodal Fusion and Vision-Language Models A Survey for Robot Vision.pdf"
 ---
@@ -94,8 +96,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Han et al._2025_Multimodal Fusion and Vi
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1469_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 로봇 비전을 위한 멀티모달 융합 기법의 체계적 분석이 휴머노이드 occupancy 인식 시스템 설계에 적용됩니다.
-- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — 시각-언어 네비게이션 서베이를 멀티모달 융합과 VLM 관점에서 확장하여 더욱 포괄적인 분석을 제공합니다.
-- 🏛 기반 연구: [[papers/1608_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — VLA 모델의 개념과 응용이 로봇 비전에서 멀티모달 융합의 이론적 토대를 제공합니다.
-- 🔗 후속 연구: [[papers/1590_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — 범용 로봇을 위한 기초 모델 서베이를 멀티모달 융합과 VLM의 구체적 적용으로 심화 발전시킨 형태입니다.
-- 🏛 기반 연구: [[papers/1469_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 로봇 비전을 위한 멀티모달 융합 기법이 occupancy 인식 시스템의 다중 센서 통합 방법론의 토대가 됩니다.
+- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — vision-language navigation에 대한 기존 survey를 multimodal fusion 기법과 최신 VLM 응용으로 확장하여 더 포괄적인 로봇 비전 연구 방향을 제시한다.
+- 🔄 다른 접근: [[papers/1300_A_Survey_on_Vision-Language-Action_Models_for_Autonomous_Dri/review]] — 로봇 비전에서 multimodal fusion vs autonomous driving에 특화된 VLA 모델이라는 서로 다른 도메인별 접근법을 비교 분석한다.
+- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — foundation model driven robotics의 포괄적인 리뷰를 제공하여 multimodal fusion과 VLM의 로봇 응용에 대한 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — 멀티모달 융합 기법이 Learning Transferable Visual Models from Natural Language Supervision의 시각-언어 학습 방법론을 기반으로 발전한다.
+- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — 둘 다 로봇 비전을 위한 시각적 특징 학습에 초점을 맞추지만, 멀티모달 융합은 VLM 통합을, DINOv2는 자기지도 학습에 집중한다.
+- 🏛 기반 연구: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — 로봇 비전을 위한 멀티모달 융합 기법은 VLA 모델 전반의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 멀티모달 융합 기술은 OmniVLA의 다중 센서 통합 접근법의 이론적 토대가 됩니다.
+- 🔄 다른 접근: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — embodied 멀티모달 모델의 개발과 데이터 관점에서 상호 보완적인 리뷰를 제공합니다.
+- 🏛 기반 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Multimodal Fusion and Vision-Language Models 서베이가 Foundation Models in Robotics에서 다루는 multimodal foundation model의 로봇 응용에 기초적 이론을 제공한다.
+- 🔗 후속 연구: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — Multimodal Fusion and Vision-Language Models 서베이는 생성형 AI를 멀티모달 로봇 학습으로 확장한 포괄적 검토임
+- 🏛 기반 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — Multimodal Fusion Survey는 로봇 foundation model의 핵심 구성 요소인 다중모달 융합에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — Multimodal Fusion 서베이가 Pri-GP의 분산 학습을 멀티모달 퓨전 관점에서 확장하여 로봇 응용에 적용한다.
+- 🔗 후속 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — 로보틱스를 위한 다중모드 융합과 VLM 서베이가 언어-행동 연결 서베이를 확장합니다.
+- 🏛 기반 연구: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 멀티모달 융합 기법의 이론적 배경은 OmniVLA의 다중 센서 통합 구현에 핵심적인 기반을 제공합니다.

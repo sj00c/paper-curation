@@ -13,7 +13,9 @@ score: 4.0
 essence: "본 논문은 과학 자체를 정량적으로 분석하는 Science of Science (SciSci)라는 새로운 학문 분야를 제시하며, 대규모 데이터를 활용하여 과학 발전의 메커니즘과 과학자의 경력 궤적을 이해하고자 한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_and_Research_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fortunato et al._2018_Science of science.pdf"
 ---
@@ -81,13 +83,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fortunato et al._2018_Science of science
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 연구 기반을 마련하기 위한 대규모 데이터 인프라인 SciSciNet을 통해 분야의 실증적 연구를 확장했다.
-- 🔗 후속 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 과학의 과학 연구에 AI 기반 자동화 도구인 SciSciGPT를 도입하여 연구 방법론의 혁신을 이뤘다.
-- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 분야의 이론적 토대와 방법론적 프레임워크를 제시하여 후속 연구의 기초를 마련했다.
-- 🧪 응용 사례: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 과학의 과학 연구에 AI 협력자인 SciSciGPT를 도입하여 연구 워크플로우의 자동화와 재현성을 향상시켰다.
-- 🏛 기반 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 연구를 위한 핵심 데이터 인프라를 제공하여 분야 연구의 재현성과 접근성을 획기적으로 향상시켰다.
-- 🔗 후속 연구: [[papers/1042_The_Scholarly_Knowledge_Ecosystem_Challenges_and_Opportuniti/review]] — 과학의 과학 분야를 학술 지식 생태계의 종합적 이해와 거버넌스라는 더 넓은 관점으로 확장하여 분석했다.
-- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 분야의 전반적 개념과 방법론을 제시하여 AI 시대 과학 연구 분석의 이론적 기반을 마련한다.
-- 🔗 후속 연구: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — 기존 과학의 과학 연구에 AI 자동화 기술을 통합하여 차세대 연구 패러다임을 제시한다.
-- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학 분야의 핵심 개념과 방법론을 더욱 발전시킨 후속 연구임
-- 🏛 기반 연구: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 과학의 과학 분야의 이론적 발전이 RAG 기반 연구 평가 시스템 개발의 학문적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — Science of Science 분야의 핵심 개념과 방법론을 체계적으로 정립한 기초 연구이다.
+- 🔗 후속 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — SciSci의 이론적 토대 위에 구체적인 데이터 측정 방법론과 실증적 접근법을 발전시켰다.
+- 🧪 응용 사례: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학이라는 새로운 학문 분야의 연구를 위한 대규모 데이터 인프라를 제공합니다.
+- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학 분야에서 데이터 기반 예측의 구체적인 방법론과 응용을 보여줍니다.
+- 🔗 후속 연구: [[papers/1042_The_Scholarly_Knowledge_Ecosystem_Challenges_and_Opportuniti/review]] — 과학의 과학 분야를 학술 지식 생태계라는 더 포괄적 관점으로 확장하여 거버넌스 측면을 강조한다.
+- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학학 분야의 기초 문헌으로서 AI 시대 과학학 연구 방향성을 제시하는 이론적 토대
+- 🏛 기반 연구: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — 과학의 과학 기본 개념이 AI 기반 자동화 SoS 연구 프레임워크 개발의 학문적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학의 과학 분야를 다루지만, 전반적 개관보다는 데이터 기반 예측이라는 특정 접근법의 현황과 한계에 집중한다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야의 데이터와 방법론적 기반을 체계적으로 정리하여 연구 분야 발전의 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — AI 기반 모바일 의사결정이 SDG에 미치는 영향 분석을 과학학 전반의 관점에서 확장할 수 있다.

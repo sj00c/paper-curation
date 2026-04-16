@@ -1,3 +1,25 @@
+---
+title: "2031_Iterative_Closed-Loop_Motion_Synthesis_for_Scaling_the_Capab"
+authors:
+  - "Weisheng Xu"
+  - "Qiwei Wu"
+  - "Jiaxi Zhang"
+  - "Tan Jing"
+  - "Yangfan Li"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 폐쇄 루프 자동화 모션 데이터 생성 및 반복 프레임워크(CLAIMS)를 제안하여 고정된 난이도 분포의 데이터셋 한계를 극복하고, 휴머노이드 제어 정책의 성능 상한을 향상시킨다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2026_Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control.pdf"
+---
+
 # Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control
 
 > **저자**: Weisheng Xu, Qiwei Wu, Jiaxi Zhang, Tan Jing, Yangfan Li, Yuetong Fang, Jiaqi Xiong, Kai Wu, Rong Ou, Renjing Xu | **날짜**: 2026-02-25 | **URL**: [https://arxiv.org/abs/2602.21599](https://arxiv.org/abs/2602.21599)
@@ -63,3 +85,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 동적 난이도 적응을 통해 휴머노이드 제어의 고질적인 문제(고정 데이터 분포, 높은 데이터 수집 비용)를 혁신적으로 해결하며, 폐쇄 루프 프레임워크의 개념과 실제 구현이 모두 우수하다. 특히 AMASS의 1/10 데이터로 45% 실패율 감소라는 실질적 성과와 다양한 벤치마크에서의 일반화 능력은 이 분야에 상당한 실용적 기여를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1652_Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_an/review]] — 자동화된 모션 데이터 생성에서 폐쇄 루프 방식 대신 로봇 간 정책 적응을 통한 데이터 확장 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2094_Mechanical_Intelligence-Aware_Curriculum_Reinforcement_Learn/review]] — 기계적 지능을 고려한 커리큘럼 학습이 CLAIMS의 반복적 난이도 조절 메커니즘에 대한 이론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 실제-시뮬레이션 변환 프레임워크에서 CLAIMS가 생성한 다양한 난이도의 데이터를 활용하여 더 강건한 정책 학습이 가능하다.
+- 🏛 기반 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — 모션 난이도 평가와 커리큘럼 학습에 대한 벤치마킹 기반 제공
+- 🔄 다른 접근: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — 둘 다 강화학습 프레임워크이지만 CLAIMS는 반복적 데이터 생성, Booster Gym은 end-to-end 학습 환경 제공
+- 🏛 기반 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — MoE 기반 로봇 제어의 신뢰성 있는 sim-to-real 전이가 CLAIMS의 반복적 능력 확장에 실세계 적용 기반 제공
+- 🔄 다른 접근: [[papers/1869_DexMimicGen_Automated_Data_Generation_for_Bimanual_Dexterous/review]] — iterative closed-loop motion synthesis가 DexMimicGen과 다른 방식으로 대규모 조작 데이터를 생성하는 접근법을 제시한다.

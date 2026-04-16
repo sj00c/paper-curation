@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇 학습 및 제어에서 SE(3) 동형(equivariance)을 명시적으로 통합한 신경망 아키텍처를 체계적으로 리뷰하는 튜토리얼 서베이로, 군론(group theory), Lie 군/대수, 기하학적 심층학습, 그리고 기하학적 제어의 수학적 기초부터 로봇 조작 및 제어 응용까지 포괄한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Transformer_Policies"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Deep_Reinforcement_Learning_Applications"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Seo et al._2025_SE(3)-Equivariant Robot Learning and Control A Tutorial Survey.pdf"
 ---
@@ -84,6 +86,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Seo et al._2025_SE(3)-Equivariant Robot 
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D 정책 학습에서 SE(3) 동형성이 시각-운동 정책의 기하학적 일반화 능력을 향상시킨다.
-- 🏛 기반 연구: [[papers/1607_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — 휴머노이드 전신 제어에서 위치 거리 필드가 SE(3) 동형성을 활용한 기하학적 제어의 실제 응용을 보여준다.
-- 🔗 후속 연구: [[papers/1288_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 3D 확산 정책에서 SE(3) 동형성이 기하학적으로 일관된 시각-운동 정책 학습을 가능하게 한다.
+- 🧪 응용 사례: [[papers/1395_FlowPolicy_Enabling_Fast_and_Robust_3D_Flow-based_Policy_via/review]] — FlowPolicy는 SE(3) equivariance 원리를 3D flow 기반 정책에 실제로 적용한 구체적인 사례를 제공한다.
+- 🧪 응용 사례: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D Diffusion Policy는 SE(3) equivariant 구조를 diffusion 기반 visuomotor 정책에 적용한 실제 구현 사례다.
+- 🧪 응용 사례: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep은 SE(3) equivariance를 관계형 keypoint 제약에 적용하여 시공간 추론을 수행하는 구체적 응용이다.
+- 🧪 응용 사례: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — SpatialVLA는 SE(3) equivariance 개념을 VLA 모델의 공간 표현에 적용하여 조작 성능을 향상시킨다.
+- 🧪 응용 사례: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — SE(3)-equivariant 신경망의 기하학적 제어 이론이 strain gradient elasticity의 기하학적 매개변수 식별에 실제 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA의 3D generative world model이 SE(3) equivariance의 로봇 학습 적용을 구체적으로 보여주는 실례다.
+- 🔗 후속 연구: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — RVT의 3D object manipulation이 SE(3)-equivariant learning을 실제 로봇 조작 태스크로 확장한 구체적 응용 사례다.
+- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — Deep RL for Robotics Survey의 강화학습 접근법을 SE(3) 동형성을 명시적으로 고려한 기하학적 관점으로 확장했다.
+- 🏛 기반 연구: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — SE(3)-equivariant learning의 기하학적 제어 이론이 strain gradient 탄성 매개변수의 기하학적 수정 항목 분석에 수학적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — SE(3)-Equivariant 학습의 수학적으로 엄밀한 3D 기하학적 표현이 SpatialVLA의 공간 이해 강화 방법론의 이론적 기초가 된다.

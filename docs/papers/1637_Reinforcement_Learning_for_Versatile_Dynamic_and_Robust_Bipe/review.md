@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "이족 로봇의 다양한 동적 보행 기술(걷기, 뛰기, 점프)을 통합적으로 제어하기 위해 dual-history 아키텍처를 갖춘 심화강화학습 프레임워크를 제시하고, 시뮬레이션에서 실제 로봇(Cassie)으로 무튜닝 전이 배포를 성공시켰다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2024_Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control.pdf"
 ---
@@ -80,3 +82,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2024_Reinforcement Learning fo
 - Overall: 4/5
 
 **총평**: 이족 로봇 제어라는 도전적 과제에서 dual-history 아키텍처와 task randomization을 통해 통합 RL 프레임워크를 달성하고, 광범위한 실제 로봇 실험으로 다양한 동적 보행 기술의 강건한 구현을 입증한 우수한 연구이다. 다만 아키텍처 설계 선택의 이론적 근거 강화와 다른 플랫폼으로의 확장성 검증이 필요하다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — Robust and Versatile Bipedal Jumping의 강화학습 기반 점프 제어가 본 논문의 다양한 동적 보행 기술을 확장함
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 두 논문 모두 이족 로봇 sim-to-real을 다루지만, 본 논문은 dual-history 아키텍처를, Learning Sim-to-Real은 15분 학습에 중점을 둠
+- 🧪 응용 사례: [[papers/1925_FastStair_Learning_to_Run_Up_Stairs_with_Humanoid_Robots/review]] — FastStair의 계단 오르기 기술이 본 논문의 versatile dynamic locomotion 프레임워크를 실제 계단 환경에 적용한 사례임
+- 🔄 다른 접근: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — 두 논문 모두 이족 로봇의 동적 운동을 강화학습으로 학습하지만, 점프와 일반적인 이족보행이라는 다른 태스크를 다룬다.
+- 🔄 다른 접근: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — 둘 다 다양한 gait pattern 학습을 다루지만, Gait-Conditioned는 단일 recurrent policy에서의 통합 접근법을, Versatile Bipedal은 별도 제어 전략을 사용합니다.
+- 🔗 후속 연구: [[papers/2045_Learning_agile_and_dynamic_motor_skills_for_legged_robots/review]] — 사족 로봇의 민첩한 동적 기술이 이족 로봇의 다양하고 강건한 보행으로 확장될 수 있다.
+- 🏛 기반 연구: [[papers/2127_Optimizing_Bipedal_Locomotion_for_The_100m_Dash_With_Compari/review]] — Reinforcement learning for versatile bipedal locomotion이 Cassie 로봇의 100m 대시 최적화에서 이족 보행의 다양한 매개변수 조정의 기술적 기반을 제공합니다.

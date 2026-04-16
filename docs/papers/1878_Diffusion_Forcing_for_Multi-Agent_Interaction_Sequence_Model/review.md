@@ -1,3 +1,23 @@
+---
+title: "1878_Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Model"
+authors:
+  - "Vongani H. Maluleke"
+  - "Kie Horiuchi"
+  - "Lea Wilken"
+  - "Evonne Ng"
+  - "Jitendra Malik"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "MAGNet은 diffusion forcing을 활용한 통합 autoregressive diffusion framework로, 다양한 multi-agent interaction 시나리오를 하나의 모델로 처리하며 dyadic부터 polyadic 상황까지 확장 가능한 long-horizon motion generation을 수행한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Text-Conditioned_Motion_Generation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Maluleke et al._2025_Diffusion Forcing for Multi-Agent Interaction Sequence Modeling.pdf"
+---
+
 # Diffusion Forcing for Multi-Agent Interaction Sequence Modeling
 
 > **저자**: Vongani H. Maluleke, Kie Horiuchi, Lea Wilken, Evonne Ng, Jitendra Malik, Angjoo Kanazawa | **날짜**: 2025-12-19 | **URL**: [https://arxiv.org/abs/2512.17900](https://arxiv.org/abs/2512.17900)
@@ -67,3 +87,12 @@ MAGNet은 diffusion forcing을 활용한 통합 autoregressive diffusion framewo
 - Overall: 4/5
 
 **총평**: MAGNet은 multi-agent motion generation의 근본적인 문제인 task fragmentation을 해결하는 우아한 통합 프레임워크를 제시하며, relational representation과 diffusion forcing의 조합으로 polyadic scenario까지 자연스럽게 확장 가능한 점이 탁월하다. 다만 polyadic scenario의 정량적 평가 강화와 practical deployment에 필요한 robustness 평가가 향후 과제이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1930_Flexible_Motion_In-betweening_with_Diffusion_Models/review]] — multi-agent interaction modeling에서 diffusion forcing과 flexible motion in-betweening이 서로 다른 시퀀스 생성 방법론을 제시한다.
+- 🔗 후속 연구: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — MAGNet의 multi-agent diffusion framework가 OmniControl의 joint-level 제어로 확장되어 더 세밀한 상호작용 제어를 가능하게 한다.
+- 🔗 후속 연구: [[papers/2067_Learning_to_Control_Physically-simulated_3D_Characters_via_G/review]] — 2D 데이터에서의 3D 캐릭터 제어가 다중 에이전트 상호작용 시퀀스 모델링으로 확장된다.
+- 🔗 후속 연구: [[papers/2093_Masquerade_Learning_from_In-the-wild_Human_Videos_using_Data/review]] — Masquerade의 데이터 편집 접근법을 다중 에이전트 상호작용 시퀀스 모델링으로 확장하여 더 복잡한 상호작용을 학습할 수 있다.
+- 🔗 후속 연구: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — 통합 낙상 안전 정책에 Diffusion Forcing의 multi-agent interaction 모델링을 적용하여 복잡한 환경에서의 협력적 낙상 회복 전략을 개발할 수 있습니다.
+- 🏛 기반 연구: [[papers/2122_One_Policy_but_Many_Worlds_A_Scalable_Unified_Policy_for_Ver/review]] — Diffusion Forcing의 multi-agent sequence modeling이 DreamPolicy의 terrain-aware autoregressive diffusion planner 설계에 방법론적 기반을 제공했다

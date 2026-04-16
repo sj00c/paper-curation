@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "기하학적 추론과 데이터 효율성을 결합한 RGMP는 humanoid robot 조작을 위해 Geometric-prior Skill Selector와 Adaptive Recursive Gaussian Network를 통합하여 87% 성공률과 5배 데이터 효율을 달성한다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Latent_Human_Motion"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_RGMP Recurrent Geometric-prior Multimodal Policy for Generalizable Humanoid Robot Manipulation.pdf"
 ---
@@ -87,3 +90,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_RGMP Recurrent Geometric-
 - Overall: 4/5
 
 **총평**: RGMP는 기하학적 추론과 데이터 효율성의 결합을 통해 humanoid robot 조작의 중요한 문제를 해결하며, GSS와 ARGN의 설계가 정교하고 실제 로봇에서 strong empirical result를 달성한 우수한 연구이다. 다만 기하학적 제약의 자동화와 더 광범위한 실증 평가가 이루어진다면 더욱 강력할 것으로 판단된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — RGMP의 기하학적 추론 기반 정책과 BFM의 행동 기반 파운데이션 모델은 휴머노이드 조작의 서로 다른 일반화 전략
+- 🏛 기반 연구: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — DemoHLM의 단일 데모 기반 학습이 RGMP의 데이터 효율성 달성을 위한 핵심 방법론적 기반
+- 🔗 후속 연구: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — 언어 기반 휴머노이드 제어가 RGMP의 기하학적 추론을 자연언어 명령으로 확장하는 발전 방향
+- 🏛 기반 연구: [[papers/1946_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — RGMP의 기하학적 추론이 Generalizable Geometric Prior의 recurrent spiking feature 방법론을 휴머노이드 조작에 적용한 것이다
+- 🔄 다른 접근: [[papers/1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — 두 논문 모두 일반화 가능한 휴머노이드 조작을 다루지만 RGMP는 기하학적 prior에, Generalizable Humanoid Manipulation은 3D diffusion policy에 집중한다
+- 🔗 후속 연구: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — RGMP의 87% 성공률 달성 경험이 SkillBlender의 다양한 whole-body skill 결합에서 성능 최적화 가이드라인을 제공할 수 있다
+- 🧪 응용 사례: [[papers/1779_A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Ma/review]] — RGMP의 geometric reasoning을 실제 manipulation dataset에 적용한 사례
+- 🔄 다른 접근: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — 행동 기반 파운데이션 모델과 RGMP의 기하학적 추론 정책은 휴머노이드 일반화의 서로 다른 사전학습 전략
+- 🔗 후속 연구: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — RGMP의 데이터 효율적 기하학적 추론을 DemoHLM의 극단적 데이터 효율성으로 확장한 형태
+- 🔄 다른 접근: [[papers/1946_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — 둘 다 기하학적 정보와 정책 학습을 결합하지만 RGMP-S는 spiking 신경망을, RGMP는 multimodal policy를 사용한다.
+- 🔗 후속 연구: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — RGMP의 geometric-prior multimodal policy가 NoMaD의 unified diffusion policy로 더욱 일반화된 것이다

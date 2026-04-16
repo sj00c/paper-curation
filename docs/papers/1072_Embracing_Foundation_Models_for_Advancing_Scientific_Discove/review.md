@@ -12,7 +12,9 @@ score: 4.0
 essence: "본 논문은 기초 모델(Foundation Models), 특히 대규모 언어 모델(LLM)을 과학 발견에 활용하기 위해 지식-기반 아이디어 사슬(KG-CoI) 방법론과 IdeaBench 벤치마크를 제안한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/LLM_Applications_in_Science"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Guo et al._2024_Embracing Foundation Models for Advancing Scientific Discovery 1.pdf"
 ---
@@ -85,11 +87,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Guo et al._2024_Embracing Foundation Mod
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — LLM이 과학의 과학 분야에 미치는 전반적 영향력을 기초 모델 활용으로 구체화함
-- 🔄 다른 접근: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 과학적 발견과 연구 예측에서 기초 모델과 기계학습의 다른 접근법임
-- 🔗 후속 연구: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 과학적 돌파구 예측에서 구조적 분석을 기초 모델 기반 아이디어 생성으로 보완함
-- ⚖️ 반론/비판: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식 부담 문제를 AI 기반 파운데이션 모델로 해결하여 과학 발견을 가속화하려는 대안적 접근법이다.
-- 🔄 다른 접근: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 과학 발견과 교육에서 기초 모델 활용의 다른 접근법과 목적을 보여줌
-- 🔗 후속 연구: [[papers/1116_Harnessing_the_Power_of_Adversarial_Prompting_and_Large_Lang/review]] — 기초 모델을 과학 발견에 활용하는 방법을 천문학 분야로 구체적으로 적용함
-- 🔗 후속 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기초모델을 활용한 과학적 발견 가속화를 심혈관질환 연구 분야에 구체적으로 적용한 사례 연구로 확장된다.
-- 🧪 응용 사례: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 방사선학 분야의 기초 모델들을 과학적 발견 가속화에 활용할 수 있는 구체적 경로를 제시한다.
+- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 일반적인 기초 모델 접근법과 생의학 특화 가설 생성 시스템의 서로 다른 전략을 비교한다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 연구 트렌드 예측의 기존 방법론이 기초 모델 기반 과학 발견의 토대가 된다.
+- 🔗 후속 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM이 과학 논문 작성에 미치는 영향을 넘어서 과학 발견 자체를 위한 기초 모델 활용으로 확장한다.
+- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 기초 모델 기반 과학 발견과 LLM-지식그래프 결합 연구 매핑이 서로 다른 AI 활용 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — LLM이 과학의 과학 분야를 어떻게 강화할 수 있는지에 대한 기반적 논의를 과학 발견으로 구체화한다.
+- 🏛 기반 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI 시대 인간 창의성의 정의와 가치 재구성이 기초 모델을 활용한 과학 발견의 철학적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 기초 모델을 활용한 과학 발견과 인용 추천에서 서로 다른 접근법으로 과학적 지식 연결을 지원한다.
+- 🔗 후속 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM이 과학 논문 생산에 미치는 영향을 기초로 과학 발견 자체를 위한 LLM 활용으로 확장한다.
+- 🔄 다른 접근: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — LLM과 지식 그래프를 결합한 과학 연구 매핑과 기초 모델 기반 과학 발견이 서로 다른 접근으로 AI를 활용한다.
+- 🏛 기반 연구: [[papers/1065_A_Survey_of_AI_Scientists/review]] — 과학 발견을 위한 기반 모델 활용의 이론적 틀을 제공하여, AI Scientist 시스템 개발의 기술적 토대를 구축한다.
+- 🔄 다른 접근: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 과학 발견을 위한 AI 활용을 다루지만, 기반 모델보다는 인간 과학자의 전문성 분포를 AI에 통합하는 접근법에 집중한다.
+- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 신경망 기반 연구 트렌드 예측과 기초 모델을 이용한 과학 발견은 AI 기반 과학 연구의 서로 다른 방법론이다.
+- 🧪 응용 사례: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 파운데이션 모델이 과학적 발견을 가속화하는 방법을 AI 연구 예측의 실제 적용 사례로 보여준다.
+- 🏛 기반 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 과학 발견을 위한 기초 모델 수용 이론이 방사선학 AI 모델 저장소 설계의 이론적 배경을 제공합니다.

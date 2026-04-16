@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "ManiSkill3는 GPU 병렬화된 로봇 시뮬레이션 및 렌더링 프레임워크로, 접촉이 풍부한 물리 엔진과 다양한 조작 작업을 지원하여 시뮬레이션 속도를 10-1000배 향상시킨다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/GPU-Accelerated_Physics_Simulation"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tao et al._2024_ManiSkill3 GPU Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI.pdf"
 ---
@@ -91,14 +93,18 @@ ManiSkill3는 GPU 병렬화된 로봇 시뮬레이션 및 렌더링 프레임워
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — ManiSkill3의 GPU 병렬화 시뮬레이션을 MuJoCo+Blender 조합으로 확장하여 더 현실적인 시각 렌더링을 추가함
-- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 둘 다 고충실도 시뮬레이션을 다루지만 1469는 로봇 조작에, 1523은 3D 재구성 기반 접근에 특화됨
-- 🏛 기반 연구: [[papers/1412_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — GaussGym의 real-to-sim framework가 GPU 가속 시뮬레이션의 기반 기술을 제공함
-- 🔗 후속 연구: [[papers/1325_cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_D/review]] — dynamics-aware motion generation을 대규모 로봇 시뮬레이션으로 확장한다
-- 🔗 후속 연구: [[papers/1430_iGibson_10_a_Simulation_Environment_for_Interactive_Tasks_in/review]] — 시뮬레이션 환경을 더 확장된 robotics 플랫폼으로 발전시켰다
-- 🔄 다른 접근: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — 둘 다 GPU 가속 시뮬레이션을 제공하지만 1483은 MuJoCo+Blender 조합으로, 1469는 순수 GPU 병렬화로 접근함
-- 🏛 기반 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — ManiSkill3의 고충실도 물리 시뮬레이션이 3D 재구성 기반 sim-to-real 전이의 기반을 제공함
-- 🏛 기반 연구: [[papers/1508_Openfly_A_comprehensive_platform_for_aerial_vision-language/review]] — ManiSkill3의 GPU 병렬화 시뮬레이션 기술이 항공 VLN 플랫폼의 기반 기술을 제공함
-- 🔗 후속 연구: [[papers/1313_ComFree-Sim_A_GPU-Parallelized_Analytical_Contact_Physics_En/review]] — GPU 가속 물리 시뮬레이션을 로봇 조작 학습으로 확장한 플랫폼이다
-- 🏛 기반 연구: [[papers/1556_Lightning_Grasp_High_Performance_Procedural_Grasp_Synthesis/review]] — ManiSkill3의 GPU 가속 시뮬레이션 기술이 고성능 절차적 그래스프 생성의 기반 플랫폼을 제공함
-- 🔗 후속 연구: [[papers/1577_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — ManiSkill3의 GPU 시뮬레이션을 230k 환경과 42M 그래프로 확장하여 대규모 생태계를 구축함
+- 🔗 후속 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — ManiSkill3의 GPU 병렬화가 robosuite의 모듈형 시뮬레이션 프레임워크를 대규모 병렬 처리로 발전시켜 학습 속도를 획기적으로 향상시킨다.
+- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — 둘 다 로봇 시뮬레이션 환경이지만, ManiSkill3는 GPU 병렬화에, MuJoCo Playground는 다양한 시뮬레이션 실험에 초점을 둔다.
+- 🏛 기반 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — ManiSkill3의 접촉이 풍부한 물리 엔진이 Habitat 2.0의 환경 상호작용 시뮬레이션 기술을 기반으로 발전된다.
+- 🔗 후속 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — SIMPLER의 시뮬레이션 평가는 ManiSkill3와 같은 고성능 GPU 시뮬레이션 환경에서 더욱 효과적으로 수행될 수 있습니다.
+- 🔄 다른 접근: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench와 ManiSkill3 모두 로봇 학습 벤치마크이지만 태스크 다양성 vs 시뮬레이션 성능에 특화된 차이가 있음
+- 🏛 기반 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — ManiSkill3의 GPU 병렬화 기술이 Habitat 2.0의 대규모 물리 시뮬레이션 성능 향상에 기여함
+- 🔄 다른 접근: [[papers/1430_iGibson_10_a_Simulation_Environment_for_Interactive_Tasks_in/review]] — 둘 다 대규모 로봇 시뮬레이션 환경이지만 interactive task focus vs GPU parallelized manipulation이라는 다른 특화 방향을 가진다.
+- 🔄 다른 접근: [[papers/1483_MuBlE_MuJoCo_and_Blender_simulation_Environment_and_Benchmar/review]] — ManiSkill3과 MuBlE 모두 GPU 가속 로봇 시뮬레이션을 제공하지만 서로 다른 렌더링 엔진을 사용합니다.
+- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — ManiSkill3도 GPU 기반 로봇 시뮬레이션을 제공하지만 더 복잡한 접촉 물리와 렌더링에 특화된 반면, MuJoCo Playground는 단순성과 속도에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — robosuite와 ManiSkill3 모두 로봇 학습을 위한 시뮬레이션 프레임워크이지만 GPU 병렬화의 차이가 있다.
+- 🧪 응용 사례: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting의 실시간 렌더링 기술을 ManiSkill3의 GPU 병렬 시뮬레이션에 적용할 수 있습니다.
+- 🏛 기반 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — ManiSkill3의 GPU 병렬화 로봇 시뮬레이션은 BEHAVIOR-1K의 대규모 일상 활동 시뮬레이션에 기술적 기초를 제공한다.
+- 🧪 응용 사례: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — GPU 병렬화된 로봇 시뮬레이션의 구체적 구현 사례를 제공한다.
+- 🏛 기반 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — ManiSkill3는 SIMPLER와 같은 시뮬레이션 기반 평가를 위한 고성능 물리 시뮬레이션 환경을 제공합니다.
+- 🏛 기반 연구: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — GRUtopia의 대규모 시뮬레이션 환경이 ManiSkill3의 GPU 병렬화 기술 기반 위에 구축되어 로봇 학습 데이터 생성을 가능하게 한다.

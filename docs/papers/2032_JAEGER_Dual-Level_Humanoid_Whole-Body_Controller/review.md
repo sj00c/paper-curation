@@ -1,3 +1,24 @@
+---
+title: "2032_JAEGER_Dual-Level_Humanoid_Whole-Body_Controller"
+authors:
+  - "Ziluo Ding"
+  - "Haobin Jiang"
+  - "Yuxuan Wang"
+  - "Zhenguo Sun"
+  - "Yu Zhang"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "JAEGER는 인간형 로봇의 상체와 하체를 독립적인 두 개의 컨트롤러로 분리하여 제어하는 dual-level whole-body controller를 제안하며, root velocity tracking(coarse-grained)과 local joint angle tracking(fine-grained) 제어를 모두 지원한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ding et al._2025_JAEGER Dual-Level Humanoid Whole-Body Controller.pdf"
+---
+
 # JAEGER: Dual-Level Humanoid Whole-Body Controller
 
 > **저자**: Ziluo Ding, Haobin Jiang, Yuxuan Wang, Zhenguo Sun, Yu Zhang, Xiaojie Niu, Ming Yang, Weishuai Zeng, Xinrun Xu, Zongqing Lu | **날짜**: 2025-05-10 | **URL**: [https://arxiv.org/abs/2505.06584](https://arxiv.org/abs/2505.06584)
@@ -67,3 +88,17 @@ JAEGER는 인간형 로봇의 상체와 하체를 독립적인 두 개의 컨트
 - Overall: 4/5
 
 **총평**: JAEGER는 상하체 분리 설계와 MLP 기반 retargeting, 체계화된 curriculum learning을 통해 인간형 로봇의 whole-body control 문제에 대한 실질적이고 창의적인 해결책을 제시하며, 실제 환경에서의 검증을 통해 높은 실용성을 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — 휴머노이드 전신 제어에서 dual-level 방식 대신 centroidal momentum을 활용한 multi-agent 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — 다중 접촉점을 가진 전신 모델 예측 제어의 이론적 기반을 JAEGER의 dual-level 제어 아키텍처에 적용할 수 있다.
+- 🔗 후속 연구: [[papers/1975_Hierarchical_visuomotor_control_of_humanoids/review]] — 계층적 시각운동 제어를 JAEGER의 상/하체 분리 제어 구조와 통합하여 더 정교한 전신 협응을 구현할 수 있다.
+- 🔄 다른 접근: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — 둘 다 휴머노이드 전신 제어의 확장성을 다루지만 JAEGER는 dual-level 분리, Scalable은 cross-humanoid 일반화 중심
+- 🔗 후속 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — JAEGER의 dual-level 제어가 FARM의 frame-accelerated 증강과 결합되어 더 효율적인 상하체 협응 학습 가능
+- 🏛 기반 연구: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — ULTRA의 통합 멀티모달 제어가 JAEGER의 dual-level 아키텍처에 상체-하체 통합 제어 프레임워크 제공
+- 🔗 후속 연구: [[papers/1805_Architecture_Is_All_You_Need_Diversity-Enabled_Sweet_Spots_f/review]] — LCA의 이중 수준 제어가 JAEGER의 dual-level 컨트롤러와 유사한 구조적 확장 가능성을 보여준다
+- 🏛 기반 연구: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 이중 레벨 전신 제어기 아키텍처가 빠른 도어 통과를 위한 행동 조정 시스템의 기반 기술을 제공합니다.
+- 🔗 후속 연구: [[papers/1799_AMO_Adaptive_Motion_Optimization_for_Hyper-Dexterous_Humanoi/review]] — JAEGER의 dual-level control이 AMO의 sim-to-real RL과 trajectory optimization 결합 방식을 더욱 체계화합니다.
+- 🔄 다른 접근: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — 휴머노이드 전신 협응에서 centroidal momentum 기반 multi-agent 방식 대신 dual-level 제어 접근법을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/2165_ULC_A_Unified_and_Fine-Grained_Controller_for_Humanoid_Loco-/review]] — JAEGER의 dual-level control과 ULC의 unified single policy는 휴머노이드 전신 제어의 서로 다른 아키텍처 접근법임

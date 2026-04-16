@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 embodied intelligence와 산업용 로봇을 결합한 embodied intelligent industrial robotics (EIIR) 기술 프레임워크를 제안하고, 산업 환경에서의 적용을 위한 기술 동향을 종합적으로 검토한 리뷰 논문이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Symbolic_Navigation_Memory"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Language_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Embodied intelligent industrial robotics Framework and techniques.pdf"
 ---
@@ -87,7 +89,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Embodied intelligent i
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — NavFoM의 범용 네비게이션 모델이 산업용 embodied intelligence 프레임워크에 적용될 수 있다.
-- 🔄 다른 접근: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — 생성형 AI 서베이도 로봇 조작 분야의 기술 발전을 종합적으로 검토한다.
-- 🏛 기반 연구: [[papers/1260_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — AGILE의 humanoid loco-manipulation 워크플로우가 산업용 embodied robotics의 기술적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — EIIR 프레임워크가 생성형 AI를 산업용 로봇 조작에 적용하는 맥락을 제공한다.
+- 🧪 응용 사례: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — embodied intelligence 프레임워크를 대규모 도시 환경의 범용 로봇 시스템에 실제 적용한 구현 사례
+- 🏛 기반 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — large model empowered embodied AI가 산업용 로봇의 embodied intelligence 프레임워크 기반
+- 🧪 응용 사례: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — Gemini Robotics의 일반화된 로봇 시스템이 EIIR 프레임워크의 산업 환경 적용을 위한 구체적인 구현 사례를 제공합니다.
+- 🏛 기반 연구: [[papers/1294_A_Generalist_Agent/review]] — A Generalist Agent의 범용 에이전트 개념이 산업용 로봇의 embodied intelligence 통합의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — General-Purpose Robots 조사가 EIIR의 산업 특화 프레임워크를 더 넓은 범용 로봇 관점으로 확장합니다.
+- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — Foundation Model Driven Robotics는 EIIR 프레임워크의 이론적 토대가 되는 로봇 기반 모델 전반에 대한 포괄적 리뷰임
+- 🔗 후속 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Robot Learning in the Era of Foundation Models는 EIIR의 산업 특화 접근을 학습 관점에서 확장한 연구임
+- 🧪 응용 사례: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — VLA Models 서베이는 EIIR 프레임워크에서 제시한 embodied intelligence의 실제 구현 방향을 제시함

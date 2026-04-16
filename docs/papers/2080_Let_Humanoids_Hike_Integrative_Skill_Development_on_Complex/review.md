@@ -1,3 +1,21 @@
+---
+title: "2080_Let_Humanoids_Hike_Integrative_Skill_Development_on_Complex"
+authors:
+  - "Kwan-Yee Lin"
+  - "Stella X. Yu"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 복잡한 산길을 자율적으로 하이킹하도록 학습시키기 위해 시각 인식, 의사결정, 운동 실행을 통합하는 LEGO-H 프레임워크를 제안한다. TC-ViT와 Hierarchical Latent Matching을 통해 네비게이션과 로코모션을 단일 학습 체계로 통합한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin and Yu_2025_Let Humanoids Hike! Integrative Skill Development on Complex Trails.pdf"
+---
+
 # Let Humanoids Hike! Integrative Skill Development on Complex Trails
 
 > **저자**: Kwan-Yee Lin, Stella X. Yu | **날짜**: 2025-05-09 | **URL**: [https://arxiv.org/abs/2505.06218](https://arxiv.org/abs/2505.06218)
@@ -66,3 +84,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 하이킹을 새로운 벤치마크로 제시하고 TC-ViT와 HLM 기반 LEGO-H 프레임워크를 통해 네비게이션과 로코모션의 통합이라는 오래된 문제에 혁신적으로 접근한다. 다만 시뮬레이션 중심의 평가가 실제 배포 가능성의 의문을 남기지만, 휴머노이드 로봇 자율성 개발을 위한 강력한 기초 제시로서 충분히 의미 있는 기여이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 확장 가능한 지각적 파쿠르 프레임워크와 복잡한 산길 통합 스킬 개발이라는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2134_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 동적 인간 스킬 연결을 통한 지각적 휴머노이드 파쿠르의 확장된 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 야생에서의 휴머노이드 시각 탐색의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — NoMaD의 goal masking을 활용한 unified diffusion policy가 하이킹에서의 목표 지향적 내비게이션의 기반 기술을 제공한다.
+- 🔗 후속 연구: [[papers/1804_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — 높은 플랫폼 traversal 기술을 복잡한 지형에서의 통합적 스킬 개발로 확장한 종합적 접근법이다.
+- 🧪 응용 사례: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — Gallant의 voxel grid 기반 지형 인식을 복잡한 하이킹 환경에 적용하여 더 robust한 통합 스킬 개발이 가능하다.
+- 🔄 다른 접근: [[papers/2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — 복잡한 산길 환경에서 시각 인식과 보행 제어를 통합하는 유사한 문제를 다룬다.

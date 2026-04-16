@@ -1,3 +1,23 @@
+---
+title: "2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration"
+authors:
+  - "Zhengjie Xu"
+  - "Ye Li"
+  - "Kwan-yee Lin"
+  - "Stella X. Yu"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.07407"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 균형을 잃었을 때 안전하게 넘어지고 빠르게 일어날 수 있도록, 스파스한 인간 시연과 reinforcement learning, diffusion 기반 메모리를 결합하여 낙상 예방·충격 완화·회복을 통합하는 단일 정책을 학습한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2025_Unified Humanoid Fall-Safety Policy from a Few Demonstrations.pdf"
+---
+
 # Unified Humanoid Fall-Safety Policy from a Few Demonstrations
 
 > **저자**: Zhengjie Xu, Ye Li, Kwan-yee Lin, Stella X. Yu | **날짜**: 2025-11-10 | **DOI**: [10.48550/arXiv.2511.07407](https://doi.org/10.48550/arXiv.2511.07407)
@@ -67,3 +87,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 낙상 완화와 회복을 명시적으로 통합하는 첫 성공적인 통합 정책을 제시하며, 스파스 인간 시연과 RL, diffusion model을 창의적으로 결합하여 안전한 다중 모달 행동을 학습한다. Unitree G1에서의 견고한 sim-to-real 전이와 일관된 성능은 실제 환경에서의 로봇 안전성을 크게 향상시킬 가능성을 보여준다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — SafeFall의 낙상 보호 제어 기법이 Unified Fall-Safety Policy의 통합 낙상 안전 정책 개발을 위한 기본 안전 제어 이론을 제공합니다.
+- 🔄 다른 접근: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — Unified Fall-Safety Policy는 스파스 시연과 diffusion 메모리를 사용하고 Discovering Self-Protective Falling은 자기보호적 발견 학습을 통한 서로 다른 낙상 대응 접근법입니다.
+- 🔗 후속 연구: [[papers/1878_Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Model/review]] — 통합 낙상 안전 정책에 Diffusion Forcing의 multi-agent interaction 모델링을 적용하여 복잡한 환경에서의 협력적 낙상 회복 전략을 개발할 수 있습니다.
+- 🏛 기반 연구: [[papers/1649_Robot_Crash_Course_Learning_Soft_and_Stylized_Falling/review]] — 로봇의 부드럽고 스타일화된 낙상 학습이 낙상 예방, 충격 완화, 회복을 통합하는 단일 안전 정책 개발의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/2051_Learning_Getting-Up_Policies_for_Real-World_Humanoid_Robots/review]] — 실제 휴머노이드 로봇을 위한 일어나기 정책 학습이 통합 낙상-안전 정책의 회복 단계를 실제 환경에서 더욱 견고하게 구현할 수 있습니다.
+- 🏛 기반 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 통합된 낙상 안전 정책에 대한 기본적인 프레임워크를 제공한다.
+- 🔗 후속 연구: [[papers/1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid/review]] — 소수 시연에서 학습한 통합 낙상 안전 정책을 VIGOR의 시각적 추론 방식과 결합할 수 있습니다.
+- 🧪 응용 사례: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — 적은 시연으로부터 통합된 낙상 안전 정책의 실제 적용을 보여줍니다.
+- 🔗 후속 연구: [[papers/2068_Learning_to_Get_Up_Across_Morphologies_Zero-Shot_Recovery_wi/review]] — 소수의 시연으로부터 통합된 휴머노이드 낙상 안전 정책을 학습하는 확장된 접근법을 보여준다.
+- 🧪 응용 사례: [[papers/2150_Toward_Humanoid_Brain-Body_Co-design_Joint_Optimization_of_C/review]] — RoboCraft의 fall recovery 최적화 기법을 Unified Fall-Safety Policy의 통합 낙상 안전 정책에 적용하여 더 강건한 회복 능력을 달성할 수 있습니다.

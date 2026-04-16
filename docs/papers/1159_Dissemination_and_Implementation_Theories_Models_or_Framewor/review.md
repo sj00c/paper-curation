@@ -12,9 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "국제 노인 연구에서 Dissemination and Implementation (D&I) Theories, Models, Frameworks (TMFs)의 사용 현황을 451개 논문의 인용 분석을 통해 조사한 결과, 5개 주요 TMF가 51%를 차지하며 의미 있는 적용은 39%에 불과함을 발견했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Barth et al._2026_Dissemination and Implementation Theories, Models, or Frameworks Utilized in International Aging Res.pdf"
 ---
@@ -92,8 +92,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Barth et al._2026_Dissemination and Impl
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — D&I 이론의 의미 있는 적용 부족 문제가 협력적 가이드포스트를 통한 팀 과학 메트릭 재고찰로 해결될 수 있다.
-- 🏛 기반 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 노인 연구에서 D&I 프레임워크의 재현성 문제를 이해하기 위해 심리학 과학의 재현성 추정 연구가 기반이 된다.
-- 🔄 다른 접근: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 사회복지 지식 생산 35년 진화 분석과 노인 연구의 D&I 프레임워크 사용 현황을 비교하여 서로 다른 분야의 이론 적용 패턴을 탐구할 수 있다.
-- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 공인용 분석과 서지결합의 기본 개념을 제시하여 D&I 이론의 인용 네트워크 분석을 위한 방법론적 토대를 마련한다.
-- 🧪 응용 사례: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑 기법을 활용하여 D&I 이론들의 적용 패턴과 의미 있는 활용 사례를 시각적으로 분석한다.
+- 🔄 다른 접근: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 둘 다 보건의료 분야의 이론적 프레임워크(D&I TMFs vs 인증 프로세스)를 bibliometric으로 분석한다.
+- 🔗 후속 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 노인 연구의 D&I 이론을 사회복지 분야 지식 생산 진화와 연계하여 실무 적용을 강화할 수 있다.
+- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 노인 연구에서 성별 다양성이 D&I 이론의 효과적 적용과 혁신에 미치는 영향을 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 의료 기술 구현 연구의 기본적인 서지계량 분석 틀을 제공한다
+- 🔗 후속 연구: [[papers/1079_REFORMS_Consensus-based_Recommendations_for_Machine-learning/review]] — 머신러닝 연구의 합의 기반 권고사항을 의료 분야로 확장한다
+- 🧪 응용 사례: [[papers/1236_Weaning_from_mechanical_ventilation_in_ICU_patients_research/review]] — 중환자실 기계환기 이탈 연구가 노인 연구에서 D&I 이론 적용의 구체적 임상 사례를 제공하기 때문
+- 🏛 기반 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 심리학 연구의 재현가능성 평가가 노인 연구에서 D&I 프레임워크의 실제 적용 효과 검증에 방법론적 기반을 제공하기 때문
+- 🔗 후속 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 의료 서비스에서 기술 구현 연구를 발달장애 보조기술로 구체화한다
+- 🔄 다른 접근: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 둘 다 보건의료 분야의 이론/모델/프레임워크(인증 vs D&I TMFs)를 bibliometric으로 분석한다.

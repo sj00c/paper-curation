@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "UniSkill은 대규모의 라벨 없는 교차-구현(cross-embodiment) 비디오 데이터로부터 구현-무관한 스킬 표현을 학습하여, 인간 비디오 시연으로부터 추출한 스킬을 로봇 정책으로 직접 전이할 수 있는 프레임워크이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Robotic_Foundation_Generalization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kim et al._2025_UniSkill Imitating Human Videos via Cross-Embodiment Skill Representations.pdf"
 ---
@@ -91,7 +92,12 @@ UniSkill은 대규모의 라벨 없는 교차-구현(cross-embodiment) 비디오
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — cross-embodiment 기반 일반화를 위해 UniSkill은 skill representation 학습을, Transferring Foundation Models는 foundation model 전이를 사용하는 다른 접근법
-- 🏛 기반 연구: [[papers/1522_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — UniSkill의 human video demonstration이 Learning from Massive Human Videos의 대규모 인간 행동 데이터 활용 방법론을 기반으로 구현
-- 🧪 응용 사례: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — UniSkill의 cross-embodiment transfer가 Human-Humanoid Cross-Embodiment 연구의 실제 구현체로서 humanoid 로봇 정책 학습에 직접 활용 가능
-- 🔄 다른 접근: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — foundation model 기반 일반화를 위해 Transferring Foundation Models는 언어-추론 기반 분할을, UniSkill은 cross-embodiment 표현 학습을 사용하는 다른 접근법
+- 🔄 다른 접근: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — Human2Robot은 UniSkill과 유사하게 인간 시연으로부터 로봇 행동을 학습하지만 paired 데이터에 집중하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — MimicPlay는 UniSkill과 같이 인간 비디오 모방을 통한 로봇 학습이지만 장기 수평선 작업에 특화된 다른 방법론이다.
+- 🔄 다른 접근: [[papers/1634_ZeroMimic_Distilling_Robotic_Manipulation_Skills_from_Web_Vi/review]] — ZeroMimic은 UniSkill과 유사한 웹 비디오에서 로봇 조작 스킬을 추출하는 또 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — Phantom은 UniSkill과 같이 인간 비디오만으로 로봇을 훈련시키지만 cross-embodiment 대신 단일 로봇에 집중한다.
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 인간 시연에서 로봇으로의 전이 학습 기본 개념을 제공하여 UniSkill의 cross-embodiment 접근법의 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — SWIM의 인간 비디오 활용을 cross-embodiment 스킬 표현으로 확장하여 더 일반적인 전이 학습을 가능하게 한다.
+- 🔗 후속 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — cross-embodiment skill 학습을 latent diffusion으로 더 정교하게 구현한 발전된 형태다.
+- 🔗 후속 연구: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — UniSkill의 크로스 embodiment 기법을 로봇 형태 정보를 조건화하는 Transformer 구조로 더욱 체계화했다.
+- 🔄 다른 접근: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Being-H0.5의 인간 중심 학습과 UniSkill의 인간 비디오 모방은 cross-embodiment 학습의 서로 다른 데이터 활용 전략이다.

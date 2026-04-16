@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "SpecPrune-VLA는 Vision-Language-Action 모델의 LLM 추론을 가속화하기 위해 시간-공간 일관성을 활용한 액션-인식 자체-추측 토큰 프루닝 기법을 제안한다. 두 단계 프루닝(액션 레벨 정적 프루닝과 레이어 레벨 동적 프루닝)과 액션-인식 컨트롤러를 통해 최대 1.70배 속도 향상을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/VLA_Model_Optimization"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Action-Value_Reasoning_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_SpecPrune-VLA Accelerating Vision-Language-Action Models via Action-Aware Self-Speculative Pruning.pdf"
 ---
@@ -91,11 +92,17 @@ SpecPrune-VLA는 Vision-Language-Action 모델의 LLM 추론을 가속화하기 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — VLA 모델 효율화의 다른 접근법으로 1비트 양자화와 토큰 프루닝의 성능-효율성 트레이드오프를 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — Robotics Transformer의 효율적 배포에서 선형 주의 변환과 액션-인식 프루닝의 상호 보완적 최적화를 제공한다.
-- 🏛 기반 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — 경량 VLA 모델의 빠른 추론에서 토큰 프루닝이 데이터 효율성과 함께 배포 성능을 최적화한다.
-- 🔗 후속 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — 빠른 추론과 데이터 효율성에서 소형 VLA와 토큰 프루닝이 상호 보완적 최적화를 제공한다.
-- ⚖️ 반론/비판: [[papers/1616_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang/review]] — SpecPrune-VLA가 기존 모델 압축을, VLA-Adapter가 처음부터 경량 설계를 추구하는 대조적 효율화 전략이다
-- 🏛 기반 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — SpecPrune-VLA의 pruning 기법이 BitVLA의 1-bit quantization과 함께 사용되어 더 효과적인 모델 압축을 달성할 수 있다.
-- 🔄 다른 접근: [[papers/1363_Diffusion_Transformer_Policy/review]] — SpecPrune을 통한 VLA 모델 가속화가 diffusion transformer의 scaling 문제를 다른 관점에서 접근한다.
-- 🔗 후속 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — SpecPrune의 VLA 가속화 기법이 MoDE의 효율적인 diffusion transformer 개념을 더욱 발전시킨다.
+- 🔄 다른 접근: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — VLA 모델 추론 가속화를 위한 서로 다른 최적화 전략 - token pruning vs KV caching입니다.
+- 🏛 기반 연구: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — 실시간 VLA 실행을 위한 기반 연구로 추론 속도 최적화의 중요성을 제시합니다.
+- 🔗 후속 연구: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — 동적 추론 최적화를 action-aware pruning으로 확장한 고도화된 접근법입니다.
+- ⚖️ 반론/비판: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — RoboMonkey가 더 많은 샘플링을 통한 성능 향상을 추구하는 반면, SpecPrune-VLA는 토큰 프루닝을 통한 효율화에 중점을 둔다.
+- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — BitVLA가 모델 quantization을 통한 경량화에 중점을 두는 반면, SpecPrune-VLA는 동적 토큰 프루닝을 통한 추론 가속화에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1479_MoLe-VLA_Dynamic_Layer-skipping_Vision_Language_Action_Model/review]] — VLA 모델 가속화 기법을 pruning과 layer-skipping을 결합하여 더 포괄적인 효율성 최적화 솔루션을 제공한다.
+- 🔄 다른 접근: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — RLRC의 압축과 SpecPrune-VLA의 pruning 가속화는 VLA 모델 효율성 향상을 위한 서로 다른 최적화 전략이다.
+- ⚖️ 반론/비판: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — SpecPrune-VLA가 VLA 모델의 추론 속도 향상을 위한 프루닝에 중점을 두는 반면, RoboMonkey는 더 많은 샘플링을 통한 성능 향상을 추구한다.
+- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — SpecPrune-VLA는 VLA 모델의 실시간 실행을 위해 pruning 기반 가속화 기법을 제시하는 대안적 접근법이다.
+- 🔄 다른 접근: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — VLA 추론 가속화를 위한 서로 다른 최적화 방법 - KV caching vs token pruning입니다.
+- 🔄 다른 접근: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — VLA 모델 가속화를 위한 다른 최적화 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — SpecPrune-VLA의 VLA 모델 가속화 기술은 DeeR-VLA의 동적 추론 프레임워크에 모델 압축의 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — SpecPrune-VLA의 VLA 모델 가속화 개념을 더 극단적인 1-bit quantization으로 발전시켜 11배 메모리 감소와 4.4배 지연 단축을 달성한 연구입니다.
+- 🧪 응용 사례: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — VLA 모델 가속화를 위한 구조적 가지치기의 구체적인 적용 사례입니다.

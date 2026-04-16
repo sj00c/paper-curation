@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "RoboBrain은 로봇 조작을 위해 Planning Capability, Affordance Perception, Trajectory Prediction의 세 가지 핵심 능력을 갖춘 통합 MLLM 모델이며, 이를 학습하기 위해 ShareRobot이라는 대규모 고품질 이질 데이터셋을 제시한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
   - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ji et al._2025_RoboBrain A Unified Brain Model for Robotic Manipulation from Abstract to Concrete.pdf"
@@ -87,6 +89,16 @@ RoboBrain은 로봇 조작을 위해 Planning Capability, Affordance Perception,
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1247_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — Behavior Foundation Model Survey가 RoboBrain의 통합 MLLM 모델 개발에 필요한 행동 기반 모델의 이론적 배경을 제공한다.
-- 🔗 후속 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID의 대규모 실제 조작 데이터셋이 RoboBrain의 ShareRobot 데이터셋을 더 광범위한 실제 환경으로 확장한다.
-- 🔄 다른 접근: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — RoboCat의 self-improving generalist agent와 RoboBrain의 unified brain model은 모두 일반화된 로봇 조작을 위한 서로 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1379_Embodied-R_Collaborative_Framework_for_Activating_Embodied_S/review]] — Embodied-R과 동일하게 통합된 embodied reasoning을 추구하지만 RoboBrain은 조작에 특화되고 ShareRobot 데이터셋을 활용한다.
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 로봇 데이터셋 구축 경험이 RoboBrain의 ShareRobot 데이터셋 개발에 중요한 기반이 된다.
+- 🔗 후속 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — RT-1의 로봇 제어 능력을 Planning, Affordance, Trajectory 예측의 통합 MLLM 모델로 확장하여 더 포괄적인 조작 시스템을 구축한다.
+- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — 로봇의 지능적 의사결정을 RoboBrain은 통합 MLLM으로, RationalVLA는 dual system으로 구현하는 서로 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E의 embodied multimodal language model 아키텍처가 RoboBrain의 통합 MLLM 설계에 핵심적인 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — RoboBrain의 통합 MLLM은 RoboCerebra의 장기간 조작 작업에서 계층적 계획-실행을 더 효과적으로 수행할 수 있습니다.
+- 🏛 기반 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — ShareRobot 대규모 데이터셋은 RoboMIND와 같은 다중 embodiment 데이터 수집 표준에 중요한 참조점을 제공합니다.
+- 🔄 다른 접근: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — 둘 다 통합된 뇌 모델 접근법이지만, Neural Brain은 신경과학 기반을, RoboBrain은 로봇 매니퓰레이션 통합에 초점을 둔다.
+- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — 로봇이 실행 불가능한 지시를 처리하는 rational 능력을 다룬 두 논문으로, 하나는 dual system으로 다른 하나는 unified MLLM으로 접근한다.
+- 🔄 다른 접근: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — 로봇의 의류 조작에서 SKT는 state-aware keypoint trajectory로, RoboBrain은 통합 MLLM으로 서로 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1538_RoboCerebra_A_Large-scale_Benchmark_for_Long-horizon_Robotic/review]] — RoboCerebra의 장기간 조작 평가는 RoboBrain과 같은 통합 뇌 모델의 실제 성능을 검증하는 벤치마크 역할을 합니다.
+- 🔗 후속 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — 다중 embodiment 데이터는 RoboBrain과 같은 통합 뇌 모델이 다양한 로봇 플랫폼에서 일반화될 수 있게 합니다.
+- 🔄 다른 접근: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — 둘 다 로봇 조작을 위한 통합된 brain model을 제시하지만 RoboBrain은 별도의 brain model에, VeBrain은 MLLM 통합에 집중합니다.

@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "OpenAlex 데이터베이스의 출판물 유형(publication type)과 언어(language) 메타데이터 품질을 평가하여 43%의 출판물 유형 불일치와 3.3%의 언어 불일치를 발견했다. 체계적인 데이터 검증의 필요성을 강조한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Computational_Bibliometric_Analysis"
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Research_Data_and_Metadata"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Doǧan and Sezen_2026_OpenAlex in focus Metadata quality of publication type and language fields in an open peer review c.pdf"
 ---
@@ -80,9 +82,17 @@ OpenAlex 데이터베이스의 출판물 유형(publication type)과 언어(lang
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — 주요 인용 데이터베이스들의 커버리지 비교 연구가 OpenAlex 메타데이터 품질 평가의 기준점을 제공한다.
-- 🔗 후속 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex의 전체적 소개를 바탕으로 특정 메타데이터 필드의 품질을 심층적으로 검증한다.
-- 🔗 후속 연구: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — OpenAlex라는 새로운 인용 데이터 소스의 메타데이터 품질을 평가하여 기존 6개 데이터베이스 비교를 보완한다.
-- 🔄 다른 접근: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — Scopus 기반 인용 지표 데이터베이스와는 다른 접근으로 OpenAlex의 출판물 유형과 접근성 메타데이터 품질을 분석한다.
-- 🏛 기반 연구: [[papers/1227_Exploring_Open_Access_Research_Trends_in_the_Indian_Council/review]] — ICAR 기관의 오픈 액세스 분석에서 OpenAlex 데이터베이스의 메타데이터 품질과 출판 유형 정확성이 기반이 된다.
-- 🔄 다른 접근: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — OpenAlex와 Web of Science/Crossref 모두 학술 메타데이터 품질 평가의 서로 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex의 전체 시스템을 소개한 기초 연구로, 메타데이터 품질 평가의 대상이 되는 시스템에 대한 근본적 이해를 제공합니다.
+- 🔄 다른 접근: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 인용 분석에서 데이터 품질을 평가한 연구로, OpenAlex 메타데이터와 다른 데이터베이스의 품질 평가 방법론을 제시하는 대안적 접근법입니다.
+- 🔗 후속 연구: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — OpenAlex뿐만 아니라 다른 주요 학술 데이터베이스들의 메타데이터 품질을 종합적으로 비교 분석할 수 있다.
+- 🧪 응용 사례: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 대규모 과학학 데이터 레이크에서 메타데이터 품질 문제가 연구 결과에 미치는 영향을 정량화할 수 있다.
+- 🔗 후속 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 메타데이터 오류로 인한 과학 연구의 체계적 편향을 평가하는 확장된 분석 틀을 제공한다.
+- 🏛 기반 연구: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 학습분석 공개 데이터셋 품질 연구가 OpenAlex 메타데이터 품질 평가의 방법론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — OpenAlex의 메타데이터 품질 분석이 6개 주요 인용 데이터 소스 비교를 확장한 최신 연구이다.
+- 🔄 다른 접근: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — OpenAlex의 메타데이터 품질 분석이 Scopus 기반 인용 지표 데이터베이스의 품질 검증에 보완적 관점을 제공한다.
+- 🔗 후속 연구: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — OpenAlex 메타데이터 품질 평가에서 학습분석 공개 데이터셋의 품질 체크리스트로 범위가 확장된다.
+- 🔗 후속 연구: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — OpenAlex 메타데이터 품질 분석을 실제 데이터 통합 도구로 발전시킨 응용이다
+- 🔗 후속 연구: [[papers/1156_Correction_Enabling_transparent_research_evaluation_A_method/review]] — OpenAlex 메타데이터 품질 분석이 투명한 연구 평가 방법론에서 데이터 품질 확보의 중요성을 보완한다.
+- 🔄 다른 접근: [[papers/1227_Exploring_Open_Access_Research_Trends_in_the_Indian_Council/review]] — OpenAlex 메타데이터 품질을 다른 관점에서 평가하여 보완적 시각을 제공한다
+- 🔄 다른 접근: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — A&HCI의 종교학 분야 한계를 OpenAlex의 메타데이터 품질 분석과 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — OpenAlex 메타데이터 품질 분석을 다른 주요 데이터베이스와의 체계적 비교로 발전시킨다

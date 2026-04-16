@@ -1,3 +1,21 @@
+---
+title: "1889_Dribble_Master_Learning_Agile_Humanoid_Dribbling_through_Leg"
+authors:
+  - "Zhuoheng Wang"
+  - "Jinyin Zhou"
+  - "Qi Wu"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "두 단계 curriculum learning과 virtual camera 모델을 이용하여 humanoid 로봇이 시뮬레이션에서 학습한 드리블링 정책을 실제 로봇에 성공적으로 전이하는 방법을 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_Dribble Master Learning Agile Humanoid Dribbling through Legged Locomotion.pdf"
+---
+
 # Dribble Master: Learning Agile Humanoid Dribbling through Legged Locomotion
 
 > **저자**: Zhuoheng Wang, Jinyin Zhou, Qi Wu | **날짜**: 2025-05-19 | **URL**: [https://arxiv.org/abs/2505.12679](https://arxiv.org/abs/2505.12679)
@@ -67,3 +85,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid 로봇의 지속적이고 민첩한 드리블링을 최초로 실현한 의미 있는 연구로, 현실적 시각 제약 모델링과 실제 로봇 전이 성공은 높은 가치가 있다. 다만 정량적 평가와 방법의 일반화 가능성 검증이 보강되면 더욱 완성도 있을 것이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — ExBody2의 teacher-student 기반 모션 추적 프레임워크가 드리블링 정책의 실제 로봇 전이를 위한 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2046_Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_fro/review]] — 동일한 스포츠 도메인에서 축구 스킬 학습을 다루므로, 휴머노이드의 운동 기능 학습에 대한 비교 연구가 가능하다.
+- 🧪 응용 사례: [[papers/1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human/review]] — ByteDexter Hand의 정밀한 원격 조작 기술을 드리블링 시 공 조작에 응용할 수 있는 가능성을 제시한다.
+- 🔗 후속 연구: [[papers/1994_Humanoid_Goalkeeper_Learning_from_Position_Conditioned_Task-/review]] — Dribble Master의 민첩한 드리블 학습을 골키퍼의 위치 조건부 방어 동작으로 확장한 발전된 형태다.
+- 🔗 후속 연구: [[papers/2016_HUSKY_Humanoid_Skateboarding_System_via_Physics-Aware_Whole-/review]] — HUSKY의 hybrid contact dynamics 모델링이 Dribble Master의 축구공 드리블링에서 발생하는 복잡한 접촉 상황 처리에 적용될 수 있다.

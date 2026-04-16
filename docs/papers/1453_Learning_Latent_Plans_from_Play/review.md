@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "인간의 비지도 원격조종 플레이 데이터로부터 자기감독 학습을 통해 잠재 계획 공간에서 행동을 조직화하고 재사용하여 다양한 조작 작업을 수행할 수 있는 Play-LMP 방법을 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Large-scale_Egocentric_Datasets"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lynch et al._2019_Learning Latent Plans from Play.pdf"
 ---
@@ -90,7 +91,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lynch et al._2019_Learning Latent Plans 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — self-supervised play data learning의 기본 아이디어가 internet-scale video에서의 latent action learning으로 확장됩니다.
-- 🔗 후속 연구: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — Play-LMP의 latent plan 개념을 더 대규모 데이터와 현대적 architecture로 발전시킨 형태입니다.
-- 🔄 다른 접근: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — 둘 다 unsupervised learning이지만 Play-LMP는 plan space에, CLAM은 action sequence supervision에 중점을 둡니다.
-- 🔗 후속 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — Play-LMP의 self-supervised play data 학습을 internet-scale video로 확장하여 더 일반화된 action representation을 학습합니다.
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 대규모 로봇 학습 데이터가 Play-LMP의 비지도 플레이 데이터 학습에 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — 플레이 데이터에서의 학습을 long-horizon imitation learning으로 더 체계화하고 발전시켰다.
+- 🔄 다른 접근: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — 둘 다 연속적인 행동 학습이지만 Play-LMP는 잠재 계획에, CLAM은 연속 잠재 행동에 집중한다.
+- 🔗 후속 연구: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — bootstrap learning을 latent plan space에서 확장하여 더 효율적인 기술 조합과 재사용을 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — 둘 다 비지도 학습을 통한 행동 표현 학습을 다루지만 play data와 video data의 활용 방식 차이를 분석할 수 있다.
+- 🔗 후속 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — play 데이터에서의 잠재 계획 학습을 인터넷 규모 비디오 사전학습과 결합하여 더 일반적인 행동 표현을 학습할 수 있다.
+- 🔗 후속 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — MEM의 다중 스케일 메모리가 Learning Latent Plans from Play의 잠재적 계획 학습과 결합되어 더 효율적인 장기 로봇 제어를 실현한다.
+- 🔄 다른 접근: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — 둘 다 인간 플레이 데이터를 활용하지만 hierarchical imitation learning과 latent plan learning의 접근법 차이를 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — Learning Latent Plans from Play의 라벨 없는 학습 개념을 trajectory modeling을 통한 policy learning으로 발전시켜 더 robust한 visuomotor 학습을 가능하게 합니다.
+- 🔗 후속 연구: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — Learning Latent Plans from Play의 라벨 없는 학습 개념을 continuous latent action space와 joint training을 통한 실제 환경 grounding으로 발전시킨 연구입니다.

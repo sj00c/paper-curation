@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "OmniVLA는 2D 포즈, egocentric 이미지, 자연어 등 다양한 모달리티로 조건화된 목표를 처리할 수 있는 omni-modal vision-language-action 모델로, 9,500시간 이상의 다중 플랫폼 로봇 네비게이션 데이터로 학습되어 강력한 일반화 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Geometric_Language_Reasoning"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Visual_Language_Mapping"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hirose et al._2025_OmniVLA An Omni-Modal Vision-Language-Action Model for Robot Navigation.pdf"
 ---
@@ -91,8 +93,12 @@ OmniVLA는 2D 포즈, egocentric 이미지, 자연어 등 다양한 모달리티
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — top-view 공간 추론 능력이 OmniVLA의 다중 플랫폼 로봇 네비게이션에서 상위 시점 경로 계획에 필수적이다
-- 🔗 후속 연구: [[papers/1576_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — 공간 표현 탐색 방법론을 OmniVLA의 omni-modal 목표 조건화 시스템에 통합하여 공간 이해를 강화할 수 있다
-- 🧪 응용 사례: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — 일반목적 휴머노이드 제어를 위한 파운데이션 모델이 OmniVLA의 multi-platform 일반화 검증에 실제 환경을 제공한다
-- 🔗 후속 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — omni-modal VLA의 다중 조건화 방법을 LeVERB의 latent verb 인터페이스에 통합하여 명령 표현 능력을 강화할 수 있다
-- 🔗 후속 연구: [[papers/1498_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-/review]] — 대규모 모방 학습 기반 생성형 제어 확장 방법론을 InterMimic의 physics-based 정책 학습에 직접 적용할 수 있다
+- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OmniVLA의 다중 플랫폼 학습이 OpenVLA의 일반화된 아키텍처를 다양한 로봇 플랫폼에서 검증하고 확장한 연구이다.
+- 🔄 다른 접근: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — 둘 다 다리 로봇 네비게이션에 VLA를 적용하지만, OmniVLA는 다중 모달리티를, NaVILA는 vision-language-action에 집중한다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — OmniVLA의 다중 모달리티 처리가 Visual Language Maps의 공간-언어 매핑 기술을 기반으로 확장된다.
+- 🔄 다른 접근: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — VLA 모델에서 omni-modal vs spatial representation의 다른 다양성 추구 방식
+- 🏛 기반 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — OmniVLA의 통합 데이터셋 활용이 기반으로 하는 unified robot learning dataset
+- 🔗 후속 연구: [[papers/1628_WholeBodyVLA_Towards_Unified_Latent_VLA_for_Whole-Body_Loco-/review]] — OmniVLA의 다중모달 VLA 접근법이 WholeBodyVLA의 전신 로코모션으로 확장되어 더 포괄적인 로봇 제어를 실현할 수 있습니다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OmniVLA가 확장한 OpenVLA의 기본 오픈소스 VLA 모델 기반
+- 🔗 후속 연구: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — OmniVLA의 omni-modal approach가 EO-1에서 interleaved vision-text-action pre-training으로 더욱 통합된 embodied foundation model로 발전했다.
+- ⚖️ 반론/비판: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 동일한 OmniVLA 이름으로 omni-modal vs multimodal sensor의 다른 통합 접근법 제시

@@ -1,3 +1,20 @@
+---
+title: "1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned"
+authors:
+  - "| **날짜**: 2026-03-31"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "CReF는 cross-modal attention과 gated residual fusion을 활용하여 raw depth 입력으로부터 직접 locomotion-relevant 특징을 학습하는 단일 단계 depth-conditioned humanoid locomotion 프레임워크로, 명시적 기하학적 중간 표현 없이 zero-shot sim-to-real transfer를 달성한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_CReF Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion.pdf"
+---
+
 # CReF: Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion
 
 > **저자**:  | **날짜**: 2026-03-31 | **URL**: [https://arxiv.org/abs/2603.29452](https://arxiv.org/abs/2603.29452)
@@ -68,3 +85,13 @@ CReF는 cross-modal attention과 gated residual fusion을 활용하여 raw depth
 - Overall: 4/5
 
 **총평**: CReF는 명시적 기하학적 중간 표현을 제거하고 cross-modal attention과 gated recurrent fusion을 통해 raw depth로부터 직접 locomotion-relevant features를 학습하는 혁신적 접근법으로, zero-shot sim-to-real transfer와 다양한 실제 환경에서의 강건한 성능을 통해 humanoid locomotion 분야에 significant contribution을 제시한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — raw depth 입력의 직접 학습과 지각 정보 증류는 모두 sim-to-real 전이에서 센서 데이터 처리의 다른 패러다임을 제시한다.
+- 🔗 후속 연구: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — HumanoidPano의 panoramic-LiDAR 융합과 CReF의 depth-conditioned locomotion이 다중 모달 지각 시스템의 완전한 형태를 보여준다.
+- 🔄 다른 접근: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 깊이 정보를 활용한 지형 인식 보행에서 cross-modal fusion과 depth-only 접근법의 서로 다른 센서 융합 전략을 비교한다.
+- 🧪 응용 사례: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — CReF의 depth-conditioned locomotion 기술이 Gallant의 voxel-based 지형 표현과 결합되어 더 강건한 지형 인식 시스템을 구축할 수 있다.
+- 🔄 다른 접근: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — sim-to-real 전이에서 contrastive learning은 지각 정보 증류, CReF는 depth 기반 직접 학습으로 서로 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 깊이 정보만을 사용한 지형 인식과 cross-modal fusion을 통한 접근법이 센서 데이터 활용에서 서로 다른 전략을 보여준다.
+- 🔄 다른 접근: [[papers/1895_Efficient_and_Scalable_Monocular_Human-Object_Interaction_Mo/review]] — CReF의 깊이 조건부 cross-modal fusion 방법이 단안 비디오 기반 HOI 재구성에 대한 다른 기술적 접근을 제시한다.

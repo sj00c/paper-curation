@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "인터넷 규모의 기초 모델(foundation models)에서 생성된 언어-추론 기반 분할 마스크를 활용하여 로봇 조작 작업을 조건화함으로써 샘플 효율적인 일반화를 달성하는 패러다임을 제안한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Robotic_Foundation_Generalization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2023_Transferring Foundation Models for Generalizable Robotic Manipulation.pdf"
 ---
@@ -90,8 +92,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2023_Transferring Foundation
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — foundation model 기반 일반화를 위해 Transferring Foundation Models는 언어-추론 기반 분할을, UniSkill은 cross-embodiment 표현 학습을 사용하는 다른 접근법
-- 🏛 기반 연구: [[papers/1504_JAEGER_Dual-Level_Humanoid_Whole-Body_Controller/review]] — Open X-Embodiment 데이터셋이 foundation model의 로봇 조작 전이를 위한 대규모 학습 데이터와 평가 기준을 제공
-- 🔗 후속 연구: [[papers/1415_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — foundation model 기반 분할이 General Motion Tracking의 humanoid 제어와 결합되어 더 정교한 whole-body 조작을 가능하게 함
-- 🏛 기반 연구: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — 일반화 가능한 로봇 조작을 위한 기초 모델 전이 방법론이 motion token 학습의 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — cross-embodiment 기반 일반화를 위해 UniSkill은 skill representation 학습을, Transferring Foundation Models는 foundation model 전이를 사용하는 다른 접근법
+- 🔄 다른 접근: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — 둘 다 foundation model을 로봇 조작에 전이하지만 RoboFlamingo는 VLM 기반 정책 구축에 집중하는 다른 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 언어 모델을 로봇 제어에 활용하는 Code as Policies의 개념을 foundation model 전이 학습으로 확장한 연구입니다.
+- 🏛 기반 연구: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — 언어 명령을 통한 정책 사전학습의 확장 가능한 방법론을 제공하여 foundation model 전이의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1506_Open-World_Object_Manipulation_using_Pre-trained_Vision-Lang/review]] — Open-World Object Manipulation은 기초 모델을 활용한 일반화 가능한 로봇 조작의 이론적 배경을 제시합니다.
+- 🔗 후속 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — AutoRT는 기초 모델의 대규모 로봇 학습 오케스트레이션을 통해 일반화 가능한 조작을 실현하는 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — Learning Transferable Visual Models은 기초 모델에서 로봇 조작으로의 전이 학습을 위한 시각 표현 학습 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — Foundation model을 로봇 제어에 적용하는 선구적 연구로서 transfer learning 접근법의 이론적 근거를 제공한다.
+- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-1의 foundation model 활용을 언어-추론 기반 분할로 더 정교하게 발전시켜 일반화 성능을 향상시킨다.
+- 🔄 다른 접근: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — 둘 다 foundation model을 로봇 조작에 활용하지만 1594는 분할 마스크 기반, RoboFlamingo는 VLM 기반 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1302_Adapt3R_Adaptive_3D_Scene_Representation_for_Domain_Transfer/review]] — 일반화 가능한 로봇 조작을 위한 foundation model 전이와 3D 장면 표현 적응이 상호 보완적입니다.
+- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy를 foundation model로 확장하여 일반화 가능한 로봇 조작으로 발전시킵니다.

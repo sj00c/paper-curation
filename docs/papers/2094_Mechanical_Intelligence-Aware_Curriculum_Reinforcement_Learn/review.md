@@ -1,3 +1,24 @@
+---
+title: "2094_Mechanical_Intelligence-Aware_Curriculum_Reinforcement_Learn"
+authors:
+  - "Yusuke Tanaka"
+  - "Alvin Zhu"
+  - "Quanyou Wang"
+  - "Yeting Liu"
+  - "Dennis Hong"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 병렬 구동 메커니즘을 완전히 시뮬레이션하여 학습한 RL 정책을 휴머노이드 로봇 BRUCE에 배포하며, 기존의 직렬 근사 방식과 달리 폐곡선 운동학 제약을 GPU 가속 MJX로 네이티브 구현한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tanaka et al._2025_Mechanical Intelligence-Aware Curriculum Reinforcement Learning for Humanoids with Parallel Actuatio.pdf"
+---
+
 # Mechanical Intelligence-Aware Curriculum Reinforcement Learning for Humanoids with Parallel Actuation
 
 > **저자**: Yusuke Tanaka, Alvin Zhu, Quanyou Wang, Yeting Liu, Dennis Hong | **날짜**: 2025-06-30 | **URL**: [https://arxiv.org/abs/2507.00273](https://arxiv.org/abs/2507.00273)
@@ -66,3 +87,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 병렬 메커니즘의 기계적 특성을 완전히 시뮬레이션하여 RL 학습에 반영하는 혁신적 접근법을 제시하며, 실제 하드웨어 검증을 통해 이 방식의 실질적 성능 이득을 명확히 보여줌으로써 휴머노이드 로봇 제어 분야에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1851_Control_of_Humanoid_Robots_with_Parallel_Mechanisms_using_Di/review]] — 병렬 메커니즘을 사용한 휴머노이드 로봇 제어의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — 다중 단계 커리큘럼을 통한 보행 조건부 강화학습과 기계적 지능 인식 커리큘럼이라는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1620_PolySim_Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_vi/review]] — 휴머노이드 제어를 위한 시뮬레이션-현실 격차 해소의 확장된 구현을 보여준다.
+- 🏛 기반 연구: [[papers/1846_ComFree-Sim_A_GPU-Parallelized_Analytical_Contact_Physics_En/review]] — ComFree-Sim의 GPU 병렬화된 접촉 물리 엔진이 BRUCE의 병렬 구동 메커니즘 시뮬레이션의 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor/review]] — 기계적 제약을 고려한 제어에서 model predictive control과 reinforcement learning의 다른 접근법을 비교할 수 있다.
+- 🧪 응용 사례: [[papers/1928_Feature-Based_vs_GAN-Based_Learning_from_Demonstrations_When/review]] — Feature-based vs GAN-based 선택 프레임워크를 Mechanical Intelligence-Aware 커리큘럼 설계에 적용하여 최적의 학습 방법을 선택할 수 있다.
+- 🏛 기반 연구: [[papers/2031_Iterative_Closed-Loop_Motion_Synthesis_for_Scaling_the_Capab/review]] — 기계적 지능을 고려한 커리큘럼 학습이 CLAIMS의 반복적 난이도 조절 메커니즘에 대한 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/2059_Learning_Motion_Skills_with_Adaptive_Assistive_Curriculum_Fo/review]] — 기계적 지능을 고려한 커리큘럼 학습의 원리가 A2CF의 적응형 보조력 설계에 대한 이론적 기반을 제공한다.

@@ -8,8 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "제약 R&D의 높은 비용과 낮은 생산성 문제를 해결하기 위해 특허 데이터(Patent Lens)와 임상 미충족 수요 데이터(Clinical & Unmet Need Lens)를 결합한 White Space Analysis(백색공간 분석)라는 전략적 방법론을 제시한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Innovation_Patent_Analysis"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/DrugPatentWatch_2025_A Strategic Guide to White Space Analysis for Pharmaceutical R&D.pdf"
 ---
@@ -73,9 +75,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/DrugPatentWatch_2025_A Strategic Guide t
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 과학과 스타트업 실패 역학의 정량화 접근법을 제약 R&D의 백색공간 분석에 적용하여 혁신 기회 탐지 방법을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 기초 과학 펀딩의 광범위한 영향을 시각화하는 방법론을 제약 R&D의 특허-임상 데이터 통합 분석으로 확장한다.
-- 🏛 기반 연구: [[papers/1020_Scientific_prize_network_predicts_who_pushes_the_boundaries/review]] — 과학상 네트워크가 경계 돌파를 예측하는 원리를 제약 분야의 미충족 수요 발굴에 응용할 수 있는 이론적 토대를 제공한다.
-- 🧪 응용 사례: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 생의학 지식그래프의 약물 재위치 지정이 제약 분야 화이트 스페이스 분석의 구체적 적용임
-- 🧪 응용 사례: [[papers/975_Interdisciplinary_papers_supported_by_disciplinary_grants_ga/review]] — 학제간 연구의 그랜트 전략을 제약업계의 화이트스페이스 분석에 적용하여 연구개발 투자 최적화 방안을 모색할 수 있다.
-- 🏛 기반 연구: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 제약 산업의 화이트 스페이스 분석 전략적 가이드가 MSME 파산 예측 연구의 미개척 영역 식별에 방법론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 제약 R&D의 백색공간 분석이 촉매 연구 데이터를 활용한 신약 개발 기회 식별에 적용 가능
+- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 머신러닝 기반 고영향 연구 예측 방법을 제약 분야의 미충족 수요 식별로 확장
+- ⚖️ 반론/비판: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 매튜 효과로 인한 불균등한 자금 배분 문제를 백색공간 분석으로 완화할 수 있는 대안 제시
+- 🔄 다른 접근: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 전통적인 연구 자금 지원 방식에 대한 대안적 접근법을 보여준다.
+- 🧪 응용 사례: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 제약 분야에서 백색 공간 분석을 위한 지식 조직 체계의 실제 적용 방법을 보여준다.
+- 🧪 응용 사례: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 제약 분야에서 백색 공간 분석을 통해 펀딩의 전략적 영향 평가라는 유사한 접근법을 특정 도메인에 적용한다.
+- 🔄 다른 접근: [[papers/975_Interdisciplinary_papers_supported_by_disciplinary_grants_ga/review]] — 제약 분야 백색공간 분석과 그랜트-논문 학제간성 분석은 연구 기회 식별의 서로 다른 접근법이다.
+- 🔄 다른 접근: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 제약 분야 백색 공간 분석을 통해 펀딩-연구 연결과 유사한 전략적 분석의 다른 도메인 적용을 제시한다.

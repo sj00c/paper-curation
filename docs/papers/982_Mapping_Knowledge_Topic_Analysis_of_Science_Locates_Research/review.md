@@ -10,7 +10,8 @@ score: 4.0
 essence: "과학 출판물의 의미론적 네트워크와 주제 모델링을 기반으로 연구자들의 인식론적 위치를 규명하는 새로운 좌표계를 제시한다. 주제 구성과 기하학적 데이터 분석을 결합하여 개별 연구자를 학문 지형 내에 위치시킨다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Thematic_Network_Detection"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hladik and Renisio_2024_Mapping Knowledge Topic Analysis of Science Locates Researchers in Disciplinary Landscape.pdf"
 ---
@@ -84,9 +85,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hladik and Renisio_2024_Mapping Knowledg
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 계층적 분야 분류 시스템을 활용하여 연구자의 학문적 위치 매핑을 더욱 정밀하게 수행할 수 있다.
-- 🔄 다른 접근: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 연구자 위치 매핑을 위한 주제 모델링과 궤적 임베딩이라는 서로 다른 기하학적 접근법을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 지식 그래프를 활용한 과학 연구 매핑 기법을 연구자 위치 매핑에 적용하여 더 풍부한 맥락 정보를 제공할 수 있다.
-- 🔗 후속 연구: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 주제 수준의 과학 매핑을 개별 과학자의 지식공간 탐색 행동으로 확장하여 미시적 관점을 추가합니다.
-- 🔄 다른 접근: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 이탈리아 의료센터 종양학 연구의 비교 과학 매핑과 토픽 수준에서의 연구 자금 및 성과 매핑이 다른 관점의 과학 매핑을 제시합니다.
-- 🔗 후속 연구: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 계층적 분야 분류 시스템을 기반으로 개별 연구자의 학문적 위치를 더 정밀하게 매핑할 수 있다.
+- 🏛 기반 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 과학 공동체 매핑의 기초 방법론으로, 연구자의 인식론적 위치 규명에 필요한 네트워크 분석 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 궤적의 비지도학습 임베딩으로 잠재 구조를 포착하는 연구로, 주제 모델링과 다른 접근법으로 연구자 위치를 파악하는 대안적 방법입니다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미 및 신경 네트워크를 활용한 연구 트렌드 예측 방법론을 주제 분석 기반 연구자 위치 매핑에 적용할 수 있다.
+- 🔗 후속 연구: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 구조의 시간적 변화 매핑을 개별 연구자의 인식론적 위치 매핑으로 확장하여 미시적 관점을 제공한다.
+- 🏛 기반 연구: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 계층적 연구 분야 분류 시스템이 연구자의 인식론적 위치 좌표계 개발의 기본 토대를 제공한다.
+- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 주제 모델에 대한 네트워크 접근법이 연구자 위치 매핑의 방법론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 주제 수준 분석이 과학 지도의 지식 구조 표현에서 핵심적 방법론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 지식 매핑과 주제 분석 방법론이 학술지 임베딩을 통한 과학 구조 변화 추적에 구체적 분석 도구를 제공한다.
+- 🔄 다른 접근: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 과학 매핑에서 주제 분석과 메타데이터 기반 개념 구조 분석이 서로 다른 접근법을 제시합니다.
+- 🧪 응용 사례: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 계층적 분류 시스템이 연구자의 인식론적 위치를 규명하는 좌표계 개발에 직접 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 주제 수준 과학 지식 배치가 특정 의학 분야의 신흥 트렌드 파악에 방법론적 토대를 제공한다.

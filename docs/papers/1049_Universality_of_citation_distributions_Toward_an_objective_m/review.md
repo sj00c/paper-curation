@@ -11,7 +11,9 @@ score: 4.0
 essence: "다양한 학문분야의 논문 인용 분포가 상대지표 cf = c/c0로 정규화되면 보편적 곡선(universal curve)으로 수렴함을 보이며, 이를 기반으로 학문분야 간 과학적 영향력을 객관적으로 비교할 수 있는 방법을 제시한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Statistical_Robustness_Mapping"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Radicchi et al._2008_Universality of citation distributions Toward an objective measure of scientific impact.pdf"
 ---
@@ -86,9 +88,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Radicchi et al._2008_Universality of cit
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 인용 분포의 보편성이 장기 과학적 영향력을 예측하는 모델의 수학적 기반과 분야 간 비교 방법론을 제공합니다.
-- 🏛 기반 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 전 세계적 인용 불평등의 증가가 인용 분포의 보편성을 통한 객관적 측정의 필요성을 뒷받침합니다.
-- 🧪 응용 사례: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 인용 분포의 보편적 정규화 방법이 파괴성 지수의 인용 인플레이션 문제를 해결하는 데 적용될 수 있습니다.
-- 🏛 기반 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 인용 분포의 보편성이 장기 과학적 영향력 모델의 수학적 기반과 정규화 방법론을 제공합니다.
-- 🔗 후속 연구: [[papers/928_A_General_Theory_of_Bibliometric_and_Other_Cumulative_Advant/review]] — 누적 우위 이론을 인용 분포의 보편성 연구로 확장하여 객관적 측정 가능성을 탐구한다
-- 🔗 후속 연구: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 표준화된 인용 지표 데이터베이스를 인용 분포의 보편성과 객관적 측정이라는 이론적 맥락으로 확장했다.
+- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — g-지수의 절댓값 기반 평가와 달리 상대지표를 통한 학문분야 간 객관적 비교 방법을 제시한다.
+- 🏛 기반 연구: [[papers/928_A_General_Theory_of_Bibliometric_and_Other_Cumulative_Advant/review]] — 서지학적 누적 이점의 일반 이론이 인용 분포의 보편성 발견에 이론적 기초를 제공한다.
+- 🧪 응용 사례: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 글로벌 인용 불평등 증가 현상이 보편적 인용 분포 정규화의 실제적 필요성을 보여준다.
+- 🧪 응용 사례: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 인용 분포의 보편성이 커뮤니티별로 다른 인용 역학을 모델링하는 Price-Pareto 모델에 적용된다.
+- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 학문분야 간 인용 차이를 보정하는 방법을 다루지만, 상대적 인용 비율보다는 보편적 곡선으로의 수렴에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기적 과학적 영향력 정량화의 방법론을 학문분야 간 비교가 가능한 객관적 척도로 발전시킨다.
+- 🏛 기반 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 인용 분포의 보편성에 대한 이해가 장기 과학적 영향력 예측 모델의 이론적 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 인용 분포의 보편성 연구가 커뮤니티별 이질적 인용 역학을 모델링하는 Price-Pareto 모델의 이론적 근거를 제공한다.
+- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 상대지표 기반 보편적 인용 분포가 g-지수의 절댓값 기반 평가와 다른 정규화된 비교 방법을 제시한다.
+- 🏛 기반 연구: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 인용 분포의 보편성 이론이 인용 인플레이션 현상 분석의 기반이 된다
+- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 인용 분포의 보편성을 이해하는 것이 h-index와 같은 개별 연구자 평가 지표의 타당성을 뒷받침하는 이론적 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1210_Scilit_with_the_Integrated_Impact_Indicator_Assessment/review]] — 인용 분포의 보편성 연구가 제공하는 객관적 측정 이론이 I3 지표의 타당성과 신뢰성 검증에 핵심적인 이론적 근거를 제공한다.

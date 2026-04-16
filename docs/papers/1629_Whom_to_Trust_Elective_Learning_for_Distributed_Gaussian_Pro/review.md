@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Multi-agent 시스템에서 신뢰도 기반의 선택적 학습을 통해 Gaussian process regression의 분산 협력 학습을 개선하는 Pri-GP 알고리즘을 제안한다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Uncertainty-Aware_Model_Predictive_Control"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2024_Whom to Trust Elective Learning for Distributed Gaussian Process Regression.pdf"
 ---
@@ -86,6 +88,13 @@ Multi-agent 시스템에서 신뢰도 기반의 선택적 학습을 통해 Gauss
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — 분산 가우시안 프로세스 회귀를 통한 다중 에이전트 협력 학습이 Pri-GP 알고리즘의 핵심 이론적 기초를 제공합니다.
-- 🔄 다른 접근: [[papers/1563_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — 이질적 다중 에이전트 강화학습과 신뢰도 기반 선택적 학습이 다중 에이전트 협력에서 서로 다른 접근법을 제시합니다.
-- 🔗 후속 연구: [[papers/1581_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — 다중 작업 심층 강화학습이 Pri-GP의 분산 학습을 여러 작업으로 확장할 수 있는 방법론적 확장을 제공합니다.
+- 🔄 다른 접근: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — 둘 다 multi-agent 시스템에서 협력 학습을 다루지만 Pri-GP는 신뢰도 기반을, GauDP는 Gaussian 분포 기반 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1539_RoboFactory_Exploring_Embodied_Agent_Collaboration_with_Comp/review]] — RoboFactory의 embodied agent 협력을 신뢰도 기반 선택적 학습으로 확장하여 분산 환경에서의 효율성을 개선한다.
+- 🏛 기반 연구: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — 모터 제어를 위한 masked visual pre-training이 분산 Gaussian process regression의 시각적 특징 학습 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — 이질적인 사전 훈련 모델을 활용한 고유감각-시각 학습이 분산 GP 회귀의 multi-modal 학습 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — All Robots in One의 통합 데이터셋이 Pri-GP의 분산 로봇 학습을 위한 표준화된 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — Multimodal Fusion 서베이가 Pri-GP의 분산 학습을 멀티모달 퓨전 관점에서 확장하여 로봇 응용에 적용한다.
+- 🏛 기반 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — Multi-agent 시스템에서의 신뢰성과 보안 문제에 대한 기본 개념을 제공하여 분산 학습에서의 신뢰도 평가 방법론을 뒷받침한다.
+- 🔄 다른 접근: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — 둘 다 AI 시스템의 신뢰성 문제를 다루지만, 하나는 분산 협력에서의 신뢰도를, 다른 하나는 보안 취약점에 집중한다.
+- 🔗 후속 연구: [[papers/1535_RoboArena_Distributed_Real-World_Evaluation_of_Generalist_Ro/review]] — Pri-GP의 분산 신뢰 기반 학습을 로봇 평가 환경으로 확장하여 다중 에이전트 로봇 시스템의 신뢰성 있는 협력을 가능하게 한다.
+- 🔗 후속 연구: [[papers/1539_RoboFactory_Exploring_Embodied_Agent_Collaboration_with_Comp/review]] — 분산 Gaussian Process 학습의 trust 메커니즘이 RoboFactory의 다중 에이전트 협력을 더 신뢰성 있는 시스템으로 발전시킨다.

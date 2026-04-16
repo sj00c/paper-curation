@@ -1,3 +1,24 @@
+---
+title: "1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func"
+authors:
+  - "Zachary Olkin"
+  - "Kejun Li"
+  - "William D. Compton"
+  - "Aaron D. Ames"
+date: "2025.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Control Lyapunov Function(CLF)의 안정성 조건을 RL 보상에 임베딩하여 휴머노이드 로봇의 달리기를 실현하는 CLF-RL 방법을 제시한다. 이는 휴머노이드가 비행 및 단일 지지 상(flight and single support phases)를 포함한 동적 달리기를 수행하도록 한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Humanoid_Exercise_Learning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Olkin et al._2025_Chasing Stability Humanoid Running via Control Lyapunov Function Guided Reinforcement Learning.pdf"
+---
+
 # Chasing Stability: Humanoid Running via Control Lyapunov Function Guided Reinforcement Learning
 
 > **저자**: Zachary Olkin, Kejun Li, William D. Compton, Aaron D. Ames | **날짜**: 2025-09-23 | **URL**: [https://arxiv.org/abs/2509.19573](https://arxiv.org/abs/2509.19573)
@@ -61,3 +82,19 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 고전 제어 이론(CLF)과 최신 RL을 매우 효과적으로 통합하여, 휴머노이드 로봇의 동적 달리기 제어를 위한 원리 기반의 체계적 프레임워크를 제시한다. 실제 하드웨어에서의 안정적 배포와 강건한 추적 성능은 높은 실용적 가치를 입증한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — 강화학습을 통한 robust한 이족 점프 제어가 CLF-RL의 동적 달리기에 필요한 기초적인 동적 움직임 제어 기술을 제공한다
+- 🔄 다른 접근: [[papers/1710_The_invariant_extended_Kalman_filter_as_a_stable_observer/review]] — 휴머노이드의 안정성을 Control Lyapunov Function과 Invariant Extended Kalman Filter라는 서로 다른 수학적 도구로 보장한다
+- 🔗 후속 연구: [[papers/2033_Keep_on_Going_Learning_Robust_Humanoid_Motion_Skills_via_Sel/review]] — sequential skill learning을 통한 robust한 motion skill이 CLF-RL 기반 달리기의 연속성과 안정성을 더욱 향상시킬 수 있다
+- 🔗 후속 연구: [[papers/1925_FastStair_Learning_to_Run_Up_Stairs_with_Humanoid_Robots/review]] — FastStair의 계단 달리기와 함께 CLF 기반 안정성 제어가 다양한 동적 locomotion 과제에 적용될 수 있음을 보여준다.
+- ⚖️ 반론/비판: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — CLF 기반 동적 달리기 vs 저에너지 대칭 보행이라는 상반된 설계 철학을 비교하여 성능과 에너지 효율성의 트레이드오프를 분석할 수 있다
+- 🏛 기반 연구: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — 고전적인 균형 제어 원리가 CLF-RL에서 안정성 조건을 강화학습 보상에 임베딩하는 이론적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1711_The_MIT_Humanoid_Robot_Design_Motion_Planning_and_Control_Fo/review]] — Control Lyapunov Function 기반 안정성 추적이 MIT 휴머노이드의 MPC-WBIC 통합 착지 제어의 이론적 기반을 제공한다
+- 🧪 응용 사례: [[papers/1777_A_Gait_Driven_Reinforcement_Learning_Framework_for_Humanoid/review]] — Control Lyapunov Function 기반 안정성 추구 접근법이 gait planner의 실시간 안정성 보장에 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1861_Deep_Whole-body_Parkour/review]] — Control Lyapunov Function 기반 안정성 보장이 parkour의 동적 움직임 제어에 필수적인 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — Control Lyapunov Function을 통한 안정성 추적 연구가 고전적 균형 제어 원리의 수학적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — 제어 Lyapunov 함수를 통한 안정성 추구가 HuB의 극도 준정적 균형 작업의 이론적 기반이 된다.
+- 🏛 기반 연구: [[papers/2001_Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rig/review]] — Control Lyapunov Function 기반 안정성 추적이 아크로바틱 동작의 완전한 강체 역학 제어에 필요한 기초를 제공한다.
+- 🏛 기반 연구: [[papers/2127_Optimizing_Bipedal_Locomotion_for_The_100m_Dash_With_Compari/review]] — 제어 Lyapunov 함수를 통한 휴머노이드 달리기 안정성 이론이 고속 주행 최적화의 기반을 제공한다.

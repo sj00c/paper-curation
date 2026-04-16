@@ -1,3 +1,24 @@
+---
+title: "1995_Humanoid_Hanoi_Investigating_Shared_Whole-Body_Control_for_S"
+authors:
+  - "Minku Kim"
+  - "Kuan-Chia Chen"
+  - "Aayam Shrestha"
+  - "Li Fuxin"
+  - "Stefan Lee"
+date: "2026.02"
+doi: "10.48550/arXiv.2602.13850"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 장기 박스 재배열 작업을 위해 공유된 task-agnostic WBC를 통해 재사용 가능한 스킬들을 조합하는 skill-based framework를 제안하고, 분포 이동으로 인한 강건성 저하를 데이터 집계를 통해 해결한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kim et al._2026_Humanoid Hanoi Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement.pdf"
+---
+
 # Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement
 
 > **저자**: Minku Kim, Kuan-Chia Chen, Aayam Shrestha, Li Fuxin, Stefan Lee, Alan Fern | **날짜**: 2026-02-23 | **DOI**: [10.48550/arXiv.2602.13850](https://doi.org/10.48550/arXiv.2602.13850)
@@ -64,3 +85,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 공유 WBC를 통한 모듈식 스킬 조합 아키텍처의 systematic exploration과 데이터 집계 기반 robustness 개선이라는 실용적 기여를 제시하며, Humanoid Hanoi 벤치마크를 통해 long-horizon 장기 자율 실행의 가능성을 입증한다. 다만 high-level planning, 계산 scalability, sim-to-real gap에 대한 심화 분석은 부족하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — box rearrangement를 위해 diffusion model을 사용하는 것과 달리 Humanoid Hanoi는 task-agnostic WBC를 통한 skill 조합 방식을 제안한다.
+- 🔗 후속 연구: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — HumanX의 video-based skill learning이 Humanoid Hanoi의 skill-based framework에서 새로운 스킬 습득 방법을 제공할 수 있다.
+- 🏛 기반 연구: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — SkillBlender의 versatile whole-body loco-manipulation 기법이 Humanoid Hanoi의 reusable skill 조합 방법론의 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 박스 로코-매니퓰레이션의 sim-to-real 학습이 장기 박스 재배열 작업의 skill-based framework의 토대가 된다.
+- 🔄 다른 접근: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 휴머노이드 물체 조작을 Humanoid Hanoi는 스킬 기반으로, SimGenHOI는 물리적 상호작용으로 접근한다.
+- 🔄 다른 접근: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — Humanoid Hanoi의 skill-based framework와 유사하게 box manipulation을 위한 계층적 접근법을 사용하지만 diffusion model을 추가로 활용한다.
+- 🔗 후속 연구: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — Humanoid Hanoi의 skill-based approach를 HumanX가 human video learning으로 확장하여 task-specific reward 없이 일반화 가능한 스킬 습득을 실현한다.
+- 🔗 후속 연구: [[papers/2027_InterPrior_Scaling_Generative_Control_for_Physics-Based_Huma/review]] — 물리 기반 인간-객체 상호작용에서 Humanoid Hanoi는 특정 조작 태스크로의 확장 사례
+- 🔄 다른 접근: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 인간-휴머노이드 협력에서 객체 운반 대신 하노이탑과 같은 공유 전신 제어 작업을 통한 다른 협업 접근법을 제시한다.

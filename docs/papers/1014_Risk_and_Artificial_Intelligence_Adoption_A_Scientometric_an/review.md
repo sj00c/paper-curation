@@ -10,7 +10,8 @@ score: 4.0
 essence: "1990-2025년 Scopus와 Web of Science 데이터 기반 scientometric 분석을 통해 AI 도입(adoption) 연구에서 위험(risk)의 역할이 개별 지각적 억제요인에서 구조적 거버넌스 구성으로 진화했음을 규명한 연구이다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Thematic_Network_Detection"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huong and Long_2026_Risk and Artificial Intelligence Adoption A Scientometric and Thematic Evolution Analysis Based on.pdf"
 ---
@@ -78,8 +79,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huong and Long_2026_Risk and Artificial 
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — AI 도입에서 위험 역할의 진화를 기계학습 기반 미래 예측 방법론을 통해 분석하고 전망할 수 있습니다.
-- 🔗 후속 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — AI 도입 연구에서 위험의 역할 변화를 AI의 과학적 활용과 잠재적 이익에 대한 정량적 분석으로 확장합니다.
-- 🏛 기반 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 사이버보안에서 기계학습의 게임체인징 역할이 AI 도입에서 위험 관리의 기술적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — AI 도입의 사이버보안 분야 적용이 위험과 AI 도입의 일반적 과학계량 분석을 확장함
-- 🧪 응용 사례: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — AI 도입 위험성 분석을 투어 가이딩 기술의 전문직 통합 과정에 적용할 수 있다
+- 🔄 다른 접근: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — arXiv 기반 학제간 지식 교류 분석이 AI 도입 연구에서 위험 담론의 학제적 확산을 이해하는 방법론적 대안을 제시한다.
+- 🧪 응용 사례: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — AI 기반 자동화가 차세대 과학의 기반이 되는 과정에서 위험 거버넌스의 구조적 진화를 실증한다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미론적 네트워크를 통한 연구 트렌드 예측이 AI 위험 담론의 주제적 진화 분석에 방법론적 기초를 제공한다.
+- 🧪 응용 사례: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — 텍스트 마이닝과 과학 지도화를 결합한 방법론을 AI 도입 위험 연구에 구체적으로 적용한 사례를 보여준다.
+- 🔄 다른 접근: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — AI 도입 연구의 주제 진화를 분석하여 통합적 주제 진화 프레임워크의 실제 적용 사례를 제공한다.
+- 🏛 기반 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — AI 연구 예측과 AI 도입 위험 연구가 서로 연관되어 AI 기술 발전의 다면적 이해를 돕는다.
+- 🧪 응용 사례: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 과학자들에 대한 설문 연구의 결과를 AI 도입 과정에서의 위험 인식 변화 분석에 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI 도입에서 위험의 역할을 인간 창의성의 재정의라는 맥락에서 확장하여 이해합니다.
+- 🧪 응용 사례: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — AI 도입 위험 분석에 인간 행동 모델링 기법을 적용할 수 있다.
+- 🔄 다른 접근: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — arXiv 기반 학제간 지식 교류 분석이 AI 도입에서 위험 담론의 scientometric 분석과 상호 보완적 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1055_When_text_mining_meets_science_mapping_in_the_bibliometric_a/review]] — AI 도입 위험 연구가 텍스트 마이닝과 과학 지도화 결합 방법론의 구체적 적용 사례로 제시된다.
+- 🔗 후속 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 사이버보안에서 머신러닝의 역할을 AI 채택의 위험과 기회 관점에서 확장 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 데이터 보안 분야의 scientometric 분석을 위험 관리 관점에서 접근한 연구입니다.

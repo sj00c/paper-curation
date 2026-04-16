@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 대규모 언어모델(LLM)의 요약 능력을 활용하여 로봇이 적은 수의 예시로부터 사용자의 개인화된 물건 정리 선호도를 학습하고 일반화할 수 있음을 보여준다. TidyBot이라는 실제 모바일 매니퓨레이터에서 91.2% 벤치마크 정확도와 85.0% 실제 환경 성공률을 달성했다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2023_TidyBot Personalized Robot Assistance with Large Language Models.pdf"
 ---
@@ -88,6 +90,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2023_TidyBot Personalized Robo
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — TidyBot의 개인화된 로봇 지원이 PaLM-E의 멀티모달 언어 모델 기반 embodied AI 능력을 특정 도메인(정리)에 특화시킨 확장
-- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — TidyBot이 실제 환경에서 언어 기반 affordance grounding을 구현하는 방식이 Do As I Can, Not As I Say의 원리를 실용적으로 적용
-- 🔄 다른 접근: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — TidyBot은 LLM을 통한 선호도 학습을, CoPAL은 대화형 계획 수정을 통해 로봇이 사용자 요구에 적응하는 다른 방식
+- 🏛 기반 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — 자연어로부터 로봇 행동을 학습하기 위한 language-to-reward 기본 패러다임을 제시합니다.
+- 🔗 후속 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 대규모 사전 훈련 모델을 개인화된 로봇 보조 작업에 적용한 확장 연구입니다.
+- 🔄 다른 접근: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — 개인화된 로봇 학습을 위한 서로 다른 접근법 - few-shot learning vs large-scale orchestration입니다.
+- 🧪 응용 사례: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — CANVAS는 TidyBot의 개인화된 정리 능력을 직관적 인간-로봇 네비게이션에 적용하는 구체적 사례다.
+- 🧪 응용 사례: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — Habitat 2.0의 가정용 로봇 환경은 TidyBot의 개인화된 정리 작업을 시뮬레이션에서 훈련할 수 있는 플랫폼을 제공한다.
+- 🧪 응용 사례: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — Manipulate-Anything은 TidyBot의 물건 정리 기능을 더 광범위한 실세계 조작 작업에 적용하는 확장된 접근법이다.
+- 🔄 다른 접근: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue은 TidyBot과 같은 개인화된 로봇 지원을 내부 추론 과정을 통해 달성하는 다른 방법론이다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 언어 모델 기반 제어를 개인화된 물건 정리라는 구체적 도메인에 적용하여 실용성을 높인다.
+- 🏛 기반 연구: [[papers/1294_A_Generalist_Agent/review]] — Gato의 generalist agent 개념이 TidyBot의 다양한 개인화 선호도를 하나의 모델로 학습하는 접근법의 기초가 된다.
+- 🧪 응용 사례: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — VLABench가 제공하는 large-scale 벤치마크가 TidyBot의 개인화 정리 작업 성능을 체계적으로 평가하는 데 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 개인화 학습을 위해 TidyBot은 LLM의 요약 능력을, Text2Reward는 reward shaping을 활용하는 서로 다른 접근법을 사용한다.

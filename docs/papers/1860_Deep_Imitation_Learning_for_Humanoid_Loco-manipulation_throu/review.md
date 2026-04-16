@@ -1,3 +1,25 @@
+---
+title: "1860_Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_throu"
+authors:
+  - "Mingyo Seo"
+  - "Steve Han"
+  - "Kyutae Sim"
+  - "Seung Hyeon Bang"
+  - "Carlos Gonzalez"
+date: "2023.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 VR 텔레오퍼레이션을 통해 수집한 인간 시연 데이터로부터 humanoid 로봇의 loco-manipulation 능력을 deep imitation learning으로 학습하는 TRILL 프레임워크를 제시한다. Whole-body control 기반의 계층적 정책 구조를 통해 높은 자유도 humanoid의 복잡한 동작을 데이터 효율적으로 학습할 수 있다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Seo et al._2023_Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation.pdf"
+---
+
 # Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation
 
 > **저자**: Mingyo Seo, Steve Han, Kyutae Sim, Seung Hyeon Bang, Carlos Gonzalez, Luis Sentis, Yuke Zhu | **날짜**: 2023-09-05 | **URL**: [https://arxiv.org/abs/2309.01952](https://arxiv.org/abs/2309.01952)
@@ -70,3 +92,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid loco-manipulation을 위한 데이터 효율적 deep imitation learning 방법을 제시하며, whole-body control과의 영리한 결합을 통해 높은 자유도 시스템의 안정성과 학습 효율성을 동시에 달성했다. 실제 humanoid 로봇에서 처음으로 성공적으로 복잡한 manipulation을 학습한 선도적 성과로, 앞으로 humanoid의 자율 능력 향상에 중요한 기여를 할 것으로 예상된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1785_A_Whole-Body_Motion_Imitation_Framework_from_Human_Data_for/review]] — VR 텔레오퍼레이션을 통한 휴머노이드 loco-manipulation 학습에서 deep imitation learning과 whole-body motion imitation의 서로 다른 데이터 활용 방식을 제시한다.
+- 🔗 후속 연구: [[papers/2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti/review]] — TRILL의 VR 텔레오퍼레이션 프레임워크가 TWIST2의 확장 가능한 데이터 수집 시스템으로 발전하여 더 다양한 조작 기술을 포착할 수 있다.
+- 🔄 다른 접근: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — TRILL의 VR 기반 인간 시연 수집과 DemoHLM의 단일 시뮬레이션 데모 활용은 휴머노이드 로코-매니퓰레이션 학습에서 서로 다른 데이터 획득 전략이다.
+- 🏛 기반 연구: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오로부터의 범용 휴머노이드 정책 학습이 TRILL의 deep imitation learning 프레임워크에 필요한 인간 동작 데이터와 학습 방법론을 제공한다.
+- 🧪 응용 사례: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — TRILL의 VR 텔레오퍼레이션 기반 모방 학습이 상자 로코-매니퓰레이션의 sim-to-real 학습에 실질적으로 적용되어 복잡한 조작 기술을 습득할 수 있다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — TRILL의 whole-body control 기반 계층적 정책이 다단계 강화학습을 통한 휴머노이드 배드민턴으로 확장되어 더 동적인 전신 스포츠 기술을 학습한다.
+- 🏛 기반 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — 폐쇄 루프 전신 텔레오퍼레이션의 기본 프레임워크를 제공합니다.
+- 🔗 후속 연구: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — 텔레오퍼레이션 전신 모방 시스템의 발전된 형태를 보여줍니다.
+- 🧪 응용 사례: [[papers/1997_Humanoid_Manipulation_Interface_Humanoid_Whole-Body_Manipula/review]] — 인간형 전신 조작 인터페이스의 실제 구현 사례를 제시합니다.
+- 🔄 다른 접근: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — DemoHLM의 합성 데이터 생성과 TRILL의 VR 텔레오퍼레이션 수집은 휴머노이드 로코-매니퓰레이션 정책 학습에서 서로 다른 데이터 획득 방식을 보여준다.

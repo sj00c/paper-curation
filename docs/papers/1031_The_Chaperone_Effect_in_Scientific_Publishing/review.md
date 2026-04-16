@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "과학 논문 출판에서 경험 많은 과학자(선임저자)가 특정 저널에 이전 경험이 있을 때 더 높은 출판 성공률을 보이는 '샤페론 효과(chaperone effect)'를 정량적으로 분석한 연구이다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Citation_Analysis_Methods"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sekara et al._2018_The chaperone effect in scientific publishing.pdf"
 ---
@@ -87,6 +89,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sekara et al._2018_The chaperone effect 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 출판에서의 샤페론 효과는 연구 펀딩에서 나타나는 Matthew 효과와 유사한 누적 이익 현상을 보여준다.
-- 🏛 기반 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 학계 채용에서의 체계적 불평등과 위계가 출판에서의 샤페론 효과 발생의 구조적 배경을 설명한다.
-- ⚖️ 반론/비판: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성이 혁신적 연구를 촉진한다는 관점과 기존 네트워크 기반 샤페론 효과가 상충할 수 있다.
+- 🔄 다른 접근: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 저널 명성 기반 인용 편향이 개별 연구자 수준에서 나타나는 샤페론 효과의 거시적 맥락을 제공한다.
+- ⚖️ 반론/비판: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 동료 심사에서 빅네임 효과가 샤페론 효과와 유사한 메커니즘으로 작동하는지 비교 분석이 필요하다.
+- 🏛 기반 연구: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 초기 경력 좌절이 샤페론 없는 연구자들의 출판 성공률에 미치는 장기적 영향을 보여준다.
+- 🔗 후속 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 출판 성공에서의 샤페론 효과와 소수집단의 혁신 과소평가가 모두 과학계의 구조적 불평등을 드러낸다.
+- 🏛 기반 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 학술 채용 네트워크의 위계와 출판에서의 샤페론 효과가 모두 과학계 내 체계적 불평등의 메커니즘을 설명한다.
+- ⚖️ 반론/비판: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 샤페론 효과의 긍정적 측면과 성별 다양성이 과학 발견에 미치는 영향을 균형적으로 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 과학 협력 네트워크의 구조적 이해가 샤페론 효과의 사회적 네트워크 메커니즘을 설명하는 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 샤페론 효과가 개별 연구자 수준에서 나타나는 저널 출판 편향을 보여주는 미시적 관점을 제공한다.
+- 🔗 후속 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 출판에서의 샤페론 효과와 함께 소수집단의 혁신 기여 과소평가가 과학계 불평등의 다면적 양상을 보여준다.
+- 🧪 응용 사례: [[papers/1123_The_misalignment_of_incentives_in_academic_publishing_and_im/review]] — 과학 출판에서의 후견인 효과가 인센티브 왜곡에 미치는 구체적 사례다.
+- 🏛 기반 연구: [[papers/1142_Beyond_Retractions_Forensic_Scientometrics_Techniques_to_Ide/review]] — 학술 출판에서 동료 검토의 영향과 한계를 이해하여 부정행위 탐지 맥락을 제공한다.

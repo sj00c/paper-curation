@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "실제 로봇 데이터로 훈련한 조작 정책을 시뮬레이션 환경에서 평가하기 위해 SIMPLER라는 시뮬레이션 환경 모음을 제안하고, 제어 및 시각적 차이를 완화하여 실제 성능과 높은 상관관계를 달성한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Automated_Policy_Evaluation"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Robotic_Policy_Scaling"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2024_Evaluating Real-World Robot Manipulation Policies in Simulation.pdf"
 ---
@@ -85,9 +87,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2024_Evaluating Real-World Rob
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1335_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reac/review]] — 시뮬레이션 기반 정책 평가가 constraint-aware monitoring과 결합하여 더 robust한 평가 체계 구축
-- 🧪 응용 사례: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — SIMPLER 환경을 GRUtopia 대규모 도시 환경에서 정책 평가 벤치마크로 확장 적용
-- 🏛 기반 연구: [[papers/1535_RoboArena_Distributed_Real-World_Evaluation_of_Generalist_Ro/review]] — 실제 로봇 조작 정책의 시뮬레이션 평가 한계를 극복하기 위한 실제 환경 기반 평가 프레임워크를 제공한다.
-- 🏛 기반 연구: [[papers/1608_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 생성형 모션 매칭 기법이 인간 동작 데이터 합성을 위한 핵심 이론적 기초를 제공합니다.
-- 🔄 다른 접근: [[papers/1335_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reac/review]] — 로봇 정책 평가를 constraint satisfaction으로 접근하는 것과 시뮬레이션 기반 평가의 상호보완적 방법론
-- 🏛 기반 연구: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — GRUtopia 대규모 시뮬레이션 환경이 SIMPLER와 같은 정책 평가 벤치마크의 확장 기반 제공
+- 🏛 기반 연구: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench의 시뮬레이션 환경과 벤치마크가 SIMPLER의 실제-시뮬레이션 정책 평가 프레임워크 설계의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — Real2Render2Real의 실제-시뮬레이션-실제 파이프라인이 SIMPLER의 실세계 성능 상관관계 달성 방법을 확장합니다.
+- 🧪 응용 사례: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — Sim-to-Real RL 방법론이 SIMPLER 환경에서 훈련된 정책을 실제 로봇으로 전이하는 구체적인 적용 방법을 제공합니다.
+- 🔗 후속 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — 정적 마찰 연구는 SIMPLER가 다루지 못한 물리적 파라미터가 sim-to-real 성능에 미치는 구체적 영향을 분석합니다.
+- 🏛 기반 연구: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — ManiSkill3는 SIMPLER와 같은 시뮬레이션 기반 평가를 위한 고성능 물리 시뮬레이션 환경을 제공합니다.
+- 🔗 후속 연구: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — VLABench는 SIMPLER의 시뮬레이션 평가 방법론을 언어 조건부 로봇 학습으로 확장한 연구임
+- 🏛 기반 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — SIMPLER의 sim-to-real 평가 프레임워크는 정적 마찰이 성능에 미치는 영향을 측정할 수 있는 기준점을 제공합니다.
+- 🔗 후속 연구: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — SIMPLER의 시뮬레이션 평가는 ManiSkill3와 같은 고성능 GPU 시뮬레이션 환경에서 더욱 효과적으로 수행될 수 있습니다.
+- 🔗 후속 연구: [[papers/1535_RoboArena_Distributed_Real-World_Evaluation_of_Generalist_Ro/review]] — 시뮬레이션 기반 로봇 정책 평가를 실제 환경의 분산 평가로 확장하여 더 현실적인 성능 검증을 제공한다.
+- 🔗 후속 연구: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — 시뮬레이션에서 실제 로봇 정책 평가 연구를 VLA 모델의 실제 배포 가이드로 확장하여 실용적 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1314_AutoEval_Autonomous_Evaluation_of_Generalist_Robot_Manipulat/review]] — Evaluating Real-World Robot Manipulation Policies의 평가 문제를 완전 자동화된 24시간 연속 평가 시스템으로 해결한 실용적 솔루션입니다.
+- 🧪 응용 사례: [[papers/1293_A_Distributional_Treatment_of_Real2Sim2Real_for_Object-Centr/review]] — 시뮬레이션에서 실제 로봇 정책 평가 문제를 Real2Sim2Real 프레임워크로 해결할 수 있습니다.
+- 🏛 기반 연구: [[papers/1309_An_Real-Sim-Real_RSR_Loop_Framework_for_Generalizable_Roboti/review]] — 시뮬레이션에서 실제 로봇 정책 평가에 대한 기초적인 방법론을 제공합니다.

@@ -1,3 +1,25 @@
+---
+title: "1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf"
+authors:
+  - "Junjia Liu"
+  - "Zhuo Li"
+  - "Minghao Yu"
+  - "Zhipeng Dong"
+  - "Sylvain Calinon"
+date: "2024.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Unified Digital Human (UDH) 모델을 공통 프로토타입으로 사용하여 인간 시연에서 행동 원시 요소를 학습하고, 분해된 adversarial imitation learning과 kinematic motion retargeting을 통해 다양한 휴머노이드 로봇 플랫폼으로 로코-매니퓰레이션 스킬을 효율적으로 전이한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Human-Humanoid Robots Cross-Embodiment Behavior-Skill Transfer Using Decomposed Adversarial Learning.pdf"
+---
+
 # Human-Humanoid Robots Cross-Embodiment Behavior-Skill Transfer Using Decomposed Adversarial Learning from Demonstration
 
 > **저자**: Junjia Liu, Zhuo Li, Minghao Yu, Zhipeng Dong, Sylvain Calinon, Darwin Caldwell, Fei Chen | **날짜**: 2024-12-19 | **URL**: [https://arxiv.org/abs/2412.15166](https://arxiv.org/abs/2412.15166)
@@ -65,3 +87,17 @@ Unified Digital Human (UDH) 모델을 공통 프로토타입으로 사용하여 
 - Overall: 4/5
 
 **총평**: 본 논문은 UDH를 중심으로 한 창의적인 교차 embodiment 프레임워크를 제시하며, functional decomposition과 adversarial imitation learning의 결합, 그리고 interaction graph 기반 계획을 통해 휴머노이드 로봇의 로코-매니퓰레이션 스킬 전이 문제를 실질적으로 해결하는 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1987_HuBE_Cross-Embodiment_Human-like_Behavior_Execution_for_Huma/review]] — HuBE의 cross-embodiment adaptation을 UDH 모델과 adversarial imitation learning으로 더욱 발전시킨 확장된 접근법이다.
+- 🔄 다른 접근: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — HAT의 unified state-action space와 UDH의 common prototype은 human-humanoid skill transfer를 위한 서로 다른 통합 방식이다.
+- 🏛 기반 연구: [[papers/1917_Example-based_Motion_Synthesis_via_Generative_Motion_Matchin/review]] — generative motion matching의 motion synthesis 기법이 UDH 모델의 behavior primitive 학습을 위한 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto/review]] — dynamically-feasible trajectory imitation이 UDH 모델의 cross-embodiment skill transfer를 물리적으로 실현 가능한 동작으로 확장합니다.
+- 🏛 기반 연구: [[papers/1646_RoboMirror_Understand_Before_You_Imitate_for_Video_to_Humano/review]] — RoboMirror의 비디오-휴머노이드 모방 기술이 UDH 모델 기반 교차 구현체 스킬 전이의 핵심 토대가 된다.
+- 🔄 다른 접근: [[papers/2120_OmniRetarget_Interaction-Preserving_Data_Generation_for_Huma/review]] — 교차 구현체 전이를 이 논문은 UDH 모델로, OmniRetarget은 상호작용 보존으로 접근한다.
+- 🔗 후속 연구: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — Behavior Foundation Model의 기초 개념을 다양한 휴머노이드 플랫폼 간 스킬 전이로 확장한 발전된 형태다.
+- 🔗 후속 연구: [[papers/1901_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — 인간-휴머노이드 교차 embodiment 행동 기술 전이가 EgoHumanoid의 로봇 없는 학습을 더욱 일반화한 접근법입니다.
+- 🔗 후속 연구: [[papers/1987_HuBE_Cross-Embodiment_Human-like_Behavior_Execution_for_Huma/review]] — UDH 모델의 cross-embodiment skill transfer 방법이 HuBE의 bone scaling 기반 데이터 증강을 더욱 정교화할 수 있다.
+- 🔄 다른 접근: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — UDH의 common prototype 방식과 달리 HAT는 unified state-action space에서 human과 robot을 직접적으로 통합 모델링한다.
+- 🏛 기반 연구: [[papers/2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu/review]] — 인간-휴머노이드 교차 구현 행동-기술 전이의 이론적 기반을 제공한다.

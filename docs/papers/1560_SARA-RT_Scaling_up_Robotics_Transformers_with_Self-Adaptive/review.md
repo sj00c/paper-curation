@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "SARA-RT는 Robotics Transformer를 on-robot 배포에 적합하도록 선형 주의(linear attention)로 변환하는 up-training 방법을 제시하여, quadratic 복잡도의 모델을 high quality 유지하면서 효율화한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Compact_VLA_Models"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leal et al._2023_SARA-RT Scaling up Robotics Transformers with Self-Adaptive Robust Attention.pdf"
 ---
@@ -89,9 +90,13 @@ SARA-RT는 Robotics Transformer를 on-robot 배포에 적합하도록 선형 주
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1273_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — 휴머노이드 로봇의 충돌 회피를 위한 지각 시스템으로 이고센트릭 네비게이션의 실용적 응용 분야를 제시한다.
-- 🏛 기반 연구: [[papers/1372_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 대규모 이고센트릭 조작 데이터셋으로 AND 데이터셋과 유사한 실제 환경 데이터 수집 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1409_GR-2_A_Generative_Video-Language-Action_Model_with_Web-Scale/review]] — 이고센트릭 비전을 활용한 휴머노이드 보행 제어에서 실시간 적응형 지각 시스템을 발전시킨다.
-- 🧪 응용 사례: [[papers/1268_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — LookOut의 egocentric 네비게이션 시스템이 평가된 VIO 시스템들을 실제 humanoid 환경에서 활용하는 사례를 보여준다.
-- 🧪 응용 사례: [[papers/1323_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — LookOut의 real-world humanoid navigation이 CReF의 depth-conditioned locomotion을 실제 환경에서 검증하는 구체적 사례를 제공한다.
-- 🔗 후속 연구: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — Robotics Transformer의 효율적 배포에서 선형 주의 변환과 액션-인식 프루닝의 상호 보완적 최적화를 제공한다.
+- 🔄 다른 접근: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — 두 논문 모두 로봇 transformer의 효율화를 다루지만 어텐션 최적화와 모델 압축의 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 성능을 유지하면서 SARA-RT가 배포 효율성을 개선한다.
+- 🏛 기반 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 모델 효율화의 맥락에서 SARA-RT와 OneDP가 상호 보완적인 최적화 방법이다.
+- 🏛 기반 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Behavior Transformers의 multi-modal transformer 아키텍처가 SARA-RT의 robotics transformer 설계의 기초가 된다.
+- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Efficient Diffusion Transformer가 diffusion 모델의 효율화에 중점을 두는 반면, SARA-RT는 transformer의 attention mechanism 최적화에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — BitVLA의 VLA 모델 경량화 개념을 linear attention을 통한 효율화로 확장하여 on-robot 배포에 최적화했다.
+- 🔗 후속 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — SARA-RT의 모델 효율화 연구를 OneDP가 추론 시간 최적화 관점에서 보완한다.
+- 🔄 다른 접근: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — 두 논문 모두 VLA 모델의 효율화를 다루지만 압축과 어텐션 최적화의 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — self-adaptive robust attention transformer의 scaling 방법론을 제공하여 VLA-Cache의 효율적인 attention 처리에 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1410_GR-3_Technical_Report/review]] — self-adaptive 로봇 트랜스포머가 GR-3의 VLA 모델 구조를 더 효율적으로 확장한 형태다.

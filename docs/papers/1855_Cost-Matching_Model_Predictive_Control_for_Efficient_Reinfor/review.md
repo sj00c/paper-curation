@@ -1,3 +1,20 @@
+---
+title: "1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor"
+authors:
+  - "| **날짜**: 2026-03-30"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇 보행 제어를 위해 MPC를 RL로 학습할 때 반복적인 MPC 해결의 계산 부담을 제거하는 Cost-Matching MPC 방법을 제안한다. 매개변수화된 MPC의 비용-미래가치(cost-to-go)와 실제 측정된 리턴값의 불일치를 최소화하여 효율적으로 학습한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Force_Disturbance_Compensation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_Cost-Matching Model Predictive Control for Efficient Reinforcement Learning in Humanoid Locomotion.pdf"
+---
+
 # Cost-Matching Model Predictive Control for Efficient Reinforcement Learning in Humanoid Locomotion
 
 > **저자**:  | **날짜**: 2026-03-30 | **URL**: [https://arxiv.org/abs/2603.28243](https://arxiv.org/abs/2603.28243)
@@ -67,3 +84,18 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 MPC-RL의 계산 병목을 해결하는 창의적인 cost-matching 방법을 제시하며, 복잡한 인간형 로봇 제어 문제에 체계적으로 적용한 우수한 연구다. 다만 실제 로봇 검증의 부재가 임팩트를 제한하므로, 향후 sim-to-real 전이 연구가 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — reference-free sampling 기반 MPC가 Cost-Matching MPC의 반복적 해결 부담을 제거하는 효율적인 기초 방법론을 제공한다
+- 🔗 후속 연구: [[papers/1938_Full-Order_Sampling-Based_MPC_for_Torque-Level_Locomotion_Co/review]] — full-order sampling 기반 MPC가 Cost-Matching MPC의 토크 레벨 제어를 더욱 정교하고 완전한 형태로 확장한다
+- 🔄 다른 접근: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — MPC 학습 효율성을 cost-matching과 모델 예측 기반 실패 감지라는 서로 다른 방법으로 향상시킨다
+- 🔗 후속 연구: [[papers/1883_DoublyAware_Dual_Planning_and_Policy_Awareness_for_Temporal/review]] — 시간적 차분 학습에서 이중 인식을 통해 MPC 효율성을 향상시킵니다.
+- 🏛 기반 연구: [[papers/1622_Predictive_Sampling_Real-time_Behaviour_Synthesis_with_MuJoC/review]] — Cost-Matching Model Predictive Control의 효율적 강화학습 방법론이 MJPC의 실시간 행동 합성의 기초가 됨
+- 🔗 후속 연구: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — Cost-Matching MPC의 효율적인 강화학습 접근법이 MuJoCo 기반 실시간 MPC의 성능과 적응성을 향상시킬 수 있다.
+- 🏛 기반 연구: [[papers/1883_DoublyAware_Dual_Planning_and_Policy_Awareness_for_Temporal/review]] — 모델 예측 제어의 효율적 학습이 이중 인식 프레임워크의 기초가 됩니다.
+- 🔗 후속 연구: [[papers/2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — 비용 매칭 모델 예측 제어가 도달성 맵 기반 최적화의 확장된 형태이다.
+- 🔄 다른 접근: [[papers/2094_Mechanical_Intelligence-Aware_Curriculum_Reinforcement_Learn/review]] — 기계적 제약을 고려한 제어에서 model predictive control과 reinforcement learning의 다른 접근법을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto/review]] — Opt2Skill은 DDP-RL 결합, Cost-Matching Model Predictive Control은 MPC-RL 결합으로 서로 다른 최적화 방법과 강화학습을 통합한다.
+- 🏛 기반 연구: [[papers/2131_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor/review]] — Cost-matching model predictive control이 PACE의 learned predictor와 physics-based reward 결합에서 예측 기반 제어의 이론적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/2145_TD-GRPC_Temporal_Difference_Learning_with_Group_Relative_Pol/review]] — Cost-Matching Model Predictive Control의 효율적인 강화학습을 Group Relative Policy Optimization과 trust-region constraint로 발전시킨 연구이다.

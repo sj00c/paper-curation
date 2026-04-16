@@ -1,3 +1,21 @@
+---
+title: "2057_Learning_Humanoid_Navigation_from_Human_Data"
+authors:
+  - "| **날짜**: 2026-04-01"
+date: "2026.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간 보행 데이터 5시간으로만 학습하여 휴머노이드 로봇이 미지의 환경을 자율 내비게이션할 수 있는 EgoNav 시스템을 제안. 360° 시각 메모리와 diffusion model을 통해 다중모달 궤적 분포를 생성하고 로봇에 직접 배포 가능."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_Learning Humanoid Navigation from Human Data.pdf"
+---
+
 # Learning Humanoid Navigation from Human Data
 
 > **저자**:  | **날짜**: 2026-04-01 | **URL**: [https://arxiv.org/abs/2604.00416](https://arxiv.org/abs/2604.00416)
@@ -70,3 +88,13 @@
 - Overall: 4/5
 
 **총평**: 인간 보행 데이터로부터 로봇 데이터 없이 휴머노이드 내비게이션을 학습하는 혁신적 접근으로, 360° visual memory와 diffusion model의 조합으로 다중모달 예측과 실시간 성능을 동시에 달성했다. 실제 로봇 배포 데모는 임팩트 있지만 정량적 성능 평가 확대와 다양한 로봇 및 환경에서의 일반화 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1996_Humanoid_Locomotion_as_Next_Token_Prediction/review]] — 휴머노이드 내비게이션에서 diffusion model 기반 접근법 대신 다음 토큰 예측을 통한 locomotion 방법을 제시한다.
+- 🏛 기반 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 공간 선택적 주의와 waypoint 가이드의 원리가 EgoNav의 360도 시각 메모리 기반 내비게이션에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — 인간 데이터 기반 내비게이션 학습을 실제 환경의 에고센트릭 내비게이션 시스템으로 확장하여 더 실용적인 구현을 달성할 수 있다.
+- 🏛 기반 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 야생 환경에서의 휴머노이드 시각 탐색 능력이 자율 내비게이션의 기반 제공
+- 🧪 응용 사례: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 인간 데이터 기반 내비게이션 학습을 대규모 로봇 내비게이션 생태계에 적용
+- 🔗 후속 연구: [[papers/2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — 인간 데이터 기반 내비게이션이 긍정적/부정적 시연을 활용한 사회적 내비게이션으로 확장되어 인간 환경 적응을 보여준다.
+- 🏛 기반 연구: [[papers/2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — 긍정적/부정적 시연을 활용한 사회적 내비게이션이 인간 데이터 기반 내비게이션 학습의 기반을 제공한다.

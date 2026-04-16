@@ -9,8 +9,8 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 자율 네비게이션을 위한 멀티모달 인식 기법들을 inference domain이라는 통합 관점에서 조직화하고 분석하는 포괄적인 서베이로, 약 200개의 관련 논문을 검토하여 시각, 언어, 음향 정보를 활용한 네비게이션 접근법들의 공통 원리와 차이를 체계적으로 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ieong and Tang_2025_Multimodal Perception for Goal-oriented Navigation A Survey.pdf"
 ---
@@ -86,6 +86,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ieong and Tang_2025_Multimodal Perceptio
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1607_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — Vision-Language Navigation의 체계적 분류가 goal-oriented navigation에서 multimodal perception의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — 항공 시각-언어 네비게이션과 지상 goal-oriented navigation의 multimodal perception 기법이 상호 보완적이다.
-- 🧪 응용 사례: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 로봇 네비게이션 적용이 multimodal perception 기반 goal-oriented navigation의 실용적 구현을 보여준다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — 멀티모달 목표 지향 네비게이션 서베이가 Vision-Language Navigation의 기존 분류 체계를 멀티모달 인식으로 확장한 연구이다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 멀티모달 네비게이션 서베이의 inference domain 관점이 NaVid의 비디오 기반 VLM 계획과 결합되어 더 정교한 네비게이션 추론을 가능하게 한다.
+- 🧪 응용 사례: [[papers/1463_LOVON_Legged_Open-Vocabulary_Object_Navigator/review]] — 멀티모달 네비게이션의 이론적 프레임워크가 LOVON의 다리 로봇 개방형 어휘 객체 네비게이션에 실제 적용된다.
+- 🏛 기반 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — JanusVLN의 spatial-geometric과 semantic 정보 분리 접근법이 멀티모달 목표 지향 네비게이션의 핵심 설계 원리를 제공한다.
+- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — VLN을 goal-oriented navigation의 multimodal perception으로 확장한 포괄적 조사입니다.

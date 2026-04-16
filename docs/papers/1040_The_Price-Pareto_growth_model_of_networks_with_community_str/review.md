@@ -12,7 +12,8 @@ score: 4.0
 essence: "커뮤니티 구조를 가진 네트워크의 도수 수열(degree sequence)을 모델링하기 위해 Price 모델을 확장한 Price-Pareto 성장 모델을 제안한다. 각 커뮤니티별로 이질적인 인용 역학을 포착할 수 있는 분석적 틀을 제공한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Network_Community_Detection"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Brzozowski et al._2026_The Price-Pareto growth model of networks with community structure.pdf"
 ---
@@ -85,7 +86,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Brzozowski et al._2026_The Price-Pareto 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크 이론을 커뮤니티 구조를 가진 학술 인용 네트워크에 적용할 수 있는 확장된 모델을 제공한다.
-- 🧪 응용 사례: [[papers/990_Networks_of_Scientific_Papers/review]] — 학술 논문 인용 네트워크의 기초적 패턴 분석을 커뮤니티 구조를 고려한 고도화된 모델링으로 발전시켰다.
-- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 무작위 네트워크에서 스케일링 현상의 출현 이론이 커뮤니티 구조를 가진 네트워크 모델링의 기초를 제공한다.
-- 🔗 후속 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크 모델을 커뮤니티 구조를 가진 학술 인용 네트워크에 적용할 수 있는 Price-Pareto 성장 모델로 확장했다.
+- 🏛 기반 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학자 협력 네트워크의 우선적 부착 관찰이 Price-Pareto 모델의 커뮤니티별 이질적 인용 역학 설계에 실증적 근거를 제공한다.
+- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 무작위 네트워크에서 스케일링 출현 현상이 Price-Pareto 모델의 수학적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/990_Networks_of_Scientific_Papers/review]] — 과학 논문의 서지학적 네트워크 패턴이 Price-Pareto 모델의 실제 적용 사례를 보여준다.
+- 🏛 기반 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 인용 분포의 보편성 연구가 커뮤니티별 이질적 인용 역학을 모델링하는 Price-Pareto 모델의 이론적 근거를 제공한다.
+- 🔗 후속 연구: [[papers/948_Community_Detection_in_Graphs/review]] — 커뮤니티 탐지 방법론을 기반으로 하여, 발견된 커뮤니티 구조에서 인용 네트워크의 성장 과정을 수학적으로 모델링한다.
+- 🔄 다른 접근: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 과학 협력 네트워크의 구조적 특성을 분석하되, 정적 구조보다는 동적 성장 과정에서의 커뮤니티별 차별화된 메커니즘에 초점을 맞춘다.
+- 🧪 응용 사례: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 인용 분포의 보편성이 커뮤니티별로 다른 인용 역학을 모델링하는 Price-Pareto 모델에 적용된다.
+- 🔗 후속 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — Price-Pareto 성장 모델은 small-world 네트워크 이론을 기반으로 커뮤니티 구조를 가진 네트워크의 진화를 설명합니다.
+- 🔄 다른 접근: [[papers/948_Community_Detection_in_Graphs/review]] — 커뮤니티 구조를 가진 네트워크의 성장 모델을 통해 커뮤니티 검출과 다른 관점에서 네트워크 구조를 분석한다.
+- 🔗 후속 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 스케일-프리 네트워크 모델을 커뮤니티 구조를 포함한 더 복잡한 네트워크로 발전시킨다
+- 🔗 후속 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — Price-Pareto 모델이 커뮤니티 구조를 가진 네트워크에서 preferential attachment의 이질적 역학을 더 정교하게 모델링한다.

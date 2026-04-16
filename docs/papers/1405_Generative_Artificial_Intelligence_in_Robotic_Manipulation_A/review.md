@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇 조작(robotic manipulation) 분야에서 생성형 AI 모델들(GAN, VAE, diffusion model 등)의 최근 발전을 종합적으로 검토하는 서베이로, 데이터 부족, 장기 태스크 계획, 다중 모드 추론이라는 세 가지 핵심 도전 과제를 해결하는 방법을 제시한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
   - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Generative Artificial Intelligence in Robotic Manipulation A Survey.pdf"
@@ -89,7 +91,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Generative Artificial 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — EIIR 프레임워크가 생성형 AI를 산업용 로봇 조작에 적용하는 맥락을 제공한다.
-- 🔗 후속 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — Dex1B의 대규모 합성 데이터 생성이 로봇 조작의 데이터 부족 문제 해결에 기여한다.
-- 🔄 다른 접근: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — Diffusion Models for Robotic Manipulation 서베이도 생성형 모델의 로봇 조작 적용을 종합적으로 다룬다.
-- 🔄 다른 접근: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — 생성형 AI 서베이도 로봇 조작 분야의 기술 발전을 종합적으로 검토한다.
+- 🏛 기반 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 로봇 조작에서 diffusion model 사용에 대한 기초적인 서베이를 제공하여 생성형 AI 전반의 이해를 돕는다.
+- 🔗 후속 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — 생성형 AI 모델들의 로봇 조작 활용을 구체적으로 다루며, 대규모 모델 기반 embodied AI 서베이와 상호 보완적이다.
+- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation model의 로봇 적용을 다각도로 분석한 서베이와 생성형 AI 중심의 다른 관점을 제시한다.
+- 🔗 후속 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — Multimodal Fusion and Vision-Language Models 서베이는 생성형 AI를 멀티모달 로봇 학습으로 확장한 포괄적 검토임
+- 🔗 후속 연구: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — dexterous manipulation의 imitation learning을 생성형 AI 관점에서 확장한 포괄적 조사입니다.

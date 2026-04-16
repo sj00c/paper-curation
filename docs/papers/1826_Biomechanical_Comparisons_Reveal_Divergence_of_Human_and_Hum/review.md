@@ -1,3 +1,24 @@
+---
+title: "1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum"
+authors:
+  - "Luying Feng"
+  - "Yaochu Jin"
+  - "Hanze Hu"
+  - "Wei Chen"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Gait Divergence Analysis Framework (GDAF)를 제안하여 인간과 휴머노이드 로봇의 보행 간 생체역학적 차이를 정량적으로 분석하고, 28개 속도에서 수집한 공개 데이터셋과 분석 도구를 제공한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Exercise_Learning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Feng et al._2026_Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits.pdf"
+---
+
 # Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits
 
 > **저자**: Luying Feng, Yaochu Jin, Hanze Hu, Wei Chen | **날짜**: 2026-02-25 | **URL**: [https://arxiv.org/abs/2602.21666](https://arxiv.org/abs/2602.21666)
@@ -66,3 +87,23 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 보행 평가를 위한 첫 번째 체계적 생체역학 분석 프레임워크와 완전 공개 데이터셋을 제시하여 로봇 보행 개선의 정량적 기준과 도구를 확보하게 하는 점에서 의의가 크며, 방법론적 투명성과 재현가능성이 우수하나 단일 플랫폼과 보행 환경 제약이 일반화 가능성을 다소 제한한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — 인간다움 평가를 위한 Motion Turing Test가 GDAF의 생체역학적 차이 분석을 더욱 포괄적인 관점에서 확장한다
+- 🏛 기반 연구: [[papers/1758_WHOLE_World-Grounded_Hand-Object_Lifted_from_Egocentric_Vide/review]] — 인간 참조 데이터를 활용한 전신 로봇 보행이 GDAF의 인간-로봇 보행 비교 분석에 필요한 기준 데이터를 제공한다
+- 🔄 다른 접근: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — 인간과 휴머노이드의 정책 비교라는 같은 목표를 생체역학적 분석과 행동 정책 분석이라는 다른 방법으로 접근한다
+- 🔗 후속 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — GDAF의 생체역학적 분석이 CMR의 강건한 휴머노이드 보행 학습에서 인간-로봇 보행 차이를 이해하는 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1864_Demonstrating_Berkeley_Humanoid_Lite_An_Open-source_Accessib/review]] — GDAF로 분석된 인간-휴머노이드 보행 차이가 Berkeley Humanoid Lite의 실제 보행 제어기 개발과 sim-to-real 전이에 중요한 통찰을 제공한다.
+- 🏛 기반 연구: [[papers/1655_Robust_and_Generalized_Humanoid_Motion_Tracking/review]] — Robust and Generalized Humanoid Motion Tracking의 견고한 동작 추적 기술이 GDAF의 정확한 보행 분석을 위한 기술적 기반이 된다.
+- 🔄 다른 접근: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — GDAF가 인간-로봇 보행의 차이를 분석하는 반면, Natural Humanoid Robot Locomotion은 생성적 모션 프라이어로 자연스러운 휴머노이드 보행을 달성하는 다른 접근을 제시한다.
+- 🏛 기반 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — 인간과 휴머노이드 보행의 생체역학적 차이 분석이 Motion Difficulty Score의 인간 동작 모방 난이도 평가에 필요한 기준점을 제공한다
+- 🧪 응용 사례: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — 생체역학적 보행 분석이 WHOLE의 인간 전신 동작 데이터에서 휴머노이드로의 동작 전이 시 생체역학적 타당성 검증에 적용될 수 있다
+- 🏛 기반 연구: [[papers/1618_PIMBS_Efficient_Body_Schema_Learning_for_Musculoskeletal_Hum/review]] — PIMBS의 근골격 휴머노이드 신체 스키마 학습이 Biomechanical Comparisons의 인간-휴머노이드 운동학적 차이 분석을 기반으로 한다
+- 🏛 기반 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — GDAF의 인간-휴머노이드 보행 차이 분석이 CMR의 노이즈에 강건한 보행 학습에서 생체역학적 통찰을 제공한다.
+- 🧪 응용 사례: [[papers/1776_A_Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/review]] — 인간과 휴머노이드 간 생체역학적 비교 연구에서 발목 설계 최적화의 구체적 적용 사례를 제공합니다.
+- 🧪 응용 사례: [[papers/1864_Demonstrating_Berkeley_Humanoid_Lite_An_Open-source_Accessib/review]] — Berkeley Humanoid Lite의 실제 구현이 GDAF의 인간-휴머노이드 보행 차이 분석 결과를 실제 하드웨어에서 검증하고 개선하는 데 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1990_Human-Level_Actuation_for_Humanoids/review]] — 생체역학적 비교 분석이 인간 수준 구동 평가 프레임워크의 기초적 비교 기준을 제공한다.
+- 🏛 기반 연구: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — 인간과 휴머노이드의 biomechanical 차이 분석이 Motion Turing Test에서 human-likeness 평가 기준 설정의 과학적 근거를 제공함
+- 🧪 응용 사례: [[papers/2127_Optimizing_Bipedal_Locomotion_for_The_100m_Dash_With_Compari/review]] — 인간과 휴머노이드의 생체역학적 비교 분석을 실제 100m 대시 기록 달성에 적용한 구체적 사례이다.
+- 🏛 기반 연구: [[papers/2136_PHUMA_Physically-Grounded_Humanoid_Locomotion_Dataset/review]] — 인간과 휴머노이드의 biomechanical 차이 분석이 PHUMA의 physics-constrained retargeting 방법론의 이론적 근거를 제공함

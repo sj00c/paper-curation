@@ -1,3 +1,24 @@
+---
+title: "1777_A_Gait_Driven_Reinforcement_Learning_Framework_for_Humanoid"
+authors:
+  - "Bolin Li"
+  - "Yuzhi Jiang"
+  - "Linwei Sun"
+  - "Xuecong Huang"
+  - "Lijun Zhu"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 humanoid robot의 bipedal gait 학습을 위해 실시간 gait planner와 structured reward composition을 결합한 reinforcement learning framework를 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_A Gait Driven Reinforcement Learning Framework for Humanoid Robots.pdf"
+---
+
 # A Gait Driven Reinforcement Learning Framework for Humanoid Robots
 
 > **저자**: Bolin Li, Yuzhi Jiang, Linwei Sun, Xuecong Huang, Lijun Zhu, Han Ding | **날짜**: 2025-06-10 | **URL**: [https://arxiv.org/abs/2506.08416](https://arxiv.org/abs/2506.08416)
@@ -66,3 +87,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 model-based planning과 data-driven learning을 효과적으로 결합하여 humanoid robot의 bipedal gait 학습을 위한 실용적인 framework를 제시한다. H-LIP 기반 decoupling과 structured reward composition의 조합이 학습 효율성과 periodicity를 동시에 향상시키는 점에서 기술적 독창성이 있으나, 물리 실험 검증과 복잡한 환경 적응성 평가가 추가되면 더욱 강화될 것이다.
+
+## Related Papers
+
+- 🧪 응용 사례: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — Gait-driven RL의 실시간 보행 계획이 reference-free MPC 프레임워크에서 emergent locomotion 생성에 직접 활용된다.
+- 🏛 기반 연구: [[papers/1776_A_Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/review]] — 구조화된 보상 구성과 gait planner가 발목 설계 최적화에서 보행 성능 평가 기준을 제공한다.
+- 🔄 다른 접근: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — 둘 다 gait 기반 강화학습을 다루지만 하나는 실시간 planner에, 다른 하나는 multi-phase curriculum에 초점을 둔다.
+- 🔗 후속 연구: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — 대칭적이고 에너지 효율적인 locomotion 학습 기법이 gait driven RL framework의 보행 효율성과 안정성을 향상시킬 수 있다.
+- 🧪 응용 사례: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — Control Lyapunov Function 기반 안정성 추구 접근법이 gait planner의 실시간 안정성 보장에 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1635_Reduced-Order_Model-Guided_Reinforcement_Learning_for_Demons/review]] — A Gait Driven Reinforcement Learning Framework의 보행 주도 강화학습이 ROM-GRL의 gait template 기반 학습의 이론적 기초를 제공함
+- 🏛 기반 연구: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — Reference-free MPC 프레임워크가 gait-driven RL의 실시간 gait planner 구성요소에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1776_A_Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/review]] — 발목 설계 최적화가 gait-driven RL 프레임워크에서 하드웨어-소프트웨어 통합 최적화로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — 두 논문 모두 강화학습 기반 보행 프레임워크이지만 gait-conditioned vs behavior-driven 접근법이 다르다.

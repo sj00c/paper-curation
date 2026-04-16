@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "PRIMAL은 두 단계 학습 패러다임으로 아바타의 모터 시스템을 generative motion model로 구현하여, 물리적으로 반응성 있고 제어 가능하며 실시간 상호작용이 가능한 3D 캐릭터 애니메이션을 실현한다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Egocentric_Manipulation_Imitation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_PRIMAL Physically Reactive and Interactive Motor Model for Avatar Learning.pdf"
 ---
@@ -84,3 +87,14 @@ PRIMAL은 두 단계 학습 패러다임으로 아바타의 모터 시스템을 
 - Overall: 4/5
 
 **총평**: PRIMAL은 짧은 시간 척도에서의 physics 지배성이라는 통찰력으로 unsupervised diffusion model을 통해 실시간 반응성과 물리적 사실성을 동시에 달성한 혁신적 접근이며, Unreal Engine 구현으로 실제 응용 가능성을 입증한 탁월한 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1669_Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_f/review]] — PRIMAL의 generative motion model과 제스처 생성의 LLM+Motion-GPT는 서로 다른 인간형 실시간 애니메이션 접근법
+- 🔗 후속 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — EMOTION의 표현적 휴머노이드 동작 생성이 PRIMAL의 반응형 모터 모델을 감정적 표현으로 확장한 형태
+- 🏛 기반 연구: [[papers/1882_Do_You_Have_Freestyle_Expressive_Humanoid_Locomotion_via_Aud/review]] — 자유형 휴머노이드 로코모션이 PRIMAL의 물리적 반응성과 제어 가능한 3D 캐릭터 애니메이션의 기반 기술
+- 🔄 다른 접근: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — PRIMAL과 Taming Diffusion 모두 물리적으로 반응성 있는 캐릭터 제어를 다루지만 전자는 generative motion model에, 후자는 확산 모델에 기반한다
+- 🏛 기반 연구: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — PRIMAL의 두 단계 학습 패러다임이 Benchmarking Potential Based Rewards의 휴머노이드 학습 평가 방법론을 활용할 수 있다
+- 🏛 기반 연구: [[papers/1917_Example-based_Motion_Synthesis_via_Generative_Motion_Matchin/review]] — Generative motion synthesis 방법론을 interactive avatar control에 적용한 기반 연구
+- 🔗 후속 연구: [[papers/2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars/review]] — PRIMAL의 reactive motor model을 real-time avatar control로 확장한 연구
+- 🧪 응용 사례: [[papers/1928_Feature-Based_vs_GAN-Based_Learning_from_Demonstrations_When/review]] — Feature-based vs GAN-based 비교 프레임워크가 물리적 반응형 모션 모델 선택에 적용될 수 있다.

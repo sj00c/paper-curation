@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Search-TTA는 위성 이미지와 현장 센서 측정을 활용하여 VLM(Vision Language Model)의 예측을 실시간으로 개선하는 멀티모달 테스트타임 적응 프레임워크로, 야외 로봇 시각 탐색 성능을 30%까지 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Video_Generation_Models"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tan et al._2025_Search-TTA A Multimodal Test-Time Adaptation Framework for Visual Search in the Wild.pdf"
 ---
@@ -91,8 +92,9 @@ Search-TTA는 위성 이미지와 현장 센서 측정을 활용하여 VLM(Visio
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — MLLM의 공간 추론 능력을 활용한 네비게이션에서 멀티모달 테스트타임 적응 기법이 성능 향상에 기여한다.
-- 🔗 후속 연구: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — 멀티모달 AI 에이전트의 기반 모델에서 테스트타임 적응이 실제 환경 배포 시 성능 안정성을 제공한다.
-- 🔄 다른 접근: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — 비전-언어-액션 모델의 네비게이션 응용에서 다른 멀티모달 적응 전략을 제시한다.
-- 🏛 기반 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — MLLM의 공간 추론 능력을 top-view 네비게이션으로 특화하여 멀티모달 테스트타임 적응의 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1540_Learning_to_Control_Physically-simulated_3D_Characters_via_G/review]] — 3D mesh 기반 휴머노이드 모션 학습을 Mimic2DM의 물리 기반 3D 캐릭터 제어에 통합하여 기하학적 정확성을 향상시킬 수 있다
+- 🏛 기반 연구: [[papers/1568_Search-TTA_A_Multimodal_Test-Time_Adaptation_Framework_for_V/review]] — Test-time adaptation 개념이 야외 로봇의 실시간 환경 적응에 핵심적인 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — 로봇의 환경 적응에서 Search-TTA는 멀티모달 테스트타임 적응으로, CorrectNav는 자기교정 메커니즘으로 접근한다.
+- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual Instruction Tuning의 시각-언어 모델 최적화 기법이 Search-TTA의 VLM 예측 개선 방법론에 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — ApexNav가 zero-shot 객체 내비게이션에 중점을 두는 반면, Search-TTA는 멀티모달 센서 융합을 통한 시각 탐색 성능 향상에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — CEED-VLA의 consistency vision-language-action 모델이 Search-TTA의 멀티모달 테스트타임 적응을 위한 기반 VLM 아키텍처를 제공한다.
+- 🔗 후속 연구: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — NavigateDiff의 시각적 예측 기반 네비게이션을 멀티모달 센서 데이터와 실시간 적응을 통해 야외 로봇 환경으로 확장했다.

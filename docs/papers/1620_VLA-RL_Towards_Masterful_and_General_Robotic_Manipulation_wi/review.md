@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 사전학습된 Vision-Language-Action(VLA) 모델을 강화학습(RL)으로 개선하여 로봇 조작 작업의 분포 외(OOD) 시나리오 대응력을 향상시키는 VLA-RL 프레임워크를 제시한다. 궤적 수준의 RL 공식화와 robotic process reward model을 통해 LIBERO 벤치마크에서 OpenVLA-7B의 성능을 4.5% 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Diffusion_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lu et al._2025_VLA-RL Towards Masterful and General Robotic Manipulation with Scalable Reinforcement Learning.pdf"
 ---
@@ -91,10 +92,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lu et al._2025_VLA-RL Towards Masterful 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1444_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — Language to Rewards의 언어 기반 보상 설계가 VLA-RL의 robotic process reward model 개발 기반이 된다
-- 🔗 후속 연구: [[papers/1532_Learning_Motion_Skills_with_Adaptive_Assistive_Curriculum_Fo/review]] — RLinf-VLA의 통합 강화학습 프레임워크를 VLA 모델 특화하여 out-of-distribution 대응력을 향상시켰다
-- 🧪 응용 사례: [[papers/1534_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — RoboAgent의 일반화 능력과 VLA-RL의 강화학습 개선을 결합하여 robust한 조작 정책 학습이 가능하다
-- ⚖️ 반론/비판: [[papers/1583_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — Text2Reward가 언어에서 보상으로, VLA-RL이 사전학습에서 강화학습으로의 서로 다른 방향의 개선 전략을 보여준다
-- 🔗 후속 연구: [[papers/1411_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — VLA-RL의 masterful manipulation이 GR-RL의 고정밀 전문가 정책 학습을 더욱 일반화된 관점으로 확장한다.
-- 🔗 후속 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — VLA-RL의 마스터 수준 로봇 조작과 RLinf-VLA의 효율적 RL 훈련이 VLA 강화학습의 상호 보완적 측면을 제시한다.
-- 🔄 다른 접근: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — 둘 다 VLA 강화학습이지만 VLA-RFT는 world model 기반, VLA-RL은 direct RL로 다른 학습 패러다임이다
+- 🔄 다른 접근: [[papers/1573_SimpleVLA-RL_Scaling_VLA_Training_via_Reinforcement_Learning/review]] — 둘 다 VLA와 RL의 결합을 다루지만 SimpleVLA-RL은 단순화된 접근에, VLA-RL은 궤적 수준 RL에 집중합니다.
+- 🔗 후속 연구: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — VLA 모델의 reinforced fine-tuning 개념을 scalable RL framework로 확장하여 더 체계적인 VLA-RL 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — language model guided RL의 기본 개념을 제공하여 VLA-RL의 언어 조건부 강화학습에 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — 둘 다 VLA 모델의 강화학습 개선을 다루지만, VLA-RL은 OOD 대응력을, VLA-RFT는 world model 효율성에 집중한다.
+- 🏛 기반 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — VLA 모델의 강화학습 통합에 대한 통일된 프레임워크를 제공하여 VLA-RL의 방법론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo의 일반적인 로봇 정책을 강화학습으로 개선하여 분포 외 시나리오에서의 성능 향상을 달성한다.
+- 🔗 후속 연구: [[papers/1394_FLaRe_Achieving_Masterful_and_Adaptive_Robot_Policies_with_L/review]] — VLA-RL은 FLaRe의 BC-to-RL 파이프라인을 VLA 모델에 특화하여 발전시킨 연구입니다.
+- 🔄 다른 접근: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RLinf-VLA와 VLA-RL은 모두 VLA 모델의 강화학습 적용을 다루지만 훈련 효율성과 일반적 성능 향상이라는 다른 초점을 가진다.
+- 🔗 후속 연구: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — VLA-RL이 VLA-RFT의 강화 학습 파인튜닝 아이디어를 더 일반적이고 숙련된 로봇 조작으로 확장한다.
+- 🔄 다른 접근: [[papers/1338_ConRFT_A_Reinforced_Fine-tuning_Method_for_VLA_Models_via_Co/review]] — VLA-RL을 통한 숙련된 로봇 조작을 위한 다른 강화학습 접근법입니다.
+- 🔄 다른 접근: [[papers/1411_GR-RL_Going_Dexterous_and_Precise_for_Long-Horizon_Robotic_M/review]] — VLA 모델의 RL 기반 미세조정에서 다른 방법론적 접근을 제시합니다.

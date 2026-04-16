@@ -1,3 +1,24 @@
+---
+title: "1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A"
+authors:
+  - "Zhirui Liu"
+  - "Kaiyang Ji"
+  - "Ke Yang"
+  - "Jingyi Yu"
+  - "Ye Shi"
+date: "2026.04"
+doi: "10.48550/arXiv.2511.22963"
+arxiv: ""
+score: 4.0
+essence: "자유형식 자연언어 명령을 인간형 로봇의 신체 전체 제어로 매핑하는 Large Language Action Model(Humanoid-LLA)을 제안하며, 통합 모션 어휘, 어휘-지향 컨트롤러 증류, 강화학습 기반 파인튜닝을 통해 언어 일반화와 물리적 타당성을 동시에 달성한다."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LLM_Physical_Motion_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2026_Commanding Humanoid by Free-form Language A Large Language Action Model with Unified Motion Vocabul.pdf"
+---
+
 # Commanding Humanoid by Free-form Language: A Large Language Action Model with Unified Motion Vocabulary
 
 > **저자**: Zhirui Liu, Kaiyang Ji, Ke Yang, Jingyi Yu, Ye Shi, Jingya Wang | **날짜**: 2026-04-10 | **DOI**: [10.48550/arXiv.2511.22963](https://doi.org/10.48550/arXiv.2511.22963)
@@ -68,3 +89,28 @@
 - Overall: 4/5
 
 **총평**: Humanoid-LLA는 통합 모션 어휘, 어휘-지향 증류, 강화학습 파인튜닝을 통합하여 자유형식 언어에서 물리적으로 실행 가능한 인간형 로봇 제어로의 매핑을 최초로 달성한 중요한 기여이며, 실세계 검증과 명확한 기술 혁신으로 인간-로봇 상호작용 분야의 중대한 진전을 나타낸다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 통합 모션 어휘 기반 언어 처리와 SENTINEL의 flow matching은 자유형식 자연언어 제어의 서로 다른 아키텍처
+- 🏛 기반 연구: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — TextOp의 실시간 스트리밍 명령 처리가 Humanoid-LLA의 자유형식 언어 명령 매핑을 위한 기본 기술
+- 🔗 후속 연구: [[papers/1643_RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with/review]] — RLPF의 텍스트-모션 변환을 Humanoid-LLA의 자유형식 자연언어 처리로 확장한 고도화된 형태
+- 🔄 다른 접근: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — Large Language Action Model과 retargeting-free 언어 제어는 자연언어 기반 휴머노이드 제어의 서로 다른 구현 방식
+- 🔗 후속 연구: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — 언어 기반 전신 제어에서 더 정교한 임베딩 방식을 활용합니다.
+- 🏛 기반 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — GPT-4와 인간형 로봇 연결의 기본 개념을 제공합니다.
+- 🔄 다른 접근: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — SENTINEL의 flow matching 기반 행동 생성과 Humanoid-LLA의 통합 모션 어휘는 언어-행동 변환의 서로 다른 아키텍처
+- 🔗 후속 연구: [[papers/1643_RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with/review]] — Humanoid-LLA의 자유형식 언어 명령 처리가 RLPF의 텍스트-모션 변환을 실용적 자연언어로 확장
+- 🔄 다른 접근: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — physics-guided approach vs free-form language라는 다른 방식의 텍스트 기반 휴머노이드 제어입니다.
+- 🏛 기반 연구: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — 자유형식 언어 명령을 통한 휴머노이드 제어의 기본 개념을 제공한다.
+- 🔗 후속 연구: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — Humanoid-LLA의 자유형식 언어 처리가 TextOp의 스트리밍 명령을 더 유연한 자연언어로 확장
+- 🔗 후속 연구: [[papers/1893_ECHO_Edge-Cloud_Humanoid_Orchestration_for_Language-to-Motio/review]] — LLM 기반 humanoid 명령 체계가 ECHO의 자연어 제어를 더 고도화된 언어 모델로 확장한다.
+- 🏛 기반 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — 자유형식 언어 명령 처리가 GPT-4 기반 휴머노이드 제어의 기반 기술이다.
+- 🏛 기반 연구: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — Free-form language commanding이 HIAER의 의도 추론 및 표현적 동작 생성의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — Free-form language commanding이 hierarchical vision-language planning의 고수준 계획 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1992_Humanoid_Agent_via_Embodied_Chain-of-Action_Reasoning_with_M/review]] — 자유형 언어로 humanoid 명령하기 위한 대형 언어 모델 활용이 Embodied Chain-of-Action reasoning의 기반 기술입니다.
+- 🧪 응용 사례: [[papers/2013_HumanX_Toward_Agile_and_Generalizable_Humanoid_Interaction_S/review]] — free-form language commanding이 HumanX의 generalizable skill learning을 실제 언어 지시 기반 제어로 적용할 수 있게 한다.
+- 🔄 다른 접근: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — HYPERmotion은 강화학습 기반, Commanding Humanoid by Free-form Language는 LLM 기반으로 자연어 명령을 로봇 동작으로 변환하는 서로 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — 자유형식 언어를 통한 휴머노이드 명령의 기본 원리와 대형 언어 모델 활용 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/2081_LeVERB_Humanoid_Whole-Body_Control_with_Latent_Vision-Langua/review]] — 자유 형식 언어를 통한 휴머노이드 명령의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm/review]] — 고유감각 인식 MLLM 대신 자유 형식 언어를 통한 휴머노이드 명령 방식으로 구현화 문제를 다룬다.
+- 🏛 기반 연구: [[papers/2170_Unified_Human-Scene_Interaction_via_Prompted_Chain-of-Contac/review]] — 자유형식 언어 명령이 프롬프트 기반 접촉 체인의 기반 기술이다.

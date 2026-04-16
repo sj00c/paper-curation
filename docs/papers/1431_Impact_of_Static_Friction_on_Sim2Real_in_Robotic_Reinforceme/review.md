@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "정적 마찰이 로봇 강화학습의 Sim2Real 성능에 미치는 영향을 체계적으로 분석하고, Static friction-aware domain randomization을 제안하여 복잡한 지형에서의 로봇 적응 능력을 향상시킨다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Energy-Aware_Reward_Design"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Robotic_Policy_Scaling"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2025_Impact of Static Friction on Sim2Real in Robotic Reinforcement Learning.pdf"
 ---
@@ -89,8 +91,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2025_Impact of Static Friction
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1580_MOSAIC_Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_M/review]] — Static friction-aware domain randomization은 MOSAIC의 sim-to-real gap 해결 방법론과 밀접한 관련이 있다.
-- 🔗 후속 연구: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — 정적 마찰 분석은 복잡한 야외 지형에서의 perceptive navigation 성능 향상에 직접적으로 기여한다.
-- 🔄 다른 접근: [[papers/1317_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — 두 논문 모두 sim-to-real transfer를 다루지만, 하나는 정적 마찰에, 다른 하나는 contrastive representation learning에 초점을 둔다.
-- 🏛 기반 연구: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — 복잡한 야외 지형 탐색에서 정적 마찰 특성 이해는 perceptive navigation의 안전성과 성능 향상에 필수적이다.
-- 🏛 기반 연구: [[papers/1520_Learning_Bipedal_Locomotion_on_Gear-Driven_Humanoid_Robot_Us/review]] — 정적 마찰이 Sim2Real 전이에 미치는 영향 분석이 고기어비 액추에이터 환경에서의 실제 전이 문제 해결에 직접적으로 도움됨
+- 🏛 기반 연구: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — 정적 마찰 분석이 Real-to-Sim-to-Real 프레임워크에서 물리적 현실성을 높이는 핵심 요소로 작용한다.
+- 🔗 후속 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 정적 마찰을 고려한 도메인 랜덤화가 Sim-to-Real 강화학습에서 데스크테라스 조작의 현실 적응성을 크게 개선한다.
+- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 둘 다 시뮬레이션과 현실 간의 격차를 줄이는 데 초점을 맞추지만, 정적 마찰 연구는 물리적 요소를, Re³Sim은 3D 인식에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — SIMPLER의 sim-to-real 평가 프레임워크는 정적 마찰이 성능에 미치는 영향을 측정할 수 있는 기준점을 제공합니다.
+- 🔗 후속 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — 실제 휴머노이드 로코모션 연구는 정적 마찰 분석을 이족 보행 로봇의 실제 환경 적응에 적용합니다.
+- 🔄 다른 접근: [[papers/1368_DiWA_Diffusion_Policy_Adaptation_with_World_Models/review]] — sim2real 문제를 static friction vs world model adaptation의 다른 관점에서 해결하는 접근법입니다.
+- 🏛 기반 연구: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — sim2real에서 friction의 영향 분석을 Forward Dynamics Model 학습에 적용한 실용적 확장이다.
+- 🔄 다른 접근: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — 두 논문 모두 로봇 시뮬레이션의 물리적 정확성을 다루지만 strain gradient와 friction의 다른 측면을 다룬다.
+- 🏛 기반 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 정적 마찰이 Sim2Real에 미치는 영향 연구는 정교한 조작에서 sim-to-real 성공의 핵심 요소를 분석한다.
+- 🔗 후속 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — 정적 마찰 연구는 SIMPLER가 다루지 못한 물리적 파라미터가 sim-to-real 성능에 미치는 구체적 영향을 분석합니다.
+- 🔗 후속 연구: [[papers/1293_A_Distributional_Treatment_of_Real2Sim2Real_for_Object-Centr/review]] — 정적 마찰이 Sim2Real에 미치는 영향 연구를 deformable object에 대한 포괄적인 물리 파라미터 분포 추정으로 확장한 방법론입니다.

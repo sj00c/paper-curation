@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Fast-in-Slow (FiS)는 VLM 기반의 System 2 내부에 System 1 실행 모듈을 매개변수 공유로 통합한 통합 dual-system VLA 모델로, 고속 제어와 추론 능력을 동시에 달성한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_Fast-in-Slow A Dual-System Foundation Model Unifying Fast Manipulation within Slow Reasoning.pdf"
 ---
@@ -90,8 +91,13 @@ Fast-in-Slow (FiS)는 VLM 기반의 System 2 내부에 System 1 실행 모듈을
 
 ## Related Papers
 
-- ⚖️ 반론/비판: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — 단일 모델 내 동적 추론과 dual-system 분리 아키텍처의 계산 효율성 접근법 비교
-- 🔗 후속 연구: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — Fast-in-Slow 구조가 Gemini Robotics의 motion transfer와 embodied thinking 능력으로 확장
-- 🔄 다른 접근: [[papers/1395_FlowPolicy_Enabling_Fast_and_Robust_3D_Flow-based_Policy_via/review]] — 단일 추론 단계 policy 생성과 dual-system 구조의 서로 다른 속도 최적화 접근법
-- 🏛 기반 연구: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — Gemini Robotics의 motion transfer 메커니즘이 dual-system VLA 모델 설계의 기초 아이디어 제공
-- 🔄 다른 접근: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — 계산 효율성 향상을 위해 동적 조기 종료와 dual-system 아키텍처의 서로 다른 접근법
+- 🏛 기반 연구: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — TriVLA의 삼중 시스템 구조가 Fast-in-Slow의 dual-system 설계를 이론적으로 확장한 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — Ground Slow, Move Fast도 dual-system 접근법을 사용하지만 navigation에 특화된 다른 시스템 분리 전략을 제시합니다.
+- 🔗 후속 연구: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — MetaMorph의 universal controller가 Fast-in-Slow의 통합 VLA 모델을 다양한 형태의 로봇으로 확장합니다.
+- 🏛 기반 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy의 단일 추론 단계 정책 생성 기법이 FiS의 System 1 고속 실행 설계 기반이 됨
+- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — RationalVLA와 FiS 모두 dual-system 접근을 취하지만 합리적 추론 vs 속도-정확도 균형에서 다른 초점을 가짐
+- 🏛 기반 연구: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — Fast-in-Slow dual-system foundation model의 개념을 VLN 특화 시스템으로 구체화했다.
+- 🔄 다른 접근: [[papers/1521_RationalVLA_A_Rational_Vision-Language-Action_Model_with_Dua/review]] — RationalVLA와 Fast-in-Slow 모두 dual system 접근법을 사용하지만 안전성과 효율성이라는 다른 목표를 추구합니다.
+- 🔄 다른 접근: [[papers/1509_OpenHelix_A_Short_Survey_Empirical_Analysis_and_Open-Source/review]] — Fast-in-Slow dual-system과 동일한 이중 시스템 접근이지만 OpenHelix는 VLA에 특화된 분석과 구현을 제공한다.
+- 🔗 후속 연구: [[papers/1553_RoBridge_A_Hierarchical_Architecture_Bridging_Cognition_and/review]] — Fast-in-Slow의 dual-system 구조와 RoBridge의 계층적 아키텍처를 결합하면 더 효과적인 인지-실행 통합이 가능하다.
+- 🔄 다른 접근: [[papers/1373_DualVLA_Building_a_Generalizable_Embodied_Agent_via_Partial/review]] — Fast-in-Slow도 추론과 행동의 분리 문제를 다루지만 dual-system 접근법으로 DualVLA와 다른 해결책을 제시합니다.

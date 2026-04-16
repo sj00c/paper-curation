@@ -8,9 +8,9 @@ arxiv: ""
 score: 3.0
 essence: "본 논문은 2018-2025년에 Scopus 데이터베이스에서 수집한 200개의 고인용 논문을 분석하여 cardiovascular disease 연구에서 machine learning 응용의 scientometrics 동향을 제시한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sadjadi_2026_A scientometrics survey of machine learning applications in cardiovascular disease research An anal.pdf"
 ---
@@ -90,14 +90,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sadjadi_2026_A scientometrics survey of 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 사이버보안 분야 기계학습 연구와 달리 심혈관질환 분야의 기계학습 응용에 특화된 과학계량학 분석을 제시한다.
-- 🏛 기반 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 기계학습이 의료 분야에서 게임 체인저 역할을 한다는 관점의 심혈관질환 특화 실증 분석을 제공한다.
-- 🔗 후속 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 기초모델을 활용한 과학적 발견 가속화를 심혈관질환 연구 분야에 구체적으로 적용한 사례 연구로 확장된다.
-- 🏛 기반 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 심혈관질환 연구의 머신러닝 응용 분석에 PubMed 기반 개방형 생의학 과학 지도가 제공하는 분야 매핑이 기반이 됩니다.
-- 🔄 다른 접근: [[papers/1236_Weaning_from_mechanical_ventilation_in_ICU_patients_research/review]] — 심혈관질환의 머신러닝 응용과 ICU 기계환기 이탈 연구가 모두 의학 분야의 서로 다른 영역에서 서지계량학적 분석을 수행합니다.
-- 🏛 기반 연구: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 기계학습 응용의 과학계량학적 조사가 CS-KG 지식그래프 구축의 이론적 배경임
-- 🔄 다른 접근: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 기계학습 응용 분야에서 사이버보안과 전반적 과학계량 조사의 다른 범위 접근법임
-- 🔄 다른 접근: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 기계학습 응용에 대한 과학계량학적 접근을 투어 가이딩 기술에 적용한다
-- 🏛 기반 연구: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — 머신러닝 응용에 대한 포괄적 scientometric 조사가 AI 기반 비즈니스 의사결정 연구의 기술적 배경을 제공한다.
-- 🔄 다른 접근: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 기계학습 응용 연구의 scientometric 분석과 보조기술 연구 분석을 비교하여 서로 다른 기술 도메인의 연구 패턴을 탐구할 수 있다.
-- 🧪 응용 사례: [[papers/1236_Weaning_from_mechanical_ventilation_in_ICU_patients_research/review]] — 동일하게 의학 분야에서 서지계량학적 분석을 수행하지만 심혈관질환의 머신러닝 응용에 특화된 분석을 제공합니다.
+- 🔄 다른 접근: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 발달 조건을 위한 보조 기술의 scientometrics 연구로, 심혈관 질환과 다른 의료 분야에서 기술 응용을 분석하는 대안적 접근법입니다.
+- 🔗 후속 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 사이버보안에서 머신러닝의 새로운 트렌드를 다룬 연구로, 심혈관 연구의 머신러닝 응용을 다른 분야로 확장할 수 있습니다.
+- 🏛 기반 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 인공지능의 사용량과 잠재적 이익 정량화가 심혈관질환 연구에서 기계학습 응용 동향 분석의 배경을 제공한다.
+- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 심혈관질환과 건물 개보수 분야는 기계학습 응용에 대한 서로 다른 도메인의 과학계량학적 접근이다.
+- 🧪 응용 사례: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — Open Catalyst 데이터셋과 커뮤니티 챌린지가 심혈관질환 기계학습 연구의 데이터 기반 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 기계학습 응용의 과학계량학적 조사와 AI 사용의 정량적 측정은 모두 AI의 과학 연구 영향을 체계적으로 분석한다.
+- 🏛 기반 연구: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 기계학습 응용 분야의 사이언토메트릭스 조사 방법론을 고분자 과학 분야에 적용할 수 있는 방법론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — 기계학습 응용의 과학계량학적 조사를 통해 생의학 과학 지도의 구체적 활용 방안을 제시한다.
+- 🏛 기반 연구: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 머신러닝 응용 분야 과학계량 조사가 투어 가이딩 기술(AI, 로봇)의 기술적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 사이버보안 분야의 기계학습 응용에 대한 scientometric 조사가 의료 AI 모델의 보안성과 신뢰성 평가에 필수적인 방법론적 통찰을 제공한다.
+- 🔄 다른 접근: [[papers/1150_Characterization_of_a_Workload_Generator_for_Content-based_P/review]] — 기계학습 응용의 과학계량학적 분석과 유사한 접근법을 시스템 성능 분석에 적용한다.

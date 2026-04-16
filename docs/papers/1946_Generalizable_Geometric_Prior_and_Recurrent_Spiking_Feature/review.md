@@ -1,3 +1,25 @@
+---
+title: "1946_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature"
+authors:
+  - "Xuetao Li"
+  - "Wenke Huang"
+  - "Mang Ye"
+  - "Jifeng Xuan"
+  - "Bo Du"
+date: "2026.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "RGMP-S는 기하학적 선행 정보와 spiking 신경망을 결합하여 인간형 로봇 조작을 위한 고수준 의미론적 추론과 저수준 동작 생성을 동시에 달성하는 프레임워크다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2026_Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation.pdf"
+---
+
 # Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation
 
 > **저자**: Xuetao Li, Wenke Huang, Mang Ye, Jifeng Xuan, Bo Du, Sheng Liu, Miao Li | **날짜**: 2026-01-13 | **URL**: [https://arxiv.org/abs/2601.09031](https://arxiv.org/abs/2601.09031)
@@ -66,3 +88,14 @@ RGMP-S는 기하학적 선행 정보와 spiking 신경망을 결합하여 인간
 - Overall: 4/5
 
 **총평**: RGMP-S는 기하학적 추론과 spiking neural network을 창의적으로 결합하여 인간형 로봇 조작에서 기술 가능성 검증과 데이터 효율성이라는 두 가지 근본적 도전을 동시에 해결한다. 다양한 실제 로봇 플랫폼에서의 광범위한 검증과 19% 성능 향상, 5배 데이터 효율성 개선은 높은 실용적 가치를 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — 둘 다 기하학적 정보와 정책 학습을 결합하지만 RGMP-S는 spiking 신경망을, RGMP는 multimodal policy를 사용한다.
+- 🏛 기반 연구: [[papers/2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm/review]] — proprioception-aware embodied planning이 RGMP-S의 기하학적 선행 정보 활용에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2023_InEKFormer_A_Hybrid_State_Estimator_for_Humanoid_Robots/review]] — RGMP-S의 spiking 기반 저전력 추론을 InEKFormer의 hybrid state estimation과 결합하면 더 효율적인 휴머노이드 인지 시스템이 가능하다.
+- 🧪 응용 사례: [[papers/1872_Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environmen/review]] — RGMP-S의 geometric prior와 spiking 네트워크를 cluttered environment에서의 dexterous control에 적용하여 더 안전하고 효율적인 조작이 가능하다.
+- 🏛 기반 연구: [[papers/1871_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — multi-fingered robot manipulation의 smart lens 기반 dexterity 연구가 RGMP-S의 고수준 의미론적 추론과 저수준 동작 생성의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — RGMP-S의 기하학적 선행 정보 활용을 dynamics-aware world model과 결합하여 더 강건한 humanoid 조작 제어로 발전시켰습니다.
+- 🏛 기반 연구: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — RGMP의 기하학적 추론이 Generalizable Geometric Prior의 recurrent spiking feature 방법론을 휴머노이드 조작에 적용한 것이다
+- 🏛 기반 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — RGMP-S의 기하학적 선행 정보와 multimodal policy 연구가 HAIC의 dynamics-aware world model 설계에서 필요한 기하학적 이해의 기초를 제공합니다.

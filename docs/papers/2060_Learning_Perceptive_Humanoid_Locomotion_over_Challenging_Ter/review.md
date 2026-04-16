@@ -1,3 +1,25 @@
+---
+title: "2060_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter"
+authors:
+  - "Wandong Sun"
+  - "Baoshi Cao"
+  - "Long Chen"
+  - "Yongbo Su"
+  - "Yang Liu"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇이 소음이 있는 센서 데이터로부터 지형을 인식하고 거친 지형을 안정적으로 보행할 수 있도록, teacher-student distillation과 variational information bottleneck을 결합한 세계 모델 기반 방법을 제안한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Teacher-Student_Policy_Distillation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sun et al._2025_Learning Perceptive Humanoid Locomotion over Challenging Terrain.pdf"
+---
+
 # Learning Perceptive Humanoid Locomotion over Challenging Terrain
 
 > **저자**: Wandong Sun, Baoshi Cao, Long Chen, Yongbo Su, Yang Liu, Zongwu Xie, Hong Liu | **날짜**: 2025-03-02 | **URL**: [https://arxiv.org/abs/2503.00692](https://arxiv.org/abs/2503.00692)
@@ -66,3 +88,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 teacher-student distillation과 world model 기반 센서 디노이징을 효과적으로 결합하여 인간형 로봇의 실제 환경 보행 성능을 크게 향상시켰다. 2 km의 다양한 지형 횡단 성과와 체계적인 방법론은 높은 기술적 가치를 가지며, 실제 로봇 배포를 위한 중요한 진전을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1658_RPL_Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challe/review]] — 거친 지형에서의 인식 기반 휴머노이드 보행을 다른 접근법으로 해결한다.
+- 🔗 후속 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 실시간 지형 인식과 적응적 보행을 결합한 확장된 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2080_Let_Humanoids_Hike_Integrative_Skill_Development_on_Complex/review]] — 복잡한 산길 환경에서 시각 인식과 보행 제어를 통합하는 유사한 문제를 다룬다.
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — sim-to-real 전이를 위한 대조적 표현 학습이 지형 인식 보행의 기반 제공
+- 🔗 후속 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — MoE 기반 로봇 제어의 sim-to-real 예측 가능성을 지형 보행으로 확장
+- 🔄 다른 접근: [[papers/2056_Learning_Humanoid_Locomotion_over_Challenging_Terrain/review]] — 거친 지형에서의 지각적 보행에서 teacher-student는 증류 방법을, PIM은 내부 모델 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 지각적 보행이 야생에서의 확장 가능한 파쿠르 프레임워크로 확장되어 더 극한 환경 적응을 보여준다.
+- 🧪 응용 사례: [[papers/1791_Advancing_Humanoid_Locomotion_Mastering_Challenging_Terrains/review]] — DWL의 복잡한 지형 마스터 기술이 perceptive locomotion over challenging terrain의 핵심 방법론입니다.
+- 🔄 다른 접근: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Hiking in the Wild의 end-to-end RL과 perceptive locomotion은 모두 도전적인 지형에서의 humanoid 이동을 다루되 서로 다른 인식 전략을 사용합니다.
+- 🔄 다른 접근: [[papers/2056_Learning_Humanoid_Locomotion_over_Challenging_Terrain/review]] — 도전적 지형에서의 지각적 locomotion에서 내부 모델 기반 접근법 대신 직접적인 지각 학습 방법을 비교할 수 있다.

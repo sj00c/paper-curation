@@ -1,3 +1,25 @@
+---
+title: "2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En"
+authors:
+  - "Yiyang Shao"
+  - "Xiaoyu Huang"
+  - "Bike Zhang"
+  - "Qiayuan Liao"
+  - "Yuman Gao"
+date: "2025.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "자연언어 명령을 humanoid robot의 전신 제어 동작으로 직접 변환하는 end-to-end 학습 프레임워크를 제시한다. Reinforcement learning으로 학습한 teacher policy와 CVAE 기반 student policy를 결합하여 언어-행동의 통합 latent space를 구성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shao et al._2025_LangWBC Language-directed Humanoid Whole-Body Control via End-to-end Learning.pdf"
+---
+
 # LangWBC: Language-directed Humanoid Whole-Body Control via End-to-end Learning
 
 > **저자**: Yiyang Shao, Xiaoyu Huang, Bike Zhang, Qiayuan Liao, Yuman Gao, Yufeng Chi, Zhongyu Li, Sophia Shao, Koushil Sreenath | **날짜**: 2025-04-30 | **URL**: [https://arxiv.org/abs/2504.21738](https://arxiv.org/abs/2504.21738)
@@ -65,3 +87,20 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid 전신 제어의 오랜 난제인 언어-행동 갭을 end-to-end learning으로 직접 해결하며, CVAE 기반의 unified latent space 구성으로 동작 다양성과 부드러운 전환을 동시에 달성한 점이 우수하다. 실제 로봇 검증과 강건성 입증을 통해 현실 적용 가능성을 보였으나, 데이터셋 의존성과 다양한 플랫폼 일반화에 대한 추가 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — 언어 명령을 휴머노이드 제어로 변환하는데 있어 end-to-end 학습 대신 retargeting-free 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 자유형식 언어를 통한 휴머노이드 명령의 기본 원리와 대형 언어 모델 활용 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — CVAE 기반 언어-행동 통합을 실시간 텍스트 기반 전신 제어 시스템으로 확장하여 더 즉각적인 반응성을 구현할 수 있다.
+- 🔄 다른 접근: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 언어-행동 모델에서 SENTINEL은 완전 end-to-end를, LangWBC는 CVAE 기반 접근 사용
+- 🧪 응용 사례: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 텍스트 기반 휴머노이드 모션 제어의 실시간 상호작용 적용 사례
+- 🔄 다른 접근: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — 둘 다 언어 기반 휴머노이드 제어이지만 LangWBC는 end-to-end 전신 제어, EMOTION은 감정 표현 모션 생성 중심
+- 🏛 기반 연구: [[papers/2170_Unified_Human-Scene_Interaction_via_Prompted_Chain-of-Contac/review]] — Chain-of-Contact 기반 통합 인간-장면 상호작용이 LangWBC의 언어 기반 전신 제어에 상황 인식 접촉 계획 기반 제공
+- 🔗 후속 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — Being-0의 언어 기반 계획이 LangWBC의 언어 지향 전신 제어로 확장되어 더 세밀한 동작 제어를 달성할 수 있다
+- 🔗 후속 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 언어 기반 전신 제어에서 더 정교한 임베딩 방식을 활용합니다.
+- 🔄 다른 접근: [[papers/1893_ECHO_Edge-Cloud_Humanoid_Orchestration_for_Language-to-Motio/review]] — LangWBC가 language-directed whole-body control을 다른 아키텍처로 구현하여 ECHO와 상호 보완적인 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — 언어 지향 전신 제어가 일반적인 휴머노이드 제어의 구체적인 확장 구현이다.
+- 🔗 후속 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — LangWBC의 언어 지향 전신 제어가 BiBo의 GPT-4 embodied instruction을 더욱 직접적인 제어 방식으로 발전시켰습니다.
+- 🔗 후속 연구: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — LangWBC의 언어 지향 whole-body 제어를 HYPERmotion이 hybrid behavior planning으로 확장하여 더 복잡한 자율 작업을 처리합니다.
+- 🔗 후속 연구: [[papers/2025_INTENTION_Inferring_Tendencies_of_Humanoid_Robot_Motion_Thro/review]] — 언어 지향 휴머노이드 제어에서 end-to-end 학습을 통한 발전된 접근

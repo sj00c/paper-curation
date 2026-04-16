@@ -1,3 +1,25 @@
+---
+title: "2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae"
+authors:
+  - "Arturo Flores Alvarez"
+  - "Fatemeh Zargarbashi"
+  - "Havel Liu"
+  - "Shiqi Wang"
+  - "Liam Edwards"
+date: "2025.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "미적 설계 제약이 있는 엔터테인먼트 휴머노이드 로봇 Cosmo를 위해 Adversarial Motion Priors (AMP)를 기반으로 한 강화학습 보행 시스템을 제시하며, 극단적인 질량 분포와 움직임 제약 하에서도 자연스러운 보행 행동을 학습할 수 있음을 보여준다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Alvarez et al._2025_Learning to Walk in Costume Adversarial Motion Priors for Aesthetically Constrained Humanoids.pdf"
+---
+
 # Learning to Walk in Costume: Adversarial Motion Priors for Aesthetically Constrained Humanoids
 
 > **저자**: Arturo Flores Alvarez, Fatemeh Zargarbashi, Havel Liu, Shiqi Wang, Liam Edwards, Jessica Anz, Alex Xu, Fan Shi, Stelian Coros, Dennis W. Hong | **날짜**: 2025-09-06 | **URL**: [https://arxiv.org/abs/2509.05581](https://arxiv.org/abs/2509.05581)
@@ -66,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 엔터테인먼트 로봇의 미적 설계 제약이라는 실제적이고 새로운 도전 문제를 다루면서 AMP 기반 학습을 성공적으로 적용한 의미 있는 연구이다. 극단적인 질량 분포와 제한된 감각 조건에서의 안정적인 sim-to-real 보행 달성은 인상적이지만, 특정 로봇 플랫폼에 대한 높은 맞춤화와 실험의 범위 제한이 일반화 가능성을 감소시킨다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — Adversarial Motion Priors의 원리를 제공하며, 제약이 있는 엔터테인먼트 로봇의 자연스러운 보행 학습에 직접 활용된다.
+- 🔄 다른 접근: [[papers/2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — 애니메이션 캐릭터의 물리적 구현이라는 같은 목표를 다른 기계설계와 제어 방식으로 접근한 사례이다.
+- 🔗 후속 연구: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 깊이 기반 지각을 통해 극한 제약 조건에서도 환경 적응 보행을 가능하게 하는 확장된 방법론이다.
+- 🧪 응용 사례: [[papers/1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — 표현적 휴머노이드 전신 제어 기술을 엔터테인먼트 로봇의 미적 보행에 실제 적용한 사례이다.
+- 🔄 다른 접근: [[papers/1882_Do_You_Have_Freestyle_Expressive_Humanoid_Locomotion_via_Aud/review]] — 자율 휴머노이드 보행을 통한 표현적 보행과 미적 제약 하 자연스러운 보행이라는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 두 논문 모두 AMP 기반이지만 Cosmo는 미적 제약에, 항공 휴머노이드는 다중 모드 전환에 중점을 둔다.
+- 🔗 후속 연구: [[papers/1649_Robot_Crash_Course_Learning_Soft_and_Stylized_Falling/review]] — 제약된 환경에서의 자연스러운 운동이 부드럽고 스타일화된 낙상 학습으로 확장되어 더 복잡한 제약 처리를 보여준다.
+- 🔗 후속 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 의상 착용 캐릭터를 위한 adversarial motion prior 확장이 AMP의 stylized character control 응용 범위를 넓힌다
+- 🔄 다른 접근: [[papers/2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — 애니메이션 캐릭터의 물리적 구현이라는 같은 도전을 다른 캐릭터와 기계설계로 접근한 유사 사례이다.

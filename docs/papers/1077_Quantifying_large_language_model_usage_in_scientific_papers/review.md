@@ -13,7 +13,8 @@ score: 4.0
 essence: "2020년 1월부터 2024년 9월까지 112만여 개의 학술논문을 분석하여 대규모언어모델(LLM, Large Language Model)의 사용 비율을 단어빈도 변화 기반 모집단 수준 프레임워크로 정량화한 연구이다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Research_Evaluation_and_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_Quantifying large language model usage in scientific papers.pdf"
 ---
@@ -88,10 +89,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_Quantifying large lang
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM 시대 과학 출판 현황을 정량적으로 측정하여 과학 생산성 변화를 구체화함
-- 🔄 다른 접근: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — LLM 사용 탐지에서 단어 빈도 변화와 문체적 특징의 다른 접근법임
-- 🏛 기반 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM과 책임감 있는 연구 평가의 이론적 틀이 LLM 사용 정량화의 기반이 됨
-- 🔗 후속 연구: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 인용 추천 시스템에 LLM 사용 패턴을 통합하면 더 정확한 추천이 가능할 것임
-- 🔗 후속 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM이 과학 논문 생산성에 미치는 영향을 정량적으로 측정하여 AI의 학술 활용 규모를 구체화했다.
-- 🔗 후속 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 과학 논문에서 LLM 사용을 정량화하는 보완적 접근법으로 AI 영향 측정의 다각적 관점을 제공한다.
-- 🏛 기반 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — 과학 논문에서 대규모 언어 모델 사용량 정량화가 연구 새로움 감소 분석의 기초가 된다
+- 🔗 후속 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — LLM 사용 정량화를 AI 전반의 과학 연구 활용도와 잠재적 이익 측정으로 확장한다.
+- 🏛 기반 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학에서 성별 격차 측정 방법론이 LLM 사용도 정량화의 방법론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 가속화된 논문 작성이 과학 출판 생태계에 미치는 부정적 영향의 실증적 근거를 제공한다.
+- 🔗 후속 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM 사용이 연구 참신성에 미치는 영향을 구체적으로 정량화한 후속 연구다.
+- 🏛 기반 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM 사용 정량화 방법론이 생산성 변화 분석의 측정 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — 과학 논문에서 LLM 사용량을 정량화하여 LLM이 과학계량학에 미치는 실제 영향을 측정한다.
+- 🔗 후속 연구: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — 과학 논문에서 LLM 사용 정량화가 연방 연구 자금에 미치는 영향 분석의 방법론적 기초를 제공한다.
+- 🧪 응용 사례: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — LLM 사용 정량화 연구의 실제 영향을 출판 시스템 관점에서 해석한다.
+- 🏛 기반 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — 과학 논문에서 LLM 사용 정량화가 ChatGPT 연구 평가의 스타일 편향 분석에 방법론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — OLMo 같은 공개 언어모델이 실제 과학논문에서 어떻게 사용되는지 정량적으로 분석한다.
+- 🏛 기반 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 과학 논문에서의 대형 언어 모델 사용량 정량화가 AI의 과학 연구 활용도를 측정하는 구체적 방법론을 제공한다.
+- 🧪 응용 사례: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — 과학 논문에서 대형 언어모델 사용 정량화 연구가 LLM의 연구 새로움 감소 효과를 실증적으로 측정하는 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 과학 논문에서 대형언어모델 사용량 정량화와 오픈 연구 인프라 영향 평가 모두 과학 연구의 새로운 도구 활용을 측정하기 때문
+- 🏛 기반 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 과학 논문에서 대형언어모델 사용량 정량화 연구가 AI 생성 연구 보고서 평가의 필요성을 실증적으로 뒷받침하기 때문
+- 🏛 기반 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — LLM 사용량 정량화 연구가 제공하는 과학 논문에서의 AI 활용 현황 이해가 LLM-native artifacts 설계에 필수적인 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 과학 논문에서 LLM 사용 정량화 연구가 LLM 기반 평가의 기초 데이터를 제공합니다.
+- 🏛 기반 연구: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 과학 논문에서 LLM 사용량 정량화 연구가 RAG 기반 연구 평가 시스템 설계에 필요한 기초 데이터를 제공한다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 Vision-Language-Action(VLA) 모델에 시각적 chain-of-thought 추론을 도입하여, 로봇이 직접 행동을 생성하기 전에 미래의 부분 목표 이미지를 자동회귀적으로 생성하도록 함으로써 로봇 조작 성능을 향상시킨다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2025_CoT-VLA Visual Chain-of-Thought Reasoning for Vision-Language-Action Models.pdf"
 ---
@@ -91,11 +93,22 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2025_CoT-VLA Visual Chain-of
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — Robotic Control via Embodied Chain-of-Thought는 CoT-VLA와 유사한 구체화된 추론이지만 로봇 제어에 특화된 체인-오브-사고트 추론을 사용한다
-- 🔗 후속 연구: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — ThinkBot은 CoT-VLA의 시각적 체인-오브-사고트를 사고 체인이 있는 구체화된 지시 따르기로 확장한다
-- 🏛 기반 연구: [[papers/1528_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — Reflective Planning은 CoT-VLA의 시각적 추론에 필요한 다단계 계획의 이론적 기반을 제공한다
-- 🏛 기반 연구: [[papers/1503_OneTwoVLA_A_Unified_Vision-Language-Action_Model_with_Adapti/review]] — CoT-VLA의 visual chain-of-thought 추론이 OneTwoVLA의 adaptive reasoning 메커니즘의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — 비전-언어 추론의 Chain-of-Thought 기반에서 시각 잠재 계획이 추론과 행동의 연결고리를 제공한다.
-- 🔄 다른 접근: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — ThinkBot의 사고 체인 추론과 CoT-VLA의 visual chain-of-thought는 서로 다른 모달리티에서 단계별 추론을 구현하는 접근법
-- 🔄 다른 접근: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — VLA 모델의 reasoning 능력 향상에서 visual chain-of-thought와 visual trace prompting이라는 서로 다른 접근법을 사용한다.
-- 🏛 기반 연구: [[papers/1552_LEGO_Latent-space_Exploration_for_Geometry-aware_Optimizatio/review]] — 비전-언어-행동 모델의 의도 인식 방법론이 LEGO의 인간 동작 데이터 기반 설계 최적화에 핵심 이론적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — embodied chain-of-thought reasoning이 visual CoT의 로봇 적용을 위한 핵심 이론적 기반
+- 🔄 다른 접근: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — visual chain-of-thought와 system-2 thinking의 서로 다른 VLA 추론 능력 향상 접근법
+- 🔗 후속 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — CoT-VLA의 시각적 chain-of-thought와 Cosmos-Reason1의 물리적 추론은 VLA 모델의 단계별 추론 능력을 상호 보완적으로 강화한다.
+- 🔄 다른 접근: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — CoT-VLA의 미래 목표 이미지 생성과 Diffusion-VLA의 reasoning injection은 VLA 모델 추론 통합의 서로 다른 접근 방식이다.
+- 🔗 후속 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — Visual CoT의 순차적 추론 개념이 Chain-of-Action의 역방향 궤적 모델링에 추론 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — Reflective Planning의 multi-stage 추론 개념이 CoT-VLA의 시각적 chain-of-thought 구조의 기초가 됩니다.
+- 🔗 후속 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — Cosmos-Reason1의 물리적 상식 추론과 CoT-VLA의 시각적 chain-of-thought는 모두 VLA 모델의 추론 능력 강화를 위한 보완적 접근법이다.
+- 🔗 후속 연구: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — visual reasoning에서 spatial relationship을 활용한 접근법을 chain-of-thought로 확장한 연구입니다.
+- 🔄 다른 접근: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — CoT-VLA의 visual chain-of-thought와 EmbodiedVSR의 dynamic scene graph-guided reasoning은 VLA에서 추론 과정을 서로 다르게 구조화한다.
+- 🔗 후속 연구: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — CoT-VLA의 시각적 추론 체인을 확장하여 Set-of-Mark과 Trace-of-Mark로 더 정교한 시공간 추론을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — 둘 다 시각적 추론 체인을 활용하지만, MineDreamer는 상상 기반 계획을, CoT-VLA는 추론 체인 기반 행동 생성에 집중한다.
+- 🏛 기반 연구: [[papers/1503_OneTwoVLA_A_Unified_Vision-Language-Action_Model_with_Adapti/review]] — visual chain-of-thought reasoning의 기본 이론을 제공하여 OneTwoVLA의 adaptive reasoning 메커니즘 설계에 필요한 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — CoT-VLA가 시각적 chain-of-thought에 중점을 두는 반면, Embodied CoT는 행동 예측을 위한 전체적인 embodied reasoning 과정을 다룬다.
+- 🔄 다른 접근: [[papers/1556_RT-H_Action_Hierarchies_Using_Language/review]] — CoT-VLA는 RT-H와 유사하게 중간 추론 단계를 사용하지만 시각적 사고 체인을 활용하는 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — Vision-Language-Action에서 visual chain-of-thought reasoning의 기반을 제시합니다.
+- 🔗 후속 연구: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — 시각적 사고 체인 추론을 VLA 모델에 통합하여 ThinkBot의 사고 체인 추론을 시각 도메인으로 확장한 연구입니다.
+- 🔄 다른 접근: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — 둘 다 VLA 모델의 추론 능력 향상을 목표로 하지만 CoT-VLA는 Chain-of-Thought에, TraceVLA는 visual trace에 집중합니다.
+- 🔄 다른 접근: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — VeBrain과 CoT-VLA는 모두 MLLM의 시각적 추론을 로봇 제어에 활용하지만 통합 vs 연쇄 사고 접근이 다릅니다.
+- 🏛 기반 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — Visual chain-of-thought의 순차적 추론 개념이 Chain-of-Action의 역방향 궤적 모델링에 영감을 제공합니다.

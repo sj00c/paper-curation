@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Large Language Model(LLM)을 활용하여 자연언어 및 시각적 지시사항을 로봇 조작 작업의 순차적 행동으로 매핑하는 Instruct2Act 프레임워크를 제안한다. SAM과 CLIP 같은 기초 모델들을 API로 활용하여 인식, 계획, 행동 루프를 구현하는 Python 프로그램을 생성한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Automated_Policy_Evaluation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Robot_Foundation_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2023_Instruct2Act Mapping Multi-modality Instructions to Robotic Actions with Large Language Model.pdf"
 ---
@@ -89,7 +91,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2023_Instruct2Act Mapping M
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 자연언어를 로봇 행동으로 변환하는 서로 다른 접근 방식으로, API 활용과 코드 생성의 차이를 보여준다.
-- 🔗 후속 연구: [[papers/1416_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — 언어 지시를 로봇 행동으로 변환하는 과정에서 LLM의 인터랙티브 환경 활용이 공통적이다.
-- 🧪 응용 사례: [[papers/1512_LapSurgie_Humanoid_Robots_Performing_Surgery_via_Teleoperate/review]] — PaLM-E의 multimodal language model이 Instruct2Act의 멀티모달 지시사항 처리에 실용적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — multi-modal instruction mapping의 구체적 구현이 language-conditioned manipulation의 실제 적용을 보여준다
+- 🔄 다른 접근: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — 둘 다 LLM 기반 로봇 제어이지만 Instruct2Act는 API 활용에, Inner Monologue는 환경 피드백에 집중한다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — LLM 코드 생성을 로봇 제어에 활용하는 기본 아이디어가 Instruct2Act의 Python 프로그램 생성에 적용되었다.
+- 🔗 후속 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — LLM을 통한 로봇 행동 계획을 corrective planning으로 더 발전시켜 오류 수정 능력을 추가했다.
+- 🏛 기반 연구: [[papers/1506_Open-World_Object_Manipulation_using_Pre-trained_Vision-Lang/review]] — Open-World Object Manipulation의 기본 개념을 LLM과 foundation model API로 구현하는 구체적 프레임워크를 제시한다.
+- 🧪 응용 사례: [[papers/1569_Segment_Anything/review]] — Segment Anything을 로봇 조작의 객체 인식 API로 활용하여 multimodal instruction을 action으로 매핑한다.
+- 🔄 다른 접근: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — SayCan과 Instruct2Act 모두 언어 지시를 로봇 행동으로 변환하지만 affordance 기반 vs API 호출 방식의 차이가 있음
+- 🏛 기반 연구: [[papers/1422_Hi_Robot_Open-Ended_Instruction_Following_with_Hierarchical/review]] — Instruct2Act의 multi-modal instruction mapping을 계층적 VLM 구조로 발전시킨 확장 연구이다.
+- 🔄 다른 접근: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — 둘 다 LLM을 로봇 제어에 활용하지만 Inner Monologue는 환경 피드백에, Instruct2Act는 API 기반 실행에 집중한다.
+- 🔄 다른 접근: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — Instruct2Act는 VIMA와 같은 다중모달 명령을 로봇 행동으로 매핑하지만 다른 아키텍처를 사용한다.
+- 🔄 다른 접근: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — 둘 다 multimodal instruction을 로봇 행동으로 매핑하지만 IKER는 keypoint 기반 reward에, Instruct2Act는 직접적인 action mapping에 중점을 둡니다.
+- 🧪 응용 사례: [[papers/1304_ALFRED_A_Benchmark_for_Interpreting_Grounded_Instructions_fo/review]] — Instruct2Act은 ALFRED와 같은 벤치마크에서 평가될 수 있는 multi-modal instruction mapping의 구체적 구현입니다.

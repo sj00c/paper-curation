@@ -1,3 +1,24 @@
+---
+title: "2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b"
+authors:
+  - "Masaki Murooka"
+  - "Iori Kumagai"
+  - "Mitsuharu Morisawa"
+  - "Fumio Kanehiro"
+date: "2025.08"
+doi: "10.48550/arXiv.2508.11275"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 운동 생성 비용을 줄이기 위해 미분 가능한 Reachability Map을 학습하는 방법을 제안하며, 이를 연속 최적화 제약 조건으로 활용하여 발디딤, 다중 접촉, 조작 운동 계획을 효율적으로 해결한다."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Manipulation_Reasoning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Murooka et al._2025_Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation.pdf"
+---
+
 # Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation
 
 > **저자**: Masaki Murooka, Iori Kumagai, Mitsuharu Morisawa, Fumio Kanehiro | **날짜**: 2025-08-15 | **DOI**: [10.48550/arXiv.2508.11275](https://doi.org/10.48550/arXiv.2508.11275)
@@ -58,3 +79,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 미분 가능한 reachability map의 개념을 명확히 정의하고 학습 기반으로 구현하여, 기존의 이산 map과 근사 convex 표현의 한계를 극복하는 우수한 기여를 한다. 휴머노이드 운동 계획의 효율성을 실질적으로 향상시킬 수 있는 실용적인 방법론이지만, 고차원 공간과 다중 제약 조건에서의 확장성 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — 미분 가능한 도달성 맵과 참조 자유 샘플링 기반 모델 예측 제어는 모두 최적화 기반 제어이지만 서로 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor/review]] — 비용 매칭 모델 예측 제어가 도달성 맵 기반 최적화의 확장된 형태이다.
+- 🏛 기반 연구: [[papers/1691_Stabilizing_Humanoid_Robot_Trajectory_Generation_via_Physics/review]] — 물리 유도 궤적 안정화가 최적화 기반 인간형 모션 생성의 기반이다.
+- 🧪 응용 사례: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 미분 가능한 도달성 맵을 박스 조작 계획에 적용한 구체적 사례
+- 🔗 후속 연구: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 휴머노이드 운동 계획을 실제 환경 상호작용으로 확장한 발전된 접근
+- 🔗 후속 연구: [[papers/1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — 미분 가능한 도달성 맵을 활용한 최적화가 3D diffusion 정책 기반의 일반화 가능한 조작으로 확장될 수 있다.
+- 🧪 응용 사례: [[papers/2055_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — 최적화 기반 운동 계획에서 도출된 효율적인 제약 조건이 정확한 end-effector 추적을 요구하는 물체 집기 작업에 직접 적용된다.
+- 🏛 기반 연구: [[papers/1702_Task_and_Motion_Planning_for_Humanoid_Loco-manipulation/review]] — 휴머노이드의 다중 접촉 운동 계획을 위한 작업 및 동작 계획의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2055_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — 도달성 맵 기반 최적화가 end-effector 추적의 효율적인 운동 계획에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto/review]] — Learning differentiable reachability maps가 Opt2Skill의 optimization-based trajectory generation에서 동역학적 실현 가능성 보장의 이론적 기반을 제공합니다.

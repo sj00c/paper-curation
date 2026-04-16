@@ -11,7 +11,9 @@ score: 4.0
 essence: "65백만 개 이상의 논문, 특허, 소프트웨어 제품 분석을 통해 소규모 팀은 과학기술을 혁신(disrupt)하고 대규모 팀은 기존 아이디어를 발전(develop)시킨다는 것을 입증했다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2019_Large teams develop and small teams disrupt science and technology.pdf"
 ---
@@ -85,12 +87,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2019_Large teams develop and s
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학기술의 혁신성 감소 현상과 팀 규모별 역할 분화를 연결하여 혁신 생태계의 변화를 종합적으로 분석한다.
-- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 생산에서 팀의 지배력 증가 현상이 팀 규모별 기능 분화에 미치는 영향의 이론적 기반을 제공한다.
-- 🧪 응용 사례: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 성별 다양성이 과학적 발견에 미치는 영향을 팀 규모별로 분석하여 최적의 팀 구성 전략을 도출할 수 있다.
-- 🔗 후속 연구: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식 부담으로 인한 팀 연구 증가를 대형 팀과 소형 팀이 과학 발전에 미치는 차별적 영향으로 확장하여 분석했다.
-- 🔗 후속 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 기반 연구의 우세를 대형 팀과 소형 팀이 각각 다른 방식으로 과학 발전에 기여한다는 세분화된 분석으로 확장했다.
-- 🔄 다른 접근: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 팀 크기에 따른 지식 생산 방식의 차이를 대규모 팀과 소규모 팀의 역할 분화로 설명한다.
-- 🔗 후속 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 대규모 팀과 소규모 팀의 혁신 패턴을 비전형적 조합의 관점에서 확장하여 분석한다
-- 🏛 기반 연구: [[papers/977_Introducing_multiverse_analysis_to_bibliometrics_The_case_of/review]] — 팀 규모와 과학적 파괴성의 관계에 대한 원본 연구로서 다중우주분석의 검증 대상이 되는 핵심 이론을 제공한다.
-- 🏛 기반 연구: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 투어 가이딩 기술의 영향을 분석하기 위해 대규모 팀과 소규모 팀이 기술 발전에 미치는 차별적 효과를 이해해야 한다.
+- 🔗 후속 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 크기와 지식 생산 간의 관계를 더 깊이 탐구하여 팀 규모가 과학적 혁신에 미치는 영향을 확장 분석한다.
+- 🔄 다른 접근: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 팀 구성에서 규모 대신 성별 다양성이 혁신적 연구 성과에 미치는 영향을 다른 관점에서 조명한다.
+- 🔗 후속 연구: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 원격 협업 환경에서도 소규모 팀의 혁신적 아이디어 융합 능력이 제한된다는 것을 보여주어 팀 규모 이론을 보완한다.
+- 🏛 기반 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학기술 분야에서 혁신성(disruptiveness)이 시간에 따라 감소하는 현상의 근본적 증거를 제공한다.
+- 🏛 기반 연구: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 대규모 팀과 소규모 팀의 차별화된 역할은 실패와 성공의 동역학이 팀 구성에 따라 다르게 나타날 수 있음을 시사합니다.
+- 🔗 후속 연구: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 대규모 팀과 소규모 팀의 차이에 더해 물리적 거리가 혁신성에 미치는 영향을 추가로 분석한다.
+- 🔗 후속 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 대규모 팀과 소규모 팀의 차별적 역할 분석은 팀 기반 지식 생산의 증가가 혁신의 성격에 미치는 영향을 더 자세히 규명합니다.
+- 🧪 응용 사례: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 대규모 팀과 소규모 팀의 혁신 방식 차이가 인간-AI 협력에서 팀 구성 전략에 실용적 시사점을 제공하기 때문
+- 🏛 기반 연구: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 대규모 팀과 소규모 팀의 과학 발전 메커니즘 차이를 이해하여, 인간 중심 AI가 포착해야 할 과학적 발견의 사회적 역학을 제공한다.
+- 🔗 후속 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 대규모 팀과 소규모 팀의 혁신 패턴 차이가 혁신성 감소 현상의 팀 구성 요인을 설명한다.
+- 🏛 기반 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 협력 네트워크의 진화가 과학적 발견과 기술 혁신에 미치는 영향을 이해하는 기초를 제공한다.
+- 🏛 기반 연구: [[papers/977_Introducing_multiverse_analysis_to_bibliometrics_The_case_of/review]] — 대규모 팀은 개발하고 소규모 팀은 파괴적 연구를 한다는 원본 연구로, 다중우주분석의 검증 대상이 되는 기초 연구입니다.
+- 🏛 기반 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 사회복지 분야의 협력 증대와 팀 규모 변화를 과학기술에서 대규모 팀의 역할 이론으로 설명할 수 있다.
+- 🏛 기반 연구: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 대형팀과 소규모팀의 과학기술 발전 역할이 생명공학 연구 전환의 배경을 설명합니다.

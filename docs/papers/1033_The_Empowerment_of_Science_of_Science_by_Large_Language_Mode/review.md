@@ -13,7 +13,9 @@ score: 3.0
 essence: "대규모언어모델(LLM)의 핵심 기술(프롬프트 엔지니어링, RAG, 파인튜닝 등)을 정리하고 과학계량학(SciSci) 분야에의 적용 가능성을 제시하는 종합 리뷰 논문이다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_The Empowerment of Science of Science by Large Language Models New Tools and Methods.pdf"
 ---
@@ -87,11 +89,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_The Empowerment of Sci
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — 대규모언어모델이 과학 연구 방향과 영향에 미치는 변화를 과학계량학 관점에서 체계적으로 분석할 수 있다.
-- 🧪 응용 사례: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — 인공지능 사용량 정량화 연구에 LLM 기반 과학계량학 분석 도구를 적용하여 더 정확한 측정이 가능하다.
-- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 연구 분야에 LLM 기술을 통합하는 이론적이고 방법론적 토대를 공유한다.
-- 🧪 응용 사례: [[papers/1124_The_Science_of_Science/review]] — LLM이 과학의 과학 연구를 어떻게 강화할 수 있는지 구체적 활용 방안을 제시한다.
-- 🔗 후속 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — LLM이 과학의 과학 분야에 미치는 전반적 영향력을 기초 모델 활용으로 구체화함
-- 🏛 기반 연구: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — LLM의 과학 연구 영향력 분석에 필요한 오픈 모델 인프라를 제공함
-- 🔗 후속 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — AI 연구 방향 예측을 위한 Science4Cast 벤치마크와 대규모 언어 모델이 과학의 과학을 강화하는 방법이 상호 보완적 발전을 이룹니다.
-- 🏛 기반 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM을 과학계량학에 활용할 때 필요한 책임 있는 평가 원칙의 이론적 기반을 공유한다.
+- 🔗 후속 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — 대규모 언어모델이 과학 생산에 미치는 영향을 실증적으로 분석하여 LLM의 과학계량학 적용 가능성을 구체적으로 입증한다.
+- 🧪 응용 사례: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 과학 논문에서 LLM 사용량을 정량화하여 LLM이 과학계량학에 미치는 실제 영향을 측정한다.
+- 🏛 기반 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — AI가 과학적 발견 과정을 어떻게 혁신할 수 있는지에 대한 이론적 배경을 제공한다.
+- ⚖️ 반론/비판: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM을 활용한 연구 평가에서 발생할 수 있는 책임과 윤리적 문제들을 제기하여 신중한 접근을 요구한다.
+- 🔗 후속 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 과학학 분야 인간-AI 협력 연구에서 LLM의 과학학 역량 강화로 구체적 기술 영역이 확장된다.
+- ⚖️ 반론/비판: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구 참신성을 감소시킨다는 우려와 과학학 역량 강화라는 긍정적 관점이 대조된다.
+- 🏛 기반 연구: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 대규모 언어 모델에 의한 과학의 과학 분야 강화는 과학-정책 브리프 생성에서 LLM 활용의 이론적 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — LLM 기반 과학 발견을 교육 분야에 구체적으로 적용한 실용적 사례다
+- 🔗 후속 연구: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — AI4SoS 자동화 프레임워크가 LLM의 과학 연구 역량 강화라는 더 넓은 맥락에서 구체적 실현 방안을 제시합니다.
+- 🏛 기반 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — LLM이 과학의 과학 분야를 어떻게 강화할 수 있는지에 대한 기반적 논의를 과학 발견으로 구체화한다.
+- 🔗 후속 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — LLM을 활용한 과학 발견 자동화 시스템의 차세대 발전 방향을 제시한다
+- 🧪 응용 사례: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — AI가 과학의 과학 분야에 미치는 구체적인 영향과 활용 사례를 보여준다.
+- 🔗 후속 연구: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 대형 언어 모델이 과학의 과학 연구에 미치는 영향을 AI 연구 예측의 구체적 사례로 확장 분석한다.
+- 🔗 후속 연구: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — NLP 기반 scientometrics를 대규모 언어모델을 활용한 과학학 연구로 확장할 수 있다.
+- 🔗 후속 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — AI가 사회복지 지식 생산에 미치는 영향을 대규모 언어모델의 과학학 혁신과 연계하여 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — 고등교육 지식관리에서 AI와 디지털 변환의 미래 방향을 대규모 언어모델 연구로 뒷받침할 수 있다.
+- 🔗 후속 연구: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — LLM 기반 과학학 연구에서 양자 컴퓨팅 모듈을 통합한 차세대 연구 평가 시스템으로 확장한다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VITA는 시각 표현에서 잠재 행동으로 직접 흐르는 noise-free flow matching 정책으로, 기존의 반복적인 시각 조건화 모듈을 제거하여 추론 속도와 메모리 효율성을 획기적으로 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Video_Action_Generation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gao et al._2025_VITA Vision-to-Action Flow Matching Policy.pdf"
 ---
@@ -90,9 +92,14 @@ VITA는 시각 표현에서 잠재 행동으로 직접 흐르는 noise-free flow
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 둘 다 빠른 정책 추론을 목표하지만 VITA는 flow matching, One-Step Diffusion은 diffusion 기반의 다른 접근법이다
-- 🔗 후속 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy의 일관성 보장 원리를 flow matching 정책에서 noise-free 방식으로 발전시켰다
-- 🏛 기반 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Streaming Flow Policy가 VITA의 vision-to-action flow matching 구조의 이론적 기반을 제공한다
-- 🧪 응용 사례: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — Real-Time Execution이 VITA의 빠른 추론 속도를 실제 로봇 환경에서 활용하는 방법을 구체적으로 보여준다
-- 🔗 후속 연구: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — VITA의 vision-to-action flow matching이 VLA 모델의 action generation 부분을 개선한 구체적 발전
-- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Vision-to-action flow matching이 diffusion policy의 action diffusion 개념을 flow matching으로 확장한다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — One-Step Diffusion Policy는 VITA와 유사하게 추론 속도와 효율성을 획기적으로 개선하지만 diffusion 기반 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy는 VITA와 같은 효율적인 visuomotor 정책이지만 consistency model을 활용하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Streaming Flow Policy는 VITA의 flow matching과 유사한 flow 기반 정책이지만 streaming 방식으로 단순화한다.
+- 🏛 기반 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy는 VITA가 대안으로 제시하는 기존 diffusion 기반 정책의 기반 연구다.
+- 🔄 다른 접근: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — 둘 다 로봇 조작을 위한 diffusion 기반 정책이지만 VITA는 flow matching에, 기존 연구들은 일반적인 diffusion에 집중합니다.
+- 🔗 후속 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — VITA의 효율적인 vision-to-action flow를 KV caching을 통해 더욱 가속화하여 실시간 성능을 향상시킵니다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Action diffusion의 기본 개념을 제공하여 VITA의 flow matching policy 설계에 핵심적인 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — RTC의 real-time execution을 VITA의 flow matching policy와 결합하여 더 효율적인 vision-to-action 시스템을 구축할 수 있다.
+- 🏛 기반 연구: [[papers/1569_Segment_Anything/review]] — VITA의 vision-to-action flow matching이 SAM의 강력한 시각적 분할 능력을 로봇 조작 정책 학습의 기초로 활용한다.
+- 🔗 후속 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — VITA의 효율적인 flow matching 정책을 KV 캐싱을 통해 더욱 가속화하여 추론 효율성을 극대화합니다.
+- 🔄 다른 접근: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — 둘 다 trajectory modeling을 다루지만 Chain-of-Action은 역방향 autoregressive에, VITA는 vision-to-action flow matching에 중점을 둡니다.

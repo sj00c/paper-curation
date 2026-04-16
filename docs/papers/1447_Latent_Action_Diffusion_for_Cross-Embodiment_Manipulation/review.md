@@ -10,8 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇의 다양한 end-effector 간 action space 이질성을 극복하기 위해 contrastive learning으로 학습된 shared latent action space에서 diffusion policy를 학습하여 cross-embodiment 조작을 실현한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Goal-Conditioned_Manipulation_Policies"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Dexterous_Spatial_Grasping"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bauer et al._2025_Latent Action Diffusion for Cross-Embodiment Manipulation.pdf"
 ---
@@ -89,6 +90,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bauer et al._2025_Latent Action Diffusio
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — Cross-embodied learning의 일반적 원리가 latent action space를 통한 cross-embodiment 조작의 기반이 된다.
-- 🔄 다른 접근: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — 서로 다른 로봇 플랫폼 간 정책 전이에 대한 contrastive learning과 diffusion co-tuning의 다른 접근법을 보여준다.
-- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 visuomotor policy learning이 latent space에서의 diffusion policy 학습에 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — 둘 다 cross-embodiment 학습이지만 Latent Action Diffusion은 latent space에, Scaling 논문은 정책 통합에 집중한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — diffusion policy의 기본 아이디어가 latent action space에서의 cross-embodiment 정책 학습에 적용되었다.
+- 🔗 후속 연구: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — cross-embodiment skill 학습을 latent diffusion으로 더 정교하게 구현한 발전된 형태다.
+- 🏛 기반 연구: [[papers/1331_CLASS_Contrastive_Learning_via_Action_Sequence_Supervision_f/review]] — contrastive learning을 통한 행동 표현 학습의 기본 원리를 cross-embodiment manipulation에 적용하는 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — 둘 다 다양한 로봇 형태에 대한 일반화를 다루지만 latent action space와 universal controller의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — 둘 다 cross-embodiment learning을 다루지만 universal controller와 latent action diffusion의 접근법 차이를 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — cross-embodiment manipulation의 이론적 기반이 CrossFormer의 다중 로봇 제어에 적용된다.
+- 🔄 다른 접근: [[papers/1633_X-VLA_Soft-Prompted_Transformer_as_Scalable_Cross-Embodiment/review]] — Cross-embodiment manipulation을 latent action diffusion으로 해결하는 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — latent action diffusion의 궤적 표현 개념이 chain-of-action의 역방향 모델링 설계 기반
+- 🏛 기반 연구: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — Latent Action Diffusion의 latent action space 개념을 continuous space에서 unlabeled observation data로부터의 학습으로 확장한 방법론입니다.

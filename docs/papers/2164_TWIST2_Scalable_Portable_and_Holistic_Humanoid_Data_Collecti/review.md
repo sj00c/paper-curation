@@ -1,3 +1,24 @@
+---
+title: "2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti"
+authors:
+  - "Yanjie Ze"
+  - "Siheng Zhao"
+  - "Weizhuo Wang"
+  - "Angjoo Kanazawa"
+  - "Rocky Duan"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.02832"
+arxiv: ""
+score: 4.0
+essence: "TWIST2는 mocap 없이 VR 기반의 포터블한 휴머노이드 텔레오퍼레이션 시스템으로, 전신 제어를 유지하면서 확장 가능한 데이터 수집을 가능하게 한다. 수집한 데이터로 hierarchical visuomotor policy를 학습하여 자율적인 전신 제어를 구현한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ze et al._2025_TWIST2 Scalable, Portable, and Holistic Humanoid Data Collection System.pdf"
+---
+
 # TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System
 
 > **저자**: Yanjie Ze, Siheng Zhao, Weizhuo Wang, Angjoo Kanazawa, Rocky Duan, Pieter Abbeel, Guanya Shi, Jiajun Wu, C. Karen Liu | **날짜**: 2025-11-04 | **DOI**: [10.48550/arXiv.2511.02832](https://doi.org/10.48550/arXiv.2511.02832)
@@ -73,3 +94,27 @@ TWIST2는 mocap 없이 VR 기반의 포터블한 휴머노이드 텔레오퍼레
 - Overall: 4/5
 
 **총평**: TWIST2는 휴머노이드 로봇의 대규모 데이터 수집 병목을 실질적으로 해결하는 혁신적인 시스템으로, 포터블성과 전신 제어의 오래된 trade-off를 극복했다. 완전 오픈소스 공개와 실증적 성과(whole-body dexterous manipulation, kick-T task)는 휴머노이드 로봇 학습 커뮤니티에 즉각적인 영향을 미칠 수 있는 중대한 기여다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — TWIST2는 VR 기반 포터블 텔레오퍼레이션을 제안하고 Open-TeleVision은 immersive active vision을 사용하는 서로 다른 데이터 수집 접근법입니다.
+- 🏛 기반 연구: [[papers/1975_Hierarchical_visuomotor_control_of_humanoids/review]] — Hierarchical visuomotor control의 계층적 시각-운동 제어가 TWIST2의 hierarchical visuomotor policy 학습을 위한 기반 이론을 제공합니다.
+- 🔗 후속 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — TWIST2의 확장 가능한 데이터 수집을 CLONE의 closed-loop 전신 텔레오퍼레이션과 결합하면 더 효율적인 장기 학습 데이터 생성이 가능합니다.
+- 🔄 다른 접근: [[papers/1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f/review]] — Bunny-VisionPro의 bimanual dexterous teleoperation과 TWIST2의 whole-body teleoperation은 상호 보완적인 VR 기반 접근법임
+- 🔗 후속 연구: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — ExtremControl의 low-latency 특성을 TWIST2의 hierarchical visuomotor policy에 통합하면 더 responsive한 전신 제어 가능
+- 🔗 후속 연구: [[papers/1868_DexHub_and_DART_Towards_Internet_Scale_Robot_Data_Collection/review]] — DexHub의 internet-scale 데이터 수집과 TWIST2의 scalable 데이터 수집을 결합하면 더 포괄적인 휴머노이드 데이터셋 구축 가능
+- 🔗 후속 연구: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — TWIST2의 데이터 수집 시스템이 ToddlerBot의 ML 학습을 위한 고품질 데이터 생성을 지원합니다.
+- 🔗 후속 연구: [[papers/1806_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — AR 기반 데이터 수집을 확장하여 scalable하고 holistic한 휴머노이드 데이터 수집 시스템을 구현한다.
+- 🔗 후속 연구: [[papers/1842_CLOT_Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Human/review]] — CLOT의 폐루프 전역 추적이 TWIST2의 확장 가능한 데이터 수집으로 확장되어 더 견고한 원격조종 데이터 생성을 가능하게 한다
+- 🏛 기반 연구: [[papers/1853_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — Choice Policy의 모듈식 텔레오퍼레이션 데이터 수집 방법론이 TWIST2의 확장 가능한 데이터 수집 시스템과 기본 원리를 공유한다.
+- 🔗 후속 연구: [[papers/1860_Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_throu/review]] — TRILL의 VR 텔레오퍼레이션 프레임워크가 TWIST2의 확장 가능한 데이터 수집 시스템으로 발전하여 더 다양한 조작 기술을 포착할 수 있다.
+- 🔄 다른 접근: [[papers/1868_DexHub_and_DART_Towards_Internet_Scale_Robot_Data_Collection/review]] — TWIST2가 humanoid 데이터 수집을 위한 다른 접근법을 제시하여 DexHub와 상호 보완적인 데이터 생태계를 구축할 수 있다.
+- 🔗 후속 연구: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — TWIST2의 확장 가능하고 홀리스틱한 휴머노이드 데이터 수집 시스템이 ExtremControl의 직접 제어 방식을 대규모 데이터 수집에 확장 적용할 수 있는 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1961_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — TWIST2의 holistic humanoid 데이터 수집 시스템이 H-RDT의 대규모 egocentric 조작 데이터 사전학습을 위한 기반 기술을 제공합니다.
+- 🔗 후속 연구: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — TWIST2의 확장 가능한 데이터 수집을 실시간 외골격 원격조종 시스템으로 발전시킨 HOMIE의 확장 버전이다.
+- 🔄 다른 접근: [[papers/1997_Humanoid_Manipulation_Interface_Humanoid_Whole-Body_Manipula/review]] — 휴대용 하드웨어와 통합 데이터 수집 시스템으로 휴머노이드 전신 조작 학습 접근법이 다르다.
+- 🔗 후속 연구: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — TWIST2의 scalable humanoid 데이터 수집이 대규모 자아중심 인간 데모 활용을 실제 로봇 플랫폼에서 구현 가능하게 확장합니다.
+- 🔗 후속 연구: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — HumDex의 IMU 기반 모션 트래킹이 TWIST2의 홀리스틱 데이터 수집 시스템과 결합되어 더 포괄적인 텔레오퍼레이션 플랫폼 구축 가능
+- 🔗 후속 연구: [[papers/2118_OmniClone_Engineering_a_Robust_All-Rounder_Whole-Body_Humano/review]] — TWIST2의 확장 가능한 휴머노이드 데이터 수집을 OmniBench 진단 벤치마크를 통한 성능 최적화로 발전시킨 연구이다.
+- 🔗 후속 연구: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Open-TeleVision에서 수집된 원격조종 데이터를 더 체계적이고 확장 가능한 형태로 구축하는 통합 데이터 수집 시스템이다.
+- 🔗 후속 연구: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — TeleGate의 gated expert selection을 TWIST2의 확장 가능한 데이터 수집 시스템과 결합하면 더 효율적인 휴머노이드 학습이 가능합니다.

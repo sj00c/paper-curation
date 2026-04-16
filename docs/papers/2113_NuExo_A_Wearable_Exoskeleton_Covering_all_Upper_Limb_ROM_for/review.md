@@ -1,3 +1,23 @@
+---
+title: "2113_NuExo_A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM_for"
+authors:
+  - "Rui Zhong"
+  - "Chuang Cheng"
+  - "Junpeng Xu"
+  - "Yantong Wei"
+  - "Ce Guo"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "상지의 전체 운동 범위를 커버하면서 야외 환경에서 사용 가능한 경량 웨어러블 외골격계(exoskeleton) NuExo를 개발하여 인간형 로봇의 원격조종과 모션 데이터 수집을 동시에 수행한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Exoskeleton_Hand_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhong et al._2025_NuExo A Wearable Exoskeleton Covering all Upper Limb ROM for Outdoor Data Collection and Teleoperat.pdf"
+---
+
 # NuExo: A Wearable Exoskeleton Covering all Upper Limb ROM for Outdoor Data Collection and Teleoperation of Humanoid Robots
 
 > **저자**: Rui Zhong, Chuang Cheng, Junpeng Xu, Yantong Wei, Ce Guo, Daoxun Zhang, Wei Dai, Huimin Lu | **날짜**: 2025-03-13 | **URL**: [https://arxiv.org/abs/2503.10554](https://arxiv.org/abs/2503.10554)
@@ -66,3 +86,10 @@
 - Overall: 4/5
 
 **총평**: NuExo는 해부학적으로 영감받은 외골격계 설계와 경량화, multi-modal sensing의 통합을 통해 teleoperation과 로봇 모션 데이터 수집의 네 가지 핵심 목표를 동시에 달성한 혁신적 시스템이다. 야외 환경에서의 실용성과 다양한 로봇 플랫폼 호환성은 인간형 로봇의 imitation learning 분야에 중대한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1786_ACE_A_Cross-Platform_Visual-Exoskeletons_System_for_Low-Cost/review]] — NuExo는 상지 전체 ROM 커버, ACE는 cross-platform visual-exoskeletons로 서로 다른 범위와 플랫폼의 외골격 시스템을 제공한다.
+- 🔗 후속 연구: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — NuExo의 경량 웨어러블 외골격을 HOMIE의 isomorphic exoskeleton과 결합하여 더 자연스러운 전신 휴머노이드 조작이 가능하다.
+- 🏛 기반 연구: [[papers/2008_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We/review]] — NuExo의 상지 모션 데이터 수집이 HumanoidExo의 scalable whole-body manipulation에서 상체 제어 정책 학습에 필요한 데이터 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1876_DIAL_Distilling_Intent-Aware_Latents_for_Vision-Language-Act/review]] — 상지 전체 ROM을 다루는 착용형 외골격이 SoftHand Model-W의 손목 통합 설계에 필요한 인간공학적 기초를 제공한다

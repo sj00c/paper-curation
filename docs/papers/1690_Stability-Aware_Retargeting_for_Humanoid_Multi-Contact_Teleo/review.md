@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "휴머노이드 로봇의 다중 접촉 텔레오퍼레이션 중 안정성을 향상시키기 위해 Centroidal stability 기반 retargeting을 제안하며, Linear Program 민감도 분석을 통해 효율적으로 안정성 여유 기울기를 계산한다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Tactile_Contact_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/McCrory et al._2025_Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation.pdf"
 ---
@@ -84,3 +87,22 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/McCrory et al._2025_Stability-Aware Reta
 - Overall: 4/5
 
 **총평**: 다중 접촉 텔레오퍼레이션에 centroidal 안정성 분석을 효과적으로 통합하고 LP 민감도를 통한 새로운 기울기 계산 방법을 제시하며, 시뮬레이션과 하드웨어 검증으로 실용성을 입증한 견고한 기여.
+
+## Related Papers
+
+- 🧪 응용 사례: [[papers/1707_Teleoperation_of_Humanoid_Robots_A_Survey/review]] — Centroidal stability 기반 retargeting 기술이 휴머노이드 텔레오퍼레이션의 핵심 안정성 보장 메커니즘으로 직접 활용된다.
+- 🔗 후속 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 다중 접촉 안정성 제어 기법이 SPARK 안전 프레임워크의 고급 안전 제어 모듈로 통합될 수 있다.
+- 🔄 다른 접근: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — 둘 다 휴머노이드 안전성을 다루지만 물리적 안정성 기반 vs VLM-RAG 기반으로 접근 방식이 다르다
+- 🔗 후속 연구: [[papers/1706_TeleOpBench_A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexte/review]] — 안정성 인식 retargeting과 쌍팔 민첩한 텔레오퍼레이션을 결합하면 복잡한 다중 접촉 조작이 안전하게 가능하다
+- 🏛 기반 연구: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — TeleGate의 전신 휴머노이드 텔레오퍼레이션에 안정성 인식 retargeting이 필수적인 안전 기술을 제공한다
+- 🏛 기반 연구: [[papers/1714_Thor_Towards_Human-Level_Whole-Body_Reactions_for_Intense_Co/review]] — 강한 접촉 상호작용에서의 안정성 제어 기술을 텔레오퍼레이션 환경으로 확장하여 다중 접촉 상황의 안정성을 보장했다.
+- 🔗 후속 연구: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — 텔레오퍼레이션 시스템의 안정성 개념을 Centroidal stability 기반으로 확장하여 다중 접촉 환경에서의 정밀한 제어를 실현했다.
+- 🔄 다른 접근: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — 휴머노이드 텔레오퍼레이션을 위해 서로 다른 접근(안정성 기반 retargeting vs 저지연 직접 제어)을 통해 안전하고 효율적인 원격 조종을 구현한다.
+- 🧪 응용 사례: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — 안정성 인식 retargeting 기술을 외골격 기반 로코-조작이라는 구체적 응용으로 확장하여 안전한 인간-로봇 협업을 실현했다.
+- 🏛 기반 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — SPARK의 모듈식 안전 제어 프레임워크가 다중 접촉 텔레오퍼레이션의 안정성 보장 메커니즘에 기반 기술을 제공한다.
+- 🔗 후속 연구: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — SafeHumanoid의 VLM-RAG 기반 임피던스 조정과 다중 접촉 안정성 인식 retargeting을 결합하면 더 안전한 텔레오퍼레이션이 가능하다
+- 🏛 기반 연구: [[papers/1707_Teleoperation_of_Humanoid_Robots_A_Survey/review]] — 휴머노이드 텔레오퍼레이션 서베이가 다중 접촉 안정성 제어와 같은 고급 텔레오퍼레이션 기법의 이론적 배경과 분류 체계를 제공한다.
+- 🔗 후속 연구: [[papers/1714_Thor_Towards_Human-Level_Whole-Body_Reactions_for_Intense_Co/review]] — 접촉 상호작용에서의 안정성 제어 기술을 강한 접촉 환경으로 확장하여 force-adaptive torso-tilt과 decoupled 아키텍처를 제안했다.
+- 🔗 후속 연구: [[papers/1775_A_Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Hu/review]] — 다중 접촉 원격조작을 위한 안정성 인식 리타겟팅에 고속 역운동학 솔버를 적용할 수 있습니다.
+- 🧪 응용 사례: [[papers/1913_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe/review]] — 안정성 인식 retargeting 연구가 EMP의 서 있는 자세 유지 중 상체 동작 모방을 실제 multi-contact 상황에 적용하는 구체적인 방법을 제공한다.
+- 🔗 후속 연구: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — stability-aware retargeting과 TWIST의 실시간 리타겟팅을 결합하면 더 안정적인 전신 협응 제어 구현 가능

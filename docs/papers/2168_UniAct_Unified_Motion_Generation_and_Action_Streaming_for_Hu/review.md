@@ -1,3 +1,25 @@
+---
+title: "2168_UniAct_Unified_Motion_Generation_and_Action_Streaming_for_Hu"
+authors:
+  - "Nan Jiang"
+  - "Zimo He"
+  - "Wanhe Yu"
+  - "Lexi Pang"
+  - "Yunhao Li"
+date: "2025.12"
+doi: "10.48550/arXiv.2512.24321"
+arxiv: ""
+score: 4.0
+essence: "UniAct는 MLLM과 causal streaming pipeline을 결합한 두 단계 프레임워크로, 인간형 로봇이 언어, 음악, 궤적 등 다양한 multimodal 명령을 sub-500ms 지연시간으로 실행할 수 있게 한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2025_UniAct Unified Motion Generation and Action Streaming for Humanoid Robots.pdf"
+---
+
 # UniAct: Unified Motion Generation and Action Streaming for Humanoid Robots
 
 > **저자**: Nan Jiang, Zimo He, Wanhe Yu, Lexi Pang, Yunhao Li, Hongjie Li, Jieming Cui, Yuhan Li, Yizhou Wang, Yixin Zhu, Siyuan Huang | **날짜**: 2025-12-30 | **DOI**: [10.48550/arXiv.2512.24321](https://doi.org/10.48550/arXiv.2512.24321)
@@ -67,3 +89,19 @@ UniAct는 MLLM과 causal streaming pipeline을 결합한 두 단계 프레임워
 - Overall: 4/5
 
 **총평**: UniAct는 MLLM과 robust tracking을 unified framework로 통합하여 실제 humanoid robot에서 multimodal instruction following을 low latency로 달성한 의미 있는 연구이며, UA-Net 데이터셋 기여와 함께 embodied AI 분야에서 중요한 진전을 나타낸다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1815_Being-M05_A_Real-Time_Controllable_Vision-Language-Motion_Mo/review]] — Being-M0.5의 실시간 controllable vision-language-motion 기술이 UniAct의 multimodal 명령 처리와 streaming pipeline 구현을 위한 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1893_ECHO_Edge-Cloud_Humanoid_Orchestration_for_Language-to-Motio/review]] — UniAct은 sub-500ms 지연시간에 집중하고 ECHO는 edge-cloud 분산 처리를 통한 서로 다른 실시간 language-to-motion 접근법입니다.
+- 🔗 후속 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — UniAct의 multimodal 명령 처리를 EMOTION의 expressive motion sequence generation과 결합하면 더 감정적이고 표현적인 실시간 휴머노이드 제어가 가능합니다.
+- 🏛 기반 연구: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — 실시간 전신 원격조종의 기본 기술이 다양한 multimodal 명령의 통합 스트리밍 실행으로 확장된다.
+- 🔄 다른 접근: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — TextOp의 real-time text-driven control과 UniAct의 multimodal command streaming은 서로 다른 input modality 처리 방식을 비교할 수 있음
+- 🏛 기반 연구: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — language to locomotion의 retargeting-free 접근법이 UniAct의 MLLM 기반 multimodal 명령 처리의 이론적 기반을 제공함
+- 🔄 다른 접근: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — Trinity의 modular AI system과 UniAct의 unified streaming framework는 휴머노이드 AI 시스템의 서로 다른 아키텍처 접근법임
+- 🏛 기반 연구: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — promptable behavioral foundation model의 기초 기술이 unified motion generation과 action streaming에 활용된다.
+- 🔗 후속 연구: [[papers/1841_CLoSD_Closing_the_Loop_between_Simulation_and_Diffusion_for/review]] — CLoSD의 diffusion-RL 폐쇄 루프가 UniAct의 통합 모션 생성으로 확장되어 더 seamless한 행동 스트리밍을 달성할 수 있다
+- 🧪 응용 사례: [[papers/1886_DreamControl_Human-Inspired_Whole-Body_Humanoid_Control_for/review]] — 통합 모션 생성과 행동 스트리밍의 실제 구현 사례를 보여줍니다.
+- 🔗 후속 연구: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — UniAct의 통합 동작 생성 및 행동 스트리밍이 FRoM-W1의 언어-전신 제어를 더욱 일반화된 형태로 발전시켰습니다.
+- 🔗 후속 연구: [[papers/1952_GENMO_A_GENeralist_Model_for_Human_MOtion/review]] — GENMO의 통합 동작 추정-생성을 UniAct의 unified motion generation과 결합하면 더 포괄적인 휴머노이드 행동 시스템이 가능하다.
+- 🔗 후속 연구: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — 실시간 전신 원격조종 기술을 다양한 multimodal 명령 스트리밍으로 확장한 발전된 형태이다.

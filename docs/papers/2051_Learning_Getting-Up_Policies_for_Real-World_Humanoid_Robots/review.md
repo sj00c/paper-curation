@@ -1,3 +1,22 @@
+---
+title: "2051_Learning_Getting-Up_Policies_for_Real-World_Humanoid_Robots"
+authors:
+  - "Xialin He"
+  - "Runpei Dong"
+  - "Zixuan Chen"
+  - "Saurabh Gupta"
+date: "2025.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 낙상 복구를 위해 두 단계 강화학습 프레임워크(HUMANUP)를 제시하여 다양한 자세와 지형에서 일어나는 동작을 학습하고 실제 G1 로봇에 배포했다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/He et al._2025_Learning Getting-Up Policies for Real-World Humanoid Robots.pdf"
+---
+
 # Learning Getting-Up Policies for Real-World Humanoid Robots
 
 > **저자**: Xialin He, Runpei Dong, Zixuan Chen, Saurabh Gupta | **날짜**: 2025-02-17 | **URL**: [https://arxiv.org/abs/2502.12152](https://arxiv.org/abs/2502.12152)
@@ -63,3 +82,16 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇 낙상 복구는 중요하면서도 미탐색된 문제이며, 이 논문은 작업 특성을 정확히 파악하고 실용적 커리큘럼 학습을 통해 인간 규모 로봇에서 처음 성공적인 실제 배포를 시연했다. 기술적 기여도 있지만 평가 범위의 한계와 설계 선택의 일반화 가능성에 대한 추가 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2058_Learning_Humanoid_Standing-up_Control_across_Diverse_Posture/review]] — 두 논문 모두 휴머노이드의 일어서기 동작을 다루지만 HoST는 단일 프레임워크로 HUMANUP은 두 단계 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/2068_Learning_to_Get_Up_Across_Morphologies_Zero-Shot_Recovery_wi/review]] — 단일 로봇의 낙상 복구에서 여러 형태의 로봇에서 작동하는 통합 정책으로의 일반화를 보여준다.
+- 🏛 기반 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 낙상 상황에서의 보호적 제어 학습이 낙상 후 복구 정책 학습의 안전성 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1639_Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Polic/review]] — Learning Getting-Up Policies의 실제 휴머노이드 기립 정책 학습이 본 논문의 residual off-policy RL 방법론의 실제 적용 사례임
+- 🔗 후속 연구: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — 실제 휴머노이드 로봇의 일어서기 정책 학습 연구가 낙상 회복의 다중접촉 일어서기 능력을 실제 환경에서 확장 적용할 수 있는 방향을 제시한다.
+- 🔗 후속 연구: [[papers/1976_HiFAR_Multi-Stage_Curriculum_Learning_for_High-Dynamics_Huma/review]] — 일어서기 정책 학습의 기초를 다단계 커리큘럼을 통한 낙상 회복까지 확장한 HiFAR의 발전된 형태다.
+- 🏛 기반 연구: [[papers/2058_Learning_Humanoid_Standing-up_Control_across_Diverse_Posture/review]] — 실제 휴머노이드를 위한 일어서기 정책 학습의 기본 원리가 HoST의 다양한 자세 대응 능력에 대한 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/2068_Learning_to_Get_Up_Across_Morphologies_Zero-Shot_Recovery_wi/review]] — 단일 로봇 낙상 복구에서 여러 형태의 로봇에서 작동하는 통합 정책으로 일반화되어 범용성을 보여준다.
+- 🔗 후속 연구: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — 실제 휴머노이드 로봇을 위한 일어나기 정책 학습이 통합 낙상-안전 정책의 회복 단계를 실제 환경에서 더욱 견고하게 구현할 수 있습니다.
+- 🧪 응용 사례: [[papers/2123_One-shot_Adaptation_of_Humanoid_Whole-body_Motion_with_Walki/review]] — Learning getting-up policies의 실제 humanoid 적용이 one-shot adaptation의 보행 사전 지식을 활용한 비보행 동작 학습의 구체적인 적용 사례입니다.

@@ -10,7 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 인문형 로봇이 MIDI 악보를 기반으로 드럼을 연주하는 기술을 제시하며, Rhythmic Contact Chain 표현과 temporal decomposition을 활용한 reinforcement learning 프레임워크를 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shahid et al._2025_Robot Drummer Learning Rhythmic Skills for Humanoid Drumming.pdf"
 ---
@@ -83,3 +86,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shahid et al._2025_Robot Drummer Learnin
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid robotics에서 process-driven 창의적 작업으로의 확장을 의미 있게 시연하며, Rhythmic Contact Chain과 temporal decomposition이라는 실용적 기법을 통해 장시간 정밀 제어 문제를 효과적으로 해결한다. 30개 이상의 곡에서의 성공적 성과와 신흥 인간형 전략의 발현은 RL 기반 로봇 제어의 창의적 응용 가능성을 강력하게 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1682_SMASH_Mastering_Scalable_Whole-Body_Skills_for_Humanoid_Ping/review]] — 드럼 연주와 탁구는 모두 리듬감과 정밀한 타이밍이 요구되는 휴머노이드 스포츠/예술 활동으로 유사한 temporal decomposition 접근법을 활용한다.
+- 🏛 기반 연구: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — Rhythmic Contact Chain과 temporal decomposition 기법이 실시간 캐릭터 제어를 위한 CAMDM의 조건부 생성 메커니즘에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — Robot Drummer는 MIDI 기반 드럼 연주를, Humanoid Whole-Body Badminton은 배드민턴 기술을 통해 리듬감 있는 휴머노이드 제어를 다르게 구현함
+- 🏛 기반 연구: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — Vision in Action의 능동적 지각 기반 인간 시연 학습이 Robot Drummer의 rhythmic skill 학습의 기초가 됨
+- 🔗 후속 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — Learning Athletic Humanoid Tennis Skills의 불완전한 인간 데이터 학습이 Robot Drummer의 temporal decomposition 기반 리듬 학습을 확장함
+- 🔄 다른 접근: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — 드럼 연주와 탁구라는 서로 다른 rhythmic skill을 다루는 접촉 기반 운동 제어 연구입니다.
+- 🔗 후속 연구: [[papers/1653_RobotDancing_Residual-Action_Reinforcement_Learning_Enables/review]] — 리듬감과 접촉 제어가 춤 동작의 beat matching에도 적용될 수 있는 확장 가능성을 보여줍니다.
+- 🔄 다른 접근: [[papers/1679_SkillMimic_Learning_Basketball_Interaction_Skills_from_Demon/review]] — 농구 상호작용과 드럼 연주 모두 rhythmic skill이지만 대상 객체와의 접촉 방식이 다릅니다.
+- 🔄 다른 접근: [[papers/1682_SMASH_Mastering_Scalable_Whole-Body_Skills_for_Humanoid_Ping/review]] — 탁구와 드럼 연주는 모두 정밀한 타이밍과 리듬이 요구되는 휴머노이드 전신 스킬로 유사한 temporal control 기법을 공유한다.
+- 🔄 다른 접근: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — CAMDM의 실시간 동적 제어와 드럼 연주의 temporal decomposition은 모두 시간적 조건부 모션 생성을 다루는 상호 보완적 접근법이다.
+- 🔗 후속 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — LATENT의 불완전한 인간 데이터 활용이 Robot Drummer의 리듬 스킬 학습과 결합되어 음악적 타이밍이 있는 스포츠 동작 학습 가능
+- 🏛 기반 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — Robot crash course의 soft falling learning이 MoE 기반 robust locomotion에서 예외 상황 처리와 recovery 능력의 기술적 토대를 제공합니다.

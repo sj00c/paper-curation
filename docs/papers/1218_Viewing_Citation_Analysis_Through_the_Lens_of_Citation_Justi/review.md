@@ -9,8 +9,9 @@ score: 4.0
 essence: "본 논문은 1981년 발표된 citation analysis 논문을 citation justice의 관점에서 재검토하며, 인용 분석의 공정성을 확보하기 위한 방안들을 제시한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Journal_Citation_Patterns"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Smith_2026_Viewing Citation Analysis Through the Lens of Citation Justice.pdf"
 ---
@@ -76,11 +77,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Smith_2026_Viewing Citation Analysis Thr
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — 인용 정의의 관점에서 인용 분석을 재검토하는 것은 Science Citation Index의 원래 개념과 활용에서 출발한다.
-- 🔗 후속 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 인용 정의 관점의 인용 분석이 저널 평가 도구로서의 인용 분석으로 확장될 수 있다.
-- 🧪 응용 사례: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터과학의 체계적 성별 인용 불균형 문제에 인용 정의 원칙을 적용할 수 있다
-- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학 분야 성별 격차 분석에 인용 정의 관점을 추가하여 공정성을 높일 수 있다
-- 🏛 기반 연구: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 인용 맥락 분석을 위한 새로운 방법론이 인용 정당화 관점에서 인용 분석을 이해하는 이론적 토대를 제공한다.
-- 🔗 후속 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 인용 분석을 인용 정당화 관점에서 재해석하여 단순 연결성 이상의 의미를 탐구한다.
-- 🔗 후속 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 인용 분석 방법들의 효과 비교 연구를 인용 정당성의 관점에서 더욱 심층적으로 확장하여 분석할 수 있습니다.
-- 🏛 기반 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 인용 정당성 관점에서 인용 분석을 바라보는 시각을 제공하여 치의학 철회 논문의 지속적 인용 문제를 이론적으로 해석할 수 있다.
+- 🔗 후속 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터과학의 체계적 성별 인용 불균형 연구를 인용 공정성 관점으로 확장하여 해결방안을 모색합니다.
+- 🏛 기반 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 저널 평가 도구로서의 인용 분석 기초 이론이 인용 공정성 논의의 출발점을 제공합니다.
+- 🔗 후속 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 투명한 연구 평가 방법과 인용 공정성이 상호 보완하여 평가 체계의 윤리성을 강화합니다.
+- 🔗 후속 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 전 세계적 인용 불평등 증가 현상을 citation justice 관점에서 해결할 수 있는 방안 제시로 확장됩니다.
+- 🏛 기반 연구: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 인용 정당화 관점에서 인용 분석을 바라보는 이론적 틀이 인용 맥락 시각화의 개념적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 비낙인화 언어 연구에서 인용 공정성 관점을 적용할 수 있는 확장 연구입니다.
+- 🏛 기반 연구: [[papers/1151_Citation_Analysis_of_DESIDOC_Journal_of_Information_Technolo/review]] — 인용 분석의 타당성과 인용 정당화 관점에서 DJLIT 인용 패턴의 학술적 의미를 평가할 수 있다.
+- 🔗 후속 연구: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 인용 공정성 관점에서 인도 연구 평가 체계의 개선 방향을 제시합니다.
+- 🏛 기반 연구: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 인용 정당성 관점에서의 인용 분석이 종교학 연구평가에서 A&HCI 사용의 타당성 문제를 이론적으로 뒷받침하기 때문
+- 🔗 후속 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 전통적 인용 분석을 citation justice 관점에서 재검토하여 LIS 분야의 공정한 인용 관행 확립에 기여합니다.

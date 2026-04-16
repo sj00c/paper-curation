@@ -11,8 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "저비용 하드웨어로 세밀한 양팔 조작 작업을 학습하기 위해 텔레오퍼레이션 시스템과 Action Chunking with Transformers (ACT) 알고리즘을 결합한 시스템을 제시한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Action_Chunking_Methods"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Action_Tokenization_Methods"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2023_Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.pdf"
 ---
@@ -88,8 +88,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2023_Learning Fine-Grained B
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1432_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — 저비용 하드웨어 기반의 기본적인 bimanual learning이 대규모 human data enhancement의 출발점이 됩니다.
-- 🔗 후속 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Action Chunking with Transformers를 저비용 하드웨어에 적용하여 실용적인 bimanual manipulation을 구현한 사례입니다.
-- ⚖️ 반론/비판: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — 저비용 접근법 vs 대규모 데이터 접근법의 대조를 통해 bimanual learning의 다른 패러다임을 제시합니다.
-- 🔗 후속 연구: [[papers/1432_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — 저비용 하드웨어 기반 bimanual learning을 대규모 human data로 확장하여 성능을 크게 향상시킨 발전된 형태입니다.
-- 🔗 후속 연구: [[papers/1438_HandX_Scaling_Bimanual_Motion_and_Interaction_Generation/review]] — fine-grained bimanual manipulation의 기본 개념을 large-scale motion generation과 interaction modeling로 확장한 포괄적 프레임워크입니다.
+- 🔄 다른 접근: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — 둘 다 bimanual manipulation을 다루지만 저비용 하드웨어와 diffusion foundation model의 접근법 차이를 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — 대규모 dexterous manipulation 데이터를 저비용 시스템에 적용하여 접근 가능한 양팔 조작 학습을 실현할 수 있다.
+- 🏛 기반 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — action tokenization의 효율적인 방법론을 양팔 조작 작업에 적용하는 기본 원리를 제공한다.
+- 🏛 기반 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — RDT의 bimanual manipulation을 위한 기본적인 fine-grained bimanual control과 low-cost hardware 활용 방법을 제공한다.
+- 🧪 응용 사례: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — 저비용 하드웨어를 활용한 정밀 양손 조작 연구는 RVT-2의 고정밀 조작 기술을 실용적 환경에 적용하는 사례다.

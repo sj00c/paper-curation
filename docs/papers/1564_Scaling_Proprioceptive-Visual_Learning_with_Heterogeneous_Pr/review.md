@@ -11,8 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "HPT(Heterogeneous Pre-trained Transformers)는 embodiment-specific tokenizer(stem)와 shared transformer trunk를 통해 서로 다른 로봇 embodiment와 task에서 수집한 대규모 이종 데이터에서 사전 학습하여 일반화된 정책 표현을 학습하는 방법을 제안한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Robotic_Foundation_Generalization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_Scaling Proprioceptive-Visual Learning with Heterogeneous Pre-trained Transformers.pdf"
 ---
@@ -88,8 +88,11 @@ HPT(Heterogeneous Pre-trained Transformers)는 embodiment-specific tokenizer(ste
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — RoboCat의 multi-embodiment 학습이 HPT의 heterogeneous pre-training 방법론의 기초를 제공한다.
-- 🔗 후속 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — All Robots in One의 unified dataset이 HPT의 heterogeneous embodiment 사전학습을 더 포괄적인 로봇 데이터로 확장한다.
-- 🧪 응용 사례: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2가 HPT의 대규모 이종 데이터 사전학습을 실제 로봇 학습 데이터셋에서 구체적으로 적용한다.
-- 🏛 기반 연구: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — HPT의 heterogeneous pre-training이 RoboCat의 multi-embodiment 학습을 위한 기초 방법론을 제공한다.
-- 🏛 기반 연구: [[papers/1302_Adapt3R_Adaptive_3D_Scene_Representation_for_Domain_Transfer/review]] — MaskedManipulator는 Adapt3R의 3D 장면 표현을 다양한 전신 조작으로 확장하는 기반을 제공한다
+- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — BitVLA가 단일 embodiment에서의 효율화에 중점을 두는 반면, HPT는 다중 이종 embodiment에서의 표현 학습에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — Mastering Diverse Domains의 world model 기반 다중 도메인 학습 개념이 HPT의 이종 데이터 사전 학습 방법론의 기초가 된다.
+- ⚖️ 반론/비판: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — CrossFormer가 embodiment 간 수동 정렬 없이 학습하는 반면, HPT는 embodiment-specific tokenizer를 통한 명시적 구조화를 추구한다.
+- 🔗 후속 연구: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — RDP의 tactile feedback을 heterogeneous pre-training과 결합하여 proprioceptive-visual-tactile learning을 통합한 더 강력한 policy를 개발할 수 있다.
+- 🔄 다른 접근: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — HPT가 embodiment-specific tokenizer를 사용하는 반면, CrossFormer는 수동 정렬 없이 cross-embodied 학습을 달성한다.
+- 🏛 기반 연구: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — 이질적인 사전 훈련 모델을 활용한 고유감각-시각 학습이 분산 GP 회귀의 multi-modal 학습 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1302_Adapt3R_Adaptive_3D_Scene_Representation_for_Domain_Transfer/review]] — 이종 사전 훈련 데이터 스케일링과 3D 장면 표현 도메인 전이가 다른 일반화 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 다중 센서 VLA의 기초가 되는 proprioceptive-visual learning의 heterogeneous 접근

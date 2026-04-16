@@ -1,3 +1,25 @@
+---
+title: "1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis"
+authors:
+  - "Zelin Tao"
+  - "Zeran Su"
+  - "Peiran Liu"
+  - "Jingkai Sun"
+  - "Wenqiang Que"
+date: "2026.03"
+doi: "10.48550/arXiv.2603.27756"
+arxiv: ""
+score: 4.0
+essence: "Heracles는 state-conditioned diffusion 미들웨어를 통해 정밀한 모션 추적과 생성적 적응을 통합하여 휴머노이드 로봇이 극단적인 외부 교란 상황에서도 자연스러운 복구 동작을 수행하도록 한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Latent_Human_Motion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tao et al._2026_Heracles Bridging Precise Tracking and Generative Synthesis for General Humanoid Control.pdf"
+---
+
 # Heracles: Bridging Precise Tracking and Generative Synthesis for General Humanoid Control
 
 > **저자**: Zelin Tao, Zeran Su, Peiran Liu, Jingkai Sun, Wenqiang Que, Jiahao Ma, Jialin Yu, Jiahang Cao, Pihai Sun, Hao Liang, Gang Han, Wen Zhao, Zhiyuan Xu, Jian Tang, Qiang Zhang, Yijie Guo | **날짜**: 2026-03-31 | **DOI**: [10.48550/arXiv.2603.27756](https://doi.org/10.48550/arXiv.2603.27756)
@@ -65,3 +87,16 @@ Heracles는 state-conditioned diffusion 미들웨어를 통해 정밀한 모션 
 - Overall: 4/5
 
 **총평**: Heracles는 state-conditioned diffusion을 활용한 혁신적인 제어 미들웨어를 제시하여 휴머노이드 로봇의 정밀 추적과 생성적 적응성의 오래된 딜레마를 우아하게 해결하며, 물리적 로봇 실험을 통한 강건한 성능 검증으로 실질적 가치를 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1984_HoRD_Robust_Humanoid_Control_via_History-Conditioned_Reinfor/review]] — HoRD의 history-conditioned RL과 Heracles의 state-conditioned diffusion은 모두 외부 교란에 대한 강건성을 추구하는 상반된 접근법이다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 adversarial motion prior 기법이 Heracles의 자연스러운 복구 동작 생성을 위한 기초 이론을 제공한다.
+- 🔗 후속 연구: [[papers/1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C/review]] — DiffCoTune의 differentiable co-tuning 방식을 Heracles의 state-conditioned diffusion에 적용하여 도메인 적응 성능을 향상시킬 수 있다.
+- 🔄 다른 접근: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — Heracles의 state-conditioned diffusion과 GMT의 adaptive sampling은 모두 외부 교란에 대한 humanoid 적응을 위한 서로 다른 생성 모델 접근법입니다.
+- 🏛 기반 연구: [[papers/2131_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor/review]] — physics augmentation을 통한 강화학습이 Heracles의 물리적으로 정확한 복구 동작 생성의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — 외부 교란 하에서의 모션 추적 기술을 Heracles가 생성적 적응으로 확장하여 자연스러운 복구 동작을 실현합니다.
+- 🔄 다른 접근: [[papers/1976_HiFAR_Multi-Stage_Curriculum_Learning_for_High-Dynamics_Huma/review]] — 극단적 상황 대응을 Heracles는 외부 교란에, HiFAR은 낙상 회복에 각각 특화하여 접근한다.
+- 🏛 기반 연구: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — RAPT의 분포 외 감지와 실패 처리 방법론이 Heracles의 극단적 교란 상황 대응의 이론적 기반이 된다.
+- 🔗 후속 연구: [[papers/1785_A_Whole-Body_Motion_Imitation_Framework_from_Human_Data_for/review]] — 정확한 추적과 생성적 합성을 연결하는 Heracles의 접근법을 전신 동작 모방 프레임워크로 확장할 수 있습니다.
+- 🔄 다른 접근: [[papers/1984_HoRD_Robust_Humanoid_Control_via_History-Conditioned_Reinfor/review]] — Heracles의 diffusion-based 접근법과 달리 HoRD는 history-conditioned RL을 통해 도메인 시프트 문제를 해결한다.

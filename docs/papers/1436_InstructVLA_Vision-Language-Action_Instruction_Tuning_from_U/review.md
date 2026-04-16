@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "InstructVLA는 Vision-Language Model의 추론 능력을 보존하면서 로봇 조작 성능을 달성하는 end-to-end VLA 모델이며, Vision-Language-Action Instruction Tuning (VLA-IT) 패러다임을 통해 multimodal reasoning과 action generation을 동시에 최적화한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
   - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_InstructVLA Vision-Language-Action Instruction Tuning from Understanding to Manipulation.pdf"
@@ -89,7 +90,10 @@ InstructVLA는 Vision-Language Model의 추론 능력을 보존하면서 로봇 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual Instruction Tuning의 기본 방법론을 VLA 모델에 적용하여 multimodal reasoning과 action generation을 통합합니다.
-- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 기본 구조를 instruction tuning으로 확장하여 understanding과 action 능력을 동시에 향상시킵니다.
-- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — 둘 다 reasoning 강화를 추구하지만 InstructVLA는 instruction tuning에, ThinkAct은 reinforced reasoning에 중점을 둡니다.
-- 🏛 기반 연구: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — VLA 모델의 instruction tuning 방법론을 dual-system에서 어떻게 효과적으로 적용할지에 대한 기반 연구입니다.
+- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA와 다르게 VLM의 추론 능력을 보존하면서 로봇 조작 성능을 달성하는 instruction tuning 방식을 제안한다.
+- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual Instruction Tuning의 기본 개념을 vision-language-action 도메인으로 확장하여 적용한다.
+- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 web knowledge transfer를 instruction tuning으로 발전시켜 multimodal reasoning과 action을 동시 최적화한다.
+- 🔗 후속 연구: [[papers/1404_Gemini_Robotics_Bringing_AI_into_the_Physical_World/review]] — Gemini 2.0의 추론 능력을 활용한 VLA 접근법으로 InstructVLA의 instruction tuning 개념과 상호 보완적이다.
+- 🔗 후속 연구: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — InstructVLA는 VIMA의 멀티모달 instruction following을 VLA 프레임워크로 확장한 후속 연구다.
+- 🔗 후속 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — visual instruction tuning을 로봇의 vision-language-action instruction tuning으로 확장하여 embodied AI 도메인에 특화시킵니다.
+- 🔄 다른 접근: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — 인스트럭션 튜닝을 통한 다른 언어-행동 연결 방법을 제시한다.

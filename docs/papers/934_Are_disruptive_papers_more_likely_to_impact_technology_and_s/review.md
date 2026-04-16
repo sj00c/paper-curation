@@ -13,7 +13,8 @@ score: 4.0
 essence: "거의 4천만 개의 논문을 분석하여 높은 CD index(파괴적 지수)를 가진 논문이 역설적으로 기술·사회 영향력이 낮다는 것을 발견했으며, 대신 '파괴적 인용(disruptive citation)' 지표가 더 강한 예측력을 가짐을 밝혔다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_Are disruptive papers more likely to impact technology and society.pdf"
 ---
@@ -79,8 +80,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_Are disruptive papers m
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 논문과 특허의 파괴성 감소 경향이 파괴적 논문이 기술사회적 영향력에 미치는 역설적 효과를 이해하는 배경을 제공합니다.
-- 🔗 후속 연구: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 파괴성 지수(CD index)의 한계를 파괴적 인용 지표로 개선하는 것이 파괴성 지수의 인플레이션 문제 분석으로 확장됩니다.
-- ⚖️ 반론/비판: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 파괴성 감소에 대한 강력한 증거와 파괴적 논문의 기술사회적 영향력 한계라는 서로 다른 관점에서 파괴성을 분석합니다.
-- 🔗 후속 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 인용 확산의 공간적-시간적 특성이 논문의 파괴적 특성과 기술사회적 영향력에 어떻게 연결되는지 확장 분석을 제공합니다.
-- 🧪 응용 사례: [[papers/927_A_Dynamic_Network_Measure_of_Technological_Change/review]] — 파괴적 논문이 기술과 사회에 미치는 영향을 CDt 지수로 측정할 수 있다
+- 🔗 후속 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학과 기술에서 파괴성이 감소하는 현상을 사회적 영향력 측면에서 심화 분석한다
+- 🏛 기반 연구: [[papers/927_A_Dynamic_Network_Measure_of_Technological_Change/review]] — 기술 네트워크의 동적 변화 측정이 논문의 파괴성 평가의 이론적 토대를 제공한다
+- 🔄 다른 접근: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 파괴성 지수의 한계를 인용 인플레이션 관점에서 다르게 분석한 연구이다
+- 🔄 다른 접근: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 높은 영향력 과학의 특성을 파괴적 지수와 비전형적 조합이라는 서로 다른 지표로 측정하고 분석합니다.
+- 🔗 후속 연구: [[papers/927_A_Dynamic_Network_Measure_of_Technological_Change/review]] — 기술 네트워크의 파괴성 측정을 논문의 기술-사회 영향력 예측으로 확장한 연구이다

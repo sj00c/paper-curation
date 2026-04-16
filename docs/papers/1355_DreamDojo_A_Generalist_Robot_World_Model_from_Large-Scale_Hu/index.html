@@ -68,53 +68,54 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: DreamDojo overview. DreamDojo acquires comprehensive physical knowledge from large-scale</em></p></div>
-<p>44k시간의 대규모 인간 영상으로 사전학습하고 continuous latent actions를 도입하여, 접촉이 많은 로봇 작업에 대한 generalist world model인 DreamDojo를 제시한다.</p></div>
+<p>44k시간의 대규모 인간 동영상으로부터 연속 잠재 행동(continuous latent actions)을 통일된 프록시로 사용하여 학습한 DreamDojo는 로봇의 손재주 제어와 물리 이해를 갖춘 기초 세계 모델로, 실시간 텔레오퍼레이션과 모델 기반 계획을 가능하게 한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: Video world models은 최근 비디오 생성 기술의 발전으로 주목받고 있으나, 주로 이산 제어에 국한되어 있다. 기존 로봇 데이터는 수집 비용이 높고 커버리지가 제한적이며, 대부분 전문가 시연으로 구성되어 있어 강한 action controllability 학습이 어렵다.</li>
-<li><strong>Gap</strong>: 로봇 데이터의 부족함과 action label의 희소성으로 인해 기존 video world models은 관찰된 설정에만 국한되고 반사실적 action에 반응하지 못한다. 다양한 로봇에 대한 통일된 action 포맷 변환의 엔지니어링 비용도 문제다.</li>
-<li><strong>Why</strong>: Generalist robot agents의 개발을 위해 다양한 환경에서 action의 결과를 시뮬레이션할 수 있는 world model이 필수적이며, 이는 대규모 정책 평가와 모델 기반 계획 등 실제 배포 없이 로봇 정책을 개발할 수 있게 한다.</li>
-<li><strong>Approach</strong>: 인간 영상에서의 embodiment gap을 극복하기 위해 기초 물리학 지식이 인간과 로봇에서 일관되다는 점을 활용하고, continuous latent actions을 통일된 프록시 action으로 사용하여 레이블 없는 영상에서도 인과관계를 학습한다.</li>
+<li><strong>Known</strong>: Video world models는 미래 상태를 비디오 프레임으로 표현하여 로봇 제어에 활용되고 있으며, 최근 video generation 기술의 발전이 이를 촉진하고 있다. 다만 기존 접근법은 이산 제어에 제한되고 로봇 데이터의 제한된 커버리지로 인해 분포 외(OOD) 환경에서의 일반화 능력이 부족하다.</li>
+<li><strong>Gap</strong>: 로봇 데이터는 수집 비용이 높고 커버리지가제한적이며 세밀한 행동 레이블이 부족하고, 기존 세계 모델들은 관찰된 설정 시뮬레이션에 국한되어 반사실적 행동에 반응하지 못한다. 또한 다양한 행동 형식을 통일된 프레임워크로 통합하는 문제가 존재한다.</li>
+<li><strong>Why</strong>: 일반화된 로봇 에이전트의 대규모 개발을 위해서는 다양한 환경에서 행동의 결과를 시뮬레이션할 수 있는 능력이 필수적이며, 이는 실제 배포 없이 정책 평가와 모델 기반 계획을 가능하게 하여 로봇 학습의 효율성을 혁신할 수 있다.</li>
+<li><strong>Approach</strong>: 대규모 인간 동영상 데이터셋(DreamDojo-HV: 44k시간)을 수집하고, 연속 잠재 행동을 통일된 프록시 행동으로 도입하여 레이블 없는 비디오에서 행동 인과성을 학습한다. Cosmos-Predict2.5 기반으로 human 비디오에서 사전학습 후 로봇 데이터로 후학습하고, Self Forcing 패러다임의 증류 파이프라인을 통해 실시간 예측 능력을 확보한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
-<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
-<p class="fig-caption"><em>Figure 1: DreamDojo overview. DreamDojo acquires comprehensive physical knowledge from large-scale</em></p></div>
-<ul>
-<li><strong>DreamDojo-HV 데이터셋</strong>: 44k시간의 egocentric 인간 영상으로 기존 로봇 데이터셋 대비 96배 이상의 스킬과 2000배 이상의 장면을 포함하는 최대 규모 world model 사전학습 데이터셋 구축</li>
-<li><strong>Foundation world model</strong>: continuous latent actions과 Cosmos-Predict2.5 기반 architecture를 통해 다양한 환경과 객체에 대한 zero-shot 일반화 능력을 갖춘 첫 world model 달성</li>
-<li><strong>실시간 추론 가능화</strong>: Self Forcing 패러다임 기반 distillation pipeline으로 640×480 해상도에서 10.81 FPS의 실시간 예측 달성</li>
-<li><strong>다중 응용 가능성</strong>: live teleoperation, policy evaluation, model-based planning 등 다양한 downstream application 실현</li>
-</ul></div>
-<div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Figure 2: Distribution analysis of DreamDojo-HV. (a) Distribution of the scenarios and random examples</em></p></div>
 <ul>
-<li>DreamDojo-HV에서 In-lab, EgoDex 등 3개 egocentric 인간 영상 데이터셋을 수집하여 사전학습</li>
-<li>Latent action model을 통해 프레임 간의 의미론적 action을 자기감독 방식으로 추출하여 모든 비디오에 대한 통일된 action 조건화</li>
-<li>Cosmos-Predict2.5 latent video diffusion model을 기반으로 flow matching loss로 학습</li>
-<li>목표 로봇 데이터셋에서 post-training 시 action conditioning layer를 리셋하고 새로운 action space 학습</li>
-<li>Self Forcing 기반 distillation pipeline으로 자기 회귀적 예측 가속화 및 context consistency 개선</li>
-<li>6개의 out-of-distribution benchmark에서 체계적 평가로 일반화 능력 검증</li>
+<li><strong>DreamDojo-HV 데이터셋</strong>: 44k시간의 egocentric human videos로 구성된 최대 규모 세계 모델 학습 데이터셋으로, 기존 공개 데이터셋 대비 96배 많은 기술과 2,000배 많은 장면을 포함하며 다양한 일상 활동을 아우른다.</li>
+<li><strong>연속 잠재 행동 기반 학습</strong>: 자기지도 방식으로 프레임 간 의미 있는 행동을 추출하여 세밀한 행동 레이블 부족 문제를 해결하고, 인간과 로봇 간 embodiment gap을 극복하며 효과적인 지식 전이를 달성한다.</li>
+<li><strong>실시간 증류 모델</strong>: Self Forcing 패러다임 기반 증류 파이프라인으로 640×480 해상도에서 10.81 FPS의 실시간 자동회귀 예측을 구현하고, 맥락 일관성을 개선하여 1분 이상 연속 상호작용이 가능하다.</li>
+<li><strong>OOD 일반화 능력</strong>: 여러 challenging 분포 외 벤치마크에서 체계적 평가를 통해 미보기 객체와 새로운 환경으로의 zero-shot 일반화, 접촉 기반(contact-rich) 작업 시뮬레이션 능력을 검증한다.</li>
+<li><strong>다중 응용 프로그램</strong>: live teleoperation, policy evaluation, model-based planning 등 생성형 세계 모델 기반 여러 실질적 응용이 가능함을 입증한다.</li>
+</ul></div>
+<div class="section-box"><h2>How</h2>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Latent action model. [Left]: The information bottleneck design of our latent action model enforces</em></p></div>
+<ul>
+<li>DreamDojo-HV 구축: YouTube 등 공개 소스에서 46개 언어의 egocentric human 동영상을 수집하고, 자동 처리 파이프라인과 인간 검증을 통해 44k시간의 고품질 데이터셋을 큐레이션</li>
+<li>연속 잠재 행동 모델: 정보 병목(information bottleneck) 설계로 프레임 쌍 간 의미 있는 행동을 자기지도 방식으로 학습하여, 다양한 행동 형식을 통일된 벡터 표현으로 변환</li>
+<li>Cosmos-Predict2.5 기반 구조: pretrained latent video diffusion 모델을 기초로 하여 flow matching loss로 학습하되, 행동 조건을 텍스트 및 프레임 조건과 함께 DiT 블록에 주입</li>
+<li>3단계 학습 파이프라인: (1) human 비디오에서 연속 잠재 행동 조건으로 사전학습, (2) 목표 로봇 데이터로 행동 조건화 층을 재설정하고 후학습, (3) 실시간성과 맥락 일관성 개선을 위한 증류</li>
+<li>Self Forcing 기반 증류: 짧은 시간 맥락을 효율적으로 모델링하면서 자동회귀 예측의 시각적 품질 저하를 방지하고 장기 일관성을 향상</li>
+<li>다중 로봇 어댑테이션: 서로 다른 embodiment(GR-1, G1, AgiBot, YAM 등)에 대해 행동 공간 재학습을 통해 모델 적응 가능</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li>기존 로봇 world models와 달리 대규모 인간 영상(44k시간)을 활용한 사전학습으로 embodiment gap 극복</li>
-<li>Continuous latent actions를 unified proxy로 사용하여 action label 희소성 문제를 자기감독 학습으로 해결하는 혁신적 접근</li>
-<li>데이터 스케일과 다양성 측면에서 기존 로봇 학습 데이터셋 대비 획기적 개선 (96×, 2000×)</li>
-<li>First world model으로서 unseen objects와 novel environments에 대한 zero-shot 일반화 능력 달성</li>
+<li><strong>인간 비디오 대규모 활용</strong>: 기존 로봇 세계 모델이 teleoperation 데이터에 의존한 반면, embodiment gap을 극복하면서 44k시간의 인간 동영상을 직접 활용한 최초의 시도</li>
+<li><strong>연속 잠재 행동의 통합 프레임워크</strong>: 다양한 행동 형식(skeleton, joint angles 등)을 단일 연속 벡터 공간으로 통합하는 자기지도 방식의 혁신적 접근으로, 대규모 이질적 데이터 학습 가능</li>
+<li><strong>Zero-shot OOD 일반화</strong>: 사전학습 단계에서 미보기 객체와 환경으로의 일반화를 달성하여, 기존 모델의 분포 내 한계를 초월</li>
+<li><strong>실시간 증류 파이프라임</strong>: Self Forcing 패러다임을 world model 증류에 적용하여 실시간 예측과 시각 품질을 동시에 확보한 최초의 실현</li>
+<li><strong>다중 벤치마크 체계적 평가</strong>: 6개의 challenging OOD 벤치마크로 엄격한 평가를 수행하여 현실적 적용 가능성을 입증</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li>실제 로봇 제어 실험 결과가 제시되지 않았으므로 실제 배포 성능은 미지수</li>
-<li>Post-training에 필요한 로봇 데이터의 규모와 특성에 대한 분석 부족</li>
-<li>Distillation으로 인한 성능 손실 정량화 및 분석 미흡</li>
-<li>인간-로봇 embodiment gap이 완전히 해결되었는지에 대한 심화 분석 필요</li>
-<li>다른 world model baseline과의 정량적 비교 평가 부재</li>
-<li>긴 horizon(1분 이상) 예측 시 누적 오차 특성에 대한 분석 필요</li>
+<li><strong>Embodiment gap 완전 해결 미흡</strong>: 인간과 로봇의 기하학적, 동역학적 차이(팔 길이, 조작 방식 등)가 존재하여 완전한 zero-shot 전이는 제한될 수 있으며, 후학습이 여전히 필요</li>
+<li><strong>데이터 편향성</strong>: YouTube 기반 인간 동영상은 특정 지역, 문화, 언어에 편중될 수 있어 글로벌 일반화 가능성이 제한될 수 있음</li>
+<li><strong>복잡한 다물체 상호작용</strong>: 추상적인 물리 개념(중력, 마찰 등) 이해는 강하나, 여러 물체의 복잡한 동시 상호작용이나 카오스적 동역학 시뮬레이션 능력의 한계 미검증</li>
+<li><strong>장기 예측 정확도</strong>: 1분 이상 연속 예측이 가능하나 시간이 증가할수록 누적 오차 가능성이 있으며, 극도의 장기(수분 이상) 예측에 대한 분석 부족</li>
+<li><strong>후속 연구 방향</strong>: (1) 다양한 로봇 embodiment의 자동 적응 메커니즘 개발, (2) 물리 법칙 명시적 제약 통합을 통한 물리적 일관성 강화, (3) 다중 모달 입력(촉각, 힘 센서 등) 통합, (4) 실제 정책 학습 성과 검증을 위한 광범위한 로봇 배포 실험</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: 대규모 인간 영상을 활용한 foundation world model 구축이라는 혁신적 접근과 continuous latent actions라는 우아한 솔루션을 제시하여 로봇 학습의 데이터 효율성 문제를 크게 개선했으나, 실제 로봇 배포 및 제어 실험의 충분한 검증이 필요하다.</p></div>
+<p><strong>총평</strong>: DreamDojo는 대규모 인간 동영상과 연속 잠재 행동의 혁신적 결합으로 로봇 세계 모델의 스케일과 일반화 능력을 획기적으로 향상시킨 중요한 기여이다. 실시간 성능과 다양한 실제 응용 가능성이 입증되었으나, embodiment gap 완전 해결과 극도의 장기 예측에 대한 추가 검증이 필요하다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

@@ -13,7 +13,9 @@ score: 4.0
 essence: "Twitter에서 학술 출판물을 논의하는 9,842개의 연구·정책 관련 기관 계정(Organisational accounts)을 식별하고 이들의 소셜 미디어 활동, 팔로워 기반, 참여 패턴을 분석한 연구."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Social_Media_Engagement"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zahedi et al._2026_Organisational accounts engaged in scholarly communication on Twitter Patterns of presence, activit 1.pdf"
 ---
@@ -91,8 +93,11 @@ Twitter에서 학술 출판물을 논의하는 9,842개의 연구·정책 관련
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 조직 계정의 체계적 소셜미디어 전략과 개별 논문의 혁신성이 사회적 주목도에 미치는 영향이라는 다른 관점을 제공한다.
-- 🔗 후속 연구: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 연구자 평판 관리를 위한 통합적 접근법과 기관 계정의 소셜미디어 전략을 결합하여 더 효과적인 과학 소통 방안을 모색할 수 있다.
-- 🧪 응용 사례: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — 대형 언어 모델 시대의 과학 생산 변화와 기관의 소셜미디어 소통 전략이 어떻게 상호작용하는지 분석할 수 있다.
-- 🔄 다른 접근: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 개별 논문의 혁신성 효과와 기관 계정의 체계적 소셜미디어 전략이라는 다른 관점에서 학술 소통을 분석한다.
-- 🔗 후속 연구: [[papers/1177_From_Clicks_to_Cradles_Mapping_the_Digital_Landscape_of_Mate/review]] — 모성 지원의 디지털 환경 매핑이 학술 커뮤니케이션의 조직적 계정 분석으로 확장될 수 있다.
+- 🔗 후속 연구: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 온라인 과학 커뮤니케이션에서 정보 경로의 역할을 분석한 연구로, 기관 계정의 소셜 미디어 활동을 확장 분석할 수 있습니다.
+- 🔄 다른 접근: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — 연구 발견을 위한 통합적 접근법을 다룬 연구로, 트위터 기관 계정과 다른 방식의 학술 커뮤니케이션 채널을 분석하는 대안적 방법입니다.
+- 🏛 기반 연구: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 온라인에 게시된 논문 인용 맥락 시각화가 Twitter 기관 계정의 학술 커뮤니케이션 분석의 이론적 기반이다.
+- 🧪 응용 사례: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — 대규모 언어 모델 시대의 과학 생산 연구에서 소셜 미디어 학술 커뮤니케이션이 실제 적용 사례가 된다.
+- 🏛 기반 연구: [[papers/942_Bridging_the_gap_between_science_and_society_Mapping_librari/review]] — 과학과 사회 간 격차를 메우는 도서관 매핑 연구가 기관 계정의 학술 커뮤니케이션 역할 이해의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1177_From_Clicks_to_Cradles_Mapping_the_Digital_Landscape_of_Mate/review]] — 모성 건강의 디지털 환경 매핑과 학술 기관의 트위터 활동이 서로 다른 영역에서 디지털 커뮤니케이션을 분석하는 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1177_From_Clicks_to_Cradles_Mapping_the_Digital_Landscape_of_Mate/review]] — 온라인 양육 자원의 소셜 미디어 상호작용을 학술 기관의 소셜 미디어 활동 연구로 이해할 수 있다.
+- 🔗 후속 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 철회 논문의 소셜 미디어 주목도를 학술 기관의 소셜 미디어 활동과 연계하여 분석할 수 있다.

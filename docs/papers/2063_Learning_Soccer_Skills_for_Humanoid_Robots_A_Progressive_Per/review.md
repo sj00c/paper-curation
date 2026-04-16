@@ -1,3 +1,24 @@
+---
+title: "2063_Learning_Soccer_Skills_for_Humanoid_Robots_A_Progressive_Per"
+authors:
+  - "Jipeng Kong"
+  - "Xinzhe Liu"
+  - "Yuhang Lin"
+  - "Jinrui Han"
+  - "Sören Schwertfeger"
+date: "2026.02"
+doi: "10.48550/arXiv.2602.05310"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 humanoid robot이 human-like kicking과 whole-body balance를 동시에 수행하는 soccer skill을 습득하기 위해, 세 단계로 구성된 Perception-Action integrated Decision-making (PAiD) 프레임워크를 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kong et al._2026_Learning Soccer Skills for Humanoid Robots A Progressive Perception-Action Framework.pdf"
+---
+
 # Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework
 
 > **저자**: Jipeng Kong, Xinzhe Liu, Yuhang Lin, Jinrui Han, Sören Schwertfeger, Chenjia Bai, Xuelong Li | **날짜**: 2026-02-05 | **DOI**: [10.48550/arXiv.2602.05310](https://doi.org/10.48550/arXiv.2602.05310)
@@ -64,3 +85,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid robot의 복잡한 embodied skill 습득을 위한 체계적인 progressive framework를 제시하며, motion tracking-perception integration-sim-to-real transfer의 세 단계 분해를 통해 기존 방식의 training instability와 reward conflict를 효과적으로 해결한다. 91.3% 성공률의 robust real-world kicking 성능과 diverse condition에서의 일관성은 제안 방법의 효과를 입증하며, divide-and-conquer 전략은 향후 complex embodied skill 습득의 scalable framework로 활용 가능하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 시각 기반 반응형 축구 기술과 인식-행동 통합 프레임워크라는 다른 접근법으로 축구 스킬을 학습한다.
+- 🔗 후속 연구: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — 계층적 의사결정을 통한 자율 휴머노이드 축구의 확장된 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1679_SkillMimic_Learning_Basketball_Interaction_Skills_from_Demon/review]] — 시연 기반 농구 상호작용 스킬 학습의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — 점진적 지각-행동 학습이 end-to-end 축구 기술 학습으로 확장되어 더 통합된 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/1778_A_Hierarchical_Model-Based_System_for_High-Performance_Human/review]] — 동일한 축구 도메인에서 progressive perception 기반 기술 학습과 계층적 시스템 설계라는 다른 접근법을 제시한다
+- 🔗 후속 연구: [[papers/2046_Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_fro/review]] — 노이즈 센서 입력에서의 강건한 킥킹 기술을 점진적 학습을 통한 포괄적인 축구 기술로 확장할 수 있다.
+- 🔄 다른 접근: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 인식-행동 통합 의사결정과 시각-모션 제어 통합이라는 다른 접근법으로 축구 스킬을 학습한다.
+- 🔄 다른 접근: [[papers/2127_Optimizing_Bipedal_Locomotion_for_The_100m_Dash_With_Compari/review]] — 축구 스킬 학습이라는 다른 운동 영역에서 점진적 훈련을 통해 휴머노이드의 운동 능력을 향상시킨 사례이다.

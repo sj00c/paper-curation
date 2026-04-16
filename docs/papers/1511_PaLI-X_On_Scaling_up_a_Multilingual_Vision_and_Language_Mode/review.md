@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "PaLI-X는 시각 및 언어 컴포넌트를 균형있게 확장한 다국어 비전-언어 모델로, 25개 이상의 벤치마크에서 새로운 최첨단 성능을 달성하며 복잡한 계산과 다국어 객체 검출 같은 새로운 능력을 보여준다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2023_PaLI-X On Scaling up a Multilingual Vision and Language Model.pdf"
 ---
@@ -94,7 +95,14 @@ PaLI-X는 시각 및 언어 컴포넌트를 균형있게 확장한 다국어 비
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — 언어-이미지 사전학습을 위한 sigmoid loss 최적화 기법이 PaLI-X의 다국어 비전-언어 모델 학습에 직접 적용 가능하다
-- 🔗 후속 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — 감독 없는 강건한 시각 특성 학습을 PaLI-X의 다국어 객체 검출 능력 강화에 통합할 수 있다
-- 🔄 다른 접근: [[papers/1611_Visual_Instruction_Tuning/review]] — 시각 instruction tuning과 다국어 vision-language 확장에서 서로 다른 접근 방향을 제시하지만 상호 보완적이다
-- 🔗 후속 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — 다국어 비전-언어 모델 확장에서 효율적인 pairwise sigmoid loss가 배치 크기 제약을 해결한다.
+- 🏛 기반 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — PaLI-X의 multilingual vision-language scaling이 기반으로 하는 VLM 설계 공간 연구
+- 🧪 응용 사례: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — multilingual VLM scaling을 통해 neural scaling laws를 실증한 구체적 사례
+- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — multilingual vision-language model에서 PaLI-X vs InternVLA의 다른 scaling 접근
+- 🔗 후속 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLI-X의 다국어 비전-언어 모델이 PaLM-E의 embodied multimodal 언어 모델로 확장되어 로봇 제어 능력을 추가합니다.
+- 🏛 기반 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — VLN-BERT의 시각-언어 사전학습 방법론이 PaLI-X의 다국어 비전-언어 모델 개발의 기초적인 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1466_ManipBench_Benchmarking_Vision-Language_Models_for_Low-Level/review]] — PaLI-X의 멀티링구얼 비전-언어 모델이 ManipBench의 VLM 저수준 조작 추론 평가 기반이 됨
+- 🧪 응용 사례: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — scaling law 분석을 multilingual vision-language model에 적용한 구체적 사례
+- 🔗 후속 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — PaLI-X의 multilingual vision-language 확장이 Prismatic VLMs의 설계 원리를 다국어 환경으로 발전시킨다.
+- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — PaLI-X는 RoboFlamingo가 활용하는 다국어 vision-language 모델의 확장된 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — 대규모 vision-language 모델에서 Sigmoid Loss는 효율적인 pre-training에, PaLI-X는 multilingual scaling에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — 다국어 비전-언어 모델이 도메인 불변 표현 학습의 이론적 기반을 제공합니다.

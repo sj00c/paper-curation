@@ -1,3 +1,24 @@
+---
+title: "1984_HoRD_Robust_Humanoid_Control_via_History-Conditioned_Reinfor"
+authors:
+  - "Puyue Wang"
+  - "Jiawei Hu"
+  - "Yan Gao"
+  - "Junyan Wang"
+  - "Yu Zhang"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "HoRD는 history-conditioned reinforcement learning과 online distillation을 결합한 두 단계 학습 프레임워크로, 휴머노이드 로봇이 도메인 시프트 상황에서 강건한 제어를 수행하도록 한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2026_HoRD Robust Humanoid Control via History-Conditioned Reinforcement Learning and Online Distillation.pdf"
+---
+
 # HoRD: Robust Humanoid Control via History-Conditioned Reinforcement Learning and Online Distillation
 
 > **저자**: Puyue Wang, Jiawei Hu, Yan Gao, Junyan Wang, Yu Zhang, Gillian Dobbie, Tao Gu, Wafa Johal, Ting Dang, Hong Jia | **날짜**: 2026-02-04 | **URL**: [https://arxiv.org/abs/2602.04412](https://arxiv.org/abs/2602.04412)
@@ -65,3 +86,19 @@ HoRD는 history-conditioned reinforcement learning과 online distillation을 결
 - Overall: 4/5
 
 **총평**: HoRD는 history-conditioned 동역학 추론과 sparse 명령 처리라는 두 가지 핵심 혁신을 통해 휴머노이드 제어의 강건성과 일반화 문제를 효과적으로 해결하며, 광범위한 실험 검증과 데이터셋 공개로 실용적 가치를 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — Heracles의 diffusion-based 접근법과 달리 HoRD는 history-conditioned RL을 통해 도메인 시프트 문제를 해결한다.
+- 🔗 후속 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — MoE-based robot의 sim-to-real predictability 향상 방법이 HoRD의 online distillation 단계에서 강건성을 더욱 개선할 수 있다.
+- 🏛 기반 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — CMR의 contractive mapping embeddings가 HoRD의 history-conditioned learning에서 robust representation을 위한 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — robust sim-to-real transfer를 위한 대조 표현 학습이 HoRD의 도메인 시프트 상황에서의 강건한 제어 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1696_Success_in_Humanoid_Reinforcement_Learning_under_Partial_Obs/review]] — HoRD의 history-conditioned 방법론이 부분 관찰 문제 해결에 더 정교한 접근을 제공합니다.
+- 🔄 다른 접근: [[papers/1613_PhysHSI_Towards_a_Real-World_Generalizable_and_Natural_Human/review]] — PhysHSI는 LiDAR-camera 기반 객체 인식에, HoRD는 history-conditioned 접근법에 의존하여 휴머노이드 환경 상호작용을 다르게 해결함
+- 🔄 다른 접근: [[papers/1617_PILOT_A_Perceptive_Integrated_Low-level_Controller_for_Loco-/review]] — PILOT는 지각 기반 통합 제어를, HoRD는 이력 조건부 강화학습을 사용하여 휴머노이드 loco-manipulation을 다르게 해결함
+- 🔄 다른 접근: [[papers/1627_PvP_Data-Efficient_Humanoid_Robot_Learning_with_Propriocepti/review]] — PvP는 고유감각-특권상태 대조학습을, HoRD는 history-conditioned 접근을 통해 휴머노이드 전신 제어의 샘플 효율성을 다르게 향상시킴
+- 🔗 후속 연구: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — History-conditioned reinforcement learning이 contact-rich 환경에서의 compliance 제어를 더욱 발전시킵니다.
+- 🔄 다른 접근: [[papers/1929_FLAM_Foundation_Model-Based_Body_Stabilization_for_Humanoid/review]] — 둘 다 humanoid 제어의 안정성을 추구하지만, FLAM은 foundation model 기반 보상 설계를, HoRD는 history-conditioned 강화학습을 사용합니다.
+- 🔄 다른 접근: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — HoRD의 history-conditioned RL과 Heracles의 state-conditioned diffusion은 모두 외부 교란에 대한 강건성을 추구하는 상반된 접근법이다.
+- 🔗 후속 연구: [[papers/1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — HoRD의 강건한 제어를 접촉이 풍부한 조작 상황에서의 heterogeneous meta-control로 확장한 발전된 형태다.
+- 🔄 다른 접근: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — HOMIE의 isomorphic exoskeleton 방식과 HoRD의 history-conditioned RL은 humanoid 제어의 서로 다른 인터페이스 접근법이다.

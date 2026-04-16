@@ -10,7 +10,8 @@ score: 4.0
 essence: "본 연구는 물리학 지식이 정책에 선택적으로 활용되는 방식을 분석하여, 학제간 물리학(Interdisciplinary Physics)이 정책 담론 진입은 용이하지만 실제 정책 영향력(policy influence)으로는 이어지지 않는 현상을 규명했다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Interdisciplinary_Research_Collaboration"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lee and Yoon_2026_The selective use of physics knowledge in policy how interdisciplinary physics bridges subfields an.pdf"
 ---
@@ -85,10 +86,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lee and Yoon_2026_The selective use of p
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 공적 자금으로 지원된 과학 연구의 공공 활용을 물리학 지식이 정책에 선택적으로 활용되는 구체적 사례로 분석했다.
-- 🔗 후속 연구: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학 지식의 정책 활용을 AI를 통한 과학-정책 번역 자동화라는 기술적 해결 방안으로 확장했다.
-- 🏛 기반 연구: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 온라인 과학 커뮤니케이션에서 정보 경로 분석이 물리학 지식의 정책 진입 메커니즘 이해의 기초를 제공한다.
-- 🧪 응용 사례: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 공적 자금으로 지원된 물리학 연구가 정책에 선택적으로 활용되는 메커니즘을 구체적으로 분석한 사례 연구다.
-- 🔄 다른 접근: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학 지식의 정책적 활용에서 선택적 사용 패턴을 분석한 다른 접근법임
-- 🧪 응용 사례: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 미중 과학협력의 발산이 물리학 지식의 정책적 선택적 활용에서 어떻게 나타나는지 구체적 사례를 제공합니다.
-- 🔄 다른 접근: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 정책에서 물리학 지식의 선별적 사용을 통해 과학-정책 상호작용의 다른 측면을 분석한다
+- 🧪 응용 사례: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 촉매 발견 연구가 정책에 활용되는 방식을 통해 물리학 지식의 정책적 활용 패턴을 구체적으로 관찰할 수 있다.
+- 🔗 후속 연구: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 인플레이션 감소법에서의 실증 증거 활용과 물리학 지식의 정책 활용은 모두 과학-정책 연결의 선택성을 보여준다.
+- 🔄 다른 접근: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학 지식의 정책 활용을 다루지만, LLM을 활용한 과학-정책 변환보다는 물리학 지식의 선택적 정책 진입 과정에 집중한다.
+- 🏛 기반 연구: [[papers/975_Interdisciplinary_papers_supported_by_disciplinary_grants_ga/review]] — 학제간 연구가 받는 펀딩 지원의 한계를 보여주어, 학제간 물리학이 정책 영향력으로 이어지지 않는 구조적 배경을 설명한다.
+- 🔗 후속 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 당파적 과학 펀딩 격차를 물리학-정책 연계의 맥락에서 구체화하여, 정치적 편향이 학제간 지식의 정책 활용에 미치는 영향을 보여준다.
+- 🔗 후속 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 물리학 지식이 정책에서 선택적으로 사용되는 양상은 공적 과학이 실제 정책 결정에 활용되는 메커니즘을 구체적으로 보여줍니다.
+- 🧪 응용 사례: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학 지식이 정책에 선별적으로 활용되는 현상을 LLM을 통해 개선하려는 실용적 접근이다.
+- 🧪 응용 사례: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 촉매 발견 데이터셋이 물리학 지식의 정책적 활용 패턴을 분석하는 구체적 사례를 제공한다.
+- 🏛 기반 연구: [[papers/942_Bridging_the_gap_between_science_and_society_Mapping_librari/review]] — 정책에서 과학 지식의 선택적 활용에 대한 이론적 배경을 제공하여 도서관의 중개 전략 이해를 돕는다.
+- 🔄 다른 접근: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 과학-정책 연결을 팬데믹 상황과 물리학 지식 활용이라는 다른 맥락에서 각각 분석

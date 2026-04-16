@@ -12,9 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 2010-2025년 Scopus 2,443개 논문을 scientometric 분석하여 AI 기반 모바일 및 데이터 기반 비즈니스 의사결정이 SDG 8(양질의 일자리와 경제성장)과 SDG 9(혁신과 인프라)에 미치는 영향을 매핑한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Bibliometric_Mapping_Tools"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Muriira et al._2026_AI-Augmented Mobile and Data-Driven Decision Making in Business Mapping Global Research Trends for.pdf"
 ---
@@ -89,10 +89,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Muriira et al._2026_AI-Augmented Mobile 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 머신러닝 응용에 대한 포괄적 scientometric 조사가 AI 기반 비즈니스 의사결정 연구의 기술적 배경을 제공한다.
-- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — AI와 SDG의 연결을 매핑하는 연구가 혁신적 논문이 사회적 주목을 받는 현상을 지속가능성 맥락으로 확장한다.
-- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 둘 다 디지털 기술과 비즈니스의 연결을 bibliometric 방법으로 분석하지만 서로 다른 기술 영역에 초점을 맞춘다.
-- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑의 기본 개념과 방법론을 제공하여 AI 기반 모바일 의사결정 연구의 scientometric 분석 기법을 뒷받침한다.
-- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer를 활용한 서지계량학 분석 기법을 AI-비즈니스 연구 매핑에 실제 적용하는 사례를 제시한다.
-- 🔄 다른 접근: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — AI 연구 동향을 기계학습으로 예측하는 다른 접근법을 제시하여 scientometric 분석과 비교 연구할 수 있다.
-- 🔄 다른 접근: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — AI와 디지털 변환을 다루는 두 bibliometric 연구로서 교육 분야와 비즈니스 분야에서 AI 연구 동향을 비교 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer 프로그램을 활용한 scientometric 분석의 기본 도구와 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1019_Science_of_science/review]] — AI 기반 모바일 의사결정이 SDG에 미치는 영향 분석을 과학학 전반의 관점에서 확장할 수 있다.
+- 🔄 다른 접근: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 같은 기간 동안 AI와 ML의 영향을 각각 비즈니스와 사이버보안 분야에서 분석한 평행 연구다.
+- 🔄 다른 접근: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — 비즈니스와 교육 분야에서 AI 기술 적용 동향의 서로 다른 관점을 제공한다
+- 🔗 후속 연구: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 디지털 마케팅에서 모바일 AI 의사결정 시스템으로 연구 범위를 확장한다
+- 🏛 기반 연구: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — LLM이 비즈니스 의사결정에 미치는 영향 분석의 이론적 배경을 제공한다
+- 🔄 다른 접근: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 데이터 프라이버시와 클라우드 보안 연구가 AI 기반 모바일 의사결정 연구와 함께 디지털 기술의 사회적 영향을 다루기 때문
+- 🏛 기반 연구: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 주제별 과학 자금 지원과 연구 성과 매핑이 SDG 목표와 AI 연구 영향 매핑의 방법론적 기반을 제공하기 때문
+- 🔄 다른 접근: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 같은 기간 동안 머신러닝과 AI의 영향을 각각 사이버보안과 비즈니스 의사결정 분야에서 분석한다.

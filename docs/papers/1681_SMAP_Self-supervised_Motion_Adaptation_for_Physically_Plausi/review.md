@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 인간 모션과 휴머노이드 로봇의 이질적 행동 공간 간 차이를 해결하기 위해 Vector-Quantized Periodic Autoencoder 기반의 Humanoid-Adapter를 제안하여 인간 모션을 물리적으로 타당한 로봇 모션으로 적응시키고, Teacher-Student 증류 학습을 통해 안정적인 전신 제어 정책을 학습한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2025_SMAP Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control.pdf"
 ---
@@ -88,3 +91,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2025_SMAP Self-supervised Mo
 - Overall: 4/5
 
 **총평**: 본 논문은 인간-로봇 모션 이질성이라는 실질적 문제를 Vector-Quantized Periodic Autoencoder와 디커플된 보상을 통해 체계적으로 해결하며, 시뮬레이션과 실제 로봇 실험을 통해 방법의 효과성을 충분히 입증한다. 다만 특정 로봇 플랫폼에 한정된 검증과 일반화 가능성에 대한 추가 분석이 있으면 더욱 강력한 논문이 될 것으로 예상된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 두 논문 모두 인간 모션을 휴머노이드 로봇으로 적응시키는 문제를 다루지만, 자기지도 학습과 일반적인 추적이라는 다른 방법을 사용한다.
+- 🏛 기반 연구: [[papers/2088_Make_Tracking_Easy_Neural_Motion_Retargeting_for_Humanoid_Wh/review]] — 휴머노이드 전신 제어를 위한 신경망 모션 리타게팅의 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/2137_PhysDiff_Physics-Guided_Human_Motion_Diffusion_Model/review]] — 물리 기반 인간 모션 diffusion을 자기지도 학습으로 휴머노이드에 적응시키는 방향으로 확장한다.
+- 🔄 다른 접근: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — 인간 모션을 휴머노이드로 적응시키는 과제에서 자기지도 적응과 시각적 모방이라는 서로 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1615_Physics-Based_Motion_Imitation_with_Adversarial_Differential/review]] — 물리 기반 모션 모방에서 adversarial differential과 self-supervised adaptation이라는 관련된 학습 패러다임을 사용한다.
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — human motion adaptation vs residual policy라는 서로 다른 방식의 자연스러운 휴머노이드 제어 접근법입니다.
+- 🏛 기반 연구: [[papers/2000_Humanoid_Policy__Human_Policy/review]] — 인간 모션의 물리적 타당성 확보가 humanoid-human policy alignment의 기초입니다.
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — 자연스러운 보행을 위해 residual learning vs motion adaptation이라는 서로 다른 decoupling 방식을 사용합니다.
+- 🔄 다른 접근: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — 인간 모션을 휴머노이드로 적용하는 과제에서 시각적 모방과 자기지도 적응이라는 서로 다른 접근법을 사용한다.

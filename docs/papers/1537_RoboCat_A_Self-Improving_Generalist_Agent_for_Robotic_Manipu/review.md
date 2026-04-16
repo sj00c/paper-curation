@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "RoboCat는 서로 다른 로봇과 작업 경험을 활용하여 다중 embodiment과 다중 작업을 처리할 수 있는 시각 기반 goal-conditioned decision transformer 기반의 자가 개선 로봇 조작 에이전트이다. 100-1000개의 예제만으로 새로운 작업과 로봇에 적응하며, 자체 생성 데이터를 이용한 반복적 개선이 가능하다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Robotic_Foundation_Generalization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bousmalis et al._2023_RoboCat A Self-Improving Generalist Agent for Robotic Manipulation.pdf"
 ---
@@ -93,8 +94,11 @@ RoboCat는 서로 다른 로봇과 작업 경험을 활용하여 다중 embodime
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — HPT의 heterogeneous pre-training이 RoboCat의 multi-embodiment 학습을 위한 기초 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo의 open-source generalist robot policy가 RoboCat의 self-improving agent를 오픈소스 환경에서 구현한다.
-- 🧪 응용 사례: [[papers/1562_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — Scaling Cross-Embodied Learning이 RoboCat의 다중 embodiment 학습 원리를 대규모로 적용한 구체적 사례이다.
-- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — RoboCat의 self-improving generalist agent와 RoboBrain의 unified brain model은 모두 일반화된 로봇 조작을 위한 서로 다른 접근법이다.
-- 🏛 기반 연구: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — RoboCat의 multi-embodiment 학습이 HPT의 heterogeneous pre-training 방법론의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo와 함께 범용 로봇 정책을 추구하지만 RoboCat는 자가 개선에, Octo는 오픈소스 일반화에 초점을 맞춘 서로 다른 접근이다.
+- 🔗 후속 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment의 다중 embodiment 데이터를 활용하여 RoboCat의 크로스 로봇 학습 능력을 더욱 체계화했다.
+- 🏛 기반 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — RoboCat의 self-improving agent를 위한 기본적인 behavior cloning과 multi-modal learning 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — RoboCat의 self-improvement를 RoboMonkey의 test-time sampling과 verification으로 확장하여 더 신뢰성 있는 로봇 학습을 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1294_A_Generalist_Agent/review]] — RoboCat의 robot-specific generalist agent와 달리 일반적인 multi-domain generalist agent 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1294_A_Generalist_Agent/review]] — RoboCat은 Gato의 범용 에이전트 개념을 로봇 조작에 특화하여 발전시킨 후속 연구입니다.
+- 🏛 기반 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — RoboCat의 self-improving agent 개념이 RT-1의 대규모 학습과 일반화 능력 개발의 이론적 기반이다.
+- 🔗 후속 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — self-improving generalist agent 개념을 VLM 기반 imitation learning으로 확장하여 더 효율적인 로봇 학습을 제시합니다.

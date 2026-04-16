@@ -13,7 +13,8 @@ score: 4.0
 essence: "학술출판의 지식 전파와 학문적 신용 확립이라는 두 목표의 불일치 문제를 분석하고, 상업출판사의 이윤 추구가 학술평가 체계에 미치는 부작용을 조명하며 대안적 출판 모델을 제시한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Peer_Review_Grant_Systems"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Public_Science_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Trueblood et al._2025_The misalignment of incentives in academic publishing and implications for journal reform.pdf"
 ---
@@ -78,9 +79,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Trueblood et al._2025_The misalignment o
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 학술 출판 과점 구조가 지식 전파와 학문적 신용 체계의 불일치를 어떻게 심화시키는지 구체적 메커니즘을 분석한다.
-- 🏛 기반 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 오픈 액세스 현황 분석을 통해 상업 출판사 모델의 대안적 출판 방식의 실현 가능성을 평가하는 근거를 제공한다.
-- 🧪 응용 사례: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — 학술 출판 인센티브 불일치 문제를 AI 기반 펀딩 혁신으로 해결할 수 있는 연결점을 탐색한다.
-- 🔗 후속 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 학술 출판 시장의 과점 구조가 연구자들의 출판 인센티브와 어떻게 잘못 정렬되어 있는지를 보여준다.
-- 🏛 기반 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 학술 출판에서 인센티브의 잘못된 정렬이 출판 부담 심화의 근본적 원인을 제공합니다.
-- 🔗 후속 연구: [[papers/1234_The_Open_Science_promise_vs_the_Author-pays_reality_The_Hidd/review]] — 학술 출판의 잘못된 인센티브 구조가 author-pays 모델을 통해 어떻게 형평성을 해치는지 구체적으로 보여준다.
+- 🏛 기반 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 디지털 시대 학술출판사 과점 구조 분석이 학술출판 인센티브 불일치 문제의 구조적 원인을 설명하기 때문
+- 🔗 후속 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 학술출판의 부담 증가 현상을 인센티브 구조의 근본적 불일치 관점에서 심화 분석했기 때문
+- ⚖️ 반론/비판: [[papers/1224_Declarative_commitments_and_editorial_open_access_practices/review]] — 편집진의 오픈액세스 선언과 실제 관행 차이가 출판 시스템 인센티브 불일치의 구체적 사례를 보여주기 때문
+- 🧪 응용 사례: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 과학 출판에서의 후견인 효과가 인센티브 왜곡에 미치는 구체적 사례다.
+- 🔗 후속 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 출판사 독점 구조가 학술 출판에서 인센티브 불일치 문제를 심화시키는 구조적 원인으로 작용한다.
+- 🏛 기반 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 학술 출판에서 인센티브 불일치 문제를 다루어, 과학자들이 양적 생산 압박을 받는 구조적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 학술 출판의 인센티브 불일치 문제 분석이 연구 평가 체계의 구조적 문제점 이해와 개선 방향 설정에 핵심적인 이론적 토대를 제공한다.

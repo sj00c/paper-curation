@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "SkillBlender는 사전학습된 목표조건부 원시 기술들을 동적으로 혼합하여 휴머노이드 로봇이 복잡한 전신 조작-이동 작업을 최소한의 보상 엔지니어링으로 수행할 수 있게 하는 계층적 강화학습 프레임워크이다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adaptive_Locomotion_Recovery"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kuang et al._2025_SkillBlender Towards Versatile Humanoid Whole-Body Loco-Manipulation via Skill Blending.pdf"
 ---
@@ -84,3 +86,23 @@ SkillBlender는 사전학습된 목표조건부 원시 기술들을 동적으로
 - Overall: 4/5
 
 **총평**: SkillBlender는 휴머노이드 로봇의 다용도적 조작-이동 능력 개발에 대한 우아하고 실용적인 해결책을 제시하며, 포괄적인 벤치마크와 함께 향후 휴머노이드 연구의 중요한 기초가 될 가능성이 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 두 논문 모두 계층적 학습을 통한 조작-이동 작업을 다루지만, 일반적인 스킬 혼합과 홈 환경 특화라는 다른 접근을 사용한다.
+- 🏛 기반 연구: [[papers/1943_GBC_Generalized_Behavior-Cloning_Framework_for_Whole-Body_Hu/review]] — 일반적인 행동 클로닝 프레임워크를 통한 전신 휴머노이드 제어의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/2090_MASH_Cooperative-Heterogeneous_Multi-Agent_Reinforcement_Lea/review]] — 협력적 이종 다중 에이전트 학습을 원시 기술 혼합으로 확장하여 더 복잡한 조작-이동 작업을 수행한다.
+- 🏛 기반 연구: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 기본적인 loco-manipulation 기술들이 복잡한 전신 조작-이동 작업의 primitive skill 기반이 됩니다.
+- 🔗 후속 연구: [[papers/2115_OKAMI_Teaching_Humanoid_Robots_Manipulation_Skills_through_S/review]] — primitive skill blending이 human demonstration을 통한 manipulation skill teaching으로 확장됩니다.
+- 🔗 후속 연구: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 박스 조작의 기본 loco-manipulation이 더 복잡한 전신 조작-이동 작업으로 발전됩니다.
+- 🔗 후속 연구: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — ResMimic의 전신 loco-manipulation이 SkillBlender의 다양한 스킬 결합과 통합되어 더 versatile한 휴머노이드 제어를 실현할 수 있다
+- 🔗 후속 연구: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — RGMP의 87% 성공률 달성 경험이 SkillBlender의 다양한 whole-body skill 결합에서 성능 최적화 가이드라인을 제공할 수 있다
+- 🔗 후속 연구: [[papers/1760_X-Loco_Towards_Generalist_Humanoid_Locomotion_Control_via_Sy/review]] — SkillBlender의 다재다능한 whole-body 제어가 X-Loco의 전문가 정책 통합 방식을 보완합니다.
+- 🏛 기반 연구: [[papers/1896_EGM_Efficiently_Learning_General_Motion_Tracking_Policy_for/review]] — SkillBlender의 다양한 loco-manipulation 기술 블렌딩 방법론이 EGM의 일반화된 모션 추적 정책 학습을 위한 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1995_Humanoid_Hanoi_Investigating_Shared_Whole-Body_Control_for_S/review]] — SkillBlender의 versatile whole-body loco-manipulation 기법이 Humanoid Hanoi의 reusable skill 조합 방법론의 기초를 제공한다.
+- 🏛 기반 연구: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — 다재다능한 전신 로코-조작이 하이브리드 행동 계획의 기반 기술이다.
+- 🔗 후속 연구: [[papers/2038_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — OMoE를 기반으로 한 다중 기술 학습을 loco-manipulation 통합 시스템으로 확장하여 더 포괄적인 휴머노이드 능력을 구현할 수 있다.
+- 🔄 다른 접근: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — 둘 다 versatile whole-body manipulation이지만 MaskedManipulator는 masked approach를, SkillBlender는 skill composition 방식을 사용한다
+- 🔗 후속 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — SkillBlender의 versatile whole-body control에 TrajBooster의 궤적 전이 방법을 적용하면 더 다양한 manipulation skill 학습 가능
+- 🔗 후속 연구: [[papers/2165_ULC_A_Unified_and_Fine-Grained_Controller_for_Humanoid_Loco-/review]] — SkillBlender의 versatile whole-body skills에 ULC의 residual action modeling을 적용하면 더 정밀한 loco-manipulation 제어 가능
+- 🔄 다른 접근: [[papers/2153_Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distill/review]] — 다중행동 증류는 여러 행동을 하나의 정책으로 통합하고 SkillBlender는 다양한 스킬을 조합하는 서로 다른 휴머노이드 제어 접근법입니다.

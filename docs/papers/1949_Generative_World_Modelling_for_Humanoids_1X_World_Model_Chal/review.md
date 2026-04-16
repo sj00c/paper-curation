@@ -1,3 +1,24 @@
+---
+title: "1949_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal"
+authors:
+  - "Riccardo Mereu"
+  - "Aidan Scannell"
+  - "Yuxin Hou"
+  - "Yi Zhao"
+  - "Aditya Jitta"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "1X World Model Challenge에서 humanoid 로봇의 미래 상태 예측을 위해 Wan 2.2 TI2V-5B를 video-state-conditioned 프레임 예측으로 적응시키고, Spatio-Temporal Transformer를 압축 트랙용으로 훈련하여 두 트랙 모두에서 1위를 달성했다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mereu et al._2025_Generative World Modelling for Humanoids 1X World Model Challenge Technical Report.pdf"
+---
+
 # Generative World Modelling for Humanoids: 1X World Model Challenge Technical Report
 
 > **저자**: Riccardo Mereu, Aidan Scannell, Yuxin Hou, Yi Zhao, Aditya Jitta, Antonio Dominguez, Luigi Acerbi, Amos Storkey, Paul Chang | **날짜**: 2025-10-08 | **URL**: [https://arxiv.org/abs/2510.07092](https://arxiv.org/abs/2510.07092)
@@ -66,3 +87,21 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 대규모 foundation model을 robot state 조건화로 효과적으로 적응시키고, pixel space와 discrete latent space에서 모두 최고 성능을 달성함으로써 실제 humanoid 로봇 world modeling의 새로운 벤치마크를 제시했다. 방법론의 명확한 설명과 포괄적인 ablation study는 향후 world model 연구에 큰 기여가 될 것으로 예상된다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — Genie Sim 3.0의 종합적인 시뮬레이션 플랫폼이 1X World Model Challenge의 세계 모델링 기법을 통합할 수 있다.
+- 🔄 다른 접근: [[papers/2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — 둘 다 계층적 세계 모델링을 다루지만 Generative World Modelling은 video 예측에, MetaWorld-X는 VLM 기반 조율에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — 둘 다 world model을 다루지만 Generative World Modelling은 video-state 예측을, DreamZero는 zero-shot policy를 중심으로 한다.
+- 🔗 후속 연구: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — 1X World Model Challenge의 video 예측 기술을 Humanoid World Models의 open world foundation과 결합하면 더 포괄적인 세계 모델이 가능하다.
+- 🔗 후속 연구: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — Genie Sim 3.0의 고품질 시뮬레이션 환경이 GR00T N1의 합성 데이터 생성과 모델 훈련에 확장 적용될 수 있음
+- 🔗 후속 연구: [[papers/1791_Advancing_Humanoid_Locomotion_Mastering_Challenging_Terrains/review]] — 1X World Model의 생성형 세계 모델링이 DWL의 denoising 접근법을 더욱 정교하게 발전시킵니다.
+- 🔗 후속 연구: [[papers/1885_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — DreamControl-v2의 diffusion 기반 motion generation이 1X World Model의 generative world modeling과 결합되어 더 포괄적인 휴머노이드 AI 시스템을 구축할 수 있다.
+- 🏛 기반 연구: [[papers/1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — generative world model이 DreamGen의 video world model 기반 로봇 학습 파이프라인의 핵심 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — 1X World Model의 generative world modelling 프레임워크가 DreamZero의 world action model을 더욱 고도화할 수 있는 확장 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — generative world model의 기본 원리가 ego-vision world model for contact planning의 이론적 토대를 마련한다.
+- 🏛 기반 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — generative world modelling이 Genie Sim 3.0의 LLM 기반 장면 생성에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — 1X World Model의 generative world modeling과 HWM은 모두 humanoid world model을 다루지만 서로 다른 생성 모델 구조를 사용한다.
+- 🔗 후속 연구: [[papers/2027_InterPrior_Scaling_Generative_Control_for_Physics-Based_Huma/review]] — 생성형 제어 프레임워크를 휴머노이드 전용 world model과 결합하여 더 정교한 물리 기반 시뮬레이션을 구현할 수 있다.
+- 🏛 기반 연구: [[papers/2082_LHM-Humanoid_Learning_a_Unified_Policy_for_Long-Horizon_Huma/review]] — 1X World Model의 생성형 세계 모델링이 LHM-Humanoid의 장시간 다중 객체 조작을 위한 환경 이해의 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2154_Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and/review]] — SAC 기반 정책 사전학습은 model-free 접근법을 사용하고 Generative World Modelling은 생성형 세계 모델을 통한 서로 다른 휴머노이드 학습 전략입니다.

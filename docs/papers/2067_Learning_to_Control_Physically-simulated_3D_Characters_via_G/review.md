@@ -1,3 +1,23 @@
+---
+title: "2067_Learning_to_Control_Physically-simulated_3D_Characters_via_G"
+authors:
+  - "Jianan Li"
+  - "Xiao Chen"
+  - "Tao Huang"
+  - "Tien-Tsin Wong"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Mimic2DM은 비디오에서 추출한 2D 키포인트 궤적만을 사용하여 물리 기반 3D 캐릭터 제어 정책을 직접 학습하는 모션 모방 프레임워크이며, 재투영 오차 최소화와 RL을 통해 2D 데이터로부터 물리적으로 타당한 3D 동작을 합성한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Teacher-Student_Policy_Distillation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_Learning to Control Physically-simulated 3D Characters via Generating and Mimicking 2D Motions.pdf"
+---
+
 # Learning to Control Physically-simulated 3D Characters via Generating and Mimicking 2D Motions
 
 > **저자**: Jianan Li, Xiao Chen, Tao Huang, Tien-Tsin Wong | **날짜**: 2025-12-09 | **URL**: [https://arxiv.org/abs/2512.08500](https://arxiv.org/abs/2512.08500)
@@ -64,3 +84,12 @@ Mimic2DM은 비디오에서 추출한 2D 키포인트 궤적만을 사용하여 
 - Overall: 4/5
 
 **총평**: Mimic2DM은 접근성 높은 2D 데이터로부터 물리 기반 3D 캐릭터 제어를 학습하는 실질적이고 혁신적인 방법으로, 기존의 희소한 3D MoCap 데이터 의존성을 크게 완화하며 다양한 도메인에서 우수한 성능을 보여준다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 물리 기반 캐릭터 제어의 기본 방법론을 2D 데이터 기반 3D 제어로 확장한 기반
+- 🔄 다른 접근: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — 확률적 모델을 이용한 캐릭터 제어에서 diffusion과 재투영 기반의 다른 접근법
+- 🏛 기반 연구: [[papers/1858_cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_D/review]] — 2D 키포인트를 활용한 물리 기반 제어가 깊이 융합 동역학 인식 운동 생성에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1878_Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Model/review]] — 2D 데이터에서의 3D 캐릭터 제어가 다중 에이전트 상호작용 시퀀스 모델링으로 확장된다.
+- 🧪 응용 사례: [[papers/1815_Being-M05_A_Real-Time_Controllable_Vision-Language-Motion_Mo/review]] — 비디오에서의 모션 모방이 실시간 제어 가능한 vision-language-motion 생성에 직접 적용된다.
+- 🔗 후속 연구: [[papers/2123_One-shot_Adaptation_of_Humanoid_Whole-body_Motion_with_Walki/review]] — Learning to Control 3D Characters의 물리 시뮬레이션 캐릭터 제어를 실제 휴머노이드의 원샷 전신 운동 적응으로 발전시킨 연구이다.

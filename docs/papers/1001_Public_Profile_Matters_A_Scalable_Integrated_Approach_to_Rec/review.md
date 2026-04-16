@@ -12,7 +12,8 @@ score: 4.0
 essence: "논문은 인용 추천 시스템에서 인간의 인용 행동 패턴(public profile)을 효율적으로 캡처하는 경량 모듈 Profiler와 적응형 벡터 게이팅을 통해 신뢰도 사전정보와 의미론적 정보를 통합하는 DAVINCI 모델을 제안하며, 현실적인 귀납적(inductive) 평가 설정을 도입하여 새로운 최첨단 성능을 달성한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Research_Evaluation_and_Metrics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Goyal et al._2026_Public Profile Matters A Scalable Integrated Approach to Recommend Citations in the Wild.pdf"
 ---
@@ -85,7 +86,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Goyal et al._2026_Public Profile Matters
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 인용 추천 시스템에 LLM 사용 패턴을 통합하면 더 정확한 추천이 가능할 것임
-- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 개별 연구자의 과학적 성과 측정 방법론이 public profile 분석의 이론적 기반이 됨
-- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야의 실증적 방법론이 인용 추천 시스템 평가에 필수적임
-- 🔗 후속 연구: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 연구자 평판 관리를 위한 통합적 접근법과 기관 계정의 소셜미디어 전략을 결합하여 더 효과적인 과학 소통 방안을 모색할 수 있다.
+- 🔄 다른 접근: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 인용 추천에서 머신러닝 기반 접근법과 인간 행동 패턴 기반 접근법의 차이를 보여준다.
+- 🏛 기반 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 인용 관계의 복잡한 패턴을 이해하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 인용 추천 시스템에서 상대인용비율과 같은 정규화된 지표를 활용하여 더 정확한 추천 성능을 달성할 수 있다.
+- ⚖️ 반론/비판: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — AI 기반 인용 추천 시스템이 LLM 시대의 과학 논문 생산성 증가에 어떤 영향을 미치는지 비교 분석한다.
+- 🔄 다른 접근: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 기초 모델을 활용한 과학 발견과 인용 추천에서 서로 다른 접근법으로 과학적 지식 연결을 지원한다.
+- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 인용 추천 시스템의 기반이 되는 의미론적 네트워크와 신경망 기반 연구 트렌드 예측 방법론을 활용합니다.
+- 🔄 다른 접근: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — 연구 발견을 위한 다중 에이전트 시스템이라는 다른 접근법으로 인용 추천 문제를 해결하려고 시도합니다.
+- ⚖️ 반론/비판: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — AI 기반 연구 평가 시스템의 책임감 있는 사용에 대한 우려를 제기하여 자동화된 인용 추천의 한계를 지적합니다.
+- 🔄 다른 접근: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 연구 발견을 위한 통합적 접근법을 다룬 연구로, 트위터 기관 계정과 다른 방식의 학술 커뮤니케이션 채널을 분석하는 대안적 방법입니다.

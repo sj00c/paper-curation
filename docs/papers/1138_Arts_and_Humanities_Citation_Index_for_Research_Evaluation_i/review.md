@@ -9,9 +9,9 @@ arxiv: ""
 score: 4.0
 essence: "Arts & Humanities Citation Index (A&HCI)를 종교학 연구평가에 사용할 때 50년간의 데이터 분석을 통해 색인 기록의 정체, 저자 주소 정보 결손, 기여 국가/지역의 이상, 저널 집중도 과다 등의 문제점을 발견했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang and Liu_2026_Arts and Humanities Citation Index for Research Evaluation in the Field of Religion Unusual Finding.pdf"
 ---
@@ -82,11 +82,11 @@ Arts & Humanities Citation Index (A&HCI)를 종교학 연구평가에 사용할 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — 종교학 연구평가에서 A&HCI의 한계와 Google Scholar, Scopus 등 다양한 학술 데이터베이스의 비교 분석이라는 대안적 접근법을 제시합니다.
-- 🏛 기반 연구: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 특정 학문 분야에서 scientometric 연구의 사례로서 인도 폴리머 과학 연구가 종교학 A&HCI 분석의 방법론적 참고 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — A&HCI의 데이터 품질 문제를 인용 분석에서 일반적인 데이터 품질 평가 문제로 확장하여 분석합니다.
-- 🔄 다른 접근: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 둘 다 인문학 분야의 인용 분석이지만 1138은 종교학, 1152는 도서관정보학 분야를 다룬다.
-- 🏛 기반 연구: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 의료 분야 전통 관행의 bibliometric 분석이 종교학 연구 평가의 문화적 맥락을 이해하는 기반을 제공한다.
-- 🔗 후속 연구: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 과학의 과학에서 학제간 출현을 식별하는 방법론이 종교학의 학제간 특성을 평가하는 데 확장 적용된다.
-- 🔄 다른 접근: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 둘 다 특정 의료 분야의 bibliometric 분석이지만 1132는 전통 치과 관행, 1138은 종교학 연구 평가를 다룬다.
-- 🔄 다른 접근: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 둘 다 인문사회 분야의 인용 분석이지만 1152는 도서관정보학, 1138은 종교학을 다룬다.
+- 🔗 후속 연구: [[papers/1139_Assessing_data_quality_in_citation_analysis_A_case_study_of/review]] — 둘 다 주요 인용 데이터베이스의 데이터 품질 문제를 다루며 상호 보완적인 분석을 제공한다.
+- 🔄 다른 접근: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — A&HCI의 종교학 분야 한계를 OpenAlex의 메타데이터 품질 분석과 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1115_Google_Scholar_Microsoft_Academic_Scopus_Dimensions_Web_of_S/review]] — 여러 학술 데이터베이스의 비교 분석 방법론과 각 데이터베이스의 특성을 이해하는 데 필요하다.
+- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학 연구의 편향성 평가 방법론이 인문학 연구평가 편향 분석의 기반이 된다
+- 🔄 다른 접근: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 연구 평가 시스템의 문제점을 인문학과 전체 과학 거버넌스 관점에서 다르게 접근한다
+- 🏛 기반 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 정당성 관점에서의 인용 분석이 종교학 연구평가에서 A&HCI 사용의 타당성 문제를 이론적으로 뒷받침하기 때문
+- 🔗 후속 연구: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 과학의 파괴성 감소에 대한 견고한 증거 연구가 인문학 분야 인용 색인의 한계를 과학 전반의 맥락에서 설명하기 때문
+- 🏛 기반 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 저널 평가 도구로서의 인용 분석이 A&HCI를 종교학 연구평가에 사용할 때의 문제점 분석에 기반을 제공하기 때문

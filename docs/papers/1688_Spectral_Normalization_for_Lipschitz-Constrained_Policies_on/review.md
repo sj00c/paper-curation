@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 인간형 로봇의 보행 학습에서 Spectral Normalization (SN)을 사용하여 Lipschitz 연속성을 효율적으로 강제하고, 기존의 gradient penalty 기반 방법보다 GPU 메모리 오버헤드를 줄이면서도 유사한 성능을 달성한다."
 tags:
-  - "cat/Other"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Parallel_Robot_Training"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shin et al._2025_Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion.pdf"
 ---
@@ -81,3 +84,21 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shin et al._2025_Spectral Normalization 
 - Overall: 4/5
 
 **총평**: 본 논문은 Spectral Normalization이라는 기존 기법을 로봇 정책 학습의 대역폭 제약 문제에 창의적으로 적용하여, 계산 효율성과 성능을 모두 달성한 실용적인 솔루션을 제시한다. 시뮬레이션과 실제 로봇 양쪽에서의 검증으로 신뢰성을 높였으며, sim-to-real 전이 문제 해결에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1710_The_invariant_extended_Kalman_filter_as_a_stable_observer/review]] — Spectral Normalization의 Lipschitz 연속성 보장이 IEKF의 안정성 분석에서 요구되는 수학적 조건과 이론적으로 연관된다.
+- 🔄 다른 접근: [[papers/1759_Whole-Body_Model-Predictive_Control_of_Legged_Robots_with_Mu/review]] — SN 기반 메모리 효율적 학습과 MuJoCo 기반 실시간 MPC는 모두 계산 효율성을 추구하는 상호 보완적 제어 접근법이다.
+- 🔄 다른 접근: [[papers/2062_Learning_Smooth_Humanoid_Locomotion_through_Lipschitz-Constr/review]] — 두 논문 모두 Lipschitz 제약을 통한 부드러운 휴머노이드 보행을 다루지만, spectral normalization과 일반적인 제약이라는 다른 구현 방법을 사용한다.
+- 🏛 기반 연구: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — 빠르고 효율적인 강화학습 방법의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — 다중 작업 deep RL을 Lipschitz 제약으로 확장하여 더 안정적인 학습을 달성한다.
+- 🏛 기반 연구: [[papers/1696_Success_in_Humanoid_Reinforcement_Learning_under_Partial_Obs/review]] — 부분 관찰 환경에서의 안정적 학습 기법을 Lipschitz 연속성 관점에서 보완하여 메모리 효율성과 성능을 동시에 개선했다.
+- 🔄 다른 접근: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — 휴머노이드 학습의 안정성을 위해 서로 다른 아키텍처(Spectral Normalization vs 2단계 강화학습)를 통해 효율적인 정책 학습을 추구한다.
+- 🏛 기반 연구: [[papers/1696_Success_in_Humanoid_Reinforcement_Learning_under_Partial_Obs/review]] — Lipschitz 연속성을 통한 안정적 학습 기법을 부분 관찰 환경으로 확장하여 고정 길이 과거 관찰 시퀀스를 활용한 안정적 정책 학습을 구현했다.
+- 🧪 응용 사례: [[papers/1710_The_invariant_extended_Kalman_filter_as_a_stable_observer/review]] — IEKF의 안정성 분석에 필요한 Lie group 상의 조건들이 Spectral Normalization의 Lipschitz 제약과 수학적으로 연관되어 상호 보완한다.
+- 🏛 기반 연구: [[papers/1629_Quantum_deep_reinforcement_learning_for_humanoid_robot_navig/review]] — Spectral Normalization의 Lipschitz 제약 정책이 quantum deep RL에서 안정적인 학습과 수렴성 보장의 이론적 기초를 제공함
+- 🏛 기반 연구: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — Lipschitz 제약 정책을 위한 spectral normalization이 CMR에서 disturbance attenuation을 위한 Lipschitz regularization의 구현 기반을 제공한다
+- 🔗 후속 연구: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 립시츠 제약 정책이 대칭 등변 제어의 안정성을 보장합니다.
+- 🔗 후속 연구: [[papers/2033_Keep_on_Going_Learning_Robust_Humanoid_Motion_Skills_via_Sel/review]] — Keep on Going의 선택적 적대적 강화가 Spectral Normalization의 Lipschitz 제약 정책과 결합되어 더 안정적인 견고성 달성
+- 🏛 기반 연구: [[papers/2062_Learning_Smooth_Humanoid_Locomotion_through_Lipschitz-Constr/review]] — Lipschitz 제약을 통한 정책 안정화의 이론적 기반과 구현 방법을 제공한다.
+- 🔄 다른 접근: [[papers/2133_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — 포즈 거리 필드 대신 Lipschitz 제약을 통해 정책의 안정성과 타당성을 보장하는 다른 수학적 접근법이다.

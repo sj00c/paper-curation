@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "EO-1은 interleaved vision-text-action 사전학습을 통해 multimodal embodied reasoning과 robot control을 통합한 unified embodied foundation model이며, 1.5M 샘플의 EO-Data1.5M 데이터셋과 함께 개발되었다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
   - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qu et al._2025_EO-1 An Open Unified Embodied Foundation Model for General Robot Control.pdf"
@@ -88,8 +90,12 @@ EO-1은 interleaved vision-text-action 사전학습을 통해 multimodal embodie
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — NavFoM도 unified embodied foundation model을 통한 범용성을 추구한다.
-- 🔗 후속 연구: [[papers/1422_Hi_Robot_Open-Ended_Instruction_Following_with_Hierarchical/review]] — Hi Robot의 계층적 구조가 EO-1의 unified multimodal reasoning을 보완한다.
-- 🏛 기반 연구: [[papers/1294_A_Generalist_Agent/review]] — A Generalist Agent의 범용 에이전트 개념이 EO-1의 unified foundation model 설계에 기반한다.
-- 🔄 다른 접근: [[papers/1294_A_Generalist_Agent/review]] — EO-1은 Gato와 유사한 통합 기초 모델이지만 구체화된 AI에 특화되어 있다
-- 🔗 후속 연구: [[papers/1387_EWMBench_Evaluating_Scene_Motion_and_Semantic_Quality_in_Emb/review]] — EO-1의 unified embodied model이 EWMBench의 평가 대상이 될 수 있다.
+- 🔄 다른 접근: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — Unified Vision-Language-Action Model과 EO-1은 모두 통합 embodied foundation model을 목표로 하지만 다른 아키텍처 설계를 사용합니다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 오픈소스 VLA 프레임워크가 EO-1의 unified embodied foundation model 설계의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1406_Genie_Envisioner_A_Unified_World_Foundation_Platform_for_Rob/review]] — Genie Envisioner의 세계 foundation 플랫폼이 EO-1의 multimodal embodied reasoning을 더 포괄적인 로봇 제어 환경으로 확장합니다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E의 embodied multimodal language model이 EO-1의 unified embodied foundation model 개발에 기초적인 아키텍처와 접근 방식을 제공한다.
+- 🔗 후속 연구: [[papers/1499_OmniVLA_An_Omni-Modal_Vision-Language-Action_Model_for_Robot/review]] — OmniVLA의 omni-modal approach가 EO-1에서 interleaved vision-text-action pre-training으로 더욱 통합된 embodied foundation model로 발전했다.
+- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA와 EO-1 모두 3D 시각 정보를 활용한 embodied foundation model이지만 world model 생성 방식이 다름
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 vision-language-action 통합 방법론은 EO-1의 multimodal embodied reasoning 설계 기반이 됨
+- 🔄 다른 접근: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — 통합된 embodied foundation model을 구축하는 다른 접근법
+- 🔄 다른 접근: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — embodied multimodal language model에서 PaLM-E vs EO-1의 다른 통합 방식

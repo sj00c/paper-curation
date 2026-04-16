@@ -1,3 +1,25 @@
+---
+title: "1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models"
+authors:
+  - "Haoqi Yuan"
+  - "Yu Bai"
+  - "Yuhui Fu"
+  - "Bohan Zhou"
+  - "Yicheng Feng"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Being-0는 Foundation Model, VLM 기반 Connector, 모듈식 스킬 라이브러리를 계층적으로 통합하여 인간형 로봇이 복잡한 장기 과제를 수행할 수 있도록 하는 프레임워크이다. Connector 모듈이 언어 기반 계획을 실행 가능한 스킬 명령으로 변환하고 보행과 조작을 동적으로 조율한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yuan et al._2025_Being-0 A Humanoid Robotic Agent with Vision-Language Models and Modular Skills.pdf"
+---
+
 # Being-0: A Humanoid Robotic Agent with Vision-Language Models and Modular Skills
 
 > **저자**: Haoqi Yuan, Yu Bai, Yuhui Fu, Bohan Zhou, Yicheng Feng, Xinrun Xu, Yi Zhan, Börje F. Karlsson, Zongqing Lu | **날짜**: 2025-03-16 | **URL**: [https://arxiv.org/abs/2503.12533](https://arxiv.org/abs/2503.12533)
@@ -67,3 +89,22 @@ Being-0는 Foundation Model, VLM 기반 Connector, 모듈식 스킬 라이브러
 - Overall: 4/5
 
 **총평**: Being-0는 인간형 로봇을 위한 실용적이고 효율적인 hierarchical agent 프레임워크로, Connector 모듈을 통한 창의적인 중간층 설계와 실제 하드웨어 구현으로 embodied AI 분야에 의미 있는 기여를 한다. 높은 완수율과 4.2배 효율성 향상은 제안 방식의 효과를 입증하지만, FM의 클라우드 의존성과 실내 중심 평가는 실용성 확대를 위한 개선 과제이다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — VoxPoser의 LLM+VLM 조합을 Being-0의 계층적 VLM-Connector 구조로 발전시킨 포괄적 시스템
+- 🔗 후속 연구: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — RoboPlayground의 언어 기반 작업 정의를 Being-0의 Foundation Model 기반 장기 과제 수행으로 확장
+- 🏛 기반 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 다중 에이전트 학습의 계층적 프레임워크가 Being-0의 모듈식 스킬 조율을 위한 기본 협업 구조
+- 🔗 후속 연구: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — 행동 기초 모델에 VLM과 모듈식 스킬 라이브러리를 통합하여 복잡한 장기 과제를 수행할 수 있는 완전한 시스템을 구현한다.
+- 🔄 다른 접근: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — 계층적 휴머노이드 AI 시스템에서 하나는 Being-0, 다른 하나는 Trinity 모듈식 아키텍처를 제시한다.
+- 🏛 기반 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — GPT-4에 휴머노이드 몸체를 부여하는 기초 연구가 Being-0의 언어-행동 연결 메커니즘에 활용된다.
+- 🔄 다른 접근: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 휴머노이드의 복잡한 장기 과제 수행을 위해 VLM 기반 모듈식 스킬 vs promptable behavioral foundation model이라는 다른 아키텍처를 비교할 수 있다
+- 🔗 후속 연구: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — Being-0의 언어 기반 계획이 LangWBC의 언어 지향 전신 제어로 확장되어 더 세밀한 동작 제어를 달성할 수 있다
+- 🏛 기반 연구: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — end-to-end 언어-행동 모델이 Being-0의 Connector 모듈에서 언어 명령을 실행 가능한 스킬로 변환하는 이론적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — Being-0의 모듈식 스킬 라이브러리가 자연어 작업 정의와 재현 가능한 명세 컴파일의 기반 구조
+- 🏛 기반 연구: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — Being-0의 VLM 기반 언어-행동 변환 구조가 VoxPoser의 언어 기반 조작 계획 방법론과 직접적으로 연관
+- 🔗 후속 연구: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — 행동 기초 모델을 VLM과 모듈식 스킬 라이브러리와 통합하여 복잡한 장기 과제 수행이 가능한 시스템으로 확장한다.
+- ⚖️ 반론/비판: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 단일 정책 기반 foundation model vs 모듈식 스킬 라이브러리라는 상반된 아키텍처 철학을 비교하여 각각의 장단점을 분석할 수 있다
+- 🔗 후속 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — Being-0의 모듈식 스킬 조율을 다중 에이전트 협업으로 확장한 인간-휴머노이드 협업 프레임워크
+- 🔄 다른 접근: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — GPT-4를 휴머노이드에 적용하는 것과 비전-언어 모델 기반 휴머노이드 에이전트는 유사한 목표를 다른 방식으로 달성한다.
+- 🔗 후속 연구: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — 비전-언어 모델 기반 휴머노이드 에이전트가 모듈식 AI 시스템의 구체적 확장이다.

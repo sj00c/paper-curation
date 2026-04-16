@@ -1,3 +1,24 @@
+---
+title: "1938_Full-Order_Sampling-Based_MPC_for_Torque-Level_Locomotion_Co"
+authors:
+  - "Haoru Xue"
+  - "Chaoyi Pan"
+  - "Zeji Yi"
+  - "Guannan Qu"
+  - "Guanya Shi"
+date: "2024.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "DIAL-MPC는 diffusion 프로세스의 iterative refinement 아이디어를 sampling-based MPC에 적용하여 full-order 사족 로봇의 torque-level 제어를 실시간으로 수행하는 training-free 방법이다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xue et al._2024_Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing.pdf"
+---
+
 # Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing
 
 > **저자**: Haoru Xue, Chaoyi Pan, Zeji Yi, Guannan Qu, Guanya Shi | **날짜**: 2024-09-23 | **URL**: [https://arxiv.org/abs/2409.15610](https://arxiv.org/abs/2409.15610)
@@ -67,3 +88,15 @@ DIAL-MPC는 diffusion 프로세스의 iterative refinement 아이디어를 sampl
 - Overall: 4/5
 
 **총평**: 본 논문은 MPPI와 diffusion의 수학적 연결을 통해 sampling-based MPC의 근본적 한계를 새로운 각도로 접근하며, diffusion-inspired annealing이라는 창의적 방법으로 full-order 사족 로봇의 실시간 제어를 training-free로 달성한 의미있는 기여이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1622_Predictive_Sampling_Real-time_Behaviour_Synthesis_with_MuJoC/review]] — 둘 다 sampling-based 실시간 제어를 다루지만 DIAL-MPC는 diffusion 기반이고 Predictive Sampling은 MuJoCo 기반이다.
+- 🏛 기반 연구: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — reference-free sampling-based MPC의 이론적 기반이 DIAL-MPC의 training-free 접근법에 도움이 된다.
+- 🏛 기반 연구: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 대칭성을 고려한 locomotion control 연구가 DIAL-MPC의 full-order 사족 로봇 제어에서 효율적인 샘플링 전략의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — RAPT의 model-predictive OOD detection을 diffusion 기반 sampling과 결합하여 더 강건한 실시간 제어 시스템으로 발전시켰습니다.
+- 🔗 후속 연구: [[papers/1622_Predictive_Sampling_Real-time_Behaviour_Synthesis_with_MuJoC/review]] — Full-Order Sampling-Based MPC의 토크 수준 제어가 MJPC의 실시간 예측 제어 프레임워크를 더욱 정밀하게 확장함
+- 🔗 후속 연구: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — Full-Order Sampling-Based MPC의 토크 수준 전신 제어가 본 논문의 emergent locomotion MPC를 더욱 정밀하게 확장함
+- 🔄 다른 접근: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — 둘 다 MPC 기반 제어를 다루지만 MuJoCo 연구는 실시간 iLQR에, Full-Order는 sampling 기반 토크 레벨 제어에 중점을 둔다.
+- 🔗 후속 연구: [[papers/1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor/review]] — full-order sampling 기반 MPC가 Cost-Matching MPC의 토크 레벨 제어를 더욱 정교하고 완전한 형태로 확장한다
+- 🔄 다른 접근: [[papers/2145_TD-GRPC_Temporal_Difference_Learning_with_Group_Relative_Pol/review]] — Full-order sampling-based MPC가 TD-GRPC의 temporal difference MPC와 다른 sampling 접근법으로 torque-level locomotion control을 달성합니다.

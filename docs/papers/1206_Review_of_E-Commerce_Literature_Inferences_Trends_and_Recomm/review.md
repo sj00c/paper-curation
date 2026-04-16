@@ -8,9 +8,9 @@ arxiv: ""
 score: 4.0
 essence: "Web of Science 데이터베이스의 15,670개 논문(1973-2025)을 VOSviewer와 R Studio Bibliometrix로 분석하여 e-commerce 문헌의 구조, 동향 및 연구 격차를 체계적으로 파악했다. 기술 인프라, 경영 및 사회적 맥락에 중점을 두고 있으며, 중국·미국·영국의 국제 협력 네트워크와 SDG와의 연계성을 확인했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Esmer_2026_Review of E-Commerce Literature Inferences, Trends and Recommendations from Bibliometric Analysis.pdf"
 ---
@@ -91,9 +91,10 @@ Web of Science 데이터베이스의 15,670개 논문(1973-2025)을 VOSviewer와
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/932_An_empirical_analysis_of_open_access_citation_advantages_in/review]] — e-commerce 문헌의 오픈 액세스 현황을 분석하기 위해 오픈 액세스 인용 이점의 실증 분석이 기반이 된다.
-- ⚖️ 반론/비판: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — e-commerce 연구의 국제 협력이 활발한 반면, 학술 출판의 과점화는 지식 접근성을 제한하는 상반된 현상이다.
-- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer를 활용한 e-commerce 문헌의 시각적 분석에 핵심적인 방법론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 지식 매핑의 다른 접근법으로 e-commerce 연구 동향을 분석할 수 있다
-- 🔗 후속 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 서지결합과 동시인용 분석을 통해 e-commerce 분야의 지적 구조를 더 정교하게 파악할 수 있다
-- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 소셜미디어-디지털마케팅과 e-commerce 문헌 분석 모두 디지털 경제의 서로 다른 측면을 bibliometric으로 접근한다.
+- 🔗 후속 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 개방접근 출판의 전반적 현황 분석을 전자상거래 분야의 구체적 적용 사례로 확장합니다.
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 전자상거래의 혁신성 증가 추세와 과학 논문의 파괴적 혁신 감소 현상을 대조적으로 비교할 수 있습니다.
+- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — S2ORC 대규모 학술 코퍼스가 제공하는 포괄적인 과학 문헌 데이터베이스 구조와 메타데이터 표준이 e-commerce 문헌 분석의 방법론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 전자상거래와 생명공학 모두 기술 혁신이 주도하는 분야로서 장기간에 걸친 연구 동향 변화의 bibliometric 분석 비교 연구가 가능하다.
+- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — e-commerce 문헌 분석과 디지털마케팅 연구가 상호 보완적인 bibliometric 접근을 보여줍니다.
+- 🏛 기반 연구: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 전자상거래 문헌 리뷰가 MSME 파산 예측 연구의 디지털 경제 맥락을 제공하는 이론적 배경이기 때문
+- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 디지털마케팅과 e-commerce의 bibliometric 분석을 서로 다른 R 패키지로 수행한 연구입니다.

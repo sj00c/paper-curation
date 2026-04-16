@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Visually-Conditioned Language Models (VLMs)의 설계 공간을 체계적으로 탐색하여 핵심 설계 결정이 모델 성능에 미치는 영향을 분석하고, 표준화된 평가 스위트와 최적화된 학습 코드, 그리고 InstructBLIP과 LLaVa v1.5를 능가하는 Prismatic VLMs를 제시한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Karamcheti et al._2024_Prismatic VLMs Investigating the Design Space of Visually-Conditioned Language Models.pdf"
 ---
@@ -89,8 +91,15 @@ Visually-Conditioned Language Models (VLMs)의 설계 공간을 체계적으로 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — DINOv2의 self-supervised visual feature learning이 Prismatic VLMs의 vision encoder 설계 결정에 중요한 기초를 제공한다.
-- 🔗 후속 연구: [[papers/1511_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — PaLI-X의 multilingual vision-language model이 Prismatic VLMs의 VLM 설계 공간을 다국어 환경으로 확장한다.
-- 🧪 응용 사례: [[papers/1268_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — proprietary VLM들의 empirical evaluation이 Prismatic VLMs의 체계적 설계 분석을 실제 상용 모델에 적용한다.
-- 🏛 기반 연구: [[papers/1466_ManipBench_Benchmarking_Vision-Language_Models_for_Low-Level/review]] — 시각적으로 조건화된 언어 모델의 기본 구조가 로봇 조작을 위한 VLM 평가의 토대가 됩니다.
-- 🔗 후속 연구: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — Prismatic VLMs의 체계적 VLM 설계가 SKT의 Vision-Language Model 활용을 더 최적화된 모델로 확장한다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — Prismatic VLMs의 체계적인 설계 공간 분석이 RT-2의 vision-language-action 통합 방법론의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — PaLI-X의 multilingual vision-language 확장이 Prismatic VLMs의 설계 원리를 다국어 환경으로 발전시킨다.
+- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — DINOv2의 self-supervised visual learning과 Prismatic VLMs의 supervised VLM 설계는 시각적 표현 학습의 다른 패러다임을 보여준다.
+- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — VLM의 로봇 적용을 위한 설계 최적화의 기초가 되는 foundation model 연구
+- 🧪 응용 사례: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — VLM 설계 최적화를 실제 VLA 구현에 적용한 zero-modification 접근법
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — VLA 모델 서베이에서 제시된 설계 원칙들을 Prismatic VLMs가 체계적으로 검증한다.
+- 🏛 기반 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — PaLI-X의 multilingual vision-language scaling이 기반으로 하는 VLM 설계 공간 연구
+- 🏛 기반 연구: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — Prismatic VLM의 시각-언어 모델 설계 공간 연구가 VLA 모델의 백본 선택과 아키텍처 설계 분석의 기반이 되었다.
+- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Prismatic VLMs 연구는 RoboFlamingo가 기반으로 하는 vision-language 모델의 설계 공간에 대한 체계적 분석을 제공한다.
+- 🔄 다른 접근: [[papers/1611_Visual_Instruction_Tuning/review]] — Prismatic VLMs는 LLaVA와 유사한 vision-language 모델이지만 다양한 아키텍처 설계를 체계적으로 탐구하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — Prismatic VLMs의 general visually-grounded language와 EmbSpatial-Bench의 embodied spatial understanding은 VLM 평가에서 서로 다른 특화 영역을 다룬다.
+- 🏛 기반 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — Sigmoid Loss의 효율적인 vision-language pre-training 기법이 Prismatic VLMs의 설계 공간 탐구에 훈련 효율성 측면의 기반을 제공한다.

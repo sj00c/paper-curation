@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "Real-time chunking (RTC)은 diffusion 또는 flow 기반 VLA의 inference 시간에 action chunking 정책을 비동기적으로 실행하는 알고리즘으로, 현재 chunk 실행 중 다음 chunk를 생성하면서 inference 지연으로 인한 불연속성을 제거한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Action_Chunking_Methods"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Action_Tokenization_Methods"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Black et al._2025_Real-Time Execution of Action Chunking Flow Policies.pdf"
 ---
@@ -88,10 +90,18 @@ Real-time chunking (RTC)은 diffusion 또는 flow 기반 VLA의 inference 시간
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1519_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — 불완전한 인간 데이터로부터 운동 기술 학습 방법론이 배드민턴 기술의 인간 모션 프라이어 활용에 직접 적용 가능하다
-- 🧪 응용 사례: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 실시간 action chunking 알고리즘이 배드민턴의 정밀한 타이밍 제어와 diffusion policy 가속화에 모두 적용 가능하다
-- 🔗 후속 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — 배드민턴 기술의 점진적 강화학습 프레임워크를 humanoid table tennis의 복잡한 전신 협력 학습에 확장할 수 있다
-- 🧪 응용 사례: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — 실시간 action chunking 실행 프레임워크가 NavDP의 연속적인 navigation policy 배포에 직접 적용 가능하다
-- 🧪 응용 사례: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — 실시간 액션 청킹 플로우 정책 실행에서 스트리밍 플로우가 지연 시간을 크게 개선한다.
-- 🧪 응용 사례: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — Real-Time Execution이 VITA의 빠른 추론 속도를 실제 로봇 환경에서 활용하는 방법을 구체적으로 보여준다
-- 🔗 후속 연구: [[papers/1374_DynamicVLA_A_Vision-Language-Action_Model_for_Dynamic_Object/review]] — Real-time action chunking flow policy execution이 DynamicVLA의 실시간 폐루프 제어 개념을 구체적으로 구현한다.
+- 🔄 다른 접근: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — action representation에서 real-time chunking vs efficient action tokenization이라는 서로 다른 행동 처리 및 최적화 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — streaming flow policy의 개념을 action chunking과 결합하여 더 효율적이고 연속적인 로봇 제어 시스템을 구축한다.
+- 🏛 기반 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — one-step diffusion policy의 기본 이론을 제공하여 RTC의 비동기적 action chunk 생성과 실행에 필요한 빠른 inference 기법의 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RLinf-VLA의 효율적인 VLA 훈련 프레임워크가 실시간 action chunking 정책의 최적화된 실행을 위한 기반 기술을 제공한다.
+- 🔗 후속 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy의 가속화된 정책 실행 기법이 RTC의 실시간 chunking 성능을 더욱 향상시킬 수 있다.
+- 🏛 기반 연구: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — RTC가 해결하고자 하는 VLA 모델의 real-time execution 문제와 성능 최적화 방법론의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — RTC의 real-time execution을 VITA의 flow matching policy와 결합하여 더 효율적인 vision-to-action 시스템을 구축할 수 있다.
+- 🧪 응용 사례: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — diffusion policy의 real-time execution 기법을 navigation 도메인에 적용하여 NavDP의 실시간 궤적 생성 성능을 향상시킨다.
+- 🧪 응용 사례: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — real-time action chunking 기법을 reactive diffusion policy에 적용하여 고주파 촉각 피드백과 복잡한 궤적 모델링의 실시간 통합을 달성한다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — OneDP의 single-step distillation과 달리 real-time chunking을 통해 inference 지연 문제를 해결하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — Real-Time Execution of Action Chunking은 VLA 실시간 실행과 동일한 실시간 로봇 제어 문제를 다른 최적화 기법으로 해결한다.
+- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Real-Time Execution of Action Chunking의 실시간 정책 실행 개념을 flow sampling 중 실시간 스트리밍이 가능한 더 발전된 형태로 확장했다.
+- 🏛 기반 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — 실시간 action execution이 VLA 모델의 효율적인 추론 최적화 기반입니다.
+- 🔗 후속 연구: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — 실시간 액션 청킹 flow 정책으로 정책 composition을 확장한다.
+- 🏛 기반 연구: [[papers/1374_DynamicVLA_A_Vision-Language-Action_Model_for_Dynamic_Object/review]] — Real-Time Execution of Action Chunking의 실시간 제어 기법이 DynamicVLA의 continuous inference와 real-time closed-loop control 구현에 기초가 된다.

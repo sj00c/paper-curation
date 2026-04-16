@@ -1,3 +1,25 @@
+---
+title: "1893_ECHO_Edge-Cloud_Humanoid_Orchestration_for_Language-to-Motio"
+authors:
+  - "Haozhe Jia"
+  - "Jianfei Song"
+  - "Yuan Zhang"
+  - "Honglei Jin"
+  - "Youcheng Fan"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "ECHO는 자연어 명령으로 휴머노이드 로봇을 제어하는 엣지-클라우드 프레임워크로, 클라우드의 diffusion 기반 text-to-motion 생성기와 엣지의 RL 트래커를 로봇 네이티브 38차원 표현으로 연결하여 실시간 폐루프 실행을 실현한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jia et al._2026_ECHO Edge-Cloud Humanoid Orchestration for Language-to-Motion Control.pdf"
+---
+
 # ECHO: Edge-Cloud Humanoid Orchestration for Language-to-Motion Control
 
 > **저자**: Haozhe Jia, Jianfei Song, Yuan Zhang, Honglei Jin, Youcheng Fan, Wenshuo Chen, Wei Zhang, Yutao Yue | **날짜**: 2026-03-17 | **URL**: [https://arxiv.org/abs/2603.16188](https://arxiv.org/abs/2603.16188)
@@ -66,3 +88,16 @@ ECHO는 자연어 명령으로 휴머노이드 로봇을 제어하는 엣지-클
 - Overall: 4/5
 
 **총평**: ECHO는 생성과 실행의 명확한 분리, robot-native 표현 설계, 실세계 배포 달성을 통해 언어-기반 휴머노이드 제어 분야에서 modularity와 deployability의 새로운 기준을 제시하는 의미 있는 연구이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — real-time text-driven humanoid control이 ECHO의 language-to-motion 변환을 위한 기본적인 자연어 처리 원리를 제공한다.
+- 🔄 다른 접근: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — LangWBC가 language-directed whole-body control을 다른 아키텍처로 구현하여 ECHO와 상호 보완적인 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — LLM 기반 humanoid 명령 체계가 ECHO의 자연어 제어를 더 고도화된 언어 모델로 확장한다.
+- 🔄 다른 접근: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — ECHO의 엣지-클라우드 분산 구조와 BiBo의 통합 프레임워크는 LLM 기반 휴머노이드 제어의 서로 다른 아키텍처 접근법입니다.
+- 🔗 후속 연구: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — Trinity의 모듈형 AI 시스템이 ECHO의 엣지-클라우드 협업 구조를 더욱 체계화하고 확장한 형태입니다.
+- 🔗 후속 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — EMOTION의 언어 기반 표현적 동작 생성이 ECHO의 diffusion 기반 text-to-motion 생성기를 더욱 풍부하고 자연스럽게 확장할 수 있다.
+- 🔗 후속 연구: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — 엣지-클라우드 협업이 retargeting-free 제어의 실시간 배포 확장이다.
+- 🔄 다른 접근: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — BiBo의 통합 프레임워크와 ECHO의 엣지-클라우드 분산 구조는 GPT-4 기반 휴머노이드 제어의 서로 다른 아키텍처입니다.
+- 🔄 다른 접근: [[papers/2168_UniAct_Unified_Motion_Generation_and_Action_Streaming_for_Hu/review]] — UniAct은 sub-500ms 지연시간에 집중하고 ECHO는 edge-cloud 분산 처리를 통한 서로 다른 실시간 language-to-motion 접근법입니다.
+- 🧪 응용 사례: [[papers/2136_PHUMA_Physically-Grounded_Humanoid_Locomotion_Dataset/review]] — ECHO의 edge-cloud orchestration이 PHUMA의 대규모 데이터 처리와 physics-constrained retargeting을 분산 컴퓨팅 환경에 적용한 사례입니다.

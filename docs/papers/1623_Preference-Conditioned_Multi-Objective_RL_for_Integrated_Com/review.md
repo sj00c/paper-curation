@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "인간형 로봇의 명령 추적과 외력 순응을 동시에 달성하기 위해 선호도 조건부 MORL 프레임워크를 제안하며, 단일 정책으로 추적-순응 간의 연속적인 trade-off를 구현한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leng et al._2025_Preference-Conditioned Multi-Objective RL for Integrated Command Tracking and Force Compliance in Hu.pdf"
 ---
@@ -85,3 +87,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leng et al._2025_Preference-Conditioned 
 - Overall: 4/5
 
 **총평**: 본 논문은 선호도 조건부 MORL을 통해 인간형 로봇 보행의 핵심 trade-off를 명시적으로 해결하는 창의적 접근법을 제시하며, velocity-resistance 모델링이라는 우아한 통합 기법과 실세계 검증을 통해 실제 배치 가능성을 입증한다. 다만 범위 제한(수평 평면, 선형 모델)과 단일 플랫폼 실험이 일반화 가능성에 대한 의문을 남긴다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — Preference-Conditioned MORL은 선호도 조건부 접근을, AMOR은 adaptive multi-objective 접근을 통해 다중 목표 최적화를 다르게 해결함
+- 🧪 응용 사례: [[papers/1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff/review]] — Hold My Beer의 부드러운 locomotion과 end-effector 제어가 본 논문의 추적-순응 trade-off 프레임워크의 실제 적용 사례임
+- 🔗 후속 연구: [[papers/1836_CHIP_Adaptive_Compliance_for_Humanoid_Control_through_Hindsi/review]] — CHIP의 adaptive compliance 제어 기법이 본 논문의 명령 추적과 외력 순응 간의 연속적 trade-off를 더욱 정교하게 확장함
+- 🏛 기반 연구: [[papers/1615_Physics-Based_Motion_Imitation_with_Adversarial_Differential/review]] — ADD의 multi-objective optimization을 preference-based framework로 발전시킨 연구
+- 🔗 후속 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — Multi-objective RL을 PopArt를 통한 multi-task learning으로 확장
+- 🔗 후속 연구: [[papers/1615_Physics-Based_Motion_Imitation_with_Adversarial_Differential/review]] — ADD의 자동 목표 균형 조정을 preference-conditioned MORL로 확장한 연구
+- 🔄 다른 접근: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — 둘 다 multi-objective RL을 다루지만 preference conditioning과 adaptive weight learning이라는 서로 다른 접근법을 사용한다
+- 🔄 다른 접근: [[papers/1894_ECO_Energy-Constrained_Optimization_with_Reinforcement_Learn/review]] — 다목적 강화학습을 통한 통합 제어 접근 방식으로, 에너지 효율성과 다른 목표들 간의 균형을 다른 관점에서 다룬다.
+- 🏛 기반 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — 선호도 조건부 다목적 강화학습의 이론적 기반을 제공하여 태스크 간 보상 균형 문제를 해결한다.

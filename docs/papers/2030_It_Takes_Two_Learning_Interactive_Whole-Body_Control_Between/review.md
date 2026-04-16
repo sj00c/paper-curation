@@ -1,3 +1,24 @@
+---
+title: "2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between"
+authors:
+  - "Zuhong Liu"
+  - "Junhao Ge"
+  - "Minhao Xiong"
+  - "Jiahao Gu"
+  - "Bowei Tang"
+date: "2025.10"
+doi: "10.48550/arXiv.2510.10206"
+arxiv: ""
+score: 4.0
+essence: "Harmanoid는 두 개의 휴머노이드 로봇 간 상호작용 동작을 모방하는 프레임워크로, 접촉 인식 motion retargeting과 상호작용 기반 motion controller를 통해 키네마틱 충실도와 물리적 현실성을 동시에 보존한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_It Takes Two Learning Interactive Whole-Body Control Between Humanoid Robots.pdf"
+---
+
 # It Takes Two: Learning Interactive Whole-Body Control Between Humanoid Robots
 
 > **저자**: Zuhong Liu, Junhao Ge, Minhao Xiong, Jiahao Gu, Bowei Tang, Wei Jing, Siheng Chen | **날짜**: 2025-10-11 | **DOI**: [10.48550/arXiv.2510.10206](https://doi.org/10.48550/arXiv.2510.10206)
@@ -66,3 +87,16 @@ Harmanoid는 두 개의 휴머노이드 로봇 간 상호작용 동작을 모방
 - Overall: 4/5
 
 **총평**: Harmanoid는 다중 휴머노이드 상호작용 동작 모방의 명확한 문제를 체계적으로 해결하며, contact-aware retargeting과 interaction-aware control의 결합으로 고립 문제를 효과적으로 극복하는 첫 프레임워크이다. 종합적인 실험과 우수한 성능으로 humanoid robotics 분야에 중요한 기여를 하나, sim-to-real 검증 부재와 2-agent 제한이 실제 적용의 완전성을 제약한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu/review]] — It Takes Two의 두 휴머노이드 간 상호작용 학습을 Learning Whole-Body Human-Humanoid Interaction의 인간-휴머노이드 상호작용으로 확장할 수 있다.
+- 🧪 응용 사례: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — Harmanoid의 접촉 인식 motion retargeting 기술이 Human-Robot Collaboration의 모바일 휴머노이드 원격 제어에서 안전한 협업을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — It Takes Two는 로봇-로봇 학습, Cognition to Control은 인간-휴머노이드 학습으로 서로 다른 주체 간 상호작용 학습을 다룬다.
+- 🔗 후속 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — Harmanoid의 두 휴머노이드 상호작용 프레임워크가 인간-휴머노이드 협업 객체 조작 학습에 직접 응용 가능
+- 🔄 다른 접근: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — 둘 다 다중 에이전트 상호작용이지만 Harmanoid는 로봇-로봇, TokenHSI는 인간-장면 상호작용 중심
+- 🏛 기반 연구: [[papers/1990_Human-Level_Actuation_for_Humanoids/review]] — 인간 수준의 액추에이션 기술이 Harmanoid의 두 휴머노이드 간 자연스러운 상호작용 동작 구현에 필수적
+- 🏛 기반 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 인간-휴머노이드 상호작용 전신 제어가 3계층 Cognition-to-Control 협업 프레임워크의 기본 제어 구조
+- 🔄 다른 접근: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — 둘 다 인간-로봇 상호작용 제어를 다루지만 H2-COMPACT는 협력 운반에, It Takes Two는 일반적인 상호작용에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 두 에이전트 간 상호작용 제어 학습의 기본 원리가 인간-휴머노이드 협력 시스템 구현에 대한 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu/review]] — 두 에이전트 간 상호작용적 전신 제어 학습의 확장된 접근법을 보여준다.

@@ -1,3 +1,24 @@
+---
+title: "1842_CLOT_Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Human"
+authors:
+  - "Tengjie Zhu"
+  - "Guanyu Cai"
+  - "Yang Zhaohui"
+  - "Guanzhu Ren"
+  - "Haohui Xie"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "CLOT는 고주파 로컬라이제이션 피드백을 통해 폐루프 전역 자세 추적을 달성하는 실시간 인간형 로봇 원격조종 시스템으로, 장시간 운영 중 누적되는 전역 드리프트 문제를 해결한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhu et al._2026_CLOT Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation.pdf"
+---
+
 # CLOT: Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation
 
 > **저자**: Tengjie Zhu, Guanyu Cai, Yang Zhaohui, Guanzhu Ren, Haohui Xie, ZiRui Wang, Junsong Wu, Jingbo Wang, Xiaokang Yang, Yao Mu, Yichao Yan | **날짜**: 2026-02-13 | **URL**: [https://arxiv.org/abs/2602.15060](https://arxiv.org/abs/2602.15060)
@@ -68,3 +89,12 @@ CLOT는 고주파 로컬라이제이션 피드백을 통해 폐루프 전역 자
 - Overall: 4/5
 
 **총평**: CLOT는 폐루프 전역 제어와 Observation Pre-shift 데이터 기반 무작위화 전략을 통해 장시간 드리프트 없는 인간형 로봇 원격조종을 달성한 혁신적 시스템으로, 실제 인간형 로봇에서의 포괄적 검증과 고품질 데이터셋 공개는 이 분야의 중요한 기여이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — 두 논문 모두 전신 humanoid 원격조종의 폐루프 제어를 다루지만 CLOT은 전역 추적, CLONE은 협응 동작에 특화되었다.
+- 🏛 기반 연구: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — TWIST의 whole-body teleoperation 기술이 CLOT의 closed-loop global tracking 시스템 개발에 기본 프레임워크를 제공했다.
+- 🔗 후속 연구: [[papers/2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti/review]] — CLOT의 폐루프 전역 추적이 TWIST2의 확장 가능한 데이터 수집으로 확장되어 더 견고한 원격조종 데이터 생성을 가능하게 한다
+- 🏛 기반 연구: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — 저지연 휴머노이드 원격조종이 CLOT에서 실시간 전역 자세 추적의 고주파 피드백 구현에 기술적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — 두 논문 모두 폐루프 전역 추적을 다루며 CLONE의 MoE 기반 제어와 CLOT의 고주파 피드백이 상호 보완적인 기술을 제시한다.
+- 🔗 후속 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — CLOT의 closed-loop 추적 기술을 다단계 조작 작업의 저수준 제어기로 확장 적용한 형태다.

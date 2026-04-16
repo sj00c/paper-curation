@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 과학의 과학(Science of Science, SoS) 연구에 AI 기술을 통합하여 대규모 연구 패턴 자동 발견을 가능하게 하는 AI4SoS(AI for Science of Science) 프레임워크를 제안한다. 기존 통계 기반 방법론의 한계를 극복하고 자동화된 SoS 연구의 완전한 실현을 위한 5단계 자동화 계층을 제시한다."
 tags:
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Computational_Bibliometric_Analysis"
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Scientific_Discovery_Automation"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_AI-Driven Automation Can Become the Foundation of Next-Era Science of Science Research.pdf"
 ---
@@ -89,7 +91,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_AI-Driven Automation Ca
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1019_Science_of_science/review]] — 기존 과학의 과학 연구에 AI 자동화 기술을 통합하여 차세대 연구 패러다임을 제시한다.
-- 🏛 기반 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 인간-AI 협력 기반의 과학의 과학 연구 발전을 위한 이론적 토대를 공유한다.
-- 🧪 응용 사례: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학 연구 프런티어 자금 지원 패턴 분석에 AI4SoS 자동화 프레임워크를 적용할 수 있다.
-- 🔄 다른 접근: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 기반 과학 자동화에서 전체 워크플로우와 개별 구성요소에 초점을 둔 다른 접근법임
+- 🔗 후속 연구: [[papers/1124_The_Science_of_Science/review]] — 과학학 분야의 종합적 개요를 AI 자동화 기술로 구체화한 미래 지향적 프레임워크
+- 🏛 기반 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 과학학 연구에서 인간-AI 협력의 이론적 기반을 자동화된 SoS 시스템으로 발전
+- 🔗 후속 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 데이터 기반 과학 예측을 AI 자동화로 확장하여 과학학 연구의 완전 자동화 실현
+- 🔗 후속 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — AI4SoS 자동화 프레임워크가 LLM의 과학 연구 역량 강화라는 더 넓은 맥락에서 구체적 실현 방안을 제시합니다.
+- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 기본 개념이 AI 기반 자동화 SoS 연구 프레임워크 개발의 학문적 토대를 제공합니다.
+- 🧪 응용 사례: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 기반 자동화가 차세대 과학의 기반이 되는 과정에서 위험 거버넌스의 구조적 진화를 실증한다.
+- 🔄 다른 접근: [[papers/1124_The_Science_of_Science/review]] — 과학학 연구에 AI 통합이라는 동일한 목표를 종합 개요와 자동화 프레임워크로 각각 접근
+- 🏛 기반 연구: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 기반 자동화가 차세대 과학 연구의 기반이 되는 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — AI 기반 자동화가 투어 가이딩 전문직에 미치는 영향을 확장 분석합니다.
+- 🔗 후속 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — LLM-native figures가 AI 기반 과학 자동화 프레임워크에서 시각적 발견 도구로 활용될 수 있습니다.

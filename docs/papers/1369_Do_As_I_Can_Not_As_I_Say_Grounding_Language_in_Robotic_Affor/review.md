@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Large Language Models(LLM)의 의미론적 지식과 로봇의 실행 가능한 스킬을 결합하여, LLM을 affordance function으로 grounding함으로써 자연어 명령을 실제 로봇 행동으로 변환한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ahn et al._2022_Do As I Can, Not As I Say Grounding Language in Robotic Affordances.pdf"
 ---
@@ -88,12 +89,15 @@ Large Language Models(LLM)의 의미론적 지식과 로봇의 실행 가능한 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — DoReMi의 계획-실행 불일치 감지가 affordance function의 실행 제약을 보완한다.
-- 🔄 다른 접근: [[papers/1422_Hi_Robot_Open-Ended_Instruction_Following_with_Hierarchical/review]] — Hi Robot도 자연어 명령을 로봇 행동으로 변환하는 유사한 language grounding 접근법이다.
-- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 언어 모델 기반 제어가 LLM의 affordance function 활용의 기반이다.
-- 🏛 기반 연구: [[papers/1372_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — Large-scale egocentric dexterous manipulation 학습이 EgoMimic의 egocentric video 활용 방법론에 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1422_Hi_Robot_Open-Ended_Instruction_Following_with_Hierarchical/review]] — affordance function의 언어-행동 grounding이 Hi Robot의 자연어 지시 처리에 기초가 된다.
-- 🏛 기반 연구: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — TidyBot이 실제 환경에서 언어 기반 affordance grounding을 구현하는 방식이 Do As I Can, Not As I Say의 원리를 실용적으로 적용
-- 🏛 기반 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser의 affordance reasoning과 code-writing이 Do As I Can, Not As I Say의 언어 기반 affordance grounding 원리를 3D 공간으로 확장한 형태
-- 🏛 기반 연구: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — affordance function의 언어-행동 grounding이 DoReMi의 LLM 기반 계획 생성에 기초가 된다.
-- 🔗 후속 연구: [[papers/1587_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — 대규모 egocentric 조작 데이터를 다자유도 로봇 손의 계층적 제어 시스템으로 전환하는 방법을 제시한다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Do As I Can의 언어-로봇 스킬 grounding과 Code as Policies의 LLM 코드 생성은 자연어 명령을 로봇 행동으로 변환하는 상호 보완적 접근법이다.
+- 🧪 응용 사례: [[papers/1546_Robot_Utility_Models_General_Policies_for_Zero-Shot_Deployme/review]] — Robot Utility Models의 제로샷 배포는 Do As I Can의 LLM affordance function grounding을 실제 로봇 정책으로 구현한다.
+- 🏛 기반 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 대형 언어 모델의 인터랙티브 환경 grounding은 Do As I Can의 affordance function 설계에 핵심적인 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — Plan-Seq-Learn의 language model guided RL과 Do As I Can의 affordance function 접근은 언어와 로봇 행동 연결에서 서로 다른 학습 패러다임을 사용한다.
+- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Text2Reward의 언어를 통한 reward shaping 개념이 Do As I Can에서 제시된 언어 기반 로봇 행동 grounding의 기초적 아이디어를 제공한다.
+- 🔄 다른 접근: [[papers/1404_Gemini_Robotics_Bringing_AI_into_the_Physical_World/review]] — SayCan과 Gemini Robotics 모두 LLM을 로봇 제어에 활용하지만 affordance grounding vs 직접 제어의 차이가 있음
+- 🔄 다른 접근: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — SayCan과 Instruct2Act 모두 언어 지시를 로봇 행동으로 변환하지만 affordance 기반 vs API 호출 방식의 차이가 있음
+- 🔄 다른 접근: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — 둘 다 언어 기반 로봇 제어이지만 Language to Rewards는 보상 함수에, Do As I Can은 직접적인 행동 생성에 집중한다.
+- 🏛 기반 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — 언어 기반 affordance 추론의 기본 개념을 제공하여 UniAff의 통일된 affordance 표현에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — 언어 기반 affordance 추론의 기본 개념을 제공하여 VoxPoser의 LLM affordance reasoning에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1301_A3VLM_Actionable_Articulation-Aware_Vision_Language_Model/review]] — 로봇 어포던스 기반 언어 학습의 이론적 기반을 관절 인식 VLM으로 확장합니다.
+- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 LLM 코드 생성과 Do As I Can의 언어-로봇 스킬 결합은 자연어 명령을 로봇 행동으로 변환하는 상호 보완적 접근법이다.

@@ -1,3 +1,25 @@
+---
+title: "1996_Humanoid_Locomotion_as_Next_Token_Prediction"
+authors:
+  - "Ilija Radosavovic"
+  - "Bike Zhang"
+  - "Baifeng Shi"
+  - "Jathushan Rajasegaran"
+  - "Sarthak Kamat"
+date: "2024.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Humanoid 로봇 제어를 언어 모델의 next token prediction처럼 다루어, causal transformer를 통해 sensorimotor 궤적을 자동 회귀적으로 예측한다. 시뮬레이션, 모션캡처, 유튜브 영상 등 다양한 소스의 불완전한 데이터로 학습하여 실제 humanoid 로봇이 zero-shot으로 샌프란시스코에서 보행할 수 있게 한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Radosavovic et al._2024_Humanoid Locomotion as Next Token Prediction.pdf"
+---
+
 # Humanoid Locomotion as Next Token Prediction
 
 > **저자**: Ilija Radosavovic, Bike Zhang, Baifeng Shi, Jathushan Rajasegaran, Sarthak Kamat, Trevor Darrell, Koushil Sreenath, Jitendra Malik | **날짜**: 2024-02-29 | **URL**: [https://arxiv.org/abs/2402.19469](https://arxiv.org/abs/2402.19469)
@@ -68,3 +90,25 @@ Humanoid 로봇 제어를 언어 모델의 next token prediction처럼 다루어
 - Overall: 4/5
 
 **총평**: 본 논문은 언어 모델의 next token prediction 패러다임을 humanoid 제어에 창의적으로 적용하여, 불완전한 다중 소스 데이터로 학습한 모델이 실제 환경에서 zero-shot 보행을 가능하게 함을 입증했다. 생성 모델 기반의 로봇 제어 학습에 대한 유망한 방향을 제시하며, 실제 배포 결과는 매우 인상적이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1988_HuMam_Humanoid_Motion_Control_via_End-to-End_Deep_Reinforcem/review]] — transformer 기반 토큰 예측과 Mamba 기반 강화학습으로 휴머노이드 제어의 서로 다른 패러다임을 제시한다.
+- 🏛 기반 연구: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오 학습이 next token prediction 방식의 데이터 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — HWM의 egocentric video prediction이 next token prediction의 multimodal data 활용을 video world model로 확장한 발전된 형태이다.
+- 🏛 기반 연구: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — large motion model의 million-level human motion data scaling이 next token prediction의 대규모 데이터 학습을 위한 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1968_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — Harmon의 language-driven motion generation이 next token prediction 방식을 언어 입력으로 확장합니다.
+- 🏛 기반 연구: [[papers/1683_SoccerDiffusion_Toward_Learning_End-to-End_Humanoid_Robot_So/review]] — 휴머노이드 보행을 next token prediction으로 모델링하는 기초적인 접근법을 제공한다.
+- 🔄 다른 접근: [[papers/1643_RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with/review]] — Physical feedback 대신 next token prediction으로 motion generation을 해결
+- 🔄 다른 접근: [[papers/1789_Adapting_Humanoid_Locomotion_over_Challenging_Terrain_via_Tw/review]] — terrain 적응을 위해 하나는 transformer sequence modeling, 다른 하나는 next token prediction을 사용합니다.
+- 🔄 다른 접근: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — 언어에서 로코모션으로의 직접 변환과 다음 토큰 예측 방식의 휴머노이드 보행은 서로 다른 언어 처리 패러다임을 사용한다.
+- 🏛 기반 연구: [[papers/1968_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from/review]] — Next token prediction 방식의 humanoid control이 Harmon의 language-driven motion generation 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1988_HuMam_Humanoid_Motion_Control_via_End-to-End_Deep_Reinforcem/review]] — Mamba 인코더 기반 강화학습과 transformer 기반 next token prediction으로 보행 제어 접근법이 다르다.
+- 🔄 다른 접근: [[papers/1994_Humanoid_Goalkeeper_Learning_from_Position_Conditioned_Task-/review]] — next token prediction 방식과 달리 goalkeeper는 position-conditioned task-motion constraints 학습을 통한 특화된 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — next token prediction의 transformer 기반 접근법을 HWM이 egocentric video prediction과 world modeling으로 확장한 발전된 형태이다.
+- 🏛 기반 연구: [[papers/2035_Kimodo_Scaling_Controllable_Human_Motion_Generation/review]] — Next Token Prediction 기반 휴머노이드 로코모션이 Kimodo의 텍스트 조건부 모션 생성에 언어 모델 기반 아키텍처 제공
+- 🏛 기반 연구: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 다음 토큰 예측 방식의 locomotion 학습 원리가 UH-1 모델의 텍스트-제어 변환 메커니즘에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/review]] — 배드민턴 기술의 점진적 학습이 next token prediction을 통한 더 일반적인 운동 생성으로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 휴머노이드 내비게이션에서 diffusion model 기반 접근법 대신 다음 토큰 예측을 통한 locomotion 방법을 제시한다.
+- 🔄 다른 접근: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — Motion Turing Test는 관찰자 기반 인간다움 평가를 제안하고 Humanoid Locomotion as Next Token Prediction은 언어 모델 기반 접근법을 사용하는 서로 다른 평가 방식입니다.
+- 🔄 다른 접근: [[papers/2136_PHUMA_Physically-Grounded_Humanoid_Locomotion_Dataset/review]] — PHUMA는 인터넷 비디오에서 physics-constrained retargeting을 사용하는 반면 이 논문은 next token prediction 접근법을 사용함

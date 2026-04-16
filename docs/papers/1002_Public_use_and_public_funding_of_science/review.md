@@ -13,7 +13,7 @@ score: 4.0
 essence: "공적 자금으로 지원되는 과학연구가 실제로 공중의 필요와 일치하는지 대규모 데이터 연계를 통해 실증적으로 검증한 연구이다. 정부문서, 뉴스미디어, 특허 등 세 개의 공공 영역에서 과학의 활용 패턴을 분석하고 공적 자금 배분과의 정렬성(alignment)을 측정했다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_Funding"
+  - "sub/Public_Science_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2022_Public use and public funding of science.pdf"
 ---
@@ -86,14 +86,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2022_Public use and public fu
 
 ## Related Papers
 
-- ⚖️ 반론/비판: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 공적 자금의 효율적 배분을 위해 기존 동료평가 시스템 개선보다는 추첨 기반 배분을 제안하는 대안적 관점이다.
-- 🔗 후속 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 과학 연구비의 공공 활용 분석을 미국 정치적 양극화가 과학 자금 배분에 미치는 영향까지 확장하여 분석했다.
-- 🧪 응용 사례: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 공적 자금으로 지원된 물리학 연구가 정책에 선택적으로 활용되는 메커니즘을 구체적으로 분석한 사례 연구다.
-- 🔄 다른 접근: [[papers/1012_Rethink_Funding_by_Putting_the_Lottery_First/review]] — 연구비 배분의 효율성을 추첨으로 개선하려는 접근과 달리 공적 자금 활용의 실증적 분석을 통한 개선 방안이다.
-- 🏛 기반 연구: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 공공 자금으로 지원된 과학연구의 공공적 활용이라는 기본 전제를 공유함
-- 🧪 응용 사례: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 공적 자금으로 지원된 과학 연구의 공공 활용을 물리학 지식이 정책에 선택적으로 활용되는 구체적 사례로 분석했다.
-- 🏛 기반 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 과학의 공공 활용과 펀딩에 대한 이론적 논의가 정당별 펀딩 분석의 정책적 중요성을 뒷받침한다.
-- 🏛 기반 연구: [[papers/942_Bridging_the_gap_between_science_and_society_Mapping_librari/review]] — 공공 자금으로 지원된 과학 연구의 사회적 활용에 대한 이론적 토대를 제공한다.
-- 🏛 기반 연구: [[papers/945_Coevolution_of_policy_and_science_during_the_pandemic/review]] — 과학의 공적 사용과 공적 펀딩 관계가 팬데믹 시기 정책-과학 공진화의 기본 구조를 제공한다
-- 🏛 기반 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학의 공공 활용과 공공 펀딩에 대한 이론적 논의가 펀딩 영향 시각화 시스템의 필요성을 뒷받침한다.
-- 🏛 기반 연구: [[papers/1234_The_Open_Science_promise_vs_the_Author-pays_reality_The_Hidd/review]] — 공적 자금으로 지원된 과학 연구의 공적 사용이라는 원칙이 author-pays 모델과 어떻게 충돌하는지 설명한다.
+- 🏛 기반 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 글로벌 과학 펀딩과 연구 출판물 간의 연계 분석은 공적 자금과 공중 필요의 정렬성을 평가하는 방법론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 물리학 지식이 정책에서 선택적으로 사용되는 양상은 공적 과학이 실제 정책 결정에 활용되는 메커니즘을 구체적으로 보여줍니다.
+- 🧪 응용 사례: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 온라인 과학 소통의 정보 경로 분석은 공적 자금 연구가 어떻게 대중에게 전달되는지 이해하는 실증적 도구를 제공합니다.
+- 🔗 후속 연구: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — 과학에 대한 공공 자금 지원과 활용에 대한 이론적 기반을 실제 정당별 자금 배분 데이터로 실증 분석한다.
+- 🔗 후속 연구: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학 펀딩의 공공적 활용을 다차원적 사회적 영향 평가로 확장한 연구이다
+- 🏛 기반 연구: [[papers/975_Interdisciplinary_papers_supported_by_disciplinary_grants_ga/review]] — 과학의 공공 이용과 공공 자금 지원 관계 연구가 그랜트 유형별 효과 분석의 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 과학의 공공 자금 지원 연구에서 펀딩-출판물 연결의 체계적 데이터화로 발전된다.
+- 🧪 응용 사례: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 과학의 공공 이용과 자금 지원 이론이 북유럽 지역 연구 생태계 분석에 실제 적용된다.
+- 🔗 후속 연구: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — 공공 자금 지원과 정책의 관계를 Javanese 철학으로 확장 해석한 연구입니다.

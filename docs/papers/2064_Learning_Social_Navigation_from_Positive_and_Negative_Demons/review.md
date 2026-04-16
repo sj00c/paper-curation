@@ -1,3 +1,24 @@
+---
+title: "2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons"
+authors:
+  - "Chanwoo Kim"
+  - "Jihwan Yoon"
+  - "Hyeonseong Kim"
+  - "Taemoon Jeong"
+  - "Changwoo Yoo"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 긍정적 및 부정적 시연과 규칙 기반 명세로부터 학습한 밀도 기반 보상을 결합하여 동적 인간 환경에서 안전성과 적응성의 균형을 맞춘 모바일 로봇 네비게이션 정책을 개발한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kim et al._2025_Learning Social Navigation from Positive and Negative Demonstrations and Rule-Based Specifications.pdf"
+---
+
 # Learning Social Navigation from Positive and Negative Demonstrations and Rule-Based Specifications
 
 > **저자**: Chanwoo Kim, Jihwan Yoon, Hyeonseong Kim, Taemoon Jeong, Changwoo Yoo, Seungbeen Lee, Soohwan Byeon, Hoon Chung, Matthew Pan, Jean Oh, Kyungjae Lee, Sungjoon Choi | **날짜**: 2025-10-14 | **URL**: [https://arxiv.org/abs/2510.12215](https://arxiv.org/abs/2510.12215)
@@ -61,3 +82,12 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 데이터 기반 보상과 규칙 기반 안전 명제의 효과적인 통합을 통해 동적 인간 환경에서의 로봇 네비게이션을 다루는 실용적이고 신뢰할 수 있는 해결책을 제시하며, teacher-student 증류 및 불확실성 추정 기법을 포함한 방법론적 기여와 함께 실제 인간 참여자 실험으로 검증한 점에서 높은 가치를 갖는다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 웨이포인트 가이드를 통한 공간 선택적 주의 기반 네비게이션의 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 대규모 개방형 생태계를 통한 로봇 네비게이션의 확장된 프레임워크를 제공한다.
+- 🏛 기반 연구: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — 목표 마스킹 확산 정책을 통한 네비게이션의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 긍정적/부정적 시연을 활용한 사회적 내비게이션이 인간 데이터 기반 내비게이션 학습의 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1629_Quantum_deep_reinforcement_learning_for_humanoid_robot_navig/review]] — Learning Social Navigation의 양음 시연 학습이 quantum DRL의 고차원 상태-행동 공간 학습을 사회적 내비게이션에 적용한 사례임
+- 🔗 후속 연구: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 인간 데이터 기반 내비게이션이 긍정적/부정적 시연을 활용한 사회적 내비게이션으로 확장되어 인간 환경 적응을 보여준다.

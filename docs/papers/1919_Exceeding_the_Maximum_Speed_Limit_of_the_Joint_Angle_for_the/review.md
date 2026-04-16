@@ -1,3 +1,24 @@
+---
+title: "1919_Exceeding_the_Maximum_Speed_Limit_of_the_Joint_Angle_for_the"
+authors:
+  - "Kento Kawaharazuka"
+  - "Yuya Koga"
+  - "Kei Tsuzuki"
+  - "Moritaka Onitsuka"
+  - "Yuki Asano"
+date: "2025.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "중복 힘줄 구동 구조를 가진 근골격 인간형 로봇에서 가장 느린 근육에 의해 제한되는 관절 각속도 한계를 초과하는 두 가지 방법을 제안하고 실제 로봇 실험으로 검증한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Tactile_Contact_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kawaharazuka et al._2025_Exceeding the Maximum Speed Limit of the Joint Angle for the Redundant Tendon-driven Structures of M.pdf"
+---
+
 # Exceeding the Maximum Speed Limit of the Joint Angle for the Redundant Tendon-driven Structures of Musculoskeletal Humanoids
 
 > **저자**: Kento Kawaharazuka, Yuya Koga, Kei Tsuzuki, Moritaka Onitsuka, Yuki Asano, Kei Okada, Koji Kawasaki, Masayuki Inaba | **날짜**: 2025-02-18 | **URL**: [https://arxiv.org/abs/2502.12808](https://arxiv.org/abs/2502.12808)
@@ -60,3 +81,11 @@
 - Overall: 4/5
 
 **총평**: 근골격 인간형 로봇의 구동 제약을 새로운 관점에서 분석하고, 실용적이면서도 독창적인 두 가지 해결 방법을 제시했다. 실제 로봇 실험 검증을 통해 이론의 타당성을 입증했으나, 시뮬레이션의 단순화와 적용 조건의 제한이 개선될 여지가 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — 근골격 휴머노이드의 근육 특성 관리 방법론이 중복 힘줄 구동에서 관절 각속도 한계를 초과하는 방법의 이론적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1920_Explosive_Output_to_Enhance_Jumping_Ability_A_Variable_Reduc/review]] — 점프 능력 향상을 위한 variable reduction 출력이 근골격 로봇의 관절 각속도 한계 극복을 더욱 효과적으로 구현할 수 있다
+- 🔄 다른 접근: [[papers/1990_Human-Level_Actuation_for_Humanoids/review]] — 근골격 로봇의 성능 한계를 관절 각속도 초과와 인간 수준 액추에이션이라는 서로 다른 하드웨어 접근법으로 돌파한다
+- 🔄 다른 접근: [[papers/1920_Explosive_Output_to_Enhance_Jumping_Ability_A_Variable_Reduc/review]] — EVRR-K의 동적 감속비 변화와 중복 힘줄 구조 최적화는 휴머노이드 점프 능력 향상의 서로 다른 메커니즘입니다.
+- 🏛 기반 연구: [[papers/2127_Optimizing_Bipedal_Locomotion_for_The_100m_Dash_With_Compari/review]] — Optimizing Bipedal Locomotion의 고속 주행 최적화가 Exceeding the Maximum Speed Limit의 관절 각도 최대 속도 한계 극복에 필요한 이론적 기반을 제공한다.

@@ -1,3 +1,24 @@
+---
+title: "1773_A_21-DOF_Humanoid_Dexterous_Hand_with_Hybrid_SMA-Motor_Actua"
+authors:
+  - "Jin Chai"
+  - "Xiang Yao"
+  - "Mengfan Hou"
+  - "Yanghong Li"
+  - "Erbao Dong"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "CYJ Hand-0는 SMA와 DC 모터의 하이브리드 구동 방식을 결합한 21-DOF 휴머노이드 손으로, 3D 프린팅 AlSi10Mg 금속 프레임과 고강도 낚싯줄 텐던을 활용하여 인간의 손 구조를 생체모방한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Exoskeleton_Hand_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chai et al._2025_A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation CYJ Hand-0.pdf"
+---
+
 # A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation: CYJ Hand-0
 
 > **저자**: Jin Chai, Xiang Yao, Mengfan Hou, Yanghong Li, Erbao Dong | **날짜**: 2025-07-19 | **URL**: [https://arxiv.org/abs/2507.14538](https://arxiv.org/abs/2507.14538)
@@ -71,3 +92,13 @@ CYJ Hand-0는 SMA와 DC 모터의 하이브리드 구동 방식을 결합한 21-
 - Overall: 4/5
 
 **총평**: CYJ Hand-0는 SMA-모터 하이브리드 구동, 정교한 생체모방 설계, 효율적인 3D 프린팅 제조를 통해 경량이면서도 고성능의 휴머노이드 손을 실현한 주목할 만한 연구이며, 특히 모듈화 아키텍처와 포괄적 성능 평가가 강점이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1630_Quasi-Direct_Drive_for_Low-Cost_Compliant_Robotic_Manipulati/review]] — SMA-DC모터 하이브리드와 Quasi-Direct Drive는 모두 컴플라이언트하고 저비용인 로봇 구동을 위한 서로 다른 혁신적 접근법이다.
+- 🧪 응용 사례: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — 21-DOF 정밀 손 제어 기술이 ToddlerBot과 같은 학습 플랫폼에서 복잡한 조작 스킬 습득에 직접 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — 두 연구 모두 고성능 인간형 손을 개발하지만 CYJ Hand는 SMA-모터 하이브리드를, RAPID Hand는 다른 구동 방식을 사용합니다.
+- ⚖️ 반론/비판: [[papers/1803_Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic/review]] — CYJ Hand의 하이브리드 구동과 달리 순수 Bowden 케이블 기반의 경량 설계를 대조적으로 보여줍니다.
+- 🏛 기반 연구: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — 학습 기반 휴머노이드 손 설계의 이론적 기반을 RUKA의 재설계 철학에서 찾을 수 있습니다.
+- 🔄 다른 접근: [[papers/1630_Quasi-Direct_Drive_for_Low-Cost_Compliant_Robotic_Manipulati/review]] — Quasi-Direct Drive와 SMA-Motor 하이브리드 구동은 모두 저비용으로 컴플라이언트한 로봇 조작을 실현하는 서로 다른 구동 방식이다.
+- ⚖️ 반론/비판: [[papers/1803_Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic/review]] — Bowden 케이블 기반 경량 설계와 SMA-모터 하이브리드 구동 방식의 CYJ Hand가 서로 다른 설계 철학을 대조적으로 보여줍니다.

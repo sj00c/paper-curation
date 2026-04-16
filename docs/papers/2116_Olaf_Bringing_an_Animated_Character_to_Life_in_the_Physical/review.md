@@ -1,3 +1,24 @@
+---
+title: "2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical"
+authors:
+  - "David Müller"
+  - "Espen Knoop"
+  - "Dario Mylonopoulos"
+  - "Agon Serifi"
+  - "Michael A. Hopkins"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "애니메이션 캐릭터 올라프를 실제 물리 로봇으로 구현하기 위해 RL 기반 제어와 혁신적인 기계설계를 결합한 연구이다. 비물리적 움직임과 부자연스러운 비율을 가진 캐릭터를 believable하게 현실화했다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Müller et al._2025_Olaf Bringing an Animated Character to Life in the Physical World.pdf"
+---
+
 # Olaf: Bringing an Animated Character to Life in the Physical World
 
 > **저자**: David Müller, Espen Knoop, Dario Mylonopoulos, Agon Serifi, Michael A. Hopkins, Ruben Grandia, Moritz Bächer | **날짜**: 2025-12-18 | **URL**: [https://arxiv.org/abs/2512.16705](https://arxiv.org/abs/2512.16705)
@@ -67,3 +88,13 @@
 - Overall: 4/5
 
 **총평**: 애니메이션 캐릭터를 물리 로봇으로 현실화하는 문제에 대해 기계설계와 제어 알고리즘을 창의적으로 결합한 우수한 연구이며, thermal awareness와 impact reduction 같은 실무적 고려사항을 RL에 반영한 점이 특히 주목할 만하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 애니메이션 캐릭터의 물리적 구현이라는 같은 도전을 다른 캐릭터와 기계설계로 접근한 유사 사례이다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 스타일화된 물리 기반 캐릭터 애니메이션의 핵심 방법론을 제공하여 올라프의 believable한 움직임 구현에 활용된다.
+- 🔗 후속 연구: [[papers/1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — 표현적 휴머노이드 제어를 실제 애니메이션 캐릭터 구현으로 확장한 구체적 응용 사례이다.
+- 🔗 후속 연구: [[papers/2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars/review]] — PHC의 대규모 motion clips 학습과 강건성 기법이 Olaf의 애니메이션 캐릭터 구현에서 다양한 동작과 예외 상황 처리를 위한 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — DeepMimic의 physics-based character control 방법론이 애니메이션 캐릭터를 실제 물리 로봇으로 구현하는 Olaf의 핵심 기술적 토대를 제공합니다.
+- 🏛 기반 연구: [[papers/1865_Design_and_Control_of_a_Bipedal_Robotic_Character/review]] — Olaf의 애니메이션 캐릭터를 물리적 세계로 구현하는 기술이 이족 로봇 캐릭터의 표현적 동작과 강건한 제어 시스템 설계에 기초적 프레임워크를 제공한다.
+- 🔄 다른 접근: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 애니메이션 캐릭터의 물리적 구현이라는 같은 목표를 다른 기계설계와 제어 방식으로 접근한 사례이다.

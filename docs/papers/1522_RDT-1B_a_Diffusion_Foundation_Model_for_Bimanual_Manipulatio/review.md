@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "bimanual manipulation을 위한 1.2B 파라미터 규모의 diffusion foundation model인 RDT를 제시하며, 다중 로봇 데이터셋 사전학습과 physically interpretable unified action space를 통해 높은 일반화 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Transformer_Policies"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Dexterous_Spatial_Grasping"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_RDT-1B a Diffusion Foundation Model for Bimanual Manipulation.pdf"
 ---
@@ -92,15 +94,16 @@ bimanual manipulation을 위한 1.2B 파라미터 규모의 diffusion foundation
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1494_In-N-On_Scaling_Egocentric_Manipulation_with_in-the-wild_and/review]] — 대규모 egocentric 데이터 수집 방법론을 Humanoid-X의 2천만 포즈-텍스트 쌍 데이터셋 구축에 적용하여 데이터 품질을 향상시킬 수 있다
-- 🧪 응용 사례: [[papers/1430_iGibson_10_a_Simulation_Environment_for_Interactive_Tasks_in/review]] — interactive task 시뮬레이션 환경이 RDT-1B의 bimanual manipulation 정책 검증에 실제적인 테스트 환경을 제공한다
-- 🏛 기반 연구: [[papers/1287_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — 비전-언어-행동 flow 모델 구조가 UH-1의 Transformer 기반 휴머노이드 제어 시스템에 핵심 아키텍처 기반을 제공한다
-- 🏛 기반 연구: [[papers/1376_EmbodMocap_In-the-Wild_4D_Human-Scene_Reconstruction_for_Emb/review]] — Massive human video를 통한 universal policy learning이 EgoScale의 대규모 egocentric 데이터 활용에 방법론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — massive human video learning의 기반 방법론을 human-robot paired data에 특화하여 적용한 구체적 구현입니다.
-- ⚖️ 반론/비판: [[papers/1450_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Ha/review]] — 저비용 접근법 vs 대규모 데이터 접근법의 대조를 통해 bimanual learning의 다른 패러다임을 제시합니다.
-- 🏛 기반 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — 대규모 휴머노이드 포즈-텍스트 데이터셋 구축 방법론을 MEM의 장기 메모리 시스템에 활용할 수 있다
-- 🧪 응용 사례: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — Learning from Massive Human Videos의 대규모 데이터와 VQ-VLA의 확장 가능한 토큰화를 결합한 효과적 학습이 가능하다
-- 🔗 후속 연구: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — Massive human video 학습을 통한 universal humanoid policy가 DexVLA의 embodied curriculum learning을 확장한다.
-- 🔗 후속 연구: [[papers/1371_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — Massive human video를 통한 universal humanoid policy가 DreamDojo의 human video 학습을 humanoid control로 확장한다.
-- 🏛 기반 연구: [[papers/1432_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — massive human video learning의 기본 방법론을 bimanual manipulation에 특화하여 적용한 구체적 구현 사례입니다.
-- 🏛 기반 연구: [[papers/1460_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — massive human video learning의 기반 방법론을 cross-embodiment transfer에 특화하여 적용한 구체적 구현입니다.
+- 🔗 후속 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — RDT-1B의 bimanual manipulation diffusion 접근법이 Dex1B의 dexterous manipulation을 양손 조작으로 확장한 발전된 형태다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 visuomotor learning 방법론이 RDT-1B의 bimanual diffusion foundation model의 이론적 기반이다.
+- 🔄 다른 접근: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy와 RDT의 diffusion foundation model은 transformer 구조 활용 방식에서 다른 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — RT-1의 대규모 실제 로봇 데이터 학습 방법론이 RDT-1B의 bimanual manipulation foundation model 개발의 기반이 된다.
+- 🔗 후속 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 인간 비디오로 사전학습한 world model을 RDT-1B의 diffusion 기반 bimanual policy와 결합하면 더 효과적인 양팔 조작 학습이 가능하다.
+- 🏛 기반 연구: [[papers/1450_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Ha/review]] — RDT의 bimanual manipulation을 위한 기본적인 fine-grained bimanual control과 low-cost hardware 활용 방법을 제공한다.
+- 🧪 응용 사례: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — RDT의 bimanual manipulation 능력을 BEHAVIOR-1K의 다양한 human-centered embodied tasks에서 평가하고 적용할 수 있다.
+- 🔄 다른 접근: [[papers/1450_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Ha/review]] — 둘 다 bimanual manipulation을 다루지만 저비용 하드웨어와 diffusion foundation model의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — RDT-1B는 RVT-2와 유사한 정밀 조작 작업을 위해 diffusion 기반 접근법을 사용하는 대안적 방법론이다.
+- 🏛 기반 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 인간 비디오로 사전학습한 world model이 RDT-1B와 같은 diffusion 기반 조작 정책의 효율적인 학습에 기반 지식을 제공한다.
+- 🔗 후속 연구: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — RDT-1B의 bimanual manipulation을 위한 diffusion 기반 모델을 flow matching으로 개선하고 단일/양팔 통합 접근법으로 발전시킨 연구입니다.
+- 🔗 후속 연구: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — DexVLA의 diffusion action expert와 RDT-1B의 diffusion foundation model은 양손 조작에서 diffusion 기반 정책의 발전을 보여준다.
+- 🔄 다른 접근: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — diffusion 기반 bimanual manipulation과 VLA 프레임워크 기반 dexterous grasping은 서로 다른 접근법으로 복잡한 로봇 조작을 해결한다.

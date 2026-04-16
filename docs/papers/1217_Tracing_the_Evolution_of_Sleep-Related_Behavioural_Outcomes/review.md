@@ -12,9 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "자폐스펙트럼장애(ASD) 아동의 수면 장애와 행동 결과 간의 관계에 대한 1969-2025년 2878개 논문의 scientometric 분석을 통해 이 분야의 지식 발전 경로를 추적하고 주요 연구 클러스터 및 emerging pattern을 파악하였다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2026_Tracing the Evolution of Sleep-Related Behavioural Outcomes Research in Autistic Children A Sciento.pdf"
 ---
@@ -92,10 +92,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2026_Tracing the Evolution of 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 자폐스펙트럼장애 연구의 지식 발전 경로를 추적하기 위해 코로나19가 과학자들에게 미친 불평등한 영향을 고려해야 한다.
-- 🔄 다른 접근: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 자폐 아동의 수면-행동 연구와 체중 낙인화 연구 모두 건강 관련 행동 결과를 scientometric 관점에서 분석한다.
-- 🔄 다른 접근: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 발달 조건을 위한 보조 기술 연구와 자폐스펙트럼장애 수면 연구를 비교 분석할 수 있다
-- 🔗 후속 연구: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 양육 스타일과 청소년 건강 연구 방법론을 자폐아동 수면-행동 관계 분석에 확장할 수 있다
-- 🧪 응용 사례: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 우울증 관련 낙인 연구의 서지계량 방법을 자폐스펙트럼장애 수면 연구에 적용할 수 있다
-- 🔄 다른 접근: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 둘 다 청소년의 행동 결과를 다루지만 1146은 부모 양육방식과 행복, 1217은 수면 관련 행동에 초점을 맞춘다.
-- 🔄 다른 접근: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 우울증 관련 낙인화와 자폐스펙트럼장애 아동의 수면-행동 관계 모두 정신건강 분야의 scientometric 분석을 다룬다.
+- 🔄 다른 접근: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 발달 조건을 위한 보조 기술과 자폐 스펙트럼 아동의 수면-행동 연구를 서로 다른 관점에서 접근합니다.
+- 🏛 기반 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — 심리학 연구의 재현성 추정 방법론이 자폐 관련 수면-행동 연구의 신뢰성 평가 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 자폐스펙트럼장애 아동의 수면-행동 관계와 양육 스타일-청소년 건강 관계 모두 발달 과정에서의 행동 결과를 연구하는 유사한 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서의 성별 불평등 역사적 비교 연구가 제공하는 longitudinal 분석 방법론을 자폐 관련 수면 연구의 진화 추적에 적용할 수 있다.
+- 🔄 다른 접근: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 35년간 지식생산 진화와 56년간 ASD 수면 연구 진화를 비교하여 학문 발전 패턴을 분석합니다.
+- 🧪 응용 사례: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 수면 관련 행동 결과의 진화 추적은 다양성-혁신 역설이 특정 연구 분야에서 어떻게 나타나는지 보여주는 구체적 사례입니다.
+- 🔗 후속 연구: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 행동과학 연구에서 양육에서 수면으로 연구 범위를 확장한다
+- 🔗 후속 연구: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 수면 연구에서 안과 질환 연구로 생의학 분야 서지계량 분석을 확장한다

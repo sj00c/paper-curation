@@ -13,8 +13,9 @@ score: 4.0
 essence: "Deep Research Agents가 생성한 분석가급 보고서 평가의 핵심 문제인 'Mirage of Synthesis'를 식별하고, 능력 균형 원칙에 기반한 DREAM 프레임워크를 제안하여 agentic evaluation으로 시간 민감도와 사실성을 효과적으로 검증한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Evaluation_and_Metrics"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Avraham et al._2026_DREAM Deep Research Evaluation with Agentic Metrics.pdf"
 ---
@@ -93,15 +94,17 @@ Deep Research Agents가 생성한 분석가급 보고서 평가의 핵심 문제
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 논문 품질 검사에서 단일 모델을 넘어 다중 에이전트 평가 시스템으로 발전시킨 접근법임
-- 🔄 다른 접근: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — 연구 평가에서 에이전트 기반 메트릭과 실행 기반 평가의 다른 접근법임
-- 🔗 후속 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM의 책임감 있는 연구 평가를 멀티 에이전트 시스템으로 확장함
-- 🧪 응용 사례: [[papers/1079_REFORMS_Consensus-based_Recommendations_for_Machine-learning/review]] — 기계학습 기반 과학 연구의 검증을 위한 REFORMS 체크리스트를 AI 에이전트 평가에 적용할 수 있는 자동화 도구를 제공한다.
-- 🏛 기반 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — ChatGPT가 연구 평가에서 놓치는 문체적 특징 분석을 통해 agentic evaluation의 한계와 개선 방향을 제시한다.
-- 🔄 다른 접근: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — AI 기반 연구 평가를 위해 SciSciGPT와는 다른 접근인 DREAM 시스템을 통한 심층 연구 평가 방법을 제안한다.
-- 🔄 다른 접근: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — ChatGPT의 스타일 편향 문제에 대한 대안으로 더 정교한 AI 기반 연구 평가 메트릭을 제안한다.
-- 🧪 응용 사례: [[papers/1079_REFORMS_Consensus-based_Recommendations_for_Machine-learning/review]] — REFORMS 체크리스트를 AI 연구 평가에 적용할 때 DREAM 프레임워크가 제공하는 자동화된 검증 도구로 활용할 수 있다.
-- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — LLM을 활용한 연구 품질 평가에서 비판적 오류 식별과 연구 평가 에이전트 메트릭스는 상호 보완적인 접근법이다.
-- 🔗 후속 연구: [[papers/1175_Figures_as_Interfaces_Toward_LLM-Native_Artifacts_for_Scient/review]] — LLM-native figures를 연구 평가 에이전트 시스템에 통합하여 더 정교한 평가가 가능하다.
-- 🔄 다른 접근: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM 기반 연구 평가를 서로 다른 관점에서 접근하여 책임성 원칙과 실용적 구현 방법을 비교 연구할 수 있다.
-- 🔗 후속 연구: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — RAG 시스템을 에이전틱 메트릭을 활용한 심층 연구 평가로 발전시켜 더 정교한 평가가 가능하다.
+- 🔄 다른 접근: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — 에이전트 기반 시스템을 연구 발견과 연구 평가라는 다른 목적으로 각각 설계하여 적용
+- 🔗 후속 연구: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — 실행 기반 평가의 한계를 에이전트 기반 메트릭으로 보완하여 더 포괄적인 연구 평가 제시
+- 🏛 기반 연구: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — LLM 기반 과학 논문 품질 평가의 기초 개념을 에이전트 기반 평가로 발전시킨 연구
+- 🔄 다른 접근: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — LLM 기반 연구 평가에서 에이전트 메트릭과 일반적 평가 방법의 차이를 비교한다
+- 🔗 후속 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — ChatGPT 평가 한계를 극복하는 고도화된 AI 평가 시스템으로 발전시킨다
+- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 과학 논문에서 대형언어모델 사용량 정량화 연구가 AI 생성 연구 보고서 평가의 필요성을 실증적으로 뒷받침하기 때문
+- 🔗 후속 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 에이전트 메트릭을 활용한 심층 연구 평가는 SciSciGPT의 다중 에이전트 시스템을 연구 평가 영역으로 확장한 응용 사례입니다.
+- 🔄 다른 접근: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — 다중 에이전트 기반 연구 발견과 에이전트 기반 연구 평가라는 유사한 접근법을 다른 목적에 적용
+- 🔄 다른 접근: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — AI를 활용한 연구 평가 방법을 다루지만, 에이전트 기반 지표보다는 기존 LLM의 편향성 문제를 규명하는 데 집중한다.
+- 🧪 응용 사례: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 과학자 시스템의 성과를 평가하기 위한 에이전트 기반 메트릭 개발이 필요하다.
+- 🏛 기반 연구: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 연구 평가 프레임워크의 기본적인 방법론적 토대를 제공한다
+- 🏛 기반 연구: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — 실행 기반 평가가 에이전트 기반 연구 평가 시스템의 핵심 검증 메커니즘으로 활용
+- 🔄 다른 접근: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 연구 평가에서 RAG 기반 접근법과 에이전틱 메트릭스 기반 접근법의 서로 다른 방법론을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1150_Characterization_of_a_Workload_Generator_for_Content-based_P/review]] — 시스템 평가에서 워크로드 생성기와 연구 평가 시스템이라는 다른 접근법을 비교한다

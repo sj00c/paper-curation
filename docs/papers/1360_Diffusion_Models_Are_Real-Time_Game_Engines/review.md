@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "GameNGen은 diffusion model을 기반으로 한 신경망 게임 엔진으로, DOOM을 실시간(20 FPS)으로 실행하면서 사람과 구별하기 어려운 수준의 시각적 품질과 게임 상태 일관성을 유지한다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/Human_Motion_Mimicking"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Action_Tokenization_Methods"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Valevski et al._2024_Diffusion Models Are Real-Time Game Engines.pdf"
 ---
@@ -90,9 +92,18 @@ GameNGen은 diffusion model을 기반으로 한 신경망 게임 엔진으로, D
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — 실시간 게임 엔진으로서의 diffusion 모델이 상호작용 시뮬레이터의 핵심 기술적 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — 실시간 게임 엔진으로서의 diffusion 모델이 Chain-of-Imagination의 시각적 생성 능력을 뒷받침합니다.
-- 🏛 기반 연구: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — diffusion 모델의 실시간 생성 능력이 시각적 예측을 통한 제로샷 네비게이션의 핵심 기술입니다.
-- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — Diffusion Models as Game Engines의 실시간 생성을 물리 AI 도메인으로 확장하여 로봇 시뮬레이션을 구현했다
-- 🏛 기반 연구: [[papers/1604_Video_Language_Planning/review]] — 실시간 게임 엔진으로서의 diffusion model 연구가 VLP의 text-to-video model 기반 상세 계획 생성에 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 실시간 게임 엔진으로서의 diffusion 모델이 Genie Sim 3.0의 시뮬레이션 환경 구축에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 게임 엔진 생성을 게임에서 자율주행으로 확장하여 실세계 응용 가능한 generative world model 제시
+- 🏛 기반 연구: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — interactive simulator 학습이 diffusion 기반 실시간 게임 엔진의 핵심 기반 기술
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — 생성형 상호작용 환경의 기초적인 개념과 게임 엔진으로서의 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 물리적 AI를 위한 비디오 기초 모델을 사용한 다른 월드 시뮬레이션 접근법입니다.
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — 게임 환경에서의 world model 구현을 위한 기본 이론적 배경을 제공합니다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — Diffusion Models Are Real-Time Game Engines와 GAIA-1의 generative world model은 실시간 환경 생성에서 게임 vs. 자율주행의 서로 다른 응용 분야를 다룬다.
+- 🔄 다른 접근: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Diffusion Models Are Real-Time Game Engines는 Genie와 유사하게 생성형 인터랙티브 환경을 구축하지만 diffusion 기반의 다른 접근법을 사용합니다.
+- 🏛 기반 연구: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — 실시간 게임 엔진으로서의 diffusion model이 UniSim의 interactive simulator 설계에 기반이 된다.
+- 🏛 기반 연구: [[papers/1490_NavigateDiff_Visual_Predictors_are_Zero-Shot_Navigation_Assi/review]] — diffusion model이 실시간 환경 예측에 사용될 수 있는 기초 이론을 제공하여 NavigateDiff의 visual predictor 구축에 필요한 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 신경 렌더링 기반 시뮬레이션은 실시간 게임 엔진으로서의 확산 모델 기술을 로봇 시뮬레이션에 적용한 사례입니다.
+- 🏛 기반 연구: [[papers/1573_SimpleVLA-RL_Scaling_VLA_Training_via_Reinforcement_Learning/review]] — 실시간 시뮬레이션 환경에서 VLA 모델의 효율적인 RL 학습을 위한 기반 기술입니다.
+- 🏛 기반 연구: [[papers/1598_Unified_Video_Action_Model/review]] — 실시간 게임 엔진으로서의 확산 모델 개념을 제공하여 UVA의 비디오-액션 통합 아키텍처 설계에 영감을 준다.
+- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — Diffusion Models as Game Engines는 GR-1의 비디오 생성 기반 로봇 학습을 위한 실시간 시뮬레이션 기술적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 실시간 게임 엔진으로서의 diffusion model이라는 유사한 실시간 시뮬레이션 접근법이다.
+- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 같은 생성형 월드 모델 문제를 다루지만 3D-VLA는 로봇 행동에, Diffusion Models는 게임 환경에 초점을 맞춘 대안적 접근법입니다.

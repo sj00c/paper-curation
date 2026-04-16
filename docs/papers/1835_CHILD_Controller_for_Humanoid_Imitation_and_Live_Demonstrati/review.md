@@ -1,3 +1,22 @@
+---
+title: "1835_CHILD_Controller_for_Humanoid_Imitation_and_Live_Demonstrati"
+authors:
+  - "Noboru Myers"
+  - "Obin Kwon"
+  - "Sankalp Yamsani"
+  - "Joohyung Kim"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "CHILD는 베이비 캐리어 크기의 컴팩트한 텔레오퍼레이션 장치로, 직접 관절 매핑을 통해 휴머노이드 로봇의 전신 관절 수준 제어를 가능하게 하는 시스템이다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Myers et al._2025_CHILD (Controller for Humanoid Imitation and Live Demonstration) a Whole-Body Humanoid Teleoperatio.pdf"
+---
+
 # CHILD (Controller for Humanoid Imitation and Live Demonstration): a Whole-Body Humanoid Teleoperation System
 
 > **저자**: Noboru Myers, Obin Kwon, Sankalp Yamsani, Joohyung Kim | **날짜**: 2025-07-31 | **URL**: [https://arxiv.org/abs/2508.00162](https://arxiv.org/abs/2508.00162)
@@ -67,3 +86,11 @@ CHILD는 베이비 캐리어 크기의 컴팩트한 텔레오퍼레이션 장치
 - Overall: 4/5
 
 **총평**: 이 논문은 전신 humanoid 텔레오퍼레이션을 위한 직접 관절 매핑 방식을 최초로 제시하였으며, 베이비 캐리어를 활용한 혁신적이고 저비용의 하드웨어 설계와 오픈소스 공개를 통해 robotics 커뮤니티에 실질적인 기여를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — CHILD는 물리적 장치로 직접 관절 매핑을, 직관적 GUI는 소프트웨어 인터페이스로 비전문가 조작을 가능하게 하는 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — CHILD의 컴팩트한 텔레오퍼레이션 개념이 HOMIE의 아이소모픽 엑소스켈레톤으로 발전하여 더 정밀한 전신 제어를 구현한다.
+- 🔄 다른 접근: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — CHILD의 직접 관절 매핑 방식과 TeleGate의 게이트 전문가 기반 접근법은 휴머노이드 텔레오퍼레이션에 대한 서로 다른 제어 패러다임을 제시한다.
+- 🏛 기반 연구: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — 전신 양측 텔레오퍼레이션의 다단계 객체 처리 기술이 CHILD의 전신 관절 수준 제어 시스템 설계에 기초적인 프레임워크를 제공한다.
+- 🔄 다른 접근: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — 직관적 GUI의 소프트웨어 기반 비전문가 인터페이스와 CHILD의 물리적 장치 기반 직접 제어는 휴머노이드 텔레오퍼레이션에서 서로 다른 사용자 인터페이스 접근법이다.

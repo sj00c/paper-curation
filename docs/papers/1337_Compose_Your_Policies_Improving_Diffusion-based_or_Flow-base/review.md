@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 General Policy Composition (GPC)를 제안하여 사전학습된 diffusion 또는 flow 기반 로봇 정책들의 분포 수준 점수를 convex 조합으로 결합함으로써, 추가 학습 없이 개별 정책보다 우수한 성능을 달성한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Task_Learning_Benchmarks"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Robotic_Policy_Scaling"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cao et al._2025_Compose Your Policies! Improving Diffusion-based or Flow-based Robot Policies via Test-time Distribu.pdf"
 ---
@@ -80,11 +82,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cao et al._2025_Compose Your Policies! I
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1359_Diffusion_for_World_Modeling_Visual_Details_Matter_in_Atari/review]] — GPC의 사전학습 정책 조합 방식과 DIAMOND의 diffusion 기반 world model은 생성형 정책 설계에서 서로 다른 접근법을 비교할 수 있다
-- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 확산 기반 정책 학습 방법론이 GPC의 diffusion 정책 조합 설계에 이론적 기반을 제공한다
-- 🔗 후속 연구: [[papers/1410_GR-3_Technical_Report/review]] — GR-3의 대규모 VLA 모델이 GPC의 정책 조합 아이디어를 foundation model 수준으로 확장한 구현체로 볼 수 있다
-- 🏛 기반 연구: [[papers/1539_RoboFactory_Exploring_Embodied_Agent_Collaboration_with_Comp/review]] — diffusion/flow 기반 정책 구성 방법론을 바탕으로 농구와 같은 장기 과제에서의 정책 통합을 해결한다.
-- 🏛 기반 연구: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — diffusion 기반 정책 구성의 기본 방법론을 의류 조작에 적용한다
-- 🔄 다른 접근: [[papers/1359_Diffusion_for_World_Modeling_Visual_Details_Matter_in_Atari/review]] — DIAMOND의 diffusion world model과 GPC의 정책 조합 방식은 생성형 모델을 활용한 로봇 정책 설계의 서로 다른 관점을 제시한다
-- 🏛 기반 연구: [[papers/1410_GR-3_Technical_Report/review]] — GR-3의 대규모 VLA 모델이 GPC의 정책 조합 아이디어를 foundation model 규모에서 구현할 수 있는 기반 플랫폼을 제공한다
-- 🏛 기반 연구: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — Bimanual dexterous manipulation을 위한 자동 데이터 생성 기술이 DexVLA의 다양한 embodiment 학습에 필요한 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — diffusion 기반 정책 학습의 기초적 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — 실시간 액션 청킹 flow 정책으로 정책 composition을 확장한다.
+- 🔄 다른 접근: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — 스트리밍 flow 정책이라는 다른 diffusion/flow 기반 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — 전문가 혼합을 통한 효율적인 diffusion transformer 정책의 다른 조합 방식입니다.
+- 🏛 기반 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy의 기본 구조를 여러 정책의 조합으로 확장한 접근방식을 제시합니다.
+- 🔄 다른 접근: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — Flow-based 정책을 단일 모델로 학습하는 것과 달리 사전학습된 정책들의 조합으로 접근합니다.

@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Perceiver Transformer를 사용하여 voxelized 3D 관찰과 이산화된 행동으로 6-DoF 로봇 조작을 수행하는 언어 조건화 행동 복제 에이전트 PerAct를 제안한다. 이 formulation은 2D 이미지 기반 접근법보다 훨씬 효율적이고 강력한 구조적 prior를 제공한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Dexterous_Spatial_Grasping"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shridhar et al._2022_Perceiver-Actor A Multi-Task Transformer for Robotic Manipulation.pdf"
 ---
@@ -88,7 +90,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shridhar et al._2022_Perceiver-Actor A M
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — SpatialVLA의 3D 공간 표현이 PerAct의 voxelized 3D 관찰을 더 일반화된 VLA 모델로 확장한다.
-- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA의 3D generative world model과 PerAct의 voxelized transformer는 모두 3D 공간 이해를 위한 서로 다른 접근법이다.
-- 🏛 기반 연구: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — RVT의 robotic view transformer가 PerAct의 Perceiver Transformer 구조의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — PerAct의 voxelized 3D 관찰이 SpatialVLA의 3D 공간 표현 학습의 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — 3D object manipulation을 위한 transformer 기반 접근법을 RVT의 robotic view transformer와 결합하여 더 정확한 6-DoF 조작 성능을 달성한다.
+- 🔄 다른 접근: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D visuomotor policy learning에서 voxelized observation vs 3D diffusion policy라는 서로 다른 3D 공간 표현 및 학습 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — 3D value map 기반 로봇 조작의 이론적 기반을 제공하여 PerAct의 voxelized 3D 관찰과 이산화된 행동 표현 설계에 영향을 준다.
+- 🏛 기반 연구: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — PerAct의 6-DoF 로봇 조작 접근법은 RLBench 벤치마크에서 제시된 다양한 3D 조작 태스크를 기반으로 합니다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — PerAct의 6-DoF manipulation에서 활용하는 2D-3D correspondence와 spatial understanding의 기초가 되는 vision-language grounding 방법을 제공한다.
+- 🏛 기반 연구: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — multi-task transformer의 기본 아키텍처를 다양한 로봇 형태에 대한 universal controller 설계에 적용하는 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench의 다양한 조작 태스크는 PerAct와 같은 6-DoF 조작 에이전트의 성능 평가 기준을 제공합니다.
+- 🔄 다른 접근: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — Perceiver-Actor와 RVT는 모두 transformer 기반 3D 조작을 다루지만 서로 다른 아키텍처 설계를 채택합니다.
+- 🔄 다른 접근: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — Perceiver-Actor는 VIMA와 유사한 멀티태스크 transformer이지만 perceiver 아키텍처를 활용하는 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1616_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang/review]] — Perceiver-Actor의 multi-task transformer 아키텍처가 VLA-Adapter의 경량 백본 설계에 구조적 영감을 제공했다.
+- 🔄 다른 접근: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — 둘 다 vision-language 기반 로봇 조작을 다루지만 CLIPort는 what/where separation에, Perceiver-Actor는 multi-task transformer에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — 둘 다 transformer 아키텍처를 로봇 학습에 활용하지만 BeT는 action discretization에, Perceiver-Actor는 multi-task learning에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 멀티태스크 transformer 구조가 diffusion policy의 조건부 생성을 위한 기반을 제공합니다.

@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 LLM과 VLM 같은 foundation model들이 로봇공학에 미치는 변혁적 영향을 체계적으로 분석하는 종합 리뷰로, 시뮬레이션, 실제 환경 실행, sim-to-real transfer, 적응형 로봇 등 다양한 응용 분야를 통합적으로 평가한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Khan and Waheed_2025_Foundation Model Driven Robotics A Comprehensive Review.pdf"
 ---
@@ -85,10 +87,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Khan and Waheed_2025_Foundation Model Dr
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — DRL 실세계 성공사례를 foundation model 통합 관점에서 종합적으로 확장 분석
-- 🔄 다른 접근: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — foundation model 기반 로봇공학과 embodied multimodal 모델의 상호보완적 발전 방향
-- 🔗 후속 연구: [[papers/1357_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — VLA 모델 서베이가 foundation model 기반 로봇공학의 구체적 구현 방향으로 확장
-- 🏛 기반 연구: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — EMLM 체계적 리뷰가 foundation model 기반 로봇공학 연구의 multimodal 통합 방향성 제시
-- 🏛 기반 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — 로봇공학에서 foundation model의 전반적 활용에 대한 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — foundation model 기반 로봇 연구에 대해 서로 다른 분류 체계와 분석 관점을 제공한다.
-- 🏛 기반 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — DRL 실세계 성공사례 분석이 foundation model 기반 로봇공학의 강화학습 적용 방향성 제시
+- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — 둘 다 foundation model의 로봇공학 응용을 종합적으로 다루지만 LLM/VLM 중심 vs 전반적 foundation model로 범위가 다르다.
+- 🏛 기반 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — foundation model 시대의 로봇 학습에 대한 기본적인 조망을 제공하는 선행 연구이다.
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — 순수 VLA 모델에 대한 연구를 LLM과 VLM을 포함한 더 넓은 foundation model 관점으로 확장했다.
+- 🔄 다른 접근: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — General-Purpose Robots Survey는 foundation model driven robotics와 유사한 범위를 다루지만 범용 로봇 관점에서 다른 분석 틀을 제시합니다.
+- 🔄 다른 접근: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — Vision-Language-Action Models review와 Foundation Model Driven Robotics review는 로봇공학에서 foundation model의 역할을 서로 다른 관점에서 종합적으로 분석한다.
+- 🏛 기반 연구: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — Vision-Language-Action Models for Robotics의 VLA 모델 리뷰가 Foundation Model Driven Robotics의 더 넓은 foundation model 응용 분석에 기초적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation Model Driven Robotics의 포괄적 리뷰는 로봇틱스 foundation model 응용 조사에 더 넓은 기술적 맥락과 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — Foundation Model Driven Robotics의 전반적 리뷰를 의사결정 패러다임과 embodied learning으로 구체화하여 발전시킨다.
+- 🏛 기반 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — foundation model driven robotics의 포괄적인 리뷰를 제공하여 multimodal fusion과 VLM의 로봇 응용에 대한 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — Foundation Model Driven Robotics 서베이가 VLA 모델 연구의 전반적 맥락을 제공한다.
+- 🔄 다른 접근: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — 두 survey 모두 foundation model driven robotics를 다루지만 하나는 학습 중심, 다른 하나는 전반적 로봇 시스템 관점에서 접근한다.
+- 🔄 다른 접근: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — Foundation Model Driven Robotics는 foundation model 기반 로봇공학에 대한 또 다른 종합적 리뷰를 제공한다.
+- 🔄 다른 접근: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — 둘 다 로봇 분야의 comprehensive review이지만 VLN survey는 navigation에, Foundation Model Driven Robotics는 foundation model에 집중한다.
+- 🏛 기반 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — Foundation Model Driven Robotics는 EIIR 프레임워크의 이론적 토대가 되는 로봇 기반 모델 전반에 대한 포괄적 리뷰임
+- 🔄 다른 접근: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — Foundation Model 기반 로보틱스 리뷰와 사이버-물리 정렬이 다른 관점에서 embodied AI를 분석합니다.

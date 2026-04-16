@@ -11,7 +11,8 @@ score: 4.0
 essence: "본 논문은 급증하는 과학 출판물을 효율적으로 분석하기 위해 텍스트 마이닝(Text Mining)과 과학 지도화(Science Mapping)를 결합한 서지학적 분석(Bibliometric Analysis) 방법론을 종합적으로 검토하고, 향후 연구 방향을 제시한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Thematic_Network_Detection"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2023_When text mining meets science mapping in the bibliometric analysis A review and future opportuniti.pdf"
 ---
@@ -86,7 +87,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2023_When text mining meets 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 기본적인 과학 지도 작성과 과학 지도의 원리가 텍스트 마이닝과 결합된 서지학적 분석의 방법론적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 서지학적 분석에서 텍스트 마이닝과 과학 지도화의 결합을 의미적, 신경망 네트워크 기반 연구 동향 예측으로 확장합니다.
-- 🔄 다른 접근: [[papers/949_Comparative_science_mapping_a_novel_conceptual_structure_ana/review]] — 서지학적 분석에서 새로운 개념 구조 분석과 비교 과학 지도화라는 서로 다른 접근법을 제시합니다.
-- 🏛 기반 연구: [[papers/1013_Rethinking_Thematic_Evolution_in_Science_Mapping_An_Integrat/review]] — 과학 지도 작성에서 텍스트 마이닝과 결합된 서지학적 분석이 주제 진화 추적의 방법론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 전통적 과학 지도화 이론이 텍스트 마이닝과 결합된 서지학적 분석의 개념적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미론적 네트워크를 통한 연구 트렌드 예측이 텍스트 마이닝 기반 과학 지도화의 실용적 적용 사례를 보여준다.
+- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 주제 모델에 대한 네트워크 접근법이 텍스트 마이닝과 과학 지도화 결합의 방법론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 인용 맥락 분석과 같은 구체적 텍스트 마이닝 응용이 텍스트 마이닝과 과학 지도화 결합의 실증 사례가 된다.
+- 🔗 후속 연구: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 도입 위험 연구가 텍스트 마이닝과 과학 지도화 결합 방법론의 구체적 적용 사례로 제시된다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야의 데이터와 실증 방법론에 대한 체계적 이해가 텍스트 마이닝과 과학 지도화 결합의 이론적 배경을 제공한다.
+- 🧪 응용 사례: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — 기계학습을 이용한 AI 미래 예측이 텍스트 마이닝과 과학 지도화를 결합한 서지학적 분석의 구체적 적용 사례이다.
+- 🧪 응용 사례: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — 텍스트 마이닝과 과학 지도화를 결합한 방법론을 AI 도입 위험 연구에 구체적으로 적용한 사례를 보여준다.
+- 🔗 후속 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 텍스트 마이닝과 과학 지도화의 결합이 전통적 인용 기반 매핑을 확장한 방법론적 발전을 보여준다.
+- 🧪 응용 사례: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 텍스트 마이닝과 과학 지도화 결합 방법론을 인용 맥락 분석이라는 구체적 사례로 적용하여 보여준다.

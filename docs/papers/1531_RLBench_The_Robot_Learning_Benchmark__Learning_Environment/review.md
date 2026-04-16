@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇 학습을 위한 대규모 벤치마크인 RLBench를 제시하며, 100개의 고유한 손-설계 태스크, 다양한 센서 모달리티, 그리고 motion planner를 통한 무한한 데모를 제공한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Synthetic_Grasping_Datasets"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/3D_Keypoint_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/James et al._2019_RLBench The Robot Learning Benchmark & Learning Environment.pdf"
 ---
@@ -91,6 +93,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/James et al._2019_RLBench The Robot Lear
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1562_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — ManiSkill-HAB의 가정 환경 조작 벤치마크가 RLBench의 로봇 학습 벤치마크를 실제 가정 환경으로 확장한다.
-- 🔄 다른 접근: [[papers/1469_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — ManiSkill3의 GPU 병렬화 시뮬레이션과 RLBench의 로봇 학습 환경은 모두 로봇 학습을 위한 서로 다른 시뮬레이션 플랫폼이다.
-- 🏛 기반 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — BEHAVIOR-1K의 human-centered embodied AI benchmark가 RLBench의 100개 태스크 설계의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — BEHAVIOR-1K와 함께 대규모 로봇 학습 벤치마크를 제공하지만 RLBench는 손 설계 태스크에, BEHAVIOR-1K는 인간 중심 태스크에 집중한다.
+- 🏛 기반 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — Habitat 2.0의 시뮬레이션 환경 기술이 RLBench의 로봇 학습 벤치마크 구현에 환경적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — RLBench는 robosuite와 함께 로봇 학습 벤치마크의 표준을 제시하며 더 복잡한 태스크를 다룹니다.
+- 🔗 후속 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — RLBench의 다양한 조작 태스크는 PerAct와 같은 6-DoF 조작 에이전트의 성능 평가 기준을 제공합니다.
+- 🔄 다른 접근: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — RLBench와 CALVIN 모두 언어 조건화된 로봇 학습 벤치마크이지만 태스크 복잡성과 평가 방식에서 차별화됩니다.
+- 🧪 응용 사례: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — RLBench의 benchmark tasks를 LIBERO의 lifelong robot learning 평가에 활용하여 knowledge transfer 성능을 측정할 수 있다.
+- 🔄 다른 접근: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — RLBench와 ManiSkill3 모두 로봇 학습 벤치마크이지만 태스크 다양성 vs 시뮬레이션 성능에 특화된 차이가 있음
+- 🏛 기반 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — PerAct의 6-DoF 로봇 조작 접근법은 RLBench 벤치마크에서 제시된 다양한 3D 조작 태스크를 기반으로 합니다.
+- 🔗 후속 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — robosuite의 모듈식 프레임워크는 RLBench와 같은 더 복잡한 벤치마크 환경 구축의 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1591_Towards_Diverse_Behaviors_A_Benchmark_for_Imitation_Learning/review]] — RLBench는 D3IL과 같은 로봇 학습 벤치마크이지만 언어 조건부 작업에 특화된 다른 평가 환경을 제공한다.
+- 🔄 다른 접근: [[papers/1304_ALFRED_A_Benchmark_for_Interpreting_Grounded_Instructions_fo/review]] — 둘 다 로봇 학습 벤치마크이지만 ALFRED는 자연어 지시사항과 egocentric vision에, RLBench는 일반적인 로봇 학습 환경에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — RLBench의 robot learning benchmark 개념을 language-conditioned policy learning과 장기간 조작 작업에 특화하여 발전시킨 연구입니다.
+- 🏛 기반 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — RLBench의 시뮬레이션 환경과 벤치마크가 SIMPLER의 실제-시뮬레이션 정책 평가 프레임워크 설계의 기반을 제공합니다.

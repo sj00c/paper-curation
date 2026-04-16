@@ -1,3 +1,24 @@
+---
+title: "1902_EgoMI_Learning_Active_Vision_and_Whole-Body_Manipulation_fro"
+authors:
+  - "Justin Yu"
+  - "Yide Shentu"
+  - "Di Wu"
+  - "Pieter Abbeel"
+  - "Ken Goldberg"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "EgoMI는 인간의 동시화된 머리 및 손 움직임을 포착하는 egocentric 데이터 수집 프레임워크로, SPARKS 메모리 메커니즘을 통해 급속한 시점 변화를 처리하여 반인간형 로봇으로 zero-shot 전이를 달성한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Dexterous_Hand_Trajectory_Datasets"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2025_EgoMI Learning Active Vision and Whole-Body Manipulation from Egocentric Human Demonstrations.pdf"
+---
+
 # EgoMI: Learning Active Vision and Whole-Body Manipulation from Egocentric Human Demonstrations
 
 > **저자**: Justin Yu, Yide Shentu, Di Wu, Pieter Abbeel, Ken Goldberg, Philipp Wu | **날짜**: 2025-10-31 | **URL**: [https://arxiv.org/abs/2511.00153](https://arxiv.org/abs/2511.00153)
@@ -66,3 +87,14 @@ EgoMI는 인간의 동시화된 머리 및 손 움직임을 포착하는 egocent
 - Overall: 4/5
 
 **총평**: EgoMI는 인간의 active vision과 manipulation을 동시에 포착하는 창의적 프레임워크로, SPARKS 메커니즘을 통해 급속한 시점 변화를 우아하게 처리하며 zero-shot transfer를 달성해 imitation learning의 embodiment gap 문제에 실질적 솔루션을 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — EgoMI의 SPARKS 메모리 메커니즘과 인간 시연 기반 능동 지각 학습은 서로 다른 시점에서 능동 시각을 다룹니다.
+- 🧪 응용 사례: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — LookOut의 실제 환경 자아중심 내비게이션이 EgoMI의 능동 시각 및 전신 조작 학습을 실용적으로 적용한 사례입니다.
+- 🏛 기반 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoMimic의 egocentric 비디오 기반 모방 학습 스케일링 기술이 EgoMI의 능동적 시각 및 전신 조작 학습을 위한 기반 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — Visual Imitation의 맥락적 휴머노이드 제어가 egocentric 데이터 없이도 시각 기반 제어를 가능하게 하는 다른 접근 방식을 제시한다.
+- 🏛 기반 연구: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — egocentric vision을 활용한 전신 조작 학습에서 active vision과 loco-manipulation이라는 관련 영역을 다룬다.
+- 🧪 응용 사례: [[papers/1837_Climber_Force_and_Motion_Estimation_from_Video/review]] — EgoMI의 능동 시각과 전신 조작 학습이 등반 환경에서 시각-동작 통합을 위한 실용적 응용 사례를 제공한다.
+- 🏛 기반 연구: [[papers/1871_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — Aria Gen 2를 통한 egocentric vision 기반 조작 학습이 EgoMI의 active vision과 whole-body manipulation의 기본 원리와 일치한다.
+- 🔄 다른 접근: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — 둘 다 자기중심 시각 기반 전신 조작을 다루지만 이 논문은 통합 멀티모달 제어에, EgoMI는 능동 시각과 조작 학습에 중점을 둡니다.

@@ -1,3 +1,25 @@
+---
+title: "1992_Humanoid_Agent_via_Embodied_Chain-of-Action_Reasoning_with_M"
+authors:
+  - "Congcong Wen"
+  - "Geeta Chandra Raju Bethala"
+  - "Yu Hao"
+  - "Niraj Pudasaini"
+  - "Hao Huang"
+date: "2025.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인형로봇의 전신 보행-조작을 위해 기초 모델의 추론 능력과 Embodied Chain-of-Action (CoA) 메커니즘을 통합한 제로샷 에이전트 프레임워크를 제시한다. 고수준 인간 지시를 affordance 분석, 공간 추론, 전신 동작 추론을 통해 체계적인 보행 및 조작 원시 동작 수열로 분해한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wen et al._2025_Humanoid Agent via Embodied Chain-of-Action Reasoning with Multimodal Foundation Models for Zero-Sho.pdf"
+---
+
 # Humanoid Agent via Embodied Chain-of-Action Reasoning with Multimodal Foundation Models for Zero-Shot Loco-Manipulation
 
 > **저자**: Congcong Wen, Geeta Chandra Raju Bethala, Yu Hao, Niraj Pudasaini, Hao Huang, Shuaihang Yuan, Baoru Huang, Anh Nguyen, Mengyu Wang, Anthony Tzes, Yi Fang | **날짜**: 2025-04-13 | **URL**: [https://arxiv.org/abs/2504.09532](https://arxiv.org/abs/2504.09532)
@@ -63,3 +85,17 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 Foundation model의 추론 능력을 인형로봇 보행-조작에 처음 통합한 의미 있는 기여이며, CoA Reasoning 메커니즘을 통해 자연어 지시를 물리적으로 실현 가능한 동작 수열로 변환하는 새로운 접근을 제시한다. 실제 인형로봇에서 강건한 제로샷 일반화를 입증한 점에서 높은 실용적 가치를 갖는다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — GMD의 텍스트 조건부 모션 생성을 humanoid agent가 multimodal reasoning과 결합하여 더 지능적인 전신 제어로 확장합니다.
+- 🔄 다른 접근: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — Embodied Chain-of-Action과 Trinity의 modular AI system은 모두 고수준 추론을 humanoid 제어로 변환하는 서로 다른 아키텍처 접근법입니다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 자유형 언어로 humanoid 명령하기 위한 대형 언어 모델 활용이 Embodied Chain-of-Action reasoning의 기반 기술입니다.
+- 🔄 다른 접근: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — 3계층 hierarchical framework가 embodied chain-of-action reasoning과 다른 방식으로 다단계 조작을 해결합니다.
+- 🏛 기반 연구: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — SENTINEL의 end-to-end language-action model이 embodied CoA reasoning의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — 자율 휴머노이드 계획을 이 논문은 CoA 추론으로, HYPERmotion은 하이브리드 행동 계획으로 접근한다.
+- 🏛 기반 연구: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — 자연어를 통한 모션 제어가 humanoid agent의 embodied reasoning과 결합되어 더 지능적인 전신 제어를 가능하게 합니다.
+- 🏛 기반 연구: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — 체화된 행동 추론이 계층적 의도 인식의 기반 메커니즘이다.
+- 🔄 다른 접근: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — Embodied chain-of-action reasoning이 3계층 hierarchical framework와 다른 방식으로 다단계 조작을 해결합니다.
+- 🔄 다른 접근: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — HYPERmotion의 RL+최적화 결합과 Embodied Chain-of-Action의 기초 모델 추론은 자연어 명령 처리를 위한 서로 다른 계층적 접근법입니다.
+- 🔗 후속 연구: [[papers/2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm/review]] — 고유감각 인식 MLLM을 Humanoid Agent의 chain-of-action reasoning과 결합하면 더 정확한 embodied planning과 실행이 가능합니다.

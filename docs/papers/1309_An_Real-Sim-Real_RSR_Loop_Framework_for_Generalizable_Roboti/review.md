@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Real-Sim-Real (RSR) 루프 프레임워크를 제안하여 differentiable simulation을 활용해 시뮬레이션 파라미터를 반복적으로 개선하고 실제 세계 조건과 정렬시킴으로써 sim-to-real 갭을 해소한다. 정보 이론 기반의 비용 함수를 통해 다양하고 대표적인 실세계 데이터 수집을 유도하여 시뮬레이션 정제의 효율성을 극대화한다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Uncertainty-Aware_Model_Predictive_Control"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Robotic_Policy_Scaling"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2025_An Real-Sim-Real (RSR) Loop Framework for Generalizable Robotic Policy Transfer with Differentiable.pdf"
 ---
@@ -84,4 +86,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2025_An Real-Sim-Real (RSR) L
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1239_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 실세계 배포를 위한 RSR 루프 프레임워크가 door traversal 같은 구체적 행동의 시뮬-실세계 전이에 필요한 기초를 제공한다
+- 🔄 다른 접근: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — Real-to-Sim-to-Real 접근법의 다른 구현 방식을 제시한다.
+- 🔗 후속 연구: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — 동역학 시뮬레이션 없이 로봇 데이터를 스케일링하는 방법으로 RSR 루프를 확장한다.
+- 🏛 기반 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — 시각 기반 정교한 조작을 위한 Sim-to-Real 강화학습의 기초 이론을 제공한다.
+- 🏛 기반 연구: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — 시뮬레이션에서 실제 로봇 정책 평가에 대한 기초적인 방법론을 제공합니다.
+- 🔄 다른 접근: [[papers/1293_A_Distributional_Treatment_of_Real2Sim2Real_for_Object-Centr/review]] — 둘 다 Real2Sim2Real 프레임워크를 제안하지만 RSR Loop은 differentiable simulation에, Distributional Treatment는 물리 파라미터 분포 추정에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1368_DiWA_Diffusion_Policy_Adaptation_with_World_Models/review]] — DiWA의 world model을 활용한 diffusion policy adaptation 개념을 Real-Sim-Real loop에서 반복적인 시뮬레이션 개선으로 확장한 방법론입니다.
+- 🏛 기반 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — Mastering Diverse Domains through World Models의 world model 활용 개념을 differentiable simulation 기반의 sim-to-real 갭 해소로 구체화한 연구입니다.
+- 🏛 기반 연구: [[papers/1293_A_Distributional_Treatment_of_Real2Sim2Real_for_Object-Centr/review]] — 일반화 가능한 로봇 제어를 위한 RSR 루프 프레임워크가 Real2Sim2Real의 이론적 기반을 제공합니다.

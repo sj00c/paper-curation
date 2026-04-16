@@ -1,3 +1,23 @@
+---
+title: "1943_GBC_Generalized_Behavior-Cloning_Framework_for_Whole-Body_Hu"
+authors:
+  - "Yifei Yao"
+  - "Chengyuan Luo"
+  - "Jiaheng Du"
+  - "Wentao He"
+  - "Jun-Guo Lu"
+date: "2025.08"
+doi: "10.48550/arXiv.2508.09960"
+arxiv: ""
+score: 4.0
+essence: "GBC는 이질적인 휴머노이드 로봇들을 위한 통합 행동 모방 프레임워크로, differentiable IK 기반 데이터 파이프라인, DAgger-MMPPO 알고리즘, MMTransformer 아키텍처를 결합하여 인간 모션캡처 데이터를 다양한 로봇에 자동으로 재타겟팅하고 학습한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yao et al._2025_GBC Generalized Behavior-Cloning Framework for Whole-Body Humanoid Imitation.pdf"
+---
+
 # GBC: Generalized Behavior-Cloning Framework for Whole-Body Humanoid Imitation
 
 > **저자**: Yifei Yao, Chengyuan Luo, Jiaheng Du, Wentao He, Jun-Guo Lu | **날짜**: 2025-08-13 | **DOI**: [10.48550/arXiv.2508.09960](https://doi.org/10.48550/arXiv.2508.09960)
@@ -68,3 +88,16 @@ GBC는 이질적인 휴머노이드 로봇들을 위한 통합 행동 모방 프
 - Overall: 4/5
 
 **총평**: 본 논문은 이질적 휴머노이드 로봇들의 행동 모방을 위한 첫 번째 통합 프레임워크를 제시하며, differentiable IK, MMTransformer, DAgger-MMPPO 알고리즘을 결합하여 데이터 처리부터 정책 학습까지 일원화된 솔루션을 제공한다. 오픈소스 플랫폼 제공과 다중 로봇 검증을 통해 실용성과 확장성을 입증했으나, 실제 로봇 배포 성능 및 동적 환경에서의 강건성에 대한 검증이 후속과제이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1906_Embodiment-Aware_Generalist_Specialist_Distillation_for_Unif/review]] — 둘 다 다양한 휴머노이드 embodiment 간 일반화를 다루지만 GBC는 행동 모방에, Embodiment-Aware는 specialist distillation에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — H-Zero의 cross-humanoid 사전학습이 GBC의 통합 행동 모방 프레임워크를 강화할 수 있다.
+- 🏛 기반 연구: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — 일반적인 행동 클로닝 프레임워크를 통한 전신 휴머노이드 제어의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1712_The_Role_of_Domain_Randomization_in_Training_Diffusion_Polic/review]] — 전신 휴머노이드 제어를 위해 서로 다른 접근(Diffusion Policies vs Generalized Behavior-Cloning)을 통해 데이터 요구사항과 성능을 비교 분석한다.
+- 🔄 다른 접근: [[papers/1906_Embodiment-Aware_Generalist_Specialist_Distillation_for_Unif/review]] — GBC의 generalized behavior-cloning이 EAGLE과 다른 접근으로 multiple humanoid control의 일반화 문제를 해결한다.
+- 🏛 기반 연구: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — GBC의 cross-humanoid 행동 모방이 H-Zero의 locomotion pretraining에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2026_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-/review]] — 행동 복제 기반의 전신 휴머노이드 제어에 대한 일반화된 프레임워크 제공
+- 🔄 다른 접근: [[papers/2027_InterPrior_Scaling_Generative_Control_for_Physics-Based_Huma/review]] — 둘 다 생성형 전신 제어이지만 InterPrior는 모방학습-강화학습 결합, GBC는 행동 복제 프레임워크 기반
+- 🔗 후속 연구: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 행동 복제와 강화학습을 결합하여 빠른 휴머노이드 제어 정책 학습을 확장한다.
+- 🏛 기반 연구: [[papers/2082_LHM-Humanoid_Learning_a_Unified_Policy_for_Long-Horizon_Huma/review]] — GBC의 generalized behavior-cloning이 LHM-Humanoid의 통합 정책 학습에 방법론적 기반을 제공했다

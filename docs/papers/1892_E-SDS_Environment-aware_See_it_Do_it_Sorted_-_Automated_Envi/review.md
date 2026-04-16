@@ -1,3 +1,25 @@
+---
+title: "1892_E-SDS_Environment-aware_See_it_Do_it_Sorted_-_Automated_Envi"
+authors:
+  - "Enis Yalcin"
+  - "Joshua O'Hara"
+  - "Maria Stamatopoulou"
+  - "Chengxu Zhou"
+  - "Dimitrios Kanoulas"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "E-SDS는 Vision-Language Model과 실시간 지형 센서 분석을 통합하여 휴머노이드 로봇의 환경 인식 보행 정책을 자동으로 학습할 수 있는 프레임워크를 제시한다. 환경 통계 기반 보상 함수 자동 생성으로 수동 엔지니어링 시간을 대폭 단축하면서도 더 강건한 보행 정책을 실현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yalcin et al._2025_E-SDS Environment-aware See it, Do it, Sorted - Automated Environment-Aware Reinforcement Learning.pdf"
+---
+
 # E-SDS: Environment-aware See it, Do it, Sorted - Automated Environment-Aware Reinforcement Learning for Humanoid Locomotion
 
 > **저자**: Enis Yalcin, Joshua O'Hara, Maria Stamatopoulou, Chengxu Zhou, Dimitrios Kanoulas | **날짜**: 2025-12-18 | **URL**: [https://arxiv.org/abs/2512.16446](https://arxiv.org/abs/2512.16446)
@@ -67,3 +89,13 @@ E-SDS는 Vision-Language Model과 실시간 지형 센서 분석을 통합하여
 - Overall: 4/5
 
 **총평**: E-SDS는 VLM 기반 자동 보상 설계와 환경 인식 지각형 제어를 혁신적으로 통합하여 휴머노이드 보행의 자동화 및 강건성을 획기적으로 개선했다. 다만 최신 VLM 모델 의존성, 계산 비용, 실제 하드웨어 검증 부재 등은 실용화를 위한 과제로 남아있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid/review]] — vision-based goal inference가 E-SDS의 VLM 기반 환경 인식 보행 정책 학습에 시각적 목표 설정의 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/2042_Learning_a_Vision-Based_Footstep_Planner_for_Hierarchical_Wa/review]] — vision-based footstep planner가 E-SDS의 환경 인식 보행을 hierarchical walking으로 확장하여 더 정교한 지형 대응을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1892_E-SDS_Environment-aware_See_it_Do_it_Sorted_-_Automated_Envi/review]] — terrain foothold planning을 자동화된 환경 분석으로 접근하여 수동 엔지니어링을 최소화하는 혁신적 방법론을 제시한다.
+- 🔄 다른 접근: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 환경 인식 보행에서 VLM 기반 자동 정책 학습과 visual search를 통한 in-the-wild navigation의 서로 다른 환경 적응 접근법을 비교한다.
+- 🧪 응용 사례: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — E-SDS의 환경 통계 기반 보상 함수 생성이 Genie Sim 3.0의 고충실도 시뮬레이션 환경에서 더 정교한 지형 적응 정책을 개발할 수 있다.
+- 🏛 기반 연구: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — Real-Time Polygonal Semantic Mapping이 E-SDS의 환경 인식 지형 센서 분석을 위한 기본적인 매핑 기술을 제공한다.
+- 🧪 응용 사례: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Hiking in the Wild의 perceptive parkour 프레임워크가 E-SDS의 환경 통계 기반 보행 정책을 실제 복잡한 지형에 적용하는 사례를 보여준다.

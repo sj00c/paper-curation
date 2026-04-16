@@ -1,3 +1,25 @@
+---
+title: "1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha"
+authors:
+  - "Xue Bin Peng"
+  - "Ze Ma"
+  - "Pieter Abbeel"
+  - "Sergey Levine"
+  - "Angjoo Kanazawa"
+date: "2021.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "물리 기반 캐릭터 애니메이션에서 adversarial motion prior를 학습하여 비구조화된 모션 클립 데이터셋으로부터 자동으로 스타일을 추출하고, 간단한 보상 함수로 정의된 고수준 태스크 목표를 달성하면서도 자연스러운 움직임을 생성하는 방법을 제안한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Character_Motion_Policy_Transfer"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Peng et al._2021_AMP Adversarial Motion Priors for Stylized Physics-Based Character Control.pdf"
+---
+
 # AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control
 
 > **저자**: Xue Bin Peng, Ze Ma, Pieter Abbeel, Sergey Levine, Angjoo Kanazawa | **날짜**: 2021-04-05 | **URL**: [https://arxiv.org/abs/2104.02180](https://arxiv.org/abs/2104.02180)
@@ -66,3 +88,31 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 adversarial motion prior를 통해 비구조화 모션 데이터의 자동 활용을 실현한 물리 기반 캐릭터 애니메이션 분야의 중요한 기여로, 모션 선택 메커니즘 설계의 부담을 제거하면서도 최첨단 성능을 달성하며 게임, 영상, 로봇 등 다양한 응용 분야에 실질적 가치를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 둘 다 motion capture 데이터를 활용하지만 adversarial prior와 example-guided learning이라는 서로 다른 학습 패러다임을 제시한다
+- 🔗 후속 연구: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 의상 착용 캐릭터를 위한 adversarial motion prior 확장이 AMP의 stylized character control 응용 범위를 넓힌다
+- 🏛 기반 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — StyleLoco의 generative adversarial distillation 기법이 AMP의 자연스러운 움직임 생성에 필요한 핵심 기술적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — 인간 보행 데이터 모방 학습이 AMP의 adversarial motion prior를 실제 humanoid 로봇에 적용하는 구체적 사례입니다.
+- 🏛 기반 연구: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — AMP의 adversarial prior 학습에서 AMOR의 multi-objective 보상 조정이 스타일과 태스크 목표의 균형을 맞춥니다.
+- 🔗 후속 연구: [[papers/1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol/review]] — AMP의 adversarial motion prior 학습이 ALMI의 대적적 휴머노이드 정책 학습에 방법론적 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1809_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph/review]] — 둘 다 adversarial skill learning을 다루지만 AMP는 motion prior에, ASE는 large-scale reusable skill embedding에 중점을 둔다.
+- 🧪 응용 사례: [[papers/2027_InterPrior_Scaling_Generative_Control_for_Physics-Based_Huma/review]] — InterPrior의 physics-based humanoid control scaling이 AMP의 adversarial motion prior를 더 복잡한 상호작용 시나리오로 확장하는 데 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — 스타일화된 물리 기반 캐릭터 제어를 위한 adversarial motion prior의 기초 개념을 제공한다.
+- 🏛 기반 연구: [[papers/1635_Reduced-Order_Model-Guided_Reinforcement_Learning_for_Demons/review]] — ROM-GRL의 adversarial discriminator가 AMP의 adversarial motion prior 방법론을 reduced-order model에 적용한 것이다
+- 🏛 기반 연구: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — AMP의 adversarial motion prior 개념이 인간 보행 데이터를 활용한 자연스러운 움직임 생성에 핵심적입니다.
+- 🧪 응용 사례: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — AMOR의 MORL 프레임워크가 AMP의 adversarial motion prior 학습에서 보상 균형 문제를 해결합니다.
+- 🏛 기반 연구: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 적대적 모션 사전이 대칭성 기반 정책의 이론적 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol/review]] — AMP의 adversarial motion prior 학습 방법론이 ALMI의 대적적 학습 프레임워크의 이론적 기반이 된다.
+- 🔄 다른 접근: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — motion capture 데이터 활용에서 example-guided learning과 adversarial motion prior라는 서로 다른 학습 패러다임을 제시한다
+- ⚖️ 반론/비판: [[papers/1928_Feature-Based_vs_GAN-Based_Learning_from_Demonstrations_When/review]] — GAN 기반 접근법과 적대적 모션 프라이어의 차이점을 명확히 하여 방법론 선택 기준을 제시한다.
+- 🏛 기반 연구: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — AMP의 adversarial motion prior 기법이 Heracles의 자연스러운 복구 동작 생성을 위한 기초 이론을 제공한다.
+- 🏛 기반 연구: [[papers/1994_Humanoid_Goalkeeper_Learning_from_Position_Conditioned_Task-/review]] — AMP의 적대적 모션 프라이어가 골키퍼의 자동화되고 인간다운 전신 동작 생성의 핵심 토대가 된다.
+- 🏛 기반 연구: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 스타일화된 물리 기반 캐릭터 제어를 위한 적대적 동작 선험의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — Adversarial Motion Priors의 원리를 제공하며, 제약이 있는 엔터테인먼트 로봇의 자연스러운 보행 학습에 직접 활용된다.
+- 🏛 기반 연구: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 적대적 동작 선험을 시각 기반 동적 제어 환경으로 확장하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — AMP의 adversarial motion prior를 frozen generative model 기반의 더 안정적인 fine-grained 감독으로 발전시킨 연구이다.
+- 🏛 기반 연구: [[papers/2116_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — 스타일화된 물리 기반 캐릭터 애니메이션의 핵심 방법론을 제공하여 올라프의 believable한 움직임 구현에 활용된다.
+- 🔄 다른 접근: [[papers/2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars/review]] — AMP의 adversarial motion priors가 PHC의 PMCP와 다른 adversarial 접근법으로 robust physics-based character control을 달성합니다.
+- 🔄 다른 접근: [[papers/2137_PhysDiff_Physics-Guided_Human_Motion_Diffusion_Model/review]] — diffusion 기반 물리 제약 대신 adversarial motion prior를 통해 물리적으로 타당한 캐릭터 제어를 달성한다.

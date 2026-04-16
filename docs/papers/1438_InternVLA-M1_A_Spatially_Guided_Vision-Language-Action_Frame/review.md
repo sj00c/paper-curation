@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "InternVLA-M1은 공간 그라운딩을 시각-언어-행동 학습의 중심 연결고리로 활용하여, 지시 따르기 로봇의 확장 가능한 일반 지능을 구현한 통합 프레임워크이다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_InternVLA-M1 A Spatially Guided Vision-Language-Action Framework for Generalist Robot Policy.pdf"
 ---
@@ -90,11 +92,11 @@ InternVLA-M1은 공간 그라운딩을 시각-언어-행동 학습의 중심 연
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — 두 논문 모두 시각-언어-행동 통합을 다루지만, 하나는 공간 그라운딩에, 다른 하나는 flow matching 기반 행동 생성에 집중합니다.
-- 🔄 다른 접근: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — 모두 멀티모달 기초 모델을 다루지만, 하나는 공간 인식에, 다른 하나는 시공간 지능 획득에 중점을 둡니다.
-- 🔗 후속 연구: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 공간 그라운딩을 통한 시각-언어-행동 학습이 일반적인 휴머노이드 제어로 확장 적용될 수 있습니다.
-- 🏛 기반 연구: [[papers/1510_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — 오픈소스 비전-언어-행동 모델의 기초적인 구조와 훈련 방법론을 제공합니다.
-- 🔄 다른 접근: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — 두 논문 모두 멀티모달 기초 모델을 다루지만, 하나는 시공간 지능에, 다른 하나는 공간 그라운딩에 중점을 둡니다.
-- 🔄 다른 접근: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — 두 논문 모두 시각-언어-행동 통합을 다루지만, 하나는 flow matching 기반 생성에, 다른 하나는 공간 그라운딩에 집중합니다.
-- 🧪 응용 사례: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — InternVLA-M1의 spatially guided framework가 PaLM-E의 embodied multimodal reasoning을 실제 로봇 조작 작업에 구체적으로 적용한다.
-- 🔄 다른 접근: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — InternVLA-M1의 spatially guided framework와 SpatialVLA의 ego3D position encoding은 모두 VLA의 공간 이해를 위한 서로 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — 둘 다 공간 기반 VLA이지만 InternVLA-M1은 공간 그라운딩에, FSD는 visual aids 생성에 집중한다.
+- 🔗 후속 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — 공간 표현을 VLA에 통합하는 InternVLA-M1의 접근법을 spatial representation으로 더 일반화했다.
+- 🏛 기반 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 통합된 이해-생성-행동 모델의 기본 구조가 InternVLA-M1의 공간 그라운딩 프레임워크에 기반이 된다.
+- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 기본 구조에 공간 그라운딩을 핵심으로 한 확장 가능한 일반 지능 프레임워크를 구축한다.
+- 🏛 기반 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — RoboPoint의 spatial affordance prediction을 vision-language-action 학습의 중심 연결고리로 확장한다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — grounding 기능을 통한 공간적 이해의 기본 원리를 VLA 프레임워크에 적용하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — multimodal spatial language maps를 VLA의 공간 그라운딩 메커니즘과 결합하여 더 정확한 공간 추론을 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — 둘 다 공간 추론을 통한 VLA 모델이지만 FSD는 visual aids 생성에, InternVLA-M1은 공간 그라운딩에 집중한다.

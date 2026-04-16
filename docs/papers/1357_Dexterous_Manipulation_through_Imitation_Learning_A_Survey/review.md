@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Imitation Learning(IL)을 활용한 Dexterous Manipulation 방법들을 종합적으로 조사하는 서베이 논문으로, 전문가 시연을 통해 로봇이 인간 수준의 손재주를 습득하도록 하는 방식을 다룬다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Adversarial_Robot_Learning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_Language_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/An et al._2025_Dexterous Manipulation through Imitation Learning A Survey.pdf"
 ---
@@ -90,7 +92,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/An et al._2025_Dexterous Manipulation th
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1336_CogACT_A_Foundational_Vision-Language-Action_Model_for_Syner/review]] — Dexterous manipulation을 위한 데이터 수집과 처리 파이프라인 기술이 imitation learning survey의 핵심 구성요소가 된다.
-- 🔗 후속 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — Human-robot 데이터 쌍을 활용한 robot action 학습이 dexterous manipulation의 imitation learning 연구로 확장된다.
-- 🧪 응용 사례: [[papers/1548_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/review]] — Two multifingered hands를 통한 visuotactile 스킬 학습이 dexterous manipulation imitation learning의 실제 적용 사례를 제공한다.
-- 🔗 후속 연구: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — 제로샷 월드 액션 모델이 WHALE의 retracing-rollout 기법을 정책 학습으로 확장할 수 있는 가능성을 보여줍니다.
+- 🏛 기반 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 10억 개 시연으로 학습한 손재주 조작의 기초적인 대규모 데이터 접근법을 제공합니다.
+- 🧪 응용 사례: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — 의류 조작 환경에서 손재주 조작의 구체적인 적용 사례를 보여줍니다.
+- 🔗 후속 연구: [[papers/1591_Towards_Diverse_Behaviors_A_Benchmark_for_Imitation_Learning/review]] — 다양한 행동을 위한 모방 학습 벤치마크와 손재주 조작 서베이가 상호 보완적 관점을 제공합니다.
+- 🏛 기반 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 인간-로봇 쌍 데이터를 통한 모방학습이 손가락 조작 학습의 핵심 기반입니다.
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation model 시대에 손가락 조작 모방학습의 새로운 방향성을 제시합니다.
+- 🔗 후속 연구: [[papers/1298_A_Survey_of_Embodied_Learning_for_Object-Centric_Robotic_Man/review]] — Dexterous Manipulation through Imitation Learning 서베이를 object-centric한 embodied learning 관점에서 확장하여 더 체계적인 분류를 제시합니다.
+- 🔗 후속 연구: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — dexterous manipulation의 imitation learning을 생성형 AI 관점에서 확장한 포괄적 조사입니다.
+- 🧪 응용 사례: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — 모방 학습을 통한 손재주 조작이 의류 조작 환경에서 구체적으로 적용됩니다.
+- 🧪 응용 사례: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 모방 학습을 통한 손재주 조작 서베이가 Dex1B 데이터셋의 실제 적용 방향을 제시합니다.

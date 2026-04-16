@@ -9,7 +9,8 @@ score: 4.0
 essence: "h-지수의 개선 버전인 g-지수를 제안하고, 상위 g개 논문이 함께 최소 g²개의 인용을 받은 최대 순위 g로 정의하여 상위 논문들의 인용 성과를 더 잘 반영한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Egghe_2006_Theory and Practice of the g-index.pdf"
 ---
@@ -76,10 +77,15 @@ h-지수의 개선 버전인 g-지수를 제안하고, 상위 g개 논문이 함
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 개별 연구자의 과학적 성과를 정량화하는 h-지수가 g-지수 개발의 직접적 기반이 됩니다.
-- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 논문 영향력 측정에서 상위 논문의 인용 누적을 강조하는 g-지수와 분야 정규화된 상대인용비율이라는 다른 접근법을 제시합니다.
-- 🔗 후속 연구: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — g-지수의 인용 중심 평가를 다차원적 요소를 통합한 NK 지수로 확장하여 종합적 성과 측정을 가능하게 합니다.
-- 🔄 다른 접근: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — 학술 성과 평가에서 다차원적 NK 지수와 인용 중심의 g-지수라는 서로 다른 측정 방식을 비교할 수 있습니다.
-- 🔄 다른 접근: [[papers/928_A_General_Theory_of_Bibliometric_and_Other_Cumulative_Advant/review]] — h-index의 대안인 g-index를 통해 누적 우위 효과를 다른 방식으로 측정한다
-- 🔗 후속 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index의 한계를 보완하여 높은 인용을 받은 논문에 더 큰 가중치를 부여하는 g-index를 제안했다.
-- 🏛 기반 연구: [[papers/1210_Scilit_with_the_Integrated_Impact_Indicator_Assessment/review]] — g-index와 같은 기존 영향력 지표의 이론과 실무를 바탕으로 새로운 통합 지표를 개발했다.
+- 🔄 다른 접근: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — NK 복합 지수가 g-지수의 인용 중심 평가를 넘어 경력 기간과 저자 기여도까지 통합하는 확장된 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-지수 개발이 g-지수 설계의 직접적 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 상대지표 기반 보편적 인용 분포가 g-지수의 절댓값 기반 평가와 다른 정규화된 비교 방법을 제시한다.
+- 🔗 후속 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 상대 인용 비율이라는 새로운 지표가 g-지수와 함께 인용 기반 영향력 측정의 다양한 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기적 과학적 영향력 정량화의 필요성을 기반으로, 상위 성과 논문들의 인용을 더 잘 포착하는 지표 개발의 중요성을 보여준다.
+- 🔄 다른 접근: [[papers/1007_Redefining_Academic_Performance_The_Development_of_the_NK_Co/review]] — g-지수가 상위 논문의 인용 성과를 강조하는 반면, NK 지수는 경력 기간과 저자 기여도까지 통합적으로 평가한다.
+- 🔗 후속 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 기존의 g-지수 등 인용 기반 지표를 발전시켜 분야별 정규화를 통한 더 정확한 영향력 측정을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — g-지수의 절댓값 기반 평가와 달리 상대지표를 통한 학문분야 간 객관적 비교 방법을 제시한다.
+- 🔗 후속 연구: [[papers/928_A_General_Theory_of_Bibliometric_and_Other_Cumulative_Advant/review]] — 누적 우위 이론의 베타 함수 모델링이 g-index와 같은 새로운 서지학적 지수 개발의 수학적 토대가 됩니다.
+- 🔗 후속 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index를 보완하기 위해 개발된 g-index는 고인용 논문의 영향을 더 강하게 반영하는 대안적 지표입니다.
+- 🔄 다른 접근: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 인용 성과 측정을 위한 다른 지표인 g-index를 통해 저자십 효과를 평가할 수 있다.
+- 🔄 다른 접근: [[papers/1210_Scilit_with_the_Integrated_Impact_Indicator_Assessment/review]] — 학술 영향력 측정에서 기존 g-index와 새로운 I3/I3N 지표의 서로 다른 접근법을 비교할 수 있습니다.

@@ -1,3 +1,20 @@
+---
+title: "1876_DIAL_Distilling_Intent-Aware_Latents_for_Vision-Language-Act"
+authors:
+  - "| **날짜**: 2026-03-31"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "SoftHand Model-W는 3D 프린팅 기반의 인간형 로봇 손으로, 2-DoF 손목을 통합하여 손가락의 underactuated tendon-driven 구조와 손목의 능동적 제어를 결합했다. Carpal tunnel 영감의 힘줄 라우팅을 통해 원격 모터 배치를 가능하게 하면서 compact한 형태를 유지한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Exoskeleton_Hand_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_DIAL Distilling Intent-Aware Latents for Vision-Language-Action on Humanoid Robots.pdf"
+---
+
 # DIAL: Distilling Intent-Aware Latents for Vision-Language-Action on Humanoid Robots
 
 > **저자**:  | **날짜**: 2026-03-31 | **URL**: [https://arxiv.org/list/cs.RO/current](https://arxiv.org/list/cs.RO/current)
@@ -63,3 +80,12 @@ SoftHand Model-W는 3D 프린팅 기반의 인간형 로봇 손으로, 2-DoF 손
 - Overall: 4/5
 
 **총평**: SoftHand Model-W는 soft robotics의 adaptive synergies 개념을 유지하면서 능동적 손목을 처음 통합한 혁신적 설계이며, 3D 프린팅과 carpal tunnel routing을 통해 실용성과 anthropomorphism을 동시에 달성했다. 손목 추가의 명확한 성능 개선 효과를 입증하여 dexterous manipulation 분야에 의미 있는 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — 휴머노이드 손 설계에서 SoftHand Model-W와 RUKA라는 서로 다른 설계 철학과 학습 기반 접근법을 제시한다
+- 🔗 후속 연구: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — HumDex의 dexterous manipulation 간편화가 SoftHand Model-W의 underactuated 구조를 더욱 효과적으로 활용할 수 있는 제어 방법을 제공한다
+- 🏛 기반 연구: [[papers/2113_NuExo_A_Wearable_Exoskeleton_Covering_all_Upper_Limb_ROM_for/review]] — 상지 전체 ROM을 다루는 착용형 외골격이 SoftHand Model-W의 손목 통합 설계에 필요한 인간공학적 기초를 제공한다
+- 🔄 다른 접근: [[papers/1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human/review]] — ByteDexter Hand의 20-DoF 텔레오퍼레이션과 SoftHand의 underactuated tendon-driven 구조는 서로 다른 손 원격제어 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — RAPID Hand의 perception-integrated 디자인은 SoftHand Model-W의 물리적 구조에 지각 능력을 추가한 확장형태로 볼 수 있습니다.
+- 🏛 기반 연구: [[papers/1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — vision-language-action 모델의 latent 표현이 3D diffusion policy의 기반이 된다.

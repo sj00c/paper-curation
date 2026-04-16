@@ -12,7 +12,9 @@ score: 4.0
 essence: "SciSciNet은 134M개 이상의 과학 출판물과 자금 조달, 특허, 임상시험 등 외부 연계를 포괄하는 대규모 개방형 데이터 레이크(data lake)로서 과학의 과학(science of science) 연구의 진입 장벽을 낮추고 재현성을 향상시킨다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Citation_Index_Analysis"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2023_SciSciNet A large-scale open data lake for the science of science research.pdf"
 ---
@@ -91,13 +93,17 @@ SciSciNet은 134M개 이상의 과학 출판물과 자금 조달, 특허, 임상
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 연구를 위한 핵심 데이터 인프라를 제공하여 분야 연구의 재현성과 접근성을 획기적으로 향상시켰다.
-- 🔄 다른 접근: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 과학의 과학 전용 데이터 레이크와는 달리 자연어처리 연구에 최적화된 대규모 학술 논문 코퍼스를 제공한다.
-- 🔗 후속 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — SciSciNet을 보완할 수 있는 완전 개방형 학술 작품, 저자, 기관 색인을 제공하여 과학계량학 연구를 확장한다.
-- 🔗 후속 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — S2ORC 데이터를 활용하여 더 포괄적인 과학의 과학 연구를 위한 SciSciNet 데이터레이크 구축에 기여한다.
-- 🔗 후속 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 연구 기반을 마련하기 위한 대규모 데이터 인프라인 SciSciNet을 통해 분야의 실증적 연구를 확장했다.
-- 🔗 후속 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학을 위한 대규모 오픈 데이터 레이크를 제공하여 AI 기반 과학 연구 분석의 실용적 인프라를 구축한다.
-- 🔗 후속 연구: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 지식 조직 체계의 통합 솔루션 필요성을 제시한 연구와 과학의 과학을 위한 대규모 개방 데이터 레이크 구축이 상호 보완적 관계에 있습니다.
-- 🔗 후속 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 연구를 위한 대규모 오픈 데이터 플랫폼으로 확장됨
-- 🧪 응용 사례: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 학습분석 분야의 공개 데이터셋 발굴 방법론을 과학의 과학 연구를 위한 대규모 오픈 데이터 레이크 구축에 적용할 수 있다.
-- 🏛 기반 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 데이터 프라이버시와 클라우드 보안 연구를 위한 대규모 과학 데이터 레이크의 체계적 구축이 필요하다.
+- 🔄 다른 접근: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 과학의 과학 연구를 위한 서로 다른 범위와 구조를 가진 대규모 오픈 데이터 플랫폼들입니다.
+- 🔗 후속 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — 학술 색인의 완전 개방화가 과학의 과학 연구를 위한 포괄적 데이터 레이크로 확장됩니다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야에서 데이터, 측정, 실증적 방법론의 중요성을 보여주는 이론적 배경을 제공합니다.
+- 🧪 응용 사례: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 학습 분석의 오픈 데이터셋 동향 분석은 SciSciNet과 같은 오픈 데이터 레이크가 특정 연구 분야에서 어떻게 활용될 수 있는지 보여주는 구체적 응용 사례입니다.
+- 🔄 다른 접근: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 학술 데이터 구축에서 서로 다른 접근법과 범위를 가진 경쟁적인 오픈 데이터 플랫폼들입니다.
+- 🧪 응용 사례: [[papers/1019_Science_of_science/review]] — 과학의 과학이라는 새로운 학문 분야의 연구를 위한 대규모 데이터 인프라를 제공합니다.
+- 🏛 기반 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — SciSciNet 대규모 과학 데이터 레이크는 SciSciGPT가 효과적으로 작동하기 위해 필요한 포괄적 데이터 인프라를 제공합니다.
+- 🔗 후속 연구: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 과학의 과학 연구를 위한 대규모 오픈 데이터 구축의 연장선에서, 인용 지표에 특화된 표준화된 데이터베이스를 제공한다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 연구를 위한 대규모 오픈 데이터 구축이 실증적 연구 방법론 발전의 핵심 인프라임을 보여준다.
+- 🏛 기반 연구: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 과학의 과학을 위한 대규모 오픈 데이터 레이크로, 학습분석 공개 데이터셋 연구에 필요한 데이터 인프라 토대를 제공합니다.
+- 🧪 응용 사례: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — 대규모 과학학 데이터 레이크에서 메타데이터 품질 문제가 연구 결과에 미치는 영향을 정량화할 수 있다.
+- 🔗 후속 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex 데이터를 활용하여 과학계량학 연구를 위한 더 포괄적인 오픈 데이터 레이크를 구축한다.
+- 🔗 후속 연구: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — 서지 데이터 통합을 넘어 과학의 과학을 위한 대규모 오픈 데이터 레이크로 확장된 플랫폼을 제공한다.
+- 🔗 후속 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — SciSciNet 오픈 데이터 레이크에서 생의학 분야 특화 과학 지도로 연구 범위가 구체화된다.

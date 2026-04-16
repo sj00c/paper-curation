@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "RoboMIND는 4종류의 로봇 embodiment을 통해 수집된 107k개의 demonstration trajectory로 구성된 대규모 통합 로봇 조작 데이터셋으로, 통일된 데이터 수집 표준과 5k개의 failure case를 포함한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
   - "sub/Robotic_Interaction_Datasets"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2024_RoboMIND Benchmark on Multi-embodiment Intelligence Normative Data for Robot Manipulation.pdf"
@@ -91,6 +93,11 @@ RoboMIND는 4종류의 로봇 embodiment을 통해 수집된 107k개의 demonstr
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 로봇 학습 데이터셋 구축 경험을 다중 embodiment 환경으로 확장하여 더 포괄적인 벤치마크를 제공한다.
-- 🔄 다른 접근: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 대규모 로봇 조작 데이터셋 구축에서 단일 플랫폼과 다중 embodiment라는 서로 다른 전략을 채택한다.
-- 🏛 기반 연구: [[papers/1552_RoboTwin_Dual-Arm_Robot_Benchmark_with_Generative_Digital_Tw/review]] — dual-arm 로봇 벤치마크의 기본 구조를 다중 embodiment 환경으로 확장하여 더 일반적인 intelligence 평가를 가능하게 한다.
+- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment의 다중 로봇 데이터셋 구축 경험이 RoboMIND의 multi-embodiment 벤치마크 설계 방법론의 기반이다.
+- 🔗 후속 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID 데이터셋의 in-the-wild 수집 방식이 RoboMIND의 다중 embodiment 환경으로 확장되어 더 포괄적인 벤치마크를 구성한다.
+- 🔄 다른 접근: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — RoboMIND와 cross-platform VLA scaling은 모두 다중 로봇 플랫폼을 다루지만 데이터셋과 모델 확장이라는 다른 관점에서 접근한다.
+- 🔄 다른 접근: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — RoboMIND와 BridgeData V2 모두 대규모 로봇 학습 데이터셋이지만 다중 embodiment와 단일 플랫폼이라는 다른 접근법을 가집니다.
+- 🔗 후속 연구: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — 다중 embodiment 데이터는 RoboBrain과 같은 통합 뇌 모델이 다양한 로봇 플랫폼에서 일반화될 수 있게 합니다.
+- 🏛 기반 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — 통일된 다중 로봇 데이터셋 표준은 모든 로봇을 하나로 통합하는 비전과 언어 데이터셋의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment 데이터셋의 다중 로봇 플랫폼 경험이 RoboMIND의 multi-embodiment 벤치마크 설계에 직접적인 확장 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — ShareRobot 대규모 데이터셋은 RoboMIND와 같은 다중 embodiment 데이터 수집 표준에 중요한 참조점을 제공합니다.

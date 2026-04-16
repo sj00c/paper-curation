@@ -11,7 +11,8 @@ score: 4.0
 essence: "본 연구는 310,000여 개의 경제경영학 논문을 대상으로 Altmetrics를 활용하여 혁신적(novel) 연구가 소셜 미디어 등 사회적 주목도를 더 크게 받는지 실증 분석했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Social_Media_Engagement"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cheng et al._2025_Do novel papers attract more social attention.pdf"
 ---
@@ -87,7 +88,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cheng et al._2025_Do novel papers attrac
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 논문의 혁신성이 전통적 인용도뿐만 아니라 오픈액세스를 통한 사회적 주목도에도 영향을 미치는지 확장 검증할 수 있다.
-- 🔄 다른 접근: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 개별 논문의 혁신성 효과와 기관 계정의 체계적 소셜미디어 전략이라는 다른 관점에서 학술 소통을 분석한다.
-- 🏛 기반 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 비전형적 조합과 과학적 영향의 관계를 통해 혁신적 연구가 사회적 주목을 받는 이론적 근거를 제공한다.
-- 🔄 다른 접근: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 조직 계정의 체계적 소셜미디어 전략과 개별 논문의 혁신성이 사회적 주목도에 미치는 영향이라는 다른 관점을 제공한다.
+- 🔗 후속 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 오픈 액세스와 제목이 인용에 미치는 영향을 분석한 연구로, 소셜 미디어 주목도와 인용도 관계를 확장 연구할 수 있습니다.
+- 🏛 기반 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 오픈 액세스의 인용 및 Altmetrics 장점을 평가한 기초 연구로, 혁신적 논문의 사회적 주목도 연구에 방법론적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 연구의 참신성이 미치는 영향을 소셜 관심도와 과학적 임팩트라는 다른 측면에서 분석한다
+- ⚖️ 반론/비판: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 참신한 연구의 소셜 관심에 대해 원격 협력의 한계라는 반대 관점을 제시한다
+- 🔗 후속 연구: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 참신한 연구의 사회적 관심을 머신러닝을 통한 미래 임팩트 예측으로 발전시킨다
+- 🔗 후속 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 오픈 액세스 논문의 인용 우위가 사회적 관심도 증가로도 이어지는지 분석할 수 있다.
+- 🔄 다른 접근: [[papers/932_An_empirical_analysis_of_open_access_citation_advantages_in/review]] — 인용 영향력 대신 소셜 미디어 관심도 측면에서 새로운 연구의 영향을 측정하는 다른 접근법을 제시한다.
+- ⚖️ 반론/비판: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 참신한 논문이 더 많은 사회적 관심을 끈다는 관점과 잠자는 미녀의 늦은 인식을 대조적으로 비교합니다.
+- 🔗 후속 연구: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 소셜미디어 마케팅의 사회적 관심도 분석에 novel papers의 사회적 주목도 측정 방법론을 적용하여 더 정확한 영향력 평가가 가능하다.
+- 🔗 후속 연구: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 새로운 연구 개념의 사회적 관심도 분석을 예술관광 분야로 확장한다

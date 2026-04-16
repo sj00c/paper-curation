@@ -1,3 +1,22 @@
+---
+title: "1805_Architecture_Is_All_You_Need_Diversity-Enabled_Sweet_Spots_f"
+authors:
+  - "Blake Werner"
+  - "Lizhi Yang"
+  - "Aaron D. Ames"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 견고한 보행을 위해 빠른 고주파 안정화 제어기와 느린 저주파 지각 정책을 분리하는 계층화 제어 구조(LCA)가 단일 end-to-end 설계보다 우월함을 보였다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Werner et al._2025_Architecture Is All You Need Diversity-Enabled Sweet Spots for Robust Humanoid Locomotion.pdf"
+---
+
 # Architecture Is All You Need: Diversity-Enabled Sweet Spots for Robust Humanoid Locomotion
 
 > **저자**: Blake Werner, Lizhi Yang, Aaron D. Ames | **날짜**: 2025-10-16 | **URL**: [https://arxiv.org/abs/2510.14947](https://arxiv.org/abs/2510.14947)
@@ -66,3 +85,12 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇 제어에서 네트워크 복잡도보다 구조적 설계(계층화 다중 주파수)가 견고성의 핵심임을 명확히 입증한 중요한 연구로, 최소한의 아키텍처로 복잡한 실제 환경 과제를 해결함으로써 로봇 제어 설계의 원칙을 제시한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — 두 논문 모두 humanoid 보행 학습에서 reward shaping의 중요성을 다루지만 LCA는 아키텍처 관점에서 접근한다.
+- 🔄 다른 접근: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — Booster Gym의 end-to-end RL 프레임워크와 대조적으로 계층화된 제어 구조의 우월성을 보인 연구다.
+- 🔄 다른 접근: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 안정적인 휴머노이드 제어를 위해 계층적 분리 vs 통합적 사전 훈련이라는 서로 다른 접근법을 비교할 수 있다
+- 🔗 후속 연구: [[papers/2032_JAEGER_Dual-Level_Humanoid_Whole-Body_Controller/review]] — LCA의 이중 수준 제어가 JAEGER의 dual-level 컨트롤러와 유사한 구조적 확장 가능성을 보여준다
+- 🧪 응용 사례: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — PBRS의 보상 척도 견고성이 계층화 제어 구조에서 각 레벨의 보상 함수 설계에 실용적으로 적용될 수 있다
+- ⚖️ 반론/비판: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — Architecture 논문에서 제시한 계층화 구조의 우월성과 대조적으로 end-to-end RL 프레임워크의 실용성을 입증한다.

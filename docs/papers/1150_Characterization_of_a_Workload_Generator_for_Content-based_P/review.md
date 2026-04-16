@@ -8,7 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 content-based publish-subscribe (CBPS) 시스템 연구 평가를 위한 workload generator인 YuGen의 생성 workload를 특성화하고, popularity와 locality를 시각적으로 분석하는 enhanced 도구를 제시한다."
 tags:
-  - "cat/Other"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Thematic_Network_Detection"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_Characterization of a Workload Generator for Content-based Publish-subscribe Research Evaluation.pdf"
 ---
@@ -81,3 +84,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_Characterization of a Workload Gene
 - Overall: 4/5
 
 **총평**: 본 논문은 CBPS 연구 평가의 표준화를 위해 YuGen의 workload 특성을 체계적으로 characterize하고 시각화 도구를 제공함으로써, 분산 시스템 성능 평가의 신뢰성과 재현성을 향상시키는 실용적 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1082_The_Open_Catalyst_2022_OC22_Dataset_and_Challenges_for_Oxide/review]] — 대규모 데이터셋 특성화 방법론을 촉매 연구와 publish-subscribe 시스템에서 각각 적용
+- 🧪 응용 사례: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학학 연구의 데이터 측정 방법론을 content-based 시스템의 워크로드 분석에 구체적으로 적용
+- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 오픈 연구 코퍼스의 데이터 특성화 방법이 CBPS 시스템 워크로드 분석의 기초 방법론 제공
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 시스템 성능 분석과 시각화 도구의 방법론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — 시스템 평가에서 워크로드 생성기와 연구 평가 시스템이라는 다른 접근법을 비교한다
+- 🧪 응용 사례: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — 시스템 성능 특성화 방법론을 논문 품질 평가 시스템에 적용한다
+- 🔄 다른 접근: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기계학습 응용의 과학계량학적 분석과 유사한 접근법을 시스템 성능 분석에 적용한다.
+- 🏛 기반 연구: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야 지식 조직 시스템에 대한 이론적 기반을 제공한다.

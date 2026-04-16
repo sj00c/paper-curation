@@ -11,7 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "Physics-Informed Neural Networks (PINNs) 개념을 적용하여 근골격 휴머노이드 로봇의 신체 스키마를 적은 데이터로 효율적으로 학습하는 PIMBS 방법을 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kawaharazuka et al._2025_PIMBS Efficient Body Schema Learning for Musculoskeletal Humanoids with Physics-Informed Neural Net.pdf"
 ---
@@ -81,3 +84,15 @@ Physics-Informed Neural Networks (PINNs) 개념을 적용하여 근골격 휴머
 - Overall: 4/5
 
 **총평**: 이 논문은 Physics-Informed Neural Networks를 근골격 로봇의 신체 스키마 학습에 창의적으로 적용하여 적은 데이터로도 효율적인 학습을 가능하게 하는 실용적이고 혁신적인 방법을 제시한다. 시뮬레이션과 실제 로봇 실험을 통한 검증으로 제안 방법의 타당성을 충분히 입증했다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2095_MeshMimic_Geometry-Aware_Humanoid_Motion_Learning_through_3D/review]] — PIMBS는 physics-informed neural networks로, MeshMimic은 geometry-aware 학습으로 신체 스키마를 다르게 모델링함
+- 🏛 기반 연구: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — Sampling-Based System Identification의 능동적 탐색 기반 시스템 식별 방법이 PIMBS의 효율적 신체 스키마 학습의 기초가 됨
+- 🔗 후속 연구: [[papers/2078_Legged_Robot_State-Estimation_Through_Combined_Forward_Kinem/review]] — Legged Robot State-Estimation의 forward kinematics 기반 상태 추정이 PIMBS의 근골격 모델 학습을 확장할 수 있음
+- 🏛 기반 연구: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — PIMBS의 근골격 휴머노이드 신체 스키마 학습이 Biomechanical Comparisons의 인간-휴머노이드 운동학적 차이 분석을 기반으로 한다
+- 🔗 후속 연구: [[papers/1652_Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_an/review]] — PIMBS의 효율적인 신체 스키마 학습이 Robot Trains Robot의 dynamics-encoded latent 최적화와 결합되어 더 안전한 실제 환경 학습을 가능하게 한다
+- 🏛 기반 연구: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — 근골격 시스템의 특성 분석을 바탕으로 PIMBS의 physics-informed learning 설계
+- 🔄 다른 접근: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — SPI-Active와 PIMBS 모두 휴머노이드의 물리 파라미터 식별을 다루지만 전자는 sim-to-real 갭 최소화에, 후자는 신체 스키마 학습에 집중한다
+- 🏛 기반 연구: [[papers/1652_Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_an/review]] — Robot Trains Robot의 dynamics-encoded latent 최적화가 PIMBS의 물리 정보 기반 신체 스키마 학습과 유사한 물리 제약 활용 접근을 취한다
+- 🏛 기반 연구: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — PIMBS의 근골격 신체 스키마 학습이 Kengoro와 Musashi의 복잡한 근육 특성을 효과적으로 관리하는 기초 방법론을 제공한다

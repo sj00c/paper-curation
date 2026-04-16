@@ -9,7 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "ROM-GRL은 모션캡처 데이터 없이 4-DOF reduced-order model로 생성한 gait template을 이용해 full-body humanoid 정책을 학습하는 2단계 강화학습 프레임워크이다. Adversarial discriminator를 통해 ROM의 5-dimensional gait feature 분포를 따르도록 유도하여 자연스러운 보행을 실현한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu and Lau_2025_Reduced-Order Model-Guided Reinforcement Learning for Demonstration-Free Humanoid Locomotion.pdf"
 ---
@@ -83,3 +86,14 @@ ROM-GRL은 모션캡처 데이터 없이 4-DOF reduced-order model로 생성한 
 - Overall: 4/5
 
 **총평**: ROM-GRL은 reduced-order model을 creative하게 활용해 motion capture 의존성을 제거하면서 자연스럽고 안정적인 humanoid 보행을 달성하는 novel 프레임워크이다. 보상 설계와 모방 학습 간 간격을 효과적으로 줄였으나, 제한된 속도 범위와 실제 로봇 검증 부재가 일반화 가능성의 의문을 남긴다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — ROM-GRL은 reduced-order model 기반 2단계 학습을, Gait-Conditioned RL은 다중 위상 커리큘럼을 통해 보행 학습을 다르게 접근함
+- 🏛 기반 연구: [[papers/1777_A_Gait_Driven_Reinforcement_Learning_Framework_for_Humanoid/review]] — A Gait Driven Reinforcement Learning Framework의 보행 주도 강화학습이 ROM-GRL의 gait template 기반 학습의 이론적 기초를 제공함
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — ROM-GRL과 RuN 모두 자연스러운 휴머노이드 보행을 위한 decoupled learning을 사용하지만 전자는 ROM 기반, 후자는 motion generator 기반이다
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — ROM-GRL의 adversarial discriminator가 AMP의 adversarial motion prior 방법론을 reduced-order model에 적용한 것이다
+- 🔗 후속 연구: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — ROM-GRL의 4-DOF reduced model이 Natural Humanoid Locomotion의 generative motion prior와 결합되어 더 효율적인 gait 학습을 실현할 수 있다
+- 🔄 다른 접근: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — Demonstration-free learning을 pretraining 기반 접근법으로 해결한 대조적 연구
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — RuN과 ROM-GRL 모두 자연스러운 휴머노이드 보행을 위한 decoupled learning을 사용하지만 전자는 motion generator 기반, 후자는 ROM 기반이다
+- 🧪 응용 사례: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — motion difficulty 평가 방법론이 reduced-order model 기반 demonstration learning에 실제 적용되어 학습 효율성을 향상시킨다.

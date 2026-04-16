@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 인간의 행동 다양성을 학습할 수 있는 imitation learning 알고리즘을 평가하기 위해 D3IL이라는 벤치마크 데이터셋과 환경을 제안하고, 다중 모드 행동의 다양성을 정량화하는 메트릭을 도입한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Goal-Conditioned_Manipulation_Policies"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jia et al._2024_Towards Diverse Behaviors A Benchmark for Imitation Learning with Human Demonstrations.pdf"
 ---
@@ -88,8 +90,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jia et al._2024_Towards Diverse Behavior
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — imitation learning에서 적은 데이터로부터의 정밀 조작과 인간 행동 다양성 학습이라는 서로 다른 과제를 다룬다.
-- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — data scaling laws 연구의 원리를 인간 행동의 다양성을 정량화하고 평가하는 벤치마크로 적용한다.
-- 🧪 응용 사례: [[papers/1476_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — 대규모 human video 데이터의 다양성을 imitation learning 알고리즘이 학습할 수 있는 벤치마크 환경으로 구현한다.
-- 🧪 응용 사례: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — 적은 시연으로부터의 학습이라는 공통 과제를 3D 조작과 행동 다양성이라는 서로 다른 관점에서 해결한다.
-- 🔄 다른 접근: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — OmniClone의 whole-body control이 VLA와 다른 접근으로 범용적 로봇 제어를 달성하는 대안적 솔루션
+- 🔄 다른 접근: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2는 D3IL과 유사하게 대규모 로봇 학습 벤치마크를 제공하지만 실제 로봇 데이터에 집중하는 차별점이 있다.
+- 🔄 다른 접근: [[papers/1531_RLBench_The_Robot_Learning_Benchmark__Learning_Environment/review]] — RLBench는 D3IL과 같은 로봇 학습 벤치마크이지만 언어 조건부 작업에 특화된 다른 평가 환경을 제공한다.
+- 🔄 다른 접근: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — VLABench는 D3IL의 다양성 평가와 유사한 목적으로 언어 조건부 로봇 작업을 위한 대규모 벤치마크를 제공한다.
+- 🔄 다른 접근: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — LIBERO는 D3IL과 같은 모방 학습 벤치마크이지만 지속적 학습과 지식 전이에 특화된 평가를 제공한다.
+- 🔗 후속 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — imitation learning에서 데이터 스케일링 법칙을 연구한 기존 연구를 다중 모드 행동 다양성 평가로 확장한다.
+- 🔄 다른 접근: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Behavior Transformers가 k개 모드를 클로닝하는 방법을 제안한 반면, D3IL은 인간 행동 다양성을 평가하는 벤치마크를 제공한다.
+- 🏛 기반 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 인간-로봇 쌍 데이터를 통한 로봇 행동 학습 연구가 인간 행동 다양성을 모델링하는 imitation learning의 기반이 된다.
+- 🔗 후속 연구: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — CALVIN의 언어 조건부 정책 학습을 행동 다양성 평가로 확장한다.
+- 🔗 후속 연구: [[papers/1457_LIBERO_Benchmarking_Knowledge_Transfer_for_Lifelong_Robot_Le/review]] — 모방 학습을 위한 다양한 행동 벤치마크를 생애주기 학습의 지식 전이로 더 발전시켰다.
+- 🔄 다른 접근: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — Towards Diverse Behaviors 벤치마크가 VLABench와 다른 모방 학습 관점에서 로봇 행동의 다양성을 평가한다.
+- 🔄 다른 접근: [[papers/1314_AutoEval_Autonomous_Evaluation_of_Generalist_Robot_Manipulat/review]] — 모방학습을 위한 다양한 행동 벤치마크라는 다른 평가 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — 다양한 행동을 위한 모방 학습 벤치마크와 손재주 조작 서베이가 상호 보완적 관점을 제공합니다.
+- 🏛 기반 연구: [[papers/1322_BOSS_Benchmark_for_Observation_Space_Shift_in_Long-Horizon_T/review]] — 모방학습에서 다양한 행동을 위한 벤치마크의 기초적인 평가 기준을 제공합니다.

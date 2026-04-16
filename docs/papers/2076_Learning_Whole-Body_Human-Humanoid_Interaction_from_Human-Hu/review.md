@@ -1,3 +1,25 @@
+---
+title: "2076_Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Hu"
+authors:
+  - "Wei-Jin Huang"
+  - "Yue-Yi Zhang"
+  - "Yi-Lin Wei"
+  - "Zhi-Wei Xia"
+  - "Juantao Tan"
+date: "2026.01"
+doi: "10.48550/arXiv.2601.09518"
+arxiv: ""
+score: 4.0
+essence: "휴먼-휴먼 인터랙션(HHI) 데이터를 물리적 일관성을 보존하면서 휴먼-휴모이드 인터랙션(HHoI)으로 변환하는 PAIR와, 시간적 의도와 공간적 선택을 분리하여 상호작용적 이해를 갖춘 D-STAR 정책을 제안한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2026_Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations.pdf"
+---
+
 # Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations
 
 > **저자**: Wei-Jin Huang, Yue-Yi Zhang, Yi-Lin Wei, Zhi-Wei Xia, Juantao Tan, Yuan-Ming Li, Zhilin Zhao, Wei-Shi Zheng | **날짜**: 2026-01-14 | **DOI**: [10.48550/arXiv.2601.09518](https://doi.org/10.48550/arXiv.2601.09518)
@@ -66,3 +88,14 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 HHI에서 HHoI로의 데이터 변환 문제를 물리적 일관성 관점에서 체계적으로 해결하고, 시공간 분리를 통해 상호작용 정책의 반응성을 크게 향상시키는 혁신적인 접근을 제시한다. 시뮬레이션과 실제 로봇 검증을 통해 실용성을 입증하였으나, 더 다양한 상호작용 시나리오와 플랫폼으로의 확장이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — 인간-휴머노이드 교차 구현 행동-기술 전이의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — 인간 동작의 임의 관절 제어와 휴먼-휴머노이드 상호작용이라는 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — 두 에이전트 간 상호작용적 전신 제어 학습의 확장된 접근법을 보여준다.
+- 🔗 후속 연구: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 인간-휴머노이드 협력 학습을 다중 에이전트 환경으로 확장한 발전된 접근
+- 🏛 기반 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 전신 인간-휴머노이드 상호작용이 물체 운반에서의 협력적 제어에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1969_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — HHI 데이터를 활용한 상호작용이 대화형 전신 제어 학습으로 확장되어 더 복잡한 상호작용을 가능하게 한다.
+- 🔗 후속 연구: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — It Takes Two의 두 휴머노이드 간 상호작용 학습을 Learning Whole-Body Human-Humanoid Interaction의 인간-휴머노이드 상호작용으로 확장할 수 있다.
+- 🔗 후속 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 물체 운반에서의 협력이 전신 인간-휴머노이드 상호작용으로 확장되어 더 복잡한 협업 시나리오를 다룬다.

@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "A3VLM은 로봇 중심의 행동 학습 대신 물체 중심의 관절 구조(articulation)와 행동 가능성(affordance)을 인식하는 Vision Language Model로, 비용이 많이 드는 로봇 상호작용 데이터 수집을 최소화하면서도 다양한 로봇에 적용 가능한 표현을 학습한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
   - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2024_A3VLM Actionable Articulation-Aware Vision Language Model.pdf"
@@ -91,8 +93,12 @@ A3VLM은 로봇 중심의 행동 학습 대신 물체 중심의 관절 구조(ar
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff는 A3VLM의 affordance 인식 개념을 도구 사용을 위한 통합 표현으로 확장한 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — RoboPoint는 A3VLM과 유사하게 공간적 affordance를 다루지만 Vision-Language 모델 기반의 다른 접근법을 사용한다
-- 🔗 후속 연구: [[papers/1468_ManipVQA_Injecting_Robotic_Affordance_and_Physically_Grounde/review]] — ManipVQA는 A3VLM의 affordance 개념을 로봇 조작을 위한 물리적 근거가 있는 질의응답으로 확장한다
-- 🧪 응용 사례: [[papers/1466_ManipBench_Benchmarking_Vision-Language_Models_for_Low-Level/review]] — articulation-aware 비전 언어 모델이 저수준 로봇 조작 추론의 실제 구현에 필요한 기술을 제공합니다.
-- 🔗 후속 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff의 통일된 affordance 표현이 A3VLM의 actionable articulation 인식과 결합되어 더 정교한 관절 객체 조작을 가능하게 함
+- 🔗 후속 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — A3VLM의 물체 중심 관절 구조 인식과 RoboPoint의 공간 어포던스 예측은 물체 이해 기반 로봇 조작의 보완적 접근법이다.
+- 🔄 다른 접근: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — A3VLM의 물체 중심 어포던스와 VoxPoser의 3D 가치 맵 기반 조작은 공간-의미 이해의 서로 다른 표현 방식이다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO의 시각적 grounding 기술은 A3VLM의 관절 구조와 어포던스 인식에 핵심 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 what-where pathway 개념이 A3VLM의 물체 중심 관절 구조 인식 접근법의 기초적 아이디어를 제공합니다.
+- 🔗 후속 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — UniAff의 통합 affordance 표현은 A3VLM의 물체 중심 행동 가능성 학습을 더 일반화한 접근법입니다.
+- 🔄 다른 접근: [[papers/1468_ManipVQA_Injecting_Robotic_Affordance_and_Physically_Grounde/review]] — 둘 다 robotic affordance를 다루지만 ManipVQA는 질의응답 형태로, A3VLM은 관절 구조 인식으로 접근합니다.
+- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — 로봇 어포던스 기반 언어 학습의 이론적 기반을 관절 인식 VLM으로 확장합니다.
+- 🔄 다른 접근: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — 둘 다 관절형 객체와 affordance를 다루지만 A3VLM은 actionable articulation에 집중하는 다른 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 what-where pathway가 A3VLM의 물체 중심 관절 구조 인식의 기초적 아이디어를 제공합니다.

@@ -1,3 +1,24 @@
+---
+title: "2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl"
+authors:
+  - "Ajay Sridhar"
+  - "Dhruv Shah"
+  - "Catherine Glossop"
+  - "Sergey Levine"
+date: "2023.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "NoMaD는 goal masking을 활용한 unified diffusion policy로 로봇의 목표 지향 네비게이션과 목표 무관 탐색을 단일 모델로 처리하며, Transformer 기반 정책과 diffusion model decoder를 결합하여 미지의 환경에서 효과적인 네비게이션을 구현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sridhar et al._2023_NoMaD Goal Masked Diffusion Policies for Navigation and Exploration.pdf"
+---
+
 # NoMaD: Goal Masked Diffusion Policies for Navigation and Exploration
 
 > **저자**: Ajay Sridhar, Dhruv Shah, Catherine Glossop, Sergey Levine | **날짜**: 2023-10-11 | **URL**: [https://arxiv.org/abs/2310.07896](https://arxiv.org/abs/2310.07896)
@@ -64,3 +85,18 @@ NoMaD는 goal masking을 활용한 unified diffusion policy로 로봇의 목표 
 - Overall: 4/5
 
 **총평**: NoMaD는 goal masking과 diffusion policy를 결합하여 exploration과 goal-seeking을 통합한 혁신적 아키텍처를 제시하며, ViNT 대비 25% 이상의 성능 향상과 15배 효율성 개선을 실제 로봇에서 달성하여 로봇 네비게이션 분야에 상당한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/2110_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — NoMaD의 goal masking을 활용한 통합 정책이 No More Marching의 constellation 기반 목표 지향 보상 설계에 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — 둘 다 diffusion 기반 제어를 다루지만, NoMaD는 goal masking을 통한 내비게이션에, Taming Diffusion은 캐릭터 제어에 특화된다.
+- 🧪 응용 사례: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — NoMaD의 목표 지향 내비게이션과 탐색을 통합한 정책이 LookOut의 실세계 egocentric 내비게이션에 직접 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — FocusNav의 waypoint guidance가 NoMaD의 goal-oriented navigation과 goal-free exploration 통합 설계에 영감을 제공했다
+- 🔗 후속 연구: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — RGMP의 geometric-prior multimodal policy가 NoMaD의 unified diffusion policy로 더욱 일반화된 것이다
+- 🔗 후속 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — NoMaD의 goal masked diffusion을 360도 시각 탐색과 결합하여 더 포괄적인 야생 환경 내비게이션을 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1638_Reinforcement_Learning_with_Data_Bootstrapping_for_Dynamic_S/review]] — Hierarchical navigation을 goal-masked diffusion으로 해결한 다른 접근법
+- 🔗 후속 연구: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — NoMaD의 goal masked diffusion 기반 navigation이 AME-2의 attention 기반 지형 인식을 목표 지향적 경로 계획으로 확장할 수 있다.
+- 🏛 기반 연구: [[papers/2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — 목표 마스킹 확산 정책을 통한 네비게이션의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2080_Let_Humanoids_Hike_Integrative_Skill_Development_on_Complex/review]] — NoMaD의 goal masking을 활용한 unified diffusion policy가 하이킹에서의 목표 지향적 내비게이션의 기반 기술을 제공한다.
+- 🔄 다른 접근: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — 둘 다 navigation을 위한 diffusion policy이지만 LookOut은 egocentric head pose 예측에, NoMaD는 goal masking 기반 탐색에 중점을 둔다
+- 🔗 후속 연구: [[papers/2110_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — NoMaD의 goal masking 기반 내비게이션 기법을 단거리 SE(2) 목표 도달이라는 더 구체적인 작업으로 특화한 연구이다.

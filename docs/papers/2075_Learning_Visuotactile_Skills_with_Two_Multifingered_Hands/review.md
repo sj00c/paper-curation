@@ -1,3 +1,23 @@
+---
+title: "2075_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands"
+authors:
+  - "Toru Lin"
+  - "Yu Zhang"
+  - "Qiyang Li"
+  - "Haozhi Qi"
+  - "Brent Yi"
+date: "2024.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "VR 기반 저가형 텔레오퍼레이션 시스템 HATO와 촉각 센서가 장착된 의족 손을 활용하여 양손 다중지 조작 로봇이 시각-촉각 데이터로부터 인간 수준의 민첩한 조작 기술을 학습하는 시스템을 제시한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2024_Learning Visuotactile Skills with Two Multifingered Hands.pdf"
+---
+
 # Learning Visuotactile Skills with Two Multifingered Hands
 
 > **저자**: Toru Lin, Yu Zhang, Qiyang Li, Haozhi Qi, Brent Yi, Sergey Levine, Jitendra Malik | **날짜**: 2024-04-25 | **URL**: [https://arxiv.org/abs/2404.16823](https://arxiv.org/abs/2404.16823)
@@ -66,3 +86,15 @@ VR 기반 저가형 텔레오퍼레이션 시스템 HATO와 촉각 센서가 장
 - Overall: 4/5
 
 **총평**: 본 논문은 양손 다중지 조작 분야에서 하드웨어 혁신(의족 재목적화)과 접근성 높은 텔레오퍼레이션 시스템(HATO)을 통해 visuotactile learning의 새로운 경계를 개척했다. 촉각 센싱의 중요성을 실증적으로 보여주고 효율적 데이터 수집 및 정책 학습을 달성하여 로봇 조작 분야에 상당한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — Learning Visuotactile Skills의 촉각 센서가 RAPID Hand의 perception-integrated 민첩 조작에 필요한 감각 피드백 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1967_HandX_Scaling_Bimanual_Motion_and_Interaction_Generation/review]] — Learning Visuotactile Skills의 양손 다중지 조작을 HandX의 bimanual motion generation과 결합하여 더 정교한 양손 협업 작업이 가능하다.
+- 🔄 다른 접근: [[papers/1869_DexMimicGen_Automated_Data_Generation_for_Bimanual_Dexterous/review]] — Learning Visuotactile Skills는 VR 기반 저가형 시스템, DexMimicGen은 자동화된 데이터 생성으로 서로 다른 방식의 양손 민첐 조작 학습을 제공한다.
+- 🔗 후속 연구: [[papers/1779_A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Ma/review]] — 두 개의 다중 손가락 손을 사용한 시각촉각 기술 학습에 휴머노이드 전신 데이터를 통합할 수 있습니다.
+- 🧪 응용 사례: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — DexCap의 정밀한 손가락 동작 데이터가 multifingered hands의 visuotactile skill 학습에 필수적인 고품질 시연 데이터를 제공한다.
+- 🔗 후속 연구: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — 두 개의 다중 손가락 손을 사용한 시각촉각 기술 학습으로 발전됩니다.
+- 🧪 응용 사례: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — 두 손가락 손의 시각촉각 기술 학습 연구가 FALCON의 정밀한 말단 장치 위치 추적을 실제 조작 작업에 적용하는 구체적인 사례를 제공한다.
+- 🔗 후속 연구: [[papers/2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — Learning Visuotactile Skills의 이중 다지 손 기법을 인간 모션 캡처 데이터 기반의 embodiment gap 해결로 확장한 연구이다.
+- 🔗 후속 연구: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — 두 개의 다중 손가락 핸드를 사용한 시각-촉각 기술 학습이 UniDex의 범용 손재주 제어를 촉각 피드백을 포함한 더 정교한 조작으로 확장할 수 있습니다.

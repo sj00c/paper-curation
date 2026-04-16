@@ -1,3 +1,25 @@
+---
+title: "1907_EmbodMocap_In-the-Wild_4D_Human-Scene_Reconstruction_for_Emb"
+authors:
+  - "Wenjia Wang"
+  - "Liang Pan"
+  - "Huaijin Pi"
+  - "Yuke Lou"
+  - "Xuqian Ren"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "EmbodMocap은 두 개의 이동하는 iPhone을 사용하여 실외 환경에서 메트릭 스케일의 인간 동작과 3D 장면을 동시에 재구성하는 저비용 데이터 수집 파이프라인을 제안한다. 이 시스템은 모노큘러 재구성, 물리 기반 캐릭터 애니메이션, 로봇 제어 등 세 가지 embodied AI 작업을 지원한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2026_EmbodMocap In-the-Wild 4D Human-Scene Reconstruction for Embodied Agents.pdf"
+---
+
 # EmbodMocap: In-the-Wild 4D Human-Scene Reconstruction for Embodied Agents
 
 > **저자**: Wenjia Wang, Liang Pan, Huaijin Pi, Yuke Lou, Xuqian Ren, Yifan Wu, Zhouyingcheng Liao, Lei Yang, Rishabh Dabral, Christian Theobalt, Taku Komura | **날짜**: 2026-02-26 | **URL**: [https://arxiv.org/abs/2602.23205](https://arxiv.org/abs/2602.23205)
@@ -68,3 +90,17 @@ EmbodMocap은 두 개의 이동하는 iPhone을 사용하여 실외 환경에서
 - Overall: 4/5
 
 **총평**: EmbodMocap은 embodied AI 연구의 실질적 장애물인 고비용 데이터 수집을 혁신적으로 해결하는 실용적이고 확장 가능한 시스템을 제시한다. Dual-view RGB-D의 joint optimization이라는 기술적 통찰력과 함께 monocular reconstruction, physics-based animation, robot control까지 포괄적으로 검증한 점에서 높은 가치를 지닌다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — 둘 다 iPhone 기반 모션 캡처를 하지만 EmbodMocap은 실외 장면 재구성을, FRAME은 VR/AR 환경 자세 추정을 목표로 한다.
+- 🔗 후속 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — EmbodMocap의 실외 환경 3D 재구성 데이터를 GaussGym의 포토리얼리스틱 시뮬레이션에 통합하면 더 현실적인 훈련 환경을 제공할 수 있다.
+- 🧪 응용 사례: [[papers/2107_MOSAIC_Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_M/review]] — EmbodMocap의 실외 인간 동작 데이터가 MOSAIC의 sim-to-real 격차 해소에 실제 환경 기반 검증 데이터로 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — PICO의 3D 인간-객체 접촉 재구성 기술이 EmbodMocap의 메트릭 스케일 재구성의 이론적 기반입니다.
+- 🏛 기반 연구: [[papers/1837_Climber_Force_and_Motion_Estimation_from_Video/review]] — 비디오 기반 클라이밍 동작 및 힘 추정 연구가 EmbodMocap의 실외 환경 인간 동작 재구성을 위한 기본적인 비디오 분석 기술을 제공한다.
+- 🔄 다른 접근: [[papers/2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe/review]] — HumanoidPano의 구형 파노라마-LiDAR cross-modal 인식이 iPhone 기반과는 다른 센서 융합 방식으로 인간-장면 재구성에 접근한다.
+- 🔗 후속 연구: [[papers/1838_ClimbingCap_Multi-Modal_Dataset_and_Method_for_Rock_Climbing/review]] — RGB와 LiDAR를 활용한 climbing motion 복원을 in-the-wild 4D human-scene reconstruction으로 확장하여 더 일반적인 환경에 적용한다.
+- 🔗 후속 연구: [[papers/1857_CRISP_Contact-Guided_Real2Sim_from_Monocular_Video_with_Plan/review]] — CRISP의 real-to-sim 파이프라인이 EmbodMocap의 in-the-wild 4D 재구성과 결합되어 더 포괄적인 실제 환경 시뮬레이션을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — 둘 다 iPhone 기반 모션 추정을 하지만 FRAME은 VR/AR 환경 자세 추정을, EmbodMocap은 실외 4D 재구성을 목표로 한다.
+- 🔗 후속 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — GaussGym의 포토리얼리스틱 시뮬레이션에 EmbodMocap의 실제 환경 3D 재구성 데이터를 통합하면 더 현실적인 훈련 환경을 구축할 수 있다.
+- 🏛 기반 연구: [[papers/2015_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — in-the-wild 4D human-scene reconstruction이 HUMOTO의 복잡한 다중-객체 상호작용 기록을 위한 기반 캡처 기술을 제공합니다.

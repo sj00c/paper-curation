@@ -1,3 +1,25 @@
+---
+title: "1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo"
+authors:
+  - "Chen Wang"
+  - "Haochen Shi"
+  - "Weizhuo Wang"
+  - "Ruohan Zhang"
+  - "Li Fei-Fei"
+date: "2024.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "DexCap은 SLAM과 전자기장을 활용한 휴대용 손 모션캡처 시스템이며, DexIL은 이 데이터로부터 역운동학과 point cloud 기반 모방학습을 통해 로봇이 손가락 조작을 직접 학습하도록 하는 알고리즘이다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Dexterous_Hand_Trajectory_Datasets"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_DexCap Scalable and Portable Mocap Data Collection System for Dexterous Manipulation.pdf"
+---
+
 # DexCap: Scalable and Portable Mocap Data Collection System for Dexterous Manipulation
 
 > **저자**: Chen Wang, Haochen Shi, Weizhuo Wang, Ruohan Zhang, Li Fei-Fei, C. Karen Liu | **날짜**: 2024-03-12 | **URL**: [https://arxiv.org/abs/2403.07788](https://arxiv.org/abs/2403.07788)
@@ -64,3 +86,20 @@ DexCap은 SLAM과 전자기장을 활용한 휴대용 손 모션캡처 시스템
 - Overall: 4/5
 
 **총평**: DexCap과 DexIL은 휴대용 mocap 시스템과 embodiment gap을 극복하는 imitation learning을 처음으로 통합하여 in-the-wild 환경에서 로봇 손가락 조작 학습을 가능하게 한 우수한 기여이며, 6가지 조작 작업에서 일관된 성과를 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — DexterCap과 함께 dexterous manipulation을 위한 모션캡처 시스템의 서로 다른 기술적 접근법을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/2015_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — HUMOTO 4D 데이터셋이 DexCap의 손동작 데이터를 물체 상호작용까지 확장하여 더 풍부한 학습 데이터를 제공한다.
+- 🧪 응용 사례: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — EgoDex가 large-scale egocentric 데이터를 활용한 dexterous manipulation 학습으로 DexCap 데이터의 실제 응용을 보여준다.
+- 🧪 응용 사례: [[papers/2075_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/review]] — DexCap의 정밀한 손가락 동작 데이터가 multifingered hands의 visuotactile skill 학습에 필수적인 고품질 시연 데이터를 제공한다.
+- 🔄 다른 접근: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — DexCap의 포터블 모캡 시스템과 OSMO의 촉각 글러브는 인간-로봇 기술 전수에서 시각적 vs 촉각적 데이터 수집의 서로 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — RAPID Hand의 지각 통합 정교한 조작 기술이 DexCap으로 수집된 손 모션 데이터를 실제 로봇 제어에 적용하는 데 필요한 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — 둘 다 민첩한 손 조작 데이터 수집 시스템이지만 RAPID Hand는 20-DoF 로봇손에, DexCap은 모션 캡처에 초점을 맞춘다
+- 🏛 기반 연구: [[papers/1786_ACE_A_Cross-Platform_Visual-Exoskeletons_System_for_Low-Cost/review]] — 확장 가능한 모션 캡처 시스템이 ACE의 시각 기반 자세 추적에 데이터 수집 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — 저비용 광학 모션 캡처와 SLAM 기반 전자기장 시스템이 손가락 추적에서 서로 다른 기술적 해결책을 제공한다.
+- 🏛 기반 연구: [[papers/1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human/review]] — DexCap의 손 모션캡처 기술이 ByteDexter Hand의 20-DoF 정교한 텔레오퍼레이션에서 인간 손 움직임을 정확하게 추적하고 retarget하는 데 필요한 데이터 수집 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — EgoDex의 대규모 손 추적 데이터는 DexCap의 손목 착용형 모캡 시스템과 결합하여 더 정확한 dexterous manipulation 학습이 가능하다.
+- 🏛 기반 연구: [[papers/2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — DexCap의 mocap data collection이 Object-Centric Dexterous Manipulation의 human hand motion capture 활용에 기술적 기반을 제공했다
+- 🔄 다른 접근: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — 인간 자기중심 비디오 기반 학습 대신 확장 가능한 모캡 데이터 수집을 통한 손재주 조작 접근법이다.
+- 🔄 다른 접근: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — DexCap은 손동작 캡처에 집중하는 반면 OSMO는 촉각 정보까지 포함한 더 포괄적인 skill transfer를 지원함

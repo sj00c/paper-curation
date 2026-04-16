@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "AI가 과학의 모든 영역을 자동화하면서 인간의 이해(understanding)가 제어(control)를 따라가지 못하는 '과학 이후(after science)' 시대로 전환되고 있으며, 이 새로운 시대에 과학의 지속적 발전을 위해서는 AI에 호기심(curiosity)을 부여하고 방법론적 다양성을 보존해야 함을 주장한다."
 tags:
+  - "cat/Science_Policy_and_Research_Dynamics"
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Evans and Duede_2025_After science.pdf"
 ---
@@ -75,7 +77,9 @@ AI가 과학의 모든 영역을 자동화하면서 인간의 이해(understandi
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI가 과학에 미치는 부정적 영향에 대한 우려를 더욱 근본적인 차원에서 확장함
-- 🏛 기반 연구: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — LLM이 연구 방향에 미치는 영향에 대한 분석이 과학 이후 시대 논의의 배경이 됨
-- 🔗 후속 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구 참신성을 감소시킨다는 우려가 과학 이후 시대의 구체적 증거가 됨
-- ⚖️ 반론/비판: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 과학자의 발전에 대한 기술적 낙관론과 달리 인간 이해의 한계를 경고함
+- 🔗 후속 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — AI가 과학을 혁명화할 것이라는 낙관론에 대해 '과학 이후' 시대의 우려를 제기한다.
+- ⚖️ 반론/비판: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 과학이 장례식과 함께 발전한다는 전통적 관점에 AI 시대의 새로운 패러다임을 대비시킨다.
+- ⚖️ 반론/비판: [[papers/1065_A_Survey_of_AI_Scientists/review]] — 현재 AI Scientist 시스템의 단계별 발전을 체계적으로 분석한 연구와 달리, AI가 과학을 완전히 대체하는 미래 시나리오를 철학적으로 탐구한다.
+- 🏛 기반 연구: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI가 과학 연구에 야기하는 이해의 환상 문제를 기반으로, 과학 이후 시대에 진정한 과학적 이해를 보존하기 위한 방안을 모색한다.
+- ⚖️ 반론/비판: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI가 과학을 완전히 자동화하는 '과학 이후' 비전과 달리, 현재 AI Scientist 시스템의 기술적 한계와 발전 과정을 체계적으로 분석한다.
+- 🔗 후속 연구: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI가 과학적 이해에 미치는 위험을 구체화하여, 과학 이후 시대에 진정한 이해를 보존해야 하는 이유를 설명한다.

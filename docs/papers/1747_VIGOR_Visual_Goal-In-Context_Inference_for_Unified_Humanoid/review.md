@@ -1,3 +1,24 @@
+---
+title: "1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid"
+authors:
+  - "Osher Azulay"
+  - "Zhengjie Xu"
+  - "Andrew Scheffer"
+  - "Stella X. Yu"
+date: "2026.03"
+doi: "10.48550/arXiv.2602.16511"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 넘어짐 안전성을 위해 teacher-student 증류 방식으로 egocentric depth와 proprioception만 사용하여 시각적 goal-in-context 표현을 학습하는 통합 접근법을 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Trajectory_Optimization_Sampling"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Azulay et al._2026_VIGOR Visual Goal-In-Context Inference for Unified Humanoid Fall Safety.pdf"
+---
+
 # VIGOR: Visual Goal-In-Context Inference for Unified Humanoid Fall Safety
 
 > **저자**: Osher Azulay, Zhengjie Xu, Andrew Scheffer, Stella X. Yu | **날짜**: 2026-03-03 | **DOI**: [10.48550/arXiv.2602.16511](https://doi.org/10.48550/arXiv.2602.16511)
@@ -66,3 +87,16 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드의 통합적 fall safety를 시각 기반으로 해결하는 창의적 접근으로, factorized data generation과 goal-in-context representation의 개념이 우수하며 zero-shot transfer 결과가 인상적이다. 다만 실제 환경 적용성을 더 광범위하게 검증할 필요가 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 휴머노이드 안전성에서 넘어짐 안전과 보호 제어라는 서로 다른 안전 메커니즘을 다룬다.
+- 🔗 후속 연구: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — 휴머노이드 넘어짐 안전에서 goal-in-context 추론과 자기보호 정책이라는 보완적 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2068_Learning_to_Get_Up_Across_Morphologies_Zero-Shot_Recovery_wi/review]] — 다양한 형태에서의 zero-shot 회복 능력이 VIGOR의 통합된 넘어짐 안전 접근법과 관련된다.
+- 🏛 기반 연구: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — geometry-aware 예측 안전 필터 기술이 VIGOR의 넘어짐 방지 메커니즘에 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — 소수 시연에서 학습한 통합 낙상 안전 정책을 VIGOR의 시각적 추론 방식과 결합할 수 있습니다.
+- 🔄 다른 접근: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 휴머노이드 안전성을 위해 서로 다른 접근(넘어짐 특화 안전 시스템 vs 포괄적 벤치마크 프레임워크)을 통해 안전한 자율 제어를 실현한다.
+- 🏛 기반 연구: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — 휴머노이드 접촉 계획을 위한 ego-vision 월드 모델의 개념을 넘어짐 안전성이라는 특정 목표로 확장하여 teacher-student 증류 방식을 적용했다.
+- 🔄 다른 접근: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 휴머노이드 안전성을 위해 서로 다른 접근(포괄적 벤치마크 프레임워크 vs 넘어짐 특화 안전 시스템)을 통해 안전한 자율 제어를 실현한다.
+- 🏛 기반 연구: [[papers/1892_E-SDS_Environment-aware_See_it_Do_it_Sorted_-_Automated_Envi/review]] — vision-based goal inference가 E-SDS의 VLM 기반 환경 인식 보행 정책 학습에 시각적 목표 설정의 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/2055_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — 비전 기반 목표 추론의 원리가 HERO 시스템의 open-vocabulary 객체 인식 및 조작에 대한 이론적 토대를 제공한다.

@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Vision-Language Navigation(VLN) 분야를 종합적으로 조사하고, 언어 지시의 특성에 따라 single-turn/multi-turn, goal-oriented/route-oriented, passive/interactive 등으로 체계적으로 분류한 택소노미를 제시한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2021_Vision-Language Navigation A Survey and Taxonomy.pdf"
 ---
@@ -87,13 +89,25 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2021_Vision-Language Navigatio
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — VLN survey의 분류 체계가 VL-Nav의 neuro-symbolic approach가 다루는 복잡한 reasoning 기반 네비게이션의 이론적 기반을 제공
-- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — VLN 분야 전반의 taxonomy가 Visual Language Maps의 특정 구현 방법이 전체 분야에서 차지하는 위치와 기여를 이해하는 기반
-- 🧪 응용 사례: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — VLN survey에서 제시한 분류 기준이 NaVid의 video-based VLM planning 접근법의 평가와 비교 분석에 활용 가능
-- 🔄 다른 접근: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — Vision-Language Navigation 서베이도 시각-언어 네비게이션의 전반적 발전을 다룬다.
-- 🔗 후속 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — 시각-언어 네비게이션의 전반적인 분류 체계에서 듀얼 메모리 접근법의 위치를 이해할 수 있습니다.
-- 🔗 후속 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — 시각-언어 네비게이션 서베이를 멀티모달 융합과 VLM 관점에서 확장하여 더욱 포괄적인 분석을 제공합니다.
-- 🧪 응용 사례: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 시각-언어 네비게이션의 분류 체계에서 비디오 기반 VLM 접근법의 위치와 활용을 이해할 수 있습니다.
-- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps가 Vision-Language Navigation survey에서 다루는 spatial relationship navigation의 구체적인 구현 방법론을 제시
-- 🔗 후속 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — VL-Nav의 neuro-symbolic reasoning이 VLN survey에서 제시한 interactive navigation 분류에서 reasoning 능력을 대폭 강화한 발전된 형태
-- 🏛 기반 연구: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — Vision-Language Navigation 조사 논문이 CANVAS의 직관적 인간-로봇 상호작용에 대한 이론적 배경을 제공한다
+- 🏛 기반 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — language-conditioned control의 포괄적 서베이가 VLN 분야의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1486_Multimodal_Perception_for_Goal-oriented_Navigation_A_Survey/review]] — VLN을 goal-oriented navigation의 multimodal perception으로 확장한 포괄적 조사입니다.
+- 🔗 후속 연구: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — VLN 분류 체계를 바탕으로 zero-shot continuous environment에 특화된 발전입니다.
+- 🧪 응용 사례: [[papers/1443_L3MVN_Leveraging_Large_Language_Models_for_Visual_Target_Nav/review]] — L3MVN은 VLN 서베이에서 분류한 언어 기반 시각 네비게이션의 구체적인 구현 사례를 제시한다.
+- 🧪 응용 사례: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — NaVid는 VLN 서베이가 다루는 vision-language navigation의 비디오 기반 구체적 구현 사례다.
+- 🧪 응용 사례: [[papers/1507_OpenBench_A_New_Benchmark_and_Baseline_for_Semantic_Navigati/review]] — OpenBench는 VLN 서베이에서 다룬 semantic navigation을 위한 실제 벤치마크와 baseline을 제공한다.
+- 🧪 응용 사례: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — JanusVLN은 VLN 서베이의 분류 체계에 해당하는 의미론과 공간성을 분리한 구체적 구현 사례다.
+- 🔗 후속 연구: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — VLN survey의 체계적 분류가 Pure VLA Models survey와 결합되어 vision-language-action 전반에 대한 더 포괄적인 이해를 제공한다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — World Models for Embodied AI의 포괄적 조사가 VLN taxonomy의 이론적 배경과 미래 발전 방향을 제시한다.
+- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — 둘 다 로봇 분야의 comprehensive review이지만 VLN survey는 navigation에, Foundation Model Driven Robotics는 foundation model에 집중한다.
+- 🧪 응용 사례: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — VLA Models의 concepts와 applications가 VLN taxonomy를 action까지 포함한 더 넓은 프레임워크로 확장하는 데 활용된다.
+- 🏛 기반 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — Vision-Language Navigation 서베이에서 제시된 기본 개념들을 웹 데이터 활용으로 발전시킨다.
+- 🏛 기반 연구: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — Vision-Language Navigation Survey가 DualVLN의 dual-system navigation model 설계의 이론적 배경과 방법론을 제공합니다.
+- 🔗 후속 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — vision-language navigation에 대한 기존 survey를 multimodal fusion 기법과 최신 VLM 응용으로 확장하여 더 포괄적인 로봇 비전 연구 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1486_Multimodal_Perception_for_Goal-oriented_Navigation_A_Survey/review]] — 멀티모달 목표 지향 네비게이션 서베이가 Vision-Language Navigation의 기존 분류 체계를 멀티모달 인식으로 확장한 연구이다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 기존 시각-언어 네비게이션 연구들과 달리 NaVid는 비디오 기반 VLM으로 지도나 깊이 없이 네비게이션을 수행한다.
+- 🏛 기반 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — Vision-Language Navigation 분야의 전반적 동향을 이해하는 데 필요한 기초 서베이이다.
+- 🏛 기반 연구: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — Vision-Language Navigation 분야의 체계적 분류와 현황을 제시하는 기반 연구입니다.
+- 🏛 기반 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — vision-language navigation의 포괄적인 survey와 taxonomy를 제공하여 RoboTron-Nav의 unified embodied navigation framework 설계에 필요한 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — Vision-Language Navigation Survey가 NavFoM의 크로스-구현체 네비게이션 모델 설계의 이론적 배경과 방법론을 제공합니다.
+- 🏛 기반 연구: [[papers/1300_A_Survey_on_Vision-Language-Action_Models_for_Autonomous_Dri/review]] — Vision-Language Navigation의 전반적인 분류체계와 기초 개념을 제공합니다.
+- 🔗 후속 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — vision-language navigation의 전반적 조사를 LLM 특화 관점으로 심화 발전시킨 연구

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "NavFoM은 8백만 개의 네비게이션 샘플로 학습된 크로스-구현체·크로스-태스크 기반 네비게이션 모델로, 다양한 로봇 플랫폼과 네비게이션 작업에서 미세 조정 없이 최첨단 성능을 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Multimodal_Navigation_Benchmarks"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Multimodal_Navigation_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Embodied Navigation Foundation Model.pdf"
 ---
@@ -89,11 +91,14 @@ NavFoM은 8백만 개의 네비게이션 샘플로 학습된 크로스-구현체
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1367_EgoActor_Grounding_Task_Planning_into_Spatial-aware_Egocentr/review]] — DivScene의 대규모 네비게이션 데이터셋이 NavFoM의 크로스-태스크 학습에 기여한다.
-- 🔗 후속 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — RoboTron-Nav의 통합 네비게이션 프레임워크가 NavFoM의 범용성을 확장한다.
-- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo도 다양한 로봇 플랫폼에서 작동하는 범용 정책을 제안한다.
-- 🔗 후속 연구: [[papers/1367_EgoActor_Grounding_Task_Planning_into_Spatial-aware_Egocentr/review]] — NavFoM의 크로스-구현체 네비게이션 능력이 DivScene의 open-vocabulary 네비게이션을 일반화한다.
-- 🔗 후속 연구: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — NavFoM의 범용 네비게이션이 ForesightNav의 상상력 기반 탐색 전략을 일반화한다.
-- 🏛 기반 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — NavFoM의 크로스-태스크 네비게이션이 VLN-BERT의 vision-language 사전학습에 기반한다.
-- 🔗 후속 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — NavFoM의 범용 네비게이션 모델이 산업용 embodied intelligence 프레임워크에 적용될 수 있다.
-- 🔄 다른 접근: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — NavFoM도 unified embodied foundation model을 통한 범용성을 추구한다.
+- 🔗 후속 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — OctoNav의 generalist navigation을 더 크고 포괄적인 cross-embodiment foundation model로 확장 발전
+- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — cross-embodied learning의 통합 정책 개념이 navigation foundation model의 핵심 설계 기반
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation Survey가 NavFoM의 크로스-구현체 네비게이션 모델 설계의 이론적 배경과 방법론을 제공합니다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — NaVid의 비디오 기반 VLM 계획이 NavFoM의 foundation model을 실시간 네비게이션으로 확장하는 방법을 제시합니다.
+- 🧪 응용 사례: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps가 NavFoM의 크로스-태스크 네비게이션을 공간 표현과 결합한 구체적인 적용 방법을 제공합니다.
+- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — LM-Nav의 large pre-trained model 기반 navigation이 NavFoM의 foundation model 기반 네비게이션 프레임워크 개발에 기초가 된다.
+- 🔗 후속 연구: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — embodied navigation foundation model을 diffusion policy와 결합하여 더 일반적인 navigation 능력을 달성할 수 있다.
+- 🏛 기반 연구: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — embodied navigation foundation model의 이론적 기반을 제공하여 Neural Brain 프레임워크의 navigation 모듈 설계에 필요한 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — SmartWay의 waypoint 기반 navigation을 foundation model 관점에서 확장하여 더 일반적인 embodied navigation으로 발전시킬 수 있다.
+- 🔄 다른 접근: [[papers/1587_Time-Transient_Wireless_RF_Sensor_with_Differentiative_Detec/review]] — RF 센서와 Embodied Navigation Foundation Model은 환경 인식에서 서로 다른 센싱 모달리티를 제공합니다.
+- 🔄 다른 접근: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — Embodied Navigation Foundation Model과 동일한 embodied navigation을 다루지만 NaVILA는 legged robot에 특화된 접근법을 사용한다.

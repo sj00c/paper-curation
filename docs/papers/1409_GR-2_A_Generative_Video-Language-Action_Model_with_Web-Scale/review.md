@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "GR-2는 38백만 개의 비디오 클립으로 대규모 사전학습한 후 로봇 궤적으로 미세조정하는 generative video-language-action 모델로, 100개 이상의 조작 작업에서 97.7% 평균 성공률을 달성하고 미보기 시나리오에 뛰어난 일반화를 보인다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Cross-Domain_Robot_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cheang et al._2024_GR-2 A Generative Video-Language-Action Model with Web-Scale Knowledge for Robot Manipulation.pdf"
 ---
@@ -87,10 +87,7 @@ GR-2는 38백만 개의 비디오 클립으로 대규모 사전학습한 후 로
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1394_FLaRe_Achieving_Masterful_and_Adaptive_Robot_Policies_with_L/review]] — web-scale 사전학습 기반 generative 접근과 behavior cloning + RL 미세조정의 상이한 학습 전략
-- 🔗 후속 연구: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — GR-2의 대규모 비디오 학습이 Gemini Robotics의 embodied reasoning 능력 강화로 연결
-- 🔗 후속 연구: [[papers/1394_FLaRe_Achieving_Masterful_and_Adaptive_Robot_Policies_with_L/review]] — FLaRe의 gradient 안정화 기법이 GR-2와 같은 generative VLA 모델의 미세조정에 적용
-- 🧪 응용 사례: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — demonstration learning 방법론 선택 기준이 GR-2와 같은 generative 모델 훈련에 적용
-- 🔄 다른 접근: [[papers/1404_Gemini_Robotics_Bringing_AI_into_the_Physical_World/review]] — Gemini 2.0 기반 접근과 web-scale 사전학습 기반 generative 모델의 서로 다른 VLA 전략
-- 🔄 다른 접근: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — 대규모 로봇 데이터 생성에서 web-scale 데이터 활용과 시뮬레이션 기반 생성이라는 서로 다른 전략을 제시한다.
-- 🔗 후속 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — 이고센트릭 비전을 활용한 휴머노이드 보행 제어에서 실시간 적응형 지각 시스템을 발전시킨다.
+- 🔗 후속 연구: [[papers/1410_GR-3_Technical_Report/review]] — GR-2의 generative video-language-action 모델을 더욱 발전시킨 차세대 버전입니다.
+- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 대규모 비디오 생성 사전학습이 visuomotor policy에 미치는 영향의 기초 연구입니다.
+- 🔗 후속 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — GR-2는 GR-1의 비디오 생성 사전학습 아이디어를 계승하여 더욱 발전된 비디오-언어-행동 모델로 진화했습니다.
+- 🏛 기반 연구: [[papers/1410_GR-3_Technical_Report/review]] — GR-3의 이전 버전인 GR-2 모델의 기초 연구입니다.

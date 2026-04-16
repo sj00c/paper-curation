@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "AutoRT는 VLM과 LLM을 활용하여 로봇 함대의 대규모 자율 데이터 수집을 오케스트레이션하는 시스템으로, 77,000개의 실제 로봇 에피소드를 다양한 미지의 환경에서 수집했다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
   - "sub/Robot_Foundation_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ahn et al._2024_AutoRT Embodied Foundation Models for Large Scale Orchestration of Robotic Agents.pdf"
@@ -93,12 +94,16 @@ AutoRT는 VLM과 LLM을 활용하여 로봇 함대의 대규모 자율 데이터
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1314_AutoEval_Autonomous_Evaluation_of_Generalist_Robot_Manipulat/review]] — 대규모 자율 데이터 수집이 자동화된 정책 평가에 필요한 다양한 평가 시나리오를 제공한다
-- 🔄 다른 접근: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — 대규모 로봇 데이터를 각각 자율 수집과 통합 표준이라는 다른 접근법으로 다룬다
-- 🔗 후속 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment의 cross-embodiment 개념을 대규모 자율 데이터 수집으로 실제 구현한다
-- 🏛 기반 연구: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — 대규모 로봇 orchestration 시스템이 VLM을 활용한 자동 조작 데이터 생성의 기반 인프라를 제공합니다.
-- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — 대규모 로봇 정책 학습에서 generalist policy와 대규모 오케스트레이션의 서로 다른 접근 방식을 보여준다.
-- 🔗 후속 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — 대규모 로봇 데이터 수집과 AutoRT의 embodied foundation model 오케스트레이션이 상호 보완적인 확장성을 제공한다.
-- 🏛 기반 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — AutoRT의 대규모 로봇 데이터 수집 경험을 바탕으로 CLIP 기반 자동 언어 주석을 통한 instruction augmentation을 개발한다.
-- 🔗 후속 연구: [[papers/1314_AutoEval_Autonomous_Evaluation_of_Generalist_Robot_Manipulat/review]] — AutoRT의 대규모 데이터 수집을 자동화된 평가 시스템으로 보완하여 완전한 개발 파이프라인을 구성한다
-- 🔄 다른 접근: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 대규모 로봇 데이터 수집과 시뮬레이션 환경을 통한 정책 학습의 서로 다른 접근 방식을 보여준다.
+- 🏛 기반 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — AutoRT의 대규모 로봇 데이터 수집과 DreamDojo의 인간 동영상 기반 세계 모델은 모두 대규모 데이터를 통한 로봇 학습 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — AutoRT의 77,000 에피소드 수집과 BridgeData V2의 대규모 로봇 학습 데이터셋은 실제 로봇 데이터 확장의 연속선상에 있다.
+- 🧪 응용 사례: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo의 오픈소스 generalist 로봇 정책은 AutoRT의 대규모 데이터 수집을 활용한 실용적 응용 사례이다.
+- 🏛 기반 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — AutoRT의 대규모 자율 데이터 수집 개념이 로봇 foundation model 개발의 핵심 인프라를 제공합니다.
+- 🔗 후속 연구: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — RoboGen은 AutoRT의 대규모 데이터 수집을 자동화된 로봇 생성과 결합하여 더 확장한 개념입니다.
+- 🏛 기반 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — DreamDojo의 대규모 인간 동영상 학습과 AutoRT의 로봇 함대 데이터 수집은 모두 대규모 데이터 기반 로봇 학습의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — AutoRT와 Manipulate-Anything 모두 자동화된 로봇 데이터 생성을 목표하지만 대규모 오케스트레이션 vs 단일 환경 접근의 차이가 있음
+- 🔗 후속 연구: [[papers/1484_MuJoCo_Playground/review]] — MuJoCo Playground의 빠른 정책 훈련은 AutoRT의 대규모 로봇 오케스트레이션에 필요한 효율적인 학습 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — Neural Scaling Laws의 정량적 분석이 AutoRT의 대규모 로봇 시스템 설계에서 최적 모델 크기 결정에 실용적 지침을 제공한다.
+- 🧪 응용 사례: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment 데이터셋을 활용하여 AutoRT의 large-scale robot orchestration과 data collection을 수행할 수 있다.
+- 🔄 다른 접근: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — 개인화된 로봇 학습을 위한 서로 다른 접근법 - few-shot learning vs large-scale orchestration입니다.
+- 🔗 후속 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — AutoRT는 기초 모델의 대규모 로봇 학습 오케스트레이션을 통해 일반화 가능한 조작을 실현하는 확장된 접근법입니다.
+- 🏛 기반 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — AutoRT는 DRL 정책을 실제 로봇에 대규모로 배포하는 orchestration 프레임워크로, 실세계 성공 사례 조사의 핵심 기반을 제공합니다.

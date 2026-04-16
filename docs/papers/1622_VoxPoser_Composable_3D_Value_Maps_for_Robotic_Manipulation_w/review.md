@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "LLM의 affordance 추론 능력과 code-writing 능력을 활용하여 3D value map을 생성하고, 이를 model-based planning으로 로봇 trajectory 합성에 활용하는 zero-shot 로봇 조작 방법론."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/3D_Keypoint_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2023_VoxPoser Composable 3D Value Maps for Robotic Manipulation with Language Models.pdf"
 ---
@@ -92,8 +94,23 @@ LLM의 affordance 추론 능력과 code-writing 능력을 활용하여 3D value 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — VoxPoser의 3D value map 생성이 SayPlan의 3D scene graph grounding과 결합되어 더 정교한 언어 기반 로봇 조작 계획을 수립할 수 있음
-- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — VoxPoser의 affordance reasoning과 code-writing이 Do As I Can, Not As I Say의 언어 기반 affordance grounding 원리를 3D 공간으로 확장한 형태
-- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — VoxPoser는 3D value map 기반으로, Code as Policies는 직접적인 코드 생성으로 LLM을 embodied control에 활용하는 서로 다른 접근법
-- 🔄 다른 접근: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — VoxPoser의 3D value maps와 ReKep의 relational keypoint constraints는 모두 로봇 조작을 위한 3D 공간 표현의 서로 다른 접근법이다.
-- 🔗 후속 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — VoxPoser는 CLIPort의 공간적 정밀성을 3D 값 맵을 통한 구성 가능한 조작으로 확장한다
+- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies와 함께 LLM의 코드 생성 능력을 로봇 제어에 활용하지만, VoxPoser는 3D value map에 특화되어 있다
+- 🔗 후속 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — RoboPoint의 spatial affordance 예측을 3D value map 생성과 결합하면 더 정밀한 로봇 조작이 가능하다
+- 🏛 기반 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting의 실시간 3D 장면 표현 기술이 VoxPoser의 3D value map 생성에 핵심적인 기반 기술을 제공한다
+- 🔗 후속 연구: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep의 관계적 키포인트 추론과 VoxPoser의 3D value map을 결합하면 더 복잡한 공간 관계를 다룰 수 있다
+- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — 언어 기반 affordance 추론의 기본 개념을 제공하여 VoxPoser의 LLM affordance reasoning에 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — VoxPoser와 SayPlan은 모두 LLM 기반 3D 로봇 조작이지만 voxel 기반 vs scene graph 표현으로 접근이 다릅니다.
+- 🧪 응용 사례: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — spatial language map의 개념을 composable 3D value maps로 실제 조작에 적용
+- 🏛 기반 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — 3D value map 기반 로봇 조작의 이론적 기반을 제공하여 PerAct의 voxelized 3D 관찰과 이산화된 행동 표현 설계에 영향을 준다.
+- 🔄 다른 접근: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep의 3D 키포인트 제약과 VoxPoser의 3D value maps는 3D 공간 정보를 로봇 조작에 활용하는 서로 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — VoxPoser는 3D value map을 통해 의류 조작과 유사한 복잡한 조작 작업을 해결하는 대안적 접근법이다.
+- 🏛 기반 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — VoxPoser의 3D value maps와 compositional manipulation 개념이 SpatialVLA의 3D 공간 표현 설계에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — 로봇의 공간 이해를 RoboPoint는 affordance keypoint로, VoxPoser는 3D value maps로 표현하는 서로 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — VoxPoser의 3D value map 개념을 multi-view transformer로 확장하여 더 효율적인 3D 조작 표현을 구현했다.
+- 🔄 다른 접근: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — VoxPoser와 SayPlan은 모두 LLM을 활용한 3D 로봇 조작 계획이지만 voxel vs scene graph 표현으로 차별화됩니다.
+- 🔗 후속 연구: [[papers/1597_UniAff_A_Unified_Representation_of_Affordances_for_Tool_Usag/review]] — 3D value map 기반 조작을 affordance와 도구 사용으로 확장하여 더 복합적인 로봇 조작 능력을 구현한다.
+- 🧪 응용 사례: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — VoxPoser의 composable 3D value maps가 VLMaps의 semantic mapping을 robotic manipulation 작업에 직접 활용할 수 있게 한다.
+- 🏛 기반 연구: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — 3D value map 기반 조작이 VLM 생성 keypoint reward의 공간적 표현 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1301_A3VLM_Actionable_Articulation-Aware_Vision_Language_Model/review]] — A3VLM의 물체 중심 어포던스와 VoxPoser의 3D 가치 맵 기반 조작은 공간-의미 이해의 서로 다른 표현 방식이다.
+- 🔗 후속 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIPort의 공간적 정밀성과 언어 이해를 3D 공간으로 확장한 것이 VoxPoser의 3D value maps 접근법입니다.
+- 🏛 기반 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — VoxPoser의 3D value map 개념이 3D-VLA의 3D 공간 표현과 행동 생성 메커니즘의 기초가 됩니다.

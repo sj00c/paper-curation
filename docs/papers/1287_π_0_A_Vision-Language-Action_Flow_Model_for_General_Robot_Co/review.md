@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "π0는 사전학습된 vision-language model (VLM)을 기반으로 flow matching을 통해 연속적인 로봇 행동을 생성하는 generalist robot policy를 제안한다. 다양한 로봇 플랫폼에서 10,000시간 이상의 데이터로 사전학습한 후 미세조정을 통해 세탁물 접기, 테이블 청소, 박스 조립 등 복잡한 손작업을 수행할 수 있다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robot_Foundation_Models"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Black et al._2024_$π_0$ A Vision-Language-Action Flow Model for General Robot Control.pdf"
 ---
@@ -91,9 +92,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Black et al._2024_$π_0$ A Vision-Langua
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — VLA 모델의 구조적 분석이 π0의 vision-language-action flow model 설계에 이론적 기초를 제공한다
-- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — 범용 로봇 정책을 flow matching과 transformer 기반 접근법으로 각각 다르게 구현한다
-- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — 웹 지식을 로봇 제어에 전이하는 RT-2의 접근을 flow model을 통해 더 연속적이고 정밀하게 발전시킨다
-- 🧪 응용 사례: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — VLA 모델의 구조적 분석을 π0의 실제 구현에 적용하여 설계 원리를 검증한다
-- 🧪 응용 사례: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — π0 VLA 모델의 실시간 추론 최적화를 통해 실제 로봇 환경에서 30Hz 제어를 가능하게 한다.
-- 🔄 다른 접근: [[papers/1300_A_Survey_on_Vision-Language-Action_Models_for_Autonomous_Dri/review]] — VLA 모델을 각각 자율주행과 일반 로봇 제어라는 다른 도메인에 적용한다
+- 🔄 다른 접근: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — π0의 flow matching 기반 행동 생성과 DexVLA의 diffusion expert 접근법은 VLA 모델에서 행동 생성의 서로 다른 방법론이다.
+- 🔗 후속 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — π0의 generalist robot policy와 Being-H0.5의 cross-embodiment 일반화는 모두 범용 로봇 정책을 지향한다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 오픈소스 VLA 모델은 π0의 vision-language-action 정책 설계에 기초 프레임워크를 제공한다.
+- ⚖️ 반론/비판: [[papers/1336_CogACT_A_Foundational_Vision-Language-Action_Model_for_Syner/review]] — cognition과 action을 분리하는 접근법으로 π0의 통합적 flow matching 방식과 대조된다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 연속적 행동 생성을 위한 diffusion 기반 정책 학습의 기초 이론을 제공한다.
+- 🔗 후속 연구: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — π₀의 flow-based action 생성 아키텍처를 NORA-1.5가 world model과 결합하여 발전시킨다.
+- 🔄 다른 접근: [[papers/1603_V-JEPA_2_Self-Supervised_Video_Models_Enable_Understanding_P/review]] — 둘 다 vision-based robot control을 다루지만 V-JEPA 2는 self-supervised video learning을, π_0는 flow model을 사용한다.
+- 🔗 후속 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Being-H0.5의 cross-embodiment 일반화와 π0의 generalist robot policy는 범용 로봇 정책의 서로 다른 확장 방향이다.
+- ⚖️ 반론/비판: [[papers/1336_CogACT_A_Foundational_Vision-Language-Action_Model_for_Syner/review]] — 통합된 flow matching과 달리 cognition과 action을 명시적으로 분리하는 대조적 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — DexVLA의 diffusion expert 통합과 π0의 flow matching 행동 생성은 VLA 모델에서 행동 생성의 서로 다른 확률적 접근법이다.

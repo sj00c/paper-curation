@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "iGibson 1.0은 15개의 완전히 상호작용 가능한 현실적 실내 장면(108개 방)을 포함하는 로봇 시뮬레이션 환경으로, 대규모 장면에서 조작과 네비게이션을 포함한 대화형 작업을 학습할 수 있게 한다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/GPU-Accelerated_Physics_Simulation"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shen et al._2020_iGibson 1.0 a Simulation Environment for Interactive Tasks in Large Realistic Scenes.pdf"
 ---
@@ -93,9 +94,11 @@ iGibson 1.0은 15개의 완전히 상호작용 가능한 현실적 실내 장면
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — 대규모 실내 환경에서의 interactive task를 다른 벤치마크 구성으로 제시한다
-- 🏛 기반 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — interactive 실내 환경의 기본 프레임워크와 데이터셋을 제공한다
-- 🔗 후속 연구: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — 시뮬레이션 환경을 더 확장된 robotics 플랫폼으로 발전시켰다
-- 🔗 후속 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — 상호작용 가능한 실내 환경을 물체 재배치 태스크로 특화 발전시켰다
-- 🧪 응용 사례: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — interactive task 시뮬레이션 환경이 RDT-1B의 bimanual manipulation 정책 검증에 실제적인 테스트 환경을 제공한다
-- 🔄 다른 접근: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — 대규모 실내 환경에서의 embodied AI를 다른 태스크 구성으로 벤치마킹한다
+- 🔄 다른 접근: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — 둘 다 대규모 로봇 시뮬레이션 환경이지만 interactive task focus vs GPU parallelized manipulation이라는 다른 특화 방향을 가진다.
+- 🏛 기반 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — BEHAVIOR-1K의 human-centered embodied task 개념을 15개 대규모 실내 장면으로 확장한 구현체이다.
+- 🔗 후속 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — Habitat 2.0의 interactive rearrangement 개념을 108개 방을 포함한 더 대규모 환경으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1544_robosuite_A_Modular_Simulation_Framework_and_Benchmark_for_R/review]] — robosuite의 모듈화된 시뮬레이션 프레임워크가 iGibson의 대규모 상호작용 환경 구축 기반이 됨
+- 🔄 다른 접근: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — iGibson과 Habitat 2.0 모두 실내 로봇 시뮬레이션을 제공하지만 상호작용 vs 재배치 작업에 특화된 차이가 있음
+- 🔄 다른 접근: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 실시간 고품질 시각화에서 Gaussian Splatting과 iGibson의 물리 시뮬레이션이 다른 접근법을 제공합니다.
+- 🔄 다른 접근: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — 상호작용 작업을 위한 iGibson 1.0과 일상 활동 중심의 BEHAVIOR-1K가 다른 벤치마크 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1417_GRUtopia_Dream_General_Robots_in_a_City_at_Scale/review]] — iGibson의 상호작용 중심 시뮬레이션과 다르게 대규모 도시 스케일에서 embodied AI scaling law 탐구에 특화된다.

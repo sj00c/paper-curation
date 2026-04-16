@@ -10,7 +10,9 @@ score: 4.0
 essence: "AI 도구가 과학 연구에 광범위하게 도입될 때, 생산성과 객관성 향상을 약속하지만 실제로는 '이해의 환상(illusions of understanding)'을 야기하여 과학적 이해를 저해할 위험이 있다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Science_of_Science_Analysis"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Messeri and Crockett_2024_Artificial intelligence and illusions of understanding in scientific research.pdf"
 ---
@@ -88,8 +90,14 @@ AI 도구가 과학 연구에 광범위하게 도입될 때, 생산성과 객관
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1058_Why_Most_Published_Research_Findings_Are_False/review]] — 과학 연구의 신뢰성 문제를 AI 도구와 연구 방법론의 다른 관점에서 접근함
-- 🔗 후속 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서 편향성 문제가 AI 도구에 의한 이해의 환상으로 확장됨
-- 🔄 다른 접근: [[papers/1142_Beyond_Retractions_Forensic_Scientometrics_Techniques_to_Ide/review]] — 과학 연구의 질 평가에서 AI 환상과 법의학적 과학계량 기법의 대안적 접근법임
-- 🔗 후속 연구: [[papers/1067_After_science/review]] — AI가 과학에 미치는 부정적 영향에 대한 우려를 더욱 근본적인 차원에서 확장함
-- ⚖️ 반론/비판: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — 과학에서 인공지능의 이해 착각 문제와 복잡 네트워크 기반의 해석 가능한 개념 모델링이라는 상반된 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — AI 도구 사용 시 이해의 환상 문제가 연구 평가에서 어떻게 나타나는지 구체적으로 보여준다.
+- 🔗 후속 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서 편향성 문제를 AI 시대의 새로운 차원인 이해의 환상으로 확장한다.
+- 🔄 다른 접근: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — AI가 과학적 이해에 미치는 부정적 영향의 서로 다른 측면들로 상호보완적 분석을 제공한다.
+- ⚖️ 반론/비판: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 인간을 고려한 AI의 과학 가속화 가능성과 이해의 환상이라는 위험은 AI의 과학적 활용에 대한 상반된 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — AI 도구의 이해의 환상 문제를 ChatGPT의 스타일 편향이라는 구체적 사례로 실증적으로 입증하는 연구의 이론적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1067_After_science/review]] — AI가 과학적 이해에 미치는 위험을 구체화하여, 과학 이후 시대에 진정한 이해를 보존해야 하는 이유를 설명한다.
+- 🔄 다른 접근: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM이 과학 생산에 미치는 영향을 다루지만, 생산성 변화보다는 과학적 이해의 질적 저하에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — LLM이 연구 제안서의 독창성을 감소시키는 현상과 과학적 이해의 환상 문제는 AI가 과학 연구에 미치는 부정적 영향의 다른 측면이다.
+- 🏛 기반 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI가 인간의 이해에 미치는 영향에 대한 이론적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — AI가 과학 연구 평가에 야기하는 이해의 환상 문제를 ChatGPT의 스타일 편향이라는 구체적 사례로 실증적으로 보여준다.
+- 🏛 기반 연구: [[papers/1067_After_science/review]] — AI가 과학 연구에 야기하는 이해의 환상 문제를 기반으로, 과학 이후 시대에 진정한 과학적 이해를 보존하기 위한 방안을 모색한다.

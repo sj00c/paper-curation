@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Physics-based 캐릭터 애니메이션을 위해 Adversarial Differential Discriminator (ADD)를 통해 수동 보상 함수 설계 없이 다중 목표 최적화를 자동으로 수행하는 방법을 제시한다. 단일 positive sample(영점 벡터)만으로도 효과적으로 여러 목표를 동적으로 균형잡아 고난도 동작을 모방할 수 있다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Physics-Based Motion Imitation with Adversarial Differential Discriminators.pdf"
 ---
@@ -84,3 +86,15 @@ Physics-based 캐릭터 애니메이션을 위해 Adversarial Differential Discr
 - Overall: 4/5
 
 **총평**: 본 논문은 다중 목표 최적화의 자동화를 위해 창의적인 adversarial discriminator 설계를 제시하며, physics-based 캐릭터 애니메이션에서 수동 보상 함수 설계 제거를 통해 일반화 가능성을 크게 향상시킨다. 핵심 아이디어의 단순성과 광범위한 적용 가능성이 강점이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — DeepMimic의 physics-based character control과 adversarial training 방법론이 ADD의 적대적 차별자 설계의 이론적 기초를 제공함
+- 🔄 다른 접근: [[papers/1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein/review]] — AMOR은 multi-objective reinforcement learning을, ADD는 adversarial differential discriminator를 사용하여 다중 목표 최적화를 다르게 접근함
+- 🔗 후속 연구: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — MaskedMimic의 마스킹 기반 physics 제어 기법이 ADD의 자동 목표 균형 조정 능력을 더욱 정교하게 확장할 수 있음
+- 🔗 후속 연구: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — ADD의 자동 목표 균형 조정을 preference-conditioned MORL로 확장한 연구
+- 🏛 기반 연구: [[papers/1681_SMAP_Self-supervised_Motion_Adaptation_for_Physically_Plausi/review]] — 물리 기반 모션 모방에서 adversarial differential과 self-supervised adaptation이라는 관련된 학습 패러다임을 사용한다.
+- 🔄 다른 접근: [[papers/1691_Stabilizing_Humanoid_Robot_Trajectory_Generation_via_Physics/review]] — 두 논문 모두 물리 기반 모방 학습을 다루지만, 물리 정보 기반 안정화와 adversarial differential privacy라는 다른 접근을 사용한다.
+- 🏛 기반 연구: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — ADD의 multi-objective optimization을 preference-based framework로 발전시킨 연구
+- 🔄 다른 접근: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 물리 기반 모션 모방을 위한 다른 적대적 학습 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto/review]] — Physics-based motion imitation with adversarial differential이 Opt2Skill의 DDP 기반 궤적 생성과 다른 adversarial 접근법으로 물리적으로 실현 가능한 동작을 생성합니다.

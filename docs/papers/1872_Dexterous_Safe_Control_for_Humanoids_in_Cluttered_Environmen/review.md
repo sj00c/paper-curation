@@ -1,3 +1,23 @@
+---
+title: "1872_Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environmen"
+authors:
+  - "Rui Chen"
+  - "Yifan Sun"
+  - "Changliu Liu"
+date: "2025.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇이 복잡한 환경에서 다중 충돌 회피를 수행할 때 발생하는 제어 제약의 불가능성 문제를 해결하기 위해 Projected Safe Set Algorithm (p-SSA)을 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm.pdf"
+---
+
 # Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm
 
 > **저자**: Rui Chen, Yifan Sun, Changliu Liu | **날짜**: 2025-02-05 | **URL**: [https://arxiv.org/abs/2502.02858](https://arxiv.org/abs/2502.02858)
@@ -63,3 +83,13 @@
 - Overall: 4/5
 
 **총평**: 밀집된 환경에서 인간형 로봇의 섬세한 다중 충돌 회피라는 현실적이고 중요한 문제를 처음 체계적으로 다루었으며, p-SSA 알고리즘은 실제 로봇 배포에 즉시 활용 가능한 실용적 해결책을 제시한다. 이론적 보장은 제한적이지만 광범위한 실증 검증과 무매개변수 일반화 능력이 인간형 로봇 안전 제어의 중요한 진전을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — 복잡한 환경에서의 휴머노이드 안전을 projected safe set과 CBF 기대값이라는 서로 다른 수학적 접근법으로 보장한다
+- 🏛 기반 연구: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — geometry-aware predictive safety filter가 복잡한 환경에서 p-SSA의 다중 충돌 회피 성능을 더욱 향상시키는 기하학적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 실내 혼잡한 장면에서의 collision-free traversal이 Dexterous Safe Control의 실제 환경 적용 범위를 확장한다
+- 🏛 기반 연구: [[papers/1836_CHIP_Adaptive_Compliance_for_Humanoid_Control_through_Hindsi/review]] — CHIP의 적응적 컴플라이언스 메커니즘이 복잡한 환경에서의 다중 충돌 회피를 위한 p-SSA 알고리즘 구현에 필요한 강인한 제어 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 안전 보호 및 지원 로봇 키트의 기본 개념을 제공합니다.
+- 🔗 후속 연구: [[papers/1836_CHIP_Adaptive_Compliance_for_Humanoid_Control_through_Hindsi/review]] — CHIP의 적응적 컴플라이언스가 복잡한 환경에서의 안전 제어로 확장되어 충돌 회피와 강인한 조작을 동시에 달성한다.
+- 🧪 응용 사례: [[papers/1946_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — RGMP-S의 geometric prior와 spiking 네트워크를 cluttered environment에서의 dexterous control에 적용하여 더 안전하고 효율적인 조작이 가능하다.

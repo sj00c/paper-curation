@@ -1,3 +1,25 @@
+---
+title: "2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr"
+authors:
+  - "Jiacheng Liu"
+  - "Pengxiang Ding"
+  - "Qihang Zhou"
+  - "Yuxuan Wu"
+  - "Da Huang"
+date: "2026.03"
+doi: "10.48550/arXiv.2509.11839"
+arxiv: ""
+score: 4.0
+essence: "TrajBooster는 휠드 휴머노이드에서 추출한 다양한 궤적 데이터를 이족 휴머노이드(Unitree G1)로 전이학습하여, 부족한 이족 휴머노이드 데이터를 보충하고 Vision-Language-Action 모델의 성능을 향상시키는 실시간-시뮬레이션-실시간 파이프라인이다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2026_TrajBooster Boosting Humanoid Whole-Body Manipulation via Trajectory-Centric Learning.pdf"
+---
+
 # TrajBooster: Boosting Humanoid Whole-Body Manipulation via Trajectory-Centric Learning
 
 > **저자**: Jiacheng Liu, Pengxiang Ding, Qihang Zhou, Yuxuan Wu, Da Huang, Zimian Peng, Wei Xiao, Weinan Zhang, Lixin Yang, Cewu Lu, Donglin Wang | **날짜**: 2026-03-19 | **DOI**: [10.48550/arXiv.2509.11839](https://doi.org/10.48550/arXiv.2509.11839)
@@ -65,3 +87,20 @@ TrajBooster는 휠드 휴머노이드에서 추출한 다양한 궤적 데이터
 - Overall: 4/5
 
 **총평**: TrajBooster는 형태학적으로 다른 로봇 간 전이학습이라는 어려운 문제에 대해 실용적이고 효과적인 해결책을 제시한다. 최소한의 실제 데이터만으로도 이족 휴머노이드의 광범위한 전신 조작을 가능하게 한 점에서 로봇 학습의 실용성 측면에서 매우 중요한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1961_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — 휠드에서 이족 휴머노이드로의 전이학습 기본 원리가 H-RDT의 인간 시연 강화 이중손 조작에도 적용된다.
+- 🔄 다른 접근: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — 궤적 기반 전이학습 대신 직접적인 휴머노이드 손재주 조작을 쉽게 만드는 접근법이다.
+- 🔗 후속 연구: [[papers/1814_Being-H0_Vision-Language-Action_Pretraining_from_Large-Scale/review]] — 대규모 휴머노이드 데이터에서 학습한 VLA 모델을 궤적 전이를 통해 특정 로봇으로 부스팅하는 발전된 형태이다.
+- 🔄 다른 접근: [[papers/1937_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — FRoM-W1의 foundation model 기반 접근법과 TrajBooster의 trajectory 전이 접근법은 휴머노이드 제어의 서로 다른 패러다임을 제시함
+- 🔗 후속 연구: [[papers/1815_Being-M05_A_Real-Time_Controllable_Vision-Language-Motion_Mo/review]] — Being-M0.5의 real-time vision-language-motion 모델에 TrajBooster의 trajectory 전이 기법을 통합하면 더 풍부한 데이터로 성능 향상 가능
+- 🏛 기반 연구: [[papers/2102_Mobile-TeleVision_Predictive_Motion_Priors_for_Humanoid_Whol/review]] — Mobile-TeleVision의 predictive motion priors가 TrajBooster의 휠드-이족 휴머노이드 간 궤적 전이의 이론적 기반을 제공함
+- 🔗 후속 연구: [[papers/1678_SkillBlender_Towards_Versatile_Humanoid_Whole-Body_Loco-Mani/review]] — SkillBlender의 versatile whole-body control에 TrajBooster의 궤적 전이 방법을 적용하면 더 다양한 manipulation skill 학습 가능
+- 🔄 다른 접근: [[papers/1743_UniTracker_Learning_Universal_Whole-Body_Motion_Tracker_for/review]] — 둘 다 전신 동작 추적을 다루지만 이 논문은 휠드-이족 간 전이에, UniTracker는 범용 추적기 학습에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1987_HuBE_Cross-Embodiment_Human-like_Behavior_Execution_for_Huma/review]] — 교차 구현체 인간-유사 행동 실행 기법이 휠드 휴머노이드에서 이족 휴머노이드로의 궤적 전이 방법론의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/2008_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We/review]] — 웨어러블 외골격을 통한 확장 가능한 휴머노이드 조작이 TrajBooster의 전이학습 접근법을 실제 인간-로봇 협업으로 발전시킬 수 있습니다.
+- 🔗 후속 연구: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — 전신 조작을 위한 궤적 향상 방법을 잠재 행동 공간에서 더 효율적으로 구현한다.
+- 🔗 후속 연구: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — 궤도 부스팅 기반 전신 조작이 WoCoCo의 순차적 접촉 제어를 동적 궤도 최적화로 확장
+- 🔗 후속 연구: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — TrajBooster의 trajectory optimization이 HiWET의 world-frame end-effector tracking 정확도를 더욱 향상시킬 수 있다.
+- 🔗 후속 연구: [[papers/2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto/review]] — TrajBooster의 궤적 기반 전신 조작 향상을 DDP로 생성한 동역학적 실현 가능 궤적의 RL 모방으로 발전시킨 연구이다.

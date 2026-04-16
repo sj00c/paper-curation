@@ -1,3 +1,25 @@
+---
+title: "2105_MoRE_Mixture_of_Residual_Experts_for_Humanoid_Lifelike_Gaits"
+authors:
+  - "Dewei Wang"
+  - "Xinmiao Wang"
+  - "Xinzhe Liu"
+  - "Jiyuan Shi"
+  - "Yingnan Zhao"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 복잡한 지형을 인간다운 보행으로 횡단하기 위해 Mixture of Residual Experts (MoRE)와 다중 판별자를 활용한 2단계 RL 학습 프레임워크를 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_MoRE Mixture of Residual Experts for Humanoid Lifelike Gaits Learning on Complex Terrains.pdf"
+---
+
 # MoRE: Mixture of Residual Experts for Humanoid Lifelike Gaits Learning on Complex Terrains
 
 > **저자**: Dewei Wang, Xinmiao Wang, Xinzhe Liu, Jiyuan Shi, Yingnan Zhao, Chenjia Bai, Xuelong Li | **날짜**: 2025-06-10 | **URL**: [https://arxiv.org/abs/2506.08840](https://arxiv.org/abs/2506.08840)
@@ -66,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 복잡 지형 횡단과 인간다운 다중 보행 학습을 동시에 달성하는 통합적 프레임워크를 제시하며, MoE 기반 residual 접근법과 다중 판별자 활용으로 방법론적 독창성을 보인다. 실제 로봇 배포 검증과 함께 기술적으로 견고하고 실무적 중요성이 높은 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2110_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — 둘 다 휴머노이드의 효율적인 이동을 다루지만, MoRE는 복잡한 지형에서의 인간다운 보행에, No More Marching은 단거리 목표 도달에 집중한다.
+- 🏛 기반 연구: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — Robust and Versatile Bipedal Jumping의 강화학습 기반 보행 제어 기법이 MoRE의 다중 전문가 시스템 설계에 이론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Hiking in the Wild의 지각 기반 파쿠르 프레임워크를 복잡한 지형에서 더욱 자연스러운 인간다운 보행으로 확장한 연구이다.
+- 🔄 다른 접근: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — 둘 다 natural humanoid locomotion이지만 MoRE는 복잡한 지형 횡단에, RuN은 일반적인 자연스러운 보행에 중점을 둔다
+- 🏛 기반 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — StyleLoco의 GAD 기반 자연스러운 보행 생성이 MoRE의 다중 판별자 학습 프레임워크에 방법론적 기반을 제공했다
+- 🏛 기반 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 residual mixture-of-experts 구조가 MoRE의 잔차 전문가 혼합을 통한 인간다운 보행 학습의 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol/review]] — 복잡한 지형에서의 인간다운 보행을 위한 다른 접근법으로, adversarial learning과 mixture of experts의 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — 둘 다 다양한 동작 유형 처리를 위해 mixture-of-experts를 사용하지만 적용 영역이 다르다.
+- 🔄 다른 접근: [[papers/2110_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — 둘 다 휴머노이드의 효율적 이동을 다루지만, No More Marching은 단거리 목표 도달 최적화에, MoRE는 복잡 지형의 자연스러운 보행에 초점을 둔다.

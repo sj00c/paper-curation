@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Gato는 대규모 언어 모델의 접근 방식을 일반화하여 텍스트를 넘어 다양한 모달리티와 구체화(embodiment)를 처리할 수 있는 단일 신경망 기반의 범용 정책 에이전트이다. 동일한 가중치를 가진 하나의 모델로 Atari 게임, 이미지 캡셔닝, 대화, 로봇 제어 등 604개의 서로 다른 작업을 수행할 수 있다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Grounded_Action_Planning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Reed et al._2022_A Generalist Agent.pdf"
 ---
@@ -90,9 +92,20 @@ Gato는 대규모 언어 모델의 접근 방식을 일반화하여 텍스트를
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — Magma는 Gato의 멀티모달 일반 에이전트 개념을 멀티모달 AI 에이전트로 확장한다
-- 🔄 다른 접근: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — EO-1은 Gato와 유사한 통합 기초 모델이지만 구체화된 AI에 특화되어 있다
-- 🔗 후속 연구: [[papers/1591_OmniClone_Engineering_a_Robust_All-Rounder_Whole-Body_Humano/review]] — 모방 학습의 다양한 행동을 위한 벤치마크로 Gato의 다중 작업 성능 평가에 필요한 기준을 제공한다
-- 🔗 후속 연구: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — 일반주의 에이전트의 개념을 멀티모달 AI 에이전트로 발전시켜 더욱 포괄적인 작업 수행 능력을 구현합니다.
-- 🔗 후속 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — A Generalist Agent가 SIMA의 embodied AI 에이전트를 더 일반화된 형태로 확장한다.
-- 🏛 기반 연구: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — A Generalist Agent의 범용 에이전트 개념이 EO-1의 unified foundation model 설계에 기반한다.
+- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Gato의 범용성 개념을 로봇 특화로 발전시켜 더 실용적인 오픈소스 정책 모델로 구현
+- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — Gato의 다중 모달리티 처리 능력을 웹 지식과 결합하여 로봇 제어에 특화된 형태로 발전
+- 🏛 기반 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Gato의 단일 신경망 다중 작업 수행 개념은 Being-H0.5의 cross-embodiment 통합 학습 패러다임의 기초가 된다.
+- 🔗 후속 연구: [[papers/1464_Magma_A_Foundation_Model_for_Multimodal_AI_Agents/review]] — Gato의 범용 정책 에이전트 개념은 Magma의 멀티모달 AI 에이전트로 확장된다.
+- 🔄 다른 접근: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — Gato의 단일 모델 다중 도메인 접근법과 world model 기반 다양한 도메인 마스터링은 일반화의 서로 다른 전략이다.
+- 🔗 후속 연구: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — RoboCat은 Gato의 범용 에이전트 개념을 로봇 조작에 특화하여 발전시킨 후속 연구입니다.
+- 🔄 다른 접근: [[papers/1308_An_Embodied_Generalist_Agent_in_3D_World/review]] — 둘 다 generalist agent를 지향하지만 LEO는 3D 환경에서의 embodied 능력에 더 특화되어 있습니다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — Gato의 다중 모달리티 처리 개념이 embodied AI를 위한 world model 설계의 중요한 이론적 기반을 제공
+- 🏛 기반 연구: [[papers/1433_In-Context_Imitation_Learning_via_Next-Token_Prediction/review]] — generalist agent의 기본 개념과 next-token prediction을 통한 일반화 능력의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — 대규모 모델 기반 embodied AI 연구가 DeepMind의 Generalist Agent 개념을 이론적 기반으로 삼아 발전된 연구 분야이다.
+- 🔄 다른 접근: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — embodied agent 설계에서 neuroscience-inspired framework vs generalist agent라는 서로 다른 아키텍처 설계 철학을 제시한다.
+- 🔄 다른 접근: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — RoboCat의 robot-specific generalist agent와 달리 일반적인 multi-domain generalist agent 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — A Generalist Agent와 SIMA는 모두 범용 AI 에이전트를 목표로 하되 SIMA가 더 다양한 3D 환경으로 확장했습니다.
+- 🏛 기반 연구: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — Gato의 generalist agent 개념이 TidyBot의 다양한 개인화 선호도를 하나의 모델로 학습하는 접근법의 기초가 된다.
+- 🏛 기반 연구: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — Gato의 generalist agent 개념이 UniGoal의 단일 모델로 다양한 navigation 작업을 수행하는 접근법의 이론적 토대가 된다.
+- 🏛 기반 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — A Generalist Agent의 범용 에이전트 개념이 산업용 로봇의 embodied intelligence 통합의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — Generalist Agent를 embodied AI로 확장하는 구체적 방향을 제시한다.

@@ -11,8 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "CLASS는 행동 시퀀스 유사성을 기반으로 하는 supervised contrastive learning을 통해 로봇 조작 태스크에서 robust한 시각적 표현을 학습하는 방법이다. DTW로 측정된 action sequence 유사성을 약한 감독 신호로 활용하여 heterogeneous 데이터셋에서의 일반화 성능을 크게 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Representation_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lee et al._2025_CLASS Contrastive Learning via Action Sequence Supervision for Robot Manipulation.pdf"
 ---
@@ -88,7 +88,9 @@ CLASS는 행동 시퀀스 유사성을 기반으로 하는 supervised contrastiv
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — 둘 다 라벨이 없는 데이터 활용이지만 CLASS는 action sequence supervision을, ATM은 궤적 모델링을 통한 정책 학습을 사용한다.
-- 🏛 기반 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — R3M의 universal visual representation이 CLASS의 contrastive learning 기반 시각 표현 학습에 대한 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1372_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — DROID의 대규모 manipulation 데이터가 CLASS의 DTW 기반 action sequence 유사성 측정을 더 다양한 환경에서 검증할 수 있다.
-- 🔄 다른 접근: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — 둘 다 라벨이 없는 데이터에서 로봇 정책을 학습하지만 ATM은 궤적 모델링을, CLASS는 action sequence supervision을 사용한다.
+- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — Self-Supervised Learning from Images의 joint-embedding 개념을 action sequence 유사성 기반의 supervised contrastive learning으로 로봇 조작에 적용한 연구입니다.
+- 🔗 후속 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — Learning Transferable Visual Models의 contrastive learning 개념을 DTW 기반 action sequence 유사성을 약한 감독 신호로 활용하여 로봇 도메인에 특화한 방법론입니다.
+- 🔄 다른 접근: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — 둘 다 universal visual representation을 추구하지만 CLASS는 action sequence supervision에, R3M은 general robot manipulation에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1447_Latent_Action_Diffusion_for_Cross-Embodiment_Manipulation/review]] — contrastive learning을 통한 행동 표현 학습의 기본 원리를 cross-embodiment manipulation에 적용하는 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — CLASS와 함께 효율적인 로봇 조작 학습을 다루지만 RoboAgent는 semantic augmentation에, CLASS는 contrastive learning에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — CLASS의 contrastive learning via action sequence supervision이 sigmoid loss의 pairwise learning 접근법의 로봇 학습 적용 기초가 된다.

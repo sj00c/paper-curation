@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "인간형 로봇이 촉각 센서를 활용한 모방 학습(imitation learning)을 통해 전신 접촉 조작을 수행할 수 있도록 하는 TACT(tactile-modality extended ACT) 제어 시스템을 제안하였다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Tactile_Contact_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Murooka et al._2025_TACT Humanoid Whole-body Contact Manipulation through Deep Imitation Learning with Tactile Modality.pdf"
 ---
@@ -86,3 +88,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Murooka et al._2025_TACT Humanoid Whole-
 - Overall: 4/5
 
 **총평**: 본 연구는 촉각 센서를 Transformer 기반 모방 학습에 성공적으로 통합하여 생활 규모 인간형 로봇의 섬세한 전신 접촉 조작을 최초로 실증했으며, 모델 기반 제어와 학습 기반 제어의 창의적 결합으로 신뢰성과 유연성을 동시에 확보한 의미 있는 기여이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1853_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — TACT의 촉각 기반 모방학습과 Choice Policy의 다중 후보 행동 학습은 휴머노이드 조작의 서로 다른 센서 활용 방식
+- 🔗 후속 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — 물리적 일관성 로코-조작이 TACT의 촉각 접촉 조작을 장기 계획과 결합한 확장 형태
+- 🏛 기반 연구: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — OSMO 촉각 글러브의 인간-로봇 스킬 전이가 TACT의 촉각 모방학습을 위한 직접적 데이터 수집 기반
+- 🔄 다른 접근: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — 둘 다 접촉 중심 상호작용을 다루지만 TACT는 촉각 모방 학습에, PICO는 시각적 접촉 복원에 초점을 맞춘다
+- 🔄 다른 접근: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — 둘 다 손 기반 조작을 다루지만 촉각 센서 활용 vs tendon-driven 메커니즘으로 접근이 다르다
+- 🔗 후속 연구: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — RUKA의 learning-based control과 TACT의 촉각 모방 학습을 결합하면 더 정교한 접촉 조작이 가능하다
+- 🏛 기반 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — TACT의 촉각 기반 모방학습이 물리적 일관성 있는 조작을 위한 접촉 정보 활용 측면에서 기반 기술
+- 🔗 후속 연구: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — PICO의 접촉 정보 활용 3D 인간-물체 상호작용 복원 기술이 촉각 기반 전신 접촉 조작 학습에 데이터셋과 방법론을 제공한다
+- 🔄 다른 접근: [[papers/1853_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — Choice Policy의 다중 후보 행동 학습과 TACT의 촉각 기반 모방학습은 휴머노이드 조작의 서로 다른 학습 방식
+- 🏛 기반 연구: [[papers/1931_Flow_Matching_Imitation_Learning_for_Multi-Support_Manipulat/review]] — 전신 접촉 조작이 다중 지지점 조작 학습의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — deep reinforcement learning을 통한 whole-body contact manipulation이 HiWET의 계층적 end-effector 추적의 기반 제어 기술입니다.
+- 🔄 다른 접근: [[papers/1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — 접촉 기반 조작을 HMC는 heterogeneous meta-control로, TACT는 깊은 RL 기반 접촉으로 접근한다.
+- 🔄 다른 접근: [[papers/2106_MorphoGuard_A_Morphology-Based_Whole-Body_Interactive_Motion/review]] — MorphoGuard는 형태학적 표현 기반, TACT는 접촉 조작 기반으로 서로 다른 관점에서 휴머노이드 전신 접촉 제어 문제를 해결한다.
+- 🏛 기반 연구: [[papers/2165_ULC_A_Unified_and_Fine-Grained_Controller_for_Humanoid_Loco-/review]] — 심층 강화학습을 통한 휴머노이드 전신 접촉 조작 기법이 상체-하체 통합 제어를 위한 단일 정책 프레임워크의 기반이 됩니다.

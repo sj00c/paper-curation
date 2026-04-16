@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "ARIO는 로봇 embodied AI 에이전트 학습을 위한 통합 데이터 표준과 약 300만 에피소드의 대규모 데이터셋으로, 258개 로봇 시리즈와 5가지 감각 모달리티를 포함하여 범용적이고 강건한 로봇 에이전트 개발을 가능하게 한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robotic_Interaction_Datasets"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_All Robots in One A New Standard and Unified Dataset for Versatile, General-Purpose Embodied Agents.pdf"
 ---
@@ -91,10 +93,15 @@ ARIO는 로봇 embodied AI 에이전트 학습을 위한 통합 데이터 표준
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 데이터셋을 더 포괄적인 통합 표준과 다중 로봇 플랫폼으로 확장한다
-- 🔄 다른 접근: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 대규모 로봇 데이터셋을 각각 통합 표준과 in-the-wild manipulation이라는 다른 접근법으로 구축한다
-- 🏛 기반 연구: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment의 cross-embodiment 학습이 ARIO의 다중 플랫폼 통합에 이론적 기초를 제공한다
-- 🔗 후속 연구: [[papers/1296_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — ARIO의 통합 데이터 표준을 활용하여 더 효율적이고 실용적인 VLA 모델을 개발한다
-- 🔗 후속 연구: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — All Robots in One의 unified dataset이 HPT의 heterogeneous embodiment 사전학습을 더 포괄적인 로봇 데이터로 확장한다.
-- 🔄 다른 접근: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — 대규모 로봇 데이터를 각각 자율 수집과 통합 표준이라는 다른 접근법으로 다룬다
-- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 저비용 로봇 기반의 대규모 데이터셋이 통합 데이터 표준 개발의 실제 사례를 제공한다
+- 🔄 다른 접근: [[papers/1504_Open_X-Embodiment_Robotic_Learning_Datasets_and_RT-X_Models/review]] — Open X-Embodiment 데이터셋과 비교하여 더 통합된 로봇 데이터 표준을 제시한다.
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 대규모 로봇 학습을 위한 데이터셋 구축의 기초 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇 모방 학습에서 데이터 스케일링 법칙을 ARIO 데이터셋으로 확장 연구한다.
+- 🧪 응용 사례: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — ARIO의 통합 데이터 표준이 cross-embodied learning 연구에서 실제로 활용될 수 있는 데이터 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 야생 환경 로봇 조작 데이터 DROID와 다양한 로봇 시리즈 포함 ARIO가 다른 데이터 수집 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — All Robots in One 연구는 MetaMorph가 추구하는 범용 로봇 제어기의 데이터셋 통합 관점을 제공합니다.
+- 🏛 기반 연구: [[papers/1499_OmniVLA_An_Omni-Modal_Vision-Language-Action_Model_for_Robot/review]] — OmniVLA의 통합 데이터셋 활용이 기반으로 하는 unified robot learning dataset
+- 🏛 기반 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — 통일된 다중 로봇 데이터셋 표준은 모든 로봇을 하나로 통합하는 비전과 언어 데이터셋의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — All Robots in One은 CrossFormer가 달성하려는 통합된 다중 embodiment 제어를 위한 표준화된 데이터셋을 제공한다.
+- 🏛 기반 연구: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — All Robots in One의 통합 데이터셋이 Pri-GP의 분산 로봇 학습을 위한 표준화된 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1633_X-VLA_Soft-Prompted_Transformer_as_Scalable_Cross-Embodiment/review]] — Cross-embodiment learning을 위한 통합 데이터셋과 표준화 방법론의 기본 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 데이터 수집 방법론이 ARIO와 같은 통합 로봇 데이터셋 개발의 기초가 됩니다.

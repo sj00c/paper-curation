@@ -11,7 +11,8 @@ score: 4.0
 essence: "저명한 생명과학자의 조기사망이 해당 분야의 활성화에 미치는 영향을 분석한 결과, 별 과학자가 생존할 때는 외부인들이 진입을 회피하지만 사망 후 새로운 방향의 연구가 증가하여 과학 진보가 가속화됨을 보여준다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Academic_Career_Trajectories"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Azoulay et al._2019_Does Science Advance One Funeral at a Time.pdf"
 ---
@@ -86,7 +87,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Azoulay et al._2019_Does Science Advance
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 과학자의 조기사망이 분야에 미치는 긍정적 효과를 초기 경력 좌절의 부정적 영향과 대비하여 분석한다
-- 🔗 후속 연구: [[papers/1121_Superstar_Extinctionsupsup/review]] — 슈퍼스타 과학자의 소멸이 과학 진보에 미치는 영향을 조기사망 효과로 확장하여 분석한다
-- 🧪 응용 사례: [[papers/1028_Tenure_and_research_trajectories/review]] — 종신 재직권이 연구 궤적에 미치는 영향을 저명 과학자의 사망 후 변화와 비교 분석할 수 있다
-- 🔗 후속 연구: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 과학계에서의 실패 역학을 세대 교체와 패러다임 변화 맥락에서 확장하여 이해할 수 있는 관점을 제공한다.
+- 🔄 다른 접근: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 과학 경력에 미치는 영향을 저명 과학자 사망과 초기 좌절이라는 다른 사건으로 분석한다
+- 🔗 후속 연구: [[papers/1121_Superstar_Extinctionsupsup/review]] — 저명 과학자의 영향력을 개별 사망 사건에서 전반적인 슈퍼스타 소멸 현상으로 확장한다
+- 🏛 기반 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술, 문화, 과학 경력의 핫스트릭 분석이 과학 진보 패턴 이해의 기초를 제공한다
+- 🔄 다른 접근: [[papers/1121_Superstar_Extinctionsupsup/review]] — 과학자의 사망이 분야에 미치는 영향을 다른 관점에서 분석한다.
+- ⚖️ 반론/비판: [[papers/1067_After_science/review]] — 과학이 장례식과 함께 발전한다는 전통적 관점에 AI 시대의 새로운 패러다임을 대비시킨다.
+- 🔄 다른 접근: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 저명 과학자 사망의 분야 활성화 효과와 조기 좌절의 성과 향상 효과가 모두 장애물이 혁신을 촉진하는 역설적 메커니즘을 보여준다.

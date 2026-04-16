@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Vision-Language-Action (VLA) 모델에 discrete diffusion을 적용하여 action token을 적응적으로 디코딩하는 unified transformer 정책을 제시한다. 이를 통해 자동회귀 방식의 순서 제약을 극복하고 분리된 decoder 구조의 문제를 해결한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/VLA_Model_Optimization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Vision-Language-Action_Distillation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_Discrete Diffusion VLA Bringing Discrete Diffusion to Action Decoding in Vision-Language-Action Pol.pdf"
 ---
@@ -89,9 +91,11 @@ Vision-Language-Action (VLA) 모델에 discrete diffusion을 적용하여 action
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — VLA reinforcement fine-tuning이 discrete diffusion VLA의 action decoding을 RL 관점에서 더욱 발전시킨다.
-- 🔄 다른 접근: [[papers/1503_Iterative_Closed-Loop_Motion_Synthesis_for_Scaling_the_Capab/review]] — Adaptive discrete action을 통한 OneTwoVLA가 discrete diffusion과 다른 방식으로 action token의 순서 문제를 해결한다.
-- 🏛 기반 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — DCT 기반의 FAST action tokenization이 discrete diffusion VLA의 효율적인 action representation 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — DCT 기반 action tokenization이 discrete diffusion VLA의 효율적인 action representation을 위한 구체적 구현을 제공한다.
-- 🔗 후속 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — Discrete Diffusion VLA의 이산 확산 모델을 vector quantization 기반으로 확장하여 대규모 데이터 학습을 가능하게 했다
-- 🏛 기반 연구: [[papers/1533_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — ego-vision world model이 지형 인식 휴머노이드 이동의 세계 모델 기반 인지에 핵심 이론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — discrete diffusion 대신 efficient action tokenization을 통한 다른 VLA 액션 디코딩 최적화 방법
+- 🏛 기반 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — vector quantization이 discrete diffusion VLA의 action token 표현에 핵심적인 기반 기술
+- 🏛 기반 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy의 기본 아키텍처가 Discrete Diffusion VLA에서 action token 디코딩에 적용되는 transformer-diffusion 결합의 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — One-Step Diffusion Policy의 빠른 추론과 Discrete Diffusion VLA의 adaptive action decoding은 diffusion 기반 정책에서 효율성을 다르게 접근한다.
+- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — Streaming Flow Policy의 단순화된 diffusion/flow matching과 Discrete Diffusion VLA는 모두 기존 diffusion policy의 복잡성을 해결하려는 방향성을 공유한다.
+- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 오픈소스 VLA의 action decoding을 discrete diffusion으로 개선하는 구체적 방법을 제시합니다.
+- 🏛 기반 연구: [[papers/1598_Unified_Video_Action_Model/review]] — 통합된 비전-언어-액션 모델의 기본 아키텍처를 제공합니다.
+- 🔗 후속 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — Discrete Diffusion VLA의 discrete 접근법을 autoregressive와 결합하여 더 유연한 action generation을 구현한다.

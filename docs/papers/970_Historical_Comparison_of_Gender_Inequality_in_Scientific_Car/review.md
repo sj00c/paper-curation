@@ -12,7 +12,8 @@ score: 4.0
 essence: "1955-2010년 간 150만 명 이상의 과학자 데이터를 분석하여 STEM 분야 전 학문과 83개국에 걸친 성별 불평등의 장기 추이를 규명했다. 역설적으로 여성 과학자 비율 증가가 생산성(productivity)과 영향력(impact)의 성별 격차 증가를 동반했으나, 동일한 논문 수에 대해 남녀의 연간 발표율(annual rate)과 커리어 영향력이 동등함을 발견했다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Gender_Research_Diversity"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2020_Historical Comparison of Gender Inequality in Scientific Careers Across Countries and Disciplines.pdf"
 ---
@@ -94,17 +95,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2020_Historical Comparison 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 불평등의 역사적 패턴 분석을 성별 다양성이 실제 연구 성과에 미치는 효과 연구로 발전시킨다.
-- 🔄 다른 접근: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 성별 차원의 불평등과 전반적 인용 불평등은 과학계 불평등을 서로 다른 관점에서 조명한다.
-- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성이 과학에서 적게 인정받는 현상이 장기적 성별 불평등 패턴의 지속적 원인임을 보여준다.
-- 🔗 후속 연구: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 교수 채용의 위계 구조가 과학 경력에서 성별 불평등을 역사적으로 어떻게 심화시켜왔는지 확장 분석합니다.
-- 🔗 후속 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 과학 경력에서 성별 불평등의 역사적 변화를 종신교수제가 연구 궤적에 미치는 영향으로 확장하여 분석했다.
-- 🔗 후속 연구: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 팬데믹의 성별별 차별적 영향이 과학계 성별 불평등의 역사적 패턴을 더욱 심화시킬 수 있음을 보여준다.
-- 🔄 다른 접근: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학 경력에서 성별 불평등의 역사적 비교를 통해 성별 격차의 변화 양상을 분석한다
-- 🏛 기반 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 불평등의 역사적 추이 분석이 성별 다양성이 연구 성과에 미치는 긍정적 효과를 이해하는 배경을 제공한다.
-- 🔄 다른 접근: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 글로벌 인용 불평등과 성별 불평등은 모두 과학계 내 구조적 불평등 문제를 다른 차원에서 다룬다.
-- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 과학 경력에서의 성별 불평등 연구를 인종과 성별의 교차적 관점으로 확장하여 더 포괄적인 분석을 제공한다.
-- 🏛 기반 연구: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 과학 경력에서의 성별 불평등 역사적 비교가 청소년 발달 연구에서의 젠더 관점을 이해하는 배경을 제공한다.
-- 🏛 기반 연구: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 우울증 낙인화 연구에서 성별 차이를 이해하기 위해 과학 경력에서의 역사적 성별 불평등 비교 연구가 기반이 된다.
-- 🔗 후속 연구: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 과학 경력에서의 성별 불평등 역사적 비교가 전통 의료 관행 연구에서의 지역별 기여도 차이를 이해하는 틀을 확장한다.
-- 🏛 기반 연구: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 과학 경력에서 성별 불평등의 역사적 변화 분석이 회계 분야 거버넌스 연구에서 ESG 패러다임으로의 전환을 이해하는 사회적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 성별 불평등 분석에서 인종과 성별의 교차적 불평등으로 연구 범위가 확장된다.
+- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 여성 과학자의 저평가 현상에 대한 기본적 이해가 장기적 성별 불평등 추이 분석의 토대가 된다.
+- 🔄 다른 접근: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학 분야 성별 격차를 시간적 변화와 글로벌 비교라는 서로 다른 관점으로 분석한다.
+- 🧪 응용 사례: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성 팀의 혁신성 우위가 역사적 성별 불평등 감소 노력의 구체적 성과로서 다양성의 가치를 실증한다.
+- 🔗 후속 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학 발견을 위한 성별 다양성 프레임워크가 역사적 성별 불평등 분석을 미래 지향적 전략으로 발전시킨다.
+- 🔗 후속 연구: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 과학 경력에서 성별 불평등의 역사적 비교가 팬데믹으로 인한 여성 과학자 영향을 장기적 맥락에서 이해하게 한다.
+- 🏛 기반 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — STEM 분야 성별 불평등의 역사적 비교 분석이 성별 다양성 팀의 성과 우위를 이해하는 배경적 맥락을 제공한다.
+- 🏛 기반 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 과학 분야 성별 불평등의 역사적 비교가 교차적 불평등 분석의 기본적 맥락을 제공한다.
+- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — STEM 분야 성별 불평등의 역사적 분석이 성별 다양성 프레임워크 구축의 실증적 배경과 필요성을 제공한다.
+- 🏛 기반 연구: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 과학 경력에서의 성별 불평등 역사적 비교 연구가 출산율 연구의 성별 관련 맥락을 이해하는 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 과학 경력에서의 성별 불평등 역사적 비교 연구가 제공하는 longitudinal 분석 방법론을 자폐 관련 수면 연구의 진화 추적에 적용할 수 있다.

@@ -9,7 +9,9 @@ score: 4.0
 essence: "본 연구는 학술 성과 평가의 한계를 극복하기 위해 출판량, 인용 영향력, 경력 기간, 저자 기여도를 통합한 NK 지수(NK Composite Scholarly Performance Index)를 개발했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Taştan_2026_Redefining Academic Performance The Development of the NK Composite Scholarly Performance Index.pdf"
 ---
@@ -77,8 +79,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Taştan_2026_Redefining Academic Perform
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 학술 성과 평가에서 다차원적 NK 지수와 인용 중심의 g-지수라는 서로 다른 측정 방식을 비교할 수 있습니다.
-- 🏛 기반 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 상대인용비율(RCR)의 분야 정규화 방법론이 NK 지수의 학문분야별 성과 비교를 위한 기술적 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 개별 연구자의 과학적 성과를 정량화하는 h-지수를 다차원적 요소들을 통합한 종합적 평가 방식으로 확장합니다.
-- 🔗 후속 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — RCR의 개별 논문 영향력 측정을 연구자 전체의 종합적 성과 평가로 확장하는 NK 지수와 연결됩니다.
-- 🔗 후속 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — g-지수의 인용 중심 평가를 다차원적 요소를 통합한 NK 지수로 확장하여 종합적 성과 측정을 가능하게 합니다.
+- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — g-지수가 상위 논문의 인용 성과를 강조하는 반면, NK 지수는 경력 기간과 저자 기여도까지 통합적으로 평가한다.
+- 🏛 기반 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 펀딩에서의 Matthew 효과가 학술 성과 평가 지표 개발 시 고려해야 할 구조적 불평등을 보여준다.
+- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-지수 개발의 기본 철학이 NK 복합 지수 설계의 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 개별 논문 수준의 RCR 지표와 연구자 수준의 NK 지수가 상호 보완적으로 학술 성과를 평가할 수 있다.
+- 🧪 응용 사례: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 표준화된 인용 지표 데이터베이스를 활용하여 NK 지수의 유효성을 검증하고 벤치마킹할 수 있다.
+- 🧪 응용 사례: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 연구 평가 시스템의 글로벌 발견적 접근법에서 새로운 복합 성과 지표가 활용될 수 있습니다.
+- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 논문 수준의 RCR과 연구자 수준의 NK 지수가 서로 다른 관점에서 학술 성과를 측정한다.
+- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — NK 복합 지수가 g-지수의 인용 중심 평가를 넘어 경력 기간과 저자 기여도까지 통합하는 확장된 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/1052_Updated_science-wide_author_databases_of_standardized_citati/review]] — 표준화된 인용 지표 데이터베이스를 활용하여 NK 복합 지수의 유효성을 검증하고 비교 분석할 수 있다.
+- 🔗 후속 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — h-index의 한계를 극복하기 위해 출판량, 인용 영향력, 경력 기간, 저자 기여도를 통합한 더 포괄적인 성과 지표를 개발했습니다.

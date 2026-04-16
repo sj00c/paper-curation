@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "LEO는 egocentric 2D 이미지, 3D point cloud, 텍스트를 입력으로 받아 3D 환경에서 인식, grounding, 추론, 계획, 행동을 수행할 수 있는 최초의 embodied generalist agent이다. 통일된 모델 아키텍처와 학습 목표로 3D vision-language alignment와 3D vision-language-action instruction tuning의 두 단계로 학습된다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Multimodal_Reasoning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2023_An Embodied Generalist Agent in 3D World.pdf"
 ---
@@ -87,3 +87,10 @@ LEO는 egocentric 2D 이미지, 3D point cloud, 텍스트를 입력으로 받아
 - Overall: 4/5
 
 **총평**: LEO는 3D 환경에서의 embodied generalist agent 개발에 중요한 이정표를 제시하며, 통일된 아키텍처로 다양한 3D 작업을 처리할 수 있음을 입증했다. LLM-assisted 데이터 생성 파이프라인은 3D 데이터 수집의 실질적 문제를 해결하는 실용적 기여이며, 광범위한 실험과 ablation study가 연구의 신뢰성을 높인다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — 둘 다 generalist robotics agent이지만 LEO는 3D 환경에, Gemini Robotics는 범용 로봇 지능에 더 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — TopV-Nav의 top-view spatial reasoning이 LEO의 3D 환경에서의 공간 인식과 계획 능력의 기초가 됩니다.
+- 🔗 후속 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA는 LEO의 3D embodied agent 개념을 generative world model로 발전시킨 후속 연구입니다.
+- 🔄 다른 접근: [[papers/1294_A_Generalist_Agent/review]] — 둘 다 generalist agent를 지향하지만 LEO는 3D 환경에서의 embodied 능력에 더 특화되어 있습니다.

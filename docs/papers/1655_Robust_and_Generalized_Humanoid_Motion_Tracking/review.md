@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "휴머노이드 로봇의 일반적인 전신 제어를 위해 dynamics-conditioned command aggregation 프레임워크를 제안하며, 인과적 temporal encoder와 multi-head cross-attention을 결합하여 노이즈가 있는 참조 동작에 강건하게 대응한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ma et al._2026_Robust and Generalized Humanoid Motion Tracking.pdf"
 ---
@@ -87,3 +89,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ma et al._2026_Robust and Generalized Hu
 - Overall: 4/5
 
 **총평**: 본 논문은 dynamics-conditioned command aggregation이라는 우아한 설계를 통해 컴팩트한 데이터셋으로도 강건한 일반화 휴머노이드 전신 제어를 달성하며, 낙하 회복의 통합과 실제 로봇 배포 검증으로 높은 실용성을 보여준다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 두 논문 모두 인간 모션을 휴머노이드 로봇이 추적하는 문제를 다루지만, 다른 네트워크 아키텍처를 사용한다.
+- 🔗 후속 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — GMT의 일반적인 모션 추적 방법론을 dynamics-conditioned aggregation으로 확장하여 노이즈에 더 강건하게 만든다.
+- 🏛 기반 연구: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — SONIC의 대규모 motion tracking 접근법이 본 논문의 강건한 모션 추적 프레임워크의 기반이 된다.
+- 🔗 후속 연구: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — 단일 로봇의 robust motion tracking을 여러 휴머노이드 형태로 확장하는 cross-humanoid 일반화입니다.
+- 🔄 다른 접근: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — 전역 정보 기반 motion tracking vs 부분 관측만으로 하는 locomotion이라는 다른 접근 방식입니다.
+- 🏛 기반 연구: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — 단일 로봇의 robust control이 여러 휴머노이드로의 일반화를 위한 기본 전제입니다.
+- ⚖️ 반론/비판: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — privileged information 없는 제한적 센서 vs robust한 전역 정보 활용이라는 대조적 관점입니다.
+- 🏛 기반 연구: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 강건하고 일반화된 휴머노이드 모션 추적의 기초적인 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1660_RuN_Residual_Policy_for_Natural_Humanoid_Locomotion/review]] — motion prior 기반 자연스러운 보행이 robust motion tracking의 기초 methodology가 됩니다.
+- 🔗 후속 연구: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — Robust and Generalized Motion Tracking이 Adam의 인간 수준 보행을 더 다양한 환경으로 확장합니다.
+- 🏛 기반 연구: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — Robust and Generalized Humanoid Motion Tracking의 견고한 동작 추적 기술이 GDAF의 정확한 보행 분석을 위한 기술적 기반이 된다.
+- 🔄 다른 접근: [[papers/2088_Make_Tracking_Easy_Neural_Motion_Retargeting_for_Humanoid_Wh/review]] — 강건하고 일반화된 휴머노이드 동작 추적과 신경 동작 리타겟팅이라는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — Any2Track은 교란 적응에 특화된 두 단계 학습을 제안하고 Robust and Generalized Motion Tracking은 일반화된 강건성을 추구하는 서로 다른 접근법입니다.

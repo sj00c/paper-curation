@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "컴퓨터과학 분야 2,453명 교수의 200,000개 이상 논문 데이터를 분석하여, 생산성이 초기에 급상승 후 완만히 감소한다는 기존의 정설(canonical narrative)이 실제로는 약 20%의 교수에게만 해당되며, 나머지 80%는 다양한 생산성 패턴을 보임을 밝혔다."
 tags:
+  - "cat/Science_Policy_and_Research_Dynamics"
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Way et al._2017_The misleading narrative of the canonical faculty productivity trajectory.pdf"
 ---
@@ -79,8 +80,7 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Way et al._2017_The misleading narrative
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1000_Productivity_Prominence_and_the_Effects_of_Academic_Environm/review]] — 학술 환경이 연구 생산성에 미치는 영향이 개별 교수들의 다양한 생산성 궤적 패턴을 설명하는 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 교수 생산성의 다양한 패턴과 예술, 과학 경력에서 나타나는 hot streak 현상이라는 서로 다른 성과 패턴을 비교 분석할 수 있습니다.
-- 🔗 후속 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — tenure 시스템이 교수들의 다양한 생산성 궤적 형성에 미치는 제도적 영향을 확장 분석합니다.
-- 🔗 후속 연구: [[papers/1000_Productivity_Prominence_and_the_Effects_of_Academic_Environm/review]] — 학술 환경이 생산성에 미치는 영향을 개별 연구자의 다양한 생산성 궤적 패턴으로 확장하여 분석합니다.
-- ⚖️ 반론/비판: [[papers/1028_Tenure_and_research_trajectories/review]] — 종신교수제의 다양한 영향을 보여주며 교수 생산성에 대한 단순한 서사가 잘못되었다는 관점을 뒷받침한다.
+- 🔄 다른 접근: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 초기 커리어의 좌절이 미치는 영향과 다양한 생산성 패턴은 모두 전통적인 학술 커리어 서사의 한계를 보여준다.
+- 🔗 후속 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 종신재직권과 연구 궤적의 관계는 교수 생산성의 다양한 패턴을 이해하는 데 중요한 맥락을 제공한다.
+- 🔄 다른 접근: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 교수 생산성의 다양한 패턴을 분석한다는 점에서 유사하지만, 핫 스트릭 현상보다는 전반적인 궤적의 이질성에 초점을 맞춘다.
+- ⚖️ 반론/비판: [[papers/1028_Tenure_and_research_trajectories/review]] — 표준적 교수 생산성 서사의 오해를 지적하는 연구는 종신교수제가 연구 궤적에 미치는 영향에 대한 기존 가정을 재검토하게 합니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 3D voxel 기반 belief map을 활용하여 zero-shot object navigation에서 LLM의 의미론적 추론과 계층적 공간 정보를 통합함으로써 로봇이 사전 학습이나 사전 구축 맵 없이 자연어로 지정된 대상을 미지의 환경에서 찾을 수 있도록 한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhou et al._2025_BeliefMapNav 3D Voxel-Based Belief Map for Zero-Shot Object Navigation.pdf"
 ---
@@ -88,7 +90,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhou et al._2025_BeliefMapNav 3D Voxel-B
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — MapNav는 BeliefMapNav와 유사하게 의미론적 맵을 사용하지만 주석이 달린 의미 맵 기반의 다른 접근법을 활용한다
-- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps는 BeliefMapNav의 3D voxel belief map에 대한 시각-언어 맵핑의 이론적 기반을 제공한다
-- 🔗 후속 연구: [[papers/1443_L3MVN_Leveraging_Large_Language_Models_for_Visual_Target_Nav/review]] — L3MVN은 BeliefMapNav의 개념을 대규모 언어 모델을 활용한 시각적 목표 네비게이션으로 확장한다
-- 🔗 후속 연구: [[papers/1469_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 3D voxel 기반 belief map을 휴머노이드 로봇을 위한 일반화된 멀티모달 인식으로 확장한 발전된 형태입니다.
+- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 3D voxel belief map 대신 annotated semantic map을 활용한 다른 메모리 기반 네비게이션 접근법
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — visual language map의 공간-언어 표현 개념이 3D voxel belief map 설계의 이론적 기반
+- 🏛 기반 연구: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — CLIP-Fields의 의미론적 필드 개념이 BeliefMapNav의 3D voxel 기반 belief map 구축의 이론적 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — ApexNav의 zero-shot 탐색 전략을 3D belief map과 LLM 추론으로 발전시킨 고도화된 접근법입니다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — Zero-shot 객체 네비게이션에서 3D voxel belief map과 비디오 기반 VLM 계획이 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — 실세계를 위한 open-vocabulary 쿼리 가능 장면 표현이 belief map 기반 네비게이션의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — 범용 zero-shot 목표 지향 네비게이션과 3D belief map 기반 객체 네비게이션을 결합할 수 있습니다.
+- 🔄 다른 접근: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — object navigation에서 서로 다른 지도 표현 - top-view reasoning vs 3D voxel-based belief map입니다.
+- 🔗 후속 연구: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — WMNav의 메모리 기반 탐색 전략을 zero-shot object navigation으로 확장한 접근법이다.
+- 🔗 후속 연구: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — CLIP-Fields의 의미론적 필드가 BeliefMapNav의 3D voxel belief map 구축에 기술적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — 둘 다 zero-shot object navigation을 다루지만 ApexNav는 의미-기하학 적응적 탐색을, BeliefMapNav는 3D voxel belief map을 사용하는 다른 접근법입니다.

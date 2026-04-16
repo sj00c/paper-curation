@@ -8,8 +8,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 1953-2024년 동안 발표된 480개 논문을 bibliometric 분석하여 비낙인화 언어(non-stigmatizing language)에 관한 비만 및 체중 관리 연구(RnSLO)의 진화, 주요 기관, 국제 협력 네트워크, 그리고 신흥 주제들을 종합적으로 분석했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Alshahrani_2026_Exploring Strategies for Addressing Weight Stigma An Analysis of Health Communication Dynamics and.pdf"
 ---
@@ -92,6 +93,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Alshahrani_2026_Exploring Strategies for
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 체중 관리 연구에서 비낙인화 언어 사용의 성별 격차를 이해하기 위해 컴퓨터 과학 분야의 체계적 성별 인용 불균형 연구가 참고된다.
-- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 체중 낙인화 연구의 국제 협력 네트워크 분석이 과학에서의 교차적 불평등 분석으로 확장될 수 있다.
-- 🔄 다른 접근: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 자폐 아동의 수면-행동 연구와 체중 낙인화 연구 모두 건강 관련 행동 결과를 scientometric 관점에서 분석한다.
+- 🔄 다른 접근: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 둘 다 사회적 낙인과 관련된 주제(체중 낙인 vs 청소년 행복)를 bibliometric 방법으로 분석한다.
+- 🔗 후속 연구: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 체중 낙인과 우울증 낙인을 연계하여 사회적 편견이 정신건강에 미치는 종합적 영향을 분석할 수 있다.
+- 🏛 기반 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 체중 낙인 연구에서 교차적 불평등 관점을 적용하여 과학 분야 내 다층적 편견을 이해할 수 있다.
+- 🏛 기반 연구: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 비낙인화 언어 연구의 재현성과 일관성을 평가하기 위해 사회과학 실험의 재현 가능성 평가 방법론을 적용할 수 있다.
+- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 비낙인화 언어 연구에서 인용 공정성 관점을 적용할 수 있는 확장 연구입니다.
+- 🏛 기반 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 건강 연구 분야의 성별 격차와 편견 문제에 대한 bibliometric 기초를 제공합니다.
+- 🔄 다른 접근: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 둘 다 사회적 낙인과 관련된 주제(청소년 행복 vs 체중 낙인)를 bibliometric 방법으로 분석한다.
+- 🔗 후속 연구: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 우울증 낙인과 체중 낙인을 연계하여 정신건강과 신체적 특성에 대한 사회적 편견을 종합 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 의료 기술 분야에서 보조기술과 체중 편견이라는 다른 주제의 서지계량 분석을 비교한다
+- 🔗 후속 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 체중 낙인 해결 전략 분석이 보건의료 인증 과정에서 환자 안전과 품질 개선으로 확장될 수 있기 때문

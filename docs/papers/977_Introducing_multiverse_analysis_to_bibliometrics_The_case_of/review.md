@@ -10,7 +10,8 @@ score: 4.0
 essence: "본 연구는 다중우주분석(multiverse analysis)을 문헌계량학에 도입하여 팀 규모가 파괴적 연구에 미치는 영향에 대한 모델 불확실성을 체계적으로 평가한다. Wu et al. (2019)의 '소규모 팀이 더 파괴적 연구를 생산한다'는 주장의 견고성을 재검토한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Statistical_Robustness_Mapping"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leibel and Bornmann_2026_Introducing multiverse analysis to bibliometrics The case of team size effects on disruptive resear.pdf"
 ---
@@ -85,6 +86,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Leibel and Bornmann_2026_Introducing mul
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 파괴적 연구 감소에 대한 견고한 증거를 다중우주분석으로 재검증하여 방법론적 견고성을 높일 수 있다.
-- 🏛 기반 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 팀 규모와 과학적 파괴성의 관계에 대한 원본 연구로서 다중우주분석의 검증 대상이 되는 핵심 이론을 제공한다.
-- 🔄 다른 접근: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 연구 평가에서 통계적 견고성과 AI 기반 평가 방법이라는 서로 다른 신뢰성 확보 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀은 개발하고 소규모 팀은 파괴적 연구를 한다는 원본 연구로, 다중우주분석의 검증 대상이 되는 기초 연구입니다.
+- 🔗 후속 연구: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 파괴성 감소에 대한 견고한 증거를 제시한 연구로, 팀 규모와 파괴적 연구의 관계를 다중우주분석으로 확장 검토할 수 있습니다.
+- 🔄 다른 접근: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 과학, 스타트업에서의 실패 동역학 정량화를 통해 연구 성과 분석의 다른 관점을 제시한다.
+- 🔄 다른 접근: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 파괴성 지수의 인용 인플레이션 문제와 팀 규모-파괴성 관계의 모델 불확실성은 서로 다른 방법론적 비판이다.
+- 🧪 응용 사례: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학학 분야의 실증 방법론 연구에서 다중우주분석이 실제 적용될 수 있는 구체적 사례를 보여준다.
+- 🔗 후속 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 서지계량학 분석에서 방법론적 다양성의 중요성을 멀티버스 분석으로 확장한다

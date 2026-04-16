@@ -1,3 +1,25 @@
+---
+title: "1809_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph"
+authors:
+  - "Xue Bin Peng"
+  - "Yunrong Guo"
+  - "Lina Halper"
+  - "Sergey Levine"
+  - "Sanja Fidler"
+date: "2022.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "대규모 비정형 모션 데이터셋으로부터 adversarial imitation learning과 unsupervised reinforcement learning을 결합하여 물리 시뮬레이션 캐릭터의 재사용 가능한 스킬 임베딩을 학습하는 데이터 기반 프레임워크를 제시한다. 학습된 스킬 임베딩은 다양한 새로운 과제에 효과적으로 전이되며 자연스러운 행동을 합성한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Peng et al._2022_ASE Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters.pdf"
+---
+
 # ASE: Large-Scale Reusable Adversarial Skill Embeddings for Physically Simulated Characters
 
 > **저자**: Xue Bin Peng, Yunrong Guo, Lina Halper, Sergey Levine, Sanja Fidler | **날짜**: 2022-05-04 | **URL**: [https://arxiv.org/abs/2205.01906](https://arxiv.org/abs/2205.01906)
@@ -65,3 +87,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 adversarial imitation learning과 information maximization을 결합하여 대규모 비정형 모션 데이터로부터 재사용 가능한 스킬 임베딩을 학습하는 혁신적인 프레임워크를 제시한다. 십 년 규모의 대규모 사전 학습과 탁월한 전이 성능으로 물리 기반 캐릭터 애니메이션 분야에 significant contribution을 제공한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — ASE의 adversarial skill embedding 개념을 발전시켜 BFM-Zero는 더 포괄적인 behavioral foundation model을 제시한다.
+- 🏛 기반 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — 대규모 모션 데이터셋으로부터 adversarial skill learning의 기초 방법론이 motion difficulty 평가에 활용된다.
+- 🔗 후속 연구: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — adversarial skill embeddings을 확장하여 어떤 disturbance 하에서도 모션을 추적할 수 있는 강건한 시스템을 구현한다.
+- 🧪 응용 사례: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — 대규모 reusable skill embeddings이 백만 단위 인간 모션 데이터 학습에 실제 적용되는 구체적 사례이다.
+- 🔗 후속 연구: [[papers/1612_PhysHMR_Learning_Humanoid_Control_Policies_from_Vision_for_P/review]] — ASE의 adversarial skill embedding이 PhysHMR의 비전 기반 제어 정책으로 확장되어 시각적 입력에서 직접 스킬을 학습할 수 있다
+- 🔄 다른 접근: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 둘 다 adversarial skill learning을 다루지만 AMP는 motion prior에, ASE는 large-scale reusable skill embedding에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — adversarial imitation learning의 기초 위에서 동작 난이도를 정량화하여 정책 성능과 본질적 어려움을 분리한다.
+- 🔄 다른 접근: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — ASE의 adversarial skill embedding과 다른 접근으로 unsupervised RL과 Forward-Backward 모델을 통한 behavioral foundation model을 제시한다.
+- 🏛 기반 연구: [[papers/2038_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — ASE의 재사용 가능한 적대적 스킬 임베딩이 KungfuBot2의 OMoE 아키텍처에 다양한 동작 스킬의 효율적 표현 기반 제공

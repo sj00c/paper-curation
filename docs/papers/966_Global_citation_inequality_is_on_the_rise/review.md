@@ -10,6 +10,7 @@ score: 4.0
 essence: "2000-2015년 15년간 4백만 명의 저자와 2,600만 편의 논문을 분석한 결과, 상위 1% 인용 엘리트 과학자들의 인용 점유율이 14-21%로 증가하며 글로벌 인용 불평등(Gini 계수 0.65→0.70)이 심화되고 있음을 보여줌."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
   - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nielsen and Andersen_2021_Global citation inequality is on the rise.pdf"
@@ -80,10 +81,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nielsen and Andersen_2021_Global citatio
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 글로벌 인용 불평등과 성별 불평등은 모두 과학계 내 구조적 불평등 문제를 다른 차원에서 다룬다.
-- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 개인 연구자의 과학적 산출물 정량화 지수가 인용 불평등 측정과 분석의 기초 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 인용 불평등이 연구 펀딩 분배에서도 나타나는 매튜 효과로 확장되어 불평등이 심화되는 메커니즘을 보여준다.
-- 🏛 기반 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 전 세계적 인용 불평등의 증가가 인용 분포의 보편성을 통한 객관적 측정의 필요성을 뒷받침합니다.
-- 🏛 기반 연구: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 글로벌 인용 불평등 증가라는 구조적 변화가 CD 지수의 인용 인플레이션에 기여하는 맥락을 설명한다.
-- 🔄 다른 접근: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 성별 차원의 불평등과 전반적 인용 불평등은 과학계 불평등을 서로 다른 관점에서 조명한다.
-- 🏛 기반 연구: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 기업지배구조 연구의 인용 불평등과 지적 구조 분석에서 글로벌 인용 불평등 증가 현상을 이해하는 기반이 된다.
+- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 글로벌 인용 불평등을 성별과 인종 등 교차적 불평등으로 확장하여 분석한다
+- 🔄 다른 접근: [[papers/1026_Systematic_Inequality_and_Hierarchy_in_Faculty_Hiring_Networ/review]] — 과학계 불평등을 인용 점유율과 채용 네트워크라는 다른 측면에서 분석한다
+- 🏛 기반 연구: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 개별 연구자의 연구 성과 정량화가 인용 불평등 분석의 방법론적 기초를 제공한다
+- 🔗 후속 연구: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 과학 펀딩에서 마태 효과가 글로벌 인용 불평등 증가의 구조적 원인 중 하나로서 불평등 심화 메커니즘을 설명한다.
+- ⚖️ 반론/비판: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 집단 신용 배분의 공정성 추구가 증가하는 글로벌 인용 불평등 현실과 대조되어 이상과 현실 간 괴리를 보여준다.
+- 🏛 기반 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 글로벌 인용 불평등 증가 현상이 저널 명성에 따른 인용 편향의 근본적 배경을 제공한다.
+- 🧪 응용 사례: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 글로벌 인용 불평등 증가 현상이 보편적 인용 분포 정규화의 실제적 필요성을 보여준다.
+- 🔗 후속 연구: [[papers/932_An_empirical_analysis_of_open_access_citation_advantages_in/review]] — 전세계 인용 불평등 증가 현상을 도서관정보학 분야의 개방접근 효과 분석으로 구체화합니다.
+- ⚖️ 반론/비판: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 인도의 급속한 연구 생산성 증가가 글로벌 인용 불평등 심화 현상에 미치는 영향을 대조적으로 검토할 수 있다.
+- ⚖️ 반론/비판: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 글로벌 인용 불평등 증가 현상이 집단 신용 배분 알고리즘의 공정성 목표와 대조되는 현실적 도전을 제시한다.
+- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 전 세계적 인용 불평등 증가 현상을 citation justice 관점에서 해결할 수 있는 방안 제시로 확장됩니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "대규모 Vision-Language Model(VLM)을 기반으로 한 Vision-Language-Action(VLA) 모델들을 로봇 매니퓰레이션에 적용하는 연구의 첫 번째 체계적 설문조사로, Monolithic 모델과 Hierarchical 모델이라는 두 가지 주요 아키텍처 패러다임을 제시한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Language_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shao et al._2025_Large VLM-based Vision-Language-Action Models for Robotic Manipulation A Survey.pdf"
 ---
@@ -90,8 +92,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shao et al._2025_Large VLM-based Vision-
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — Vision-Language-Action 모델의 모듈별 해부학적 분석이 VLA 아키텍처 이해의 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — VLA 모델의 아키텍처 분류에 대한 서로 다른 체계적 접근과 관점을 보여준다.
-- 🔗 후속 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — VLA 모델의 개념, 진전, 응용에 대한 확장된 분석과 로봇 매니퓰레이션의 구체적 적용이 연결된다.
-- 🔄 다른 접근: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — VLA 모델 분류에서 pure VLA와 hierarchical/monolithic 관점이라는 서로 다른 체계적 접근을 보여준다.
-- 🔄 다른 접근: [[papers/1509_OpenHelix_A_Short_Survey_Empirical_Analysis_and_Open-Source/review]] — VLA 아키텍처 분석에서 dual-system과 hierarchical/monolithic 분류라는 서로 다른 체계적 접근을 보여준다.
+- 🔄 다른 접근: [[papers/1519_Pure_Vision_Language_Action_VLA_Models_A_Comprehensive_Surve/review]] — 둘 다 VLA 모델의 체계적 분석이지만, Large VLM-based 서베이는 로봇 매니퓰레이션에, Pure VLA 서베이는 VLA 모델 전반에 초점을 둔다.
+- 🔗 후속 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — Large VLM-based VLA 서베이가 Vision-Language-Action Models의 일반적 개념을 로봇 매니퓰레이션 영역에서 구체화하고 심화시킨다.
+- 🧪 응용 사례: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — Large VLM-based VLA 모델들의 이론적 분류가 VLABench의 언어 조건부 로봇 제어 벤치마크 설계에 실용적 기준을 제공한다.
+- 🔗 후속 연구: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — VLA Models for Robotics 리뷰를 대규모 VLM 기반 시스템으로 구체화하여 로봇 매니퓰레이션에 특화한다.
+- 🔗 후속 연구: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — What Matters in Building VLA Models은 대규모 VLM 기반 VLA의 핵심 설계 요소를 실용적 관점에서 심화함

@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "Vision-Language-Action 모델의 실제 배포를 위해 structured pruning, SFT/RL 기반 성능 복구, 그리고 양자화를 결합한 RLRC 압축 방법을 제안하여 8배의 메모리 감소와 2.3배의 처리량 향상을 달성한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Model_Scaling_Performance"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen and Li_2025_RLRC Reinforcement Learning-based Recovery for Compressed Vision-Language-Action Models.pdf"
 ---
@@ -83,8 +85,13 @@ Vision-Language-Action 모델의 실제 배포를 위해 structured pruning, SFT
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 VLA 아키텍처를 압축하고 최적화하는 방법론을 제시하여 실제 배포 가능성을 높인다.
-- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — VLA 모델의 실시간 실행이라는 동일한 목표를 압축과 스트리밍이라는 다른 접근법으로 해결한다.
-- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — VLA 모델의 효율성 향상을 압축과 양자화라는 상호 보완적인 방법으로 달성한다.
-- 🧪 응용 사례: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 대규모 VLA 모델을 실제 배포를 위해 압축과 최적화 기법을 적용하는 구체적 사례를 제시한다.
-- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — VLA 모델의 실시간 실행을 압축 기법과 스트리밍 추론이라는 서로 다른 최적화 방법으로 달성한다.
+- 🔄 다른 접근: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — RLRC의 압축과 SpecPrune-VLA의 pruning 가속화는 VLA 모델 효율성 향상을 위한 서로 다른 최적화 전략이다.
+- 🔗 후속 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — BitVLA의 1-bit quantization이 RLRC의 structured pruning과 quantization을 더 극단적인 압축으로 발전시킨다.
+- 🧪 응용 사례: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — RLRC의 압축 기술이 Running VLAs at Real-time Speed의 실시간 실행 요구사항을 만족하는 실제적 해결책을 제공한다.
+- 🔄 다른 접근: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — 두 논문 모두 VLA 모델의 효율화를 다루지만 압축과 어텐션 최적화의 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — OneDP의 추론 속도 개선과 RLRC의 모델 압축이 상호 보완적인 효율화 방법이다.
+- 🏛 기반 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RLRC의 RL-based recovery를 위한 효율적인 VLA reinforcement learning training framework를 제공한다.
+- 🔗 후속 연구: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — NORA-1.5의 성능을 실제 배포에 활용하기 위해 model compression과 RL 기반 성능 복구 방법을 적용할 수 있다.
+- 🔗 후속 연구: [[papers/1532_RLinf-VLA_A_Unified_and_Efficient_Framework_for_Reinforcemen/review]] — RLinf-VLA의 효율적인 RL 훈련 프레임워크가 RLRC의 압축된 VLA 모델 성능 복구와 결합되어 전체 배포 파이프라인을 완성한다.
+- ⚖️ 반론/비판: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — RLRC의 모델 압축과 RoboMonkey의 샘플링 확장이 효율성과 성능의 상반된 접근법이다.
+- 🔄 다른 접근: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — 두 논문 모두 로봇 transformer의 효율화를 다루지만 어텐션 최적화와 모델 압축의 다른 접근법이다.

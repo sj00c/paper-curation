@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "RoboFlamingo는 공개 소스 VLM인 OpenFlamingo를 기반으로 하여 로봇 조작 정책을 구축하는 프레임워크로, 시각-언어 이해와 의사결정을 분리하고 최소한의 미세조정으로 높은 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Instruction_Following"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2023_Vision-Language Foundation Models as Effective Robot Imitators.pdf"
 ---
@@ -90,8 +92,19 @@ RoboFlamingo는 공개 소스 VLM인 OpenFlamingo를 기반으로 하여 로봇 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual Instruction Tuning의 vision-language 연결 기법을 로봇 정책 학습에 적용한 구체적 사례다
-- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 둘 다 VLM 기반 로봇 정책이지만 RoboFlamingo는 OpenFlamingo, OpenVLA는 처음부터 설계된 차이가 있다
-- 🔗 후속 연구: [[papers/1433_In-Context_Imitation_Learning_via_Next-Token_Prediction/review]] — in-context learning을 통한 모방 학습으로 RoboFlamingo의 few-shot 학습 능력을 이론적으로 뒷받침한다
-- 🧪 응용 사례: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — Human2Robot과 함께 인간-로봇 행동 전이에서 vision-language 모델의 활용 방안을 보완적으로 제시한다
-- 🔄 다른 접근: [[papers/1506_Open-World_Object_Manipulation_using_Pre-trained_Vision-Lang/review]] — Pre-trained vision-language model을 로봇 모방 학습에 활용하는 서로 다른 접근 방식을 보여준다.
+- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA는 RoboFlamingo와 유사한 VLM 기반 로봇 정책이지만 오픈소스이며 더 광범위한 데이터셋을 활용한다.
+- 🏛 기반 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — Prismatic VLMs 연구는 RoboFlamingo가 기반으로 하는 vision-language 모델의 설계 공간에 대한 체계적 분석을 제공한다.
+- 🏛 기반 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — PaLI-X는 RoboFlamingo가 활용하는 다국어 vision-language 모델의 확장된 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo는 RoboFlamingo와 같은 일반화 가능한 로봇 정책이지만 더 광범위한 embodiment를 지원하는 차별점이 있다.
+- 🔄 다른 접근: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — 둘 다 foundation model을 로봇 조작에 활용하지만 1594는 분할 마스크 기반, RoboFlamingo는 VLM 기반 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — self-improving generalist agent 개념을 VLM 기반 imitation learning으로 확장하여 더 효율적인 로봇 학습을 제시합니다.
+- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual instruction tuning의 기본 방법론을 제공하여 RoboFlamingo의 VLM 기반 로봇 정책 구축에 핵심적인 이론적 토대를 마련한다.
+- 🔗 후속 연구: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — RoboFlamingo의 VLM 활용 접근을 zero modification으로 단순화하여 더 실용적이고 효율적인 방법론을 제시한다.
+- 🏛 기반 연구: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — Vision-Language Foundation Models as Robot Imitators의 기본 VLM 활용법이 FSD의 spatial reasoning을 통한 zero-shot generalization에 기초가 된다.
+- 🏛 기반 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — VLM의 로봇 적용을 위한 설계 최적화의 기초가 되는 foundation model 연구
+- 🏛 기반 연구: [[papers/1506_Open-World_Object_Manipulation_using_Pre-trained_Vision-Lang/review]] — Vision-Language Foundation Models의 로봇 모방 학습 활용 연구가 MOO의 pre-trained VLM 기반 객체 조작 방법론의 기초가 된다.
+- 🔗 후속 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — Vision-Language Foundation Models를 로봇 모방 학습에 활용하는 것이 DIAL의 CLIP 기반 명령어 생성을 더 일반적인 프레임워크로 확장한다.
+- 🔄 다른 접근: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — 둘 다 foundation model을 로봇 조작에 전이하지만 RoboFlamingo는 VLM 기반 정책 구축에 집중하는 다른 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — Visual instruction tuning의 기본 방법론을 로봇 조작 정책으로 확장하여 실제 구현체인 RoboFlamingo를 만드는 데 기여한다.
+- 🏛 기반 연구: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — VLM 기반 로봇 정책의 기본 접근법을 제공하여 VLA-0의 zero modification 방법론의 이론적 근거를 마련한다.
+- 🧪 응용 사례: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — Sigmoid Loss의 메모리 효율적인 언어-이미지 학습이 Vision-Language Foundation Models의 효과적인 로봇 모방 학습에서 활용될 수 있습니다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 접촉 기반 조작 작업을 위해 AR 기반 촉각 피드백 텔레작동 시스템 TactAR과 slow-fast 계층 구조의 Reactive Diffusion Policy (RDP) 알고리즘을 제안하여, 고주파 촉각 피드백 기반 폐루프 제어와 복잡한 궤적 모델링을 통합한다."
 tags:
-  - "cat/Humanoid_Teleoperation_and_Interaction"
-  - "sub/Force-Feedback_Teleoperation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xue et al._2025_Reactive Diffusion Policy Slow-Fast Visual-Tactile Policy Learning for Contact-Rich Manipulation.pdf"
 ---
@@ -91,7 +92,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xue et al._2025_Reactive Diffusion Polic
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1604_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — AR 기반 촉각 피드백 시스템 TactAR과 웨어러블 촉각 장갑 OSMO가 모두 촉각 정보를 활용한 로봇 제어라는 동일한 문제를 다룬다.
-- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — slow-fast 계층 구조의 Reactive Diffusion Policy가 기본적인 Diffusion Policy의 visuomotor 학습 프레임워크를 기반으로 확장되었다.
-- 🔗 후속 연구: [[papers/1419_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — 촉각 피드백과 시각 정보를 통합한 RDP 접근법이 삼중 계층 구조의 H³DP로 더욱 복잡한 visuomotor 정책으로 발전할 수 있다.
-- 🔄 다른 접근: [[papers/1604_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — 인간-로봇 스킬 전이를 위한 오픈소스 촉각 장갑 OSMO와 AR 기반 촉각 피드백 TactAR이 동일한 촉각 인터페이스 문제를 다룬다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — diffusion policy의 기본 이론과 visuomotor learning 방법론을 제공하여 RDP의 slow-fast hierarchical diffusion policy 설계에 필수적인 기술적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — hierarchical diffusion policy의 개념을 visual-tactile feedback과 결합하여 접촉 기반 조작 작업에서의 계층적 제어를 구현한다.
+- 🧪 응용 사례: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — real-time action chunking 기법을 reactive diffusion policy에 적용하여 고주파 촉각 피드백과 복잡한 궤적 모델링의 실시간 통합을 달성한다.
+- 🔄 다른 접근: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — RDP의 visual-tactile policy와 달리 vision-based dexterous manipulation을 위한 sim-to-real 강화학습 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — RDP의 tactile feedback을 heterogeneous pre-training과 결합하여 proprioceptive-visual-tactile learning을 통합한 더 강력한 policy를 개발할 수 있다.
+- 🔄 다른 접근: [[papers/1558_RVT-2_Learning_Precise_Manipulation_from_Few_Demonstrations/review]] — Reactive Diffusion Policy가 slow-fast 시각-촉각 학습에 중점을 두는 반면, RVT-2는 순수 시각 기반의 고정밀 조작 학습에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1374_DynamicVLA_A_Vision-Language-Action_Model_for_Dynamic_Object/review]] — Reactive Diffusion Policy의 slow-fast visual-tactile learning이 DynamicVLA의 perception-action latency 해결에 대한 확장된 접근 방식을 제시한다.

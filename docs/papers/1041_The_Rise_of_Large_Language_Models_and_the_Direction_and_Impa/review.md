@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "대규모 언어 모델(LLM)이 2023년 이후 급격히 확산되면서 연방 연구 자금 신청 제안서의 의미론적 독창성을 감소시키고 있으며, 이러한 변화가 NIH에서는 제안 성공률과 논문 출판량 증가와 연관되지만 NSF에서는 그러한 연관성이 관찰되지 않음을 보여준다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/AI_Impact_on_Computer_Science"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qian et al._2026_The Rise of Large Language Models and the Direction and Impact of US Federal Research Funding.pdf"
 ---
@@ -84,9 +85,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qian et al._2026_The Rise of Large Langu
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM이 과학 논문 작성에 미치는 영향을 연방 연구 자금 신청서의 의미론적 독창성 변화라는 구체적 사례로 적용했다.
-- 🔗 후속 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구 참신성을 감소시킨다는 발견을 연구 자금 신청서의 의미론적 독창성 감소로 확장하여 검증했다.
-- 🧪 응용 사례: [[papers/996_Partisan_disparities_in_the_funding_of_science_in_the_United/review]] — LLM이 연구비 신청에 미치는 영향을 미국 과학 자금 배분의 정치적 양극화 맥락에서 분석할 수 있다.
-- 🧪 응용 사례: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM이 과학 논문 작성에 미치는 영향을 연방 연구 자금 신청서의 의미론적 독창성 변화에 적용한 사례다.
-- 🔗 후속 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — 대규모언어모델이 과학 연구 방향과 영향에 미치는 변화를 과학계량학 관점에서 체계적으로 분석할 수 있다.
-- 🏛 기반 연구: [[papers/1067_After_science/review]] — LLM이 연구 방향에 미치는 영향에 대한 분석이 과학 이후 시대 논의의 배경이 됨
+- 🔗 후속 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 과학 논문에서 LLM 사용 정량화가 연방 연구 자금에 미치는 영향 분석의 방법론적 기초를 제공한다.
+- ⚖️ 반론/비판: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 가속화된 글쓰기가 적절한 검증 없이 출판되는 문제가 연구 제안서의 의미론적 독창성 감소와 연결된다.
+- 🏛 기반 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — 대규모 언어 모델 시대의 과학적 생산성 변화가 연방 펀딩 영향 분석의 이론적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — LLM이 연구 제안서의 독창성을 감소시키는 현상과 과학적 이해의 환상 문제는 AI가 과학 연구에 미치는 부정적 영향의 다른 측면이다.
+- 🔄 다른 접근: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구에 미치는 영향을 다루지만, 연구 신규성 감소보다는 제안서의 의미론적 독창성과 펀딩 성공률 변화에 집중한다.
+- 🔄 다른 접근: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI가 과학적 이해에 미치는 부정적 영향의 서로 다른 측면들로 상호보완적 분석을 제공한다.
+- 🔗 후속 연구: [[papers/1078_Quantifying_the_use_and_potential_benefits_of_artificial_int/review]] — LLM이 과학에 미치는 영향을 AI 기술 전반의 연구 방향성 변화로 확장하여 분석한다.
+- 🔗 후속 연구: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — 고등교육에서 AI와 LLM의 영향을 지식관리 관점에서 확장 분석합니다.
+- 🏛 기반 연구: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 대규모 언어모델의 부상이 AI 기반 투어 가이딩 기술 발전 방향과 연구 동향 변화에 미치는 영향을 이해하는 데 필수적인 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — LLM이 비즈니스 의사결정에 미치는 영향 분석의 이론적 배경을 제공한다

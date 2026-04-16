@@ -1,3 +1,24 @@
+---
+title: "2033_Keep_on_Going_Learning_Robust_Humanoid_Motion_Skills_via_Sel"
+authors:
+  - "Yang Zhang"
+  - "Zhanxiang Cao"
+  - "Buqing Nie"
+  - "Haoyang Li"
+  - "Zhong Jiangwei"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 장시간 안정적 운영을 위해 선택적 적대적 공격(SA2RT)을 통한 견고한 동작 제어 정책을 학습하는 방법을 제안한다. 공격 예산 제약 하에서 취약한 상태와 행동을 찾아 표적화된 섭동을 가하여 정책을 강화한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Keep on Going Learning Robust Humanoid Motion Skills via Selective Adversarial Training.pdf"
+---
+
 # Keep on Going: Learning Robust Humanoid Motion Skills via Selective Adversarial Training
 
 > **저자**: Yang Zhang, Zhanxiang Cao, Buqing Nie, Haoyang Li, Zhong Jiangwei, Qiao Sun, Xiaoyi Hu, Xiaokang Yang, Yue Gao | **날짜**: 2025-07-11 | **URL**: [https://arxiv.org/abs/2507.08303](https://arxiv.org/abs/2507.08303)
@@ -65,3 +86,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 선택적 적대적 공격을 통해 인간형 로봇의 동작 견고성을 체계적으로 강화하는 혁신적인 방법을 제시하며, 실제 로봇 플랫폼에서 40% 성공률 향상 등 괄목할 만한 성과를 입증했다. 다만 단일 로봇 플랫폼 실험과 공격 예산 설정의 일반화 측면에서 개선의 여지가 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — 휴머노이드 안전성 확보에서 선택적 적대적 공격 대신 제어 배리어 함수를 활용한 안전 보장 방법을 제시한다.
+- 🔗 후속 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — SA2RT를 통한 견고성 강화와 낙하 보호 제어를 결합하여 포괄적인 휴머노이드 안전 시스템을 구축할 수 있다.
+- 🏛 기반 연구: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — 분포 외 상황 탐지 및 실패 처리 메커니즘이 적대적 공격 하에서의 정책 강화에 대한 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — Keep on Going의 선택적 적대적 강화가 Spectral Normalization의 Lipschitz 제약 정책과 결합되어 더 안정적인 견고성 달성
+- 🏛 기반 연구: [[papers/1643_RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with/review]] — 물리 피드백을 통한 강화학습이 Keep on Going의 적대적 공격 기반 정책 강화에 실제 환경 기반 검증 제공
+- 🔗 후속 연구: [[papers/1834_Chasing_Stability_Humanoid_Running_via_Control_Lyapunov_Func/review]] — sequential skill learning을 통한 robust한 motion skill이 CLF-RL 기반 달리기의 연속성과 안정성을 더욱 향상시킬 수 있다
+- 🔗 후속 연구: [[papers/2017_HWC-Loco_A_Hierarchical_Whole-Body_Control_Approach_to_Robus/review]] — HWC-Loco의 계층적 안전 제어가 Keep on Going의 적대적 강화 방법과 결합되어 더 견고한 로봇 제어 달성 가능

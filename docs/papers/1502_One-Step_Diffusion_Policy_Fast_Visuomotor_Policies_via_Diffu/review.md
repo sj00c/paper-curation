@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "One-Step Diffusion Policy (OneDP)는 사전 학습된 diffusion policy의 지식을 단일 단계 action generator로 distill하여 로봇 제어의 추론 속도를 42배 향상시킨다. KL divergence 최소화를 통해 원본 policy 분포와의 정렬을 보장하면서도 2%-10%의 추가 학습 비용만 필요하다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
   - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_One-Step Diffusion Policy Fast Visuomotor Policies via Diffusion Distillation.pdf"
@@ -91,12 +92,20 @@ One-Step Diffusion Policy (OneDP)는 사전 학습된 diffusion policy의 지식
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — consistency policy의 가속화 원리가 OneDP의 단일 단계 action generation 설계에 핵심 이론적 기반을 제공한다
-- 🧪 응용 사례: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — diffusion policy 가속화 기법이 NavDP의 실시간 trajectory generation 최적화에 직접 적용 가능하다
-- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — streaming flow policy의 실시간 처리 프레임워크를 OneDP의 단일 단계 추론과 결합하여 지연 시간을 더욱 단축할 수 있다
-- 🔄 다른 접근: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — 둘 다 diffusion 기반이지만 hierarchical approach vs one-step approach로 서로 다른 속도-성능 트레이드오프를 제시합니다.
-- 🏛 기반 연구: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — diffusion policy의 추론 속도 최적화 기법이 NavDP의 실시간 trajectory generation 성능 향상에 필수적이다
-- 🧪 응용 사례: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — 실시간 action chunking 알고리즘이 배드민턴의 정밀한 타이밍 제어와 diffusion policy 가속화에 모두 적용 가능하다
-- 🔄 다른 접근: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — 둘 다 빠른 정책 추론을 목표하지만 VITA는 flow matching, One-Step Diffusion은 diffusion 기반의 다른 접근법이다
-- 🔗 후속 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — One-Step Diffusion Policy의 단일 스텝 생성이 Consistency Policy의 저지연 추론을 더욱 극단적으로 최적화할 수 있다.
-- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — One-step diffusion policy가 original diffusion policy의 추론 속도 문제를 해결하여 실시간 visuomotor control을 가능하게 한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 핵심 개념을 OneDP가 단일 단계로 압축하여 효율성을 극대화한다.
+- 🔄 다른 접근: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — 두 논문 모두 diffusion 기반 정책의 추론 속도 개선을 목표로 하지만 distillation과 consistency model로 접근법이 다르다.
+- 🔗 후속 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — SARA-RT의 모델 효율화 연구를 OneDP가 추론 시간 최적화 관점에서 보완한다.
+- 🔄 다른 접근: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — OneDP의 single-step distillation과 달리 real-time chunking을 통해 inference 지연 문제를 해결하는 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — OneDP가 개선하고자 하는 기존 diffusion/flow-matching policy의 streaming 방법론과 성능 한계를 제시한다.
+- 🔄 다른 접근: [[papers/1395_FlowPolicy_Enabling_Fast_and_Robust_3D_Flow-based_Policy_via/review]] — 둘 다 빠른 정책 추론을 목표로 하지만 Consistency Flow Matching vs One-Step Diffusion이라는 다른 가속화 기법을 사용한다.
+- 🔄 다른 접근: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — 고품질 visuomotor policy 생성에서 consistency training vs diffusion의 다른 접근
+- 🏛 기반 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — one-step diffusion policy의 기본 이론을 제공하여 RTC의 비동기적 action chunk 생성과 실행에 필요한 빠른 inference 기법의 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — OneDP의 추론 속도 개선과 RLRC의 모델 압축이 상호 보완적인 효율화 방법이다.
+- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — One-Step Diffusion Policy는 VLA 실시간 실행과 유사한 목표로 diffusion 정책의 추론 속도를 획기적으로 개선한다.
+- 🏛 기반 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — 모델 효율화의 맥락에서 SARA-RT와 OneDP가 상호 보완적인 최적화 방법이다.
+- 🔄 다른 접근: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — One-Step Diffusion Policy는 VITA와 유사하게 추론 속도와 효율성을 획기적으로 개선하지만 diffusion 기반 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — one-step diffusion을 KV 캐싱과 결합하여 더 빠른 visuomotor policy를 구현할 수 있습니다.
+- 🔄 다른 접근: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — 단일 스텝 diffusion 기반 VLA 가속화에 대한 다른 접근 방식을 제시합니다.
+- 🔄 다른 접근: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Diffusion policy의 속도 개선을 위한 또 다른 one-step 접근방식을 제시합니다.
+- 🔄 다른 접근: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — One-Step Diffusion Policy의 빠른 추론과 Discrete Diffusion VLA의 adaptive action decoding은 diffusion 기반 정책에서 효율성을 다르게 접근한다.
+- 🔄 다른 접근: [[papers/1374_DynamicVLA_A_Vision-Language-Action_Model_for_Dynamic_Object/review]] — dynamic object manipulation을 위한 continuous inference 대신 one-step diffusion을 통한 빠른 정책 실행

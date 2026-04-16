@@ -1,3 +1,24 @@
+---
+title: "1914_End-to-End_Humanoid_Robot_Safe_and_Comfortable_Locomotion_Po"
+authors:
+  - "Zifan Wang"
+  - "Xun Yang"
+  - "Jianzhuang Zhao"
+  - "Jiaming Zhou"
+  - "Teli Ma"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 안전하고 편안한 네비게이션을 위해 LiDAR 포인트 클라우드를 모터 커맨드로 직접 매핑하는 end-to-end 정책을 제시하며, CMDP 프레임워크에서 CBF 원리를 비용 함수로 변환하여 P3O로 안전 제약을 강제한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_End-to-End Humanoid Robot Safe and Comfortable Locomotion Policy.pdf"
+---
+
 # End-to-End Humanoid Robot Safe and Comfortable Locomotion Policy
 
 > **저자**: Zifan Wang, Xun Yang, Jianzhuang Zhao, Jiaming Zhou, Teli Ma, Ziyao Gao, Arash Ajoudani, Junwei Liang | **날짜**: 2025-08-11 | **URL**: [https://arxiv.org/abs/2508.07611](https://arxiv.org/abs/2508.07611)
@@ -63,3 +84,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 LiDAR 기반 end-to-end 정책, CBF-CMDP-P3O 통합 프레임워크, HRI 기반 편안함 설계를 통해 휴머노이드 로봇의 안전하고 사회적으로 수용 가능한 네비게이션 문제를 종합적으로 해결한 강력한 기여를 제시한다. 형식적 안전 보장과 실제 배포의 균형을 잘 맞추었으며, 다만 비선형 동역학과 도메인 갭 분석 강화가 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — 둘 다 LiDAR 기반 휴머노이드 보행을 다루지만 End-to-End 정책은 안전성을, Gallant는 3D 제약 지형 횡단을 중심으로 한다.
+- 🏛 기반 연구: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — CMDP에서 CBF 원리를 비용 함수로 변환하는 접근법이 SHIELD의 CBF 기반 안전 제어 이론에 기반한다.
+- 🔗 후속 연구: [[papers/1693_STATE-NAV_Stability-Aware_Traversability_Estimation_for_Bipe/review]] — End-to-End 안전 보행 정책을 STATE-NAV의 안정성 인식 횡단 추정과 결합하면 더 강건한 지형 네비게이션이 가능하다.
+- 🔄 다른 접근: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — Hiking in the Wild의 perceptive parkour가 CBF 기반 안전 제약이 아닌 다른 방식으로 복잡한 지형 내비게이션 문제를 해결하는 접근을 제시한다.
+- 🧪 응용 사례: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — Geometry-Aware Predictive Safety Filters 연구가 end-to-end 정책의 P3O 안전 제약을 실제 휴머노이드 시스템에 적용하는 구체적인 구현 방법을 제공한다.
+- 🏛 기반 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — Gait-Adaptive의 통합 정책 기반 보행 적응이 End-to-End 안전 보행 정책의 실시간 제어 구현에 기반 기술을 제공한다.
+- 🔗 후속 연구: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — Gallant의 3D 제약 지형 횡단 능력을 End-to-End 안전 정책과 결합하면 복잡한 환경에서도 안전한 네비게이션이 가능하다.

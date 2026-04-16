@@ -1,3 +1,25 @@
+---
+title: "2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy"
+authors:
+  - "Liang Heng"
+  - "Yihe Tang"
+  - "Jiajun Xu"
+  - "Henghui Bao"
+  - "Di Huang"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "IMU 기반 모션 트래킹을 활용한 휴머노이드 전신 손재주 조작 텔레오퍼레이션 시스템으로, learning-based hand retargeting과 human 데이터 사전학습을 통해 최소 데이터로 높은 일반화 성능을 달성한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Heng et al._2026_HumDex Humanoid Dexterous Manipulation Made Easy.pdf"
+---
+
 # HumDex: Humanoid Dexterous Manipulation Made Easy
 
 > **저자**: Liang Heng, Yihe Tang, Jiajun Xu, Henghui Bao, Di Huang, Yue Wang | **날짜**: 2026-03-12 | **URL**: [https://arxiv.org/abs/2603.12260](https://arxiv.org/abs/2603.12260)
@@ -68,3 +90,18 @@ IMU 기반 모션 트래킹을 활용한 휴머노이드 전신 손재주 조작
 - Overall: 4/5
 
 **총평**: IMU 기반 휴대용 텔레오퍼레이션과 learning-based hand retargeting, human 데이터 활용의 three-pronged 접근으로 humanoid 손재주 조작 데이터 수집의 오래된 병목을 효과적으로 해결한 높은 수준의 시스템 논문이다. 재현성 높은 설계와 충분한 실험 검증으로 실제 영향력이 클 것으로 예상된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2008_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We/review]] — HumanoidExo의 full-body exoskeleton과 달리 HumDex는 IMU-based tracking에 집중한 경량화된 teleoperation 방식을 제안한다.
+- 🔗 후속 연구: [[papers/1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human/review]] — ByteDexter Hand의 20-DoF dexterous teleoperation이 HumDex의 humanoid hand manipulation을 더 정교한 multi-finger control로 확장할 수 있다.
+- 🏛 기반 연구: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — DexterCap의 affordable mocap system이 HumDex의 learning-based hand retargeting을 위한 데이터 수집 기초 기술을 제공한다.
+- 🔄 다른 접근: [[papers/1997_Humanoid_Manipulation_Interface_Humanoid_Whole-Body_Manipula/review]] — HuMI의 휴대용 하드웨어가 HumDex의 IMU 기반 시스템과 다른 방식으로 전신 조작 데이터를 수집합니다.
+- 🔄 다른 접근: [[papers/1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f/review]] — 둘 다 실시간 양손 조작 텔레오퍼레이션이지만 HumDex는 IMU 기반, Bunny-VisionPro는 비전 기반
+- 🔗 후속 연구: [[papers/2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti/review]] — HumDex의 IMU 기반 모션 트래킹이 TWIST2의 홀리스틱 데이터 수집 시스템과 결합되어 더 포괄적인 텔레오퍼레이션 플랫폼 구축 가능
+- 🏛 기반 연구: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — OSMO의 촉각 글러브 기술이 HumDex의 손재주 조작에 촉각 피드백을 추가하여 성능 향상 가능
+- 🔗 후속 연구: [[papers/1876_DIAL_Distilling_Intent-Aware_Latents_for_Vision-Language-Act/review]] — HumDex의 dexterous manipulation 간편화가 SoftHand Model-W의 underactuated 구조를 더욱 효과적으로 활용할 수 있는 제어 방법을 제공한다
+- 🔗 후속 연구: [[papers/1997_Humanoid_Manipulation_Interface_Humanoid_Whole-Body_Manipula/review]] — HumDex의 IMU 기반 dexterous manipulation이 HuMI의 전신 조작을 손재주 제어로 확장합니다.
+- 🔄 다른 접근: [[papers/2008_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We/review]] — HumDex의 IMU-based tracking과 달리 HumanoidExo는 full-body exoskeleton을 통한 comprehensive motion capture 방식을 사용한다.
+- 🔄 다른 접근: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — 궤적 기반 전이학습 대신 직접적인 휴머노이드 손재주 조작을 쉽게 만드는 접근법이다.
+- 🔗 후속 연구: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — 단일 휴머노이드 손재주를 8종 로봇 핸드에 대한 범용 제어로 확장한 발전된 파운데이션 스위트이다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 전 세계 과학 논문의 저자 데이터를 분석하여 성별 불균형이 연구 생산성 전반에 걸쳐 지속되고 있음을 입증하는 서지계량학 분석을 제시한다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Gender_Research_Diversity"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Larivière et al._2013_Bibliometrics Global Gender Disparities in Science.pdf"
 ---
@@ -80,9 +82,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Larivière et al._2013_Bibliometrics Glo
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학 분야 성별 신용 배분 불균형을 전 세계적 성별 격차의 구체적 메커니즘으로 확장한다
-- 🔄 다른 접근: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서 성별 불평등의 역사적 비교를 통해 성별 격차의 변화 양상을 분석한다
-- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 온라인 과학의 교차적 불평등을 성별 격차의 다차원적 분석으로 확장한다
-- 🏛 기반 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 과학계 전반의 성별 격차 분석이 컴퓨터과학 특정 분야의 성별 인용 불균형 연구의 이론적 토대를 제공한다.
-- 🔗 후속 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 사회복지 분야의 성별 다양성 변화가 지식생산 패턴에 미친 영향을 분석할 수 있는 보완적 관점을 제공한다.
-- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 과학 분야 성별 격차 분석에 인용 정의 관점을 추가하여 공정성을 높일 수 있다
+- 🔗 후속 연구: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 전세계 과학 분야 성별 격차를 출산율 연구의 성별 관련 패턴 분석으로 구체화합니다.
+- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 과학에서의 성별 불평등을 교차적 불평등의 더 넓은 관점으로 확장합니다.
+- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학에서 여성의 기여도가 과소평가되는 구체적 메커니즘에 대한 실증적 근거를 제공한다.
+- 🔄 다른 접근: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 컴퓨터 과학 분야에서의 체계적 성별 인용 불균형을 분석하여 특정 분야의 사례를 제시한다.
+- 🏛 기반 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 저널의 명성이 인용에 미치는 편향 효과의 배경이 되는 과학계의 전반적인 성별 격차를 보여줍니다.
+- 🔗 후속 연구: [[papers/1027_Systemic_Gendered_Citation_Imbalance_in_Computer_Science_Evi/review]] — 과학계 전반의 성별 격차가 컴퓨터과학이라는 특정 분야에서 인용 불균형으로 구체화되어 나타납니다.
+- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학 분야의 글로벌 성별 격차 분석을 여성 업적의 인정 부족이라는 구체적 메커니즘으로 심화시켜 설명한다.
+- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 과학에서 성별 격차 측정 방법론이 LLM 사용도 정량화의 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 과학 출판에서 저자십과 관련된 성별 격차 문제를 정형외과 분야의 구체적 사례로 확장 분석한다.
+- 🔄 다른 접근: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 분야 성별 격차를 시간적 변화와 글로벌 비교라는 서로 다른 관점으로 분석한다.
+- 🔗 후속 연구: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 과학 분야의 성별 격차 연구가 청소년 발달 연구에서 성별에 따른 양육방식 효과 분석으로 확장될 수 있기 때문
+- 🔄 다른 접근: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 서지계량학적 분석을 사이버보안과 성별 격차라는 다른 주제에 각각 적용하여 트렌드 파악
+- 🏛 기반 연구: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 건강 연구 분야의 성별 격차와 편견 문제에 대한 bibliometric 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 과학 분야 성별 격차 분석을 인구학 연구 영역의 구체적 지표(출산율) 분석으로 확장합니다.
+- 🏛 기반 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 인도 LIS 학자들의 인용 패턴을 성별 불균형 관점에서 분석할 수 있는 이론적 토대를 제공합니다.

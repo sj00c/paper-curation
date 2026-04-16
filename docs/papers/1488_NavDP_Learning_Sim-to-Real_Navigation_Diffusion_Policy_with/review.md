@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "NavDP는 시뮬레이션에서만 학습한 unified transformer 기반 diffusion policy로, privileged information을 활용한 trajectory generation과 critic value prediction을 통해 zero-shot sim-to-real transfer를 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Terrain_Perception"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Trajectory-Conditioned_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cai et al._2025_NavDP Learning Sim-to-Real Navigation Diffusion Policy with Privileged Information Guidance.pdf"
 ---
@@ -93,8 +94,12 @@ NavDP는 시뮬레이션에서만 학습한 unified transformer 기반 diffusion
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — diffusion policy의 추론 속도 최적화 기법이 NavDP의 실시간 trajectory generation 성능 향상에 필수적이다
-- 🧪 응용 사례: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — 실시간 action chunking 실행 프레임워크가 NavDP의 연속적인 navigation policy 배포에 직접 적용 가능하다
-- 🔗 후속 연구: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — 다리 로봇의 시각-언어-행동 모델 구조를 NavDP의 지형 적응형 네비게이션에 확장 적용할 수 있다
-- 🧪 응용 사례: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — diffusion policy 가속화 기법이 NavDP의 실시간 trajectory generation 최적화에 직접 적용 가능하다
-- 🧪 응용 사례: [[papers/1574_Mobi-π_Mobilizing_Your_Robot_Learning_Policy/review]] — 네비게이션 확산 정책에서 정책 모빌화 기법이 실제 환경 배포 시 성능 향상에 기여한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — diffusion policy의 기본 이론과 visuomotor policy learning 방법론을 제공하여 NavDP의 trajectory generation 메커니즘 설계에 핵심적인 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1572_Sim-to-Real_Reinforcement_Learning_for_Vision-Based_Dexterou/review]] — sim-to-real transfer의 기본 개념을 navigation diffusion policy와 privileged information을 활용한 zero-shot transfer로 확장한다.
+- 🧪 응용 사례: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — diffusion policy의 real-time execution 기법을 navigation 도메인에 적용하여 NavDP의 실시간 궤적 생성 성능을 향상시킨다.
+- 🔄 다른 접근: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — 둘 다 sim-to-real navigation을 다루지만 diffusion policy와 forward dynamics model의 접근법 차이를 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — diffusion transformer의 기본 아키텍처를 navigation diffusion policy에 적용하는 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — embodied navigation foundation model을 diffusion policy와 결합하여 더 일반적인 navigation 능력을 달성할 수 있다.
+- 🔗 후속 연구: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — NavDP의 sim-to-real navigation diffusion이 ForesightNav에서 상상력 기반 장기 네비게이션 목표 선택으로 더욱 발전한 형태이다.
+- 🔗 후속 연구: [[papers/1414_Ground_Slow_Move_Fast_A_Dual-System_Foundation_Model_for_Gen/review]] — NavDP의 diffusion policy가 DualVLN의 Diffusion Transformer 기반 policy를 sim-to-real navigation으로 확장합니다.
+- 🔄 다른 접근: [[papers/1449_Learned_Perceptive_Forward_Dynamics_Model_for_Safe_and_Platf/review]] — 둘 다 sim-to-real navigation을 다루지만 forward dynamics model과 diffusion policy의 접근법 차이를 분석할 수 있다.

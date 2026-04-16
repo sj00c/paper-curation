@@ -8,9 +8,9 @@ arxiv: ""
 score: 4.0
 essence: "2000-2026년 기간 동안 회계 분야의 기업지배구조 연구에 대한 bibliometric 분석을 통해 지적 구조, 주제 진화, 인용 역학을 매핑하고 전통적 거버넌스 메커니즘에서 지속가능성 및 ESG로의 패러다임 전환을 규명한 연구이다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Judijanto_2026_Corporate Governance in Accounting A Bibliometric Analysis of Thematic Patterns and Citation Dynami.pdf"
 ---
@@ -79,10 +79,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Judijanto_2026_Corporate Governance in A
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 기업지배구조와 생명공학 분야 모두에서 지속가능성과 ESG로의 패러다임 전환을 bibliometric 분석으로 추적하는 접근법이 유사하다.
-- 🏛 기반 연구: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 기업지배구조 연구의 인용 불평등과 지적 구조 분석에서 글로벌 인용 불평등 증가 현상을 이해하는 기반이 된다.
-- 🔄 다른 접근: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 상업 박사 논문의 인용 분석과 회계 분야 기업지배구조 연구의 bibliometric 분석을 비교하여 서로 다른 학술 영역의 연구 동향 분석법을 대조할 수 있다.
-- 🧪 응용 사례: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑 방법론을 회계 분야의 기업지배구조 연구에 적용하여 특정 주제의 지적 구조 변화를 추적한다.
-- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서 성별 불평등의 역사적 변화 분석이 회계 분야 거버넌스 연구에서 ESG 패러다임으로의 전환을 이해하는 사회적 배경을 제공한다.
-- 🏛 기반 연구: [[papers/1148_Bibliometrics_Analysis_of_Bankruptcy_Prediction_Trends_in_MS/review]] — 회계 분야 기업지배구조의 bibliometric 분석이 MSME 파산 예측 연구의 재무 관리 맥락을 제공한다.
-- 🔄 다른 접근: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — 회계 분야와 세무 정책 분야의 서로 다른 bibliometric 접근법을 비교하여 경제학 관련 연구 분석의 다양한 관점을 제공한다.
+- 🔗 후속 연구: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 기업 거버넌스 연구가 MSME 파산 예측의 이론적 배경과 ESG 관점을 제공한다.
+- 🏛 기반 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — ESG로의 패러다임 전환을 비정형적 조합과 과학적 영향의 관점에서 이해할 수 있다.
+- 🔄 다른 접근: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — 둘 다 경제 정책과 거버넌스(기업 거버넌스 vs VAT 정책)를 bibliometric으로 분석한다.
+- 🔄 다른 접근: [[papers/1148_Bibliometrics_Analysis_of_Bankruptcy_Prediction_Trends_in_MS/review]] — 기업 연구에서 지배구조와 파산 예측이라는 서로 다른 관점을 비교한다
+- 🔗 후속 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학 발견에서 성별 다양성 연구를 기업 거버넌스 분야로 확장한다
+- 🏛 기반 연구: [[papers/1147_Bibliometric_Analysis_on_the_Research_Trends_and_Collaborati/review]] — 기업 거버넌스 연구가 MSME 파산 예측 연구의 이론적 기반과 맥락을 제공한다.
+- 🔗 후속 연구: [[papers/1148_Bibliometrics_Analysis_of_Bankruptcy_Prediction_Trends_in_MS/review]] — 기업 거버넌스와 MSME 파산 예측을 연계하여 중소기업 경영의 종합적 이해를 제공한다.
+- 🔗 후속 연구: [[papers/1184_Hamemayu_Hayuning_Nagara_A_Bibliometric_Analysis_of_the_Poli/review]] — VAT 정책과 기업 거버넌스를 연계하여 국가 재정과 기업 윤리의 조화로운 발전을 분석할 수 있다.

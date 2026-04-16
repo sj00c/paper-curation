@@ -66,51 +66,57 @@ a { color: #A62018; }
 <blockquote><p><strong>저자</strong>: Zipeng Fu, Qingqing Zhao, Qi Wu, Gordon Wetzstein, Chelsea Finn | <strong>날짜</strong>: 2024-06-15 | <strong>URL</strong>: <a href="https://arxiv.org/abs/2406.10454" target="_blank">https://arxiv.org/abs/2406.10454</a></p></blockquote>
 <hr>
 <div class="essence-box"><h2>Essence</h2>
-<div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
-<p class="fig-caption"><em>Figure 1: Stanford HumanPlus Robot. We present a full-stack system for humanoid robots to learn motion and</em></p></div>
-<p>휴머노이드 로봇이 인간의 모션 데이터와 RGB 카메라만으로 실시간 shadowing 및 자율 skill 학습을 수행하는 풀스택 시스템을 제시한다.</p></div>
+<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
+<p class="fig-caption"><em>Figure 3: Shadowing and Retargeting. Our system uses one RGB camera for body and hand pose estimation.</em></p></div>
+<p>휴머노이드 로봇이 단일 RGB 카메라를 사용하여 인간의 동작을 실시간으로 따라할 수 있는 shadowing 시스템과, 수집된 데이터로부터 자율적인 작업 기술을 학습하는 imitation learning 파이프라인을 제시하는 전체 스택 시스템이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: 휴머노이드 로봇은 인간과 유사한 형태로 인해 대규모 인간 데이터 활용이 가능하며, RL을 통한 저수준 정책 학습과 sim-to-real 전환이 다족 로봇에서 성공한 바 있다.</li>
-<li><strong>Gap</strong>: 휴머노이드의 높은 차원의 제어 복잡성, 인간과의 형태학적 차이, 그리고 egocentric vision에서의 자율 skill 학습을 위한 데이터 파이프라인이 부재하다.</li>
-<li><strong>Why</strong>: 일반목적 휴머노이드 로봇 개발을 위해서는 복잡한 조작 및 이동 skill을 효율적으로 학습하는 방법이 필수적이며, 이는 로봇의 실용화와 확장성을 결정한다.</li>
-<li><strong>Approach</strong>: AMASS 데이터셋 기반의 Humanoid Shadowing Transformer로 저수준 정책을 학습하고, 이를 통해 RGB 카메라만으로 인간 모션을 실시간 추적한 후, 수집된 데이터로 Humanoid Imitation Transformer를 사용해 vision 기반 skill policy를 학습한다.</li>
+<li><strong>Known</strong>: 휴머노이드 로봇은 인간 형태의 이점으로 인해 대규모 인간 데이터 활용이 가능하지만, 실제로는 perception과 control의 복잡성, 형태론적 차이, 자율 기술 학습을 위한 데이터 파이프라인 부족으로 인해 인간 데이터 활용이 어려웠다.</li>
+<li><strong>Gap</strong>: 기존 연구들은 모션 캡처 시스템이나 exoskeleton을 사용한 비용이 높은 teleoperation 방식에 의존하고 있었으며, 휴머노이드의 복잡한 전신 제어와 고자유도 환경에서 효율적으로 학습할 수 있는 통합 시스템이 부족하였다.</li>
+<li><strong>Why</strong>: 인간과 유사한 형태의 휴머노이드가 인간 환경과 도구에 대한 일반적인 적응 능력을 갖출 수 있다면, 이는 범용 로봇 지능 달성을 향한 유망한 경로이며 로봇 공학에서 오랫동안 추구해온 목표를 실현할 수 있기 때문이다.</li>
+<li><strong>Approach</strong>: AMASS 데이터셋으로부터 reinforcement learning을 통해 Humanoid Shadowing Transformer라는 저수준 정책을 학습하여 pose 조건부 제어를 가능하게 하고, 이를 통해 수집한 데이터로 behavior cloning을 수행하여 egocentric vision 기반의 자율 기술 정책을 학습한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: Stanford HumanPlus Robot. We present a full-stack system for humanoid robots to learn motion and</em></p></div>
 <ul>
-<li><strong>Shadowing 시스템</strong>: 단일 RGB 카메라로 인간의 신체 및 손 모션을 실시간으로 33-DoF 휴머노이드에 전달하는 저비용 teleoperation 시스템 구현</li>
-<li><strong>Task-agnostic 저수준 정책</strong>: 40시간 인간 모션 데이터(AMASS)로 훈련된 Humanoid Shadowing Transformer가 zero-shot으로 실제 환경에 전환</li>
-<li><strong>효율적 학습</strong>: 최대 40가지 시연으로 신발 신기-일어서기-보행, 창고 물체 언로드, 옷 접기, 타이핑 등의 tasks를 60-100% 성공률로 자율 완수</li>
-<li><strong>통합 파이프라인</strong>: shadowing을 통한 데이터 수집과 behavior cloning을 결합하여 현실 환경에서 복합 manipulation 및 locomotion skill 습득</li>
+<li><strong>Shadowing 시스템</strong>: 단일 RGB 카메라와 body & hand pose estimation을 사용하여 실시간으로 인간 동작을 휴머노이드에 따라하게 하는 저비용 teleoperation 시스템 개발</li>
+<li><strong>Humanoid Shadowing Transformer</strong>: AMASS 40시간 데이터로 학습된 task-agnostic 저수준 정책으로 zero-shot sim-to-real transfer 달성</li>
+<li><strong>Humanoid Imitation Transformer</strong>: Forward dynamics prediction을 통합한 transformer 기반 imitation learning으로 40개 시연만으로 자율 작업 학습</li>
+<li><strong>자율 작업 달성</strong>: 신발 신기-일어나기-걷기, 창고 물품 언로드, 스웨터 접기, 물품 정렬, 타이핑, 다른 로봇 인사 등 6개 작업을 60-100% 성공률로 수행</li>
+<li><strong>통합 시스템</strong>: 데이터 수집부터 자율 실행까지의 완전한 파이프라인을 33-DoF 180cm 커스텀 휴머노이드에서 구현</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
 <p class="fig-caption"><em>Figure 3: Shadowing and Retargeting. Our system uses one RGB camera for body and hand pose estimation.</em></p></div>
 <ul>
-<li>AMASS 데이터셋의 인간 pose를 휴머노이드 pose로 retarget한 후 transformer 기반 decoder-only 아키텍처로 저수준 정책 학습</li>
-<li>실시간 body & hand pose estimation 알고리즘(58Hz)으로 인간 모션을 감지하고 retargeting을 통해 Humanoid Shadowing Transformer 입력으로 변환</li>
-<li>Shadowing 중 binocular RGB 카메라로 egocentric vision 데이터 수집</li>
-<li>수집 데이터로 supervised behavior cloning 수행하여 이미지 피처 공간에서의 forward dynamics 예측을 통해 정규화되는 Humanoid Imitation Transformer 훈련</li>
+<li>AMASS 데이터셋의 인간 모션을 pose retargeting을 통해 휴머노이드 pose로 변환</li>
+<li>Pose 조건부 목표를 입력으로 하는 Humanoid Shadowing Transformer를 RL로 시뮬레이션에서 학습</li>
+<li>학습된 저수준 정책을 실제 로봇에 zero-shot으로 배포</li>
+<li>실시간 body & hand pose estimation 알고리즘으로 인간 동작 추정</li>
+<li>추정된 인간 동작을 휴머노이드 공간으로 retarget하여 shadowing 제어</li>
+<li>Shadowing 중 binocular egocentric RGB 카메라로 전신 데이터 수집</li>
+<li>수집한 데이터로 Humanoid Imitation Transformer를 behavior cloning으로 학습</li>
+<li>Forward dynamics prediction 보조 작업으로 vision feature 공간에서 정규화하여 과적합 방지</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li>단순 RGB 카메라만으로 전신 teleoperation을 가능하게 하여 기존의 고가의 mocap, exoskeleton, VR 장치 의존성 제거</li>
-<li>대규모 인간 모션 데이터(AMASS)를 활용한 task-agnostic 저수준 정책으로 다양한 skill에 대응 가능한 범용성 확보</li>
-<li>Forward dynamics 예측을 imitation learning에 통합하여 egocentric vision 기반 고차원 제어의 overfitting 문제 해결</li>
-<li>shadowing과 behavior cloning의 통합 파이프eline으로 현실 환경에서의 효율적 데이터 수집 및 skill 학습 실현</li>
+<li>기존 teleoperation 방식의 mocap/exoskeleton 대신 단일 RGB 카메라 기반의 저비용 실시간 shadowing 시스템 제안</li>
+<li>Task-agnostic 저수준 정책으로 다양한 인간 동작을 일반화하는 새로운 접근</li>
+<li>Forward dynamics prediction을 imitation learning에 통합하여 egocentric vision 학습 안정성 개선</li>
+<li>완전한 end-to-end 시스템 구현: RL 기반 shadowing과 behavior cloning 기반 자율 학습의 synergy 활용</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li>40가지 시연만으로 학습되므로 더 복잡하거나 정밀한 조작 task의 일반화 능력 미검증</li>
-<li>33-DoF 휴머노이드의 특정 하드웨어 설정에 최적화된 것으로, 다른 형태의 휴머노이드로의 전환 가능성 불명확</li>
-<li>Pose retargeting 과정에서 발생하는 휴머노이드-인간 형태 차이를 완전히 극복하지 못할 가능성</li>
-<li>후속 연구: 다중 시점 RGB 카메라 활용, 더 정교한 hand manipulation을 위한 tactile feedback 통합, 다양한 휴머노이드 플랫폼으로의 확장성 검증 필요</li>
+<li>성공률이 작업별로 편차가 크며(60-100%) 일부 작업은 여전히 낮은 성능을 보임</li>
+<li>40개 시연이라는 적정량의 데이터 필요성이 여전히 존재하며 더 적은 시연으로의 확장성 미흡</li>
+<li>Pose retargeting의 형태학적 차이에 대한 손실이 완전히 해결되지 않음</li>
+<li>Egocentric vision 기반 정책이 특정 환경 조건에서 일반화 능력 부족 가능성</li>
+<li>후속 연구: 더 작은 데이터셋으로 학습하는 메타러닝 기법 탐색, 양손 협력 조작 작업 확대, 동적 환경에 대한 적응성 강화</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: 이 논문은 RGB 카메라 기반 실시간 shadowing과 효율적 imitation learning을 통합하여 휴머노이드 로봇의 자율 skill 습득을 실현한 실질적 기여를 보여준다. 기존 고가 teleoperation 시스템 대체와 대규모 인간 데이터 활용이라는 측면에서 휴머노이드 개발의 새로운 방향을 제시한다.</p></div>
+<p><strong>총평</strong>: 본 논문은 휴머노이드 로봇의 인간 데이터 활용이라는 오랫동안의 과제에 대해 실용적이고 완성도 높은 end-to-end 시스템을 제시했으며, RGB 카메라 기반 shadowing의 단순성과 효율성, 그리고 다양한 자율 작업의 성공적 구현은 로봇 공학 분야에 실질적인 기여를 한다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

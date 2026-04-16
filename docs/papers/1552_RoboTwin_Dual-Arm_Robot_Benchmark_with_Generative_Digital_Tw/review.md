@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "RoboTwin은 3D generative foundation model과 LLM을 활용한 generative digital twin 프레임워크로, 2D 이미지로부터 다양한 3D 객체 모델을 생성하고 dual-arm 로봇 작업을 위한 synthetic 데이터셋과 real-world-aligned 벤치마크를 제공한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
   - "sub/Robotic_Interaction_Datasets"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mu et al._2024_RoboTwin Dual-Arm Robot Benchmark with Generative Digital Twins (early version).pdf"
@@ -92,8 +93,11 @@ RoboTwin은 3D generative foundation model과 LLM을 활용한 generative digita
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — 기본적인 generative digital twin 프레임워크를 MLLM과 자동화된 파이프라인을 통해 더욱 확장 가능한 시스템으로 발전시킨다.
-- 🔗 후속 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — 기존 로봇 학습 데이터셋의 한계를 극복하기 위해 3D generative model을 활용한 synthetic 데이터 생성 방법을 제시한다.
-- 🏛 기반 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting 기술을 활용하여 실시간으로 현실적인 dual-arm 로봇 작업을 위한 3D 객체 모델을 생성한다.
-- 🏛 기반 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — dual-arm 로봇 벤치마크의 기본 구조를 다중 embodiment 환경으로 확장하여 더 일반적인 intelligence 평가를 가능하게 한다.
-- 🔗 후속 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — RoboTwin의 generative digital twin 개념을 MLLM 기반 자동 코드 생성과 대규모 데이터 생성이 가능한 확장 가능한 프레임워크로 발전시킨다.
+- 🏛 기반 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — RoboTwin의 기본 generative digital twin 개념이 RoboTwin 2.0의 확장 가능한 프레임워크 개발에 직접적인 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting의 실시간 3D 렌더링 기술이 RoboTwin의 generative digital twin 구현에 시각적 품질 향상을 제공한다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 로봇을 위한 세계 모델링에서 RoboTwin은 generative digital twin으로, World Simulation은 video foundation model로 접근한다.
+- 🔗 후속 연구: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — 3D generative foundation model은 R2R2R의 스마트폰 기반 3D 스캔과 결합하여 더 효율적인 데이터 생성 파이프라인을 구축할 수 있습니다.
+- 🔄 다른 접근: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — RoboTwin과 Genie 모두 생성형 환경을 다루지만 로봇 특화와 범용 상호작용 환경이라는 다른 목표를 가집니다.
+- 🔗 후속 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 고충실도 시뮬레이션 데이터 생성은 RoboTwin의 generative digital twin과 결합하여 더 현실적인 로봇 훈련 환경을 구축할 수 있습니다.
+- 🏛 기반 연구: [[papers/1527_Real2Render2Real_Scaling_Robot_Data_Without_Dynamics_Simulat/review]] — 스마트폰 기반 3D 스캔 데이터 생성은 RoboTwin의 generative digital twin 프레임워크와 상호 보완적입니다.
+- 🔗 후속 연구: [[papers/1551_RoboTwin_20_A_Scalable_Data_Generator_and_Benchmark_with_Str/review]] — RoboTwin의 기본 generative digital twin을 MLLM 기반 자동 코드 생성과 확장 가능한 데이터 생성으로 발전시킨 직접적인 후속 연구이다.

@@ -1,3 +1,24 @@
+---
+title: "1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc"
+authors:
+  - "Ryan Hoque"
+  - "Peide Huang"
+  - "David J. Yoon"
+  - "Mouli Sivapurapu"
+  - "Jian Zhang"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Apple Vision Pro를 활용하여 829시간의 3D 손 추적 주석이 포함된 대규모 자아중심 비디오 데이터셋 EgoDex를 수집하고, 이를 통해 기술적 조작 모방 학습을 위한 벤치마크를 제시한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Dexterous_Hand_Trajectory_Datasets"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hoque et al._2025_EgoDex Learning Dexterous Manipulation from Large-Scale Egocentric Video.pdf"
+---
+
 # EgoDex: Learning Dexterous Manipulation from Large-Scale Egocentric Video
 
 > **저자**: Ryan Hoque, Peide Huang, David J. Yoon, Mouli Sivapurapu, Jian Zhang | **날짜**: 2025-05-16 | **URL**: [https://arxiv.org/abs/2505.11709](https://arxiv.org/abs/2505.11709)
@@ -66,3 +87,21 @@ Apple Vision Pro를 활용하여 829시간의 3D 손 추적 주석이 포함된 
 - Overall: 4/5
 
 **총평**: EgoDex는 기술적 조작 학습을 위한 획기적인 대규모 데이터셋을 제공하며, 웨어러블 기술의 실제 활용을 통해 로봇 조작 분야의 '인터넷 규모 데이터' 시대를 개척한다. 데이터셋의 규모와 정밀도는 탁월하나, 실제 로봇 정책 전이의 실효성 검증이 후속 과제로 남아있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 둘 다 egocentric 비디오에서 손 추적 데이터를 수집하지만 EgoDex는 Apple Vision Pro를, EgoMimic은 Project Aria를 사용한다.
+- 🔗 후속 연구: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — EgoDex의 대규모 손 추적 데이터는 DexCap의 손목 착용형 모캡 시스템과 결합하여 더 정확한 dexterous manipulation 학습이 가능하다.
+- 🧪 응용 사례: [[papers/2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — EgoDex의 자아중심 손 추적 데이터를 Object-Centric Dexterous Manipulation 프레임워크에 적용하여 물체 중심의 조작 학습을 개선할 수 있다.
+- 🔗 후속 연구: [[papers/1868_DexHub_and_DART_Towards_Internet_Scale_Robot_Data_Collection/review]] — DexHub의 대규모 로봇 데이터 수집 시스템이 EgoDex의 자아중심 비디오 데이터셋을 로봇 도메인으로 확장한 개념입니다.
+- 🧪 응용 사례: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — EgoDex가 large-scale egocentric 데이터를 활용한 dexterous manipulation 학습으로 DexCap 데이터의 실제 응용을 보여준다.
+- 🔄 다른 접근: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 둘 다 일인칭 시점 비디오에서 손 추적을 하지만 EgoMimic은 Project Aria를, EgoDex는 Apple Vision Pro를 활용한다.
+- 🔄 다른 접근: [[papers/1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — 둘 다 large-scale 데이터를 활용한 humanoid manipulation을 다루지만, 3D Diffusion Policy는 단일 장면 일반화에, EgoDex는 egocentric 대규모 데이터에 집중합니다.
+- 🔄 다른 접근: [[papers/1957_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — 둘 다 대규모 egocentric 데이터를 활용하지만 GraspDreamer는 생성형 모델을, EgoDex는 직접적인 조작 학습을 사용한다.
+- 🏛 기반 연구: [[papers/2022_In-N-On_Scaling_Egocentric_Manipulation_with_in-the-wild_and/review]] — 에고센트릭 데이터를 통한 조작 학습의 기본 원리와 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/2055_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — 시각 기반 물체 집기에서 HERO는 정확한 추적에, EgoDex는 자기중심 시점 데이터에서의 학습에 중점을 둔다.
+- 🔗 후속 연구: [[papers/2071_Learning_to_Look_Seeking_Information_for_Decision_Making_via/review]] — 대규모 자아중심적 시연으로부터 손재주 조작을 학습하는 확장된 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2093_Masquerade_Learning_from_In-the-wild_Human_Videos_using_Data/review]] — 대규모 자아중심적 시연으로부터 손재주 조작 학습의 확장된 구현을 보여준다.
+- 🏛 기반 연구: [[papers/2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — EgoDex의 egocentric 대규모 손목 조작 데이터가 Object-Centric의 계층적 정책 학습에서 고수준 손목 궤적 생성 모델 개발에 활용된다.
+- 🏛 기반 연구: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — EgoDex의 large-scale egocentric manipulation learning이 UniDex의 인간 자기중심 비디오 기반 dexterous control의 데이터 기반을 제공함
+- 🔄 다른 접근: [[papers/1758_WHOLE_World-Grounded_Hand-Object_Lifted_from_Egocentric_Vide/review]] — egocentric video에서 hand-object 상호작용 재구성을 다루며, world-grounded lifting과 large-scale dexterity라는 서로 다른 접근법을 사용한다.

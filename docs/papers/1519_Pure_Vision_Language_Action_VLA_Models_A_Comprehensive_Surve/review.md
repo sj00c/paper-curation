@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Vision Language Action (VLA) 모델을 체계적으로 분류하고 분석하는 포괄적 서베이로, autoregression-based, diffusion-based, reinforcement-based, hybrid, specialized methods로 VLA 접근법을 분류하여 300개 이상의 최근 연구를 종합한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Robotics_Foundation_Models"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Pure Vision Language Action (VLA) Models A Comprehensive Survey.pdf"
 ---
@@ -87,11 +89,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Pure Vision Language A
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1446_Large_VLM-based_Vision-Language-Action_Models_for_Robotic_Ma/review]] — VLA 모델 분류에서 pure VLA와 hierarchical/monolithic 관점이라는 서로 다른 체계적 접근을 보여준다.
-- 🔗 후속 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — VLA 모델의 포괄적 분류와 diffusion-autoregression 통합이 VLA 접근법의 확장된 이해를 제공한다.
-- 🏛 기반 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — VLA 모델의 개념과 응용에 대한 기본적 이해가 pure VLA 모델의 체계적 분석에 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — pure VLA 모델의 포괄적 조사가 VLA 구조 분석의 이론적 토대를 제공한다
-- 🔄 다른 접근: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — VLA 모델에서 diffusion과 autoregression의 통합 방식에 대한 서로 다른 체계적 접근을 보여준다.
-- 🔄 다른 접근: [[papers/1446_Large_VLM-based_Vision-Language-Action_Models_for_Robotic_Ma/review]] — VLA 모델의 아키텍처 분류에 대한 서로 다른 체계적 접근과 관점을 보여준다.
-- 🏛 기반 연구: [[papers/1509_OpenHelix_A_Short_Survey_Empirical_Analysis_and_Open-Source/review]] — Pure VLA 모델의 포괄적 서베이가 dual-system VLA 아키텍처 분석의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — Pure VLA 모델들의 종합적 분석이 VLA 개념과 진전을 체계화한 1608 리뷰의 기초 자료
+- 🔗 후속 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Pure VLA 모델들의 포괄적 분류가 foundation models 시대 로봇 학습 survey를 VLA 특화 관점으로 심화 확장한다.
+- 🏛 기반 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation Models in Robotics의 전반적 분석이 VLA 모델 survey의 이론적 배경과 분류 체계를 제공한다.
+- 🔄 다른 접근: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — 두 survey 모두 VLA 모델을 다루지만 하나는 pure VLA에, 다른 하나는 broader VLA concepts에 집중하는 상호보완적 관점이다.
+- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — Foundation Model Driven Robotics 서베이가 VLA 모델 연구의 전반적 맥락을 제공한다.
+- 🔗 후속 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — 범용 로봇을 위한 foundation model 동향을 VLA 모델 관점에서 구체화한다.
+- 🔄 다른 접근: [[papers/1307_An_Anatomy_of_Vision-Language-Action_Models_From_Modules_to/review]] — Pure VLA 모델에 대한 포괄적 서베이로 VLA 구조 분석을 보완한다.
+- 🔗 후속 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — 순수 VLA 모델에 대한 연구를 LLM과 VLM을 포함한 더 넓은 foundation model 관점으로 확장했다.
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Pure Vision Language Action Models의 VLA 특화 조사가 Foundation Models in Robotics의 더 광범위한 foundation model 응용 연구로 확장된 관계이다.
+- 🔄 다른 접근: [[papers/1446_Large_VLM-based_Vision-Language-Action_Models_for_Robotic_Ma/review]] — 둘 다 VLA 모델의 체계적 분석이지만, Large VLM-based 서베이는 로봇 매니퓰레이션에, Pure VLA 서베이는 VLA 모델 전반에 초점을 둔다.
+- 🔗 후속 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — VLA 모델 서베이에서 제시된 설계 원칙들을 Prismatic VLMs가 체계적으로 검증한다.
+- 🏛 기반 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Foundation models 시대의 로봇 학습 전반을 다룬 survey가 Pure VLA 모델들의 구체적 분류와 분석의 이론적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — Pure VLA Models Survey는 foundation model 서베이를 VLA 모델에 특화하여 확장한 더 구체적인 연구 조사다.
+- 🔄 다른 접근: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — Pure VLA Models 서베이가 VLA 모델 구축에 대한 포괄적인 다른 관점과 체계적 분석을 제공한다.
+- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — VLN survey의 체계적 분류가 Pure VLA Models survey와 결합되어 vision-language-action 전반에 대한 더 포괄적인 이해를 제공한다.
+- 🏛 기반 연구: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — Pure VLA 모델에 대한 기존 종합 조사가 80개 이상 VLA 모델을 분석하는 더 포괄적인 리뷰의 기반이 되었다.
+- 🔄 다른 접근: [[papers/1609_Vision-Language-Action_Models_for_Robotics_A_Review_Towards/review]] — 두 리뷰 논문 모두 VLA 모델을 다루지만 실제 배포 vs 순수 VLA 모델 설계에 중점을 두어 서로 보완적입니다.
+- 🔄 다른 접근: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — 순수 VLA 모델 포괄 서베이와 언어 조건부 조작 서베이가 다른 범위의 분석을 제공합니다.

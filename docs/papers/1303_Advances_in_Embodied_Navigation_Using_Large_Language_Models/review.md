@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 Large Language Models (LLMs)과 embodied intelligence의 융합에 초점을 맞춰 LLM 기반 navigation 모델들의 최신 동향을 종합적으로 조사하고, 기존 모델과 데이터셋의 장단점을 분석한 서베이이다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2023_Advances in Embodied Navigation Using Large Language Models A Survey.pdf"
 ---
@@ -87,8 +89,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2023_Advances in Embodied Nav
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — LLM과 embodied AI의 융합을 navigation에서 전체 사이버-물리 공간으로 확장하여 더 포괄적으로 다룬다
-- 🏛 기반 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — language-conditioned robot manipulation의 기초 이론이 LLM 기반 navigation의 언어 이해에 토대를 제공한다
-- 🧪 응용 사례: [[papers/1461_Human-Level_Actuation_for_Humanoids/review]] — 대규모 pre-trained model을 로봇 navigation에 적용하는 구체적 사례를 LLM 기반 접근법으로 제시한다
-- 🏛 기반 연구: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — LLM 기반 embodied navigation의 구체적 연구가 사이버-물리 융합의 실제 적용 사례를 제공한다
-- 🔗 후속 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — language-conditioned manipulation의 기초 이론을 LLM 기반 embodied navigation으로 확장 적용한다
+- 🏛 기반 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — language-conditioned manipulation 서베이가 LLM 기반 네비게이션 연구의 언어 처리 방법론적 기반을 제공
+- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — vision-language navigation의 전반적 조사를 LLM 특화 관점으로 심화 발전시킨 연구
+- 🔗 후속 연구: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — 범용적 embodied navigation으로 LLM 기반 네비게이션을 확장한다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 비디오 기반 VLM을 활용한 다른 네비게이션 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — 3D 장면 그래프를 활용한 LLM 기반 계획의 기초 방법론을 제공한다.
+- 🧪 응용 사례: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — CityNavAgent는 LLM 기반 네비게이션의 구체적 구현 사례로서 aerial domain에 특화된 응용입니다.
+- 🔗 후속 연구: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — JARVIS-1은 LLM 기반 네비게이션을 메모리 증강과 멀티태스크로 확장한 발전된 형태입니다.
+- 🧪 응용 사례: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — LLM 기반 embodied navigation 서베이에서 제시된 방법론을 도시 aerial 환경이라는 특수한 도메인에 적용한 사례입니다.
+- 🔗 후속 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — language-conditioned manipulation을 LLM 기반 navigation으로 확장하여 더 넓은 embodied AI 영역을 포괄

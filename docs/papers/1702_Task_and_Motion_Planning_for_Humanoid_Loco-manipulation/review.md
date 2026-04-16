@@ -10,7 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 접촉 모드의 통일된 표현을 통해 로봇 이동과 조작을 함께 계획하는 최적화 기반 TAMP 프레임워크를 제시하며, 인형로봇의 장시간 복잡한 로코-조작 행동 생성을 가능하게 한다."
 tags:
-  - "cat/Other"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LLM_Physical_Motion_Planning"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ciebielski et al._2025_Task and Motion Planning for Humanoid Loco-manipulation.pdf"
 ---
@@ -81,3 +84,23 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ciebielski et al._2025_Task and Motion P
 - Overall: 4/5
 
 **총평**: 본 논문은 인형로봇의 동적 로코-조작 계획이라는 도전적 문제에 대해 접촉 수준의 통일된 기호 표현을 통해 이론적으로 견고한 TAMP 솔루션을 제시하며, 전신 동역학과 구동 제약을 포함한 점에서 학술적 기여도가 높다. 다만 실제 로봇 실험 검증과 대규모 문제에 대한 계산 효율 평가가 추가되면 영향력을 더욱 높일 수 있을 것으로 판단된다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — LDM 기반 접촉 위치 생성이 TAMP의 통일된 접촉 모드 표현과 최적화 기반 계획의 핵심 입력
+- 🔗 후속 연구: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — WoCoCo의 순차적 접촉 학습이 TAMP의 접촉 모드 계획을 강화학습 기반 실행으로 확장
+- 🔄 다른 접근: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 최적화 기반 TAMP와 계층적 박스 로코-조작 계획은 복합 조작의 서로 다른 계획 패러다임
+- ⚖️ 반론/비판: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — TAMP의 체계적 계획 접근이 SENTINEL의 end-to-end 학습 한계를 보완하는 대안적 관점을 제시한다
+- 🔗 후속 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — 계층적 비전-언어 계획과 접촉 모드 통일 TAMP를 결합하면 언어 지시로부터 복잡한 로코-조작이 가능하다
+- 🔗 후속 연구: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 텍스트 기반 휴머노이드 제어의 개념을 접촉 모드 통합과 TAMP 프레임워크로 확장하여 장시간 복잡한 로코-조작 행동을 계획할 수 있게 했다.
+- 🏛 기반 연구: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — 하이브리드 행동 계획의 개념을 접촉 모드 표현과 최적화 기반 TAMP로 구체화하여 이동과 조작을 통합한 계획을 실현했다.
+- 🔄 다른 접근: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — 휴머노이드 로코-조작을 위해 서로 다른 접근(최적화 기반 TAMP vs 종합적 워크플로우)을 통해 복잡한 작업의 계획과 실행을 통합한다.
+- 🔄 다른 접근: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 둘 다 언어에서 휴머노이드 제어로의 변환을 다루지만 SENTINEL은 end-to-end 학습, TAMP는 계획 기반 접근을 사용한다
+- 🏛 기반 연구: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 최적화 기반 TAMP의 고수준 계획을 실시간 텍스트 명령으로 확장하여 사용자가 자연어로 휴머노이드 행동을 제어할 수 있게 했다.
+- 🔗 후속 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — TAMP 프레임워크의 접촉 모드 통합 계획이 LDM 기반 접촉 생성을 실제 로코-조작으로 확장하는 방향성
+- 🏛 기반 연구: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — TAMP의 접촉 모드 통일 표현이 WoCoCo의 순차적 접촉 단계별 분해 학습을 위한 이론적 기반
+- 🏛 기반 연구: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 휴머노이드 loco-manipulation을 위한 작업 및 동작 계획의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — 휴머노이드 로코-조작을 위한 작업 및 모션 계획이 계층적 비전-언어 계획의 확장된 형태이다.
+- 🏛 기반 연구: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — task and motion planning이 HYPERmotion의 복잡한 loco-manipulation 작업을 위한 계층적 행동 계획의 기반 방법론을 제공합니다.
+- 🏛 기반 연구: [[papers/2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — 휴머노이드의 다중 접촉 운동 계획을 위한 작업 및 동작 계획의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2170_Unified_Human-Scene_Interaction_via_Prompted_Chain-of-Contac/review]] — task and motion planning에 UniHSI의 Chain-of-Contacts를 통합하면 더 정교한 contact-aware planning 가능

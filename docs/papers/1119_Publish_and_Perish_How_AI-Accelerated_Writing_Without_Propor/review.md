@@ -8,8 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "AI 기반 논문 작성 도구의 급속한 확산이 동료 검증(peer review) 능력을 초과하면서 과학적 지식 생산이 역설적으로 감소하는 현상을 제조업의 제약 이론(Theory of Constraints)으로 정량화한 동역학 모델 연구."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/AI-Assisted_Academic_Writing"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kwon_2026_Publish and Perish How AI-Accelerated Writing Without Proportional Verification Investment Degrades.pdf"
 ---
@@ -86,9 +88,15 @@ AI 기반 논문 작성 도구의 급속한 확산이 동료 검증(peer review)
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 과학 출판의 부담이라는 기존 문제에 AI 가속 글쓰기라는 새로운 변수를 추가하여 시스템 붕괴 위험을 정량적으로 모델링한다.
-- 🏛 기반 연구: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — LLM 시대 과학 생산의 전반적 변화상을 제시하여 AI 가속 글쓰기가 동료 검토에 미치는 영향을 이해하는 배경을 제공한다.
-- 🔄 다른 접근: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 동료 검토 시스템의 선택 편향 문제를 질적 관점에서 다루어 AI 가속 글쓰기로 인한 양적 과부하 문제와 대조적 시각을 제공한다.
-- 🔗 후속 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 과학 출판량 급증 문제가 AI 가속화된 글쓰기로 인한 제안 없는 출판으로 더욱 심화되는 메커니즘을 확장 분석합니다.
-- ⚖️ 반론/비판: [[papers/1065_A_Survey_of_AI_Scientists/review]] — AI 가속화된 과학 발견의 긍정적 전망과 달리 적절한 검증 없는 출판의 위험을 지적함
-- 🔄 다른 접근: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — AI 가속화된 글쓰기가 과학 발전에 미치는 부정적 영향을 다른 관점에서 분석한다
+- 🏛 기반 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구 새로움을 감소시킨다는 실증 증거가 AI 가속화된 글쓰기 문제의 이론적 근거 제공
+- 🔗 후속 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI 시대 창의성 재정의 논의를 출판 시스템의 구조적 문제로 확장하여 분석
+- 🔄 다른 접근: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식 부담 증가와 AI 도구 과다 사용이라는 다른 메커니즘으로 과학적 혁신 감소 설명
+- 🔗 후속 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 과학 출판의 부담이 AI로 인해 더욱 심화되는 현상을 정량적으로 분석한다.
+- 🧪 응용 사례: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — LLM 사용 정량화 연구의 실제 영향을 출판 시스템 관점에서 해석한다.
+- ⚖️ 반론/비판: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — 적절한 검토 없는 AI 가속 글쓰기의 폐해는 LLM 시대 과학 생산성 증가의 잠재적 부작용과 질적 우려를 제기합니다.
+- ⚖️ 반론/비판: [[papers/1041_The_Rise_of_Large_Language_Models_and_the_Direction_and_Impa/review]] — AI 가속화된 글쓰기가 적절한 검증 없이 출판되는 문제가 연구 제안서의 의미론적 독창성 감소와 연결된다.
+- 🏛 기반 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — AI 가속화된 글쓰기가 적절한 검증 없는 출판 증가를 통해 출판 부담을 가중시킨다.
+- 🏛 기반 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — AI 시대 창의성 재정의가 AI 가속화된 글쓰기의 문제점 해결을 위한 이론적 기반 제공
+- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — AI 가속화된 논문 작성이 과학 출판 생태계에 미치는 부정적 영향의 실증적 근거를 제공한다.
+- 🔗 후속 연구: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM의 연구 새로움 감소 현상을 출판 시스템 전체의 구조적 문제로 확장하여 분석
+- ⚖️ 반론/비판: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — AI 가속화된 연구 작성의 부작용을 경고하여 책임 있는 평가의 필요성을 강조합니다.

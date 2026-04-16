@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "RoboMirror는 VLM을 활용하여 비디오에서 visual motion intent를 추출하고 diffusion-based policy로 직접 인간형 로봇의 보행을 제어하는 retargeting-free 프레임워크이다. 기존의 pose estimation-retargeting 파이프라인을 우회하고 egocentric/third-person 비디오로부터 시맨틱하게 정렬된 보행을 생성한다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_RoboMirror Understand Before You Imitate for Video to Humanoid Locomotion.pdf"
 ---
@@ -88,3 +91,16 @@ RoboMirror는 VLM을 활용하여 비디오에서 visual motion intent를 추출
 - Overall: 4/5
 
 **총평**: RoboMirror는 인간형 로봇 제어에 시각적 이해라는 자연스러운 패러다임을 도입하고, retargeting-free 아키텍처로 지연시간을 획기적으로 단축하면서 성능을 향상시킨 의미 있는 기여이다. 다만 sim-to-real 검증 부재와 VLM 의존성 문제는 실용화를 위해 추가 연구가 필요함을 시사한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — RoboMirror는 VLM 기반 motion intent 추출을, EgoMimic은 egocentric video scaling을 통해 비디오-로봇 제어를 다르게 구현함
+- 🔗 후속 연구: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — Visual Imitation Enables Contextual Control의 맥락적 휴머노이드 제어가 RoboMirror의 VLM 기반 의도 추출을 더욱 정교하게 확장함
+- 🏛 기반 연구: [[papers/1898_EgoActor_Grounding_Task_Planning_into_Spatial-aware_Egocentr/review]] — EgoActor의 공간 인식 egocentric 작업 계획이 RoboMirror의 egocentric 비디오 기반 locomotion 제어의 기초가 됨
+- 🔄 다른 접근: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — RoboMirror와 VisualMimic 모두 비디오 기반 휴머노이드 제어를 다루지만 전자는 VLM 기반 intent 추출에, 후자는 visual imitation에 집중한다
+- 🔗 후속 연구: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — RoboMirror의 retargeting-free 접근법이 From Language to Locomotion의 언어-보행 직접 변환과 결합되어 더 자연스러운 multimodal 제어를 실현할 수 있다
+- 🔗 후속 연구: [[papers/1669_Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_f/review]] — Visual motion intent를 semantic gesture synthesis로 확장한 응용 연구
+- 🔗 후속 연구: [[papers/1837_Climber_Force_and_Motion_Estimation_from_Video/review]] — 비디오에서의 motion 추정을 humanoid 전체 동작 모방을 위한 comprehensive understanding으로 확장한다.
+- 🏛 기반 연구: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — RoboMirror의 비디오-인간 모방 기법이 EgoVLA의 자아중심 비디오 기반 VLA 학습의 핵심 기반입니다.
+- 🏛 기반 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — RoboMirror의 비디오-휴머노이드 모방 기술이 UDH 모델 기반 교차 구현체 스킬 전이의 핵심 토대가 된다.
+- 🧪 응용 사례: [[papers/2120_OmniRetarget_Interaction-Preserving_Data_Generation_for_Huma/review]] — RoboMirror의 비디오-인간 모방 학습에 OmniRetarget의 interaction-preserving data augmentation 기법을 적용하여 학습 데이터의 질과 양을 크게 개선할 수 있다.

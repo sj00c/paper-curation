@@ -10,8 +10,8 @@ arxiv: ""
 score: 4.0
 essence: "로봇 하드웨어 없이 인간 비디오 데모만으로 로봇 정책을 학습하는 Phantom 방법을 제안하며, 데이터 편집 기법을 통해 인간-로봇 간의 embodiment gap을 극복하고 zero-shot 배포를 달성한다."
 tags:
-  - "cat/Humanoid_Teleoperation_and_Interaction"
-  - "sub/Human-Robot_Data_Collection"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lepert et al._2025_Phantom Training Robots Without Robots Using Only Human Videos.pdf"
 ---
@@ -92,13 +92,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lepert et al._2025_Phantom Training Robo
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1501_Is_imitation_learning_the_route_to_humanoid_robots/review]] — 둘 다 VR 텔레오퍼레이션에서 신경망 정책을 다루지만 서로 다른 접근 방식이나 개선사항을 제시한다
-- 🔗 후속 연구: [[papers/1441_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu/review]] — 기본적인 적응 학습을 haptic 피드백과 무거운 물체 조작으로 확장했다
-- 🏛 기반 연구: [[papers/1452_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — adaptive neural control의 개념이 heterogeneous meta-control의 기반이 된다
-- 🔗 후속 연구: [[papers/1337_DexMimicGen_Automated_Data_Generation_for_Bimanual_Dexterous/review]] — 인간 비디오만으로 로봇 정책을 학습하는 Phantom 방식을 데이터 생성 관점에서 확장한 DexMimicGen과 공통된 접근법을 갖는다.
-- 🏛 기반 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — 로봇 하드웨어 없이 인간 시연으로 학습하는 Phantom의 핵심 데이터셋 구축 철학이 EgoMimic의 egocentric 비디오 기반 모방학습과 일치한다.
-- 🔄 다른 접근: [[papers/1522_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 로봇 없이 인간 비디오로 정책 학습하는 Phantom과 대규모 인간 비디오로 휴머노이드 정책을 학습하는 접근법이 동일한 문제를 다룬다.
-- 🔗 후속 연구: [[papers/1441_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu/review]] — Learning Adaptive Neural Teleoperation의 힘 적응 개념을 무거운 물체 조작에 특화하여 적용했다
-- 🔗 후속 연구: [[papers/1452_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — 기존 텔레오퍼레이션의 힘 제어를 heterogeneous meta-control로 확장했다
-- 🔄 다른 접근: [[papers/1501_Is_imitation_learning_the_route_to_humanoid_robots/review]] — 둘 다 VR 텔레오퍼레이션에서 신경망 정책을 다루지만 서로 다른 접근 방식이나 관점을 제시한다
-- 🔄 다른 접근: [[papers/1588_OKAMI_Teaching_Humanoid_Robots_Manipulation_Skills_through_S/review]] — 단일 RGB-D 비디오로 휴머노이드 조작을 학습하는 OKAMI와 인간 비디오만으로 로봇 정책을 훈련하는 Phantom이 동일한 비디오 기반 학습 문제를 다룬다.
+- 🏛 기반 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — Phantom이 인간 비디오에서 로봇 정책을 학습하기 위해 활용하는 visual representation learning의 기초 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — Phantom의 인간 비디오 활용과 달리 large-scale video generative pre-training을 통한 visuomotor policy learning 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — Phantom의 human video learning을 Human2Robot의 paired human-robot demonstration으로 확장하여 더 정확한 embodiment transfer를 실현할 수 있다.
+- 🔗 후속 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 인간 비디오만을 활용한 로봇 학습에서 더 나아가 paired human-robot video로 확장한 연구입니다.
+- 🔗 후속 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — Phantom은 HumanPlus의 인간 비디오 학습 개념을 로봇 없이 훈련하는 극한까지 발전시킴
+- 🔄 다른 접근: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — Phantom과 동일하게 인간 비디오를 활용하지만 Moto는 latent motion token이라는 중간 표현을 통해 차별화된 접근을 한다.
+- 🔄 다른 접근: [[papers/1578_SPRINT_Scalable_Policy_Pre-Training_via_Language_Instruction/review]] — Phantom은 SPRINT와 같이 사전학습을 통한 효율성을 추구하지만 로봇 없이 인간 비디오만으로 훈련하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — Phantom은 UniSkill과 같이 인간 비디오만으로 로봇을 훈련시키지만 cross-embodiment 대신 단일 로봇에 집중한다.
+- 🔄 다른 접근: [[papers/1634_ZeroMimic_Distilling_Robotic_Manipulation_Skills_from_Web_Vi/review]] — Phantom과 함께 인간 비디오만으로 로봇을 훈련하는 접근법이지만, ZeroMimic은 일반 웹 비디오에서 직접 스킬을 추출하는 점이 다르다
+- 🔄 다른 접근: [[papers/1347_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr/review]] — 인간 비디오만을 사용한 로봇 훈련과 데스크톱 환경 전이 학습이 다른 데이터 활용 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — 액션 라벨 없는 학습 문제를 궤적 모델링 대신 인간 비디오만으로 해결하는 다른 접근법
+- 🔗 후속 연구: [[papers/1376_EgoScale_Scaling_Dexterous_Manipulation_with_Diverse_Egocent/review]] — Phantom의 human video만을 사용한 로봇 훈련이 EgoScale의 대규모 egocentric 데이터 활용으로 더욱 확장된 형태이다.

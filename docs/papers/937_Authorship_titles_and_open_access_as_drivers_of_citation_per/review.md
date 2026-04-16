@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "정형외과 논문 97,806개를 분석하여 저자 수, 제목 특성, 개방접근(OA) 출판이 인용 성과에 미치는 영향을 규명한 scientometric 연구"
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Journal_Citation_Patterns"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Migliorini et al._2026_Authorship, titles and open access as drivers of citation performance in orthopaedics a scientometr.pdf"
 ---
@@ -82,7 +84,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Migliorini et al._2026_Authorship, title
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 상대 인용 비율이라는 새로운 메트릭을 통해 정형외과 논문의 인용 성과를 다른 방식으로 측정한다
-- 🧪 응용 사례: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 천문학 저널 인용 편향 분석을 정형외과 분야의 저자 수와 Open Access 효과 연구에 적용할 수 있다
-- 🏛 기반 연구: [[papers/932_An_empirical_analysis_of_open_access_citation_advantages_in/review]] — Open Access 인용 이점의 실증적 증거가 정형외과 논문의 OA 출판 효과 분석에 기반을 제공한다
-- 🏛 기반 연구: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 디지털마케팅 연구의 인용 분석에서 저자명과 제목이 인용 성과에 미치는 영향을 이해해야 한다.
+- 🔗 후속 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 개방접근의 인용 성과 영향을 정형외과 분야의 저자 수, 제목 특성과 결합한 구체적 분석으로 확장합니다.
+- 🏛 기반 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 과학에서의 집단적 크레딧 할당 이론이 정형외과 논문의 저자 수와 인용 성과 관계를 설명하는 기반이 됩니다.
+- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학 출판에서 저자십과 관련된 성별 격차 문제를 정형외과 분야의 구체적 사례로 확장 분석한다.
+- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 기반 지식 생산에서 저자 수가 연구 성과에 미치는 영향의 이론적 배경을 제공한다.
+- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 인용 성과 측정을 위한 다른 지표인 g-index를 통해 저자십 효과를 평가할 수 있다.
+- 🏛 기반 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 상대적 인용 비율 지표가 정형외과 논문의 인용 성과 동인 분석에 보다 정확한 비교 기준을 제공합니다.
+- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 저자 수와 인용 성과 관계 분석이 과학에서 여성의 신용 인정 부족 문제와 연결되어 성별 영향 분석으로 확장됩니다.
+- 🔗 후속 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 저자 정보, 제목, 오픈액세스가 인용에 미치는 영향 분석은 저널 명성 편향 외에도 논문 인용에 영향을 주는 다른 요인들을 포괄적으로 다룹니다.
+- 🔗 후속 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 저자 신분, 제목, 오픈 액세스가 인용 성과에 미치는 복합적 영향을 분석한다.
+- 🏛 기반 연구: [[papers/932_An_empirical_analysis_of_open_access_citation_advantages_in/review]] — 개방접근과 인용 성과 관계에 대한 일반적 분석이 특정 분야 연구의 기초를 제공한다
+- 🔗 후속 연구: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 오픈 액세스와 제목이 인용에 미치는 영향을 분석한 연구로, 소셜 미디어 주목도와 인용도 관계를 확장 연구할 수 있습니다.
+- 🔗 후속 연구: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 저자십과 제목이 인용에 미치는 영향을 OA 이점 분석에 확장 적용한 연구입니다.
+- 🔗 후속 연구: [[papers/1227_Exploring_Open_Access_Research_Trends_in_the_Indian_Council/review]] — 개방접근 출판 패턴 분석을 저자 속성과 인용 성과 측면에서 확장한 연구이다

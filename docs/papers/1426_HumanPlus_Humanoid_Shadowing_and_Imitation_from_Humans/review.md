@@ -10,10 +10,12 @@ date: "2024.06"
 doi: ""
 arxiv: ""
 score: 4.0
-essence: "휴머노이드 로봇이 인간의 모션 데이터와 RGB 카메라만으로 실시간 shadowing 및 자율 skill 학습을 수행하는 풀스택 시스템을 제시한다."
+essence: "휴머노이드 로봇이 단일 RGB 카메라를 사용하여 인간의 동작을 실시간으로 따라할 수 있는 shadowing 시스템과, 수집된 데이터로부터 자율적인 작업 기술을 학습하는 imitation learning 파이프라인을 제시하는 전체 스택 시스템이다."
 tags:
-  - "cat/Humanoid_Teleoperation_and_Interaction"
-  - "sub/Real-World_Humanoid_Skills"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Egocentric_Human_Data"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_HumanPlus Humanoid Shadowing and Imitation from Humans.pdf"
 ---
@@ -26,18 +28,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_HumanPlus Humanoid Shadow
 
 ## Essence
 
-![Figure 1](figures/fig1.webp)
+![Figure 3](figures/fig3.webp)
 
-*Figure 1: Stanford HumanPlus Robot. We present a full-stack system for humanoid robots to learn motion and*
+*Figure 3: Shadowing and Retargeting. Our system uses one RGB camera for body and hand pose estimation.*
 
-휴머노이드 로봇이 인간의 모션 데이터와 RGB 카메라만으로 실시간 shadowing 및 자율 skill 학습을 수행하는 풀스택 시스템을 제시한다.
+휴머노이드 로봇이 단일 RGB 카메라를 사용하여 인간의 동작을 실시간으로 따라할 수 있는 shadowing 시스템과, 수집된 데이터로부터 자율적인 작업 기술을 학습하는 imitation learning 파이프라인을 제시하는 전체 스택 시스템이다.
 
 ## Motivation
 
-- **Known**: 휴머노이드 로봇은 인간과 유사한 형태로 인해 대규모 인간 데이터 활용이 가능하며, RL을 통한 저수준 정책 학습과 sim-to-real 전환이 다족 로봇에서 성공한 바 있다.
-- **Gap**: 휴머노이드의 높은 차원의 제어 복잡성, 인간과의 형태학적 차이, 그리고 egocentric vision에서의 자율 skill 학습을 위한 데이터 파이프라인이 부재하다.
-- **Why**: 일반목적 휴머노이드 로봇 개발을 위해서는 복잡한 조작 및 이동 skill을 효율적으로 학습하는 방법이 필수적이며, 이는 로봇의 실용화와 확장성을 결정한다.
-- **Approach**: AMASS 데이터셋 기반의 Humanoid Shadowing Transformer로 저수준 정책을 학습하고, 이를 통해 RGB 카메라만으로 인간 모션을 실시간 추적한 후, 수집된 데이터로 Humanoid Imitation Transformer를 사용해 vision 기반 skill policy를 학습한다.
+- **Known**: 휴머노이드 로봇은 인간 형태의 이점으로 인해 대규모 인간 데이터 활용이 가능하지만, 실제로는 perception과 control의 복잡성, 형태론적 차이, 자율 기술 학습을 위한 데이터 파이프라인 부족으로 인해 인간 데이터 활용이 어려웠다.
+- **Gap**: 기존 연구들은 모션 캡처 시스템이나 exoskeleton을 사용한 비용이 높은 teleoperation 방식에 의존하고 있었으며, 휴머노이드의 복잡한 전신 제어와 고자유도 환경에서 효율적으로 학습할 수 있는 통합 시스템이 부족하였다.
+- **Why**: 인간과 유사한 형태의 휴머노이드가 인간 환경과 도구에 대한 일반적인 적응 능력을 갖출 수 있다면, 이는 범용 로봇 지능 달성을 향한 유망한 경로이며 로봇 공학에서 오랫동안 추구해온 목표를 실현할 수 있기 때문이다.
+- **Approach**: AMASS 데이터셋으로부터 reinforcement learning을 통해 Humanoid Shadowing Transformer라는 저수준 정책을 학습하여 pose 조건부 제어를 가능하게 하고, 이를 통해 수집한 데이터로 behavior cloning을 수행하여 egocentric vision 기반의 자율 기술 정책을 학습한다.
 
 ## Achievement
 
@@ -45,10 +47,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_HumanPlus Humanoid Shadow
 
 *Figure 1: Stanford HumanPlus Robot. We present a full-stack system for humanoid robots to learn motion and*
 
-- **Shadowing 시스템**: 단일 RGB 카메라로 인간의 신체 및 손 모션을 실시간으로 33-DoF 휴머노이드에 전달하는 저비용 teleoperation 시스템 구현
-- **Task-agnostic 저수준 정책**: 40시간 인간 모션 데이터(AMASS)로 훈련된 Humanoid Shadowing Transformer가 zero-shot으로 실제 환경에 전환
-- **효율적 학습**: 최대 40가지 시연으로 신발 신기-일어서기-보행, 창고 물체 언로드, 옷 접기, 타이핑 등의 tasks를 60-100% 성공률로 자율 완수
-- **통합 파이프라인**: shadowing을 통한 데이터 수집과 behavior cloning을 결합하여 현실 환경에서 복합 manipulation 및 locomotion skill 습득
+- **Shadowing 시스템**: 단일 RGB 카메라와 body & hand pose estimation을 사용하여 실시간으로 인간 동작을 휴머노이드에 따라하게 하는 저비용 teleoperation 시스템 개발
+- **Humanoid Shadowing Transformer**: AMASS 40시간 데이터로 학습된 task-agnostic 저수준 정책으로 zero-shot sim-to-real transfer 달성
+- **Humanoid Imitation Transformer**: Forward dynamics prediction을 통합한 transformer 기반 imitation learning으로 40개 시연만으로 자율 작업 학습
+- **자율 작업 달성**: 신발 신기-일어나기-걷기, 창고 물품 언로드, 스웨터 접기, 물품 정렬, 타이핑, 다른 로봇 인사 등 6개 작업을 60-100% 성공률로 수행
+- **통합 시스템**: 데이터 수집부터 자율 실행까지의 완전한 파이프라인을 33-DoF 180cm 커스텀 휴머노이드에서 구현
 
 ## How
 
@@ -56,24 +59,29 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_HumanPlus Humanoid Shadow
 
 *Figure 3: Shadowing and Retargeting. Our system uses one RGB camera for body and hand pose estimation.*
 
-- AMASS 데이터셋의 인간 pose를 휴머노이드 pose로 retarget한 후 transformer 기반 decoder-only 아키텍처로 저수준 정책 학습
-- 실시간 body & hand pose estimation 알고리즘(58Hz)으로 인간 모션을 감지하고 retargeting을 통해 Humanoid Shadowing Transformer 입력으로 변환
-- Shadowing 중 binocular RGB 카메라로 egocentric vision 데이터 수집
-- 수집 데이터로 supervised behavior cloning 수행하여 이미지 피처 공간에서의 forward dynamics 예측을 통해 정규화되는 Humanoid Imitation Transformer 훈련
+- AMASS 데이터셋의 인간 모션을 pose retargeting을 통해 휴머노이드 pose로 변환
+- Pose 조건부 목표를 입력으로 하는 Humanoid Shadowing Transformer를 RL로 시뮬레이션에서 학습
+- 학습된 저수준 정책을 실제 로봇에 zero-shot으로 배포
+- 실시간 body & hand pose estimation 알고리즘으로 인간 동작 추정
+- 추정된 인간 동작을 휴머노이드 공간으로 retarget하여 shadowing 제어
+- Shadowing 중 binocular egocentric RGB 카메라로 전신 데이터 수집
+- 수집한 데이터로 Humanoid Imitation Transformer를 behavior cloning으로 학습
+- Forward dynamics prediction 보조 작업으로 vision feature 공간에서 정규화하여 과적합 방지
 
 ## Originality
 
-- 단순 RGB 카메라만으로 전신 teleoperation을 가능하게 하여 기존의 고가의 mocap, exoskeleton, VR 장치 의존성 제거
-- 대규모 인간 모션 데이터(AMASS)를 활용한 task-agnostic 저수준 정책으로 다양한 skill에 대응 가능한 범용성 확보
-- Forward dynamics 예측을 imitation learning에 통합하여 egocentric vision 기반 고차원 제어의 overfitting 문제 해결
-- shadowing과 behavior cloning의 통합 파이프eline으로 현실 환경에서의 효율적 데이터 수집 및 skill 학습 실현
+- 기존 teleoperation 방식의 mocap/exoskeleton 대신 단일 RGB 카메라 기반의 저비용 실시간 shadowing 시스템 제안
+- Task-agnostic 저수준 정책으로 다양한 인간 동작을 일반화하는 새로운 접근
+- Forward dynamics prediction을 imitation learning에 통합하여 egocentric vision 학습 안정성 개선
+- 완전한 end-to-end 시스템 구현: RL 기반 shadowing과 behavior cloning 기반 자율 학습의 synergy 활용
 
 ## Limitation & Further Study
 
-- 40가지 시연만으로 학습되므로 더 복잡하거나 정밀한 조작 task의 일반화 능력 미검증
-- 33-DoF 휴머노이드의 특정 하드웨어 설정에 최적화된 것으로, 다른 형태의 휴머노이드로의 전환 가능성 불명확
-- Pose retargeting 과정에서 발생하는 휴머노이드-인간 형태 차이를 완전히 극복하지 못할 가능성
-- 후속 연구: 다중 시점 RGB 카메라 활용, 더 정교한 hand manipulation을 위한 tactile feedback 통합, 다양한 휴머노이드 플랫폼으로의 확장성 검증 필요
+- 성공률이 작업별로 편차가 크며(60-100%) 일부 작업은 여전히 낮은 성능을 보임
+- 40개 시연이라는 적정량의 데이터 필요성이 여전히 존재하며 더 적은 시연으로의 확장성 미흡
+- Pose retargeting의 형태학적 차이에 대한 손실이 완전히 해결되지 않음
+- Egocentric vision 기반 정책이 특정 환경 조건에서 일반화 능력 부족 가능성
+- 후속 연구: 더 작은 데이터셋으로 학습하는 메타러닝 기법 탐색, 양손 협력 조작 작업 확대, 동적 환경에 대한 적응성 강화
 
 ## Evaluation
 
@@ -83,16 +91,21 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2024_HumanPlus Humanoid Shadow
 - Clarity: 4/5
 - Overall: 4/5
 
-**총평**: 이 논문은 RGB 카메라 기반 실시간 shadowing과 효율적 imitation learning을 통합하여 휴머노이드 로봇의 자율 skill 습득을 실현한 실질적 기여를 보여준다. 기존 고가 teleoperation 시스템 대체와 대규모 인간 데이터 활용이라는 측면에서 휴머노이드 개발의 새로운 방향을 제시한다.
+**총평**: 본 논문은 휴머노이드 로봇의 인간 데이터 활용이라는 오랫동안의 과제에 대해 실용적이고 완성도 높은 end-to-end 시스템을 제시했으며, RGB 카메라 기반 shadowing의 단순성과 효율성, 그리고 다양한 자율 작업의 성공적 구현은 로봇 공학 분야에 실질적인 기여를 한다.
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1370_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — HumanPlus의 RGB 카메라 기반 실시간 shadowing과 자율 학습 시스템은 EgoHumanoid의 로봇 없는 인간 시연 활용 프레임워크의 기술적 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1417_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — HumanPlus의 RGB 카메라만을 활용한 단순한 센서 구성과 3D LiDAR 플랫폼 기반의 복합 센서 시스템은 휴머노이드 인지를 위한 서로 다른 접근법입니다.
-- 🏛 기반 연구: [[papers/1314_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — HumanPlus의 인간-로봇 모방 학습 방법론이 Humanoid-LLA의 물리적으로 실행 가능한 동작 생성에 기반 기술을 제공한다
-- 🔗 후속 연구: [[papers/1342_DexUMI_Using_Human_Hand_as_the_Universal_Manipulation_Interf/review]] — UniDex의 범용적 손 조작 프레임워크는 HumanPlus의 RGB 카메라 기반 실시간 학습 시스템과 결합하여 더욱 포괄적인 humanoid 제어가 가능합니다.
-- 🔗 후속 연구: [[papers/1370_EgoHumanoid_Unlocking_In-the-Wild_Loco-Manipulation_with_Rob/review]] — EgoHumanoid의 robot-free egocentric 시연 수집 방식은 HumanPlus의 RGB 카메라 기반 실시간 shadowing 시스템과 결합하여 더욱 효과적인 데이터 수집이 가능합니다.
-- 🔄 다른 접근: [[papers/1417_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — 3D LiDAR 기반 플랫폼과 3D Diffusion Policy를 사용한 일반화 가능한 조작과 HumanPlus의 RGB 카메라만을 활용한 접근법은 센서 모달리티 측면에서 대조적인 방법론입니다.
-- ⚖️ 반론/비판: [[papers/1484_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 동일한 HumanPlus 시스템이지만 다른 관점이나 개선사항을 제시할 수 있다
-- 🔗 후속 연구: [[papers/1407_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — HumanPlus의 인간 모방 학습이 FRoM-W1의 휴머노이드 제어 프레임워크를 실제 인간 데이터로부터 학습하는 방향으로 확장한다
-- 🔗 후속 연구: [[papers/1599_Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Po/review]] — HumanPlus의 인간 shadowing 방법론을 door opening과 같은 specific task로 확장한 연구
+- 🔄 다른 접근: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — 둘 다 인간-휴머노이드 학습이지만 HumanPlus는 모방 학습에, H2O는 실시간 원격조종에 집중한다.
+- 🏛 기반 연구: [[papers/1376_EgoScale_Scaling_Dexterous_Manipulation_with_Diverse_Egocent/review]] — 다양한 egocentric 데이터 수집 방법이 HumanPlus의 인간 동작 데이터 수집 파이프라인에 기반이 된다.
+- 🔗 후속 연구: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 인간 동작 데이터를 로봇이 학습하는 방법을 paired human-robot 데이터로 더 정교하게 발전시켰다.
+- 🔗 후속 연구: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — Phantom은 HumanPlus의 인간 비디오 학습 개념을 로봇 없이 훈련하는 극한까지 발전시킴
+- 🏛 기반 연구: [[papers/1279_BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Mani/review]] — 휴머노이드 섀도잉과 모방 학습 기술은 BEHAVIOR Robot Suite의 전신 조작 학습에 기초 이론을 제공한다.
+- 🔄 다른 접근: [[papers/1390_Expressive_Whole-Body_Control_for_Humanoid_Robots/review]] — 표현력 있는 전신 제어와 HumanPlus 휴머노이드 섀도잉은 인간 동작 모방의 서로 다른 학습 및 제어 접근법이다.
+- 🔄 다른 접근: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — 둘 다 인간-휴머노이드 학습이지만 H2O는 실시간 원격조종에, HumanPlus는 모방 학습에 집중한다.
+- 🏛 기반 연구: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — HumanPlus의 휴머노이드 모방 학습 기술이 OmniH2O의 인간 동작을 휴머노이드로 전이하는 핵심 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1513_Parallels_Between_VLA_Model_Post-Training_and_Human_Motor_Le/review]] — VLA post-training 분석이 참조하는 인간 운동 학습의 실제 적용 사례인 humanoid imitation
+- 🏛 기반 연구: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — 인간 시연에서 로봇으로의 전이 학습 기본 개념을 제공하여 UniSkill의 cross-embodiment 접근법의 이론적 토대를 마련한다.
+- 🏛 기반 연구: [[papers/1628_WholeBodyVLA_Towards_Unified_Latent_VLA_for_Whole-Body_Loco-/review]] — humanoid shadowing and imitation learning의 기본 개념을 제공하여 WholeBodyVLA의 전신 제어에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — 인간의 손가락 동작을 로봇이 모방하는 기본 원리를 제공합니다.
+- 🏛 기반 연구: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — NaVILA의 legged robot control을 위한 기본적인 humanoid shadowing 및 imitation learning 기법을 제공한다.
+- 🏛 기반 연구: [[papers/1376_EgoScale_Scaling_Dexterous_Manipulation_with_Diverse_Egocent/review]] — 인간 동작 데이터 수집 방법론과 로봇 imitation learning 파이프라인의 기반 연구입니다.

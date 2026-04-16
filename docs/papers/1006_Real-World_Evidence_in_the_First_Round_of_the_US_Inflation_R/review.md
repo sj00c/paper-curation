@@ -10,8 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 미국 인플레이션 감축법(IRA)의 첫 번째 Medicare 약가 협상에서 인용된 실제임상증거(RWE)의 출처와 연구 설계를 체계적으로 분석한 인용 분석 연구이다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Research_Data_and_Metadata"
+  - "sub/Statistical_Robustness_Mapping"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Winberg et al._2026_Real-World Evidence in the First Round of the US Inflation Reduction Act Drug Price Negotiations A.pdf"
 ---
@@ -77,5 +78,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Winberg et al._2026_Real-World Evidence 
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 실제임상증거(RWE)의 장기적 과학적 영향력을 정량화하여 약가 협상에서의 과학적 근거의 지속성을 평가할 수 있다.
-- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 정책 의사결정에서 과학적 데이터와 측정 방법론이 어떻게 활용되는지에 대한 실증적 근거를 제공한다.
+- 🔄 다른 접근: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 인용 맥락 분석이 실제임상증거 논문의 인용 패턴을 더 깊이 이해하는 보완적 접근법을 제공한다.
+- ⚖️ 반론/비판: [[papers/1058_Why_Most_Published_Research_Findings_Are_False/review]] — 대부분의 연구 결과가 거짓이라는 관점에서 RWE 기반 정책 결정의 신뢰성 문제를 제기한다.
+- 🏛 기반 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 재현가능성 문제가 실제임상증거의 품질과 정책적 활용에서 핵심적 고려사항임을 보여준다.
+- 🏛 기반 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 정책 결정에서 인용 분석이 어떻게 활용되는지 보여주는 기본적인 방법론적 배경을 제공합니다.
+- 🔗 후속 연구: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학적 증거를 정책에 적용하는 과정을 AI를 활용하여 자동화하고 개선하는 방향으로 확장합니다.
+- 🧪 응용 사례: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 대규모 언어 모델을 활용한 책임감 있는 연구 평가는 IRA 약가 협상에서 실제임상증거 평가의 객관성을 높일 수 있는 방법을 제시합니다.
+- 🏛 기반 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 투명한 연구 평가 방법론은 정책 결정에서 인용되는 과학적 증거의 품질과 편향을 체계적으로 분석하는 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 보건 서비스에서 인증 기관의 기여도 분석은 의료 정책 결정에서 과학적 증거가 어떻게 활용되는지에 대한 보완적 시각을 제공합니다.
+- 🔗 후속 연구: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 인플레이션 감소법에서의 실증 증거 활용과 물리학 지식의 정책 활용은 모두 과학-정책 연결의 선택성을 보여준다.
+- 🔄 다른 접근: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 인용 맥락 분석이 실제임상증거 논문의 인용 패턴을 텍스트 수준에서 깊이 분석하는 방법론을 제공한다.
+- 🧪 응용 사례: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 실제 비즈니스 환경에서 디지털 마케팅 연구 성과의 증거 기반 평가 사례를 제시합니다.

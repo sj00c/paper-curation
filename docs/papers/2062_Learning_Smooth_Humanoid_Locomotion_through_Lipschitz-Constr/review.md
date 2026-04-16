@@ -1,3 +1,25 @@
+---
+title: "2062_Learning_Smooth_Humanoid_Locomotion_through_Lipschitz-Constr"
+authors:
+  - "Zixuan Chen"
+  - "Xialin He"
+  - "Yen-Jen Wang"
+  - "Qiayuan Liao"
+  - "Yanjie Ze"
+date: "2024.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Reinforcement Learning으로 훈련한 humanoid robot의 locomotion policy에 Lipschitz 제약을 부여하여 smooth behavior를 자동으로 유도하는 Lipschitz-Constrained Policies (LCP) 방법을 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Damage-Aware_Safety_Locomotion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2024_Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies.pdf"
+---
+
 # Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies
 
 > **저자**: Zixuan Chen, Xialin He, Yen-Jen Wang, Qiayuan Liao, Yanjie Ze, Zhongyu Li, S. Shankar Sastry, Jiajun Wu, Koushil Sreenath, Saurabh Gupta, Xue Bin Peng | **날짜**: 2024-10-15 | **URL**: [https://arxiv.org/abs/2410.11825](https://arxiv.org/abs/2410.11825)
@@ -66,3 +88,12 @@
 - Overall: 4/5
 
 **총평**: Lipschitz constraint을 통한 smooth policy 학습은 이론적으로 명확하고 실용적이며, 기존의 복잡한 smoothing 기법들을 단순하고 미분 가능한 방식으로 대체하는 우수한 기여이다. 실제 humanoid robot에서의 검증과 재현성 있는 공개 코드 공개로 high impact을 기대할 수 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — Lipschitz 제약을 통한 정책 안정화의 이론적 기반과 구현 방법을 제공한다.
+- 🔄 다른 접근: [[papers/1671_SHIELD_Safety_on_Humanoids_via_CBFs_In_Expectation_on_Learne/review]] — CBF를 통한 휴머노이드 안전성 확보라는 유사하지만 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — 기하학적 인식과 예측 안전 필터를 결합하여 안전한 휴머노이드 제어를 확장한다.
+- 🧪 응용 사례: [[papers/1696_Success_in_Humanoid_Reinforcement_Learning_under_Partial_Obs/review]] — 부분 관측 하에서의 강화학습을 스무스 보행 제어에 적용한 실용적 접근
+- 🧪 응용 사례: [[papers/1649_Robot_Crash_Course_Learning_Soft_and_Stylized_Falling/review]] — Lipschitz 제약을 통한 부드러운 제어가 부드럽고 스타일화된 낙상 학습에 직접 적용된다.
+- 🔄 다른 접근: [[papers/1688_Spectral_Normalization_for_Lipschitz-Constrained_Policies_on/review]] — 두 논문 모두 Lipschitz 제약을 통한 부드러운 휴머노이드 보행을 다루지만, spectral normalization과 일반적인 제약이라는 다른 구현 방법을 사용한다.

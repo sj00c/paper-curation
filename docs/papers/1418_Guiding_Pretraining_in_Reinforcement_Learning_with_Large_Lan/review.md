@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "ELLM은 대규모 언어모델(LLM)을 활용하여 RL 에이전트의 탐색을 인간의 상식적 지식으로 안내하는 방법을 제안한다. 현재 상태에 기반해 LLM이 제시하는 목표 달성을 보상함으로써 의미 있는 행동 학습을 유도한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Foundation_Model_Agents"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/LLM-Based_Reward_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Du et al._2023_Guiding Pretraining in Reinforcement Learning with Large Language Models.pdf"
 ---
@@ -88,10 +90,16 @@ ELLM은 대규모 언어모델(LLM)을 활용하여 RL 에이전트의 탐색을
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — ELLM과 ExploRLLM 모두 LLM을 RL 탐색에 활용하지만, 목표 기반 상식 안내 vs 정책 코드 생성이라는 서로 다른 메커니즘을 사용한다
-- 🔗 후속 연구: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — GLAM의 온라인 RL 업데이트가 ELLM의 LLM 가이드 사전훈련을 interactive environment에서 지속적으로 개선하는 방향으로 확장한다
-- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Text2Reward의 언어 기반 보상 설계가 ELLM의 LLM 목표 제시 방법론에 보상 함수 자동 생성이라는 이론적 기반을 제공한다
-- 🔄 다른 접근: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — GLAM과 ELLM 모두 LLM을 RL에 통합하지만, 온라인 점진적 업데이트 vs 사전 지식 기반 탐색 안내라는 서로 다른 접근법을 사용한다
-- 🏛 기반 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 대규모 언어 모델을 활용한 강화학습 가이드 연구가 Text2Reward의 LLM 기반 보상 형성에 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1532_Learning_Motion_Skills_with_Adaptive_Assistive_Curriculum_Fo/review]] — 휴머노이드 동작 학습을 위한 적응형 보조 시스템과 대규모 언어 모델로 강화학습을 가이드하는 방식이 서로 다른 접근법이다.
-- 🔄 다른 접근: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — ExploRLLM과 ELLM 모두 LLM을 RL 탐색에 활용하지만, 정책 코드 생성 vs 목표 기반 안내라는 서로 다른 접근 방식을 사용한다
+- 🔄 다른 접근: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 둘 다 LLM을 활용한 RL 보상 설계를 다루지만 탐색 가이드 vs 직접적 보상 생성이라는 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — ExploRLLM의 LLM 기반 탐색 가이드 개념을 사전학습 단계에 적용한 확장 연구이다.
+- 🔗 후속 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — Language to Rewards의 개념을 RL 사전학습에서 LLM 가이드 탐색으로 발전시켰다.
+- 🔄 다른 접근: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 둘 다 LLM을 RL에 활용하지만 ELLM은 탐색 가이던스에, GLAM은 online 업데이트에 중점을 둔다.
+- 🔗 후속 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — Plan-Seq-Learn은 ELLM의 LLM 기반 탐색 가이드를 장기 계획 수립으로 발전시킨 연구입니다.
+- 🏛 기반 연구: [[papers/1328_Deep_Reinforcement_Learning_for_Bipedal_Locomotion_A_Brief_S/review]] — 강화학습에서 언어 모델을 활용한 사전학습 가이드의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1416_Grounding_Large_Language_Models_in_Interactive_Environments/review]] — 둘 다 LLM 기반 RL이지만 GLAM은 online learning에, ELLM은 탐색 가이던스에 집중한다.
+- 🏛 기반 연구: [[papers/1444_Language_to_Rewards_for_Robotic_Skill_Synthesis/review]] — 언어를 보상으로 변환하는 기본 개념이 ELLM의 LLM 기반 RL 가이던스에 적용되었다.
+- 🧪 응용 사례: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Guiding Pretraining with LLM은 Text2Reward의 언어 기반 보상 형성을 사전훈련 과정에 적용하는 응용 사례다.
+- 🏛 기반 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — 대규모 언어모델을 활용한 강화학습 가이드 방법론이 Voyager의 GPT-4 기반 학습 메커니즘의 이론적 기반을 제공한다
+- 🏛 기반 연구: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — 대규모 언어 모델의 상호작용적 환경 가이드 개념이 DEPS의 LLM 기반 대화형 계획의 기초가 됩니다.
+- 🏛 기반 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — LLM 기반 RL 사전 훈련 가이드의 방법론이 ExploRLLM의 LLM 정책 코드 생성 및 탐색 유도 설계의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — LLM을 활용한 강화학습 사전 훈련 가이드로서 DRL의 실세계 적용을 확장합니다.

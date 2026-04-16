@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "대규모 생의학 문헌(2004-2008, 215만 개 논문)을 이용하여 공인용분석(co-citation analysis), 서지적 결합(bibliographic coupling), 직접 인용(direct citation), 그리고 하이브리드 접근법의 4가지 유사성 기반 방법이 연구 최전선을 얼마나 정확하게 표현하는지 비교 평가했다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Citation_Analysis_Methods"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Boyack and Klavans_2010_Co‐citation analysis, bibliographic coupling, and direct citation Which citation approach represent.pdf"
 ---
@@ -76,12 +78,22 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Boyack and Klavans_2010_Co‐citation an
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 분석 방법들의 효과 비교 연구를 인용 정당성의 관점에서 더욱 심층적으로 확장하여 분석할 수 있습니다.
-- 🧪 응용 사례: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 공인용분석과 서지결합 등의 인용 분석 방법들을 학술지 평가 도구로 실제 적용하는 구체적 사례를 보여줍니다.
-- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer가 구현하는 co-citation, bibliographic coupling 등의 기본 분석 기법들의 이론적 배경을 제공한다.
-- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 문서-단어 네트워크를 통한 토픽 모델링이 서지결합 및 동시인용 분석의 이론적 기반을 확장한다.
-- 🏛 기반 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 공동인용 분석과 서지학적 결합의 기본 원리가 인용 네트워크의 사회구조적 분석을 위한 방법론적 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — Co-citation과 bibliographic coupling 분석 기법이 부모 양육방식 연구의 co-word 분석 방법론적 기반이다.
-- 🏛 기반 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 공인용 분석과 서지결합의 기본 개념을 제시하여 D&I 이론의 인용 네트워크 분석을 위한 방법론적 토대를 마련한다.
-- 🔗 후속 연구: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — 서지결합과 동시인용 분석을 통해 e-commerce 분야의 지적 구조를 더 정교하게 파악할 수 있다
-- 🧪 응용 사례: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — Co-citation, co-occurrence, co-authorship 분석 기법이 보건의료 인증 분야의 지식 구조 규명에 적용된다.
+- 🏛 기반 연구: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑의 기본 원리와 방법론에 대한 종합적 이해를 제공하여 인용 분석 방법들의 맥락을 파악할 수 있다.
+- 🔗 후속 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 인용 기반 유사성 분석을 공간-시간적 인용 확산 패턴 분석으로 확장하여 더 동적인 관점을 제공한다.
+- 🔄 다른 접근: [[papers/989_Modeling_Changing_Scientific_Concepts_with_Complex_Networks/review]] — 복잡 네트워크를 활용하여 과학 개념의 변화를 모델링하는 다른 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 서지계량학 방법론을 실제 분석에 적용하기 위한 도구적 접근을 제시한다
+- 🔗 후속 연구: [[papers/977_Introducing_multiverse_analysis_to_bibliometrics_The_case_of/review]] — 서지계량학 분석에서 방법론적 다양성의 중요성을 멀티버스 분석으로 확장한다
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학학 분야의 데이터와 실증 방법론에 대한 포괄적 기초를 제공한다
+- 🔄 다른 접근: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 과학 공동체 매핑을 위한 링크 필터링 방법론이 기존 유사성 기반 방법들의 확장성 문제에 새로운 해결책을 제시한다.
+- 🏛 기반 연구: [[papers/1009_Relative_Citation_Ratio_A_New_Metric_That_Uses_Citation_Rate/review]] — 공동인용 분석 방법론을 활용하여 학문 분야를 정의하고 인용 영향력을 정규화하는 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 동시인용 분석과 서지결합이 VOSviewer의 핵심 클러스터링 알고리즘의 이론적 토대를 구성한다.
+- 🏛 기반 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — 동시인용분석과 서지결합 등 현대 인용분석 기법의 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1053_Visualizing_the_context_of_citations_referencing_papers_publ/review]] — 전통적 동시인용 분석을 인용 맥락의 키워드 동시출현으로 확장한 혁신적 접근법을 보여준다.
+- 🏛 기반 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 문헌 간 인용 관계 분석 방법론이 자동 가설 생성 시스템의 기반 이론을 제공한다.
+- 🔗 후속 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 동시인용, 서지결합, 직접인용 분석이 초기 인용 네트워크 연구를 정교화한 방법론으로 발전시킨다.
+- 🔄 다른 접근: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 링크 필터링 기반 과학 공동체 매핑이 기존 유사성 기반 서지계량학 방법들의 확장성 문제에 새로운 해결책을 제시한다.
+- 🏛 기반 연구: [[papers/1144_Bibliometric_analysis_of_publications_titled_culinary_arts_s/review]] — 요리 예술 분야의 co-citation과 bibliographic coupling 분석의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1146_BIBLIOMETRIC_ANALYSIS_ON_PARENTING_STYLES_AND_ADOLESCENTS_HA/review]] — 부모 양육과 청소년 행복 연구의 co-citation과 co-word 분석 방법론의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 보건의료 인증 연구의 co-citation과 co-authorship 분석 방법론의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/926_A_bibliometric_analysis_of_bouldering_and_climbing_research/review]] — 서지계량학의 핵심 분석 방법들이 특정 분야 연구 동향 파악의 이론적 토대를 제공한다
+- 🏛 기반 연구: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 동시인용분석과 서지결합의 기본 방법론을 다룬 기초 연구로, 인용 네트워크 분석에 필요한 이론적 토대를 제공합니다.

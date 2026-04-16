@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "OneTwoVLA는 단일 통합 vision-language-action 모델로서 reasoning과 acting을 모두 수행하며, 작업 실행 중 critical moment에서는 explicit reasoning을, 그 외에는 reasoning 기반 action generation으로 adaptively switch한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2025_OneTwoVLA A Unified Vision-Language-Action Model with Adaptive Reasoning.pdf"
 ---
@@ -89,7 +91,9 @@ OneTwoVLA는 단일 통합 vision-language-action 모델로서 reasoning과 acti
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — CoT-VLA의 visual chain-of-thought 추론이 OneTwoVLA의 adaptive reasoning 메커니즘의 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — OneTwoVLA의 adaptive switch와 embodied chain-of-thought의 다단계 추론은 VLA 모델의 추론 능력 향상을 위한 서로 다른 접근법이다.
-- 🔗 후속 연구: [[papers/1584_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — ThinkAct의 reinforced vision-language-action reasoning이 OneTwoVLA의 adaptive reasoning 프레임워크를 강화학습으로 확장한다.
-- 🔄 다른 접근: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — OneTwoVLA의 adaptive reasoning switch와 embodied chain-of-thought의 multi-step reasoning은 모두 VLA 모델의 추론 능력을 위한 서로 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — VLA 모델에서 adaptive reasoning-action switching vs reinforced visual reasoning이라는 서로 다른 추론-행동 통합 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — System-2 thinking을 adaptive reasoning과 결합하여 상황에 따라 추론 깊이를 조절하는 더 효율적인 VLA 시스템을 구축한다.
+- 🏛 기반 연구: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — visual chain-of-thought reasoning의 기본 이론을 제공하여 OneTwoVLA의 adaptive reasoning 메커니즘 설계에 필요한 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1509_OpenHelix_A_Short_Survey_Empirical_Analysis_and_Open-Source/review]] — OneTwoVLA의 adaptive reasoning 접근법과 OpenHelix의 dual-system 아키텍처는 reasoning과 acting을 분리하는 다른 전략을 제시한다.
+- ⚖️ 반론/비판: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — unified VLA vs triple-system 기반의 다른 시스템 통합 철학
+- 🏛 기반 연구: [[papers/1616_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang/review]] — OneTwoVLA의 적응형 아키텍처 설계가 VLA-Adapter의 Bridge Attention 기반 연결 방법론의 이론적 기반을 제공한다.

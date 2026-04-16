@@ -11,7 +11,8 @@ arxiv: ""
 score: 4.0
 essence: "MoDE는 Mixture-of-Experts 아키텍처를 Diffusion Policy에 적용하여 noise-conditioned routing과 noise-conditioned self-attention을 통해 매개변수는 40% 감소시키면서 90% 적은 FLOPs로 더 높은 성능을 달성하는 효율적인 Imitation Learning 정책이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
   - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Reuss et al._2024_Efficient Diffusion Transformer Policies with Mixture of Expert Denoisers for Multitask Learning.pdf"
@@ -89,9 +90,15 @@ MoDE는 Mixture-of-Experts 아키텍처를 Diffusion Policy에 적용하여 nois
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — Diffusion model survey에서 다룬 robotic manipulation 이론이 MoDE의 mixture-of-experts 적용에 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy의 scaling approach가 MoDE의 efficiency 중심 접근과 대조된다.
-- 🔗 후속 연구: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — SpecPrune의 VLA 가속화 기법이 MoDE의 효율적인 diffusion transformer 개념을 더욱 발전시킨다.
-- 🔄 다른 접근: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — 둘 다 로봇 데이터 이질성을 해결하지만 HiMoE-VLA는 hierarchical MoE를, Efficient DTP는 mixture of experts를 사용한 다른 접근법입니다.
-- 🔄 다른 접근: [[papers/1479_MoLe-VLA_Dynamic_Layer-skipping_Vision_Language_Action_Model/review]] — VLA 모델의 계산 효율성 향상에 대한 서로 다른 접근법으로, layer-skipping과 mixture of experts를 각각 활용한다.
-- 🔗 후속 연구: [[papers/1361_Diffusion_Models_for_Robotic_Manipulation_A_Survey/review]] — Mixture-of-experts를 diffusion policy에 적용한 구체적 구현이 diffusion model survey에서 다룬 이론적 내용을 실제로 발전시킨다.
+- 🔄 다른 접근: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — HiMoE-VLA의 hierarchical mixture-of-experts와 MoDE의 noise-conditioned MoE는 VLA 모델에서 전문가 혼합을 서로 다른 방식으로 적용한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 기본 visuomotor learning 프레임워크가 MoDE에서 mixture-of-experts로 확장되는 diffusion policy의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — H³DP의 triply-hierarchical diffusion과 MoDE의 efficient expert routing은 모두 diffusion policy의 복잡성과 효율성을 개선하려는 방향이다.
+- 🏛 기반 연구: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion Transformer Policy의 기본 아키텍처를 MoE로 확장하여 효율성을 개선한 연구입니다.
+- 🏛 기반 연구: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — Mixture of Experts의 기본 개념을 로봇 데이터의 이질성 문제에 특화하여 계층적으로 확장한다.
+- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 둘 다 Mixture-of-Experts 아키텍처를 사용하지만 video generation과 diffusion policy의 접근법 차이를 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1479_MoLe-VLA_Dynamic_Layer-skipping_Vision_Language_Action_Model/review]] — VLA 모델의 효율성 향상에서 dynamic layer-skipping vs mixture of experts라는 서로 다른 계산 최적화 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — Efficient Diffusion Transformer가 모델 아키텍처 최적화에 중점을 두는 반면, Running VLAs는 추론 파이프라인 최적화를 통한 실시간 성능 달성에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — Efficient Diffusion Transformer가 diffusion 모델의 효율화에 중점을 두는 반면, SARA-RT는 transformer의 attention mechanism 최적화에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1337_Compose_Your_Policies_Improving_Diffusion-based_or_Flow-base/review]] — 전문가 혼합을 통한 효율적인 diffusion transformer 정책의 다른 조합 방식입니다.
+- 🏛 기반 연구: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — Efficient Diffusion Transformer의 혼합 전문가 모델은 DexVLA의 diffusion expert 통합에 효율적인 구조적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1363_Diffusion_Transformer_Policy/review]] — Diffusion transformer의 효율성을 위한 MoE와 단일 large transformer의 서로 다른 접근법입니다.

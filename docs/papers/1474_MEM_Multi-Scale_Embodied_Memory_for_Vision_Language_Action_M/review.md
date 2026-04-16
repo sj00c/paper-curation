@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇의 장시간 작업을 위해 비디오 기반 단기 메모리와 텍스트 기반 장기 메모리를 결합한 Multi-Scale Embodied Memory (MEM)을 제안하여, 15분 이상의 복잡한 조작 작업을 수행할 수 있는 Vision Language Action 모델을 구현했다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Reasoning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Action-Value_Reasoning_Systems"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Torne et al._2026_MEM Multi-Scale Embodied Memory for Vision Language Action Models.pdf"
 ---
@@ -88,8 +90,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Torne et al._2026_MEM Multi-Scale Embodi
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — 대규모 휴머노이드 포즈-텍스트 데이터셋 구축 방법론을 MEM의 장기 메모리 시스템에 활용할 수 있다
-- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — 실시간 action chunking 실행 알고리즘을 MEM의 단기 메모리 기반 제어에 통합하여 지연 시간을 최소화할 수 있다
-- 🔄 다른 접근: [[papers/1371_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — 단일 멀티스케일 world model로 장기 지평 작업을 처리하는 대안적 접근법을 제시한다
-- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — 배드민턴 기술의 점진적 강화학습 프레임워크를 humanoid table tennis의 복잡한 전신 협력 학습에 확장할 수 있다
-- 🔄 다른 접근: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — multi-stage 장기 지평 계획에서 reflection 메커니즘과 multi-scale 메모리는 서로 다른 접근이지만 상호 보완적이다
+- 🔄 다른 접근: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — 장기간 로봇 작업을 위한 메모리 시스템에서 multi-scale embodied memory vs LLM-based state representation이라는 서로 다른 상태 관리 접근법을 보여준다.
+- 🔗 후속 연구: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — embodied reasoning을 위한 state-maintaining 메커니즘을 multi-scale memory로 확장하여 더 복잡한 장기간 작업에서의 상태 추적 능력을 향상시킨다.
+- 🏛 기반 연구: [[papers/1442_JARVIS-1_Open-World_Multi-task_Agents_with_Memory-Augmented/review]] — memory-augmented multi-task agent의 기초 연구로서 MEM의 다중 스케일 메모리 아키텍처 설계에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1453_Learning_Latent_Plans_from_Play/review]] — MEM의 다중 스케일 메모리가 Learning Latent Plans from Play의 잠재적 계획 학습과 결합되어 더 효율적인 장기 로봇 제어를 실현한다.
+- 🏛 기반 연구: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — MEM의 시공간 메모리 개념이 TraceVLA의 시공간 인식 향상 방법론과 유사한 이론적 기반을 공유한다.
+- 🏛 기반 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — 장기간 작업을 위한 메모리 시스템의 기초가 되는 planning with language 개념
+- 🔄 다른 접근: [[papers/1462_LOTUS_Continual_Imitation_Learning_for_Robot_Manipulation_Th/review]] — 로봇 조작에서 장기 기억을 위한 multi-scale memory vs continual learning 접근법
+- 🔗 후속 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — Hume의 System-2 사고 방식이 MEM의 다중 스케일 메모리 시스템과 결합되어 더욱 복잡한 장기 로봇 작업을 수행할 수 있다.
+- 🔗 후속 연구: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — MEM의 multi-scale embodied memory 개념을 LLM 기반 장기 작업 계획의 상태 추적으로 확장했다.
+- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 둘 다 VLN에서 메모리 표현을 다루지만 MapNav는 2D semantic map을, MEM은 multi-scale embodied memory를 사용하는 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — MEM의 multi-scale embodied memory를 spatial-geometric과 visual-semantic으로 특화하여 VLN에 적용했다.
+- 🔄 다른 접근: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — 둘 다 embodied navigation에서 통합된 프레임워크를 다루지만 RoboTron-Nav는 multitask collaboration에, MEM은 multi-scale memory에 초점을 맞춘 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — multi-scale 메모리를 명시적 상태 유지와 결합하여 더 효과적인 장기 계획을 수행할 수 있습니다.
+- 🏛 기반 연구: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — multi-scale embodied memory가 visual tracking에서 Target Identification Memory의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1322_BOSS_Benchmark_for_Observation_Space_Shift_in_Long-Horizon_T/review]] — 멀티스케일 메모리를 활용한 다른 장기 작업 해결 접근법을 제시한다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇 조작을 위한 3D 공간 이해를 강화한 VLA 모델 SpatialVLA를 제안하며, Ego3D Position Encoding과 Adaptive Action Grids를 통해 이질적인 로봇 간 일반화 가능한 공간 표현을 학습한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qu et al._2025_SpatialVLA Exploring Spatial Representations for Visual-Language-Action Model.pdf"
 ---
@@ -89,11 +90,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qu et al._2025_SpatialVLA Exploring Spat
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — PerAct의 voxelized 3D 관찰이 SpatialVLA의 3D 공간 표현 학습의 기초 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA의 3D vision-language-action model이 SpatialVLA의 공간 표현을 더 포괄적인 3D 생성 모델로 확장한다.
-- 🔄 다른 접근: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — InternVLA-M1의 spatially guided framework와 SpatialVLA의 ego3D position encoding은 모두 VLA의 공간 이해를 위한 서로 다른 접근법이다.
-- 🔗 후속 연구: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — SpatialVLA의 3D 공간 표현이 PerAct의 voxelized 3D 관찰을 더 일반화된 VLA 모델로 확장한다.
-- 🔄 다른 접근: [[papers/1302_Adapt3R_Adaptive_3D_Scene_Representation_for_Domain_Transfer/review]] — SpatialVLA는 Adapt3R과 유사하게 공간 표현을 탐색하지만 Vision-Language-Action에 특화된 다른 방식을 사용한다
-- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — SpatialVLA는 CLIPort의 공간적 표현을 Vision-Language-Action 모델로 확장하는 기반을 제공한다
-- 🔄 다른 접근: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — SpatialVLA도 vision-language-action에서 공간 표현 탐구를 다룬다.
-- 🏛 기반 연구: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — 시각-언어-행동 모델의 공간적 표현이 legged 로봇 네비게이션의 기본 구조를 제공합니다.
+- 🔗 후속 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — RT-1의 기본 로봇 제어에 3D 공간 이해 강화와 이질적 로봇 간 일반화 능력을 추가한 공간적으로 발전된 형태이다.
+- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 로봇을 위한 3D 이해에서 SpatialVLA는 spatial representation에, 3D-VLA는 generative world model에 초점을 맞춘 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser의 3D value maps와 compositional manipulation 개념이 SpatialVLA의 3D 공간 표현 설계에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1567_SE3-Equivariant_Robot_Learning_and_Control_A_Tutorial_Survey/review]] — SE(3)-Equivariant 학습의 수학적으로 엄밀한 3D 기하학적 표현이 SpatialVLA의 공간 이해 강화 방법론의 이론적 기초가 된다.
+- 🔗 후속 연구: [[papers/1517_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_M/review]] — PointWorld의 3D world model 개념을 로봇 조작에 특화된 ego3D position encoding과 adaptive action grid로 확장했다.
+- 🔄 다른 접근: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — 둘 다 spatial representation을 VLA에 통합하지만 depth-aware layering vs explicit spatial reasoning이라는 다른 방법론을 사용한다.
+- 🔗 후속 연구: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — 공간 표현을 VLA에 통합하는 InternVLA-M1의 접근법을 spatial representation으로 더 일반화했다.
+- 🔗 후속 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — Multimodal Spatial Language Maps의 공간 표현 방법론이 SpatialVLA의 시각-언어-행동 모델에서 더 정교한 공간적 이해로 확장됩니다.
+- 🔄 다른 접근: [[papers/1499_OmniVLA_An_Omni-Modal_Vision-Language-Action_Model_for_Robot/review]] — VLA 모델에서 omni-modal vs spatial representation의 다른 다양성 추구 방식
+- 🧪 응용 사례: [[papers/1567_SE3-Equivariant_Robot_Learning_and_Control_A_Tutorial_Survey/review]] — SpatialVLA는 SE(3) equivariance 개념을 VLA 모델의 공간 표현에 적용하여 조작 성능을 향상시킨다.
+- 🔗 후속 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — TopV-Nav의 top-view spatial reasoning이 SpatialVLA의 spatial representation 탐구와 결합되어 더 강력한 공간 이해 능력을 제공한다.
+- 🧪 응용 사례: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — SpatialVLA는 EmbSpatial-Bench에서 평가하는 공간 이해 능력을 VLA 모델에 직접 통합하는 구체적인 적용 사례입니다.

@@ -1,3 +1,23 @@
+---
+title: "1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance"
+authors:
+  - "Yang Zhang"
+  - "Jianming Ma"
+  - "Liyun Yan"
+  - "Zhanxiang Cao"
+  - "Yazhou Zhang"
+date: "2026.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "FocusNav는 인간형 로봇의 국소 항법을 위해 Waypoint-Guided Spatial Cross-Attention (WGSCA)와 Stability-Aware Selective Gating (SASG) 모듈을 결합한 공간 선택적 주의 프레임워크를 제안한다. 예측된 무충돌 경로점을 기준으로 환경 지각을 동적으로 조정하여 불안정 시 원거리 정보를 제거함으로써 동적·복잡한 환경에서의 견고한 항법을 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2026_FocusNav Spatial Selective Attention with Waypoint Guidance for Humanoid Local Navigation.pdf"
+---
+
 # FocusNav: Spatial Selective Attention with Waypoint Guidance for Humanoid Local Navigation
 
 > **저자**: Yang Zhang, Jianming Ma, Liyun Yan, Zhanxiang Cao, Yazhou Zhang, Haoyang Li, Yue Gao | **날짜**: 2026-01-19 | **URL**: [https://arxiv.org/abs/2601.12790](https://arxiv.org/abs/2601.12790)
@@ -66,3 +86,21 @@ FocusNav는 인간형 로봇의 국소 항법을 위해 Waypoint-Guided Spatial 
 - Overall: 4/5
 
 **총평**: FocusNav는 생물학적 영감과 기술적 혁신을 결합하여 인간형 로봇의 복잡한 동적 환경 항법이라는 중대한 과제를 체계적으로 해결한다. WGSCA와 SASG 모듈의 설계가 우수하고 실제 로봇 실험으로 검증되었으나, 단일 플랫폼 실험과 수동 파라미터 조정이라는 제약이 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 둘 다 humanoid의 환경 인식과 navigation을 다루지만, FocusNav는 waypoint 기반 선택적 주의에, Thinking in 360°는 전방위 시각 탐색에 집중합니다.
+- 🔗 후속 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — LookOut의 실제 환경 egocentric navigation 연구를 waypoint 안내와 안정성 인식이 결합된 더 정교한 프레임워크로 발전시켰습니다.
+- 🔄 다른 접근: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — 둘 다 복잡한 3D 환경에서의 humanoid navigation을 다루지만, FocusNav는 selective attention을, Gallant는 voxel grid 기반 인식을 사용합니다.
+- 🔗 후속 연구: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 공간 인식 기반 네비게이션에서 360도 파노라마 탐색과 선택적 주의 메커니즘이 상호 보완적이다.
+- 🏛 기반 연구: [[papers/1807_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — 충돌 회피를 위한 공간적 선택적 주의 메커니즘이 ARMOR의 transformer 기반 지각 정책의 이론적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 공간 선택적 주의 메커니즘이 어수선한 실내 환경에서의 충돌 회피를 향상시킵니다.
+- 🔄 다른 접근: [[papers/1941_Gallant_Voxel_Grid-based_Humanoid_Locomotion_and_Local-navig/review]] — 둘 다 공간 인식 기반 humanoid navigation을 다루지만, Gallant는 voxel grid 기반 전체 3D 환경 이해에, FocusNav는 waypoint 안내 selective attention에 집중합니다.
+- 🧪 응용 사례: [[papers/1975_Hierarchical_visuomotor_control_of_humanoids/review]] — FocusNav의 spatial selective attention 기법이 고차원 시각-운동 제어의 attention mechanism으로 활용될 수 있다.
+- 🏛 기반 연구: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 공간 선택적 주의와 waypoint 가이드의 원리가 EgoNav의 360도 시각 메모리 기반 내비게이션에 대한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2064_Learning_Social_Navigation_from_Positive_and_Negative_Demons/review]] — 웨이포인트 가이드를 통한 공간 선택적 주의 기반 네비게이션의 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — 웨이포인트 가이드를 통한 공간 선택적 주의의 확장된 네비게이션 접근법을 보여준다.
+- 🔗 후속 연구: [[papers/2101_Mobi-π_Mobilizing_Your_Robot_Learning_Policy/review]] — 정책 모빌라이제이션을 waypoint 가이드와 결합하여 더 효과적인 공간 선택적 주의 메커니즘을 구현할 수 있다.
+- 🏛 기반 연구: [[papers/2110_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — FocusNav의 공간 선택적 주의와 waypoint 안내 기법이 No More Marching의 constellation 기반 보상 함수 설계에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — FocusNav의 waypoint guidance가 NoMaD의 goal-oriented navigation과 goal-free exploration 통합 설계에 영감을 제공했다
+- 🔗 후속 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — FocusNav의 공간 선택적 주의 메커니즘을 동적 환경에서 전방향 충돌 회피라는 더 복잡한 작업으로 확장한 연구이다.

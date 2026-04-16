@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "인간처럼 360° 파노라마 환경에서 머리 회전을 통해 능동적으로 물체를 탐색하거나 경로를 찾는 embodied 시각 탐색 에이전트를 제안하고, 실내 장면을 넘어 지하철역·쇼핑몰·거리 등 복잡한 현실 환경을 대상으로 한 H*Bench 벤치마크를 구축했다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/LiDAR_Terrain_Perception"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2025_Thinking in 360° Humanoid Visual Search in the Wild.pdf"
 ---
@@ -84,3 +87,24 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2025_Thinking in 360° Humanoi
 - Overall: 4/5
 
 **총평**: humanoid visual search라는 새로운 embodied AI 문제를 정의하고 현실적이고 도전적인 H*Bench 벤치마크를 제시함으로써 MLLM 기반 에이전트의 공간 추론 능력을 체계적으로 평가할 수 있는 기틀을 마련했으며, SFT와 RL을 통한 성능 향상을 보여주되 남은 큰 도전과제도 명확히 규명한 높은 가치의 연구이다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 공간 인식 기반 네비게이션에서 360도 파노라마 탐색과 선택적 주의 메커니즘이 상호 보완적이다.
+- 🏛 기반 연구: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 대규모 로봇 네비게이션 생태계에서 360도 시각 탐색이 다양한 환경에서의 일반화 능력을 제공할 수 있다.
+- 🧪 응용 사례: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 도어 통과와 같은 구체적 작업에서 360도 시각 탐색이 필요한 환경 인식 능력을 제공합니다.
+- 🏛 기반 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — 전방향 충돌 회피를 위한 omnidirectional perception과 360도 시각 탐색의 이론적 기반을 공유합니다.
+- 🔗 후속 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 실시간 지형 인식을 통한 보행 제어에 360도 환경 인식 기능을 통합할 수 있습니다.
+- 🔗 후속 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — 실제 환경에서의 휴머노이드 네비게이션을 360° 파노라마 시각 탐색으로 확장하여 복잡한 현실 환경에서의 능동적 물체 탐색을 실현했다.
+- 🧪 응용 사례: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 360° 시각 탐색 기술을 실내 환경을 넘어 복잡한 현실 공간으로 확장하여 충돌 없는 휴머노이드 이동을 실현했다.
+- 🧪 응용 사례: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 도어 통과 작업에서 360도 시각 탐색을 통한 환경 인식이 GPU 가속 인식 시스템을 보완할 수 있습니다.
+- 🧪 응용 사례: [[papers/1879_DIJIT_A_Robotic_Head_for_an_Active_Observer/review]] — DIJIT의 생체모방 쌍안 로봇 헤드 기술이 실제 환경에서 360도 시각 탐색을 수행하는 구체적 응용사례입니다.
+- 🔄 다른 접근: [[papers/1892_E-SDS_Environment-aware_See_it_Do_it_Sorted_-_Automated_Envi/review]] — 환경 인식 보행에서 VLM 기반 자동 정책 학습과 visual search를 통한 in-the-wild navigation의 서로 다른 환경 적응 접근법을 비교한다.
+- 🔄 다른 접근: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 둘 다 humanoid의 환경 인식과 navigation을 다루지만, FocusNav는 waypoint 기반 선택적 주의에, Thinking in 360°는 전방위 시각 탐색에 집중합니다.
+- 🏛 기반 연구: [[papers/1911_Emergent_Active_Perception_and_Dexterity_of_Simulated_Humano/review]] — 360° 시각적 탐색 연구가 PDC 프레임워크의 egocentric vision 기반 능동적 인식을 위한 기본적인 시각 탐색 기술을 제공한다.
+- 🏛 기반 연구: [[papers/1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 360도 visual search가 휴머노이드의 일반화된 환경 인식 시스템의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/2057_Learning_Humanoid_Navigation_from_Human_Data/review]] — 야생 환경에서의 휴머노이드 시각 탐색 능력이 자율 내비게이션의 기반 제공
+- 🏛 기반 연구: [[papers/2071_Learning_to_Look_Seeking_Information_for_Decision_Making_via/review]] — 야생에서의 휴머노이드 시각 탐색의 이론적 기반과 구현 방법을 제공한다.
+- 🏛 기반 연구: [[papers/2080_Let_Humanoids_Hike_Integrative_Skill_Development_on_Complex/review]] — 야생에서의 휴머노이드 시각 탐색의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — 야생에서의 휴머노이드 시각 탐색의 이론적 기반과 구현 방법을 제공한다.
+- 🔗 후속 연구: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — NoMaD의 goal masked diffusion을 360도 시각 탐색과 결합하여 더 포괄적인 야생 환경 내비게이션을 달성할 수 있다.

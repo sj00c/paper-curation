@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "이족 로봇의 불안정성을 예측하는 TravFormer 신경망을 개발하고, 안정성 기반 명령 속도를 traversability로 정의하여 거친 지형에서의 안전하고 효율적인 네비게이션을 실현한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Terrain_Foothold_Planning"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yoon et al._2025_STATE-NAV Stability-Aware Traversability Estimation for Bipedal Navigation on Rough Terrain.pdf"
 ---
@@ -89,3 +90,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yoon et al._2025_STATE-NAV Stability-Awa
 - Overall: 4/5
 
 **총평**: 이 논문은 이족 로봇의 안정성 기반 traversability 추정이라는 중요하면서도 미개척된 문제를 처음 체계적으로 다루며, BSFA 특성 식별부터 TravFormer 개발, 계층적 네비게이션 프레임워크까지 일관된 기술적 기여를 제시한다. 시뮬레이션과 실제 로봇 실험을 통한 검증이 견고하고, 안정성 기반 속도 표현이라는 혁신적 설계로 가중치 재조정 문제를 해결하여 실용적 가치가 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1746_VB-Com_Learning_Vision-Blind_Composite_Humanoid_Locomotion_A/review]] — 이족 로봇의 지형 적응을 위해 서로 다른 접근(안정성 기반 traversability vs 시각 결손 대응 복합 제어)을 통해 안전한 네비게이션을 구현한다.
+- 🏛 기반 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 지형 인식 기반 휴머노이드 보행의 개념을 안정성 예측과 traversability 정의로 확장하여 거친 지형에서의 안전한 이동을 실현했다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 거친 지형에서의 파쿠어 프레임워크를 안정성 기반 traversability 추정으로 확장하여 이족 로봇의 안전하고 효율적인 네비게이션을 구현했다.
+- 🔄 다른 접근: [[papers/2133_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — 이족 로봇의 지형 네비게이션을 위해 서로 다른 표현(traversability estimation vs pose distance fields)을 통해 안전한 경로 계획을 수행한다.
+- 🔗 후속 연구: [[papers/1619_PolygMap_A_Perceptive_Locomotion_Framework_for_Humanoid_Robo/review]] — PolygMap의 계단 인식을 일반적인 terrain traversability estimation으로 확장
+- 🏛 기반 연구: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — STATE-NAV의 안정성 인식 보행성 추정이 LiDAR 기반 계단 등반 알고리즘의 핵심 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1746_VB-Com_Learning_Vision-Blind_Composite_Humanoid_Locomotion_A/review]] — 지형 적응을 위해 서로 다른 접근(시각 결손 대응 복합 제어 vs 안정성 기반 traversability)을 통해 휴머노이드의 안전한 이동을 구현한다.
+- 🔗 후속 연구: [[papers/1914_End-to-End_Humanoid_Robot_Safe_and_Comfortable_Locomotion_Po/review]] — End-to-End 안전 보행 정책을 STATE-NAV의 안정성 인식 횡단 추정과 결합하면 더 강건한 지형 네비게이션이 가능하다.
+- 🔗 후속 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — STATE-NAV의 안정성 인식 traversability 추정을 Hiking이 end-to-end 학습으로 확장하여 실시간 비정형 지형 내비게이션을 달성합니다.
+- 🏛 기반 연구: [[papers/2004_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — 안정성 인식 지형 통과성 추정이 좁은 지형에서의 동적 균형 메커니즘의 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2042_Learning_a_Vision-Based_Footstep_Planner_for_Hierarchical_Wa/review]] — 지형 인식 보행에서 STATE-NAV는 안정성 중심, 본 연구는 시각 기반 발걸음 계획 중심
+- 🏛 기반 연구: [[papers/2110_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — STATE-NAV의 안정성 인식 횡단성 추정이 단거리 SE(2) 목표 도달의 안정성 보장을 위한 기술적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — STATE-NAV의 traversability estimation이 Omni-Perception의 환경 위험 평가를 통한 전방향 충돌 회피로 발전된 것이다

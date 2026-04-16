@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "인터넷 규모의 데이터로 학습한 vision-language 모델을 로봇 제어에 직접 통합하여 end-to-end 로봇 정책을 학습하는 RT-2 모델을 제안한다. 로봇 액션을 텍스트 토큰으로 표현하여 VLM의 사전학습 이점을 활용하면서도 저수준의 로봇 제어를 가능하게 한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Model_Scaling_Performance"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Brohan et al._2023_RT-2 Vision-Language-Action Models Transfer Web Knowledge to Robotic Control.pdf"
 ---
@@ -91,11 +92,25 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Brohan et al._2023_RT-2 Vision-Language-
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1554_LeVERB_Humanoid_Whole-Body_Control_with_Latent_Vision-Langua/review]] — RT-1의 robotics transformer 아키텍처를 확장하여 web-scale vision-language 사전학습의 이점을 로봇 제어에 통합한다.
-- 🧪 응용 사례: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — RT-2의 대규모 VLA 모델을 실제 배포를 위해 압축과 최적화 기법을 적용하는 구체적 사례를 제시한다.
-- 🏛 기반 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — vision-language model의 로봇 적용 가능성을 보여주어 자동 instruction augmentation 연구의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1287_π_0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Co/review]] — 웹 지식을 로봇 제어에 전이하는 RT-2의 접근을 flow model을 통해 더 연속적이고 정밀하게 발전시킨다
-- 🏛 기반 연구: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — RT-2의 VLA 아키텍처를 압축하고 최적화하는 방법론을 제시하여 실제 배포 가능성을 높인다.
-- 🔗 후속 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — RT-2 모델의 성능을 테스트 시간에 샘플링과 검증을 통해 추가로 향상시키는 방법을 제시한다.
-- 🔗 후속 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — RT-2의 vision-language 통합 아이디어를 주석이 없는 데이터에서 자동으로 언어 조건부 정책을 학습하는 방향으로 발전시킨다.
-- 🔗 후속 연구: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — RT-2의 vision-language-action 모델에 visual trace prompting을 추가하여 spatial-temporal 인식 능력을 향상시킨다.
+- 🏛 기반 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — RT-1의 대규모 로봇 데이터 학습 성과가 RT-2의 웹 지식 통합 아키텍처 설계의 직접적인 기반이 되었다.
+- 🔗 후속 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E의 embodied multimodal language model이 RT-2의 vision-language-action 통합을 더 포괄적인 multimodal 이해로 발전시킨다.
+- 🔄 다른 접근: [[papers/1604_Video_Language_Planning/review]] — RT-2와 Video Language Planning은 모두 언어 지식을 로봇 제어에 활용하지만 end-to-end action과 planning 중심이라는 다른 접근을 보여준다.
+- 🔗 후속 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — RT-2의 VLM 기반 로봇 제어 개념을 Octo가 범용 정책으로 확장한다.
+- 🔗 후속 연구: [[papers/1294_A_Generalist_Agent/review]] — Gato의 다중 모달리티 처리 능력을 웹 지식과 결합하여 로봇 제어에 특화된 형태로 발전
+- 🏛 기반 연구: [[papers/1286_π_05_a_Vision-Language-Action_Model_with_Open-World_Generali/review]] — RT-2의 웹 지식을 로봇 제어에 전이하는 아이디어를 확장하여 더 큰 규모의 heterogeneous 데이터로 발전시킨 VLA 모델입니다.
+- 🔗 후속 연구: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — RT-2의 웹 지식 전이 개념을 확장하여 더 정교한 Motion Transfer 메커니즘을 구현한다.
+- 🔗 후속 연구: [[papers/1404_Gemini_Robotics_Bringing_AI_into_the_Physical_World/review]] — RT-2의 웹 지식 전이 접근법을 Gemini 2.0 기반으로 더 발전시켜 embodied reasoning을 강화했다.
+- 🏛 기반 연구: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — RT-2의 vision-language-action 아키텍처를 기반으로 한 embodied 추론 능력 확장 연구이다.
+- 🔗 후속 연구: [[papers/1436_InstructVLA_Vision-Language-Action_Instruction_Tuning_from_U/review]] — RT-2의 web knowledge transfer를 instruction tuning으로 발전시켜 multimodal reasoning과 action을 동시 최적화한다.
+- 🏛 기반 연구: [[papers/1494_NORA-15_A_Vision-Language-Action_Model_Trained_using_World_M/review]] — RT-2의 VLM 기반 로봇 제어 아키텍처를 NORA-1.5가 flow-matching과 world model로 확장한다.
+- 🏛 기반 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — Prismatic VLMs의 체계적인 설계 공간 분석이 RT-2의 vision-language-action 통합 방법론의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — RT-2의 언어 조건부 제어를 DIAL이 대규모 데이터 증강으로 발전시킨다.
+- 🏛 기반 연구: [[papers/1553_RoBridge_A_Hierarchical_Architecture_Bridging_Cognition_and/review]] — vision-language-action model의 web knowledge transfer 이론을 제공하여 RoBridge의 VLM과 강화학습 통합에 필요한 사전학습된 능력 활용 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — RT-2는 RT-1의 직접적인 후속 연구로 웹 지식을 로봇 제어에 통합하여 성능을 크게 향상시켰다.
+- 🔗 후속 연구: [[papers/1556_RT-H_Action_Hierarchies_Using_Language/review]] — RT-H의 언어 기반 행동 계층 구조는 RT-2의 언어-행동 통합 방식을 더욱 세밀하게 발전시킨 접근법이다.
+- 🔗 후속 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — RT-2의 성능을 유지하면서 SARA-RT가 배포 효율성을 개선한다.
+- 🏛 기반 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — RT-2의 vision-language-action 통합 아키텍처가 TinyVLA의 경량화된 VLA 모델 설계의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — RT-1의 foundation model 활용을 언어-추론 기반 분할로 더 정교하게 발전시켜 일반화 성능을 향상시킨다.
+- 🏛 기반 연구: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — RT-2의 웹 지식 전이 접근법이 VIMA의 멀티모달 프롬프트 기반 로봇 조작의 이론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — RT-2의 vision-language-action 통합 방법론은 EO-1의 multimodal embodied reasoning 설계 기반이 됨
+- 🏛 기반 연구: [[papers/1296_A_Pragmatic_VLA_Foundation_Model/review]] — 웹 지식을 로봇 제어에 전이하는 Vision-Language-Action 모델의 선구적 연구입니다.

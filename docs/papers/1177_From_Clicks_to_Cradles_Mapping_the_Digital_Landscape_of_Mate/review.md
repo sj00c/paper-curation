@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 Web of Science 데이터베이스에서 1,352개 논문을 수집하여 최종 453개 논문을 분석하는 bibliometric analysis를 통해 어머니들의 온라인 양육 자원 상호작용의 학술 지형도를 매핑했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mee et al._2026_From Clicks to Cradles Mapping the Digital Landscape of Maternal Support through Bibliometric Analy.pdf"
 ---
@@ -80,5 +81,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mee et al._2026_From Clicks to Cradles M
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 어머니들의 온라인 양육 자원 상호작용과 온라인 과학 커뮤니케이션의 정보 경로는 디지털 지식 교환이라는 공통점이 있다.
-- 🔗 후속 연구: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 모성 지원의 디지털 환경 매핑이 학술 커뮤니케이션의 조직적 계정 분석으로 확장될 수 있다.
+- 🔗 후속 연구: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 어머니의 온라인 양육 자원과 디지털 마케팅을 연계하여 모성과 디지털 미디어의 종합적 분석을 제공한다.
+- 🏛 기반 연구: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 온라인 양육 자원의 소셜 미디어 상호작용을 학술 기관의 소셜 미디어 활동 연구로 이해할 수 있다.
+- 🔄 다른 접근: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 둘 다 온라인 플랫폼에서의 정보 전달과 상호작용 패턴(양육 vs 과학 소통)을 분석한다.
+- 🔄 다른 접근: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 디지털 기술을 활용한 사용자 지원 서비스의 다른 적용 분야 연구입니다.
+- 🔄 다른 접근: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 모성 건강의 디지털 환경 매핑과 학술 기관의 트위터 활동이 서로 다른 영역에서 디지털 커뮤니케이션을 분석하는 접근법을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 디지털 마케팅과 온라인 양육 자원 모두 디지털 플랫폼에서의 사용자 참여와 상호작용 패턴을 bibliometric으로 분석하는 공통된 연구 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1216_Tour_guiding_technologies_a_bibliometric_analysis_mapping_tr/review]] — 투어 가이딩 기술과 모성 지원 기술 모두 디지털 기술의 인간 서비스 적용을 다루는 연구입니다.

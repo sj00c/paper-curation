@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "VL-Nav는 신경-기호 접근법(NeSy)을 통해 복잡한 인간 지시에 따라 미지의 대규모 환경을 탐색하는 로봇 네비게이션 시스템으로, VLM의 추론 능력과 기호적 안내를 결합한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Symbolic_Navigation_Memory"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Du et al._2025_VL-Nav A Neuro-Symbolic Approach for Reasoning-based Vision-Language Navigation.pdf"
 ---
@@ -90,9 +91,11 @@ VL-Nav는 신경-기호 접근법(NeSy)을 통해 복잡한 인간 지시에 따
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — VL-Nav의 neuro-symbolic reasoning이 VLN survey에서 제시한 interactive navigation 분류에서 reasoning 능력을 대폭 강화한 발전된 형태
-- 🔄 다른 접근: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — VL-Nav는 neuro-symbolic approach를, WMNav는 world model 기반 접근법을 사용하여 복잡한 navigation reasoning을 구현하는 다른 방식
-- 🏛 기반 연구: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — VL-Nav의 reasoning 기반 planning이 Describe, Explain, Plan and Select의 interactive planning 원리를 네비게이션 도메인에 특화하여 적용
-- 🔄 다른 접근: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — WMNav는 VLM 기반 world model을, VL-Nav는 neuro-symbolic reasoning을 통해 복잡한 object goal navigation을 해결하는 다른 접근법
-- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — VLN survey의 분류 체계가 VL-Nav의 neuro-symbolic approach가 다루는 복잡한 reasoning 기반 네비게이션의 이론적 기반을 제공
-- 🔄 다른 접근: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — VL-Nav는 CANVAS와 유사하게 시각-언어 네비게이션을 다루지만 신경-기호적 추론 접근법을 사용한다
+- 🏛 기반 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — physical common sense reasoning이 neuro-symbolic VLN의 추론 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — 복잡한 instruction following을 위한 서로 다른 접근법 - neuro-symbolic vs enhanced waypoint prediction입니다.
+- 🔗 후속 연구: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — reinforced embodied reasoning을 neuro-symbolic 접근법과 결합할 수 있습니다.
+- 🔗 후속 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — top-view spatial reasoning을 복잡한 추론 기반 네비게이션으로 확장하여 신경-기호 접근법으로 발전시켰습니다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — vision-language navigation을 위한 visual language map의 기본 개념을 제공하여 VL-Nav의 추론 기반 네비게이션에 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — 둘 다 large language model을 활용한 로봇 행동 계획을 다루지만 CoPAL은 corrective planning에, VL-Nav는 navigation reasoning에 집중합니다.
+- 🏛 기반 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — VL-Nav의 neuro-symbolic 추론을 spatial-geometric과 visual-semantic 분리로 구체화하여 발전시킨다.
+- 🔗 후속 연구: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — 신경-기호 접근법을 통해 복잡한 추론이 필요한 vision-language navigation으로 TopV-Nav의 공간 추론을 확장합니다.

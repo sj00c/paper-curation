@@ -1,3 +1,23 @@
+---
+title: "2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated"
+authors:
+  - "Yutong Shen"
+  - "Hangxu Liu"
+  - "Penghui Liu"
+  - "Jiashuo Luo"
+  - "Yongkang Zhang"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 복잡한 로코-매니퓰레이션 제어를 Specialized Expert Policy(SEP)와 VLM 기반 Intelligent Routing Mechanism(IRM)으로 분해-통합하는 계층적 프레임워크를 제안한다. 인간 모션 프라이어와 의미적 라우팅을 결합하여 자연스럽고 안정적인 동작을 생성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Force_Disturbance_Compensation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shen et al._2026_MetaWorld-X Hierarchical World Modeling via VLM-Orchestrated Experts for Humanoid Loco-Manipulation.pdf"
+---
+
 # MetaWorld-X: Hierarchical World Modeling via VLM-Orchestrated Experts for Humanoid Loco-Manipulation
 
 > **저자**: Yutong Shen, Hangxu Liu, Penghui Liu, Jiashuo Luo, Yongkang Zhang, Rex Morvley, Chen Jiang, Jianwei Zhang, Lei Zhang | **날짜**: 2026-03-09 | **URL**: [https://arxiv.org/abs/2603.08572](https://arxiv.org/abs/2603.08572)
@@ -64,3 +84,14 @@
 - Overall: 4/5
 
 **총평**: MetaWorld-X는 human motion priors, world models, VLM 기반 의미적 라우팅을 창의적으로 결합하여 고자유도 휴머노이드 로코-매니퓰레이션 제어의 중요한 문제(스킬 간섭, 부자연스러운 동작, 낮은 일반화)를 효과적으로 해결한다. Humanoid-bench에서의 강력한 실험 결과와 명확한 방법론 제시에도 불구하고, 실제 로봇 검증 부재가 임팩트를 제한한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — Genie Sim 3.0의 고충실도 시뮬레이션 플랫폼이 MetaWorld-X의 계층적 세계 모델링의 시뮬레이션 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — 자율 휴머노이드 행동 계획에서 VLM 기반 라우팅과 hybrid behavior planning의 다른 접근법을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/1647_RoboPlayground_구조화된_물리_도메인을_통한_로봇_평가_민주화/review]] — Language-based task specification을 hierarchical world modeling으로 확장
+- 🔗 후속 연구: [[papers/1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — MetaWorld-X의 hierarchical world modeling이 DreamGen의 video world model을 VLM-orchestrated 계층 구조로 확장한다.
+- 🔄 다른 접근: [[papers/1949_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — 둘 다 계층적 세계 모델링을 다루지만 Generative World Modelling은 video 예측에, MetaWorld-X는 VLM 기반 조율에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — 복잡한 조작 작업을 이 논문은 3계층 구조로, MetaWorld-X는 VLM 오케스트레이션으로 해결한다.
+- 🔗 후속 연구: [[papers/2154_Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and/review]] — 대규모 사전학습 기법을 MetaWorld-X의 hierarchical world modeling과 결합하면 더 효율적인 VLM 기반 휴머노이드 제어가 가능합니다.
+- 🔗 후속 연구: [[papers/2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm/review]] — VLM 기반 계층적 세계 모델링 기법이 이중팔 휴머노이드의 고유감각 인식 계획 능력을 더욱 향상시킬 수 있습니다.

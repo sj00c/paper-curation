@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "구강 점막하 섬유증(OSF)의 무작위대조시험(RCT)에 대한 서지계량학 분석으로, 2006-2024년 발표된 25개의 주요 논문을 분석하여 이 분야 임상연구의 현황과 부족함을 파악했다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gaikwad et al._2026_Bibliometric analysis of randomized controlled trials in oral submucous fibrosis.pdf"
 ---
@@ -86,7 +88,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gaikwad et al._2026_Bibliometric analysi
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 전통 아프리카 치과 관행의 bibliometric 분석이 구강 점막하 섬유증 RCT 분석의 구강 의학 연구 맥락을 제공한다.
-- 🔄 다른 접근: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 둘 다 의학 분야의 특정 질환에 대한 bibliometric 분석이지만 서로 다른 의학 세부 영역을 다룬다.
-- 🔗 후속 연구: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 사회과학 실험의 재현성 평가가 구강 점막하 섬유증 RCT의 임상연구 품질 평가로 의학 분야로 확장된다.
-- 🏛 기반 연구: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 구강 관련 임상연구의 bibliometric 분석이 전통 아프리카 구강 치료 관행 연구의 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 둘 다 특정 의료 치료법(OSF의 RCT vs 신경근 섬유화 예방)의 연구 현황을 bibliometric으로 분석한다.
+- 🔗 후속 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 의학 분야 철회 논문 분석과 OSF의 RCT 연구 부족 현상을 연계하여 의료 연구의 질적 문제를 탐구할 수 있다.
+- 🏛 기반 연구: [[papers/958_Estimating_the_Reproducibility_of_Psychological_Science/review]] — OSF 연구의 재현성 문제를 심리학 실험의 재현성 연구 방법론으로 평가할 수 있다.
+- 🔗 후속 연구: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 의학 분야 서지계량 분석을 안과에서 치과로 확장한 연구다
+- 🏛 기반 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 과학 연구 부정행위와 철회 논문 분석의 이론적 배경을 제공한다
+- 🔄 다른 접근: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 의학 분야 임상연구에 대한 서지계량학적 분석의 다른 사례를 제시한다.
+- 🔄 다른 접근: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 둘 다 특정 의료 치료법(poloxamer/HA vs OSF RCT)의 연구 동향을 bibliometric으로 분석한다.
+- 🔄 다른 접근: [[papers/1132_A_bibliometric_analysis_of_the_traditional_African_dental_pr/review]] — 의학 분야에서 특정 치료법에 대한 서지계량학적 분석의 다른 사례를 보여준다.
+- 🔄 다른 접근: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 구강 건강 분야 무작위 대조 실험 bibliometric 분석이 의학 세부 분야 연구 동향 분석의 방법론적 유사성을 보여준다.
+- 🔄 다른 접근: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 둘 다 특정 전문 분야(예술관광 vs 구강의학)의 학술 문헌 진화를 서지학적 방법으로 추적한다.
+- 🔄 다른 접근: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 둘 다 의학 분야(치의학 철회 논문 vs OSF RCT)의 연구 품질과 동향을 scientometric으로 분석한다.
+- 🔄 다른 접근: [[papers/1236_Weaning_from_mechanical_ventilation_in_ICU_patients_research/review]] — 기계환기 이탈과 구강외과 무작위 대조연구 모두 의료 중재의 효과와 안전성을 평가하는 임상 연구의 bibliometric 분석 접근법을 공유한다.

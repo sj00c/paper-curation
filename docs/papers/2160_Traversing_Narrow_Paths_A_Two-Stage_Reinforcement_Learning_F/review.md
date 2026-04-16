@@ -1,3 +1,23 @@
+---
+title: "2160_Traversing_Narrow_Paths_A_Two-Stage_Reinforcement_Learning_F"
+authors:
+  - "TianChen Huang"
+  - "Runchen Xu"
+  - "Yu Wang"
+  - "Wei Gao"
+  - "Shiwu Zhang"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 humanoid 로봇이 좁은 경로를 안전하게 통과하도록 하는 두 단계 reinforcement learning 프레임워크를 제안하며, physics-기반 LIPM foothold planner와 RL 기반 foothold tracker/modifier를 결합한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2025_Traversing Narrow Paths A Two-Stage Reinforcement Learning Framework for Robust and Safe Humanoid W.pdf"
+---
+
 # Traversing Narrow Paths: A Two-Stage Reinforcement Learning Framework for Robust and Safe Humanoid Walking
 
 > **저자**: TianChen Huang, Runchen Xu, Yu Wang, Wei Gao, Shiwu Zhang | **날짜**: 2025-08-28 | **URL**: [https://arxiv.org/abs/2508.20661](https://arxiv.org/abs/2508.20661)
@@ -66,3 +86,10 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 physics-기반 모델과 reinforcement learning을 창의적으로 결합하여 안전하고 해석 가능한 narrow path traversal을 달성했으며, 실제 humanoid robot에서 높은 성공률로 검증함으로써 로봇 제어의 실질적 응용 가치를 입증했다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1811_BeamDojo_Learning_Agile_Humanoid_Locomotion_on_Sparse_Footho/review]] — 두 논문 모두 까다로운 지형에서의 이동을 다루지만 이 논문은 좁은 경로에, BeamDojo는 희소한 발판에서의 민첩한 이동에 집중합니다.
+- 🏛 기반 연구: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 보행 적응형 지각적 이동의 실시간 계획 기법이 좁은 경로에서의 발판 계획 및 추적 방법론의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1658_RPL_Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challe/review]] — 도전적인 지형에서의 견고한 지각적 이동 학습이 좁은 경로 통과를 위한 두 단계 강화학습 프레임워크를 더 복잡한 환경으로 확장할 수 있습니다.
+- 🔄 다른 접근: [[papers/2004_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — 좁은 지형 통과를 위해 ZMP 기반 동적 균형과 2단계 강화학습으로 접근법이 다르다.

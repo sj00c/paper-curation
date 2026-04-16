@@ -13,6 +13,7 @@ score: 4.0
 essence: "Scopus 데이터베이스의 3,600만 논문 메타데이터를 활용하여 1998-2017년 전 세계 학자의 국제 이동 패턴을 분석하고, 경제 발전 수준에 따른 학자 이민의 U자형 관계를 발견했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
   - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sanliturk et al._2023_Global patterns of migration of scholars with economic development.pdf"
@@ -85,8 +86,14 @@ Scopus 데이터베이스의 3,600만 논문 메타데이터를 활용하여 199
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 국가 간 거시적 학자 이동 패턴을 기관-산업 간 미시적 이동 분석으로 확장하여 다층적 이해를 제공한다.
-- 🧪 응용 사례: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 경제 발전에 따른 학자 이동의 U자형 관계를 기관 차원의 학제간 연구 전략에 적용할 수 있다.
-- 🏛 기반 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 1971-2020년 과학 협력의 글로벌 지도를 통해 학자 이동 패턴의 역사적 맥락과 배경을 이해할 수 있다.
-- 🏛 기반 연구: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 경제 발전과 학자 이동의 전 지구적 패턴이 과학 마이그레이션의 다층적 요인을 이해하는 기반을 제공합니다.
-- 🏛 기반 연구: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 글로벌 학자 이동의 거시적 패턴을 통해 개별 연구자의 기관-산업 이동 동기와 맥락을 이해할 수 있다.
+- 🔗 후속 연구: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 기관 간 이동이 과학적 성과에 미치는 영향을 분석한 연구로, 학자 이동 패턴의 결과적 효과를 확장 분석할 수 있습니다.
+- 🔄 다른 접근: [[papers/1028_Tenure_and_research_trajectories/review]] — 종신재직권과 연구 궤적의 관계를 분석한 연구로, 경제적 동기가 아닌 제도적 관점에서 학자 이동을 분석하는 대안적 접근법입니다.
+- 🔗 후속 연구: [[papers/1213_The_evolution_of_international_scientific_collaboration_netw/review]] — 국제 과학 협력 네트워크의 진화를 학자 이동 패턴의 관점에서 보완하여 더 완전한 그림을 제공한다.
+- 🏛 기반 연구: [[papers/1000_Productivity_Prominence_and_the_Effects_of_Academic_Environm/review]] — 학술 환경이 생산성과 명성에 미치는 영향에 대한 이론적 배경을 제공하여 학자 이동의 동기를 이해할 수 있다.
+- 🔗 후속 연구: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 글로벌 학자 이동 분석을 미중 과학 협력이라는 구체적 사례로 심화한 연구이다
+- ⚖️ 반론/비판: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — 학자 이동의 긍정적 측면에 대해 팬데믹으로 인한 불평등한 영향이라는 제약을 제시한다
+- 🧪 응용 사례: [[papers/1000_Productivity_Prominence_and_the_Effects_of_Academic_Environm/review]] — 연구자의 기관 이동이 성과에 미치는 영향에 대한 이해를 국제적 인재 이동 패턴 분석에 적용합니다.
+- 🔄 다른 접근: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 경제 발전에 따른 학자 이주 패턴이 미중 과학 협력의 수렴-발산 과정을 미시적 관점에서 설명한다.
+- 🏛 기반 연구: [[papers/1050_Unsupervised_embedding_of_trajectories_captures_the_latent_s/review]] — 글로벌 학자 이동 패턴의 기초적 분석 틀을 제공하여 경제 발전과의 연관성을 이해할 수 있게 한다.
+- 🧪 응용 사례: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 인도의 고분자 과학 연구 성장이 경제 발전에 따른 연구자 이주 패턴과 어떤 관련성을 갖는지 분석할 수 있다.
+- 🏛 기반 연구: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 경제발전과 학자 이주의 글로벌 패턴 연구가 연구자의 기관간 이동 영향 분석의 이론적 배경을 제공한다.

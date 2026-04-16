@@ -1,3 +1,24 @@
+---
+title: "2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert"
+authors:
+  - "Jie Li"
+  - "Bing Tang"
+  - "Feng Wu"
+  - "Rongyun Cao"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "TeleGate는 가벼운 gating network를 통해 multiple domain-specific expert policies를 동적으로 선택하여 humanoid robot의 real-time whole-body teleoperation을 수행하며, VAE 기반 motion prior를 도입하여 미래 정보 없이도 점프나 일어서기 같은 동적 동작을 예측적으로 제어한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2026_TeleGate Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior.pdf"
+---
+
 # TeleGate: Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior
 
 > **저자**: Jie Li, Bing Tang, Feng Wu, Rongyun Cao | **날짜**: 2026-02-10 | **URL**: [https://arxiv.org/abs/2602.09628](https://arxiv.org/abs/2602.09628)
@@ -67,3 +88,22 @@ TeleGate는 가벼운 gating network를 통해 multiple domain-specific expert p
 - Overall: 4/5
 
 **총평**: TeleGate는 gated expert selection과 VAE 기반 motion prior를 결합하여 제한된 데이터로도 높은 정밀도의 real-time whole-body humanoid teleoperation을 실현하는 혁신적인 프레임워크이며, Unitree G1에서의 성공적인 physical deployment로 실제 적용 가능성을 입증했다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — TeleGate는 expert selection을 통한 텔레오퍼레이션을 제안하고 HOMIE는 isomorphic exoskeleton을 사용하는 서로 다른 전신 제어 접근법입니다.
+- 🏛 기반 연구: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Open-TeleVision의 immersive 시각 텔레오퍼레이션 기술이 TeleGate의 실시간 전신 텔레오퍼레이션을 위한 핵심 기반이 됩니다.
+- 🔗 후속 연구: [[papers/2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti/review]] — TeleGate의 gated expert selection을 TWIST2의 확장 가능한 데이터 수집 시스템과 결합하면 더 효율적인 휴머노이드 학습이 가능합니다.
+- 🔄 다른 접근: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — gated expert selection 대신 다단계 객체 인식을 통한 전신 양손 원격조종 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — 인간-휴머노이드 협력적 제어의 기본 원리가 TeleGate의 expert policy 선택 메커니즘에 적용된다.
+- 🔗 후속 연구: [[papers/2168_UniAct_Unified_Motion_Generation_and_Action_Streaming_for_Hu/review]] — 실시간 전신 원격조종 기술을 다양한 multimodal 명령 스트리밍으로 확장한 발전된 형태이다.
+- 🔄 다른 접근: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — CLONE의 closed-loop teleoperation이 TeleGate의 gated expert selection과 다른 continuous control 접근법으로 real-time whole-body teleoperation을 달성합니다.
+- 🏛 기반 연구: [[papers/1924_FARM_Frame-Accelerated_Augmentation_and_Residual_Mixture-of-/review]] — FARM의 residual mixture-of-experts가 TeleGate의 multiple expert policies 동적 선택에서 전문가 네트워크 구조의 기술적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — TWIST의 teleoperated whole-body imitation이 TeleGate의 gated expert selection을 더 포괄적인 imitation learning으로 확장한 형태입니다.
+- 🏛 기반 연구: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — TeleGate의 전신 휴머노이드 텔레오퍼레이션에 안정성 인식 retargeting이 필수적인 안전 기술을 제공한다
+- 🔄 다른 접근: [[papers/1707_Teleoperation_of_Humanoid_Robots_A_Survey/review]] — 포괄적 서베이와 구체적인 TeleGate 시스템이 휴머노이드 텔레오퍼레이션의 이론과 실제를 상호 보완한다
+- 🔄 다른 접근: [[papers/1835_CHILD_Controller_for_Humanoid_Imitation_and_Live_Demonstrati/review]] — CHILD의 직접 관절 매핑 방식과 TeleGate의 게이트 전문가 기반 접근법은 휴머노이드 텔레오퍼레이션에 대한 서로 다른 제어 패러다임을 제시한다.
+- 🔄 다른 접근: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — CLONE의 MoE 기반 폐루프 제어와 TeleGate의 게이트 전문가 방식은 휴머노이드 전신 텔레오퍼레이션에 대한 서로 다른 제어 아키텍처를 제시한다.
+- 🔗 후속 연구: [[papers/1970_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu/review]] — TeleGate의 gated expert 기반 전신 텔레오퍼레이션이 햅틱 피드백 방식을 발전시킵니다.
+- 🔄 다른 접근: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — TeleGate의 gated expert 접근법과 TWIST의 통합 신경망 접근법은 휴머노이드 텔레오퍼레이션의 상이한 아키텍처를 비교할 수 있음
+- 🏛 기반 연구: [[papers/2168_UniAct_Unified_Motion_Generation_and_Action_Streaming_for_Hu/review]] — 실시간 전신 원격조종의 기본 기술이 다양한 multimodal 명령의 통합 스트리밍 실행으로 확장된다.

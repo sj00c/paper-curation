@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "Vision-Language Navigation 문제를 LLM과 VLM을 활용한 모듈식 접근으로 해결하며, 자연어 지시에서 landmark를 추출하고 topological map에서 경로를 검색하여 dynamic programming으로 정렬 점수를 계산한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Graph-Based_Visual_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Rajabi and Kosecka_2025_TRAVEL Training-Free Retrieval and Alignment for Vision-and-Language Navigation.pdf"
 ---
@@ -88,9 +90,17 @@ Vision-Language Navigation 문제를 LLM과 VLM을 활용한 모듈식 접근으
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — TRAVEL은 modular LLM/VLM 접근법을, UniGoal은 unified graph representation을 사용하여 다양한 목표 유형의 네비게이션을 해결하는 다른 방식
-- 🔗 후속 연구: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — TRAVEL의 landmark 추출과 경로 검색이 GC-VLN의 graph constraint 기반 접근법과 결합되어 더 효율적인 training-free navigation을 달성
-- 🧪 응용 사례: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — TRAVEL의 topological mapping 접근법이 CityNavAgent의 hierarchical planning과 함께 대규모 도시 환경 네비게이션에 적용 가능
-- 🧪 응용 사례: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — flow-based 정책 개선 방법론이 일관성 훈련을 통한 고품질 행동 생성에 적용될 수 있습니다.
-- 🔗 후속 연구: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — TRAVEL의 training-free retrieval이 SmartWay의 zero-shot 프레임워크를 더 효율적인 검색 기반 방법으로 확장한다.
-- 🔄 다른 접근: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — UniGoal의 unified graph representation과 TRAVEL의 modular approach는 다양한 목표 유형의 네비게이션을 위한 서로 다른 통합 전략
+- 🏛 기반 연구: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — graph constraint 기반 training-free VLN의 기반이 되는 그래프 제약 활용 연구입니다.
+- 🔗 후속 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — image-text 페어링을 topological map과 결합한 vision-language navigation의 확장입니다.
+- 🔄 다른 접근: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — VLN에서 서로 다른 모듈식 접근법 - retrieval-alignment vs dual implementation입니다.
+- 🔄 다른 접근: [[papers/1443_L3MVN_Leveraging_Large_Language_Models_for_Visual_Target_Nav/review]] — L3MVN은 TRAVEL과 유사하게 대규모 언어 모델을 시각적 네비게이션에 활용하지만 다른 접근 방식을 제시한다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — NaVid는 TRAVEL과 같은 VLN 문제를 비디오 기반 VLM으로 해결하는 다른 접근법을 제공한다.
+- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — MapNav는 TRAVEL의 topological map 기반 접근법과 유사하게 주석이 달린 의미론적 지도를 활용한 네비게이션을 제시한다.
+- 🔄 다른 접근: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — SmartWay는 TRAVEL의 경로 검색과 유사한 waypoint 예측과 backtracking을 통한 향상된 네비게이션을 제공한다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 언어 모델 프로그래밍 패러다임이 TRAVEL의 LLM/VLM 기반 모듈식 접근법의 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — SayPlan의 3D scene graph grounding이 TRAVEL의 landmark 추출과 topological map 구축을 더욱 정밀하게 만들 수 있다.
+- 🏛 기반 연구: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — TRAVEL의 training-free retrieval 개념을 그래프 제약 최적화로 확장한 발전된 형태이다.
+- 🔄 다른 접근: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — 둘 다 vision-language navigation이지만 VLN-BERT는 사전학습에, TRAVEL은 training-free 접근에 집중한다.
+- 🏛 기반 연구: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — training-free VLN 접근법의 기초 연구로서 MapNav의 효율적인 메모리 표현 설계에 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — VLN에서 video-based VLM vs training-free retrieval and alignment라는 서로 다른 시각적 정보 처리 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — retrieval and alignment 개념이 self-correction flywheel의 오류 복구 메커니즘 설계에 핵심 기반 제공

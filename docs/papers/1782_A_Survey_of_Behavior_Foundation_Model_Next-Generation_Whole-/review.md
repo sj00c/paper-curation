@@ -1,3 +1,25 @@
+---
+title: "1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-"
+authors:
+  - "Mingqi Yuan"
+  - "Tao Yu"
+  - "Wenqi Ge"
+  - "Xiuyong Yao"
+  - "Huijiang Wang"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 휴머노이드 로봇의 전신 제어(WBC)를 위한 행동 기초 모델(BFM)의 발전과 응용을 종합적으로 조사하며, 대규모 사전학습을 통해 재사용 가능한 행동 기초를 학습하여 다양한 작업에 빠르게 적응할 수 있는 차세대 제어 시스템을 제시한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Latent_Human_Motion"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yuan et al._2025_A Survey of Behavior Foundation Model Next-Generation Whole-Body Control System of Humanoid Robots.pdf"
+---
+
 # A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots
 
 > **저자**: Mingqi Yuan, Tao Yu, Wenqi Ge, Xiuyong Yao, Huijiang Wang, Jiayu Chen, Bo Li, Wei Zhang, Wenjun Zeng, Hua Chen, Xin Jin | **날짜**: 2025-06-25 | **URL**: [https://arxiv.org/abs/2506.20487](https://arxiv.org/abs/2506.20487)
@@ -63,3 +85,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 로봇 제어의 역사적 진화를 명확히 하고 BFM을 차세대 통합 제어 패러다임으로 체계적으로 정의하여, 로봇 제어 커뮤니티에 명확한 비전과 구조화된 개요를 제공하는 가치 높은 조사 논문이다. 다만 구체적인 기술적 혁신과 실세계 검증 결과는 추가 개발이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1761_Zero-Shot_Whole-Body_Humanoid_Control_via_Behavioral_Foundat/review]] — BFM 서베이가 FB-CPR과 같은 behavioral foundation model 연구의 이론적 배경과 발전 방향을 제시합니다.
+- 🔗 후속 연구: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 서베이에서 제시한 차세대 BFM 개념이 BFM-Zero의 promptable 접근법으로 구체화되었습니다.
+- 🏛 기반 연구: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 대규모 사전훈련을 통한 행동 기초 모델 개념이 일반화된 humanoid 제어의 이론적 근거를 제공합니다.
+- 🔄 다른 접근: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — 두 논문 모두 휴머노이드를 위한 행동 기초 모델을 다루지만 하나는 서베이, 다른 하나는 구체적 구현이다.
+- 🔗 후속 연구: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — Humanoid World Models의 구체적인 구현이 BFM survey에서 제시하는 차세대 전신 제어 시스템의 실현 가능성을 보여준다.
+- 🔗 후속 연구: [[papers/1761_Zero-Shot_Whole-Body_Humanoid_Control_via_Behavioral_Foundat/review]] — Behavior Foundation Model 서베이가 FB-CPR의 unsupervised RL 정규화 방법론을 더 넓은 맥락에서 이해하게 합니다.
+- 🏛 기반 연구: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — 행동 파운데이션 모델 조사가 BFM의 휴머노이드 특화 행동 모델 개발을 위한 이론적 기반
+- 🔗 후속 연구: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 차세대 전신 제어를 위한 행동 기초 모델의 이론을 promptable한 구체적 시스템으로 구현하여 실용성을 높인다.

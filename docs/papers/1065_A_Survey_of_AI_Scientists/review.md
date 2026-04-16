@@ -11,7 +11,8 @@ score: 4.0
 essence: "본 논문은 2022-2025년 AI 과학자(AI Scientist) 시스템의 급속한 발전을 종합적으로 분석하며, 문헌 검토부터 논문 생성까지 6단계 방법론 프레임워크를 통해 자율적 과학 발견의 전체 워크플로우를 체계화한다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Scientific_Discovery_Automation"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/AI-Driven_Scientific_Discovery"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tie et al._2026_A Survey of AI Scientists.pdf"
 ---
@@ -87,6 +88,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tie et al._2026_A Survey of AI Scientist
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — AI 기반 과학 자동화에서 전체 워크플로우와 개별 구성요소에 초점을 둔 다른 접근법임
-- ⚖️ 반론/비판: [[papers/1067_After_science/review]] — AI 과학자의 발전에 대한 기술적 낙관론과 달리 인간 이해의 한계를 경고함
-- ⚖️ 반론/비판: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 가속화된 과학 발견의 긍정적 전망과 달리 적절한 검증 없는 출판의 위험을 지적함
+- 🧪 응용 사례: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — AI 과학자 시스템의 성과를 평가하기 위한 에이전트 기반 메트릭 개발이 필요하다.
+- 🏛 기반 연구: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — AI 기반 자동화가 차세대 과학 연구의 기반이 되는 이론적 토대를 제공한다.
+- ⚖️ 반론/비판: [[papers/1067_After_science/review]] — AI가 과학을 완전히 자동화하는 '과학 이후' 비전과 달리, 현재 AI Scientist 시스템의 기술적 한계와 발전 과정을 체계적으로 분석한다.
+- 🔗 후속 연구: [[papers/1070_Challenges_in_High-Throughput_Inorganic_Materials_Prediction/review]] — AI 기반 자동화된 과학 발견의 구체적 한계 사례를 제시하여, AI Scientist 시스템이 극복해야 할 실제 문제점들을 보여준다.
+- 🏛 기반 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 과학 발견을 위한 기반 모델 활용의 이론적 틀을 제공하여, AI Scientist 시스템 개발의 기술적 토대를 구축한다.
+- 🧪 응용 사례: [[papers/1014_Risk_and_Artificial_Intelligence_Adoption_A_Scientometric_an/review]] — AI 과학자들에 대한 설문 연구의 결과를 AI 도입 과정에서의 위험 인식 변화 분석에 적용할 수 있습니다.
+- ⚖️ 반론/비판: [[papers/1067_After_science/review]] — 현재 AI Scientist 시스템의 단계별 발전을 체계적으로 분석한 연구와 달리, AI가 과학을 완전히 대체하는 미래 시나리오를 철학적으로 탐구한다.
+- ⚖️ 반론/비판: [[papers/1070_Challenges_in_High-Throughput_Inorganic_Materials_Prediction/review]] — AI Scientist 시스템의 급속한 발전에 대한 낙관적 전망과 달리, 자동화된 재료 발견의 신뢰성 문제와 개선 필요성을 구체적으로 지적한다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "20,854시간의 대규모 이고센트릭 인간 비디오 데이터로 VLA 모델을 사전학습한 후 소량의 정렬된 인간-로봇 중간학습 데이터로 미세조정하여 22-DoF 손가락 조작 로봇에서 54% 성공률 향상을 달성했다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Large-scale_Egocentric_Datasets"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2026_EgoScale Scaling Dexterous Manipulation with Diverse Egocentric Human Data.pdf"
 ---
@@ -94,4 +95,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2026_EgoScale Scaling Dexte
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1487_HUMOTO_A_4D_Dataset_of_Mocap_Human_Object_Interactions/review]] — EmbodMocap의 4D 인간-장면 재구성 기술이 고품질 모션캡처 데이터셋 구축의 기반을 제공함
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 large-scale robot learning dataset 구축 경험이 EgoScale의 대규모 egocentric video 데이터 활용 방법론에 기초가 된다.
+- 🔄 다른 접근: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — MimicPlay의 human video를 통한 long-horizon imitation과 EgoScale의 egocentric video 기반 dexterous manipulation은 인간 비디오 활용에서 서로 다른 접근이다.
+- 🔗 후속 연구: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — Phantom의 human video만을 사용한 로봇 훈련이 EgoScale의 대규모 egocentric 데이터 활용으로 더욱 확장된 형태이다.
+- 🔄 다른 접근: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 대규모 인간 데이터를 로봇 학습에 활용하는 방법론에서 egocentric vs paired video 접근법을 비교할 수 있습니다.
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 인간 동작 데이터 수집 방법론과 로봇 imitation learning 파이프라인의 기반 연구입니다.
+- 🔄 다른 접근: [[papers/1425_Human2Robot_Learning_Robot_Actions_from_Paired_Human-Robot_V/review]] — 인간 비디오 데이터를 로봇 학습에 활용하는 방법에서 paired video vs egocentric data의 다른 접근입니다.
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 다양한 egocentric 데이터 수집 방법이 HumanPlus의 인간 동작 데이터 수집 파이프라인에 기반이 된다.
+- 🔗 후속 연구: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — diverse egocentric data를 hierarchical imitation learning과 결합하여 더 효율적인 장기 조작 학습을 달성할 수 있다.
+- 🔗 후속 연구: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — EgoScale은 DexGarmentLab의 양손 조작 개념을 다양한 작업으로 확장하여 더 포괄적인 조작 학습 환경을 제공합니다.

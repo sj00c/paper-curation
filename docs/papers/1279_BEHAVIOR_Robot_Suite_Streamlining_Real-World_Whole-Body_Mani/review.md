@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "BEHAVIOR Robot Suite (BRS)는 가정용 일상 작업을 수행하기 위한 양팔 협력, 안정적 네비게이션, 광범위한 말단 장치 도달성을 갖춘 전신 조작 로봇을 위한 통합 프레임워크를 제시한다. JoyLo 원격 조작 인터페이스와 WB-VIMA 시각운동 정책 학습 알고리즘을 통해 실세계 가정 작업 수행을 가능하게 한다."
 tags:
-  - "cat/Humanoid_Teleoperation_and_Interaction"
-  - "sub/Humanoid_Teleoperation_Data"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Humanoid_Robot_Teleoperation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2025_BEHAVIOR Robot Suite Streamlining Real-World Whole-Body Manipulation for Everyday Household Activit.pdf"
 ---
@@ -88,10 +90,11 @@ BEHAVIOR Robot Suite (BRS)는 가정용 일상 작업을 수행하기 위한 양
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1272_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — 실세계 전신 조작에서 물리적 로봇과 증강현실 기반 데이터 수집의 다른 방식이다
-- 🔗 후속 연구: [[papers/1291_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — 가정용 일상 작업에서 BRS의 전신 조작이 BiGym의 양팔 조작을 확장한다
-- 🏛 기반 연구: [[papers/1320_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — Choice Policy의 모듈식 접근에서 WB-VIMA 시각운동 정책이 기초가 된다
-- 🧪 응용 사례: [[papers/1562_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 가정 환경 저수준 조작 벤치마크에서 BRS의 일상 작업 수행 능력이 적용된다
-- 🏛 기반 연구: [[papers/1291_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — 가정용 양팔 조작 벤치마크가 실세계 전신 조작 프레임워크의 기초가 된다
-- 🔄 다른 접근: [[papers/1272_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — 로봇 조작 데이터 수집에서 증강현실과 물리적 로봇 텔레오퍼레이션의 다른 접근이다
-- 🔗 후속 연구: [[papers/1320_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — 통합 휴머노이드 조작에서 Choice Policy가 WB-VIMA 시각운동 정책을 확장한다
+- 🔗 후속 연구: [[papers/1390_Expressive_Whole-Body_Control_for_Humanoid_Robots/review]] — BEHAVIOR Robot Suite의 전신 조작과 인간형 로봇의 표현력 있는 전신 제어는 상호 보완적인 휴머노이드 조작 기술이다.
+- 🧪 응용 사례: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — BRS의 JoyLo 원격조작 인터페이스와 인간-휴머노이드 실시간 전신 텔레오퍼레이션은 동일한 인간-로봇 제어 문제를 다룬다.
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 휴머노이드 섀도잉과 모방 학습 기술은 BEHAVIOR Robot Suite의 전신 조작 학습에 기초 이론을 제공한다.
+- 🔗 후속 연구: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — 전신 조작을 위한 원격조작 기술을 휴머노이드 로봇에 확장 적용한다.
+- 🔗 후속 연구: [[papers/1390_Expressive_Whole-Body_Control_for_Humanoid_Robots/review]] — 인간형 로봇의 표현력 있는 전신 제어와 BEHAVIOR Robot Suite의 전신 조작은 휴머노이드 로봇의 상호 보완적인 움직임 기술이다.
+- 🔗 후속 연구: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — BEHAVIOR Robot Suite의 whole-body manipulation 개념을 가정 환경의 재배치 작업으로 구체화하여 적용한다.
+- 🧪 응용 사례: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — OmniH2O의 teleoperation 시스템을 BEHAVIOR robot suite의 다양한 whole-body manipulation 작업에 적용할 수 있다.
+- 🏛 기반 연구: [[papers/1539_RoboFactory_Exploring_Embodied_Agent_Collaboration_with_Comp/review]] — 다중 에이전트 조작 시스템은 BEHAVIOR Robot Suite의 전신 조작 기술을 다중 로봇 환경으로 확장한 응용입니다.

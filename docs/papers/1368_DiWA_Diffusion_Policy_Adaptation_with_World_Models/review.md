@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "DiWA는 학습된 world model을 활용하여 diffusion 기반 로봇 정책을 오프라인으로 미세조정하는 프레임워크로, RL을 통해 상상 속 롤아웃에서 정책을 개선한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Diffusion_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Vision-Language_Model_Fine-tuning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chandra et al._2025_DiWA Diffusion Policy Adaptation with World Models.pdf"
 ---
@@ -88,4 +90,10 @@ DiWA는 학습된 world model을 활용하여 diffusion 기반 로봇 정책을 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1530_Learning_Humanoid_Navigation_from_Human_Data/review]] — 두 논문 모두 egocentric 시점에서의 시연 생성을 다루지만, 인간 보행 데이터 vs 조작 데이터라는 서로 다른 도메인에 집중함
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — World Models의 세계 모델 개념은 DiWA의 학습된 world model을 활용한 diffusion 정책 적응에 근본적인 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — DiWA의 diffusion 정책 적응과 Diffusion Policy의 비주오모터 학습은 diffusion 기반 로봇 정책의 발전된 활용이다.
+- 🔄 다른 접근: [[papers/1368_DiWA_Diffusion_Policy_Adaptation_with_World_Models/review]] — DiWA의 오프라인 world model 활용과 온라인 정책 학습은 diffusion 정책 개선의 서로 다른 학습 패러다임이다.
+- 🔄 다른 접근: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — 상호작용 실세계 시뮬레이터 학습을 통한 다른 월드 모델 기반 적응 접근법입니다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — World model을 활용한 policy adaptation의 기본 개념과 구조를 제공합니다.
+- 🔄 다른 접근: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — sim2real 문제를 static friction vs world model adaptation의 다른 관점에서 해결하는 접근법입니다.
+- 🔗 후속 연구: [[papers/1309_An_Real-Sim-Real_RSR_Loop_Framework_for_Generalizable_Roboti/review]] — DiWA의 world model을 활용한 diffusion policy adaptation 개념을 Real-Sim-Real loop에서 반복적인 시뮬레이션 개선으로 확장한 방법론입니다.

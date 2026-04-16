@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VisualMimic은 egocentric vision과 hierarchical whole-body control을 결합한 sim-to-real 프레임워크로, 인간의 동작 데이터로 학습한 task-agnostic keypoint tracker와 task-specific visuomotor policy를 통해 humanoid robot의 loco-manipulation을 실현한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2025_VisualMimic Visual Humanoid Loco-Manipulation via Motion Tracking and Generation.pdf"
 ---
@@ -85,3 +88,21 @@ VisualMimic은 egocentric vision과 hierarchical whole-body control을 결합한
 - Overall: 4/5
 
 **총평**: VisualMimic은 teacher-student distillation의 창의적 이중 적용과 human motion statistics 기반 제약으로 humanoid loco-manipulation의 현실적 과제를 효과적으로 해결하며, 다양한 작업에서 zero-shot real-world transfer를 입증한 매우 의미 있는 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — 둘 다 visual humanoid loco-manipulation을 다루지만 VIRAL은 대규모 GPU 컴퓨팅에, VisualMimic은 motion tracking에 특화됩니다.
+- 🔄 다른 접근: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — 둘 다 비전 기반 humanoid 제어지만 VIDEOMIMIC은 real-to-sim-to-real, VisualMimic은 hierarchical 접근법을 사용합니다.
+- 🏛 기반 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — GMT의 일반적인 모션 추적 기술이 VisualMimic의 task-agnostic keypoint tracker 개발에 기여합니다.
+- 🔄 다른 접근: [[papers/1681_SMAP_Self-supervised_Motion_Adaptation_for_Physically_Plausi/review]] — 인간 모션을 휴머노이드로 적용하는 과제에서 시각적 모방과 자기지도 적응이라는 서로 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 일반적 모션 트래킹에서 전신 제어로의 확장에서 visual과 residual 접근법이라는 보완적 방법론을 다룬다.
+- 🏛 기반 연구: [[papers/1902_EgoMI_Learning_Active_Vision_and_Whole-Body_Manipulation_fro/review]] — egocentric vision을 활용한 전신 조작 학습에서 active vision과 loco-manipulation이라는 관련 영역을 다룬다.
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoMimic의 대규모 egocentric 비디오 모방 학습 기법이 VisualMimic의 egocentric vision 기반 동작 추적을 확장할 수 있다.
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — DeepMimic의 물리 기반 모방 학습 프레임워크가 VisualMimic의 동작 추적 방법론의 기초가 된다.
+- 🔄 다른 접근: [[papers/1681_SMAP_Self-supervised_Motion_Adaptation_for_Physically_Plausi/review]] — 인간 모션을 휴머노이드로 적응시키는 과제에서 자기지도 적응과 시각적 모방이라는 서로 다른 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1646_RoboMirror_Understand_Before_You_Imitate_for_Video_to_Humano/review]] — RoboMirror와 VisualMimic 모두 비디오 기반 휴머노이드 제어를 다루지만 전자는 VLM 기반 intent 추출에, 후자는 visual imitation에 집중한다
+- 🔄 다른 접근: [[papers/1612_PhysHMR_Learning_Humanoid_Control_Policies_from_Vision_for_P/review]] — 같은 비전 기반 humanoid motion imitation 문제를 motion tracking 접근법으로 해결
+- 🔄 다른 접근: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — 둘 다 visual sim-to-real humanoid loco-manipulation을 다루지만 VisualMimic은 motion tracking에 더 초점을 맞춥니다.
+- 🔄 다른 접근: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — 둘 다 인간 영상에서 humanoid 제어를 학습하지만 VisualMimic은 hierarchical control에 더 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1969_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — VisualMimic의 visual tracking을 HDMI가 robot-object co-tracking으로 확장하여 더 복잡한 상호작용 시나리오를 처리합니다.
+- 🔗 후속 연구: [[papers/1975_Hierarchical_visuomotor_control_of_humanoids/review]] — 시각적 모션 추적 모방이 계층적 시각운동 제어의 현대적 확장이다.

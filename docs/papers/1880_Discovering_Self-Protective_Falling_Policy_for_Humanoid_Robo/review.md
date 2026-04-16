@@ -1,3 +1,22 @@
+---
+title: "1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo"
+authors:
+  - "Diyuan Shi"
+  - "Shangke Lyu"
+  - "Donglin Wang"
+date: "2025.12"
+doi: "10.48550/arXiv.2512.01336"
+arxiv: ""
+score: 4.0
+essence: "Deep Reinforcement Learning과 Curriculum Learning을 이용하여 인간형 로봇이 낙상 상황에서 자체적으로 보호 행동을 발견하도록 학습시키며, 팔을 삼각형 구조로 형성하여 낙상 손상을 최소화하는 방법을 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2025_Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning.pdf"
+---
+
 # Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning
 
 > **저자**: Diyuan Shi, Shangke Lyu, Donglin Wang | **날짜**: 2025-12-01 | **DOI**: [10.48550/arXiv.2512.01336](https://doi.org/10.48550/arXiv.2512.01336)
@@ -67,3 +86,16 @@ Deep Reinforcement Learning과 Curriculum Learning을 이용하여 인간형 로
 - Overall: 4/5
 
 **총평**: 이 논문은 DRL과 Curriculum Learning을 통해 인간형 로봇이 자신의 물리적 특성에 맞는 낙상 보호 정책을 자율적으로 발견하도록 하는 혁신적 접근을 제시하며, 실제 로봇 플랫폼으로의 성공적 전이와 포괄적 벤치마크 구성으로 인간형 로봇의 안전성 향상에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — SafeFall이 같은 humanoid 낙상 보호 문제를 다른 학습 방법론으로 접근하여 상호 보완적인 해결책을 제시한다.
+- 🔗 후속 연구: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — 고전적 균형 제어 원리를 강화학습에 임베딩한 방법이 self-protective falling의 이론적 기반을 더욱 견고하게 만든다.
+- 🏛 기반 연구: [[papers/1649_Robot_Crash_Course_Learning_Soft_and_Stylized_Falling/review]] — soft and stylized falling 학습이 humanoid의 자기보호 낙상 정책 개발을 위한 기본적인 방법론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — 적은 시연으로부터 통합된 낙상 안전 정책의 실제 적용을 보여줍니다.
+- 🏛 기반 연구: [[papers/1649_Robot_Crash_Course_Learning_Soft_and_Stylized_Falling/review]] — 휴머노이드 로봇의 자기보호적 낙하 정책 발견이라는 동일한 문제 영역의 기초 연구입니다.
+- 🔗 후속 연구: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 자기보호 낙상 정책의 기초 연구를 GRU 기반 예측과 구조적 취약성 고려로 확장한다.
+- 🔗 후속 연구: [[papers/1747_VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid/review]] — 휴머노이드 넘어짐 안전에서 goal-in-context 추론과 자기보호 정책이라는 보완적 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1905_Embedding_Classical_Balance_Control_Principles_in_Reinforcem/review]] — 같은 humanoid 낙상 회복 문제를 고전적 제어 원리와 deep RL의 조합으로 접근하여 self-protective falling과 상호 보완적 해결책을 제시한다.
+- 🏛 기반 연구: [[papers/1976_HiFAR_Multi-Stage_Curriculum_Learning_for_High-Dynamics_Huma/review]] — 자기보호적 낙상 정책 발견 방법론이 HiFAR의 낙상 회복 학습 프레임워크의 핵심 기반이 된다.
+- 🔄 다른 접근: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — Unified Fall-Safety Policy는 스파스 시연과 diffusion 메모리를 사용하고 Discovering Self-Protective Falling은 자기보호적 발견 학습을 통한 서로 다른 낙상 대응 접근법입니다.

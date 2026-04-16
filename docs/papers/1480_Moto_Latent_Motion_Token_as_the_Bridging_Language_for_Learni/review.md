@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 비디오에서 비지도 학습으로 latent motion token을 학습하여 로봇 조작 태스크를 위한 사전학습의 중간 표현으로 사용하고, Moto-GPT를 통해 motion token의 자동회귀 예측으로 motion prior를 학습한 후 co-fine-tuning으로 실제 로봇 제어로 전이하는 방법을 제안한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Robotic_Foundation_Generalization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Egocentric_Human_Data"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2024_Moto Latent Motion Token as the Bridging Language for Learning Robot Manipulation from Videos.pdf"
 ---
@@ -84,7 +85,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2024_Moto Latent Motion Toke
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — latent motion token을 사전학습에서 로봇 제어로 전이하는 방법론을 더욱 발전시킨 자기 참조적 연구입니다.
-- 🏛 기반 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — 일반화 가능한 로봇 조작을 위한 기초 모델 전이 방법론이 motion token 학습의 기반을 제공합니다.
-- 🧪 응용 사례: [[papers/1448_High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Ro/review]] — 비디오에서의 잠재 행동 사전학습이 motion token 기반 로봇 학습에 실제 적용되는 사례입니다.
-- 🔗 후속 연구: [[papers/1522_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오 학습을 latent motion token과 결합하여 더욱 효과적인 로봇 정책을 구현할 수 있습니다.
+- 🔄 다른 접근: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — Phantom과 동일하게 인간 비디오를 활용하지만 Moto는 latent motion token이라는 중간 표현을 통해 차별화된 접근을 한다.
+- 🏛 기반 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — 비디오에서의 latent action pretraining 연구가 Moto의 motion token 학습 방법론의 이론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 대규모 비디오 생성 사전학습의 기본 원리를 latent motion token learning에 적용하는 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — 둘 다 비디오에서 motion representation을 학습하지만 VQ-VAE 기반 양자화와 latent motion token의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1330_CLAM_Continuous_Latent_Action_Models_for_Robot_Learning_from/review]] — 둘 다 latent action modeling을 다루지만 CLAM은 continuous latent space에, Moto는 latent motion token에 중점을 둡니다.

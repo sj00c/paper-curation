@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 시뮬레이션과 실세계 데이터로 학습한 지각형 Forward Dynamics Model (FDM)을 제안하여, 복잡한 지형에서 사족 로봇의 안전한 네비게이션을 실현한다. 이 FDM을 MPPI 플래닝 프레임워크에 통합하여 복잡한 비용 함수 튜닝 없이 안전한 경로 계획을 가능하게 한다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Proprioceptive_Terrain_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Roth et al._2025_Learned Perceptive Forward Dynamics Model for Safe and Platform-aware Robotic Navigation.pdf"
 ---
@@ -91,13 +92,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Roth et al._2025_Learned Perceptive Forw
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — 복잡한 야외 지형 탐색에서 정적 마찰 특성 이해는 perceptive navigation의 안전성과 성능 향상에 필수적이다.
-- 🔄 다른 접근: [[papers/1608_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 두 논문 모두 지각 기반 parkour를 다루지만, 하나는 단일 단계 end-to-end에, 다른 하나는 계층적 접근에 초점을 둔다.
-- 🔗 후속 연구: [[papers/1553_Let_Humanoids_Hike_Integrative_Skill_Development_on_Complex/review]] — Hiking in the Wild의 야외 지형 navigation은 Let Humanoids Hike의 복잡한 지형에서의 통합 스킬 개발로 확장된다.
-- 🔗 후속 연구: [[papers/1270_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — 고플랫폼 순회를 더 일반적인 parkour 프레임워크로 확장한다
-- 🔗 후속 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — 정적 마찰 분석은 복잡한 야외 지형에서의 perceptive navigation 성능 향상에 직접적으로 기여한다.
-- 🏛 기반 연구: [[papers/1475_Humanoid_Whole-Body_Locomotion_on_Narrow_Terrain_via_Dynamic/review]] — 좁은 지형에서의 dynamic balance는 복잡한 야외 지형 탐색의 핵심 기반 기술이다.
-- 🔄 다른 접근: [[papers/1514_Learning_a_Vision-Based_Footstep_Planner_for_Hierarchical_Wa/review]] — 두 논문 모두 지각 기반 보행 제어를 다루지만, depth 카메라 vs 다중 센서 융합이라는 서로 다른 센서 전략을 채택함
-- 🔄 다른 접근: [[papers/1529_Learning_Humanoid_Locomotion_over_Challenging_Terrain/review]] — 두 논문 모두 도전적인 지형에서의 지각 기반 보행을 다루지만, Transformer 사전학습 vs 실시간 적응이라는 서로 다른 학습 전략을 채택함
-- 🔗 후속 연구: [[papers/1553_Let_Humanoids_Hike_Integrative_Skill_Development_on_Complex/review]] — 지각 기반 파쿠르 프레임워크의 개념을 복잡한 산책로라는 특수한 자연 환경에서의 하이킹에 특화시켜 통합적으로 발전시킨 형태임
-- 🔄 다른 접근: [[papers/1608_Perceptive_Humanoid_Parkour_Chaining_Dynamic_Human_Skills_vi/review]] — 야생 환경에서의 파쿠르 프레임워크와 모션 매칭 기반 파쿠르가 서로 다른 환경 적응 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — 둘 다 사족 로봇의 복잡한 지형 네비게이션을 다루지만 perceptive FDM + MPPI vs pure RL이라는 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — sim2real에서 friction의 영향 분석을 Forward Dynamics Model 학습에 적용한 실용적 확장이다.
+- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — real-world robotics의 DRL 응용을 learned dynamics model과 결합하여 안전한 네비게이션으로 발전시켰다.
+- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — 둘 다 사족 로봇을 위한 시뮬레이션 기반 접근법이지만 forward dynamics model과 MuJoCo 기반 학습의 차이점을 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — 둘 다 sim-to-real navigation을 다루지만 forward dynamics model과 diffusion policy의 접근법 차이를 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1484_MuJoCo_Playground/review]] — 둘 다 사족 로봇 시뮬레이션을 다루지만 MuJoCo playground와 forward dynamics model의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — 둘 다 sim-to-real navigation을 다루지만 diffusion policy와 forward dynamics model의 접근법 차이를 비교할 수 있다.

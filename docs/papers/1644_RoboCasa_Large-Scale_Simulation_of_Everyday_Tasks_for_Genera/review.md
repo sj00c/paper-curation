@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "RoboCasa는 kitchen 환경에 중점을 둔 대규모 로봇 시뮬레이션 프레임워크로, 생성형 AI를 활용하여 다양한 3D 자산과 task를 확보하고 100K 이상의 synthetic trajectory로 generalist robot 학습을 가능하게 한다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nasiriany et al._2024_RoboCasa Large-Scale Simulation of Everyday Tasks for Generalist Robots.pdf"
 ---
@@ -87,3 +90,22 @@ RoboCasa는 kitchen 환경에 중점을 둔 대규모 로봇 시뮬레이션 프
 - Overall: 4/5
 
 **총평**: RoboCasa는 generative AI를 활용하여 robot learning을 위한 대규모 realistic simulation을 구축한 의미 있는 contribution이며, 실제 real-world transfer 성공을 보여줌으로써 sim-to-real robot learning의 실질적 경로를 제시한다. 다만 현재 kitchen 환경 집중과 제한된 real-world 검증은 향후 개선이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — AGILE의 표준화된 sim-to-real 워크플로우가 RoboCasa의 대규모 시뮬레이션 데이터를 실제 로봇으로 전이하는 필수 기반
+- 🔗 후속 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — Genie Sim 3.0의 고충실도 시뮬레이션이 RoboCasa의 kitchen 환경을 더 포괄적인 시뮬레이션 플랫폼으로 확장
+- 🔄 다른 접근: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — 대규모 synthetic trajectory 생성과 VoxPoser의 zero-shot 자연언어 조작은 로봇 학습의 서로 다른 데이터 활용 전략
+- 🔄 다른 접근: [[papers/1824_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — RoboCasa는 kitchen 중심 시뮬레이션을, BiGym은 이동형 양손 조작에 중점을 두어 범용 로봇 학습을 다르게 접근함
+- 🔗 후속 연구: [[papers/2009_HumanoidGen_Data_Generation_for_Bimanual_Dexterous_Manipulat/review]] — HumanoidGen의 양손 정교 조작 데이터 생성이 RoboCasa의 kitchen task 중심 synthetic trajectory를 확장함
+- 🔄 다른 접근: [[papers/1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — 두 논문 모두 generalist robot 학습을 위한 대규모 데이터를 다루지만 RoboCasa는 시뮬레이션 trajectory에, DreamGen은 unlocking generalization에 집중한다
+- 🔄 다른 접근: [[papers/1673_Sim-and-Real_Co-Training_A_Simple_Recipe_for_Vision-Based_Ro/review]] — 두 논문 모두 시뮬레이션과 실제 환경의 혼합 학습을 다루지만, 일반적인 co-training과 대규모 일상 작업이라는 다른 규모를 다룬다.
+- 🔄 다른 접근: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — VoxPoser의 LLM+VLM 기반 자연언어 조작과 RoboCasa의 대규모 시뮬레이션 환경은 상호 보완적인 일반화 접근법
+- 🔗 후속 연구: [[papers/1824_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — RoboCasa의 대규모 시뮬레이션 환경과 BiGym의 mobile bi-manual benchmark가 함께 포괄적인 manipulation 학습 환경을 구성한다.
+- 🔗 후속 연구: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — RoboCasa의 대규모 시뮬레이션 데이터를 AGILE의 표준화된 워크플로우로 실제 로봇에 신뢰성 있게 전이
+- 🧪 응용 사례: [[papers/1868_DexHub_and_DART_Towards_Internet_Scale_Robot_Data_Collection/review]] — RoboCasa의 large-scale simulation이 DexHub 데이터베이스와 연계되어 더 포괄적인 로봇 학습 환경을 조성한다.
+- 🧪 응용 사례: [[papers/2021_Implicit_Kinodynamic_Motion_Retargeting_for_Human-to-humanoi/review]] — 대규모 로봇 시뮬레이션 환경에서 IKMR 프레임워크를 통한 인간-휴머노이드 모션 변환 기술을 검증할 수 있는 플랫폼을 제공한다.
+- 🔄 다른 접근: [[papers/2082_LHM-Humanoid_Learning_a_Unified_Policy_for_Long-Horizon_Huma/review]] — 일반적인 조작을 위한 대규모 시뮬레이션과 장시간 휴머노이드 전신 조작이라는 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 일반적인 조작을 위한 대규모 시뮬레이션의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2100_Mimicking-Bench_A_Benchmark_for_Generalizable_Humanoid-Scene/review]] — RoboCasa의 일상 작업 시뮬레이션 프레임워크를 실제 3D 장면과 인간 상호작용 데이터로 확장한 종합 벤치마크이다.
+- 🔗 후속 연구: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — RoboCasa의 everyday tasks 시뮬레이션이 MolmoSpaces의 대규모 실내 환경 생태계로 크게 확장된 것이다

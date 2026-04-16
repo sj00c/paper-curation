@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "81.1M 학술 논문의 메타데이터, 초록, 인용 정보와 8.1M 오픈 액세스 논문의 구조화된 전체 텍스트를 포함하는 대규모 공개 학술 코퍼스(S2ORC)를 소개한다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Research_Infrastructure_Platforms"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lo et al._2020_S2ORC The Semantic Scholar Open Research Corpus.pdf"
 ---
@@ -89,15 +91,22 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lo et al._2020_S2ORC The Semantic Schola
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — S2ORC와 OpenAlex 모두 대규모 학술 데이터 코퍼스를 제공하는 연구 인프라 플랫폼으로 기능이 유사하다.
-- 🔗 후속 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — S2ORC 데이터를 활용하여 더 포괄적인 과학의 과학 연구를 위한 SciSciNet 데이터레이크 구축에 기여한다.
-- 🧪 응용 사례: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — Paper Circle의 다중 에이전트 시스템이 S2ORC 같은 대규모 학술 코퍼스를 활용하여 논문 발견과 분석을 자동화한다.
-- 🔄 다른 접근: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 전용 데이터 레이크와는 달리 자연어처리 연구에 최적화된 대규모 학술 논문 코퍼스를 제공한다.
-- 🔗 후속 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — SCI의 인용 기반 색인 아이디어를 현대적 오픈 연구 코퍼스로 확장하여 대규모 과학 문헌 분석을 가능하게 한다.
-- 🧪 응용 사례: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — S2ORC 같은 대규모 학술 코퍼스를 Paper Circle의 다중 에이전트 시스템이 효과적으로 활용할 수 있다.
-- 🏛 기반 연구: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — Semantic Scholar의 대규모 연구 말뭉치가 30년 종단 scientometric 데이터셋 구축의 기술적 기반과 참고 모델을 제공합니다.
-- 🔄 다른 접근: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — Microsoft Academic Graph 대체로 개발된 OpenAlex와 Semantic Scholar의 S2ORC가 서로 다른 접근법의 대규모 개방형 학술 데이터 인프라를 제시합니다.
-- 🏛 기반 연구: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — Scopus와 Web of Science 데이터 통합을 위해서는 S2ORC와 같은 대규모 오픈 연구 코퍼스가 제공하는 기반 구조가 필요합니다.
-- 🏛 기반 연구: [[papers/969_Hierarchical_Classification_of_Research_Fields_in_the_Web_of/review]] — 대규모 학술 말뭉치 구축과 처리를 위한 핵심 인프라와 방법론적 토대를 제공한다.
-- 🏛 기반 연구: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 대규모 과학 문헌 코퍼스 구축과 처리에 필요한 기술적 기반을 제공한다
-- 🏛 기반 연구: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — 대규모 학술 코퍼스 구축 및 표준화된 메타데이터 관리의 방법론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 대규모 학술 코퍼스가 과학의 과학 연구에서 데이터 기반 실증 분석의 핵심 인프라를 제공한다.
+- 🔄 다른 접근: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex와 S2ORC가 서로 다른 접근으로 대규모 학술 데이터베이스를 구축하여 상호 보완적 역할을 한다.
+- 🧪 응용 사례: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — 대규모 학술 코퍼스를 활용하여 LLM과 지식 그래프를 결합한 과학 연구 매핑 시스템 구축이 가능하다.
+- 🔄 다른 접근: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 대규모 학술 데이터 구축에서 서로 다른 접근법과 범위를 가진 경쟁적인 오픈 데이터 플랫폼들입니다.
+- 🔄 다른 접근: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학 연구를 위한 서로 다른 범위와 구조를 가진 대규모 오픈 데이터 플랫폼들입니다.
+- 🏛 기반 연구: [[papers/1112_CS-KG_20_A_Large-scale_Knowledge_Graph_of_Computer_Science/review]] — 대규모 학술 코퍼스 구축과 처리 방법론의 기반을 제공한다
+- 🏛 기반 연구: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — S2ORC 오픈 연구 코퍼스가 대규모 scientometric 데이터셋 구축의 방법론적 선례를 제공한다.
+- 🧪 응용 사례: [[papers/1054_Whats_In_Your_Field_Mapping_Scientific_Research_with_Knowled/review]] — S2ORC와 같은 대규모 학술 코퍼스를 기반으로 LLM과 지식 그래프를 결합한 연구 매핑 시스템을 구축한다.
+- 🧪 응용 사례: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — S2ORC와 같은 대규모 학술 데이터셋이 과학의 과학 연구에서 실증적 분석의 핵심 데이터 인프라를 제공한다.
+- 🔄 다른 접근: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — 언어 모델 연구와 의미론적 학술 코퍼스라는 서로 다른 오픈 사이언스 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/990_Networks_of_Scientific_Papers/review]] — Semantic Scholar 오픈 연구 코퍼스가 인용 네트워크 패턴 분석을 대규모로 실현할 수 있는 데이터 인프라를 제공한다.
+- 🏛 기반 연구: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — S2ORC 의미론적 연구 코퍼스가 학습분석 분야 공개 데이터셋 발굴과 분석의 데이터 기반을 제공한다.
+- 🔄 다른 접근: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — 학술 메타데이터 제공을 위한 또 다른 대규모 오픈 연구 코퍼스로서 OpenAlex와 상호 보완적인 역할을 한다.
+- 🏛 기반 연구: [[papers/978_Introducing_the_open_biomedical_map_of_science/review]] — S2ORC 의미론적 연구 코퍼스가 개방형 생의학 과학 지도 개발의 데이터 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1196_Media_and_Digital_Marketing_Bibliomatrix_Analysis_using_R_Fu/review]] — 대규모 학술 연구 코퍼스가 소셜미디어 마케팅 연구 분석의 데이터 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — S2ORC 대규모 학술 코퍼스가 제공하는 포괄적인 과학 문헌 데이터베이스 구조와 메타데이터 표준이 e-commerce 문헌 분석의 방법론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/1209_Scientometric_Analysis_of_Data_Privacy_and_Cloud_Security_Re/review]] — 대규모 학술 데이터셋 구축에서 서로 다른 접근법(arXiv 중심 vs 의미론적 스콜라 코퍼스)을 제시합니다.
+- 🔄 다른 접근: [[papers/1228_OpenRad_a_Curated_Repository_of_Open-access_AI_models_for_Ra/review]] — OpenRad와 S2ORC 모두 대규모 과학 데이터를 체계적으로 수집하고 표준화하여 연구 커뮤니티에 제공하는 오픈 사이언스 인프라 구축 프로젝트다.
+- 🏛 기반 연구: [[papers/1150_Characterization_of_a_Workload_Generator_for_Content-based_P/review]] — 대규모 오픈 연구 코퍼스의 데이터 특성화 방법이 CBPS 시스템 워크로드 분석의 기초 방법론 제공

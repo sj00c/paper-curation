@@ -1,3 +1,25 @@
+---
+title: "1923_FAME_Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelo"
+authors:
+  - "Niraj Pudasaini"
+  - "Yutong Zhang"
+  - "Jensen Lavering"
+  - "Alessandro Roncone"
+  - "Nikolaus Correll"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "FAME는 양팔 조작 시 외부 손 힘으로 인한 균형 교란을 해결하기 위해, 상체 관절 구성과 양팔 상호작용 힘을 인코딩하는 latent context에 조건화된 RL 정책을 학습한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Pudasaini et al._2026_FAME Force-Adaptive RL for Expanding the Manipulation Envelope of a Full-Scale Humanoid.pdf"
+---
+
 # FAME: Force-Adaptive RL for Expanding the Manipulation Envelope of a Full-Scale Humanoid
 
 > **저자**: Niraj Pudasaini, Yutong Zhang, Jensen Lavering, Alessandro Roncone, Nikolaus Correll | **날짜**: 2026-03-09 | **URL**: [https://arxiv.org/abs/2603.08961](https://arxiv.org/abs/2603.08961)
@@ -66,3 +88,17 @@ FAME는 양팔 조작 시 외부 손 힘으로 인한 균형 교란을 해결하
 - Overall: 4/5
 
 **총평**: FAME는 latent context adaptation을 양팔 조작 중 balance 문제에 창의적으로 적용하며, 센서 불필요 배포와 실세계 검증으로 실용적 기여를 한다. 다만 sim-to-real 격차와 힘 추정 정확도 분석이 보강되면 더욱 강력해질 것이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1964_HAFO_A_Force-Adaptive_Control_Framework_for_Humanoid_Robots/review]] — 둘 다 외부 힘에 대한 적응적 제어를 다루지만 FAME은 양팔 조작에, HAFO는 일반적인 힘 적응에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — 인간-휴머노이드 협력 시나리오에서 FAME의 힘 적응 기법을 활용할 수 있다.
+- 🔄 다른 접근: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — FAME의 외부 힘 적응과 FALCON의 힘-적응 학습은 휴머노이드 조작에서의 서로 다른 힘 제어 접근방식입니다.
+- 🏛 기반 연구: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — MaskedManipulator의 다양한 전신 조작 기술이 FAME의 양팔 조작 시 균형 교란 해결을 위한 기본적인 조작 능력을 제공한다.
+- 🧪 응용 사례: [[papers/1988_HuMam_Humanoid_Motion_Control_via_End-to-End_Deep_Reinforcem/review]] — HuMam의 end-to-end 심층 강화학습 기반 휴머노이드 동작 제어가 FAME의 양팔 상호작용 힘 학습을 실제 시스템에 적용하는 구체적인 방법을 제공한다.
+- 🧪 응용 사례: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — FAME의 force-adaptive RL 기법이 투척 시 물체와의 접촉력 제어 및 조작 영역 확장에 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — FAME의 양팔 상호작용 힘 인코딩 기술이 FALCON의 하체 안정성과 상체 정밀 추적 분리 학습을 위한 힘 적응 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — FAME의 힘 적응적 RL이 H2-COMPACT의 haptic intent inference에 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1964_HAFO_A_Force-Adaptive_Control_Framework_for_Humanoid_Robots/review]] — FAME의 force-adaptive RL 연구가 HAFO의 강한 외력 상호작용에서 필요한 적응적 제어 전략의 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1981_HMC_Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loc/review]] — FAME의 힘 적응 RL 기술이 HMC의 접촉이 많은 조작 작업에서의 적응적 제어 혼합의 기반이 된다.
+- 🔗 후속 연구: [[papers/2012_HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Con/review]] — FAME의 force-adaptive RL이 HumanoidVLM의 impedance parameter 선택을 강화학습으로 확장합니다.

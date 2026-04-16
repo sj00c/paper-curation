@@ -1,3 +1,24 @@
+---
+title: "2120_OmniRetarget_Interaction-Preserving_Data_Generation_for_Huma"
+authors:
+  - "Lujie Yang"
+  - "Xiaoyu Huang"
+  - "Zhen Wu"
+  - "Angjoo Kanazawa"
+  - "Pieter Abbeel"
+date: "2025.10"
+doi: "10.48550/arXiv.2509.26633"
+arxiv: ""
+score: 4.0
+essence: "OmniRetarget은 interaction mesh 기반의 제약 최적화를 통해 human motion을 humanoid robot을 위한 고품질 kinematic reference로 retarget하며, 상호작용을 보존하면서 단일 시연으로부터 다양한 로봇 구체화, 지형, 물체 설정으로 효율적인 data augmentation을 수행한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Computational_Optimization_and_Tools"
+  - "sub/Trajectory_Optimization_Sampling"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_OmniRetarget Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and S.pdf"
+---
+
 # OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction
 
 > **저자**: Lujie Yang, Xiaoyu Huang, Zhen Wu, Angjoo Kanazawa, Pieter Abbeel, Carmelo Sferrazza, C. Karen Liu, Rocky Duan, Guanya Shi | **날짜**: 2025-10-08 | **DOI**: [10.48550/arXiv.2509.26633](https://doi.org/10.48550/arXiv.2509.26633)
@@ -65,3 +86,17 @@ OmniRetarget은 interaction mesh 기반의 제약 최적화를 통해 human moti
 - Overall: 4/5
 
 **총평**: OmniRetarget은 interaction-preserving motion retargeting과 체계적 data augmentation을 통해 humanoid robot 제어의 데이터 병목을 해결하는 실질적이고 영향력 있는 기여이며, 최소한의 reward engineering으로 complex whole-body loco-manipulation 기술의 zero-shot sim-to-real transfer를 성공적으로 입증하여 로보틱스 커뮤니티에 매우 유용한 공개 도구 및 데이터셋을 제공한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — PyRoki의 모션 리타게팅 최적화 도구들을 활용하여 OmniRetarget의 interaction-preserving constraint optimization을 더욱 효율적으로 구현할 수 있다.
+- 🏛 기반 연구: [[papers/1858_cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_D/review]] — cuRoboV2의 동역학 인식 운동 생성이 OmniRetarget의 고품질 kinematic reference 생성에 필수적인 기술적 토대를 마련한다.
+- 🧪 응용 사례: [[papers/1646_RoboMirror_Understand_Before_You_Imitate_for_Video_to_Humano/review]] — RoboMirror의 비디오-인간 모방 학습에 OmniRetarget의 interaction-preserving data augmentation 기법을 적용하여 학습 데이터의 질과 양을 크게 개선할 수 있다.
+- 🏛 기반 연구: [[papers/1849_Contact-Aided_Invariant_Extended_Kalman_Filtering_for_Robot/review]] — Contact-aided motion capture 기술이 OmniRetarget의 interaction mesh 기반 제약 최적화에서 human-object interaction 보존의 기술적 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/2088_Make_Tracking_Easy_Neural_Motion_Retargeting_for_Humanoid_Wh/review]] — Make Tracking Easy의 neural retargeting이 OmniRetarget의 optimization-based retargeting과 다른 neural network 접근법으로 유사한 motion retargeting 문제를 해결합니다.
+- 🔗 후속 연구: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — PICO의 3D people-object contact reconstruction이 OmniRetarget의 interaction 보존 retargeting을 실제 3D 접촉 데이터로 확장한 형태입니다.
+- 🔗 후속 연구: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — PyRoki의 역기구학과 모션 리타게팅 기능을 활용하여 OmniRetarget의 interaction-preserving retargeting을 더 효율적으로 구현할 수 있다.
+- 🔗 후속 연구: [[papers/1785_A_Whole-Body_Motion_Imitation_Framework_from_Human_Data_for/review]] — OmniRetarget의 상호작용 보존 데이터 생성이 contact-aware 전신 모션 리타겟팅의 정확성과 안정성을 향상시킬 수 있다.
+- 🏛 기반 연구: [[papers/1858_cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_D/review]] — cuRoboV2의 동역학 인식 운동 생성 프레임워크가 OmniRetarget의 interaction-preserving data generation에 필수적인 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1987_HuBE_Cross-Embodiment_Human-like_Behavior_Execution_for_Huma/review]] — OmniRetarget의 interaction-preserving data generation이 HuBE의 cross-embodiment adaptation을 위한 데이터 생성 기법의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — 교차 구현체 전이를 이 논문은 UDH 모델로, OmniRetarget은 상호작용 보존으로 접근한다.

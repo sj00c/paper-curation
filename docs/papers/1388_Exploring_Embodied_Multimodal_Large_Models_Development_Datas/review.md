@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Embodied Multimodal Large Models (EMLMs)는 Large Language Models, Large Vision Models 등의 기초 모델들을 결합하여 지각, 인지, 행동을 물리적 환경에서 통합하는 체계적인 종합 리뷰이다. 본 논문은 300개 논문을 분석하여 EMLMs의 발전, 데이터셋, 및 미래 방향에 대한 첫 번째 체계적 분석을 제공한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_Exploring Embodied Multimodal Large Models Development, Datasets, and Future Directions.pdf"
 ---
@@ -88,10 +89,11 @@ Embodied Multimodal Large Models (EMLMs)는 Large Language Models, Large Vision 
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — embodied multimodal 모델의 cross-platform 배포를 위한 하드웨어별 성능 최적화 전략
-- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — EMLM 체계적 리뷰가 foundation model 기반 로봇공학 연구의 multimodal 통합 방향성 제시
-- 🏛 기반 연구: [[papers/1357_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — VLA 모델 전체 스택 리뷰가 embodied multimodal 모델 발전의 포괄적 기초 자료 제공
-- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — foundation model 기반 로봇공학과 embodied multimodal 모델의 상호보완적 발전 방향
-- 🔄 다른 접근: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — embodied multimodal model을 각각 사이버-물리 융합과 개발-데이터-평가라는 다른 관점에서 조사한다
-- 🔗 후속 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — VLA 모델의 cross-platform scaling 연구가 embodied multimodal 모델의 실용적 배포 전략으로 확장
-- 🔗 후속 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — DRL 분류체계가 embodied multimodal 모델의 강화학습 통합 연구로 발전
+- 🏛 기반 연구: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — General-Purpose Robots Survey가 EMLMs 리뷰의 foundation model 기반 로봇 개발 동향 분석의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — Foundation Models in Robotics가 EMLMs의 체계적 분석을 로봇 응용의 구체적인 도전과 기회로 확장합니다.
+- 🔄 다른 접근: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Robot Learning in the Era of Foundation Models는 EMLMs와 유사한 주제를 다루지만 학습 관점에서 다른 분석 프레임워크를 제시합니다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — embodied AI의 world model과 multimodal foundation model의 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1298_A_Survey_of_Embodied_Learning_for_Object-Centric_Robotic_Man/review]] — 둘 다 embodied AI의 포괄적 서베이이지만 A Survey of Embodied Learning은 object-centric manipulation에, Exploring Embodied는 multimodal large model에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — Exploring Embodied Multimodal Large Models은 대규모 모델 강화 embodied AI를 구체적인 개발과 데이터 관점에서 확장함
+- 🔄 다른 접근: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — embodied 멀티모달 모델의 개발과 데이터 관점에서 상호 보완적인 리뷰를 제공합니다.
+- 🔄 다른 접근: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — 둘 다 embodied multimodal AI를 포괄적으로 다루지만 본 논문은 사이버-물리 연결에, 다른 논문은 개발과 데이터에 더 집중합니다.

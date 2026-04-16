@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Thor는 humanoid 로봇이 강한 접촉 상호작용 환경에서 인간 수준의 전신 반응을 생성하도록 하는 프레임워크로, force-adaptive torso-tilt (FAT2) 보상 함수와 decoupled reinforcement learning 아키텍처를 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_Thor Towards Human-Level Whole-Body Reactions for Intense Contact-Rich Environments.pdf"
 ---
@@ -87,3 +89,17 @@ Thor는 humanoid 로봇이 강한 접촉 상호작용 환경에서 인간 수준
 - Overall: 4/5
 
 **총평**: Thor는 decoupled RL 아키텍처와 인간 생체역학 기반 FAT2 보상 함수를 통해 humanoid의 강력한 힘 상호작용 능력을 크게 향상시킨 우수한 연구로, 실세계 성능 검증과 다양한 작업 시연을 통해 높은 실용적 가치를 입증했다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1799_AMO_Adaptive_Motion_Optimization_for_Hyper-Dexterous_Humanoi/review]] — AMO의 적응형 전신 제어가 Thor의 강한 접촉 반응 능력을 더욱 정교하게 확장합니다.
+- 🧪 응용 사례: [[papers/1908_Embrace_Collisions_Humanoid_Shadowing_for_Deployable_Contact/review]] — Thor의 접촉 대응 기술이 충돌을 적극 활용하는 humanoid shadowing에 직접 적용 가능합니다.
+- 🔄 다른 접근: [[papers/1836_CHIP_Adaptive_Compliance_for_Humanoid_Control_through_Hindsi/review]] — 둘 다 접촉 상황에서의 compliance 제어를 다루지만 CHIP은 힌드사이트 경험을 활용합니다.
+- 🏛 기반 연구: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 순응적 전신 제어의 기반 기술을 강한 접촉 상호작용 환경으로 확장하여 인간 수준의 전신 반응을 생성하는 프레임워크로 발전시켰다.
+- 🔗 후속 연구: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — 접촉 상호작용에서의 안정성 제어 기술을 강한 접촉 환경으로 확장하여 force-adaptive torso-tilt과 decoupled 아키텍처를 제안했다.
+- 🔄 다른 접근: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — 접촉이 풍부한 환경에서의 휴머노이드 제어를 위해 서로 다른 접근(인간 수준 전신 반응 vs force-adaptive 로코-조작)을 통해 강건성을 달성한다.
+- 🏛 기반 연구: [[papers/1964_HAFO_A_Force-Adaptive_Control_Framework_for_Humanoid_Robots/review]] — Force-adaptive 제어 프레임워크의 개념을 강한 접촉 상호작용에서 인간 수준의 반응을 생성하는 Thor 시스템으로 확장하여 구현했다.
+- 🏛 기반 연구: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 강한 접촉 상호작용에서 전신 반응을 생성하는 기반 기술을 순응적 제어라는 관점에서 확장하여 외부 힘에 대한 적응을 구현했다.
+- 🏛 기반 연구: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — 강한 접촉 상호작용에서의 안정성 제어 기술을 텔레오퍼레이션 환경으로 확장하여 다중 접촉 상황의 안정성을 보장했다.
+- 🏛 기반 연구: [[papers/1799_AMO_Adaptive_Motion_Optimization_for_Hyper-Dexterous_Humanoi/review]] — Thor의 접촉 대응 전신 제어 개념이 AMO의 hyper-dexterous whole-body control 개발의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1964_HAFO_A_Force-Adaptive_Control_Framework_for_Humanoid_Robots/review]] — Thor의 intense contact에 대한 human-level reaction 연구를 dual-agent 최적화를 통한 하체-상체 통합 제어로 발전시켰습니다.

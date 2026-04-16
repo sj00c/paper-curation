@@ -8,8 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "1971년부터 2020년까지 OpenAlex 데이터를 활용하여 15개 자연과학 분야의 국제·기관 간 연구 협력 관계를 시각화한 아틀라스를 제시한다. 세계 지도와 다양한 다이어그램을 통해 국가 및 국제 협력 패턴의 변화를 보여준다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Collaboration_Networks"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Okamura_2024_Atlas of Science Collaboration, 1971–2020.pdf"
 ---
@@ -81,11 +83,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Okamura_2024_Atlas of Science Collaborat
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 과학 협력 네트워크의 구조적 특성이 국제 협력 아틀라스 구축의 이론적 기반이 된다
-- 🔗 후속 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력의 사회적 네트워크 진화를 50년간의 장기적 관점에서 확장한다
-- 🧪 응용 사례: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 미중 과학 협력의 변화하는 지형을 국제 협력 아틀라스의 구체적 사례로 분석할 수 있다
-- 🏛 기반 연구: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 1971-2020년 과학 협력의 전반적 지도가 미중 과학협력 변화를 이해하는 역사적 맥락과 기반을 제공합니다.
-- 🧪 응용 사례: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 과학 협력 아틀라스의 글로벌 관점에서 인도 고분자과학 연구의 국제적 위치와 협력 패턴을 분석할 수 있다.
-- 🏛 기반 연구: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 1971-2020년 과학 협력의 글로벌 지도를 통해 학자 이동 패턴의 역사적 맥락과 배경을 이해할 수 있다.
-- 🔗 후속 연구: [[papers/1213_The_evolution_of_international_scientific_collaboration_netw/review]] — 국제 과학 협력의 역사적 변화를 개념 변화와 연결하여 분석할 수 있다
-- 🧪 응용 사례: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 출산율 연구의 국제 협력 분석이 1971-2020년 과학 협력 아틀라스에서 실제 적용될 수 있다.
+- 🔗 후속 연구: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 미중 과학 협력 관계 변화를 전세계 과학 협력 아틀라스의 구체적 사례로 확장합니다.
+- 🏛 기반 연구: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 과학 협력 네트워크의 구조적 특성 이론이 1971-2020년 협력 아틀라스의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 과학 협력 네트워크의 진화를 시각적 아틀라스로 확장하여 더 직관적인 이해를 돕는다.
+- 🔄 다른 접근: [[papers/1213_The_evolution_of_international_scientific_collaboration_netw/review]] — 국제 과학 협력 네트워크의 진화를 다른 관점에서 분석한 연구로 비교 분석이 가능하다.
+- 🔗 후속 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 국제 과학 협력의 시각적 매핑이 과학에서 집단적 신용 배분 메커니즘을 지리적 차원에서 이해하는 데 기여합니다.
+- 🔗 후속 연구: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 글로벌 과학 협력 아틀라스에서 인도의 고분자 과학 연구가 국제 협력 네트워크에서 차지하는 위치를 구체적으로 분석할 수 있다.
+- 🧪 응용 사례: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 커뮤니티 검출 알고리즘을 과학 협력 네트워크 분석에 구체적으로 적용한 사례이다
+- 🔗 후속 연구: [[papers/1213_The_evolution_of_international_scientific_collaboration_netw/review]] — 국제 협력 네트워크 진화 분석이 기존의 과학 협력 아틀라스 연구를 개념적 차원에서 확장합니다.
+- 🏛 기반 연구: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 1971-2020년 과학 협력 아틀라스는 특정 분야 인용 네트워크 분석에 필요한 전체적인 과학 협력 패턴의 기초 지식을 제공한다.

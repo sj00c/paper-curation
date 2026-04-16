@@ -1,3 +1,25 @@
+---
+title: "1968_Harmon_Whole-Body_Motion_Generation_of_Humanoid_Robots_from"
+authors:
+  - "Zhenyu Jiang"
+  - "Yuqi Xie"
+  - "Jinhan Li"
+  - "Ye Yuan"
+  - "Yifeng Zhu"
+date: "2024.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간 모션 데이터셋으로부터 사전학습된 프라이어를 활용하고 Vision Language Model을 통해 손가락과 머리 모션을 생성·편집하여 휴머노이드 로봇의 자연스러운 전신 모션을 언어 설명으로부터 생성한다."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/LLM_Physical_Motion_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2024_Harmon Whole-Body Motion Generation of Humanoid Robots from Language Descriptions.pdf"
+---
+
 # Harmon: Whole-Body Motion Generation of Humanoid Robots from Language Descriptions
 
 > **저자**: Zhenyu Jiang, Yuqi Xie, Jinhan Li, Ye Yuan, Yifeng Zhu, Yuke Zhu | **날짜**: 2024-10-16 | **URL**: [https://arxiv.org/abs/2410.12773](https://arxiv.org/abs/2410.12773)
@@ -66,3 +88,17 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 인간 모션 프라이어와 VLM의 상식적 추론을 창의적으로 결합하여 언어로부터 자연스러운 휴머노이드 모션을 생성하는 실용적인 방법을 제시하며, 실제 로봇 실험과 높은 사용자 평가로 그 유효성을 입증했다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 사전학습된 프라이어 기반 전신 모션 생성과 실시간 텍스트 기반 모션 제어는 서로 다른 언어-모션 변환 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1960_Guided_Motion_Diffusion_for_Controllable_Human_Motion_Synthe/review]] — 제어 가능한 인간 모션 합성이 휴머노이드 전신 모션 생성의 확장된 응용이다.
+- 🏛 기반 연구: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — 대규모 인간 모션 데이터가 휴머노이드 모션 생성의 기반 자원이다.
+- 🏛 기반 연구: [[papers/1996_Humanoid_Locomotion_as_Next_Token_Prediction/review]] — Next token prediction 방식의 humanoid control이 Harmon의 language-driven motion generation 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1935_From_Language_to_Locomotion_Retargeting-free_Humanoid_Contro/review]] — Language to locomotion retargeting이 Harmon의 전신 모션 생성을 보행 제어로 확장합니다.
+- 🏛 기반 연구: [[papers/1915_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — GPT-4를 휴머노이드에 적용하는 기초 연구가 Harmon의 언어 기반 전신 동작 생성의 이론적 토대가 된다.
+- 🔗 후속 연구: [[papers/1912_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — Harmon의 언어 기반 동작 생성을 감정적 표현까지 확장한 EMOTION의 발전된 형태다.
+- 🏛 기반 연구: [[papers/1669_Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_f/review]] — Harmon의 전신 모션 생성 기술이 제스처와 조화된 휴머노이드 전체 움직임 생성에 필요한 기반이다
+- 🔄 다른 접근: [[papers/1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — Harmon의 전신 동작 생성이 모션 캡처 데이터 학습이 아닌 다른 방식으로 표현적 휴머노이드 제어를 달성하는 접근을 제시한다.
+- 🔗 후속 연구: [[papers/1996_Humanoid_Locomotion_as_Next_Token_Prediction/review]] — Harmon의 language-driven motion generation이 next token prediction 방식을 언어 입력으로 확장합니다.
+- 🏛 기반 연구: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — Harmon의 language-conditioned motion generation이 TokenHSI의 transformer 기반 통합 정책에서 다양한 HSI 작업의 토큰 기반 모델링의 기술적 토대를 제공합니다.

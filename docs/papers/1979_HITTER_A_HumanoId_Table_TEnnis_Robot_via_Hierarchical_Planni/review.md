@@ -1,3 +1,23 @@
+---
+title: "1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni"
+authors:
+  - "Zhi Su"
+  - "Bike Zhang"
+  - "Nima Rahmanian"
+  - "Yuman Gao"
+  - "Qiayuan Liao"
+date: "2025.09"
+doi: "10.48550/arXiv.2508.21043"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 탁구를 하기 위한 계층적 프레임워크를 제시하며, model-based planner와 RL 기반 whole-body controller를 통합하여 sub-second 반응 시간 내에 초당 5 m/s 이상의 볼을 처리한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Su et al._2025_HITTER A HumanoId Table TEnnis Robot via Hierarchical Planning and Learning.pdf"
+---
+
 # HITTER: A HumanoId Table TEnnis Robot via Hierarchical Planning and Learning
 
 > **저자**: Zhi Su, Bike Zhang, Nima Rahmanian, Yuman Gao, Qiayuan Liao, Caitlin Regan, Koushil Sreenath, S. Shankar Sastry | **날짜**: 2025-09-04 | **DOI**: [10.48550/arXiv.2508.21043](https://doi.org/10.48550/arXiv.2508.21043)
@@ -68,3 +88,20 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid table tennis를 통해 고속 동적 환경에서의 전신 제어 및 상호작용을 처음으로 성공적으로 시연하였으며, 계층적 planning-control 통합과 minimal human references를 통한 우아한 접근법이 인상적이다. 실제 세계 검증(106 연속 샷)은 방법론의 실용성을 강력히 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — 라켓 스포츠 제어를 HITTER는 탁구에, Humanoid Whole-Body Badminton은 배드민턴에 각각 특화하여 접근한다.
+- 🏛 기반 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — 불완전한 인간 데이터에서 테니스 스킬을 학습하는 방법론이 HITTER의 빠른 반응 기반 탁구 제어의 토대가 된다.
+- 🔗 후속 연구: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — FALCON의 힘 적응 학습을 빠른 볼 처리가 필요한 탁구 상황으로 확장 적용한 HITTER의 발전된 형태다.
+- 🔄 다른 접근: [[papers/1682_SMASH_Mastering_Scalable_Whole-Body_Skills_for_Humanoid_Ping/review]] — 탁구와 테니스 모두 라켓 스포츠이지만 에고센트릭 비전 vs 계층적 의사결정이라는 다른 접근법입니다.
+- 🔗 후속 연구: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — HITTER의 계층적 탁구 로봇 계획이 RoboStriker의 3단계 권투 프레임워크를 라켓 스포츠로 확장함
+- 🔄 다른 접근: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — 드럼 연주와 탁구라는 서로 다른 rhythmic skill을 다루는 접촉 기반 운동 제어 연구입니다.
+- 🔗 후속 연구: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — 탁구 로봇의 계층적 계획과 제어 방식을 전신 동적 투척 작업에 적용할 수 있는 확장된 접근법입니다.
+- 🔄 다른 접근: [[papers/1994_Humanoid_Goalkeeper_Learning_from_Position_Conditioned_Task-/review]] — 골키퍼와 탁구 로봇 모두 스포츠 특화 제어이지만 위치 조건부 vs 계층적 계획 접근법이 다르다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — HITTER의 hierarchical planning for table tennis가 badminton의 multi-stage RL curriculum을 다른 라켓 스포츠로 확장한 연구이다.
+- 🔄 다른 접근: [[papers/2046_Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_fro/review]] — 둘 다 휴머노이드 스포츠 기술이지만 Learning Agile Striker는 축구 킥킹, HITTER는 탁구 기술 중심
+- 🏛 기반 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — 계층적 계획을 통한 탁구 로봇 제어의 원리가 테니스 기술 학습에서의 고수준 정책 설계에 기본 틀을 제공한다.
+- 🔄 다른 접근: [[papers/2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/review]] — 휴머노이드 스포츠 기술에서 배드민턴과 탁구로 다른 종목에 적용된 유사한 계층적 학습
+- 🔗 후속 연구: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 시각 기반 반응형 축구가 계층적 플래닝을 통한 탁구로 확장되어 더 정밀한 반응 제어를 보여준다.
+- 🏛 기반 연구: [[papers/2131_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor/review]] — HITTER의 계층적 계획 기반 휴머노이드 탁구 로봇 기술이 PACE의 탁구 경기를 위한 end-to-end RL 프레임워크 개발에 기반을 제공한다.

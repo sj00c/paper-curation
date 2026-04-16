@@ -12,7 +12,9 @@ score: 4.0
 essence: "1790만 개 논문 분석을 통해 최고 영향력의 과학은 기존 지식의 매우 관례적 조합을 기반으로 하면서도 동시에 비전형적 조합의 '침입'을 특징으로 함을 발견했다. 이러한 조합을 가진 논문은 높은 인용도를 보일 확률이 2배 높았다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Journal_Citation_Patterns"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Uzzi et al._2013_Atypical Combinations and Scientific Impact.pdf"
 ---
@@ -86,11 +88,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Uzzi et al._2013_Atypical Combinations a
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀과 소규모 팀의 혁신 패턴을 비전형적 조합의 관점에서 확장하여 분석한다
-- 🧪 응용 사례: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술, 문화, 과학 경력의 핫스트릭을 비전형적 조합이 만드는 영향력으로 설명할 수 있다
-- ⚖️ 반론/비판: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 다양성-혁신 패러독스를 비전형적 조합의 긍정적 효과와 대비하여 분석한다
-- 🏛 기반 연구: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 비전형적 조합이 과학적 영향력을 증대시킨다는 이론이 여성의 맥락적 참신성 혁신의 가치를 뒷받침한다.
-- 🔄 다른 접근: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 비전형적 조합과 과학적 영향의 관계를 통해 혁신성을 측정하는 다른 접근법을 제시한다.
-- 🏛 기반 연구: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 비전형적 조합과 과학적 영향의 관계를 통해 혁신적 연구가 사회적 주목을 받는 이론적 근거를 제공한다.
-- 🔄 다른 접근: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 학제간 지식 결합을 식별하는 BERTopic 방법론이 atypical combination 분석의 대안적 접근법을 제시한다.
-- 🔗 후속 연구: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 생명공학 분야의 지속가능성 지향 전환이 비전형적 조합과 과학적 영향력 연구로 확장될 수 있다.
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 비전형적 조합이 높은 영향력을 만든다는 발견과 과학이 점점 덜 파괴적이 된다는 관찰 간의 대조
+- 🏛 기반 연구: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 비전형적 조합과 과학 영향력의 관계가 파괴적 혁신 감소 현상의 이론적 배경 제공
+- 🔄 다른 접근: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 과학적 성공을 비전형적 조합과 핫스트릭이라는 서로 다른 메커니즘으로 각각 설명
+- 🔄 다른 접근: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 과학적 영향력을 비전형적 조합과 장기적 영향력 정량화라는 서로 다른 관점에서 측정하고 분석합니다.
+- 🔗 후속 연구: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 비정형적 조합을 통한 과학적 영향력과 지식공간에서의 탐색 패턴이 연결되어 혁신적 연구의 조건을 설명한다.
+- 🔄 다른 접근: [[papers/934_Are_disruptive_papers_more_likely_to_impact_technology_and_s/review]] — 높은 영향력 과학의 특성을 파괴적 지수와 비전형적 조합이라는 서로 다른 지표로 측정하고 분석합니다.
+- 🔄 다른 접근: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 연구의 참신성이 미치는 영향을 소셜 관심도와 과학적 임팩트라는 다른 측면에서 분석한다
+- 🏛 기반 연구: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 비정형적 조합과 과학적 임팩트의 관계를 분석한 기초 연구로, 학제간 지식 결합의 이론적 토대를 제공합니다.
+- 🏛 기반 연구: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 비전형적 조합과 과학적 영향력 이론이 생명공학 연구 전선 변화의 학제간 융합 현상을 설명합니다.
+- 🏛 기반 연구: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — ESG로의 패러다임 전환을 비정형적 조합과 과학적 영향의 관점에서 이해할 수 있다.

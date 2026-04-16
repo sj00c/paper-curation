@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 LLM이 완전한 데이터 출처 정보를 포함하는 기계 판독 가능한 과학 도형을 생성하고 조작할 수 있도록 LLM-native figures 개념을 제안한다. 이를 통해 도형을 정적 시각 요약에서 인터랙티브한 발견의 인터페이스로 재정의한다."
 tags:
-  - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/LLM_Applications_in_Science"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2026_Figures as Interfaces Toward LLM-Native Artifacts for Scientific Discovery.pdf"
 ---
@@ -88,6 +90,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2026_Figures as Interfaces T
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1051_Unsupervised_Word_Embeddings_Capture_Latent_Knowledge_from_M/review]] — LLM이 과학적 도형에서 잠재 지식을 추출하고 조작하는 능력의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — LLM-native figures를 연구 평가 에이전트 시스템에 통합하여 더 정교한 평가가 가능하다.
-- 🧪 응용 사례: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 기계 학습을 통한 연구 동향 예측에 인터랙티브 도형 인터페이스를 활용할 수 있다.
+- 🏛 기반 연구: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — 다중 에이전트 연구 분석 시스템에 LLM 네이티브 도형 생성 기능을 통합하여 시각화 향상
+- 🔗 후속 연구: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — 과학용 언어모델 개발을 기계 판독 가능한 과학 시각화라는 새로운 영역으로 확장
+- 🔄 다른 접근: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 지식 시각화를 정적 매핑과 동적 LLM 기반 인터페이스라는 다른 접근법으로 구현
+- 🔗 후속 연구: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — LLM-native figures의 기계 판독성과 execution-grounded evaluation의 코드 검증 기능을 결합하여 과학 재현성을 크게 향상시킬 수 있다.
+- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — LLM 사용량 정량화 연구가 제공하는 과학 논문에서의 AI 활용 현황 이해가 LLM-native artifacts 설계에 필수적인 배경을 제공한다.
+- 🔗 후속 연구: [[papers/931_AI-Driven_Automation_Can_Become_the_Foundation_of_Next-Era_S/review]] — LLM-native figures가 AI 기반 과학 자동화 프레임워크에서 시각적 발견 도구로 활용될 수 있습니다.
+- 🔗 후속 연구: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — LLM 기반 연구 분석 도구에 기계 판독 가능한 도형 생성 기능을 추가하여 시각화 확장
+- 🔗 후속 연구: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — 코드와 데이터 검증 기반 평가와 LLM-native figures의 기계 판독성을 결합하면 과학 연구의 투명성과 재현성을 획기적으로 향상시킬 수 있다.

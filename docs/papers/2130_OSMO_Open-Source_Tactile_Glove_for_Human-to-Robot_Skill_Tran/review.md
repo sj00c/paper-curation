@@ -1,3 +1,23 @@
+---
+title: "2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran"
+authors:
+  - "Jessica Yin"
+  - "Haozhi Qi"
+  - "Youngsun Wi"
+  - "Sayantan Kundu"
+  - "Mike Lambeta"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "OSMO는 인간의 촉각 데이터를 캡처하는 오픈소스 웨어러블 촉각 장갑으로, 촉각-시각 embodiment 격차를 최소화하여 인간 시연만으로 로봇 접촉 조작 정책을 학습할 수 있게 한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Dexterous_Hand_Trajectory_Datasets"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2025_OSMO Open-Source Tactile Glove for Human-to-Robot Skill Transfer.pdf"
+---
+
 # OSMO: Open-Source Tactile Glove for Human-to-Robot Skill Transfer
 
 > **저자**: Jessica Yin, Haozhi Qi, Youngsun Wi, Sayantan Kundu, Mike Lambeta, William Yang, Changhao Wang, Tingfan Wu, Jitendra Malik, Tess Hellebrekers | **날짜**: 2025-12-09 | **URL**: [https://arxiv.org/abs/2512.08920](https://arxiv.org/abs/2512.08920)
@@ -67,3 +87,18 @@ OSMO는 인간의 촉각 데이터를 캡처하는 오픈소스 웨어러블 촉
 - Overall: 4/5
 
 **총평**: OSMO는 웨어러블 촉각 센싱 분야에서 주목할 만한 하드웨어 기여를 하며, 인간-로봇 skill transfer에서 촉각 정보의 중요성을 실증적으로 입증했다. 완전 공개 설계와 다양한 hand-tracking 호환성은 커뮤니티 영향력을 높일 것으로 예상되나, 단일 작업 평가와 로봇 플랫폼 제한성이 일반화 가능성에 대한 의문을 남긴다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1779_A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Ma/review]] — OSMO 촉각 장갑으로 수집한 인간 시연 데이터를 contact-rich manipulation 학습에 활용할 수 있음
+- 🔄 다른 접근: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — DexCap은 손동작 캡처에 집중하는 반면 OSMO는 촉각 정보까지 포함한 더 포괄적인 skill transfer를 지원함
+- 🏛 기반 연구: [[papers/2115_OKAMI_Teaching_Humanoid_Robots_Manipulation_Skills_through_S/review]] — OKAMI의 인간 동작 데이터 기반 manipulation 학습이 OSMO 촉각 데이터와 결합되면 더 정교한 skill transfer 가능
+- 🔗 후속 연구: [[papers/1758_WHOLE_World-Grounded_Hand-Object_Lifted_from_Egocentric_Vide/review]] — WHOLE의 hand-object interaction 데이터가 OSMO 촉각 피드백과 함께 사용되면 embodiment 격차를 더 효과적으로 해소할 수 있음
+- 🏛 기반 연구: [[papers/1700_TACT_Humanoid_Whole-body_Contact_Manipulation_through_Deep_I/review]] — OSMO 촉각 글러브의 인간-로봇 스킬 전이가 TACT의 촉각 모방학습을 위한 직접적 데이터 수집 기반
+- 🧪 응용 사례: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — 근골격 근육 특성의 관리 방법론이 OSMO 촉각 장갑의 인간-로봇 스킬 전이에서 근력 및 촉각 피드백 매핑에 실용적으로 적용될 수 있다
+- 🔄 다른 접근: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — DexCap의 포터블 모캡 시스템과 OSMO의 촉각 글러브는 인간-로봇 기술 전수에서 시각적 vs 촉각적 데이터 수집의 서로 다른 접근법이다.
+- 🧪 응용 사례: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — DexterCap의 정밀한 손가락 추적 데이터가 OSMO 촉각 장갑의 human-to-robot skill transfer에서 정확한 참조 동작을 제공할 수 있다.
+- 🔗 후속 연구: [[papers/1977_High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Ro/review]] — IMU 기반 모션 캡처가 촉각 장갑을 통한 스킬 전이로 확장될 수 있다.
+- 🏛 기반 연구: [[papers/2008_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We/review]] — OSMO의 tactile glove system이 HumanoidExo의 wearable interface에서 hand manipulation data 수집을 위한 기초 기술을 제공한다.
+- 🏛 기반 연구: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — OSMO의 촉각 글러브 기술이 HumDex의 손재주 조작에 촉각 피드백을 추가하여 성능 향상 가능
+- 🏛 기반 연구: [[papers/2129_ORCA_An_Open-Source_Reliable_Cost-Effective_Anthropomorphic/review]] — ORCA의 신뢰성 있는 anthropomorphic 로봇 손이 OSMO의 tactile glove를 통한 인간-로봇 스킬 전이에 필요한 하드웨어 기반을 제공한다.

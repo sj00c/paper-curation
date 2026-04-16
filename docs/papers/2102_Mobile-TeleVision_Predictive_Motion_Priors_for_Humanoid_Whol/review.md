@@ -1,3 +1,23 @@
+---
+title: "2102_Mobile-TeleVision_Predictive_Motion_Priors_for_Humanoid_Whol"
+authors:
+  - "Chenhao Lu"
+  - "Xuxin Cheng"
+  - "Jialong Li"
+  - "Shiqi Yang"
+  - "Mazeyu Ji"
+date: "2024.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 전신 제어를 위해 상체 조작과 하체 보행을 분리하고, CVAE 기반 Predictive Motion Priors (PMP)를 사용하여 상체의 정밀한 조작과 하체의 강건한 보행을 동시에 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lu et al._2024_Mobile-TeleVision Predictive Motion Priors for Humanoid Whole-Body Control.pdf"
+---
+
 # Mobile-TeleVision: Predictive Motion Priors for Humanoid Whole-Body Control
 
 > **저자**: Chenhao Lu, Xuxin Cheng, Jialong Li, Shiqi Yang, Mazeyu Ji, Chengjing Yuan, Ge Yang, Sha Yi, Xiaolong Wang | **날짜**: 2024-12-10 | **URL**: [https://arxiv.org/abs/2412.07773](https://arxiv.org/abs/2412.07773)
@@ -68,3 +88,10 @@
 - Overall: 4/5
 
 **총평**: 상체 정밀 조작과 하체 강건 보행이라는 근본적으로 다른 요구를 효과적으로 분리하면서도 CVAE 기반 motion prior를 통해 통합하는 창의적 접근으로, 고 DoF 팔 제어에서 기존 전신 RL 방법을 명확히 능가한다. 실세계 텔레오퍼레이션 가능성까지 보여주어 실용성이 높은 연구이다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — Mobile-TeleVision의 예측적 프라이어를 ULTRA의 통합 멀티모달 제어로 확장하여 더 포괄적인 전신 제어를 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1887_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — Mobile-TeleVision이 predictive motion prior를 통해 DreamGen과 다른 방식으로 humanoid whole-body control의 일반화를 달성한다.
+- 🔗 후속 연구: [[papers/2101_Mobi-π_Mobilizing_Your_Robot_Learning_Policy/review]] — Mobile-TeleVision의 mobile manipulation이 Mobi-π의 정책 모빌라이제이션으로 더욱 일반화된 해결책을 제시한다
+- 🏛 기반 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — Mobile-TeleVision의 predictive motion priors가 TrajBooster의 휠드-이족 휴머노이드 간 궤적 전이의 이론적 기반을 제공함

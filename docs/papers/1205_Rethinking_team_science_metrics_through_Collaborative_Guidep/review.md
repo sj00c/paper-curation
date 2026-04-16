@@ -13,8 +13,9 @@ score: 4.0
 essence: "Collaborative Guideposts 프레임워크는 팀의 조직 우선순위와 성공 지표를 정렬하여 출판 건수나 인용 지수 같은 전통적 지표를 넘어서는 팀 과학 평가 방식을 제안한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Research_Team_Dynamics"
+  - "sub/Science_Policy_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/McQuerry et al._2026_Rethinking team science metrics through Collaborative Guideposts.pdf"
 ---
@@ -79,12 +80,11 @@ Collaborative Guideposts 프레임워크는 팀의 조직 우선순위와 성공
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 투명한 연구 평가를 가능하게 하는 방법론이 팀 과학에서 협업 성과를 평가하는 새로운 프레임워크의 기반을 제공합니다.
-- 🧪 응용 사례: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 생산에서 팀의 증가하는 지배력을 Collaborative Guideposts 프레임워크로 평가하는 구체적 적용 사례를 제공합니다.
-- 🔗 후속 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 과학 연구팀 형성과 진화의 원리를 협업 지표를 통한 팀 성과 평가로 확장하여 종합적 관점을 제시합니다.
-- 🏛 기반 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 팀 과학 평가에서 개별 기여도 정량화 방법론이 Collaborative Guideposts 프레임워크의 기반이 된다
-- 🧪 응용 사례: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성이 팀 성과에 미치는 영향을 측정할 수 있는 평가 도구를 제공한다
-- 🔄 다른 접근: [[papers/1117_Human-Modeling_in_Sequential_Decision-Making_An_Analysis_thr/review]] — 팀 과학에서 인간 모델링과 협력 가이드포스트의 다른 접근법임
-- 🔗 후속 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 팀 과학 원리를 협업 가이드포인트를 통한 실제 팀 과학 평가 지표로 발전시킨다.
-- 🔗 후속 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — D&I 이론의 의미 있는 적용 부족 문제가 협력적 가이드포스트를 통한 팀 과학 메트릭 재고찰로 해결될 수 있다.
-- 🔗 후속 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 협력적 가이드포스트를 통한 팀 과학 메트릭 재고찰이 보건의료 인증에서의 협력 네트워크 분석으로 확장된다.
+- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 기반 지식생산의 증가 현상에 대한 이론적 배경을 평가 체계 설계에 반영합니다.
+- 🔗 후속 연구: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 과학 연구팀 형성 원칙을 협력 가이드포스트 프레임워크로 확장 적용합니다.
+- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양성이 혁신에 미치는 긍정적 효과를 팀 과학 평가 지표에 포함시킬 수 있는 근거를 제공합니다.
+- 🧪 응용 사례: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 협력적 가이드포스트를 통한 팀 과학 지표 재고는 팀 중심 지식 생산 시대에 적합한 새로운 평가 방법론을 제시합니다.
+- 🔄 다른 접근: [[papers/1066_Accelerating_science_with_human-aware_artificial_intelligenc/review]] — 인간 인식 통합 AI와 협력 가이드포스트 메트릭이라는 서로 다른 팀 과학 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/999_Principles_of_Scientific_Research_Team_Formation_and_Evoluti/review]] — 협업 가이드포스트를 통한 팀 과학 메트릭 재고찰이 연구팀 형성 원리를 실제 평가 체계에 적용하는 방안을 제시한다.
+- 🧪 응용 사례: [[papers/1179_Global_Research_Trends_in_Knowledge_Management_in_Higher_Edu/review]] — 팀 과학 평가 프레임워크를 고등교육 지식관리에 적용할 수 있습니다.
+- 🔄 다른 접근: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — 인도의 연구 평가 개혁과 팀 과학 평가 혁신이 모두 전통적 지표를 넘어서는 새로운 평가 방식을 추구합니다.

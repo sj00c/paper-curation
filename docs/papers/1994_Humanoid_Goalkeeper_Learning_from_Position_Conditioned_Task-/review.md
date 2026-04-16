@@ -1,3 +1,25 @@
+---
+title: "1994_Humanoid_Goalkeeper_Learning_from_Position_Conditioned_Task-"
+authors:
+  - "Junli Ren"
+  - "Junfeng Long"
+  - "Tao Huang"
+  - "Huayi Wang"
+  - "Zirui Wang"
+date: "2026.03"
+doi: "10.48550/arXiv.2510.18002"
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 골키퍼 역할을 위해 위치 조건부 task-motion constraints를 학습하는 end-to-end RL 프레임워크를 제시하며, 인간 모션 프라이어를 adversarial scheme으로 통합하여 자동화되고 인간다운 전신 동작을 생성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Autonomous_Dribbling_Robots"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ren et al._2026_Humanoid Goalkeeper Learning from Position Conditioned Task-Motion Constraints.pdf"
+---
+
 # Humanoid Goalkeeper: Learning from Position Conditioned Task-Motion Constraints
 
 > **저자**: Junli Ren, Junfeng Long, Tao Huang, Huayi Wang, Zirui Wang, Feiyu Jia, Wentao Zhang, Jingbo Wang, Ping Luo, Jiangmiao Pang | **날짜**: 2026-03-14 | **DOI**: [10.48550/arXiv.2510.18002](https://doi.org/10.48550/arXiv.2510.18002)
@@ -70,3 +92,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 position-conditioned adversarial motion priors를 통해 humanoid 로봇의 자동화되고 인간다운 골키퍼 능력을 처음으로 시연한 의미 있는 연구이며, 실제 하드웨어 배포와 task 일반화를 통해 실용성을 입증했으나, 정량적 분석과 ablation study가 강화될 필요가 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — 골키퍼와 탁구 로봇 모두 스포츠 특화 제어이지만 위치 조건부 vs 계층적 계획 접근법이 다르다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — 골키퍼 기술이 배드민턴의 다단계 강화학습으로 확장되어 더 복잡한 스포츠 동작을 학습할 수 있다.
+- 🔄 다른 접근: [[papers/1996_Humanoid_Locomotion_as_Next_Token_Prediction/review]] — next token prediction 방식과 달리 goalkeeper는 position-conditioned task-motion constraints 학습을 통한 특화된 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1648_RoboStriker_Hierarchical_Decision-Making_for_Autonomous_Huma/review]] — RoboStriker의 hierarchical decision-making이 humanoid goalkeeper의 골키퍼 역할을 축구 경기의 striker 측면으로 확장한 연구이다.
+- 🏛 기반 연구: [[papers/1936_From_Motion_to_Behavior_Hierarchical_Modeling_of_Humanoid_Ge/review]] — hierarchical modeling of humanoid gait의 motion behavior 방법론이 goalkeeper의 task-motion constraints 학습 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 적대적 모션 프라이어가 골키퍼의 자동화되고 인간다운 전신 동작 생성의 핵심 토대가 된다.
+- 🔗 후속 연구: [[papers/1889_Dribble_Master_Learning_Agile_Humanoid_Dribbling_through_Leg/review]] — Dribble Master의 민첩한 드리블 학습을 골키퍼의 위치 조건부 방어 동작으로 확장한 발전된 형태다.
+- 🔗 후속 연구: [[papers/1778_A_Hierarchical_Model-Based_System_for_High-Performance_Human/review]] — 축구 로봇의 골키퍼 태스크는 완전한 축구 시스템의 특화된 구성 요소로 전체 시스템 성능을 향상시킬 수 있다

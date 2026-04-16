@@ -10,9 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 2001-2024년 치의학 분야의 231편 철회 논문을 scientometric 방법과 Altmetrics 지수를 이용하여 분석하였으며, 철회 논문이 소셜 미디어에서 지속적으로 주목받음을 규명했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Citation_Analysis_Methods"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Singh et al._2026_Citation of classical research by doctoral-level LIS scholars in Indian universities A study.pdf"
 ---
@@ -84,10 +84,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Singh et al._2026_Citation of classical 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 둘 다 인문사회 분야의 인용 분석이지만 1152는 도서관정보학, 1138은 종교학을 다룬다.
-- 🏛 기반 연구: [[papers/1151_Citation_Analysis_of_DESIDOC_Journal_of_Information_Technolo/review]] — DESIDOC 저널의 인용 분석이 인도 도서관정보학 학자들의 고전 연구 인용 패턴을 이해하는 기반을 제공한다.
-- 🔗 후속 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학적 발견에서 성별 다양성의 효과가 도서관정보학 분야의 인용 다양성과 학문적 영향을 이해하는 데 확장된다.
-- 🏛 기반 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 정당성 관점에서 인용 분석을 바라보는 시각을 제공하여 치의학 철회 논문의 지속적 인용 문제를 이론적으로 해석할 수 있다.
-- 🔗 후속 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 연구 부정행위로 인한 논문 철회 현상을 특정 분야(치의학)에서 altmetrics과 결합하여 심층 분석한다.
-- 🔄 다른 접근: [[papers/1226_Evaluating_Open_Access_Advantages_for_Citations_and_Altmetri/review]] — 오픈 액세스의 인용과 altmetrics 장점 분석과 철회 논문의 지속적 주목을 비교하여 학술 커뮤니케이션의 복잡성을 탐구한다.
-- 🔄 다른 접근: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 둘 다 인문학 분야의 인용 분석이지만 1138은 종교학, 1152는 도서관정보학 분야를 다룬다.
+- 🔄 다른 접근: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 둘 다 의학 분야(치의학 철회 논문 vs OSF RCT)의 연구 품질과 동향을 scientometric으로 분석한다.
+- 🏛 기반 연구: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 치의학 분야 철회 논문 분석에 연구 부정행위와 철회의 일반적 패턴을 이해하는 기반을 제공한다.
+- 🔗 후속 연구: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 철회 논문의 소셜 미디어 주목도를 학술 기관의 소셜 미디어 활동과 연계하여 분석할 수 있다.
+- 🔗 후속 연구: [[papers/1142_Beyond_Retractions_Forensic_Scientometrics_Techniques_to_Ide/review]] — 철회논문 분석을 포렌식 서지계량학 관점으로 확장한다
+- 🏛 기반 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 인도 LIS 학자들의 인용 패턴을 성별 불균형 관점에서 분석할 수 있는 이론적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 전통적 인용 분석을 citation justice 관점에서 재검토하여 LIS 분야의 공정한 인용 관행 확립에 기여합니다.
+- 🔗 후속 연구: [[papers/1151_Citation_Analysis_of_DESIDOC_Journal_of_Information_Technolo/review]] — 도서관정보학 분야에서 박사급 연구자들의 고전 연구 인용 패턴과 현재 학술지 인용 패턴을 비교 분석할 수 있다.
+- 🔗 후속 연구: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 의학 분야 철회 논문 분석과 OSF의 RCT 연구 부족 현상을 연계하여 의료 연구의 질적 문제를 탐구할 수 있다.

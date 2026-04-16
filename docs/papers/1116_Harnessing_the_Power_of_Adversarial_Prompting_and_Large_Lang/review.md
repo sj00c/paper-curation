@@ -12,7 +12,9 @@ score: 4.0
 essence: "본 연구는 GPT-4와 적대적 프롬프팅(adversarial prompting)을 활용하여 천문학 분야에서 가설 생성 능력을 향상시키는 방법을 제시한다. NASA 천체물리학 데이터시스템(ADS)의 1,000개 논문을 맥락 정보로 제공할 때 적대적 프롬프팅이 특히 효과적임을 보여준다."
 tags:
   - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/LLM_Applications_in_Science"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Scientific_Language_Model_Development"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ciucă et al._2023_Harnessing the Power of Adversarial Prompting and Large Language Models for Robust Hypothesis Genera.pdf"
 ---
@@ -89,7 +91,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ciucă et al._2023_Harnessing the Power 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 가설 생성에서 LLM 기반 프롬프팅과 생의학 네트워크 기반의 다른 접근법임
-- 🔗 후속 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 기초 모델을 과학 발견에 활용하는 방법을 천문학 분야로 구체적으로 적용함
-- 🔄 다른 접근: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 연구 주제 예측에서 적대적 프롬프팅과 기계학습의 다른 방법론적 접근법임
-- 🔄 다른 접근: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 가설 생성에서 생의학 네트워크 기반과 LLM 기반의 다른 접근법임
+- 🔄 다른 접근: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — LLM을 활용한 아이디어 생성을 천문학 가설과 교육용 창의성으로 각각 다르게 적용
+- 🔗 후속 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 자동화된 가설 생성 시스템에 적대적 프롬프팅이라는 새로운 기법을 추가하여 성능 향상
+- 🏛 기반 연구: [[papers/1074_OLMo_Accelerating_the_Science_of_Language_Models/review]] — 대규모 언어모델의 과학적 응용을 위한 기초 모델 개발이 천문학 가설 생성에 필수적
+- 🔄 다른 접근: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — AI를 활용한 아이디어 생성을 교육과 가설 생성이라는 다른 맥락에서 각각 접근
+- 🏛 기반 연구: [[papers/1073_MOLIERE_Automatic_Biomedical_Hypothesis_Generation_System/review]] — 적대적 프롬프팅과 대규모 언어 모델을 활용한 과학적 발견의 현대적 접근법이 초기 지식 네트워크 기반 가설 생성 시스템의 발전된 형태임을 보여준다.
+- 🔄 다른 접근: [[papers/963_Forecasting_the_future_of_artificial_intelligence_with_machi/review]] — AI를 활용한 미래 연구 예측을 머신러닝 기반 링크 예측과 적대적 프롬프팅으로 각각 접근

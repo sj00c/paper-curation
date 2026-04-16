@@ -1,3 +1,19 @@
+---
+title: "1781_A_Rapid_Instrument_Exchange_System_for_Humanoid_Robots_in_Mi"
+authors:
+  - "| **날짜**: 2026-04-03"
+date: "2026.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 이중 팔 구성을 활용하여 HMD 기반 몰입형 원격조작과 단축 컴플라이언트 도킹 메커니즘을 통합한 최소침습 수술용 고속 기구 교환 시스템을 제안한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Laparoscopic_Teleoperation_Systems"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/2026_A Rapid Instrument Exchange System for Humanoid Robots in Minimally Invasive Surgery.pdf"
+---
+
 # A Rapid Instrument Exchange System for Humanoid Robots in Minimally Invasive Surgery
 
 > **저자**:  | **날짜**: 2026-04-03 | **URL**: [https://arxiv.org/abs/2604.02707](https://arxiv.org/abs/2604.02707)
@@ -61,3 +77,11 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇을 최소침습 수술에 실질적으로 적용하기 위한 핵심 기술 과제를 체계적으로 해결하였으며, HMD 기반 몰입형 원격조작과 맞춤형 도킹 메커니즘의 통합이 효과적임을 입증한 중요한 연구이다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2040_LapSurgie_Humanoid_Robots_Performing_Surgery_via_Teleoperate/review]] — 일반적인 복강경 수술 원격조작을 휴머노이드 로봇 플랫폼으로 확장하여 기구 교환 시스템을 통합한 연구입니다.
+- 🧪 응용 사례: [[papers/1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — 로봇과 AI 에이전트 분류 프레임워크를 의료용 휴머노이드 로봇의 법적 지위와 거버넌스에 적용할 수 있습니다.
+- 🏛 기반 연구: [[papers/1866_Development_of_an_Intuitive_GUI_for_Non-Expert_Teleoperation/review]] — 비전문가를 위한 직관적 원격조작 GUI가 외과의사를 위한 HMD 기반 몰입형 인터페이스의 기반 기술을 제공합니다.
+- 🧪 응용 사례: [[papers/1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — CPST 기반 로봇 분류 프레임워크를 의료용 휴머노이드 로봇의 법적 지위와 거버넌스 정책 수립에 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/2011_Humanoids_in_Hospitals_A_Technical_Study_of_Humanoid_Robot_S/review]] — Rapid instrument exchange system이 의료 시술용 휴머노이드를 수술 도구 교환으로 확장합니다.

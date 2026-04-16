@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "휴머노이드 로봇의 발에 4개의 수동 바퀴를 장착하고 Deep Reinforcement Learning을 통해 롤러스케이팅 스위즐 보행을 학습시켜 전통적인 보행 대비 충격력 75.86%, 에너지 소비 63.34% 감소를 달성했다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Terrain-Adaptive_Humanoid_Locomotion"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gu et al._2026_SKATER Synthesized Kinematics for Advanced Traversing Efficiency on a Humanoid Robot via Roller Ska.pdf"
 ---
@@ -88,3 +90,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gu et al._2026_SKATER Synthesized Kinema
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇의 에너지 효율과 관절 수명 향상을 위해 롤러스케이팅이라는 창의적인 솔루션을 제시하고, DRL 기반 제어 프레임워크를 통해 현실적인 구현을 달성한 혁신적 연구이다. 85~76% 수준의 높은 성능 개선과 sim-to-real 전이의 성공은 로봇 운동 제어 분야에 실질적 기여를 한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1709_The_Duke_Humanoid_Design_and_Control_For_Energy_Efficient_Bi/review]] — 롤러스케이팅 기술이 Duke Humanoid의 패시브 다이내믹스와 결합되어 더욱 에너지 효율적인 고속 이동이 가능하다.
+- 🔄 다른 접근: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — 수동 바퀴를 활용한 스위즐 보행과 전통적인 terrain adaptation은 모두 충격과 에너지를 줄이는 서로 다른 보행 전략이다.
+- 🔄 다른 접근: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — 롤러스케이팅과 점프 제어 모두 동적 움직임이지만 연속적 vs 폭발적 동작이라는 대조적 특성입니다.
+- 🏛 기반 연구: [[papers/1894_ECO_Energy-Constrained_Optimization_with_Reinforcement_Learn/review]] — 에너지 효율적인 traversal이 에너지 제약 최적화 강화학습의 실제 적용 사례입니다.
+- 🔄 다른 접근: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — 점프 제어와 롤러스케이팅 모두 동적 locomotion이지만 공중 vs 지면 접촉이라는 대조적 방법입니다.
+- 🔗 후속 연구: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — Terrain randomization 기반 robust walking이 롤러스케이팅과 같은 특수한 지형 적응 기법으로 확장되어 더 다양한 환경 대응이 가능하다.
+- 🏛 기반 연구: [[papers/1709_The_Duke_Humanoid_Design_and_Control_For_Energy_Efficient_Bi/review]] — Duke Humanoid의 패시브 다이내믹스 활용 원리가 롤러스케이팅의 에너지 효율적 이동에 이론적 기반을 제공한다.

@@ -8,8 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "인도의 연구 평가 체계가 구식 메트릭스 중심의 체계에 머물러 있으며, 책임감 있는 연구 평가(Responsible Research Assessment, RRA) 원칙으로의 개혁이 시급함을 논의한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_Funding"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kar_2026_Rethinking Research Evaluation in India Is the Ecosystem Ready for a Responsible Reform Agenda.pdf"
 ---
@@ -75,10 +77,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kar_2026_Rethinking Research Evaluation 
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 글로벌 연구 평가 체계 비교 휴리스틱을 인도라는 특정 국가 사례에 구체적으로 적용하여 RRA 도입의 현실적 과제를 분석한다.
-- 🔄 다른 접근: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 연구 평가 투명성을 확보하는 서로 다른 접근법으로 기술적 해결책(RCR 데이터 추출)과 제도적 개혁(RRA 도입)을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 주제 수준에서 연구 펀딩과 성과를 매핑하는 방법론이 인도의 연구 평가 개혁에서 메트릭스 중심 체계의 한계를 극복하는 대안을 제시한다.
-- 🧪 응용 사례: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 투명한 연구 평가 방법이 인도의 연구 생태계 재고찰에서 실제로 적용될 수 있다.
-- 🧪 응용 사례: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 연구 평가 체계의 글로벌 비교 휴리스틱을 인도의 구체적 사례에 적용하여 RRA 도입 가능성을 체계적으로 평가한다.
-- 🧪 응용 사례: [[papers/1224_Declarative_commitments_and_editorial_open_access_practices/review]] — 러시아 사례를 통해 개방접근 정책과 실행의 불일치 문제를 인도 연구 생태계 개선에 적용할 수 있다.
-- 🏛 기반 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 인도의 연구 평가 생태계 재고찰이 보건의료 인증기구의 품질 기여도 평가 방법론의 맥락을 제공한다.
+- 🧪 응용 사례: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 글로벌 연구 평가 휴리스틱을 인도 특수 상황에 적용한 구체적 사례 연구입니다.
+- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 공정성 관점에서 인도 연구 평가 체계의 개선 방향을 제시합니다.
+- 🔄 다른 접근: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 인도의 연구 평가 개혁과 팀 과학 평가 혁신이 모두 전통적 지표를 넘어서는 새로운 평가 방식을 추구합니다.
+- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학 연구의 편향성 메타 평가가 인도 연구 평가 체계 개혁의 필요성을 뒷받침하는 근거를 제공합니다.
+- 🔄 다른 접근: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 인도의 연구 평가 생태계 재고를 통해 연구 펀딩과 성과 평가의 다른 지역적 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — Leiden Manifesto 원칙을 LLM 평가에 적용하는 것이 인도의 책임감 있는 연구 평가 개혁에 참조할 수 있습니다.
+- 🔄 다른 접근: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 글로벌 연구 평가 체계와 인도의 연구 평가 생태계 모두 과학 거버넌스와 평가 시스템의 개혁 필요성을 다루는 상호 보완적 관점을 제공한다.

@@ -10,7 +10,8 @@ score: 3.0
 essence: "2010-2020년 Web of Science 데이터를 기반으로 인도의 고분자 과학(Polymer Science) 연구 생산성을 scientometrics 분석한 연구로, 인도가 2010년 4위에서 2020년 2위로 급상승했음을 밝혔다."
 tags:
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Bibliometric_Measurement_Methods"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mete and Wagh_2026_Polymer Science Research in India A Scientometrics Study.pdf"
 ---
@@ -78,8 +79,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mete and Wagh_2026_Polymer Science Resea
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1227_Exploring_Open_Access_Research_Trends_in_the_Indian_Council/review]] — 동일한 국가(인도)의 서로 다른 연구 분야에서 scientometrics 분석을 통해 학문분야별 특성을 비교할 수 있다.
-- 🧪 응용 사례: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 과학 협력 아틀라스의 글로벌 관점에서 인도 고분자과학 연구의 국제적 위치와 협력 패턴을 분석할 수 있다.
-- 🔄 다른 접근: [[papers/1227_Exploring_Open_Access_Research_Trends_in_the_Indian_Council/review]] — 인도 고분자과학 연구와 농업연구의 OA 패턴을 비교하여 학문분야별 개방접근 전략을 도출할 수 있다.
-- 🏛 기반 연구: [[papers/1138_Arts_and_Humanities_Citation_Index_for_Research_Evaluation_i/review]] — 특정 학문 분야에서 scientometric 연구의 사례로서 인도 폴리머 과학 연구가 종교학 A&HCI 분석의 방법론적 참고 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 인도의 폴리머 과학 연구와 맥락삭 연구 모두 특정 국가나 지역의 과학 연구 현황을 scientometric으로 분석한다.
+- 🔄 다른 접근: [[papers/1212_Shifts_in_Biotechnology_Research_Fronts_20002026_A_Bibliomet/review]] — 생명공학 연구 전선의 변화를 분석한 연구로, 고분자 과학과 다른 과학 분야에서 인도의 연구 동향을 비교하는 대안적 접근법입니다.
+- 🔗 후속 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기적 과학 임팩트를 정량화한 연구로, 인도 고분자 과학의 생산성을 임팩트 관점에서 확장 분석할 수 있습니다.
+- 🔗 후속 연구: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 글로벌 과학 협력 아틀라스에서 인도의 고분자 과학 연구가 국제 협력 네트워크에서 차지하는 위치를 구체적으로 분석할 수 있다.
+- 🧪 응용 사례: [[papers/967_Global_patterns_of_migration_of_scholars_with_economic_devel/review]] — 인도의 고분자 과학 연구 성장이 경제 발전에 따른 연구자 이주 패턴과 어떤 관련성을 갖는지 분석할 수 있다.
+- ⚖️ 반론/비판: [[papers/966_Global_citation_inequality_is_on_the_rise/review]] — 인도의 급속한 연구 생산성 증가가 글로벌 인용 불평등 심화 현상에 미치는 영향을 대조적으로 검토할 수 있다.
+- 🏛 기반 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기계학습 응용 분야의 사이언토메트릭스 조사 방법론을 고분자 과학 분야에 적용할 수 있는 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1227_Exploring_Open_Access_Research_Trends_in_the_Indian_Council/review]] — 인도 과학기술연구위원회의 오픈 액세스 연구 동향 탐구는 인도 고분자 과학 연구의 과학계량학적 분석을 오픈 액세스 관점으로 확장한다.
+- 🧪 응용 사례: [[papers/973_Impacts_of_inter-institutional_mobility_on_scientific_perfor/review]] — 기관 간 이동이 과학적 성과에 미치는 영향 연구는 인도 고분자 과학 연구 순위 상승의 구체적 메커니즘을 설명하는 적용 사례다.
+- 🏛 기반 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 인도의 폴리머 과학 연구가 보조기술 개발의 재료과학적 기반을 제공하는 scientometric 분석 사례이기 때문

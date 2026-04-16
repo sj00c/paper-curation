@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "SayPlan은 3D Scene Graph (3DSG) 표현을 활용하여 LLM 기반 대규모 로봇 태스크 계획을 확장 가능하게 만드는 접근법이다. 의미론적 검색, 고전적 경로 계획 통합, 반복 재계획 파이프라인을 통해 멀티룸, 멀티플로어 환경에서 실행 가능한 계획을 생성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Robotic_Manipulation_and_Simulation"
   - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Rana et al._2023_SayPlan Grounding Large Language Models using 3D Scene Graphs for Scalable Robot Task Planning.pdf"
@@ -95,13 +96,21 @@ SayPlan은 3D Scene Graph (3DSG) 표현을 활용하여 LLM 기반 대규모 로
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — NLMap의 개방형 어휘 쿼리 장면 표현이 SayPlan의 3D Scene Graph 활용을 위한 기초 방법론을 제공한다.
-- 🔗 후속 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies가 SayPlan의 LLM 기반 태스크 계획을 코드 생성으로 확장한다.
-- 🧪 응용 사례: [[papers/1416_Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature/review]] — Grounding Large Language Models이 SayPlan의 3D scene graph grounding을 interactive 환경에서 구체적으로 적용한다.
-- 🔗 후속 연구: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — SayPlan의 3D scene graph가 GC-VLN의 그래프 제약 표현을 확장한다.
-- 🧪 응용 사례: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — 3D 장면 그래프를 이용한 언어 그라운딩이 객체 중심 상태 표현을 실제 환경에서 구현하는 데 활용됩니다.
-- 🔗 후속 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — 3D 장면 그래프와 언어 그라운딩을 통해 작업 계획의 공간적 추론 능력을 더욱 향상시킬 수 있습니다.
-- 🔗 후속 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — SayPlan의 3D Scene Graph가 NLMap의 VLM 기반 장면 표현을 대규모 태스크 계획으로 확장한다.
-- 🔗 후속 연구: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser의 3D value map 생성이 SayPlan의 3D scene graph grounding과 결합되어 더 정교한 언어 기반 로봇 조작 계획을 수립할 수 있음
-- 🏛 기반 연구: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — SayPlan은 OVSG의 3D 장면 그래프를 대규모 언어 모델과 결합하는 기반을 제공한다
-- 🔄 다른 접근: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — SayPlan도 LLM을 3D scene과 연결하여 계획-실행 간격을 해결하는 유사한 접근법이다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Code as Policies의 언어 모델 기반 계획 패러다임을 3D Scene Graph 환경으로 확장한 접근법입니다.
+- 🔄 다른 접근: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — 시각-언어 지도 대신 3D Scene Graph를 활용한 다른 접근법으로 로봇 공간 이해를 개선합니다.
+- 🔗 후속 연구: [[papers/1341_CoPAL_Corrective_Planning_of_Robot_Actions_with_Large_Langua/review]] — LLM 기반 계획의 오류 수정 메커니즘을 3DSG 환경에서 확장 가능하게 적용할 수 있습니다.
+- 🔄 다른 접근: [[papers/1604_Video_Language_Planning/review]] — SayPlan과 Video Language Planning은 모두 장기 계획 생성에서 서로 다른 표현 방식(3DSG vs 비디오)을 사용합니다.
+- 🔄 다른 접근: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser와 SayPlan은 모두 LLM을 활용한 3D 로봇 조작 계획이지만 voxel vs scene graph 표현으로 차별화됩니다.
+- 🔗 후속 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — LLM3는 SayPlan의 3D 장면 이해를 바탕으로 작업-동작 계획을 더욱 정교하게 통합한 발전된 형태입니다.
+- 🔗 후속 연구: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — SayPlan의 3D scene graph를 연속 환경의 그래프 제약으로 일반화하여 zero-shot 적응을 실현했다.
+- 🏛 기반 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — SayPlan의 3D scene graph 활용이 EmbodiedVSR의 dynamic scene graph 기반 공간 추론 프레임워크 개발에 기초가 된다.
+- 🏛 기반 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — 3D 장면 그래프를 활용한 LLM 기반 계획의 기초 연구로서, LLM3의 모션 계획 실패 추론에 필요한 공간 이해 능력을 제공한다.
+- 🏛 기반 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — SayPlan의 LLM 기반 3D 장면 그래프 활용 기법이 PSL의 언어 모델 가이드 계획 수립의 핵심 기반 기술이 된다.
+- 🔄 다른 접근: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — 둘 다 LLM과 3D 장면 표현을 결합하지만 NLMap은 쿼리 가능한 표현에, SayPlan은 scene graph 기반 계획에 초점을 맞춘 다른 접근법입니다.
+- 🧪 응용 사례: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — SayPlan의 3D scene graph grounding이 TRAVEL의 landmark 추출과 topological map 구축을 더욱 정밀하게 만들 수 있다.
+- 🔄 다른 접근: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — VoxPoser와 SayPlan은 모두 LLM 기반 3D 로봇 조작이지만 voxel 기반 vs scene graph 표현으로 접근이 다릅니다.
+- 🔄 다른 접근: [[papers/1604_Video_Language_Planning/review]] — Video Language Planning과 SayPlan은 장기 계획에서 비디오 vs 3D 장면 그래프라는 서로 다른 표현 방식을 사용합니다.
+- 🔄 다른 접근: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — 로봇 공간 이해를 위한 서로 다른 접근법 - visual language map vs 3D scene graph입니다.
+- 🔄 다른 접근: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — 둘 다 3D scene graph를 활용하지만 OVSG는 open-vocabulary entity grounding에, SayPlan은 LLM 기반 계획에 초점을 맞춘 다른 접근법입니다.
+- 🧪 응용 사례: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — SayPlan의 3D scene graph 기반 계획 수립이 DoReMi의 고수준 계획 생성과 실행 제약조건 설정에 활용될 수 있습니다.
+- 🏛 기반 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — 3D 장면 그래프를 활용한 LLM 기반 계획의 기초 방법론을 제공한다.

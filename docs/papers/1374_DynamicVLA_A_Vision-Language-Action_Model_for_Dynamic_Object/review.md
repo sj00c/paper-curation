@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "DynamicVLA는 동적 객체 조작을 위한 compact 0.4B VLA 모델로, Continuous Inference와 Latent-aware Action Streaming을 통해 지각-실행 간의 지연을 제거하고 실시간 폐루프 제어를 가능하게 한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Geometric_Language_Reasoning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xie et al._2026_DynamicVLA A Vision-Language-Action Model for Dynamic Object Manipulation.pdf"
 ---
@@ -93,6 +95,10 @@ DynamicVLA는 동적 객체 조작을 위한 compact 0.4B VLA 모델로, Continu
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — Real-time action chunking flow policy execution이 DynamicVLA의 실시간 폐루프 제어 개념을 구체적으로 구현한다.
-- 🏛 기반 연구: [[papers/1328_Chain-of-Action_Trajectory_Autoregressive_Modeling_for_Robot/review]] — Chain-of-Action의 trajectory autoregressive modeling이 DynamicVLA의 dynamic object manipulation을 위한 기반 방법론이다.
-- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D Vision-Language-Action 모델이 DynamicVLA의 compact 0.4B 모델과 다른 규모로 동적 조작을 접근한다.
+- 🏛 기반 연구: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — real-time VLA 실행 기술이 DynamicVLA의 continuous inference와 실시간 제어의 핵심 기반
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — dynamic object manipulation을 위한 continuous inference 대신 one-step diffusion을 통한 빠른 정책 실행
+- 🏛 기반 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — Real-Time Execution of Action Chunking의 실시간 제어 기법이 DynamicVLA의 continuous inference와 real-time closed-loop control 구현에 기초가 된다.
+- 🔗 후속 연구: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — Reactive Diffusion Policy의 slow-fast visual-tactile learning이 DynamicVLA의 perception-action latency 해결에 대한 확장된 접근 방식을 제시한다.
+- 🔄 다른 접근: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — 동적 객체에 특화된 compact VLA와 범용 generalist robot policy의 서로 다른 설계 철학을 보여줍니다.
+- 🏛 기반 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 효율성 최적화 방법이 실시간 동적 객체 조작을 위한 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — DynamicVLA와 유사하게 동적 환경을 다루지만 Mixture-of-Transformers로 이해, 생성, 행동을 통합하는 다른 접근법을 제시한다.

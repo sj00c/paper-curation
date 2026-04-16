@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "대규모 모델이 강화된 embodied AI 시스템의 의사결정과 학습 방법을 체계적으로 조사한 종합 서베이로, 계층적/end-to-end 의사결정 패러다임, imitation learning/reinforcement learning 기반 embodied learning, 그리고 world model의 역할을 통합적으로 분석한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Foundation_Models"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Language_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_Large Model Empowered Embodied AI A Survey on Decision-Making and Embodied Learning.pdf"
 ---
@@ -93,6 +95,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2025_Large Model Empowered 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — Embodied AI에서 world model의 역할에 대한 서로 다른 관점과 체계적 분석을 제공한다.
-- 🏛 기반 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — 로봇공학에서 foundation model의 전반적 활용에 대한 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1590_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — 범용 로봇을 위한 foundation model의 포괄적 서베이와 embodied AI의 의사결정 관점이 상호 보완적이다.
+- 🔗 후속 연구: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — 대규모 모델 기반 embodied AI 서베이가 Foundation Models in Robotics의 기초 연구를 의사결정과 학습 관점에서 심화 발전시킨다.
+- 🔄 다른 접근: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — 둘 다 embodied AI의 포괄적 조사이지만, 대규모 모델 서베이는 의사결정에, General-Purpose Robots 서베이는 foundation model 전반에 초점을 둔다.
+- 🏛 기반 연구: [[papers/1294_A_Generalist_Agent/review]] — 대규모 모델 기반 embodied AI 연구가 DeepMind의 Generalist Agent 개념을 이론적 기반으로 삼아 발전된 연구 분야이다.
+- 🔗 후속 연구: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — Foundation Model Driven Robotics의 전반적 리뷰를 의사결정 패러다임과 embodied learning으로 구체화하여 발전시킨다.
+- 🏛 기반 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Robot Learning in the Era of Foundation Models의 기본 개념을 계층적/end-to-end 의사결정과 학습으로 체계화한다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — World Models for Embodied AI 서베이가 대규모 모델 기반 embodied AI의 의사결정과 학습에 필요한 세계 모델 이론을 제공함
+- 🔗 후속 연구: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — Exploring Embodied Multimodal Large Models은 대규모 모델 강화 embodied AI를 구체적인 개발과 데이터 관점에서 확장함
+- 🔄 다른 접근: [[papers/1608_Vision-Language-Action_VLA_Models_Concepts_Progress_Applicat/review]] — VLA Models 서베이는 대규모 모델 중심 vs VLA 아키텍처 중심으로 embodied AI를 다른 관점에서 체계화함
+- 🔗 후속 연구: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — 생성형 AI 모델들의 로봇 조작 활용을 구체적으로 다루며, 대규모 모델 기반 embodied AI 서베이와 상호 보완적이다.
+- 🏛 기반 연구: [[papers/1377_Embodied_intelligent_industrial_robotics_Framework_and_techn/review]] — large model empowered embodied AI가 산업용 로봇의 embodied intelligence 프레임워크 기반
+- 🔗 후속 연구: [[papers/1305_Aligning_Cyber_Space_with_Physical_World_A_Comprehensive_Sur/review]] — Large Model Empowered Embodied AI 서베이는 본 논문의 MLM과 WM 중심 관점을 의사결정 관점에서 확장합니다.

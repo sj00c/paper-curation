@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "과학계에서 소수집단이 다수집단보다 더 높은 혁신율을 보이지만, 그들의 혁신적 기여가 과소평가되고 학업 경력 성공으로 이어지지 않는 다양성-혁신 역설을 규명한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Academic_Institutional_Diversity"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hofstra et al._2020_The Diversity-Innovation Paradox in Science.pdf"
 ---
@@ -91,12 +93,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hofstra et al._2020_The Diversity-Innova
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 과학계 소수집단의 혁신 기여 과소평가 문제를 인종적 다양성이 과학 협업에 미치는 긍정적 영향으로 확장했다.
-- 🧪 응용 사례: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 다양성-혁신 역설을 성별 관점에서 구체화하여 여성 과학자의 학제간 혁신이 과소평가되는 현상을 분석했다.
-- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 소수집단의 혁신 과소평가 문제를 성별 다양성이 팀의 참신성과 영향력에 미치는 긍정적 효과로 확장했다.
-- 🧪 응용 사례: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 과학계 다양성-혁신 역설을 성별 관점에서 구체화하여 여성의 학제간 혁신이 과소평가되는 메커니즘을 분석했다.
-- 🏛 기반 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 과학계 다양성이 혁신에 미치는 긍정적 효과를 인종적 다양성이 협업 영향력에 미치는 구체적 근거로 입증했다.
-- ⚖️ 반론/비판: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 다양성-혁신 역설이 제기하는 학제간 협력의 딜레마를 IFISC 모델이 어떻게 극복하는지 비교 분석할 수 있다.
-- ⚖️ 반론/비판: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 다양성-혁신 패러독스를 비전형적 조합의 긍정적 효과와 대비하여 분석한다
-- ⚖️ 반론/비판: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 다양성-혁신 역설과 성별 다양성의 긍정적 효과는 다양성이 과학에 미치는 복합적 영향을 보여준다.
-- ⚖️ 반론/비판: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 성별 다양성 최적화 프레임워크와 다양성-혁신 역설은 다양성 효과에 대한 상반된 관점을 제시한다.
+- 🔗 후속 연구: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 출판에서의 샤페론 효과와 함께 소수집단의 혁신 기여 과소평가가 과학계 불평등의 다면적 양상을 보여준다.
+- 🏛 기반 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 교차적 불평등 관점에서 소수집단이 겪는 다양성-혁신 역설을 더 포괄적으로 이해할 수 있다.
+- ⚖️ 반론/비판: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 성별 다양팀의 혁신 효과와 소수집단의 혁신 과소평가가 다양성의 복합적 영향을 대조적으로 제시한다.
+- 🔗 후속 연구: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 여성 과학자의 혁신 과소평가 문제와 소수집단의 다양성-혁신 역설은 과학계의 체계적 편향을 보여주는 연결된 현상이다.
+- 🔗 후속 연구: [[papers/1121_Superstar_Extinctionsupsup/review]] — 슈퍼스타 소멸 현상은 다양성-혁신 역설과 함께 과학계에서 기존 엘리트 구조가 변화하면서 소수집단의 기여가 재평가되는 양상을 보여줍니다.
+- 🧪 응용 사례: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 수면 관련 행동 결과의 진화 추적은 다양성-혁신 역설이 특정 연구 분야에서 어떻게 나타나는지 보여주는 구체적 사례입니다.
+- 🔗 후속 연구: [[papers/1020_Scientific_prize_network_predicts_who_pushes_the_boundaries/review]] — 과학계 다양성-혁신 역설은 과학상 수상자 예측에서 소수집단의 혁신적 기여가 어떻게 과소평가되는지 보완적 관점을 제공합니다.
+- 🔗 후속 연구: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 출판 성공에서의 샤페론 효과와 소수집단의 혁신 과소평가가 모두 과학계의 구조적 불평등을 드러낸다.
+- 🔄 다른 접근: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 여성 과학자와 소수집단 모두 혁신적 기여를 과소평가받는다는 공통된 패턴을 보여준다.
+- ⚖️ 반론/비판: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 다양성-혁신 역설에 대한 제도적 해결책을 제시한다.
+- 🔄 다른 접근: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — 과학의 다양성 감소를 LLM 사용과 다양성-혁신 역설이라는 다른 메커니즘으로 각각 설명
+- ⚖️ 반론/비판: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 과학에서 다양성의 긍정적 효과에 대해 다양성-혁신 역설이라는 복잡한 관점을 제시한다
+- 🔗 후속 연구: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 과학에서 다양성-혁신 역설을 다룬 연구로, 학제간 신흥 분야 출현의 복잡성을 확장 분석할 수 있습니다.
+- 🏛 기반 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 과학에서 다양성-혁신 역설에 대한 이론적 배경을 제공하여 교차적 불평등의 복잡성을 이해할 수 있다.

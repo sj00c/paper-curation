@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "ROSIE는 text-to-image diffusion 모델을 이용한 inpainting을 통해 기존 로봇 조작 데이터를 의미론적으로 증강하여, 새로운 물체와 환경에 대한 로봇의 일반화 능력을 향상시키는 방법을 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Representation_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2023_Scaling Robot Learning with Semantically Imagined Experience.pdf"
 ---
@@ -89,8 +89,8 @@ ROSIE는 text-to-image diffusion 모델을 이용한 inpainting을 통해 기존
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 대규모 인간 비디오 데이터를 로봇 학습에 활용하는 다른 접근법으로 데이터 증강과 사전학습을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 비디오 생성 사전학습 모델을 로봇 조작에 활용하는 기본 아이디어의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — Cross-platform 비전-언어-액션 모델 확장에서 의미론적 데이터 증강 기법이 일반화 성능 향상에 기여한다.
-- 🔄 다른 접근: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 대규모 인간 비디오에서 로봇 학습의 다른 접근법으로 world model과 데이터 증강을 비교할 수 있다.
-- 🔄 다른 접근: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 대규모 데이터를 활용한 로봇 학습의 다른 접근법으로 비디오 생성 사전학습과 데이터 증강을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Genie의 생성형 인터랙티브 환경 개념이 ROSIE의 diffusion 모델을 이용한 로봇 데이터 의미론적 증강의 기초가 된다.
+- 🔄 다른 접근: [[papers/1540_RoboGen_Towards_Unleashing_Infinite_Data_for_Automated_Robot/review]] — RoboGen이 완전히 새로운 데이터 생성에 중점을 두는 반면, ROSIE는 기존 데이터의 의미론적 변형을 통한 증강에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — Unleashing Large-Scale Video Generation의 비디오 생성 기술을 로봇 조작 데이터의 의미론적 증강으로 특화하여 적용했다.
+- 🏛 기반 연구: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — 의미적으로 상상된 경험을 통한 로봇 학습 확장 기법이 RoboAgent의 semantic augmentation 방법론의 이론적 기초가 된다.
+- 🔄 다른 접근: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — ROSIE가 기존 데이터의 의미론적 증강에 중점을 두는 반면, RoboPoint는 완전히 합성된 데이터로부터 spatial affordance를 학습한다.

@@ -10,7 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "SLAC는 저충실도 시뮬레이터에서 학습한 task-agnostic 잠재 행동 공간을 사용하여 고자유도 모바일 매니퓨레이터가 실제 환경에서 효율적이고 안전하게 강화학습으로 접촉이 풍부한 전신 조작 작업을 학습할 수 있게 한다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2025_SLAC Simulation-Pretrained Latent Action Space for Whole-Body Real-World RL.pdf"
 ---
@@ -86,3 +89,18 @@ SLAC는 저충실도 시뮬레이터에서 학습한 task-agnostic 잠재 행동
 - Overall: 4/5
 
 **총평**: SLAC는 저충실도 시뮬레이션 기반 latent action space pretraining과 실제 환경 강화학습을 결합하여 고자유도 모바일 매니퓨레이터의 복잡한 접촉 조작 작업을 안전하고 효율적으로 학습할 수 있게 하는 혁신적인 접근법을 제시하며, 1시간 미만의 실제 상호작용만으로 의미 있는 성과를 달성함으로써 실제 로봇 학습의 실용성을 크게 향상시킨다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — 두 논문 모두 전신 조작 작업을 다루지만, 잠재 행동 공간과 홈 환경 벤치마크라는 다른 접근을 사용한다.
+- 🏛 기반 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — 물리적으로 일관된 휴머노이드 조작을 위한 잠재 공간 사용의 기초 개념을 제공한다.
+- 🔗 후속 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — 전신 조작을 위한 궤적 향상 방법을 잠재 행동 공간에서 더 효율적으로 구현한다.
+- 🔄 다른 접근: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — 전신 조작 학습에서 잠재 행동 공간과 4D 기하학 재구성이라는 서로 다른 표현 학습 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1794_AGILE_A_Comprehensive_Workflow_for_Humanoid_Loco-Manipulatio/review]] — 휴머노이드 loco-manipulation에서 SLAC의 잠재 행동 공간이 AGILE의 포괄적 워크플로우에 통합될 수 있다.
+- 🏛 기반 연구: [[papers/2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto/review]] — 동적으로 실행 가능한 궤적 모방에서 잠재 행동 공간과 최적화 기반 접근법이 상호 보완적이다.
+- 🔄 다른 접근: [[papers/1652_Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_an/review]] — task-agnostic latent space vs robot-guided learning이라는 다른 방식의 실제 환경 적응 접근법입니다.
+- 🔗 후속 연구: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 저충실도 시뮬레이션 기반 잠재 공간이 복잡한 접촉 기반 조작 작업으로 확장됩니다.
+- 🏛 기반 연구: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 분리된 정책 학습이 전신 조작에서 task-agnostic 잠재 공간 학습의 기초가 됩니다.
+- 🔄 다른 접근: [[papers/1652_Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_an/review]] — teacher-student 프레임워크를 로봇 팔과 휴머노이드 vs 시뮬레이션과 실제 환경에서 다르게 구현합니다.
+- 🔄 다른 접근: [[papers/1751_Visual_Imitation_Enables_Contextual_Humanoid_Control/review]] — real-to-sim-to-real과 simulation-pretrained latent space라는 서로 다른 시뮬레이션-실제 연결 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/2016_HUSKY_Humanoid_Skateboarding_System_via_Physics-Aware_Whole-/review]] — 스케이트보드 제어와 전신 잠재 액션 스페이스로 physics-aware 제어의 다른 적용 분야를 보여준다.

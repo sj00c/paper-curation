@@ -1,3 +1,20 @@
+---
+title: "1990_Human-Level_Actuation_for_Humanoids"
+authors:
+  - "MD-Nazmus Sunbeam"
+date: "2025.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 '인간 수준' 구동을 정량화하고 비교 가능하게 하기 위해 생체역학 기반의 포괄적 평가 프레임워크를 제시하고, DoF atlas, Human-Equivalence Envelopes (HEE), Human-Level Actuation Score (HLAS)의 세 가지 핵심 요소로 구성된다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Sunbeam_2025_Human-Level Actuation for Humanoids.pdf"
+---
+
 # Human-Level Actuation for Humanoids
 
 > **저자**: MD-Nazmus Sunbeam | **날짜**: 2025-11-10 | **URL**: [https://arxiv.org/abs/2511.06796](https://arxiv.org/abs/2511.06796)
@@ -63,3 +80,14 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 휴머노이드 로봇의 '인간 수준' 구동력을 정량화하기 위한 학제적 프레임워크를 제시하며, 생체역학 기반의 엄격한 기준과 표준화된 측정 프로토콜을 결합하여 로봇 개발과 벤치마킹의 투명성과 재현성을 크게 향상시킨다. 구동기 설계 트레이드오프를 명시적으로 노출하고 작업 맥락에 맞춘 평가를 수행한다는 점에서 기존 피크값 기반 사양과 차별화되며, 휴머노이드 로봇 공학 분야에서 중요한 표준화 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — 생체역학적 비교 분석이 인간 수준 구동 평가 프레임워크의 기초적 비교 기준을 제공한다.
+- 🔗 후속 연구: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — 근육 특성 관리가 Human-Level Actuation Score 계산에 필수적인 생체역학적 요소를 확장한다.
+- 🔗 후속 연구: [[papers/1776_A_Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/review]] — Optimal ankle design framework가 human-level actuation 평가를 특정 관절 설계로 확장합니다.
+- 🧪 응용 사례: [[papers/1927_Fauna_Sprout_A_lightweight_approachable_developer-ready_huma/review]] — Fauna Sprout의 경량 휴머노이드가 Human-Level Actuation Score 평가의 실제 적용 사례가 됩니다.
+- 🔗 후속 연구: [[papers/1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus/review]] — 인간 수준의 액추에이션이 근골격 휴머노이드의 5가지 근육 특성을 더욱 효과적으로 활용할 수 있는 하드웨어적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1859_DecARt_Leg_Design_and_Evaluation_of_a_Novel_Humanoid_Robot_L/review]] — 인간 수준의 액추에이션 기술이 DecARt Leg의 decoupled actuation을 더욱 효과적이고 인간과 유사한 성능으로 구현할 수 있다
+- 🔄 다른 접근: [[papers/1919_Exceeding_the_Maximum_Speed_Limit_of_the_Joint_Angle_for_the/review]] — 근골격 로봇의 성능 한계를 관절 각속도 초과와 인간 수준 액추에이션이라는 서로 다른 하드웨어 접근법으로 돌파한다
+- 🏛 기반 연구: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — 인간 수준의 액추에이션 기술이 Harmanoid의 두 휴머노이드 간 자연스러운 상호작용 동작 구현에 필수적

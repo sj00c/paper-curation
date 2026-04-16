@@ -1,3 +1,25 @@
+---
+title: "2100_Mimicking-Bench_A_Benchmark_for_Generalizable_Humanoid-Scene"
+authors:
+  - "Yun Liu"
+  - "Bowen Yang"
+  - "Licheng Zhong"
+  - "He Wang"
+  - "Li Yi"
+date: "2024.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간의 모션 데이터를 활용한 휴머노이드 로봇의 3D 장면 상호작용 학습을 위한 첫 번째 종합 벤치마크인 Mimicking-Bench를 제시하며, 23K개의 인간 상호작용 모션과 11K개의 다양한 객체 형상을 포함한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Mimicking-Bench A Benchmark for Generalizable Humanoid-Scene Interaction Learning via Human Mimicki.pdf"
+---
+
 # Mimicking-Bench: A Benchmark for Generalizable Humanoid-Scene Interaction Learning via Human Mimicking
 
 > **저자**: Yun Liu, Bowen Yang, Licheng Zhong, He Wang, Li Yi | **날짜**: 2024-12-23 | **URL**: [https://arxiv.org/abs/2412.17730](https://arxiv.org/abs/2412.17730)
@@ -67,3 +89,15 @@
 - Overall: 4/5
 
 **총평**: Mimicking-Bench는 인간 모션 데이터의 대규모 다양성을 활용한 휴머노이드-장면 상호작용 학습을 위한 첫 종합 벤치마크로, 신체 모방 기반의 로봇 스킬 학습 연구를 체계적으로 진행할 수 있는 중요한 기여를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 둘 다 로봇 내비게이션과 매니퓰레이션을 위한 대규모 데이터셋과 벤치마크를 제공하지만 Mimicking-Bench는 인간 모션 중심, MolmoSpaces는 환경 중심이다.
+- 🔗 후속 연구: [[papers/1644_RoboCasa_Large-Scale_Simulation_of_Everyday_Tasks_for_Genera/review]] — RoboCasa의 일상 작업 시뮬레이션 프레임워크를 실제 3D 장면과 인간 상호작용 데이터로 확장한 종합 벤치마크이다.
+- 🏛 기반 연구: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — ManiSkill-HAB의 저수준 조작 벤치마크가 제공하는 기초 위에 인간-장면 상호작용이라는 고수준 행동을 추가로 다룬다.
+- 🏛 기반 연구: [[papers/1816_Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficu/review]] — Benchmarking Humanoid Imitation Learning의 motion difficulty 평가 방법이 Mimicking-Bench의 종합 벤치마크 설계에 기반이 되었다
+- 🔗 후속 연구: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — SimGenHOI의 humanoid-object interaction이 Mimicking-Bench의 대규모 3D 장면 상호작용 벤치마크로 확장된 것이다
+- 🔄 다른 접근: [[papers/2007_HumanoidBench_Simulated_Humanoid_Benchmark_for_Whole-Body_Lo/review]] — 둘 다 humanoid benchmark이지만 Mimicking-Bench는 scene interaction에, HumanoidBench는 whole-body locomotion에 특화되어 있다
+- 🧪 응용 사례: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — Mimicking-Bench의 23K 인간 상호작용 모션이 Genie Sim 3.0의 고충실도 시뮬레이션 플랫폼에서 다양한 휴머노이드 행동 학습에 활용될 수 있다.
+- 🔗 후속 연구: [[papers/2089_ManiSkill-HAB_A_Benchmark_for_Low-Level_Manipulation_in_Home/review]] — MS-HAB의 저수준 조작 벤치마크를 Mimicking-Bench의 일반화 가능한 휴머노이드-장면 상호작용으로 확장할 수 있다.
+- 🔄 다른 접근: [[papers/2104_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 둘 다 로봇을 위한 대규모 환경 데이터를 제공하지만, MolmoSpaces는 정적 환경과 그래스프에, Mimicking-Bench는 동적 인간-객체 상호작용에 초점을 둔다.

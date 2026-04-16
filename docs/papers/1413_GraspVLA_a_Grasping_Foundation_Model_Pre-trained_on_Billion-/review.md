@@ -12,9 +12,12 @@ arxiv: ""
 score: 4.0
 essence: "SynGrasp-1B라는 10억 프레임 규모의 합성 데이터셋을 기반으로 GraspVLA라는 Vision-Language-Action 기반 집기 모델을 제시하며, 합성 데이터만으로 사전학습하여 실세계에서 강력한 제로샷 일반화와 소수샷 적응성을 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Synthetic_Grasping_Datasets"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Dexterous_Spatial_Grasping"
   - "topic/physical-ai"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Deng et al._2025_GraspVLA a Grasping Foundation Model Pre-trained on Billion-scale Synthetic Action Data.pdf"
 ---
 
 # GraspVLA: a Grasping Foundation Model Pre-trained on Billion-scale Synthetic Action Data
@@ -88,9 +91,10 @@ SynGrasp-1B라는 10억 프레임 규모의 합성 데이터셋을 기반으로 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — Dex1B도 10억 규모 시연 데이터로 손가락 조작을 학습하는 유사한 접근법이다.
-- 🔗 후속 연구: [[papers/1428_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — GraspDreamer의 기능적 파지 학습이 GraspVLA의 합성 데이터 기반 학습을 보완한다.
-- 🏛 기반 연구: [[papers/1558_Load-Aware_Locomotion_Control_for_Humanoid_Robots_in_Industr/review]] — RVT-2의 소수 시연 기반 정밀 조작이 GraspVLA의 소수샷 적응성 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — GraspVLA의 대규모 파지 모델과 RoboPoint의 affordance keypoint 예측은 모두 로봇 파지를 위한 서로 다른 접근법이다.
-- 🔄 다른 접근: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — GraspVLA도 10억 규모 합성 데이터로 집기 학습하는 유사한 접근법을 사용한다.
-- 🏛 기반 연구: [[papers/1428_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — GraspVLA의 합성 데이터 기반 학습이 GraspDreamer의 생성형 시연 활용에 기초가 된다.
+- 🔄 다른 접근: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — 둘 다 grasping VLA 모델이지만 billion-scale synthetic data vs plug-in diffusion expert라는 다른 학습 전략을 사용한다.
+- 🏛 기반 연구: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — 3D-prior 기반 고해상도 시뮬레이션 데이터 생성 개념을 grasping 특화 합성 데이터셋 구축에 적용했다.
+- 🔗 후속 연구: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — Dex1B의 대규모 demonstration 학습 개념을 grasping 도메인에 합성 데이터로 확장했다.
+- 🔗 후속 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 로봇 데이터 개념을 합성 데이터로 확장하여 10억 프레임 규모의 집기 데이터셋을 구축한다.
+- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA와 다르게 합성 데이터 사전학습에 특화된 VLA 모델로 실세계 일반화에 대한 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1297_A_Real-to-Sim-to-Real_Approach_to_Robotic_Manipulation_with/review]] — keypoint 기반 접근법 대신 대규모 그래스핑 데이터로 사전 학습된 foundation model을 활용하는 다른 조작 방법론
+- 🏛 기반 연구: [[papers/1356_DexGraspVLA_A_Vision-Language-Action_Framework_Towards_Gener/review]] — 대규모 그립 데이터로 사전학습된 foundation model이 손가락 그립 VLA의 기반이 됩니다.

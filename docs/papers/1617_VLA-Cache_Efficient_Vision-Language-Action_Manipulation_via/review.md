@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "VLA-Cache는 로봇 조작 작업에서 인접한 프레임 간의 시간적 중복성을 활용하여 정적 시각 토큰의 KV 표현을 캐싱하고 재사용함으로써 Vision-Language-Action 모델의 추론을 가속화하는 학습 불필요 방법이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Reasoning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Trajectory-Conditioned_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2025_VLA-Cache Efficient Vision-Language-Action Manipulation via Adaptive Token Caching.pdf"
 ---
@@ -90,8 +92,15 @@ VLA-Cache는 로봇 조작 작업에서 인접한 프레임 간의 시간적 중
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1557_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with/review]] — Running VLAs at Real-time Speed가 VLA-Cache의 KV 캐싱 최적화를 실제 실시간 실행에 적용한 사례다
-- 🔗 후속 연구: [[papers/1479_HumanoidExo_Scalable_Whole-Body_Humanoid_Manipulation_via_We/review]] — MoLe-VLA의 동적 layer-skipping과 VLA-Cache의 temporal caching을 결합한 효율성 향상 방법론이다
-- 🔄 다른 접근: [[papers/1351_DeeR-VLA_Dynamic_Inference_of_Multimodal_Large_Language_Mode/review]] — 둘 다 VLA 추론 최적화이지만 DeeR-VLA는 동적 추론, VLA-Cache는 캐싱 기반의 다른 가속화 접근법이다
-- 🏛 기반 연구: [[papers/1575_Mobile-TeleVision_Predictive_Motion_Priors_for_Humanoid_Whol/review]] — Mobile-TeleVision의 predictive motion prior가 VLA-Cache의 시간적 중복성 활용 아이디어의 이론적 근거를 제공한다
-- 🔄 다른 접근: [[papers/1528_Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_V/review]] — 휴머노이드 엔드-이펙터 제어를 위한 HERO 시스템과 효율적 VLA 조작을 위한 VLA-Cache가 서로 다른 최적화 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — VLA 추론 가속화를 위한 서로 다른 최적화 방법 - KV caching vs token pruning입니다.
+- 🏛 기반 연구: [[papers/1525_Real-Time_Execution_of_Action_Chunking_Flow_Policies/review]] — 실시간 action execution이 VLA 모델의 효율적인 추론 최적화 기반입니다.
+- 🔗 후속 연구: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — one-step diffusion을 KV 캐싱과 결합하여 더 빠른 visuomotor policy를 구현할 수 있습니다.
+- 🔗 후속 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — VITA의 효율적인 flow matching 정책을 KV 캐싱을 통해 더욱 가속화하여 추론 효율성을 극대화합니다.
+- 🔄 다른 접근: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — 둘 다 VLA 모델의 실시간 실행을 목표로 하지만 VLA-Cache는 캐싱에, Running VLAs는 전반적인 최적화에 집중합니다.
+- 🏛 기반 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — self-adaptive robust attention transformer의 scaling 방법론을 제공하여 VLA-Cache의 효율적인 attention 처리에 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 추론 효율성 향상을 KV 캐싱을 통한 추가적인 최적화로 확장하여 더 실용적인 시스템을 구축한다.
+- 🔗 후속 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — VLA-Cache의 efficient manipulation via caching이 FAST의 efficient action tokenization과 함께 VLA 모델의 전반적 효율성 향상을 위한 상호 보완적 접근이다.
+- 🔄 다른 접근: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — VLA 모델 추론 가속화를 위한 서로 다른 최적화 전략 - token pruning vs KV caching입니다.
+- 🏛 기반 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — VLA 모델의 추론 효율성 향상이라는 공통 목표를 가지며, 캐싱과 경량화라는 상호 보완적 접근을 보여준다.
+- 🔗 후속 연구: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — VITA의 효율적인 vision-to-action flow를 KV caching을 통해 더욱 가속화하여 실시간 성능을 향상시킵니다.
+- 🔗 후속 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — VLA-Cache의 효율적 추론 개념을 1-bit 양자화로 더 극단적으로 발전시킨 메모리 최적화 연구입니다.

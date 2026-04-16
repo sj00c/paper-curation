@@ -1,3 +1,25 @@
+---
+title: "1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta"
+authors:
+  - "Geeta Chandra Raju Bethala"
+  - "Hao Huang"
+  - "Niraj Pudasaini"
+  - "Abdullah Mohamed Ali"
+  - "Shuaihang Yuan"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "힘각 센서 기반 haptic intent inference와 reinforcement learning 기반 locomotion policy를 계층적으로 결합하여 인간-휴머노이드 협력 물체 운반을 실현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bethala et al._2025_H2-COMPACT Human-Humanoid Co-Manipulation via Adaptive Contact Trajectory Policies.pdf"
+---
+
 # H2-COMPACT: Human-Humanoid Co-Manipulation via Adaptive Contact Trajectory Policies
 
 > **저자**: Geeta Chandra Raju Bethala, Hao Huang, Niraj Pudasaini, Abdullah Mohamed Ali, Shuaihang Yuan, Congcong Wen, Anthony Tzes, Yi Fang | **날짜**: 2025-05-23 | **URL**: [https://arxiv.org/abs/2505.17627](https://arxiv.org/abs/2505.17627)
@@ -72,3 +94,20 @@
 - Overall: 4/5
 
 **총평**: Haptic-based intent inference와 force-adaptive legged locomotion의 계층적 결합으로 인간-휴머노이드 협력 물체 운반의 새로운 패러다임을 제시하며, motion-capture free 데이터 수집과 sim-to-real 검증을 통해 실용성 높은 연구로 평가된다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1923_FAME_Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelo/review]] — FAME의 힘 적응적 RL이 H2-COMPACT의 haptic intent inference에 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2030_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — 둘 다 인간-로봇 상호작용 제어를 다루지만 H2-COMPACT는 협력 운반에, It Takes Two는 일반적인 상호작용에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — Human-robot collaboration 방법론이 인간-휴머노이드 협력 운반에서 다른 제어 전략을 제시합니다.
+- 🔗 후속 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — Human-humanoid coordination learning이 H2-COMPACT의 협력 조작 개념을 확장합니다.
+- 🏛 기반 연구: [[papers/1756_Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_P/review]] — Whole-body bilateral teleoperation 기술이 human-humanoid co-manipulation의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1931_Flow_Matching_Imitation_Learning_for_Multi-Support_Manipulat/review]] — Flow Matching의 다중 접촉 조작 기법이 H2-COMPACT의 인간-휴머노이드 협력 물체 운반에서 필요한 복잡한 접촉 상호작용 처리의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — GentleHumanoid의 contact-rich interaction을 위한 compliance learning을 인간과의 실제 협력 작업에 적용한 구체적인 사례입니다.
+- 🔄 다른 접근: [[papers/1844_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — 인간-휴머노이드 협업을 위해 3계층 인지-제어 프레임워크 vs 적응적 접촉 기반 co-manipulation이라는 서로 다른 협업 패러다임을 비교할 수 있다
+- 🔗 후속 연구: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — GentleHumanoid의 상체 compliance 기법을 인간-휴머노이드 협력 물체 운반에 적용하여 실제적인 협업 시나리오로 확장했습니다.
+- 🔗 후속 연구: [[papers/1923_FAME_Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelo/review]] — 인간-휴머노이드 협력 시나리오에서 FAME의 힘 적응 기법을 활용할 수 있다.
+- 🔗 후속 연구: [[papers/1931_Flow_Matching_Imitation_Learning_for_Multi-Support_Manipulat/review]] — Flow Matching의 다중 접촉 조작 기법을 인간-휴머노이드 협력 시나리오로 확장하여 적용한 사례입니다.
+- 🔄 다른 접근: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — H2-COMPACT의 adaptive contact trajectory가 human-robot collaboration과 다른 방식으로 협력 제어를 구현합니다.
+- 🔗 후속 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — proprioception 기반의 협력적 운반을 적응형 접촉을 통한 인간-휴머노이드 공동 조작으로 확장하여 더 정교한 협업을 구현할 수 있다.
+- 🏛 기반 연구: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — 인간-휴머노이드 협력적 제어의 기본 원리가 TeleGate의 expert policy 선택 메커니즘에 적용된다.

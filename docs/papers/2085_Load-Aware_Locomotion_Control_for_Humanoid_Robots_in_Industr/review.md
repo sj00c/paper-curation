@@ -1,3 +1,24 @@
+---
+title: "2085_Load-Aware_Locomotion_Control_for_Humanoid_Robots_in_Industr"
+authors:
+  - "Lequn Fu"
+  - "Yijun Zhong"
+  - "Xiao Li"
+  - "Yibin Liu"
+  - "Zhiyuan Xu"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "산업용 휴머노이드 로봇의 다양한 하중 조건에서 안정적 보행을 위해 분리-협조 구조의 로코-매니퓰레이션 아키텍처를 제안하며, RL 기반 하체 제어와 상태 추정기를 통해 시뮬레이션 학습 후 실제 로봇에 파인튜닝 없이 배포 성공."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fu et al._2026_Load-Aware Locomotion Control for Humanoid Robots in Industrial Transportation Tasks.pdf"
+---
+
 # Load-Aware Locomotion Control for Humanoid Robots in Industrial Transportation Tasks
 
 > **저자**: Lequn Fu, Yijun Zhong, Xiao Li, Yibin Liu, Zhiyuan Xu, Jian Tang, Shiqi Li | **날짜**: 2026-03-15 | **URL**: [https://arxiv.org/abs/2603.14308](https://arxiv.org/abs/2603.14308)
@@ -68,3 +89,12 @@
 - Overall: 4/5
 
 **총평**: 산업용 휴머노이드의 실질적 과제인 하중 변화 조건에서의 로코-매니퓰레이션을 분리-협조 구조와 상태 추정으로 체계적으로 해결하며, 시뮬레이션 학습 후 무튜닝 실배포 성공은 높은 실무 가치를 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — Load-Aware Locomotion Control은 산업용 하중 운반, Sim-to-Real Learning for Humanoid Box Loco-Manipulation은 박스 조작으로 서로 다른 유형의 물체 운반 작업을 다룬다.
+- 🏛 기반 연구: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — Load-Aware Locomotion Control의 분리-협조 구조가 Hierarchical Planning and Control for Box Loco-Manipulation의 계층적 제어 아키텍처 설계에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff/review]] — Load-Aware Locomotion Control의 하중 인식 보행을 Hold My Beer의 부드러운 end-effector 제어와 결합하여 더 안정적인 물체 운반이 가능하다.
+- 🔗 후속 연구: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — FALCON의 force-adaptive 학습을 산업용 운반 작업의 하중 변화에 적응하는 방향으로 확장할 수 있다.
+- 🧪 응용 사례: [[papers/1694_SteadyTray_Learning_Object_Balancing_Tasks_in_Humanoid_Tray/review]] — 트레이 운반 기술을 산업 환경에서의 부하 인식 이동 제어로 확장하여 실제 작업장에서 활용 가능한 휴머노이드 시스템을 구현했다.
+- 🔄 다른 접근: [[papers/2036_Kinematics-Aware_Multi-Policy_Reinforcement_Learning_for_For/review]] — 둘 다 산업용 휴머노이드 고부하 작업이지만 Kinematics-Aware는 다중 정책, Load-Aware는 하중 인식 로코모션 중심

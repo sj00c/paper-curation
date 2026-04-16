@@ -1,3 +1,24 @@
+---
+title: "1977_High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Ro"
+authors:
+  - "Sylvain Bertrand"
+  - "Luigi Penco"
+  - "Dexton Anderson"
+  - "Duncan Calvert"
+  - "Valentine Roy"
+date: "2024.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 7개의 IMU 기반 캘리브레이션 무료 모션 캡처, low-latency kinematics streaming toolbox, 고대역폭 cycloidal actuator를 통합하여 휴머노이드 로봇의 고속 및 충격 강건 텔레오퍼레이션을 실현한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bertrand et al._2024_High-Speed and Impact Resilient Teleoperation of Humanoid Robots.pdf"
+---
+
 # High-Speed and Impact Resilient Teleoperation of Humanoid Robots
 
 > **저자**: Sylvain Bertrand, Luigi Penco, Dexton Anderson, Duncan Calvert, Valentine Roy, Stephen McCrory, Khizar Mohammed, Sebastian Sanchez, Will Griffith, Steve Morfey, Alexis Maslyczyk, Achintya Mohan, Cody Castello, Bingyin Ma, Kartik Suryavanshi, Patrick Dills, Jerry Pratt, Victor Ragusila, Brandon Shrewsbury, Robert Griffin | **날짜**: 2024-09-06 | **URL**: [https://arxiv.org/abs/2409.04639](https://arxiv.org/abs/2409.04639)
@@ -67,3 +88,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 최소 센서 기반 모션 캡처, low-latency streaming, cycloidal actuator를 통합하여 휴머노이드 로봇의 고속 충격 강건 텔레오퍼레이션을 처음으로 실제 구현 및 검증했으며, 간단하면서도 효과적인 설계로 실용적 가치가 높다. 다만 플랫폼 특화성과 환경 다양성 평가 부재가 한계이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — IMU 기반과 SE(3) 포즈 기반으로 저지연 텔레오퍼레이션 구현 방식이 상호 보완적이다.
+- 🔗 후속 연구: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — IMU 기반 모션 캡처가 촉각 장갑을 통한 스킬 전이로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/1970_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu/review]] — 햅틱 피드백 기반 원격조종이 IMU 기반 고속 텔레오퍼레이션과 다른 피드백 방식을 사용합니다.
+- 🏛 기반 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — CLONE의 closed-loop 전신 텔레오퍼레이션이 고속 충격 강건 제어의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — 두 논문 모두 저지연 텔레오퍼레이션을 목표로 하지만 SE(3) 포즈 기반과 IMU 기반으로 접근법이 다르다.
+- 🔄 다른 접근: [[papers/1970_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu/review]] — IMU 기반 고속 텔레오퍼레이션이 햅틱 기반 휠형 휴머노이드 제어와 다른 원격조종 방식을 제시합니다.
+- 🔗 후속 연구: [[papers/2040_LapSurgie_Humanoid_Robots_Performing_Surgery_via_Teleoperate/review]] — LapSurgie의 정밀 수술 텔레오퍼레이션을 High-Speed and Impact Resilient Teleoperation의 고속 충격 복원 기술과 결합하여 더 견고한 의료 로봇 시스템을 구현할 수 있다.
+- 🏛 기반 연구: [[papers/2043_Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots_F/review]] — 고속 충격 내성 텔레오퍼레이션이 Learning Adaptive의 적응형 신경 제어에 동적 환경에서의 견고성 기반 제공

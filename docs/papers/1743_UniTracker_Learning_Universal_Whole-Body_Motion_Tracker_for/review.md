@@ -1,3 +1,23 @@
+---
+title: "1743_UniTracker_Learning_Universal_Whole-Body_Motion_Tracker_for"
+authors:
+  - "Kangning Yin"
+  - "Weishuai Zeng"
+  - "Ke Fan"
+  - "Minyue Dai"
+  - "Zirui Wang"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "UniTracker는 CVAE 기반 세 단계 학습 프레임워크를 통해 부분 관측 조건에서도 다양하고 일관성 있는 전신 동작 추적을 실현하는 휴머노이드 로봇 제어 정책이다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Teacher-Student_Policy_Distillation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2025_UniTracker Learning Universal Whole-Body Motion Tracker for Humanoid Robots.pdf"
+---
+
 # UniTracker: Learning Universal Whole-Body Motion Tracker for Humanoid Robots
 
 > **저자**: Kangning Yin, Weishuai Zeng, Ke Fan, Minyue Dai, Zirui Wang, Qiang Zhang, Zheng Tian, Jingbo Wang, Jiangmiao Pang, Weinan Zhang | **날짜**: 2025-07-10 | **URL**: [https://arxiv.org/abs/2507.07356](https://arxiv.org/abs/2507.07356)
@@ -65,3 +85,15 @@ UniTracker는 CVAE 기반 세 단계 학습 프레임워크를 통해 부분 관
 - Overall: 4/5
 
 **총평**: UniTracker는 CVAE 기반 증류와 전역 맥락 정렬을 통해 기존 teacher-student 프레임워크의 핵심 한계를 우아하게 해결하며, 실제 로봇에서 8,000개 이상의 동작 추적을 성공시킨 강력한 기여이다. 방법론의 창의성, 실제 배포 검증, 그리고 실용적 영향 면에서 높은 평가를 받을 만한 논문이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — 부분 관측 조건에서의 전신 모션 트래킹을 다루며, CVAE 기반 다양성 생성과 센서 조건부 확산 정책이라는 서로 다른 생성 모델을 사용한다.
+- 🏛 기반 연구: [[papers/1692_StageACT_Stage-Conditioned_Imitation_for_Robust_Humanoid_Doo/review]] — 부분 관찰성 문제 해결에서 CVAE 기반 다양성과 작업 단계 조건부 접근법이 상호 보완적이다.
+- 🔗 후속 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — 일반적 모션 트래킹에서 UniTracker의 universal 접근법과 GMT의 general 접근법이 유사한 목표를 가진다.
+- 🏛 기반 연구: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — 부분 관측 환경에서의 전신 동작 추적이라는 공통 과제를 다루며, CVAE와 확산 모델이라는 서로 다른 생성 모델 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1692_StageACT_Stage-Conditioned_Imitation_for_Robust_Humanoid_Doo/review]] — 부분 관찰성 환경에서의 휴머노이드 제어를 다루며, 작업 단계 조건부 학습과 CVAE 기반 다양성 생성이라는 서로 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1896_EGM_Efficiently_Learning_General_Motion_Tracking_Policy_for/review]] — EGM의 효율적인 일반 모션 추적 정책이 UniTracker의 universal whole-body motion tracking으로 확장되어 더 포괄적인 동작 추적을 실현한다.
+- 🏛 기반 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — UniTracker의 universal whole-body motion tracking 연구가 GMT의 다양한 전신 모션 추적을 위한 통합 정책 학습의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1969_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — UniTracker의 전신 동작 추적 기술을 물체와의 상호작용 학습에 특화하여 발전시킨 HDMI의 확장 버전이다.
+- 🔄 다른 접근: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — 둘 다 전신 동작 추적을 다루지만 이 논문은 휠드-이족 간 전이에, UniTracker는 범용 추적기 학습에 중점을 둡니다.

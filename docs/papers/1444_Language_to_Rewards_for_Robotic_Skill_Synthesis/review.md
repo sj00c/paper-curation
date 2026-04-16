@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "LLM을 이용하여 자연어 명령을 보상 함수로 변환하고, 실시간 최적화기(MuJoCo MPC)로 로봇 행동을 합성하는 새로운 패러다임을 제시한다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Energy-Aware_Reward_Design"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Deep_Reinforcement_Learning_Applications"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2023_Language to Rewards for Robotic Skill Synthesis.pdf"
 ---
@@ -88,10 +90,18 @@ LLM을 이용하여 자연어 명령을 보상 함수로 변환하고, 실시간
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1511_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — Language to Rewards의 자연어-보상 변환 개념은 LangWBC의 언어 지향 전신 제어로 발전한다.
-- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — 두 논문 모두 언어를 로봇 제어로 변환하지만, 하나는 보상 함수를, 다른 하나는 직접적인 정책 코드를 생성한다.
-- 🏛 기반 연구: [[papers/1583_No_More_Marching_Learning_Humanoid_Locomotion_for_Short-Rang/review]] — Language to Rewards는 Text2Reward의 언어 기반 보상 설계 패러다임의 핵심 기반이 된다.
-- 🏛 기반 연구: [[papers/1361_E-SDS_Environment-aware_See_it_Do_it_Sorted_-_Automated_Envi/review]] — Language to Rewards의 자연어 기반 보상 생성 방법이 E-SDS의 VLM 기반 보상 함수 자동 생성의 이론적 기반이 된다.
-- 🔄 다른 접근: [[papers/1466_Humanoid_Hanoi_Investigating_Shared_Whole-Body_Control_for_S/review]] — 두 논문 모두 complex task를 다루지만, 하나는 스킬 기반 제어에, 다른 하나는 언어 기반 보상 설계에 초점을 둔다.
-- 🔗 후속 연구: [[papers/1521_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — 계층적 계획과 제어 프레임워크를 미분가능한 도달성 맵을 통해 더욱 효율적으로 구현할 수 있는 발전된 형태를 제시함
-- 🏛 기반 연구: [[papers/1605_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor/review]] — 계층적 계획과 제어 프레임워크가 PACE의 탁구 경기를 위한 end-to-end 학습에서 계층적 의사결정 구조의 이론적 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — 언어를 보상으로 변환하는 기본 개념이 ELLM의 LLM 기반 RL 가이던스에 적용되었다.
+- 🔗 후속 연구: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — 언어를 보상으로 변환하는 개념을 reward shaping으로 더 체계화하고 일반화한 접근법이다.
+- 🔄 다른 접근: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — 둘 다 언어 기반 로봇 제어이지만 Language to Rewards는 보상 함수에, Do As I Can은 직접적인 행동 생성에 집중한다.
+- 🔗 후속 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — Language to Rewards의 자연어-보상 변환이 Plan-Seq-Learn의 언어 기반 계획 수립과 결합되어 더 복잡한 로봇 스킬 합성을 가능하게 한다.
+- 🏛 기반 연구: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — Language to Rewards가 Code as Policies의 언어-코드 변환 철학을 보상 함수 설계 영역으로 확장한 접근법이다.
+- 🔗 후속 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — ExploRLLM은 Language to Rewards의 LLM 기반 보상 생성을 탐색 가이드로 활용하여 실제 RL 학습에 적용합니다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Language to Rewards의 언어 기반 제어를 환경 피드백이 포함된 내적 독백으로 발전시킨다.
+- 🔗 후속 연구: [[papers/1418_Guiding_Pretraining_in_Reinforcement_Learning_with_Large_Lan/review]] — Language to Rewards의 개념을 RL 사전학습에서 LLM 가이드 탐색으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — PSL의 language model guided RL을 위한 language to rewards mapping과 skill synthesis의 이론적 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — Language to Rewards는 언어 기반 로봇 스킬 합성에서 LLM을 활용하지만 보상 신호 생성에 집중하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Language to Rewards는 Text2Reward와 동일한 언어-보상 변환 문제를 다른 방법론으로 접근한다.
+- 🏛 기반 연구: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — 자연어로부터 로봇 행동을 학습하기 위한 language-to-reward 기본 패러다임을 제시합니다.
+- 🏛 기반 연구: [[papers/1321_Bootstrap_Your_Own_Skills_Learning_to_Solve_New_Tasks_with_L/review]] — Language to Rewards의 언어 기반 보상 설계는 BOSS의 LLM 가이드 스킬 학습에 핵심적인 기반 메커니즘을 제공한다.
+- 🔗 후속 연구: [[papers/1389_ExploRLLM_Guiding_Exploration_in_Reinforcement_Learning_with/review]] — Language to Rewards가 ExploRLLM의 LLM 가이드 탐색을 보상 설계를 통한 스킬 합성으로 확장합니다.
+- 🔗 후속 연구: [[papers/1324_Bridging_Language_and_Action_A_Survey_of_Language-Conditione/review]] — 언어를 보상으로 변환하는 로봇 스킬 합성으로 language-conditioned manipulation을 확장한다.

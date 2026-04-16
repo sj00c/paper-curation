@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "SmartWay는 향상된 waypoint predictor와 MLLM 기반 navigator를 통합한 zero-shot VLN-CE 프레임워크로, occupancy-aware loss와 history-aware reasoning, backtracking 메커니즘을 통해 연속 환경에서의 네비게이션 성능을 개선한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Open-Vocabulary_Scene_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2025_SmartWay Enhanced Waypoint Prediction and Backtracking for Zero-Shot Vision-and-Language Navigation.pdf"
 ---
@@ -91,7 +92,16 @@ SmartWay는 향상된 waypoint predictor와 MLLM 기반 navigator를 통합한 z
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1507_OpenBench_A_New_Benchmark_and_Baseline_for_Semantic_Navigati/review]] — OpenBench의 스마트 로지스틱스 네비게이션과 SmartWay의 zero-shot VLN-CE는 모두 실제 환경 네비게이션을 위한 서로 다른 접근법이다.
-- 🔗 후속 연구: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — TRAVEL의 training-free retrieval이 SmartWay의 zero-shot 프레임워크를 더 효율적인 검색 기반 방법으로 확장한다.
-- 🏛 기반 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — NaVid의 video-based VLM navigation이 SmartWay의 MLLM 기반 navigator의 기초 방법론을 제공한다.
-- 🔄 다른 접근: [[papers/1507_OpenBench_A_New_Benchmark_and_Baseline_for_Semantic_Navigati/review]] — SmartWay의 zero-shot VLN-CE와 OpenBench의 스마트 로지스틱스는 모두 실제 환경에서의 네비게이션 문제를 다른 관점에서 접근한다.
+- 🔄 다른 접근: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — VLN에서 navigation 오류를 해결하기 위한 서로 다른 접근법 - backtracking vs self-correction입니다.
+- 🏛 기반 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — Vision-Language Navigation 분야의 체계적 분류와 현황을 제시하는 기반 연구입니다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — VLM을 활용한 waypoint 예측을 video 기반 다음 단계 계획으로 확장할 수 있습니다.
+- 🔄 다른 접근: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — 둘 다 zero-shot object navigation을 다루지만 SmartWay는 waypoint prediction에, ApexNav는 adaptive exploration에 집중한다.
+- 🔗 후속 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — SmartWay의 waypoint 기반 navigation을 foundation model 관점에서 확장하여 더 일반적인 embodied navigation으로 발전시킬 수 있다.
+- 🏛 기반 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — Hume의 System-2 thinking 접근법이 SmartWay의 history-aware reasoning과 backtracking 메커니즘의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — 연속 환경에서의 navigation 성능 향상을 위해 SmartWay는 occupancy-aware loss를, 다른 접근은 strain gradient elastic parameters를 사용한다.
+- 🔄 다른 접근: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — 둘 다 시각-언어 네비게이션에서 공간 추론 향상에 초점을 맞추지만, JanusVLN은 dual memory를, SmartWay는 waypoint 예측에 집중한다.
+- 🔄 다른 접근: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — SmartWay는 TRAVEL의 경로 검색과 유사한 waypoint 예측과 backtracking을 통한 향상된 네비게이션을 제공한다.
+- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — VLN 분류 체계를 바탕으로 zero-shot continuous environment에 특화된 발전입니다.
+- 🔄 다른 접근: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — 복잡한 instruction following을 위한 서로 다른 접근법 - neuro-symbolic vs enhanced waypoint prediction입니다.
+- 🔗 후속 연구: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — 향상된 경로점 예측과 백트래킹을 CANVAS의 상식 인식 네비게이션에 통합할 수 있습니다.
+- 🔗 후속 연구: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — 향상된 웨이포인트 예측과 백트래킹을 통한 네비게이션 성능 개선을 확장합니다.

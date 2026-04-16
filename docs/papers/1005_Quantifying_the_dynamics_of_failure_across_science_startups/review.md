@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "과학, 스타트업, 보안 등 다양한 분야에서 반복된 실패의 역학을 설명하는 일-매개변수 모델을 개발하여, 실패 후 성공으로 이어지는 동역학의 위상 전이를 발견했다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Team_Dynamics"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2019_Quantifying the dynamics of failure across science, startups and security.pdf"
 ---
@@ -87,7 +89,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yin et al._2019_Quantifying the dynamics
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 실패 역학 모델을 개인 연구자의 초기 경력 좌절이 향후 성과에 미치는 영향 분석에 적용할 수 있다.
-- ⚖️ 반론/비판: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 실패 후 성공의 역학보다는 연구자 경력에서 지속적인 고성과 시기인 핫 스트릭 현상을 분석한다.
-- 🔗 후속 연구: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 과학계에서의 실패 역학을 세대 교체와 패러다임 변화 맥락에서 확장하여 이해할 수 있는 관점을 제공한다.
-- 🔄 다른 접근: [[papers/1111_A_Strategic_Guide_to_White_Space_Analysis_for_Pharmaceutical/review]] — 과학과 스타트업 실패 역학의 정량화 접근법을 제약 R&D의 백색공간 분석에 적용하여 혁신 기회 탐지 방법을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 과학에서 초기 실패가 이후 성공으로 이어지는 메커니즘을 정량적으로 모델링한다.
+- ⚖️ 반론/비판: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 실패 후 성공 패턴과 창의적 경력에서 나타나는 연속 성공 패턴을 대조적으로 분석한다.
+- 🧪 응용 사례: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 파괴적 혁신의 감소에 대한 강건한 증거는 과학 분야에서 반복된 실패 후 성공으로 이어지는 패턴 변화를 뒷받침합니다.
+- 🏛 기반 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀과 소규모 팀의 차별화된 역할은 실패와 성공의 동역학이 팀 구성에 따라 다르게 나타날 수 있음을 시사합니다.
+- 🧪 응용 사례: [[papers/927_A_Dynamic_Network_Measure_of_Technological_Change/review]] — 기술 변화 측정 방법론을 스타트업과 과학 분야의 실패 동역학 분석에 적용한다
+- 🔄 다른 접근: [[papers/977_Introducing_multiverse_analysis_to_bibliometrics_The_case_of/review]] — 과학, 스타트업에서의 실패 동역학 정량화를 통해 연구 성과 분석의 다른 관점을 제시한다.
+- 🔗 후속 연구: [[papers/1148_Bibliometrics_Analysis_of_Bankruptcy_Prediction_Trends_in_MS/review]] — 실패 역학 연구를 중소기업 파산이라는 구체적 영역으로 적용한다

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "인간형 로봇이 인간의 모션 캡처 데이터를 학습하여 표현력 있는 전신 움직임을 수행하도록 강화학습 기반의 제어 정책을 제안하며, 상체는 참조 모션을 모방하되 하체는 속도 명령만 따르도록 제약을 완화하여 실제 로봇에서의 동작을 가능하게 함."
 tags:
-  - "cat/Humanoid_Teleoperation_and_Interaction"
-  - "sub/Assistive_Humanoid_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Humanoid_Robot_Teleoperation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cheng et al._2024_Expressive Whole-Body Control for Humanoid Robots.pdf"
 ---
@@ -90,10 +92,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cheng et al._2024_Expressive Whole-Body 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1387_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — 기본 Expressive Whole-Body Control 방법은 ExBody2의 Advanced 버전에서 시뮬레이션 데이터와 모션 캡처의 통합적 활용을 위한 핵심 기술적 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1381_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — 모션 캡처 데이터 기반의 표현력 있는 전신 움직임 학습과 EMOTION의 LLM 기반 동적 제스처 생성은 휴머노이드 표현성을 위한 서로 다른 데이터 소스와 방법론을 사용합니다.
-- 🏛 기반 연구: [[papers/1289_Bi-Level_Motion_Imitation_for_Humanoid_Robots/review]] — 표현적 전신 제어에서 VLM 기반 사회적 맥락 이해가 기초가 된다
-- 🔗 후속 연구: [[papers/1387_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — ExBody2의 Advanced Expressive Whole-Body Control은 기존 ExBody의 표현력 있는 전신 제어 방법을 시뮬레이션과 모션 캡처 데이터 통합으로 한층 발전시킨 버전입니다.
-- 🔄 다른 접근: [[papers/1381_EMOTION_Expressive_Motion_Sequence_Generation_for_Humanoid_R/review]] — EMOTION의 LLM 기반 동적 제스처 생성과 ExBody의 모션 캡처 데이터 기반 표현력 있는 전신 제어는 휴머노이드 표현성 향상을 위한 서로 다른 접근법입니다.
-- 🏛 기반 연구: [[papers/1382_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe/review]] — Expressive Whole-Body Control의 전신 표현 방법이 EMP의 상체 동작 모방과 하체 안정성 조화의 이론적 기반이 된다.
-- 🏛 기반 연구: [[papers/1471_Humanoid_Policy__Human_Policy/review]] — Humanoid Policy의 VAE 기반 동작 표현은 expressive whole-body control의 기반 기술이 된다.
+- 🔗 후속 연구: [[papers/1279_BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Mani/review]] — 인간형 로봇의 표현력 있는 전신 제어와 BEHAVIOR Robot Suite의 전신 조작은 휴머노이드 로봇의 상호 보완적인 움직임 기술이다.
+- 🏛 기반 연구: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — 인간-휴머노이드 실시간 전신 텔레오퍼레이션 학습은 표현력 있는 전신 제어의 인간 모션 캡처 학습에 데이터 수집 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — 표현력 있는 전신 제어와 HumanPlus 휴머노이드 섀도잉은 인간 동작 모방의 서로 다른 학습 및 제어 접근법이다.
+- 🧪 응용 사례: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — OmniH2O는 표현력 있는 전신 제어 방법론을 범용적인 인간-휴머노이드 제어 시스템으로 실용화함
+- 🏛 기반 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — 인간형 로봇의 locomotion에 대한 강화학습 기반 제어의 기초 연구입니다.
+- 🔗 후속 연구: [[papers/1279_BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Mani/review]] — BEHAVIOR Robot Suite의 전신 조작과 인간형 로봇의 표현력 있는 전신 제어는 상호 보완적인 휴머노이드 조작 기술이다.
+- 🏛 기반 연구: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — 표현력 있는 전신 제어 정책이 H2O의 실시간 원격조종 시스템 설계의 기술적 기반이 됨
+- 🏛 기반 연구: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — whole-body 휴머노이드 제어 기술은 OmniH2O의 전신 텔레오퍼레이션 구현에 필수적인 기반입니다.
+- 🧪 응용 사례: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — expressive whole-body control의 개념을 causal transformer 기반 강화학습 정책에 적용하여 실제 휴머노이드 로봇의 안정적인 보행을 실현한다.
+- 🔗 후속 연구: [[papers/1628_WholeBodyVLA_Towards_Unified_Latent_VLA_for_Whole-Body_Loco-/review]] — expressive whole-body control을 vision-language-action framework로 확장하여 더 지능적인 전신 제어를 제시합니다.

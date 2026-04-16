@@ -12,8 +12,10 @@ arxiv: ""
 score: 5.0
 essence: "LLM 기반 로봇 제어 시스템의 보안 취약점을 조사하기 위해 RoboPAIR 알고리즘을 제안하며, 이는 채팅봇 jailbreak와 달리 실제 물리적 해로운 행동을 유도하는 최초의 공격 방식이다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Language_Model_Vulnerabilities"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Deep_Reinforcement_Learning_Applications"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Robey et al._2024_Jailbreaking LLM-Controlled Robots.pdf"
 ---
@@ -90,9 +92,10 @@ LLM 기반 로봇 제어 시스템의 보안 취약점을 조사하기 위해 Ro
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1286_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — 로봇 AI 시스템의 분류와 거버넌스를 통해 jailbreak 공격의 사회적 위험성을 이해하는 기초를 제공한다
-- 🔄 다른 접근: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 제어 로봇의 취약점을 다룬다는 동일한 문제의식을 다른 각도에서 접근한다
-- 🔗 후속 연구: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — LLM 기반 로봇의 차별과 폭력 위험을 구체적으로 분석하여 jailbreak의 실제 사회적 파급효과를 보여준다
-- 🔗 후속 연구: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — LLM 기반 로봇의 안전성 문제에 대한 상호 보완적인 분석으로, jailbreaking과 차별/폭력의 다른 측면을 다룬다.
-- 🏛 기반 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM 제어 로봇의 jailbreaking 취약성이 일반적인 LLM/VLM 로봇 취약성 분석의 구체적 사례를 제공한다.
-- 🧪 응용 사례: [[papers/1286_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — 로봇 AI 시스템의 분류 체계가 LLM 기반 로봇의 보안 취약점을 분석하는 구체적 틀을 제공한다
+- 🔗 후속 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 제어 로봇의 보안 취약점을 더 광범위하게 분석하여 RoboPAIR의 발견을 확장한다.
+- 🏛 기반 연구: [[papers/1550_Robots_Enact_Malignant_Stereotypes/review]] — 로봇이 악의적 고정관념을 행동으로 구현하는 위험성의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — LLM 기반 로봇의 차별과 폭력 위험을 다른 관점에서 분석한다.
+- 🔄 다른 접근: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — 둘 다 LLM 제어 로봇의 안전성 문제를 다루지만, 차별 연구는 사회적 편향을, Jailbreaking은 악의적 조작에 초점을 둔다.
+- 🔗 후속 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM 제어 로봇의 jailbreaking 공격을 넘어서 입력 모달리티 변화에 대한 전반적인 취약성까지 분석 범위를 확장했다.
+- 🔄 다른 접근: [[papers/1550_Robots_Enact_Malignant_Stereotypes/review]] — 두 연구 모두 LLM/VLM 제어 로봇의 안전성 문제를 다루지만 하나는 편향, 다른 하나는 의도적 공격이라는 다른 위협을 분석한다.
+- 🔄 다른 접근: [[papers/1629_Whom_to_Trust_Elective_Learning_for_Distributed_Gaussian_Pro/review]] — 둘 다 AI 시스템의 신뢰성 문제를 다루지만, 하나는 분산 협력에서의 신뢰도를, 다른 하나는 보안 취약점에 집중한다.

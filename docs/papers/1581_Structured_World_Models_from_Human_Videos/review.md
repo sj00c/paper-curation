@@ -10,8 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 대규모 인간 비디오 데이터로 사전학습한 구조화된 world model을 로봇의 조작 작업에 미세조정하여, 30분 이내의 실제 상호작용으로 복잡한 조작 기술을 학습할 수 있는 SWIM 프레임워크를 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Large-scale_Egocentric_Datasets"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mendonca et al._2023_Structured World Models from Human Videos.pdf"
 ---
@@ -85,11 +86,21 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mendonca et al._2023_Structured World Mo
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — 대규모 인간 비디오에서 로봇 학습의 다른 접근법으로 world model과 데이터 증강을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 비디오 생성 사전학습을 활용한 로봇 학습의 기반 아이디어를 구조화된 world model로 발전시킨다.
-- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 비디오 기반 world model을 물리적 AI를 위한 세계 시뮬레이션으로 확장한다.
-- 🔗 후속 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — Human video로부터 structured world model을 학습하는 방법론을 robot manipulation에 특화된 world model로 확장한다.
-- 🔄 다른 접근: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — 대규모 인간 비디오 데이터를 로봇 학습에 활용하는 다른 접근법으로 데이터 증강과 사전학습을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 구조화된 world model을 대규모 비디오 생성 사전학습으로 발전시켜 멀티태스크 로봇 조작을 가능하게 한다.
-- 🔗 후속 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — Structured World Models의 인간 비디오 기반 구조화된 월드 모델이 3D-VLA의 3D 월드 모델링을 더 체계적으로 발전시킬 수 있다.
-- 🏛 기반 연구: [[papers/1316_Behavior_Transformers_Cloning_k_modes_with_one_stone/review]] — Multi-task Deep RL with PopArt의 multi-task 학습 방법론이 BeT의 k개 mode cloning에서 task 간 균형을 위한 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — 인간 비디오로 사전학습한 world model이 RDT-1B와 같은 diffusion 기반 조작 정책의 효율적인 학습에 기반 지식을 제공한다.
+- 🔗 후속 연구: [[papers/1631_World_Models/review]] — World Models의 기본 개념을 인간 비디오 데이터로 확장하여 로봇 조작 작업에 특화된 structured world model로 발전시켰다.
+- 🔄 다른 접근: [[papers/1476_MimicPlay_Long-Horizon_Imitation_Learning_by_Watching_Human/review]] — 인간의 행동 학습에서 SWIM은 비디오 기반 world model로, MimicPlay는 장기 모방 학습으로 서로 다른 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — 둘 다 대규모 비디오 데이터에서 world model을 학습하지만, SWIM은 인간 비디오에 집중하고 WHALE은 행동 조건화에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — SWIM의 구조화된 world model 개념을 확장하여 flow-based architecture로 더 정교한 세계 시뮬레이션을 구현한다.
+- 🏛 기반 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — 대규모 인간 비디오에서 로봇 정책을 학습하는 기본 아이디어를 공유하며, SWIM의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — DreamDojo의 인간 동영상 기반 세계 모델과 Structured World Models의 인간 비디오 활용은 비디오 데이터 활용의 발전된 형태이다.
+- 🏛 기반 연구: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — Structured World Models from Human Videos의 비디오 기반 세계 모델링이 GAIA-1의 video, text, action을 활용한 생성형 모델에 기초적 접근법을 제공한다.
+- 🏛 기반 연구: [[papers/1406_Genie_Envisioner_A_Unified_World_Foundation_Platform_for_Rob/review]] — 인간 비디오로부터 structured world model을 학습하는 개념을 로봇 조작에 특화하여 발전시킨다.
+- 🔗 후속 연구: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — Structured World Models은 UniSim의 인간 비디오 학습을 구조화된 세계 모델로 발전시킨 연구임
+- 🔄 다른 접근: [[papers/1517_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_M/review]] — PointWorld의 3D point flow와 달리 human videos로부터 structured world model을 학습하는 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — 인간 비디오로 사전학습한 world model을 RDT-1B의 diffusion 기반 bimanual policy와 결합하면 더 효과적인 양팔 조작 학습이 가능하다.
+- 🔗 후속 연구: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — human video로부터 구조화된 world model을 에피소딕 메모리와 결합할 수 있습니다.
+- 🔗 후속 연구: [[papers/1601_UniSkill_Imitating_Human_Videos_via_Cross-Embodiment_Skill_R/review]] — SWIM의 인간 비디오 활용을 cross-embodiment 스킬 표현으로 확장하여 더 일반적인 전이 학습을 가능하게 한다.
+- 🏛 기반 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 비디오 데이터에서 로봇 정책을 학습하는 기본 접근법을 공유하며, structured world model 개념의 실용적 구현을 보여준다.
+- 🔄 다른 접근: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — 둘 다 비디오 데이터에서 world model을 학습하지만, WHALE은 behavior-conditioning을, SWIM은 구조화된 표현에 집중한다.
+- 🔗 후속 연구: [[papers/1631_World_Models/review]] — Structured World Models from Human Videos가 인간 비디오 데이터를 활용하여 World Models의 학습 데이터 범위를 크게 확장한다
+- 🏛 기반 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — Human video에서 structured world model을 학습하는 기본 방법론을 제공한다.

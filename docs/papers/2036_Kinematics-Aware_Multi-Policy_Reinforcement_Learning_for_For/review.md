@@ -1,3 +1,24 @@
+---
+title: "2036_Kinematics-Aware_Multi-Policy_Reinforcement_Learning_for_For"
+authors:
+  - "Kaiyan Xiao"
+  - "Zihan Xu"
+  - "Cheng Zhe"
+  - "Chengju Liu"
+  - "Qijun Chen"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.21169"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 휴머노이드 로봇의 고부하 산업 작업 수행을 위해 kinematics 사전 정보를 활용한 휴리스틱 보상함수, force-based curriculum learning, delta-command 정책을 통합한 3단계 RL 기반 loco-manipulation 프레임워크를 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiao et al._2025_Kinematics-Aware Multi-Policy Reinforcement Learning for Force-Capable Humanoid Loco-Manipulation.pdf"
+---
+
 # Kinematics-Aware Multi-Policy Reinforcement Learning for Force-Capable Humanoid Loco-Manipulation
 
 > **저자**: Kaiyan Xiao, Zihan Xu, Cheng Zhe, Chengju Liu, Qijun Chen | **날짜**: 2025-11-26 | **DOI**: [10.48550/arXiv.2511.21169](https://doi.org/10.48550/arXiv.2511.21169)
@@ -66,3 +87,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 로봇의 고부하 loco-manipulation을 위해 kinematics 정보 활용, curriculum learning, modular 정책 조정을 결합한 체계적이고 실용적인 RL 프레임워크를 제시하며, 실제 로봇 실험으로 강력한 성능을 입증했다. 다만 단일 플랫폼 검증과 실제 산업 환경 적응성 평가 보강이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — 고부하 산업 작업을 위한 force-capable 제어에서 kinematics 기반 접근법 대신 힘 적응형 locomotion-manipulation 통합 방법을 제시한다.
+- 🏛 기반 연구: [[papers/1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff/review]] — 부드러운 힘 제어와 end-effector 정밀도가 고부하 산업 작업에서의 안전하고 정확한 조작을 위한 기본 원리를 제공한다.
+- 🔗 후속 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — 동역학 기반 객체 상호작용 제어를 kinematics-aware 다중 정책과 결합하여 더 정교한 force-capable 조작을 구현할 수 있다.
+- 🔄 다른 접근: [[papers/2085_Load-Aware_Locomotion_Control_for_Humanoid_Robots_in_Industr/review]] — 둘 다 산업용 휴머노이드 고부하 작업이지만 Kinematics-Aware는 다중 정책, Load-Aware는 하중 인식 로코모션 중심
+- 🔗 후속 연구: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — Kinematics-Aware의 force-capable loco-manipulation이 박스 로코-조작의 계층적 계획 제어와 결합되어 산업 응용 향상

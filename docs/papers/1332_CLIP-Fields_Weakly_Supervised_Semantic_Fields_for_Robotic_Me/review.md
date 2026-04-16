@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "CLIP-Fields는 공간 좌표를 CLIP, Detic, Sentence-BERT 등 웹 사전학습 모델의 의미론적 임베딩으로 매핑하는 암묵적 신경 필드로, 직접 인간 감독 없이 로봇의 3D 의미론적 메모리로 작동한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
   - "sub/Open-Vocabulary_Scene_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shafiullah et al._2022_CLIP-Fields Weakly Supervised Semantic Fields for Robotic Memory.pdf"
@@ -88,8 +90,14 @@ CLIP-Fields는 공간 좌표를 CLIP, Detic, Sentence-BERT 등 웹 사전학습 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1456_HOVER_Versatile_Neural_Whole-Body_Controller_for_Humanoid_Ro/review]] — LERF는 CLIP-Fields의 언어 임베딩 신경 필드에 대한 이론적 토대를 제공한다
-- 🔗 후속 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — Open-vocabulary Queryable Scene Representations는 CLIP-Fields의 개념을 실제 로봇 응용으로 확장한다
-- 🔄 다른 접근: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — Multimodal Spatial Language Maps는 CLIP-Fields와 유사한 공간-언어 매핑이지만 멀티모달 접근법을 사용한다
-- 🔗 후속 연구: [[papers/1285_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — 접근 가능한 오픈소스 휴머노이드에서 Berkeley Humanoid의 저비용 설계가 확장된다
-- 🔗 후속 연구: [[papers/1589_Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical/review]] — 오픈소스 접근 가능한 휴머노이드 플랫폼이 올라프와 같은 특수 캐릭터 로봇의 개발을 위한 하드웨어 기반을 확장할 수 있습니다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO의 open-vocabulary grounding 능력이 CLIP-Fields의 의미론적 필드 구축에 핵심적인 기술적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — LERF의 언어 임베딩 radiance field 개념을 로봇 메모리 시스템으로 확장한 실용적 응용입니다.
+- 🔗 후속 연구: [[papers/1319_BeliefMapNav_3D_Voxel-Based_Belief_Map_for_Zero-Shot_Object/review]] — CLIP-Fields의 의미론적 필드가 BeliefMapNav의 3D voxel belief map 구축에 기술적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — CLIP-Fields의 의미론적 공간 매핑 개념이 Visual Language Maps의 로봇 네비게이션 응용으로 확장된 형태입니다.
+- 🧪 응용 사례: [[papers/1569_Segment_Anything/review]] — Segment Anything의 segmentation 기능을 CLIP과 결합하여 로봇의 3D 공간 이해와 의미론적 메모리 구축에 활용한 실용적 응용입니다.
+- 🏛 기반 연구: [[papers/1319_BeliefMapNav_3D_Voxel-Based_Belief_Map_for_Zero-Shot_Object/review]] — CLIP-Fields의 의미론적 필드 개념이 BeliefMapNav의 3D voxel 기반 belief map 구축의 이론적 기초를 제공합니다.
+- 🔄 다른 접근: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — 로봇 조작에서 언어 기반 객체 이해를 위한 다른 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — CLIP 기반 3D 장면 이해의 기초가 되는 weakly supervised semantic field 방법론
+- 🔄 다른 접근: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — semantic field 표현에서 open-vocabulary queryable scene vs CLIP-based weakly supervised field라는 서로 다른 장면 이해 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1569_Segment_Anything/review]] — CLIP-Fields의 weakly supervised semantic field 개념을 확장하여 1B 마스크 데이터를 통한 더 강력한 범용 분할 시스템을 구축했다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — CLIP-Fields의 weakly supervised semantic field가 visual language map의 기반 기술입니다.

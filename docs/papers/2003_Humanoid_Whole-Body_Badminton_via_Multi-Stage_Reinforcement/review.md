@@ -1,3 +1,24 @@
+---
+title: "2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement"
+authors:
+  - "Chenhao Liu"
+  - "Leyun Jiang"
+  - "Yibo Wang"
+  - "Kairan Yao"
+  - "Jinchen Fu"
+date: "2025.12"
+doi: "10.48550/arXiv.2511.11218"
+arxiv: ""
+score: 4.0
+essence: "이 논문은 다단계 강화학습 커리큘럼을 통해 휴머노이드 로봇이 배드민턴을 하도록 학습하는 통합 전신 제어기를 제시하며, 시뮬레이션과 실제 로봇 모두에서 1초 이내의 반응 시간으로 19.1 m/s의 셔틀콕 속도를 달성했다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning.pdf"
+---
+
 # Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
 
 > **저자**: Chenhao Liu, Leyun Jiang, Yibo Wang, Kairan Yao, Jinchen Fu, Xiaoyu Ren | **날짜**: 2025-12-09 | **DOI**: [10.48550/arXiv.2511.11218](https://doi.org/10.48550/arXiv.2511.11218)
@@ -69,3 +90,21 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 휴머노이드 로봇의 고속 동적 상호작용 능력을 크게 진전시키며, 잘 설계된 3단계 커리큘럼과 실제 배포 성공이 인상적이다. 다만 예측 없는 변형의 실제 검증 부족과 현재 제한된 시험 환경이 향후 개선 과제이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/review]] — badminton과 유사한 라켓 스포츠이지만 humanoid whole-body control과 human-like skill learning의 서로 다른 접근 방식을 사용한다.
+- 🔗 후속 연구: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — HITTER의 hierarchical planning for table tennis가 badminton의 multi-stage RL curriculum을 다른 라켓 스포츠로 확장한 연구이다.
+- 🔗 후속 연구: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — Gait-Conditioned의 다단계 커리큘럼을 배드민턴 특화 전신 제어로 확장한 발전된 형태다.
+- 🏛 기반 연구: [[papers/1682_SMASH_Mastering_Scalable_Whole-Body_Skills_for_Humanoid_Ping/review]] — 휴머노이드 전신 배드민턴의 다단계 강화학습이 SMASH의 탁구 시스템에 유사한 라켓 스포츠 제어 방법론을 제공한다
+- 🔄 다른 접근: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — Robot Drummer는 MIDI 기반 드럼 연주를, Humanoid Whole-Body Badminton은 배드민턴 기술을 통해 리듬감 있는 휴머노이드 제어를 다르게 구현함
+- 🔄 다른 접근: [[papers/1757_Whole-body_Multi-contact_Motion_Control_for_Humanoid_Robots/review]] — 두 연구 모두 전신 동역학을 활용하지만 하나는 투척에, 다른 하나는 배드민턴이라는 서로 다른 동적 작업에 적용합니다.
+- 🧪 응용 사례: [[papers/1778_A_Hierarchical_Model-Based_System_for_High-Performance_Human/review]] — multi-stage 강화학습을 통한 배드민턴 기술이 축구 시스템의 복잡한 동적 움직임 계획에 적용될 수 있다.
+- 🔗 후속 연구: [[papers/1860_Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_throu/review]] — TRILL의 whole-body control 기반 계층적 정책이 다단계 강화학습을 통한 휴머노이드 배드민턴으로 확장되어 더 동적인 전신 스포츠 기술을 학습한다.
+- 🔄 다른 접근: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — 라켓 스포츠 제어를 HITTER는 탁구에, Humanoid Whole-Body Badminton은 배드민턴에 각각 특화하여 접근한다.
+- 🔗 후속 연구: [[papers/1994_Humanoid_Goalkeeper_Learning_from_Position_Conditioned_Task-/review]] — 골키퍼 기술이 배드민턴의 다단계 강화학습으로 확장되어 더 복잡한 스포츠 동작을 학습할 수 있다.
+- 🔗 후속 연구: [[papers/2046_Learning_Agile_Striker_Skills_for_Humanoid_Soccer_Robots_fro/review]] — Learning Agile Striker의 강건한 볼 킥킹 기술이 배드민턴 전신 제어의 다단계 학습과 결합되어 더 다양한 스포츠 기술 달성 가능
+- 🔗 후속 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — LATENT 시스템을 다단계 강화학습과 결합하여 더 정교하고 다양한 배드민턴 기술을 습득할 수 있다.
+- 🔗 후속 연구: [[papers/2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/review]] — Imitation-to-Interaction 학습을 다단계 강화학습으로 확장하여 더 복잡하고 다양한 배드민턴 전략을 습득할 수 있다.
+- 🔗 후속 연구: [[papers/2066_Learning_to_Ball_Composing_Policies_for_Long-Horizon_Basketb/review]] — 다단계 강화학습을 통한 휴머노이드 배드민턴으로 스포츠 스킬의 확장된 적용을 보여준다.
+- 🔗 후속 연구: [[papers/2131_PACE_Physics_Augmentation_for_Coordinated_End-to-end_Reinfor/review]] — Humanoid Whole-Body Badminton의 다단계 강화학습을 탁구라는 더 빠른 반응이 필요한 스포츠로 확장하여 물리 증강 학습을 적용한 연구이다.

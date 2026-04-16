@@ -1,3 +1,25 @@
+---
+title: "1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes"
+authors:
+  - "Han Xue"
+  - "Sikai Liang"
+  - "Zhikai Zhang"
+  - "Zicheng Zeng"
+  - "Yun Liu"
+date: "2026.01"
+doi: "10.48550/arXiv.2601.16035"
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇이 어수선한 실내 환경에서 장애물을 피하며 이동할 수 있도록 Humanoid Potential Field (HumanoidPF)를 제안하고, 하이브리드 장면 생성 방식과 RL 기반 학습으로 현실 세계에 성공적으로 전이시킨 연구이다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Terrain_Foothold_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xue et al._2026_Collision-Free Humanoid Traversal in Cluttered Indoor Scenes.pdf"
+---
+
 # Collision-Free Humanoid Traversal in Cluttered Indoor Scenes
 
 > **저자**: Han Xue, Sikai Liang, Zhikai Zhang, Zicheng Zeng, Yun Liu, Yunrui Lian, Jilong Wang, Qingtao Liu, Xuesong Shi, Li Yi | **날짜**: 2026-01-23 | **DOI**: [10.48550/arXiv.2601.16035](https://doi.org/10.48550/arXiv.2601.16035)
@@ -69,3 +91,22 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 humanoid 로봇의 현실적 실내 이동이라는 중요한 문제를 체계적으로 처음 다루면서, HumanoidPF라는 창의적이고 효과적인 표현 방식과 하이브리드 scene generation을 통해 실제 로봇에의 성공적 전이를 보여준다. 기술적 깊이, 실험의 포괄성, 그리고 실용적 가치 측면에서 humanoid robotics 분야에 상당한 기여를 하는 우수한 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1807_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — 밀집 환경에서의 충돌 회피를 다루지만 HumanoidPF는 potential field, ARMOR은 ToF 센서 기반으로 서로 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1811_BeamDojo_Learning_Agile_Humanoid_Locomotion_on_Sparse_Footho/review]] — 복잡한 지형에서의 이동이라는 공통 도전과제에서 BeamDojo의 sparse foothold와 HumanoidPF의 cluttered scene이 상호 보완적이다.
+- 🔄 다른 접근: [[papers/1804_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — 휴머노이드의 복잡한 환경 navigation에서 하나는 어수선한 실내, 다른 하나는 높은 플랫폼을 다루는 상호 보완적 접근이다.
+- 🧪 응용 사례: [[papers/2087_LookOut_Real-World_Humanoid_Egocentric_Navigation/review]] — cluttered indoor scene에서의 collision-free traversal 기술이 real-world humanoid egocentric navigation에 실제 적용된다.
+- 🏛 기반 연구: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — 실내 환경에서의 의미적 매핑이 장애물 회피 경로 계획의 기초가 됩니다.
+- 🔗 후속 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 공간 선택적 주의 메커니즘이 어수선한 실내 환경에서의 충돌 회피를 향상시킵니다.
+- 🧪 응용 사례: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — 전방향 충돌 회피 기술이 실내 복잡 환경 탐색에 직접 적용됩니다.
+- 🧪 응용 사례: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 360° 시각 탐색 기술을 실내 환경을 넘어 복잡한 현실 공간으로 확장하여 충돌 없는 휴머노이드 이동을 실현했다.
+- 🧪 응용 사례: [[papers/1613_PhysHSI_Towards_a_Real-World_Generalizable_and_Natural_Human/review]] — PhysHSI의 실시간 LiDAR-camera 기반 객체 인식이 Collision-Free Traversal의 cluttered 환경 navigation과 직접 연관된다
+- 🔄 다른 접근: [[papers/1804_APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid/review]] — 휴머노이드의 복잡한 환경 traversal에서 하나는 높은 플랫폼, 다른 하나는 어수선한 실내 환경을 다루는 상호 보완적 접근이다.
+- 🏛 기반 연구: [[papers/1807_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — 두 논문 모두 밀집 환경에서의 충돌 회피를 다루지만 ARMOR은 ToF 센서 기반, HumanoidPF는 potential field 기반 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1811_BeamDojo_Learning_Agile_Humanoid_Locomotion_on_Sparse_Footho/review]] — 복잡한 지형에서의 이동을 다루지만 BeamDojo는 sparse foothold, HumanoidPF는 cluttered scene에 특화되어 상호 보완적이다.
+- 🔗 후속 연구: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 실내 장애물 환경에서의 충돌 없는 이동 기술을 도어 통과라는 구체적 작업에 적용한 확장 연구입니다.
+- 🔗 후속 연구: [[papers/1798_AME-2_Agile_and_Generalized_Legged_Locomotion_via_Attention-/review]] — attention 기반 지형 인식을 실내 어수선한 환경에서의 충돌 회피로 확장한 발전된 형태이다.
+- 🔗 후속 연구: [[papers/1872_Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environmen/review]] — 실내 혼잡한 장면에서의 collision-free traversal이 Dexterous Safe Control의 실제 환경 적용 범위를 확장한다
+- 🏛 기반 연구: [[papers/1908_Embrace_Collisions_Humanoid_Shadowing_for_Deployable_Contact/review]] — collision-free traversal 기술이 contact-agnostic 동작에서 환경과의 충돌을 의도적으로 활용하는 상반된 접근법의 이론적 대비점을 제공한다.

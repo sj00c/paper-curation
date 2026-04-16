@@ -1,3 +1,25 @@
+---
+title: "2170_Unified_Human-Scene_Interaction_via_Prompted_Chain-of-Contac"
+authors:
+  - "Zeqi Xiao"
+  - "Tai Wang"
+  - "Jingbo Wang"
+  - "Jinkun Cao"
+  - "Wenwei Zhang"
+date: "2023.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "UniHSI는 Large Language Model을 활용하여 자연어 명령을 Chain of Contacts (CoC)로 변환하고, 통합 컨트롤러를 통해 다양한 인간-장면 상호작용을 물리적으로 타당하게 수행하는 프레임워크를 제안한다."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/LLM_Physical_Motion_Planning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xiao et al._2023_Unified Human-Scene Interaction via Prompted Chain-of-Contacts.pdf"
+---
+
 # Unified Human-Scene Interaction via Prompted Chain-of-Contacts
 
 > **저자**: Zeqi Xiao, Tai Wang, Jingbo Wang, Jinkun Cao, Wenwei Zhang, Bo Dai, Dahua Lin, Jiangmiao Pang | **날짜**: 2023-09-14 | **URL**: [https://arxiv.org/abs/2309.07918](https://arxiv.org/abs/2309.07918)
@@ -67,3 +89,14 @@ UniHSI는 Large Language Model을 활용하여 자연어 명령을 Chain of Cont
 - Overall: 4/5
 
 **총평**: UniHSI는 Chain of Contacts라는 새로운 상호작용 표현과 LLM 기반 계획 생성으로 자연어 명령 기반의 다양하고 장기간의 인간-장면 상호작용을 통합적으로 제어하는 혁신적 프레임워크이며, ICLR 2024 발표 논문으로서 embodied AI 분야에 의미 있는 기여를 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers/review]] — 통합 인간-장면 상호작용과 빠른 문 통과를 위한 행동 아키텍처는 모두 환경과의 상호작용을 다루지만 서로 다른 복잡도를 가진다.
+- 🔗 후속 연구: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 물리적으로 현실적인 전신 인간-객체 상호작용이 인간-장면 상호작용의 확장된 형태이다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — 자유형식 언어 명령이 프롬프트 기반 접촉 체인의 기반 기술이다.
+- 🔄 다른 접근: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — LLM 기반 Chain of Contacts 대신 transformer 기반 통합 정책으로 인간-장면 상호작용을 처리한다.
+- 🔗 후속 연구: [[papers/1841_CLoSD_Closing_the_Loop_between_Simulation_and_Diffusion_for/review]] — 시뮬레이션과 diffusion 간의 루프를 닫는 기본 개념을 인간-장면 상호작용의 물리적 타당성 보장으로 확장한다.
+- 🔗 후속 연구: [[papers/1702_Task_and_Motion_Planning_for_Humanoid_Loco-manipulation/review]] — task and motion planning에 UniHSI의 Chain-of-Contacts를 통합하면 더 정교한 contact-aware planning 가능
+- 🏛 기반 연구: [[papers/2039_LangWBC_Language-directed_Humanoid_Whole-Body_Control_via_En/review]] — Chain-of-Contact 기반 통합 인간-장면 상호작용이 LangWBC의 언어 기반 전신 제어에 상황 인식 접촉 계획 기반 제공
+- 🔄 다른 접근: [[papers/2148_TokenHSI_Unified_Synthesis_of_Physical_Human-Scene_Interacti/review]] — transformer 기반 통합 정책 대신 LLM을 활용한 Chain of Contacts 방식으로 인간-장면 상호작용을 처리한다.

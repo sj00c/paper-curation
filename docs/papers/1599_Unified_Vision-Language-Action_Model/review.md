@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "UniVLA는 vision, language, action을 discrete token으로 통일하여 autoregressive sequence modeling으로 joint하게 학습하는 unified vision-language-action model이다. World model을 post-training에 통합하여 비디오에서 temporal dynamics를 학습하고 downstream policy learning을 강화한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
   - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_Unified Vision-Language-Action Model.pdf"
@@ -91,9 +93,17 @@ UniVLA는 vision, language, action을 discrete token으로 통일하여 autoregr
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1598_Unified_Video_Action_Model/review]] — 비디오-액션 통합의 다른 접근법으로 discrete token 기반과 확산 모델 방식을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1602_Unleashing_Large-Scale_Video_Generative_Pre-training_for_Vis/review]] — 대규모 비디오 생성 사전학습을 discrete token 기반 통합 VLA로 발전시킨다.
-- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 오픈소스 VLA 모델을 통합된 vision-language-action 토큰 모델링으로 확장한 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1427_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — unified VLA model의 기본 구조와 training paradigm을 humanoid에 특화하여 구현한 구체적 사례입니다.
-- 🏛 기반 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — Unified VLA Model의 기본 구조를 Mixture-of-Transformers로 확장하여 더 효율적인 multi-task learning을 구현합니다.
-- 🔄 다른 접근: [[papers/1598_Unified_Video_Action_Model/review]] — 비디오-액션 통합 모델링의 다른 접근법으로 확산 기반과 autoregressive 방식을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — open-source vision-language-action model의 기반이 되는 통합 모델링 접근법입니다.
+- 🔄 다른 접근: [[papers/1598_Unified_Video_Action_Model/review]] — vision-language-action 통합을 위한 서로 다른 모델링 방법 - autoregressive vs diffusion입니다.
+- 🔗 후속 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — InternVLA의 통합 접근법을 discrete token 기반으로 확장한 발전된 모델입니다.
+- 🔗 후속 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D 환경에서의 vision-language-action 통합을 통해 UniVLA의 unified token approach를 3차원 세계 모델로 확장합니다.
+- 🏛 기반 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — efficient action tokenization 방법을 제공하여 UniVLA의 discrete token 통일 접근법에 핵심 기술적 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 비디오 foundation model을 활용한 세계 시뮬레이션으로 UniVLA의 world model 통합을 물리적 AI 응용으로 확장합니다.
+- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 둘 다 VLA 통합을 추구하지만, UniVLA는 discrete token 통합을, VLA-0는 구조 변경 없는 텍스트 표현을 사용한다.
+- 🏛 기반 연구: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — World model을 통한 temporal dynamics 학습의 이론적 기반을 제공하여 UniVLA의 post-training 통합 방법론을 뒷받침한다.
+- 🔄 다른 접근: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — 둘 다 VLA 모델의 spatial-temporal 처리를 개선하지만, TraceVLA는 visual trace를, UniVLA는 통합된 토큰화를 사용한다.
+- 🔄 다른 접근: [[papers/1598_Unified_Video_Action_Model/review]] — 비디오와 액션의 통합 학습에 대한 서로 다른 접근법 - diffusion vs autoregressive modeling입니다.
+- 🔄 다른 접근: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — 둘 다 action을 token으로 표현하지만, VQ-VLA는 vector quantization을, UniVLA는 discrete token 통합을 사용한다.
+- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 둘 다 VLA 통합을 추구하지만, VLA-0는 구조 변경 없는 단순함을, UniVLA는 discrete token 통합을 추구한다.
+- 🔄 다른 접근: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — Unified Vision-Language-Action Model과 EO-1은 모두 통합 embodied foundation model을 목표로 하지만 다른 아키텍처 설계를 사용합니다.
+- 🔄 다른 접근: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — Unified Vision-Language-Action Model은 DexVLA와 유사한 통합 모델이지만 diffusion expert 없이 다른 통합 전략을 사용합니다.

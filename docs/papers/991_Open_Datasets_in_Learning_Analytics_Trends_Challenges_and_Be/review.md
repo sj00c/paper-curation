@@ -12,7 +12,9 @@ score: 4.0
 essence: "학습분석(Learning Analytics) 연구의 세 주요 학회(LAK, EDM, AIED)에서 2020-2024년간 출판된 1,125개 논문을 분석하여 172개의 공개 데이터셋(Open Datasets)을 발굴하고, 현황을 파악하며 PRACTICE 8개 항목 체크리스트를 제시한 종합 조사 연구이다."
 tags:
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Research_Data_and_Metadata"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Švábenský et al._2026_Open Datasets in Learning Analytics Trends, Challenges, and Best PRACTICE.pdf"
 ---
@@ -89,5 +91,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Švábenský et al._2026_Open Datasets i
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 학습분석 분야의 공개 데이터셋 발굴 방법론을 과학의 과학 연구를 위한 대규모 오픈 데이터 레이크 구축에 적용할 수 있다.
-- 🏛 기반 연구: [[papers/980_Linking_Global_Science_Funding_to_Research_Publications/review]] — 연구 자금과 연구 결과물 연결의 중요성을 학습분석 데이터셋 공개와 활용 맥락에서 이해할 수 있다.
+- 🏛 기반 연구: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 과학의 과학을 위한 대규모 오픈 데이터 레이크로, 학습분석 공개 데이터셋 연구에 필요한 데이터 인프라 토대를 제공합니다.
+- 🔄 다른 접근: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 오픈 연구 정보 인프라의 영향을 평가한 연구로, 데이터셋 공개와 다른 관점에서 오픈 사이언스 인프라를 분석하는 대안적 접근법입니다.
+- ⚖️ 반론/비판: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 공개 데이터셋 기반 연구 평가와 LLM 기반 연구 평가의 상반된 접근법을 비교 검토할 수 있다.
+- 🏛 기반 연구: [[papers/939_BibFusion_A_Python_package_to_integrate_deduplicate_and_harm/review]] — 다양한 소스의 데이터셋 통합과 중복 제거를 위한 기술적 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — S2ORC 의미론적 연구 코퍼스가 학습분석 분야 공개 데이터셋 발굴과 분석의 데이터 기반을 제공한다.
+- 🔗 후속 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — OpenAlex 메타데이터 품질 평가에서 학습분석 공개 데이터셋의 품질 체크리스트로 범위가 확장된다.
+- 🧪 응용 사례: [[papers/1023_SciSciNet_A_large-scale_open_data_lake_for_the_science_of_sc/review]] — 학습 분석의 오픈 데이터셋 동향 분석은 SciSciNet과 같은 오픈 데이터 레이크가 특정 연구 분야에서 어떻게 활용될 수 있는지 보여주는 구체적 응용 사례입니다.
+- 🔄 다른 접근: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 촉매 발견과 학습 분석이라는 서로 다른 분야의 오픈 데이터셋 구축 접근법을 비교한다.
+- 🏛 기반 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — 학습분석 공개 데이터셋 품질 연구가 OpenAlex 메타데이터 품질 평가의 방법론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 학습 분석의 오픈 데이터셋 트렌드가 발달장애 지원 보조기술의 데이터 기반 접근법으로 확장될 수 있기 때문

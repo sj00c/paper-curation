@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "복잡한 네트워크의 위상 구조가 스케일-프리(scale-free) 멱법칙 분포를 따르며, 이는 네트워크의 지속적 성장과 선호적 부착(preferential attachment)이라는 두 가지 보편적 메커니즘에서 비롯된다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Network_Community_Detection"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Scholarly_Impact_Metrics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Barabási and Albert_1999_Emergence of Scaling in Random Networks.pdf"
 ---
@@ -73,9 +75,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Barabási and Albert_1999_Emergence of S
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 스케일-프리 네트워크의 이론적 기반을 실제 대규모 네트워크에서 커뮤니티를 탐지하는 알고리즘으로 발전시킨다.
-- 🏛 기반 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 과학논문 인용 네트워크의 초기 패턴 분석이 복잡한 네트워크의 스케일-프리 특성 발견의 기초를 제공했다.
-- 🧪 응용 사례: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 선호적 부착 메커니즘을 과학자 협업 네트워크의 실제 구조 형성 과정에 적용하여 검증한다.
-- 🏛 기반 연구: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 무작위 네트워크에서 스케일링 현상의 출현 이론이 커뮤니티 구조를 가진 네트워크 모델링의 기초를 제공한다.
-- 🔗 후속 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 과학논문 인용 네트워크의 초기 패턴 관찰이 복잡한 네트워크의 스케일-프리 특성 발견으로 발전했다.
-- 🏛 기반 연구: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 스케일-프리 네트워크와 선호적 부착 이론이 대규모 네트워크 커뮤니티 탐지 알고리즘 개발의 이론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 초기 인용 네트워크 패턴 연구가 스케일-프리 네트워크 이론 발전의 실증적 토대를 제공한다
+- 🔗 후속 연구: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 스케일-프리 네트워크 모델을 커뮤니티 구조를 포함한 더 복잡한 네트워크로 발전시킨다
+- 🔄 다른 접근: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 복잡 네트워크의 구조적 특성을 스케일-프리성과 소세계 특성으로 다르게 접근한다
+- 🧪 응용 사례: [[papers/948_Community_Detection_in_Graphs/review]] — 스케일-프리 네트워크의 기본 메커니즘이 그래프 커뮤니티 검출 방법론의 이론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 과학 협력 네트워크의 구조 분석에서 스케일-프리 성장과 선호적 부착 메커니즘이 핵심적 설명 원리로 작용한다.
+- 🏛 기반 연구: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 무작위 네트워크에서 스케일링 출현 현상이 Price-Pareto 모델의 수학적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/928_A_General_Theory_of_Bibliometric_and_Other_Cumulative_Advant/review]] — 베타 함수로 표현되는 누적 우위가 무작위 네트워크에서 스케일링 출현의 수학적 원리를 제공합니다.
+- 🏛 기반 연구: [[papers/948_Community_Detection_in_Graphs/review]] — 스케일-프리 네트워크의 선호적 부착 메커니즘이 커뮤니티 구조 형성의 기본 원리를 설명한다.

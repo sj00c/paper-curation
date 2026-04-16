@@ -1,3 +1,24 @@
+---
+title: "1864_Demonstrating_Berkeley_Humanoid_Lite_An_Open-source_Accessib"
+authors:
+  - "Yufeng Chi"
+  - "Qiayuan Liao"
+  - "Junfeng Long"
+  - "Xiaoyu Huang"
+  - "Sophia Shao"
+date: "2025.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Berkeley Humanoid Lite는 3D-printed cycloidal gearbox를 활용한 오픈소스 휴머노이드 로봇으로, $5,000 이하의 저비용으로 데스크톱 3D프린터와 e-commerce 부품으로 제작 가능하며 강화학습 기반 locomotion controller를 통해 sim-to-real transfer를 입증했다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Exercise_Learning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chi et al._2025_Demonstrating Berkeley Humanoid Lite An Open-source, Accessible, and Customizable 3D-printed Humano.pdf"
+---
+
 # Demonstrating Berkeley Humanoid Lite: An Open-source, Accessible, and Customizable 3D-printed Humanoid Robot
 
 > **저자**: Yufeng Chi, Qiayuan Liao, Junfeng Long, Xiaoyu Huang, Sophia Shao, Borivoje Nikolic, Zhongyu Li, Koushil Sreenath | **날짜**: 2025-04-24 | **URL**: [https://arxiv.org/abs/2504.17249](https://arxiv.org/abs/2504.17249)
@@ -66,3 +87,17 @@ Berkeley Humanoid Lite는 3D-printed cycloidal gearbox를 활용한 오픈소스
 - Overall: 4/5
 
 **총평**: Berkeley Humanoid Lite는 3D-printed cycloidal gear 기반 저비용 휴머노이드 로봇의 설계와 구현을 통해 로봇 연구의 접근성을 획기적으로 낮추고, 완전 오픈소스 공개 정책으로 커뮤니티 주도의 발전을 가능하게 했다. Reinforcement learning 기반 locomotion control의 성공적인 sim-to-real transfer는 플랫폼의 실용성을 입증하며, 향후 휴머노이드 로봇 연구의 민주화를 주도할 초석이 될 가능성이 크다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1796_AGILOped_Agile_Open-Source_Humanoid_Robot_for_Research/review]] — 저비용 오픈소스 휴머노이드를 3D-printed cycloidal gearbox와 3D 프린팅 상용 부품이라는 서로 다른 제작 전략으로 구현한다
+- 🏛 기반 연구: [[papers/1818_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — Berkeley Humanoid의 학습 기반 제어 플랫폼 경험이 Berkeley Humanoid Lite의 강화학습 기반 locomotion controller 개발에 필요한 기초를 제공한다
+- 🔗 후속 연구: [[papers/1927_Fauna_Sprout_A_lightweight_approachable_developer-ready_huma/review]] — Fauna Sprout의 접근하기 쉬운 개발자 친화적 특성이 Berkeley Humanoid Lite의 오픈소스 접근성을 더욱 향상시킬 수 있다
+- 🔄 다른 접근: [[papers/1859_DecARt_Leg_Design_and_Evaluation_of_a_Novel_Humanoid_Robot_L/review]] — Berkeley Humanoid Lite의 저비용 접근성과 DecARt Leg의 고성능 설계는 휴머노이드 개발에서 민주화 vs 성능 최적화의 서로 다른 목표를 보여준다.
+- 🧪 응용 사례: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — Berkeley Humanoid Lite의 실제 구현이 GDAF의 인간-휴머노이드 보행 차이 분석 결과를 실제 하드웨어에서 검증하고 개선하는 데 활용될 수 있다.
+- 🧪 응용 사례: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — Berkeley Humanoid Lite의 강화학습 기반 locomotion controller가 15분 sim-to-real 학습의 빠른 적응성을 실제 저비용 플랫폼에서 검증하는 데 활용된다.
+- 🔄 다른 접근: [[papers/1709_The_Duke_Humanoid_Design_and_Control_For_Energy_Efficient_Bi/review]] — 오픈소스 휴머노이드 개발을 위해 서로 다른 접근(에너지 효율적 10-DoF vs 접근성 중심 Berkeley Humanoid Lite)을 통해 연구 커뮤니티에 기여한다.
+- 🔄 다른 접근: [[papers/1818_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — 둘 다 학습 기반 제어를 위한 저비용 휴머노이드를 제공하지만 중형과 소형이라는 서로 다른 크기 전략을 택한다
+- 🧪 응용 사례: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — GDAF로 분석된 인간-휴머노이드 보행 차이가 Berkeley Humanoid Lite의 실제 보행 제어기 개발과 sim-to-real 전이에 중요한 통찰을 제공한다.
+- 🔄 다른 접근: [[papers/1796_AGILOped_Agile_Open-Source_Humanoid_Robot_for_Research/review]] — 동일한 저비용 오픈소스 휴머노이드 개발 목표를 서로 다른 설계 철학과 제작 방식으로 구현한다
+- 🔄 다른 접근: [[papers/1859_DecARt_Leg_Design_and_Evaluation_of_a_Novel_Humanoid_Robot_L/review]] — DecARt Leg의 고성능 decoupled actuation과 Berkeley Humanoid Lite의 저비용 설계는 휴머노이드 다리 설계에서 성능 vs 접근성의 서로 다른 우선순위를 보여준다.

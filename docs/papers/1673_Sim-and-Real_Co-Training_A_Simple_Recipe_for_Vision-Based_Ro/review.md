@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "시뮬레이션 데이터와 실제 로봇 데이터를 혼합하여 학습하는 sim-and-real co-training 전략을 체계적으로 연구하고, 비전 기반 로봇 조작 작업에서 실제 데이터만 사용하는 것 대비 평균 38% 성능 향상을 달성했다."
 tags:
-  - "cat/Other"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Maddukuri et al._2025_Sim-and-Real Co-Training A Simple Recipe for Vision-Based Robotic Manipulation.pdf"
 ---
@@ -83,3 +85,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Maddukuri et al._2025_Sim-and-Real Co-Tr
 - Overall: 4/5
 
 **총평**: 본 논문은 sim-and-real co-training의 실용성을 체계적으로 검증하여 실제 로봇 학습의 데이터 효율성 문제에 직접적인 해결책을 제시하며, 명확한 실험 설계와 실무적 가이드라인으로 로봇 커뮤니티에 높은 가치를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1644_RoboCasa_Large-Scale_Simulation_of_Everyday_Tasks_for_Genera/review]] — 두 논문 모두 시뮬레이션과 실제 환경의 혼합 학습을 다루지만, 일반적인 co-training과 대규모 일상 작업이라는 다른 규모를 다룬다.
+- 🔗 후속 연구: [[papers/2103_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — 인간-로봇 핸드오버의 일반화 학습을 시뮬레이션-실제 co-training으로 확장한다.
+- 🏛 기반 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 실제-시뮬레이션 프레임워크의 기본적인 개념과 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — sim-to-real 전이에서 co-training과 teacher-student 구조라는 서로 다른 접근법을 사용하여 시뮬레이션-실제 간격을 해결한다.
+- 🔗 후속 연구: [[papers/2125_Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Po/review]] — 시뮬레이션과 실제 데이터 혼합 학습 전략이 휴머노이드 pixel-to-action 정책의 sim-to-real 전이에 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1749_VIRAL_Visual_Sim-to-Real_at_Scale_for_Humanoid_Loco-Manipula/review]] — Sim-and-Real Co-Training의 방법론이 VIRAL의 teacher-student 구조 설계에 영향을 줍니다.
+- 🏛 기반 연구: [[papers/1881_Distillation-PPO_A_Novel_Two-Stage_Reinforcement_Learning_Fr/review]] — sim-and-real co-training의 간단한 레시피가 D-PPO의 시뮬레이션과 실제 로봇 간 안정성 확보에 필요한 기초 방법론을 제공한다
+- 🔗 후속 연구: [[papers/2107_MOSAIC_Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_M/review]] — Sim-and-Real Co-Training의 sim-to-real 방법론이 MOSAIC의 simulation-reality gap 해결로 더욱 발전된 것이다
+- 🧪 응용 사례: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — PMSM 기반 에너지 효율 모델링을 vision-based robotic learning의 sim-and-real co-training에 적용하여 더 현실적인 에너지 제약을 반영할 수 있습니다.
+- 🔄 다른 접근: [[papers/2125_Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Po/review]] — 둘 다 sim-to-real 문제를 다루지만, Opening the Sim-to-Real Door는 포토리얼리스틱 시뮬레이션 기반 문열기에, Sim-and-Real Co-Training은 공동 훈련에 집중한다.

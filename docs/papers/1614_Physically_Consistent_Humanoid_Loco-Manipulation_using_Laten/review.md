@@ -11,7 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Latent Diffusion Model(LDM)을 활용하여 인간-물체 상호작용 장면을 생성하고, 이로부터 추출한 접촉 위치와 로봇 구성을 whole-body trajectory optimization에 활용하여 인형로봇의 물리적으로 일관성 있는 장기 조작 계획을 수립한다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Tactile_Contact_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Taouil et al._2025_Physically Consistent Humanoid Loco-Manipulation using Latent Diffusion Models.pdf"
 ---
@@ -85,3 +88,25 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Taouil et al._2025_Physically Consistent
 - Overall: 4/5
 
 **총평**: 본 논문은 LDM과 foundation model을 창의적으로 결합하여 인형로봇의 장기 로코-조작 계획 문제를 새로운 방식으로 접근하며, 광범위한 실험과 분석을 통해 방법론의 유효성을 입증했다. 다만 실제 로봇 검증과 일부 모듈의 정확성 개선이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — LDM 기반 접촉 계획과 WoCoCo의 순차적 접촉 RL 프레임워크는 휴머노이드 접촉 조작의 서로 다른 학습 패러다임
+- 🏛 기반 연구: [[papers/1700_TACT_Humanoid_Whole-body_Contact_Manipulation_through_Deep_I/review]] — TACT의 촉각 기반 모방학습이 물리적 일관성 있는 조작을 위한 접촉 정보 활용 측면에서 기반 기술
+- 🔗 후속 연구: [[papers/1702_Task_and_Motion_Planning_for_Humanoid_Loco-manipulation/review]] — TAMP 프레임워크의 접촉 모드 통합 계획이 LDM 기반 접촉 생성을 실제 로코-조작으로 확장하는 방향성
+- 🔄 다른 접근: [[papers/1841_CLoSD_Closing_the_Loop_between_Simulation_and_Diffusion_for/review]] — 두 논문 모두 diffusion 모델로 휴머노이드 제어를 다루지만, 본 논문은 latent space에서, CLoSD는 simulation-diffusion loop에서 작동함
+- 🔗 후속 연구: [[papers/1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — Generalizable Humanoid Manipulation의 3D diffusion policy가 본 논문의 LDM 기반 조작 계획을 3차원 공간으로 확장함
+- 🏛 기반 연구: [[papers/1930_Flexible_Motion_In-betweening_with_Diffusion_Models/review]] — Flexible Motion In-betweening의 diffusion 기반 모션 보간 기법이 본 논문의 장기 조작 계획 생성의 기반이 됨
+- 🔗 후속 연구: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 물리적으로 일관성 있는 장기 조작 계획과 박스 조작의 sim-to-real 전이를 함께 고려하면 실용적인 휴머노이드 조작이 가능하다
+- 🏛 기반 연구: [[papers/2026_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-/review]] — InterMimic의 universal whole-body control이 LDM으로 생성된 접촉 기반 조작 계획의 실행에 필요한 기반 기술이다
+- 🔄 다른 접근: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — 둘 다 휴머노이드 로코-조작을 다루지만 강화학습 기반 sim-to-real vs LDM 기반 계획으로 접근법이 다르다
+- 🏛 기반 연구: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — 물리적으로 일관된 휴머노이드 조작을 위한 잠재 공간 사용의 기초 개념을 제공한다.
+- 🔗 후속 연구: [[papers/1700_TACT_Humanoid_Whole-body_Contact_Manipulation_through_Deep_I/review]] — 물리적 일관성 로코-조작이 TACT의 촉각 접촉 조작을 장기 계획과 결합한 확장 형태
+- 🏛 기반 연구: [[papers/1702_Task_and_Motion_Planning_for_Humanoid_Loco-manipulation/review]] — LDM 기반 접촉 위치 생성이 TAMP의 통일된 접촉 모드 표현과 최적화 기반 계획의 핵심 입력
+- 🔗 후속 연구: [[papers/1252_ActiveUMI_Robotic_Manipulation_with_Active_Perception_from_R/review]] — VoxPoser의 zero-shot 조작 궤적 생성과 LDM 기반 인간-물체 상호작용 생성을 결합하면 더 포괄적인 휴머노이드 조작 계획이 가능하다
+- 🔄 다른 접근: [[papers/1759_WoCoCo_Learning_Whole-Body_Humanoid_Control_with_Sequential/review]] — 순차적 접촉 RL 프레임워크와 LDM 기반 접촉 생성은 휴머노이드 접촉 제어의 상호 보완적 방법론
+- 🏛 기반 연구: [[papers/1853_Coordinated_Humanoid_Manipulation_with_Choice_Policies/review]] — LDM 기반 인간-물체 상호작용 생성이 Choice Policy의 멀티모달 행동 모델링을 위한 데이터 생성 기반
+- 🏛 기반 연구: [[papers/1953_GentleHumanoid_Learning_Upper-body_Compliance_for_Contact-ri/review]] — 물리적 일관성을 유지하는 휴머노이드 로코-조작 기술이 GentleHumanoid의 compliance 학습에 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1929_FLAM_Foundation_Model-Based_Body_Stabilization_for_Humanoid/review]] — 물리적으로 일관된 humanoid loco-manipulation을 위한 latent space 활용 연구가 FLAM의 foundation model 기반 안정화 접근법의 기초가 됩니다.
+- 🧪 응용 사례: [[papers/2091_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — 잠재 공간을 통한 물리적 일관성 있는 전신 조작을 실제 환경에서 구현한 응용 사례이다.
+- 🏛 기반 연구: [[papers/2123_One-shot_Adaptation_of_Humanoid_Whole-body_Motion_with_Walki/review]] — Physically consistent loco-manipulation 기술이 one-shot adaptation에서 보행과 비보행 동작 간의 물리적 일관성 유지의 기술적 기반을 제공합니다.

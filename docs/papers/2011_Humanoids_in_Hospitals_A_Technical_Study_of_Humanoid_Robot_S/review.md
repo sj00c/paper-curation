@@ -1,3 +1,23 @@
+---
+title: "2011_Humanoids_in_Hospitals_A_Technical_Study_of_Humanoid_Robot_S"
+authors:
+  - "Soofiyan Atar"
+  - "Xiao Liang"
+  - "Calvin Joyce"
+  - "Florian Richter"
+  - "Wood Ricardo"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 연구는 Unitree G1 인간형 로봇에 대한 원격조종 시스템을 개발하여 7가지 의료 시술(신체검진, 응급 개입, 정밀 바늘 작업)을 수행할 수 있는 가능성을 탐색적으로 검증했다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Atar et al._2025_Humanoids in Hospitals A Technical Study of Humanoid Robot Surrogates for Dexterous Medical Interve.pdf"
+---
+
 # Humanoids in Hospitals: A Technical Study of Humanoid Robot Surrogates for Dexterous Medical Interventions
 
 > **저자**: Soofiyan Atar, Xiao Liang, Calvin Joyce, Florian Richter, Wood Ricardo, Charles Goldberg, Preetham Suresh, Michael Yip | **날짜**: 2025-03-17 | **URL**: [https://arxiv.org/abs/2503.12725](https://arxiv.org/abs/2503.12725)
@@ -63,3 +83,10 @@
 - Overall: 4/5
 
 **총평**: 본 연구는 인간형 로봇의 의료 활용 가능성을 처음으로 체계적으로 탐색한 획기적인 연구로, innovative teleoperation 시스템과 실제 임상 작업 검증을 통해 향후 의료 로봇 통합의 토대를 마련했다. 다만 힘 출력과 센서 한계로 인한 현실적 과제 해결이 임상 배포를 위한 핵심 과제이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1707_Teleoperation_of_Humanoid_Robots_A_Survey/review]] — Teleoperation survey가 의료용 휴머노이드 원격조종의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1781_A_Rapid_Instrument_Exchange_System_for_Humanoid_Robots_in_Mi/review]] — Rapid instrument exchange system이 의료 시술용 휴머노이드를 수술 도구 교환으로 확장합니다.
+- 🔄 다른 접근: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — SPARK의 safe assistive robot이 의료 휴머노이드와 다른 방식으로 의료 보조를 제공합니다.
+- 🔗 후속 연구: [[papers/1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — 병원 환경에서의 휴머노이드 로봇 기술 연구를 CPST 이론 기반의 분류 및 거버넌스 프레임워크로 확장할 수 있습니다.

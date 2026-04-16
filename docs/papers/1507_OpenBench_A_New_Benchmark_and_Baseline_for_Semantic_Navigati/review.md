@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "스마트 로지스틱스의 마지막 배송 구간을 위해 OpenStreetMap, LLM, VLM을 결합한 OPEN 시스템과 이를 평가하기 위한 새로운 벤치마크 OpenBench를 제안한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Visual_Language_Mapping"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_OpenBench A New Benchmark and Baseline for Semantic Navigation in Smart Logistics.pdf"
 ---
@@ -91,9 +93,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_OpenBench A New Benchma
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — SmartWay의 zero-shot VLN-CE와 OpenBench의 스마트 로지스틱스는 모두 실제 환경에서의 네비게이션 문제를 다른 관점에서 접근한다.
-- 🔗 후속 연구: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — CityNavAgent의 aerial vision-language navigation이 OpenBench의 마지막 배송 구간 네비게이션을 공중 시점으로 확장한다.
-- 🏛 기반 연구: [[papers/1577_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — MolmoSpaces의 대규모 개방형 로봇 네비게이션 생태계가 OpenBench 벤치마크의 기반 환경을 제공한다.
-- 🏛 기반 연구: [[papers/1311_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — OpenBench는 ApexNav의 zero-shot navigation 성능 평가를 위한 의미 네비게이션 벤치마크 기반을 제공한다
-- 🔄 다른 접근: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — OpenBench의 스마트 로지스틱스 네비게이션과 SmartWay의 zero-shot VLN-CE는 모두 실제 환경 네비게이션을 위한 서로 다른 접근법이다.
-- 🏛 기반 연구: [[papers/1345_CoWs_on_Pasture_Baselines_and_Benchmarks_for_Language-Driven/review]] — OpenBench는 CoWs의 성능 평가를 위한 의미 네비게이션 벤치마크 기반을 제공한다
+- 🔄 다른 접근: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — 대규모 지역 네비게이션에서 OpenStreetMap 기반 시스템 vs hierarchical aerial vision-language navigation이라는 서로 다른 스케일의 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — universal zero-shot goal-oriented navigation을 스마트 로지스틱스의 실제 배송 환경에 특화하여 적용한 실용적 확장을 보여준다.
+- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 대규모 사전학습 모델을 활용한 로봇 네비게이션의 기초 이론을 제공하여 OPEN 시스템의 LLM/VLM 통합에 필요한 방법론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — OpenBench의 스마트 로지스틱스 접근법과 NaVid의 video-based VLM navigation은 다른 센서 모달리티로 동일한 navigation 문제를 해결한다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 공간-언어 매핑 기술이 OpenBench의 OpenStreetMap과 VLM 결합 시스템의 이론적 기반이다.
+- 🔗 후속 연구: [[papers/1367_DivScene_Towards_Open-Vocabulary_Object_Navigation_with_Larg/review]] — DivScene의 open-vocabulary object navigation이 OpenBench의 semantic navigation을 더 복잡한 실내 환경으로 확장한다.
+- 🧪 응용 사례: [[papers/1507_OpenBench_A_New_Benchmark_and_Baseline_for_Semantic_Navigati/review]] — OpenBench의 스마트 로지스틱스 벤치마크는 실제 배송 시나리오에서 semantic navigation 시스템들의 성능을 평가하는 구체적인 응용 사례를 제공합니다.
+- 🏛 기반 연구: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — OpenBench의 벤치마킹 방법론이 VLABench의 대규모 언어 조건부 로봇 벤치마크 설계의 기초적인 평가 프레임워크를 제시합니다.
+- 🏛 기반 연구: [[papers/1600_UniGoal_Towards_Universal_Zero-shot_Goal-oriented_Navigation/review]] — semantic navigation benchmark가 universal goal-oriented navigation의 평가 기반이 됩니다.
+- 🧪 응용 사례: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — OpenBench는 VLN 서베이에서 다룬 semantic navigation을 위한 실제 벤치마크와 baseline을 제공한다.
+- 🧪 응용 사례: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — ApexNav의 의미론적 적응 탐색 전략을 평가할 수 있는 새로운 semantic navigation 벤치마크
+- 🏛 기반 연구: [[papers/1367_DivScene_Towards_Open-Vocabulary_Object_Navigation_with_Larg/review]] — 의미적 네비게이션을 위한 새로운 벤치마크와 기준선의 기초를 제공합니다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "JanusVLN은 시각-언어 네비게이션에서 spatial-geometric과 visual-semantic 정보를 분리하여 dual implicit neural memory로 모델링하는 프레임워크를 제안한다. 3D 기하학적 선행 지식과 MLLM의 의미론적 이해를 결합하여 효율적이고 공간 인식적인 에이전트 네비게이션을 실현한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Symbolic_Navigation_Memory"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zeng et al._2025_JanusVLN Decoupling Semantics and Spatiality with Dual Implicit Memory for Vision-Language Navigati.pdf"
 ---
@@ -93,8 +95,16 @@ JanusVLN은 시각-언어 네비게이션에서 spatial-geometric과 visual-sema
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 두 논문 모두 VLN에서 메모리 표현을 다루지만, 하나는 듀얼 암시적 메모리를, 다른 하나는 의미적 맵 기반 메모리를 사용합니다.
-- 🏛 기반 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — 공간 언어 맵이 시각-언어 네비게이션에서 공간-기하학적 정보와 의미론적 정보를 분리하는 기초를 제공합니다.
-- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — 시각 언어 맵의 기본 개념이 공간-의미 정보 분리의 이론적 토대가 됩니다.
-- 🔗 후속 연구: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — 시각-언어 네비게이션의 전반적인 분류 체계에서 듀얼 메모리 접근법의 위치를 이해할 수 있습니다.
-- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 두 논문 모두 VLN에서 메모리 표현을 다루지만, 하나는 의미적 맵 기반에, 다른 하나는 듀얼 암시적 메모리에 집중합니다.
+- 🔄 다른 접근: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — 둘 다 spatial reasoning을 위한 그래프 기반 접근이지만 dual implicit memory vs dynamic scene graph라는 다른 표현 방식을 사용한다.
+- 🏛 기반 연구: [[papers/1487_Multimodal_Spatial_Language_Maps_for_Robot_Navigation_and_Ma/review]] — Multimodal Spatial Language Maps의 spatial-semantic 분리 개념을 dual implicit neural memory로 구체화했다.
+- 🔗 후속 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — MEM의 multi-scale embodied memory를 spatial-geometric과 visual-semantic으로 특화하여 VLN에 적용했다.
+- 🏛 기반 연구: [[papers/1486_Multimodal_Perception_for_Goal-oriented_Navigation_A_Survey/review]] — JanusVLN의 spatial-geometric과 semantic 정보 분리 접근법이 멀티모달 목표 지향 네비게이션의 핵심 설계 원리를 제공한다.
+- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — JanusVLN이 Visual Language Maps의 공간-언어 매핑을 dual implicit memory로 발전시켜 더 효율적인 네비게이션을 실현한다.
+- 🔄 다른 접근: [[papers/1575_SmartWay_Enhanced_Waypoint_Prediction_and_Backtracking_for_Z/review]] — 둘 다 시각-언어 네비게이션에서 공간 추론 향상에 초점을 맞추지만, JanusVLN은 dual memory를, SmartWay는 waypoint 예측에 집중한다.
+- 🏛 기반 연구: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — VL-Nav의 neuro-symbolic 추론을 spatial-geometric과 visual-semantic 분리로 구체화하여 발전시킨다.
+- 🔗 후속 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — VLN-BERT의 기본적인 vision-language navigation을 dual implicit memory로 확장하여 공간-의미 분리를 구현한다.
+- 🔄 다른 접근: [[papers/1589_TopV-Nav_Unlocking_the_Top-View_Spatial_Reasoning_Potential/review]] — TopV-Nav의 top-view spatial reasoning과 다르게 3D geometric과 semantic을 분리한 dual memory 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — 둘 다 공간 추론을 위해 그래프 기반 표현을 활용하지만 scene graph vs neural memory라는 서로 다른 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/1595_TRAVEL_Training-Free_Retrieval_and_Alignment_for_Vision-and-/review]] — VLN에서 서로 다른 모듈식 접근법 - retrieval-alignment vs dual implementation입니다.
+- 🧪 응용 사례: [[papers/1607_Vision-Language_Navigation_A_Survey_and_Taxonomy/review]] — JanusVLN은 VLN 서베이의 분류 체계에 해당하는 의미론과 공간성을 분리한 구체적 구현 사례다.
+- 🏛 기반 연구: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — JanusVLN의 의미론적-공간적 분리 개념이 CityNavAgent의 계층적 의미 계획 구조의 기초가 됩니다.

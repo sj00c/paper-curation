@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇 네비게이션과 조작을 위해 pretrained multimodal foundation model의 특징을 3D 환경 재구성과 융합한 spatial language map (VLMaps, AVLMaps)을 제안한다. 이를 통해 자연어, 이미지, 오디오 등 다중모달 쿼리를 공간상의 목표 위치로 그라운딩할 수 있다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Language-Guided_Visual_Navigation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Visual_Language_Navigation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2025_Multimodal Spatial Language Maps for Robot Navigation and Manipulation.pdf"
 ---
@@ -89,12 +91,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2025_Multimodal Spatial Lan
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 사전훈련된 멀티모달 모델의 특징을 공간적으로 융합하는 방법론이 로봇 네비게이션의 기반 기술을 제공합니다.
-- 🔄 다른 접근: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 두 논문 모두 공간적 언어 표현을 다루지만, 하나는 3D 융합에, 다른 하나는 top-down 맵에 집중합니다.
-- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — 기본적인 시각 언어 맵을 멀티모달(언어, 이미지, 오디오) 쿼리가 가능한 공간 맵으로 발전시킨 형태입니다.
-- 🏛 기반 연구: [[papers/1505_Open-vocabulary_Queryable_Scene_Representations_for_Real_Wor/review]] — 오픈 어휘 장면 표현이 공간 언어 맵에서 다양한 모달리티를 공간적으로 그라운딩하는 기반을 제공합니다.
-- 🔗 후속 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 사전훈련된 모델들의 조합을 멀티모달 공간 언어 맵과 결합하여 더욱 정교한 네비게이션을 구현할 수 있습니다.
-- 🔗 후속 연구: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — 공간 언어 맵을 annotated semantic map으로 발전시켜 더욱 구조화된 네비게이션 정보를 제공합니다.
-- 🏛 기반 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — 공간 언어 맵이 시각-언어 네비게이션에서 공간-기하학적 정보와 의미론적 정보를 분리하는 기초를 제공합니다.
-- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 2D 기반 접근법이 Multimodal Spatial Language Maps의 다중 모달 확장과 결합되어 더 풍부한 공간 이해를 달성할 수 있음
-- 🔄 다른 접근: [[papers/1332_CLIP-Fields_Weakly_Supervised_Semantic_Fields_for_Robotic_Me/review]] — Multimodal Spatial Language Maps는 CLIP-Fields와 유사한 공간-언어 매핑이지만 멀티모달 접근법을 사용한다
+- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps를 확장하여 오디오 모달리티까지 포함한 AVLMaps로 다중모달 spatial grounding을 실현했다.
+- 🏛 기반 연구: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — LERF의 언어 임베딩 3D 필드 기법이 VLMaps의 공간-언어 매핑 구현의 핵심 기술적 기초가 된다.
+- 🔗 후속 연구: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — open-vocabulary 3D scene grounding을 multimodal spatial mapping으로 발전시킨 확장
+- 🧪 응용 사례: [[papers/1622_VoxPoser_Composable_3D_Value_Maps_for_Robotic_Manipulation_w/review]] — spatial language map의 개념을 composable 3D value maps로 실제 조작에 적용
+- 🔗 후속 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — Multimodal Spatial Language Maps의 공간 표현 방법론이 SpatialVLA의 시각-언어-행동 모델에서 더 정교한 공간적 이해로 확장됩니다.
+- 🔗 후속 연구: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — Multimodal Spatial Language Maps의 공간 표현이 GauDP에서 3D Gaussian field를 통한 다중 에이전트 공간 협업으로 더욱 발전한 형태이다.
+- 🔗 후속 연구: [[papers/1438_InternVLA-M1_A_Spatially_Guided_Vision-Language-Action_Frame/review]] — multimodal spatial language maps를 VLA의 공간 그라운딩 메커니즘과 결합하여 더 정확한 공간 추론을 달성할 수 있다.
+- 🏛 기반 연구: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — Multimodal Spatial Language Maps의 spatial-semantic 분리 개념을 dual implicit neural memory로 구체화했다.
+- 🔗 후속 연구: [[papers/1456_LERF_Language_Embedded_Radiance_Fields/review]] — LERF의 언어-3D 매핑 개념을 로봇 네비게이션과 조작에 직접 적용한 확장 연구
+- 🔗 후속 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — visual language map을 multimodal spatial language map으로 확장한 발전된 연구입니다.
+- 🏛 기반 연구: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — Multimodal Spatial Language Maps의 공간 이해 방법론이 EmbSpatial-Bench의 egocentric 공간 관계 평가 설계의 기반을 제공합니다.

@@ -12,9 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 2014년 1월부터 2025년 2월까지 ICU 환자의 기계환기 이탈에 관한 5,101개 논문을 CiteSpace와 VOSviewer를 이용하여 분석한 서지학적 분석으로, 연구 동향과 새로운 핫스팟을 파악했다."
 tags:
+  - "cat/Open_Access_Publication_Analytics"
   - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Trend_Forecasting_Techniques"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Weaning from mechanical ventilation in ICU patients research hotspots and trends.pdf"
 ---
@@ -91,9 +92,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Weaning from mechanical ventilation in I
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — ICU 기계환기 이탈 연구 동향을 전통적 서지분석으로 파악한 것과 달리 신경망 기반 미래 연구 동향 예측 방법을 제시합니다.
-- 🧪 응용 사례: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 동일하게 의학 분야에서 서지계량학적 분석을 수행하지만 심혈관질환의 머신러닝 응용에 특화된 분석을 제공합니다.
-- 🧪 응용 사례: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 기계학습을 통한 연구 동향 예측 방법을 ICU 기계환기 이탈 분야의 핫스팟 분석에 적용한다
-- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer 프로그램이 의료 분야 연구 동향 시각화에 핵심적인 도구로 사용된다
-- 🔄 다른 접근: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 의료 분야에서 poloxamer와 hyaluronic acid 연구와 유사한 서지계량학적 접근을 사용한다
-- 🔄 다른 접근: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 심혈관질환의 머신러닝 응용과 ICU 기계환기 이탈 연구가 모두 의학 분야의 서로 다른 영역에서 서지계량학적 분석을 수행합니다.
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — VOSviewer 프로그램의 bibliometric 분석 기능이 기계환기 이탈 연구의 시각화 분석 도구 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — poloxamer와 히알루론산 관련 연구가 중환자실 기계환기 이탈의 구체적 치료 접근법 사례를 제시합니다.
+- 🔄 다른 접근: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — 기계환기 이탈과 구강외과 무작위 대조연구 모두 의료 중재의 효과와 안전성을 평가하는 임상 연구의 bibliometric 분석 접근법을 공유한다.
+- 🏛 기반 연구: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — COVID-19 팬데믹이 과학자들에게 미친 불평등한 영향 연구가 ICU 환자 치료 연구의 팬데믹 시기 동향 변화를 이해하는 데 중요한 맥락을 제공한다.
+- 🔄 다른 접근: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 의학 분야 연구 핫스팟 파악을 CiteSpace/VOSviewer와 Science Mapping이라는 다른 방법으로 수행합니다.
+- 🧪 응용 사례: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 중환자실 기계환기 이탈 연구가 노인 연구에서 D&I 이론 적용의 구체적 임상 사례를 제공하기 때문

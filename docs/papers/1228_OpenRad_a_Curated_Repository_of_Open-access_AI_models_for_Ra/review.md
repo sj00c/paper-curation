@@ -12,9 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "OpenRad는 방사선학 분야의 개방형 AI 모델을 위한 큐레이션된 저장소로, 5,239개의 논문을 검색하여 1,694개의 개방형 코드/모델을 보유한 표준화된 리소스이다. 이 저장소는 RSNA AI Roadmap 온톨로지를 따르며 모델 발견성, 재현성, 임상 적용을 촉진한다."
 tags:
-  - "cat/AI-Assisted_Scientific_Discovery"
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Knowledge_Graphs_and_Data_Integration"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/OpenRad a Curated Repository of Open-access AI models for Radiology.pdf"
 ---
@@ -99,9 +99,9 @@ OpenRad는 방사선학 분야의 개방형 AI 모델을 위한 큐레이션된 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야의 지식 조직 시스템에 대한 이론적 기반을 방사선학 AI 모델 분류에 적용했다.
-- 🧪 응용 사례: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 방사선학 분야의 기초 모델들을 과학적 발견 가속화에 활용할 수 있는 구체적 경로를 제시한다.
-- 🔄 다른 접근: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 생의학 지식 그래프와 달리 방사선학 특화 AI 모델 저장소로 도메인별 접근법을 제시한다.
-- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 학술 코퍼스 구축 및 표준화된 메타데이터 관리의 방법론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1079_REFORMS_Consensus-based_Recommendations_for_Machine-learning/review]] — 기계학습 모델의 표준화된 보고 지침을 방사선학 AI 모델 저장소에 적용할 수 있다.
-- 🔄 다른 접근: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — AI 모델의 오픈 접근에서 촉매 발견과 방사선학의 다른 과학 영역 접근법임
+- 🔄 다른 접근: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 오픈 카탈리스트와 OpenRad 모두 특정 분야를 위한 개방형 AI 모델 저장소를 서로 다른 접근법으로 구축합니다.
+- 🏛 기반 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 과학 발견을 위한 기초 모델 수용 이론이 방사선학 AI 모델 저장소 설계의 이론적 배경을 제공합니다.
+- 🔄 다른 접근: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — OpenRad와 S2ORC 모두 대규모 과학 데이터를 체계적으로 수집하고 표준화하여 연구 커뮤니티에 제공하는 오픈 사이언스 인프라 구축 프로젝트다.
+- 🏛 기반 연구: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 사이버보안 분야의 기계학습 응용에 대한 scientometric 조사가 의료 AI 모델의 보안성과 신뢰성 평가에 필수적인 방법론적 통찰을 제공한다.
+- 🔗 후속 연구: [[papers/1109_A_comprehensive_large-scale_biomedical_knowledge_graph_for_A/review]] — 의료 AI 분야의 지식 그래프를 방사선학 특화 AI 모델로 확장한 접근이다
+- 🏛 기반 연구: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야 지식 조직 체계에 대한 포괄적 분석이 특화 분야 저장소 구축의 기반을 제공한다

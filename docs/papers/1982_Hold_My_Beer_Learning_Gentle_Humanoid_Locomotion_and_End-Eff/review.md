@@ -1,3 +1,23 @@
+---
+title: "1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff"
+authors:
+  - "Yitang Li"
+  - "Yuanhang Zhang"
+  - "Wenli Xiao"
+  - "Chaoyi Pan"
+  - "Haoyang Weng"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 음료를 들고 걸을 때 흘리지 않도록 상체와 하체를 분리된 에이전트로 제어하는 SoFTA 프레임워크를 제안하여, 느린 보행 제어와 빠른 end-effector 안정화를 동시에 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_Hold My Beer Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control.pdf"
+---
+
 # Hold My Beer: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control
 
 > **저자**: Yitang Li, Yuanhang Zhang, Wenli Xiao, Chaoyi Pan, Haoyang Weng, Guanqi He, Tairan He, Guanya Shi | **날짜**: 2025-05-30 | **URL**: [https://arxiv.org/abs/2505.24198](https://arxiv.org/abs/2505.24198)
@@ -67,3 +87,16 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 휴머노이드의 보행 중 end-effector 안정화라는 중요하면서도 미해결 문제를 frequency separation과 decoupled control로 우아하게 해결한 창의적 접근법을 제시하며, 실세계 배포로 실용성을 입증한 뛰어난 연구이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1694_SteadyTray_Learning_Object_Balancing_Tasks_in_Humanoid_Tray/review]] — 물체 안정화 제어를 Hold My Beer는 음료 운반에, SteadyTray는 트레이 균형에 각각 특화하여 접근한다.
+- 🏛 기반 연구: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — HuB의 극도 균형 제어 기술이 Hold My Beer의 음료를 흘리지 않는 정밀한 end-effector 안정화의 토대가 된다.
+- 🔗 후속 연구: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — compliant하고 불균등한 지형에서의 강건한 보행을 부드러운 물체 운반 상황으로 확장한 형태다.
+- 🧪 응용 사례: [[papers/1684_SoftMimic_Learning_Compliant_Whole-body_Control_from_Example/review]] — 순응적 전신 제어 기술을 실제 음료 운반과 같은 섬세한 조작 작업에 적용하여 부드러운 이동과 종단점 제어를 달성했다.
+- 🏛 기반 연구: [[papers/1694_SteadyTray_Learning_Object_Balancing_Tasks_in_Humanoid_Tray/review]] — Hold My Beer의 부드러운 운반 제어가 SteadyTray의 불안정한 물체 균형에 필요한 제어 기술을 제공한다
+- 🧪 응용 사례: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — Hold My Beer의 부드러운 locomotion과 end-effector 제어가 본 논문의 추적-순응 trade-off 프레임워크의 실제 적용 사례임
+- 🧪 응용 사례: [[papers/1929_FLAM_Foundation_Model-Based_Body_Stabilization_for_Humanoid/review]] — FLAM의 신체 안정화 기법이 Hold My Beer의 gentle locomotion과 end-effector tracking에 직접 적용될 수 있습니다.
+- 🏛 기반 연구: [[papers/2036_Kinematics-Aware_Multi-Policy_Reinforcement_Learning_for_For/review]] — 부드러운 힘 제어와 end-effector 정밀도가 고부하 산업 작업에서의 안전하고 정확한 조작을 위한 기본 원리를 제공한다.
+- 🔗 후속 연구: [[papers/2085_Load-Aware_Locomotion_Control_for_Humanoid_Robots_in_Industr/review]] — Load-Aware Locomotion Control의 하중 인식 보행을 Hold My Beer의 부드러운 end-effector 제어와 결합하여 더 안정적인 물체 운반이 가능하다.
+- 🔗 후속 연구: [[papers/2149_TOP_Time_Optimization_Policy_for_Stable_and_Accurate_Standin/review]] — Hold My Beer의 gentle locomotion and end-effector control이 TOP의 안정적인 standing manipulation을 이동하면서도 수행할 수 있도록 확장한 형태입니다.

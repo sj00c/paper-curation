@@ -10,8 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "포셀린 용기 외부에 설치 가능한 마이크로스트립 기반 무선 RF 센서를 제안하며, 670-730 MHz 대역에서 작동하여 물의 이온 농도 변화와 고체 오염물을 동시에 감지할 수 있다."
 tags:
-  - "cat/Biomechanical_Robot_Design_Systems"
-  - "sub/Musculoskeletal_Transmission_Systems"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gholami et al._2023_Time-Transient Wireless RF Sensor with Differentiative Detecting Capability for Target Ionic Solutio.pdf"
 ---
@@ -85,9 +86,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gholami et al._2023_Time-Transient Wirel
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1304_Climber_Force_and_Motion_Estimation_from_Video/review]] — RF 센서 기반 물성 감지와 물리학적 입자 상호작용 분석의 서로 다른 물질 특성 연구 접근법을 비교합니다.
-- 🏛 기반 연구: [[papers/1313_Aspects_of_entanglement_with_background_electric_and_magneti/review]] — 마이크로스트립 RF 센서의 전자기장 상호작용이 배경 자기장 entanglement 연구에 실험적 기초를 제공합니다.
-- 🏛 기반 연구: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — RF 센서의 이온 농도 감지 정확도가 strain gradient 탄성 매개변수 식별 방법에 측정 기준을 제공합니다.
-- 🔄 다른 접근: [[papers/1304_Climber_Force_and_Motion_Estimation_from_Video/review]] — 물리학적 상호작용 분석과 RF 센서 기반 물성 감지의 서로 다른 물질 특성 연구 방법을 비교할 수 있습니다.
-- 🧪 응용 사례: [[papers/1530_Revised_identification_of_strain_gradient_elastic_parameters/review]] — 탄성 매개변수 식별 방법이 RF 센서의 물질 특성 변화 감지 정확도 향상에 적용됩니다.
-- 🔄 다른 접근: [[papers/1313_Aspects_of_entanglement_with_background_electric_and_magneti/review]] — 양자 entanglement와 RF 센서의 전자기장 상호작용 분석에서 서로 다른 전자기 현상 연구 접근법을 보여줍니다.
+- 🔄 다른 접근: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — Time-Transient RF 센서와 3D Gaussian Splatting은 모두 실시간 환경 감지를 다루지만 무선 RF와 시각적 렌더링이라는 다른 센서 모달리티를 사용한다.
+- 🏛 기반 연구: [[papers/1313_Aspects_of_entanglement_with_background_electric_and_magneti/review]] — Background electromagnetic field의 물리적 특성 분석이 RF 센서의 전자기파 기반 감지 메커니즘의 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — 무선 RF 센서 기술은 VeBrain의 물리적 환경 인식 능력을 향상시킬 수 있는 센싱 모듈로 활용 가능합니다.
+- 🔄 다른 접근: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — RF 센서와 Embodied Navigation Foundation Model은 환경 인식에서 서로 다른 센싱 모달리티를 제공합니다.
+- 🔗 후속 연구: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — 무선 RF 센서는 VeBrain의 멀티모달 지각 능력을 물리적 환경 감지로 확장할 수 있는 추가 센싱 모달리티입니다.
+- 🔄 다른 접근: [[papers/1313_Aspects_of_entanglement_with_background_electric_and_magneti/review]] — 시간 과도적 무선 RF 센서에 대한 다른 물리학적 접근 방식을 보여줍니다.

@@ -1,3 +1,25 @@
+---
+title: "2044_Learning_Aerodynamics_for_the_Control_of_Flying_Humanoid_Rob"
+authors:
+  - "Antonello Paolino"
+  - "Gabriele Nava"
+  - "Fabio Di Natale"
+  - "Fabio Bergonti"
+  - "Punith Reddy Vanteddu"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "비행 인간형 로봇의 공기역학 모델링을 위해 CFD 시뮬레이션, 풍동 실험, 딥러닝을 결합한 포괄적 접근 방식을 제시하고, 제트 엔진을 장착한 iRonCub-Mk1 로봇을 설계·제작하여 비행 제어를 구현한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Paolino et al._2025_Learning Aerodynamics for the Control of Flying Humanoid Robots.pdf"
+---
+
 # Learning Aerodynamics for the Control of Flying Humanoid Robots
 
 > **저자**: Antonello Paolino, Gabriele Nava, Fabio Di Natale, Fabio Bergonti, Punith Reddy Vanteddu, Donato Grassi, Luca Riccobene, Alex Zanotti, Renato Tognaccini, Gianluca Iaccarino, Daniele Pucci | **날짜**: 2025-05-30 | **URL**: [https://arxiv.org/abs/2506.00305](https://arxiv.org/abs/2506.00305)
@@ -67,3 +89,14 @@
 - Overall: 4/5
 
 **총평**: 인간형 로봇의 비행 능력 확보를 위해 공기역학 모델링과 제어를 종합적으로 다룬 기술적·과학적으로 의미 있는 연구이며, 다중 모드 로봇의 미래 설계에 중요한 기여를 제시한다. 다만 실제 비행 실험 검증과 학습 모델의 일반화 성능 평가가 후속 과제이다.
+
+## Related Papers
+
+- 🧪 응용 사례: [[papers/2028_iRonCub_3_The_Jet-Powered_Flying_Humanoid_Robot/review]] — 공기역학 학습 방법론이 iRonCub-Mk1의 제트 엔진 비행 제어에 직접 적용된다.
+- 🔄 다른 접근: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 비행 제어를 위해 공기역학 학습과 적대적 모션 프라이어로 접근법이 다르다.
+- 🧪 응용 사례: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — Learning Aerodynamics의 공기역학 모델이 Ego-Vision World Model의 휴머노이드 접촉 계획에서 공중 단계 예측 정확도를 향상시킬 수 있다.
+- 🔄 다른 접근: [[papers/1832_CAD-Driven_Co-Design_for_Flight-Ready_Jet-Powered_Humanoids/review]] — Learning Aerodynamics는 실험적 접근, CAD-Driven Co-Design은 설계 최적화 접근으로 비행 휴머노이드 개발에 서로 다른 방법론을 사용한다.
+- 🔄 다른 접근: [[papers/2019_iCub3_Avatar_System_Enabling_Remote_Fully-Immersive_Embodime/review]] — 둘 다 비행 휴머노이드이지만 Learning Aerodynamics는 공기역학 학습, iCub3 Avatar는 원격 몰입형 구현 중심
+- 🔄 다른 접근: [[papers/1832_CAD-Driven_Co-Design_for_Flight-Ready_Jet-Powered_Humanoids/review]] — 제트 추진 휴머노이드를 위해 CAD 기반 형태 최적화와 공기역학 제어 학습이라는 서로 다른 설계 접근법을 제시한다
+- 🔗 후속 연구: [[papers/2028_iRonCub_3_The_Jet-Powered_Flying_Humanoid_Robot/review]] — iRonCub 3의 제트 추진 비행이 공기역학 학습과 결합되어 더 정교한 비행 제어를 실현할 수 있다.
+- 🔄 다른 접근: [[papers/2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors/review]] — 비행 휴머노이드 로봇을 위한 공기역학 학습이라는 다른 접근법으로 항공 제어를 다룬다.

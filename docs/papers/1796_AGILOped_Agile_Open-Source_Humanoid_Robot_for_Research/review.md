@@ -1,3 +1,23 @@
+---
+title: "1796_AGILOped_Agile_Open-Source_Humanoid_Robot_for_Research"
+authors:
+  - "Grzegorz Ficht"
+  - "Luis Denninger"
+  - "Sven Behnke"
+date: "2025.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "AGILOped는 오픈소스 휴머노이드 로봇으로서 높은 성능과 접근성 사이의 간극을 해소하며, 3D 프린팅과 상용 부품을 활용해 6,380 USD의 저렴한 가격으로 동적 운동 능력을 제공한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Humanoid_Exercise_Learning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ficht et al._2025_AGILOped Agile Open-Source Humanoid Robot for Research.pdf"
+---
+
 # AGILOped: Agile Open-Source Humanoid Robot for Research
 
 > **저자**: Grzegorz Ficht, Luis Denninger, Sven Behnke | **날짜**: 2025-09-11 | **URL**: [https://arxiv.org/abs/2509.09364](https://arxiv.org/abs/2509.09364)
@@ -65,3 +85,18 @@ AGILOped는 오픈소스 휴머노이드 로봇으로서 높은 성능과 접근
 - Overall: 4/5
 
 **총평**: AGILOped는 오픈소스, 저가격, 높은 성능을 결합한 획기적인 휴머노이드 로봇으로, 휴머노이드 로봇 연구의 진입장벽을 크게 낮추고 학계의 민주화를 촉진하는 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1864_Demonstrating_Berkeley_Humanoid_Lite_An_Open-source_Accessib/review]] — 동일한 저비용 오픈소스 휴머노이드 개발 목표를 서로 다른 설계 철학과 제작 방식으로 구현한다
+- 🔗 후속 연구: [[papers/1927_Fauna_Sprout_A_lightweight_approachable_developer-ready_huma/review]] — Fauna Sprout의 lightweight하고 접근하기 쉬운 개발자 친화적 특성이 AGILOped의 연구용 활용도를 확장시킬 수 있다
+- 🏛 기반 연구: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — ToddlerBot의 ML 호환 플랫폼 설계 경험이 AGILOped의 동적 운동 능력 구현에 필요한 기초 지식을 제공한다
+- 🔄 다른 접근: [[papers/1709_The_Duke_Humanoid_Design_and_Control_For_Energy_Efficient_Bi/review]] — 둘 다 저비용 오픈소스 humanoid이지만 Duke는 에너지 효율, AGILOped는 동적 성능에 특화되었습니다.
+- 🔄 다른 접근: [[papers/1818_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — Berkeley Humanoid와 함께 연구용 humanoid 플랫폼이지만 AGILOped는 더 접근 가능한 가격대를 제공합니다.
+- 🔄 다른 접근: [[papers/1709_The_Duke_Humanoid_Design_and_Control_For_Energy_Efficient_Bi/review]] — 둘 다 오픈소스 humanoid 플랫폼이지만 AGILOped는 더 높은 동적 성능에 초점을 맞춥니다.
+- 🔄 다른 접근: [[papers/1715_ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_L/review]] — 둘 다 저비용 오픈소스 humanoid를 제공하지만 AGILOped는 더 고성능 동적 움직임에 초점을 맞춥니다.
+- 🔄 다른 접근: [[papers/1818_Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Con/review]] — 학습 기반 제어를 위한 연구 플랫폼으로 Berkeley Humanoid vs AGILOped라는 서로 다른 오픈소스 휴머노이드 설계를 비교할 수 있다
+- 🔄 다른 접근: [[papers/1859_DecARt_Leg_Design_and_Evaluation_of_a_Novel_Humanoid_Robot_L/review]] — 오픈소스 인간형 로봇 연구를 위한 다른 하드웨어 접근법을 제시합니다.
+- 🔄 다른 접근: [[papers/1864_Demonstrating_Berkeley_Humanoid_Lite_An_Open-source_Accessib/review]] — 저비용 오픈소스 휴머노이드를 3D-printed cycloidal gearbox와 3D 프린팅 상용 부품이라는 서로 다른 제작 전략으로 구현한다
+- 🔄 다른 접근: [[papers/1927_Fauna_Sprout_A_lightweight_approachable_developer-ready_huma/review]] — 둘 다 연구용 휴머노이드 플랫폼이지만 Sprout는 안전성과 접근성, AGILOped는 민첩성에 중점을 둔다.
+- 🔄 다른 접근: [[papers/2077_Learning_with_pyCub_A_Simulation_and_Exercise_Framework_for/review]] — 교육용 시뮬레이션 프레임워크와 연구용 오픈소스 휴머노이드는 모두 교육 목적이지만 서로 다른 접근법을 제공한다.

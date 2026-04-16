@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "인터넷 데이터로부터 학습된 generative model을 기반으로 인간, 로봇 등의 상호작용에 대한 시각적 결과를 시뮬레이션하는 universal simulator (UniSim)를 제안한다. 다양한 데이터셋을 통합하여 언어 지시, 로봇 제어, 인간 활동 등 다양한 모달리티의 행동을 입력받아 일관성 있는 비디오를 생성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Synthetic_Grasping_Datasets"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Egocentric_Human_Data"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2023_Learning Interactive Real-World Simulators.pdf"
 ---
@@ -89,10 +91,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2023_Learning Interactive Re
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — 두 논문 모두 로봇 조작을 위한 시뮬레이션과 데이터 생성을 다루지만, 하나는 범용 시뮬레이터에, 다른 하나는 VLM 기반 자동화에 집중합니다.
-- 🏛 기반 연구: [[papers/1360_Diffusion_Models_Are_Real-Time_Game_Engines/review]] — 실시간 게임 엔진으로서의 diffusion 모델이 상호작용 시뮬레이터의 핵심 기술적 기반을 제공합니다.
-- 🧪 응용 사례: [[papers/1421_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — 고충실도 시뮬레이션 플랫폼이 멀티모달 AI 에이전트의 훈련과 평가 환경을 제공합니다.
-- 🏛 기반 연구: [[papers/1631_World_Models/review]] — 월드 모델의 기본 개념이 실제 세계 상호작용을 시뮬레이션하는 범용 시뮬레이터의 이론적 토대가 됩니다.
-- 🔄 다른 접근: [[papers/1467_Manipulate-Anything_Automating_Real-World_Robots_using_Visio/review]] — 두 논문 모두 로봇을 위한 시뮬레이션과 데이터 생성을 다루지만, 하나는 VLM 기반 자동화에, 다른 하나는 범용 시뮬레이터에 집중합니다.
-- 🔗 후속 연구: [[papers/1347_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr/review]] — Learning Interactive Real-World Simulators는 D2E의 데스크톱 데이터를 상호작용적 실세계 시뮬레이터 학습으로 확장한다
-- 🔄 다른 접근: [[papers/1387_EWMBench_Evaluating_Scene_Motion_and_Semantic_Quality_in_Emb/review]] — Learning Interactive Real-World Simulators도 embodied world modeling의 품질 평가를 다룬다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 둘 다 생성형 시뮬레이터이지만 UniSim은 범용 상호작용에, GAIA-1은 자율주행에 특화되어 있다.
+- 🏛 기반 연구: [[papers/1360_Diffusion_Models_Are_Real-Time_Game_Engines/review]] — 실시간 게임 엔진으로서의 diffusion model이 UniSim의 interactive simulator 설계에 기반이 된다.
+- 🔗 후속 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 비디오 파운데이션 모델을 활용한 물리적 상호작용 시뮬레이션으로 UniSim의 접근법을 더 발전시켰다.
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Genie의 생성형 상호작용 환경 개념이 UniSim의 universal simulator 설계 기반이 됨
+- 🔗 후속 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — Structured World Models은 UniSim의 인간 비디오 학습을 구조화된 세계 모델로 발전시킨 연구임
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — world model의 기본 개념과 원리를 interactive real-world simulation에 적용하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1355_DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Hu/review]] — 동영상 기반 세계 모델을 실시간 상호작용이 가능한 시뮬레이터로 확장한 연구입니다.
+- 🏛 기반 연구: [[papers/1396_ForesightNav_Learning_Scene_Imagination_for_Efficient_Explor/review]] — 실제 환경의 시뮬레이션 학습 개념을 scene imagination을 통한 탐색 전략에 적용했다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 둘 다 생성형 월드 모델이지만 GAIA-1은 자율주행에, UniSim은 범용 상호작용 시뮬레이션에 특화되어 있다.
+- 🔗 후속 연구: [[papers/1406_Genie_Envisioner_A_Unified_World_Foundation_Platform_for_Rob/review]] — 로봇 조작을 위한 통합 플랫폼에서 더 나아가 실세계 시뮬레이터 학습으로 확장한 연구입니다.
+- 🏛 기반 연구: [[papers/1407_Genie_Generative_Interactive_Environments/review]] — Learning Interactive Real-World Simulators의 상호작용적 시뮬레이션 기법이 Genie의 생성형 인터랙티브 환경 설계의 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — world model 학습을 실제 interactive simulator 구현에 적용한 사례
+- 🔗 후속 연구: [[papers/1439_IPR-1_Interactive_Physical_Reasoner/review]] — Learning Interactive Real-World Simulators의 개념을 PhysCode를 통한 물리 중심 추론으로 발전시킨다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — real-world simulation을 위한 서로 다른 접근법 - foundation model vs interactive learning입니다.
+- 🔗 후속 연구: [[papers/1387_EWMBench_Evaluating_Scene_Motion_and_Semantic_Quality_in_Emb/review]] — Learning Interactive Real-World Simulators의 시뮬레이터 평가가 EWMBench에서 robotic manipulation 특화된 물리적 타당성 평가로 확장되었다.
+- 🏛 기반 연구: [[papers/1360_Diffusion_Models_Are_Real-Time_Game_Engines/review]] — interactive simulator 학습이 diffusion 기반 실시간 게임 엔진의 핵심 기반 기술
+- 🔄 다른 접근: [[papers/1368_DiWA_Diffusion_Policy_Adaptation_with_World_Models/review]] — 상호작용 실세계 시뮬레이터 학습을 통한 다른 월드 모델 기반 적응 접근법입니다.

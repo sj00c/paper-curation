@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 사이버공간과 물리세계를 연결하는 embodied AI의 최신 동향을 포괄적으로 조사하며, Multi-modal Large Models(MLMs)과 World Models(WMs)의 역할을 강조한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Scaling"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Aligning Cyber Space with Physical World A Comprehensive Survey on Embodied AI.pdf"
 ---
@@ -82,7 +84,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Aligning Cyber Space wit
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — LLM 기반 embodied navigation의 구체적 연구가 사이버-물리 융합의 실제 적용 사례를 제공한다
-- 🔗 후속 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — world model과 multi-modal large model의 결합을 embodied AI의 포괄적 관점으로 발전시킨다
-- 🔄 다른 접근: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — embodied multimodal model을 각각 사이버-물리 융합과 개발-데이터-평가라는 다른 관점에서 조사한다
-- 🔗 후속 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — LLM과 embodied AI의 융합을 navigation에서 전체 사이버-물리 공간으로 확장하여 더 포괄적으로 다룬다
+- 🔄 다른 접근: [[papers/1590_Toward_General-Purpose_Robots_via_Foundation_Models_A_Survey/review]] — Foundation Model을 통한 범용 로봇 개발이라는 유사한 목표를 다른 관점에서 접근한다.
+- 🏛 기반 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — 물리적 세계와 연결된 멀티모달 언어 모델의 기초적 구현을 제공한다.
+- 🔗 후속 연구: [[papers/1294_A_Generalist_Agent/review]] — Generalist Agent를 embodied AI로 확장하는 구체적 방향을 제시한다.
+- 🔄 다른 접근: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — 둘 다 embodied multimodal AI를 포괄적으로 다루지만 본 논문은 사이버-물리 연결에, 다른 논문은 개발과 데이터에 더 집중합니다.
+- 🔗 후속 연구: [[papers/1445_Large_Model_Empowered_Embodied_AI_A_Survey_on_Decision-Makin/review]] — Large Model Empowered Embodied AI 서베이는 본 논문의 MLM과 WM 중심 관점을 의사결정 관점에서 확장합니다.
+- 🔗 후속 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — Embodied AI를 위한 World Model 포괄 서베이와 사이버-물리 연결 서베이가 상호 보완적 관점을 제공합니다.
+- 🔄 다른 접근: [[papers/1397_Foundation_Model_Driven_Robotics_A_Comprehensive_Review/review]] — Foundation Model 기반 로보틱스 리뷰와 사이버-물리 정렬이 다른 관점에서 embodied AI를 분석합니다.

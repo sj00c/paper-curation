@@ -1,3 +1,24 @@
+---
+title: "2072_Learning_to_Walk_and_Fly_with_Adversarial_Motion_Priors"
+authors:
+  - "Giuseppe L'Erario"
+  - "Drew Hanover"
+  - "Angel Romero"
+  - "Yunlong Song"
+  - "Gabriele Nava"
+date: "2023.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Adversarial Motion Priors(AMP)와 강화학습을 결합하여 항공 인형로봇(aerial humanoid robot)이 인간 같은 보행과 비행 사이를 자동으로 전환하도록 학습하는 방법을 제시한다. 복잡한 보상 함수 없이 동작 데이터셋을 모방하면서 과제를 수행하며, 환경 피드백에 따라 locomotion 모드가 자발적으로 전환된다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/L'Erario et al._2023_Learning to Walk and Fly with Adversarial Motion Priors.pdf"
+---
+
 # Learning to Walk and Fly with Adversarial Motion Priors
 
 > **저자**: Giuseppe L'Erario, Drew Hanover, Angel Romero, Yunlong Song, Gabriele Nava, Paolo Maria Viceconte, Daniele Pucci, Davide Scaramuzza | **날짜**: 2023-09-22 | **URL**: [https://arxiv.org/abs/2309.12784](https://arxiv.org/abs/2309.12784)
@@ -68,3 +89,17 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 AMP와 강화학습의 결합을 통해 항공 인형로봇의 multimodal locomotion에서 자동 mode-switching이라는 미해결 문제를 우아하게 해결한 높은 수준의 연구이다. 비록 시뮬레이션 환경에 한정되어 있지만, 기술적 혁신성, 문제 해결의 우수성, 그리고 실제 응용 가능성 측면에서 로봇공학 분야에 의미 있는 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — 스타일화된 물리 기반 캐릭터 제어를 위한 적대적 동작 선험의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — 생성적 적대 증류를 통한 자연스러운 휴머노이드 보행의 확장된 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/2044_Learning_Aerodynamics_for_the_Control_of_Flying_Humanoid_Rob/review]] — 비행 휴머노이드 로봇을 위한 공기역학 학습이라는 다른 접근법으로 항공 제어를 다룬다.
+- 🏛 기반 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — 보행과 비행 사이의 자동 전환이 centroidal momentum을 통한 팔-다리 협응 제어의 기반을 제공한다.
+- 🧪 응용 사례: [[papers/2028_iRonCub_3_The_Jet-Powered_Flying_Humanoid_Robot/review]] — 항공 휴머노이드의 보행-비행 전환이 제트 동력 비행 휴머노이드 로봇에 직접 적용된다.
+- 🏛 기반 연구: [[papers/1832_CAD-Driven_Co-Design_for_Flight-Ready_Jet-Powered_Humanoids/review]] — 비행과 보행을 결합한 adversarial motion prior 학습이 제트 추진 휴머노이드의 복합 모션 제어에 필요한 기초 기술을 제공한다
+- 🏛 기반 연구: [[papers/2016_HUSKY_Humanoid_Skateboarding_System_via_Physics-Aware_Whole-/review]] — 적대적 모션 프라이어를 통한 비행 학습이 스케이트보드의 lean-to-steer 제약 모델링에 기초가 된다.
+- 🔗 후속 연구: [[papers/2028_iRonCub_3_The_Jet-Powered_Flying_Humanoid_Robot/review]] — 지상 보행과 공중 비행을 모두 포함하는 다중 모드 휴머노이드 제어를 위한 적대적 모션 우선순위 학습 방법을 확장할 수 있다.
+- 🔄 다른 접근: [[papers/2044_Learning_Aerodynamics_for_the_Control_of_Flying_Humanoid_Rob/review]] — 비행 제어를 위해 공기역학 학습과 적대적 모션 프라이어로 접근법이 다르다.
+- 🔗 후속 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — 팔 운동을 통한 협응 제어가 보행과 비행 사이의 자동 전환으로 확장되어 더 복잡한 다중 모드 제어를 보여준다.
+- 🔄 다른 접근: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 두 논문 모두 AMP 기반이지만 Cosmo는 미적 제약에, 항공 휴머노이드는 다중 모드 전환에 중점을 둔다.

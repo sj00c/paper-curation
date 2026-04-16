@@ -1,3 +1,25 @@
+---
+title: "1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano"
+authors:
+  - "Yitang Li"
+  - "Zhengyi Luo"
+  - "Tonghe Zhang"
+  - "Cunxi Dai"
+  - "Anssi Kanervisto"
+date: "2025.11"
+doi: "10.48550/arXiv.2511.04131"
+arxiv: ""
+score: 4.0
+essence: "BFM-Zero는 unsupervised RL과 Forward-Backward 모델을 활용하여 휴머노이드 로봇의 다양한 제어 작업을 단일 정책으로 수행할 수 있는 promptable behavioral foundation model을 제시한다. 공유 잠재 공간에 모션, 목표, 보상을 임베딩하여 zero-shot 추론과 few-shot 적응을 가능하게 한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Li et al._2025_BFM-Zero A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforce.pdf"
+---
+
 # BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning
 
 > **저자**: Yitang Li, Zhengyi Luo, Tonghe Zhang, Cunxi Dai, Anssi Kanervisto, Andrea Tirinzoni, Haoyang Weng, Kris Kitani, Mateusz Guzek, Ahmed Touati, Alessandro Lazaric, Matteo Pirotta, Guanya Shi | **날짜**: 2025-11-06 | **DOI**: [10.48550/arXiv.2511.04131](https://doi.org/10.48550/arXiv.2511.04131)
@@ -68,3 +90,21 @@ BFM-Zero는 unsupervised RL과 Forward-Backward 모델을 활용하여 휴머노
 - Overall: 4/5
 
 **총평**: BFM-Zero는 unsupervised RL을 통해 휴머노이드 로봇의 실제 배포에서 처음으로 promptable foundation model을 성공적으로 구현하였으며, zero-shot 다중 작업 수행과 few-shot 적응의 균형을 이루는 실용적 솔루션을 제시한다. 이는 로봇 제어의 패러다임 전환을 제시하는 중요한 기여이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — BeyondMimic의 compact motion tracking과 BFM-Zero의 shared latent space는 모두 통합된 행동 표현 학습이라는 공통 목표를 가진다.
+- 🔄 다른 접근: [[papers/1809_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph/review]] — ASE의 adversarial skill embedding과 다른 접근으로 unsupervised RL과 Forward-Backward 모델을 통한 behavioral foundation model을 제시한다.
+- 🔗 후속 연구: [[papers/1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — 차세대 전신 제어를 위한 행동 기초 모델의 이론을 promptable한 구체적 시스템으로 구현하여 실용성을 높인다.
+- 🔄 다른 접근: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — zero-shot 정책 구현에서 하나는 behavioral foundation model, 다른 하나는 world action model을 사용하는 상호 보완적 접근이다.
+- 🏛 기반 연구: [[papers/2168_UniAct_Unified_Motion_Generation_and_Action_Streaming_for_Hu/review]] — promptable behavioral foundation model의 기초 기술이 unified motion generation과 action streaming에 활용된다.
+- ⚖️ 반론/비판: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — 단일 정책 기반 foundation model vs 모듈식 스킬 라이브러리라는 상반된 아키텍처 철학을 비교하여 각각의 장단점을 분석할 수 있다
+- 🔗 후속 연구: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — BFM-Zero의 promptable 특성이 GR00T N1의 generalist foundation model로 확장되어 더 범용적인 휴머노이드 제어를 달성할 수 있다
+- 🏛 기반 연구: [[papers/1760_X-Loco_Towards_Generalist_Humanoid_Locomotion_Control_via_Sy/review]] — BFM-Zero의 promptable behavioral foundation이 X-Loco의 범용 정책 통합 개념의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1761_Zero-Shot_Whole-Body_Humanoid_Control_via_Behavioral_Foundat/review]] — behavioral foundation model에서 promptable과 zero-shot이라는 보완적 제어 패러다임을 제시한다.
+- 🔗 후속 연구: [[papers/1809_ASE_Large-Scale_Reusable_Adversarial_Skill_Embeddings_for_Ph/review]] — ASE의 adversarial skill embedding 개념을 발전시켜 BFM-Zero는 더 포괄적인 behavioral foundation model을 제시한다.
+- 🔄 다른 접근: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — 휴머노이드의 복잡한 장기 과제 수행을 위해 VLM 기반 모듈식 스킬 vs promptable behavioral foundation model이라는 다른 아키텍처를 비교할 수 있다
+- 🔄 다른 접근: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — 두 논문 모두 zero-shot humanoid control을 다루지만 BeyondMimic은 diffusion 기반, BFM-Zero는 RL 기반 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — 서베이에서 제시한 차세대 BFM 개념이 BFM-Zero의 promptable 접근법으로 구체화되었습니다.
+- 🔗 후속 연구: [[papers/1936_From_Motion_to_Behavior_Hierarchical_Modeling_of_Humanoid_Ge/review]] — 프롬프트 가능한 행동 기반 모델이 계층적 행동 계획의 확장된 구현이다.
+- 🔗 후속 연구: [[papers/2099_MimicDroid_In-Context_Learning_for_Humanoid_Robot_Manipulati/review]] — 휴머노이드를 위한 프롬프트 가능한 행동 기초 모델의 확장된 구현을 보여준다.

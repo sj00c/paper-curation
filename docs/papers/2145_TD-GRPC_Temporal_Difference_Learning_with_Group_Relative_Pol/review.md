@@ -1,3 +1,24 @@
+---
+title: "2145_TD-GRPC_Temporal_Difference_Learning_with_Group_Relative_Pol"
+authors:
+  - "Khang Nguyen"
+  - "Khai Nguyen"
+  - "An T. Le"
+  - "Jan Peters"
+  - "Manfred Huber"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Humanoid Locomotion을 위해 TD-MPC 프레임워크에 Group Relative Policy Optimization (GRPO)와 trust-region constraint를 통합한 TD-GRPC를 제안하여, off-policy 학습의 불안정성과 policy mismatch 문제를 해결한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Robust_Temporal_MPC"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nguyen et al._2025_TD-GRPC Temporal Difference Learning with Group Relative Policy Constraint for Humanoid Locomotion.pdf"
+---
+
 # TD-GRPC: Temporal Difference Learning with Group Relative Policy Constraint for Humanoid Locomotion
 
 > **저자**: Khang Nguyen, Khai Nguyen, An T. Le, Jan Peters, Manfred Huber, Ngo Anh Vien, Minh Nhat Vu | **날짜**: 2025-05-19 | **URL**: [https://arxiv.org/abs/2505.13549](https://arxiv.org/abs/2505.13549)
@@ -64,3 +85,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 GRPO와 trust-region constraint를 통합한 TD-GRPC를 제안하여 humanoid locomotion의 off-policy 학습 안정성을 효과적으로 개선한 의미 있는 연구이나, 실제 로봇 검증과 이론적 분석 심화, 그리고 더 광범위한 task 평가가 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2121_OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_H/review]] — 둘 다 고성능 휴머노이드 제어를 위한 정책 학습을 다루지만, TD-GRPC는 시간차 학습 안정화에, OmniXtreme은 생성형 정책 기반 극단 동작에 집중한다.
+- 🏛 기반 연구: [[papers/1622_Predictive_Sampling_Real-time_Behaviour_Synthesis_with_MuJoC/review]] — Predictive Sampling의 실시간 행동 합성 기법이 TD-GRPC의 TD-MPC 프레임워크에서 off-policy 학습의 불안정성 해결에 방법론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor/review]] — Cost-Matching Model Predictive Control의 효율적인 강화학습을 Group Relative Policy Optimization과 trust-region constraint로 발전시킨 연구이다.
+- 🔄 다른 접근: [[papers/1938_Full-Order_Sampling-Based_MPC_for_Torque-Level_Locomotion_Co/review]] — Full-order sampling-based MPC가 TD-GRPC의 temporal difference MPC와 다른 sampling 접근법으로 torque-level locomotion control을 달성합니다.
+- 🔗 후속 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — Multi-task deep RL with PopArt이 TD-GRPC의 group relative policy optimization을 multi-task learning 환경으로 확장한 형태입니다.

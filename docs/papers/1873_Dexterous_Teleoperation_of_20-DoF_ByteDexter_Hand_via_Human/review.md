@@ -1,3 +1,23 @@
+---
+title: "1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human"
+authors:
+  - "Ruoshi Wen"
+  - "Jiajun Zhang"
+  - "Guangzeng Chen"
+  - "Zhongren Cui"
+  - "Min Du"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "ByteDexter라는 20-DoF 링크구동 로봇 손과 optimization 기반 motion retargeting을 이용하여 인간의 손 움직임을 실시간으로 로봇에 재현하는 원격조종 시스템을 제시한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wen et al._2025_Dexterous Teleoperation of 20-DoF ByteDexter Hand via Human Motion Retargeting.pdf"
+---
+
 # Dexterous Teleoperation of 20-DoF ByteDexter Hand via Human Motion Retargeting
 
 > **저자**: Ruoshi Wen, Jiajun Zhang, Guangzeng Chen, Zhongren Cui, Min Du, Yang Gou, Zhigang Han, Junkai Hu, Liqun Huang, Hao Niu, Wei Xu, Haoxiang Zhang, Zhengming Zhu, Hang Li, Zeyu Ren | **날짜**: 2025-07-04 | **URL**: [https://arxiv.org/abs/2507.03227](https://arxiv.org/abs/2507.03227)
@@ -68,3 +88,15 @@ ByteDexter라는 20-DoF 링크구동 로봇 손과 optimization 기반 motion re
 - Overall: 4/5
 
 **총평**: ByteDexter 시스템은 linkage-driven 손의 mechanical design, fast kinematics solver, 그리고 optimization 기반 motion retargeting을 정교하게 통합하여 고-DoF 로봇 손의 원격조종을 실현하는 의미 있는 기여를 제시한다. 실시간 제어와 고품질 demonstration data 생성이라는 실용적 가치가 높지만, 다양한 task 환경에서의 general robustness와 imitation learning 결과의 실증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f/review]] — ByteDexter의 20-DoF 링크구동과 Bunny-VisionPro의 Apple Vision Pro 기반 시스템은 정교한 손 텔레오퍼레이션에서 서로 다른 하드웨어와 추적 기술을 사용한다.
+- 🏛 기반 연구: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — DexCap의 손 모션캡처 기술이 ByteDexter Hand의 20-DoF 정교한 텔레오퍼레이션에서 인간 손 움직임을 정확하게 추적하고 retarget하는 데 필요한 데이터 수집 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — ByteDexter의 링크구동 20-DoF 손과 RUKA의 학습 기반 휴머노이드 손 설계는 정교한 로봇 손에서 기계적 설계 vs 학습적 접근의 서로 다른 철학을 보여준다.
+- 🏛 기반 연구: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — UniDex의 범용 정교한 손 조작 로봇 기반이 ByteDexter Hand의 20-DoF 텔레오퍼레이션에 필요한 다양한 조작 기술과 제어 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — 인간의 손 동작을 로봇이 모방하는 과제에서 수화와 손가락 조작이라는 관련 영역을 다룬다.
+- 🔄 다른 접근: [[papers/1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f/review]] — Bunny-VisionPro는 Apple Vision Pro로 양손 조작을, ByteDexter는 20-DoF 손으로 정교한 텔레오퍼레이션을 구현하는 서로 다른 하드웨어 접근법을 보여준다.
+- 🔄 다른 접근: [[papers/1876_DIAL_Distilling_Intent-Aware_Latents_for_Vision-Language-Act/review]] — ByteDexter Hand의 20-DoF 텔레오퍼레이션과 SoftHand의 underactuated tendon-driven 구조는 서로 다른 손 원격제어 접근법을 제시합니다.
+- 🧪 응용 사례: [[papers/1889_Dribble_Master_Learning_Agile_Humanoid_Dribbling_through_Leg/review]] — ByteDexter Hand의 정밀한 원격 조작 기술을 드리블링 시 공 조작에 응용할 수 있는 가능성을 제시한다.
+- 🔗 후속 연구: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — ByteDexter Hand의 20-DoF dexterous teleoperation이 HumDex의 humanoid hand manipulation을 더 정교한 multi-finger control로 확장할 수 있다.

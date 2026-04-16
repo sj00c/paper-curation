@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 CLIP 같은 대규모 기초 모델을 활용하는 로봇 조작 시스템이 실제 물리적 환경에서 인종, 성별 고정관념과 과학적으로 입증되지 않은 골상학을 체계적으로 재현하는 것을 처음으로 실증적으로 입증한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Task_Learning_Benchmarks"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Robotic_Policy_Scaling"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hundt et al._2022_Robots Enact Malignant Stereotypes.pdf"
 ---
@@ -89,7 +90,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hundt et al._2022_Robots Enact Malignant
 
 ## Related Papers
 
-- ⚖️ 반론/비판: [[papers/1458_HuBE_Cross-Embodiment_Human-like_Behavior_Execution_for_Huma/review]] — CLIP 기반 로봇의 편향 문제를 다룬 연구와 달리 LLM 기반 로봇의 차별과 폭력 위험을 체계적으로 분석하여 AI 안전성 관점을 확장한다.
-- 🏛 기반 연구: [[papers/1501_Is_imitation_learning_the_route_to_humanoid_robots/review]] — LLM/VLM 제어 로봇의 취약성 연구가 로봇 시스템에서 기초 모델 사용 시 발생할 수 있는 편향과 안전성 문제의 이론적 배경을 제공한다.
-- 🔗 후속 연구: [[papers/1440_HDMI_Learning_Interactive_Humanoid_Whole-Body_Control_from_H/review]] — LLM 제어 로봇의 jailbreaking 연구를 확장하여 실제 물리적 환경에서 발생하는 사회적 편향의 구체적 사례를 제시한다.
-- 🧪 응용 사례: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — 범용 VLA 모델 구축 시 고려사항 연구에 로봇 편향 문제 해결 방안을 포함시켜 더 안전하고 공정한 로봇 시스템 개발에 기여한다.
+- 🔗 후속 연구: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — 로봇이 악성 고정관념을 재현한다는 발견이 LLM 기반 로봇의 차별과 폭력 위험으로 확장되어 더 광범위한 AI 안전성 문제를 드러낸다.
+- 🔄 다른 접근: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — 두 연구 모두 LLM/VLM 제어 로봇의 안전성 문제를 다루지만 하나는 편향, 다른 하나는 의도적 공격이라는 다른 위협을 분석한다.
+- 🏛 기반 연구: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — LLM/VLM 제어 로봇의 취약성 분석이 고정관념 재현 문제를 더 광범위한 보안 위협의 맥락에서 이해하는 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1440_Jailbreaking_LLM-Controlled_Robots/review]] — 로봇이 악의적 고정관념을 행동으로 구현하는 위험성의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1458_LLM-Driven_Robots_Risk_Enacting_Discrimination_Violence_and/review]] — LLM 기반 로봇의 차별과 폭력 위험이 Robots Enact Malignant Stereotypes 연구에서 제기된 편향 문제를 더욱 구체적으로 확장한다.
+- ⚖️ 반론/비판: [[papers/1501_On_the_Vulnerability_of_LLMVLM-Controlled_Robotics/review]] — 로봇의 악의적 스테레오타입 문제와 달리 이 연구는 기술적 취약성에 초점을 맞춰 LLM/VLM 로봇 시스템의 다른 측면을 다룬다.

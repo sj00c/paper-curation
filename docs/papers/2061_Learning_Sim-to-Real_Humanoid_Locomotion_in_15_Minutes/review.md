@@ -1,3 +1,24 @@
+---
+title: "2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes"
+authors:
+  - "Younggyo Seo"
+  - "Carmelo Sferrazza"
+  - "Juyue Chen"
+  - "Guanya Shi"
+  - "Rocky Duan"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 FastSAC와 FastTD3라는 off-policy RL 알고리즘을 기반으로 단일 RTX 4090 GPU에서 15분 이내에 humanoid 로봇의 보행 정책을 학습할 수 있는 실용적인 레시피를 제시한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Seo et al._2025_Learning Sim-to-Real Humanoid Locomotion in 15 Minutes.pdf"
+---
+
 # Learning Sim-to-Real Humanoid Locomotion in 15 Minutes
 
 > **저자**: Younggyo Seo, Carmelo Sferrazza, Juyue Chen, Guanya Shi, Rocky Duan, Pieter Abbeel | **날짜**: 2025-12-01 | **URL**: [https://arxiv.org/abs/2512.01996](https://arxiv.org/abs/2512.01996)
@@ -67,3 +88,23 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 off-policy RL을 humanoid 제어에 효과적으로 적용하기 위한 실용적이고 체계적인 레시피를 제공하며, 15분의 빠른 훈련 시간과 실제 로봇 배포를 통해 sim-to-real 개발 사이클의 혁신을 보여준다. 오픈소스 구현 제공으로 산업 및 학계에 즉시 영향을 미칠 수 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — FastTD3 알고리즘을 기반으로 한 빠른 휴머노이드 보행 학습 방법의 이론적 근거를 제공한다.
+- 🔄 다른 접근: [[papers/2084_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with/review]] — GPU 기반 병렬 훈련을 통한 대규모 휴머노이드 강화학습의 다른 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1943_GBC_Generalized_Behavior-Cloning_Framework_for_Whole-Body_Hu/review]] — 행동 복제와 강화학습을 결합하여 빠른 휴머노이드 제어 정책 학습을 확장한다.
+- 🔄 다른 접근: [[papers/2048_Learning_Bipedal_Locomotion_on_Gear-Driven_Humanoid_Robot_Us/review]] — 두 논문 모두 하드웨어 제약이 있는 휴머노이드에서 빠른 강화학습을 다루며 실용적 sim-to-real 접근법을 제시한다.
+- 🧪 응용 사례: [[papers/1828_Booster_Gym_An_End-to-End_Reinforcement_Learning_Framework_f/review]] — 빠른 강화학습 레시피가 end-to-end RL 프레임워크를 통한 실제 로봇 배포에 적용된다.
+- 🔄 다른 접근: [[papers/1637_Reinforcement_Learning_for_Versatile_Dynamic_and_Robust_Bipe/review]] — 두 논문 모두 이족 로봇 sim-to-real을 다루지만, 본 논문은 dual-history 아키텍처를, Learning Sim-to-Real은 15분 학습에 중점을 둠
+- 🔗 후속 연구: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — 15분만에 학습하는 빠른 sim-to-real 방법을 compliant terrain에서의 강건한 보행으로 확장한다.
+- 🧪 응용 사례: [[papers/1843_CMR_Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locom/review]] — CMR의 관찰 노이즈에 강건한 표현 학습이 15분 만에 sim-to-real 휴머노이드 보행을 학습하는 빠른 적응에 실질적으로 활용될 수 있다.
+- ⚖️ 반론/비판: [[papers/1791_Advancing_Humanoid_Locomotion_Mastering_Challenging_Terrains/review]] — 복잡한 지형 마스터링에 비해 15분만에 기본 보행 학습이 가능함을 보여주는 대조적 접근법이다.
+- 🧪 응용 사례: [[papers/1864_Demonstrating_Berkeley_Humanoid_Lite_An_Open-source_Accessib/review]] — Berkeley Humanoid Lite의 강화학습 기반 locomotion controller가 15분 sim-to-real 학습의 빠른 적응성을 실제 저비용 플랫폼에서 검증하는 데 활용된다.
+- 🧪 응용 사례: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — GaussGym의 고속 포토리얼리스틱 시뮬레이션이 15분 휴머노이드 학습의 시각적 충실도를 향상시킬 수 있다.
+- 🔄 다른 접근: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — 둘 다 빠른 휴머노이드 학습을 목표로 하지만 FastTD3는 off-policy TD3 최적화를, 다른 논문은 15분 sim-to-real을 중심으로 한다.
+- 🔄 다른 접근: [[papers/2048_Learning_Bipedal_Locomotion_on_Gear-Driven_Humanoid_Robot_Us/review]] — 두 논문 모두 하드웨어 제약이 있는 휴머노이드에서 빠른 강화학습을 통한 보행 학습을 다루며 실용적 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2084_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with/review]] — 15분 내 시뮬레이션-현실 학습과 GPU 기반 병렬 훈련이라는 다른 접근법으로 빠른 휴머노이드 학습을 제시한다.
+- 🔄 다른 접근: [[papers/2154_Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and/review]] — 대규모 병렬 시뮬레이션 기반 사전학습 대신 15분 내 빠른 학습으로 sim-to-real 전이를 달성하는 효율적 접근법이다.
+- 🔄 다른 접근: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 이 논문은 에너지 효율성에, Learning Sim-to-Real Humanoid Locomotion은 빠른 학습에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/2125_Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Po/review]] — teacher-student 방식 대신 더 빠른 15분 내 학습 방법으로 sim-to-real 휴머노이드 제어를 달성한다.

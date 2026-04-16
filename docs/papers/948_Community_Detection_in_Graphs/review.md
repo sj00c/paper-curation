@@ -8,8 +8,10 @@ arxiv: ""
 score: 4.0
 essence: "그래프(네트워크)에서 커뮤니티 구조(community structure)를 검출하는 방법들을 종합적으로 분석하고 분류한 리뷰 논문으로, 실제 복잡 시스템의 모듈 조직을 이해하기 위한 다양한 알고리즘과 기법들을 제시한다."
 tags:
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Network_Community_Detection"
+  - "sub/Bibliometric_Science_Mapping"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fortunato_2010_Community Detection in Graphs.pdf"
 ---
@@ -83,8 +85,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Fortunato_2010_Community Detection in Gr
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1046_The_structure_of_scientific_collaboration_networks/review]] — 과학 협력 네트워크의 구조 분석에 커뮤니티 탐지 방법론이 핵심적인 기반을 제공한다
-- 🧪 응용 사례: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 과학 커뮤니티 매핑에 그래프 커뮤니티 탐지 알고리즘을 직접 적용할 수 있다
-- 🔄 다른 접근: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 대규모 네트워크에서 커뮤니티를 빠르게 탐지하는 다른 알고리즘적 접근법을 제시한다
-- 🔄 다른 접근: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 네트워크 커뮤니티 탐지의 다양한 알고리즘적 접근법을 비교하여 각각의 장단점을 이해할 수 있다.
-- 🏛 기반 연구: [[papers/1213_The_evolution_of_international_scientific_collaboration_netw/review]] — 복잡 네트워크에서 커뮤니티 구조 탐지 방법이 과학 혁명 시기 협력 네트워크 분석의 기초가 된다
+- 🔗 후속 연구: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 일반적인 커뮤니티 검출 이론을 대규모 네트워크에서 실제로 적용할 수 있는 빠른 알고리즘으로 구현한다.
+- 🏛 기반 연구: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크의 집합적 동역학 이론을 제공하여 커뮤니티 형성의 기초 원리를 이해할 수 있다.
+- 🔄 다른 접근: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 커뮤니티 구조를 가진 네트워크의 성장 모델을 통해 커뮤니티 검출과 다른 관점에서 네트워크 구조를 분석한다.
+- 🔗 후속 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 일반적 커뮤니티 검출 방법을 과학 커뮤니티 매핑이라는 특화된 영역으로 확장한다
+- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 스케일-프리 네트워크의 선호적 부착 메커니즘이 커뮤니티 구조 형성의 기본 원리를 설명한다.
+- 🔗 후속 연구: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 커뮤니티 탐지 방법론을 기반으로 하여, 발견된 커뮤니티 구조에서 인용 네트워크의 성장 과정을 수학적으로 모델링한다.
+- 🔗 후속 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 일반적인 커뮤니티 탐지 알고리즘을 텍스트 분석과 토픽 모델링에 특화하여 적용
+- 🧪 응용 사례: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — small-world 네트워크에서 커뮤니티를 탐지하는 알고리즘은 네트워크의 국소적 클러스터링 특성을 활용합니다.
+- 🧪 응용 사례: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 스케일-프리 네트워크의 기본 메커니즘이 그래프 커뮤니티 검출 방법론의 이론적 토대를 제공한다.
+- 🧪 응용 사례: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 커뮤니티 검출 이론을 대규모 네트워크에서 효율적으로 구현한 실용적 알고리즘이다
+- 🏛 기반 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 네트워크에서 커뮤니티 탐지를 위한 핵심 알고리즘적 기반을 제공한다.

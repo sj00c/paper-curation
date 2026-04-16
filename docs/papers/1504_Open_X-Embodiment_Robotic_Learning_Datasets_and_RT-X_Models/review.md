@@ -12,9 +12,12 @@ arxiv: ""
 score: 4.0
 essence: "21개 기관에서 수집한 22종의 로봇 데이터를 통합한 대규모 Open X-Embodiment 데이터셋을 제시하고, 이를 활용하여 여러 로봇 플랫폼에 긍정적 전이를 보이는 RT-X 범용 로봇 정책을 개발했다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Goal-Conditioned_Manipulation_Policies"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Collaboration et al._2023_Open X-Embodiment Robotic Learning Datasets and RT-X Models.pdf"
 ---
 
 # Open X-Embodiment: Robotic Learning Datasets and RT-X Models
@@ -87,10 +90,23 @@ tags:
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Open X-Embodiment 데이터셋이 Octo generalist robot policy의 직접적인 훈련 데이터로 활용된다.
-- 🔗 후속 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — 대규모 로봇 데이터 수집과 AutoRT의 embodied foundation model 오케스트레이션이 상호 보완적인 확장성을 제공한다.
-- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — Cross-embodiment learning의 이론적 기반이 다중 로봇 플랫폼 데이터 통합에 방법론적 근거를 제공한다.
-- 🏛 기반 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Open X-Embodiment 데이터셋이 Octo 모델의 사전훈련에 직접적인 데이터 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1546_Robot_Utility_Models_General_Policies_for_Zero-Shot_Deployme/review]] — Open X-Embodiment 데이터셋의 대규모 다양성을 활용하여 새로운 환경에서 zero-shot 배포가 가능한 범용 정책을 개발한다.
-- 🏛 기반 연구: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — Open X-Embodiment의 cross-embodiment 학습이 ARIO의 다중 플랫폼 통합에 이론적 기초를 제공한다
-- 🔗 후속 연구: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — Open X-Embodiment의 cross-embodiment 개념을 대규모 자율 데이터 수집으로 실제 구현한다
+- 🔗 후속 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — Open X-Embodiment 데이터셋의 다중 로봇 플랫폼 경험이 RoboMIND의 multi-embodiment 벤치마크 설계에 직접적인 확장 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — BridgeData V2의 대규모 로봇 학습 데이터 수집 방법론이 Open X-Embodiment 프로젝트의 기초가 되었다.
+- 🧪 응용 사례: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — Cross-embodied learning 정책이 Open X-Embodiment 데이터셋의 다양한 로봇 플랫폼 데이터를 실제 활용하는 구체적인 응용 사례다.
+- 🔗 후속 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — DROID 데이터셋과 함께 Open X-Embodiment는 대규모 로봇 학습 데이터의 체계적 수집과 활용을 위한 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Open X-Embodiment 데이터를 활용한 범용 로봇 정책 개발의 후속 연구에 해당한다.
+- 🧪 응용 사례: [[papers/1315_AutoRT_Embodied_Foundation_Models_for_Large_Scale_Orchestrat/review]] — Open X-Embodiment 데이터셋을 활용하여 AutoRT의 large-scale robot orchestration과 data collection을 수행할 수 있다.
+- 🔗 후속 연구: [[papers/1401_GauDP_Reinventing_Multi-Agent_Collaboration_through_Gaussian/review]] — Open X-Embodiment의 다중 로봇 학습 개념을 3D Gaussian 기반 협업 프레임워크로 발전시켰다.
+- 🔄 다른 접근: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — Open X-Embodiment는 스케일링 법칙을 실제 다중 실시화 데이터로 검증하는 반면, Neural Scaling Laws는 이론적 분석에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1496_Octo_An_Open-Source_Generalist_Robot_Policy/review]] — Octo가 활용하는 Open X-Embodiment 데이터셋과 다중 로봇 플랫폼에서의 positive transfer 방법론의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1537_RoboCat_A_Self-Improving_Generalist_Agent_for_Robotic_Manipu/review]] — Open X-Embodiment의 다중 embodiment 데이터를 활용하여 RoboCat의 크로스 로봇 학습 능력을 더욱 체계화했다.
+- 🏛 기반 연구: [[papers/1541_RoboMIND_Benchmark_on_Multi-embodiment_Intelligence_Normativ/review]] — Open X-Embodiment의 다중 로봇 데이터셋 구축 경험이 RoboMIND의 multi-embodiment 벤치마크 설계 방법론의 기반이다.
+- 🏛 기반 연구: [[papers/1546_Robot_Utility_Models_General_Policies_for_Zero-Shot_Deployme/review]] — Open X-Embodiment의 대규모 로봇 데이터셋과 RT-X 모델이 Robot Utility Models의 zero-shot 배포 능력 개발에 핵심 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1554_RT-1_Robotics_Transformer_for_Real-World_Control_at_Scale/review]] — Open X-Embodiment 데이터셋은 RT-1이 활용한 대규모 로봇 데이터의 핵심 구성 요소를 제공한다.
+- 🏛 기반 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — CrossFormer의 cross-embodied 학습은 Open X-Embodiment가 제공하는 다양한 로봇 데이터셋을 활용한다.
+- 🏛 기반 연구: [[papers/1633_X-VLA_Soft-Prompted_Transformer_as_Scalable_Cross-Embodiment/review]] — cross-embodiment learning의 기반이 되는 open x-embodiment dataset과 모델입니다.
+- 🏛 기반 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Open X-Embodiment의 cross-embodiment 데이터와 방법론이 Being-H0.5의 통합 액션 공간 개발의 기초가 됩니다.
+- 🔄 다른 접근: [[papers/1306_All_Robots_in_One_A_New_Standard_and_Unified_Dataset_for_Ver/review]] — Open X-Embodiment 데이터셋과 비교하여 더 통합된 로봇 데이터 표준을 제시한다.
+- 🏛 기반 연구: [[papers/1323_BridgeData_V2_A_Dataset_for_Robot_Learning_at_Scale/review]] — Open X-Embodiment의 robotic learning dataset 개념을 구체적인 bridge data로 구현하여 다양한 학습 방법들과의 호환성을 검증한 연구입니다.
+- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 대규모 로봇 학습 데이터셋과 RT-X 모델의 데이터 스케일링 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1372_DROID_A_Large-Scale_In-The-Wild_Robot_Manipulation_Dataset/review]] — Open X-Embodiment는 DROID와 같은 대규모 로봇 데이터셋들을 통합하여 더 큰 규모의 다중 실시화 데이터셋을 구축했습니다.

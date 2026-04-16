@@ -1,3 +1,25 @@
+---
+title: "1987_HuBE_Cross-Embodiment_Human-like_Behavior_Execution_for_Huma"
+authors:
+  - "Shipeng Lyu"
+  - "Fangyuan Wang"
+  - "Weiwei Lin"
+  - "Luhao Zhu"
+  - "David Navarro-Alarcon"
+date: "2025.08"
+doi: "10.48550/arXiv.2508.19002"
+arxiv: ""
+score: 4.0
+essence: "HuBE는 인간 행동의 유사성(similarity)과 적절성(appropriateness)을 모두 만족하는 이족 로봇용 양단계 폐루프 프레임워크를 제안하며, 뼈 스케일링 기반 데이터 증강을 통해 이기종 로봇 간 교차-구현체(cross-embodiment) 적응을 실현한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lyu et al._2025_HuBE Cross-Embodiment Human-like Behavior Execution for Humanoid Robots.pdf"
+---
+
 # HuBE: Cross-Embodiment Human-like Behavior Execution for Humanoid Robots
 
 > **저자**: Shipeng Lyu, Fangyuan Wang, Weiwei Lin, Luhao Zhu, David Navarro-Alarcon, Guodong Guo | **날짜**: 2025-08-26 | **DOI**: [10.48550/arXiv.2508.19002](https://doi.org/10.48550/arXiv.2508.19002)
@@ -64,3 +86,15 @@ HuBE는 인간 행동의 유사성(similarity)과 적절성(appropriateness)을 
 - Overall: 4/5
 
 **총평**: HuBE는 인간형 로봇 행동 생성에 행동 적절성 개념을 처음 체계적으로 도입하고, 폐루프 아키텍처와 bone scaling 기반 교차-구현체 적응을 통해 실무적 가치 높은 솔루션을 제시한다. 다만 LLM 주석 신뢰성 검증과 더 광범위한 플랫폼 실험이 진행된다면 영향력이 한층 강화될 것으로 예상된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — HuB의 extreme balance와 달리 HuBE는 cross-embodiment 적응을 통한 human-like behavior 실현에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — UDH 모델의 cross-embodiment skill transfer 방법이 HuBE의 bone scaling 기반 데이터 증강을 더욱 정교화할 수 있다.
+- 🏛 기반 연구: [[papers/2120_OmniRetarget_Interaction-Preserving_Data_Generation_for_Huma/review]] — OmniRetarget의 interaction-preserving data generation이 HuBE의 cross-embodiment adaptation을 위한 데이터 생성 기법의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — HuBE의 인간-유사 행동 실행과 H-Zero의 locomotion 중심 접근법은 cross-embodiment 전이에서 서로 다른 행동 범위를 다룹니다.
+- 🏛 기반 연구: [[papers/1665_Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_L/review]] — Cross-humanoid scalable control이 HuBE의 cross-embodiment adaptation의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1962_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — H-Zero의 cross-humanoid locomotion과 HuBE의 cross-embodiment behavior는 모두 서로 다른 로봇 간 기술 전이를 다루되 초점이 다릅니다.
+- 🔄 다른 접근: [[papers/1986_HuB_Learning_Extreme_Humanoid_Balance/review]] — HuBE의 cross-embodiment adaptation과 HuB의 extreme balance는 모두 humanoid의 한계 상황 대응이지만 서로 다른 측면에 집중한다.
+- 🔗 후속 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — HuBE의 cross-embodiment adaptation을 UDH 모델과 adversarial imitation learning으로 더욱 발전시킨 확장된 접근법이다.
+- 🏛 기반 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — 교차 구현체 인간-유사 행동 실행 기법이 휠드 휴머노이드에서 이족 휴머노이드로의 궤적 전이 방법론의 기반이 됩니다.

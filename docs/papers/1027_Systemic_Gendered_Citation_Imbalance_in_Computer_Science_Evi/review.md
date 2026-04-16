@@ -12,6 +12,7 @@ score: 4.0
 essence: "컴퓨터과학 분야에서 여성 저자 논문이 예상보다 적은 인용을 받는 체계적 불균형을 발견하였으며, 이러한 현상이 학회 논문에서 특히 두드러진다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
   - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nakajima et al._2026_Systemic Gendered Citation Imbalance in Computer Science Evidence from Conferences and Journals.pdf"
@@ -90,10 +91,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Nakajima et al._2026_Systemic Gendered C
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학계에서 여성에 대한 체계적 차별을 컴퓨터과학 분야의 성별 인용 불균형이라는 구체적 사례로 확장하여 분석했다.
-- 🧪 응용 사례: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 여성 과학자의 혁신적 기여가 과소평가되는 현상을 컴퓨터과학 분야의 성별 인용 불균형에서도 확인할 수 있다.
-- 🏛 기반 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학계 전반의 성별 격차 분석이 컴퓨터과학 특정 분야의 성별 인용 불균형 연구의 이론적 토대를 제공한다.
-- 🏛 기반 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학계에서 여성 기여의 체계적 과소인정이 컴퓨터과학 분야 성별 인용 불균형의 이론적 배경을 제공한다.
-- 🏛 기반 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 컴퓨터 과학 분야의 체계적 성별 인용 불균형 연구의 교차적 분석 확장 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 체중 관리 연구에서 비낙인화 언어 사용의 성별 격차를 이해하기 위해 컴퓨터 과학 분야의 체계적 성별 인용 불균형 연구가 참고된다.
-- 🧪 응용 사례: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 컴퓨터과학의 체계적 성별 인용 불균형 문제에 인용 정의 원칙을 적용할 수 있다
+- 🏛 기반 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 컴퓨터과학의 성별 인용 불균형과 천문학의 저널 명성 편향이 함께 학술계의 체계적 편향을 보여줍니다.
+- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학계 전반의 성별 격차가 컴퓨터과학이라는 특정 분야에서 인용 불균형으로 구체화되어 나타납니다.
+- 🏛 기반 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 성별 인용 불균형이 과학계의 더 광범위한 교차적 불평등 구조의 일부임을 보여줍니다.
+- 🔗 후속 연구: [[papers/1059_Women_are_credited_less_in_science_than_men/review]] — 과학에서 여성이 남성보다 적은 크레딧을 받는다는 일반적 현상은 컴퓨터과학 분야의 성별 인용 불균형을 뒷받침하는 광범위한 증거입니다.
+- 🧪 응용 사례: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학 발견과 혁신을 위한 성별 다양성 활용 방안은 컴퓨터과학 분야 성별 인용 불균형을 해결하는 실질적 정책 방향을 제시합니다.
+- 🔗 후속 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 천문학 분야의 저널 명성 편향이 컴퓨터과학의 성별 인용 불균형과 함께 학술계의 체계적 편향을 보여줍니다.
+- 🏛 기반 연구: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 컴퓨터과학 분야의 체계적 성별 인용 불균형이 여성의 경계 넘나드는 혁신이 과소평가되는 메커니즘을 구체적으로 보여준다.
+- 🔄 다른 접근: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 컴퓨터 과학 분야에서의 체계적 성별 인용 불균형을 분석하여 특정 분야의 사례를 제시한다.
+- 🔄 다른 접근: [[papers/976_Intersectional_inequalities_in_science/review]] — 컴퓨터 과학의 체계적 젠더 인용 불균형을 분석한 연구로, 교차적 불평등을 다른 학문 분야에서 검증하는 대안적 접근법입니다.
+- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 컴퓨터과학의 체계적 성별 인용 불균형 연구를 인용 공정성 관점으로 확장하여 해결방안을 모색합니다.

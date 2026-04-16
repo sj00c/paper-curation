@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "o1 스타일의 심층 추론 패러다임을 embodied 인터랙티브 작업으로 확장하여, 시각 탐색, 추론, 행동을 통합하는 Embodied-Reasoner 모델을 제시한다. 9.3k개의 Observation-Thought-Action 궤적과 3단계 학습 파이프라인을 통해 공간 이해, 시간 추론, 자기 반성 능력을 갖춘 모델을 개발했다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_Embodied-Reasoner Synergizing Visual Search, Reasoning, and Action for Embodied Interactive Tasks.pdf"
 ---
@@ -92,9 +94,11 @@ o1 스타일의 심층 추론 패러다임을 embodied 인터랙티브 작업으
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1379_Embodied-R_Collaborative_Framework_for_Activating_Embodied_S/review]] — Embodied-R도 대규모 모델 협력을 통한 embodied spatial reasoning을 다룬다.
-- 🔗 후속 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — EmbodiedVSR의 scene graph 구조가 Embodied-Reasoner의 시각 탐색과 추론을 체계화한다.
-- 🏛 기반 연구: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — Robotic Control via Embodied Chain-of-Thought의 추론 체인이 Embodied-Reasoner의 방법론적 기초가 된다.
-- 🏛 기반 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — Embodied-Reasoner의 Chain-of-Thought 추론이 EmbodiedVSR의 구조적 추론 프레임워크에 기반한다.
-- 🔗 후속 연구: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — Embodied-Reasoner의 추론과 행동 통합이 Diffusion-VLA의 reasoning injection을 발전시킨다.
-- 🔄 다른 접근: [[papers/1379_Embodied-R_Collaborative_Framework_for_Activating_Embodied_S/review]] — Embodied-Reasoner도 대규모 모델 협력과 RL을 통한 spatial reasoning을 다룬다.
+- 🔄 다른 접근: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — 두 논문 모두 VLA 모델에 System-2 스타일의 심층 추론을 도입하여 복잡한 로봇 제어를 개선하는 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 vision-language-action 아키텍처를 기반으로 한 embodied 추론 능력 확장 연구이다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 언어 기반 추론을 embodied 환경에서 시각-행동과 통합한 발전된 형태이다.
+- 🔗 후속 연구: [[papers/1547_Robotic_Control_via_Embodied_Chain-of-Thought_Reasoning/review]] — Chain-of-Thought Reasoning이 Embodied-Reasoner의 Observation-Thought-Action 궤적을 실제 로봇 제어로 확장합니다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — Statler는 embodied reasoning을 위해 state-maintaining 접근법을 사용하여 Embodied-Reasoner와 다른 추론 전략을 제시합니다.
+- 🔄 다른 접근: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — ThinkBot의 thought chain following과 Embodied-Reasoner의 o1-style deep reasoning은 embodied instruction following에서 서로 다른 추론 체계를 제시한다.
+- 🏛 기반 연구: [[papers/1428_Hume_Introducing_System-2_Thinking_in_Visual-Language-Action/review]] — Embodied-Reasoner의 심층 추론 패러다임을 VLA 모델에 System-2 thinking으로 구체화했다.
+- 🔄 다른 접근: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — embodied reasoning에서 active perception vs visual search and reasoning이라는 서로 다른 인지 메커니즘 접근법을 제시한다.

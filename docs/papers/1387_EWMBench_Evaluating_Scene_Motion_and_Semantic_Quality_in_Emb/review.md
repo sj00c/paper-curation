@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 Embodied World Models (EWMs)의 성능을 평가하기 위한 전문 벤치마크인 EWMBench를 제안하며, 시각적 장면 일관성, 동작 정확성, 의미론적 정렬이라는 세 가지 핵심 측면을 기반으로 로보틱 조작 작업에서의 물리적 타당성과 행동 일관성을 평가한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yue et al._2025_EWMBench Evaluating Scene, Motion, and Semantic Quality in Embodied World Models.pdf"
 ---
@@ -87,6 +89,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yue et al._2025_EWMBench Evaluating Scen
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1356_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — DreamGen의 video world model이 EWMBench의 Embodied World Models 평가 기준과 연결된다.
-- 🔗 후속 연구: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — EO-1의 unified embodied model이 EWMBench의 평가 대상이 될 수 있다.
-- 🔄 다른 접근: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — Learning Interactive Real-World Simulators도 embodied world modeling의 품질 평가를 다룬다.
+- 🏛 기반 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — World Simulation with Video Foundation Models의 세계 모델 시뮬레이션 기법이 EWMBench의 Embodied World Models 평가 기준 설계의 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — Mastering Diverse Domains through World Models이 EWMBench의 평가 범위를 다양한 도메인의 세계 모델로 확장합니다.
+- 🧪 응용 사례: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — GAIA-1의 자율주행 세계 모델이 EWMBench 평가 기준을 특정 도메인에 적용하는 구체적인 사례를 제공합니다.
+- 🔄 다른 접근: [[papers/1631_World_Models/review]] — World Models의 일반적인 세계 모델 평가와 EWMBench의 embodied world model 특화 평가는 서로 다른 범위와 초점을 가진 벤치마킹 접근이다.
+- 🔗 후속 연구: [[papers/1452_Learning_Interactive_Real-World_Simulators/review]] — Learning Interactive Real-World Simulators의 시뮬레이터 평가가 EWMBench에서 robotic manipulation 특화된 물리적 타당성 평가로 확장되었다.
+- 🔄 다른 접근: [[papers/1359_Diffusion_for_World_Modeling_Visual_Details_Matter_in_Atari/review]] — Atari에서의 world modeling 연구는 EWMBench와 다른 도메인에서 세계 모델의 시각적 세부사항 중요성을 보여줍니다.
+- 🔗 후속 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — Embodied AI를 위한 world model 서베이는 EWMBench가 벤치마킹하는 EWM 기술들의 포괄적인 이론적 배경을 제공합니다.
+- 🔗 후속 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — EWMBench는 DreamerV3와 같은 world model들의 embodied 환경에서의 성능을 체계적으로 평가할 수 있는 벤치마크를 제공합니다.
+- 🔄 다른 접근: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — 둘 다 embodied AI 벤치마크이지만 EWMBench는 scene/motion quality에, VLABench는 language-conditioned tasks에 집중합니다.

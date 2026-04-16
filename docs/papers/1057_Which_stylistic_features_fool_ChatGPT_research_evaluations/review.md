@@ -9,8 +9,10 @@ arxiv: ""
 score: 4.0
 essence: "ChatGPT는 추상(abstract)의 언어적 복잡성과 길이에 과도하게 반응하여 연구 품질을 평가하는데, 이는 인간 전문가의 평가와 달리 스타일 편향(stylistic bias)을 보인다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Citation_Analysis_Methods"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kousha and Thelwall_2026_Which stylistic features fool ChatGPT research evaluations.pdf"
 ---
@@ -77,9 +79,13 @@ ChatGPT는 추상(abstract)의 언어적 복잡성과 길이에 과도하게 반
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — ChatGPT의 연구 평가 편향 문제가 LLM을 책임감 있게 연구 평가에 활용하는 방법론의 필요성을 뒷받침한다.
-- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — ChatGPT의 스타일 편향 문제에 대한 대안으로 더 정교한 AI 기반 연구 평가 메트릭을 제안한다.
-- 🔗 후속 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서의 편향 메타평가 연구가 AI 기반 연구 평가에서 나타나는 스타일 편향을 이해하는 틀을 확장한다.
-- 🔄 다른 접근: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — LLM 사용 탐지에서 단어 빈도 변화와 문체적 특징의 다른 접근법임
-- 🏛 기반 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — ChatGPT가 연구 평가에서 놓치는 문체적 특징 분석을 통해 agentic evaluation의 한계와 개선 방향을 제시한다.
-- 🔄 다른 접근: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — 텍스트 스타일 분석 대신 실행 가능한 코드와 데이터를 통한 연구 평가의 대안적 접근법을 제공한다.
+- 🔗 후속 연구: [[papers/1192_Large_language_models_and_responsible_research_evaluation_an/review]] — 대규모 언어 모델의 책임감 있는 연구 평가에서 스타일 편향 문제가 핵심적 고려사항으로 다뤄진다.
+- 🧪 응용 사례: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학에서 편향의 메타 평가가 ChatGPT의 연구 평가 편향을 이해하는 이론적 틀을 제공한다.
+- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 과학 논문에서 LLM 사용 정량화가 ChatGPT 연구 평가의 스타일 편향 분석에 방법론적 기초를 제공한다.
+- ⚖️ 반론/비판: [[papers/953_Do_Large_Language_Models_Reduce_Research_Novelty_Evidence_fr/review]] — LLM이 연구 참신성을 감소시킨다는 연구와 ChatGPT가 스타일에 편향된다는 발견은 AI의 연구 평가 능력에 대한 상반된 우려를 보여준다.
+- 🔗 후속 연구: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI가 과학 연구 평가에 야기하는 이해의 환상 문제를 ChatGPT의 스타일 편향이라는 구체적 사례로 실증적으로 보여준다.
+- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — AI를 활용한 연구 평가 방법을 다루지만, 에이전트 기반 지표보다는 기존 LLM의 편향성 문제를 규명하는 데 집중한다.
+- 🧪 응용 사례: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — ChatGPT 연구 평가를 속이는 문체적 특징 분석은 LLM 사용이 과학 논문 품질 평가에 미치는 구체적 영향을 보여줍니다.
+- 🏛 기반 연구: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI 도구의 이해의 환상 문제를 ChatGPT의 스타일 편향이라는 구체적 사례로 실증적으로 입증하는 연구의 이론적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — ChatGPT 연구 평가의 한계를 극복하는 구체적 해결책을 제시한다
+- 🔗 후속 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — ChatGPT 평가 한계를 극복하는 고도화된 AI 평가 시스템으로 발전시킨다

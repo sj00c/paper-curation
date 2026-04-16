@@ -1,3 +1,23 @@
+---
+title: "1879_DIJIT_A_Robotic_Head_for_an_Active_Observer"
+authors:
+  - "Mostafa Kamali Tabrizi"
+  - "Mingshi Chi"
+  - "Bir Bikram Dey"
+  - "Yu Qing Yuan"
+  - "Markus D. Solbach"
+date: "2025.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간의 시각 체계를 모방한 생체모방 쌍안 로봇 헤드 DIJIT를 제시하며, 9개의 기계적 자유도와 4개의 광학적 자유도를 통해 능동적 시각 연구와 인간 시각의 안구-머리 운동을 탐구한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Laparoscopic_Teleoperation_Systems"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tabrizi et al._2025_DIJIT A Robotic Head for an Active Observer.pdf"
+---
+
 # DIJIT: A Robotic Head for an Active Observer
 
 > **저자**: Mostafa Kamali Tabrizi, Mingshi Chi, Bir Bikram Dey, Yu Qing Yuan, Markus D. Solbach, Yiqian Liu, Michael Jenkin, John K. Tsotsos | **날짜**: 2025-12-08 | **URL**: [https://arxiv.org/abs/2512.07998](https://arxiv.org/abs/2512.07998)
@@ -64,3 +84,9 @@
 - Overall: 4/5
 
 **총평**: DIJIT은 인간 시각의 핵심 특성을 종합적으로 구현한 최초의 로봇 헤드로, 생체모방 설계와 실제 saccade 성능 평가를 통해 능동 시각 연구의 새로운 플랫폼을 제공한다. 완전 공개된 설계와 체계적인 비교 분석은 후속 로봇 시각 연구에 중요한 기여를 할 수 있다.
+
+## Related Papers
+
+- 🧪 응용 사례: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — DIJIT의 생체모방 쌍안 로봇 헤드 기술이 실제 환경에서 360도 시각 탐색을 수행하는 구체적 응용사례입니다.
+- 🏛 기반 연구: [[papers/1750_Vision_in_Action_Learning_Active_Perception_from_Human_Demon/review]] — 인간 시연으로부터 능동 지각을 학습하는 방법론이 DIJIT의 능동적 시각 연구 기반이 됩니다.
+- 🔄 다른 접근: [[papers/2070_Learning_to_Look_Around_Enhancing_Teleoperation_and_Learning/review]] — Learning to Look Around은 텔레오퍼레이션용 능동 목 제어, DIJIT은 일반적인 능동 관찰자용 로봇 헤드로 서로 다른 응용 목적을 가진다.

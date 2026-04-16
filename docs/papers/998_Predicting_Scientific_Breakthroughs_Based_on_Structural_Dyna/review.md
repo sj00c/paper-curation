@@ -11,7 +11,9 @@ score: 4.0
 essence: "본 논문은 인용 네트워크의 동적 구조 진화 특성을 포착하여 과학적 돌파구 논문을 예측하는 새로운 방법을 제안한다. 시간 순서대로 구성된 인용 캐스케이드(citation cascade)의 구조 지표 궤적을 동적 예측자로 활용한다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2024_Predicting Scientific Breakthroughs Based on Structural Dynamic of Citation Cascades.pdf"
 ---
@@ -88,10 +90,8 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yu et al._2024_Predicting Scientific Bre
 
 ## Related Papers
 
-- ⚖️ 반론/비판: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 과학적 돌파구의 사전 예측과 잠자는 미녀의 사후 발견이라는 정반대 시간적 접근 방식을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학학 분야에서 데이터 기반 예측의 일반적 이론과 방법론을 인용 네트워크의 동적 구조 예측에 적용하는 토대를 제공한다.
-- 🔄 다른 접근: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 영향력 높은 연구 주제 예측을 위한 머신러닝과 인용 네트워크의 동적 구조라는 서로 다른 예측 접근법을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1072_Embracing_Foundation_Models_for_Advancing_Scientific_Discove/review]] — 과학적 돌파구 예측에서 구조적 분석을 기초 모델 기반 아이디어 생성으로 보완함
-- 🏛 기반 연구: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 구조적 역학 기반 과학적 돌파구 예측 방법론이 신경망 기반 트렌드 예측의 이론적 기반을 제공한다.
-- ⚖️ 반론/비판: [[papers/951_Defining_and_identifying_Sleeping_Beauties_in_science/review]] — 사후적 발견(Sleeping Beauty)과 사전적 예측(breakthrough prediction)이라는 정반대 접근 방식을 비교할 수 있다.
-- 🧪 응용 사례: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 머신러닝 기반 미래 임팩트 예측 방법론을 과학적 돌파구 예측의 구조적 역학 연구에 실제 적용할 수 있는 사례를 보여줍니다.
+- 🔄 다른 접근: [[papers/1020_Scientific_prize_network_predicts_who_pushes_the_boundaries/review]] — 과학상 네트워크를 통한 경계 돌파 예측과 인용 네트워크 구조를 통한 돌파구 예측은 서로 다른 접근법이다.
+- 🏛 기반 연구: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 기계학습을 통한 고영향 연구 주제 예측이 인용 구조 기반 과학 돌파구 예측의 방법론적 기반이다.
+- 🧪 응용 사례: [[papers/1076_Predicting_research_trends_with_semantic_and_neural_networks/review]] — 의미적/신경망 기반 연구 트렌드 예측이 인용 네트워크 구조 기반 돌파구 예측에 실제 적용될 수 있다.
+- 🧪 응용 사례: [[papers/1064_Data-driven_predictions_in_the_science_of_science/review]] — 과학적 발견의 예측 가능성 이론을 구조적 역학 기반으로 실제 구현한다.
+- 🔗 후속 연구: [[papers/962_Forecasting_high-impact_research_topics_via_machine_learning/review]] — 구조적 역학 기반 과학적 돌파구 예측을 기계학습과 지식그래프로 확장한 고도화된 접근법을 제시한다.

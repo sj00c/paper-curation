@@ -9,7 +9,9 @@ score: 4.0
 essence: "과학논문의 인용 네트워크 패턴을 분석하여 과학 연구 전면(research front)의 특성을 규명한 연구로, 문헌 참고 행위를 통해 전체 과학 지식체계의 구조를 파악한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Collaboration_Networks"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Price_1965_Networks of Scientific Papers The pattern of bibliographic references indicates the nature of the s.pdf"
 ---
@@ -75,10 +77,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Price_1965_Networks of Scientific Papers
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 과학논문 인용 네트워크의 초기 패턴 관찰이 복잡한 네트워크의 스케일-프리 특성 발견으로 발전했다.
-- 🏛 기반 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — Science Citation Index 개발이 논문 인용 네트워크 패턴 분석을 가능하게 한 기초 인프라를 제공했다.
-- 🔗 후속 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 분석을 인용 정당화 관점에서 재해석하여 단순 연결성 이상의 의미를 탐구한다.
-- 🧪 응용 사례: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 학술 논문 인용 네트워크의 기초적 패턴 분석을 커뮤니티 구조를 고려한 고도화된 모델링으로 발전시켰다.
-- 🏛 기반 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — 과학 논문의 인용 네트워크 패턴 분석이라는 기초적 개념을 제시하여 SCI의 이론적 토대를 마련했다.
-- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 과학논문 인용 네트워크의 초기 패턴 분석이 복잡한 네트워크의 스케일-프리 특성 발견의 기초를 제공했다.
-- 🏛 기반 연구: [[papers/1213_The_evolution_of_international_scientific_collaboration_netw/review]] — 과학 혁명 시기의 개념 변화를 복잡 네트워크로 모델링하는 기반은 과학 논문 네트워크의 서지학적 패턴에서 출발한다.
+- 🏛 기반 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 인용 네트워크를 통한 과학 구조 분석이 과학 성장률의 정량적 분석에 기본적 이론적 틀을 제공한다.
+- 🔗 후속 연구: [[papers/1081_Science_Citation_IndexA_New_Dimension_in_Indexing_This_uniqu/review]] — Science Citation Index의 새로운 색인 차원 연구가 인용 네트워크 패턴 분석으로 구체화된다.
+- 🧪 응용 사례: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기적 과학 영향 정량화가 인용 네트워크 패턴을 통한 연구 전면 특성 분석에 실제 적용된다.
+- 🔗 후속 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 동시인용, 서지결합, 직접인용 분석이 초기 인용 네트워크 연구를 정교화한 방법론으로 발전시킨다.
+- 🧪 응용 사례: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — Semantic Scholar 오픈 연구 코퍼스가 인용 네트워크 패턴 분석을 대규모로 실현할 수 있는 데이터 인프라를 제공한다.
+- 🧪 응용 사례: [[papers/1040_The_Price-Pareto_growth_model_of_networks_with_community_str/review]] — 과학 논문의 서지학적 네트워크 패턴이 Price-Pareto 모델의 실제 적용 사례를 보여준다.
+- 🏛 기반 연구: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 과학 논문의 서지학적 네트워크 패턴이 인용 네트워크 사회구조 분석의 기본 토대를 제공한다.
+- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 초기 인용 네트워크 패턴 연구가 스케일-프리 네트워크 이론 발전의 실증적 토대를 제공한다
+- 🏛 기반 연구: [[papers/961_Fast_Unfolding_of_Communities_in_Large_Networks/review]] — 과학 논문의 서지 네트워크 패턴에 대한 기본 이해를 제공하여 커뮤니티 검출의 응용 기반을 마련한다.
+- 🔗 후속 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 인용 네트워크 패턴 분석을 통한 과학 구조 이해에서 시간적 성장률 분석으로 확장된 관점을 제공한다.

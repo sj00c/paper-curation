@@ -1,3 +1,25 @@
+---
+title: "1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D"
+authors:
+  - "Yutong Liang"
+  - "Shiyi Xu"
+  - "Yulong Zhang"
+  - "Bowen Zhan"
+  - "He Zhang"
+date: "2026.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "DexterCap는 문자 코드화된 마커 패치를 사용하는 저비용 광학 모션 캡처 시스템으로, 심한 자기 폐색 상황에서도 손가락의 섬세한 조작 동작을 정확하게 추적하며 최소한의 수동 작업으로 자동 재구성 파이프라인을 제공한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Dexterous_Hand_Trajectory_Datasets"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liang et al._2026_DexterCap An Affordable and Automated System for Capturing Dexterous Hand-Object Manipulation.pdf"
+---
+
 # DexterCap: An Affordable and Automated System for Capturing Dexterous Hand-Object Manipulation
 
 > **저자**: Yutong Liang, Shiyi Xu, Yulong Zhang, Bowen Zhan, He Zhang, Libin Liu | **날짜**: 2026-01-09 | **URL**: [https://arxiv.org/abs/2601.05844](https://arxiv.org/abs/2601.05844)
@@ -69,3 +91,15 @@ DexterCap는 문자 코드화된 마커 패치를 사용하는 저비용 광학 
 - Overall: 4/5
 
 **총평**: DexterCap은 문자 코드화 마커와 자동화 파이프라인을 통해 저비용으로도 섬세한 손 조작을 정확하게 캡처할 수 있음을 보여주며, 공개된 DexterHand 데이터셋과 함께 손-물체 상호작용 연구의 중요한 리소스로 기여한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — 저비용 광학 모션 캡처와 SLAM 기반 전자기장 시스템이 손가락 추적에서 서로 다른 기술적 해결책을 제공한다.
+- 🧪 응용 사례: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — DexterCap의 정밀한 손가락 추적 데이터가 OSMO 촉각 장갑의 human-to-robot skill transfer에서 정확한 참조 동작을 제공할 수 있다.
+- 🧪 응용 사례: [[papers/1631_RAPID_Hand_A_Robust_Affordable_Perception-Integrated_Dextero/review]] — DexterCap으로 캡처된 정교한 손 조작 데이터가 RAPID Hand의 지각 통합 정교한 로봇 손 제어에 실질적인 훈련 데이터로 활용될 수 있다.
+- 🏛 기반 연구: [[papers/1659_RUKA_Rethinking_the_Design_of_Humanoid_Hands_with_Learning/review]] — RUKA의 학습 기반 휴머노이드 손 설계가 DexterCap으로 수집된 인간 손 동작 데이터를 효과적으로 재현할 수 있는 로봇 손 하드웨어 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2075_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/review]] — 두 개의 다중 손가락 손을 사용한 시각촉각 기술 학습으로 발전됩니다.
+- 🧪 응용 사례: [[papers/1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f/review]] — 실시간 양손 정교한 텔레오퍼레이션의 실제 구현 사례를 보여줍니다.
+- 🏛 기반 연구: [[papers/1838_ClimbingCap_Multi-Modal_Dataset_and_Method_for_Rock_Climbing/review]] — DexterCap의 동작 캡처 시스템이 ClimbingCap에서 복잡한 등반 동작의 정확한 3D 복원을 위한 기술적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — DexterCap과 함께 dexterous manipulation을 위한 모션캡처 시스템의 서로 다른 기술적 접근법을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — DexterCap의 affordable mocap system이 HumDex의 learning-based hand retargeting을 위한 데이터 수집 기초 기술을 제공한다.

@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "100배 이상의 대규모 action trajectory 데이터셋을 활용하여 vector quantization 기반 action tokenizer를 학습하고, 이를 Vision-Language-Action 모델에 통합하여 추론 속도, 동작 부드러움, 장기 계획 능력을 향상시킨다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Action_Chunking_Methods"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Broad_Task_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_VQ-VLA Improving Vision-Language-Action Models via Scaling Vector-Quantized Action Tokenizers.pdf"
 ---
@@ -88,8 +88,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_VQ-VLA Improving Vision
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — 둘 다 action tokenization이지만 VQ-VLA는 vector quantization, FAST는 효율적 토큰화로 다른 접근법이다
-- 🔗 후속 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — Discrete Diffusion VLA의 이산 확산 모델을 vector quantization 기반으로 확장하여 대규모 데이터 학습을 가능하게 했다
-- 🏛 기반 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — Latent Action Pretraining의 잠재 행동 표현 학습이 VQ-VLA의 action tokenizer 설계 기반이 된다
-- 🧪 응용 사례: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — Learning from Massive Human Videos의 대규모 데이터와 VQ-VLA의 확장 가능한 토큰화를 결합한 효과적 학습이 가능하다
-- 🔗 후속 연구: [[papers/1424_HiMoE-VLA_Hierarchical_Mixture-of-Experts_for_Generalist_Vis/review]] — VQ-VLA의 quantization 기법을 hierarchical MoE 구조와 결합하여 더 효율적인 cross-embodiment learning을 달성합니다.
+- 🏛 기반 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — Action tokenization의 기본 개념을 제공하여 VQ-VLA의 vector quantization 기반 action tokenizer 설계에 핵심적인 이론적 토대를 마련한다.
+- 🔄 다른 접근: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — 둘 다 action을 token으로 표현하지만, VQ-VLA는 vector quantization을, UniVLA는 discrete token 통합을 사용한다.
+- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 대규모 데이터에서의 학습 효과에 대한 이론적 근거를 제공하여 VQ-VLA의 100배 규모 데이터셋 활용 방법론을 뒷받침한다.
+- 🔗 후속 연구: [[papers/1392_FAST_Efficient_Action_Tokenization_for_Vision-Language-Actio/review]] — VLA 모델의 action tokenization을 vector quantization 방법으로 확장한 연구입니다.
+- 🏛 기반 연구: [[papers/1429_HybridVLA_Collaborative_Diffusion_and_Autoregression_in_a_Un/review]] — VQ-VLA의 다중 생성 패러다임 개념을 diffusion과 autoregressive의 collaborative training으로 구현했다.
+- 🏛 기반 연구: [[papers/1366_Discrete_Diffusion_VLA_Bringing_Discrete_Diffusion_to_Action/review]] — vector quantization이 discrete diffusion VLA의 action token 표현에 핵심적인 기반 기술

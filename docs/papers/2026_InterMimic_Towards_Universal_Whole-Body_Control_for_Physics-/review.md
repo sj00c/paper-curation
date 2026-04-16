@@ -1,3 +1,23 @@
+---
+title: "2026_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-"
+authors:
+  - "Sirui Xu"
+  - "Hung Yu Ling"
+  - "Yu-Xiong Wang"
+  - "Liang-Yan Gui"
+date: "2025.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "InterMimic은 교사-학생 증류 및 RL 미세조정을 통해 불완전한 MoCap 데이터로부터 다양한 동적 객체와의 전신 상호작용을 학습할 수 있는 물리 기반 제어 정책 프레임워크이다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2025_InterMimic Towards Universal Whole-Body Control for Physics-Based Human-Object Interactions.pdf"
+---
+
 # InterMimic: Towards Universal Whole-Body Control for Physics-Based Human-Object Interactions
 
 > **저자**: Sirui Xu, Hung Yu Ling, Yu-Xiong Wang, Liang-Yan Gui | **날짜**: 2025-02-27 | **URL**: [https://arxiv.org/abs/2502.20390](https://arxiv.org/abs/2502.20390)
@@ -65,3 +85,16 @@ InterMimic은 교사-학생 증류 및 RL 미세조정을 통해 불완전한 Mo
 - Overall: 4/5
 
 **총평**: InterMimic은 불완전한 대규모 MoCap 데이터로부터 다양한 동적 객체와의 전신 상호작용을 학습하는 첫 통합 프레임워크로, 교사-학생 증류와 RL 미세조정의 창의적 결합을 통해 물리 기반 상호작용 애니메이션의 새로운 기준을 제시한다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/2027_InterPrior_Scaling_Generative_Control_for_Physics-Based_Huma/review]] — InterMimic의 교사-학생 증류 방식을 InterPrior의 생성형 제어 프레임워크에 통합하여 더욱 발전된 물리 기반 제어를 구현한다.
+- 🧪 응용 사례: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 물리적으로 현실적인 인간-객체 상호작용 생성을 위한 구체적인 시뮬레이션 환경과 검증 방법을 제공한다.
+- 🏛 기반 연구: [[papers/1862_DeepMimic_Example-Guided_Deep_Reinforcement_Learning_of_Phys/review]] — 물리 기반 캐릭터 제어의 기본적인 강화학습 원리와 모방 학습 방법론의 이론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — 불완전한 데이터로부터 전신 제어를 학습하는 문제에서 MaskedMimic은 다른 masking 전략 사용
+- 🏛 기반 연구: [[papers/1943_GBC_Generalized_Behavior-Cloning_Framework_for_Whole-Body_Hu/review]] — 행동 복제 기반의 전신 휴머노이드 제어에 대한 일반화된 프레임워크 제공
+- 🏛 기반 연구: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 물리 기반 인간-객체 상호작용의 범용적인 제어 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/1614_Physically_Consistent_Humanoid_Loco-Manipulation_using_Laten/review]] — InterMimic의 universal whole-body control이 LDM으로 생성된 접촉 기반 조작 계획의 실행에 필요한 기반 기술이다
+- 🔄 다른 접근: [[papers/1841_CLoSD_Closing_the_Loop_between_Simulation_and_Diffusion_for/review]] — diffusion-시뮬레이션 폐쇄루프와 InterMimic의 물리 기반 전신 제어는 다중 태스크 캐릭터 제어의 서로 다른 접근법
+- 🔄 다른 접근: [[papers/1897_Ego-Vision_World_Model_for_Humanoid_Contact_Planning/review]] — InterMimic의 universal whole-body control이 world model 기반이 아닌 다른 방식으로 접촉 계획 문제를 해결하는 대안적 접근을 제시한다.
+- 🏛 기반 연구: [[papers/2027_InterPrior_Scaling_Generative_Control_for_Physics-Based_Huma/review]] — InterMimic의 교사-학생 증류 메커니즘이 InterPrior의 모방 사전학습 단계에서 핵심적인 기술적 기반을 제공한다.

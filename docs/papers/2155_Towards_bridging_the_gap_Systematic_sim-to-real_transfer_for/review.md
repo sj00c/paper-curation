@@ -1,3 +1,22 @@
+---
+title: "2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for"
+authors:
+  - "Filip Bjelonic"
+  - "Fabian Tischhauser"
+  - "Marco Hutter"
+date: "2025.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이족 로봇의 시뮬레이션-실제 전이 문제를 해결하기 위해 강화학습과 영구자석 동기 전동기(PMSM)의 물리 기반 에너지 모델을 통합한 프레임워크를 제안하며, 최소한의 파라미터로 현실성을 확보하면서 에너지 효율성을 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bjelonic et al._2025_Towards bridging the gap Systematic sim-to-real transfer for diverse legged robots.pdf"
+---
+
 # Towards bridging the gap: Systematic sim-to-real transfer for diverse legged robots
 
 > **저자**: Filip Bjelonic, Fabian Tischhauser, Marco Hutter | **날짜**: 2025-09-08 | **URL**: [https://arxiv.org/abs/2509.06342](https://arxiv.org/abs/2509.06342)
@@ -67,3 +86,15 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 물리 기반 모델링과 강화학습을 체계적으로 결합하여 실제 다리 로봇의 시뮬레이션 전이 문제를 효과적으로 해결하며, 광범위한 플랫폼 검증과 에너지 효율성 개선으로 높은 실용성과 신뢰성을 입증한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1675_Sim-to-Real_of_Humanoid_Locomotion_Policies_via_Joint_Torque/review]] — Sim-to-Real of Humanoid Locomotion의 관절 토크 기반 전이 기법이 PMSM 에너지 모델을 통한 체계적 전이의 기반 방법론을 제공합니다.
+- 🔄 다른 접근: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — PMSM 에너지 모델은 이족 로봇의 물리 기반 접근을 사용하고 MoE-based Robust Quadruped은 사족 로봇의 혼합 전문가 모델을 사용하는 서로 다른 전이 방법입니다.
+- 🧪 응용 사례: [[papers/1673_Sim-and-Real_Co-Training_A_Simple_Recipe_for_Vision-Based_Ro/review]] — PMSM 기반 에너지 효율 모델링을 vision-based robotic learning의 sim-and-real co-training에 적용하여 더 현실적인 에너지 제약을 반영할 수 있습니다.
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 이 논문은 에너지 효율성에, Learning Sim-to-Real Humanoid Locomotion은 빠른 학습에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — 시뮬레이션-실제 전이에서 대조 표현 학습이 제공하는 견고성이 PMSM 에너지 모델 기반 전이 방법론의 이론적 기반이 됩니다.
+- 🔗 후속 연구: [[papers/1829_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — 운동 조작에서의 sim-to-real gap 해결을 systematic한 sim-to-real transfer로 확장하여 더 일반적인 해결책을 제시한다.
+- 🔗 후속 연구: [[papers/1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C/review]] — 체계적 시뮬레이션-현실 전이 격차 해소로 발전됩니다.
+- 🏛 기반 연구: [[papers/2107_MOSAIC_Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_M/review]] — 체계적인 sim-to-real 전이 연구가 MOSAIC의 시뮬레이션-실제 gap 해결을 위한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — RoboGauge는 MoE 기반 사족 로봇에 집중하고 systematic sim-to-real transfer는 이족 로봇의 PMSM 에너지 모델을 사용하는 서로 다른 접근법입니다.

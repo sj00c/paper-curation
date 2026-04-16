@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "멀티모달 프롬프트(텍스트와 이미지 혼합)를 사용하여 다양한 로봇 조작 작업을 통일된 시퀀스 모델링 문제로 표현하고, 이를 처리할 수 있는 transformer 기반 로봇 에이전트 VIMA를 제시한다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/Hierarchical_Task_Learning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Instruction-Following_Robot_Navigation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2022_VIMA General Robot Manipulation with Multimodal Prompts.pdf"
 ---
@@ -89,10 +91,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2022_VIMA General Robot Man
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — 멀티모달 프롬프트를 통한 통합 시퀀스 모델링 접근법이 PSL의 LLM 기반 고수준 계획 수립에 이론적 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 로봇 조작에서 VIMA의 멀티모달 프롬프트 기반 transformer와 VLA-0의 단순한 텍스트 액션 표현 방식을 복잡성과 성능 측면에서 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1436_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — InstructVLA의 멀티모달 instruction tuning 방법론을 VIMA의 텍스트-이미지 혼합 프롬프트 처리에 적용하여 더 정교한 명령 이해를 가능하게 한다.
-- 🧪 응용 사례: [[papers/1325_CALVIN_A_Benchmark_for_Language-Conditioned_Policy_Learning/review]] — CALVIN 벤치마크의 언어 조건 정책 학습 평가 방법론을 VIMA의 멀티모달 프롬프트 기반 로봇 에이전트 성능 검증에 활용할 수 있다.
-- 🏛 기반 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — 멀티모달 프롬프트 기반 로봇 조작을 통합 시퀀스 모델링으로 접근한 VIMA의 방법론이 PSL의 계층적 계획 수립에 이론적 기반을 제공한다.
-- ⚖️ 반론/비판: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 로봇 조작에서 VLA-0의 단순한 설계 철학과 VIMA의 복잡한 멀티모달 프롬프트 처리 방식을 효율성과 표현력 측면에서 대조할 수 있다.
-- 🏛 기반 연구: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — VIMA의 멀티모달 프롬프트 기반 조작 방법론이 ARNOLD의 언어 기반 작업 학습 설계에 이론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — VIMA와 동일한 멀티모달 프롬프트를 활용한 로봇 조작이지만 다른 transformer 아키텍처 접근법이 있을 수 있다.
+- 🔄 다른 접근: [[papers/1514_Perceiver-Actor_A_Multi-Task_Transformer_for_Robotic_Manipul/review]] — Perceiver-Actor는 VIMA와 유사한 멀티태스크 transformer이지만 perceiver 아키텍처를 활용하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — Instruct2Act는 VIMA와 같은 다중모달 명령을 로봇 행동으로 매핑하지만 다른 아키텍처를 사용한다.
+- 🔗 후속 연구: [[papers/1436_InstructVLA_Vision-Language-Action_Instruction_Tuning_from_U/review]] — InstructVLA는 VIMA의 멀티모달 instruction following을 VLA 프레임워크로 확장한 후속 연구다.
+- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — visual instruction tuning의 기본 개념을 제공하여 VIMA의 멀티모달 프롬프트 처리에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 웹 지식 전이 접근법이 VIMA의 멀티모달 프롬프트 기반 로봇 조작의 이론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA가 VIMA의 멀티모달 프롬프트 아이디어를 대규모 오픈소스 VLA 모델로 확장 발전시켰다.
+- 🔄 다른 접근: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy가 VIMA와 다른 확산 모델 기반 접근법으로 로봇 조작 정책 학습 문제를 해결한다.
+- 🧪 응용 사례: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue가 VIMA의 멀티모달 프롬프트를 실제 대화형 로봇 추론 시나리오에 적용한 사례다.
+- 🧪 응용 사례: [[papers/1611_Visual_Instruction_Tuning/review]] — visual instruction tuning의 개념을 멀티모달 프롬프트 기반 로봇 조작에 적용하여 실제 embodied AI 문제로 확장합니다.
+- 🏛 기반 연구: [[papers/1312_ARNOLD_A_Benchmark_for_Language-Grounded_Task_Learning_With/review]] — 멀티모달 프롬프트를 활용한 범용 로봇 조작의 기초 방법론을 제공한다.

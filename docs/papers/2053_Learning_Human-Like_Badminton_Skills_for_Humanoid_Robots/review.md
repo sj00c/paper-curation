@@ -1,3 +1,25 @@
+---
+title: "2053_Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots"
+authors:
+  - "Yeke Chen"
+  - "Shihao Dong"
+  - "Xiaoyu Ji"
+  - "Jingkai Sun"
+  - "Zeren Luo"
+date: "2026.02"
+doi: "10.48550/arXiv.2602.08370"
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 배드민턴 기술을 습득하도록 하는 Imitation-to-Interaction 점진적 강화학습 프레임워크를 제안하며, 시뮬레이션에서 실제 로봇으로의 제로샷 sim-to-real 전이를 달성했다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2026_Learning Human-Like Badminton Skills for Humanoid Robots.pdf"
+---
+
 # Learning Human-Like Badminton Skills for Humanoid Robots
 
 > **저자**: Yeke Chen, Shihao Dong, Xiaoyu Ji, Jingkai Sun, Zeren Luo, Liu Zhao, Jiahui Zhang, Wanyue Li, Ji Ma, Bowen Xu, Yimin Han, Yudong Zhao, Peng Lu | **날짜**: 2026-02-09 | **DOI**: [10.48550/arXiv.2602.08370](https://doi.org/10.48550/arXiv.2602.08370)
@@ -66,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 휴머노이드 로봇 스포츠 제어의 새로운 경계를 개척한 혁신적 연구로, Imitation-to-Interaction 프레임워크와 manifold expansion 전략은 희소한 전문가 데이터에서 고도로 정밀하고 인간다운 운동을 학습하는 강력한 솔루션을 제시한다. 제로샷 sim-to-real 전이의 성공은 실용적 가치가 높으나, 상대방 상호작용과 환경 변동성 측면의 제한이 남아 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — 라켓 스포츠 학습에서 배드민턴과 테니스라는 서로 다른 종목에 대한 휴머노이드 기술 습득 방법론을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — 계층적 end-effector 추적 기술이 배드민턴에서의 정밀한 라켓 제어를 위한 기본적인 제어 메커니즘을 제공한다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — Imitation-to-Interaction 학습을 다단계 강화학습으로 확장하여 더 복잡하고 다양한 배드민턴 전략을 습득할 수 있다.
+- 🔄 다른 접근: [[papers/1979_HITTER_A_HumanoId_Table_TEnnis_Robot_via_Hierarchical_Planni/review]] — 휴머노이드 스포츠 기술에서 배드민턴과 탁구로 다른 종목에 적용된 유사한 계층적 학습
+- 🔄 다른 접근: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 배드민턴과 축구 모두 시각 기반 반응형 스포츠 기술이지만 배드민턴은 모방-상호작용, 축구는 통합 강화학습을 사용한다.
+- 🔗 후속 연구: [[papers/1996_Humanoid_Locomotion_as_Next_Token_Prediction/review]] — 배드민턴 기술의 점진적 학습이 next token prediction을 통한 더 일반적인 운동 생성으로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — badminton과 유사한 라켓 스포츠이지만 humanoid whole-body control과 human-like skill learning의 서로 다른 접근 방식을 사용한다.
+- 🔄 다른 접근: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — 스포츠 기술 학습에서 테니스 대신 배드민턴을 통한 다른 라켓 스포츠 접근법과 학습 프레임워크를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 두 논문 모두 시각 기반 스포츠 기술을 다루지만 축구는 통합 강화학습을, 배드민턴은 모방-상호작용 접근법을 사용한다.

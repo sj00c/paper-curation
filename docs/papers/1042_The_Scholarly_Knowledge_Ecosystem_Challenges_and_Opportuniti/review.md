@@ -10,7 +10,8 @@ score: 4.0
 essence: "학술 지식 생태계(Scholarly Knowledge Ecosystem)의 이해, 개선, 거버넌스를 위한 근본적인 과학 연구 과제를 종합적으로 분석하여, 다부문 협력, 혼합 방법론, 학제 간 협업의 필요성을 제시하는 리뷰 논문이다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Science_Policy_Funding"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Public_Science_Funding"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Altman and Cohen_2022_The Scholarly Knowledge Ecosystem Challenges and Opportunities for the Field of Information.pdf"
 ---
@@ -78,6 +79,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Altman and Cohen_2022_The Scholarly Know
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 분야를 학술 지식 생태계의 종합적 이해와 거버넌스라는 더 넓은 관점으로 확장하여 분석했다.
-- 🧪 응용 사례: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 학술 지식 생태계의 구조적 문제를 학술 출판의 과점 구조라는 구체적 사례로 분석할 수 있다.
-- 🧪 응용 사례: [[papers/1045_The_strain_on_scientific_publishing/review]] — 학술 지식 생태계의 도전 과제를 과학 출판에 가해지는 압박이라는 구체적 맥락에서 이해할 수 있다.
+- 🏛 기반 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 학술 지식 생태계 연구의 데이터, 측정, 실증 방법론적 기반을 제공하여 체계적 분석을 가능하게 한다.
+- 🔗 후속 연구: [[papers/1019_Science_of_science/review]] — 과학의 과학 분야를 학술 지식 생태계라는 더 포괄적 관점으로 확장하여 거버넌스 측면을 강조한다.
+- 🧪 응용 사례: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 출판사 독점 문제를 학술 지식 생태계의 거버넌스 과제로 구체화하여 해결 방안을 모색한다.
+- 🔗 후속 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 분야의 전반적 발전 방향을 제시하여, 해당 분야의 미래 연구 과제와 방법론적 혁신을 구체화한다.
+- 🏛 기반 연구: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 출판사 독점 현상이 학술 지식 생태계의 거버넌스 과제를 이해하는 핵심 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1071_Data_measurement_and_empirical_methods_in_the_science_of_sci/review]] — 과학의 과학 분야의 방법론적 기반이 학술 지식 생태계 연구로 확장되어 더 포괄적 관점을 제시한다.
+- 🏛 기반 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — 학술 지식 생태계의 오픈 인프라 구축을 위한 핵심 데이터 기반을 제공한다.

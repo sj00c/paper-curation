@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "3D FlowMatch Actor (3DFA)는 flow matching을 사용한 trajectory prediction과 3D pretrained visual representation을 결합하여 단일 팔 및 양팔 로봇 조작을 위한 통합 정책을 제시하며, 이전 3D diffusion 기반 정책 대비 30배 이상 빠른 학습과 추론을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Representation_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gkanatsios et al._2025_3D FlowMatch Actor Unified 3D Policy for Single- and Dual-Arm Manipulation.pdf"
 ---
@@ -91,7 +92,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gkanatsios et al._2025_3D FlowMatch Acto
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1288_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 둘 다 3D 시각 표현 기반 로봇 정책이지만 3D FlowMatch Actor는 flow matching을, 3D Diffusion Policy는 diffusion을 사용한다.
-- 🔗 후속 연구: [[papers/1395_FastStair_Learning_to_Run_Up_Stairs_with_Humanoid_Robots/review]] — FlowPolicy의 빠르고 robust한 3D flow 기반 정책이 3D FlowMatch Actor의 30배 빠른 학습/추론 성능을 더욱 향상시킬 수 있다.
-- 🧪 응용 사례: [[papers/1432_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — H-RDT의 bimanual manipulation 프레임워크가 3DFA의 단일팔+양팔 통합 정책을 실제 dexterous 조작에 적용하는 구체적 사례를 제공한다.
-- 🔄 다른 접근: [[papers/1288_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — 둘 다 3D 기반 로봇 정책 학습이지만 3D Diffusion Policy는 점군과 diffusion을, 3D FlowMatch Actor는 flow matching을 사용한다.
+- 🏛 기반 연구: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D diffusion policy의 기반 위에서 flow matching을 통한 30배 속도 개선을 달성한 후속 연구
+- 🔄 다른 접근: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 동일한 로봇 조작 문제를 diffusion 대신 flow matching으로 해결하여 훨씬 빠른 학습과 추론 속도를 제공
+- 🏛 기반 연구: [[papers/1465_ManiFlow_A_General_Robot_Manipulation_Policy_via_Consistency/review]] — ManiFlow의 flow matching 기반 manipulation policy 개념을 3D 시각 표현과 결합하여 단일/양팔 통합 정책으로 발전시킨 연구입니다.
+- 🔗 후속 연구: [[papers/1522_RDT-1B_a_Diffusion_Foundation_Model_for_Bimanual_Manipulatio/review]] — RDT-1B의 bimanual manipulation을 위한 diffusion 기반 모델을 flow matching으로 개선하고 단일/양팔 통합 접근법으로 발전시킨 연구입니다.
+- 🏛 기반 연구: [[papers/1395_FlowPolicy_Enabling_Fast_and_Robust_3D_Flow-based_Policy_via/review]] — 3D FlowMatch Actor의 3D flow-based policy 생성 기법이 FlowPolicy의 Consistency Flow Matching 설계의 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — diffusion policy를 flow matching으로 대체하여 동일한 visuomotor 학습을 훨씬 빠르게 수행하는 개선된 접근법
+- 🔄 다른 접근: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 둘 다 3D 시각 표현과 생성 모델을 결합하지만 DP3는 diffusion을, 3DFA는 flow matching을 사용하여 서로 다른 접근법을 제시합니다.

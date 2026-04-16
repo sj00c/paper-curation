@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "LingBot-VLA는 약 20,000시간의 실제 로봇 데이터로 학습한 Vision-Language-Action 기초 모델로, 효율적인 학습과 다중 플랫폼 일반화 능력을 갖춘다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Cross-Domain_Robot_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Broad_Task_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2026_A Pragmatic VLA Foundation Model.pdf"
 ---
@@ -89,4 +90,7 @@ LingBot-VLA는 약 20,000시간의 실제 로봇 데이터로 학습한 Vision-L
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/1293_A_Distributional_Treatment_of_Real2Sim2Real_for_Object-Centr/review]] — Bridging the Sim-to-Real Gap의 athletic loco-manipulation 경험이 DLO 조작의 Real2Sim2Real 프레임워크 적용에 실용적 인사이트를 제공한다.
+- 🔄 다른 접근: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — 오픈소스 VLA 모델로서 LingBot-VLA와 다른 접근 방식의 기초 모델을 제시합니다.
+- 🏛 기반 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — 웹 지식을 로봇 제어에 전이하는 Vision-Language-Action 모델의 선구적 연구입니다.
+- 🏛 기반 연구: [[papers/1318_Being-H05_Scaling_Human-Centric_Robot_Learning_for_Cross-Emb/review]] — Being-H0.5의 멀티플랫폼 일반화 개념을 실용적인 규모로 축소하여 효율적인 학습에 중점을 둔 pragmatic한 접근법입니다.
+- 🔗 후속 연구: [[papers/1495_NORA_A_Small_Open-Sourced_Generalist_Vision_Language_Action/review]] — NORA의 소규모 오픈소스 VLA 모델 개념을 실제 20,000시간 데이터로 학습한 더 실용적인 기초 모델로 발전시킨 연구입니다.

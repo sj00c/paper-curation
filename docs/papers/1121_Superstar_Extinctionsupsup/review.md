@@ -11,7 +11,8 @@ score: 4.0
 essence: "학계 슈퍼스타의 예기치 않은 사망을 자연실험으로 활용하여, 동료 연구자들의 협업 네트워크 구조 변화가 과학적 생산성에 미치는 영향을 5-8% 감소로 정량화함."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Academic_Career_Recognition"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Azoulay et al._2010_Superstar Extinction.pdf"
 ---
@@ -74,8 +75,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Azoulay et al._2010_Superstar Extinction
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 과학자 경력의 핫스트릭 패턴 분석과 슈퍼스타 사망의 네트워크 효과를 비교하여 개인 vs 협업 차원의 과학 생산성 동역학을 탐구할 수 있다.
-- 🔗 후속 연구: [[papers/956_Early_career_setback_and_future_achievement_in_professional/review]] — 초기 경력 좌절이 미래에 미치는 영향 분석을 슈퍼스타 상실로 인한 협업 네트워크 충격과 연결하여 과학 경력의 다층적 위험 요소를 이해한다.
-- 🏛 기반 연구: [[papers/1028_Tenure_and_research_trajectories/review]] — 종신재직권과 연구 궤적의 관계를 제시하여 슈퍼스타 상실이 협업자들의 경력 안정성에 미치는 영향을 분석하는 기반을 제공한다.
-- 🧪 응용 사례: [[papers/1020_Scientific_prize_network_predicts_who_pushes_the_boundaries/review]] — 과학상 네트워크로 예측된 슈퍼스타 과학자들의 영향력 소멸 과정을 분석하는 구체적 적용 사례를 제공합니다.
-- 🔗 후속 연구: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 슈퍼스타 과학자의 소멸이 과학 진보에 미치는 영향을 조기사망 효과로 확장하여 분석한다
+- 🔄 다른 접근: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 과학자의 사망이 분야에 미치는 영향을 다른 관점에서 분석한다.
+- 🏛 기반 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 과학자 경력의 핫스트리크 패턴 연구에 네트워크 효과의 중요성을 더한다.
+- ⚖️ 반론/비판: [[papers/1020_Scientific_prize_network_predicts_who_pushes_the_boundaries/review]] — 과학상 네트워크가 엘리트를 예측한다는 관점과 슈퍼스타 과학자의 영향력이 사후에 감소한다는 상반된 관점을 보여줍니다.
+- 🔗 후속 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 슈퍼스타 소멸 현상은 다양성-혁신 역설과 함께 과학계에서 기존 엘리트 구조가 변화하면서 소수집단의 기여가 재평가되는 양상을 보여줍니다.
+- ⚖️ 반론/비판: [[papers/1036_The_Matthew_effect_in_science_funding/review]] — 슈퍼스타 과학자의 사망이 오히려 후속 연구자들에게 기회를 제공한다는 관점에서 Matthew effect의 지속성에 대해 다른 시각을 제시합니다.
+- 🔗 후속 연구: [[papers/955_Does_Science_Advance_One_Funeral_at_a_Time/review]] — 저명 과학자의 영향력을 개별 사망 사건에서 전반적인 슈퍼스타 소멸 현상으로 확장한다

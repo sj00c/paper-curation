@@ -1,3 +1,25 @@
+---
+title: "1800_AMOR_Adaptive_Character_Control_through_Multi-Objective_Rein"
+authors:
+  - "Lucas N. Alegre"
+  - "Agon Serifi"
+  - "Ruben Grandia"
+  - "David Müller"
+  - "Espen Knoop"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Multi-Objective Reinforcement Learning(MORL)을 활용하여 보상 함수의 가중치를 학습 후 조정할 수 있는 AMOR 프레임워크를 제안하며, 이를 통해 물리 기반 캐릭터 제어의 반복 튜닝 시간을 단축하고 실제 로봇으로의 전이를 용이하게 한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Parallel_Robot_Training"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Alegre et al._2025_AMOR Adaptive Character Control through Multi-Objective Reinforcement Learning.pdf"
+---
+
 # AMOR: Adaptive Character Control through Multi-Objective Reinforcement Learning
 
 > **저자**: Lucas N. Alegre, Agon Serifi, Ruben Grandia, David Müller, Espen Knoop, Moritz Bächer | **날짜**: 2025-05-29 | **URL**: [https://arxiv.org/abs/2505.23708](https://arxiv.org/abs/2505.23708)
@@ -70,3 +92,19 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 MORL을 물리 기반 캐릭터 제어에 창의적으로 적용하여 훈련 후 가중치 조정을 가능하게 함으로써 개발 워크플로우를 크게 개선하고, 실제 로봇 적용에서의 sim-to-real 전이를 용이하게 하는 실용적이고 혁신적인 접근법을 제시한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — PopArt을 활용한 multi-task 강화학습이 AMOR의 다중 목표 최적화에서 발생하는 학습 안정성 문제를 해결하는 기초를 제공한다
+- 🔄 다른 접근: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — 둘 다 multi-objective RL을 다루지만 preference conditioning과 adaptive weight learning이라는 서로 다른 접근법을 사용한다
+- 🔗 후속 연구: [[papers/1698_Symphony_A_Heuristic_Normalized_Calibrated_Advantage_Actor_a/review]] — Symphony의 정규화된 calibrated advantage 방법이 AMOR의 다중 목표 정책 학습에서 더 안정적인 성능을 제공할 수 있다
+- 🧪 응용 사례: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMOR의 MORL 프레임워크가 AMP의 adversarial motion prior 학습에서 보상 균형 문제를 해결합니다.
+- 🏛 기반 연구: [[papers/1817_Benchmarking_Potential_Based_Rewards_for_Learning_Humanoid_L/review]] — Potential Based Rewards 벤치마킹이 AMOR의 multi-objective 보상 설계 방법론에 중요한 기준을 제공합니다.
+- 🧪 응용 사례: [[papers/1916_Evolutionary_Continuous_Adaptive_RL-Powered_Co-Design_for_Hu/review]] — 진화적 연속 적응 RL 기반 co-design이 AMOR의 캐릭터 제어를 실제 휴머노이드 하드웨어 최적화와 결합하는 데 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1615_Physics-Based_Motion_Imitation_with_Adversarial_Differential/review]] — AMOR은 multi-objective reinforcement learning을, ADD는 adversarial differential discriminator를 사용하여 다중 목표 최적화를 다르게 접근함
+- 🔄 다른 접근: [[papers/1623_Preference-Conditioned_Multi-Objective_RL_for_Integrated_Com/review]] — Preference-Conditioned MORL은 선호도 조건부 접근을, AMOR은 adaptive multi-objective 접근을 통해 다중 목표 최적화를 다르게 해결함
+- 🏛 기반 연구: [[papers/1801_AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Cha/review]] — AMP의 adversarial prior 학습에서 AMOR의 multi-objective 보상 조정이 스타일과 태스크 목표의 균형을 맞춥니다.
+- 🔄 다른 접근: [[papers/1854_Coordinated_Humanoid_Robot_Locomotion_with_Symmetry_Equivari/review]] — 휴머노이드 보행의 대칭성 활용에서 Symmetry Equivariant Policy와 Multi-Objective Reinforcement Learning의 서로 다른 수학적 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2037_KungfuBot_Physics-Based_Humanoid_Whole-Body_Control_for_Lear/review]] — AMOR의 다목적 강화학습이 KungfuBot의 고동적 인간 행동 모방에서 스타일과 성능을 동시에 최적화하는 기반 제공
+- 🏛 기반 연구: [[papers/2066_Learning_to_Ball_Composing_Policies_for_Long-Horizon_Basketb/review]] — 다목적 강화학습을 통한 캐릭터 제어의 이론적 기반을 제공하며, 농구와 같은 복합 스킬 학습에 적용 가능하다.
+- 🔄 다른 접근: [[papers/2108_Multi-task_Deep_Reinforcement_Learning_with_PopArt/review]] — Multi-task 강화학습에서 PopArt 정규화와 adaptive multi-objective 접근법의 다른 관점을 비교할 수 있다.

@@ -1,3 +1,23 @@
+---
+title: "1913_EMP_Executable_Motion_Prior_for_Humanoid_Robot_Standing_Uppe"
+authors:
+  - "Haocheng Xu"
+  - "Haodong Zhang"
+  - "Zhenghan Chen"
+  - "Rong Xiong"
+date: "2025.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇이 서 있는 자세를 유지하면서 인간의 상체 동작을 모방하기 위해 강화학습과 Executable Motion Prior(EMP) 모듈을 결합한 프레임워크를 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Xu et al._2025_EMP Executable Motion Prior for Humanoid Robot Standing Upper-body Motion Imitation.pdf"
+---
+
 # EMP: Executable Motion Prior for Humanoid Robot Standing Upper-body Motion Imitation
 
 > **저자**: Haocheng Xu, Haodong Zhang, Zhenghan Chen, Rong Xiong | **날짜**: 2025-07-21 | **URL**: [https://arxiv.org/abs/2507.15649](https://arxiv.org/abs/2507.15649)
@@ -66,3 +86,13 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 RL과 동작 prior를 결합하여 휴머노이드 로봇의 안정적인 상체 동작 모방을 실현하는 실용적인 솔루션을 제시하며, 실제 로봇 배포를 통해 그 효과를 입증한 우수한 연구이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — centroidal momentum regularization이 EMP의 standing upper-body motion control에서 전체 몸의 운동량 관리에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1918_ExBody2_Advanced_Expressive_Humanoid_Whole-Body_Control/review]] — ExBody2의 advanced expressive whole-body control이 EMP의 상체 동작 모방을 더 포괄적이고 표현력 있는 전신 제어로 확장한다.
+- 🔄 다른 접근: [[papers/1744_Unleashing_Humanoid_Reaching_Potential_via_Real-world-Ready/review]] — real-world-ready humanoid reaching이 EMP와 다른 접근으로 humanoid 상체 제어의 실용적 구현을 제시한다.
+- 🏛 기반 연구: [[papers/1972_Hierarchical_Intention-Aware_Expressive_Motion_Generation_fo/review]] — 의도 인식 표현적 동작 생성 연구가 EMP의 인간 상체 동작 모방을 위한 동작 표현 및 의도 이해 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — OmniControl의 임의 관절 제어가 상체 동작에 특화된 EMP와는 다른 전신 관절 제어 접근 방식을 제시한다.
+- 🧪 응용 사례: [[papers/1690_Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleo/review]] — 안정성 인식 retargeting 연구가 EMP의 서 있는 자세 유지 중 상체 동작 모방을 실제 multi-contact 상황에 적용하는 구체적인 방법을 제공한다.
+- 🔄 다른 접근: [[papers/2058_Learning_Humanoid_Standing-up_Control_across_Diverse_Posture/review]] — 휴머노이드 일어서기 제어에서 HoST의 강화학습 접근법 대신 실행 가능한 모션 우선순위를 활용한 다른 방법을 제시한다.

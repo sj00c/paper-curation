@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 신경과학에서 영감을 받은 Neural Brain 프레임워크를 제안하여 embodied agent가 인간 수준의 적응성으로 실제 환경과 상호작용할 수 있도록 설계하였다. 이 프레임워크는 multimodal active sensing, perception-cognition-action 기능, neuroplasticity 기반 메모리, neuromorphic hardware/software 최적화를 통합한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Embodied_AI_Foundation_Models"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_Neural Brain A Neuroscience-inspired Framework for Embodied Agents.pdf"
 ---
@@ -93,7 +95,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_Neural Brain A Neuroscie
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1278_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — Embodied agent를 위한 신경과학 영감 프레임워크와 행동 foundation model의 서로 다른 접근 방식을 보여준다.
-- 🏛 기반 연구: [[papers/1610_PHUMA_Physically-Grounded_Humanoid_Locomotion_Dataset/review]] — Multimodal large language model이 신경과학 기반 embodied agent의 인지-행동 통합에 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1585_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro/review]] — ThinkBot의 thought chain과 Neural Brain의 neuroscience-inspired reasoning이 embodied reasoning의 확장된 형태를 제시한다.
-- 🔗 후속 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — Neural Brain은 Cosmos-Reason1의 구체화된 추론을 신경과학 영감 프레임워크로 확장한다
+- 🔄 다른 접근: [[papers/1294_A_Generalist_Agent/review]] — embodied agent 설계에서 neuroscience-inspired framework vs generalist agent라는 서로 다른 아키텍처 설계 철학을 제시한다.
+- 🔗 후속 연구: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — embodied AI를 위한 world model 개념을 neuroscience 원리와 결합하여 더 생물학적으로 타당한 agent 아키텍처를 구축한다.
+- 🏛 기반 연구: [[papers/1378_Embodied_Navigation_Foundation_Model/review]] — embodied navigation foundation model의 이론적 기반을 제공하여 Neural Brain 프레임워크의 navigation 모듈 설계에 필요한 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — 둘 다 통합된 뇌 모델 접근법이지만, Neural Brain은 신경과학 기반을, RoboBrain은 로봇 매니퓰레이션 통합에 초점을 둔다.
+- 🏛 기반 연구: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — Neural Brain의 신경과학적 설계 원리가 Visual Embodied Brain의 멀티모달 대규모 언어 모델 아키텍처에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — 신경과학 기반 Neural Brain은 embodied AI를 위한 월드 모델의 생물학적 영감을 제공합니다.
+- 🔄 다른 접근: [[papers/1380_Embodied-R1_Reinforced_Embodied_Reasoning_for_General_Roboti/review]] — Neural Brain과 Embodied-R1 모두 embodied reasoning을 다루지만 신경과학적 접근과 강화학습 접근으로 차별화됩니다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — 신경과학적 framework는 Inner Monologue의 계획 기능을 생물학적으로 구현하는 방법을 제시합니다.

@@ -1,3 +1,24 @@
+---
+title: "2000_Humanoid_Policy__Human_Policy"
+authors:
+  - "Ri-Zhao Qiu"
+  - "Shiqi Yang"
+  - "Xuxin Cheng"
+  - "Chaitanya Chawla"
+  - "Jialong Li"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇 조작 정책 학습을 위해 대규모 자아중심 인간 데모를 cross-embodiment 학습 데이터로 활용하고, Human Action Transformer (HAT)를 통해 인간과 로봇을 통합된 상태-행동 공간에서 다양한 embodiment으로 모델링한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Qiu et al._2025_Humanoid Policy ~ Human Policy.pdf"
+---
+
 # Humanoid Policy ~ Human Policy
 
 > **저자**: Ri-Zhao Qiu, Shiqi Yang, Xuxin Cheng, Chaitanya Chawla, Jialong Li, Tairan He, Ge Yan, David J. Yoon, Ryan Hoque, Lars Paulsen, Ge Yang, Jian Zhang, Sha Yi, Guanya Shi, Xiaolong Wang | **날짜**: 2025-03-17 | **URL**: [https://arxiv.org/abs/2503.13441](https://arxiv.org/abs/2503.13441)
@@ -63,3 +84,21 @@
 - Overall: 4/5
 
 **총평**: 로봇 조작 학습에서 대규모 인간 데이터 활용의 실질적 가치를 입증한 의미 있는 연구로, 통합된 state-action space와 체계적인 co-training 전략을 통해 embodiment 간극을 효과적으로 해소했으며, PH2D 데이터셋과 HAT 모델의 공개를 통해 cross-embodiment 학습 커뮤니티에 중요한 기여를 할 것으로 기대된다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — UDH의 common prototype 방식과 달리 HAT는 unified state-action space에서 human과 robot을 직접적으로 통합 모델링한다.
+- 🔗 후속 연구: [[papers/1903_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — EgoMimic의 large-scale egocentric video imitation이 HAT의 cross-embodiment learning을 더 큰 규모의 데이터로 확장할 수 있다.
+- 🔄 다른 접근: [[papers/1961_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — HAT 기반 통합 상태-행동 공간과 H-RDT의 diffusion transformer는 대규모 인간 데이터 활용을 위한 서로 다른 아키텍처 접근법입니다.
+- 🏛 기반 연구: [[papers/1966_Hand-Eye_Autonomous_Delivery_Learning_Humanoid_Navigation_Lo/review]] — egocentric 인간 데모를 cross-embodiment 학습에 활용하는 공통 기반 위에서 서로 다른 humanoid 기능에 특화된 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti/review]] — TWIST2의 scalable humanoid 데이터 수집이 대규모 자아중심 인간 데모 활용을 실제 로봇 플랫폼에서 구현 가능하게 확장합니다.
+- 🏛 기반 연구: [[papers/1681_SMAP_Self-supervised_Motion_Adaptation_for_Physically_Plausi/review]] — 인간 모션의 물리적 타당성 확보가 humanoid-human policy alignment의 기초입니다.
+- 🏛 기반 연구: [[papers/1758_Whole-body_Humanoid_Robot_Locomotion_with_Human_Reference/review]] — Humanoid Policy와 Human Policy의 일치성 연구가 Adam의 인간 수준 보행 성능 달성의 이론적 기반이 된다.
+- 🔄 다른 접근: [[papers/1826_Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Hum/review]] — 인간과 휴머노이드의 정책 비교라는 같은 목표를 생체역학적 분석과 행동 정책 분석이라는 다른 방법으로 접근한다
+- 🔄 다른 접근: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — 인간 정책을 휴머노이드로 전이하는 다른 접근 방식으로, 제로샷 정책 생성에 대한 대안적 관점을 제시한다.
+- 🏛 기반 연구: [[papers/1957_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — 대규모 자아중심 인간 데모 활용이라는 공통 데이터 소스를 기반으로 서로 다른 cross-embodiment 학습 방법론을 제시합니다.
+- 🔄 다른 접근: [[papers/1961_H-RDT_Human_Manipulation_Enhanced_Bimanual_Robotic_Manipulat/review]] — H-RDT와 Humanoid Policy는 모두 대규모 인간 데이터로 사전학습하되, diffusion transformer와 HAT라는 서로 다른 아키텍처를 사용합니다.
+- 🏛 기반 연구: [[papers/1966_Hand-Eye_Autonomous_Delivery_Learning_Humanoid_Navigation_Lo/review]] — 대규모 egocentric 인간 데이터 활용이라는 공통 기반 위에서 HEAD는 navigation-locomotion-reaching을, Humanoid Policy는 manipulation을 중심으로 합니다.
+- 🔄 다른 접근: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — HAT의 unified state-action space와 UDH의 common prototype은 human-humanoid skill transfer를 위한 서로 다른 통합 방식이다.
+- 🔗 후속 연구: [[papers/2156_Towards_Motion_Turing_Test_Evaluating_Human-Likeness_in_Huma/review]] — Motion Turing Test의 인간다움 평가 기준을 Humanoid Policy ~ Human Policy의 정책 유사성 측정과 결합하면 더 포괄적인 휴머노이드 성능 평가가 가능합니다.
+- 🔗 후속 연구: [[papers/2135_Perpetual_Humanoid_Control_for_Real-time_Simulated_Avatars/review]] — Humanoid Policy의 human-like behavior learning이 PHC의 10,000개 motion clips 학습을 더 human-centric한 정책 설계로 확장한 형태입니다.

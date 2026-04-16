@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 로봇 조작(robotic manipulation) 분야에서 diffusion model의 응용을 종합적으로 리뷰하는 첫 번째 survey로, grasp learning, trajectory planning, data augmentation 등의 주요 응용 분야와 학습 프레임워크, 아키텍처를 체계적으로 분류한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Transformer_Policies"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Diffusion_Policy_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wolf et al._2025_Diffusion Models for Robotic Manipulation A Survey.pdf"
 ---
@@ -87,10 +88,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wolf et al._2025_Diffusion Models for Ro
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Mixture-of-experts를 diffusion policy에 적용한 구체적 구현이 diffusion model survey에서 다룬 이론적 내용을 실제로 발전시킨다.
-- 🔄 다른 접근: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — Triply-hierarchical diffusion policy가 robotic manipulation을 위한 diffusion model의 다른 구조적 접근을 제시한다.
-- 🏛 기반 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — Multi-agent interaction을 위한 diffusion forcing 기법이 robotic manipulation diffusion model의 이론적 기반을 확장한다.
-- 🏛 기반 연구: [[papers/1288_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — Diffusion Models for Robotic Manipulation 서베이가 3D Diffusion Policy의 이론적 배경과 관련 연구 동향을 종합적으로 제시한다.
-- 🔄 다른 접근: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — Diffusion Models for Robotic Manipulation 서베이도 생성형 모델의 로봇 조작 적용을 종합적으로 다룬다.
-- 🏛 기반 연구: [[papers/1565_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — diffusion model의 로봇 조작 적용 원리를 masked motion generation을 통한 통합 캐릭터 제어로 확장한다.
-- 🏛 기반 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Diffusion model survey에서 다룬 robotic manipulation 이론이 MoDE의 mixture-of-experts 적용에 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy는 로봇 조작에서 diffusion model 적용의 핵심 원리와 방법론을 제시하여 survey의 중요한 기반 연구입니다.
+- 🔗 후속 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy는 diffusion model survey에서 다룬 sampling 속도 문제를 consistency model로 해결하는 발전된 접근법입니다.
+- 🧪 응용 사례: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 3D Diffusion Policy는 survey에서 제시된 diffusion 방법론을 3D 공간 이해와 결합한 구체적인 적용 사례입니다.
+- 🔗 후속 연구: [[papers/1423_Hierarchical_Diffusion_Policy_manipulation_trajectory_genera/review]] — 계층적 diffusion policy라는 구체적 응용사례를 통해 서베이 내용을 확장합니다.
+- 🔄 다른 접근: [[papers/1398_Foundation_Models_in_Robotics_Applications_Challenges_and_th/review]] — 로봇 조작에서 diffusion model과 foundation model의 서로 다른 관점의 종합적 리뷰를 제공합니다.
+- 🏛 기반 연구: [[papers/1405_Generative_Artificial_Intelligence_in_Robotic_Manipulation_A/review]] — 로봇 조작에서 diffusion model 사용에 대한 기초적인 서베이를 제공하여 생성형 AI 전반의 이해를 돕는다.
+- 🔄 다른 접근: [[papers/1613_VITA_Vision-to-Action_Flow_Matching_Policy/review]] — 둘 다 로봇 조작을 위한 diffusion 기반 정책이지만 VITA는 flow matching에, 기존 연구들은 일반적인 diffusion에 집중합니다.
+- 🔗 후속 연구: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — 로봇 조작용 diffusion model 서베이는 Diffusion-VLA의 견고한 행동 생성을 위한 diffusion 활용에 포괄적인 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1299_A_Survey_of_Robotic_Navigation_and_Manipulation_with_Physics/review]] — 로봇 조작을 위한 확산 모델 서베이가 물리 시뮬레이터와 sim-to-real 전이의 이론적 배경을 제공합니다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — 로봇 조작을 위한 diffusion 모델들에 대한 포괄적인 조사와 이론적 기반을 제공합니다.

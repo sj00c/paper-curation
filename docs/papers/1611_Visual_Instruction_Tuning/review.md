@@ -11,7 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "언어 전용 GPT-4를 활용하여 다중모달 시각-언어 명령어 추종 데이터를 생성하고, 이를 통해 vision encoder와 LLM을 연결한 end-to-end 다중모달 모델 LLaVA를 제시한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
   - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2023_Visual Instruction Tuning.pdf"
@@ -82,11 +84,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2023_Visual Instruction Tunin
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — CLIP의 vision-language pre-training이 Visual Instruction Tuning의 multimodal 정렬 학습 기반이 된다
-- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — LLaVA의 instruction tuning 방법론을 로봇 조작 도메인으로 확장하여 실용적 응용을 구현했다
-- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 둘 다 vision-language-action 통합이지만 LLaVA는 instruction following, InternVLA는 action generation에 특화됐다
-- 🧪 응용 사례: [[papers/1281_Being-H0_Vision-Language-Action_Pretraining_from_Large-Scale/review]] — Being-H0가 LLaVA의 vision-language 이해 능력을 humanoid 로봇 제어에 적용한 구체적 사례를 보여준다
-- 🏛 기반 연구: [[papers/1436_InstructVLA_Vision-Language-Action_Instruction_Tuning_from_U/review]] — Visual Instruction Tuning의 기본 방법론을 VLA 모델에 적용하여 multimodal reasoning과 action generation을 통합합니다.
-- 🔄 다른 접근: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — 시각 instruction tuning과 다국어 vision-language 확장에서 서로 다른 접근 방향을 제시하지만 상호 보완적이다
-- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Visual Instruction Tuning의 vision-language 연결 기법을 로봇 정책 학습에 적용한 구체적 사례다
-- 🧪 응용 사례: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — 비주얼 인스트럭션 튜닝에서 효율적인 언어-이미지 사전학습이 멀티모달 학습 성능을 향상시킨다.
+- 🔄 다른 접근: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — Prismatic VLMs는 LLaVA와 유사한 vision-language 모델이지만 다양한 아키텍처 설계를 체계적으로 탐구하는 다른 접근법이다.
+- 🔗 후속 연구: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E는 LLaVA의 multimodal instruction tuning을 embodied AI에 특화하여 확장한 연구다.
+- 🔗 후속 연구: [[papers/1610_Visual_Embodied_Brain_Let_Multimodal_Large_Language_Models_S/review]] — Visual Embodied Brain은 LLaVA의 시각-언어 통합을 embodied AI의 뇌 구조로 발전시킨 확장 연구다.
+- 🏛 기반 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — 자연어 감독을 통한 전이 가능한 시각 모델 학습은 LLaVA의 visual instruction tuning의 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — visual instruction tuning의 개념을 멀티모달 프롬프트 기반 로봇 조작에 적용하여 실제 embodied AI 문제로 확장합니다.
+- 🔗 후속 연구: [[papers/1436_InstructVLA_Vision-Language-Action_Instruction_Tuning_from_U/review]] — visual instruction tuning을 로봇의 vision-language-action instruction tuning으로 확장하여 embodied AI 도메인에 특화시킵니다.
+- 🔗 후속 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Visual instruction tuning의 기본 방법론을 로봇 조작 정책으로 확장하여 실제 구현체인 RoboFlamingo를 만드는 데 기여한다.
+- 🏛 기반 연구: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — 다중모달 instruction following의 기본 개념을 제공하여 VLA-0의 텍스트 기반 액션 표현 방법론의 이론적 근거를 마련한다.
+- 🏛 기반 연구: [[papers/1436_InstructVLA_Vision-Language-Action_Instruction_Tuning_from_U/review]] — Visual Instruction Tuning의 기본 개념을 vision-language-action 도메인으로 확장하여 적용한다.
+- 🏛 기반 연구: [[papers/1568_Search-TTA_A_Multimodal_Test-Time_Adaptation_Framework_for_V/review]] — Visual Instruction Tuning의 시각-언어 모델 최적화 기법이 Search-TTA의 VLM 예측 개선 방법론에 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1605_VIMA_General_Robot_Manipulation_with_Multimodal_Prompts/review]] — visual instruction tuning의 기본 개념을 제공하여 VIMA의 멀티모달 프롬프트 처리에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1606_Vision-Language_Foundation_Models_as_Effective_Robot_Imitato/review]] — Visual instruction tuning의 기본 방법론을 제공하여 RoboFlamingo의 VLM 기반 로봇 정책 구축에 핵심적인 이론적 토대를 마련한다.
+- 🏛 기반 연구: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — Visual Instruction Tuning의 기본적인 vision-language instruction following이 EmbSpatial-Bench의 spatial understanding evaluation을 위한 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — Visual Instruction Tuning의 vision-language 학습을 sigmoid loss를 통해 더 효율적이고 메모리 친화적인 방향으로 개선했다.

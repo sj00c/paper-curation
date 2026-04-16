@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Hi Robot는 계층적 vision-language model 구조를 통해 로봇이 복잡한 자연어 지시사항과 실시간 피드백을 처리하여 개방형 과제를 수행할 수 있도록 하는 시스템이다. 고수준 VLM이 복잡한 프롬프트를 해석하여 원자적 명령어를 생성하고, VLA 정책이 이를 실행하는 두 단계 계층 구조를 제안한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/LLM_Task_Planning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shi et al._2025_Hi Robot Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models.pdf"
 ---
@@ -88,13 +89,9 @@ Hi Robot는 계층적 vision-language model 구조를 통해 로봇이 복잡한
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — affordance function의 언어-행동 grounding이 Hi Robot의 자연어 지시 처리에 기초가 된다.
-- 🏛 기반 연구: [[papers/1384_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — BiBo의 instruction compiler가 Hi Robot의 계층적 명령어 처리 구조에 영향을 준다.
-- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 언어 기반 계획이 Hi Robot의 실시간 피드백 처리를 발전시킨다.
-- 🔗 후속 연구: [[papers/1280_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — Hi Robot은 Being-0의 계층적 구조를 확장하여 열린 지시사항 따르기를 구현한다
-- 🔗 후속 연구: [[papers/1356_DreamGen_Unlocking_Generalization_in_Robot_Learning_through/review]] — Hi Robot의 계층적 vision-language 구조가 DexGraspVLA의 계층적 VLA 설계를 확장한다.
-- 🔗 후속 연구: [[papers/1399_From_Seeing_to_Doing_Bridging_Reasoning_and_Decision_for_Rob/review]] — Hi Robot의 복잡한 지시사항 처리가 FSD의 zero-shot 일반화를 발전시킨다.
-- 🔄 다른 접근: [[papers/1497_OctoNav_Towards_Generalist_Embodied_Navigation/review]] — Hi Robot의 hierarchical instruction following과 INTENTION의 Memory Graph 기반 경험 학습은 모두 복잡한 조작 작업 수행을 위한 다른 접근법이다.
-- 🔄 다른 접근: [[papers/1369_Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affor/review]] — Hi Robot도 자연어 명령을 로봇 행동으로 변환하는 유사한 language grounding 접근법이다.
-- 🔗 후속 연구: [[papers/1384_Endowing_GPT-4_with_a_Humanoid_Body_Building_the_Bridge_Betw/review]] — Hi Robot의 계층적 VLM 구조가 BiBo의 embodied instruction compiler를 발전시킨다.
-- 🔗 후속 연구: [[papers/1385_EO-1_An_Open_Unified_Embodied_Foundation_Model_for_General_R/review]] — Hi Robot의 계층적 구조가 EO-1의 unified multimodal reasoning을 보완한다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 둘 다 계층적 instruction following을 다루지만 VLM + VLA vs state-maintaining language model이라는 다른 아키텍처를 사용한다.
+- 🏛 기반 연구: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — Instruct2Act의 multi-modal instruction mapping을 계층적 VLM 구조로 발전시킨 확장 연구이다.
+- 🔗 후속 연구: [[papers/1585_ThinkBot_Embodied_Instruction_Following_with_Thought_Chain_R/review]] — ThinkBot의 thought chain을 계층적 vision-language 구조로 더욱 체계화하여 개방형 과제 수행을 개선했다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 LLM 기반 추론을 계층적 VLM 구조로 발전시켜 더 체계적인 개방형 과제 수행을 가능하게 한다.
+- 🔄 다른 접근: [[papers/1512_PaLM-E_An_Embodied_Multimodal_Language_Model/review]] — PaLM-E의 단일 모델 접근법과 다르게 고수준 VLM과 VLA 정책을 분리한 계층적 구조를 제안한다.
+- 🔄 다른 접근: [[papers/1556_RT-H_Action_Hierarchies_Using_Language/review]] — 로봇의 계층적 제어에서 RT-H는 언어 기반 행동 계층으로, Hi Robot은 오픈엔드 instruction following으로 접근한다.

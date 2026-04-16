@@ -1,3 +1,24 @@
+---
+title: "2101_Mobi-π_Mobilizing_Your_Robot_Learning_Policy"
+authors:
+  - "Jingyun Yang"
+  - "Isabella Huang"
+  - "Brandon Vu"
+  - "Max Bajracharya"
+  - "Rika Antonova"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "모바일 로봇에서 제한된 관점으로 학습된 조작 정책을 배포할 때 발생하는 분포 외 문제를 해결하기 위해, 정책과 호환되는 로봇 베이스 포즈를 찾는 '정책 모빌라이제이션' 문제를 제시하고 3D Gaussian Splatting과 샘플링 기반 최적화를 통해 해결한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_Mobi-$π$ Mobilizing Your Robot Learning Policy.pdf"
+---
+
 # Mobi-$π$: Mobilizing Your Robot Learning Policy
 
 > **저자**: Jingyun Yang, Isabella Huang, Brandon Vu, Max Bajracharya, Rika Antonova, Jeannette Bohg | **날짜**: 2025-05-29 | **URL**: [https://arxiv.org/abs/2505.23692](https://arxiv.org/abs/2505.23692)
@@ -66,3 +87,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 모바일 조작 로봇에서 기존 정책의 재사용성을 크게 향상시키는 정책 모빌라이제이션이라는 새로운 문제를 정의하고, 3D Gaussian Splatting과 최적화 기법을 활용한 실용적 해법을 제시했다. 시뮬레이션과 실제 환경에서의 광범위한 검증을 통해 방법론의 유효성을 입증하였으며, 제시된 프레임워크는 향후 모바일 조작 연구의 중요한 기준이 될 것으로 기대된다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — GaussGym의 real-to-sim framework가 Mobi-π의 제한된 관점 문제 해결을 위한 3D representation 기법에 영감을 제공했다
+- 🔗 후속 연구: [[papers/2102_Mobile-TeleVision_Predictive_Motion_Priors_for_Humanoid_Whol/review]] — Mobile-TeleVision의 mobile manipulation이 Mobi-π의 정책 모빌라이제이션으로 더욱 일반화된 해결책을 제시한다
+- 🧪 응용 사례: [[papers/1824_BiGym_A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/review]] — BiGym의 mobile bi-manual manipulation 환경에서 Mobi-π의 정책 모빌라이제이션 기법을 실제 적용할 수 있다
+- 🏛 기반 연구: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Open-TeleVision의 몰입형 활성 시각 텔레오퍼레이션이 Mobi-π의 제한된 관점 문제 해결의 기술적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1932_FocusNav_Spatial_Selective_Attention_with_Waypoint_Guidance/review]] — 정책 모빌라이제이션을 waypoint 가이드와 결합하여 더 효과적인 공간 선택적 주의 메커니즘을 구현할 수 있다.

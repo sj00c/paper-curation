@@ -1,3 +1,23 @@
+---
+title: "1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur"
+authors:
+  - "Tianhu Peng"
+  - "Lingfan Bao"
+  - "Chengxu Zhou"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간에게서 영감을 얻은 보상 형성과 gait-conditioned reward routing을 통해 단일 recurrent policy에서 서서기, 걷기, 달리기 및 전환을 학습하는 통합 reference-free RL 프레임워크를 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Peng et al._2025_Gait-Conditioned Reinforcement Learning with Multi-Phase Curriculum for Humanoid Locomotion.pdf"
+---
+
 # Gait-Conditioned Reinforcement Learning with Multi-Phase Curriculum for Humanoid Locomotion
 
 > **저자**: Tianhu Peng, Lingfan Bao, Chengxu Zhou | **날짜**: 2025-05-27 | **URL**: [https://arxiv.org/abs/2505.20619](https://arxiv.org/abs/2505.20619)
@@ -62,3 +82,18 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 gait-conditioned reward routing과 생물역학 기반 보상 설계를 통해 MoCap 없이 자연스러운 다중 gait 학습을 가능하게 하는 우아한 프레임워크를 제시하며, 실제 인간형 로봇에서의 검증으로 실용성을 입증한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1777_A_Gait_Driven_Reinforcement_Learning_Framework_for_Humanoid/review]] — 두 논문 모두 강화학습 기반 보행 프레임워크이지만 gait-conditioned vs behavior-driven 접근법이 다르다.
+- 🏛 기반 연구: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — 대칭적이고 저에너지 보행 학습이 다중 phase 커리큘럼의 기본 원리를 제공한다.
+- 🔄 다른 접근: [[papers/1637_Reinforcement_Learning_for_Versatile_Dynamic_and_Robust_Bipe/review]] — 둘 다 다양한 gait pattern 학습을 다루지만, Gait-Conditioned는 단일 recurrent policy에서의 통합 접근법을, Versatile Bipedal은 별도 제어 전략을 사용합니다.
+- 🏛 기반 연구: [[papers/1695_StyleLoco_Generative_Adversarial_Distillation_for_Natural_Hu/review]] — StyleLoco의 자연스러운 humanoid locomotion 연구가 Gait-Conditioned의 서기-걷기-달리기 전환에서 필요한 스타일 일관성의 기초를 제공합니다.
+- 🔗 후속 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — GMT의 일반적인 motion tracking을 gait conditioning과 multi-phase curriculum을 통해 더 세밀한 보행 제어로 특화시켰습니다.
+- 🔄 다른 접근: [[papers/1635_Reduced-Order_Model-Guided_Reinforcement_Learning_for_Demons/review]] — ROM-GRL은 reduced-order model 기반 2단계 학습을, Gait-Conditioned RL은 다중 위상 커리큘럼을 통해 보행 학습을 다르게 접근함
+- 🔄 다른 접근: [[papers/1777_A_Gait_Driven_Reinforcement_Learning_Framework_for_Humanoid/review]] — 둘 다 gait 기반 강화학습을 다루지만 하나는 실시간 planner에, 다른 하나는 multi-phase curriculum에 초점을 둔다.
+- 🏛 기반 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — Gait-Conditioned의 multi-phase curriculum과 통합 정책 개념이 GMT의 Motion Mixture-of-Experts 아키텍처 설계의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/2003_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — Gait-Conditioned의 다단계 커리큘럼을 배드민턴 특화 전신 제어로 확장한 발전된 형태다.
+- 🧪 응용 사례: [[papers/2065_Learning_Symmetric_and_Low-energy_Locomotion/review]] — 대칭적이고 저에너지 보행 학습의 원리가 gait-conditioned 멀티 phase 커리큘럼에 적용될 수 있다.
+- 🔄 다른 접근: [[papers/2094_Mechanical_Intelligence-Aware_Curriculum_Reinforcement_Learn/review]] — 다중 단계 커리큘럼을 통한 보행 조건부 강화학습과 기계적 지능 인식 커리큘럼이라는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/2153_Towards_Adaptive_Humanoid_Control_via_Multi-Behavior_Distill/review]] — Gait-conditioned RL with multi-phase curriculum가 다중행동 증류와 다른 curriculum 접근법으로 다양한 이족보행 행동 학습을 달성합니다.

@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "이 논문은 양족 로봇의 낙하 현상 자체에 초점을 맞춰, 충격을 최소화하면서 사용자가 지정한 목표 자세에 도달하도록 하는 강화학습 기반 낙하 정책을 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Strauch et al._2025_Robot Crash Course Learning Soft and Stylized Falling.pdf"
 ---
@@ -85,3 +87,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Strauch et al._2025_Robot Crash Course L
 - Overall: 4/5
 
 **총평**: 이 논문은 로봇 낙하를 예방이 아닌 제어 대상으로 재정의하는 독창적 관점을 제시하며, RL 기반 다목적 보상 함수와 샘플링 전략으로 범용적 해결책을 제공한다. 실제 양족 로봇에서 부드럽고 스타일화된 낙하를 시연한 점에서 높은 의의가 있으나, 정량적 평가 확대와 다양한 로봇 플랫폼 검증이 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — Robot Crash Course와 SafeFall은 모두 휴머노이드의 안전한 낙하를 다루지만 하나는 스타일 학습에, 다른 하나는 보호 제어에 중점을 둔다.
+- 🧪 응용 사례: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — 낙하 정책 학습이 SPARK 안전 벤치마크의 핵심 안전 시나리오로 통합되어 포괄적인 안전 제어 검증이 가능하다.
+- 🏛 기반 연구: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — 휴머노이드 로봇의 자기보호적 낙하 정책 발견이라는 동일한 문제 영역의 기초 연구입니다.
+- 🧪 응용 사례: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — SPARK 벤치마크가 낙하 정책과 같은 안전 중요 시나리오의 체계적 평가와 검증 플랫폼을 제공한다.
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 낙상에 대해 예측 후 보호 제어 vs 낙하 자체를 학습하는 대조적인 safety 접근법입니다.
+- 🏛 기반 연구: [[papers/1880_Discovering_Self-Protective_Falling_Policy_for_Humanoid_Robo/review]] — soft and stylized falling 학습이 humanoid의 자기보호 낙상 정책 개발을 위한 기본적인 방법론적 토대를 제공한다.
+- 🔄 다른 접근: [[papers/2037_KungfuBot_Physics-Based_Humanoid_Whole-Body_Control_for_Lear/review]] — 둘 다 동적 인간 동작 모방이지만 KungfuBot은 쿵푸 등 고동적 행동, Robot Crash Course는 낙하 기술 중심
+- 🧪 응용 사례: [[papers/2062_Learning_Smooth_Humanoid_Locomotion_through_Lipschitz-Constr/review]] — Lipschitz 제약을 통한 부드러운 제어가 부드럽고 스타일화된 낙상 학습에 직접 적용된다.
+- 🔗 후속 연구: [[papers/2073_Learning_to_Walk_in_Costume_Adversarial_Motion_Priors_for_Ae/review]] — 제약된 환경에서의 자연스러운 운동이 부드럽고 스타일화된 낙상 학습으로 확장되어 더 복잡한 제약 처리를 보여준다.
+- 🏛 기반 연구: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — 로봇의 부드럽고 스타일화된 낙상 학습이 낙상 예방, 충격 완화, 회복을 통합하는 단일 안전 정책 개발의 기반이 됩니다.

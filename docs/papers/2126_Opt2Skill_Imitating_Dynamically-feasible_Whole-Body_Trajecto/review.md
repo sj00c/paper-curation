@@ -1,3 +1,25 @@
+---
+title: "2126_Opt2Skill_Imitating_Dynamically-feasible_Whole-Body_Trajecto"
+authors:
+  - "Fukang Liu"
+  - "Zhaoyuan Gu"
+  - "Yilin Cai"
+  - "Ziyi Zhou"
+  - "Hyunyoung Jung"
+date: "2024.09"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Opt2Skill은 Differential Dynamic Programming (DDP)로 생성한 동역학적으로 실현 가능한 궤적을 Reinforcement Learning (RL)으로 모방하게 함으로써 인간형 로봇의 다양한 로코-조작 작업을 효과적으로 수행하는 통합 파이프라인이다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2024_Opt2Skill Imitating Dynamically-feasible Whole-Body Trajectories for Versatile Humanoid Loco-Manipu.pdf"
+---
+
 # Opt2Skill: Imitating Dynamically-feasible Whole-Body Trajectories for Versatile Humanoid Loco-Manipulation
 
 > **저자**: Fukang Liu, Zhaoyuan Gu, Yilin Cai, Ziyi Zhou, Hyunyoung Jung, Jaehwi Jang, Shijie Zhao, Sehoon Ha, Yue Chen, Danfei Xu, Ye Zhao | **날짜**: 2024-09-30 | **URL**: [https://arxiv.org/abs/2409.20514](https://arxiv.org/abs/2409.20514)
@@ -65,3 +87,18 @@ Opt2Skill은 Differential Dynamic Programming (DDP)로 생성한 동역학적으
 - Overall: 4/5
 
 **총평**: Opt2Skill은 model-based trajectory optimization과 reinforcement learning을 효과적으로 결합하여 인간형 로봇의 동역학적으로 실현 가능한 다양한 로코-조작 작업을 체계적으로 해결하며, 실제 하드웨어 전이까지 성공한 중요한 기여로, 토크 정보 활용과 광범위한 실험 검증을 통해 높은 과학적 가치를 갖춘다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2123_One-shot_Adaptation_of_Humanoid_Whole-body_Motion_with_Walki/review]] — 둘 다 궤적 기반 학습을 다루지만, Opt2Skill은 DDP 최적화 궤적의 RL 모방에, One-shot Adaptation은 보행 사전 지식 기반 원샷 적응에 집중한다.
+- 🏛 기반 연구: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — Hierarchical Planning and Control의 계층적 계획 제어 기법이 Opt2Skill의 최적화와 RL을 결합한 통합 파이프라인 설계에 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2159_TrajBooster_Boosting_Humanoid_Whole-Body_Manipulation_via_Tr/review]] — TrajBooster의 궤적 기반 전신 조작 향상을 DDP로 생성한 동역학적 실현 가능 궤적의 RL 모방으로 발전시킨 연구이다.
+- 🏛 기반 연구: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — Opt2Skill의 DDP-RL 통합 파이프라인이 BeyondMimic의 모션 추적에서 다목적 휴머노이드 제어로 확장하는 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1855_Cost-Matching_Model_Predictive_Control_for_Efficient_Reinfor/review]] — Opt2Skill은 DDP-RL 결합, Cost-Matching Model Predictive Control은 MPC-RL 결합으로 서로 다른 최적화 방법과 강화학습을 통합한다.
+- 🔄 다른 접근: [[papers/1615_Physics-Based_Motion_Imitation_with_Adversarial_Differential/review]] — Physics-based motion imitation with adversarial differential이 Opt2Skill의 DDP 기반 궤적 생성과 다른 adversarial 접근법으로 물리적으로 실현 가능한 동작을 생성합니다.
+- 🏛 기반 연구: [[papers/2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — Learning differentiable reachability maps가 Opt2Skill의 optimization-based trajectory generation에서 동역학적 실현 가능성 보장의 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — 동적으로 실행 가능한 궤적 모방에서 잠재 행동 공간과 최적화 기반 접근법이 상호 보완적이다.
+- 🔄 다른 접근: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — PyRoki는 범용 역기구학 최적화를, Opt2Skill은 동적 실행가능 궤적 모방을 통해 로봇 운동학 문제를 다르게 해결함
+- 🔄 다른 접근: [[papers/1799_AMO_Adaptive_Motion_Optimization_for_Hyper-Dexterous_Humanoi/review]] — 둘 다 adaptive motion optimization을 다루지만 AMO는 sim-to-real RL에, Opt2Skill은 dynamically-feasible trajectory 모방에 중점을 둔다.
+- 🔄 다른 접근: [[papers/1891_DynaRetarget_Dynamically-Feasible_Retargeting_using_Sampling/review]] — Opt2Skill이 dynamically-feasible trajectory imitation을 다른 최적화 접근법으로 해결하여 DynaRetarget과 비교 연구가 가능하다.
+- 🔗 후속 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — dynamically-feasible trajectory imitation이 UDH 모델의 cross-embodiment skill transfer를 물리적으로 실현 가능한 동작으로 확장합니다.

@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇 조작을 위한 완전한 1-bit Vision-Language-Action 모델인 BitVLA를 제안하여 11.0배의 메모리 감소와 4.4배의 지연 시간 단축을 달성하면서도 full-precision 기준 모델과 비슷한 성능을 유지한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Instruction_Following"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_BitVLA 1-bit Vision-Language-Action Models for Robotics Manipulation.pdf"
 ---
@@ -87,15 +88,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2025_BitVLA 1-bit Vision-Lan
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — 둘 다 VLA 모델 최적화를 다루지만 BitVLA는 1-bit quantization을, CEED-VLA는 early-exit decoding을 통한 가속화를 추구한다.
-- 🔗 후속 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 fast, data-efficient 접근법이 BitVLA의 1-bit 압축과 결합되어 더욱 경량화된 VLA 모델을 구현할 수 있다.
-- 🏛 기반 연구: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — SpecPrune-VLA의 pruning 기법이 BitVLA의 1-bit quantization과 함께 사용되어 더 효과적인 모델 압축을 달성할 수 있다.
-- 🔄 다른 접근: [[papers/1495_NORA_A_Small_Open-Sourced_Generalist_Vision_Language_Action/review]] — VLA 모델의 경량화에서 3B 파라미터와 1-bit quantization이라는 서로 다른 효율성 향상 접근법을 보여준다.
-- 🔄 다른 접근: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — VLA 모델의 효율성 향상을 압축과 양자화라는 상호 보완적인 방법으로 달성한다.
-- 🔄 다른 접근: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — VLA 모델 효율화의 다른 접근법으로 1비트 양자화와 토큰 프루닝의 성능-효율성 트레이드오프를 비교할 수 있다.
-- 🔄 다른 접근: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — VLA 모델 경량화의 다른 접근법으로 1비트 양자화와 소형 아키텍처 설계를 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1627_What_Matters_in_Building_Vision-Language-Action_Models_for_G/review]] — BitVLA의 1-bit 압축 기술이 RoboVLMs의 효율성을 크게 개선한 실용적 발전
-- 🔄 다른 접근: [[papers/1616_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang/review]] — 둘 다 경량 VLA 모델이지만 VLA-Adapter는 0.5B 파라미터, BitVLA는 1-bit 양자화로 다른 효율성 접근법이다
-- 🧪 응용 사례: [[papers/1502_It_Takes_Two_Learning_Interactive_Whole-Body_Control_Between/review]] — Coordinated Humanoid Manipulation의 choice policies가 이중-휴머노이드 협력 제어의 실제 구현 사례를 보여줌
-- 🏛 기반 연구: [[papers/1524_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — 인간과 로봇의 협응된 조작을 위한 choice policy 기반 접근법이 COLA의 동적 역할 전환 메커니즘의 이론적 토대를 제공함
-- 🔄 다른 접근: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — 둘 다 VLA 모델 효율성 개선이지만 CEED-VLA는 early-exit decoding을, BitVLA는 1-bit quantization을 통한 최적화를 추구한다.
+- 🔄 다른 접근: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — 둘 다 VLA 모델의 효율성을 추구하지만 BitVLA는 1-bit 양자화로, TinyVLA는 모델 크기 축소로 접근합니다.
+- 🔗 후속 연구: [[papers/1617_VLA-Cache_Efficient_Vision-Language-Action_Manipulation_via/review]] — VLA-Cache의 효율적 추론 개념을 1-bit 양자화로 더 극단적으로 발전시킨 메모리 최적화 연구입니다.
+- 🧪 응용 사례: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA와 같은 오픈소스 VLA 모델에 BitVLA의 1-bit 양자화 기법을 적용할 수 있는 실용적 연관성이 있습니다.
+- 🔄 다른 접근: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — 둘 다 VLA 모델의 효율성 향상을 다루지만 BitVLA는 1-bit quantization에, CEED-VLA는 consistency distillation에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — SpecPrune-VLA의 VLA 모델 가속화 개념을 더 극단적인 1-bit quantization으로 발전시켜 11배 메모리 감소와 4.4배 지연 단축을 달성한 연구입니다.
+- 🔗 후속 연구: [[papers/1495_NORA_A_Small_Open-Sourced_Generalist_Vision_Language_Action/review]] — BitVLA의 1-bit 양자화 기법을 더 실용적인 3B 파라미터 모델로 확장하여 실시간 로봇 제어의 실용성을 높였다.
+- 🔗 후속 연구: [[papers/1533_RLRC_Reinforcement_Learning-based_Recovery_for_Compressed_Vi/review]] — BitVLA의 1-bit quantization이 RLRC의 structured pruning과 quantization을 더 극단적인 압축으로 발전시킨다.
+- 🔄 다른 접근: [[papers/1564_Scaling_Proprioceptive-Visual_Learning_with_Heterogeneous_Pr/review]] — BitVLA가 단일 embodiment에서의 효율화에 중점을 두는 반면, HPT는 다중 이종 embodiment에서의 표현 학습에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1560_SARA-RT_Scaling_up_Robotics_Transformers_with_Self-Adaptive/review]] — BitVLA의 VLA 모델 경량화 개념을 linear attention을 통한 효율화로 확장하여 on-robot 배포에 최적화했다.
+- 🔄 다른 접근: [[papers/1577_SpecPrune-VLA_Accelerating_Vision-Language-Action_Models_via/review]] — BitVLA가 모델 quantization을 통한 경량화에 중점을 두는 반면, SpecPrune-VLA는 동적 토큰 프루닝을 통한 추론 가속화에 초점을 맞춘다.
+- 🔗 후속 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 경량화 접근법을 더 극단적으로 추진하여 1-bit 양자화를 통해 VLA 모델의 효율성을 극대화한다.
+- 🔗 후속 연구: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — 1-bit VLA의 효율성을 reasoning과 memory 기능과 결합하여 더 강건한 모델을 만들 수 있습니다.
+- 🧪 응용 사례: [[papers/1615_VLA-0_Building_State-of-the-Art_VLAs_with_Zero_Modification/review]] — BitVLA의 1-bit quantization 기술이 VLA-0의 단순한 구조와 결합되어 실제 로봇에서 더 효율적으로 실행될 수 있다.
+- 🔗 후속 연구: [[papers/1616_VLA-Adapter_An_Effective_Paradigm_for_Tiny-Scale_Vision-Lang/review]] — 경량 VLA 모델의 효율성을 1-bit 양자화로 더 극한까지 추진하여 tiny-scale 모델의 발전 방향을 제시한다.
+- 🏛 기반 연구: [[papers/1346_Cross-Platform_Scaling_of_Vision-Language-Action_Models_from/review]] — VLA 모델의 효율적 구현을 위한 1-bit 양자화 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1327_CEED-VLA_Consistency_Vision-Language-Action_Model_with_Early/review]] — 둘 다 VLA 모델 추론 가속화를 다루지만 CEED-VLA는 consistency distillation과 early-exit에, BitVLA는 1-bit quantization에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 다중 센서 정보는 BitVLA의 1-bit 양자화된 VLA 모델에서도 활용 가능한 보완적 접근입니다.

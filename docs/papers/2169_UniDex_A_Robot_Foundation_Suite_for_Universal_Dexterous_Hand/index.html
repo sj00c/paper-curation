@@ -68,52 +68,51 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1. We introduce UniDex, a robot foundation suite for heterogeneous dexterous hand embodiments. We first curate Un</em></p></div>
-<p>인간 자기중심 비디오에서 50K+ 궤적을 수집한 UniDex-Dataset과 Function–Actuator–Aligned Space (FAAS) 통합 액션 공간을 활용하여 8종 로봇 핸드에 대한 범용 손재주 제어가 가능한 VLA 파운데이션 모델을 제시한다.</p></div>
+<p>인간 자기중심 비디오로부터 8종 로봇 핸드에 대한 범용 손재주 제어를 위해 50K+ 궤적 데이터셋(UniDex-Dataset), 통합 액션 공간(FAAS), 3D VLA 정책(UniDex-VLA)을 제시하는 로봇 파운데이션 스위트이다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: Gripper 중심의 로봇 파운데이션 모델들이 대규모 데이터셋으로 학습되고 있으며, 인간 비디오에서 로봇 데이터로의 변환 기술들이 존재한다. 그러나 손재주 조작(dexterous manipulation) 분야는 데이터 부족, 손 형태의 이질성, 높은 차원의 제어 문제를 겪고 있다.</li>
-<li><strong>Gap</strong>: 손재주 로봇 핸드의 대규모 통합 데이터셋이 부재하고, 서로 다른 DoF와 형태를 가진 여러 손들 간의 효과적인 skill transfer를 위한 통합 액션 공간이 없으며, 로봇 원격조작 데이터 수집의 높은 비용을 해결할 방안이 제시되지 않았다.</li>
-<li><strong>Why</strong>: 손재주 조작은 일상의 도구 사용 작업에 필수적이며, 파운데이션 모델의 확보는 손재주 로봇의 실용화와 다양한 응용 분야 확대를 가능하게 한다. 이는 현재 gripper 중심의 기술을 넘어 더 복잡한 조작 능력을 요구하는 실제 작업 해결의 열쇠다.</li>
-<li><strong>Approach</strong>: 인간 자기중심 비디오를 human-in-the-loop retargeting으로 로봇 궤적으로 변환하여 UniDex-Dataset을 구축하고, 기능적으로 유사한 액추에이터를 공유 좌표로 매핑하는 FAAS를 정의하며, 이를 기반으로 3D pointcloud 입력을 사용하는 UniDex-VLA를 학습한다. 추가로 portable한 UniDex-Cap 캡처 장치를 통해 인간-로봇 co-training을 가능하게 한다.</li>
+<li><strong>Known</strong>: Gripper 기반 VLA 모델들은 다양한 작업에서 성공했으나, 손재주 있는 손 제어를 위한 파운데이션 모델은 희소하고 대규모 데이터셋이 부족하다. 기존 손재주 손 연구는 특정 작업이나 하드웨어에 맞춤화되어 있다.</li>
+<li><strong>Gap</strong>: 손재주 손 제어는 (1) 수집 비용이 높은 실로봇 데이터, (2) 손 형태의 이질성으로 인한 전이 어려움, (3) 고차원 제어 공간의 복잡성으로 인해 gripper 기반 접근법을 직접 적용할 수 없다.</li>
+<li><strong>Why</strong>: 도구 사용과 같은 일상적 작업은 손재주 손이 필수적이며, 손재주 손 제어의 파운데이션 모델은 로봇 조작의 일반화와 확장성을 크게 향상시킬 수 있다.</li>
+<li><strong>Approach</strong>: 인간 비디오를 로봇 실행 가능한 궤적으로 변환하는 human-in-the-loop retargeting 절차를 개발하여 대규모 사전학습 데이터셋을 구축하고, Function–Actuator–Aligned Space(FAAS)를 통해 이질적 손 간 전이를 가능하게 하며, UniDex-VLA를 사전학습 후 미세조정하여 범용 정책을 구현한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1. We introduce UniDex, a robot foundation suite for heterogeneous dexterous hand embodiments. We first curate Un</em></p></div>
 <ul>
-<li><strong>UniDex-Dataset</strong>: 8종 로봇 핸드(6-24 DoFs)에 걸친 50K+ 궤적과 9M paired image-pointcloud-action 프레임으로 구성된 최초의 대규모 통합 손재주 데이터셋 구축</li>
-<li><strong>FAAS & UniDex-VLA</strong>: 함수 중심의 통합 액션 공간 설계 및 이를 활용한 3D VLA 모델로 도구 사용 작업에서 81% 평균 진행률(task progress) 달성, π0 모델 대비 2배 이상 성능 우위</li>
-<li><strong>Generalization 능력</strong>: spatial, object, zero-shot cross-hand generalization 모두에서 강력한 성능 입증</li>
-<li><strong>Human-Robot Co-training</strong>: UniDex-Cap을 통해 변환된 인간 데이터가 로봇 원격조작 데이터를 부분적으로 대체 가능함을 정량적으로 입증</li>
+<li><strong>UniDex-Dataset</strong>: 8개 손(6-24 DoF)에 걸친 50K+ 궤적, 9M 프레임으로 구성된 첫 대규모 다중 손 형태 데이터셋 제공</li>
+<li><strong>FAAS & UniDex-VLA</strong>: 기능 중심 통합 액션 공간과 3D VLA 정책으로 실로봇 벤치마크에서 평균 81% 작업 진행률 달성 (π0의 38% 대비 대폭 향상)</li>
+<li><strong>강한 일반화</strong>: 공간적, 객체, 제로샷 크로스-핸드 일반화를 모두 시연하며 미학습 손에 대한 전이 학습 성공</li>
+<li><strong>Human–Robot Co-training</strong>: UniDex-Cap을 통해 인간 데이터로 사전학습하고 소량의 로봇 데이터로 미세조정하여 비용 절감 실증</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Figure 2. The figure illustrates the complete human–robot trans-</em></p></div>
 <ul>
-<li>Egocentric RGB-D human manipulation 비디오를 시작점으로 하되, fingertip 기반 inverse kinematics와 interactive adjustment를 결합한 human-in-the-loop retargeting으로 인간 궤적을 로봇 실행 가능한 궤적으로 변환</li>
-<li>변환 과정에서 human hand를 visual stream에서 마스킹하고 retargeted robot hand를 scene pointcloud에 삽입하여 시각적 도메인 갭 축소</li>
-<li>Function–Actuator–Aligned Space (FAAS) 정의: 기능적으로 유사한 액추에이터들(예: 각 손의 검지손가락)을 공유 좌표계로 매핑하여 cross-hand transfer 가능성 확보</li>
-<li>3D VLA 모델 아키텍처: single-view color + pointcloud 입력을 처리하는 encoder, language instruction을 처리하는 component, FAAS 기반 action space로의 decoder로 구성</li>
-<li>Two-stage learning: UniDex-Dataset에서 대규모 pretraining 후 task-specific demonstration으로 fine-tuning</li>
-<li>UniDex-Cap: 동기화된 RGB-D 스트림과 human hand pose 기록 → 동일 변환 파이프라인으로 로봇 궤적 생성하여 co-training 데이터 수집</li>
+<li>인간 자기중심 RGB-D 비디오에서 fingertip 기반 inverse kinematics와 대화형 조정을 결합한 human-in-the-loop retargeting으로 인간 궤적을 로봇 실행 궤적으로 변환</li>
+<li>시각적 불일치 감소를 위해 인간 손을 마스킹하고 retarget된 로봇 손을 pointcloud에 삽입하여 시각-운동 도메인 갭 축소</li>
+<li>Function–Actuator–Aligned Space(FAAS)를 정의하여 기능적으로 유사한 액추에이터를 공유 좌표에 매핑, 포스트프로세싱 없이 크로스-핸드 전이 가능</li>
+<li>UniDex-Dataset에서 사전학습하고 작업 데모로 미세조정하는 3D VLA 정책 개발</li>
+<li>RGB-D 스트림과 인간 손 포즈를 동기화하여 기록하고 같은 변환 파이프라인으로 로봇 궤적 생성하는 UniDex-Cap 포터블 캡처 시스템 설계</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li><strong>최초의 대규모 통합 손재주 데이터셋</strong>: 8종 이질적인 로봇 핸드를 아우르는 50K+ 궤적 규모의 dataset은 이 분야에서 전례 없음</li>
-<li><strong>Function-centric unified action space (FAAS)</strong>: 기존 left-aligned나 latent action space와 달리 기능적 유사성을 기준으로 액추에이터를 통합하는 혁신적 설계로 post-processing 불필요</li>
-<li><strong>Human-in-the-loop retargeting의 체계적 적용</strong>: 단순 자동화가 아닌 human-in-the-loop 접근으로 kinematic gap을 효과적으로 폐쇄하고, visual masking으로 domain gap 완화</li>
-<li><strong>Practical human-robot co-training pipeline</strong>: UniDex-Cap이라는 portable 캡처 장치를 통해 인간 비디오의 경제성과 로봇 실행성을 동시에 확보</li>
+<li>처음으로 8개 이질적 손 형태를 통합한 대규모 다중 손 데이터셋 구축 및 공개적 확장 프로토콜 제공</li>
+<li>기능 중심의 Function–Actuator–Aligned Space(FAAS) 제안으로 손 형태 이질성을 효과적으로 처리하고 포스트프로세싱 없이 전이 가능</li>
+<li>인간 비디오를 로봇 사전학습 데이터로 직접 변환하는 체계적 파이프라인으로 데이터 수집 비용 대폭 절감</li>
+<li>Human–robot co-training의 정량적 평가를 통해 인간 데이터가 실로봇 데모를 부분 대체 가능함을 실증</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li><strong>Retargeting 절차의 수작업 의존성</strong>: human-in-the-loop retargeting이 필요하여 완전 자동화가 아니며, 이는 대규모 확장 시 병목이 될 가능성</li>
-<li><strong>평가 대상의 제한성</strong>: 5개 도구 사용 작업과 2종 로봇 핸드에만 실평가했으며, 더 다양한 작업 유형(재배치, 조작 등)에 대한 검증 부재</li>
-<li><strong>Sim-to-real gap 미분석</strong>: 실제 robustness와 장기간 운영 안정성에 대한 논의 부족, 실패 케이스 분석 미흡</li>
-<li><strong>FAAS의 일반성</strong>: 아직 새로운 손 형태에 FAAS를 적용하는 protocol이 명확하지 않으며, 매우 이질적인 형태의 손에 대한 transfer 가능성 미검증</li>
-<li><strong>후속 연구 방향</strong>: (1) Retargeting 과정의 자동화 수준 향상, (2) 더 많은 도구 및 일상 작업으로의 확대, (3) Real-world deployment 시 안정성 강화, (4) FAAS의 이론적 기반 및 일반화 가능성 분석</li>
+<li>Retargeting 절차가 human-in-the-loop 방식으로 수동 개입이 필요하여 완전 자동화에는 미흡할 수 있음</li>
+<li>평가가 5개 도구 사용 작업과 2개 손에 한정되어 더 광범위한 작업과 손 형태에 대한 검증 필요</li>
+<li>Real-world 테스트에서 물리적 손상이나 장애 상황에 대한 강건성 평가 부족</li>
+<li>미세조정 단계에서 필요한 로봇 데모의 최소 필요량과 인간 데이터 비율의 최적화에 대한 더 깊은 분석 필요</li>
+<li>향후 더 많은 손 형태와 실생활 조작 작업을 추가하여 데이터셋 확장 및 다양한 도메인에서의 전이 학습 성능 검증</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
 <div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: UniDex는 손재주 로봇 조작 분야의 파운데이션 모델 구축을 위해 필요한 대규모 통합 데이터셋, 혁신적 액션 공간, 실용적 co-training 파이프라인을 체계적으로 제시한 종합적 연구로, 높은 실제 성능과 함께 cross-hand generalization 능력을 입증하여 이 분야의 실질적 발전을 견인할 것으로 기대된다.</p></div>
+<p><strong>총평</strong>: UniDex는 손재주 로봇 손 제어를 위한 첫 포괄적 파운데이션 스위트로, 대규모 다중 손 데이터셋, 혁신적인 FAAS 액션 공간, 강력한 3D VLA 정책을 통합하여 일반화와 전이 학습에서 뛰어난 성과를 달성했다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

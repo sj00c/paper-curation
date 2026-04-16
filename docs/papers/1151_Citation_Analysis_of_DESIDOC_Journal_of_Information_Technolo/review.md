@@ -8,8 +8,9 @@ arxiv: ""
 score: 3.0
 essence: "본 연구는 Library and Information Science 분야의 주요 학술지인 DESIDOC Journal of Information Technology (DJLIT)에 게재된 논문들의 인용 패턴을 분석하여 학술 커뮤니케이션의 특성과 정보 자원 이용 행태를 파악하는 bibliometric 연구이다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Citation_Analysis_Methods"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mengal_2026_Citation Analysis of DESIDOC Journal of Information Technology..pdf"
 ---
@@ -73,6 +74,7 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Mengal_2026_Citation Analysis of DESIDOC
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — DESIDOC Journal 논문들의 인용 패턴 분석에 학술지 평가 도구로서의 인용 분석 이론적 기반이 필요합니다.
-- 🔗 후속 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 도서관정보학 분야 학술지의 인용 분석과 천문학 분야의 학술지 인용 편향 연구가 서로 다른 학문 분야의 인용 패턴을 비교 분석할 수 있게 합니다.
-- 🏛 기반 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — DESIDOC 저널의 인용 분석이 인도 도서관정보학 학자들의 고전 연구 인용 패턴을 이해하는 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 천문학에서 저널 인용 편향을 강화하는 연구로, DJLIT 인용 분석과 다른 학문 분야의 인용 패턴을 분석하는 대안적 접근법입니다.
+- 🏛 기반 연구: [[papers/943_Citation_Analysis_as_a_Tool_in_Journal_Evaluation/review]] — 저널 평가 도구로서 인용 분석의 기본 개념을 다룬 기초 연구로, DJLIT 인용 분석의 이론적 토대를 제공합니다.
+- 🔗 후속 연구: [[papers/1152_Citation_of_classical_research_by_doctoral-level_LIS_scholar/review]] — 도서관정보학 분야에서 박사급 연구자들의 고전 연구 인용 패턴과 현재 학술지 인용 패턴을 비교 분석할 수 있다.
+- 🏛 기반 연구: [[papers/1218_Viewing_Citation_Analysis_Through_the_Lens_of_Citation_Justi/review]] — 인용 분석의 타당성과 인용 정당화 관점에서 DJLIT 인용 패턴의 학술적 의미를 평가할 수 있다.

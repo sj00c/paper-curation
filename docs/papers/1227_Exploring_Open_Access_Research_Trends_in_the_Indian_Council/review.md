@@ -10,9 +10,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 OpenAlex 데이터베이스를 활용하여 2014-2023년 인도 농업연구회의소(ICAR) 기관의 Open Access 출판 패턴을 분석한 scientometric 연구이다. ICAR의 52% 이상의 학술 산출물이 개방 접근성을 갖추고 있으며, Green OA 부족과 저임팩트 저널 게시 문제를 식별했다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Open_Access_Publication_Analytics"
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Open_Access_Impact_Assessment"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Exploring Open Access Research Trends in the Indian Council of Agricultural Rese.pdf"
 ---
@@ -88,9 +88,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Exploring Open Access Research Trends in
 
 ## Related Papers
 
-- 🧪 응용 사례: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex 데이터베이스를 활용한 scientometric 분석의 구체적 활용 사례를 농업연구 기관에 적용했다.
-- 🔄 다른 접근: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 인도 고분자과학 연구와 농업연구의 OA 패턴을 비교하여 학문분야별 개방접근 전략을 도출할 수 있다.
-- 🏛 기반 연구: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — ICAR 기관의 오픈 액세스 분석에서 OpenAlex 데이터베이스의 메타데이터 품질과 출판 유형 정확성이 기반이 된다.
-- 🔄 다른 접근: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 동일한 국가(인도)의 서로 다른 연구 분야에서 scientometrics 분석을 통해 학문분야별 특성을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/983_Mapping_Research_Funding_and_Outputs_at_the_Topic_Level_in_t/review]] — 인도 연구 위원회의 오픈액세스 동향과 북유럽의 자금-성과 매핑을 비교하여 지역별 연구 생태계 차이를 분석할 수 있다.
-- 🔄 다른 접근: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 둘 다 오픈액세스 연구의 영향을 평가하지만 1140은 도메인별, 1227은 기관별 분석에 초점을 맞춘다.
+- 🏛 기반 연구: [[papers/993_OpenAlex_A_fully-open_index_of_scholarly_works_authors_venue/review]] — OpenAlex 색인의 전반적 구조와 기능이 인도 농업연구회의소 개방접근 분석의 데이터 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1140_Assessing_the_impact_of_Open_Research_Information_Infrastruc/review]] — 개방연구정보 인프라의 영향 평가를 인도 농업 연구기관의 구체적 사례로 확장합니다.
+- 🔗 후속 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 개방접근 출판 패턴 분석을 저자 속성과 인용 성과 측면에서 확장한 연구이다
+- 🏛 기반 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 개방접근 출판의 전반적 현황을 제시하여 특정 기관 분석의 기초를 제공한다
+- 🔄 다른 접근: [[papers/992_OpenAlex_in_focus_Metadata_quality_of_publication_type_and_l/review]] — OpenAlex 메타데이터 품질을 다른 관점에서 평가하여 보완적 시각을 제공한다
+- 🔗 후속 연구: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 인도 과학기술연구위원회의 오픈 액세스 연구 동향 탐구는 인도 고분자 과학 연구의 과학계량학적 분석을 오픈 액세스 관점으로 확장한다.

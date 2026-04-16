@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "GR-1은 대규모 비디오 생성 사전학습을 활용하여 멀티태스크 언어-조건부 시각 로봇 조작을 학습하는 GPT-스타일 transformer 모델이다. 로봇은 언어 지시, 관찰 이미지, 로봇 상태를 입력받아 로봇 액션과 미래 이미지를 end-to-end 방식으로 예측한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Visual_Representation_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wu et al._2023_Unleashing Large-Scale Video Generative Pre-training for Visual Robot Manipulation.pdf"
 ---
@@ -91,14 +92,22 @@ GR-1은 대규모 비디오 생성 사전학습을 활용하여 멀티태스크 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — 대규모 데이터를 활용한 로봇 학습의 다른 접근법으로 비디오 생성 사전학습과 데이터 증강을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 구조화된 world model을 대규모 비디오 생성 사전학습으로 발전시켜 멀티태스크 로봇 조작을 가능하게 한다.
-- 🏛 기반 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 물리적 AI를 위한 비디오 기반 world 시뮬레이션의 기반이 되는 비디오 생성 사전학습 방법론을 제공한다.
-- 🏛 기반 연구: [[papers/1419_H3DP_Triply-Hierarchical_Diffusion_Policy_for_Visuomotor_Lea/review]] — large-scale video generative pre-training이 humanoid world model 구축의 핵심 기반 기술입니다.
-- 🔗 후속 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — large-scale video generative pre-training을 robot action과 통합하여 visually-grounded action learning을 달성합니다.
-- 🧪 응용 사례: [[papers/1493_Neural_Scaling_Laws_in_Robotics/review]] — 대규모 비디오 생성 사전훈련과 로봇공학의 스케일링 법칙이 visuomotor policy에서 공통적으로 적용된다.
-- 🏛 기반 연구: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — 비디오 생성 사전학습 모델을 로봇 조작에 활용하는 기본 아이디어의 이론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 비디오 생성 사전학습을 활용한 로봇 학습의 기반 아이디어를 구조화된 world model로 발전시킨다.
-- 🏛 기반 연구: [[papers/1598_Unified_Video_Action_Model/review]] — 대규모 비디오 생성 사전학습을 비디오-액션 통합 학습으로 발전시킨 기반 아이디어를 제공한다.
-- 🔗 후속 연구: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — 대규모 비디오 생성 사전학습을 discrete token 기반 통합 VLA로 발전시킨다.
-- 🔗 후속 연구: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — Unleashing Large-Scale Video Generative Pre-training이 ATM의 비디오 기반 궤적 예측을 더 대규모로 확장하여 강화할 수 있다.
+- 🔗 후속 연구: [[papers/1409_GR-2_A_Generative_Video-Language-Action_Model_with_Web-Scale/review]] — GR-2는 GR-1의 비디오 생성 사전학습 아이디어를 계승하여 더욱 발전된 비디오-언어-행동 모델로 진화했습니다.
+- 🏛 기반 연구: [[papers/1360_Diffusion_Models_Are_Real-Time_Game_Engines/review]] — Diffusion Models as Game Engines는 GR-1의 비디오 생성 기반 로봇 학습을 위한 실시간 시뮬레이션 기술적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — World Simulation with Video Foundation Models은 GR-1과 유사한 비디오 기반 접근이지만 물리적 행동보다 시뮬레이션에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 비디오 데이터에서 로봇 정책을 학습하는 기본 접근법을 공유하며, structured world model 개념의 실용적 구현을 보여준다.
+- 🏛 기반 연구: [[papers/1384_EnerVerse_Envisioning_Embodied_Future_Space_for_Robotics_Man/review]] — 대규모 비디오 생성 사전학습의 visuomotor policy 적용에 대한 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — InternVLA-A1이 대규모 비디오 생성 사전학습의 방법론을 로봇 조작에 특화된 형태로 확장 적용한다.
+- 🏛 기반 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — 대규모 비디오 생성 사전학습의 기본 방법론을 로봇 행동 학습에 적용하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1455_Learning_Universal_Policies_via_Text-Guided_Video_Generation/review]] — large-scale video generative pre-training을 text-guided universal policy learning으로 활용한 응용이다.
+- 🏛 기반 연구: [[papers/1480_Moto_Latent_Motion_Token_as_the_Bridging_Language_for_Learni/review]] — 대규모 비디오 생성 사전학습의 기본 원리를 latent motion token learning에 적용하는 이론적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — NaVid의 비디오 기반 행동 계획이 대규모 비디오 생성형 사전학습의 시각-운동 정책으로 확장되어 더 강력한 네비게이션 능력을 달성할 수 있습니다.
+- 🔄 다른 접근: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — Phantom의 인간 비디오 활용과 달리 large-scale video generative pre-training을 통한 visuomotor policy learning 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1565_Scaling_Robot_Learning_with_Semantically_Imagined_Experience/review]] — Unleashing Large-Scale Video Generation의 비디오 생성 기술을 로봇 조작 데이터의 의미론적 증강으로 특화하여 적용했다.
+- 🏛 기반 연구: [[papers/1598_Unified_Video_Action_Model/review]] — 대규모 비디오 생성 사전 훈련이 unified video action model의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 둘 다 비디오 생성 기반 시뮬레이션을 다루지만, Cosmos는 세계 시뮬레이션에, GR-1은 로봇 조작에 특화되어 있다.
+- 🏛 기반 연구: [[papers/1634_ZeroMimic_Distilling_Robotic_Manipulation_Skills_from_Web_Vi/review]] — 대규모 비디오 생성형 사전훈련 기술이 ZeroMimic의 웹 비디오 데이터 활용과 스킬 추출에 핵심적인 기반 기술을 제공한다
+- 🏛 기반 연구: [[papers/1604_Video_Language_Planning/review]] — 대규모 비디오 생성 사전훈련 연구는 VLP의 text-to-video 모델 구성 요소에 대한 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1347_D2E_Scaling_Vision-Action_Pretraining_on_Desktop_Data_for_Tr/review]] — 대규모 비디오 생성 사전학습의 표현 학습이 D2E의 vision-action 사전학습 방법론의 이론적 토대가 됩니다.
+- 🏛 기반 연구: [[papers/1409_GR-2_A_Generative_Video-Language-Action_Model_with_Web-Scale/review]] — 대규모 비디오 생성 사전학습이 visuomotor policy에 미치는 영향의 기초 연구입니다.
+- 🔄 다른 접근: [[papers/1310_Any-point_Trajectory_Modeling_for_Policy_Learning/review]] — 둘 다 large-scale video data를 활용하지만 ATM은 궤적 모델링에, Unleashing Large-Scale Video는 generative pre-training에 중점을 둡니다.

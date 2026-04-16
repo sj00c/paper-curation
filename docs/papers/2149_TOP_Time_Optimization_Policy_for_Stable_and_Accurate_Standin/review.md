@@ -1,3 +1,24 @@
+---
+title: "2149_TOP_Time_Optimization_Policy_for_Stable_and_Accurate_Standin"
+authors:
+  - "Zhenghan Chen"
+  - "Haocheng Xu"
+  - "Haodong Zhang"
+  - "Liang Zhang"
+  - "He Li"
+date: "2025.08"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "이 논문은 휴머노이드 로봇의 안정적인 서서하기 조작을 위해 상체 동작의 시간 궤적을 최적화하는 Time Optimization Policy (TOP)을 제안한다. 상체의 빠른 움직임으로 인한 모멘텀을 줄여 균형, 정확성, 시간 효율성을 동시에 달성한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_TOP Time Optimization Policy for Stable and Accurate Standing Manipulation with Humanoid Robots.pdf"
+---
+
 # TOP: Time Optimization Policy for Stable and Accurate Standing Manipulation with Humanoid Robots
 
 > **저자**: Zhenghan Chen, Haocheng Xu, Haodong Zhang, Liang Zhang, He Li, Dongqi Wang, Jiyu Yu, Yifei Yang, Zhongxiang Zhou, Rong Xiong | **날짜**: 2025-08-01 | **URL**: [https://arxiv.org/abs/2508.00355](https://arxiv.org/abs/2508.00355)
@@ -65,3 +86,13 @@
 - Overall: 4/5
 
 **총평**: 이 논문은 상체 동작 시간 최적화라는 직관적이면서도 효과적인 아이디어로 휴머노이드 서서하기 조작의 안정성-정확성-효율성 trade-off 문제를 창의적으로 해결한다. 이론과 실험이 잘 결합되어 있으며, humanoid 로봇 제어 분야에 실질적인 기여를 제공한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — 서서하기 조작의 정확성과 안정성을 다른 방식의 계층적 끝점 추적으로 해결한 대안적 접근법이다.
+- 🔗 후속 연구: [[papers/1965_HAIC_Humanoid_Agile_Object_Interaction_Control_via_Dynamics-/review]] — 휴머노이드 민첩한 객체 상호작용을 시간 최적화를 통해 더 안정적이고 정확하게 확장한 방법론이다.
+- 🏛 기반 연구: [[papers/1694_SteadyTray_Learning_Object_Balancing_Tasks_in_Humanoid_Tray/review]] — 휴머노이드 트레이 균형 작업의 객체 밸런싱 기술이 서서하기 조작의 안정성 제어에 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1757_Whole-Body_Dynamic_Throwing_with_Legged_Manipulators/review]] — 전신 동적 던지기 제어 기술을 서서하기 조작의 상체 동작 최적화에 실제 적용할 수 있다.
+- 🔗 후속 연구: [[papers/1982_Hold_My_Beer_Learning_Gentle_Humanoid_Locomotion_and_End-Eff/review]] — Hold My Beer의 gentle locomotion and end-effector control이 TOP의 안정적인 standing manipulation을 이동하면서도 수행할 수 있도록 확장한 형태입니다.
+- 🏛 기반 연구: [[papers/1668_SEEC_Stable_End-Effector_Control_with_Model-Enhanced_Residua/review]] — SEEC의 stable end-effector control이 TOP의 상체 동작 시간 최적화에서 end-effector 안정성 보장의 기술적 토대를 제공합니다.
+- 🧪 응용 사례: [[papers/1636_Reference-Free_Sampling-Based_Model_Predictive_Control/review]] — TOP의 시간 최적화 정책이 본 논문의 reference-free MPC를 안정적이고 정확한 기립 제어에 적용한 사례임

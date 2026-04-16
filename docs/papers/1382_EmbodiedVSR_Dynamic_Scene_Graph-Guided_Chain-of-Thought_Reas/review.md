@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "EmbodiedVSR는 동적 scene graph와 Chain-of-Thought 추론을 결합하여 embodied agent의 공간 추론 능력을 향상시키는 프레임워크이며, 이를 평가하기 위해 eSpatial-Benchmark 데이터셋을 제시한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_EmbodiedVSR Dynamic Scene Graph-Guided Chain-of-Thought Reasoning for Visual Spatial Tasks.pdf"
 ---
@@ -90,10 +91,11 @@ EmbodiedVSR는 동적 scene graph와 Chain-of-Thought 추론을 결합하여 emb
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — Embodied-Reasoner의 Chain-of-Thought 추론이 EmbodiedVSR의 구조적 추론 프레임워크에 기반한다.
-- 🔗 후속 연구: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — EmbSpatial-Bench의 공간 이해 평가가 EmbodiedVSR의 spatial reasoning 성능 검증에 활용된다.
-- 🔄 다른 접근: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps도 로봇의 공간 추론과 네비게이션을 위한 구조화된 표현을 제안한다.
-- 🔗 후속 연구: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — EmbodiedVSR의 scene graph 구조가 Embodied-Reasoner의 시각 탐색과 추론을 체계화한다.
-- 🔗 후속 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — EmbodiedVSR의 dynamic scene graph guided reasoning이 RoboTron-Nav의 perception, planning, prediction 통합을 더 동적인 추론으로 확장한다.
-- 🔗 후속 연구: [[papers/1379_Embodied-R_Collaborative_Framework_for_Activating_Embodied_S/review]] — EmbodiedVSR의 dynamic scene graph가 Embodied-R의 spatial reasoning을 구조적으로 발전시킨다.
-- 🏛 기반 연구: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — EmbodiedVSR의 spatial reasoning 프레임워크가 EmbSpatial-Bench의 벤치마크 설계에 기여한다.
+- 🔄 다른 접근: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — 둘 다 공간 추론을 위해 그래프 기반 표현을 활용하지만 scene graph vs neural memory라는 서로 다른 접근법을 사용한다.
+- 🏛 기반 연구: [[papers/1612_Visual_Language_Maps_for_Robot_Navigation/review]] — Visual Language Maps의 공간-언어 매핑 개념을 동적 scene graph와 결합하여 embodied 추론으로 확장했다.
+- 🧪 응용 사례: [[papers/1383_EmbSpatial-Bench_Benchmarking_Spatial_Understanding_for_Embo/review]] — EmbSpatial-Bench에서 평가할 수 있는 embodied spatial reasoning 기법을 실제 구현한 사례이다.
+- 🔄 다른 접근: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — CoT-VLA의 visual chain-of-thought와 EmbodiedVSR의 dynamic scene graph-guided reasoning은 VLA에서 추론 과정을 서로 다르게 구조화한다.
+- 🏛 기반 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — SayPlan의 3D scene graph 활용이 EmbodiedVSR의 dynamic scene graph 기반 공간 추론 프레임워크 개발에 기초가 된다.
+- 🔗 후속 연구: [[papers/1618_VLA-Reasoner_Empowering_Vision-Language-Action_Models_with_R/review]] — VLA-Reasoner의 vision-language-action reasoning이 EmbodiedVSR에서 scene graph와 결합되어 더욱 정교한 공간 추론으로 발전했다.
+- 🔄 다른 접근: [[papers/1441_JanusVLN_Decoupling_Semantics_and_Spatiality_with_Dual_Impli/review]] — 둘 다 spatial reasoning을 위한 그래프 기반 접근이지만 dual implicit memory vs dynamic scene graph라는 다른 표현 방식을 사용한다.
+- 🔗 후속 연구: [[papers/1549_RoboTron-Nav_A_Unified_Framework_for_Embodied_Navigation_Int/review]] — dynamic scene graph 기반 추론을 multitask collaboration과 adaptive sampling으로 확장하여 더 포괄적인 embodied navigation 시스템을 구축한다.

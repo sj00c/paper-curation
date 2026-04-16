@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Vision-Language-Action (VLA) 모델의 추론 속도를 향상시키기 위해 consistency distillation과 early-exit decoding을 결합한 CEED-VLA를 제안하며, 4배 이상의 가속화를 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/VLA_Model_Optimization"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Robot_Policy_Learning"
+  - "sub/Vision-Language-Action_Distillation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Song et al._2025_CEED-VLA Consistency Vision-Language-Action Model with Early-Exit Decoding.pdf"
 ---
@@ -86,8 +87,9 @@ Vision-Language-Action (VLA) 모델의 추론 속도를 향상시키기 위해 c
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 둘 다 VLA 모델 효율성 개선이지만 CEED-VLA는 early-exit decoding을, BitVLA는 1-bit quantization을 통한 최적화를 추구한다.
-- 🏛 기반 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy의 single-step 추론 가속화 기법이 CEED-VLA의 early-exit decoding 방법론의 이론적 기반을 제공한다.
-- 🔗 후속 연구: [[papers/1588_TinyVLA_Towards_Fast_Data-Efficient_Vision-Language-Action_M/review]] — TinyVLA의 데이터 효율적 학습이 CEED-VLA의 4배 가속화와 결합되어 더욱 실용적인 VLA 시스템을 구현할 수 있다.
-- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 둘 다 VLA 모델 최적화를 다루지만 BitVLA는 1-bit quantization을, CEED-VLA는 early-exit decoding을 통한 가속화를 추구한다.
-- 🏛 기반 연구: [[papers/1339_Consistency_Policy_Accelerated_Visuomotor_Policies_via_Consi/review]] — Consistency Policy의 single-step 가속화 기법이 CEED-VLA의 early-exit decoding 방법론에 대한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 단일 스텝 diffusion 기반 VLA 가속화에 대한 다른 접근 방식을 제시합니다.
+- 🧪 응용 사례: [[papers/1557_Running_VLAs_at_Real-time_Speed/review]] — 실시간 속도로 VLA 실행하는 구체적인 적용 방법을 보여줍니다.
+- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 둘 다 VLA 모델 추론 가속화를 다루지만 CEED-VLA는 consistency distillation과 early-exit에, BitVLA는 1-bit quantization에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1568_Search-TTA_A_Multimodal_Test-Time_Adaptation_Framework_for_V/review]] — CEED-VLA의 consistency vision-language-action 모델이 Search-TTA의 멀티모달 테스트타임 적응을 위한 기반 VLM 아키텍처를 제공한다.
+- 🔄 다른 접근: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 둘 다 VLA 모델의 효율성 향상을 다루지만 BitVLA는 1-bit quantization에, CEED-VLA는 consistency distillation에 중점을 둡니다.
+- 🔄 다른 접근: [[papers/1373_DualVLA_Building_a_Generalizable_Embodied_Agent_via_Partial/review]] — CEED-VLA의 early exit mechanism과 DualVLA의 partial decoupling은 VLA 모델의 효율성과 성능을 다른 방식으로 최적화하는 접근법이다.

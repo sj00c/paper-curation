@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "Embodied-R은 대규모 Vision-Language Model(VLM)과 소규모 Language Model(LM)을 협력시키고 RL을 통해 embodied video에서의 spatial reasoning 능력을 활성화하는 프레임워크이다. 단 5k개의 embodied video 샘플로 훈련하여 OpenAI-o1, Gemini-2.5-pro 수준의 성능을 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhao et al._2025_Embodied-R Collaborative Framework for Activating Embodied Spatial Reasoning in Foundation Models v.pdf"
 ---
@@ -89,7 +89,7 @@ Embodied-R은 대규모 Vision-Language Model(VLM)과 소규모 Language Model(L
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — Embodied-Reasoner도 대규모 모델 협력과 RL을 통한 spatial reasoning을 다룬다.
-- 🔗 후속 연구: [[papers/1382_EmbodiedVSR_Dynamic_Scene_Graph-Guided_Chain-of-Thought_Reas/review]] — EmbodiedVSR의 dynamic scene graph가 Embodied-R의 spatial reasoning을 구조적으로 발전시킨다.
-- 🏛 기반 연구: [[papers/1343_Cosmos-Reason1_From_Physical_Common_Sense_To_Embodied_Reason/review]] — Cosmos-Reason1의 물리적 상식 추론이 Embodied-R의 spatial reasoning 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1381_Embodied-Reasoner_Synergizing_Visual_Search_Reasoning_and_Ac/review]] — Embodied-R도 대규모 모델 협력을 통한 embodied spatial reasoning을 다룬다.
+- 🔄 다른 접근: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — Reflective Planning의 multi-stage task planning과 Embodied-R의 collaborative VLM-LM framework는 embodied reasoning에서 서로 다른 계획 수립 접근법이다.
+- 🔗 후속 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — Inner Monologue의 embodied reasoning through planning이 Embodied-R에서 VLM과 LM의 협력을 통한 spatial reasoning으로 더욱 발전했다.
+- 🏛 기반 연구: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — Statler의 state-maintaining language model이 Embodied-R의 대규모 VLM과 소규모 LM 협력 구조에서 상태 유지 메커니즘의 기초를 제공한다.
+- 🔄 다른 접근: [[papers/1536_RoboBrain_A_Unified_Brain_Model_for_Robotic_Manipulation_fro/review]] — Embodied-R과 동일하게 통합된 embodied reasoning을 추구하지만 RoboBrain은 조작에 특화되고 ShareRobot 데이터셋을 활용한다.

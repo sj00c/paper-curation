@@ -13,7 +13,9 @@ score: 4.0
 essence: "본 연구는 영국 Research Excellence Framework (REF)의 465개 사례 분석을 통해 도서관이 과학 연구의 사회적 영향을 중개하는 구체적 전략 5가지를 의미론적 분석(LLM + BERTopic)으로 규명했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Social_Media_Engagement"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zuorong et al._2026_Bridging the gap between science and society Mapping libraries' strategies for engaging in the rese 1.pdf"
 ---
@@ -89,8 +91,12 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zuorong et al._2026_Bridging the gap bet
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1002_Public_use_and_public_funding_of_science/review]] — 공공 자금으로 지원된 과학 연구의 사회적 활용에 대한 이론적 토대를 제공한다.
-- 🔄 다른 접근: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 도서관의 체계적 중개 전략과 소셜미디어 플랫폼의 자발적 정보 흐름이라는 상이한 과학 소통 방식을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — AI 기반 과학 협력 도구가 도서관의 과학-사회 중개 역할을 어떻게 강화할 수 있는지 보여준다.
-- 🔄 다른 접근: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 소셜미디어의 자발적 정보 확산과 도서관의 체계적 과학 소통 전략이라는 서로 다른 접근 방식을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 도서관이 과학과 사회를 연결하는 역할 매핑이 예술 관광의 문화적 브리지 역할을 이해하는 틀을 확장한다.
+- 🧪 응용 사례: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학-정책 연결에서 도서관의 중개 역할과 유사하게 과학 연구를 정책으로 변환하는 AI 시스템을 제시한다.
+- 🏛 기반 연구: [[papers/1043_The_selective_use_of_physics_knowledge_in_policy_how_interdi/review]] — 정책에서 과학 지식의 선택적 활용에 대한 이론적 배경을 제공하여 도서관의 중개 전략 이해를 돕는다.
+- 🔄 다른 접근: [[papers/972_Identifying_interdisciplinary_emergence_in_the_science_of_sc/review]] — 학제간 지식 결합을 통한 사회적 영향 창출의 다른 접근법으로 주제 모델링 기반 분석을 제시한다.
+- 🔄 다른 접근: [[papers/964_Funding_the_Frontier_Visualizing_the_Broad_Impact_of_Science/review]] — 과학의 사회적 영향을 도서관 중개 전략과 펀딩 시각화라는 다른 관점에서 접근한다
+- 🔗 후속 연구: [[papers/974_Information_Pathways_in_Online_Science_Communication_The_Rol/review]] — 과학 소통의 정보 경로 분석을 도서관의 사회적 중개 역할로 확장한 연구이다
+- 🧪 응용 사례: [[papers/1016_Sci2Pol_Evaluating_and_Fine-tuning_LLMs_on_Scientific-to-Pol/review]] — 과학과 사회 간 격차 해소를 위한 도서관 역할 매핑은 LLM 기반 과학-정책 브리프가 실제 지식 전달 생태계에서 어떤 역할을 할 수 있는지 보여줍니다.
+- 🏛 기반 연구: [[papers/994_Organisational_accounts_engaged_in_scholarly_communication_o/review]] — 과학과 사회 간 격차를 메우는 도서관 매핑 연구가 기관 계정의 학술 커뮤니케이션 역할 이해의 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1137_Art_tourism_a_nascent_concept_but_symptomatic_of_a_trend_Ins/review]] — 과학과 사회를 연결하는 도서관 역할 매핑이 예술 관광에서 문화기관과 사회 연결 분석에 이론적 기반을 제공하기 때문
+- 🏛 기반 연구: [[papers/1141_Assistive_technology_for_developmental_conditions_A_scientom/review]] — 보조기술 연구가 과학과 사회 간 격차를 메우는 역할을 도서관 과학의 관점에서 분석할 수 있다.

@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "SHIELD는 학습 기반 휴머노이드 로봇 컨트롤러에 안전 계층을 추가하여 실시간 제약 조건 명시와 확률적 안전 보장을 동시에 제공하는 프레임워크이다. 동적 잔차 모델과 확률적 이산 시간 제어 배리어 함수(S-DTCBF)를 통해 기존 블랙박스 RL 정책을 재학습 없이 안전화한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2025_SHIELD Safety on Humanoids via CBFs In Expectation on Learned Dynamics.pdf"
 ---
@@ -86,3 +88,24 @@ SHIELD는 학습 기반 휴머노이드 로봇 컨트롤러에 안전 계층을 
 - Overall: 4/5
 
 **총평**: SHIELD는 학습 기반 humanoid 컨트롤러의 실제 배포를 위한 현실적이고 실용적인 안전 보장 방법을 제시하며, 데이터 기반과 모델 기반 방법의 간격을 효과적으로 연결한다. 실제 로봇 실험 검증과 함께 이론적 안전 보장을 제공하여 로봇 안전 연구에 상당한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 두 논문 모두 휴머노이드 안전성을 다루지만, 운영 중 안전 보장과 낙상 후 보호라는 다른 시점에서 접근한다.
+- 🏛 기반 연구: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — model-predictive한 분포 외 탐지 및 실패 감지 방법의 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — geometry-aware한 예측적 안전 필터를 확률적 제어 배리어 함수로 확장한다.
+- 🔗 후속 연구: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — physics-guided generation의 안전성을 확률적 제어 배리어 함수로 더욱 강화한 안전 보장 시스템입니다.
+- 🔗 후속 연구: [[papers/1686_SPARK_Safe_Protective_and_Assistive_Robot_Kit/review]] — SPARK의 실용적 안전 프레임워크와 SHIELD의 이론적 CBF 안전성을 결합하면 완전한 안전 제어 시스템을 구축할 수 있다
+- 🔄 다른 접근: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — 두 논문 모두 휴머노이드의 안전성을 다루지만, 낙상 후 보호와 운영 중 안전이라는 다른 시점에서 접근한다.
+- 🏛 기반 연구: [[papers/1662_SafeFlow_Real-Time_Text-Driven_Humanoid_Whole-Body_Control_v/review]] — 물리적 실현 가능성 보장이 안전한 휴머노이드 제어의 기본 요구사항입니다.
+- 🔗 후속 연구: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — SafeHumanoid의 VLM-RAG 기반 안전 제어가 SHIELD의 CBF 기반 안전성 보장과 결합되어 더 포괄적인 human-robot interaction 안전 시스템을 구축할 수 있다
+- 🏛 기반 연구: [[papers/1698_Symphony_A_Heuristic_Normalized_Calibrated_Advantage_Actor_a/review]] — SHIELD의 CBF 기반 안전 제어가 Symphony의 안전한 휴머노이드 훈련을 위한 theoretical safety guarantee 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1632_RAPT_Model-Predictive_Out-of-Distribution_Detection_and_Fail/review]] — RAPT는 model-predictive OOD 감지를, SHIELD는 CBF 기반 안전 보장을 통해 휴머노이드 안전성을 다르게 확보함
+- 🔄 다른 접근: [[papers/1872_Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environmen/review]] — 복잡한 환경에서의 휴머노이드 안전을 projected safe set과 CBF 기대값이라는 서로 다른 수학적 접근법으로 보장한다
+- 🏛 기반 연구: [[papers/1894_ECO_Energy-Constrained_Optimization_with_Reinforcement_Learn/review]] — SHIELD의 CBF 기반 안전성 보장 방법론이 ECO의 에너지 제약 조건을 안전하게 강제하는 기술적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1954_Geometry-Aware_Predictive_Safety_Filters_on_Humanoids_From_P/review]] — 둘 다 humanoid safety를 다루지만, Geometry-Aware는 Poisson safety function 기반 predictive filter를, SHIELD는 CBF expectation 기반 접근법을 사용합니다.
+- 🏛 기반 연구: [[papers/1914_End-to-End_Humanoid_Robot_Safe_and_Comfortable_Locomotion_Po/review]] — CMDP에서 CBF 원리를 비용 함수로 변환하는 접근법이 SHIELD의 CBF 기반 안전 제어 이론에 기반한다.
+- 🔄 다른 접근: [[papers/2017_HWC-Loco_A_Hierarchical_Whole-Body_Control_Approach_to_Robus/review]] — 둘 다 안전한 휴머노이드 제어를 위한 계층적 접근이지만 HWC-Loco는 목표-안전 trade-off, SHIELD는 CBF 기반
+- 🔄 다른 접근: [[papers/2033_Keep_on_Going_Learning_Robust_Humanoid_Motion_Skills_via_Sel/review]] — 휴머노이드 안전성 확보에서 선택적 적대적 공격 대신 제어 배리어 함수를 활용한 안전 보장 방법을 제시한다.
+- 🔄 다른 접근: [[papers/2062_Learning_Smooth_Humanoid_Locomotion_through_Lipschitz-Constr/review]] — CBF를 통한 휴머노이드 안전성 확보라는 유사하지만 다른 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/2133_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — 둘 다 휴머노이드의 안전성과 신뢰성을 다루지만, PDF-HR은 포즈 분포 기반 평가에, SHIELD는 CBF 기반 안전 제어에 집중한다.

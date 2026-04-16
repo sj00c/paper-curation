@@ -1,3 +1,24 @@
+---
+title: "1745_Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level"
+authors:
+  - "Yuxi Wei"
+  - "Zirui Wang"
+  - "Kangning Yin"
+  - "Yue Hu"
+  - "Jingbo Wang"
+date: "2025.12"
+doi: "10.48550/arXiv.2511.09241"
+arxiv: ""
+score: 4.0
+essence: "대규모 인간 모션 데이터를 활용하여 자동 파이프라인으로 생성한 Humanoid-Union 데이터셋(260시간)과 이를 기반으로 하는 SCHUR 프레임워크를 제안하여 텍스트 기반 휴머노이드 로봇 모션 생성의 확장성을 달성했다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wei et al._2025_Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots.pdf"
+---
+
 # Unveiling the Impact of Data and Model Scaling on High-Level Control for Humanoid Robots
 
 > **저자**: Yuxi Wei, Zirui Wang, Kangning Yin, Yue Hu, Jingbo Wang, Siheng Chen | **날짜**: 2025-12-07 | **DOI**: [10.48550/arXiv.2511.09241](https://doi.org/10.48550/arXiv.2511.09241)
@@ -70,3 +91,18 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 대규모 자동화 파이프라인으로 고품질 로봇 모션 데이터셋을 구축하고, FSQ VAE 및 LLaMA 기반 SCHUR 프레임워크로 효과적인 data/model scaling을 달성하여 휴머노이드 로봇의 텍스트 기반 고수준 제어의 실질적 발전을 보여준다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1712_The_Role_of_Domain_Randomization_in_Training_Diffusion_Polic/review]] — 대규모 Humanoid-Union 데이터셋이 Diffusion Policies 훈련에 필요한 데이터 규모 문제를 해결합니다.
+- 🔗 후속 연구: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — SCHUR의 텍스트 기반 제어가 million-level motion 데이터와 결합되어 더 강력한 생성 모델을 만듭니다.
+- 🏛 기반 연구: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 대규모 데이터와 모델 스케일링이 SENTINEL의 end-to-end 언어-행동 모델의 성능 향상에 기여할 수 있다.
+- 🔄 다른 접근: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 대규모 모션 데이터 활용에서 텍스트 기반 생성과 모션 트래킹이라는 서로 다른 제어 인터페이스를 제공한다.
+- 🔗 후속 연구: [[papers/1670_SENTINEL_A_Fully_End-to-End_Language-Action_Model_for_Humano/review]] — 언어 명령을 휴머노이드 제어로 변환하는 작업에서 SENTINEL의 end-to-end 접근법과 SCHUR의 대규모 데이터 기반 접근법이 상호 보완적이다.
+- 🔗 후속 연구: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 대규모 휴머노이드 제어에서 모션 트래킹과 텍스트 기반 모션 생성이라는 보완적 인터페이스를 제공한다.
+- 🏛 기반 연구: [[papers/1643_RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with/review]] — Large-scale pretraining의 효과를 motion model alignment에 적용한 기반 연구
+- 🔗 후속 연구: [[papers/1712_The_Role_of_Domain_Randomization_in_Training_Diffusion_Polic/review]] — SCHUR 프레임워크가 제공하는 대규모 데이터셋이 Diffusion Policies 훈련의 데이터 요구사항 문제를 해결합니다.
+- 🏛 기반 연구: [[papers/1885_DreamControl-v2_Simpler_and_Scalable_Autonomous_Humanoid_Ski/review]] — 데이터와 모델 스케일링의 고수준 영향 분석이 기초를 제공합니다.
+- 🔄 다른 접근: [[papers/2035_Kimodo_Scaling_Controllable_Human_Motion_Generation/review]] — 둘 다 대규모 데이터로 학습한 모션 생성이지만 Kimodo는 텍스트 제어, Unveiling은 데이터 스케일링 영향 분석 중심
+- 🏛 기반 연구: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 데이터와 모델 스케일링이 고수준 휴머노이드 제어에 미치는 영향 분석 기반
+- 🏛 기반 연구: [[papers/2109_Natural_Humanoid_Robot_Locomotion_with_Generative_Motion_Pri/review]] — 대규모 사전학습과 모델 스케일링의 영향 연구가 GMP의 frozen generative model 활용의 이론적 기반을 제공한다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "PointWorld는 RGB-D 입력과 로봇 동작을 3D point flow로 통일하여 표현하고, 이를 통해 전체 장면의 3D 포인트 변위를 예측하는 대규모 사전학습 3D 월드 모델이다. 단일 체크포인트로 실제 로봇이 다양한 조작 작업을 수행할 수 있게 한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Spatial_Language_Understanding"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/3D_Keypoint_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2026_PointWorld Scaling 3D World Models for In-The-Wild Robotic Manipulation.pdf"
 ---
@@ -91,7 +93,14 @@ PointWorld는 RGB-D 입력과 로봇 동작을 3D point flow로 통일하여 표
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian Splatting의 실시간 3D 렌더링이 PointWorld의 3D point flow 예측 모델의 기초 기술을 제공한다.
-- 🔗 후속 연구: [[papers/1631_World_Models/review]] — World Models의 일반적 프레임워크가 PointWorld의 3D 월드 모델을 더 광범위한 embodied AI 영역으로 확장한다.
-- 🔄 다른 접근: [[papers/1419_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — Generative World Modelling for Humanoids와 PointWorld는 모두 로봇을 위한 세계 모델 구축에서 서로 다른 표현 방식을 제시한다.
-- 🏛 기반 연구: [[papers/1308_CLoSD_Closing_the_Loop_between_Simulation_and_Diffusion_for/review]] — PointWorld는 LEO의 3D 월드 모델링에 필요한 확장 가능한 3D 월드 모델의 기반을 제공한다
+- 🏛 기반 연구: [[papers/1517_PointWorld_Scaling_3D_World_Models_for_In-The-Wild_Robotic_M/review]] — large-scale 3D world model의 이론적 기반을 자체적으로 제공하여 point flow 기반 통합 표현과 전체 장면 예측의 방법론적 토대를 구축한다.
+- 🔗 후속 연구: [[papers/1290_3D_Gaussian_Splatting_for_Real-Time_Radiance_Field_Rendering/review]] — 3D Gaussian splatting의 실시간 렌더링 기술을 3D 포인트 변위 예측과 결합하여 더 정확하고 효율적인 장면 모델링을 달성한다.
+- 🔄 다른 접근: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 3D world model에서 point flow based unified representation vs video foundation model이라는 서로 다른 장면 표현 및 시뮬레이션 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — PointWorld와 ReKep 모두 3D 포인트 기반 조작을 다루지만 월드 모델링과 키포인트 제약이라는 다른 접근법을 사용합니다.
+- 🏛 기반 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D 포인트 플로우 기반 월드 모델은 3D-VLA의 3D 비전-언어-액션 생성 모델과 유사한 3D 표현을 공유합니다.
+- 🔗 후속 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — 대규모 3D 월드 모델은 RoboPoint의 공간 어포던스 예측을 더 정확하고 일반화된 방식으로 구현할 수 있습니다.
+- 🔄 다른 접근: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — PointWorld의 3D point flow와 달리 human videos로부터 structured world model을 학습하는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1384_EnerVerse_Envisioning_Embodied_Future_Space_for_Robotics_Man/review]] — PointWorld의 3D world model scaling과 EnerVerse의 4D Gaussian-based future space는 로봇을 위한 세계 모델링에서 서로 다른 차원적 접근이다.
+- 🔄 다른 접근: [[papers/1529_ReKep_Spatio-Temporal_Reasoning_of_Relational_Keypoint_Const/review]] — ReKep과 PointWorld 모두 3D 공간 정보를 활용하지만 키포인트 제약과 포인트 플로우라는 다른 표현 방식을 사용합니다.
+- 🔗 후속 연구: [[papers/1576_SpatialVLA_Exploring_Spatial_Representations_for_Visual-Lang/review]] — PointWorld의 3D world model 개념을 로봇 조작에 특화된 ego3D position encoding과 adaptive action grid로 확장했다.
+- 🧪 응용 사례: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — Cosmos-Predict2.5의 3D world modeling을 실제 로보틱스 환경에서 적용할 수 있는 구체적 방법을 제시한다.

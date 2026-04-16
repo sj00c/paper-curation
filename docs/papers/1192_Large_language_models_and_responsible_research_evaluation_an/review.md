@@ -9,8 +9,9 @@ score: 4.0
 essence: "본 논문은 Large Language Models (LLMs)이 연구 평가에 활용될 가능성을 논의하며, Leiden Manifesto의 책임 있는 문헌계량학 원칙을 LLM 기반 평가에 확장 적용할 수 있는지 검토한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "cat/AI-Assisted_Scientific_Discovery"
-  - "sub/Peer_Review_Grant_Systems"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Thelwall_2026_Large language models and responsible research evaluation an extension of the Leiden Manifesto.pdf"
 ---
@@ -80,16 +81,21 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Thelwall_2026_Large language models and 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — LLM을 과학계량학에 활용할 때 필요한 책임 있는 평가 원칙의 이론적 기반을 공유한다.
-- 🔗 후속 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학 연구의 편향성 메타 평가에 LLM 기반 평가의 책임성 원칙을 적용할 수 있다.
-- 🔄 다른 접근: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 연구 평가의 투명성 확보를 위해 기존 방법론과 LLM 기반 접근법을 비교 분석한다.
-- 🏛 기반 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — AI 기반 펀딩 혁신이 실현될 때 필요한 책임 있는 평가 원칙을 LLM 환경에서 구체적으로 제시한다.
-- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — LLM 기반 연구 평가를 서로 다른 관점에서 접근하여 책임성 원칙과 실용적 구현 방법을 비교 연구할 수 있다.
-- 🧪 응용 사례: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — 연구 평가 거버넌스의 글로벌 비교 프레임워크를 LLM 시대의 새로운 평가 방식에 적용한다.
-- 🏛 기반 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — ChatGPT의 연구 평가 편향 문제가 LLM을 책임감 있게 연구 평가에 활용하는 방법론의 필요성을 뒷받침한다.
-- 🔗 후속 연구: [[papers/1069_Breaking_the_gatekeepers_how_AI_will_revolutionize_scientifi/review]] — AI 기반 펀딩 시스템이 실현될 때 필요한 책임 있는 평가 원칙을 LLM 환경에서 구체적으로 제시한다.
-- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — LLM과 책임감 있는 연구 평가의 이론적 틀이 LLM 사용 정량화의 기반이 됨
-- 🔄 다른 접근: [[papers/977_Introducing_multiverse_analysis_to_bibliometrics_The_case_of/review]] — 연구 평가에서 통계적 견고성과 AI 기반 평가 방법이라는 서로 다른 신뢰성 확보 접근법을 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — LLM의 책임감 있는 연구 평가를 논문 품질 검사로 구체적으로 적용함
-- 🔗 후속 연구: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — LLM의 책임감 있는 연구 평가를 멀티 에이전트 시스템으로 확장함
-- 🏛 기반 연구: [[papers/1182_Governing_Science_through_Evaluation_A_Global_Heuristic_of_R/review]] — LLM 기반 연구 평가의 책임 있는 적용을 위해 필요한 거버넌스 관점의 이론적 프레임워크를 제공한다.
+- 🔗 후속 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — RCR 데이터의 투명성 확보와 LLM 기반 평가의 책임성을 결합하여 더욱 포괄적인 책임 있는 연구 평가 생태계를 구축할 수 있다.
+- 🏛 기반 연구: [[papers/1022_SciSciGPT_advancing_humanAI_collaboration_in_the_science_of/review]] — 과학의 과학 분야에서의 인간-AI 협력 연구가 LLM 기반 연구 평가 시스템 설계와 구현에 필수적인 이론적 프레임워크를 제공한다.
+- 🏛 기반 연구: [[papers/1077_Quantifying_large_language_model_usage_in_scientific_papers/review]] — 과학 논문에서 LLM 사용 정량화 연구가 LLM 기반 평가의 기초 데이터를 제공합니다.
+- ⚖️ 반론/비판: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 가속화된 연구 작성의 부작용을 경고하여 책임 있는 평가의 필요성을 강조합니다.
+- 🏛 기반 연구: [[papers/941_Big_Names_or_Big_Ideas_Do_Peer-Review_Panels_Select_the_Best/review]] — 동료평가 시스템의 효과성 검증 연구가 LLM 기반 평가 시스템 도입을 위한 기준점을 제공합니다.
+- 🔗 후속 연구: [[papers/1204_Rethinking_Research_Evaluation_in_India_Is_the_Ecosystem_Rea/review]] — Leiden Manifesto 원칙을 LLM 평가에 적용하는 것이 인도의 책임감 있는 연구 평가 개혁에 참조할 수 있습니다.
+- ⚖️ 반론/비판: [[papers/1001_Public_Profile_Matters_A_Scalable_Integrated_Approach_to_Rec/review]] — AI 기반 연구 평가 시스템의 책임감 있는 사용에 대한 우려를 제기하여 자동화된 인용 추천의 한계를 지적합니다.
+- 🧪 응용 사례: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 대규모 언어 모델을 활용한 책임감 있는 연구 평가는 IRA 약가 협상에서 실제임상증거 평가의 객관성을 높일 수 있는 방법을 제시합니다.
+- ⚖️ 반론/비판: [[papers/1033_The_Empowerment_of_Science_of_Science_by_Large_Language_Mode/review]] — LLM을 활용한 연구 평가에서 발생할 수 있는 책임과 윤리적 문제들을 제기하여 신중한 접근을 요구한다.
+- 🧪 응용 사례: [[papers/1118_Paper_Circle_An_Open-source_Multi-agent_Research_Discovery_a/review]] — LLM 기반 연구 평가의 실제 구현과 적용 사례를 보여준다
+- 🔗 후속 연구: [[papers/1057_Which_stylistic_features_fool_ChatGPT_research_evaluations/review]] — 대규모 언어 모델의 책임감 있는 연구 평가에서 스타일 편향 문제가 핵심적 고려사항으로 다뤄진다.
+- 🧪 응용 사례: [[papers/1068_Artificial_intelligence_and_illusions_of_understanding_in_sc/review]] — AI 도구 사용 시 이해의 환상 문제가 연구 평가에서 어떻게 나타나는지 구체적으로 보여준다.
+- ⚖️ 반론/비판: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 공개 데이터셋 기반 연구 평가와 LLM 기반 연구 평가의 상반된 접근법을 비교 검토할 수 있다.
+- 🔄 다른 접근: [[papers/1157_Critical_Review_with_Scientometrics_Approach_on_the_Retrofit/review]] — LLM을 활용한 연구 평가에서 전체 리뷰와 비판적 오류 검출이라는 다른 접근법을 비교한다
+- 🔗 후속 연구: [[papers/1167_Enabling_transparent_research_evaluation_A_method_for_histor/review]] — 책임 있는 연구 평가를 위한 투명성 확보라는 공통 목표 하에 RCR 데이터와 LLM 기반 평가의 결합 가능성을 모색할 수 있다.
+- 🔄 다른 접근: [[papers/1162_DREAM_Deep_Research_Evaluation_with_Agentic_Metrics/review]] — LLM 기반 연구 평가에서 에이전트 메트릭과 일반적 평가 방법의 차이를 비교한다
+- 🏛 기반 연구: [[papers/1153_Classical_RAG_for_Semantic_Search__Quantum_Modules_for_Resea/review]] — 대형 언어 모델의 책임감 있는 연구 평가 방법론은 RAG 기반 연구 평가 시스템 설계의 윤리적, 방법론적 기초를 제공한다.
+- 🔗 후속 연구: [[papers/1156_Correction_Enabling_transparent_research_evaluation_A_method/review]] — 대규모 언어 모델과 책임감 있는 연구 평가를 다룬 연구로, 투명한 연구 평가 방법론을 현대적 AI 맥락에서 확장할 수 있습니다.

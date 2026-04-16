@@ -12,7 +12,9 @@ score: 4.0
 essence: "과학 논문 출판량이 2016년 대비 2022년에 47% 증가했으나 과학자 수는 정체되어 '출판 부담(strain on scientific publishing)'이 심화되고 있으며, 이를 정량적 지표로 분석한 연구이다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Publisher_Citation_Bias"
+  - "cat/Open_Access_Publication_Analytics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hanson et al._2024_The strain on scientific publishing.pdf"
 ---
@@ -77,10 +79,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hanson et al._2024_The strain on scienti
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — 과학 출판량 급증 문제가 AI 가속화된 글쓰기로 인한 제안 없는 출판으로 더욱 심화되는 메커니즘을 확장 분석합니다.
-- 🏛 기반 연구: [[papers/1123_The_misalignment_of_incentives_in_academic_publishing_and_im/review]] — 학술 출판에서 인센티브의 잘못된 정렬이 출판 부담 심화의 근본적 원인을 제공합니다.
-- 🧪 응용 사례: [[papers/1021_Scientific_production_in_the_era_of_large_language_models/review]] — 대규모 언어모델 시대의 과학적 생산이 출판 부담 문제를 어떻게 변화시키는지 구체적 적용 사례를 보여줍니다.
-- 🏛 기반 연구: [[papers/1008_Reinforcing_Prestige_Journal_Citation_Biases_in_Astronomy/review]] — 저널 명성에 따른 인용 편향이 과학 출판량 급증과 함께 출판 시스템의 구조적 문제를 심화시키는 배경을 제공합니다.
-- ⚖️ 반론/비판: [[papers/1038_The_Oligopoly_of_Academic_Publishers_in_the_Digital_Era/review]] — 출판사 과점이 학술 출판 시스템에 가하는 압박을 구조적 관점에서 분석한 대조적 시각을 제공한다.
-- 🧪 응용 사례: [[papers/1042_The_Scholarly_Knowledge_Ecosystem_Challenges_and_Opportuniti/review]] — 학술 지식 생태계의 도전 과제를 과학 출판에 가해지는 압박이라는 구체적 맥락에서 이해할 수 있다.
-- 🔗 후속 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — 과학 출판의 부담이라는 기존 문제에 AI 가속 글쓰기라는 새로운 변수를 추가하여 시스템 붕괴 위험을 정량적으로 모델링한다.
+- 🧪 응용 사례: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 글로벌 출판 부담이 미중 과학 협력의 수렴에서 발산으로의 전환에 영향을 미치는 구조적 요인이다.
+- 🏛 기반 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — AI 가속화된 글쓰기가 적절한 검증 없는 출판 증가를 통해 출판 부담을 가중시킨다.
+- 🏛 기반 연구: [[papers/968_Growth_Rates_of_Modern_Science_Bibliometric_Analysis_Based_o/review]] — 현대 과학의 성장률 분석이 출판 부담 증가 현상의 장기적 맥락을 제공한다.
+- 🔗 후속 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 연구 중심으로의 지식 생산 변화가 개별 과학자당 논문 수 증가로 이어져, 출판 부담 심화의 구조적 원인을 설명한다.
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 논문과 특허의 파괴적 혁신 감소 추세와 달리, 양적 생산성은 급격히 증가하여 과학 생산의 질적-양적 분리를 시사한다.
+- 🏛 기반 연구: [[papers/1123_The_misalignment_of_incentives_in_academic_publishing_and_im/review]] — 학술 출판에서 인센티브 불일치 문제를 다루어, 과학자들이 양적 생산 압박을 받는 구조적 배경을 제공한다.
+- 🏛 기반 연구: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 글로벌 출판 부담 증가가 미중 과학 협력 변화의 구조적 배경을 제공한다.
+- 🔗 후속 연구: [[papers/1119_Publish_and_Perish_How_AI-Accelerated_Writing_Without_Propor/review]] — 과학 출판의 부담이 AI로 인해 더욱 심화되는 현상을 정량적으로 분석한다.
+- 🔗 후속 연구: [[papers/1123_The_misalignment_of_incentives_in_academic_publishing_and_im/review]] — 학술출판의 부담 증가 현상을 인센티브 구조의 근본적 불일치 관점에서 심화 분석했기 때문
+- ⚖️ 반론/비판: [[papers/1142_Beyond_Retractions_Forensic_Scientometrics_Techniques_to_Ide/review]] — 학술 출판 시스템의 압박과 forensic scientometrics의 필요성을 상호 보완적으로 분석한다.
+- 🏛 기반 연구: [[papers/1234_The_Open_Science_promise_vs_the_Author-pays_reality_The_Hidd/review]] — 과학 출판의 구조적 부담이 author-pays 모델의 형평성 문제를 이해하는 배경을 제공합니다.

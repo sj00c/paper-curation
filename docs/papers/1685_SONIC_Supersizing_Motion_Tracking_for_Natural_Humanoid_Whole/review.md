@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "인간의 모션 캡처 데이터를 활용한 motion tracking을 기반 작업으로 삼아 42M 파라미터의 대규모 humanoid controller를 학습하고, kinematic planner와 unified token space를 통해 다양한 제어 인터페이스를 지원하는 자연스러운 전신 움직임 제어 시스템을 제시한다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luo et al._2025_SONIC Supersizing Motion Tracking for Natural Humanoid Whole-Body Control.pdf"
 ---
@@ -81,3 +84,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Luo et al._2025_SONIC Supersizing Motion
 - Overall: 4/5
 
 **총평**: 이 논문은 humanoid control에 대규모 스케일링을 성공적으로 적용한 첫 사례로, motion tracking을 foundation task로 선정하고 100M 프레임 데이터와 42M 파라미터로 학습하여 강력한 generalization을 보인다. Kinematic planner와 unified token space를 통해 다양한 제어 인터페이스를 단일 정책으로 통합함으로써 실제 응용 가능성을 입증했으며, 체계적인 ablation과 comprehensive evaluation은 연구의 엄밀성을 보강한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 두 논문 모두 모션 추적을 다루지만, 대규모 모델과 일반적인 추적이라는 다른 규모의 접근을 사용한다.
+- 🏛 기반 연구: [[papers/1655_Robust_and_Generalized_Humanoid_Motion_Tracking/review]] — 강건하고 일반화된 휴머노이드 모션 추적의 기초적인 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 일반적인 휴머노이드 전신 제어를 대규모 motion tracking으로 확장하여 더 자연스러운 움직임을 실현한다.
+- 🔄 다른 접근: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — 대규모 모션 트래킹과 센서 조건부 확산 정책이라는 서로 다른 접근법으로 휴머노이드 전신 제어를 다룬다.
+- 🔗 후속 연구: [[papers/1745_Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level/review]] — 대규모 휴머노이드 제어에서 모션 트래킹과 텍스트 기반 모션 생성이라는 보완적 인터페이스를 제공한다.
+- 🔄 다른 접근: [[papers/1744_Unleashing_Humanoid_Reaching_Potential_via_Real-world-Ready/review]] — 대규모 휴머노이드 제어를 위해 서로 다른 접근(42M 파라미터 통합 모델 vs 사전 학습된 원시 스킬 조합)으로 확장성과 일반화를 추구한다.
+- 🏛 기반 연구: [[papers/1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control/review]] — 모션 트래킹 기반 전신 제어의 기본 개념을 대규모 모델과 통합된 토큰 공간으로 확장하여 자연스러운 움직임을 실현했다.
+- 🔗 후속 연구: [[papers/1814_Being-H0_Vision-Language-Action_Pretraining_from_Large-Scale/review]] — 비전-언어-액션 사전 학습의 개념을 모션 캡처 데이터와 결합하여 42M 파라미터 규모의 휴머노이드 제어기로 확장했다.
+- 🔄 다른 접근: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 자연스러운 전신 움직임 제어를 위해 서로 다른 인터페이스(unified token space vs streaming 자연어)를 통해 사용자 명령을 처리한다.
+- 🔄 다른 접근: [[papers/1667_SCDP_Learning_Humanoid_Locomotion_from_Partial_Observations/review]] — 부분 관찰 조건에서의 휴머노이드 제어를 다루며, SCDP는 센서 기반 확산 정책을, SONIC은 대규모 모션 트래킹을 통해 접근한다.
+- 🏛 기반 연구: [[papers/1655_Robust_and_Generalized_Humanoid_Motion_Tracking/review]] — SONIC의 대규모 motion tracking 접근법이 본 논문의 강건한 모션 추적 프레임워크의 기반이 된다.
+- 🔄 다른 접근: [[papers/1708_TextOp_Real-time_Interactive_Text-Driven_Humanoid_Robot_Moti/review]] — 자연스러운 전신 움직임 제어를 위해 서로 다른 인터페이스(streaming 자연어 vs unified token space)를 통해 사용자 명령을 처리한다.
+- 🔄 다른 접근: [[papers/1745_Unveiling_the_Impact_of_Data_and_Model_Scaling_on_High-Level/review]] — 대규모 모션 데이터 활용에서 텍스트 기반 생성과 모션 트래킹이라는 서로 다른 제어 인터페이스를 제공한다.
+- 🔄 다른 접근: [[papers/1744_Unleashing_Humanoid_Reaching_Potential_via_Real-world-Ready/review]] — 대규모 휴머노이드 제어를 위해 서로 다른 접근(사전 학습된 원시 스킬 조합 vs 42M 파라미터 통합 모델)으로 확장성과 일반화를 추구한다.

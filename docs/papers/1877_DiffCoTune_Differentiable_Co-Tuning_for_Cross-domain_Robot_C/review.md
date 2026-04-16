@@ -1,3 +1,24 @@
+---
+title: "1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C"
+authors:
+  - "Lokesh Krishna"
+  - "Sheng Cheng"
+  - "Junheng Li"
+  - "Naira Hovakimyan"
+  - "Quan Nguyen"
+date: "2025.05"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "로봇 컨트롤러의 시뮬레이션-실제 환경 간 성능 격차를 해결하기 위해 differentiable simulator를 활용한 gradient 기반 co-tuning 프레임워크를 제안하며, 컨트롤러와 시뮬레이터 매개변수를 동시에 최적화하여 적은 시행횟수로 체계적인 도메인 전이를 가능하게 한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Krishna et al._2025_DiffCoTune Differentiable Co-Tuning for Cross-domain Robot Control.pdf"
+---
+
 # DiffCoTune: Differentiable Co-Tuning for Cross-domain Robot Control
 
 > **저자**: Lokesh Krishna, Sheng Cheng, Junheng Li, Naira Hovakimyan, Quan Nguyen | **날짜**: 2025-05-29 | **URL**: [https://arxiv.org/abs/2505.24068](https://arxiv.org/abs/2505.24068)
@@ -67,3 +88,15 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 로봇 도메인 전이의 실질적 문제를 differentiable simulator 기반의 우아한 co-tuning 프레임워크로 해결하며, 다양한 컨트롤러와 시스템에서의 광범위한 실험을 통해 실용성을 입증한 기여도 높은 연구이다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — MoE-based robot control의 신뢰성 있는 sim-to-real 예측이 DiffCoTune의 도메인 전이 최적화 방법론에 이론적 근거를 제공한다.
+- 🧪 응용 사례: [[papers/1829_Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/review]] — athletic loco-manipulation의 sim-to-real gap 해결이 DiffCoTune의 differentiable co-tuning 접근법의 실제 적용 사례를 보여준다.
+- 🔄 다른 접근: [[papers/1858_cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_D/review]] — cuRoboV2의 dynamics-aware motion generation이 differentiable simulator 없이도 도메인 전이 문제를 해결하는 다른 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1675_Sim-to-Real_of_Humanoid_Locomotion_Policies_via_Joint_Torque/review]] — 조인트 토크 매칭을 통한 다른 시뮬레이션-현실 학습 방식을 제시합니다.
+- 🔗 후속 연구: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — 체계적 시뮬레이션-현실 전이 격차 해소로 발전됩니다.
+- 🏛 기반 연구: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 실제-시뮬레이션 학습 프레임워크의 기본 구조를 제공합니다.
+- 🔄 다른 접근: [[papers/1947_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Polici/review]] — 둘 다 3D 환경에서의 diffusion 기반 정책을 다루지만 Generalizable Humanoid는 조작에, DiffCoTune은 cross-domain 튜닝에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1931_Flow_Matching_Imitation_Learning_for_Multi-Support_Manipulat/review]] — Flow Matching과 확산 기반 공동 튜닝은 모두 생성 모델을 활용한 모방 학습이지만 서로 다른 생성 메커니즘을 사용한다.
+- 🔗 후속 연구: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — DiffCoTune의 differentiable co-tuning 방식을 Heracles의 state-conditioned diffusion에 적용하여 도메인 적응 성능을 향상시킬 수 있다.

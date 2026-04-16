@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "TrackVLA++는 Vision-Language-Action 모델에 Polar-CoT 공간 추론과 Target Identification Memory(TIM)를 통합하여 장시간 추적과 폐색 상황에서의 강건한 embodied visual tracking을 실현한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_TrackVLA++ Unleashing Reasoning and Memory Capabilities in VLA Models for Embodied Visual Tracking.pdf"
 ---
@@ -88,7 +90,12 @@ TrackVLA++는 Vision-Language-Action 모델에 Polar-CoT 공간 추론과 Target
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — TrackVLA++의 polar reasoning과 TriVLA의 episodic memory 모두 VLA 모델의 시공간 추론 능력을 향상시키는 서로 다른 접근법
-- 🧪 응용 사례: [[papers/1474_Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement/review]] — TrackVLA++의 visual tracking과 memory 기능이 MEM의 multi-scale embodied memory와 결합되어 장기 조작 작업에 효과적으로 활용 가능
-- 🔗 후속 연구: [[papers/1592_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — TrackVLA++의 target identification이 TraceVLA의 visual trace prompting과 함께 사용되어 더 정확한 공간-시간 추론을 달성할 수 있음
-- 🔄 다른 접근: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — TriVLA의 episodic world model과 TrackVLA++의 polar reasoning은 VLA 모델의 시공간 이해를 향상시키는 서로 다른 메모리 기반 접근법
+- 🏛 기반 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — multi-scale embodied memory가 visual tracking에서 Target Identification Memory의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — VLA에서 추적과 메모리를 위한 서로 다른 접근법 - target identification vs visual trace prompting입니다.
+- 🔗 후속 연구: [[papers/1320_BitVLA_1-bit_Vision-Language-Action_Models_for_Robotics_Mani/review]] — 1-bit VLA의 효율성을 reasoning과 memory 기능과 결합하여 더 강건한 모델을 만들 수 있습니다.
+- 🔄 다른 접근: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — 둘 다 VLA 모델에 메모리 기능을 추가하지만 TrackVLA++는 tracking 특화 TIM을, TriVLA는 에피소딕 월드 모델을 사용한다.
+- 🏛 기반 연구: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — 3D-VLA의 3D 시각-언어-행동 생성 모델이 TrackVLA++의 공간적 추론 능력 개발의 기반이 되었다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO의 시각적 grounding 기술이 TrackVLA++의 Target Identification Memory 구현에 핵심 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1592_TraceVLA_Visual_Trace_Prompting_Enhances_Spatial-Temporal_Aw/review]] — visual trace prompting을 기반으로 tracking과 memory 능력을 추가하여 TraceVLA의 spatial-temporal 인식을 더욱 발전시켰습니다.
+- 🔄 다른 접근: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — 둘 다 메모리와 추론을 VLA에 통합하지만 TriVLA는 에피소딕 메모리에, TrackVLA++는 tracking memory에 집중합니다.
+- 🔗 후속 연구: [[papers/1322_BOSS_Benchmark_for_Observation_Space_Shift_in_Long-Horizon_T/review]] — 메모리와 추론 능력을 강화한 VLA로 장기 작업의 OSS 문제를 해결한다.

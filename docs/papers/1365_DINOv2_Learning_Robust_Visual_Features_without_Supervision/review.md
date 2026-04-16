@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "자기지도학습(self-supervised learning)을 대규모 큐레이션 데이터와 1B 파라미터 ViT 모델로 학습하여 텍스트 감독 없이도 다양한 비전 작업에서 통용되는 고급 시각 특성을 생성하는 DINOv2 모델을 제안한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Oquab et al._2023_DINOv2 Learning Robust Visual Features without Supervision.pdf"
 ---
@@ -86,13 +88,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Oquab et al._2023_DINOv2 Learning Robust
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — R3M의 universal visual representation이 DINOv2의 self-supervised learning 기법을 로봇 조작 분야에 적용한 기반 연구다.
-- 🔄 다른 접근: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — CLIP의 natural language supervision이 DINOv2의 unsupervised approach와 대조되는 vision feature learning 방법을 제시한다.
-- 🔗 후속 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — Grounding DINO가 DINOv2의 self-supervised visual feature를 grounded pre-training으로 확장한다.
-- 🔗 후속 연구: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — DINOv2의 unsupervised visual learning을 motor control task에 특화하여 적용한 구체적 application 사례입니다.
-- 🔗 후속 연구: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — CLIP의 supervised contrastive learning을 unsupervised visual feature learning인 DINOv2로 확장한 발전된 형태입니다.
-- 🏛 기반 연구: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — DINOv2의 self-supervised visual feature learning이 Prismatic VLMs의 vision encoder 설계 결정에 중요한 기초를 제공한다.
-- 🔗 후속 연구: [[papers/1511_PaLI-X_On_Scaling_up_a_Multilingual_Vision_and_Language_Mode/review]] — 감독 없는 강건한 시각 특성 학습을 PaLI-X의 다국어 객체 검출 능력 강화에 통합할 수 있다
-- 🔗 후속 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — DINOv2의 감독 없는 시각 특징 학습을 발전시켜 Joint-Embedding 예측 아키텍처로 확장한다.
-- 🏛 기반 연구: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — DINOv2의 robust visual feature 학습 방법론을 3D 물체 조작을 위한 multi-view 표현 학습에 적용한다.
-- 🏛 기반 연구: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 감독 없는 시각 특성 학습 방법론이 OmniVLA의 센서-마스크 이미지 표현 학습에 핵심 이론적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — R3M의 supervised visual representation과 DINOv2의 self-supervised visual feature는 로봇 조작을 위한 시각 표현 학습에서 서로 다른 접근 방식을 제시한다.
+- 🔗 후속 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — JEPA의 joint-embedding predictive architecture는 DINOv2의 self-supervised learning을 더 발전시킨 representation learning 방법론이다.
+- ⚖️ 반론/비판: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — CLIP의 language supervision과 DINOv2의 purely visual self-supervision은 multimodal vs. unimodal feature learning의 대조적 접근을 보여준다.
+- 🏛 기반 연구: [[papers/1345_CoWs_on_Pasture_Baselines_and_Benchmarks_for_Language-Driven/review]] — CLIP 기반 언어-비전 매칭의 기반이 되는 자기지도학습 시각 특성 추출 방법을 제공합니다.
+- 🔄 다른 접근: [[papers/1471_Masked_Visual_Pre-training_for_Motor_Control/review]] — 둘 다 self-supervised visual representation learning을 다루지만 masked pre-training과 DINOv2의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1454_Learning_Transferable_Visual_Models_From_Natural_Language_Su/review]] — 둘 다 self-supervised visual representation learning을 다루지만 natural language supervision과 비지도 학습의 접근법 차이를 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — 둘 다 로봇 비전을 위한 시각적 특징 학습에 초점을 맞추지만, 멀티모달 융합은 VLM 통합을, DINOv2는 자기지도 학습에 집중한다.
+- 🔄 다른 접근: [[papers/1518_Prismatic_VLMs_Investigating_the_Design_Space_of_Visually-Co/review]] — DINOv2의 self-supervised visual learning과 Prismatic VLMs의 supervised VLM 설계는 시각적 표현 학습의 다른 패러다임을 보여준다.
+- 🏛 기반 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — R3M의 visual representation learning을 위한 기본적인 self-supervised visual feature learning 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1569_Segment_Anything/review]] — 자기 지도 학습 기반 시각 모델에서 SAM은 분할에, DINOv2는 robust visual feature 학습에 특화된 서로 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — 자기 지도 학습에서 I-JEPA는 joint-embedding predictive로, DINOv2는 supervision 없는 robust feature로 서로 다른 방식을 사용한다.
+- 🏛 기반 연구: [[papers/1345_CoWs_on_Pasture_Baselines_and_Benchmarks_for_Language-Driven/review]] — CLIP 기반의 시각적 특성 추출이 언어 기반 zero-shot 네비게이션의 핵심 기반입니다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "로봇이 자연언어 설명만으로 임의의 물체를 찾을 수 있도록 CLIP 기반의 학습 없는 네비게이션 방법 CoW를 제안하고, 이를 평가하기 위한 Pasture 벤치마크를 소개한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Open-Vocabulary_Scene_Navigation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Visual_Language_Navigation"
+  - "sub/Large-Scale_Robot_Learning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gadre et al._2022_CoWs on Pasture Baselines and Benchmarks for Language-Driven Zero-Shot Object Navigation.pdf"
 ---
@@ -87,8 +88,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gadre et al._2022_CoWs on Pasture Baseli
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — OVSG는 CoWs보다 더 정교한 문맥 인식 엔티티 그라운딩을 제공하지만 둘 다 오픈 어휘 장면 네비게이션을 다룬다
-- 🔗 후속 연구: [[papers/1311_Cognition_to_Control_-_Multi-Agent_Learning_for_Human-Humano/review]] — ApexNav는 CoWs의 언어 기반 zero-shot navigation을 적응적 탐색 전략으로 확장한다
-- 🏛 기반 연구: [[papers/1507_OpenBench_A_New_Benchmark_and_Baseline_for_Semantic_Navigati/review]] — OpenBench는 CoWs의 성능 평가를 위한 의미 네비게이션 벤치마크 기반을 제공한다
-- 🏛 기반 연구: [[papers/1580_MOSAIC_Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_M/review]] — 크로스 플랫폼 VLA 모델 스케일링 기법이 MOSAIC의 일반화된 휴머노이드 정책 학습을 위한 방법론적 기초를 제공합니다.
-- 🔄 다른 접근: [[papers/1340_Context-Aware_Entity_Grounding_with_Open-Vocabulary_3D_Scene/review]] — CoWs on Pasture는 OVSG와 유사한 오픈 어휘 장면 탐색이지만 CLIP 기반의 학습 없는 방법을 사용한다
+- 🔄 다른 접근: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — 둘 다 자연언어 기반 zero-shot 네비게이션을 다루지만 CoW는 CLIP 기반 방법론을, LM-Nav는 GPT-3+CLIP 조합을 사용하는 다른 접근법입니다.
+- 🧪 응용 사례: [[papers/1621_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Ro/review]] — CoW의 언어 기반 zero-shot 네비게이션 방법론이 VLABench의 대규모 언어 조건부 로봇 벤치마크에서 평가될 수 있습니다.
+- 🏛 기반 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — CLIP 기반의 시각적 특성 추출이 언어 기반 zero-shot 네비게이션의 핵심 기반입니다.
+- 🔄 다른 접근: [[papers/1345_CoWs_on_Pasture_Baselines_and_Benchmarks_for_Language-Driven/review]] — 언어 기반 객체 찾기에서 학습 없는 접근과 학습 기반 접근의 대비를 보여줍니다.
+- 🔗 후속 연구: [[papers/1311_ApexNav_An_Adaptive_Exploration_Strategy_for_Zero-Shot_Objec/review]] — Zero-shot 객체 탐색에서 적응적 탐색 전략의 구체적 개선사항을 제시합니다.
+- 🔄 다른 접근: [[papers/1342_CorrectNav_Self-Correction_Flywheel_Empowers_Vision-Language/review]] — 언어 지시를 통한 네비게이션에서 오류 복구와 zero-shot 접근의 서로 다른 해결책을 제시합니다.
+- 🏛 기반 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — CLIP 기반 언어-비전 매칭의 기반이 되는 자기지도학습 시각 특성 추출 방법을 제공합니다.

@@ -1,3 +1,23 @@
+---
+title: "2019_iCub3_Avatar_System_Enabling_Remote_Fully-Immersive_Embodime"
+authors:
+  - "Stefano Dafarra"
+  - "Ugo Pattacini"
+  - "Giulio Romualdi"
+  - "Lorenzo Rapetti"
+  - "Riccardo Grieco"
+date: "2022.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "원격 위치에서 휴머노이드 로봇 iCub3을 구현화(embodiment)하는 완전한 아바타 시스템을 제시하며, 수백 km 떨어진 위치에서의 이동, 조작, 음성, 표정 제어와 시각, 청각, 촉각, 무게감 피드백을 통합한다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "sub/Character_Motion_Policy_Transfer"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Dafarra et al._2022_iCub3 Avatar System Enabling Remote Fully-Immersive Embodiment of Humanoid Robots.pdf"
+---
+
 # iCub3 Avatar System: Enabling Remote Fully-Immersive Embodiment of Humanoid Robots
 
 > **저자**: Stefano Dafarra, Ugo Pattacini, Giulio Romualdi, Lorenzo Rapetti, Riccardo Grieco, Kourosh Darvish, Gianluca Milani, Enrico Valli, Ines Sorrentino, Paolo Maria Viceconte, Alessandro Scalzo, Silvio Traversaro, Carlotta Sartore, Mohamed Elobaid, Nuno Guedelha, Connor Herron, Alexander Leonessa, Francesco Draicchio, Giorgio Metta, Marco Maggiali, Daniele Pucci | **날짜**: 2022-03-14 | **URL**: [https://arxiv.org/abs/2203.06972](https://arxiv.org/abs/2203.06972)
@@ -61,3 +81,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 아바타의 완전한 신체 제어와 다중 감각 피드백을 통합하여 원격 현존감을 실현한 획기적인 시스템을 제시하며, 실제 환경에서의 대규모 검증을 통해 그 실용성을 입증했다. 네트워크 지연 처리와 embodiment 평가의 정량화 측면에서 개선의 여지가 있으나, 전체적으로 로보틱스와 텔레현존 분야에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/2077_Learning_with_pyCub_A_Simulation_and_Exercise_Framework_for/review]] — pyCub 시뮬레이션 프레임워크가 iCub3 아바타 시스템의 교육 및 연구 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1814_Being-H0_Vision-Language-Action_Pretraining_from_Large-Scale/review]] — iCub3의 완전 구현화가 대규모 인간 데이터 기반 vision-language-action 사전 훈련으로 발전할 수 있다.
+- 🏛 기반 연구: [[papers/1819_Beyond_Tools_and_Persons_Who_Are_They_Classifying_Robots_and/review]] — 원격 완전 몰입형 embodiment 시스템의 법적 윤리적 분류에 CPST 공간 이론의 기반 프레임워크를 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — FRAME의 일인칭 시점 자세 추정 기술을 iCub3 Avatar System의 fully-immersive embodiment와 결합하면 더 정확한 원격 제어가 가능하다.
+- 🔄 다른 접근: [[papers/2044_Learning_Aerodynamics_for_the_Control_of_Flying_Humanoid_Rob/review]] — 둘 다 비행 휴머노이드이지만 Learning Aerodynamics는 공기역학 학습, iCub3 Avatar는 원격 몰입형 구현 중심

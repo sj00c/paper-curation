@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "WholeBodyVLA는 Vision-Language-Action 프레임워크로 humanoid 로봇의 대규모 공간에서 end-to-end 전신 조작-이동(loco-manipulation) 제어를 가능하게 한다. Unified latent learning으로 저비용 영상에서 학습하고 LMO RL policy로 정확한 이동 실행을 보장한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Humanoid_Egocentric_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Egocentric_Human_Data"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jiang et al._2025_WholeBodyVLA Towards Unified Latent VLA for Whole-Body Loco-Manipulation Control.pdf"
 ---
@@ -91,7 +92,12 @@ WholeBodyVLA는 Vision-Language-Action 프레임워크로 humanoid 로봇의 대
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1421_Helix_A_Vision-Language-Action_Model_for_Generalist_Humanoid/review]] — 둘 다 전신 제어이지만 Helix는 일반적 humanoid, WholeBodyVLA는 loco-manipulation 특화된 차이가 있다
-- 🔗 후속 연구: [[papers/1628_WholeBodyVLA_Towards_Unified_Latent_VLA_for_Whole-Body_Loco-/review]] — unified latent learning을 통해 기존 분리된 locomotion과 manipulation을 통합한 전신 제어를 구현했다
-- 🏛 기반 연구: [[papers/1249_A_Unified_and_General_Humanoid_Whole-Body_Controller_for_Ver/review]] — A Unified Humanoid Controller의 전신 제어 이론이 WholeBodyVLA의 loco-manipulation 통합 설계 기반이 된다
-- 🧪 응용 사례: [[papers/1498_InterMimic_Towards_Universal_Whole-Body_Control_for_Physics-/review]] — InterMimic의 물리 기반 전신 제어와 WholeBodyVLA의 vision-language 기반 제어를 결합한 지능형 humanoid가 가능하다
+- 🏛 기반 연구: [[papers/1426_HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/review]] — humanoid shadowing and imitation learning의 기본 개념을 제공하여 WholeBodyVLA의 전신 제어에 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1498_OmniH2O_Universal_and_Dexterous_Human-to-Humanoid_Whole-Body/review]] — 둘 다 humanoid whole-body control을 다루지만 OmniH2O는 human-to-humanoid teleop에, WholeBodyVLA는 VLA 기반 자율 제어에 집중합니다.
+- 🔗 후속 연구: [[papers/1390_Expressive_Whole-Body_Control_for_Humanoid_Robots/review]] — expressive whole-body control을 vision-language-action framework로 확장하여 더 지능적인 전신 제어를 제시합니다.
+- 🏛 기반 연구: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — 실제 humanoid 로봇의 locomotion 제어 경험을 제공하여 WholeBodyVLA의 실용적인 loco-manipulation 구현에 핵심적인 기반을 마련한다.
+- 🧪 응용 사례: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — WholeBodyVLA는 H2O의 전신 제어 개념을 VLA 모델과 통합한 실제 적용 사례임
+- 🔄 다른 접근: [[papers/1475_MetaMorph_Learning_Universal_Controllers_with_Transformers/review]] — WholeBodyVLA는 전신 제어를 통합 VLA로 해결하는 반면, MetaMorph는 Transformer 기반 형태 조건화 접근법을 사용합니다.
+- 🔗 후속 연구: [[papers/1499_OmniVLA_An_Omni-Modal_Vision-Language-Action_Model_for_Robot/review]] — OmniVLA의 다중모달 VLA 접근법이 WholeBodyVLA의 전신 로코모션으로 확장되어 더 포괄적인 로봇 제어를 실현할 수 있습니다.
+- 🔗 후속 연구: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — WholeBodyVLA의 whole-body locomotion 개념을 확장하여 조작, 네비게이션, 보행, 항공까지 포괄하는 더 광범위한 embodiment를 다룬다.
+- 🔗 후속 연구: [[papers/1491_NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigat/review]] — NaVILA의 legged robot navigation을 whole-body locomotion까지 확장한 발전

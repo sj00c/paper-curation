@@ -1,3 +1,24 @@
+---
+title: "1812_Behavior_Foundation_Model_for_Humanoid_Robots"
+authors:
+  - "Weishuai Zeng"
+  - "Shunlin Lu"
+  - "Kangning Yin"
+  - "Xiaojie Niu"
+  - "Minyue Dai"
+date: "2025.09"
+doi: "10.48550/arXiv.2509.13780"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 휴머노이드 로봇의 다양한 제어 태스크에 일반화 가능한 행동 기반 파운데이션 모델(BFM)을 제안하며, masked online distillation과 CVAE를 결합하여 대규모 행동 데이터셋으로 사전학습한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zeng et al._2025_Behavior Foundation Model for Humanoid Robots.pdf"
+---
+
 # Behavior Foundation Model for Humanoid Robots
 
 > **저자**: Weishuai Zeng, Shunlin Lu, Kangning Yin, Xiaojie Niu, Minyue Dai, Jingbo Wang, Jiangmiao Pang | **날짜**: 2025-09-17 | **DOI**: [10.48550/arXiv.2509.13780](https://doi.org/10.48550/arXiv.2509.13780)
@@ -68,3 +89,23 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 로봇 제어의 통합 행동 학습 패러다임을 명확히 제시하고 masked online distillation과 CVAE를 통한 실제적 구현으로 다양한 제어 모드 지원과 빠른 신행동 습득을 실현했으며, 시뮬레이션과 실제 플랫폼 양쪽에서 광범위하게 검증하여 범용 휴머노이드 제어의 새로운 방향을 제시한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — 행동 기반 파운데이션 모델과 RGMP의 기하학적 추론 정책은 휴머노이드 일반화의 서로 다른 사전학습 전략
+- 🔗 후속 연구: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — DemoHLM의 단일 데모 학습이 BFM의 대규모 행동 데이터셋 사전학습을 효율적 활용으로 확장
+- 🏛 기반 연구: [[papers/1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — 행동 파운데이션 모델 조사가 BFM의 휴머노이드 특화 행동 모델 개발을 위한 이론적 기반
+- 🔗 후속 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — 행동 기초 모델을 VLM과 모듈식 스킬 라이브러리와 통합하여 복잡한 장기 과제 수행이 가능한 시스템으로 확장한다.
+- 🏛 기반 연구: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — generalist humanoid robot을 위한 open foundation model의 이론적 기반을 행동 기초 모델로 구체화한다.
+- 🔄 다른 접근: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — GR00T N1과 Behavior Foundation Model 모두 휴머노이드를 위한 foundation model이지만 전자는 VLA 구조, 후자는 행동 기반 접근을 취한다
+- 🔗 후속 연구: [[papers/1666_Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/review]] — MotionLib의 대규모 모션 데이터가 Behavior Foundation Model의 휴머노이드 행동 학습에서 더 풍부한 motion prior를 제공할 수 있다
+- 🔄 다른 접근: [[papers/1642_RGMP_Recurrent_Geometric-prior_Multimodal_Policy_for_General/review]] — RGMP의 기하학적 추론 기반 정책과 BFM의 행동 기반 파운데이션 모델은 휴머노이드 조작의 서로 다른 일반화 전략
+- 🏛 기반 연구: [[papers/1761_Zero-Shot_Whole-Body_Humanoid_Control_via_Behavioral_Foundat/review]] — 휴머노이드를 위한 behavior foundation model에서 unlabeled dataset과 전신 제어라는 공통 목표를 가진다.
+- 🔗 후속 연구: [[papers/1813_Being-0_A_Humanoid_Robotic_Agent_with_Vision-Language_Models/review]] — 행동 기초 모델에 VLM과 모듈식 스킬 라이브러리를 통합하여 복잡한 장기 과제를 수행할 수 있는 완전한 시스템을 구현한다.
+- 🔄 다른 접근: [[papers/1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — 두 논문 모두 휴머노이드를 위한 행동 기초 모델을 다루지만 하나는 서베이, 다른 하나는 구체적 구현이다.
+- 🏛 기반 연구: [[papers/1863_DemoHLM_From_One_Demonstration_to_Generalizable_Humanoid_Loc/review]] — BFM의 대규모 행동 데이터셋 사전학습이 DemoHLM의 단일 데모 일반화를 위한 기본 행동 표현
+- 🔄 다른 접근: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — Vision-Language-Action 모델과 행동 기반 모델은 모두 범용적인 휴머노이드 정책 학습을 목표로 하지만 서로 다른 접근 방식을 사용한다.
+- 🔗 후속 연구: [[papers/1904_EgoVLA_Learning_Vision-Language-Action_Models_from_Egocentri/review]] — Behavior Foundation Model이 EgoVLA의 vision-language-action 학습을 humanoid robots에 특화된 foundation model로 확장한다.
+- 🏛 기반 연구: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — Behavior Foundation Model의 대규모 사전학습 개념이 FAST의 pretraining과 fast adaptation 프레임워크의 이론적 기반을 제공합니다.
+- 🔗 후속 연구: [[papers/1989_Human-Humanoid_Robots_Cross-Embodiment_Behavior-Skill_Transf/review]] — Behavior Foundation Model의 기초 개념을 다양한 휴머노이드 플랫폼 간 스킬 전이로 확장한 발전된 형태다.
+- 🏛 기반 연구: [[papers/2161_Trinity_A_Modular_Humanoid_Robot_AI_System/review]] — 행동 기반 모델이 모듈식 휴머노이드 AI 시스템의 핵심 기반이다.

@@ -1,3 +1,24 @@
+---
+title: "2154_Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and"
+authors:
+  - "Weidong Huang"
+  - "Zhehan Li"
+  - "Hangxin Liu"
+  - "Biao Hou"
+  - "Yao Su"
+date: "2026.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "대규모 병렬 시뮬레이션에서 SAC 기반 정책 사전학습과 물리-정보 기반 세계 모델을 활용한 효율적 미세조정을 결합하여 휴머노이드 로봇의 시뮬-투-리얼 전이와 안전한 적응을 실현한다."
+tags:
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Huang et al._2026_Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Contr.pdf"
+---
+
 # Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control
 
 > **저자**: Weidong Huang, Zhehan Li, Hangxin Liu, Biao Hou, Yao Su, Jingwen Zhang | **날짜**: 2026-01-29 | **URL**: [https://arxiv.org/abs/2601.21363](https://arxiv.org/abs/2601.21363)
@@ -64,3 +85,11 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 대규모 시뮬레이션 효율성과 샘플-효율적 적응을 효과적으로 결합하고, 안전성을 강조한 미세조정 전략으로 휴머노이드 제어의 실질적 도전을 해결한다. 실로봇 검증과 공개 코드는 로보틱스 커뮤니티에 즉시 활용 가능한 기초를 제공한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — General Humanoid Whole-Body Control의 사전학습과 빠른 적응 기법이 대규모 사전학습과 효율적 미세조정을 위한 기반 방법론을 제공합니다.
+- 🔄 다른 접근: [[papers/1949_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — SAC 기반 정책 사전학습은 model-free 접근법을 사용하고 Generative World Modelling은 생성형 세계 모델을 통한 서로 다른 휴머노이드 학습 전략입니다.
+- 🔗 후속 연구: [[papers/2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — 대규모 사전학습 기법을 MetaWorld-X의 hierarchical world modeling과 결합하면 더 효율적인 VLM 기반 휴머노이드 제어가 가능합니다.
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 대규모 병렬 시뮬레이션 기반 사전학습 대신 15분 내 빠른 학습으로 sim-to-real 전이를 달성하는 효율적 접근법이다.
+- 🔗 후속 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — MoE 기반 로봇 정책의 sim-to-real 예측 가능성을 더 안정적으로 보장하는 발전된 접근법이다.

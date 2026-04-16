@@ -1,3 +1,24 @@
+---
+title: "1846_ComFree-Sim_A_GPU-Parallelized_Analytical_Contact_Physics_En"
+authors:
+  - "Chetan Borse"
+  - "Zhixian Xie"
+  - "Wei-Cheng Huang"
+  - "Wanxin Jin"
+date: "2026.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "ComFree-Sim은 여집합-자유(complementarity-free) 접촉 모델링을 기반으로 한 GPU 병렬화 접촉 물리 엔진으로, 폐쇄형 해석해를 통해 접촉 임펄스를 계산하여 접촉 수에 대해 선형적 계산 복잡도를 달성한다."
+tags:
+  - "cat/Computational_Optimization_and_Tools"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/GPU_Contact_Optimization"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Borse et al._2026_ComFree-Sim A GPU-Parallelized Analytical Contact Physics Engine for Scalable Contact-Rich Robotics.pdf"
+---
+
 # ComFree-Sim: A GPU-Parallelized Analytical Contact Physics Engine for Scalable Contact-Rich Robotics Simulation and Control
 
 > **저자**: Chetan Borse, Zhixian Xie, Wei-Cheng Huang, Wanxin Jin | **날짜**: 2026-03-12 | **URL**: [https://arxiv.org/abs/2603.12185](https://arxiv.org/abs/2603.12185)
@@ -66,3 +87,19 @@ ComFree-Sim은 여집합-자유(complementarity-free) 접촉 모델링을 기반
 - Overall: 4/5
 
 **총평**: ComFree-Sim은 complementarity-free 접촉 모델링의 폐쇄형 해석 구조를 효과적으로 GPU 병렬화하고 6D로 확장하여, 기존 iterative solver 기반 접근의 근본적 병목을 해결한 혁신적 접촉 물리 엔진이다. 선형 확장성과 2-3배 향상된 처리량을 실현하면서도 물리 정확도를 유지하고, 실제 로봇 하드웨어에서 고주파 MPC 제어를 성공적으로 구현함으로써 접촉-풍부 로봇 학습과 제어 분야에 상당한 실용적 가치를 제공한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — PyRoki의 GPU 기반 운동학 최적화 툴킷이 ComFree-Sim의 접촉 물리 엔진과 통합되어 완전한 로봇 시뮬레이션 파이프라인을 구성할 수 있다.
+- 🔄 다른 접근: [[papers/2083_Lightning_Grasp_High_Performance_Procedural_Grasp_Synthesis/review]] — Lightning Grasp의 Contact Field 데이터 구조가 ComFree-Sim의 여집합-자유 접촉 모델링과는 다른 방식으로 접촉 문제를 해결한다.
+- 🧪 응용 사례: [[papers/1620_PolySim_Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_vi/review]] — PolySim의 sim-to-real 격차 해소를 위해 ComFree-Sim의 고성능 GPU 병렬화 접촉 물리 엔진이 실제 환경 시뮬레이션 정확도를 크게 향상시킬 수 있다.
+- 🧪 응용 사례: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — ComFree-Sim의 고성능 접촉 시뮬레이션 엔진이 GaussGym과 같은 실시간 학습 환경에서 실질적으로 활용될 수 있다.
+- 🔄 다른 접근: [[papers/1622_Predictive_Sampling_Real-time_Behaviour_Synthesis_with_MuJoC/review]] — 실시간 행동 합성을 위한 다른 접근법으로 물리 엔진 최적화를 제시합니다.
+- 🔗 후속 연구: [[papers/1846_ComFree-Sim_A_GPU-Parallelized_Analytical_Contact_Physics_En/review]] — 병렬화된 접촉 물리 계산이 대규모 시뮬레이션 성능을 크게 향상시킵니다.
+- 🏛 기반 연구: [[papers/1628_PyRoki_A_Modular_Toolkit_for_Robot_Kinematic_Optimization/review]] — ComFree-Sim의 GPU 병렬화 해석적 접촉 물리 엔진이 PyRoki의 크로스 플랫폼 GPU/TPU 실행의 기술적 기초를 제공함
+- 🔄 다른 접근: [[papers/1942_GaussGym_An_open-source_real-to-sim_framework_for_learning_l/review]] — 둘 다 고성능 로봇 시뮬레이션을 제공하지만 GaussGym은 3D Gaussian Splatting을, ComFree-Sim은 GPU 병렬 물리 엔진을 사용한다.
+- 🔗 후속 연구: [[papers/1951_Genie_Sim_30__A_High-Fidelity_Comprehensive_Simulation_Platf/review]] — GPU 병렬화된 물리 시뮬레이션이 고충실도 플랫폼의 핵심 확장 기술이다.
+- 🏛 기반 연구: [[papers/2077_Learning_with_pyCub_A_Simulation_and_Exercise_Framework_for/review]] — GPU 병렬 물리 시뮬레이션의 기술적 기반을 제공하여 pyCub의 효율적인 교육용 시뮬레이션을 가능하게 한다.
+- 🔄 다른 접근: [[papers/2083_Lightning_Grasp_High_Performance_Procedural_Grasp_Synthesis/review]] — ComFree-Sim의 여집합-자유 접촉 모델링이 Lightning Grasp의 Contact Field보다 더 직접적인 접촉 임펄스 계산 방식을 제시한다.
+- 🏛 기반 연구: [[papers/2084_LiPS_Large-Scale_Humanoid_Robot_Reinforcement_Learning_with/review]] — GPU 기반 병렬 물리 시뮬레이션의 핵심 기술적 기반을 제공하여 LiPS의 대규모 훈련을 가능하게 한다.
+- 🏛 기반 연구: [[papers/2094_Mechanical_Intelligence-Aware_Curriculum_Reinforcement_Learn/review]] — ComFree-Sim의 GPU 병렬화된 접촉 물리 엔진이 BRUCE의 병렬 구동 메커니즘 시뮬레이션의 기술적 기반을 제공한다.

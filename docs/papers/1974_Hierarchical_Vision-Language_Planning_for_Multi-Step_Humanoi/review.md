@@ -1,3 +1,24 @@
+---
+title: "1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi"
+authors:
+  - "André Schakkal"
+  - "Ben Zandonati"
+  - "Zhutian Yang"
+  - "Navid Azizan"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 복잡한 다단계 조작 작업을 위해 저수준 RL 추적 제어기, 중수준 모방학습 기반 스킬 정책, 고수준 VLM 기반 계획 및 모니터링으로 구성된 3계층 계층적 프레임워크를 제시한다."
+tags:
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Manipulation_Reasoning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Schakkal et al._2025_Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation.pdf"
+---
+
 # Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation
 
 > **저자**: André Schakkal, Ben Zandonati, Zhutian Yang, Navid Azizan | **날짜**: 2025-06-28 | **URL**: [https://arxiv.org/abs/2506.22827](https://arxiv.org/abs/2506.22827)
@@ -65,3 +86,21 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 humanoid 로봇의 자율적 다단계 조작을 위해 VLM 기반 계획 및 모니터링을 기존 2계층 제어에 추가하는 실용적인 접근을 제시하며, 실제 로봇 시험으로 기술적 가능성을 입증했다. 다만 73% 성공률과 단일 작업 검증은 추후 개선이 필요한 부분이다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — 계층적 비전-언어 계획과 하이브리드 행동 계획은 모두 복잡한 조작 작업을 다루지만 서로 다른 계층적 구조를 사용한다.
+- 🔗 후속 연구: [[papers/1702_Task_and_Motion_Planning_for_Humanoid_Loco-manipulation/review]] — 휴머노이드 로코-조작을 위한 작업 및 모션 계획이 계층적 비전-언어 계획의 확장된 형태이다.
+- 🏛 기반 연구: [[papers/1973_Hierarchical_Planning_and_Control_for_Box_Loco-Manipulation/review]] — 상자 로코-조작을 위한 계층적 계획이 다단계 조작의 기반 기술이다.
+- 🏛 기반 연구: [[papers/1847_Commanding_Humanoid_by_Free-form_Language_A_Large_Language_A/review]] — Free-form language commanding이 hierarchical vision-language planning의 고수준 계획 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1992_Humanoid_Agent_via_Embodied_Chain-of-Action_Reasoning_with_M/review]] — Embodied chain-of-action reasoning이 3계층 hierarchical framework와 다른 방식으로 다단계 조작을 해결합니다.
+- 🔗 후속 연구: [[papers/1663_SafeHumanoid_VLM-RAG-driven_Control_of_Upper_Body_Impedance/review]] — SafeHumanoid의 VLM-RAG driven control이 hierarchical VLM planning을 안전성 측면에서 확장합니다.
+- 🔄 다른 접근: [[papers/2096_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — 복잡한 조작 작업을 이 논문은 3계층 구조로, MetaWorld-X는 VLM 오케스트레이션으로 해결한다.
+- 🔗 후속 연구: [[papers/1842_CLOT_Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Human/review]] — CLOT의 closed-loop 추적 기술을 다단계 조작 작업의 저수준 제어기로 확장 적용한 형태다.
+- 🔗 후속 연구: [[papers/1638_Reinforcement_Learning_with_Data_Bootstrapping_for_Dynamic_S/review]] — Data bootstrapping을 vision-language planning과 결합한 확장 연구
+- 🔗 후속 연구: [[papers/1702_Task_and_Motion_Planning_for_Humanoid_Loco-manipulation/review]] — 계층적 비전-언어 계획과 접촉 모드 통일 TAMP를 결합하면 언어 지시로부터 복잡한 로코-조작이 가능하다
+- 🔗 후속 연구: [[papers/1617_PILOT_A_Perceptive_Integrated_Low-level_Controller_for_Loco-/review]] — PILOT의 perception-based control을 hierarchical vision-language planning으로 확장
+- 🔄 다른 접근: [[papers/1992_Humanoid_Agent_via_Embodied_Chain-of-Action_Reasoning_with_M/review]] — 3계층 hierarchical framework가 embodied chain-of-action reasoning과 다른 방식으로 다단계 조작을 해결합니다.
+- 🔄 다른 접근: [[papers/2018_HYPERmotion_Learning_Hybrid_Behavior_Planning_for_Autonomous/review]] — 하이브리드 행동 계획과 계층적 비전-언어 계획은 모두 복합적인 로코-조작 작업을 다루지만 서로 다른 통합 방식을 사용한다.
+- 🏛 기반 연구: [[papers/2157_Towards_Proprioception-Aware_Embodied_Planning_for_Dual-Arm/review]] — Hierarchical Vision-Language Planning의 다단계 계획 기법이 dual-arm 휴머노이드의 고유감각 인식 구현화 계획을 위한 기반 방법론을 제공합니다.
+- 🔄 다른 접근: [[papers/2166_ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Who/review]] — hierarchical vision-language planning과 ULTRA의 unified multimodal controller는 다단계 휴머노이드 제어의 서로 다른 패러다임을 제시함

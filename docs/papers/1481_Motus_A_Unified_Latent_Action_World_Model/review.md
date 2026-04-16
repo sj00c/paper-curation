@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "Motus는 vision-language-action 모델, world 모델, inverse dynamics 모델, video generation 모델을 unified latent action world model로 통합하는 embodied agent 프레임워크이며, Mixture-of-Transformer 아키텍처와 optical flow 기반 latent action을 통해 대규모 이질적 데이터 학습을 가능하게 한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Video_Action_Generation"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bi et al._2025_Motus A Unified Latent Action World Model.pdf"
 ---
@@ -89,9 +91,11 @@ Motus는 vision-language-action 모델, world 모델, inverse dynamics 모델, v
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1533_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — 복잡한 지형에서의 인지 기반 이동 제어 방법론이 HumanoidPano의 360도 지형 인식 시스템에 직접 적용 가능하다
-- 🔄 다른 접근: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 다중 센서 융합을 통한 물리적 환경 인식에서 파노라마-LiDAR 융합과 다중 모달 센서 통합의 상호 보완적 접근법이다
-- 🔗 후속 연구: [[papers/1364_Diffusion-VLA_Generalizable_and_Interpretable_Robot_Foundati/review]] — 해석 가능한 로봇 파운데이션 모델의 3D 공간 표현을 HumanoidPano의 기하학적 제약에 통합할 수 있다
-- 🔗 후속 연구: [[papers/1368_EgoDemoGen_Egocentric_Demonstration_Generation_for_Viewpoint/review]] — Motus의 unified latent action world model이 DiWA의 diffusion policy adaptation을 더 통합된 관점으로 확장한다.
-- 🔄 다른 접근: [[papers/1500_OmniVLA_Physically-Grounded_Multimodal_VLA_with_Unified_Mult/review]] — 물리적 센서 정보 통합에서 mmWave/음향과 파노라마-LiDAR은 상호 보완적인 다중 모달 인식 접근법을 제시한다
-- 🧪 응용 사례: [[papers/1533_Learning_Perceptive_Humanoid_Locomotion_over_Challenging_Ter/review]] — 복잡한 지형에서의 인지 기반 이동 제어가 HumanoidPano의 360도 지형 인식과 결합하여 실제 환경 적응 능력을 향상시킬 수 있다
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — embodied AI를 위한 world model의 포괄적인 이론적 기반을 제공하여 Motus의 unified latent action world model 설계에 필수적인 배경지식을 제공한다.
+- 🔄 다른 접근: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — world model 기반 embodied agent에서 unified latent action vs generative world model for autonomous driving이라는 서로 다른 도메인별 접근법을 보여준다.
+- 🔗 후속 연구: [[papers/1598_Unified_Video_Action_Model/review]] — unified video action model의 개념을 latent action world model과 결합하여 더 통합적인 vision-language-action 프레임워크를 구축한다.
+- 🔄 다른 접근: [[papers/1291_3D-VLA_A_3D_Vision-Language-Action_Generative_World_Model/review]] — unified world model에서 latent action vs 3D vision-language-action의 다른 통합 방식
+- 🏛 기반 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — Motus의 world model 기반이 되는 video foundation model을 활용한 물리적 AI
+- 🔗 후속 연구: [[papers/1394_FLaRe_Achieving_Masterful_and_Adaptive_Robot_Policies_with_L/review]] — latent action world model을 adaptive robot policy로 확장한 실제 적용 사례
+- 🔄 다른 접근: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — 둘 다 unified vision-language-action model을 다루지만 latent action world model과 mixture-of-transformers의 접근법 차이를 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — world model의 기본 개념과 원리를 unified latent action space에서 구현하는 이론적 기반을 제공한다.

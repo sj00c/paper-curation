@@ -13,7 +13,8 @@ score: 4.0
 essence: "의료 과학의 660만 개 논문 분석을 통해 성별 다양성 높은 팀이 동일 규모의 단일 성별 팀보다 더 신규적이고 영향력 있는 연구 결과를 생산함을 입증했다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Gender_Research_Diversity"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2022_Gender-diverse teams produce more novel and higher-impact scientific ideas.pdf"
 ---
@@ -92,16 +93,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yang et al._2022_Gender-diverse teams pr
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 성별 불평등의 역사적 추이 분석이 성별 다양성이 연구 성과에 미치는 긍정적 효과를 이해하는 배경을 제공한다.
-- 🔗 후속 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 성별 다양성의 정량적 성과 효과를 체계적인 프레임워크로 발전시켜 실제 적용 방안을 제시한다.
-- ⚖️ 반론/비판: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 다양성-혁신 역설과 성별 다양성의 긍정적 효과는 다양성이 과학에 미치는 복합적 영향을 보여준다.
-- 🔗 후속 연구: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 원격 협업의 한계를 보완할 수 있는 성별 다양성이 팀의 참신성과 영향력 향상에 미치는 긍정적 효과를 보여준다.
-- ⚖️ 반론/비판: [[papers/1031_The_Chaperone_Effect_in_Scientific_Publishing/review]] — 성별 다양성이 혁신적 연구를 촉진한다는 관점과 기존 네트워크 기반 샤페론 효과가 상충할 수 있다.
-- 🔗 후속 연구: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 소수집단의 혁신 과소평가 문제를 성별 다양성이 팀의 참신성과 영향력에 미치는 긍정적 효과로 확장했다.
-- 🔄 다른 접근: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 협업에서 다양성의 효과를 인종적 관점과 성별 관점에서 각각 분석하여 상호 보완적인 증거를 제공한다.
-- 🏛 기반 연구: [[papers/1113_Definition_and_Value_Reconstruction_of_Human_Creativity_in_t/review]] — 성별 다양성이 혁신적 과학을 촉진한다는 발견이 인간 창의성 재정의의 배경이 됨
-- 🔗 후속 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 성별 다양성 팀의 성과 측정에 개별 저자 기여도 배분 방법을 확장하여 적용한다
-- 🔗 후속 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 성별 불평등의 역사적 패턴 분석을 성별 다양성이 실제 연구 성과에 미치는 효과 연구로 발전시킨다.
-- ⚖️ 반론/비판: [[papers/976_Intersectional_inequalities_in_science/review]] — 성별 다양성이 과학적 영향력을 높인다는 주장과 교차적 불평등이 인용도에 미치는 부정적 영향을 대조적으로 분석한다.
-- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 성별 다양성의 정량적 성과 효과가 체계적 프레임워크 개발의 실증적 근거를 제공한다.
-- 🧪 응용 사례: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 성별 다양성이 팀 성과에 미치는 영향을 측정할 수 있는 평가 도구를 제공한다
+- 🔄 다른 접근: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 과학 협력에서 다양성의 효과를 성별과 민족성이라는 다른 차원에서 분석한다
+- ⚖️ 반론/비판: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 과학에서 다양성의 긍정적 효과에 대해 다양성-혁신 역설이라는 복잡한 관점을 제시한다
+- 🏛 기반 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 집단 신용 배분 시스템이 팀 다양성 효과 분석의 방법론적 토대를 제공한다
+- 🔗 후속 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 과학 발견을 위한 성별 다양성 프레임워크가 성별 다양성 팀의 혁신성 실증 결과를 체계적 이론으로 발전시킨다.
+- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — STEM 분야 성별 불평등의 역사적 비교 분석이 성별 다양성 팀의 성과 우위를 이해하는 배경적 맥락을 제공한다.
+- 🔄 다른 접근: [[papers/1010_Remote_collaboration_fuses_fewer_breakthrough_ideas/review]] — 원격 협업의 한계와 다양성 팀의 장점을 통해 혁신적 연구의 조건을 다각도로 탐구한다.
+- ⚖️ 반론/비판: [[papers/1032_The_Diversity-Innovation_Paradox_in_Science/review]] — 성별 다양팀의 혁신 효과와 소수집단의 혁신 과소평가가 다양성의 복합적 영향을 대조적으로 제시한다.
+- ⚖️ 반론/비판: [[papers/1035_The_Innovation_Recognition_Paradox_How_Science_Undervalues_t/review]] — 성별 다양성이 혁신과 영향력을 높인다는 긍정적 관점과 달리, 여성의 혁신이 과소평가받는 구조적 문제를 드러낸다.
+- 🔄 다른 접근: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 다양성과 과학적 영향력의 관계를 다루지만, 성별보다는 인종적 다양성에 특화하여 더 강한 상관관계를 발견했다.
+- 🔗 후속 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 개별 저자 기여도 분석을 팀 구성의 다양성 효과 연구로 확장한 접근이다
+- 🧪 응용 사례: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 성별 다양성 팀의 혁신성 우위가 역사적 성별 불평등 감소 노력의 구체적 성과로서 다양성의 가치를 실증한다.
+- 🔄 다른 접근: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 팀 구성에서 규모 대신 성별 다양성이 혁신적 연구 성과에 미치는 영향을 다른 관점에서 조명한다.
+- 🏛 기반 연구: [[papers/981_Making_gender_diversity_work_for_scientific_discovery_and_in/review]] — 성별 다양성 팀의 실증적 우위가 과학 발견을 위한 성별 다양성 프레임워크의 이론적 토대와 검증 근거를 제공한다.
+- 🔗 후속 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 성별 다양성이 혁신에 미치는 긍정적 효과를 팀 과학 평가 지표에 포함시킬 수 있는 근거를 제공합니다.

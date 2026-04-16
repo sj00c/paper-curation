@@ -11,8 +11,10 @@ arxiv: ""
 score: 4.0
 essence: "대규모 네트워크의 커뮤니티 구조를 모듈성(modularity) 최적화를 통해 빠르게 추출하는 휴리스틱 알고리즘을 제안한다. 반복적인 두 단계(지역 최적화 및 커뮤니티 응집)를 통해 계층적 커뮤니티 구조를 효율적으로 도출한다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Network_Community_Detection"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Thematic_Network_Detection"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Blondel et al._2008_Fast Unfolding of Communities in Large Networks.pdf"
 ---
@@ -91,10 +93,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Blondel et al._2008_Fast Unfolding of Co
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 스케일-프리 네트워크와 선호적 부착 이론이 대규모 네트워크 커뮤니티 탐지 알고리즘 개발의 이론적 기초를 제공한다.
-- 🔄 다른 접근: [[papers/948_Community_Detection_in_Graphs/review]] — 네트워크 커뮤니티 탐지의 다양한 알고리즘적 접근법을 비교하여 각각의 장단점을 이해할 수 있다.
-- 🧪 응용 사례: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 지식 지도 작성에 효율적인 커뮤니티 탐지 알고리즘을 적용하여 학문 분야 구조를 시각화한다.
-- 🧪 응용 사례: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 네트워크의 커뮤니티 탐지를 위한 효율적인 알고리즘을 제공하여 네트워크 구조 분석을 심화했다.
-- 🔄 다른 접근: [[papers/948_Community_Detection_in_Graphs/review]] — 대규모 네트워크에서 커뮤니티를 빠르게 탐지하는 다른 알고리즘적 접근법을 제시한다
-- 🔗 후속 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 스케일-프리 네트워크의 이론적 기반을 실제 대규모 네트워크에서 커뮤니티를 탐지하는 알고리즘으로 발전시킨다.
-- 🔄 다른 접근: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 대규모 네트워크에서 커뮤니티 탐지를 위한 링크 필터링과 전통적 노드 기반 접근법의 효율성을 비교할 수 있다.
+- 🔗 후속 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 커뮤니티 검출 알고리즘을 과학 커뮤니티 매핑이라는 구체적 응용 분야로 확장하여 실제 적용 사례를 제시한다.
+- 🧪 응용 사례: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — 30년간의 학제간 데이터셋에서 커뮤니티 구조를 분석하는 데 활용할 수 있는 실제 데이터를 제공한다.
+- 🏛 기반 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 과학 논문의 서지 네트워크 패턴에 대한 기본 이해를 제공하여 커뮤니티 검출의 응용 기반을 마련한다.
+- 🧪 응용 사례: [[papers/948_Community_Detection_in_Graphs/review]] — 커뮤니티 검출 이론을 대규모 네트워크에서 효율적으로 구현한 실용적 알고리즘이다
+- 🧪 응용 사례: [[papers/935_Atlas_of_Science_Collaboration_19712020/review]] — 커뮤니티 검출 알고리즘을 과학 협력 네트워크 분석에 구체적으로 적용한 사례이다
+- 🏛 기반 연구: [[papers/929_A_network_approach_to_topic_models/review]] — 계층적 확률 블록 모델이 대규모 네트워크의 빠른 커뮤니티 언폴딩 알고리즘의 이론적 기초를 제공합니다.
+- 🧪 응용 사례: [[papers/1056_Where_Do_Your_Citations_Come_From_Citation-Constellation_A_F/review]] — 대규모 네트워크 커뮤니티 탐지가 인용 네트워크에서 사회구조적 경로 식별에 활용된다.
+- 🧪 응용 사례: [[papers/947_Collective_dynamics_of_small-world_networks/review]] — 소규모 세계 특성을 가진 대규모 네트워크에서 커뮤니티 구조를 효율적으로 탐지하는 방법론을 제시한다.
+- 🔗 후속 연구: [[papers/948_Community_Detection_in_Graphs/review]] — 일반적인 커뮤니티 검출 이론을 대규모 네트워크에서 실제로 적용할 수 있는 빠른 알고리즘으로 구현한다.
+- 🏛 기반 연구: [[papers/960_Evolution_of_the_social_network_of_scientific_collaborations/review]] — 대규모 네트워크에서 커뮤니티 탐지 알고리즘이 과학자 협력 네트워크의 구조 분석에 필수적 방법론을 제공한다.
+- 🏛 기반 연구: [[papers/985_Mapping_scientific_communities_at_scale/review]] — 링크 필터링 기반 커뮤니티 탐지에 필요한 효율적인 네트워크 언폴딩 방법론을 제시한다.

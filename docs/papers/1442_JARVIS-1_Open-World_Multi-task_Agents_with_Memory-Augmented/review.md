@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "JARVIS-1은 multimodal language model과 multimodal memory를 결합하여 Minecraft의 오픈월드 환경에서 200개 이상의 다양한 작업을 수행할 수 있는 멀티태스크 에이전트이다. 특히 장기 작업(ObtainDiamondPickaxe)에서 기존 최신 에이전트 대비 5배 우수한 신뢰성을 달성한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Multimodal_Reasoning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/Embodied_Visual_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2023_JARVIS-1 Open-World Multi-task Agents with Memory-Augmented Multimodal Language Models.pdf"
 ---
@@ -93,9 +95,14 @@ JARVIS-1은 multimodal language model과 multimodal memory를 결합하여 Minec
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — 두 논문 모두 Minecraft 환경에서 멀티모달 에이전트를 다루지만, 하나는 메모리 증강에, 다른 하나는 상상 기반 지시 따르기에 집중합니다.
-- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Minecraft 환경에서 멀티모달 시스템을 더욱 발전시켜 능동적 인식과 개방형 작업 해결 능력을 강화한 형태입니다.
-- 🧪 응용 사례: [[papers/1477_Humanoid-Gym_Reinforcement_Learning_for_Humanoid_Robot_with/review]] — MineDojo 환경에서 개발된 에이전트가 JARVIS-1의 멀티태스크 학습 방법론을 실제 적용하는 사례가 됩니다.
-- 🏛 기반 연구: [[papers/1407_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — 생성형 상호작용 환경이 멀티태스크 에이전트의 훈련과 평가를 위한 기반을 제공합니다.
-- 🔄 다른 접근: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — 두 논문 모두 Minecraft 환경에서 멀티모달 에이전트를 다루지만, 하나는 상상 기반 지시 따르기에, 다른 하나는 메모리 증강에 집중합니다.
-- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Minecraft 환경에서 멀티모달 에이전트를 능동적 인식으로 발전시켜 더욱 포괄적인 개방형 작업 해결 능력을 구현합니다.
+- 🔄 다른 접근: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — 둘 다 오픈월드 멀티태스크 에이전트이지만 JARVIS-1은 Minecraft에, Voyager는 일반적인 환경에 집중한다.
+- 🏛 기반 연구: [[papers/1473_MC-JEPA_A_Joint-Embedding_Predictive_Architecture_for_Self-S/review]] — joint-embedding 예측 아키텍처가 JARVIS-1의 multimodal memory 구조 설계에 기반이 된다.
+- 🔗 후속 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — Minecraft 환경에서의 멀티태스크 능력을 multi-modal embodied system으로 더 발전시킨 형태다.
+- 🏛 기반 연구: [[papers/1478_MineDreamer_Learning_to_Follow_Instructions_via_Chain-of-Ima/review]] — MineDreamer의 chain-of-imagination을 multimodal memory와 결합하여 더 안정적인 장기 작업 수행을 구현한다.
+- 🏛 기반 연구: [[papers/1477_MineDojo_Building_Open-Ended_Embodied_Agents_with_Internet-S/review]] — MineDojo의 Minecraft 환경과 오픈월드 에이전트 개념이 JARVIS-1의 멀티태스크 학습 기반을 제공함
+- 🏛 기반 연구: [[papers/1459_LLM-State_Open_World_State_Representation_for_Long-horizon_T/review]] — JARVIS-1의 memory-augmented multi-task agent 개념을 장기 작업 계획의 상태 표현으로 발전시켰다.
+- 🏛 기반 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — memory-augmented multi-task agent의 기초 연구로서 MEM의 다중 스케일 메모리 아키텍처 설계에 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1482_MP5_A_Multi-modal_Open-ended_Embodied_System_in_Minecraft_vi/review]] — MP5의 다중모듈 시스템이 확장한 memory-augmented multi-task agent의 기초
+- 🔄 다른 접근: [[papers/1563_Scaling_Instructable_Agents_Across_Many_Simulated_Worlds/review]] — JARVIS-1은 SIMA와 유사한 다중 환경 instructable agent이지만 메모리 증강된 멀티태스크에 집중하는 차별점이 있다.
+- 🔗 후속 연구: [[papers/1623_Voyager_An_Open-Ended_Embodied_Agent_with_Large_Language_Mod/review]] — open-world multi-task agent의 개념을 memory-augmented 시스템으로 확장하여 Voyager의 평생 학습을 더 체계화합니다.
+- 🔗 후속 연구: [[papers/1303_Advances_in_Embodied_Navigation_Using_Large_Language_Models/review]] — JARVIS-1은 LLM 기반 네비게이션을 메모리 증강과 멀티태스크로 확장한 발전된 형태입니다.

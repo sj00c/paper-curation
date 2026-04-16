@@ -10,7 +10,8 @@ score: 4.0
 essence: "1650년부터 2012년까지 과학의 성장률을 분석한 연구로, 인용 참고문헌(cited references)과 출판물 수를 기반으로 segmented regression analysis(구간 회귀 분석)를 적용하여 과학의 성장 단계를 규명했다."
 tags:
   - "cat/Open_Access_Publication_Analytics"
-  - "sub/Bibliometric_Measurement_Methods"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Polymer_Science_Publication_Analytics"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bornmann and Mutz_2015_Growth Rates of Modern Science Bibliometric Analysis Based on the Number of Publications and Cited.pdf"
 ---
@@ -85,6 +86,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Bornmann and Mutz_2015_Growth Rates of M
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 과학 성장률의 장기적 분석이 disruption index의 인플레이션 문제를 이해하는 역사적 맥락을 제공한다.
-- 🔗 후속 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학의 성장 단계 분석을 통해 최근 논문들이 덜 파괴적이 되는 현상의 구조적 원인을 설명한다.
-- 🏛 기반 연구: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 출산율 연구의 성장 패턴을 이해하기 위해 현대 과학의 성장률에 대한 bibliometric 분석이 기반이 된다.
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학 논문의 파괴성이 시간에 따라 감소하고 있다는 연구로, 과학의 지속적 성장 주장과 상반된 관점을 제시합니다.
+- 🔗 후속 연구: [[papers/1030_The_Burden_of_Knowledge_and_the_Death_of_the_Renaissance_Man/review]] — 지식의 부담과 르네상스맨의 죽음을 다룬 연구로, 과학 성장률 분석을 현대적 맥락에서 확장 해석할 수 있습니다.
+- 🔗 후속 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 과학 성장률 분석을 장기적 과학적 영향력 정량화로 확장하여 성장의 질적 측면을 평가한다.
+- 🏛 기반 연구: [[papers/1124_The_Science_of_Science/review]] — 과학의 과학 연구의 기본 이론과 방법론을 제공하여 성장률 분석의 맥락을 이해할 수 있다.
+- 🔗 후속 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 인용 네트워크 패턴 분석을 통한 과학 구조 이해에서 시간적 성장률 분석으로 확장된 관점을 제공한다.
+- 🏛 기반 연구: [[papers/1045_The_strain_on_scientific_publishing/review]] — 현대 과학의 성장률 분석이 출판 부담 증가 현상의 장기적 맥락을 제공한다.
+- 🏛 기반 연구: [[papers/1120_SciEvo_A_2_Million_30-Year_Cross-disciplinary_Dataset_for_Te/review]] — 현대 과학의 성장률 분석이 30년간 학문 분야 진화를 추적하는 SciEvo 연구의 이론적 배경을 제공하기 때문
+- 🔗 후속 연구: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 과학 성장률의 문헌계량 분석에서 학술지 임베딩을 통한 과학 구조 진화 추적으로 방법론이 발전된다.
+- 🏛 기반 연구: [[papers/990_Networks_of_Scientific_Papers/review]] — 인용 네트워크를 통한 과학 구조 분석이 과학 성장률의 정량적 분석에 기본적 이론적 틀을 제공한다.
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학 성장률 증가와 혁신성 감소라는 상반된 과학 발전 트렌드를 제시한다.
+- 🏛 기반 연구: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 현대 과학의 성장률 분석이 제공하는 bibliometric 데이터의 시간적 변화 패턴 분석 방법론을 출산율 연구 동향 분석에 적용할 수 있다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "WHALE는 행동 조건화(behavior-conditioning)와 retracing-rollout 기법을 통해 embodied 환경에서 일반화 가능하고 확장 가능한 world model을 학습하는 프레임워크이며, 이를 기반으로 Whale-ST와 414M 파라미터의 Whale-X 모델을 제시한다."
 tags:
-  - "cat/Humanoid_Locomotion_Control_Systems"
-  - "sub/Uncertainty-Aware_Model_Predictive_Control"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robot_Policy_Learning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2024_WHALE Towards Generalizable and Scalable World Models for Embodied Decision-making.pdf"
 ---
@@ -89,7 +91,18 @@ WHALE는 행동 조건화(behavior-conditioning)와 retracing-rollout 기법을 
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1631_World_Models/review]] — 월드 모델의 기본 개념이 WHALE의 임바디드 환경을 위한 일반화 가능한 월드 모델 학습의 이론적 기초를 제공합니다.
-- 🔄 다른 접근: [[papers/1407_FRoM-W1_Towards_General_Humanoid_Whole-Body_Control_with_Lan/review]] — 생성형 인터랙티브 환경과 행동 조건화 월드 모델이 환경 모델링에서 서로 다른 접근 방식을 제시합니다.
-- 🔗 후속 연구: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — 제로샷 월드 액션 모델이 WHALE의 retracing-rollout 기법을 정책 학습으로 확장할 수 있는 가능성을 보여줍니다.
-- 🔗 후속 연구: [[papers/1569_MetaWorld-X_Hierarchical_World_Modeling_via_VLM-Orchestrated/review]] — 계층적 월드 모델링을 위한 VLM 기반 전문가 라우팅이 WHALE의 행동 조건화 월드 모델과 상호보완적으로 작용할 수 있습니다.
+- 🔗 후속 연구: [[papers/1631_World_Models/review]] — 기본적인 생성형 world model을 행동 조건화와 확장 가능성을 갖춘 embodied 환경 특화 모델로 발전시켰다.
+- 🔄 다른 접근: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — 둘 다 embodied AI용 world model이지만 WHALE은 행동 조건화에, TriVLA는 에피소딕 메모리에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — 자율주행을 위한 생성형 world model GAIA-1이 embodied 환경에서 일반화 가능한 world model 개발의 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 비디오 foundation model을 통한 물리적 AI 시뮬레이션이 WHALE의 확장 가능한 world model 설계에 기반 기술을 제공한다.
+- 🔄 다른 접근: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — Mastering Diverse Domains through World Models가 WHALE과 다른 도메인 다양성 관점에서 월드 모델을 다룬다.
+- 🔄 다른 접근: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 둘 다 비디오 데이터에서 world model을 학습하지만, WHALE은 behavior-conditioning을, SWIM은 구조화된 표현에 집중한다.
+- 🔗 후속 연구: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — WHALE의 world model을 VLA fine-tuning의 시뮬레이터로 활용하여 더 효율적인 강화학습 프레임워크를 구축한다.
+- 🔗 후속 연구: [[papers/1400_GAIA-1_A_Generative_World_Model_for_Autonomous_Driving/review]] — WHALE의 generalizable world model이 GAIA-1에서 자율주행 특화된 generative world model로 더욱 구체적인 응용 영역으로 발전했다.
+- 🔗 후속 연구: [[papers/1492_Neural_Brain_A_Neuroscience-inspired_Framework_for_Embodied/review]] — embodied AI를 위한 world model 개념을 neuroscience 원리와 결합하여 더 생물학적으로 타당한 agent 아키텍처를 구축한다.
+- 🔄 다른 접근: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — 둘 다 대규모 비디오 데이터에서 world model을 학습하지만, SWIM은 인간 비디오에 집중하고 WHALE은 행동 조건화에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1596_TriVLA_A_Triple-System-Based_Unified_Vision-Language-Action/review]] — 둘 다 embodied AI를 위한 world model을 제안하지만 TriVLA는 에피소딕 메모리에, WHALE은 행동 조건화에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — World model을 통한 temporal dynamics 학습의 이론적 기반을 제공하여 UniVLA의 post-training 통합 방법론을 뒷받침한다.
+- 🔄 다른 접근: [[papers/1630_WMNav_Integrating_Vision-Language_Models_into_World_Models_f/review]] — 둘 다 world model을 사용하지만 WMNav는 navigation 특화 VLM 기반을, WHALE은 일반적 embodied 환경을 대상으로 한다.
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — WHALE의 확장 가능한 world model 연구가 환경의 생성형 신경망 world model을 비지도학습으로 구축하는 기본 개념의 기반이 되었다.
+- 🏛 기반 연구: [[papers/1619_VLA-RFT_Vision-Language-Action_Reinforcement_Fine-tuning_wit/review]] — World model 기반 학습의 이론적 토대를 제공하여 VLA-RFT의 데이터 기반 world model 활용 방법론을 뒷받침한다.

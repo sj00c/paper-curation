@@ -1,3 +1,25 @@
+---
+title: "2078_Legged_Robot_State-Estimation_Through_Combined_Forward_Kinem"
+authors:
+  - "Ross Hartley"
+  - "Josh Mangelson"
+  - "Lu Gan"
+  - "Maani Ghaffari Jadidi"
+  - "Jeffrey M. Walls"
+date: "2017.12"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "시각 추적 손실 시에도 작동하는 다리 로봇 상태 추정 기법으로, Forward Kinematic 인수와 Preintegrated Contact 인수를 Factor Graph에 통합하여 엔코더 측정과 접촉 정보를 활용한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Upper_Body_Force_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hartley et al._2017_Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors.pdf"
+---
+
 # Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors
 
 > **저자**: Ross Hartley, Josh Mangelson, Lu Gan, Maani Ghaffari Jadidi, Jeffrey M. Walls, Ryan M. Eustice, Jessy W. Grizzle | **날짜**: 2017-12-15 | **URL**: [https://arxiv.org/abs/1712.05873](https://arxiv.org/abs/1712.05873)
@@ -65,3 +87,16 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 Factor Graph 프레임워크에 Forward Kinematic 및 Preintegrated Contact 인수를 처음 도입하여 시각 손실 상황에서도 다리 로봇의 상태를 추정할 수 있는 실용적 기법을 제시했으며, 이론적 엄밀성과 실제 로봇 구현 양면에서 견고한 기여를 하지만, 실험의 규모가 제한적이고 일반화 가능성 검증이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1849_Contact-Aided_Invariant_Extended_Kalman_Filtering_for_Robot/review]] — 접촉 보조 불변 확장 칼만 필터링이 다리 로봇 상태 추정의 이론적 기반 제공
+- 🔄 다른 접근: [[papers/2023_InEKFormer_A_Hybrid_State_Estimator_for_Humanoid_Robots/review]] — 휴머노이드 상태 추정에서 하이브리드 추정과 transformer 기반의 다른 접근법
+- 🏛 기반 연구: [[papers/1710_The_invariant_extended_Kalman_filter_as_a_stable_observer/review]] — The invariant extended Kalman filter가 Legged Robot State-Estimation의 Factor Graph에 통합된 Preintegrated Contact 인수 개발의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1810_AutoOdom_Learning_Auto-regressive_Proprioceptive_Odometry_fo/review]] — Legged Robot State-Estimation의 접촉 정보 활용을 AutoOdom의 자기회귀 고유수용 추측항법과 결합하여 더 견고한 상태 추정이 가능하다.
+- 🔗 후속 연구: [[papers/1618_PIMBS_Efficient_Body_Schema_Learning_for_Musculoskeletal_Hum/review]] — Legged Robot State-Estimation의 forward kinematics 기반 상태 추정이 PIMBS의 근골격 모델 학습을 확장할 수 있음
+- 🔗 후속 연구: [[papers/1802_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — 상용 VIO 시스템 평가를 다리 로봇의 forward kinematics 기반 상태 추정으로 확장한 발전된 접근법이다.
+- 🔄 다른 접근: [[papers/1810_AutoOdom_Learning_Auto-regressive_Proprioceptive_Odometry_fo/review]] — 다리 로봇 상태 추정에서 하나는 자동회귀 고유감각 방식, 다른 하나는 forward kinematics 방식을 사용한다.
+- 🏛 기반 연구: [[papers/1849_Contact-Aided_Invariant_Extended_Kalman_Filtering_for_Robot/review]] — 전진 운동학과 결합한 다리 로봇 상태 추정이 접촉 보조 InEKF의 센서 융합 방법론에 필요한 기초 이론을 제공한다
+- 🔄 다른 접근: [[papers/2023_InEKFormer_A_Hybrid_State_Estimator_for_Humanoid_Robots/review]] — InEKFormer는 Transformer와 InEKF 결합, Legged Robot State-Estimation은 Factor Graph 기반으로 서로 다른 아키텍처로 로봇 상태 추정 문제를 해결한다.
+- 🏛 기반 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — Legged Robot State-Estimation의 결합 전진 운동학 기반 상태 추정이 Omni-Perception의 시공간적 LiDAR 데이터 해석에 기술적 기반을 제공한다.

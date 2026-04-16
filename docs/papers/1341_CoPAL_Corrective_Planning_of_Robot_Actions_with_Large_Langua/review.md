@@ -12,7 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "CoPAL은 LLM 기반의 계층적 로봇 작업 및 모션 플래닝 시스템으로, 물리적·논리적·의미론적 오류를 처리하는 폐루프 재계획 메커니즘을 제안한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Embodied_AI_Architectures"
   - "sub/LLM_Task_Planning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Joublin et al._2023_CoPAL Corrective Planning of Robot Actions with Large Language Models.pdf"
@@ -87,12 +89,18 @@ CoPAL은 LLM 기반의 계층적 로봇 작업 및 모션 플래닝 시스템으
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — DEPS는 CoPAL과 유사한 LLM 기반 계획이지만 오픈월드 환경에서 대화형 계획에 특화되어 있다
-- 🔗 후속 연구: [[papers/1556_RT-H_Action_Hierarchies_Using_Language/review]] — RT-H는 CoPAL의 계층적 계획을 언어를 사용한 행동 계층으로 확장한다
-- 🏛 기반 연구: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — CANVAS는 CoPAL의 수정적 계획에 필요한 상식적 이해 기반을 제공한다
-- 🧪 응용 사례: [[papers/1269_Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic/review]] — 경량 로봇 손의 100배 페이로드 능력이 20-DoF 손의 정밀한 원격조작에 응용 가능합니다.
-- 🏛 기반 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — 대화형 계획과 언어 모델의 결합이 작업과 모션 계획의 통합적 접근법의 기초를 제공합니다.
-- 🏛 기반 연구: [[papers/1553_RoBridge_A_Hierarchical_Architecture_Bridging_Cognition_and/review]] — CoPAL의 corrective planning이 RoBridge의 cognition-execution 브릿지 구현에 필요한 계획 수정 메커니즘을 제공한다.
-- 🔄 다른 접근: [[papers/1586_TidyBot_Personalized_Robot_Assistance_with_Large_Language_Mo/review]] — TidyBot은 LLM을 통한 선호도 학습을, CoPAL은 대화형 계획 수정을 통해 로봇이 사용자 요구에 적응하는 다른 방식
-- 🔗 후속 연구: [[papers/1326_CANVAS_Commonsense-Aware_Navigation_System_for_Intuitive_Hum/review]] — CoPAL은 CANVAS의 상식적 이해를 대규모 언어 모델 기반 수정 계획으로 확장한다
-- 🔄 다른 접근: [[papers/1353_Describe_Explain_Plan_and_Select_Interactive_Planning_with_L/review]] — CoPAL은 DEPS와 유사한 LLM 기반 계획이지만 로봇 행동의 수정적 계획에 특화되어 있다
+- 🔗 후속 연구: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — 계층적 플래닝을 제약 조건 위반 감지와 결합하여 더 강건한 plan-execution 시스템으로 발전
+- 🏛 기반 연구: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — language model guided RL이 CoPAL의 LLM 기반 계층적 플래닝의 핵심 이론적 기반
+- 🏛 기반 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — LLM 기반 태스크 및 모션 계획의 기초 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1528_Reflective_Planning_Vision-Language_Models_for_Multi-Stage_L/review]] — 멀티스테이지 반성적 계획으로 CoPAL의 계층적 계획을 확장한다.
+- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — LLM 기반 로봇 제어에서 계층적 계획-재계획과 직접 코드 생성이 다른 오류 처리 접근법을 제시합니다.
+- 🔗 후속 연구: [[papers/1402_GC-VLN_Instruction_as_Graph_Constraints_for_Training-free_Vi/review]] — GC-VLN의 그래프 제약 기반 계획이 CoPAL의 LLM 기반 교정 계획에서 더 정교한 제약 처리를 위해 확장 활용될 수 있습니다.
+- 🏛 기반 연구: [[papers/1434_Inner_Monologue_Embodied_Reasoning_through_Planning_with_Lan/review]] — CoPAL의 LLM 기반 계획 수정은 Inner Monologue가 제시한 언어 모델의 로봇 제어 적용을 발전시킨 것입니다.
+- 🔗 후속 연구: [[papers/1460_LLM3Large_Language_Model-based_Task_and_Motion_Planning_with/review]] — LLM 기반 작업 계획의 오류 수정 메커니즘을 다루어 LLM3의 모션 계획 실패 추론과 반복적 개선 과정을 보완한다.
+- 🔗 후속 연구: [[papers/1435_Instruct2Act_Mapping_Multi-modality_Instructions_to_Robotic/review]] — LLM을 통한 로봇 행동 계획을 corrective planning으로 더 발전시켜 오류 수정 능력을 추가했다.
+- 🔄 다른 접근: [[papers/1516_Plan-Seq-Learn_Language_Model_Guided_RL_for_Solving_Long_Hor/review]] — CoPAL과 함께 LLM 기반 로봇 계획을 다루지만 PSL은 RL과의 통합에, CoPAL은 교정적 계획에 초점을 맞춘다.
+- 🔄 다른 접근: [[papers/1553_RoBridge_A_Hierarchical_Architecture_Bridging_Cognition_and/review]] — 로봇 인지-실행 통합에서 hierarchical architecture with symbolic bridge vs corrective planning이라는 서로 다른 계층적 제어 접근법을 제시한다.
+- 🔗 후속 연구: [[papers/1561_SayPlan_Grounding_Large_Language_Models_using_3D_Scene_Graph/review]] — LLM 기반 계획의 오류 수정 메커니즘을 3DSG 환경에서 확장 가능하게 적용할 수 있습니다.
+- 🔄 다른 접근: [[papers/1614_VL-Nav_A_Neuro-Symbolic_Approach_for_Reasoning-based_Vision-/review]] — 둘 다 large language model을 활용한 로봇 행동 계획을 다루지만 CoPAL은 corrective planning에, VL-Nav는 navigation reasoning에 집중합니다.
+- 🏛 기반 연구: [[papers/1370_DoReMi_Grounding_Language_Model_by_Detecting_and_Recovering/review]] — DoReMi의 제약 조건 기반 실행 감지가 CoPAL의 오류 처리 메커니즘 설계에 기반을 제공
+- 🔄 다른 접근: [[papers/1334_Code_as_Policies_Language_Model_Programs_for_Embodied_Contro/review]] — LLM 기반 로봇 제어에서 코드 생성 방식과 계층적 계획-재계획 방식이 다른 접근법을 제시합니다.

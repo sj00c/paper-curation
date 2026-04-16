@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 휴머노이드 로봇의 다중 손가락 손을 이용한 시각 기반 정교한 조작을 위해 sim-to-real RL을 적용하는 실용적인 레시피를 제시하며, 자동화된 실-시뮬레이션 튜닝, 일반화된 보상 설계, 분할-정복 정책 증류, 하이브리드 객체 표현을 통합한다."
 tags:
-  - "cat/Humanoid_Teleoperation_and_Interaction"
-  - "sub/Force-Feedback_Teleoperation"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multi-Task_Language_Benchmarks"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2025_Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids.pdf"
 ---
@@ -91,6 +93,18 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2025_Sim-to-Real Reinforcemen
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1433_H-Zero_Cross-Humanoid_Locomotion_Pretraining_Enables_Few-sho/review]] — 인간 플레이 비디오로 ICL 기반 휴머노이드 조작 학습이 차세대 토큰 예측을 통한 맥락 내 모방학습을 기반으로 한다.
-- 🔗 후속 연구: [[papers/1288_3D_Diffusion_Policy_Generalizable_Visuomotor_Policy_Learning/review]] — 자유로운 플레이에서 조작 학습하는 MimicDroid가 대규모 인간 시연으로 행동 기반 모델을 사전훈련하는 BFM-Zero로 확장된다.
-- 🧪 응용 사례: [[papers/1476_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — 인간 비디오 기반 ICL 조작 학습이 MimicPlay의 장기 모방학습 관찰 프레임워크에서 실제 적용될 수 있다.
+- 🔄 다른 접근: [[papers/1526_Real-World_Humanoid_Locomotion_with_Reinforcement_Learning/review]] — Real-World Humanoid Locomotion은 sim-to-real 접근법을 보행에 적용하여 조작과 다른 embodiment에서의 RL 적용 사례를 제시한다.
+- 🏛 기반 연구: [[papers/1451_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperatio/review]] — Human-to-Humanoid Teleoperation 연구는 정교한 조작을 위한 sim-to-real의 기반이 되는 인간-로봇 인터페이스를 제공한다.
+- 🏛 기반 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — 정적 마찰이 Sim2Real에 미치는 영향 연구는 정교한 조작에서 sim-to-real 성공의 핵심 요소를 분석한다.
+- 🔄 다른 접근: [[papers/1523_Re3Sim_Generating_High-Fidelity_Simulation_Data_via_3D-Photo/review]] — Re3Sim은 고충실도 시뮬레이션 데이터 생성으로 sim-to-real 문제를 다른 각도에서 해결하는 접근법이다.
+- 🔄 다른 접근: [[papers/1625_VR-Robo_A_Real-to-Sim-to-Real_Framework_for_Visual_Robot_Nav/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 손가락 조작 vs 시각 네비게이션으로 응용 영역이 다릅니다.
+- 🏛 기반 연구: [[papers/1350_Deep_Reinforcement_Learning_for_Robotics_A_Survey_of_Real-Wo/review]] — Deep RL for Robotics 서베이는 sim-to-real RL의 이론적 배경과 실제 적용 사례를 포괄적으로 제시합니다.
+- 🔄 다른 접근: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — Dex1B가 대규모 시연 데이터에 중점을 두는 반면, Sim-to-Real RL은 시뮬레이션에서 실제로의 전이 문제를 중점적으로 다룬다.
+- 🔗 후속 연구: [[papers/1431_Impact_of_Static_Friction_on_Sim2Real_in_Robotic_Reinforceme/review]] — 정적 마찰을 고려한 도메인 랜덤화가 Sim-to-Real 강화학습에서 데스크테라스 조작의 현실 적응성을 크게 개선한다.
+- 🔗 후속 연구: [[papers/1484_MuJoCo_Playground/review]] — MuJoCo Playground의 제로샷 sim-to-real 능력은 시각 기반 손재주 조작의 sim-to-real 연구를 더욱 효율적으로 만듭니다.
+- 🔗 후속 연구: [[papers/1488_NavDP_Learning_Sim-to-Real_Navigation_Diffusion_Policy_with/review]] — sim-to-real transfer의 기본 개념을 navigation diffusion policy와 privileged information을 활용한 zero-shot transfer로 확장한다.
+- 🔄 다른 접근: [[papers/1524_Reactive_Diffusion_Policy_Slow-Fast_Visual-Tactile_Policy_Le/review]] — RDP의 visual-tactile policy와 달리 vision-based dexterous manipulation을 위한 sim-to-real 강화학습 접근법을 제시한다.
+- 🔄 다른 접근: [[papers/1625_VR-Robo_A_Real-to-Sim-to-Real_Framework_for_Visual_Robot_Nav/review]] — 두 논문 모두 sim-to-real 전이를 다루지만 시각 네비게이션 vs 정교한 손가락 조작으로 응용 도메인이 다릅니다.
+- 🔗 후속 연구: [[papers/1355_DexGarmentLab_Dexterous_Garment_Manipulation_Environment_wit/review]] — 시각 기반 손재주 조작의 sim-to-real 강화학습을 의류 조작으로 확장할 수 있습니다.
+- 🧪 응용 사례: [[papers/1386_Evaluating_Real-World_Robot_Manipulation_Policies_in_Simulat/review]] — Sim-to-Real RL 방법론이 SIMPLER 환경에서 훈련된 정책을 실제 로봇으로 전이하는 구체적인 적용 방법을 제공합니다.
+- 🏛 기반 연구: [[papers/1309_An_Real-Sim-Real_RSR_Loop_Framework_for_Generalizable_Roboti/review]] — 시각 기반 정교한 조작을 위한 Sim-to-Real 강화학습의 기초 이론을 제공한다.

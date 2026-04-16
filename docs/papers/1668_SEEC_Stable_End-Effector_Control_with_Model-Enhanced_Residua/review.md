@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "SEEC는 model-enhanced residual learning을 통해 휴머노이드 로봇의 보행 중 팔 end-effector를 안정적으로 제어하는 프레임워크로, 하지 유도 교란에 대해 모델 기반 보상 신호를 RL 정책에 통합한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Jang et al._2025_SEEC Stable End-Effector Control with Model-Enhanced Residual Learning for Humanoid Loco-Manipulati.pdf"
 ---
@@ -80,3 +81,10 @@ SEEC는 model-enhanced residual learning을 통해 휴머노이드 로봇의 보
 - Overall: 4/5
 
 **총평**: SEEC는 모델 기반 제어의 정밀성과 RL의 적응성을 효과적으로 결합하며, perturbation 생성을 통한 모듈식 설계로 미학습 제어기에도 robust하게 전이되는 점에서 높은 독창성을 보인다. 실제 휴머노이드 로봇 배포와 다양한 loco-manipulation 작업 검증으로 실용성도 입증하였다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — model-enhanced residual learning vs hierarchical world-frame tracking이라는 다른 end-effector 제어 방식입니다.
+- 🔗 후속 연구: [[papers/1922_FALCON_Learning_Force-Adaptive_Humanoid_Loco-Manipulation/review]] — 안정적인 팔 제어가 force-adaptive manipulation으로 확장되어 더 복잡한 조작이 가능해집니다.
+- 🏛 기반 연구: [[papers/1980_HiWET_Hierarchical_World-Frame_End-Effector_Tracking_for_Lon/review]] — SEEC의 모델 강화 잔차 기반 end-effector 제어가 HiWET의 세계 좌표계 추적 시스템의 핵심 토대가 된다.
+- 🏛 기반 연구: [[papers/2149_TOP_Time_Optimization_Policy_for_Stable_and_Accurate_Standin/review]] — SEEC의 stable end-effector control이 TOP의 상체 동작 시간 최적화에서 end-effector 안정성 보장의 기술적 토대를 제공합니다.

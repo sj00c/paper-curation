@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "로봇 팔(teacher)이 휴머노이드 로봇(student)을 지원하고 가이드하는 Robot-Trains-Robot(RTR) 프레임워크를 제안하여, 안전하고 효율적인 실제 환경에서의 휴머노이드 학습을 가능하게 한다. Dynamics-encoded latent variable 최적화를 통한 sim-to-real 전이 방법을 함께 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2025_Robot Trains Robot Automatic Real-World Policy Adaptation and Learning for Humanoids.pdf"
 ---
@@ -84,3 +87,17 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hu et al._2025_Robot Trains Robot Automa
 - Overall: 4/5
 
 **총평**: 실제 환경에서의 휴머노이드 학습이라는 중요하면서도 실제로 구현되지 않았던 문제에 대해, 혁신적인 teacher-robot 지원 방식과 효율적 sim-to-real 알고리즘을 결합하여 실질적인 해결책을 제시한다. 실험적 검증과 전반적 설계의 견고성이 우수하지만, 제한된 플랫폼과 태스크에서의 검증이라는 한계가 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2043_Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots_F/review]] — RTR은 로봇-로봇 협력 학습을, Learning Adaptive Neural Teleoperation은 인간-로봇 원격조작을 통해 휴머노이드 학습을 다르게 지원함
+- 🔗 후속 연구: [[papers/2052_Learning_Human-Humanoid_Coordination_for_Collaborative_Objec/review]] — Learning Human-Humanoid Coordination의 협력적 객체 조작이 RTR의 teacher-student 로봇 프레임워크를 인간과의 협력으로 확장함
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — Contrastive Representation Learning의 robust sim-to-real 전이 기법이 RTR의 dynamics-encoded latent 최적화의 기초가 됨
+- 🏛 기반 연구: [[papers/1618_PIMBS_Efficient_Body_Schema_Learning_for_Musculoskeletal_Hum/review]] — Robot Trains Robot의 dynamics-encoded latent 최적화가 PIMBS의 물리 정보 기반 신체 스키마 학습과 유사한 물리 제약 활용 접근을 취한다
+- 🔄 다른 접근: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — 두 논문 모두 휴머노이드 학습에서 외부 지원을 다루지만 RTR은 로봇 팔 teacher에, HOMIE는 isomorphic exoskeleton에 집중한다
+- 🔄 다른 접근: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — teacher-student 프레임워크를 로봇 팔과 휴머노이드 vs 시뮬레이션과 실제 환경에서 다르게 구현합니다.
+- 🔗 후속 연구: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — sim-to-real 전이에서 dynamics 파라미터 식별과 최적화가 RTR 프레임워크를 더욱 강화할 수 있습니다.
+- 🏛 기반 연구: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — 물리 파라미터 식별이 로봇 간 knowledge transfer의 기초적인 system identification입니다.
+- 🔄 다른 접근: [[papers/1680_SLAC_Simulation-Pretrained_Latent_Action_Space_for_Whole-Bod/review]] — task-agnostic latent space vs robot-guided learning이라는 다른 방식의 실제 환경 적응 접근법입니다.
+- 🔗 후속 연구: [[papers/1618_PIMBS_Efficient_Body_Schema_Learning_for_Musculoskeletal_Hum/review]] — PIMBS의 효율적인 신체 스키마 학습이 Robot Trains Robot의 dynamics-encoded latent 최적화와 결합되어 더 안전한 실제 환경 학습을 가능하게 한다
+- 🔄 다른 접근: [[papers/2031_Iterative_Closed-Loop_Motion_Synthesis_for_Scaling_the_Capab/review]] — 자동화된 모션 데이터 생성에서 폐쇄 루프 방식 대신 로봇 간 정책 적응을 통한 데이터 확장 접근법을 제시한다.

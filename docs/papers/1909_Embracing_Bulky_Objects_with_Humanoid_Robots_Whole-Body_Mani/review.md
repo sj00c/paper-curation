@@ -1,3 +1,24 @@
+---
+title: "1909_Embracing_Bulky_Objects_with_Humanoid_Robots_Whole-Body_Mani"
+authors:
+  - "Chunxin Zheng"
+  - "Kai Chen"
+  - "Zhihai Bi"
+  - "Yulin Li"
+  - "Liang Pan"
+date: "2025.09"
+doi: "10.48550/arXiv.2509.13534"
+arxiv: ""
+score: 4.0
+essence: "본 논문은 인간의 동작 사전(human motion prior)과 neural signed distance field(NSDF)를 통합한 강화학습 프레임워크를 제안하여 휴머노이드 로봇이 팔과 몸통을 조율해 부피가 큰 물체를 전신으로 포용하고 운반할 수 있도록 하는 방법을 제시한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2025_Embracing Bulky Objects with Humanoid Robots Whole-Body Manipulation with Reinforcement Learning.pdf"
+---
+
 # Embracing Bulky Objects with Humanoid Robots: Whole-Body Manipulation with Reinforcement Learning
 
 > **저자**: Chunxin Zheng, Kai Chen, Zhihai Bi, Yulin Li, Liang Pan, Jinni Zhou, Haoang Li, Jun Ma | **날짜**: 2025-09-16 | **DOI**: [10.48550/arXiv.2509.13534](https://doi.org/10.48550/arXiv.2509.13534)
@@ -67,3 +88,12 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 휴머노이드 로봇의 전신 물체 포용 조작을 위한 최초의 RL 프레임워크를 제시하며, 인간 모션 사전과 NSDF의 통합을 통해 학습 효율성과 접촉 강건성을 동시에 달성한 혁신적인 연구다. 시뮬레이션과 실제 로봇 실험을 통한 검증이 충분하고 실용적 가치가 높다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1694_SteadyTray_Learning_Object_Balancing_Tasks_in_Humanoid_Tray/review]] — 부피가 큰 물체 전신 포용과 SteadyTray의 객체 균형은 휴머노이드 객체 조작의 서로 다른 접근 방식입니다.
+- 🧪 응용 사례: [[papers/1674_Sim-to-Real_Learning_for_Humanoid_Box_Loco-Manipulation/review]] — Sim-to-Real 박스 loco-manipulation이 부피가 큰 물체 전신 조작 기법의 실제 적용 사례입니다.
+- 🏛 기반 연구: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — SimGenHOI의 물리적으로 현실적인 전신 휴머노이드-물체 상호작용 기술이 부피가 큰 물체 포용을 위한 물리 기반 학습의 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data/review]] — Object-Centric Dexterous Manipulation이 인간 동작 사전 없이 물체 중심적 접근으로 조작 문제를 해결하는 다른 관점을 제시한다.
+- 🧪 응용 사례: [[papers/1779_A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Ma/review]] — 휴머노이드 시각-촉각-행동 데이터셋의 접촉이 풍부한 조작 연구가 부피가 큰 물체를 전신으로 다루는 실제 응용 사례를 제공한다.
+- 🔗 후속 연구: [[papers/1908_Embrace_Collisions_Humanoid_Shadowing_for_Deployable_Contact/review]] — 부피가 큰 객체와의 전신 조작이 Embrace Collisions의 contact-agnostic 프레임워크를 더욱 복잡하고 실용적인 상황으로 확장한다

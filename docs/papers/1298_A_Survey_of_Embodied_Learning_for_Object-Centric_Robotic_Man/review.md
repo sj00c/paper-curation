@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 object-centric robotic manipulation을 위한 embodied learning의 최신 동향을 체계적으로 조사하며, embodied perceptual learning, embodied policy learning, embodied task-oriented learning의 세 가지 주요 분야로 분류하여 종합적인 서베이를 제공한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Multimodal_Transformer_Policies"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Embodied_AI_Research"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2024_A Survey of Embodied Learning for Object-Centric Robotic Manipulation.pdf"
 ---
@@ -93,6 +94,9 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2024_A Survey of Embodied L
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1607_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — PDF-HR의 humanoid pose distance field가 object-centric manipulation의 embodied learning에서 공간적 제약 모델링의 기반을 제공한다.
-- 🔄 다른 접근: [[papers/1372_EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/review]] — 둘 다 대규모 데이터를 활용한 로봇 학습이지만 서베이는 object-centric 관점을, DROID는 일반적인 manipulation 데이터를 다룬다.
-- 🔗 후속 연구: [[papers/1564_MaskedManipulator_Versatile_Whole-Body_Manipulation/review]] — MaskedManipulator의 whole-body manipulation 능력이 object-centric embodied learning의 구체적인 구현 사례를 제공한다.
+- 🧪 응용 사례: [[papers/1354_Dex1B_Learning_with_1B_Demonstrations_for_Dexterous_Manipula/review]] — object-centric manipulation을 dexterous manipulation이라는 구체적 영역에 적용한다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — 객체 중심 조작을 위한 시각적 이해의 기초가 되는 CLIPort 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1543_RoboPoint_A_Vision-Language_Model_for_Spatial_Affordance_Pre/review]] — 공간적 어포던스 예측을 통해 object-centric manipulation을 확장한다.
+- 🔗 후속 연구: [[papers/1357_Dexterous_Manipulation_through_Imitation_Learning_A_Survey/review]] — Dexterous Manipulation through Imitation Learning 서베이를 object-centric한 embodied learning 관점에서 확장하여 더 체계적인 분류를 제시합니다.
+- 🏛 기반 연구: [[papers/1545_Robot_Learning_in_the_Era_of_Foundation_Models_A_Survey/review]] — Robot Learning in the Era of Foundation Models 서베이의 기초 위에 object-centric robotic manipulation에 특화된 embodied learning 관점을 추가한 연구입니다.
+- 🔄 다른 접근: [[papers/1388_Exploring_Embodied_Multimodal_Large_Models_Development_Datas/review]] — 둘 다 embodied AI의 포괄적 서베이이지만 A Survey of Embodied Learning은 object-centric manipulation에, Exploring Embodied는 multimodal large model에 중점을 둡니다.

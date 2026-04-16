@@ -1,3 +1,25 @@
+---
+title: "1955_GMT_General_Motion_Tracking_for_Humanoid_Whole-Body_Control"
+authors:
+  - "Zixuan Chen"
+  - "Mazeyu Ji"
+  - "Xuxin Cheng"
+  - "Xuanbin Peng"
+  - "Xue Bin Peng"
+date: "2025.06"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "GMT는 humanoid 로봇이 다양한 전신 모션을 추적할 수 있도록 하는 통합 정책을 학습하는 프레임워크로, Adaptive Sampling 전략과 Motion Mixture-of-Experts 아키텍처를 핵심 요소로 제안한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2025_GMT General Motion Tracking for Humanoid Whole-Body Control.pdf"
+---
+
 # GMT: General Motion Tracking for Humanoid Whole-Body Control
 
 > **저자**: Zixuan Chen, Mazeyu Ji, Xuxin Cheng, Xuanbin Peng, Xue Bin Peng, Xiaolong Wang | **날짜**: 2025-06-17 | **URL**: [https://arxiv.org/abs/2506.14770](https://arxiv.org/abs/2506.14770)
@@ -64,3 +86,29 @@ GMT는 humanoid 로봇이 다양한 전신 모션을 추적할 수 있도록 하
 - Overall: 4/5
 
 **총평**: GMT는 humanoid 로봇의 general motion tracking에 대한 실질적인 해결책을 제시하며, Adaptive Sampling과 Motion MoE라는 두 가지 실용적 기법으로 기존의 산발적 접근들을 통합한 우수한 연구이다. 실제 로봇 배포 성공과 상태-최첨단 성능은 높은 가치를 제시하지만, 더 광범위한 하드웨어 검증과 이론적 분석 강화가 필요하다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — 둘 다 일반적인 모션 추적을 다루지만 GMT는 Mixture-of-Experts를, ResMimic은 residual 기법을 사용한다.
+- 🔗 후속 연구: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — 다양한 교란 하에서의 모션 추적이 GMT의 적응적 샘플링 전략을 보완할 수 있다.
+- 🔄 다른 접근: [[papers/1985_HOVER_Versatile_Neural_Whole-Body_Controller_for_Humanoid_Ro/review]] — GMT의 통합 정책과 HOVER의 다목적 제어기는 모두 단일 모델로 다양한 휴머노이드 제어 모드를 지원하는 접근법을 제시합니다.
+- 🏛 기반 연구: [[papers/2058_Learning_Humanoid_Standing-up_Control_across_Diverse_Posture/review]] — 다양한 자세에서의 기립 제어 학습이 GMT의 adaptive sampling 전략과 motion tracking 능력의 기반이 됩니다.
+- 🔄 다른 접근: [[papers/1820_BeyondMimic_From_Motion_Tracking_to_Versatile_Humanoid_Contr/review]] — 둘 다 motion tracking에서 versatile control로의 발전을 다루지만, GMT는 unified policy 학습에, BeyondMimic은 tracking에서 전체적 제어로의 확장에 집중합니다.
+- 🏛 기반 연구: [[papers/1743_UniTracker_Learning_Universal_Whole-Body_Motion_Tracker_for/review]] — UniTracker의 universal whole-body motion tracking 연구가 GMT의 다양한 전신 모션 추적을 위한 통합 정책 학습의 기초를 제공합니다.
+- 🏛 기반 연구: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — Gait-Conditioned의 multi-phase curriculum과 통합 정책 개념이 GMT의 Motion Mixture-of-Experts 아키텍처 설계의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1685_SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole/review]] — 모션 트래킹 기반 전신 제어의 기본 개념을 대규모 모델과 통합된 토큰 공간으로 확장하여 자연스러운 움직임을 실현했다.
+- 🏛 기반 연구: [[papers/1640_ResMimic_From_General_Motion_Tracking_to_Humanoid_Whole-body/review]] — GMT의 범용 모션 추적 기법이 ResMimic의 일반 모션 추적 정책 기반 잔차 학습의 핵심 기초를 제공함
+- 🔗 후속 연구: [[papers/1655_Robust_and_Generalized_Humanoid_Motion_Tracking/review]] — GMT의 일반적인 모션 추적 방법론을 dynamics-conditioned aggregation으로 확장하여 노이즈에 더 강건하게 만든다.
+- 🔗 후속 연구: [[papers/1691_Stabilizing_Humanoid_Robot_Trajectory_Generation_via_Physics/review]] — 모션 트래킹의 기본 개념을 물리 기반 학습과 제어 기반 보정으로 확장하여 모방학습의 안정성을 크게 향상시켰다.
+- 🔄 다른 접근: [[papers/1698_Symphony_A_Heuristic_Normalized_Calibrated_Advantage_Actor_a/review]] — 둘 다 휴머노이드 전신 제어를 다루지만 이 논문은 안전한 훈련을 위한 정규화된 Actor-Critic에, GMT는 일반적인 동작 추적에 중점을 둡니다.
+- 🔗 후속 연구: [[papers/1743_UniTracker_Learning_Universal_Whole-Body_Motion_Tracker_for/review]] — 일반적 모션 트래킹에서 UniTracker의 universal 접근법과 GMT의 general 접근법이 유사한 목표를 가진다.
+- 🏛 기반 연구: [[papers/1753_VisualMimic_Visual_Humanoid_Loco-Manipulation_via_Motion_Tra/review]] — GMT의 일반적인 모션 추적 기술이 VisualMimic의 task-agnostic keypoint tracker 개발에 기여합니다.
+- 🔄 다른 접근: [[papers/1896_EGM_Efficiently_Learning_General_Motion_Tracking_Policy_for/review]] — 일반화된 모션 추적에서 bin-based curriculum learning과 전통적인 motion tracking 접근법의 서로 다른 학습 효율성 전략을 비교한다.
+- 🔗 후속 연구: [[papers/1940_Gait-Conditioned_Reinforcement_Learning_with_Multi-Phase_Cur/review]] — GMT의 일반적인 motion tracking을 gait conditioning과 multi-phase curriculum을 통해 더 세밀한 보행 제어로 특화시켰습니다.
+- 🔄 다른 접근: [[papers/1929_FLAM_Foundation_Model-Based_Body_Stabilization_for_Humanoid/review]] — FLAM의 foundation model 기반 안정화와 GMT의 일반적 동작 추적은 휴머노이드 전신 제어의 서로 다른 접근방식입니다.
+- 🔄 다른 접근: [[papers/1971_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — Heracles의 state-conditioned diffusion과 GMT의 adaptive sampling은 모두 외부 교란에 대한 humanoid 적응을 위한 서로 다른 생성 모델 접근법입니다.
+- 🔄 다른 접근: [[papers/1975_Hierarchical_visuomotor_control_of_humanoids/review]] — 휴머노이드 전신 제어를 이 논문은 계층적 아키텍처로, GMT는 통합된 모션 추적으로 접근한다.
+- 🔄 다른 접근: [[papers/1985_HOVER_Versatile_Neural_Whole-Body_Controller_for_Humanoid_Ro/review]] — HOVER의 정책 증류 기반 통합과 GMT의 Mixture-of-Experts는 모두 다양한 제어 모드를 단일 정책으로 통합하는 서로 다른 아키텍처 접근법입니다.
+- 🔄 다른 접근: [[papers/2038_KungfuBot2_Learning_Versatile_Motion_Skills_for_Humanoid_Who/review]] — 다양한 모션 스킬 학습에서 GMT는 일반적인 추적을, VMS는 전문화된 혼합 전문가 활용
+- 🔄 다른 접근: [[papers/2158_Track_Any_Motions_under_Any_Disturbances/review]] — 두 논문 모두 범용적인 동작 추적을 다루지만 이 논문은 교란 적응에, GMT는 일반적인 전신 제어에 집중합니다.
+- 🔗 후속 연구: [[papers/2133_PDF-HR_Pose_Distance_Fields_for_Humanoid_Robots/review]] — GMT의 일반적인 모션 추적을 휴머노이드 특화 pose distance field를 통해 더 정확하고 신뢰할 수 있는 포즈 평가로 발전시킨 연구이다.

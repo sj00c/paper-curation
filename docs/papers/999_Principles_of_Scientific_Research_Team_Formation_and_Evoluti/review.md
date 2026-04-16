@@ -9,7 +9,8 @@ score: 4.0
 essence: "본 연구는 과학 연구팀의 규모 분포가 50년간 어떻게 진화했는지를 설명하는 모델을 제시하며, 소규모 핵심팀(Poisson process)과 대규모 확장팀(누적이득)의 두 가지 지식 생산 방식을 제안한다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Team_Dynamics"
+  - "cat/Academic_Impact_and_Mobility"
+  - "sub/Gender_Citation_Imbalance"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Milojević_2014_Principles of scientific research team formation and evolution.pdf"
 ---
@@ -84,8 +85,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Milojević_2014_Principles of scientific
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 생산에서 팀의 지배력 증가가 연구팀 형성과 진화 원리를 이해하는 배경을 제공한다.
-- 🔄 다른 접근: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 팀 크기에 따른 지식 생산 방식의 차이를 대규모 팀과 소규모 팀의 역할 분화로 설명한다.
-- 🔗 후속 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 팀 과학 원리를 협업 가이드포인트를 통한 실제 팀 과학 평가 지표로 발전시킨다.
-- 🧪 응용 사례: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 과학 연구팀 형성의 일반 원리를 제도적 차원에서 구현하는 구체적 사례로 IFISC 모델을 활용할 수 있다.
-- 🔗 후속 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 과학 연구팀 형성과 진화의 원리를 협업 지표를 통한 팀 성과 평가로 확장하여 종합적 관점을 제시합니다.
+- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 지식 생산에서 팀의 지배력 증가 연구가 연구팀 형성과 진화 원리의 역사적 맥락을 제공한다.
+- 🔗 후속 연구: [[papers/946_Collective_Credit_Allocation_in_Science/review]] — 과학에서의 집단적 신용 배분 연구가 연구팀 형성 모델에서 기여도 인정 메커니즘을 보완한다.
+- 🧪 응용 사례: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 협업 가이드포스트를 통한 팀 과학 메트릭 재고찰이 연구팀 형성 원리를 실제 평가 체계에 적용하는 방안을 제시한다.
+- 🏛 기반 연구: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 과학 연구팀 형성과 진화의 원리는 지식 생산에서 팀 연구 증가 현상을 이해하는 이론적 메커니즘을 제공합니다.
+- 🏛 기반 연구: [[papers/1110_A_cross-disciplinary_research_framework_at_institution_level/review]] — 과학 연구팀 형성과 진화 원리가 IFISC의 분산형 학제간 연구 조직 구조 설계에 이론적 기반을 제공하기 때문
+- 🧪 응용 사례: [[papers/1114_GoAI_Enhancing_AI_Students_Learning_Paths_and_Idea_Generatio/review]] — 과학 연구팀 형성 원리를 AI 교육에 적용한 개인화 학습 시스템이다.
+- 🔗 후속 연구: [[papers/1205_Rethinking_team_science_metrics_through_Collaborative_Guidep/review]] — 과학 연구팀 형성 원칙을 협력 가이드포스트 프레임워크로 확장 적용합니다.

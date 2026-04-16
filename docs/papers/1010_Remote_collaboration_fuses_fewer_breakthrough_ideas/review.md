@@ -10,8 +10,10 @@ arxiv: ""
 score: 4.0
 essence: "지난 50년간 과학자와 발명가들의 원격 협업이 급증했지만, 모든 분야에서 원격 팀은 온사이트 팀에 비해 혁신적(disruptive) 발견을 이루기 어렵다는 것을 보여준다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Research_Collaboration_Networks"
+  - "cat/AI-Assisted_Scientific_Discovery"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2023_Remote collaboration fuses fewer breakthrough ideas.pdf"
 ---
@@ -90,8 +92,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Lin et al._2023_Remote collaboration fus
 
 ## Related Papers
 
-- ⚖️ 반론/비판: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 연구의 우세를 보여주지만 원격 협업이 혁신적 발견에는 제약이 있음을 밝혀 팀 연구의 한계를 지적한다.
-- 🔗 후속 연구: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 원격 협업의 한계를 보완할 수 있는 성별 다양성이 팀의 참신성과 영향력 향상에 미치는 긍정적 효과를 보여준다.
-- 🧪 응용 사례: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 원격 협업의 제약을 극복하기 위해 인종적 다양성이 과학 협업의 영향력 증대에 미치는 효과를 활용할 수 있다.
-- 🧪 응용 사례: [[papers/1034_The_Increasing_Dominance_of_Teams_in_Production_of_Knowledge/review]] — 팀 기반 연구의 우세에도 불구하고 원격 협업이 혁신적 발견에는 한계가 있음을 보여주는 구체적 사례다.
-- 🧪 응용 사례: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 인종적 다양성의 협업 효과를 원격 협업의 혁신 한계를 극복하는 방안으로 활용할 수 있다.
+- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대규모 팀과 소규모 팀의 차이에 더해 물리적 거리가 혁신성에 미치는 영향을 추가로 분석한다.
+- 🔄 다른 접근: [[papers/965_Gender-diverse_teams_produce_more_novel_and_higher-impact_sc/review]] — 원격 협업의 한계와 다양성 팀의 장점을 통해 혁신적 연구의 조건을 다각도로 탐구한다.
+- 🧪 응용 사례: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 원격 협업의 한계에 대한 연구가 미국-중국 과학 협력의 감소 추세를 이해하는 데 적용될 수 있습니다.
+- 🏛 기반 연구: [[papers/1048_Unequal_effects_of_the_COVID-19_pandemic_on_scientists/review]] — COVID-19로 인한 과학자들의 불평등한 영향이 원격 협업 증가의 배경적 상황을 제공합니다.
+- 🔗 후속 연구: [[papers/1039_The_Preeminence_of_Ethnic_Diversity_in_Scientific_Collaborat/review]] — 과학 협력에서 민족 다양성의 탁월함 분석은 원격 협업이 다양성 확보와 혁신성 간의 균형에 미치는 영향을 이해하는 데 도움이 됩니다.
+- 🏛 기반 연구: [[papers/1029_The_altering_landscape_of_USChina_science_collaboration_from/review]] — 원격 협업의 혁신성 한계가 미국-중국 과학 협력의 수렴에서 발산으로의 전환을 이해하는 배경을 제공합니다.
+- ⚖️ 반론/비판: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 참신한 연구의 소셜 관심에 대해 원격 협력의 한계라는 반대 관점을 제시한다
+- 🔗 후속 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 원격 협업 환경에서도 소규모 팀의 혁신적 아이디어 융합 능력이 제한된다는 것을 보여주어 팀 규모 이론을 보완한다.

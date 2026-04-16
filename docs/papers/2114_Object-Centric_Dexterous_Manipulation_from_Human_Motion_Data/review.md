@@ -1,3 +1,24 @@
+---
+title: "2114_Object-Centric_Dexterous_Manipulation_from_Human_Motion_Data"
+authors:
+  - "Yuanpei Chen"
+  - "Chen Wang"
+  - "Yaodong Yang"
+  - "C. Karen Liu"
+date: "2024.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간의 손 모션 캡처 데이터를 활용하여 로봇 다지털 조작을 학습하는 계층적 정책 학습 프레임워크를 제안한다. 고수준의 손목 궤적 생성 모델과 저수준의 손가락 제어기를 조합하여 embodiment gap을 극복한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Chen et al._2024_Object-Centric Dexterous Manipulation from Human Motion Data.pdf"
+---
+
 # Object-Centric Dexterous Manipulation from Human Motion Data
 
 > **저자**: Yuanpei Chen, Chen Wang, Yaodong Yang, C. Karen Liu | **날짜**: 2024-11-06 | **URL**: [https://arxiv.org/abs/2411.04005](https://arxiv.org/abs/2411.04005)
@@ -66,3 +87,21 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 인간 wrist 모션의 embodiment 불변성을 창의적으로 활용하여 embodiment gap 문제를 해결하고, 계층적 학습 프레임워크로 복잡한 다지털 조작을 효과적으로 학습한다. 실세계 전이와 일반화 능력 모두 입증하여 로봇 조작 분야에 significant한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2103_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — 둘 다 인간 모션을 활용한 로봇 조작 학습이지만, Object-Centric은 손가락 세밀 조작에, MobileH2R은 전신 협조 handover에 집중한다.
+- 🏛 기반 연구: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — EgoDex의 egocentric 대규모 손목 조작 데이터가 Object-Centric의 계층적 정책 학습에서 고수준 손목 궤적 생성 모델 개발에 활용된다.
+- 🔗 후속 연구: [[papers/2075_Learning_Visuotactile_Skills_with_Two_Multifingered_Hands/review]] — Learning Visuotactile Skills의 이중 다지 손 기법을 인간 모션 캡처 데이터 기반의 embodiment gap 해결로 확장한 연구이다.
+- 🏛 기반 연구: [[papers/1867_DexCap_Scalable_and_Portable_Mocap_Data_Collection_System_fo/review]] — DexCap의 mocap data collection이 Object-Centric Dexterous Manipulation의 human hand motion capture 활용에 기술적 기반을 제공했다
+- 🔗 후속 연구: [[papers/1871_Dexterity_from_Smart_Lenses_Multi-Fingered_Robot_Manipulatio/review]] — Dexterity from Smart Lenses의 multi-fingered manipulation이 Object-Centric의 hierarchical policy로 더욱 체계화된 것이다
+- 🔄 다른 접근: [[papers/2093_Masquerade_Learning_from_In-the-wild_Human_Videos_using_Data/review]] — 둘 다 human motion에서 robot manipulation 학습이지만 Object-Centric은 mocap data에, Masquerade는 in-the-wild video에 중점을 둔다
+- 🏛 기반 연구: [[papers/1868_DexHub_and_DART_Towards_Internet_Scale_Robot_Data_Collection/review]] — DexHub의 대규모 로봇 데이터 수집이 인간 손 모션 데이터 기반 다지털 조작 학습의 데이터 인프라 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1957_GraspDreamer_생성형_인간_시연_기반_기능적_파지_모방_학습/review]] — Object-centric 다지털 조작을 생성형 기능적 파지 학습으로 확장하여 더 지능적인 물체 조작을 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1779_A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Ma/review]] — 두 연구 모두 접촉 기반 조작을 위한 다중모달 데이터를 다루지만 하나는 시각-촉각-행동을, 다른 하나는 object-centric 접근을 사용합니다.
+- 🧪 응용 사례: [[papers/1900_EgoDex_Learning_Dexterous_Manipulation_from_Large-Scale_Egoc/review]] — EgoDex의 자아중심 손 추적 데이터를 Object-Centric Dexterous Manipulation 프레임워크에 적용하여 물체 중심의 조작 학습을 개선할 수 있다.
+- 🔄 다른 접근: [[papers/1909_Embracing_Bulky_Objects_with_Humanoid_Robots_Whole-Body_Mani/review]] — Object-Centric Dexterous Manipulation이 인간 동작 사전 없이 물체 중심적 접근으로 조작 문제를 해결하는 다른 관점을 제시한다.
+- 🧪 응용 사례: [[papers/2009_HumanoidGen_Data_Generation_for_Bimanual_Dexterous_Manipulat/review]] — object-centric dexterous manipulation이 HumanoidGen의 원자적 손 동작과 LLM 추론을 실제 조작 작업에 적용하는 구체적 사례를 제시합니다.
+- 🔗 후속 연구: [[papers/2093_Masquerade_Learning_from_In-the-wild_Human_Videos_using_Data/review]] — Object-Centric Dexterous Manipulation의 human motion 활용을 일반적인 manipulation으로 확장한 연구다
+- 🔄 다른 접근: [[papers/2103_MobileH2R_Learning_Generalizable_Human_to_Mobile_Robot_Hando/review]] — 둘 다 인간 모션 데이터를 활용한 로봇 조작 학습이지만, MobileH2R은 전신 handover에, Object-Centric은 손가락 dexterous manipulation에 특화된다.
+- 🏛 기반 연구: [[papers/2169_UniDex_A_Robot_Foundation_Suite_for_Universal_Dexterous_Hand/review]] — object-centric manipulation learning이 UniDex의 3D VLA policy에서 물체 중심 dexterous control의 이론적 토대가 됨

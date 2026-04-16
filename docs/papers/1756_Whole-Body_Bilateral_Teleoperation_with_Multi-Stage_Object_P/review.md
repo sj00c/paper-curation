@@ -11,7 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "휠 달린 인간형 로봇의 원격조종 시스템에 다단계 물체 관성 매개변수 온라인 추정을 통합하여, 무거운 물체의 들기·운반 작업을 동적으로 수행할 수 있는 프레임워크를 제시한다."
 tags:
-  - "cat/Other"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Tactile_Contact_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Baek et al._2025_Whole-Body Bilateral Teleoperation with Multi-Stage Object Parameter Estimation for Wheeled Humanoid.pdf"
 ---
@@ -90,3 +92,21 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Baek et al._2025_Whole-Body Bilateral Te
 - Overall: 4/5
 
 **총평**: 본 논문은 VLM과 hierarchical sampling을 결합한 혁신적 물체 매개변수 추정과 이를 bilateral teleoperation에 통합함으로써 로봇의 무거운 부하 취급 능력을 획기적으로 향상시켰다. 시스템 설계, 기술 구현, 실험 검증 모두 우수하며 로봇 조작 작업의 실용화에 중요한 기여를 한다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — 휴머노이드의 인간과의 상호작용에서 물리적 협력(물체 조작)과 의사소통(수화)이라는 서로 다른 상호작용 방식을 다룬다.
+- 🔗 후속 연구: [[papers/1970_Heavy_lifting_tasks_via_haptic_teleoperation_of_a_wheeled_hu/review]] — 무거운 물체 조작에서 다단계 매개변수 추정과 haptic teleoperation이라는 보완적 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1991_Human-Robot_Collaboration_for_the_Remote_Control_of_Mobile_H/review]] — mobile humanoid의 원격 제어에서 물체 조작과 인간-로봇 협력이라는 관련 연구 영역을 다룬다.
+- 🔄 다른 접근: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — 두 시스템 모두 전신 휴머노이드 원격조작을 다루지만 CLONE은 closed-loop 제어에, 이 연구는 물체 매개변수 추정에 중점을 둡니다.
+- 🏛 기반 연구: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — 저지연 원격조작 기술이 물체 매개변수를 실시간으로 추정하고 적용하는 기반 기술을 제공합니다.
+- 🔗 후속 연구: [[papers/1672_SignBot_Learning_Human-to-Humanoid_Sign_Language_Interaction/review]] — 휴머노이드의 인간과의 상호작용에서 의사소통(수화)과 물리적 협력(물체 조작)이라는 보완적 기능을 다룬다.
+- 🔗 후속 연구: [[papers/1706_TeleOpBench_A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexte/review]] — TeleOpBench의 쌍팔 벤치마크와 전신 양방향 텔레오퍼레이션을 결합하면 더 포괄적인 조작 평가가 가능하다
+- 🏛 기반 연구: [[papers/1835_CHILD_Controller_for_Humanoid_Imitation_and_Live_Demonstrati/review]] — 전신 양측 텔레오퍼레이션의 다단계 객체 처리 기술이 CHILD의 전신 관절 수준 제어 시스템 설계에 기초적인 프레임워크를 제공한다.
+- 🏛 기반 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — 전신 양측 텔레오퍼레이션의 다단계 객체 처리 기술이 CLONE의 장시간 작업에서 위치 드리프트 최소화에 필요한 기술적 토대를 제공한다.
+- 🔗 후속 연구: [[papers/1931_Flow_Matching_Imitation_Learning_for_Multi-Support_Manipulat/review]] — 전신 양손 원격조작이 다중 지지점 조작의 실제 적용으로 확장될 수 있다.
+- 🏛 기반 연구: [[papers/1963_H2-COMPACT_Human-Humanoid_Co-Manipulation_via_Adaptive_Conta/review]] — Whole-body bilateral teleoperation 기술이 human-humanoid co-manipulation의 기반이 됩니다.
+- 🏛 기반 연구: [[papers/1983_HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton/review]] — Whole-body bilateral teleoperation이 HOMIE의 loco-manipulation 통합 제어의 기반이 됩니다.
+- 🔗 후속 연구: [[papers/2043_Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots_F/review]] — Learning Adaptive의 적응형 신경 텔레오퍼레이션이 전신 양측 텔레오퍼레이션의 다단계 객체 처리와 결합되어 더 정교한 조작 가능
+- 🔄 다른 접근: [[papers/2163_TWIST_Teleoperated_Whole-Body_Imitation_System/review]] — 전신 모방 원격조작과 양손 정교 원격조작은 모두 원격조작이지만 서로 다른 범위와 접근법을 사용한다.
+- 🔄 다른 접근: [[papers/2147_TeleGate_Whole-Body_Humanoid_Teleoperation_via_Gated_Expert/review]] — gated expert selection 대신 다단계 객체 인식을 통한 전신 양손 원격조종 접근법을 제시한다.

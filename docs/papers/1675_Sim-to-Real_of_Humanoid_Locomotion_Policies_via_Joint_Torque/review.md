@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 기존 domain randomization의 한계를 극복하기 위해 상태 의존적인 joint torque space perturbation을 주입하여 humanoid 로봇의 sim-to-real 전이를 개선하는 방법을 제안한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Compliant_Motion_Tracking"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cha et al._2025_Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection.pdf"
 ---
@@ -83,3 +84,15 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Cha et al._2025_Sim-to-Real of Humanoid 
 - Overall: 4/5
 
 **총평**: 본 논문은 domain randomization의 근본적 한계를 creative하게 해결하고 full-sized humanoid 로봇에서 실증적 검증을 통해 sim-to-real 전이 분야에 유의미한 기여를 한다. 다만 방법의 일반화 가능성과 실제 배포 시나리오에서의 추가 고려사항에 대한 더 깊은 분석이 있으면 완성도가 높아질 수 있다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — sim-to-real을 joint torque perturbation vs sampling-based parameter identification으로 다르게 접근합니다.
+- 🔗 후속 연구: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — 개선된 sim-to-real 전이가 복잡한 지형에서의 robust walking으로 적용됩니다.
+- 🔄 다른 접근: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — sim-to-real gap을 physics parameter identification vs joint torque perturbation으로 다르게 해결합니다.
+- 🏛 기반 연구: [[papers/1657_Robust_Humanoid_Walking_on_Compliant_and_Uneven_Terrain_with/review]] — domain randomization의 한계를 극복한 sim-to-real 방법이 복잡 지형 보행에 필수적입니다.
+- 🔄 다른 접근: [[papers/1877_DiffCoTune_Differentiable_Co-Tuning_for_Cross-domain_Robot_C/review]] — 조인트 토크 매칭을 통한 다른 시뮬레이션-현실 학습 방식을 제시합니다.
+- 🧪 응용 사례: [[papers/2048_Learning_Bipedal_Locomotion_on_Gear-Driven_Humanoid_Robot_Us/review]] — 발목 IMU 기반 프레임워크가 관절 토크를 통한 sim-to-real 학습에 실제 적용될 수 있다.
+- 🔄 다른 접근: [[papers/2107_MOSAIC_Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_M/review]] — Sim-to-real 전이에서 범용 동작 추적과 관절 토크 기반의 다른 접근법을 비교하여 각각의 장단점을 분석할 수 있다.
+- 🏛 기반 연구: [[papers/2155_Towards_bridging_the_gap_Systematic_sim-to-real_transfer_for/review]] — Sim-to-Real of Humanoid Locomotion의 관절 토크 기반 전이 기법이 PMSM 에너지 모델을 통한 체계적 전이의 기반 방법론을 제공합니다.
+- 🔗 후속 연구: [[papers/2151_Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Rob/review]] — joint torque 기반 sim-to-real 접근법에 MoE와 RoboGauge 평가를 통합하면 더 신뢰할 수 있는 전이 성능 예측 가능

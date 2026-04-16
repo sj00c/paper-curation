@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "HiMoE-VLA는 로봇 데이터의 이질성(action space, embodiment, sensor configuration 등)을 명시적으로 처리하기 위해 계층적 Mixture-of-Experts 아키텍처를 제안하는 Vision-Language-Action 프레임워크이다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Vision-Language-Action_Models"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Multimodal_Instruction_Following"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Du et al._2025_HiMoE-VLA Hierarchical Mixture-of-Experts for Generalist Vision-Language-Action Policies.pdf"
 ---
@@ -87,7 +88,9 @@ HiMoE-VLA는 로봇 데이터의 이질성(action space, embodiment, sensor conf
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — 둘 다 로봇 데이터 이질성을 해결하지만 HiMoE-VLA는 hierarchical MoE를, Efficient DTP는 mixture of experts를 사용한 다른 접근법입니다.
-- 🔗 후속 연구: [[papers/1624_VQ-VLA_Improving_Vision-Language-Action_Models_via_Scaling_V/review]] — VQ-VLA의 quantization 기법을 hierarchical MoE 구조와 결합하여 더 효율적인 cross-embodiment learning을 달성합니다.
-- 🏛 기반 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 대규모 VLA 훈련 방법론을 hierarchical MoE로 확장하여 더 복잡한 embodiment 처리가 가능합니다.
-- 🔄 다른 접근: [[papers/1358_DexVLA_Vision-Language_Model_with_Plug-In_Diffusion_Expert_f/review]] — Hierarchical mixture-of-experts 아키텍처를 VLA에 적용하여 DexVLA의 plug-in diffusion expert와 다른 접근으로 일반화를 달성한다.
+- 🏛 기반 연구: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — Mixture of Experts의 기본 개념을 로봇 데이터의 이질성 문제에 특화하여 계층적으로 확장한다.
+- 🔗 후속 연구: [[papers/1510_OpenVLA_An_Open-Source_Vision-Language-Action_Model/review]] — OpenVLA의 일반화 능력을 이질적 로봇 데이터 처리에 특화된 MoE 구조로 발전시킨다.
+- 🔄 다른 접근: [[papers/1562_Scaling_Cross-Embodied_Learning_One_Policy_for_Manipulation/review]] — Cross-embodied learning에서 단일 정책과 다르게 MoE로 다양한 embodiment를 명시적으로 처리한다.
+- 🔗 후속 연구: [[papers/1479_MoLe-VLA_Dynamic_Layer-skipping_Vision_Language_Action_Model/review]] — 계층적 구조를 VLA 모델의 dynamic layer-skipping으로 확장한 연구입니다.
+- 🔗 후속 연구: [[papers/1437_InternVLA-A1_Unifying_Understanding_Generation_and_Action_fo/review]] — hierarchical mixture-of-experts를 video action generation에 확장하여 더 복잡한 동적 조작 작업을 처리할 수 있다.
+- 🔄 다른 접근: [[papers/1375_Efficient_Diffusion_Transformer_Policies_with_Mixture_of_Exp/review]] — HiMoE-VLA의 hierarchical mixture-of-experts와 MoDE의 noise-conditioned MoE는 VLA 모델에서 전문가 혼합을 서로 다른 방식으로 적용한다.

@@ -12,7 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "SkillMimic은 skill-specific reward 설계 없이 통합된 HOI imitation reward를 사용하여 단일 policy로 다양한 농구 상호작용 기술을 학습하고 합성할 수 있는 data-driven 프레임워크다."
 tags:
-  - "cat/Other"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/Humanoid_Diffusion_Control"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wang et al._2024_SkillMimic Learning Basketball Interaction Skills from Demonstrations.pdf"
 ---
@@ -87,3 +90,15 @@ SkillMimic은 skill-specific reward 설계 없이 통합된 HOI imitation reward
 - Overall: 4/5
 
 **총평**: SkillMimic은 skill-specific reward 제거를 통해 상호작용 기술 학습의 실용성을 혁신적으로 개선했으며, contact graph와 통합 HOI reward 설계는 기술적으로 견고하고 농구 데이터셋 기여와 함께 이 분야의 significant advance를 이룬다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 두 논문 모두 휴머노이드-객체 상호작용을 다루지만, 농구 특화 기술과 일반적인 상호작용이라는 다른 특화 정도를 가진다.
+- 🔗 후속 연구: [[papers/2066_Learning_to_Ball_Composing_Policies_for_Long-Horizon_Basketb/review]] — 농구 스킬 학습의 기초 연구를 장기간 농구 정책 구성으로 확장한다.
+- 🔗 후속 연구: [[papers/2074_Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_R/review]] — 스포츠 기술 학습에서 농구와 축구라는 서로 다른 종목에 대한 휴머노이드 제어 접근법을 다룬다.
+- 🔄 다른 접근: [[papers/1650_Robot_Drummer_Learning_Rhythmic_Skills_for_Humanoid_Drumming/review]] — 농구 상호작용과 드럼 연주 모두 rhythmic skill이지만 대상 객체와의 접촉 방식이 다릅니다.
+- 🔄 다른 접근: [[papers/1676_SimGenHOI_Physically_Realistic_Whole-Body_Humanoid-Object_In/review]] — 두 논문 모두 휴머노이드-객체 상호작용을 다루지만, 일반적인 상호작용과 농구 특화 기술이라는 다른 특화 정도를 가진다.
+- 🏛 기반 연구: [[papers/1653_RobotDancing_Residual-Action_Reinforcement_Learning_Enables/review]] — 농구 skill learning의 기초가 되는 동적 동작 추적 및 모델-실제 간 불일치 보정 방법론입니다.
+- 🏛 기반 연구: [[papers/2047_Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Huma/review]] — 불완전한 시연 데이터로부터 스포츠 기술을 학습하는 기본 방법론 제공
+- 🏛 기반 연구: [[papers/2063_Learning_Soccer_Skills_for_Humanoid_Robots_A_Progressive_Per/review]] — 시연 기반 농구 상호작용 스킬 학습의 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/2066_Learning_to_Ball_Composing_Policies_for_Long-Horizon_Basketb/review]] — 농구 동작 학습을 위한 데모 기반 스킬 모방 방법론을 확장하여 장기 시퀀스 합성에 적용할 수 있다.

@@ -12,7 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "Humanoid robot navigation을 위해 고수준 RL 기반 동적 subgoal 생성기와 저수준 MPC 기반 보행 제어기를 결합한 계층적 프레임워크를 제안하며, data bootstrapping 기법으로 학습을 안정화한다."
 tags:
-  - "cat/Other"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Terrain_Foothold_Planning"
   - "topic/humanoid"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Peng et al._2025_Reinforcement Learning with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigat.pdf"
 ---
@@ -86,3 +87,9 @@ Humanoid robot navigation을 위해 고수준 RL 기반 동적 subgoal 생성기
 - Overall: 4/5
 
 **총평**: Bipedal robot navigation을 위한 RL과 MPC의 계층적 결합은 창의적이며, data bootstrapping을 통한 학습 안정화는 실질적 기여이나, 시뮬레이션 환경만의 검증과 동적 환경 미평가가 실제 적용까지의 간격을 남긴다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/2111_NoMaD_Goal_Masked_Diffusion_Policies_for_Navigation_and_Expl/review]] — Hierarchical navigation을 goal-masked diffusion으로 해결한 다른 접근법
+- 🔗 후속 연구: [[papers/1974_Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoi/review]] — Data bootstrapping을 vision-language planning과 결합한 확장 연구
+- 🔄 다른 접근: [[papers/1926_FastTD3_Simple_Fast_and_Capable_Reinforcement_Learning_for_H/review]] — 둘 다 강화학습의 효율성 개선을 다루지만 FastTD3는 TD3 최적화에, RL with Data Bootstrapping은 데이터 효율성에 초점을 맞춘다.

@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "FlowPolicy는 Consistency Flow Matching을 기반으로 3D point cloud 조건에서 로봇 조작 정책을 단일 추론 단계로 생성하는 프레임워크로, 속도를 7배 향상시키면서 경쟁력 있는 성능을 유지한다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/VLA_Architecture_Surveys"
+  - "cat/Embodied_AI_Architectures"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "sub/Vision-Language-Action_Architectures"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2024_FlowPolicy Enabling Fast and Robust 3D Flow-based Policy via Consistency Flow Matching for Robot Ma.pdf"
 ---
@@ -88,6 +90,8 @@ FlowPolicy는 Consistency Flow Matching을 기반으로 3D point cloud 조건에
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1391_Fast-in-Slow_A_Dual-System_Foundation_Model_Unifying_Fast_Ma/review]] — 단일 추론 단계 policy 생성과 dual-system 구조의 서로 다른 속도 최적화 접근법
-- 🏛 기반 연구: [[papers/1403_Gemini_Robotics_15_Pushing_the_Frontier_of_Generalist_Robots/review]] — consistency flow matching 기반 빠른 정책 생성이 Gemini Robotics의 실시간 제어 기반
-- 🔄 다른 접근: [[papers/1559_RVT_Robotic_View_Transformer_for_3D_Object_Manipulation/review]] — 3D 조작에서 multi-view transformer와 3D flow-based policy라는 서로 다른 3D 표현 학습 방법을 제시한다.
+- 🔄 다른 접근: [[papers/1502_One-Step_Diffusion_Policy_Fast_Visuomotor_Policies_via_Diffu/review]] — 둘 다 빠른 정책 추론을 목표로 하지만 Consistency Flow Matching vs One-Step Diffusion이라는 다른 가속화 기법을 사용한다.
+- 🏛 기반 연구: [[papers/1362_Diffusion_Policy_Visuomotor_Policy_Learning_via_Action_Diffu/review]] — Diffusion Policy의 기본 아키텍처를 Consistency Flow Matching으로 가속화한 개선 버전이다.
+- 🔗 후속 연구: [[papers/1580_Streaming_Flow_Policy_Simplifying_diffusionflow-matching_pol/review]] — flow-based policy의 실시간 실행을 위한 streaming 방식으로 FlowPolicy를 더욱 실용화했다.
+- 🏛 기반 연구: [[papers/1289_3D_FlowMatch_Actor_Unified_3D_Policy_for_Single-_and_Dual-Ar/review]] — 3D FlowMatch Actor의 3D flow-based policy 생성 기법이 FlowPolicy의 Consistency Flow Matching 설계의 기반을 제공합니다.
+- 🧪 응용 사례: [[papers/1567_SE3-Equivariant_Robot_Learning_and_Control_A_Tutorial_Survey/review]] — FlowPolicy는 SE(3) equivariance 원리를 3D flow 기반 정책에 실제로 적용한 구체적인 사례를 제공한다.

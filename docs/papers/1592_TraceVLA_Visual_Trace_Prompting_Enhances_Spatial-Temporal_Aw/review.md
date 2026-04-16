@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "Visual trace prompting 기법을 통해 VLA 모델의 spatial-temporal 인식을 향상시켜 로봇 조작 작업의 성능을 개선한 연구이다. 150K 로봇 조작 궤적 데이터셋을 수집하고 TraceVLA 모델을 개발하여 시뮬레이션과 실제 로봇 환경에서 우수한 성능을 입증했다."
 tags:
-  - "cat/Robotic_Foundation_Model_Development"
-  - "sub/Goal-Conditioned_Manipulation_Policies"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "cat/Embodied_Visual_Reasoning"
+  - "sub/Semantic_Task_Generalization"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zheng et al._2024_TraceVLA Visual Trace Prompting Enhances Spatial-Temporal Awareness for Generalist Robotic Policies.pdf"
 ---
@@ -92,6 +93,10 @@ Visual trace prompting 기법을 통해 VLA 모델의 spatial-temporal 인식을
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1555_RT-2_Vision-Language-Action_Models_Transfer_Web_Knowledge_to/review]] — RT-2의 vision-language-action 모델에 visual trace prompting을 추가하여 spatial-temporal 인식 능력을 향상시킨다.
-- 🏛 기반 연구: [[papers/1542_RoboMonkey_Scaling_Test-Time_Sampling_and_Verification_for_V/review]] — VLA 모델의 성능 향상 연구를 바탕으로 visual trace prompting이라는 구체적인 개선 방법을 제시한다.
-- 🔄 다른 접근: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — VLA 모델의 reasoning 능력 향상에서 visual chain-of-thought와 visual trace prompting이라는 서로 다른 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — visual trace prompting을 기반으로 tracking과 memory 능력을 추가하여 TraceVLA의 spatial-temporal 인식을 더욱 발전시켰습니다.
+- 🔄 다른 접근: [[papers/1344_CoT-VLA_Visual_Chain-of-Thought_Reasoning_for_Vision-Languag/review]] — 둘 다 VLA 모델의 추론 능력 향상을 목표로 하지만 CoT-VLA는 Chain-of-Thought에, TraceVLA는 visual trace에 집중합니다.
+- 🏛 기반 연구: [[papers/1574_SKT_Integrating_State-Aware_Keypoint_Trajectories_with_Visio/review]] — keypoint trajectory를 VLA와 통합하는 기본 개념을 제공하여 TraceVLA의 시공간 추적 메커니즘에 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1599_Unified_Vision-Language-Action_Model/review]] — 둘 다 VLA 모델의 spatial-temporal 처리를 개선하지만, TraceVLA는 visual trace를, UniVLA는 통합된 토큰화를 사용한다.
+- 🔗 후속 연구: [[papers/1470_MapNav_A_Novel_Memory_Representation_via_Annotated_Semantic/review]] — MapNav의 구조화된 맵 표현이 TraceVLA의 visual trace prompting에서 공간적 추적 정보를 더 효과적으로 활용할 수 있게 합니다.
+- 🏛 기반 연구: [[papers/1474_MEM_Multi-Scale_Embodied_Memory_for_Vision_Language_Action_M/review]] — MEM의 시공간 메모리 개념이 TraceVLA의 시공간 인식 향상 방법론과 유사한 이론적 기반을 공유한다.
+- 🔄 다른 접근: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — VLA에서 추적과 메모리를 위한 서로 다른 접근법 - target identification vs visual trace prompting입니다.

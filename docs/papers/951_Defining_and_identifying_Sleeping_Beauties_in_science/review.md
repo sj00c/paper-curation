@@ -12,7 +12,8 @@ score: 4.0
 essence: "과학 논문 중 발표 후 수십 년간 인용되지 않다가 갑자기 높은 인용도를 보이는 '잠자는 미녀(Sleeping Beauty)' 현상을 정량화하는 매개변수 무관(parameter-free) 지표를 제시하고, 2천2백만 개 논문 분석으로 이 현상이 예외가 아닌 보편적 현상임을 규명했다."
 tags:
   - "cat/Academic_Impact_and_Mobility"
-  - "sub/Scholarly_Impact_Metrics"
+  - "cat/Science_Policy_and_Research_Dynamics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ke et al._2015_Defining and identifying Sleeping Beauties in science.pdf"
 ---
@@ -83,8 +84,11 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ke et al._2015_Defining and identifying 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기적 과학적 영향력을 측정하는 서로 다른 접근법을 제시하여 상호 보완적 관점을 제공한다.
-- ⚖️ 반론/비판: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 사후적 발견(Sleeping Beauty)과 사전적 예측(breakthrough prediction)이라는 정반대 접근 방식을 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 과학의 파괴적 혁신성 감소 현상에 대한 견고한 증거를 통해 잠자는 미녀 현상의 맥락을 이해할 수 있다.
-- 🧪 응용 사례: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기 인용 영향력 예측 방법론을 늦게 인정받는 'Sleeping Beauty' 논문들의 발견과 식별에 적용할 수 있습니다.
-- ⚖️ 반론/비판: [[papers/998_Predicting_Scientific_Breakthroughs_Based_on_Structural_Dyna/review]] — 과학적 돌파구의 사전 예측과 잠자는 미녀의 사후 발견이라는 정반대 시간적 접근 방식을 비교할 수 있다.
+- 🏛 기반 연구: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 장기적 과학적 영향력 정량화 방법론이 잠자는 미녀 현상의 늦은 인용 급증을 설명하는 기반이 됩니다.
+- ⚖️ 반론/비판: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 참신한 논문이 더 많은 사회적 관심을 끈다는 관점과 잠자는 미녀의 늦은 인식을 대조적으로 비교합니다.
+- 🔗 후속 연구: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 개별 논문의 지연된 인용을 연구 경력의 핫스트릭 현상으로 확장한 분석이다
+- 🏛 기반 연구: [[papers/1004_Quantifying_spatialtemporal_citation_diffusion_of_individual/review]] — 인용의 시공간적 확산 분석이 잠자는 미녀 현상 이해의 이론적 토대를 제공한다
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 과학의 파괴성 감소 경향이 잠자는 미녀 현상의 보편성과 상반되는 시각을 제공하여 혁신 패턴의 복잡성을 드러낸다.
+- 🧪 응용 사례: [[papers/1003_Quantifying_Long-term_Scientific_Impact/review]] — 잠자는 미인(Sleeping Beauty) 논문의 식별은 장기 과학적 영향력 예측 모델에서 지연된 인정을 받는 연구의 특성을 이해하는 데 중요합니다.
+- 🔄 다른 접근: [[papers/971_Hot_streaks_in_artistic_cultural_and_scientific_careers/review]] — 예술과 과학 경력의 핫스트릭 현상이 잠자는 미녀 논문과 함께 시간적 지연 후 급격한 성과 향상이라는 유사한 패턴을 보여준다.
+- 🧪 응용 사례: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 그래핀 연구 분야에서 뒤늦게 주목받은 중요 연구들을 슬리핑 뷰티 개념으로 식별하고 분석할 수 있다.

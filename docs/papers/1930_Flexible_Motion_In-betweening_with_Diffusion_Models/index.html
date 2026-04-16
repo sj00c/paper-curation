@@ -68,50 +68,51 @@ a { color: #A62018; }
 <div class="essence-box"><h2>Essence</h2>
 <div class="review-fig"><img src="figures/fig1.webp" alt="Figure 1">
 <p class="fig-caption"><em>Figure 1: Flexible motion in-betweening given a text prompt and spatio-temporally sparse keyframes. From left to right: </em></p></div>
-<p>본 논문은 diffusion model 기반의 CondMDI(Conditional Motion Diffusion In-betweening)를 제안하여 텍스트 조건과 유연한 keyframe 제약 조건 하에서 고품질의 다양한 인간 모션을 생성하는 unified 모델을 제시한다.</p></div>
+<p>CondMDI는 diffusion model 기반의 통합된 모션 인-비트위닝 방법으로, 텍스트 조건과 함께 유연한 keyframe 제약을 받아 다양하고 정밀한 인간 모션을 생성한다.</p></div>
 <div class="section-box"><h2>Motivation</h2>
 <ul>
-<li><strong>Known</strong>: Motion in-betweening은 character animation의 핵심 작업이며, RNN 기반 방법들은 장기 의존성 모델링에 어려움을 겪었고, 최근 transformer 기반과 diffusion 기반 방법들이 진전을 이루고 있다.</li>
-<li><strong>Gap</strong>: 기존 diffusion 기반 방법들(MDM, PriorMDM)은 sparse-in-time keyframe이나 partial pose 제약을 유연하게 처리하지 못하며, 고정된 keyframe 패턴에 제한된다.</li>
-<li><strong>Why</strong>: Motion in-betweening의 자동화는 애니메이션 제작의 labor-intensive한 과정을 크게 줄일 수 있으며, 유연한 제약 조건 처리 능력은 실제 애니메이션 워크플로우에서 매우 중요하다.</li>
-<li><strong>Approach</strong>: Masked conditional diffusion 모델을 사용하여 임의의 dense 또는 sparse keyframe 배치와 partial keyframe 제약을 지원하도록 학습하며, 마스크를 통해 관찰된 keyframe과 feature를 표시한다.</li>
+<li><strong>Known</strong>: RNN과 Transformer 기반 방법들이 motion in-betweening을 위해 제안되었으나, 고정된 keyframe 패턴으로 제한되거나 diffusion model 기반 방법들도 전체 관절 궤적 지정 시 foot sliding 등의 부자연스러운 움직임을 보인다.</li>
+<li><strong>Gap</strong>: 기존 diffusion 기반 방법들은 sparse temporal keyframe이나 부분적 pose 지정을 동시에 지원하거나, 다양한 keyframe 배치 패턴과 텍스트 조건을 유연하게 처리하는 통합 모델이 없다.</li>
+<li><strong>Why</strong>: Motion in-betweening은 character animation에서 노동집약적인 핵심 작업이며, 유연한 제약 조건 처리와 다양성이 동시에 요구되는 실무 친화적 솔루션이 필요하다.</li>
+<li><strong>Approach</strong>: 마스크된 조건부 diffusion model을 사용하여 무작위로 샘플링된 keyframe과 관절, 그리고 관찰된 keyframe과 특성을 나타내는 마스크로 학습함으로써 다양한 motion in-betweening 시나리오를 수용한다.</li>
 </ul></div>
 <div class="section-box"><h2>Achievement</h2>
-<div class="review-fig"><img src="figures/fig3.webp" alt="Figure 3">
-<p class="fig-caption"><em>Figure 3: Our model is capable of generating high-quality</em></p></div>
+<div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
+<p class="fig-caption"><em>Figure 2: Conditional Motion Diffusion In-betweening (CondMDI) overview. The model is fed a noisy motion sequence x𝑡,</em></p></div>
 <ul>
-<li><strong>유연한 keyframe 처리</strong>: arbitrary dense-or-sparse keyframe 배치와 partial pose 제약을 동시에 지원하는 unified 모델 달성</li>
-<li><strong>텍스트 조건 통합</strong>: text prompt와 spatial constraint를 함께 처리하여 조건부 모션 생성 가능</li>
-<li><strong>높은 품질과 다양성</strong>: HumanML3D 데이터셋에서 keyframe을 준수하면서도 고품질의 다양한 모션 생성 입증</li>
-<li><strong>빠른 추론 속도</strong>: 대안 diffusion 기반 방법들에 비해 빠른 inference time 제공</li>
+<li><strong>유연한 제약 처리</strong>: 임의의 밀집 또는 희소 keyframe 배치, 부분적 keyframe 제약, 텍스트 조건을 통합 모델에서 지원</li>
+<li><strong>높은 품질 생성</strong>: HumanML3D 데이터셋에서 keyframe 제약을 만족하면서도 자연스럽고 다양한 모션 생성</li>
+<li><strong>빠른 추론 속도</strong>: 다른 diffusion 기반 방법 대비 향상된 추론 효율성</li>
+<li><strong>포괄적 비교</strong>: imputation과 reconstruction guidance 등 대체 방법론 대비 성능 평가</li>
 </ul></div>
 <div class="section-box"><h2>How</h2>
 <div class="review-fig"><img src="figures/fig2.webp" alt="Figure 2">
 <p class="fig-caption"><em>Figure 2: Conditional Motion Diffusion In-betweening (CondMDI) overview. The model is fed a noisy motion sequence x𝑡,</em></p></div>
 <ul>
-<li>Randomly sampled keyframe과 randomly sampled joint를 mask와 함께 학습하여 모든 가능한 in-betweening 시나리오의 공간에서 샘플링</li>
-<li>Masked conditional diffusion 아키텍처를 통해 관찰된 위치(keyframe)와 미관찰 위치를 명시적으로 구분</li>
-<li>Text conditioning과 spatial constraint를 diffusion 프로세스에 동시에 통합</li>
-<li>Guidance와 imputation-based 접근법과 비교하여 inference-time keyframing 성능 평가</li>
-<li>Root trajectory만의 제약이나 partial joint specification 등 다양한 제약 시나리오 지원</li>
+<li>마스크 기반 조건부 diffusion model 아키텍처로 sparse temporal keyframe과 partial pose를 동시에 처리</li>
+<li>학습 시 모든 가능한 motion in-betweening 시나리오의 공간에서 sampling하여 유연성 확보</li>
+<li>Text conditioning을 HumanML3D의 text annotation과 함께 통합</li>
+<li>Inference time에 guidance와 imputation 기반 접근법 비교 평가</li>
+<li>Root trajectory 지정 가능하도록 global 제약 조건 지원</li>
 </ul></div>
 <div class="section-box"><h2>Originality</h2>
 <ul>
-<li>기존 diffusion 기반 방법들의 limitation을 명시적으로 분석하고 masked conditioning을 통해 체계적으로 해결한 점</li>
-<li>Random sampling 기반 학습으로 arbitrary keyframe 패턴에 대한 일반화 능력을 확보한 점</li>
-<li>Text prompt와 spatial constraint의 유연한 조합을 unified 모델에서 구현한 점</li>
-<li>Inference-time 유연성을 강조하면서도 고품질 생성을 달성한 설계 철학</li>
+<li>기존 방법과 달리 고정된 keyframe 패턴이 아닌 임의의 dense-or-sparse 배치를 통합 모델에서 지원</li>
+<li>Partial keyframe (부분 관절만 지정)을 text conditioning과 함께 처리하는 유일한 방법</li>
+<li>Masked diffusion 프레임워크를 motion in-betweening에 적용하여 inference-time 유연성 극대화</li>
+<li>Global spatial constraint와 sparse temporal keyframe을 동시에 처리하는 새로운 솔루션</li>
 </ul></div>
 <div class="section-box"><h2>Limitation &amp; Further Study</h2>
 <ul>
-<li>평가가 주로 HumanML3D 데이터셋에 집중되어 다른 모션 도메인으로의 일반화 검증 부족</li>
-<li>Foot sliding이나 physical plausibility 같은 특정 artifacts에 대한 명시적 처리 방법 미제시</li>
-<li>Keyframe 제약 만족도와 모션 다양성 간의 trade-off에 대한 정량적 분석 제한</li>
-<li>후속 연구: 더 다양한 모션 도메인 검증, 물리 제약 기반 diffusion guidance 개발, interactive editing을 위한 real-time inference 최적화 필요</li>
+<li>평가가 HumanML3D 데이터셋에만 국한되어 있으며, 다른 motion capture 데이터셋에서의 일반화 가능성 검증 부족</li>
+<li>Keyframe 정확도와 motion diversity 간의 trade-off 분석이 제한적</li>
+<li>실제 animation studio 워크플로우에서의 사용성 평가 및 user study 결여</li>
+<li>복잡한 multi-person interaction이나 물체 상호작용이 포함된 시나리오에 대한 확장성 미검증</li>
+<li>Guidance 방법의 computational cost와 성능 개선 정도에 대한 상세 분석 필요</li>
 </ul></div>
 <div class="section-box"><h2>Evaluation</h2>
-<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 3/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
-<p><strong>총평</strong>: 본 논문은 masked conditional diffusion을 통해 motion in-betweening의 장기적 제약인 flexible keyframe 처리를 우아하게 해결한 실용적이고 창의적인 방법을 제시하며, 애니메이션 제작의 자동화에 상당한 기여를 한다.</p></div>
+<div class="eval-badges"><span class="eval-badge">Novelty: 4/5</span> <span class="eval-badge">Technical Soundness: 4/5</span> <span class="eval-badge">Significance: 4/5</span> <span class="eval-badge">Clarity: 4/5</span> <span class="eval-badge">Overall: 4/5</span></div>
+<p><strong>총평</strong>: CondMDI는 masked conditional diffusion model을 통해 motion in-betweening의 오랜 한계를 효과적으로 해결하며, 유연한 제약 처리와 텍스트 조건의 통합으로 실무적 가치가 높고 기술적으로도 우수한 기여를 제시한다.</p></div>
 <div class="back"><a href="../../ai4s/index.html">&larr; 목록으로 돌아가기</a></div>
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
 <script>

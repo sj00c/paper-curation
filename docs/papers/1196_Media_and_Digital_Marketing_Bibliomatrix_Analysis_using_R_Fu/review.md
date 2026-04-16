@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 2020-2025년 Scopus 데이터베이스의 544개 학술논문을 대상으로 bibliometric analysis를 활용하여 소셜미디어와 디지털마케팅 연구의 발전 추세, 저자 생산성, 국가별 기여도, 인용분석, 연구주제 매핑을 체계적으로 분석한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wening et al._2026_Media and Digital Marketing Bibliomatrix Analysis using R (Future Research Directions).pdf"
 ---
@@ -92,7 +93,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Wening et al._2026_Media and Digital Mar
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — 소셜미디어-디지털마케팅과 e-commerce 문헌 분석 모두 디지털 경제의 서로 다른 측면을 bibliometric으로 접근한다.
-- 🏛 기반 연구: [[papers/937_Authorship_titles_and_open_access_as_drivers_of_citation_per/review]] — 디지털마케팅 연구의 인용 분석에서 저자명과 제목이 인용 성과에 미치는 영향을 이해해야 한다.
-- 🔄 다른 접근: [[papers/1144_Bibliometric_analysis_of_publications_titled_culinary_arts_s/review]] — 둘 다 특정 분야의 bibliometric 분석이지만 1144는 요리 예술, 1196은 디지털 마케팅을 다룬다.
-- 🔄 다른 접근: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — 둘 다 디지털 기술과 비즈니스의 연결을 bibliometric 방법으로 분석하지만 서로 다른 기술 영역에 초점을 맞춘다.
+- 🧪 응용 사례: [[papers/1006_Real-World_Evidence_in_the_First_Round_of_the_US_Inflation_R/review]] — 실제 비즈니스 환경에서 디지털 마케팅 연구 성과의 증거 기반 평가 사례를 제시합니다.
+- 🔄 다른 접근: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 디지털 기술 동향을 서로 다른 관점(마케팅 vs 사이버보안)에서 bibliometric 분석으로 접근합니다.
+- 🔄 다른 접근: [[papers/1177_From_Clicks_to_Cradles_Mapping_the_Digital_Landscape_of_Mate/review]] — 디지털 마케팅과 온라인 양육 자원 모두 디지털 플랫폼에서의 사용자 참여와 상호작용 패턴을 bibliometric으로 분석하는 공통된 연구 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/954_Do_novel_papers_attract_more_social_attention/review]] — 소셜미디어 마케팅의 사회적 관심도 분석에 novel papers의 사회적 주목도 측정 방법론을 적용하여 더 정확한 영향력 평가가 가능하다.
+- 🔄 다른 접근: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — 디지털마케팅과 e-commerce의 bibliometric 분석을 서로 다른 R 패키지로 수행한 연구입니다.
+- 🏛 기반 연구: [[papers/1015_S2ORC_The_Semantic_Scholar_Open_Research_Corpus/review]] — 대규모 학술 연구 코퍼스가 소셜미디어 마케팅 연구 분석의 데이터 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1144_Bibliometric_analysis_of_publications_titled_culinary_arts_s/review]] — 미디어와 디지털 마케팅 분야와 요리 예술 분야 모두 실용적 응용 분야의 bibliometric 분석을 수행했기 때문
+- 🔗 후속 연구: [[papers/1177_From_Clicks_to_Cradles_Mapping_the_Digital_Landscape_of_Mate/review]] — 어머니의 온라인 양육 자원과 디지털 마케팅을 연계하여 모성과 디지털 미디어의 종합적 분석을 제공한다.
+- 🔄 다른 접근: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — e-commerce 문헌 분석과 디지털마케팅 연구가 상호 보완적인 bibliometric 접근을 보여줍니다.
+- 🔄 다른 접근: [[papers/1215_Total_Fertility_Rate_Studies_Bibliometric_Analysis_with_R_Pr/review]] — 출산율 연구와 디지털마케팅 연구 모두 R Bibliometrix 패키지를 활용한 분석 방법론을 공유합니다.
+- 🔗 후속 연구: [[papers/1135_AI-Augmented_Mobile_and_Data-Driven_Decision_Making_in_Busin/review]] — 디지털 마케팅에서 모바일 AI 의사결정 시스템으로 연구 범위를 확장한다

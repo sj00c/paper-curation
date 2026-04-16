@@ -12,8 +12,8 @@ arxiv: ""
 score: 4.0
 essence: "OpenFly는 항공 Vision-Language Navigation을 위한 종합 플랫폼으로, 4개 렌더링 엔진, 자동화된 데이터 생성 툴체인, 100k 궤적의 대규모 데이터셋, 그리고 keyframe-aware VLN 모델을 제공한다."
 tags:
-  - "cat/Motion_Generation_and_Simulation"
-  - "sub/GPU-Accelerated_Physics_Simulation"
+  - "cat/Robotic_Manipulation_and_Simulation"
+  - "sub/GPU-Accelerated_Robot_Simulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Gao et al._2025_Openfly A comprehensive platform for aerial vision-language navigation.pdf"
 ---
@@ -91,7 +91,8 @@ OpenFly는 항공 Vision-Language Navigation을 위한 종합 플랫폼으로, 4
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1577_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 둘 다 대규모 시뮬레이션 환경을 제공하지만 1508은 항공 VLN에, 1577은 실내 로봇 네비게이션에 특화됨
-- 🏛 기반 연구: [[papers/1469_ManiSkill3_GPU_Parallelized_Robotics_Simulation_and_Renderin/review]] — ManiSkill3의 GPU 병렬화 시뮬레이션 기술이 항공 VLN 플랫폼의 기반 기술을 제공함
-- 🧪 응용 사례: [[papers/1442_Heracles_Bridging_Precise_Tracking_and_Generative_Synthesis/review]] — 항공 vision-language navigation이 keyframe-aware 모델과 결합하여 실제 적용 사례를 보여줌
-- 🔄 다른 접근: [[papers/1577_MolmoSpaces_A_Large-Scale_Open_Ecosystem_for_Robot_Navigatio/review]] — 둘 다 대규모 시뮬레이션 생태계를 제공하지만 1577은 실내 로봇 네비게이션에, 1508은 항공 VLN에 특화됨
+- 🔄 다른 접근: [[papers/1443_L3MVN_Leveraging_Large_Language_Models_for_Visual_Target_Nav/review]] — OpenFly와 L3MVN 모두 항공 네비게이션을 다루지만 VLN과 시각적 타겟 네비게이션이라는 다른 접근법을 사용합니다.
+- 🔗 후속 연구: [[papers/1489_NaVid_Video-based_VLM_Plans_the_Next_Step_for_Vision-and-Lan/review]] — 항공 VLN 플랫폼은 NaVid의 비디오 기반 VLM 계획과 결합하여 더 정교한 항공 네비게이션을 구현할 수 있습니다.
+- 🏛 기반 연구: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — 항공 비전-언어 네비게이션의 기반 기술은 CityNavAgent의 계층적 항공 네비게이션에도 적용됩니다.
+- 🔄 다른 접근: [[papers/1420_Habitat_20_Training_Home_Assistants_to_Rearrange_their_Habit/review]] — Openfly의 aerial 환경과 다르게 가정 내 지상 로봇의 물체 조작에 특화된 시뮬레이션 플랫폼을 제공한다.
+- 🧪 응용 사례: [[papers/1329_CityNavAgent_Aerial_Vision-and-Language_Navigation_with_Hier/review]] — aerial VLN의 도시 환경 네비게이션 개념을 포괄적인 aerial vision-language 플랫폼으로 확장 적용

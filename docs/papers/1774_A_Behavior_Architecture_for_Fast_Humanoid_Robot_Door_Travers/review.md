@@ -1,3 +1,24 @@
+---
+title: "1774_A_Behavior_Architecture_for_Fast_Humanoid_Robot_Door_Travers"
+authors:
+  - "Duncan Calvert"
+  - "Luigi Penco"
+  - "Dexton Anderson"
+  - "Tomasz Bialek"
+  - "Arghya Chatterjee"
+date: "2024.11"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "휴머노이드 로봇의 다양한 도어 통과 작업을 수행하기 위해 GPU 가속 인식, Behavior Tree 기반 행동 조정 시스템, 전신 제어기를 통합한 아키텍처를 제시한다. 실제 Nadia 휴머노이드 로봇에서 빠른 도어 통과 성능을 달성했다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Humanoid_Exercise_Learning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Calvert et al._2024_A Behavior Architecture for Fast Humanoid Robot Door Traversals.pdf"
+---
+
 # A Behavior Architecture for Fast Humanoid Robot Door Traversals
 
 > **저자**: Duncan Calvert, Luigi Penco, Dexton Anderson, Tomasz Bialek, Arghya Chatterjee, Bhavyansh Mishra, Geoffrey Clark, Sylvain Bertrand, Robert Griffin | **날짜**: 2024-11-05 | **URL**: [https://arxiv.org/abs/2411.03532](https://arxiv.org/abs/2411.03532)
@@ -68,3 +89,19 @@
 - Overall: 4/5
 
 **총평**: 이족 휴머노이드의 도어 통과라는 미개발 영역을 처음 체계적으로 다루고, 실제 로봇에서 동작하는 통합 시스템을 구현한 의미 있는 연구이다. 행동 저작의 속도와 재사용성 향상, 다층적 시스템 설계 관점에서 독창성과 실용성이 우수하나, 단일 플랫폼 검증과 일반화 가능성에 대한 보완이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — Behavior Tree 기반 행동 조정 시스템이 실시간 캐릭터 제어를 위한 diffusion model의 조건부 생성 구조에 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1710_The_invariant_extended_Kalman_filter_as_a_stable_observer/review]] — 복잡한 도어 통과 행동에서 IEKF의 안정적인 상태 추정이 GPU 가속 인식과 전신 제어의 신뢰성을 보장한다.
+- 🔗 후속 연구: [[papers/1845_Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/review]] — 실내 장애물 환경에서의 충돌 없는 이동 기술을 도어 통과라는 구체적 작업에 적용한 확장 연구입니다.
+- 🧪 응용 사례: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 도어 통과 작업에서 360도 시각 탐색을 통한 환경 인식이 GPU 가속 인식 시스템을 보완할 수 있습니다.
+- 🏛 기반 연구: [[papers/2032_JAEGER_Dual-Level_Humanoid_Whole-Body_Controller/review]] — 이중 레벨 전신 제어기 아키텍처가 빠른 도어 통과를 위한 행동 조정 시스템의 기반 기술을 제공합니다.
+- 🏛 기반 연구: [[papers/1692_StageACT_Stage-Conditioned_Imitation_for_Robust_Humanoid_Doo/review]] — 휴머노이드 로봇 도어 통과를 위한 빠른 행동 아키텍처의 기초를 제공한다.
+- 🧪 응용 사례: [[papers/1701_Taming_Diffusion_Probabilistic_Models_for_Character_Control/review]] — Transformer 기반 diffusion model이 도어 통과와 같은 복잡한 행동 시퀀스의 실시간 애니메이션 생성에 직접 적용될 수 있다.
+- 🏛 기반 연구: [[papers/1710_The_invariant_extended_Kalman_filter_as_a_stable_observer/review]] — IEKF의 비선형 관찰자 이론이 도어 통과와 같은 복잡한 행동에서 상태 추정의 안정성을 보장하는 기반을 제공한다.
+- 🔗 후속 연구: [[papers/1711_The_MIT_Humanoid_Robot_Design_Motion_Planning_and_Control_Fo/review]] — 백플립과 같은 acrobatic motion planning 기법이 도어 통과의 동적 행동 계획에 확장 적용될 수 있다.
+- 🧪 응용 사례: [[papers/1713_Thinking_in_360_Humanoid_Visual_Search_in_the_Wild/review]] — 도어 통과와 같은 구체적 작업에서 360도 시각 탐색이 필요한 환경 인식 능력을 제공합니다.
+- 🔗 후속 연구: [[papers/2049_Learning_Differentiable_Reachability_Maps_for_Optimization-b/review]] — 휴머노이드 운동 계획을 실제 환경 상호작용으로 확장한 발전된 접근
+- 🔄 다른 접근: [[papers/2170_Unified_Human-Scene_Interaction_via_Prompted_Chain-of-Contac/review]] — 통합 인간-장면 상호작용과 빠른 문 통과를 위한 행동 아키텍처는 모두 환경과의 상호작용을 다루지만 서로 다른 복잡도를 가진다.
+- 🧪 응용 사례: [[papers/2125_Opening_the_Sim-to-Real_Door_for_Humanoid_Pixel-to-Action_Po/review]] — 문 열기 특화 정책을 실제 빠른 문 통과 행동 아키텍처에 적용할 수 있는 구체적 사례이다.

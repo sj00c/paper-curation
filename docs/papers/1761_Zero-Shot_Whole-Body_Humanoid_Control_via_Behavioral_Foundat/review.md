@@ -1,3 +1,25 @@
+---
+title: "1761_Zero-Shot_Whole-Body_Humanoid_Control_via_Behavioral_Foundat"
+authors:
+  - "Andrea Tirinzoni"
+  - "Ahmed Touati"
+  - "Jesse Farebrother"
+  - "Mateusz Guzek"
+  - "Anssi Kanervisto"
+date: "2025.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Forward-Backward representations with Conditional-Policy Regularization (FB-CPR)을 통해 unlabeled behavior dataset으로 unsupervised RL을 정규화하여, humanoid agent의 zero-shot whole-body control을 가능하게 하는 behavioral foundation model Meta Motivo를 개발했다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Egocentric_Manipulation_Imitation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Tirinzoni et al._2025_Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models.pdf"
+---
+
 # Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models
 
 > **저자**: Andrea Tirinzoni, Ahmed Touati, Jesse Farebrother, Mateusz Guzek, Anssi Kanervisto, Yingchen Xu, Alessandro Lazaric, Matteo Pirotta | **날짜**: 2025-04-15 | **URL**: [https://arxiv.org/abs/2504.11054](https://arxiv.org/abs/2504.11054)
@@ -10,26 +32,26 @@
 
 *Figure 1 META MOTIVO is the first behavioral foundation model for humanoid agents that can solve whole-body control task*
 
-FB-CPR (Forward-Backward Representations with Conditional-Policy Regularization) 알고리즘을 통해 관찰-전용 모션캡처 데이터로 정규화된 unsupervised RL을 수행하여, 제로샷으로 모션추적, 목표도달, 보상최적화 등 다양한 전신 휴머노이드 제어 작업을 수행 가능한 첫 번째 behavioral foundation model인 Meta Motivo를 개발했다.
+Forward-Backward representations with Conditional-Policy Regularization (FB-CPR)을 통해 unlabeled behavior dataset으로 unsupervised RL을 정규화하여, humanoid agent의 zero-shot whole-body control을 가능하게 하는 behavioral foundation model Meta Motivo를 개발했다.
 
 ## Motivation
 
-- **Known**: Foundation model은 대규모 unlabeled 데이터로 사전학습되어 다양한 downstream task를 프롬프트 기반으로 해결할 수 있다. 기존 unsupervised RL과 sequence model 기반 접근법은 복잡한 환경에서 또는 작업 범용성에서 제약이 있다.
-- **Gap**: Zero-shot RL은 unsupervised 손실과 downstream task 간 상관성이 낮아 고차원 불안정 시스템에서 성능이 떨어지고, imitation 기반 방법은 dataset에 국한된 행동만 재현할 수 있으며, regularized policy 접근은 여전히 downstream task별 학습이 필요하다.
-- **Why**: 휴머노이드 전신 제어는 높은 차원성과 고유한 불안정성으로 인해 오래되고 도전적인 문제이며, 범용적 행동 기초 모델을 확보하면 로봇공학, 가상 아바타, NPC 생성 등에 혁신적 가치를 제공할 수 있다.
-- **Approach**: Forward-backward representation의 latent space에 unlabeled trajectory를 임베딩하고, latent-conditional discriminator를 통해 정책이 dataset의 상태를 커버하도록 유도하는 동시에 zero-shot 일반화 능력을 유지하도록 설계했다.
+- **Known**: Unsupervised RL과 behavior cloning 기반 접근법들은 각각의 장단점이 있으며, 최근 demonstration을 활용한 정규화 방법들이 등장했다. Foundation model의 개념은 언어와 vision 영역에서 성공적이다.
+- **Gap**: 기존 zero-shot RL은 고차원 불안정 제어(humanoid)에서 unsupervised exploration의 한계로 성능이 떨어지며, behavior cloning은 dataset의 behavior 외 generalization이 제한적이다. 두 접근법의 장점을 결합한 방법이 부재하다.
+- **Why**: Humanoid control은 로보틱스, 가상 캐릭터, NPC 등 광범위한 응용분야가 있으며, 일반화된 behavioral foundation model은 task-specific 학습의 필요성을 제거하여 실무적 가치가 크다.
+- **Approach**: FB representation으로 unlabeled trajectory를 state-reward-policy 잠재공간에 embedding하고, latent-conditional discriminator로 dataset 상태 분포를 cover하도록 정책을 장려하여, imitation 정규화와 zero-shot 일반화를 동시에 달성한다.
 
 ## Achievement
 
-![Figure 1](figures/fig1.webp)
+![Figure 3](figures/fig3.webp)
 
-*Figure 1 META MOTIVO is the first behavioral foundation model for humanoid agents that can solve whole-body control task*
+*Figure 3 Human-evaluation. Left figure reports the percentage of times a behavior solved a reward-based (blue) or a goal*
 
-- **FB-CPR 알고리즘 제안**: Forward-backward representation과 conditional policy regularization을 결합하여 unlabeled behavior dataset으로부터 학습하면서 zero-shot 일반화를 보존하는 novel unsupervised RL 방법 개발
-- **Meta Motivo 구현**: AMASS 모션캡처 데이터로 학습된 SMPL 기반 휴머노이드 behavioral foundation model이 motion tracking, goal reaching, reward optimization을 제로샷으로 해결 가능
-- **경쟁력 있는 성능**: task-specific 방법과 비교 가능한 성능을 달성하면서 state-of-the-art unsupervised RL 및 model-based baseline을 능가
-- **인간다운 행동**: 학습된 모델이 human-like behavior를 표현하고 SMPL skeleton의 자연스러운 동역학을 활용
-- **재현성 보장**: 환경, 코드, 사전학습 모델을 공개하여 재현성 및 후속 연구 지원
+- **FB-CPR 알고리즘**: Forward-Backward representation을 unlabeled behavior dataset으로 정규화하는 online unsupervised RL 알고리즘 제안
+- **Meta Motivo 모델**: SMPL 기반 humanoid의 최초 behavioral foundation model로 motion tracking, goal reaching, reward optimization을 zero-shot으로 수행
+- **경쟁력 있는 성능**: Task-specific 방법과 유사한 수준의 성능을 달성하면서 unsupervised RL 및 model-based baseline 초과
+- **Human-like behavior 표현**: AMASS dataset을 활용하여 인간다운 동작을 학습하고 표현
+- **재현성 보장**: 환경, 코드, 사전학습 모델 공개
 
 ## How
 
@@ -37,30 +59,26 @@ FB-CPR (Forward-Backward Representations with Conditional-Policy Regularization)
 
 *Figure 2 Illustration of the main components of FB-CPR: the discriminator is trained to estimate the ratio between the l*
 
-- Successor measure M^π(X|s,a)를 저랭크 분해로 근사하는 Forward-Backward representation 활용: M^π(X|s,a) ≈ ∫_{s'∈X} F^π(s,a)^T B(s') ρ(ds')", 'Forward F와 backward B embedding을 temporal difference loss L_FB로 학습하여 Bellman residual 최소화
-- Task encoding vector z를 통해 정책 π_z와 forward/backward embedding을 jointly 파라미터화
-- Latent-conditional discriminator를 도입하여 policy가 unlabeled dataset의 상태 분포를 커버하도록 강제 정규화
-- AMASS 모션캡처 데이터의 trajectory를 동일한 latent space에 임베딩하여 행동 기반 정보 활용
-- Actor network를 통해 continuous action space에서 arg max를 근사: L_actor(π) = -E[F(s,a,z)^T z]
-- SMPL skeleton 기반 휴머노이드에 대해 proprioceptive observation만으로 전신 제어 학습
-- Zero-shot inference: 임의의 reward 함수 r에 대해 Q^π_r(s,a) = F(s,a,z)^T z로 정책 평가 및 최적화
+- Successor measure의 low-rank decomposition인 FB representation 활용하여 reward-policy factorization 구현
+- Latent-conditional discriminator를 통해 학습된 정책이 unlabeled dataset의 상태 분포를 'cover'하도록 장려", 'Forward embedding F(s,a,z)와 backward embedding B(s)를 동일한 잠재공간에 매핑하여 trajectory embedding
+- Measure-valued Bellman equation (식 2)의 temporal difference 손실함수로 FB 학습
+- Actor network을 통해 연속 action space에서 arg max 근사
+- AMASS 모션캡처 데이터셋을 observation-only unlabeled behavior로 활용하여 정규화
 
 ## Originality
 
-- **Unlabeled behavior dataset 활용의 혁신**: Observation-only 모션캡처 데이터를 unsupervised RL에 직접 통합하기 위해 forward-backward representation을 활용한 최초의 접근
-- **Latent-conditional discriminator 설계**: 정책이 dataset 상태를 커버하도록 하면서도 zero-shot 일반화를 보존하는 새로운 정규화 메커니즘
-- **Behavioral foundation model 개념의 구체화**: Language/vision foundation model의 패러다임을 embodied agent의 whole-body control로 확장한 첫 사례
-- **Successor measure 기반 multitask learning**: 측도 기반 정책 표현으로 다양한 task (추적, 목표도달, 보상최적화)를 단일 모델에서 해결
-- **AMASS와 SMPL의 통합**: 대규모 비정제 모션캡처 데이터와 인체 골격 모델을 활용하여 scale-up된 학습 달성
+- Unlabeled trajectory를 같은 잠재공간에 embedding하고 latent-conditional discriminator로 상태 distribution 정규화하는 아이디어는 novel
+- Zero-shot RL의 exploration 한계를 behavior dataset 정규화로 해결하는 통합 프레임워크 제시
+- 고차원 불안정 동역학을 가진 humanoid 제어에 FB representation 최초 적용
+- Behavioral foundation model 개념을 embodied agent에 처음 체계적으로 구현
 
 ## Limitation & Further Study
 
-- **Computational cost**: Online unsupervised RL + imitation 학습으로 인한 계산량 증가에 대한 명시적 비용 분석 부재
-- **Dataset quality dependency**: AMASS 데이터셋의 bias나 coverage 제약이 학습된 행동에 미치는 영향에 대한 심도 있는 분석 부재
-- **Task generalization 범위**: Bipedal walker, ant maze 외 다른 환경에서의 성능 및 확장성에 대한 평가 제한적
-- **Discriminator 설계 선택사항**: Latent-conditional discriminator의 구체적 구조, 학습률, 손실 가중치 등에 대한 민감성 분석 부재
-- **Real robot 검증 부재**: 모든 평가가 simulation 환경 내에서만 수행되어 실제 로봇 적용 가능성 미검증
-- **후속 연구 방향**: (1) 다양한 morphology (사족보행, 손가락 제어)로의 확장, (2) 상이한 modality (RGB, tactile)의 통합, (3) Online interaction 환경에서의 adaptation 메커니즘
+- AMASS 같은 고품질 unlabeled behavior dataset의 availability에 의존 - 다른 도메인이나 task-misaligned dataset에서의 성능 불명확
+- Humanoid와 bipedal walker, ant maze에서만 평가 - 더 다양한 제어 문제에 대한 일반성 미검증
+- Discriminator 기반 정규화의 computational overhead와 scalability 논의 부재
+- Zero-shot 성능이 task-specific 방법대비 여전히 gap이 있음 - 더 나은 in-context learning 메커니즘 필요
+- 후속연구: (1) task-misaligned 데이터셋에 robust한 방법 개발, (2) real robot 전이학습 검증, (3) 다중 embodiment 지원 BFM 확장
 
 ## Evaluation
 
@@ -70,4 +88,19 @@ FB-CPR (Forward-Backward Representations with Conditional-Policy Regularization)
 - Clarity: 4/5
 - Overall: 4/5
 
-**총평**: 본 논문은 forward-backward representation을 unlabeled 행동 데이터와 결합하여 behavioral foundation model을 구현한 혁신적 작업으로, humanoid 제어의 zero-shot 일반화 문제를 실질적으로 해결했다. 기술적 견고성, 광범위한 실험 검증, 재현성 지원을 통해 embodied AI 분야에 중요한 기여를 제시하지만, 실로봇 검증과 확장성 분석에서 개선의 여지가 있다.
+**총평**: FB-CPR은 unsupervised RL의 exploration 한계를 behavior dataset 정규화로 창의적으로 해결하고, 복잡한 humanoid 제어에서 zero-shot generalization을 달성한 기술적으로 견실하고 의미 있는 연구이다. 재현성 보장과 다양한 평가는 강점이나, 데이터셋 의존성과 실제 로봇 검증 부재는 향후 개선이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1760_X-Loco_Towards_Generalist_Humanoid_Locomotion_Control_via_Sy/review]] — X-Loco의 전문가 정책 증류 개념이 FB-CPR의 behavioral foundation model 정규화에 영향을 줍니다.
+- 🔗 후속 연구: [[papers/1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — Behavior Foundation Model 서베이가 FB-CPR의 unsupervised RL 정규화 방법론을 더 넓은 맥락에서 이해하게 합니다.
+- 🔄 다른 접근: [[papers/1944_General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast/review]] — 둘 다 사전훈련을 통한 일반화된 humanoid 제어를 다루지만 서로 다른 사전훈련 전략을 사용합니다.
+- 🔄 다른 접근: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 대규모 인간 비디오 데이터 활용에서 zero-shot control과 universal policy라는 서로 다른 일반화 접근법을 사용한다.
+- 🔗 후속 연구: [[papers/1821_BFM-Zero_A_Promptable_Behavioral_Foundation_Model_for_Humano/review]] — behavioral foundation model에서 promptable과 zero-shot이라는 보완적 제어 패러다임을 제시한다.
+- 🏛 기반 연구: [[papers/1812_Behavior_Foundation_Model_for_Humanoid_Robots/review]] — 휴머노이드를 위한 behavior foundation model에서 unlabeled dataset과 전신 제어라는 공통 목표를 가진다.
+- 🔄 다른 접근: [[papers/2005_Humanoid_World_Models_Open_World_Foundation_Models_for_Human/review]] — 둘 다 foundation model 기반 휴머노이드 제어를 다루지만 하나는 behavior regularization에, 다른 하나는 world model에 중점을 둔다.
+- 🔗 후속 연구: [[papers/1412_GR00T_N1_An_Open_Foundation_Model_for_Generalist_Humanoid_Ro/review]] — GR00T N1의 VLA 모델이 Zero-Shot Whole-Body Control의 behavioral foundation 접근법과 결합되어 더 강력한 제어 시스템을 구축할 수 있다
+- 🔗 후속 연구: [[papers/1760_X-Loco_Towards_Generalist_Humanoid_Locomotion_Control_via_Sy/review]] — FB-CPR의 behavioral foundation model이 X-Loco의 synergetic policy distillation을 더욱 강력하게 만듭니다.
+- 🏛 기반 연구: [[papers/1782_A_Survey_of_Behavior_Foundation_Model_Next-Generation_Whole-/review]] — BFM 서베이가 FB-CPR과 같은 behavioral foundation model 연구의 이론적 배경과 발전 방향을 제시합니다.
+- 🏛 기반 연구: [[papers/1888_DreamZero_World_Action_Models_are_Zero-shot_Policies/review]] — 행동 기반 모델이 VLA 모델의 zero-shot 정책 학습을 위한 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2050_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Po/review]] — 범용 휴머노이드 제어에서 행동 기반 모델과 언어 조건부 모델의 다른 접근법

@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "본 연구는 Web of Science에서 426개의 논문을 수집하여 부모 양육 방식이 청소년의 행복에 미치는 영향에 관한 문헌을 bibliometric 분석으로 종합적으로 분석하였다. Co-citation 분석과 co-word 분석을 통해 연구 동향을 파악하고 향후 연구 방향을 제시한다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ho et al._2026_BIBLIOMETRIC ANALYSIS ON PARENTING STYLES AND ADOLESCENTS’ HAPPINESS.pdf"
 ---
@@ -80,7 +81,10 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ho et al._2026_BIBLIOMETRIC ANALYSIS ON 
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 둘 다 청소년의 행동 결과를 다루지만 1146은 부모 양육방식과 행복, 1217은 수면 관련 행동에 초점을 맞춘다.
-- 🏛 기반 연구: [[papers/970_Historical_Comparison_of_Gender_Inequality_in_Scientific_Car/review]] — 과학 경력에서의 성별 불평등 역사적 비교가 청소년 발달 연구에서의 젠더 관점을 이해하는 배경을 제공한다.
-- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — Co-citation과 bibliographic coupling 분석 기법이 부모 양육방식 연구의 co-word 분석 방법론적 기반이다.
-- 🔗 후속 연구: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 양육 스타일과 청소년 건강 연구 방법론을 자폐아동 수면-행동 관계 분석에 확장할 수 있다
+- 🔗 후속 연구: [[papers/1180_Global_research_trends_on_depression-related_stigma_in_the_2/review]] — 청소년 행복에 영향을 미치는 부모 양육과 우울증 낙인의 상호작용을 종합적으로 분석할 수 있다.
+- 🏛 기반 연구: [[papers/944_Co-Citation_Analysis_Bibliographic_Coupling_and_Direct_Citat/review]] — 부모 양육과 청소년 행복 연구의 co-citation과 co-word 분석 방법론의 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 둘 다 사회적 낙인과 관련된 주제(청소년 행복 vs 체중 낙인)를 bibliometric 방법으로 분석한다.
+- 🔗 후속 연구: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 행동과학 연구에서 양육에서 수면으로 연구 범위를 확장한다
+- 🔗 후속 연구: [[papers/940_Bibliometrics_Global_Gender_Disparities_in_Science/review]] — 과학 분야의 성별 격차 연구가 청소년 발달 연구에서 성별에 따른 양육방식 효과 분석으로 확장될 수 있기 때문
+- 🔄 다른 접근: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 둘 다 사회적 낙인과 관련된 주제(체중 낙인 vs 청소년 행복)를 bibliometric 방법으로 분석한다.
+- 🔄 다른 접근: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 자폐스펙트럼장애 아동의 수면-행동 관계와 양육 스타일-청소년 건강 관계 모두 발달 과정에서의 행동 결과를 연구하는 유사한 접근법을 사용한다.

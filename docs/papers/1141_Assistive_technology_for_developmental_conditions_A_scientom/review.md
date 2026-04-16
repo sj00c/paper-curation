@@ -12,9 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 발달장애 지원을 위한 보조기술의 연구 동향을 scientometric 분석으로 체계적으로 매핑하여, Scopus의 1,322개 문헌과 44,699개 참고문헌을 통해 세 가지 핵심 연구 클러스터와 주요 영향 논문들을 도출했다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shermadhi et al._2026_Assistive technology for developmental conditions A scientometric analysis..pdf"
 ---
@@ -85,12 +85,16 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Shermadhi et al._2026_Assistive technolo
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 둘 다 의료 기술 분야의 scientometric 분석이지만 1141은 보조기술, 1133은 안과학 연구를 다룬다.
-- 🏛 기반 연구: [[papers/1166_Emerging_Trends_in_Cybersecurity_Machine_Learning_as_a_Game-/review]] — 사이버보안에서 머신러닝의 게임체인징 역할 분석이 발달장애 지원 기술 발전의 기술적 맥락을 제공한다.
-- 🔗 후속 연구: [[papers/976_Intersectional_inequalities_in_science/review]] — 과학에서의 교차성 불평등 연구가 장애인을 위한 보조기술 개발에서의 다층적 배제를 이해하는 틀을 확장한다.
-- 🧪 응용 사례: [[papers/1018_Science_Mapping_and_Science_Maps/review]] — 과학 매핑 방법론을 발달장애 보조기술이라는 특수 도메인에 구체적으로 적용한 실증 사례를 제공한다.
-- 🏛 기반 연구: [[papers/930_A_Survey_on_Knowledge_Organization_Systems_of_Research_Field/review]] — 연구 분야의 지식 조직 체계에 대한 이해를 바탕으로 보조기술 연구의 체계적 분류와 매핑을 수행한다.
-- 🔄 다른 접근: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 기계학습 응용 연구의 scientometric 분석과 보조기술 연구 분석을 비교하여 서로 다른 기술 도메인의 연구 패턴을 탐구할 수 있다.
-- 🔄 다른 접근: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 신경근 섬유화 치료와 발달 조건 보조 기술 모두 의료 기술 발전을 scientometric 분석으로 추적하는 방법론이 동일하다.
-- 🔄 다른 접근: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 발달 조건을 위한 보조 기술 연구와 자폐스펙트럼장애 수면 연구를 비교 분석할 수 있다
-- 🏛 기반 연구: [[papers/1133_A_bibliometric_and_visualized_analysis_of_choriocapillaris_f/review]] — 발달장애 보조기술의 scientometric 분석이 의학 분야 연구 동향 분석의 방법론적 모델을 제공한다.
+- 🔄 다른 접근: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 둘 다 특정 의료 분야(발달장애 보조기술 vs 신경근 섬유화)의 연구 동향을 scientometric으로 분석한다.
+- 🔗 후속 연구: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 발달장애 지원 기술 연구를 사회복지 분야 지식 생산 진화의 맥락에서 이해할 수 있다.
+- 🏛 기반 연구: [[papers/942_Bridging_the_gap_between_science_and_society_Mapping_librari/review]] — 보조기술 연구가 과학과 사회 간 격차를 메우는 역할을 도서관 과학의 관점에서 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1172_Exploring_Strategies_for_Addressing_Weight_Stigma_An_Analysi/review]] — 의료 기술 분야에서 보조기술과 체중 편견이라는 다른 주제의 서지계량 분석을 비교한다
+- 🔗 후속 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 의료 서비스에서 기술 구현 연구를 발달장애 보조기술로 구체화한다
+- 🏛 기반 연구: [[papers/1024_Software_survey_VOSviewer_a_computer_program_for_bibliometri/review]] — 서지계량 분석 도구와 시각화 방법론의 기본 틀을 제공한다
+- 🏛 기반 연구: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 인도의 폴리머 과학 연구가 보조기술 개발의 재료과학적 기반을 제공하는 scientometric 분석 사례이기 때문
+- 🔗 후속 연구: [[papers/991_Open_Datasets_in_Learning_Analytics_Trends_Challenges_and_Be/review]] — 학습 분석의 오픈 데이터셋 트렌드가 발달장애 지원 보조기술의 데이터 기반 접근법으로 확장될 수 있기 때문
+- 🏛 기반 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 의료 기술 구현 연구의 기본적인 서지계량 분석 틀을 제공한다
+- 🔗 후속 연구: [[papers/1163_effect_of_poloxamer_and_hyaluronic_acid_administration_in_ne/review]] — 신경근 섬유화 예방 연구를 발달장애 보조기술과 연계하여 재활 의학의 종합적 관점을 제공한다.
+- 🔄 다른 접근: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 발달 조건을 위한 보조 기술과 자폐 스펙트럼 아동의 수면-행동 연구를 서로 다른 관점에서 접근합니다.
+- 🔄 다른 접근: [[papers/1134_A_scientometrics_survey_of_machine_learning_and_neural_netwo/review]] — 발달 조건을 위한 보조 기술의 scientometrics 연구로, 심혈관 질환과 다른 의료 분야에서 기술 응용을 분석하는 대안적 접근법입니다.
+- 🔗 후속 연구: [[papers/1154_Contributions_of_accreditation_organizations_in_health_servi/review]] — 의료 기술에서 의료 인증 시스템으로 연구 범위를 확장한다

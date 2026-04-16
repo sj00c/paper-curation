@@ -1,3 +1,24 @@
+---
+title: "1910_Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Emb"
+authors:
+  - "Guiliang Liu"
+  - "Bo Yue"
+  - "Yi Jin Kim"
+  - "Kui Jia"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 제어 정책과 물리적 구조를 동시에 진화시키는 co-design 메커니즘을 제안하며, 이를 bi-level 최적화 문제로 공식화하여 embodied intelligence 달성의 필수 요소임을 주장하는 위치 논문이다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Motion_Learning_from_Demonstration"
+  - "cat/Language-Guided_Robot_Motion_Planning"
+  - "sub/Adaptive_Locomotion_Recovery"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_Embracing Evolution A Call for Body-Control Co-Design in Embodied Humanoid Robot.pdf"
+---
+
 # Embracing Evolution: A Call for Body-Control Co-Design in Embodied Humanoid Robot
 
 > **저자**: Guiliang Liu, Bo Yue, Yi Jin Kim, Kui Jia | **날짜**: 2025-10-03 | **URL**: [https://arxiv.org/abs/2510.03081](https://arxiv.org/abs/2510.03081)
@@ -66,3 +87,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 인간형 로봇의 embodied intelligence 달성을 위해 co-design의 필수성을 체계적으로 주장하고 실행 가능한 방법론을 제시하는 영향력 있는 위치 논문이다. 다만 구체적인 실험 검증과 정량적 성능 평가를 통한 후속 연구로 보강될 필요가 있다.
+
+## Related Papers
+
+- 🔗 후속 연구: [[papers/1616_PICO_Reconstructing_3D_People_In_Contact_with_Objects/review]] — 신체 구조와 제어의 co-design이 물리 기반 모션 모방의 확장된 형태로 구현될 수 있다.
+- 🧪 응용 사례: [[papers/1832_CAD-Driven_Co-Design_for_Flight-Ready_Jet-Powered_Humanoids/review]] — 비행 가능한 휴머노이드 설계가 신체-제어 공동 설계의 실제 적용 사례이다.
+- 🔄 다른 접근: [[papers/2150_Toward_Humanoid_Brain-Body_Co-design_Joint_Optimization_of_C/review]] — 뇌-신체 공동 최적화와 신체-제어 co-design은 유사한 문제를 다른 관점에서 접근한다.
+- 🏛 기반 연구: [[papers/1916_Evolutionary_Continuous_Adaptive_RL-Powered_Co-Design_for_Hu/review]] — body-control co-design의 진화적 최적화 원리가 Evolutionary Continuous Adaptive RL의 co-design 메커니즘에 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1776_A_Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/review]] — co-design 메커니즘을 휴머노이드 발목 설계 최적화에 적용하여 제어 정책과 하드웨어 구조를 동시에 개선할 수 있다.
+- 🏛 기반 연구: [[papers/1916_Evolutionary_Continuous_Adaptive_RL-Powered_Co-Design_for_Hu/review]] — 몸체-제어 공동설계의 중요성을 강조하는 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/2079_LEGO_Latent-space_Exploration_for_Geometry-aware_Optimizatio/review]] — 구현된 지능에서 몸체-제어 공동 설계의 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/2150_Toward_Humanoid_Brain-Body_Co-design_Joint_Optimization_of_C/review]] — Embracing Evolution의 body-control co-design 철학이 RoboCraft 프레임워크의 제어-신체 동시 최적화 접근법의 이론적 기반을 제공합니다.

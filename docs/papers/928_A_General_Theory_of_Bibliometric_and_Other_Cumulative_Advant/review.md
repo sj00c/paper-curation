@@ -9,7 +9,8 @@ score: 4.0
 essence: "누적 우위(Cumulative Advantage) 원리를 수학적으로 모델링하는 일반 이론을 제시하며, 이를 통해 베타 함수(Beta Function)로 표현되는 분포가 서지학적 법칙들(Bradford Law, Lotka Law, Zipf Distribution 등)의 기저를 이룬다는 것을 보여준다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Citation_Index_Analysis"
+  - "cat/Computational_Bibliometric_Analysis"
+  - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Price_1976_A General Theory of Bibliometric and Other Cumulative Advantage Processes.pdf"
 ---
@@ -77,6 +78,7 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Price_1976_A General Theory of Bibliomet
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 누적 우위 이론을 인용 분포의 보편성 연구로 확장하여 객관적 측정 가능성을 탐구한다
-- 🧪 응용 사례: [[papers/933_An_index_to_quantify_an_individuals_scientific_research_outp/review]] — 개인의 과학 연구 성과 정량화에 누적 우위 이론의 베타 함수 모델을 적용할 수 있다
-- 🔄 다른 접근: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — h-index의 대안인 g-index를 통해 누적 우위 효과를 다른 방식으로 측정한다
+- 🔗 후속 연구: [[papers/1047_Theory_and_Practice_of_the_g-index/review]] — 누적 우위 이론의 베타 함수 모델링이 g-index와 같은 새로운 서지학적 지수 개발의 수학적 토대가 됩니다.
+- 🏛 기반 연구: [[papers/957_Emergence_of_Scaling_in_Random_Networks/review]] — 베타 함수로 표현되는 누적 우위가 무작위 네트워크에서 스케일링 출현의 수학적 원리를 제공합니다.
+- 🏛 기반 연구: [[papers/1049_Universality_of_citation_distributions_Toward_an_objective_m/review]] — 서지학적 누적 이점의 일반 이론이 인용 분포의 보편성 발견에 이론적 기초를 제공한다.
+- 🏛 기반 연구: [[papers/1122_The_disruption_index_suffers_from_citation_inflation_Re-anal/review]] — 서지학적 누적 이점 이론이 인용 인플레이션과 CD 지수 편향의 구조적 원인을 설명한다.

@@ -12,8 +12,9 @@ arxiv: ""
 score: 4.0
 essence: "400만 개의 (이미지, 텍스트) 쌍 데이터셋에서 이미지-텍스트 대조 학습(contrastive learning)을 통해 전이 가능한 시각 모델을 학습하고, 자연언어를 이용한 zero-shot 전이로 30개 이상의 다양한 컴퓨터 비전 작업에서 경쟁력 있는 성능을 달성한다."
 tags:
-  - "cat/Multimodal_Vision-Language_Policy_Learning"
-  - "sub/Self-Supervised_Vision_Learning"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Self-Supervised_Vision_Models"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Radford et al._2021_Learning Transferable Visual Models From Natural Language Supervision.pdf"
 ---
@@ -88,11 +89,19 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Radford et al._2021_Learning Transferabl
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — CLIP의 contrastive learning 방법론이 Grounding DINO의 vision-language grounding에 핵심적으로 적용됩니다.
-- 🔄 다른 접근: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — 둘 다 vision-language pre-training이지만 CLIP는 contrastive에, Sigmoid Loss는 다른 loss function에 중점을 둡니다.
-- 🔗 후속 연구: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — CLIP의 supervised contrastive learning을 unsupervised visual feature learning인 DINOv2로 확장한 발전된 형태입니다.
-- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — CLIP의 contrastive learning이 Grounding DINO의 vision-language grounding 메커니즘의 핵심 기반 기술입니다.
-- 🔄 다른 접근: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — 자연어 감독을 통한 시각 모델 학습과 인간 비디오 기반 표현 학습은 서로 다른 접근이지만 상호 보완적이다
-- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — CLIP의 vision-language pre-training이 Visual Instruction Tuning의 multimodal 정렬 학습 기반이 된다
-- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — CLIP의 natural language supervision이 DINOv2의 unsupervised approach와 대조되는 vision feature learning 방법을 제시한다.
-- 🏛 기반 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — 자연어 감독을 통한 시각 모델 학습의 기반이 되는 언어-이미지 사전학습 손실 함수를 제공한다.
+- 🔄 다른 접근: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — Sigmoid Loss for Language Image Pre-Training과 다르게 contrastive learning을 통한 이미지-텍스트 학습의 다른 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — Self-Supervised Learning의 joint-embedding 개념을 자연언어 감독 학습으로 확장하여 전이 가능한 모델을 구현한다.
+- 🔗 후속 연구: [[papers/1569_Segment_Anything/review]] — Segment Anything과 결합되어 zero-shot object detection과 segmentation의 기반 기술로 활용된다.
+- 🔗 후속 연구: [[papers/1520_R3M_A_Universal_Visual_Representation_for_Robot_Manipulation/review]] — CLIP의 visual representation을 로봇 조작을 위한 universal visual representation과 결합하여 더 강력한 시각적 이해를 달성할 수 있다.
+- 🔄 다른 접근: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — 둘 다 self-supervised visual representation learning을 다루지만 natural language supervision과 비지도 학습의 접근법 차이를 분석할 수 있다.
+- 🔗 후속 연구: [[papers/1432_Improving_Vision-and-Language_Navigation_with_Image-Text_Pai/review]] — CLIP의 대규모 이미지-텍스트 학습을 VLN 도메인에 특화하여 객체 참조의 시각적 기초를 강화한다.
+- 🏛 기반 연구: [[papers/1415_Grounding_DINO_Marrying_DINO_with_Grounded_Pre-Training_for/review]] — CLIP의 contrastive learning 개념을 확장하여 언어-비전 grounding이 강화된 객체 탐지 모델을 개발한다.
+- 🏛 기반 연구: [[papers/1485_Multimodal_Fusion_and_Vision-Language_Models_A_Survey_for_Ro/review]] — 멀티모달 융합 기법이 Learning Transferable Visual Models from Natural Language Supervision의 시각-언어 학습 방법론을 기반으로 발전한다.
+- 🏛 기반 연구: [[papers/1570_Self-Supervised_Learning_from_Images_with_a_Joint-Embedding/review]] — Learning Transferable Visual Models의 자연어 감독 기반 시각 모델 학습이 I-JEPA의 self-supervised 표현 학습 방법론의 기초가 된다.
+- 🔄 다른 접근: [[papers/1548_Robotic_Skill_Acquisition_via_Instruction_Augmentation_with/review]] — DIAL과 CLIP의 자연어 supervision은 비전-언어 모델 학습에서 서로 다른 supervision 전략을 제시한다.
+- 🏛 기반 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — Learning Transferable Visual Models은 기초 모델에서 로봇 조작으로의 전이 학습을 위한 시각 표현 학습 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1611_Visual_Instruction_Tuning/review]] — 자연어 감독을 통한 전이 가능한 시각 모델 학습은 LLaVA의 visual instruction tuning의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1333_CLIPort_What_and_Where_Pathways_for_Robotic_Manipulation/review]] — CLIP의 vision-language 표현 학습이 CLIPort의 의미론적 이해(what) 경로의 핵심 기술입니다.
+- 🔗 후속 연구: [[papers/1331_CLASS_Contrastive_Learning_via_Action_Sequence_Supervision_f/review]] — Learning Transferable Visual Models의 contrastive learning 개념을 DTW 기반 action sequence 유사성을 약한 감독 신호로 활용하여 로봇 도메인에 특화한 방법론입니다.
+- ⚖️ 반론/비판: [[papers/1365_DINOv2_Learning_Robust_Visual_Features_without_Supervision/review]] — CLIP의 language supervision과 DINOv2의 purely visual self-supervision은 multimodal vs. unimodal feature learning의 대조적 접근을 보여준다.
+- 🔗 후속 연구: [[papers/1571_Sigmoid_Loss_for_Language_Image_Pre-Training/review]] — CLIP의 기본 language-image pre-training을 sigmoid loss로 개선하여 메모리 효율성과 작은 배치에서의 성능을 향상시킨다.

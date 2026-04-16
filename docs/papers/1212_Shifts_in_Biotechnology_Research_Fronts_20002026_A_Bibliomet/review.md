@@ -8,9 +8,9 @@ arxiv: ""
 score: 4.0
 essence: "2000-2026년 생명공학 연구의 진화를 bibliometric 분석으로 추적하여 분자생물학에서 지속가능성 지향적이고 학제간 응용 중심 영역으로의 전환을 입증한 연구다."
 tags:
-  - "cat/Computational_Bibliometric_Analysis"
-  - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Domain-Specific_Analysis_Studies"
+  - "cat/Academic_Impact_and_Mobility"
+  - "cat/Open_Access_Publication_Analytics"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Judijanto_2026_Shifts in Biotechnology Research Fronts 2000–2026 A Bibliometric Study of Topic Emergence and Citat.pdf"
 ---
@@ -88,9 +88,13 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Judijanto_2026_Shifts in Biotechnology R
 
 ## Related Papers
 
-- 🏛 기반 연구: [[papers/1044_The_State_of_OA_A_Large-Scale_Analysis_of_the_Prevalence_and/review]] — 생명공학 연구 전선의 변화를 분석하기 위해 오픈 액세스 논문의 대규모 현황 분석이 기반 데이터로 필요하다.
-- 🔗 후속 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 생명공학 분야의 지속가능성 지향 전환이 비전형적 조합과 과학적 영향력 연구로 확장될 수 있다.
-- 🧪 응용 사례: [[papers/1020_Scientific_prize_network_predicts_who_pushes_the_boundaries/review]] — 생명공학 분야의 혁신 경계를 탐지하는 데 과학상 네트워크 분석을 적용할 수 있다
-- 🔗 후속 연구: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 시간에 따른 과학 구조 변화를 통시적으로 매핑하는 방법론을 생명공학에 적용한다
-- 🔄 다른 접근: [[papers/1017_Science_as_exploration_in_a_knowledge_landscape_tracing_hots/review]] — 지식 지형에서 핫스팟 추적을 통해 생명공학 연구 전선의 변화를 다른 관점에서 분석할 수 있다
-- 🔄 다른 접근: [[papers/1155_Corporate_Governance_in_Accounting_A_Bibliometric_Analysis_o/review]] — 기업지배구조와 생명공학 분야 모두에서 지속가능성과 ESG로의 패러다임 전환을 bibliometric 분석으로 추적하는 접근법이 유사하다.
+- 🧪 응용 사례: [[papers/1075_Open_Catalyst_2020_OC20_Dataset_and_Community_Challenges/review]] — 오픈 카탈리스트 데이터셋이 생명공학의 지속가능성 지향적 전환을 뒷받침하는 구체적 사례를 제공합니다.
+- 🏛 기반 연구: [[papers/936_Atypical_Combinations_and_Scientific_Impact/review]] — 비전형적 조합과 과학적 영향력 이론이 생명공학 연구 전선 변화의 학제간 융합 현상을 설명합니다.
+- 🔄 다른 접근: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 생명공학과 사회복지 분야 모두 26-35년간의 장기 연구 진화를 추적하여 서로 다른 학문 분야의 지식 전환 패턴을 비교 분석할 수 있다.
+- 🔄 다른 접근: [[papers/1195_Mapping_the_Research_Landscape_of_Electronic_Properties_of_G/review]] — 생명공학 분야와 그래핀 연구의 bibliometric 분석을 통해 기술 발전 패턴을 비교 분석합니다.
+- 🏛 기반 연구: [[papers/979_Large_teams_develop_and_small_teams_disrupt_science_and_tech/review]] — 대형팀과 소규모팀의 과학기술 발전 역할이 생명공학 연구 전환의 배경을 설명합니다.
+- 🔄 다른 접근: [[papers/997_Polymer_Science_Research_in_India_A_Scientometrics_Study/review]] — 생명공학 연구 전선의 변화를 분석한 연구로, 고분자 과학과 다른 과학 분야에서 인도의 연구 동향을 비교하는 대안적 접근법입니다.
+- 🔄 다른 접근: [[papers/1170_Evolution_of_Social_Work_Knowledge_Production_Over_35_Years/review]] — 생명공학과 사회복지 분야 모두에서 35년간의 연구 진화를 추적하여 학문 분야별 지식생산 패턴 변화의 비교 분석이 가능하다.
+- 🔄 다른 접근: [[papers/1195_Mapping_the_Research_Landscape_of_Electronic_Properties_of_G/review]] — 그래핀 전자 특성과 생명공학 모두 첨단 과학 기술 분야로서 2000년대 이후 급속한 발전을 보인 연구 영역의 bibliometric 분석 비교가 가능하다.
+- 🔄 다른 접근: [[papers/1206_Review_of_E-Commerce_Literature_Inferences_Trends_and_Recomm/review]] — 전자상거래와 생명공학 모두 기술 혁신이 주도하는 분야로서 장기간에 걸친 연구 동향 변화의 bibliometric 분석 비교 연구가 가능하다.
+- 🔗 후속 연구: [[papers/984_Mapping_Scholarly_Impact_Citation_Analysis_of_Commerce_Docto/review]] — 2000-2026년 생명공학 연구 전선의 서지계량학적 변화 추적은 그래핀 전자 특성 분야의 지식 구조 매핑을 다른 첨단 기술 분야로 확장한 연구다.

@@ -1,3 +1,23 @@
+---
+title: "2150_Toward_Humanoid_Brain-Body_Co-design_Joint_Optimization_of_C"
+authors:
+  - "Bo Yue"
+  - "Sheng Xu"
+  - "Kui Jia"
+  - "Guiliang Liu"
+date: "2025.10"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 humanoid 로봇의 fall recovery 능력을 향상시키기 위해 제어 정책과 신체 형태를 동시에 최적화하는 RoboCraft 프레임워크를 제안한다. 공유 제어 정책의 사전학습과 설계 공간 탐색을 결합하여 효율적인 co-design을 실현한다."
+tags:
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "sub/Compliant_Motion_Tracking"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Yue et al._2025_Toward Humanoid Brain-Body Co-design Joint Optimization of Control and Morphology for Fall Recovery.pdf"
+---
+
 # Toward Humanoid Brain-Body Co-design: Joint Optimization of Control and Morphology for Fall Recovery
 
 > **저자**: Bo Yue, Sheng Xu, Kui Jia, Guiliang Liu | **날짜**: 2025-10-25 | **URL**: [https://arxiv.org/abs/2510.22336](https://arxiv.org/abs/2510.22336)
@@ -70,3 +90,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 복잡한 humanoid 로봇에 대한 실질적이고 확장 가능한 co-design 프레임워크를 처음 제시하며, 다중 설계 사전학습 정책과 우선순위 버퍼를 통한 효율적 최적화로 형태 최적화의 중요성을 명확히 입증했다. 시뮬레이션 기반 한계에도 불구하고 embodied AI 분야의 중요한 진전을 나타낸다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1910_Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Emb/review]] — Embracing Evolution의 body-control co-design 철학이 RoboCraft 프레임워크의 제어-신체 동시 최적화 접근법의 이론적 기반을 제공합니다.
+- 🔄 다른 접근: [[papers/1916_Evolutionary_Continuous_Adaptive_RL-Powered_Co-Design_for_Hu/review]] — RoboCraft는 fall recovery에 특화된 co-design을 제안하고 Evolutionary Continuous Adaptive RL은 연속적 적응 진화를 통한 일반화된 co-design을 추구합니다.
+- 🧪 응용 사례: [[papers/2171_Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstration/review]] — RoboCraft의 fall recovery 최적화 기법을 Unified Fall-Safety Policy의 통합 낙상 안전 정책에 적용하여 더 강건한 회복 능력을 달성할 수 있습니다.
+- 🧪 응용 사례: [[papers/1661_SafeFall_Learning_Protective_Control_for_Humanoid_Robots/review]] — SafeFall의 protective control learning이 RoboCraft의 fall recovery 능력 향상을 안전한 낙상 제어라는 구체적인 문제에 적용한 사례입니다.
+- 🔗 후속 연구: [[papers/1776_A_Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/review]] — 휴머노이드 뇌-몸체 공동 설계에서 발목 최적화가 전체 시스템 최적화의 핵심 구성 요소로 확장됩니다.
+- 🔄 다른 접근: [[papers/1910_Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Emb/review]] — 뇌-신체 공동 최적화와 신체-제어 co-design은 유사한 문제를 다른 관점에서 접근한다.
+- 🔄 다른 접근: [[papers/1916_Evolutionary_Continuous_Adaptive_RL-Powered_Co-Design_for_Hu/review]] — 휴머노이드 뇌-신체 co-design이 기어비 최적화가 아닌 신경-물리적 관점에서 하드웨어-소프트웨어 동시 설계를 다루는 다른 접근을 제시한다.
+- 🔗 후속 연구: [[papers/2079_LEGO_Latent-space_Exploration_for_Geometry-aware_Optimizatio/review]] — 휴머노이드 뇌-몸체 공동 설계의 공동 최적화 확장된 접근법을 보여준다.

@@ -1,3 +1,23 @@
+---
+title: "1833_Characteristics_Management_and_Utilization_of_Muscles_in_Mus"
+authors:
+  - "Kento Kawaharazuka"
+  - "Kei Okada"
+  - "Masayuki Inaba"
+date: "2026.02"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 Kengoro와 Musashi 근골격 휴머노이드 로봇의 근육 특성을 5가지 속성(Redundancy, Independency, Anisotropy, Variable Moment Arm, Nonlinear Elasticity)으로 분류하고, 이를 효과적으로 관리·활용하는 방법론을 제시한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Laparoscopic_Teleoperation_Systems"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Kawaharazuka et al._2026_Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids Empirical Stud.pdf"
+---
+
 # Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids: Empirical Study on Kengoro and Musashi
 
 > **저자**: Kento Kawaharazuka, Kei Okada, Masayuki Inaba | **날짜**: 2026-02-09 | **URL**: [https://arxiv.org/abs/2602.08518](https://arxiv.org/abs/2602.08518)
@@ -70,3 +90,17 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 근골격 휴머노이드의 근육 특성을 처음으로 체계적으로 분류하고 관리·활용 방법을 제시한 중요한 기여이며, 실제 로봇 구현 사례를 바탕으로 높은 실용성을 갖추고 있다. 다만 정량적 성능 평가 및 일반화 가능성에 대한 보완이 필요하다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1618_PIMBS_Efficient_Body_Schema_Learning_for_Musculoskeletal_Hum/review]] — PIMBS의 근골격 신체 스키마 학습이 Kengoro와 Musashi의 복잡한 근육 특성을 효과적으로 관리하는 기초 방법론을 제공한다
+- 🔗 후속 연구: [[papers/1990_Human-Level_Actuation_for_Humanoids/review]] — 인간 수준의 액추에이션이 근골격 휴머노이드의 5가지 근육 특성을 더욱 효과적으로 활용할 수 있는 하드웨어적 기반을 제공한다
+- 🔄 다른 접근: [[papers/1920_Explosive_Output_to_Enhance_Jumping_Ability_A_Variable_Reduc/review]] — 근육의 비선형 탄성 특성을 variable reduction과 근육 특성 관리라는 서로 다른 관점에서 활용한다
+- 🏛 기반 연구: [[papers/1851_Control_of_Humanoid_Robots_with_Parallel_Mechanisms_using_Di/review]] — 병렬 구동 메커니즘의 미분가능한 해석 모델이 근골격 휴머노이드의 복잡한 근육 특성을 효율적으로 계산하고 관리하는 데 필요한 수학적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1859_DecARt_Leg_Design_and_Evaluation_of_a_Novel_Humanoid_Robot_L/review]] — 근골격 로봇의 복잡한 근육 시스템과 DecARt Leg의 decoupled actuation은 휴머노이드 구동에 대한 서로 다른 설계 철학을 보여준다.
+- 🧪 응용 사례: [[papers/2130_OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Tran/review]] — 근골격 근육 특성의 관리 방법론이 OSMO 촉각 장갑의 인간-로봇 스킬 전이에서 근력 및 촉각 피드백 매핑에 실용적으로 적용될 수 있다
+- 🏛 기반 연구: [[papers/1618_PIMBS_Efficient_Body_Schema_Learning_for_Musculoskeletal_Hum/review]] — 근골격 시스템의 특성 분석을 바탕으로 PIMBS의 physics-informed learning 설계
+- 🧪 응용 사례: [[papers/1851_Control_of_Humanoid_Robots_with_Parallel_Mechanisms_using_Di/review]] — 병렬 구동 메커니즘의 미분가능한 해석이 근골격 휴머노이드의 복잡한 근육-텐던 시스템의 정확한 동역학 모델링에 실질적으로 응용된다.
+- 🏛 기반 연구: [[papers/1919_Exceeding_the_Maximum_Speed_Limit_of_the_Joint_Angle_for_the/review]] — 근골격 휴머노이드의 근육 특성 관리 방법론이 중복 힘줄 구동에서 관절 각속도 한계를 초과하는 방법의 이론적 기반을 제공한다
+- 🔗 후속 연구: [[papers/1990_Human-Level_Actuation_for_Humanoids/review]] — 근육 특성 관리가 Human-Level Actuation Score 계산에 필수적인 생체역학적 요소를 확장한다.
+- 🏛 기반 연구: [[papers/2054_Learning_Humanoid_Arm_Motion_via_Centroidal_Momentum_Regular/review]] — 인간의 팔 스윙에서 영감을 받은 제어가 근골격 시스템에서의 근육 특성 및 활용에 대한 이해를 기반으로 한다.

@@ -11,8 +11,9 @@ arxiv: ""
 score: 4.0
 essence: "SPRINT는 대규모 언어 모델(LLM)을 활용한 instruction relabeling과 offline RL 기반 cross-trajectory skill chaining을 통해 로봇 정책 사전학습을 위한 인간 주석 비용을 크게 줄이는 확장 가능한 접근법이다."
 tags:
-  - "cat/Task-Oriented_Skill_Acquisition"
-  - "sub/LLM_Skill_Acquisition"
+  - "cat/Foundation_Models_for_Robotics"
+  - "cat/Multimodal_Robot_Learning_Systems"
+  - "sub/Dexterous_Robot_Manipulation"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2023_SPRINT Scalable Policy Pre-Training via Language Instruction Relabeling.pdf"
 ---
@@ -87,9 +88,15 @@ SPRINT는 대규모 언어 모델(LLM)을 활용한 instruction relabeling과 of
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — 로봇 정책 효율적 학습에서 SPRINT의 instruction relabeling과 RoboAgent의 semantic augmentation 방식을 인간 주석 비용 절감 측면에서 비교할 수 있다.
-- 🔗 후속 연구: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — 언어 가이드 로봇 스킬 증류 방법론을 SPRINT의 cross-trajectory skill chaining에 통합하여 더 복잡한 스킬 조합을 학습할 수 있다.
-- 🏛 기반 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — 로봇 모방 학습에서 데이터 스케일링 법칙 연구가 SPRINT의 대규모 정책 사전학습에서 데이터 효율성의 이론적 기반을 제공한다.
-- 🧪 응용 사례: [[papers/1513_Parallels_Between_VLA_Model_Post-Training_and_Human_Motor_Le/review]] — VLA 모델의 사후 훈련과 인간 운동 학습의 유사성 연구를 SPRINT의 offline RL 기반 사전학습 방법론과 연결하여 더 효과적인 학습 전략을 개발할 수 있다.
-- 🔄 다른 접근: [[papers/1534_RoboAgent_Generalization_and_Efficiency_in_Robot_Manipulatio/review]] — 로봇 정책 사전학습에서 RoboAgent의 semantic augmentation 방식과 SPRINT의 instruction relabeling 방식을 효율성 측면에서 비교할 수 있다.
-- 🏛 기반 연구: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — SPRINT의 대규모 정책 사전학습과 instruction relabeling 방법론이 언어 가이드 로봇 스킬 확장 및 증류에 이론적 기반을 제공한다.
+- 🔄 다른 접근: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — Text2Reward는 SPRINT와 유사하게 LLM을 활용하지만 instruction relabeling 대신 자동 보상 함수 생성에 집중한다.
+- 🏛 기반 연구: [[papers/1448_Latent_Action_Pretraining_from_Videos/review]] — Latent Action Pretraining은 SPRINT의 정책 사전학습을 위한 비디오 기반 사전 훈련 방법론을 제공한다.
+- 🔄 다른 접근: [[papers/1515_Phantom_Training_Robots_Without_Robots_Using_Only_Human_Vide/review]] — Phantom은 SPRINT와 같이 사전학습을 통한 효율성을 추구하지만 로봇 없이 인간 비디오만으로 훈련하는 다른 접근법이다.
+- 🔄 다른 접근: [[papers/1433_In-Context_Imitation_Learning_via_Next-Token_Prediction/review]] — In-Context Imitation Learning은 SPRINT의 cross-trajectory 학습과 유사한 효율성을 next-token prediction으로 달성한다.
+- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — Scaling Up and Distilling Down이 LLM 기반 계획과 diffusion policy에 중점을 두는 반면, SPRINT는 instruction relabeling과 offline RL 기반 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1335_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reac/review]] — Code-as-Monitor의 constraint-aware programming 개념이 SPRINT의 cross-trajectory skill chaining을 위한 논리적 구조 설계의 기초가 된다.
+- 🔗 후속 연구: [[papers/1348_Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipula/review]] — Data Scaling Laws의 모방 학습에서의 데이터 스케일링 법칙을 instruction relabeling을 통해 실용적으로 구현하는 방법론으로 확장했다.
+- 🏛 기반 연구: [[papers/1461_LM-Nav_Robotic_Navigation_with_Large_Pre-Trained_Models_of_L/review]] — LM-Nav의 대규모 사전학습 모델 활용 방법론이 SPRINT의 확장 가능한 정책 사전학습의 기초적인 설계 철학을 제공합니다.
+- 🔄 다른 접근: [[papers/1462_LOTUS_Continual_Imitation_Learning_for_Robot_Manipulation_Th/review]] — 둘 다 continual learning을 다루지만 unsupervised skill discovery와 language instruction 기반의 접근법 차이를 비교할 수 있다.
+- 🔄 다른 접근: [[papers/1566_Scaling_Up_and_Distilling_Down_Language-Guided_Robot_Skill_A/review]] — SPRINT가 offline RL과 instruction relabeling에 중점을 두는 반면, Scaling Up and Distilling Down은 LLM 기반 계획과 diffusion policy 증류를 결합한다.
+- 🔄 다른 접근: [[papers/1583_Text2Reward_Reward_Shaping_with_Language_Models_for_Reinforc/review]] — SPRINT는 Text2Reward와 유사하게 LLM을 활용하지만 보상 생성 대신 instruction relabeling에 집중하는 다른 접근법이다.
+- 🏛 기반 연구: [[papers/1594_Transferring_Foundation_Models_for_Generalizable_Robotic_Man/review]] — 언어 명령을 통한 정책 사전학습의 확장 가능한 방법론을 제공하여 foundation model 전이의 이론적 기반을 제공합니다.

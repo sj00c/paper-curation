@@ -12,8 +12,10 @@ arxiv: ""
 score: 4.0
 essence: "인지신경과학의 에피소딕 메모리 이론에서 영감을 받아, 과거 경험의 축적·회상과 미래 동역학 예측을 통합하는 에피소딕 월드 모델을 VLA 프레임워크에 처음 도입한 TriVLA를 제안한다. Vision-Language Model, Video Diffusion Model, Policy 네트워크의 삼중 시스템 아키텍처로 구현되어 긴 지평의 조작 작업에서 문맥-인식적 행동 생성을 가능하게 한다."
 tags:
-  - "cat/Embodied_Navigation_and_Planning"
-  - "sub/Embodied_Chain-of-Thought"
+  - "cat/Embodied_Visual_Reasoning"
+  - "cat/Intelligent_Robot_Navigation_Planning"
+  - "cat/Embodied_AI_Architectures"
+  - "sub/Embodied_Spatial_Reasoning"
   - "topic/physical-ai"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_TriVLA A Triple-System-Based Unified Vision-Language-Action Model with Episodic World Modeling for.pdf"
 ---
@@ -90,8 +92,20 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Liu et al._2025_TriVLA A Triple-System-B
 
 ## Related Papers
 
-- 🔄 다른 접근: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — TriVLA의 episodic world model과 TrackVLA++의 polar reasoning은 VLA 모델의 시공간 이해를 향상시키는 서로 다른 메모리 기반 접근법
-- 🔗 후속 연구: [[papers/1419_Generative_World_Modelling_for_Humanoids_1X_World_Model_Chal/review]] — TriVLA의 triple-system 아키텍처가 Generative World Modelling의 humanoid 세계 모델과 결합되어 더 포괄적인 embodied intelligence를 달성할 수 있음
-- 🏛 기반 연구: [[papers/1317_BEHAVIOR-1K_A_Human-Centered_Embodied_AI_Benchmark_with_1000/review]] — TriVLA의 episodic memory가 BEHAVIOR-1K 벤치마크의 long-horizon 작업 시나리오에서 요구하는 기본적인 메모리 메커니즘을 제공
-- 🔄 다른 접근: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — TrackVLA++의 polar reasoning과 TriVLA의 episodic memory 모두 VLA 모델의 시공간 추론 능력을 향상시키는 서로 다른 접근법
-- 🏛 기반 연구: [[papers/1631_World_Models/review]] — World Models의 생성형 환경 모델이 TriVLA의 episodic world model 설계에 핵심적인 이론적 기반을 제공
+- 🏛 기반 연구: [[papers/1292_A_Comprehensive_Survey_on_World_Models_for_Embodied_AI/review]] — embodied AI를 위한 world model의 포괄적 이해를 제공하는 기반 서베이 연구입니다.
+- 🔗 후속 연구: [[papers/1581_Structured_World_Models_from_Human_Videos/review]] — human video로부터 구조화된 world model을 에피소딕 메모리와 결합할 수 있습니다.
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 장기 지평 작업을 위한 서로 다른 접근법 - 에피소딕 메모리 vs 명시적 상태 유지입니다.
+- 🔄 다른 접근: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — 둘 다 embodied AI를 위한 world model을 제안하지만 TriVLA는 에피소딕 메모리에, WHALE은 행동 조건화에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1632_World_Simulation_with_Video_Foundation_Models_for_Physical_A/review]] — 비디오 foundation model을 통한 세계 시뮬레이션 연구가 TriVLA의 Video Diffusion Model 기반 미래 예측 시스템의 이론적 기반이다.
+- 🔗 후속 연구: [[papers/1631_World_Models/review]] — 기본적인 생성형 world model을 에피소딕 메모리와 삼중 시스템 아키텍처로 확장하여 장기 조작 작업에 특화했다.
+- 🔄 다른 접근: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — 둘 다 메모리와 추론을 VLA에 통합하지만 TriVLA는 에피소딕 메모리에, TrackVLA++는 tracking memory에 집중합니다.
+- 🏛 기반 연구: [[papers/1472_Mastering_Diverse_Domains_through_World_Models/review]] — world model을 통한 다양한 도메인 마스터링 개념을 제공하여 TriVLA의 에피소딕 월드 모델에 이론적 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1391_Fast-in-Slow_A_Dual-System_Foundation_Model_Unifying_Fast_Ma/review]] — TriVLA의 삼중 시스템 구조가 Fast-in-Slow의 dual-system 설계를 이론적으로 확장한 기반을 제공합니다.
+- ⚖️ 반론/비판: [[papers/1503_OneTwoVLA_A_Unified_Vision-Language-Action_Model_with_Adapti/review]] — unified VLA vs triple-system 기반의 다른 시스템 통합 철학
+- 🏛 기반 연구: [[papers/1509_OpenHelix_A_Short_Survey_Empirical_Analysis_and_Open-Source/review]] — OpenHelix가 분석한 dual-system VLA의 기초가 되는 triple-system 아키텍처 연구
+- 🔄 다른 접근: [[papers/1579_Statler_State-Maintaining_Language_Models_for_Embodied_Reaso/review]] — 상태 유지를 위한 서로 다른 접근법 - 명시적 상태 추적 vs 에피소딕 메모리 시스템입니다.
+- 🔄 다른 접근: [[papers/1584_ThinkAct_Vision-Language-Action_Reasoning_via_Reinforced_Vis/review]] — 고수준 추론과 저수준 행동의 연결을 위한 서로 다른 아키텍처 - 이중 시스템 vs 삼중 시스템입니다.
+- 🔄 다른 접근: [[papers/1593_TrackVLA_Unleashing_Reasoning_and_Memory_Capabilities_in_VLA/review]] — 둘 다 VLA 모델에 메모리 기능을 추가하지만 TrackVLA++는 tracking 특화 TIM을, TriVLA는 에피소딕 월드 모델을 사용한다.
+- 🔄 다른 접근: [[papers/1626_WHALE_Towards_Generalizable_and_Scalable_World_Models_for_Em/review]] — 둘 다 embodied AI용 world model이지만 WHALE은 행동 조건화에, TriVLA는 에피소딕 메모리에 중점을 둔다.
+- 🏛 기반 연구: [[papers/1631_World_Models/review]] — World Models의 생성형 world model 개념이 TriVLA의 에피소딕 월드 모델과 미래 동역학 예측의 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1373_DualVLA_Building_a_Generalizable_Embodied_Agent_via_Partial/review]] — TriVLA의 삼중 시스템 구조가 DualVLA의 추론-행동 분리 개념의 이론적 확장 기반을 제공합니다.

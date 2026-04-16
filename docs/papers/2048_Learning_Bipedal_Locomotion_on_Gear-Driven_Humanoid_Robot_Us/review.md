@@ -1,3 +1,24 @@
+---
+title: "2048_Learning_Bipedal_Locomotion_on_Gear-Driven_Humanoid_Robot_Us"
+authors:
+  - "Sotaro Katayama"
+  - "Yuta Koda"
+  - "Norio Nagatsuka"
+  - "Masaya Kinoshita"
+date: "2025.04"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "고기어비 액추에이터와 토크 센서가 없는 휴머노이드 로봇의 이족 보행 학습을 위해 발목 장착 IMU를 활용하는 Sim-to-Real RL 프레임워크를 제안하고, 대칭 데이터 증강과 random network distillation을 통해 불규칙한 지형에서의 안정화를 향상시킨다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Upper_Body_Force_Control"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Katayama et al._2025_Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs.pdf"
+---
+
 # Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs
 
 > **저자**: Sotaro Katayama, Yuta Koda, Norio Nagatsuka, Masaya Kinoshita | **날짜**: 2025-04-01 | **URL**: [https://arxiv.org/abs/2504.00614](https://arxiv.org/abs/2504.00614)
@@ -65,3 +86,14 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 저비용 고기어비 액추에이터 로봇의 Sim-to-Real 학습에서 발목 IMU 센서를 혁신적으로 활용하여 복잡한 모델링을 회피하면서도 강건한 이족 보행을 달성한다. 하드웨어 검증과 실제 성능 개선이 입증되었으나, 다양한 로봇 플랫폼으로의 일반화 가능성과 기여도 분석이 향후 강화될 필요가 있다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1988_HuMam_Humanoid_Motion_Control_via_End-to-End_Deep_Reinforcem/review]] — 발목 IMU 기반 학습이 HuMam의 로봇 중심 상태 융합에 필요한 센서 데이터를 제공한다.
+- 🧪 응용 사례: [[papers/1675_Sim-to-Real_of_Humanoid_Locomotion_Policies_via_Joint_Torque/review]] — 발목 IMU 기반 프레임워크가 관절 토크를 통한 sim-to-real 학습에 실제 적용될 수 있다.
+- 🔄 다른 접근: [[papers/1630_Quasi-Direct_Drive_for_Low-Cost_Compliant_Robotic_Manipulati/review]] — Learning Bipedal Locomotion은 고기어비 액추에이터 사용, Quasi-Direct Drive는 저비용 컴플라이언트 구동으로 서로 다른 액추에이션 방식을 채택한다.
+- 🔗 후속 연구: [[papers/1664_Sampling-Based_System_Identification_with_Active_Exploration/review]] — Learning Bipedal Locomotion의 random network distillation을 Sampling-Based System Identification의 능동 탐색과 결합하여 더 효과적인 지형 적응 학습이 가능하다.
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 두 논문 모두 하드웨어 제약이 있는 휴머노이드에서 빠른 강화학습을 통한 보행 학습을 다루며 실용적 접근법을 제시한다.
+- 🏛 기반 연구: [[papers/1627_PvP_Data-Efficient_Humanoid_Robot_Learning_with_Propriocepti/review]] — PvP의 고유감각 기반 데이터 효율적 학습이 발목 IMU를 활용한 센서 제약 환경에서의 강화학습에 이론적 기반을 제공한다.
+- 🧪 응용 사례: [[papers/1988_HuMam_Humanoid_Motion_Control_via_End-to-End_Deep_Reinforcem/review]] — HuMam의 에너지 효율적 제어가 기어 구동 로봇의 발목 IMU 기반 학습에 적용될 수 있다.
+- 🔄 다른 접근: [[papers/2061_Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/review]] — 두 논문 모두 하드웨어 제약이 있는 휴머노이드에서 빠른 강화학습을 다루며 실용적 sim-to-real 접근법을 제시한다.

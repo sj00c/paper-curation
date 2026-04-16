@@ -1,3 +1,23 @@
+---
+title: "1830_Bunny-VisionPro_Real-Time_Bimanual_Dexterous_Teleoperation_f"
+authors:
+  - "Runyu Ding"
+  - "Yuzhe Qin"
+  - "Jiyue Zhu"
+  - "Chengzhe Jia"
+  - "Shiqi Yang"
+date: "2024.07"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "Apple Vision Pro의 손 추적 기능을 활용하여 양손 민첩한 조작이 가능한 실시간 텔레오퍼레이션 시스템 Bunny-VisionPro를 제시하며, 저비용 햅틱 피드백과 충돌/특이점 회피를 통해 모방 학습용 고품질 시연 데이터를 수집한다."
+tags:
+  - "cat/Robotic_Manipulation_and_Teleoperation"
+  - "sub/Portable_Humanoid_Teleoperation"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Ding et al._2024_Bunny-VisionPro Real-Time Bimanual Dexterous Teleoperation for Imitation Learning.pdf"
+---
+
 # Bunny-VisionPro: Real-Time Bimanual Dexterous Teleoperation for Imitation Learning
 
 > **저자**: Runyu Ding, Yuzhe Qin, Jiyue Zhu, Chengzhe Jia, Shiqi Yang, Ruihan Yang, Xiaojuan Qi, Xiaolong Wang | **날짜**: 2024-07-03 | **URL**: [https://arxiv.org/abs/2407.03162](https://arxiv.org/abs/2407.03162)
@@ -68,3 +88,20 @@ Apple Vision Pro의 손 추적 기능을 활용하여 양손 민첩한 조작이
 - Overall: 4/5
 
 **총평**: Vision Pro를 활용한 양손 민첩 텔레오퍼레이션에서 실시간 성능, 안전성, 몰입감을 동시에 달성한 혁신적 시스템으로, 장시간 복잡 조작의 시연 수집을 통해 모방 학습의 새로운 가능성을 제시하는 높은 기술적·응용적 가치의 연구다.
+
+## Related Papers
+
+- 🔄 다른 접근: [[papers/1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human/review]] — Bunny-VisionPro는 Apple Vision Pro로 양손 조작을, ByteDexter는 20-DoF 손으로 정교한 텔레오퍼레이션을 구현하는 서로 다른 하드웨어 접근법을 보여준다.
+- 🔗 후속 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — Bunny-VisionPro의 실시간 양손 텔레오퍼레이션 기술이 CLONE의 MR 헤드셋 기반 전신 협응 제어로 확장되어 더 포괄적인 휴머노이드 제어를 가능하게 한다.
+- 🔄 다른 접근: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Bunny-VisionPro와 Open-TeleVision 모두 몰입형 시각 피드백을 활용한 텔레오퍼레이션을 제공하지만 서로 다른 하드웨어와 접근 방식을 사용한다.
+- 🏛 기반 연구: [[papers/1921_ExtremControl_Low-Latency_Humanoid_Teleoperation_with_Direct/review]] — ExtremControl의 저지연 텔레오퍼레이션 기술이 Bunny-VisionPro의 실시간 양손 조작 시스템 구현에 필요한 기술적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1806_ARMADA_Augmented_Reality_for_Robot_Manipulation_and_Robot-Fr/review]] — 실시간 이중팔 원격조작 기술이 ARMADA의 AR 기반 로봇 조작 데이터 수집에 피드백 시스템의 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1839_CLONE_Closed-Loop_Whole-Body_Humanoid_Teleoperation_for_Long/review]] — Bunny-VisionPro의 실시간 양손 텔레오퍼레이션 기술이 CLONE의 MR 헤드셋 기반 전신 협응 제어 시스템 개발에 기초적인 프레임워크를 제공한다.
+- 🔗 후속 연구: [[papers/1786_ACE_A_Cross-Platform_Visual-Exoskeletons_System_for_Low-Cost/review]] — 실시간 이중팔 정교한 원격조작을 ACE의 저비용 cross-platform 시각 시스템과 결합할 수 있습니다.
+- 🧪 응용 사례: [[papers/1870_DexterCap_An_Affordable_and_Automated_System_for_Capturing_D/review]] — 실시간 양손 정교한 텔레오퍼레이션의 실제 구현 사례를 보여줍니다.
+- 🔄 다른 접근: [[papers/1873_Dexterous_Teleoperation_of_20-DoF_ByteDexter_Hand_via_Human/review]] — ByteDexter의 20-DoF 링크구동과 Bunny-VisionPro의 Apple Vision Pro 기반 시스템은 정교한 손 텔레오퍼레이션에서 서로 다른 하드웨어와 추적 기술을 사용한다.
+- 🔄 다른 접근: [[papers/2014_HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/review]] — 둘 다 실시간 양손 조작 텔레오퍼레이션이지만 HumDex는 IMU 기반, Bunny-VisionPro는 비전 기반
+- 🔄 다른 접근: [[papers/2092_MaskedMimic_Unified_Physics-Based_Character_Control_Through/review]] — 둘 다 motion inpainting 접근법이지만 MaskedMimic은 physics-based control에, Flexible Motion In-betweening은 애니메이션 생성에 중점을 둔다
+- 🔗 후속 연구: [[papers/2119_OmniControl_Control_Any_Joint_at_Any_Time_for_Human_Motion_G/review]] — Flexible Motion In-betweening의 diffusion model이 OmniControl의 text-conditioned spatial control로 더욱 정교하게 발전된 것이다
+- 🔄 다른 접근: [[papers/2164_TWIST2_Scalable_Portable_and_Holistic_Humanoid_Data_Collecti/review]] — Bunny-VisionPro의 bimanual dexterous teleoperation과 TWIST2의 whole-body teleoperation은 상호 보완적인 VR 기반 접근법임
+- 🏛 기반 연구: [[papers/2124_Open-TeleVision_Teleoperation_with_Immersive_Active_Visual_F/review]] — Bunny-VisionPro의 실시간 이중팔 정교한 텔레오퍼레이션 기술이 Open-TeleVision의 VR 기반 몰입형 원격 조종 시스템 개발에 기반을 제공한다.

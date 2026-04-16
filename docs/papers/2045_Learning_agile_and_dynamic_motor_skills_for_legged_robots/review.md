@@ -1,3 +1,25 @@
+---
+title: "2045_Learning_agile_and_dynamic_motor_skills_for_legged_robots"
+authors:
+  - "Jemin Hwangbo"
+  - "Joonho Lee"
+  - "Alexey Dosovitskiy"
+  - "Dario Bellicoso"
+  - "Vassilios Tsounis"
+date: "2019.01"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "본 논문은 시뮬레이션에서 reinforcement learning으로 사족 로봇의 제어 정책을 학습하고 현실의 ANYmal 로봇에 전이하는 방법을 제시하여, 고속 주행과 낙하 복구 등의 동적 운동 기술을 달성했다."
+tags:
+  - "cat/Humanoid_Locomotion_and_Control"
+  - "cat/Diffusion-Based_Motion_Generation"
+  - "cat/Adaptive_Locomotion_and_Control"
+  - "sub/Humanoid_Exercise_Learning"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Hwangbo et al._2019_Learning agile and dynamic motor skills for legged robots.pdf"
+---
+
 # Learning agile and dynamic motor skills for legged robots
 
 > **저자**: Jemin Hwangbo, Joonho Lee, Alexey Dosovitskiy, Dario Bellicoso, Vassilios Tsounis, Vladlen Koltun, Marco Hutter | **날짜**: 2019-01-24 | **URL**: [https://arxiv.org/abs/1901.08652](https://arxiv.org/abs/1901.08652)
@@ -61,3 +83,13 @@
 - Overall: 4/5
 
 **총평**: 본 논문은 사족 로봇의 동적 제어에 reinforcement learning과 domain randomization을 효과적으로 결합하여 시뮬레이션-현실 전이 문제를 체계적으로 해결했으며, 실제 고급 로봇 플랫폼에서 이전에 달성하지 못한 수준의 운동 기술을 구현함으로써 로봇 제어 분야에 중요한 기여를 했다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — 강건하고 다양한 이족 점프 제어가 사족 로봇의 동적 운동 기술 학습에 기초적 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1637_Reinforcement_Learning_for_Versatile_Dynamic_and_Robust_Bipe/review]] — 사족 로봇의 민첩한 동적 기술이 이족 로봇의 다양하고 강건한 보행으로 확장될 수 있다.
+- 🔄 다른 접근: [[papers/1925_FastStair_Learning_to_Run_Up_Stairs_with_Humanoid_Robots/review]] — 동적 운동 기술 학습에서 범용적 접근법 대신 계단 오르기에 특화된 휴머노이드 학습 방법을 제시한다.
+- 🏛 기반 연구: [[papers/1792_Adversarial_Locomotion_and_Motion_Imitation_for_Humanoid_Pol/review]] — 적대적 locomotion과 모션 모방의 기본 원리가 사족 로봇의 민첩한 제어 정책 학습에 대한 이론적 토대를 제공한다.
+- 🏛 기반 연구: [[papers/1850_Contrastive_Representation_Learning_for_Robust_Sim-to-Real_T/review]] — 대조 표현 학습이 Learning agile의 견고한 sim-to-real 전이에서 도메인 간 특징 정렬의 이론적 기반 제공
+- 🏛 기반 연구: [[papers/1656_Robust_and_Versatile_Bipedal_Jumping_Control_through_Reinfor/review]] — legged robot의 민첩한 운동 기술 학습에 대한 기초적인 방법론을 제공한다.
+- 🔗 후속 연구: [[papers/1851_Control_of_Humanoid_Robots_with_Parallel_Mechanisms_using_Di/review]] — 다리 로봇을 위한 agile하고 동적인 운동 기술 학습이 병렬 메커니즘의 미분가능한 모델을 실제 동작에 효과적으로 활용할 수 있다

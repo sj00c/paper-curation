@@ -9,6 +9,7 @@ score: 4.0
 essence: "심리학 분야의 100개 주요 연구를 직접 재현(replication)한 결과, 원래 연구의 효과크기가 재현 연구에서 약 절반 수준으로 감소했으며, 재현 성공률이 36%에 불과함을 보여주었다."
 tags:
   - "cat/Science_Policy_and_Research_Dynamics"
+  - "cat/Computational_Bibliometric_Analysis"
   - "sub/Research_Reproducibility_Crisis"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Open Science Collaboration_2015_Estimating the Reproducibility of Psychological Science.pdf"
@@ -77,14 +78,14 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Open Science Collaboration_2015_Estimati
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 심리학에서 사회과학 전반으로 재현성 위기 연구의 범위를 확장하여 문제의 광범위성을 입증한다.
-- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학 연구의 편향성에 대한 메타분석이 재현성 실패의 근본 원인을 이해하는 이론적 토대를 제공한다.
-- 🔄 다른 접근: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 1,500명 과학자 설문조사는 100개 연구 직접 재현과 다른 방법으로 재현성 문제의 실태를 파악한다.
-- 🔗 후속 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 심리학 분야 재현성 평가를 다른 과학 분야로 확장하여 재현성 위기의 범위를 확인한다
-- 🧪 응용 사례: [[papers/1058_Why_Most_Published_Research_Findings_Are_False/review]] — 발표된 연구 결과의 거짓 가능성을 심리학 실험의 재현가능성 추정이라는 구체적 분야에서 검증했다.
-- 🔗 후속 연구: [[papers/1079_REFORMS_Consensus-based_Recommendations_for_Machine-learning/review]] — 심리학에서의 재현성 평가 경험을 ML 기반 과학 연구로 확장하여 검증 체크리스트의 실용적 근거를 강화한다.
-- 🔗 후속 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 과학 편향의 메타분석이 심리학 재현성 문제의 근본 원인을 더 넓은 관점에서 설명한다.
-- ⚖️ 반론/비판: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 의도적 부정행위와 재현 실패는 과학 신뢰성을 위협하는 서로 다른 성격의 문제임을 보여준다.
-- 🏛 기반 연구: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 심리학 재현성 연구의 방법론과 발견이 사회과학 실험 재현 연구의 설계 기반을 제공했다.
-- 🏛 기반 연구: [[papers/1142_Beyond_Retractions_Forensic_Scientometrics_Techniques_to_Ide/review]] — 심리학에서의 재현성 평가가 더 광범위한 연구 부정행위 탐지 시스템의 방법론적 기반을 제공한다.
-- 🏛 기반 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 노인 연구에서 D&I 프레임워크의 재현성 문제를 이해하기 위해 심리학 과학의 재현성 추정 연구가 기반이 된다.
+- 🔗 후속 연구: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — Nature/Science 사회과학 실험의 재현성 연구가 심리학 분야 재현성 위기를 최고 저널로 확장하여 문제의 보편성을 입증한다.
+- 🏛 기반 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — 1,500명 과학자의 재현성 인식 조사가 심리학 분야 재현성 실증 연구의 광범위한 배경과 맥락을 제공한다.
+- 🔗 후속 연구: [[papers/925_1500_scientists_lift_the_lid_on_reproducibility/review]] — Nature의 재현성 설문조사가 심리학 분야의 체계적 재현성 추정 연구로 확장되어 구체적 해결책을 제시합니다.
+- 🧪 응용 사례: [[papers/1058_Why_Most_Published_Research_Findings_Are_False/review]] — 심리학 분야에서 재현성 위기를 실제 실험을 통해 검증하여 이론을 실증한다.
+- 🏛 기반 연구: [[papers/987_Meta-assessment_of_Bias_in_Science/review]] — 심리학 실험의 재현성 평가가 과학 문헌 편향 메타분석의 방법론적 기초를 제공한다.
+- 🔄 다른 접근: [[papers/988_Misconduct_Accounts_for_the_Majority_of_Retracted_Scientific/review]] — 심리과학 실험의 재현성을 추정한 연구로, 부정행위 중심이 아닌 재현성 실패 관점에서 과학의 질을 평가하는 대안적 접근법입니다.
+- 🔄 다른 접근: [[papers/959_Evaluating_the_Replicability_of_Social_Science_Experiments_i/review]] — 과학 연구의 재현성 문제를 사회과학 실험과 심리학이라는 다른 분야에서 검증한다
+- 🏛 기반 연구: [[papers/1159_Dissemination_and_Implementation_Theories_Models_or_Framewor/review]] — 심리학 연구의 재현가능성 평가가 노인 연구에서 D&I 프레임워크의 실제 적용 효과 검증에 방법론적 기반을 제공하기 때문
+- 🏛 기반 연구: [[papers/1217_Tracing_the_Evolution_of_Sleep-Related_Behavioural_Outcomes/review]] — 심리학 연구의 재현성 추정 방법론이 자폐 관련 수면-행동 연구의 신뢰성 평가 기반을 제공합니다.
+- 🏛 기반 연구: [[papers/1214_The_Story_is_Not_the_Science_Execution-Grounded_Evaluation_o/review]] — 심리학의 재현성 평가 연구가 제공하는 실험 검증 방법론이 execution-grounded evaluation 프레임워크 설계에 핵심적인 이론적 기반을 제공한다.
+- 🏛 기반 연구: [[papers/1145_Bibliometric_analysis_of_randomized_controlled_trials_in_ora/review]] — OSF 연구의 재현성 문제를 심리학 실험의 재현성 연구 방법론으로 평가할 수 있다.

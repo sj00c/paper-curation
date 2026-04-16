@@ -9,8 +9,9 @@ arxiv: ""
 score: 4.0
 essence: "본 논문은 기술 네트워크의 동적 변화를 측정하기 위해 특정 발명이 기존 기술 스트림을 공고히(consolidate) 하는지 또는 불안정하게(destabilize) 하는지를 정량화하는 CDt 지수를 제안한다. 대학 연구 상용화 분석을 통해 연방 기금은 파괴적 기술을 유도하지만 상업적 연계는 현상 유지 기술을 강화함을 보여준다."
 tags:
+  - "cat/Academic_Impact_and_Mobility"
   - "cat/Science_Policy_and_Research_Dynamics"
-  - "sub/Innovation_Patent_Analysis"
+  - "sub/Scholar_Mobility_Patterns"
   - "topic/scisci"
 pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Funk and Owen-Smith_2017_A Dynamic Network Measure of Technological Change.pdf"
 ---
@@ -87,7 +88,7 @@ pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Funk and Owen-Smith_2017_A Dynamic Netwo
 
 ## Related Papers
 
-- 🔗 후속 연구: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 기술 변화의 파괴성 측정을 논문과 특허의 시간적 변화 분석으로 확장한다
-- 🔄 다른 접근: [[papers/1080_Robust_Evidence_for_Declining_Disruptiveness_Assessing_the_R/review]] — 과학의 파괴성 감소에 대한 강건한 증거를 기술 네트워크 변화 측정의 다른 관점에서 제시한다
-- 🧪 응용 사례: [[papers/934_Are_disruptive_papers_more_likely_to_impact_technology_and_s/review]] — 파괴적 논문이 기술과 사회에 미치는 영향을 CDt 지수로 측정할 수 있다
-- 🏛 기반 연구: [[papers/986_Mapping_the_changing_structure_of_science_through_diachronic/review]] — 기술 변화의 동적 네트워크 측정 방법론을 학술지 진화 분석에 적용하여 과학 구조 변화를 정량화하는 이론적 기반을 제공한다.
+- 🔗 후속 연구: [[papers/934_Are_disruptive_papers_more_likely_to_impact_technology_and_s/review]] — 기술 네트워크의 파괴성 측정을 논문의 기술-사회 영향력 예측으로 확장한 연구이다
+- ⚖️ 반론/비판: [[papers/995_Papers_and_patents_are_becoming_less_disruptive_over_time/review]] — 혁신의 파괴성 감소 현상에 대해 네트워크 동역학적 관점에서 다른 해석을 제시한다
+- 🧪 응용 사례: [[papers/1005_Quantifying_the_dynamics_of_failure_across_science_startups/review]] — 기술 변화 측정 방법론을 스타트업과 과학 분야의 실패 동역학 분석에 적용한다
+- 🏛 기반 연구: [[papers/934_Are_disruptive_papers_more_likely_to_impact_technology_and_s/review]] — 기술 네트워크의 동적 변화 측정이 논문의 파괴성 평가의 이론적 토대를 제공한다

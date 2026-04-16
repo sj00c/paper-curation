@@ -1,3 +1,23 @@
+---
+title: "2010_HumanoidPano_Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Pe"
+authors:
+  - "Qiang Zhang"
+  - "Zhang Zhang"
+  - "Wei Cui"
+  - "Jingkai Sun"
+  - "Jiahang Cao"
+date: "2025.03"
+doi: ""
+arxiv: ""
+score: 4.0
+essence: "인간형 로봇의 자아-폐색 및 제한된 시야 문제를 해결하기 위해 파노라마 비전과 LiDAR를 융합하는 HumanoidPano 프레임워크를 제안하며, Spherical Geometry-aware Constraints와 Spatial Deformable Attention을 통해 기하학적으로 정렬된 크로스모달 인식을 구현한다."
+tags:
+  - "cat/Motion_Learning_from_Demonstration"
+  - "sub/LiDAR_Terrain_Perception"
+  - "topic/humanoid"
+pdf: "C:/Users/jehyu/GoogleDrive/Zotero/Zhang et al._2025_HumanoidPano Hybrid Spherical Panoramic-LiDAR Cross-Modal Perception for Humanoid Robots.pdf"
+---
+
 # HumanoidPano: Hybrid Spherical Panoramic-LiDAR Cross-Modal Perception for Humanoid Robots
 
 > **저자**: Qiang Zhang, Zhang Zhang, Wei Cui, Jingkai Sun, Jiahang Cao, Yijie Guo, Gang Han, Wen Zhao, Jiaxu Wang, Chenghao Sun, Lingfeng Zhang, Hao Cheng, Yujie Chen, Lin Wang, Jian Tang, Renjing Xu | **날짜**: 2025-03-12 | **URL**: [https://arxiv.org/abs/2503.09010](https://arxiv.org/abs/2503.09010)
@@ -63,3 +83,21 @@
 - Overall: 4/5
 
 **총평**: HumanoidPano는 인간형 로봇의 고유한 구조적 제약을 심층적으로 고려하여 panoramic vision과 LiDAR를 기하학적으로 정렬하는 혁신적인 프레임워크로, 실제 로봇 플랫폼에서의 검증과 state-of-the-art 성능으로 embodied AI 분야에 새로운 패러다임을 제시한다.
+
+## Related Papers
+
+- 🏛 기반 연구: [[papers/1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — 일반화된 multimodal occupancy 인식이 HumanoidPano의 파노라마-LiDAR 크로스모달 인식을 위한 기반 프레임워크를 제공합니다.
+- 🧪 응용 사례: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — 파노라마-LiDAR 융합 인식이 복잡한 야외 지형에서의 parkour 프레임워크에 향상된 환경 인식 능력을 제공합니다.
+- 🔗 후속 연구: [[papers/1807_ARMOR_Egocentric_Perception_for_Humanoid_Robot_Collision_Avo/review]] — ARMOR의 egocentric 충돌 회피를 HumanoidPano가 spherical panoramic vision으로 확장하여 360도 환경 인식을 달성합니다.
+- 🔄 다른 접근: [[papers/1633_Real-Time_Polygonal_Semantic_Mapping_for_Humanoid_Robot_Stai/review]] — 두 논문 모두 휴머노이드의 환경 인식을 다루지만 전자는 계단 등반용 다각형 맵핑에, 후자는 panoramic-LiDAR 융합에 집중한다
+- 🧪 응용 사례: [[papers/1802_An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_Vi/review]] — 상용 VIO 시스템 벤치마크 결과를 구형 파노라마-LiDAR 교차 모달 인식 시스템의 성능 비교에 적용할 수 있습니다.
+- 🔗 후속 연구: [[papers/1780_A_Hybrid_Autoencoder_for_Robust_Heightmap_Generation_from_Fu/review]] — 구형 파노라마-LiDAR 교차 모달 인식을 높이맵 기반 지형 탐지와 결합한 확장된 접근법입니다.
+- 🔗 후속 연구: [[papers/1856_CReF_Cross-modal_and_Recurrent_Fusion_for_Depth-conditioned/review]] — HumanoidPano의 panoramic-LiDAR 융합과 CReF의 depth-conditioned locomotion이 다중 모달 지각 시스템의 완전한 형태를 보여준다.
+- 🔗 후속 연구: [[papers/1884_DPL_Depth-only_Perceptive_Humanoid_Locomotion_via_Realistic/review]] — 하이브리드 구형 파노라마-LiDAR 교차 모달 지각으로 발전됩니다.
+- 🔄 다른 접근: [[papers/1933_FRAME_Floor-aligned_Representation_for_Avatar_Motion_from_Eg/review]] — 둘 다 VR/AR 환경에서의 인간 자세 추정을 다루지만 FRAME은 스테레오 카메라를, HumanoidPano는 spherical panoramic을 사용한다.
+- 🔄 다른 접근: [[papers/1939_Gait-Adaptive_Perceptive_Humanoid_Locomotion_with_Real-Time/review]] — 둘 다 LiDAR와 카메라 융합을 통한 humanoid 인식을 다루지만, Gait-Adaptive는 깊이 기반 높이맵에, HumanoidPano는 panoramic cross-modal 접근법에 집중합니다.
+- 🔄 다른 접근: [[papers/1907_EmbodMocap_In-the-Wild_4D_Human-Scene_Reconstruction_for_Emb/review]] — HumanoidPano의 구형 파노라마-LiDAR cross-modal 인식이 iPhone 기반과는 다른 센서 융합 방식으로 인간-장면 재구성에 접근한다.
+- 🏛 기반 연구: [[papers/1978_Hiking_in_the_Wild_A_Scalable_Perceptive_Parkour_Framework_f/review]] — HumanoidPano의 파노라마-LiDAR 융합 인식이 복잡한 야외 지형에서의 안전한 parkour를 위한 향상된 환경 인식을 제공합니다.
+- 🔗 후속 연구: [[papers/1998_Humanoid_Occupancy_Enabling_A_Generalized_Multimodal_Occupan/review]] — HumanoidPano의 spherical panoramic-LiDAR fusion이 Humanoid Occupancy의 multimodal perception을 panoramic 환경 인식으로 확장할 수 있다.
+- 🔗 후속 연구: [[papers/2112_Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_fro/review]] — HumanoidPano의 하이브리드 구형 파노라마-LiDAR 교차 모달 지각을 단순한 깊이 센서만으로 달성하려는 연구이다.
+- 🏛 기반 연구: [[papers/2117_Omni-Perception_Omnidirectional_Collision_Avoidance_for_Legg/review]] — HumanoidPano의 LiDAR cross-modal perception이 Omni-Perception의 LiDAR 포인트 클라우드 직접 처리 방법에 기술적 기반을 제공했다
