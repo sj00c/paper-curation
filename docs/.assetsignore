@@ -1,0 +1,24 @@
+# Local-only topics — not published to Cloudflare
+ai4s/
+scisci/
+
+# Local dev caches — never deployed
+_local_keys.json
+_zotero_keys.json
+
+# Obsidian / Claude Code / OMC runtime files
+.obsidian/
+**/.obsidian/
+.claude/
+**/.claude/
+.omc/
+**/.omc/
+
+# Personal notes (local-only)
+notes/
+papers/*/notes.md
+
+# Source markdown (only HTML is served)
+papers/*/review.md
+papers/*/text.md
+papers/*/originality.md

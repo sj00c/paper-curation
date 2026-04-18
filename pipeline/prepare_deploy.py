@@ -1,23 +1,36 @@
 """
-배포 준비: PNG→WebP 변환 + text.md gitignore + HTML 경로 업데이트.
+배포 준비: PNG→WebP 변환 + API key strip + Cloudflare/gh-pages 배포.
 
-Cloudflare Workers(Static Assets)가 master 브랜치의 docs/ 를 자동으로
-배포한다. 따라서 이 스크립트는 docs/ 만 master에 commit/push 한다.
-(구 gh-pages subtree 방식은 제거됨)
+아키텍처:
+  - **로컬 docs/**: wrangler 배포 소스 (풀 콘텐츠)
+  - **Cloudflare Workers**: `wrangler deploy` 로 직접 업로드. 실제 사용자
+    콘텐츠. docs/.assetsignore 로 ai4s/scisci 등 로컬 전용 토픽 제외.
+  - **GitHub gh-pages 브랜치**: 작은 리다이렉트 스텁만. github.io 에 접근한
+    사용자를 Cloudflare 로 리다이렉트.
+  - **GitHub master 브랜치**: 코드 + 설정만. docs/ 내 대용량 콘텐츠는
+    .gitignore 로 제외.
 
 Usage:
   PYTHONUTF8=1 python prepare_deploy.py --topic ai4s
   PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --quality 90    # WebP 품질 (기본 90)
   PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --dry-run       # 변환 없이 크기 예상만
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --push          # 변환 후 master push (Cloudflare 자동 배포)
+  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --push          # WebP 변환 + wrangler deploy + gh-pages 스텁 + master push
+
+환경변수 (--push 시 필수):
+  CLOUDFLARE_API_TOKEN (or CF_API_TOKEN) : Cloudflare Pages:Edit 권한
+  CLOUDFLARE_ACCOUNT_ID                   : 계정 ID
 
 단계:
-  1. .gitignore에 text.md 추가
-  2. papers/*/figures/*.png → *.webp 변환 (quality 90, lossless 아님)
-  3. papers/*/index.html, papers/*/review.md에서 .png → .webp 경로 업데이트
-  4. {topic}/index.html에서 .png → .webp 경로 업데이트 (figure 참조만, 타임라인은 PNG 유지)
-  5. 원본 PNG 삭제
-  6. (선택) git add docs/ + commit + push origin master  → Cloudflare 자동 배포
+  1. papers/*/figures/*.png → *.webp 변환 (quality 90)
+  2. papers/*/index.html, review.md에서 .png → .webp 경로 업데이트
+  3. {topic}/index.html에서 figure .png → .webp 업데이트 (타임라인 PNG는 유지)
+  4. 원본 PNG 삭제 (WebP 검증된 것만)
+  5. HTML 에서 API key 제거 (로컬 working tree 는 나중에 복원)
+  6. (--push) `wrangler deploy` 로 Cloudflare 업로드
+  7. (--push) gh-pages 브랜치에 리다이렉트 스텁 idempotent 동기화
+  8. (--push) Cloudflare 엔드포인트 200 OK 검증
+  9. (--push) master 에 코드/설정 변경만 commit + push (대용량 콘텐츠는 gitignored)
+  10. 로컬 HTML 의 API key 복원
 """
 
 import argparse
@@ -153,6 +166,130 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
     for p, (c, s) in last_status.items():
         print(f"    {p}: {c} ({s})")
     return False
+
+
+_STUB_HTML = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0; url={cf_url}/{topic}/">
+<title>{title} — Paper Curation</title>
+<script>window.location.replace("{cf_url}/{topic}/");</script>
+</head>
+<body>
+<p>Redirecting to <a href="{cf_url}/{topic}/">{title} — Paper Curation</a>...</p>
+</body>
+</html>
+"""
+
+_TOPIC_TITLES = {
+    "humanoid": "Humanoid",
+    "physical-ai": "Physical AI",
+    "ai4s": "AI for Science",
+    "scisci": "Science of Science",
+}
+
+
+def _discover_deployable_topics():
+    """Scan docs/ for topic dirs deployed to Cloudflare (index.html present,
+    not in .assetsignore, not the shared 'papers' repo)."""
+    docs = str(DOCS_DIR)
+    assetsignore = os.path.join(docs, ".assetsignore")
+    excluded = {"papers", "notes"}
+    if os.path.exists(assetsignore):
+        with open(assetsignore, "r", encoding="utf-8") as f:
+            for raw in f:
+                line = raw.strip().rstrip("/")
+                if line and not line.startswith("#") and "/" not in line:
+                    excluded.add(line)
+    topics = []
+    for entry in os.listdir(docs):
+        if entry.startswith(("_", ".")) or entry in excluded:
+            continue
+        full = os.path.join(docs, entry)
+        if os.path.isdir(full) and os.path.isfile(os.path.join(full, "index.html")):
+            topics.append(entry)
+    return sorted(topics)
+
+
+def _wrangler_env():
+    """Build env for wrangler subprocess — accepts CF_API_TOKEN or
+    CLOUDFLARE_API_TOKEN, maps the former to the latter for wrangler."""
+    env = os.environ.copy()
+    if "CLOUDFLARE_API_TOKEN" not in env and "CF_API_TOKEN" in env:
+        env["CLOUDFLARE_API_TOKEN"] = env["CF_API_TOKEN"]
+    missing = [k for k in ("CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID") if not env.get(k)]
+    if missing:
+        raise SystemExit(
+            f"Missing env vars for wrangler: {', '.join(missing)}. "
+            f"Set CF_API_TOKEN (or CLOUDFLARE_API_TOKEN) and CLOUDFLARE_ACCOUNT_ID."
+        )
+    return env
+
+
+def _wrangler_deploy():
+    """Run `npx wrangler deploy` from the repo root. Raises on failure."""
+    env = _wrangler_env()
+    print("\n  [wrangler] npx wrangler deploy ...")
+    result = subprocess.run(
+        ["npx", "wrangler", "deploy"],
+        cwd=REPO, env=env,
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+    )
+    if result.stdout:
+        # Print last 15 lines for signal (upload summary, deploy URL)
+        tail = "\n".join(result.stdout.splitlines()[-15:])
+        print(f"  [wrangler stdout tail]\n{tail}")
+    if result.returncode != 0:
+        print(f"  [wrangler stderr]\n{result.stderr}")
+        raise SystemExit(f"wrangler deploy failed with exit {result.returncode}")
+
+
+def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
+    """Ensure origin/gh-pages has redirect stubs for each topic. Idempotent:
+    only commits + pushes when a stub would actually change."""
+    import tempfile
+    print(f"\n  [gh-pages] syncing stubs for: {', '.join(topics)}")
+    # Always fetch to ensure we act on the current remote state
+    subprocess.run(["git", "fetch", "origin", "gh-pages"], check=True, cwd=REPO)
+    worktree = tempfile.mkdtemp(prefix="paper-curation-ghpages-")
+    try:
+        subprocess.run(
+            ["git", "worktree", "add", "--force", worktree, "gh-pages"],
+            check=True, cwd=REPO,
+        )
+        changed = []
+        for topic in topics:
+            title = _TOPIC_TITLES.get(topic, topic.replace("-", " ").title())
+            content = _STUB_HTML.format(cf_url=cf_url, topic=topic, title=title)
+            stub_dir = os.path.join(worktree, topic)
+            os.makedirs(stub_dir, exist_ok=True)
+            stub_file = os.path.join(stub_dir, "index.html")
+            need_write = True
+            if os.path.exists(stub_file):
+                with open(stub_file, "r", encoding="utf-8") as f:
+                    if f.read() == content:
+                        need_write = False
+            if need_write:
+                with open(stub_file, "w", encoding="utf-8", newline="\n") as f:
+                    f.write(content)
+                changed.append(topic)
+        if not changed:
+            print("  [gh-pages] all stubs up to date — no push needed")
+            return
+        subprocess.run(["git", "add", "-A"], check=True, cwd=worktree)
+        msg = (
+            f"Sync redirect stubs: {', '.join(changed)}\n\n"
+            "Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
+        )
+        subprocess.run(["git", "commit", "-m", msg], check=True, cwd=worktree)
+        subprocess.run(["git", "push", "origin", "gh-pages"], check=True, cwd=worktree)
+        print(f"  [gh-pages] pushed stub updates for: {', '.join(changed)}")
+    finally:
+        subprocess.run(
+            ["git", "worktree", "remove", "--force", worktree],
+            cwd=REPO, check=False,
+        )
 
 
 def main():
@@ -311,65 +448,61 @@ def main():
         sys.exit(1)
     print(f"  Stripped API keys from {len(_originals)} files (0 leaks remaining)")
 
-    # Step 7: Commit docs/ changes and push to master (Cloudflare auto-deploys)
+    # Step 7-10: Deploy (only if --push). Otherwise we stop here — the
+    # working tree was modified by API-key strip in Step 6 so we still
+    # need to restore it in the finally block.
     try:
-        if args.push:
-            print("\nStep 7: Git commit + push to master (Cloudflare will auto-deploy)...")
-            os.chdir(REPO)
+        if not args.push:
+            print("\n(--push 없이 실행됨. Cloudflare 업로드/gh-pages 동기화/master push 모두 스킵)")
+        else:
+            # Step 7: Upload full content to Cloudflare via wrangler
+            print("\nStep 7: Deploying to Cloudflare (wrangler deploy)...")
+            _wrangler_deploy()
 
-            if args.topics:
-                # Only add specified topics + shared resources (papers, index.html)
-                subprocess.run(["git", "add", "docs/papers/", "docs/index.html"], check=True)
-                for t in args.topics:
-                    t_dir = os.path.join("docs", t)
-                    if os.path.isdir(t_dir):
-                        subprocess.run(["git", "add", t_dir], check=True)
-                print(f"  Topics included: {', '.join(args.topics)}")
+            # Step 8: Ensure gh-pages has redirect stubs for every deployed topic
+            topics_for_stubs = args.topics or _discover_deployable_topics()
+            if topics_for_stubs:
+                print(f"\nStep 8: Syncing gh-pages redirect stubs "
+                      f"({len(topics_for_stubs)} topics)...")
+                _sync_gh_pages_stubs(topics_for_stubs)
             else:
-                subprocess.run(["git", "add", "docs/"], check=True)
-            result = subprocess.run(
-                ["git", "diff", "--cached", "--quiet"],
-                capture_output=True
+                print("\nStep 8: No deployable topics found — skipping gh-pages sync")
+
+            # Step 9: Verify Cloudflare endpoints return 200
+            print("\nStep 9: Verifying Cloudflare endpoints...")
+            _verify_cloudflare(args.topic)
+
+            # Step 10: Commit + push master — only code/config changes.
+            # docs/* content is gitignored, so this only captures genuine
+            # source changes (pipeline scripts, wrangler.toml, etc.).
+            print("\nStep 10: Committing code/config changes to master...")
+            os.chdir(REPO)
+            subprocess.run(["git", "add", "-A"], check=True)
+            staged = subprocess.run(
+                ["git", "diff", "--cached", "--quiet"], capture_output=True,
             )
-            if result.returncode != 0:  # there are staged changes
-                # Deploy-diff summary (visibility before irreversible push)
-                diff_stat = subprocess.run(
-                    ["git", "diff", "--cached", "--stat=160"],
-                    capture_output=True, text=True, encoding="utf-8", errors="replace",
-                )
+            if staged.returncode == 0:
+                print("  No master-tracked changes to commit")
+            else:
                 name_status = subprocess.run(
                     ["git", "diff", "--cached", "--name-status"],
                     capture_output=True, text=True, encoding="utf-8", errors="replace",
                 )
                 ns_lines = [l for l in (name_status.stdout or "").splitlines() if l.strip()]
-                added = [l for l in ns_lines if l.startswith("A")]
-                deleted = [l for l in ns_lines if l.startswith("D")]
-                print(f"\n  Deploy diff: {len(ns_lines)} files changed "
-                      f"(+{len(added)} new, -{len(deleted)} removed)")
-                if deleted:
-                    print("  Deletions (first 20):")
-                    for l in deleted[:20]:
-                        print(f"    {l}")
-                    if len(deleted) > 20:
-                        print(f"    ... +{len(deleted) - 20} more")
-                # Tail of stat for context (last ~10 lines includes the summary row)
-                stat_tail = "\n".join((diff_stat.stdout or "").splitlines()[-5:])
-                if stat_tail:
-                    print(f"  {stat_tail}")
-                subprocess.run(["git", "commit", "-m",
-                                f"Deploy: PNG→WebP conversion, {converted} figures, "
-                                f"{total_orig // 1048576}→{total_webp // 1048576}MB\n\n"
-                                f"Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"],
-                               check=True)
+                print(f"  Master-tracked diff: {len(ns_lines)} files")
+                for l in ns_lines[:15]:
+                    print(f"    {l}")
+                if len(ns_lines) > 15:
+                    print(f"    ... +{len(ns_lines) - 15} more")
+                subprocess.run(
+                    ["git", "commit", "-m",
+                     f"Deploy: {converted} figures WebP, "
+                     f"{total_orig // 1048576}→{total_webp // 1048576}MB\n\n"
+                     f"Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"],
+                    check=True,
+                )
                 subprocess.run(["git", "push", "origin", "master"], check=True)
-                print("  Pushed to master — Cloudflare Workers will auto-deploy")
-
-                # ── Cloudflare deploy verification: poll known endpoints ──
-                _verify_cloudflare(args.topic)
-            else:
-                print("  No staged changes to commit")
-        else:
-            print("\n(--push 없이 실행됨. git push는 수동으로)")
+                print("  Pushed code/config changes to master")
     finally:
         # Restore local working tree so Deep Research UI keeps working without rebuild
         _restore_originals()
