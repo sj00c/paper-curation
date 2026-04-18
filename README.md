@@ -56,56 +56,69 @@ python pipeline/setup.py
 
 ![워크플로우](workflow.png)
 
+```mermaid
+flowchart TB
+    ZT[Zotero 컬렉션 PDF] --> S1
+    subgraph Pipeline[run_full.py 오케스트레이터]
+      S1[1 · 데이터 수집<br/>text.md + figures/]
+      S2[2 · 구조화 리뷰<br/>review.md 6섹션]
+      S3[3 · 토픽 모델링 + 분류<br/>_new_classification.json]
+      S4[4 · 인사이트 + 타임라인<br/>narrative + timeline.png]
+      S5[5 · Deep Research 인덱스<br/>_search_index.json]
+      S6[6 · 인덱스 + 네트워크<br/>index.html + network.html]
+    end
+    S1 --> S2 --> S3 --> S4 --> S6
+    S2 --> S5 --> S6
+    S6 --> OUT{로컬 열람 또는 배포}
+    OUT -->|로컬| LOCAL[python -m http.server]
+    OUT -->|배포| DEPLOY[Cloudflare + gh-pages 스텁]
+```
+
 ### 1. 데이터 수집
 
-| | 설명 |
-|---|---|
-| **소스** | Zotero 컬렉션의 PDF. 선택적으로 arXiv/Semantic Scholar/OpenAlex에서 신규 논문 검색 + Zotero 자동 등록 |
-| **처리** | PDF에서 PyMuPDF로 텍스트 추출 + Figure 렌더링(3x zoom, 최대 5장). Gemini가 Figure 품질 검증 |
-| **출력** | `papers/{slug}/text.md`, `papers/{slug}/figures/*.webp` |
+- **입력**: Zotero 컬렉션의 PDF. 선택적으로 arXiv/Semantic Scholar/OpenAlex 병렬 검색 + Zotero 자동 등록
+- **처리**: PyMuPDF로 텍스트 추출 + Figure 렌더링(3× zoom, 최대 5장). Gemini가 Figure 품질 검증
+- **출력**: `papers/{slug}/text.md`, `papers/{slug}/figures/*.webp`
 
 ### 2. 구조화 리뷰
 
-| | 설명 |
-|---|---|
-| **소스** | 추출된 텍스트 + Figure |
-| **처리** | Claude Haiku가 6개 섹션 한국어 리뷰 작성. 기술 용어(jargon)는 원문 그대로 유지. 병렬 4건 동시 처리 |
-| **출력** | `papers/{slug}/review.md` + `papers/{slug}/index.html` |
-| **활용** | 브라우저에서 리뷰 열람, Figure 인라인 표시, Related Papers 자동 연결 |
+- **입력**: 추출된 텍스트 + Figure
+- **처리**: Claude Haiku가 6개 섹션(Essence · Motivation · Achievement · How · Originality · Evaluation) 한국어 리뷰 작성. 기술 용어는 원문 그대로 유지. 병렬 4건 동시 처리
+- **출력**: `papers/{slug}/review.md` + `papers/{slug}/index.html`
+- **활용**: 브라우저에서 리뷰 열람, Figure 인라인 표시, Related Papers 자동 연결
 
 ### 3. 토픽 모델링 + 분류
 
-| | 설명 |
-|---|---|
-| **소스** | 전체 리뷰의 Essence + Title |
-| **처리** | SPECTER2 임베딩 -> HDBSCAN fine-grained 클러스터링 -> TF-IDF 키워드 추출 -> Claude Sonnet이 클러스터 작명 -> Ward linkage로 카테고리 그룹핑. 논문당 1~3개 카테고리 복수 분류 |
-| **출력** | `_new_classification.json`, `_papers_index.json` |
+- **입력**: 전체 리뷰의 Essence + Title
+- **처리** (LLM 호출 최소화, bottom-up):
+  1. SPECTER2 임베딩 → HDBSCAN fine-grained 클러스터링
+  2. TF-IDF 키워드 추출 → Claude Sonnet이 클러스터 작명
+  3. Ward linkage로 카테고리 그룹핑
+  4. 논문당 1~3개 카테고리 복수 분류 (Node-based Hybrid C: KNN-vote primary + qualified-vote multi)
+- **출력**: `_new_classification.json`, `_papers_index.json`
 
 ### 4. 인사이트 + 타임라인
 
-| | 설명 |
-|---|---|
-| **소스** | 카테고리별 논문 목록 + 리뷰 |
-| **처리** | Claude Sonnet이 카테고리 요약, 세부 주제, 카테고리 간 논문 연결 관계를 추출. Claude Opus가 카테고리별 연구 동향 내러티브를 작성하고, PaperBanana가 타임라인 다이어그램을 자동 생성 |
-| **출력** | `_category_summaries.json`, `_timeline_narrative.json`, `category_timeline_*.png` |
+- **입력**: 카테고리별 논문 목록 + 리뷰
+- **처리**:
+  1. Claude Sonnet이 카테고리 요약·세부 주제·카테고리 간 논문 연결 관계 추출
+  2. Claude Opus가 카테고리별 연구 동향 내러티브 작성
+  3. PaperBanana가 타임라인 다이어그램 자동 생성
+- **출력**: `_category_summaries.json`, `_timeline_narrative.json`, `category_timeline_*.png`
 
 ### 5. Deep Research 인덱스
 
-| | 설명 |
-|---|---|
-| **소스** | 전체 리뷰 + 개인 메모(notes/) |
-| **처리** | Section-aware chunking -> OpenAI `text-embedding-3-small` 임베딩 (int8 L2 양자화). 개인 메모도 인덱싱되어 다음 질의에 반영 |
-| **출력** | `_search_index.json` |
-| **활용** | 토픽 페이지에서 자연어 질의 -> 임베딩 유사도 검색 -> Claude가 논문 근거 답변 생성 (Extended Thinking) |
+- **입력**: 전체 리뷰 + 개인 메모(`notes/`)
+- **처리**: Section-aware chunking → OpenAI `text-embedding-3-small` 임베딩 (int8 L2 양자화). 개인 메모도 인덱싱되어 다음 질의에 반영
+- **출력**: `_search_index.json`
+- **활용**: 토픽 페이지에서 자연어 질의 → 임베딩 유사도 검색 → Claude(Extended Thinking)가 논문 근거 답변 생성
 
 ### 6. 인덱스 + 네트워크
 
-| | 설명 |
-|---|---|
-| **소스** | 전체 분류 + 리뷰 + 타임라인 + UMAP 좌표 |
-| **처리** | 카테고리별 카드 뷰, 검색, 타임라인 내러티브, Deep Research UI를 하나의 HTML로 조립. UMAP 2D/3D 좌표로 D3.js + Three.js 인터랙티브 네트워크 생성 |
-| **출력** | `{topic}/index.html`, `{topic}/network.html` |
-| **활용** | `cd docs && python -m http.server 8000`으로 로컬 서버 실행, 브라우저에서 바로 사용 |
+- **입력**: 전체 분류 + 리뷰 + 타임라인 + UMAP 좌표
+- **처리**: 카테고리 카드·검색·타임라인 내러티브·Deep Research UI를 하나의 HTML로 조립. UMAP 2D/3D 좌표로 D3.js + Three.js 인터랙티브 네트워크 생성
+- **출력**: `{topic}/index.html`, `{topic}/network.html`
+- **활용**: `cd docs && python -m http.server 8000` → 브라우저에서 바로 사용
 
 ### 배포 (선택)
 
@@ -321,56 +334,69 @@ python pipeline/setup.py
 
 ![Workflow](workflow.png)
 
+```mermaid
+flowchart TB
+    ZT[Zotero collection PDFs] --> S1
+    subgraph Pipeline[run_full.py orchestrator]
+      S1[1 · Data Collection<br/>text.md + figures/]
+      S2[2 · Structured Review<br/>review.md 6-section]
+      S3[3 · Topic Modeling + Classification<br/>_new_classification.json]
+      S4[4 · Insights + Timelines<br/>narrative + timeline.png]
+      S5[5 · Deep Research Index<br/>_search_index.json]
+      S6[6 · Index + Network<br/>index.html + network.html]
+    end
+    S1 --> S2 --> S3 --> S4 --> S6
+    S2 --> S5 --> S6
+    S6 --> OUT{Local browse or deploy}
+    OUT -->|local| LOCAL[python -m http.server]
+    OUT -->|deploy| DEPLOY[Cloudflare + gh-pages stubs]
+```
+
 ### 1. Data Collection
 
-| | Description |
-|---|---|
-| **Source** | PDFs from Zotero collection. Optionally search arXiv/Semantic Scholar/OpenAlex for new papers + auto-register to Zotero |
-| **Processing** | PyMuPDF extracts text + renders figures (3x zoom, up to 5). Gemini validates figure quality |
-| **Output** | `papers/{slug}/text.md`, `papers/{slug}/figures/*.webp` |
+- **Input**: PDFs from Zotero collection. Optional parallel search (arXiv / Semantic Scholar / OpenAlex) + auto-registration to Zotero
+- **Processing**: PyMuPDF extracts text + renders figures (3× zoom, up to 5). Gemini validates figure quality
+- **Output**: `papers/{slug}/text.md`, `papers/{slug}/figures/*.webp`
 
 ### 2. Structured Review
 
-| | Description |
-|---|---|
-| **Source** | Extracted text + figures |
-| **Processing** | Claude Haiku writes 6-section Korean reviews. Technical jargon kept verbatim. 4 concurrent workers |
-| **Output** | `papers/{slug}/review.md` + `papers/{slug}/index.html` |
-| **Usage** | Browse reviews in browser with inline figures and auto-linked related papers |
+- **Input**: Extracted text + figures
+- **Processing**: Claude Haiku writes 6-section Korean reviews (Essence · Motivation · Achievement · How · Originality · Evaluation). Technical jargon kept verbatim. 4 concurrent workers
+- **Output**: `papers/{slug}/review.md` + `papers/{slug}/index.html`
+- **Usage**: Browse reviews in browser with inline figures and auto-linked related papers
 
 ### 3. Topic Modeling + Classification
 
-| | Description |
-|---|---|
-| **Source** | Essence + title from all reviews |
-| **Processing** | SPECTER2 embeddings -> HDBSCAN clustering -> TF-IDF keywords -> Claude Sonnet naming -> Ward linkage grouping. 1-3 categories per paper |
-| **Output** | `_new_classification.json`, `_papers_index.json` |
+- **Input**: Essence + title from all reviews
+- **Processing** (bottom-up, minimal LLM calls):
+  1. SPECTER2 embeddings → HDBSCAN fine-grained clustering
+  2. TF-IDF keywords → Claude Sonnet names each cluster
+  3. Ward linkage groups clusters into categories
+  4. 1–3 categories per paper (Node-based Hybrid C: KNN-vote primary + qualified-vote multi)
+- **Output**: `_new_classification.json`, `_papers_index.json`
 
 ### 4. Insights + Timelines
 
-| | Description |
-|---|---|
-| **Source** | Per-category paper lists + reviews |
-| **Processing** | Claude Sonnet extracts category summaries and cross-category connections. Claude Opus writes research trend narratives. PaperBanana auto-generates timeline diagrams |
-| **Output** | `_category_summaries.json`, `_timeline_narrative.json`, `category_timeline_*.png` |
+- **Input**: Per-category paper lists + reviews
+- **Processing**:
+  1. Claude Sonnet extracts category summaries, sub-themes, cross-category connections
+  2. Claude Opus writes research-trend narratives per category
+  3. PaperBanana auto-generates timeline diagrams
+- **Output**: `_category_summaries.json`, `_timeline_narrative.json`, `category_timeline_*.png`
 
 ### 5. Deep Research Index
 
-| | Description |
-|---|---|
-| **Source** | All reviews + personal notes (notes/) |
-| **Processing** | Section-aware chunking -> OpenAI `text-embedding-3-small` embeddings (int8 L2 quantized). Personal notes are indexed and reflected in future queries |
-| **Output** | `_search_index.json` |
-| **Usage** | Natural-language query on topic page -> embedding similarity search -> Claude generates grounded answer with Extended Thinking |
+- **Input**: All reviews + personal notes (`notes/`)
+- **Processing**: Section-aware chunking → OpenAI `text-embedding-3-small` embeddings (int8 L2 quantized). Personal notes are indexed and reflected in future queries
+- **Output**: `_search_index.json`
+- **Usage**: Natural-language query on topic page → embedding similarity search → Claude (Extended Thinking) generates grounded answer
 
 ### 6. Index + Network
 
-| | Description |
-|---|---|
-| **Source** | All classifications + reviews + timelines + UMAP coordinates |
-| **Processing** | Assembles category cards, search, timeline narratives, Deep Research UI into a single HTML. D3.js + Three.js interactive network from UMAP 2D/3D coordinates |
-| **Output** | `{topic}/index.html`, `{topic}/network.html` |
-| **Usage** | `cd docs && python -m http.server 8000` — browse locally |
+- **Input**: All classifications + reviews + timelines + UMAP coordinates
+- **Processing**: Assembles category cards, search, timeline narratives, and Deep Research UI into a single HTML. D3.js + Three.js interactive network from UMAP 2D/3D coordinates
+- **Output**: `{topic}/index.html`, `{topic}/network.html`
+- **Usage**: `cd docs && python -m http.server 8000` — browse locally
 
 ### Deployment (Optional)
 
