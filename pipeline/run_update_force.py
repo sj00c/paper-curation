@@ -766,7 +766,44 @@ def fix_figure_paths(slug_dir):
 
     changed = False
 
-    # Fix placeholder URLs
+    # Replace any external image URL `![alt](http(s)://...)` with the matching
+    # local figure. Picks figure number from alt text ("Figure 3", "Fig.2",
+    # "그림 1"); falls back to sequential assignment from available figures.
+    seq_state = {"next": min(fig_map.keys())}
+    sorted_keys = sorted(fig_map.keys())
+    ext_replaced = 0
+
+    def replace_external_image(match):
+        nonlocal ext_replaced
+        alt = match.group(1)
+        target = None
+        num_m = re.search(r"(?:Figure|Fig\.?|그림)\s*(\d+)", alt, re.IGNORECASE)
+        if num_m:
+            n = int(num_m.group(1))
+            if n in fig_map:
+                target = fig_map[n]
+        if target is None:
+            for k in sorted_keys:
+                if k >= seq_state["next"]:
+                    target = fig_map[k]
+                    seq_state["next"] = k + 1
+                    break
+        if target is None:
+            return match.group(0)
+        ext_replaced += 1
+        return f"![{alt}]({target})"
+
+    new_content = re.sub(
+        r"!\[([^\]]*)\]\(https?://[^)]+\)",
+        replace_external_image,
+        content,
+    )
+    if new_content != content:
+        content = new_content
+        changed = True
+
+    # Legacy placeholder pattern fallback (cases without `![alt](...)` syntax,
+    # e.g. inline `<img src=...>` shipped by an older prompt template).
     def replace_placeholder(match):
         url = match.group(0)
         fig_m = re.search(r"Fig[+_ ](\d+)", url)

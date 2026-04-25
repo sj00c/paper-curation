@@ -33,6 +33,7 @@ from config_loader import (
     get_unpaywall_email,
     _ssl_ctx,
 )
+from lib.bib_enrich import enrich as enrich_bib, to_zotero_item
 
 API_KEY = get_zotero_api_key()
 USER_ID = get_zotero_user_id()
@@ -179,34 +180,14 @@ def parse_authors(authors_raw):
 # ── Build Zotero item template ────────────────────────────────────────────────
 
 def build_item_template(paper, collection_key):
-    """논문 dict → Zotero API item dict."""
-    creators = parse_authors(paper.get("authors") or paper.get("author") or [])
+    """논문 dict → Zotero API item dict.
 
-    # Date: prefer year field, fallback to publicationDate / date
-    date_val = (
-        paper.get("year")
-        or paper.get("publicationDate")
-        or paper.get("date")
-        or ""
-    )
-    if isinstance(date_val, int):
-        date_val = str(date_val)
-
-    doi = paper.get("doi") or paper.get("DOI") or ""
-    url = paper.get("url") or paper.get("pdf_url") or ""
-    if not url and doi:
-        url = f"https://doi.org/{doi}"
-
-    return {
-        "itemType": "journalArticle",
-        "title": paper.get("title", "").strip(),
-        "creators": creators,
-        "abstractNote": paper.get("abstract") or paper.get("abstractNote") or "",
-        "date": str(date_val),
-        "DOI": doi,
-        "url": url,
-        "collections": [collection_key],
-    }
+    arXiv ID / DOI 가 있으면 arXiv API + CrossRef 로 enrichment 후
+    publicationTitle, volume, issue, pages, ISSN, archiveID 등까지 채운다.
+    Zotero Wizard 와 동일한 수준.
+    """
+    enriched = enrich_bib(paper, mailto=UNPAYWALL_EMAIL)
+    return to_zotero_item(enriched, collection_key=collection_key)
 
 
 # ── PDF download strategies ───────────────────────────────────────────────────
@@ -438,6 +419,156 @@ def download_and_attach(registered, zotero_dir, dry_run=False):
     return failed_pdf
 
 
+# ── Step 6b: --fix-metadata mode ──────────────────────────────────────────────
+
+# Zotero fields that the Wizard fills but our older registrations often missed.
+_RICH_FIELDS = (
+    "publicationTitle", "volume", "issue", "pages", "ISSN", "publisher",
+    "abstractNote", "archiveID", "repository",
+)
+
+
+def _is_metadata_thin(d):
+    """기존 아이템의 metadata 가 부실한지 판단 (저널/preprint 모두 커버).
+
+    journalArticle: publicationTitle 비어 있거나 abstractNote 빔.
+    preprint: archiveID 비어 있거나 abstractNote 빔.
+    """
+    it = d.get("itemType", "")
+    if it == "journalArticle":
+        if not d.get("publicationTitle") or not d.get("abstractNote"):
+            return True
+    elif it == "preprint":
+        if not d.get("archiveID") or not d.get("abstractNote"):
+            return True
+    if not d.get("creators"):
+        return True
+    return False
+
+
+def _patch_item(item_key, version, patch):
+    """단일 아이템 PATCH. version 은 If-Unmodified-Since-Version 헤더로."""
+    base_url = f"https://api.zotero.org/users/{USER_ID}/items/{item_key}"
+    body = json.dumps(patch).encode("utf-8")
+    req = urllib.request.Request(
+        base_url, data=body, method="PATCH",
+        headers={
+            "Zotero-API-Key": API_KEY,
+            "Content-Type": "application/json",
+            "If-Unmodified-Since-Version": str(version),
+            "User-Agent": "paper-curation/1.0",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
+            return True, ""
+    except urllib.error.HTTPError as e:
+        body_text = e.read().decode("utf-8", errors="replace")
+        return False, f"[{e.code}] {body_text[:200]}"
+    except Exception as e:
+        return False, str(e)
+
+
+def fix_metadata(collection_key, dry_run=False, limit=None):
+    """기존 컬렉션 아이템 중 metadata 부실한 항목을 enrich 후 PATCH."""
+    log("컬렉션 아이템 전체 조회 중...")
+    items = get_collection_items_all(collection_key)
+    log(f"  총 {len(items)}편")
+
+    targets = [it for it in items
+               if it.get("data", {}).get("itemType") not in ("attachment", "note")
+               and _is_metadata_thin(it["data"])]
+    log(f"  metadata 부실 후보: {len(targets)}편")
+    if limit:
+        targets = targets[:limit]
+        log(f"  --limit 적용: {len(targets)}편만 처리")
+
+    success = skip = failed = 0
+    fail_log = []
+
+    for i, it in enumerate(targets):
+        d = it["data"]
+        key = d["key"]
+        version = it.get("version") or d.get("version")
+        title = d.get("title", "")[:60]
+
+        # Reconstruct minimal paper dict from existing fields
+        paper = {
+            "title": d.get("title", ""),
+            "doi": d.get("DOI") or "",
+            "url": d.get("url", ""),
+            "authors": [
+                {"firstName": c.get("firstName", ""), "lastName": c.get("lastName", "")}
+                for c in d.get("creators", [])
+                if c.get("creatorType") == "author"
+            ],
+            "abstract": d.get("abstractNote", ""),
+            "date": d.get("date", ""),
+        }
+
+        try:
+            enriched = enrich_bib(paper, mailto=UNPAYWALL_EMAIL)
+        except Exception as e:
+            log(f"  [{i+1}/{len(targets)}] {title}: enrich 실패 — {e}")
+            failed += 1
+            fail_log.append({"key": key, "title": title, "reason": f"enrich: {e}"})
+            continue
+
+        # Zotero itemType별 사용 가능 필드 (preprint는 publisher 없음 → repository로)
+        cur_type = d.get("itemType", "")
+        invalid_for_type = set()
+        if cur_type == "preprint":
+            invalid_for_type.update({"publisher", "publicationTitle", "volume",
+                                      "issue", "pages", "ISSN"})
+
+        # Build PATCH body — only fields currently empty in Zotero
+        patch = {}
+        for field in _RICH_FIELDS:
+            if field in invalid_for_type:
+                continue
+            if not d.get(field) and enriched.get(field):
+                patch[field] = str(enriched[field])
+        # preprint 인데 CrossRef publisher 가 있으면 repository 로 (비어있을 때만)
+        if cur_type == "preprint" and not d.get("repository") and enriched.get("publisher"):
+            patch["repository"] = str(enriched["publisher"])
+        if not d.get("creators") and enriched.get("authors"):
+            from lib.bib_enrich import _parse_authors as _pa  # local helper reuse
+            patch["creators"] = _pa(enriched["authors"])
+        # date: if existing date is just year and CrossRef has full YYYY-MM-DD
+        new_date = enriched.get("date", "")
+        if new_date and len(new_date) > len(d.get("date", "")):
+            patch["date"] = new_date
+        # itemType promotion: arXiv ID 발견했는데 journalArticle 인 경우 → preprint
+        if (enriched.get("arxiv_id") and d.get("itemType") == "journalArticle"
+                and not d.get("DOI")):
+            patch["itemType"] = "preprint"
+            patch["archiveID"] = f"arXiv:{enriched['arxiv_id']}"
+            patch["repository"] = "arXiv"
+
+        if not patch:
+            skip += 1
+            continue
+
+        log(f"  [{i+1}/{len(targets)}] {title}: patching {list(patch.keys())}")
+
+        if dry_run:
+            success += 1
+            continue
+
+        ok, err = _patch_item(key, version, patch)
+        if ok:
+            success += 1
+        else:
+            failed += 1
+            log(f"    PATCH 실패: {err}")
+            fail_log.append({"key": key, "title": title, "reason": err})
+
+        time.sleep(0.5)
+
+    log(f"\nMetadata 보강 완료: success={success}, skip={skip}, failed={failed}")
+    return success, skip, failed, fail_log
+
+
 # ── Step 6: --fix-pdfs mode ───────────────────────────────────────────────────
 
 def fix_pdfs(collection_key, zotero_dir, dry_run=False):
@@ -544,6 +675,10 @@ def main():
     parser.add_argument("--topic", required=True, help="토픽 (ai4s 또는 scisci)")
     parser.add_argument("--input", help="검색 결과 JSON 경로 (기본: {topic}/_search_results.json)")
     parser.add_argument("--fix-pdfs", action="store_true", help="PDF 없는 아이템에 대해 재시도")
+    parser.add_argument("--fix-metadata", action="store_true",
+                        help="기존 아이템 중 publicationTitle/abstract 등이 비어있는 경우 arXiv+CrossRef 로 보강")
+    parser.add_argument("--limit", type=int, default=None,
+                        help="--fix-metadata 처리 상한 (테스트용)")
     parser.add_argument("--dry-run", action="store_true", help="실제 등록/다운로드 없이 미리 보기")
     args = parser.parse_args()
 
@@ -554,6 +689,26 @@ def main():
         return
 
     zotero_dir = ZOTERO_DIR or os.path.join(str(get_topic_dir(topic)), "_pdfs")
+
+    # ── --fix-metadata 모드 ──
+    if args.fix_metadata:
+        log(f"=== Metadata 보강 모드: {topic} ===")
+        if args.dry_run:
+            log("[dry-run 모드]")
+        success, skip, failed, fail_log = fix_metadata(
+            collection_key, dry_run=args.dry_run, limit=args.limit,
+        )
+        print(f"\nZotero metadata 보강 완료: {topic}")
+        print(f"  보강 (PATCH): {success}편")
+        print(f"  변경 없음 (skip): {skip}편")
+        print(f"  실패: {failed}편")
+        if fail_log:
+            out_path = os.path.join(str(get_topic_dir(topic)),
+                                     "_fix_metadata_failures.json")
+            with open(out_path, "w", encoding="utf-8") as f:
+                json.dump(fail_log, f, ensure_ascii=False, indent=2)
+            print(f"  실패 로그: {out_path}")
+        return
 
     # ── --fix-pdfs 모드 ──
     if args.fix_pdfs:

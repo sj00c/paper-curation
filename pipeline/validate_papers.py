@@ -109,7 +109,13 @@ def check_broken_links(review_path, slug):
 # ── 3. 그림 완결 체크 + 자동 수정 ──
 
 def check_figure_refs(review_path, slug, fix=False):
-    """review.md의 그림 참조가 실제 파일과 일치하는지 확인."""
+    """review.md의 그림 참조가 실제 파일과 일치하는지 확인.
+
+    감지 대상:
+      - 외부 image URL (`![](http(s)://...)`) — LLM 환각 / legacy prompt 잔재
+      - 로컬 path 깨짐 (`figures/figN.png` 인데 webp만 있는 경우 등)
+      - 없는 figure 참조 (`MISSING_FIG`)
+    """
     issues = []
     slug_dir = os.path.join(PAPERS_DIR, slug)
     fig_dir = os.path.join(slug_dir, "figures")
@@ -117,37 +123,73 @@ def check_figure_refs(review_path, slug, fix=False):
     with open(review_path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Find all figure references in markdown
-    refs = list(re.finditer(r'!\[([^\]]*)\]\((figures/[^)]+)\)', content))
-    if not refs:
-        return issues, False
-
     # Build map of actual figure files
     actual_figs = {}
+    fig_map = {}
     if os.path.isdir(fig_dir):
-        for fname in os.listdir(fig_dir):
+        for fname in sorted(os.listdir(fig_dir)):
             if re.match(r'fig\d+\.(png|webp)', fname):
                 actual_figs[fname] = True
+                m = re.match(r'fig(\d+)\.(png|webp)', fname)
+                if m:
+                    fig_map[int(m.group(1))] = f"figures/{fname}"
 
     changed = False
     new_content = content
 
+    # ── External image URL detection (LLM hallucination / legacy prompt) ──
+    ext_refs = list(re.finditer(r'!\[([^\]]*)\]\((https?://[^)]+)\)', new_content))
+    for m in ext_refs:
+        alt = m.group(1)
+        url = m.group(2)
+        issues.append(f"  EXTERNAL_FIG_URL: ![{alt[:40]}]({url[:60]})")
+
+    if fix and ext_refs and fig_map:
+        sorted_keys = sorted(fig_map.keys())
+        seq_state = {"next": sorted_keys[0]}
+
+        def replace_external_image(mm):
+            alt = mm.group(1)
+            target = None
+            num_m = re.search(r'(?:Figure|Fig\.?|그림)\s*(\d+)', alt, re.IGNORECASE)
+            if num_m:
+                n = int(num_m.group(1))
+                if n in fig_map:
+                    target = fig_map[n]
+            if target is None:
+                for k in sorted_keys:
+                    if k >= seq_state["next"]:
+                        target = fig_map[k]
+                        seq_state["next"] = k + 1
+                        break
+            if target is None:
+                return mm.group(0)
+            return f"![{alt}]({target})"
+
+        replaced = re.sub(
+            r'!\[([^\]]*)\]\((https?://[^)]+)\)',
+            replace_external_image,
+            new_content,
+        )
+        if replaced != new_content:
+            new_content = replaced
+            changed = True
+
+    # ── Existing local-path checks ──
+    refs = list(re.finditer(r'!\[([^\]]*)\]\((figures/[^)]+)\)', new_content))
     for m in refs:
-        ref_path = m.group(2)  # e.g. "figures/fig1a.webp"
+        ref_path = m.group(2)
         full_path = os.path.join(slug_dir, ref_path)
         if os.path.exists(full_path):
             continue
 
-        # File doesn't exist — try to find a match
         fig_name = os.path.basename(ref_path)
-        # Extract figure number from reference
         num_match = re.search(r'fig(\d+)', fig_name)
         if not num_match:
             issues.append(f"  BROKEN_FIG: {ref_path} (no number found)")
             continue
 
         fig_num = num_match.group(1)
-        # Look for actual file with this number
         candidates = [f for f in actual_figs if f.startswith(f"fig{fig_num}.")]
         if candidates:
             correct_path = f"figures/{candidates[0]}"
@@ -401,6 +443,7 @@ def main():
     total_fig = 0
     total_pylist = 0
     total_fixed = 0
+    fixed_slugs = []  # for HTML regeneration
 
     for p in sorted(topic_papers, key=lambda x: x.get("slug", "")):
         slug = p.get("slug", "")
@@ -409,6 +452,7 @@ def main():
             continue
 
         paper_issues = []
+        slug_fixed = False
 
         # 1. Truncated sections
         trunc = check_truncated_sections(review_path)
@@ -426,6 +470,7 @@ def main():
         total_fig += len(figs)
         if fig_fixed:
             total_fixed += 1
+            slug_fixed = True
 
         # 4. Python list literals
         pylist, pylist_fixed = check_python_list_literals(review_path, fix=args.fix)
@@ -433,11 +478,39 @@ def main():
         total_pylist += len(pylist)
         if pylist_fixed:
             total_fixed += 1
+            slug_fixed = True
+
+        if slug_fixed:
+            fixed_slugs.append(slug)
 
         if paper_issues:
             log(f"\n{slug}:")
             for issue in paper_issues:
                 log(issue)
+
+    # 4.5 Re-render index.html for slugs whose review.md was auto-fixed
+    if args.fix and fixed_slugs:
+        log(f"\n[fix] Regenerating HTML for {len(fixed_slugs)} repaired slugs...")
+        try:
+            from review_to_html import convert_review, detect_topic
+            index_path = os.path.join(PAPERS_DIR, "_papers_index.json")
+            ok, fail = 0, 0
+            for slug in fixed_slugs:
+                slug_dir = os.path.join(PAPERS_DIR, slug)
+                md_path = os.path.join(slug_dir, "review.md")
+                html_path = os.path.join(slug_dir, "index.html")
+                try:
+                    topic = detect_topic(slug, index_path) or args.topic
+                    html = convert_review(md_path, topic, slug_dir)
+                    with open(html_path, "w", encoding="utf-8") as f:
+                        f.write(html)
+                    ok += 1
+                except Exception as inner:
+                    log(f"  [fix] {slug}: HTML regen failed: {inner}")
+                    fail += 1
+            log(f"[fix] HTML regeneration: {ok} ok, {fail} failed")
+        except Exception as e:
+            log(f"[fix] HTML regen import failed: {e}")
 
     # 5. Category ↔ timeline mismatch (topic-level)
     timeline_issues = check_timeline_mismatch(args.topic)

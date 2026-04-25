@@ -90,6 +90,8 @@ def build_parser():
                    help="실행 계획만 출력, 실제 호출 없음.")
     p.add_argument("--yes", action="store_true",
                    help="--mode rebuild 파괴적 확인 프롬프트 생략.")
+    p.add_argument("--no-validate", action="store_true",
+                   help="curate/rebuild 후 validate_papers --strict --fix 자동 호출 비활성.")
 
     return p
 
@@ -224,6 +226,13 @@ def main():
                           "--topic", args.topic, "--push"], None))
         else:
             plan.append((build_update_force_cmd(args, images), None))
+
+        # Post-pipeline validation gate: ensures figure refs / links / format
+        # issues introduced by LLM steps don't ship. Auto-repairs in --fix mode
+        # then fails build (--strict) if anything remains.
+        if args.mode in ("curate", "rebuild") and not args.no_validate:
+            plan.append(([sys.executable, "-u", str(PIPELINE / "validate_papers.py"),
+                          "--topic", args.topic, "--fix", "--strict"], None))
 
     # Print plan summary
     print(f"[run_full] topic={args.topic} mode={args.mode} source={args.source} images={images}")
