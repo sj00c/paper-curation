@@ -773,19 +773,20 @@ def main():
     # here. Centroids are intentionally NOT stored: classify_papers uses
     # node-based (single-linkage / kNN-vote) distance per HDBSCAN's density
     # semantics, not centroid distance.
-    topic_info_data = {
-        "generated_at": datetime.now().strftime("%Y-%m-%d"),
-        "model": "SPECTER2 + sklearn.HDBSCAN + UMAP",
-        "n_papers": len(topic_papers),
-        "n_topics": len(topic_names),
-        "topics": {str(tid): info for tid, info in topic_names.items()},
-        "topic_counts": {str(tid): sum(1 for t in topics if t == tid)
-                         for tid in topic_names},
-    }
-    info_path = os.path.join(topic_dir, "_topic_model_info.json")
-    with open(info_path, "w", encoding="utf-8") as f:
-        json.dump(topic_info_data, f, ensure_ascii=False, indent=2)
-    log(f"  Topic model info: {info_path}")
+    if not args.skip_classification:
+        topic_info_data = {
+            "generated_at": datetime.now().strftime("%Y-%m-%d"),
+            "model": "SPECTER2 + sklearn.HDBSCAN + UMAP",
+            "n_papers": len(topic_papers),
+            "n_topics": len(topic_names),
+            "topics": {str(tid): info for tid, info in topic_names.items()},
+            "topic_counts": {str(tid): sum(1 for t in topics if t == tid)
+                             for tid in topic_names},
+        }
+        info_path = os.path.join(topic_dir, "_topic_model_info.json")
+        with open(info_path, "w", encoding="utf-8") as f:
+            json.dump(topic_info_data, f, ensure_ascii=False, indent=2)
+        log(f"  Topic model info: {info_path}")
 
     # Step 6
     if not args.skip_connections:
@@ -801,7 +802,8 @@ def main():
 
     log("\n" + "=" * 50)
     log("DONE!")
-    log(f"  Topics: {len(topic_names)}")
+    if not args.skip_classification:
+        log(f"  Topics: {len(topic_names)}")
     log(f"  UMAP: {umap_path}")
     log(f"  Cache: {cache_path}")
     log("=" * 50)
