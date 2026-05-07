@@ -38,6 +38,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import platform
 import re
 import ssl
 import sys
@@ -600,6 +601,21 @@ def register_to_zotero(items: list[dict], collection_key: str, dry_run: bool) ->
 # ──────────────────────────────────────────────────────────────────────────────
 
 
+def _resolve_pdf_dir() -> Path:
+    """OS-aware PDF 저장 디렉토리. Windows path on non-Windows → 로컬 캐시."""
+    raw = get_zotero_dir() or ""
+    if not raw:
+        return PROJECT_ROOT / "pdf_cache"
+    # Windows drive letter pattern (e.g., "C:\\Users\\...") on macOS/Linux
+    if platform.system() != "Windows" and re.match(r"^[A-Za-z]:[\\/]", raw):
+        log(f"  Windows 경로 감지 ({raw}) → 로컬 캐시로 fallback")
+        return PROJECT_ROOT / "pdf_cache"
+    p = Path(raw)
+    if not p.parent.exists():
+        return PROJECT_ROOT / "pdf_cache"
+    return p
+
+
 def download_pdfs(registered: list[dict], pdf_dir: Path, dry_run: bool) -> list[dict]:
     """journalArticle 한정 PDF 다운로드 + Zotero 첨부."""
     pdf_dir = Path(pdf_dir)
@@ -627,20 +643,106 @@ def download_pdfs(registered: list[dict], pdf_dir: Path, dry_run: bool) -> list[
         if dry_run:
             continue
         try:
-            pdf_path = download_pdf(paper, str(pdf_dir))
+            # download_pdf returns (path_or_empty, error_message)
+            pdf_path, err = download_pdf(paper, str(pdf_dir))
             if pdf_path and Path(pdf_path).exists():
                 attach_pdf(zotero_key, pdf_path)
                 item["pdf_attached"] = True
                 log(f"    ✓ 첨부 완료")
             else:
-                failed.append(item)
-                log(f"    × PDF 없음")
+                failed.append({**item, "_pdf_error": err})
+                log(f"    × {err or 'PDF 없음'}")
         except Exception as e:
-            failed.append(item)
-            log(f"    × {e}")
+            failed.append({**item, "_pdf_error": str(e)})
+            log(f"    × 예외: {e}")
         time.sleep(0.5)
 
     return failed
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Recovery: PDF-only mode
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+def pdf_only_mode(parsed: list[dict], collection_key: str, pdf_dir: Path) -> tuple[list[dict], list[dict]]:
+    """이미 등록된 항목을 컬렉션에서 찾아 PDF 다운로드 + 첨부.
+
+    이전 실행이 PDF 단계에서 죽어 zotero_key 가 사라진 경우의 복구.
+    journalArticle 만 처리. 이미 PDF 가 첨부된 항목은 건너뜀.
+    """
+    log(f"기존 컬렉션 항목 조회 중…")
+    existing = get_collection_items_all(collection_key)
+    log(f"  {len(existing)}개 발견")
+
+    dois: dict[str, str] = {}
+    titles: dict[str, str] = {}
+    for it in existing:
+        d = it.get("data", {})
+        key = d.get("key", "") or it.get("key", "")
+        if d.get("DOI"):
+            dois[d["DOI"].strip().lower()] = key
+        title_norm = _norm(d.get("title", ""))[:50]
+        if title_norm:
+            titles[title_norm] = key
+
+    pdf_dir = Path(pdf_dir)
+    pdf_dir.mkdir(parents=True, exist_ok=True)
+
+    matched: list[dict] = []
+    failed: list[dict] = []
+    n_skipped_no_match = 0
+    n_skipped_has_pdf = 0
+
+    candidates = [p for p in parsed if p.get("type") == "journalArticle"]
+    for i, p in enumerate(candidates, 1):
+        doi = (p.get("doi") or "").strip().lower()
+        title_norm = _norm(p.get("title", ""))[:50]
+        zkey = dois.get(doi) or titles.get(title_norm)
+        if not zkey:
+            n_skipped_no_match += 1
+            continue
+
+        # 이미 PDF 첨부 있으면 skip
+        try:
+            children = get_item_children(zkey)
+            has_pdf = any(
+                c.get("data", {}).get("itemType") == "attachment"
+                and c.get("data", {}).get("contentType") == "application/pdf"
+                for c in children
+            )
+        except Exception:
+            has_pdf = False
+        if has_pdf:
+            n_skipped_has_pdf += 1
+            continue
+
+        log(f"  [{i}/{len(candidates)}] {p.get('title','')[:60]} → {zkey}")
+        paper = {
+            "title": p.get("title", ""),
+            "doi": p.get("doi", ""),
+            "arxiv_id": p.get("arxiv_id", ""),
+            "authors": p.get("authors", []),
+        }
+        try:
+            pdf_path, err = download_pdf(paper, str(pdf_dir))
+            if pdf_path and Path(pdf_path).exists():
+                attach_pdf(zkey, pdf_path)
+                matched.append({**p, "zotero_key": zkey, "pdf_attached": True})
+                log(f"    ✓ 첨부 완료")
+            else:
+                failed.append({**p, "zotero_key": zkey, "_pdf_error": err})
+                log(f"    × {err or 'PDF 없음'}")
+        except Exception as e:
+            failed.append({**p, "zotero_key": zkey, "_pdf_error": str(e)})
+            log(f"    × 예외: {e}")
+        time.sleep(0.5)
+
+    log(
+        f"  매칭+첨부: {len(matched)} | 실패: {len(failed)} | "
+        f"매칭실패: {n_skipped_no_match} | 이미 PDF 있음: {n_skipped_has_pdf}"
+    )
+    return matched, failed
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -670,6 +772,11 @@ def main():
     ap.add_argument("--no-cache", action="store_true", help="기존 캐시 무시")
     ap.add_argument("--skip-pdf", action="store_true", help="PDF 다운로드 건너뜀")
     ap.add_argument("--limit", type=int, default=0, help="앞 N 개만 처리 (0=전체)")
+    ap.add_argument(
+        "--pdf-only",
+        action="store_true",
+        help="이전 등록 결과의 PDF 만 (재)다운로드+첨부. 캐시(parsed.json+resolved.json) 필요.",
+    )
     args = ap.parse_args()
 
     input_path = Path(args.input)
@@ -687,6 +794,21 @@ def main():
     if args.limit > 0:
         raw_lines = raw_lines[: args.limit]
     log(f"총 {len(raw_lines)}개 참고문헌 읽음")
+
+    # ── PDF-only 복구 모드 ────────────────────────────────────────────────────
+    if args.pdf_only:
+        if not RESOLVED_CACHE.exists():
+            sys.exit(f"--pdf-only 는 {RESOLVED_CACHE} 가 필요합니다. 먼저 일반 모드로 실행하세요.")
+        resolved = json.loads(RESOLVED_CACHE.read_text(encoding="utf-8"))
+        if args.limit > 0:
+            resolved = [r for r in resolved if r.get("ref_num", 0) <= args.limit]
+        pdf_dir = _resolve_pdf_dir()
+        log(f"PDF 저장 디렉토리: {pdf_dir}")
+        matched, failed = pdf_only_mode(resolved, collection_key, pdf_dir)
+        _save_json(REPORT_DIR / "pdf_attached.json", matched)
+        _save_json(REPORT_DIR / "pdf_failed.json", failed)
+        log(f"\n=== PDF-only 요약 ===\n  첨부 성공: {len(matched)}\n  실패: {len(failed)}")
+        return
 
     # ── Step 1: Parse with Haiku (cached) ─────────────────────────────────────
     if PARSED_CACHE.exists() and not args.no_cache:
@@ -760,10 +882,7 @@ def main():
     pdf_failed: list[dict] = []
     if not args.skip_pdf and not args.dry_run:
         log(f"[6/6] PDF 다운로드")
-        zdir = Path(get_zotero_dir() or PROJECT_ROOT / "pdf_cache")
-        # Windows 경로가 mac 에서 안 풀리면 로컬 캐시로
-        if not zdir.parent.exists():
-            zdir = PROJECT_ROOT / "pdf_cache"
+        zdir = _resolve_pdf_dir()
         log(f"  PDF 저장 디렉토리: {zdir}")
         pdf_failed = download_pdfs(registered, zdir, args.dry_run)
     else:
