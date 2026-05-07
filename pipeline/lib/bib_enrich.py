@@ -140,18 +140,32 @@ def fetch_crossref_metadata(doi, mailto=None, timeout=15):
         if fn or gn:
             authors.append({"firstName": gn, "lastName": fn})
 
+    isbn_arr = msg.get("ISBN") or []
+    # CrossRef 'editor' for book/bookSection
+    editors = []
+    for e in msg.get("editor") or []:
+        gn = (e.get("given") or "").strip()
+        fn = (e.get("family") or "").strip()
+        if fn or gn:
+            editors.append({"firstName": gn, "lastName": fn})
+
     return {
         "title": (title_arr[0] if title_arr else "").strip(),
         "abstract": _strip_jats(msg.get("abstract", "")),
         "date": date,
         "authors": authors,
+        "editors": editors,
         "doi": msg.get("DOI", doi),
         "publicationTitle": (container_arr[0] if container_arr else "").strip(),
         "volume": str(msg.get("volume", "")).strip(),
         "issue": str(msg.get("issue", "")).strip(),
         "pages": str(msg.get("page", "")).strip(),
         "publisher": str(msg.get("publisher", "")).strip(),
+        "place": str(msg.get("publisher-location", "")).strip(),
         "ISSN": issn_arr[0] if issn_arr else "",
+        "ISBN": isbn_arr[0] if isbn_arr else "",
+        "edition": str(msg.get("edition-number", "")).strip(),
+        "language": str(msg.get("language", "")).strip(),
         "url": msg.get("URL", ""),
         "type": msg.get("type", ""),
     }
@@ -199,8 +213,11 @@ def enrich(paper, mailto=None, sleep=0.4):
                     out[k] = cr[k]
             if not out.get("authors") and cr.get("authors"):
                 out["authors"] = cr["authors"]
+            if not out.get("editors") and cr.get("editors"):
+                out["editors"] = cr["editors"]
             for k in ("publicationTitle", "volume", "issue", "pages",
-                       "publisher", "ISSN"):
+                       "publisher", "ISSN", "place", "ISBN", "edition",
+                       "language"):
                 if not out.get(k) and cr.get(k):
                     out[k] = cr[k]
             if cr.get("type"):
@@ -226,8 +243,11 @@ _CROSSREF_TYPE_MAP = {
 }
 
 
-def _parse_authors(authors_raw):
-    """list[str] / list[dict] / str → Zotero creators list."""
+def _parse_authors(authors_raw, creator_type="author"):
+    """list[str] / list[dict] / str → Zotero creators list.
+
+    creator_type: "author" | "editor" | "bookAuthor" 등 Zotero creatorType.
+    """
     creators = []
     if not authors_raw:
         return creators
@@ -237,21 +257,21 @@ def _parse_authors(authors_raw):
         if isinstance(a, dict):
             if "lastName" in a or "firstName" in a:
                 creators.append({
-                    "creatorType": "author",
+                    "creatorType": creator_type,
                     "firstName": a.get("firstName", ""),
                     "lastName": a.get("lastName", ""),
                 })
             elif "name" in a:
                 parts = a["name"].strip().split()
                 creators.append({
-                    "creatorType": "author",
+                    "creatorType": creator_type,
                     "firstName": " ".join(parts[:-1]) if len(parts) > 1 else "",
                     "lastName": parts[-1] if parts else "",
                 })
         elif isinstance(a, str):
             parts = a.strip().split()
             creators.append({
-                "creatorType": "author",
+                "creatorType": creator_type,
                 "firstName": " ".join(parts[:-1]) if len(parts) > 1 else "",
                 "lastName": parts[-1] if parts else "",
             })
@@ -289,10 +309,35 @@ def to_zotero_item(paper, collection_key=None):
     if isinstance(date_val, int):
         date_val = str(date_val)
 
+    creators = _parse_authors(paper.get("authors") or paper.get("author") or [])
+    # bookSection: 챕터 저자(authors) + 책 편집자(editors) 모두 creators 에 합친다.
+    if item_type == "bookSection" and paper.get("editors"):
+        creators.extend(_parse_authors(paper.get("editors"), creator_type="editor"))
+    # book: 편집자만 있는 경우(편저서)
+    elif item_type == "book" and not creators and paper.get("editors"):
+        creators = _parse_authors(paper.get("editors"), creator_type="editor")
+    elif item_type == "book" and paper.get("editors"):
+        creators.extend(_parse_authors(paper.get("editors"), creator_type="editor"))
+
+    # 같은 사람이 author + editor 양쪽에 있으면 author 만 남긴다.
+    if creators:
+        author_keys = {
+            (c.get("firstName", "").lower(), c.get("lastName", "").lower())
+            for c in creators
+            if c.get("creatorType") == "author"
+        }
+        creators = [
+            c
+            for c in creators
+            if c.get("creatorType") != "editor"
+            or (c.get("firstName", "").lower(), c.get("lastName", "").lower())
+            not in author_keys
+        ]
+
     item = {
         "itemType": item_type,
         "title": (paper.get("title") or "").strip(),
-        "creators": _parse_authors(paper.get("authors") or paper.get("author") or []),
+        "creators": creators,
         "abstractNote": paper.get("abstract") or paper.get("abstractNote") or "",
         "date": str(date_val),
         "url": url,
@@ -324,12 +369,47 @@ def to_zotero_item(paper, collection_key=None):
             item["publisher"] = paper["publisher"]
         if paper.get("pages"):
             item["pages"] = str(paper["pages"])
+    elif item_type == "book":
+        # Zotero book fields: publisher, place, ISBN, edition, numPages,
+        # series, seriesNumber, volume, numberOfVolumes, language
+        for src, dst in (
+            ("publisher", "publisher"),
+            ("place", "place"),
+            ("ISBN", "ISBN"),
+            ("edition", "edition"),
+            ("numPages", "numPages"),
+            ("series", "series"),
+            ("seriesNumber", "seriesNumber"),
+            ("volume", "volume"),
+            ("numberOfVolumes", "numberOfVolumes"),
+            ("language", "language"),
+        ):
+            v = paper.get(src)
+            if v in (None, "", "0", 0):
+                continue
+            item[dst] = str(v)
     elif item_type == "bookSection":
-        if paper.get("publicationTitle"):
+        # Zotero bookSection fields: bookTitle, publisher, place, pages, ISBN,
+        # edition, series, seriesNumber, volume, numberOfVolumes, language
+        if paper.get("bookTitle"):
+            item["bookTitle"] = paper["bookTitle"]
+        elif paper.get("publicationTitle"):
             item["bookTitle"] = paper["publicationTitle"]
-        if paper.get("publisher"):
-            item["publisher"] = paper["publisher"]
-        if paper.get("pages"):
-            item["pages"] = str(paper["pages"])
+        for src, dst in (
+            ("publisher", "publisher"),
+            ("place", "place"),
+            ("pages", "pages"),
+            ("ISBN", "ISBN"),
+            ("edition", "edition"),
+            ("series", "series"),
+            ("seriesNumber", "seriesNumber"),
+            ("volume", "volume"),
+            ("numberOfVolumes", "numberOfVolumes"),
+            ("language", "language"),
+        ):
+            v = paper.get(src)
+            if v in (None, "", "0", 0):
+                continue
+            item[dst] = str(v)
 
     return item
