@@ -62,6 +62,7 @@ from config_loader import (  # noqa: E402
 from lib.bib_enrich import enrich as enrich_bib  # noqa: E402
 from lib.bib_enrich import to_zotero_item  # noqa: E402
 from register_zotero import (  # noqa: E402
+    _patch_item,
     attach_pdf,
     download_pdf,
     get_collection_items_all,
@@ -746,6 +747,131 @@ def pdf_only_mode(parsed: list[dict], collection_key: str, pdf_dir: Path) -> tup
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Move-to-subcollection mode
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+def move_to_subcollection(
+    resolved: list[dict],
+    parent_collection_key: str,
+    sub_name: str,
+    pre_existing_keys: set[str] | None = None,
+) -> dict:
+    """resolved 항목들을 parent_collection 의 sub-collection 으로 이동.
+
+    pre_existing_keys 에 든 zotero key 는 parent + sub 양쪽에 유지.
+    그 외(우리가 새로 등록한 것)는 parent 에서 빼고 sub 에만 둔다.
+    """
+    pre_existing_keys = pre_existing_keys or set()
+
+    # 1) parent 아래에 같은 이름 sub-collection 있는지 확인
+    log(f"  collections 조회 중…")
+    cols = zotero_api(
+        "collections", params={"format": "json", "limit": "200"}
+    )
+    sub_key = None
+    for c in cols:
+        d = c.get("data", {})
+        if d.get("name") == sub_name and d.get("parentCollection") == parent_collection_key:
+            sub_key = d.get("key") or c.get("key")
+            log(f"  기존 sub-collection 사용: {sub_name} ({sub_key})")
+            break
+    if not sub_key:
+        log(f"  sub-collection 생성: {sub_name} (parent={parent_collection_key})")
+        result = zotero_api(
+            "collections",
+            method="POST",
+            data=[{"name": sub_name, "parentCollection": parent_collection_key}],
+        )
+        success = result.get("success", {}) or result.get("successful", {})
+        if not success:
+            raise RuntimeError(f"sub-collection 생성 실패: {result}")
+        sub_key = next(iter(success.values()))
+        # 일부 응답은 dict 형태 — 정상화
+        if isinstance(sub_key, dict):
+            sub_key = sub_key.get("key") or sub_key.get("data", {}).get("key", "")
+        log(f"  생성 완료: {sub_key}")
+
+    # 2) parent 컬렉션의 모든 item 조회 후 lookup map
+    log("  parent 컬렉션 항목 로드 중…")
+    parent_items = get_collection_items_all(parent_collection_key)
+    log(f"    {len(parent_items)}개")
+    by_doi: dict[str, dict] = {}
+    by_isbn: dict[str, dict] = {}
+    by_title: dict[str, dict] = {}
+    for it in parent_items:
+        d = it.get("data", {})
+        rec = {
+            "key": d.get("key") or it.get("key"),
+            "version": it.get("version") or d.get("version"),
+            "collections": list(d.get("collections") or []),
+        }
+        if d.get("DOI"):
+            by_doi[d["DOI"].strip().lower()] = rec
+        if d.get("ISBN"):
+            by_isbn[d["ISBN"].strip().replace("-", "")] = rec
+        title_norm = _norm(d.get("title", ""))[:50]
+        if title_norm:
+            by_title[title_norm] = rec
+
+    moved: list[dict] = []
+    added_only: list[dict] = []
+    not_found: list[dict] = []
+    failed: list[dict] = []
+
+    for r in resolved:
+        doi = (r.get("doi") or "").strip().lower()
+        isbn = (r.get("ISBN") or "").strip().replace("-", "")
+        title_norm = _norm(r.get("title", ""))[:50]
+        rec = by_doi.get(doi) or by_isbn.get(isbn) or by_title.get(title_norm)
+        if not rec:
+            not_found.append(r)
+            continue
+        item_key = rec["key"]
+        ver = rec["version"]
+        cols_now = set(rec["collections"])
+
+        is_pre = item_key in pre_existing_keys
+        new_cols = set(cols_now)
+        new_cols.add(sub_key)
+        if not is_pre:
+            new_cols.discard(parent_collection_key)
+
+        if new_cols == cols_now:
+            # 변경 사항 없음 (이미 sub 에 있고 parent 처리도 맞음)
+            (added_only if is_pre else moved).append(
+                {**r, "zotero_key": item_key, "_skipped": "already-correct"}
+            )
+            continue
+
+        ok, err = _patch_item(item_key, ver, {"collections": sorted(new_cols)})
+        rec_out = {**r, "zotero_key": item_key, "_was_pre_existing": is_pre}
+        if ok:
+            (added_only if is_pre else moved).append(rec_out)
+            log(
+                f"    {'+' if is_pre else '→'} {item_key} {r.get('title','')[:60]}"
+            )
+        else:
+            rec_out["_error"] = err
+            failed.append(rec_out)
+            log(f"    × {item_key} {err}")
+        time.sleep(0.15)
+
+    log(
+        f"\n  요약 — moved(parent→sub): {len(moved)}, "
+        f"added(both, pre-existing): {len(added_only)}, "
+        f"not_found: {len(not_found)}, failed: {len(failed)}"
+    )
+    return {
+        "sub_key": sub_key,
+        "moved": moved,
+        "added_only": added_only,
+        "not_found": not_found,
+        "failed": failed,
+    }
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Main
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -777,6 +903,11 @@ def main():
         action="store_true",
         help="이전 등록 결과의 PDF 만 (재)다운로드+첨부. 캐시(parsed.json+resolved.json) 필요.",
     )
+    ap.add_argument(
+        "--move-to-subcollection",
+        metavar="NAME",
+        help="resolved 항목들을 parent collection 의 sub-collection 으로 이동/추가. 캐시 필요.",
+    )
     args = ap.parse_args()
 
     input_path = Path(args.input)
@@ -794,6 +925,37 @@ def main():
     if args.limit > 0:
         raw_lines = raw_lines[: args.limit]
     log(f"총 {len(raw_lines)}개 참고문헌 읽음")
+
+    # ── Move-to-subcollection 모드 ────────────────────────────────────────────
+    if args.move_to_subcollection:
+        if not RESOLVED_CACHE.exists():
+            sys.exit(f"--move-to-subcollection 은 {RESOLVED_CACHE} 가 필요합니다.")
+        resolved = json.loads(RESOLVED_CACHE.read_text(encoding="utf-8"))
+        # existing_matches.json 에 있는 키는 사용자가 컬렉션에 두었던 것이므로 양쪽 유지
+        pre_existing_keys: set[str] = set()
+        em_path = REPORT_DIR / "existing_matches.json"
+        if em_path.exists():
+            try:
+                em = json.loads(em_path.read_text(encoding="utf-8"))
+                pre_existing_keys = {
+                    e.get("_existing_zotero_key") for e in em if e.get("_existing_zotero_key")
+                }
+                log(f"기존 매칭(parent 유지) 대상: {len(pre_existing_keys)}개")
+            except Exception:
+                pass
+        result = move_to_subcollection(
+            resolved, collection_key, args.move_to_subcollection, pre_existing_keys
+        )
+        _save_json(REPORT_DIR / "subcollection_result.json", result)
+        log(
+            f"\n=== sub-collection 요약 ===\n"
+            f"  sub_key   : {result['sub_key']}\n"
+            f"  moved     : {len(result['moved'])}\n"
+            f"  added(양쪽): {len(result['added_only'])}\n"
+            f"  not_found : {len(result['not_found'])}\n"
+            f"  failed    : {len(result['failed'])}"
+        )
+        return
 
     # ── PDF-only 복구 모드 ────────────────────────────────────────────────────
     if args.pdf_only:
