@@ -391,9 +391,18 @@ def _is_gemini_transient(exc_or_text):
     return any(m in t for m in markers)
 
 
+# Per-call watchdog timeout for PaperBanana. A normal critic-loop image takes
+# ~1~3 minutes; anything past 10 minutes is silent stall (e.g. Gemini endpoint
+# hanging with no exception). We abort that candidate and let the outer loop
+# move on instead of waiting indefinitely.
+_PB_CALL_TIMEOUT_S = 600
+
+
 def generate_with_paperbanana(method_text, caption, output_path, critic_rounds=3):
-    """PaperBanana 로 이미지 생성. Gemini 일시 실패 시 사용자 정책에 따라 재시도."""
+    """PaperBanana 로 이미지 생성. Gemini 일시 실패 시 사용자 정책에 따라 재시도.
+    각 호출은 _PB_CALL_TIMEOUT_S 안에 끝나야 한다 (silent-stall 방어)."""
     import time as _time
+    from concurrent.futures import ThreadPoolExecutor, TimeoutError as _FutTimeout
     from lib.paperbanana import generate_diagram
 
     last_exc = None
@@ -402,19 +411,37 @@ def generate_with_paperbanana(method_text, caption, output_path, critic_rounds=3
             log(f"    [gemini-retry] sleeping {sleep_s}s before attempt "
                 f"{attempt_idx}/{len(_GEMINI_RETRY_SCHEDULE)}...")
             _time.sleep(sleep_s)
+        t0 = _time.time()
+        log(f"    [paperbanana] calling generate_diagram (attempt {attempt_idx}, "
+            f"timeout {_PB_CALL_TIMEOUT_S}s)...")
         try:
-            png_bytes = generate_diagram(
-                method=method_text,
-                caption=caption,
-                aspect_ratio="16:9",
-                critic_rounds=critic_rounds,
-                exp_mode="demo_planner_critic",
-                retrieval_setting="auto",
-                output_path=output_path,
-            )
+            with ThreadPoolExecutor(max_workers=1) as ex:
+                fut = ex.submit(
+                    generate_diagram,
+                    method=method_text,
+                    caption=caption,
+                    aspect_ratio="16:9",
+                    critic_rounds=critic_rounds,
+                    exp_mode="demo_planner_critic",
+                    retrieval_setting="auto",
+                    output_path=output_path,
+                )
+                try:
+                    png_bytes = fut.result(timeout=_PB_CALL_TIMEOUT_S)
+                except _FutTimeout:
+                    elapsed = _time.time() - t0
+                    log(f"    [paperbanana-timeout] ERROR: no output for {elapsed:.0f}s "
+                        f"(> {_PB_CALL_TIMEOUT_S}s) — aborting this candidate")
+                    # Worker thread keeps running in the background; ThreadPoolExecutor
+                    # context exit won't kill it (Python threads are cooperative), but
+                    # the next candidate proceeds independently.
+                    return None
+            elapsed = _time.time() - t0
             if png_bytes and os.path.exists(output_path):
+                log(f"    [paperbanana] ok in {elapsed:.0f}s")
                 return os.path.getsize(output_path) / 1024
             # No exception but empty output — treat as transient
+            log(f"    [paperbanana] ERROR: empty output after {elapsed:.0f}s")
             last_exc = RuntimeError("PaperBanana returned empty output")
             if not _is_gemini_transient(last_exc):
                 return None
