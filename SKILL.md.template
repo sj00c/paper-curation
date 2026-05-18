@@ -676,6 +676,56 @@ User: "이 논문 리뷰해줘"
 /paper-curation --fields "network science, complex networks" --period 7d --max 30
 ```
 
+### 윈도우 분할 검색 (`--since` / `--until`)
+
+`search_papers.py` 는 단일 `--days` 외에 `--since YYYY-MM-DD --until YYYY-MM-DD` 로 좁은 윈도우 검색을 지원한다. 긴 기간(예: 90일)을 한 번에 받으면 OpenAlex/S2 의 `max_per_keyword` 한도(100) 에 잘려 후반 누락이 발생하므로, **10일 단위 슬라이스 × 9회** 패턴으로 돌리는 것이 권장. 윈도우는 `[since, until)` 반-개 구간 (until 일자는 제외).
+
+```bash
+# 예: 지난 90일을 10일 윈도우 × 9회 (macOS date 명령 기준)
+for i in 9 8 7 6 5 4 3 2 1; do
+  SINCE=$(date -v-$((i*10))d +%Y-%m-%d)
+  UNTIL=$(date -v-$(((i-1)*10))d +%Y-%m-%d)
+  PYTHONUTF8=1 python pipeline/search_papers.py --topic scisci \
+    --since "$SINCE" --until "$UNTIL" --max-papers 100 --skip-arxiv
+  PYTHONUTF8=1 python pipeline/register_zotero.py --topic scisci
+done
+PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic scisci --execute
+```
+
+### 한국 망 환경 우회
+
+| 문제 | 증상 | 해결 |
+|------|------|------|
+| `huggingface.co` LFS 차단 | `topic_modeling` 이 SPECTER2 다운로드 실패 (timeout HTTP 000) | AWS S3 미러에서 한 번 받아 `<repo>/.cache/base/` 에 압축 해제 — `topic_modeling.py` 의 `SPECTER2_MODEL` 상수가 자동 인식 |
+| arXiv chronic 429 | 첫 timeout 후 모든 키워드 차단 | `search_papers.py --skip-arxiv` (OpenAlex + S2 만 사용, ~8분/윈도우 단축) |
+| OpenDataLoader fallback | Java 미설치 시 PyMuPDF 로 조용히 fallback (표/구조 손실) | `brew install --cask temurin` 으로 Eclipse Temurin (OpenJDK) 설치 |
+
+```bash
+# SPECTER2 S3 미러 (1회)
+mkdir -p .cache && cd .cache
+curl -L -o specter2_0.tar.gz "https://ai2-s2-research-public.s3.amazonaws.com/specter2_0/specter2_0.tar.gz"
+tar -xzf specter2_0.tar.gz   # base/ + adapters/
+
+# Java Runtime (1회)
+brew install --cask temurin   # macOS
+
+# 검증: pipeline/topic_modeling.py 의 SPECTER2_MODEL 가 .cache/base 를 가리키는지
+PYTHONUTF8=1 python -c "from pipeline.topic_modeling import SPECTER2_MODEL; print(SPECTER2_MODEL)"
+```
+
+### Concurrency (Anthropic Tier 기준)
+
+`run_update_force.py` / `run_full.py` 의 `--concurrency` 기본값은 **16 (Tier 4)**. 리뷰 단계의 paper 단위 `ThreadPoolExecutor` 워커 수. 리뷰는 I/O bound (Anthropic + Gemini API) 라 하드웨어보다 ITPM(분당 토큰)이 천장.
+
+| Tier | 권장 `--concurrency` |
+|------|---------------------|
+| Free / 1 | 2~4 |
+| 2 | 6~8 |
+| 3 | 10~12 |
+| **4** | **16~20 (default 16)** |
+
+429 발생 시 자동 재시도되지만 체크포인트 재개 오버헤드 누적. 자세한 권장값과 RPM/ITPM 표는 README 의 "Concurrency 가이드" 참고.
+
 ## --update-force 재현 파이프라인
 
 새 주제 또는 기존 주제 전체 재생성 시 아래 순서대로 실행.
@@ -711,7 +761,7 @@ PYTHONUTF8=1 python pipeline/build_category_summaries.py --topic ai4s --regen-ko
 # ── Step 5: 타임라인 생성 (PaperBanana, Gemini 직접 호출 금지) ──
 PYTHONUTF8=1 python pipeline/generate_timelines.py --topic ai4s
 # 메인만: --main-only, 카테고리만: --category-only
-# candidate 수: --candidates 5 (기본값, #1 자동 배포)
+# candidate 수: --candidates 3 (기본값; #1 자동 배포). 카테고리 변경 시 9개 × 3 candidate = 27 image 생성
 # 특정 카테고리만: --categories "Ethics, Policy & Meta-Science"
 
 # ── Step 6: index.html 빌드 + 검증 ──

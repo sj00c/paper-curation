@@ -8,9 +8,11 @@ Paper Curation 파이프라인의 설치 및 설정 가이드입니다.
 
 - [Claude Code](https://claude.ai/code) 설치
 - [Zotero API Key](https://www.zotero.org/settings/keys) 발급
-- `ANTHROPIC_API_KEY` 및 `GOOGLE_API_KEY` 환경변수 설정
+- `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY`, `OPENAI_API_KEY` 환경변수 설정
 - Zotero 컬렉션 이름 확인 (리뷰할 논문들이 모인 컬렉션)
 - Zotero PDF 저장 경로 확인
+- **Python 3.14 권장** (macOS conda env `py314` 표준). 3.12+ 동작.
+- **Java Runtime** — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
 
 ## Claude Code에서 설치 (권장)
 
