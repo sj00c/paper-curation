@@ -1634,7 +1634,7 @@ if has_research_tl:
     if exec_html:
         research_tl_html += f'  <div class="timeline-summary">\n    {exec_html}\n  </div>\n'
     if os.path.exists(os.path.join(TOPIC_DIR, "network.html")):
-        research_tl_html += f'  <div style="text-align:right;margin-top:0.8rem"><a href="network.html" style="color:{accent};font-weight:600;text-decoration:none;font-size:0.9rem">&#x1F517; Interactive Paper Network &rarr;</a></div>\n'
+        research_tl_html += f'  <div style="text-align:right;margin-top:0.8rem"><a href="network.html" target="_blank" rel="noopener noreferrer" style="color:{accent};font-weight:600;text-decoration:none;font-size:0.9rem">&#x1F517; Interactive Paper Network &rarr;</a></div>\n'
     research_tl_html += '</div>\n\n\n'
 
 HTML = (
