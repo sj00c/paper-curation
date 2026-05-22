@@ -432,42 +432,13 @@ def _process_category(cat_name, papers, topic, client,
 MAX_PARALLEL_CATEGORIES = 4
 
 
-def extract_paper_connections(topic, cat_papers, client, all_topic_papers=None,
-                              incremental=True):
-    """카테고리별 병렬로 논문 간 연결 추출. 다른 카테고리 논문도 후보로 제공.
-
-    incremental=True (default): 이미 _global_connections.json 에 등록된
-    paper 는 batch 에서 제외 → 신규 paper 만 Sonnet 으로 새로 계산. 기존
-    connections 는 sync_topic_connections 의 merge 단계에서 자동 보존된다.
-    incremental=False: 매 카테고리의 전체 paper 를 다시 처리 (전체 재생성).
-    """
+def extract_paper_connections(topic, cat_papers, client, all_topic_papers=None):
+    """카테고리별 병렬로 논문 간 연결 추출. 다른 카테고리 논문도 후보로 제공."""
     from concurrent.futures import ThreadPoolExecutor, as_completed
 
     all_connections = {}
-
-    # Incremental: skip papers that already have cached connections for this topic.
-    cached_slugs = set()
-    if incremental:
-        from lib.connections import load_global_connections, filter_for_topic
-        topic_slugs = [p["slug"] for p in all_topic_papers] if all_topic_papers else []
-        existing = filter_for_topic(load_global_connections(), topic_slugs)
-        cached_slugs = set(existing.keys())
-        log(f"  [incremental] {len(cached_slugs)} papers already cached — only new papers will be processed")
-
-    targets = {}
-    for cat, papers in cat_papers.items():
-        if cat == "Other" or len(papers) < 3:
-            continue
-        if incremental:
-            new_papers = [p for p in papers if p["slug"] not in cached_slugs]
-            if not new_papers:
-                continue
-            log(f"    {cat}: {len(new_papers)} new (of {len(papers)} total)")
-            targets[cat] = new_papers
-        else:
-            targets[cat] = papers
-    if not targets:
-        log(f"  [incremental] no new papers — skipping all Sonnet calls")
+    targets = {cat: papers for cat, papers in cat_papers.items()
+                if cat != "Other" and len(papers) >= 3}
 
     with ThreadPoolExecutor(max_workers=MAX_PARALLEL_CATEGORIES) as executor:
         futures = {
@@ -500,8 +471,6 @@ def main():
     parser.add_argument("--insights-only", action="store_true", help="Cross-category insights only")
     parser.add_argument("--connections-only", action="store_true", help="Paper connections only")
     parser.add_argument("--categories", nargs="+", help="Specific categories to process (others preserved)")
-    parser.add_argument("--connections-fresh", action="store_true",
-                        help="Disable incremental cache reuse for paper_connections — recompute all papers")
     args = parser.parse_args()
 
     topic = args.topic
@@ -562,10 +531,7 @@ def main():
         log("PAPER CONNECTIONS (Sonnet)")
         log("=" * 50)
 
-        connections = extract_paper_connections(
-            topic, cat_papers, client, topic_papers,
-            incremental=not args.connections_fresh,
-        )
+        connections = extract_paper_connections(topic, cat_papers, client, topic_papers)
 
         topic_slugs = [p["slug"] for p in topic_papers]
         from lib.connections import sync_topic_connections
