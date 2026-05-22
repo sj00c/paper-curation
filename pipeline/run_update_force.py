@@ -1363,8 +1363,30 @@ def main():
                 )
                 if result.returncode != 0:
                     log(f"  [{step_name}] FAILED (exit {result.returncode})")
+                    # Dump full stderr + stdout to disk so the real traceback
+                    # (often >200 chars) survives for diagnosis.
+                    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    safe_step = re.sub(r'[^A-Za-z0-9_-]+', '_', step_name)[:50]
+                    dump_path = PIPELINE_DIR / "_logs" / f"step_failure_{safe_step}_{ts}.log"
+                    try:
+                        dump_path.parent.mkdir(parents=True, exist_ok=True)
+                        with open(dump_path, "w", encoding="utf-8") as f:
+                            f.write(f"=== command ===\n")
+                            f.write(" ".join(str(c) for c in cmd) + "\n")
+                            f.write(f"\n=== exit code: {result.returncode} ===\n")
+                            f.write(f"\n=== STDERR ({len(result.stderr or '')} chars) ===\n")
+                            f.write(result.stderr or "(empty)\n")
+                            f.write(f"\n=== STDOUT ({len(result.stdout or '')} chars) ===\n")
+                            f.write(result.stdout or "(empty)\n")
+                        log(f"    [diag] full output dumped: {dump_path}")
+                    except Exception as _dump_e:
+                        log(f"    [diag] dump failed: {_dump_e}")
+                    # Console: last 30 lines of stderr (not first 200 chars) —
+                    # tracebacks are most useful at the tail.
                     if result.stderr:
-                        log(f"    {result.stderr[:200]}")
+                        last = result.stderr.rstrip().splitlines()[-30:]
+                        for ln in last:
+                            log(f"    {ln}")
                 else:
                     out_lines = [l for l in result.stdout.strip().split("\n") if l.strip()]
                     if out_lines:
