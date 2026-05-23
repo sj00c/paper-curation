@@ -201,6 +201,11 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
 
 # 특정 슬러그만 force-rebuild (감사·복구 시)
+#   주의: --mode rebuild 는 토픽 전체의 categorization/insights/timelines 까지 재생성한다 (수 시간, API 비용 ↑).
+#   PDF 한 편 교체 후 review.md만 갱신하고 싶으면 다음 패턴이 가볍다:
+#     rm docs/papers/{NNN}_*/review.md
+#     python pipeline/run_full.py --topic ai4s --mode curate --source zotero --skip-dedup
+#   (이후 분류 영향까지 반영하려면 --mode reclassify 별도 실행)
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf
 
 # 분류만 다시 (Phase 3 node-based, LLM 호출 없음)
@@ -261,6 +266,10 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 - **Two themes**: `ai4s` uses red accent (#D63423), `scisci` uses blue (#2374D6). Theme selection flows through `review_to_html.py` and `build_topic_index.py`.
 - **Figure extraction**: PyMuPDF renders pages containing "Figure N" / "Fig. N" at 3x zoom. Up to 5 figures per paper from pages 0-14.
 - **Slug format**: `{NNN}_{Title_first_40_chars}` where NNN is zero-padded sequence number.
+- **PDF-change auto-detect**: `run_update_force.py` 가 매 실행 시작 시 `_papers_index.json` 의 `pdf_path` 캐시와 디스크 mtime을 비교해 PDF가 review.md 보다 새 것이면 자동으로 `forced_slugs` 에 추가한다 (Zotero API 호출 0, 순수 stat). 캐시는 `find_pdf()` 성공 시 자동 적재되므로 처음 한 사이클을 돈 뒤부터 작동.
+- **Subprocess timeouts (LLM steps)**: `run_step()` 에 박힌 wall-clock cap — `topic_modeling=3600s`, `extract_insights=14400s (4h)`, `generate_timelines=21600s (6h)`. 실제 토픽 크기(논문 수)에 맞춰 한 번 늘려 둠 — 한국망↔Anthropic 응답 변동성 + paper_connections 의 카테고리×배치 곱셈 비용을 흡수.
+- **Anthropic SDK 안정화**: 모든 Anthropic client 는 `Anthropic(timeout=180.0, max_retries=4)` (streaming Opus 만 `timeout=600.0`). `generate_timelines.opus_streaming_call` 은 mid-stream `Connection reset` 을 5-회 exp backoff 로 자체 wrap (SDK 의 max_retries 가 stream 시작 후 끊김을 못 잡음). `fetch_zotero_items` 도 동일한 retry 로직 적용.
+- **Zotero `attachments:` URI 핸들링**: `find_pdf()` priority 1 (Zotero children API) 에서 `attachments:<filename>` 접두사를 `ZOTERO_DIR/<filename>` 으로 해석. Zotero 의 "Linked Attachment Base Directory" 설정을 따른다.
 
 ## External Dependencies
 
