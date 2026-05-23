@@ -820,7 +820,7 @@ function deepHidePanel() {
 }
 
 function deepUpdateButtons(enabled) {
-  for (const id of ['deep-copy', 'deep-download', 'deep-newtab', 'deep-obsidian', 'deep-rerun']) {
+  for (const id of ['deep-copy', 'deep-download', 'deep-download-html', 'deep-newtab', 'deep-obsidian', 'deep-rerun']) {
     const b = document.getElementById(id);
     if (b) b.disabled = !enabled;
   }
@@ -1335,8 +1335,7 @@ function downloadAnswerMd() {
   setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
 }
 
-function openAnswerInNewTab() {
-  if (!DEEP.currentAnswer) return;
+function buildFullHtml() {
   const q = document.getElementById('search-input').value;
   let answerMarkup = mdToMarkup(DEEP.currentAnswer);
   answerMarkup = postProcessRefs(answerMarkup, DEEP.currentRefs);
@@ -1354,7 +1353,7 @@ function openAnswerInNewTab() {
   const base = new URL('.', window.location.href).href;
   answerMarkup = answerMarkup.replace(/(src|href)="(\\.\\.\\/[^"]+)"/g, (_, attr, rel) => attr + '="' + new URL(rel, base).href + '"');
   refsMarkup = refsMarkup.replace(/href="(\\.\\.\\/[^"]+)"/g, (_, rel) => 'href="' + new URL(rel, base).href + '"');
-  const doc = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Deep Research</title><style>' +
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Deep Research</title><style>' +
     'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:760px;margin:2rem auto;padding:0 1.5rem;color:#222;line-height:1.75;}' +
     'h1{font-size:1.35rem;margin-bottom:0.3rem;}' +
     '.meta{color:#888;font-size:0.85rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #eee;}' +
@@ -1378,10 +1377,29 @@ function openAnswerInNewTab() {
     '<div class="answer">' + answerMarkup + '</div>' +
     refsMarkup +
     '</body></html>';
+}
+
+function openAnswerInNewTab() {
+  if (!DEEP.currentAnswer) return;
+  const doc = buildFullHtml();
   const blob = new Blob([doc], { type: 'text/html;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   window.open(url, '_blank');
   setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+function downloadAnswerHtml() {
+  if (!DEEP.currentAnswer) return;
+  const doc = buildFullHtml();
+  const blob = new Blob([doc], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  a.href = url;
+  a.download = 'deep-research-' + ts + '.html';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1416,6 +1434,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (copy) copy.addEventListener('click', copyAnswerMd);
   const dl = document.getElementById('deep-download');
   if (dl) dl.addEventListener('click', downloadAnswerMd);
+  const dlh = document.getElementById('deep-download-html');
+  if (dlh) dlh.addEventListener('click', downloadAnswerHtml);
   const nt = document.getElementById('deep-newtab');
   if (nt) nt.addEventListener('click', openAnswerInNewTab);
   const ob = document.getElementById('deep-obsidian');
@@ -1687,7 +1707,8 @@ HTML = (
     '        <button class="deep-btn" id="deep-rerun" disabled title="현재 질의를 선택한 모델·분량으로 다시 실행">&#x21BB; 재시작</button>\n'
     '        <div class="deep-actions">\n'
     '          <button class="deep-btn" id="deep-copy" disabled title="Copy markdown">&#x1F4CB; Copy</button>\n'
-    '          <button class="deep-btn" id="deep-download" disabled title="Download .md">&#x2B07; Download</button>\n'
+    '          <button class="deep-btn" id="deep-download" disabled title="Download .md">&#x2B07; MARKDOWN</button>\n'
+    '          <button class="deep-btn" id="deep-download-html" disabled title="Download .html">&#x2B07; HTML</button>\n'
     '          <button class="deep-btn" id="deep-newtab" disabled title="Open in new tab">&#x1F517; New tab</button>\n'
     '          <button class="deep-btn" id="deep-obsidian" disabled title="Save answer + your notes to Obsidian">&#x1F4DD; Obsidian</button>\n'
     '          <button class="deep-btn" id="deep-close" title="Close">&#x2715;</button>\n'

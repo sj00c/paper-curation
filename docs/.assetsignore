@@ -1,6 +1,7 @@
 # Local-only topics — not published to Cloudflare
 ai4s/
 scisci/
+ai4s+scisci/
 
 # Local dev caches — never deployed
 _local_keys.json

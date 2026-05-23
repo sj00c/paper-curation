@@ -34,9 +34,12 @@ def parse_review(slug):
     title_m = re.search(r'^#\s+(.+)', content, re.MULTILINE)
     title = title_m.group(1).strip() if title_m else slug
 
-    # Authors
-    authors_m = re.search(r'\*\*저자\*\*:\s*(.+?)(?:\s*\|)', content)
-    authors = [a.strip() for a in authors_m.group(1).split(",")] if authors_m else []
+    # Authors — restrict to chars that can't appear in the next metadata
+    # segment ('|' as separator, '*' as the start of '**날짜**' etc) so an
+    # empty-author header like '**저자**:  | **날짜**: ...' produces an empty
+    # list instead of capturing the next blockquote segment.
+    authors_m = re.search(r'\*\*저자\*\*:\s*([^|*\n]+?)(?:\s*\|)', content)
+    authors = [a.strip() for a in authors_m.group(1).split(",") if a.strip()] if authors_m else []
 
     # Date — normalize to YYYY.MM
     date_m = re.search(r'\*\*날짜\*\*:\s*(.+?)(?:\s*\||\s*$)', content, re.MULTILINE)
