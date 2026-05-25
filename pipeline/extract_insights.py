@@ -20,7 +20,7 @@ from collections import defaultdict
 from datetime import datetime
 
 from anthropic import Anthropic
-from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir
+from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir, load_config
 
 PAPERS_DIR = str(_PAPERS_DIR)
 
@@ -274,9 +274,109 @@ Output ONLY valid JSON in this exact format:
 # 2. Paper Connections (per-category batch)
 # ═══════════════════════════════════════════
 
+def _call_with_deadline(fn, deadline_s, label=""):
+    """Run fn() in a daemon thread; raise TimeoutError if it exceeds deadline_s.
+
+    The Anthropic SDK has no hard total-request deadline, and httpx's read
+    timeout doesn't reliably fire when a Korea↔US TCP connection is silently
+    severed by a middlebox (socket stays ESTABLISHED, recv() blocks forever).
+    This wraps the call in a wall-clock watchdog: past the deadline we abandon
+    the (un-killable) thread + its hung socket and raise, so the caller's
+    per-batch except handler can skip it instead of hanging the whole run."""
+    import threading
+    box = {}
+
+    def _w():
+        try:
+            box["v"] = fn()
+        except BaseException as e:  # noqa: BLE001 — propagate any failure
+            box["e"] = e
+
+    t = threading.Thread(target=_w, daemon=True)
+    t.start()
+    t.join(deadline_s)
+    if t.is_alive():
+        raise TimeoutError(f"{label} exceeded {deadline_s}s wall-clock deadline")
+    if "e" in box:
+        raise box["e"]
+    return box.get("v")
+
+
+# Hard per-batch wall-clock cap. Legit batches finish in 2~6 min; rare ones
+# reach ~10 min. Hangs run 20~60+ min. 900s kills hangs while allowing almost
+# all real completions.
+_CONN_BATCH_DEADLINE_S = 900
+
+# Backend fallback chain. Korea↔Anthropic route stalls badly some windows while
+# the OpenAI route stays healthy (and vice-versa). The connection task is plain
+# structured-JSON generation, not provider-specific — so we try backends in
+# order and fall back on failure. Default: Anthropic primary, OpenAI fallback.
+# Override order with EXTRACT_INSIGHTS_BACKENDS=openai,anthropic (or just one).
+_BACKENDS = [b.strip().lower() for b in
+             os.environ.get("EXTRACT_INSIGHTS_BACKENDS",
+                            os.environ.get("EXTRACT_INSIGHTS_BACKEND", "anthropic") + ",openai")
+             .split(",") if b.strip()]
+# de-dup preserving order
+_BACKENDS = list(dict.fromkeys(_BACKENDS))
+_OPENAI_CONN_MODEL = os.environ.get("EXTRACT_INSIGHTS_OPENAI_MODEL", "gpt-4.1")
+# Per-attempt wall-clock cap (thread watchdog) — fail fast so fallback kicks in.
+_ATTEMPT_DEADLINE_S = int(os.environ.get("EXTRACT_INSIGHTS_ATTEMPT_DEADLINE", "150"))
+# Circuit breaker: after this many consecutive failures of a backend, drop it
+# for the rest of the run (don't keep wasting _ATTEMPT_DEADLINE_S per batch).
+_CB_TRIP = 3
+_cb_fails: dict[str, int] = {}
+_cb_lock = __import__("threading").Lock()
+
+
+def _one_backend_call(backend: str, clients: dict, prompt: str) -> str:
+    if backend == "openai":
+        resp = clients["openai"].chat.completions.create(
+            model=_OPENAI_CONN_MODEL,
+            max_tokens=16000,
+            response_format={"type": "json_object"},
+            messages=[{"role": "user", "content": prompt}],
+        )
+        return (resp.choices[0].message.content or "").strip()
+    resp = clients["anthropic"].messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=20000,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return resp.content[0].text.strip()
+
+
+def _conn_llm_text(clients: dict, prompt: str, label: str = "") -> tuple[str, str]:
+    """Try backends in _BACKENDS order with a per-attempt deadline; fall back on
+    failure. Circuit-breaks a backend after _CB_TRIP consecutive failures.
+    Returns (text, backend_used). Raises if every available backend fails."""
+    last_err = None
+    for b in _BACKENDS:
+        if clients.get(b) is None:
+            continue
+        with _cb_lock:
+            if _cb_fails.get(b, 0) >= _CB_TRIP:
+                continue  # tripped — skip for rest of run
+        try:
+            text = _call_with_deadline(
+                lambda: _one_backend_call(b, clients, prompt),
+                _ATTEMPT_DEADLINE_S, label=f"{label}:{b}")
+            with _cb_lock:
+                _cb_fails[b] = 0  # success resets the breaker
+            return text, b
+        except Exception as e:  # noqa: BLE001
+            last_err = e
+            with _cb_lock:
+                _cb_fails[b] = _cb_fails.get(b, 0) + 1
+                tripped = _cb_fails[b] >= _CB_TRIP
+            log(f"      [fallback] {b} failed ({type(e).__name__}: {str(e)[:70]})"
+                f"{' — CIRCUIT TRIPPED, dropping for rest of run' if tripped else ' → next backend'}")
+    raise RuntimeError(f"all backends failed: {type(last_err).__name__}: {str(last_err)[:80]}")
+
+
 def _call_connections_batch(papers_batch, cat_name, topic, all_paper_lines,
-                            cross_cat_lines, client):
-    """논문 배치에 대해 connections 호출. 같은 카테고리 + 다른 카테고리 후보 모두 제공."""
+                            cross_cat_lines, clients):
+    """논문 배치에 대해 connections 호출. 같은 카테고리 + 다른 카테고리 후보 모두 제공.
+    clients 는 {'anthropic': ..., 'openai': ...} dict — backend fallback 용."""
 
     batch_lines = []
     for p in papers_batch:
@@ -331,15 +431,9 @@ Rules:
 - target은 위 목록에 있는 논문 번호만 사용"""
 
     _t0 = time.time()
-    log(f"    [conn-batch:{cat_name[:30]}] calling Sonnet 4.6 ({len(papers_batch)} targets, max_tokens=20000)...")
-    resp = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=20000,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    text = resp.content[0].text.strip()
-    log(f"    [conn-batch:{cat_name[:30]}] -> {len(text)} chars in {time.time()-_t0:.0f}s "
-        f"(stop_reason={getattr(resp, 'stop_reason', '?')})")
+    log(f"    [conn-batch:{cat_name[:30]}] calling {'/'.join(_BACKENDS)} ({len(papers_batch)} targets, attempt-deadline={_ATTEMPT_DEADLINE_S}s)...")
+    text, used = _conn_llm_text(clients, prompt, label=f"conn-batch:{cat_name[:20]}")
+    log(f"    [conn-batch:{cat_name[:30]}] -> {len(text)} chars in {time.time()-_t0:.0f}s (via {used})")
     if text.startswith("```"):
         text = text.split("```")[1]
         if text.startswith("json"):
@@ -350,9 +444,10 @@ Rules:
 BATCH_SIZE = 25
 
 
-def _process_category(cat_name, papers, topic, client,
+def _process_category(cat_name, papers, topic, clients,
                       all_topic_papers=None):
-    """단일 카테고리의 connections 추출. 다른 카테고리 논문도 후보로 제공."""
+    """단일 카테고리의 connections 추출. 다른 카테고리 논문도 후보로 제공.
+    clients 는 backend fallback dict."""
     sorted_papers = sorted(papers, key=lambda x: -x.get("score", 0))
     all_paper_lines = "\n".join(
         f"[{p['slug'].split('_')[0]}] {p.get('title', '')[:60]}"
@@ -392,7 +487,7 @@ def _process_category(cat_name, papers, topic, client,
         try:
             batch_result = _call_connections_batch(
                 batch, cat_name, topic, all_paper_lines,
-                cross_cat_lines, client
+                cross_cat_lines, clients
             )
 
             for num, conns in batch_result.items():
@@ -429,20 +524,34 @@ def _process_category(cat_name, papers, topic, client,
     return cat_connections
 
 
-MAX_PARALLEL_CATEGORIES = 4
+MAX_PARALLEL_CATEGORIES = int(os.environ.get("EXTRACT_INSIGHTS_PARALLEL", "4"))
 
 
-def extract_paper_connections(topic, cat_papers, client, all_topic_papers=None):
-    """카테고리별 병렬로 논문 간 연결 추출. 다른 카테고리 논문도 후보로 제공."""
+def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
+                              topic_dir=None, topic_slugs=None):
+    """카테고리별 병렬로 논문 간 연결 추출. 다른 카테고리 논문도 후보로 제공.
+
+    topic_dir + topic_slugs 가 주어지면 카테고리가 끝날 때마다 누적 결과를
+    _paper_connections.json 에 incremental 저장한다 — hang/kill 로 죽어도
+    이미 끝난 카테고리의 connections 는 디스크에 보존된다."""
     from concurrent.futures import ThreadPoolExecutor, as_completed
 
     all_connections = {}
     targets = {cat: papers for cat, papers in cat_papers.items()
                 if cat != "Other" and len(papers) >= 3}
 
+    def _persist():
+        if topic_dir is None or topic_slugs is None:
+            return
+        try:
+            from lib.connections import sync_topic_connections
+            sync_topic_connections(all_connections, topic, topic_slugs, topic_dir, log=log)
+        except Exception as e:
+            log(f"  [incremental-save] failed: {str(e)[:100]}")
+
     with ThreadPoolExecutor(max_workers=MAX_PARALLEL_CATEGORIES) as executor:
         futures = {
-            executor.submit(_process_category, cat_name, papers, topic, client,
+            executor.submit(_process_category, cat_name, papers, topic, clients,
                             all_topic_papers): cat_name
             for cat_name, papers in sorted(targets.items())
         }
@@ -459,6 +568,9 @@ def extract_paper_connections(topic, cat_papers, client, all_topic_papers=None):
                             existing.append(c)
                             seen_targets.add(c["slug"])
                     all_connections[slug] = existing
+                # Incremental checkpoint: persist after every finished category
+                _persist()
+                log(f"  [incremental-save] {cat_name} → {len(all_connections)} papers w/ connections saved")
             except Exception as e:
                 log(f"  {cat_name} FAILED: {str(e)[:100]}")
 
@@ -491,7 +603,24 @@ def main():
     # script stalled for 1h22m with no log activity, suggesting an httpx read
     # without a deadline. 5-min per-attempt cap × 2 retries = ~15 min worst
     # case before the SDK raises, instead of hanging forever.
-    client = Anthropic(timeout=180.0, max_retries=4)
+    # Build a client per available backend. Connections use the fallback chain
+    # (_BACKENDS); cross-category insights stay on Anthropic (Anthropic-specific
+    # count_tokens / multi-block calls). Short timeout + low retries so a stalled
+    # backend fails fast and the fallback kicks in.
+    clients: dict = {"anthropic": None, "openai": None}
+    try:
+        clients["anthropic"] = Anthropic(timeout=120.0, max_retries=1)
+    except Exception as e:
+        log(f"  [backend] Anthropic init failed: {str(e)[:80]}")
+    try:
+        from openai import OpenAI
+        _oai_key = os.environ.get("OPENAI_API_KEY") or load_config().get("openai_api_key", "")
+        if _oai_key:
+            clients["openai"] = OpenAI(api_key=_oai_key, timeout=120.0, max_retries=1)
+    except Exception as e:
+        log(f"  [backend] OpenAI init failed: {str(e)[:80]}")
+    client = clients["anthropic"] or clients["openai"]  # insights path (Anthropic preferred)
+    log(f"  [backend] connection fallback chain: {' → '.join(b for b in _BACKENDS if clients.get(b))}")
     run_insights = not args.connections_only
     run_connections = not args.insights_only
 
@@ -531,9 +660,12 @@ def main():
         log("PAPER CONNECTIONS (Sonnet)")
         log("=" * 50)
 
-        connections = extract_paper_connections(topic, cat_papers, client, topic_papers)
-
         topic_slugs = [p["slug"] for p in topic_papers]
+        connections = extract_paper_connections(
+            topic, cat_papers, clients, topic_papers,
+            topic_dir=topic_dir, topic_slugs=topic_slugs)
+
+        # Final write (also covers the no-incremental path)
         from lib.connections import sync_topic_connections
         sync_topic_connections(connections, topic, topic_slugs, topic_dir, log=log)
 

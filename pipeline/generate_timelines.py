@@ -440,6 +440,17 @@ def _pb_call_with_watchdog(method_text, caption, output_path, critic_rounds):
     import time as _time
     from lib.paperbanana import generate_diagram
 
+    # 0) Remove any pre-existing output file so the watchdog's _file_ready()
+    # check can't trigger on a stale candidate left over from a prior run.
+    # Without this, generate_diagram() can fail silently while the OLD file
+    # still satisfies `os.path.exists + size > 0`, getting "salvaged from
+    # disk" as a phantom success.
+    try:
+        if output_path and _os.path.exists(str(output_path)):
+            _os.remove(str(output_path))
+    except Exception:
+        pass
+
     # 1) Re-route fd 1/2 → pipe write end. Save originals.
     saved_out = _os.dup(1)
     saved_err = _os.dup(2)
