@@ -246,7 +246,15 @@ def find_pdf(item):
                 _audit_append({"key": key, "title": title[:80],
                                "method": "zotero_children_abs", "path": path})
                 return path, "zotero_children_abs"
-            fname = os.path.basename(path)
+            # Cross-platform basename extraction: Zotero may have stored a
+            # Windows-style absolute path (``C:\Users\...\Foo.pdf``) when the
+            # item was added on Windows, then the user re-attached the
+            # collection on macOS via "Linked Attachment Base Directory".
+            # ``os.path.basename`` on POSIX doesn't treat backslash as a
+            # separator, so we'd otherwise treat the whole path as the
+            # filename and never resolve it. Normalise to forward slashes
+            # first so the basename works on either separator.
+            fname = path.replace("\\", "/").rsplit("/", 1)[-1]
             alt = os.path.join(ZOTERO_DIR, fname)
             if os.path.exists(alt):
                 _audit_append({"key": key, "title": title[:80],
