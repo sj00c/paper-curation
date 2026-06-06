@@ -1090,15 +1090,24 @@ def make_slug(item, existing_slugs):
     title = item.get("title", "Unknown")
     norm_title = re.sub(r"[^a-z0-9]", "", title.lower())
 
-    if len(norm_title) >= 40:
+    # Match against existing slugs. The compared prefix length is
+    # ``min(40, min(len(a), len(b)))``: 40 chars when both sides are long
+    # enough (rejects the "Hierarchical Framework for measuring/Humanoid"
+    # false positive at chars 25-40), but the full overlap when either
+    # title is shorter (matches "Robot Learning from Human Videos: A
+    # Survey" — 35 normalised chars — against its own existing slug).
+    # Require a 10-char floor so single-word titles can't claim each
+    # other.
+    if len(norm_title) >= 10:
         for s in existing_slugs:
             parts = s.split("_", 1)
             if len(parts) < 2:
                 continue
             slug_text = re.sub(r"[^a-z0-9]", "", parts[1].lower())
-            if len(slug_text) < 40:
+            if len(slug_text) < 10:
                 continue
-            if norm_title[:40] == slug_text[:40]:
+            match_len = min(40, len(norm_title), len(slug_text))
+            if match_len >= 10 and norm_title[:match_len] == slug_text[:match_len]:
                 return s
 
     # No match → new slug
