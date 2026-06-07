@@ -11,12 +11,15 @@
 !wrangler.toml
 !CLAUDE.md
 !workflow.png
+!before_after.png
 
 # Pipeline scripts
 !pipeline/
 !pipeline/*.py
 !pipeline/lib/
 !pipeline/lib/*.py
+!pipeline/api/
+!pipeline/api/*.py
 
 # Git hooks installer + helper scripts
 !scripts/
@@ -38,6 +41,7 @@
 !docs/
 !docs/index.html
 !docs/setup-guide.md
+!docs/operations.md
 
 # docs/ is the Cloudflare Workers deploy source, NOT a GitHub-served asset.
 # Only the landing redirect, setup guide, and wrangler .assetsignore are
