@@ -124,7 +124,15 @@ def match_paper(index_paper, zotero_items, zotero_doi_map, zotero_title_map):
     return None
 
 
-def _run_sync(topic, *, dry_run=False):
+# 삭제 안전 가드 임계값.
+#   - 빈 fetch: 토픽 논문이 있는데 Zotero 가 0건을 돌려주면 (transient 200-empty 등)
+#     모든 단일-토픽 논문 디렉토리가 rmtree 대상이 되므로 무조건 차단.
+#   - 비율: 한 사이클에 토픽 논문의 이 비율 이상이 삭제 대상이면 (정상 주간 churn 이
+#     아니라 fetch 결함일 가능성) 차단. --force-delete 로 우회.
+_DELETE_RATIO_THRESHOLD = 0.30
+
+
+def _run_sync(topic, *, dry_run=False, force_delete=False):
     """Programmatic entrypoint for sync_zotero."""
     collection_key = COLLECTIONS.get(topic)
     if not collection_key:
@@ -202,6 +210,33 @@ def _run_sync(topic, *, dry_run=False):
         log("\n--dry-run: no changes made.")
         return
 
+    # --- 삭제 안전 가드 ---------------------------------------------------
+    # fetch_zotero_items 는 retry/floor 가 없어 transient 200-empty 나 짧은 응답에서
+    # 모든 미매칭 논문을 "Zotero 에서 삭제됨" 으로 오인할 수 있다. 디렉토리 rmtree 는
+    # 영구·비가역이므로, 의심스러운 fetch 에서는 파괴적 삭제만 차단한다.
+    # (title-update / remove-topic 는 비파괴적이므로 그대로 진행.)
+    delete_blocked = False
+    if to_delete_dir and not force_delete:
+        n_papers = len(topic_papers)
+        # 1) 빈/실패 fetch: 토픽 논문이 있는데 Zotero 가 0건 → 정상 상황이 아님.
+        if not zotero_items and n_papers:
+            log(f"\n[ABORT] Zotero fetch returned 0 items but index has "
+                f"{n_papers} '{topic}' papers — likely a transient Zotero outage.")
+            delete_blocked = True
+        else:
+            # 2) 비율: 토픽 논문의 30% 이상이 한 번에 삭제 대상 → fetch 결함 의심.
+            del_ratio = len(to_delete_dir) / max(1, n_papers)
+            if del_ratio > _DELETE_RATIO_THRESHOLD:
+                log(f"\n[ABORT] {len(to_delete_dir)}/{n_papers} "
+                    f"({del_ratio:.0%}) of '{topic}' papers would be deleted, "
+                    f"over the {_DELETE_RATIO_THRESHOLD:.0%} safety threshold.")
+                delete_blocked = True
+        if delete_blocked:
+            log("  Refusing to delete directories. If this is a real collection "
+                "purge, re-run with --force-delete. Otherwise re-run later.")
+            # 파괴적 삭제만 비활성화하고 비파괴적 변경은 계속 적용한다.
+            to_delete_dir = []
+
     # Execute
     log("\nExecuting...")
     changes = 0
@@ -248,8 +283,11 @@ def main():
     parser = argparse.ArgumentParser(description="Sync deletions/renames from Zotero")
     parser.add_argument("--topic", required=True)
     parser.add_argument("--dry-run", action="store_true", help="Show changes, don't execute")
+    parser.add_argument("--force-delete", action="store_true",
+                        help="Bypass the empty-fetch / >30%% delete-ratio safety guard "
+                             "(intentional large collection purge)")
     args = parser.parse_args()
-    _run_sync(topic=args.topic, dry_run=args.dry_run)
+    _run_sync(topic=args.topic, dry_run=args.dry_run, force_delete=args.force_delete)
 
 
 if __name__ == "__main__":

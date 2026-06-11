@@ -340,7 +340,7 @@ def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
 
 
 def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
-                topics=None, workers=8):
+                topics=None, workers=8, cf_strict=False):
     """Programmatic entrypoint for prepare_deploy."""
     topic_dir = str(get_topic_dir(topic))
 
@@ -492,38 +492,43 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
         for p, orig in _originals.items():
             p.write_text(orig, encoding="utf-8")
 
-    # Safety net: verify no residual API keys remain in any deployed HTML
-    _leak_re = _re.compile(r'sk-(ant|proj)-[A-Za-z0-9_\-]{10,}|AIza[0-9A-Za-z_\-]{30,}')
-    _leak_paths = [
-        str(p) for p in DOCS_DIR.rglob("index.html")
-        if _leak_re.search(p.read_text(encoding="utf-8"))
-    ]
-    if _leak_paths:
-        _restore_originals()
-        print(f"  ABORT: API key still present in {len(_leak_paths)} files — refusing to commit:")
-        for p in _leak_paths:
-            print(f"    - {p}")
-        sys.exit(1)
-    # Safety net: verify _LOCAL_EMAILS is empty in every deployed HTML.
-    # The strip above replaces the literal array with `[]`; this catches any
-    # remnant (e.g. emails baked into a different surface we forgot to handle).
-    _email_leak_re = _re.compile(r'window\._LOCAL_EMAILS\s*=\s*\[\s*"[^"]+')
-    _email_leaks = [
-        str(p) for p in DOCS_DIR.rglob("index.html")
-        if _email_leak_re.search(p.read_text(encoding="utf-8"))
-    ]
-    if _email_leaks:
-        _restore_originals()
-        print(f"  ABORT: _LOCAL_EMAILS still populated in {len(_email_leaks)} files — refusing to commit:")
-        for p in _email_leaks:
-            print(f"    - {p}")
-        sys.exit(1)
-    print(f"  Stripped API keys from {len(_originals)} files (0 leaks remaining)")
-
-    # Step 7-10: Deploy (only if --push). Otherwise we stop here — the
-    # working tree was modified by API-key strip in Step 6 so we still
-    # need to restore it in the finally block.
+    # The working tree now holds stripped (key-less) HTML. EVERYTHING that
+    # follows — leak-scans, deploy, commit — must run under this try so that
+    # _restore_originals() in the finally ALWAYS runs back: any exception in
+    # the leak-scan window (e.g. read_text OSError/UnicodeDecodeError, or a
+    # KeyboardInterrupt during rglob) would otherwise leave the local working
+    # tree with emptied keys (Deep Research / Audio Overview silently broken
+    # until a rebuild). restore is idempotent, so it's the single restore site.
     try:
+        # Safety net: verify no residual API keys remain in any deployed HTML
+        _leak_re = _re.compile(r'sk-(ant|proj)-[A-Za-z0-9_\-]{10,}|AIza[0-9A-Za-z_\-]{30,}')
+        _leak_paths = [
+            str(p) for p in DOCS_DIR.rglob("index.html")
+            if _leak_re.search(p.read_text(encoding="utf-8"))
+        ]
+        if _leak_paths:
+            print(f"  ABORT: API key still present in {len(_leak_paths)} files — refusing to commit:")
+            for p in _leak_paths:
+                print(f"    - {p}")
+            sys.exit(1)
+        # Safety net: verify _LOCAL_EMAILS is empty in every deployed HTML.
+        # The strip above replaces the literal array with `[]`; this catches any
+        # remnant (e.g. emails baked into a different surface we forgot to handle).
+        _email_leak_re = _re.compile(r'window\._LOCAL_EMAILS\s*=\s*\[\s*"[^"]+')
+        _email_leaks = [
+            str(p) for p in DOCS_DIR.rglob("index.html")
+            if _email_leak_re.search(p.read_text(encoding="utf-8"))
+        ]
+        if _email_leaks:
+            print(f"  ABORT: _LOCAL_EMAILS still populated in {len(_email_leaks)} files — refusing to commit:")
+            for p in _email_leaks:
+                print(f"    - {p}")
+            sys.exit(1)
+        print(f"  Stripped API keys from {len(_originals)} files (0 leaks remaining)")
+
+        # Step 7-10: Deploy (only if --push). Otherwise we stop here — the
+        # working tree was modified by API-key strip in Step 6 so we still
+        # need to restore it in the finally block.
         if not push:
             print("\n(--push 없이 실행됨. Cloudflare 업로드/gh-pages 동기화/master push 모두 스킵)")
         else:
@@ -542,13 +547,28 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
             else:
                 print("\nStep 8: No deployable topics found — skipping gh-pages sync")
 
-            # Step 9: Verify Cloudflare endpoints return 200
+            # Step 9: Verify Cloudflare endpoints return 200.
+            # Bind the result — a failed/timed-out deploy must NOT be recorded
+            # as a clean "Deploy:" commit on master. cf_strict 면 hard abort,
+            # 기본은 warn-only (느린 CF propagation 이 300s 를 넘기는 경우를 위해
+            # master push 만 건너뛰고 로컬 복원은 finally 가 처리).
             print("\nStep 9: Verifying Cloudflare endpoints...")
-            _verify_cloudflare(topic)
+            cf_ok = _verify_cloudflare(topic)
+            if not cf_ok:
+                if cf_strict:
+                    print("  ABORT: Cloudflare verification failed/timed out "
+                          "(--cf-strict) — refusing to commit master")
+                    sys.exit(1)
+                print("  WARN: Cloudflare verification failed/timed out — "
+                      "skipping master commit/push (deploy NOT recorded as clean)")
 
             # Step 10: Commit + push master — only code/config changes.
             # docs/* content is gitignored, so this only captures genuine
             # source changes (pipeline scripts, wrangler.toml, etc.).
+            # Gated on cf_ok: a broken deploy is never committed as success.
+            if not cf_ok:
+                print("\nStep 10: Skipped (Cloudflare verification failed)")
+                return
             print("\nStep 10: Committing code/config changes to master...")
             os.chdir(REPO)
             subprocess.run(["git", "add", "-A"], check=True)
@@ -594,9 +614,12 @@ def main():
     parser.add_argument("--push", action="store_true", help="Git add + commit + push after conversion")
     parser.add_argument("--topics", nargs="+", help="Only deploy these topics (exclude others from git add)")
     parser.add_argument("--workers", type=int, default=8, help="Parallel workers for conversion")
+    parser.add_argument("--cf-strict", action="store_true",
+                        help="Abort (no master commit/push) if Cloudflare 200-OK verification fails/times out")
     args = parser.parse_args()
     _run_deploy(topic=args.topic, quality=args.quality, dry_run=args.dry_run,
-                push=args.push, topics=args.topics, workers=args.workers)
+                push=args.push, topics=args.topics, workers=args.workers,
+                cf_strict=args.cf_strict)
 
 
 if __name__ == "__main__":

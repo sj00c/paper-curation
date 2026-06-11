@@ -113,7 +113,10 @@ def classify_via_bundle(vec_768, bundle):
       3. outlier → nearest centroid (cosine, 768D)
       4. all_categories = top-N parent categories from centroid-ranked subs
 
-    Returns (primary_cat, all_cats, primary_subname, sub_per_cat_map).
+    Returns (primary_cat, all_cats, primary_subname, sub_per_cat_map, raw_outlier).
+    `raw_outlier` 는 centroid fallback 적용 *전* 의 raw label 이 -1 이었는지로,
+    호출부가 비싼 umap_cluster.transform() 를 다시 돌리지 않고 outlier 를
+    집계할 수 있게 한다 (per-paper transform 1회로 단일화).
     """
     import hdbscan as _hdbscan
 
@@ -128,6 +131,7 @@ def classify_via_bundle(vec_768, bundle):
 
     labels, strengths = _hdbscan.approximate_predict(hdbscan_model, vec_5d)
     primary_tid = int(labels[0])
+    raw_outlier = primary_tid == -1
 
     # Outlier 강제 배정: 768D centroid 코사인 최단
     if primary_tid == -1 or primary_tid not in tid_to_cat:
@@ -152,7 +156,7 @@ def classify_via_bundle(vec_768, bundle):
         if len(all_cats) >= TOP_N_CATEGORIES:
             break
 
-    return primary_cat, all_cats, primary_subname, sub_per_cat
+    return primary_cat, all_cats, primary_subname, sub_per_cat, raw_outlier
 
 
 def _run_classify(topic, *, slugs=None, dry_run=False):
@@ -171,7 +175,10 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
 
     # 1. HDBSCAN bundle (학습된 모델)
     bundle = load_bundle(topic_dir)
-    log(f"[bundle] {bundle['n_subclusters']} sub-clusters, "
+    # n_subclusters 는 metadata-only 키라 load_bundle 의 required 검증 대상이 아니다.
+    # 구버전/부분 번들에 없을 수 있으므로 centroids 개수로 fallback (KeyError 방지).
+    n_subclusters = bundle.get("n_subclusters", len(bundle.get("centroids", {})))
+    log(f"[bundle] {n_subclusters} sub-clusters, "
         f"{len(set(bundle['tid_to_cat'].values()))} parent categories, "
         f"trained_at={bundle.get('trained_at', '?')}")
 
@@ -204,8 +211,6 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
     outlier_count = 0
     assignments = []
 
-    # Detect outliers separately to report
-    import hdbscan as _hdbscan
     for p in topic_papers:
         slug = p["slug"]
         if slug_filter is not None and slug not in slug_filter:
@@ -224,14 +229,11 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
             skipped += 1
             continue
 
-        # Detect raw outlier flag for reporting (before centroid fallback)
-        vec_5d = bundle["umap_cluster"].transform(
-            np.asarray(vec, dtype=np.float32).reshape(1, -1))
-        raw_labels, _ = _hdbscan.approximate_predict(bundle["hdbscan_model"], vec_5d)
-        if int(raw_labels[0]) == -1:
+        # umap_cluster.transform() 는 per-call 비용이 크므로 paper 당 1회만 돈다.
+        # classify_via_bundle 가 raw outlier 여부를 반환하므로 별도 transform 불필요.
+        primary, all_cats, sub, sub_map, raw_outlier = classify_via_bundle(vec, bundle)
+        if raw_outlier:
             outlier_count += 1
-
-        primary, all_cats, sub, sub_map = classify_via_bundle(vec, bundle)
 
         prev = p.get("classifications", {}).get(topic, {})
         if prev.get("primary_category") == primary and prev.get("sub_category") == sub:

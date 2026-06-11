@@ -63,7 +63,16 @@ def load_topic_data(topic):
 # 1. Cross-Category Insights
 # ═══════════════════════════════════════════
 
-MAX_PROMPT_TOKENS = 200000
+# Sonnet 4.6 의 context window 는 200k 이고, 실제 insight 호출은 max_tokens=8000
+# 출력을 요청한다 (_cc_anthropic_call). 따라서 input+output 이 window 를 넘지 않으려면
+# 프롬프트 자체는 (window - max_output - safety_margin) 아래여야 한다. 200k 를 그대로
+# 임계값으로 쓰면 ~192~200k 프롬프트가 shrink gate 를 그냥 통과한 뒤 호출 시점에
+# context-length 초과로 죽고, 바깥 try/except 가 빈 insight 를 돌려준다.
+# CONTEXT_WINDOW - MAX_OUTPUT_TOKENS - SAFETY_MARGIN = 200000 - 8000 - 4000 = 188000.
+_CONTEXT_WINDOW = 200000
+_MAX_OUTPUT_TOKENS = 8000   # _cc_anthropic_call max_tokens
+_SAFETY_MARGIN = 4000       # tool schema/오버헤드/추정 오차 흡수
+MAX_PROMPT_TOKENS = _CONTEXT_WINDOW - _MAX_OUTPUT_TOKENS - _SAFETY_MARGIN  # 188000
 TARGET_PROMPT_TOKENS = 150000
 
 
@@ -132,8 +141,15 @@ def _fit_cat_blocks(cat_papers, client, max_prompt_tokens, target_prompt_tokens,
                     prompt_head, prompt_tail):
     """Assemble cat blocks. If (head+blocks+tail) token count > max_prompt_tokens,
     progressively summarize the largest block (via Haiku) until total ≤
-    target_prompt_tokens. Uses Anthropic's count_tokens API for authoritative
-    measurement. Returns the concatenated text + set of summarized category names.
+    target_prompt_tokens. Returns the concatenated text + set of summarized
+    category names.
+
+    Token 측정 비용 최적화: count_tokens API (네트워크 왕복) 는 시작 1회 +
+    종료 1회만 호출한다. shrink 루프 안에서는 매 반복마다 API 를 때리는 대신,
+    시작 시 측정한 (authoritative tokens / total chars) 비율로 char→token 을
+    국소 추정해서 언제 멈출지 결정한다. 이렇게 하면 큰 토픽에서 발생하던
+    ~22 회의 직렬 count_tokens 왕복이 2 회로 줄어든다. (한국↔Anthropic 경로에서
+    각 호출은 ~150~200k 페이로드라 수십 초씩 걸림.)
     """
     blocks = {}
     summarized = set()
@@ -142,11 +158,16 @@ def _fit_cat_blocks(cat_papers, client, max_prompt_tokens, target_prompt_tokens,
             continue
         blocks[cat_name] = _build_cat_block(cat_name, papers)
 
-    def total_tokens():
+    def full_prompt_text():
         cat_text = "\n\n".join(blocks[c] for c in sorted(blocks.keys()))
-        return _count_tokens(client, prompt_head + cat_text + prompt_tail)
+        return prompt_head + cat_text + prompt_tail
 
-    initial_total = total_tokens()
+    def api_total_tokens():
+        return _count_tokens(client, full_prompt_text())
+
+    # ── 시작 1회: authoritative 측정 ──────────────────────────────────────
+    initial_text = full_prompt_text()
+    initial_total = _count_tokens(client, initial_text)
     log(f"  Prompt token count (authoritative): {initial_total}")
     if initial_total <= max_prompt_tokens:
         return "\n\n".join(blocks[c] for c in sorted(blocks.keys())), summarized
@@ -154,9 +175,16 @@ def _fit_cat_blocks(cat_papers, client, max_prompt_tokens, target_prompt_tokens,
     log(f"  {initial_total} > {max_prompt_tokens} — running Haiku summarization "
         f"loop (target {target_prompt_tokens}).")
 
+    # 시작 시점의 토큰/문자 비율로 char→token 국소 추정기를 보정한다.
+    # (Korean-heavy 혼합 텍스트라 _est_tokens 의 고정 1/1.5 보다 실측 비율이 정확.)
+    tok_per_char = (initial_total / max(1, len(initial_text)))
+
+    def est_total_tokens():
+        return int(len(full_prompt_text()) * tok_per_char)
+
     max_loops = 20
     for _ in range(max_loops):
-        cur = total_tokens()
+        cur = est_total_tokens()  # 국소 추정 — 루프 안에서는 API 호출 없음
         if cur <= target_prompt_tokens:
             break
         # Summarize the biggest remaining block
@@ -175,7 +203,8 @@ def _fit_cat_blocks(cat_papers, client, max_prompt_tokens, target_prompt_tokens,
             blocks[biggest_cat], client, target_chars)
         summarized.add(biggest_cat)
 
-    final_total = total_tokens()
+    # ── 종료 1회: 실제 Sonnet 호출 전 authoritative 재측정 ────────────────
+    final_total = api_total_tokens()
     log(f"  Prompt after summarization: ~{final_total} tokens "
         f"(summarized categories: {len(summarized)})")
     return "\n\n".join(blocks[c] for c in sorted(blocks.keys())), summarized

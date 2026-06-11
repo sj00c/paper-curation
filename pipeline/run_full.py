@@ -42,7 +42,13 @@ from lib.pipeline_state import mark_running, mark_finished  # noqa: E402
 
 
 def run(cmd, timeout=None, env=None):
-    """Return exit code. stdout/stderr inherited."""
+    """Return exit code. stdout/stderr inherited.
+
+    subprocess.TimeoutExpired 는 raw traceback 으로 새어나가지 않도록 호출부
+    (main 의 execute 루프) 에서 잡아 sentinel rc=124 로 변환한다. 여기서는
+    TimeoutExpired 를 그대로 전파한다 — 어떤 step 이 timeout 했는지(critical 여부)
+    는 호출부가 알기 때문.
+    """
     print(f"\n$ {' '.join(str(c) for c in cmd)}", flush=True)
     return subprocess.call(cmd, timeout=timeout, env=env)
 
@@ -168,11 +174,15 @@ def confirm_rebuild(args):
 
 
 def build_tool_plan(args):
-    """Standalone tooling modes dispatch to single scripts; no full pipeline."""
+    """Standalone tooling modes dispatch to single scripts; no full pipeline.
+
+    Plan tuple shape: (cmd, timeout, critical). Standalone tooling 은 그 호출
+    자체가 작업의 전부이므로 모두 critical (실패 시 abort).
+    """
     py = sys.executable
     if args.mode == "audit":
         return [([py, "-u", str(PIPELINE / "audit_matching.py"),
-                  "--topic", args.topic], None)]
+                  "--topic", args.topic], None, True)]
     if args.mode == "fix-matching":
         cmd = [py, "-u", str(PIPELINE / "fix_matching.py"),
                "--topic", args.topic]
@@ -180,20 +190,20 @@ def build_tool_plan(args):
             cmd.append("--execute")
         if args.slugs:
             cmd.extend(["--slugs", args.slugs])
-        return [(cmd, None)]
+        return [(cmd, None, True)]
     if args.mode == "dedup":
         cmd = [py, "-u", str(PIPELINE / "dedup_zotero.py"),
                "--topic", args.topic]
         if args.yes:          # --yes → --execute
             cmd.append("--execute")
-        return [(cmd, None)]
+        return [(cmd, None, True)]
     if args.mode == "validate":
         cmd = [py, "-u", str(PIPELINE / "validate_papers.py"),
                "--topic", args.topic]
         if args.yes or args.strict_pdf:
             # Reuse --yes as strict-gate flag for validate
             cmd.append("--strict")
-        return [(cmd, None)]
+        return [(cmd, None, True)]
     return None
 
 
@@ -209,38 +219,46 @@ def main():
         routing = resolve_source_routing(args)
         images = resolve_images_default(args)
 
+        # Plan tuple shape: (cmd, timeout, critical).
+        # critical=True  → 실패/timeout 시 sys.exit (검색·등록·sync·update_force·deploy)
+        # critical=False → 실패/timeout 시 WARNING 후 continue (후행 validate)
         plan = []
         if routing["search"]:
             plan.append(([sys.executable, "-u", str(PIPELINE / "search_papers.py"),
                           "--topic", args.topic,
                           "--days", str(args.days),
-                          "--max-papers", str(args.max_papers)], None))
+                          "--max-papers", str(args.max_papers)], None, True))
         if routing["register"]:
             plan.append(([sys.executable, "-u", str(PIPELINE / "register_zotero.py"),
-                          "--topic", args.topic], None))
+                          "--topic", args.topic], None, True))
         if routing["sync"]:
             plan.append(([sys.executable, "-u", str(PIPELINE / "sync_zotero.py"),
-                          "--topic", args.topic], None))
+                          "--topic", args.topic], None, True))
 
         if args.mode == "deploy":
             plan.append(([sys.executable, "-u", str(PIPELINE / "prepare_deploy.py"),
-                          "--topic", args.topic, "--push"], None))
+                          "--topic", args.topic, "--push"], None, True))
         else:
-            plan.append((build_update_force_cmd(args, images), None))
+            plan.append((build_update_force_cmd(args, images), None, True))
 
         # Post-pipeline validation gate: ensures figure refs / links / format
         # issues introduced by LLM steps don't ship. Auto-repairs in --fix mode
-        # then fails build (--strict) if anything remains.
+        # then reports residual issues (--strict). SOFT step (critical=False):
+        # update_force 가 이미 모든 작업 + Cloudflare/gh-pages 배포까지 마친 뒤에
+        # 돌기 때문에, 잔여 lint nit 때문에 sys.exit 로 "파이프라인 실패"를
+        # 신호하면 cron 이 성공적으로 배포된 run 을 실패로 오인한다. 따라서
+        # 비치명적 경고(WARNING)로 강등하고 run 은 성공(exit 0)으로 끝낸다.
         if args.mode in ("curate", "rebuild") and not args.no_validate:
             plan.append(([sys.executable, "-u", str(PIPELINE / "validate_papers.py"),
-                          "--topic", args.topic, "--fix", "--strict"], None))
+                          "--topic", args.topic, "--fix", "--strict"], None, False))
 
     # Print plan summary
     print(f"[run_full] topic={args.topic} mode={args.mode} source={args.source} images={images}")
     print(f"[run_full] routing: search={routing['search']} register={routing['register']} sync={routing['sync']}")
     print(f"[run_full] {len(plan)} step(s) to execute")
-    for i, (cmd, _) in enumerate(plan, 1):
-        print(f"  {i}. {' '.join(str(c) for c in cmd)}")
+    for i, (cmd, _timeout, critical) in enumerate(plan, 1):
+        tag = "" if critical else "  [soft]"
+        print(f"  {i}. {' '.join(str(c) for c in cmd)}{tag}")
 
     if args.dry_run:
         print("\n[dry-run] exiting without execution")
@@ -259,15 +277,34 @@ def main():
     )
 
     # Execute
+    #   critical step  실패/timeout → sys.exit(rc)  (run_update_force 의
+    #                                  CRITICAL_STEPS 와 동일한 abort 정책)
+    #   soft step      실패/timeout → WARNING 후 continue (run 은 성공으로 종료)
+    soft_warnings = []
     try:
-        for i, (cmd, timeout) in enumerate(plan, 1):
-            rc = run(cmd, timeout=timeout)
+        for i, (cmd, timeout, critical) in enumerate(plan, 1):
+            try:
+                rc = run(cmd, timeout=timeout)
+            except subprocess.TimeoutExpired:
+                # raw traceback 으로 새지 않게 sentinel rc=124 로 변환
+                rc = 124
+                print(f"\n[run_full] step {i} timed out after {timeout}s (exit 124)")
             if rc != 0:
-                print(f"\n[run_full] step {i} failed with exit {rc} — aborting")
-                sys.exit(rc)
+                if critical:
+                    print(f"\n[run_full] step {i} failed with exit {rc} — aborting")
+                    sys.exit(rc)
+                # soft step: 이미 모든 작업(+배포)이 끝난 뒤 도는 후행 게이트.
+                # 잔여 이슈는 advisory 이므로 run 을 실패로 만들지 않는다.
+                soft_warnings.append((i, rc))
+                print(f"\n[run_full] ** WARNING ** soft step {i} exited {rc} "
+                      f"— continuing (run NOT marked failed)")
     finally:
         mark_finished()
 
+    if soft_warnings:
+        print(f"\n[run_full] *** VALIDATION WARNINGS *** "
+              f"{len(soft_warnings)} soft step(s) reported issues: "
+              + ", ".join(f"step {i} (exit {rc})" for i, rc in soft_warnings))
     print(f"\n[run_full] done.")
 
 
