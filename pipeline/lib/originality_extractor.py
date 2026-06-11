@@ -14,6 +14,36 @@ from pathlib import Path
 TRIGGERS_PATH = Path(__file__).parent / "originality_triggers.json"
 
 
+# ── Metadata leak strip ──
+# originality.md 에 PDF 추출 잔재 (DOI, arXiv id, URL, HTML 태그) 가 섞여
+# 들어가면 다운스트림 c-TF-IDF 키워드 추출 시 *클러스터 구별 단어* 로
+# 부각되어 카테고리 이름 품질을 망친다. 모든 추출 경로의 마지막에서 적용.
+_LEAK_PATTERNS = [
+    # URL — 다음에 등장하는 DOI/arXiv 패턴이 URL 안에 포함되어 있어도 먼저 제거
+    re.compile(r"https?://\S+", re.I),
+    # arXiv ID (arXiv:2407.09811v1 / 2407.09811v1 / abs/2407.09811)
+    re.compile(r"\b(?:arXiv:|abs/)?\d{4}\.\d{4,5}(?:v\d+)?\b", re.I),
+    # DOI (10.NNNN/...)
+    re.compile(r"\b10\.\d{4,9}/[-._;()/:A-Z0-9]+", re.I),
+    # HTML 태그 (<br>, <p>, <span>, ...)
+    re.compile(r"<[a-zA-Z][^>]*>"),
+]
+
+
+def _strip_metadata_leaks(text: str) -> str:
+    """Remove URL/arXiv/DOI/HTML leaks from extracted originality text.
+
+    Idempotent. Returns the cleaned text with collapsed whitespace.
+    """
+    if not text:
+        return text
+    for pat in _LEAK_PATTERNS:
+        text = pat.sub(" ", text)
+    text = re.sub(r"\s+([,.;:?!])", r"\1", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
 def load_triggers(path=None):
     """Load trigger categories and flat list."""
     path = path or TRIGGERS_PATH
@@ -108,7 +138,7 @@ def _extract_rule_based(text, triggers):
         if any(s_lower.startswith(ref) for ref in _REFERENTIAL_STARTS):
             start_idx = first_orig_idx - 1
 
-    return ". ".join(sentences[start_idx:])
+    return _strip_metadata_leaks(". ".join(sentences[start_idx:]))
 
 
 # ── LLM Fallback ──
@@ -160,7 +190,8 @@ def _llm_fallback(text):
         result = _parse_json_response(resp.content[0].text)
         sentences = result.get("originality_sentences", [])
         triggers = result.get("trigger_phrases", [])
-        return ". ".join(sentences) if sentences else "", triggers
+        out = ". ".join(sentences) if sentences else ""
+        return _strip_metadata_leaks(out), triggers
     except Exception:
         return "", []
 

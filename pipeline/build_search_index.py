@@ -23,6 +23,7 @@ Usage:
 
 import argparse
 import base64
+import hashlib
 import json
 import os
 import re
@@ -56,7 +57,30 @@ except ImportError:
 # Sections worth indexing (order matters — determines which chunk is
 # retrieved first when there is a tie). "How" carries method details,
 # "Achievement" carries results, "Originality" carries novelty framing.
-SECTIONS_TO_INDEX = ["Essence", "Motivation", "How", "Achievement", "Originality"]
+#
+# Limitation/Evaluation 은 모든 review.md 에 100% 존재하지만 누락돼 있었음:
+#   - Limitation: 약점·미해결 과제 검색 ("이 분야 한계는?")
+#   - Evaluation: 벤치마크·메트릭 검색 ("X benchmark 성능 비교")
+# extract_sections() 가 'Limitation & Further Study' → 'Limitation' 키로
+# 정규화하므로 짧은 이름으로 매칭 가능.
+#
+# Related Papers 는 cross-citation noise (다른 논문 제목/저자 leak) 우려로 보류.
+SECTIONS_TO_INDEX = [
+    "Essence", "Motivation", "How", "Achievement", "Originality",
+    "Limitation", "Evaluation",
+]
+
+# Evaluation 섹션의 점수 루브릭 줄("- Novelty: 4/5" 등)은 거의 모든
+# 논문에서 동일한 scaffolding 이라, 그대로 임베딩하면 ~2362 개의 사실상
+# 중복 벡터가 생겨 top-k 검색을 오염시킨다. chunking 전에 이 점수 줄만
+# 제거하고 paper-specific 한 **총평** 산문만 남긴다. (점수만 있고 산문이
+# 없으면 MIN_CHUNK_CHARS 미달로 자연히 chunk 가 빠진다.) Limitation 은
+# 진짜 산문이므로 그대로 둔다.
+EVAL_RUBRIC_LINE_RE = re.compile(
+    r"(?im)^[ \t]*[-*]?\s*"
+    r"(?:Novelty|Technical\s+Soundness|Significance|Clarity|Overall)"
+    r"\s*[:：]\s*\d+(?:\.\d+)?\s*/\s*\d+(?:\.\d+)?\s*$\n?"  # 4/5 또는 4.5/5
+)
 
 H2_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
 FIGURE_RE = re.compile(
@@ -261,7 +285,12 @@ def parse_review(md_path: Path, slug: str) -> dict:
     for sec_name in SECTIONS_TO_INDEX:
         if sec_name not in sections:
             continue
-        cleaned = clean_chunk_text(sections[sec_name])
+        raw = sections[sec_name]
+        # Evaluation 은 점수 루브릭 줄을 떼어내 중복 벡터 오염을 막는다.
+        # (총평 산문만 남으면 paper-specific, 점수만 있으면 MIN 미달로 drop)
+        if sec_name == "Evaluation":
+            raw = EVAL_RUBRIC_LINE_RE.sub("", raw)
+        cleaned = clean_chunk_text(raw)
         if len(cleaned) < MIN_CHUNK_CHARS:
             continue
         if len(cleaned) > MAX_CHUNK_CHARS:
@@ -311,19 +340,134 @@ def quantize_int8_l2(vec: list) -> bytes:
     return q.tobytes()
 
 
+# ── Content-addressed embedding cache ────────────────────────────────────
+# 매 build 마다 ~16k chunk 를 전부 재임베딩하면 한국망 OpenAI 호출이 느리고
+# (transient 429 한 번에 전체가 죽고) 비용이 든다. chunk_text 는 review.md
+# 에서 deterministic 하게 나오므로, sha256(model + text) → 양자화된 emb(b64)
+# 로 캐싱한다. 양자화된 벡터(=index 에 그대로 들어가는 값)를 저장하므로
+# 재양자화로 인한 drift 가 없다 (int8 quantization 과 100% 일관).
+EMBED_CACHE_NAME = "_embedding_cache.json"
+
+
+def _chunk_sha(model: str, text: str) -> str:
+    """Cache key = sha256 over model + chunk text (deterministic)."""
+    h = hashlib.sha256()
+    h.update(model.encode("utf-8"))
+    h.update(b"\n")
+    h.update(text.encode("utf-8"))
+    return h.hexdigest()
+
+
+def load_embedding_cache(topic_dir: Path, model: str) -> dict:
+    """Build {text_sha: emb_b64} from the prior index + sidecar cache.
+
+    Two sources, both keyed by the same sha so a hit is a hit:
+      1. the previous _search_index.json (already shipped, has text+emb)
+      2. the _embedding_cache.json sidecar (partial-save / resume store)
+    Entries whose model does not match are ignored (model is part of the sha).
+    """
+    cache: dict = {}
+
+    # 1) previous index — derive sha from stored text + (its) model
+    prev_path = topic_dir / "_search_index.json"
+    if prev_path.exists():
+        try:
+            prev = json.loads(prev_path.read_text(encoding="utf-8"))
+            prev_model = prev.get("model", model)
+            if prev_model == model:
+                for ch in prev.get("chunks", []):
+                    txt = ch.get("text")
+                    emb = ch.get("emb")
+                    if not txt or not emb:
+                        continue
+                    sha = ch.get("text_sha") or _chunk_sha(model, txt)
+                    cache[sha] = emb
+        except Exception as e:
+            print(f"      WARN: could not read prior index for cache ({e})")
+
+    # 2) sidecar cache — already keyed by sha, model-scoped
+    side_path = topic_dir / EMBED_CACHE_NAME
+    if side_path.exists():
+        try:
+            side = json.loads(side_path.read_text(encoding="utf-8"))
+            if side.get("model") == model:
+                for sha, emb in (side.get("emb") or {}).items():
+                    cache[sha] = emb
+        except Exception as e:
+            print(f"      WARN: could not read embedding cache ({e})")
+
+    return cache
+
+
+def save_embedding_cache(topic_dir: Path, model: str, sha_to_emb: dict) -> None:
+    """Persist the full {text_sha: emb_b64} map to the sidecar (atomic)."""
+    side_path = topic_dir / EMBED_CACHE_NAME
+    tmp = side_path.with_suffix(side_path.suffix + ".tmp")
+    payload = {"model": model, "count": len(sha_to_emb), "emb": sha_to_emb}
+    tmp.write_text(
+        json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    os.replace(tmp, side_path)
+
+
+EMBED_MAX_ATTEMPTS = 6
+EMBED_BACKOFF_CAP_S = 60.0
+
+
+def _retry_after_seconds(err) -> float | None:
+    """Best-effort extraction of a Retry-After hint from an OpenAI error.
+
+    한국↔OpenAI 경로의 429 는 7초 backoff 로는 못 벗어난다. RateLimitError
+    가 노출하는 retry hint (응답 헤더 또는 .retry_after) 를 존중해 backoff
+    를 맞춘다 (상한 EMBED_BACKOFF_CAP_S).
+    """
+    val = getattr(err, "retry_after", None)
+    if val is None:
+        resp = getattr(err, "response", None)
+        headers = getattr(resp, "headers", None)
+        if headers is not None:
+            try:
+                val = headers.get("retry-after") or headers.get("Retry-After")
+            except Exception:
+                val = None
+    if val is None:
+        return None
+    try:
+        return float(val)
+    except (TypeError, ValueError):
+        return None
+
+
 def embed_batch(client, texts: list, model: str) -> list:
-    """Call OpenAI embeddings with retry."""
+    """Call OpenAI embeddings with retry.
+
+    Honors Retry-After on rate limits, caps backoff at EMBED_BACKOFF_CAP_S,
+    and asserts the returned vector count matches the input count so a short
+    response loudly fails instead of silently misaligning the index.
+    """
     last_err = None
-    for attempt in range(3):
+    for attempt in range(EMBED_MAX_ATTEMPTS):
         try:
             resp = client.embeddings.create(input=texts, model=model)
-            return [d.embedding for d in resp.data]
+            vecs = [d.embedding for d in resp.data]
+            # Per-batch length guard — a short/long batch would otherwise
+            # silently misalign chunks↔embeddings downstream (zip()).
+            if len(vecs) != len(texts):
+                raise RuntimeError(
+                    f"embedding count {len(vecs)} != input count {len(texts)}"
+                )
+            return vecs
         except Exception as e:
             last_err = e
-            wait = 2 ** attempt
-            print(f"    embed retry {attempt + 1}/3 after {wait}s ({e})")
+            if attempt == EMBED_MAX_ATTEMPTS - 1:
+                break
+            hint = _retry_after_seconds(e)
+            wait = hint if hint is not None else 2 ** attempt
+            wait = min(float(wait), EMBED_BACKOFF_CAP_S)
+            print(f"    embed retry {attempt + 1}/{EMBED_MAX_ATTEMPTS} after {wait:.0f}s ({e})")
             time.sleep(wait)
-    raise RuntimeError(f"embed_batch failed after 3 attempts: {last_err}")
+    raise RuntimeError(f"embed_batch failed after {EMBED_MAX_ATTEMPTS} attempts: {last_err}")
 
 
 def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
@@ -429,7 +573,7 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
             _title = _title_m.group(1).strip() if _title_m else _note_path.stem.replace("-", " ").replace("_", " ").title()
             _note_slug = f"_note_{_note_path.stem}"
 
-            _rel = str(_note_path.relative_to(DOCS_DIR / "notes")).replace("\\\\", "/")
+            _rel = _note_path.relative_to(DOCS_DIR / "notes").as_posix()
             papers_meta[_note_slug] = {
                 "title": _title,
                 "year": "",
@@ -437,8 +581,10 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
                 "url": f"../notes/{_rel}",
                 "figures": [],
             }
-            # Split into paragraphs (max 5 chunks per note)
-            _paras = [p.strip() for p in _cleaned.split("\\n\\n") if len(p.strip()) >= MIN_CHUNK_CHARS]
+            # Split into paragraphs (max 5 chunks per note). clean_chunk_text
+            # collapses 3+ blank lines to exactly two newlines, so a REAL
+            # "\n\n" is the correct separator (not the literal 4-char string).
+            _paras = [p.strip() for p in _cleaned.split("\n\n") if len(p.strip()) >= MIN_CHUNK_CHARS]
             if not _paras:
                 _paras = [_cleaned]
             for _i, _para in enumerate(_paras[:5]):
@@ -459,12 +605,30 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
     approx_tokens = total_chars // 3  # conservative estimate
     print(f"      approx {approx_tokens:,} input tokens ~= ${approx_tokens * 0.00000002:.4f} (text-embedding-3-small)")
 
-    # --- Embed ---
+    # Cache key per chunk (sha256(model + text)); reused everywhere below.
+    for ch in pending_chunks:
+        ch["text_sha"] = _chunk_sha(model, ch["text"])
+
+    # --- Content-addressed embedding cache (incremental) ---
+    # sha → 양자화된 emb(b64). 이전 index + sidecar 에서 로드한 뒤, 캐시에
+    # 없는 chunk 만 OpenAI 로 보낸다. dry-run 도 캐시 hit 은 재사용한다.
+    sha_to_emb: dict = load_embedding_cache(topic_dir, model)
+    miss_chunks = [c for c in pending_chunks if c["text_sha"] not in sha_to_emb]
+    n_hit = len(pending_chunks) - len(miss_chunks)
+    print(f"      cache: {n_hit} hit / {len(miss_chunks)} miss (of {len(pending_chunks)})")
+
+    # --- Embed (cache misses only) ---
     if dry_run:
-        print("[3/4] --dry-run: skipping embedding API calls")
-        embeddings = [[0.0] * 1536 for _ in pending_chunks]
+        print("[3/4] --dry-run: zero-vectors for cache misses")
+        for c in miss_chunks:
+            qbytes = quantize_int8_l2([0.0] * 1536)
+            sha_to_emb[c["text_sha"]] = base64.b64encode(qbytes).decode("ascii")
+        dim = 1536
+    elif not miss_chunks:
+        print("[3/4] All chunks served from cache — no API calls")
+        dim = 0  # filled in below from any cached vector
     else:
-        print(f"[3/4] Embedding {len(pending_chunks)} chunks with {model}...")
+        print(f"[3/4] Embedding {len(miss_chunks)} chunks with {model}...")
         try:
             from openai import OpenAI
         except ImportError:
@@ -478,34 +642,67 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
             sys.exit(1)
 
         client = OpenAI(api_key=api_key)
-        embeddings: list = []
         BATCH = 100
         t0 = time.time()
-        for i in range(0, len(pending_chunks), BATCH):
-            batch = pending_chunks[i:i + BATCH]
+        embedded = 0
+        for i in range(0, len(miss_chunks), BATCH):
+            batch = miss_chunks[i:i + BATCH]
             texts = [c["text"] for c in batch]
-            vecs = embed_batch(client, texts, model)
-            embeddings.extend(vecs)
-            done = i + len(batch)
+            try:
+                vecs = embed_batch(client, texts, model)
+            except Exception as e:
+                # Partial-save: persist everything embedded so far (plus all
+                # cache hits) so a later run resumes instead of re-embedding
+                # the ~N good batches we already paid for. Do NOT clobber the
+                # existing _search_index.json — leave it stale-but-valid.
+                save_embedding_cache(topic_dir, model, sha_to_emb)
+                remaining = len(miss_chunks) - embedded
+                print(f"ERROR: embedding aborted after {embedded}/{len(miss_chunks)} "
+                      f"new chunks ({e})")
+                print(f"       Saved partial cache to {topic_dir / EMBED_CACHE_NAME}; "
+                      f"rerun to resume the remaining {remaining}.")
+                sys.exit(4)
+            # embed_batch already asserts len(vecs)==len(texts); fold the
+            # freshly-embedded (quantized) vectors into the sha→emb map.
+            for c, emb in zip(batch, vecs):
+                qbytes = quantize_int8_l2(emb)
+                sha_to_emb[c["text_sha"]] = base64.b64encode(qbytes).decode("ascii")
+            embedded += len(batch)
+            done = embedded
             elapsed = time.time() - t0
             rate = done / elapsed if elapsed > 0 else 0
-            eta = (len(pending_chunks) - done) / rate if rate > 0 else 0
-            print(f"      {done}/{len(pending_chunks)}  ({rate:.1f}/s, ETA {eta:.0f}s)")
+            eta = (len(miss_chunks) - done) / rate if rate > 0 else 0
+            print(f"      {done}/{len(miss_chunks)}  ({rate:.1f}/s, ETA {eta:.0f}s)")
+        dim = 0  # filled in below
 
-    dim = len(embeddings[0]) if embeddings else 0
+    # dim from the int8 byte length of any cached/embedded vector (1 byte/dim)
+    if pending_chunks:
+        _sample = sha_to_emb.get(pending_chunks[0]["text_sha"])
+        if _sample:
+            dim = len(base64.b64decode(_sample))
     print(f"      dim={dim}")
 
-    # --- Quantise + assemble JSON ---
-    print("[4/4] Quantising and writing JSON...")
+    # --- Assemble JSON (every chunk's emb must now be present) ---
+    print("[4/4] Assembling and writing JSON...")
+    # Loud guard: no pending chunk may be missing its embedding, otherwise
+    # the index would silently ship misaligned/short.
+    missing = [c["text_sha"] for c in pending_chunks if c["text_sha"] not in sha_to_emb]
+    if missing:
+        print(f"ERROR: {len(missing)} chunk(s) have no embedding after embed pass — aborting")
+        sys.exit(4)
+
     out_chunks = []
-    for chunk, emb in zip(pending_chunks, embeddings):
-        qbytes = quantize_int8_l2(emb)
+    for chunk in pending_chunks:
         out_chunks.append({
             "slug": chunk["slug"],
             "section": chunk["section"],
             "text": chunk["text"],
-            "emb": base64.b64encode(qbytes).decode("ascii"),
+            "text_sha": chunk["text_sha"],   # self-describing cache key
+            "emb": sha_to_emb[chunk["text_sha"]],
         })
+    assert len(out_chunks) == len(pending_chunks), (
+        f"out_chunks {len(out_chunks)} != pending_chunks {len(pending_chunks)}"
+    )
 
     out = {
         "model": model,
@@ -523,6 +720,13 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
     )
     size_kb = out_path.stat().st_size // 1024
     print(f"      wrote {out_path} ({size_kb:,} KB)")
+
+    # Refresh the sidecar cache so the next build resumes from real vectors.
+    # Skip on dry-run — its zero-vectors must never poison the cache.
+    if not dry_run:
+        # Keep only shas that are part of this build (prune drifted entries).
+        live = {c["text_sha"]: sha_to_emb[c["text_sha"]] for c in pending_chunks}
+        save_embedding_cache(topic_dir, model, live)
     print("Done.")
 
 

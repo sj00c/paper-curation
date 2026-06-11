@@ -47,7 +47,9 @@ def log(msg):
 
 def extract_originalities(topic_papers):
     """각 논문의 text.md 앞 1000자에서 originality 추출."""
-    from lib.originality_extractor import _extract_rule_based, load_triggers
+    from lib.originality_extractor import (
+        _extract_rule_based, _strip_metadata_leaks, load_triggers,
+    )
 
     triggers = load_triggers()
     results = {}
@@ -64,7 +66,16 @@ def extract_originalities(topic_papers):
             with open(orig_path, "r", encoding="utf-8") as f:
                 orig = f.read().strip()
             if orig:
-                results[slug] = orig
+                # 캐시 경로도 leak strip 통과 — 기존 965편 originality.md 는
+                # 이 strip 도입 전에 기록돼 DOI/arXiv/URL/HTML leak 이 남아 있고,
+                # 그대로 c-TF-IDF 에 들어가면 메타데이터가 클러스터 구별 단어로
+                # 부각된다. _strip_metadata_leaks 는 idempotent 하므로 이미 깨끗한
+                # 텍스트에는 no-op. 실제로 바뀐 경우에만 파일을 self-heal.
+                cleaned = _strip_metadata_leaks(orig)
+                if cleaned != orig:
+                    with open(orig_path, "w", encoding="utf-8") as f:
+                        f.write(cleaned)
+                results[slug] = cleaned
                 cached += 1
                 continue
 
@@ -197,12 +208,21 @@ def run_clustering(embeddings, slugs, originalities, min_cluster_size=2,
     """
     from umap import UMAP
     import hdbscan
-    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.feature_extraction import text as _sk_text
+    from sklearn.feature_extraction.text import CountVectorizer
 
     docs = [originalities[s] for s in slugs]
     n_docs = len(docs)
 
-    log(f"  Running UMAP + HDBSCAN (n_docs={n_docs})...")
+    # 작은 코퍼스를 40개 sub-topic 으로 억지로 쪼개면 클러스터당 1~2편짜리
+    # 파편 클러스터만 양산된다 → 코퍼스 크기에 맞춰 sub-topic 목표 하향.
+    # (대형 코퍼스는 기존 40~100 유지)
+    if n_docs < target_min * 5:
+        target_min = max(3, n_docs // 10)
+        target_max = max(target_min + 2, n_docs // 3)
+
+    log(f"  Running UMAP + HDBSCAN (n_docs={n_docs}, "
+        f"target sub-topics={target_min}~{target_max})...")
 
     # 1. UMAP 5D for clustering
     umap_cluster = UMAP(
@@ -213,7 +233,16 @@ def run_clustering(embeddings, slugs, originalities, min_cluster_size=2,
 
     # 2. HDBSCAN — adaptive min_cluster_size (target_min~target_max)
     # prediction_data=True 가 필수: classify_papers 가 approximate_predict 호출
+    #
+    # 검색 전략: n_topics 가 target_min 미만이면 mcs 를 낮춰 *재적합* 한다
+    # (이전 버전은 decrement 후 곧바로 break 해서 줄인 mcs 를 한 번도 평가하지
+    # 못하고 첫 under-target 클러스터링을 그대로 받아들였음 — 작은 코퍼스에서
+    # sub-topic 이 2~3개로 수렴해 버리는 원인). mcs 가 2까지 내려가면 더는
+    # 못 낮추므로 거기서 멈춘다. 어느 시도도 target 안에 들지 못하면, 지금까지
+    # 본 것 중 target_min 에 *가장 가까운* 결과를 채택한다 (마지막 적합을
+    # 버리지 않음). range(20) hard stop 으로 무한루프 차단.
     mcs = min_cluster_size
+    best = None  # (distance_to_target, model, topics, probs, n_topics, outliers, mcs)
     for attempt in range(20):
         hdbscan_model = hdbscan.HDBSCAN(
             min_cluster_size=mcs,
@@ -227,31 +256,106 @@ def run_clustering(embeddings, slugs, originalities, min_cluster_size=2,
         outliers = sum(1 for t in topics if t == -1)
         log(f"  [attempt {attempt+1}] min_cluster_size={mcs} → {n_topics} topics ({outliers} outliers)")
 
+        # target 범위 안의 클러스터링 (또는 적어도 1개 이상) 중 target_min 에
+        # 가장 가까운 것을 best 로 보존 — 빈 클러스터링(0개)은 best 후보에서 제외.
+        if n_topics > 0:
+            dist = 0 if target_min <= n_topics <= target_max else \
+                min(abs(n_topics - target_min), abs(n_topics - target_max))
+            if best is None or dist < best[0]:
+                best = (dist, hdbscan_model, topics, probs, n_topics, outliers, mcs)
+
         if target_min <= n_topics <= target_max:
             break
         elif n_topics > target_max:
             mcs += 1
         elif n_topics < target_min and mcs > 2:
             mcs -= 1
-            break
+            continue  # 줄인 mcs 로 재적합 (decrement 를 실제로 평가)
         else:
+            # mcs 가 이미 2이거나 더 낮출 수 없는 degenerate 상태 → 종료
             break
+
+    # target 범위에 든 적합이 없으면 가장 가까웠던 best 를 복원.
+    if best is not None and not (target_min <= n_topics <= target_max):
+        _, hdbscan_model, topics, probs, n_topics, outliers, mcs = best
+
+    # Degenerate: HDBSCAN 이 클러스터를 0개 만들고 전부 outlier(-1) 로 본 경우
+    # (아주 작거나 sparse 한 코퍼스). 아래 c-TF-IDF 의 np.vstack([]) 는 물론
+    # group_into_categories 의 centroid_matrix 도 빈 행렬이 되어 전 파이프라인이
+    # 죽는다. 모든 논문을 1개의 합성 클러스터(tid=0)로 묶어 centroid·키워드가
+    # 정상적으로 생성되게 한다 — 카테고리는 1개뿐이지만 abort 보다 낫다.
+    if n_topics == 0:
+        log("  WARN: HDBSCAN produced 0 sub-clusters (all outliers); "
+            "falling back to a single cluster of all papers")
+        topics = [0] * n_docs
+        probs = np.ones(n_docs, dtype=float) if probs is not None else probs
+        n_topics = 1
+        outliers = 0
 
     log(f"  Final: {n_topics} sub-topics (min_cluster_size={mcs}, {outliers} outliers)")
 
-    # 4. TF-IDF 키워드 추출 (c-TF-IDF 대체)
-    vectorizer = TfidfVectorizer(max_features=10000, stop_words="english")
-    tfidf_matrix = vectorizer.fit_transform(docs)
+    # 4. c-TF-IDF 키워드 추출 (Grootendorst 2022, BERTopic 표준)
+    #
+    # 각 클러스터를 1개의 큰 문서로 취급하고 IDF 를 *클러스터 K개 기준* 으로 계산.
+    # 일반 TF-IDF (문서 단위 → 클러스터 평균) 보다 클러스터 *구별성* 면에서 우월:
+    #   - tf_x,c = 단어 x 의 클러스터 c 내 빈도 / 클러스터 c 총 단어수
+    #   - f_x = 단어 x 의 전체 코퍼스 빈도 (모든 클러스터 합)
+    #   - A = 클러스터당 평균 단어수
+    #   - idf_x = log(1 + A/f_x)
+    #   - c-tfidf_x,c = tf_x,c × idf_x
+    #
+    # token_pattern + stop_words 보강: 알파벳 시작 2자+ 만 — 숫자 단독 토큰,
+    # DOI/arXiv ID 같은 메타데이터 leak (예: "10", "1038", "48550") 차단.
+    # 학술 보일러플레이트 (et, al, arxiv, doi, ...) + HTML 태그 leak (br, github)
+    # 도 stop 에 포함.
+    _TOKEN_PATTERN = r"(?u)\b[a-zA-Z][a-zA-Z\-]{1,}\b"
+    _DOMAIN_STOPS = frozenset({
+        "arxiv", "doi", "https", "http", "org", "pdf", "url", "preprint",
+        "corr", "vol", "abs", "issn", "isbn", "html", "www",
+        "et", "al", "pp", "eds", "ed", "fig", "figs", "tab", "tabs",
+        "paper", "papers", "section", "chapter", "introduction",
+        "say", "says", "said",
+        "br", "github",
+    })
+    _stop_words = list(_sk_text.ENGLISH_STOP_WORDS | _DOMAIN_STOPS)
+
+    vectorizer = CountVectorizer(
+        max_features=10000,
+        stop_words=_stop_words,
+        token_pattern=_TOKEN_PATTERN,
+    )
+    X = vectorizer.fit_transform(docs)  # n_docs × V
     feature_names = vectorizer.get_feature_names_out()
 
+    tids = sorted({t for t in topics if t != -1})
     topic_keywords = {}
-    for tid in set(topics):
-        if tid == -1:
-            continue
-        indices = [i for i, t in enumerate(topics) if t == tid]
-        cluster_tfidf = tfidf_matrix[indices].mean(axis=0).A1
-        top_indices = cluster_tfidf.argsort()[-10:][::-1]
-        topic_keywords[tid] = [(feature_names[i], float(cluster_tfidf[i])) for i in top_indices]
+    # 방어적 가드: tids 가 비면 np.vstack([]) 가 ValueError 로 죽는다.
+    # 위 degenerate fallback 이 보통 막아주지만, 어떤 경로로든 non-outlier
+    # 클러스터가 0개면 c-TF-IDF 를 건너뛰고 빈 topic_keywords 로 진행한다.
+    if not tids:
+        log("  WARN: no non-outlier clusters; skipping c-TF-IDF keyword extraction")
+    else:
+        cluster_rows = []
+        for tid in tids:
+            idx = [i for i, t in enumerate(topics) if t == tid]
+            cluster_rows.append(np.asarray(X[idx].sum(axis=0)).ravel())
+        X_c = np.vstack(cluster_rows).astype(np.float64)  # K × V
+
+        row_sums = X_c.sum(axis=1, keepdims=True)
+        row_sums[row_sums == 0] = 1.0
+        tf = X_c / row_sums                                  # K × V
+
+        f_x = X_c.sum(axis=0)                                # V
+        f_x[f_x == 0] = 1.0
+        A = X_c.sum(axis=1).mean()
+        idf = np.log(1.0 + A / f_x)                          # V
+
+        c_tfidf = tf * idf                                   # K × V
+
+        for row, tid in enumerate(tids):
+            score = c_tfidf[row]
+            top_idx = score.argsort()[-10:][::-1]
+            topic_keywords[tid] = [(feature_names[i], float(score[i])) for i in top_idx]
 
     # Sub-topic centroids (768D 원본 임베딩 공간)
     centroids = {}
