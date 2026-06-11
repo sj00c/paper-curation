@@ -786,10 +786,12 @@ def extract_figures(pdf_path, slug_dir):
         prev = best_by_num.get(c["fig_num"])
         if prev is None or c["graphic_area"] > prev["graphic_area"]:
             best_by_num[c["fig_num"]] = c
-    chosen = sorted(best_by_num.values(),
-                    key=lambda c: c["graphic_area"], reverse=True)[:5]
-    # Render in figure-number order for stable filenames/output.
-    chosen.sort(key=lambda c: c["fig_num"])
+    # Cap emitted figures to the LOWEST 5 figure numbers. Main-body figures
+    # (1-5) come before appendix figures, and in some papers (e.g. NLP papers
+    # with many "Prompt for ..." boxes in the appendix) the appendix figures
+    # have far larger area and would crowd out the real figures under an
+    # area-based cap. Figure number is the more reliable importance signal.
+    chosen = sorted(best_by_num.values(), key=lambda c: c["fig_num"])[:5]
 
     figures = []
     for c in chosen:
