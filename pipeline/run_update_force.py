@@ -1331,7 +1331,13 @@ def convert_to_html(slug):
         if not os.path.exists(md_path):
             return False
         topic = detect_topic(slug, index_path)
-        html = convert_review(md_path, topic, slug)
+        # convert_review's figure-existence guard resolves figures/figN.png
+        # against this arg, so it MUST be the full slug directory — passing
+        # the bare slug name made the check look under CWD and silently drop
+        # every figure from the rendered HTML (review_to_html.py:697 and
+        # validate_papers.py:497 both pass the full dir).
+        slug_dir = os.path.join(PAPERS_DIR, slug)
+        html = convert_review(md_path, topic, slug_dir)
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(html)
         return True
