@@ -60,21 +60,112 @@ def _split_cats_by_image_presence(topic, cats):
     return with_image, missing
 
 # topic_modeling.py / classify_papers.py 는 UMAP + hdbscan + sentence-transformers
-# 의존. UMAP.transform 가 sklearn.pairwise_distances 에 callable metric 을 넘기는
+# 의존. 표준은 ``py312`` 단일 env 이며, 이 경우 현재 인터프리터가 곧 클러스터링
+# 인터프리터다. 과거의 "py314 메인 + py312 보조" 이중 구성도 계속 지원한다: py314
+# 에서는 UMAP.transform 가 sklearn.pairwise_distances 에 callable metric 을 넘기는
 # 순간 numba 가 JIT 컴파일을 시도하는데, numba 의 bytecode interpreter 가 Python
 # 3.14 의 ``CALL_KW`` opcode 를 아직 처리하지 못해
 # (``op_CALL_KW: pop from empty list``, 0.65.1 / 0.66.0rc1 / main 모두 동일) 분류가
-# 죽는다. numba 가 패치될 때까지 ``py312`` 전용 env 를 별도로 둬서 클러스터링·분류
-# 만 그쪽 인터프리터로 라우팅한다 (CLAUDE.md "Windows fallback" 섹션의 패턴과 동일).
+# 죽으므로, 클러스터링·분류만 형제 ``py312`` 인터프리터로 라우팅한다.
 #
-# 우선 순위:
+# 해석 순서:
+#   0. 현재 인터프리터 프로브 — 클러스터링 *실경로* (UMAP cosine fit→transform +
+#      hdbscan approximate_predict) 를 소형 데이터로 실행하는 서브프로세스가
+#      성공하면 단일 env 로 보고 ``sys.executable`` 을 그대로 쓴다. import-only
+#      프로브는 JIT 시점 크래시를 못 잡아 거짓 양성을 내므로 쓰지 않는다.
+#      판정은 _state/env_probe.json 에 영구 캐시 (첫 1회만 JIT 비용 ~수십 초).
+#   프로브 실패(의존성 미설치 또는 JIT 크래시) 시 기존 fallback 체인을 그대로 탄다:
 #   1. ``PAPER_CURATION_PY312`` 환경변수 — 운영자가 명시한 절대 경로
 #   2. 현재 인터프리터의 conda prefix 에서 형제 env (../py312/bin/python)
 #   3. ``which python3.12`` PATH 검색
 #   4. fallback → ``sys.executable`` (운영자 환경이 이미 py312 이면 동작)
+_PROBE_RESULT = None  # None=미실행, True=현재 인터프리터로 클러스터링 가능, False=불가
+
+# 프로브는 import 가 아니라 *실제 크래시 경로* 를 실행한다. numba CALL_KW 류의
+# 실패는 import 시점이 아니라 UMAP.transform()/approximate_predict() 의 JIT
+# 컴파일 시점에 터지므로, import-only 프로브는 py314 에서 거짓 양성을 낸다
+# (import 성공 → 단일 env 판정 → 분류 단계 mid-run 크래시). 아래 스니펫은
+# topic_modeling/classify 가 쓰는 경로(UMAP cosine fit→transform,
+# hdbscan approximate_predict)를 소형 데이터로 그대로 통과시킨다.
+# 첫 실행은 numba JIT 때문에 수십 초 걸리므로 판정을 _state/env_probe.json 에
+# (인터프리터 경로, 파이썬 버전) 키로 영구 캐시한다. env 의 numba 를 갈아끼운
+# 뒤 재판정이 필요하면 그 파일을 지우면 된다.
+_PROBE_SNIPPET = (
+    # sentence_transformers/adapters 까지 요구하는 이유: topic_modeling 은 SPECTER2
+    # 임베딩이 필수이고, adapters 가 없으면 proximity 어댑터 대신 mean-pooling
+    # fallback 으로 *조용히 품질이 떨어진* 번들을 만든다. 어댑터까지 갖춘 env 만
+    # "단일 env" 로 인정해 EMBED_TAG(proximity vs fallback)가 env 에 따라 갈라지는
+    # 것을 막는다. 모두 없는 환경이라도 fallback 체인의 마지막이 sys.executable
+    # 이므로 동작 자체는 유지된다(이때는 specter2_embed 가 경고와 함께 fallback).
+    "import sentence_transformers, adapters\n"
+    "import numpy as np, numba, umap, hdbscan\n"
+    "rs = np.random.RandomState(0)\n"
+    "X = rs.rand(60, 32).astype('float32')\n"
+    "um = umap.UMAP(n_components=5, n_neighbors=8, metric='cosine',"
+    " random_state=42).fit(X)\n"
+    "um.transform(rs.rand(3, 32).astype('float32'))\n"
+    "cl = hdbscan.HDBSCAN(min_cluster_size=3, prediction_data=True)"
+    ".fit(um.embedding_.astype('float64'))\n"
+    "import hdbscan.prediction as hp\n"
+    "hp.approximate_predict(cl, um.transform(rs.rand(2, 32).astype('float32'))"
+    ".astype('float64'))\n"
+    "print('PROBE_OK numba', numba.__version__)\n"
+)
+import pathlib as _pathlib
+_PROBE_STATE = _pathlib.Path(__file__).resolve().parent / "_state" / "env_probe.json"
+
+
+def _probe_current_interpreter():
+    """현재 인터프리터로 클러스터링 실경로가 도는지 1회 판정 (영구 캐시).
+
+    의존성 미설치(즉시 ImportError)·JIT 크래시·타임아웃 모두 False.
+    판정은 프로세스 전역 + ``_state/env_probe.json`` 에 캐시된다.
+    """
+    global _PROBE_RESULT
+    if _PROBE_RESULT is not None:
+        return _PROBE_RESULT
+
+    key = f"{sys.executable}|py{sys.version_info[0]}.{sys.version_info[1]}"
+    try:
+        state = json.loads(_PROBE_STATE.read_text(encoding="utf-8"))
+    except Exception:
+        state = {}
+    cached = state.get(key)
+    if isinstance(cached, dict) and "ok" in cached:
+        _PROBE_RESULT = bool(cached["ok"])
+        return _PROBE_RESULT
+
+    try:
+        r = subprocess.run(
+            [sys.executable, "-c", _PROBE_SNIPPET],
+            capture_output=True, text=True, timeout=180,
+        )
+        ok = (r.returncode == 0 and "PROBE_OK" in (r.stdout or ""))
+        detail = (r.stdout if ok else (r.stderr or ""))[-200:].strip()
+    except Exception as e:
+        ok, detail = False, f"{type(e).__name__}: {str(e)[:120]}"
+
+    _PROBE_RESULT = ok
+    try:
+        state[key] = {"ok": ok, "detail": detail,
+                      "ts": datetime.now().isoformat(timespec="seconds")}
+        _PROBE_STATE.parent.mkdir(parents=True, exist_ok=True)
+        _PROBE_STATE.write_text(
+            json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception:
+        pass  # 캐시 실패는 치명적이지 않음 (다음 실행에서 재프로브)
+    return _PROBE_RESULT
+
+
 def _resolve_topic_modeling_python():
     from pathlib import Path as _Path
     import shutil as _shutil
+    # 0. 단일 env 프로브: 현재 인터프리터가 클러스터링 의존성을 직접 import 할 수
+    #    있으면 (py312 단일 표준) 서브프로세스 env 를 갈아끼울 필요가 없다.
+    if _probe_current_interpreter():
+        print(f"[env] UMAP/HDBSCAN 프로브 성공 → 단일 env 모드: {sys.executable}")
+        return sys.executable
+    # 프로브 실패 → 보조 py312 인터프리터로 라우팅 (py314 메인 + py312 보조 이중 구성)
     explicit = os.environ.get("PAPER_CURATION_PY312", "").strip()
     if explicit and os.path.exists(explicit):
         return explicit
@@ -93,7 +184,7 @@ def _resolve_topic_modeling_python():
 TOPIC_MODELING_PYTHON = _resolve_topic_modeling_python()
 if TOPIC_MODELING_PYTHON != sys.executable:
     print(f"[env] UMAP/HDBSCAN 단계 인터프리터: {TOPIC_MODELING_PYTHON} "
-          f"(numba+py3.14 CALL_KW 회피)")
+          f"(현재 env 프로브 실패 → 보조 env 라우팅; 사유는 _state/env_probe.json)")
 
 ZOTERO_DIR = get_zotero_dir()
 
@@ -1629,6 +1720,9 @@ def main():
     parser.add_argument("--dedup-execute", action="store_true",
                         help="Let the Zotero dedup preflight actually delete duplicates. "
                              "Default is dry-run (report only).")
+    parser.add_argument("--insights", action="store_true",
+                        help="extract_insights 에서 cross-category insights(Option)까지 재생성. "
+                             "기본은 paper connections(Core, '같이 보면 좋은 논문')만 생성 (--only connections).")
     # ── Phase 2: 3-axis mode (new, MECE). When --mode is set, it overrides the
     # legacy flag combinations and emits DeprecationWarnings for any legacy
     # flags that were also specified. Omitting --mode keeps 100% legacy
@@ -1884,6 +1978,12 @@ def main():
         do_reclassify = args.category  # --category forces topic_modeling
         do_timeline_images = args.timeline or args.category  # --category auto-enables timeline
 
+        # extract_insights 는 paper connections(Core — '같이 보면 좋은 논문' 박스)만
+        # 기본 생성한다. cross-category insights 는 Option 이라 --insights 가 명시될
+        # 때만 둘 다(--only all) 돌린다. 미생성 시 _insights.json 은 stale/absent 로
+        # 남고 build_topic_index 가 부재를 허용한다.
+        insights_only_arg = ["--only", "all" if args.insights else "connections"]
+
         # Identify newly processed slugs (for update mode)
         newly_completed = set(cp.get("completed", [])) - previously_completed
 
@@ -2070,7 +2170,7 @@ def main():
             run_step("build_category_summaries",
                      ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic], 14400)
+                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             cats_arg = ["--categories"] + changed_cats
             run_step("generate_timelines",
                      ["python", "pipeline/generate_timelines.py", "--topic", topic] + cats_arg, 21600)
@@ -2079,7 +2179,7 @@ def main():
             run_step("build_category_summaries",
                      ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic], 14400)
+                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
                      ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
         elif is_update:
@@ -2088,7 +2188,7 @@ def main():
                 run_step("build_category_summaries",
                          ["python", "pipeline/build_category_summaries.py", "--topic", topic] + cats_arg, 1200)
                 run_step("extract_insights",
-                         ["python", "pipeline/extract_insights.py", "--topic", topic] + cats_arg, 14400)
+                         ["python", "pipeline/extract_insights.py", "--topic", topic] + cats_arg + insights_only_arg, 14400)
 
                 # Split by image presence:
                 #   - cats_with_image: narrative-only (unless --timeline explicitly requested)
@@ -2120,7 +2220,7 @@ def main():
             run_step("build_category_summaries",
                      ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic], 14400)
+                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
                      ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
         else:
@@ -2128,7 +2228,7 @@ def main():
             run_step("build_category_summaries",
                      ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic], 14400)
+                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
                      ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
 

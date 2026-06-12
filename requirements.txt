@@ -1,14 +1,18 @@
 # Paper Curation — full dependency set.
 #
-# 표준 환경은 conda env `py314` (Python 3.14) 입니다. umap-learn / hdbscan /
-# sentence-transformers 는 macOS 에서 pip 보다 conda-forge 가 안정적이므로,
-# 가능하면 README "환경 설정" 의 conda 명령으로 두 env(py314 + py312)를 만든 뒤
-# 각 env 에서 `pip install -r requirements.txt` 로 나머지를 채우는 것을 권장합니다.
+# 표준 환경은 conda env `py312` (Python 3.14 의 numba CALL_KW 비호환을 피한 단일
+# env) 입니다. 모든 단계 — 오케스트레이터·LLM·웹·PDF·HTML 은 물론 토픽 모델링/분류
+# (topic_modeling.py · classify_papers.py) 까지 이 한 env 에서 돌아갑니다.
+# umap-learn / hdbscan / sentence-transformers 는 macOS 에서 pip 보다 conda-forge
+# 가 안정적이므로, README "환경 설정" 의 conda 명령으로 env 를 만든 뒤
+# `pip install -r requirements.txt` 로 나머지를 채우는 것을 권장합니다.
 #
-# NOTE: 토픽 모델링/분류(topic_modeling.py · classify_papers.py)는 numba 의
-# CALL_KW 비호환 때문에 Python 3.14 에서 죽으므로 별도 py312 env 에서 실행됩니다.
-# 따라서 클러스터링 의존성(umap-learn·hdbscan·sentence-transformers·joblib·
-# scikit-learn·numpy)은 py314 와 py312 양쪽 env 에 모두 설치되어야 합니다.
+# NOTE: 기존의 "py314 메인 + py312 보조" 이중 구성도 그대로 동작합니다.
+# run_update_force 가 시작 시 현재 인터프리터로 `import umap, hdbscan` 프로브를
+# 돌려, 성공하면 단일 env 로 처리하고(py312 표준), 실패하면(py314 메인 env) 토픽
+# 모델링/분류만 형제 py312 인터프리터로 자동 라우팅합니다. 이중 구성에서는
+# 클러스터링 의존성(umap-learn·hdbscan·sentence-transformers·joblib·scikit-learn·
+# numpy)이 py312 env 에 설치되어 있어야 합니다.
 
 # --- Core: LLM / web / PDF / image ---
 anthropic

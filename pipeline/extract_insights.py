@@ -931,10 +931,16 @@ def main():
     parser.add_argument("--topic", default="ai4s")
     parser.add_argument("--insights-only", action="store_true", help="Cross-category insights only")
     parser.add_argument("--connections-only", action="store_true", help="Paper connections only")
+    parser.add_argument("--only", choices=["connections", "insights", "all"], default="all",
+                        help="생성 대상 선택. connections=paper connections(Core)만, "
+                             "insights=cross-category insights(Option)만, all=둘 다(기본, 하위호환).")
     parser.add_argument("--categories", nargs="+", help="Specific categories to process (others preserved)")
     args = parser.parse_args()
-    _run_insights(topic=args.topic, insights_only=args.insights_only,
-                  connections_only=args.connections_only, categories=args.categories)
+    # --only 를 기존 *_only 게이트로 매핑 (둘 다 동일 효과; --insights-only/--connections-only 와 OR).
+    insights_only = args.insights_only or args.only == "insights"
+    connections_only = args.connections_only or args.only == "connections"
+    _run_insights(topic=args.topic, insights_only=insights_only,
+                  connections_only=connections_only, categories=args.categories)
 
 
 if __name__ == "__main__":

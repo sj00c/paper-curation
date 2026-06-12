@@ -89,6 +89,9 @@ def build_parser():
                    help="fuzzy PDF 매칭 차단 (ID-first 실패 시 skip).")
     p.add_argument("--also-reclassify", action="store_true",
                    help="curate 중 기존 논문까지 재분류.")
+    p.add_argument("--insights", action="store_true",
+                   help="extract_insights 에서 cross-category insights(Option)까지 재생성 "
+                        "(기본은 paper connections(Core)만). run_update_force 로 전달.")
     p.add_argument("--skip-dedup", action="store_true",
                    help="Zotero dedup preflight 스킵.")
     p.add_argument("--dedup-execute", action="store_true",
@@ -154,6 +157,8 @@ def build_update_force_cmd(args, images):
         cmd.extend(["--slugs", args.slugs])
     if args.also_reclassify:
         cmd.append("--category")
+    if args.insights:
+        cmd.append("--insights")
     if images in ("changed", "all"):
         cmd.append("--timeline")
     if args.skip_dedup:
