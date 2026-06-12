@@ -86,6 +86,22 @@ def load_bundle(topic_dir):
     if missing:
         log(f"ERROR: bundle at {bundle_path} missing keys: {sorted(missing)}.")
         sys.exit(2)
+
+    # 임베딩 모드 가드: 번들의 HDBSCAN manifold 가 어떤 임베딩으로 학습됐는지를
+    # 현재 분류에 쓸 임베딩 모드와 대조한다. 다르면 신 모델 벡터를 구 모델
+    # manifold 에 투영하는 셈이라 분류가 조용히 망가진다 (approximate_predict 가
+    # 엉뚱한 sub-cluster 로 보냄). 구 번들에는 키가 없으므로 base/mean 으로 간주.
+    from lib import specter2_embed
+    bundle_tag = bundle.get("embed_model", "specter2_base_mean")
+    if bundle_tag != specter2_embed.EMBED_TAG:
+        log("ERROR: 분류 임베딩 모드가 학습된 모델 번들과 다릅니다 "
+            f"(번들 embed_model={bundle_tag!r}, 현재={specter2_embed.EMBED_TAG!r}).\n"
+            "       임베딩이 바뀌었으니 신 모델 벡터를 구 모델 manifold 에 그대로\n"
+            "       투영할 수 없습니다. topic_modeling.py 를 먼저 재실행해 같은\n"
+            "       임베딩으로 HDBSCAN 모델을 다시 학습·저장한 뒤 classify_papers 를\n"
+            "       돌리세요.")
+        sys.exit(2)
+
     return bundle
 
 

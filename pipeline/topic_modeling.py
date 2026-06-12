@@ -113,74 +113,90 @@ def extract_originalities(topic_papers):
 # ═══════════════════════════════════════════
 
 def compute_embeddings(originalities, cache_path=None):
-    """SPECTER2로 임베딩 계산. 캐시 지원 (incremental: 신규 논문만 추가 계산)."""
+    """SPECTER2로 임베딩 계산. 캐시 지원 (incremental: 신규 논문만 추가 계산).
+
+    임베딩은 공유 로더 `lib.specter2_embed` 를 통한다 — base + proximity adapter
+    + [CLS] pooling (AI2 권장). adapters 미설치 시 base/mean-pooling fallback.
+
+    캐시 버전 가드: 캐시 JSON 의 "embed_model" 태그가 현재 임베딩 모드
+    (specter2_embed.EMBED_TAG) 와 다르거나 없으면, 구 모델 벡터가 신 모델 벡터와
+    섞이는 silent corruption 을 막기 위해 캐시를 통째로 무효화하고 전량 재계산한다
+    (구 _embeddings_cache.json 은 mean-pooling 벡터라 태그가 없으므로 자동 무효화).
+    """
+    from lib import specter2_embed
+
     current_slugs = sorted(originalities.keys())
+    current_tag = specter2_embed.EMBED_TAG
 
     if cache_path and os.path.exists(cache_path):
         log(f"  Loading cached embeddings: {cache_path}")
         with open(cache_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        cached_slugs = data["slugs"]
-        cached_embeddings = np.array(data["embeddings"])
 
-        cached_set = set(cached_slugs)
-        current_set = set(current_slugs)
+        cached_tag = data.get("embed_model")
+        if cached_tag != current_tag:
+            # 태그 불일치 → 캐시 무효. 아래 full recompute 로 fall through.
+            log(f"  Cache INVALID: embed_model tag mismatch "
+                f"(cached={cached_tag!r}, current={current_tag!r}) — "
+                f"전량 재계산 (구·신 모델 벡터 혼합 방지)")
+        else:
+            cached_slugs = data["slugs"]
+            cached_embeddings = np.array(data["embeddings"])
 
-        if cached_set == current_set:
-            log(f"  Cache hit: {len(cached_slugs)} papers (exact match)")
-            return cached_embeddings, cached_slugs
+            cached_set = set(cached_slugs)
+            current_set = set(current_slugs)
 
-        # Incremental update: reuse cached embeddings, compute only new ones
-        new_slugs = sorted(current_set - cached_set)
-        removed_slugs = cached_set - current_set
-        log(f"  Cache stale: cached={len(cached_slugs)}, current={len(current_slugs)}, "
-            f"new={len(new_slugs)}, removed={len(removed_slugs)}")
+            if cached_set == current_set:
+                log(f"  Cache hit: {len(cached_slugs)} papers (exact match, "
+                    f"embed_model={current_tag})")
+                return cached_embeddings, cached_slugs
 
-        # Build slug→embedding map from cache
-        slug_to_emb = dict(zip(cached_slugs, cached_embeddings))
+            # Incremental update: reuse cached embeddings, compute only new ones
+            new_slugs = sorted(current_set - cached_set)
+            removed_slugs = cached_set - current_set
+            log(f"  Cache stale: cached={len(cached_slugs)}, current={len(current_slugs)}, "
+                f"new={len(new_slugs)}, removed={len(removed_slugs)}")
 
-        # Remove deleted papers
-        for s in removed_slugs:
-            slug_to_emb.pop(s, None)
+            # Build slug→embedding map from cache
+            slug_to_emb = dict(zip(cached_slugs, cached_embeddings))
 
-        if new_slugs:
-            from sentence_transformers import SentenceTransformer
-            log("  Loading SPECTER2 model for incremental update...")
-            model = SentenceTransformer(SPECTER2_MODEL, local_files_only=True)
-            new_texts = [originalities[s] for s in new_slugs]
-            log(f"  Embedding {len(new_texts)} new papers...")
-            new_embeddings = model.encode(new_texts, show_progress_bar=True, batch_size=32)
-            for s, emb in zip(new_slugs, new_embeddings):
-                slug_to_emb[s] = emb
+            # Remove deleted papers
+            for s in removed_slugs:
+                slug_to_emb.pop(s, None)
 
-        # Rebuild in sorted order
-        slugs = sorted(slug_to_emb.keys())
-        embeddings = np.array([slug_to_emb[s] for s in slugs])
+            if new_slugs:
+                new_texts = [originalities[s] for s in new_slugs]
+                log(f"  Embedding {len(new_texts)} new papers via shared SPECTER2 loader...")
+                new_embeddings = specter2_embed.embed_texts(new_texts)
+                for s, emb in zip(new_slugs, new_embeddings):
+                    slug_to_emb[s] = emb
 
-        # Update cache
-        if cache_path:
-            os.makedirs(os.path.dirname(cache_path), exist_ok=True)
-            cache_data = {"slugs": slugs, "embeddings": embeddings.tolist()}
-            with open(cache_path, "w", encoding="utf-8") as f:
-                json.dump(cache_data, f)
-            log(f"  Cache updated: {len(slugs)} papers ({cache_path})")
+            # Rebuild in sorted order
+            slugs = sorted(slug_to_emb.keys())
+            embeddings = np.array([slug_to_emb[s] for s in slugs])
 
-        return embeddings, slugs
+            # Update cache
+            if cache_path:
+                os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+                cache_data = {"embed_model": current_tag,
+                              "slugs": slugs, "embeddings": embeddings.tolist()}
+                with open(cache_path, "w", encoding="utf-8") as f:
+                    json.dump(cache_data, f)
+                log(f"  Cache updated: {len(slugs)} papers ({cache_path})")
 
-    from sentence_transformers import SentenceTransformer
+            return embeddings, slugs
 
-    log("  Loading SPECTER2 model...")
-    model = SentenceTransformer(SPECTER2_MODEL, local_files_only=True)
-
+    # Full compute — 캐시 없음, 또는 태그 불일치로 캐시 무효화됨.
     slugs = current_slugs
     texts = [originalities[s] for s in slugs]
 
-    log(f"  Embedding {len(texts)} papers...")
-    embeddings = model.encode(texts, show_progress_bar=True, batch_size=32)
+    log(f"  Embedding {len(texts)} papers via shared SPECTER2 loader ({current_tag})...")
+    embeddings = specter2_embed.embed_texts(texts)
 
     if cache_path:
         os.makedirs(os.path.dirname(cache_path), exist_ok=True)
         cache_data = {
+            "embed_model": current_tag,
             "slugs": slugs,
             "embeddings": embeddings.tolist(),
         }
@@ -913,12 +929,16 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
         #   - tid_to_cat[tid]     → parent category name
         #   - centroids[tid]      → outlier fallback + all_categories top-N (cosine on 768D)
         import joblib
+        from lib import specter2_embed
         bundle = {
             "hdbscan_model": hdbscan_model,
             "umap_cluster": umap_cluster,
             "centroids": {int(k): v for k, v in centroids.items()},
             "tid_to_cat": {int(k): v for k, v in tid_to_cat.items()},
             "tid_to_subname": {int(k): v["name"] for k, v in topic_names.items()},
+            # 분류기(classify_papers)가 동일 임베딩 모드인지 검증하는 가드 키.
+            # 번들의 manifold 가 어느 임베딩으로 학습됐는지 박아 둔다.
+            "embed_model": specter2_embed.EMBED_TAG,
             "trained_at": datetime.now().isoformat(),
             "n_papers": len(topic_papers),
             "n_subclusters": len(centroids),
