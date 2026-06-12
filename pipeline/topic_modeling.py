@@ -220,7 +220,8 @@ def run_clustering(embeddings, slugs, originalities, min_cluster_size=2,
        — `hdbscan` 라이브러리 사용, `prediction_data=True` 설정해 신규 논문이
        `approximate_predict()` 로 같은 클러스터에 매핑될 수 있도록 한다
        (`classify_papers.py` 가 모델을 로드해 사용).
-    3. TF-IDF 키워드 추출 (c-TF-IDF 대체)
+    3. c-TF-IDF 키워드 추출 (Grootendorst 2022, BERTopic 표준 — 클러스터를
+       1문서로 취급한 tf × 클래스 기준 idf=log(1+A/f_x))
     """
     from umap import UMAP
     import hdbscan

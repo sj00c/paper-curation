@@ -219,7 +219,7 @@ flowchart TB
 | | 설명 |
 |---|---|
 | **입력** | 전체 리뷰의 Essence + Title |
-| **처리** | Bottom-up, LLM 호출 최소화:<ul><li>SPECTER2 임베딩 (proximity adapter + CLS pooling) → HDBSCAN fine-grained 클러스터링</li><li>TF-IDF 키워드 추출 → Claude Sonnet이 클러스터 작명</li><li>Ward linkage로 카테고리 그룹핑</li><li>논문당 1~3개 카테고리 복수 분류 (Node-based Hybrid C: KNN-vote primary + qualified-vote multi)</li></ul> |
+| **처리** | Bottom-up, LLM 호출 최소화:<ul><li>SPECTER2 임베딩 (proximity adapter + CLS pooling) → HDBSCAN fine-grained 클러스터링</li><li>c-TF-IDF 키워드 추출 (BERTopic 표준 — 클러스터 단위 구별성) → Claude Sonnet이 클러스터 작명</li><li>Ward linkage로 카테고리 그룹핑</li><li>논문당 1~3개 카테고리 복수 분류 (Node-based Hybrid C: KNN-vote primary + qualified-vote multi)</li></ul> |
 | **출력** | <ul><li><code>_new_classification.json</code></li><li><code>_papers_index.json</code></li></ul> |
 
 ### 4. 인사이트 + 타임라인
@@ -823,7 +823,7 @@ flowchart TB
 | | Description |
 |---|---|
 | **Input** | Essence + title from all reviews |
-| **Processing** | Bottom-up, minimal LLM calls:<ul><li>SPECTER2 embeddings (proximity adapter + CLS pooling) → HDBSCAN fine-grained clustering</li><li>TF-IDF keywords → Claude Sonnet names each cluster</li><li>Ward linkage groups clusters into categories</li><li>1–3 categories per paper (Node-based Hybrid C: KNN-vote primary + qualified-vote multi)</li></ul> |
+| **Processing** | Bottom-up, minimal LLM calls:<ul><li>SPECTER2 embeddings (proximity adapter + CLS pooling) → HDBSCAN fine-grained clustering</li><li>c-TF-IDF keywords (BERTopic-style class-based distinctiveness) → Claude Sonnet names each cluster</li><li>Ward linkage groups clusters into categories</li><li>1–3 categories per paper (Node-based Hybrid C: KNN-vote primary + qualified-vote multi)</li></ul> |
 | **Output** | <ul><li><code>_new_classification.json</code></li><li><code>_papers_index.json</code></li></ul> |
 
 ### 4. Insights + Timelines
