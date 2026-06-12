@@ -1723,6 +1723,10 @@ def main():
     parser.add_argument("--insights", action="store_true",
                         help="extract_insights 에서 cross-category insights(Option)까지 재생성. "
                              "기본은 paper connections(Core, '같이 보면 좋은 논문')만 생성 (--only connections).")
+    parser.add_argument("--local-fallback", action="store_true",
+                        help="topic_modeling 연결 단계에서 max retry round 를 다 돌고도 막힌 "
+                             "papers 를 로컬 OpenAI 호환 모델(Ollama/LM Studio 등)로 마저 연결. "
+                             "config.json 의 local_model 또는 LOCAL_MODEL_BASE_URL/NAME 필요.")
     # ── Phase 2: 3-axis mode (new, MECE). When --mode is set, it overrides the
     # legacy flag combinations and emits DeprecationWarnings for any legacy
     # flags that were also specified. Omitting --mode keeps 100% legacy
@@ -2072,6 +2076,8 @@ def main():
         # --category: always run (reclassify all)
         # --resume without --category: skip (keep existing categories)
         # full mode: always run
+        # opt-in: connection 단계가 끝까지 막히면 로컬 모델로 마저 연결 (--local-fallback)
+        tm_local = ["--local-fallback"] if getattr(args, "local_fallback", False) else []
         old_cats_by_slug = {}
         if do_reclassify:
             # Snapshot current classifications before reclassification
@@ -2085,7 +2091,7 @@ def main():
             except Exception:
                 pass
             run_step("topic_modeling",
-                     [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic], 3600)
+                     [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
         elif is_update:
             # Update mode normally runs --skip-classification (refresh coords +
             # connections only, reuse the existing HDBSCAN bundle). But
@@ -2099,13 +2105,13 @@ def main():
                 log("  [topic_modeling] HDBSCAN bundle missing — running full "
                     "topic_modeling to build it (first run for this topic)")
                 run_step("topic_modeling",
-                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic], 3600)
+                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
             else:
                 run_step("topic_modeling (coords+connections)",
-                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic, "--skip-classification"], 3600)
+                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic, "--skip-classification"] + tm_local, 3600)
         else:
             run_step("topic_modeling",
-                     [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic], 3600)
+                     [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
 
         # Step 3: classify (always — new papers only in update mode without --category)
         run_step("classify_papers",

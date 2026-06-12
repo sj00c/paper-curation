@@ -65,6 +65,40 @@ def get_zotero_api_key():
     return cfg.get("zotero", {}).get("api_key", "") or os.environ.get("ZOTERO_API_KEY", "")
 
 
+def get_local_model_config():
+    """로컬 LLM fallback (Ollama / LM Studio / llama.cpp / vLLM) 설정.
+
+    OpenAI 호환 엔드포인트 한 개를 가정한다. 환경변수가 config.json 보다 우선.
+    base_url 과 model 이 둘 다 있어야 유효하고, 그렇지 않으면 None 을 반환해
+    호출자가 "로컬 fallback 미설정" 으로 조용히 건너뛰게 한다.
+
+    config.json 예시::
+
+        "local_model": {
+          "base_url": "http://localhost:11434/v1",
+          "model": "qwen2.5:7b-instruct",
+          "api_key": "ollama",      # 로컬 서버는 대개 무시하지만 SDK 가 비어있으면 거부
+          "batch_size": 8,          # (선택) 로컬 연결 배치 크기
+          "timeout": 300            # (선택) per-call 초
+        }
+    """
+    cfg = load_config().get("local_model", {}) or {}
+    base_url = os.environ.get("LOCAL_MODEL_BASE_URL") or cfg.get("base_url")
+    model = os.environ.get("LOCAL_MODEL_NAME") or cfg.get("model")
+    if not base_url or not model:
+        return None
+    out = {
+        "base_url": base_url,
+        "model": model,
+        "api_key": os.environ.get("LOCAL_MODEL_API_KEY") or cfg.get("api_key") or "local",
+    }
+    if cfg.get("batch_size"):
+        out["batch_size"] = int(cfg["batch_size"])
+    if cfg.get("timeout"):
+        out["timeout"] = float(cfg["timeout"])
+    return out
+
+
 def get_zotero_user_id():
     """Zotero API Key로 User ID를 자동 조회. 캐싱."""
     global _user_id_cache

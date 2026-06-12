@@ -92,6 +92,9 @@ def build_parser():
     p.add_argument("--insights", action="store_true",
                    help="extract_insights 에서 cross-category insights(Option)까지 재생성 "
                         "(기본은 paper connections(Core)만). run_update_force 로 전달.")
+    p.add_argument("--local-fallback", action="store_true",
+                   help="topic_modeling 연결 단계가 끝까지 막히면 로컬 모델로 마저 연결 "
+                        "(Ollama/LM Studio 등). config.json local_model 필요. run_update_force 로 전달.")
     p.add_argument("--skip-dedup", action="store_true",
                    help="Zotero dedup preflight 스킵.")
     p.add_argument("--dedup-execute", action="store_true",
@@ -159,6 +162,8 @@ def build_update_force_cmd(args, images):
         cmd.append("--category")
     if args.insights:
         cmd.append("--insights")
+    if getattr(args, "local_fallback", False):
+        cmd.append("--local-fallback")
     if images in ("changed", "all"):
         cmd.append("--timeline")
     if args.skip_dedup:

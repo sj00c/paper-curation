@@ -688,7 +688,8 @@ def compute_related_candidates(embeddings, slugs, top_k=5):
 
 
 def generate_connections_from_candidates(candidates, topic_papers, client,
-                                         batch_size=25, deadline_s=300, max_rounds=3):
+                                         batch_size=25, deadline_s=300, max_rounds=3,
+                                         local_fallback=None):
     """임베딩 top-20 후보 -> Sonnet이 이유/관계 작성.
 
     BEST-EFFORT + 행 방지: 연결은 정규 사이클의 ``extract_insights --only
@@ -707,6 +708,11 @@ def generate_connections_from_candidates(candidates, topic_papers, client,
          2라운드에서 대개 완결되고, 끝까지 막힌 논문만 기존 연결을 유지한 채
          남는다. 성공한 배치의 논문은 *결과가 비어도* '처리됨' 으로 봐서(연결이
          없는 게 정상인 논문) 재시도 루프가 무한반복되지 않는다.
+      5) LOCAL FALLBACK (opt-in): ``local_fallback`` 가 주어지면, max_rounds 를
+         다 돌고도 남은 papers 를 *로컬에서 도는 OpenAI 호환 모델* 로 마저
+         연결한다. 클라우드 키·네트워크가 끝까지 막힌 환경에서 사용자가
+         ``--local-fallback`` 으로 켰을 때만 동작하며, 엔드포인트가 응답 없으면
+         조용히 건너뛴다(런은 절대 막지 않는다). lib/local_llm 참조.
     """
     from concurrent.futures import (ThreadPoolExecutor, FIRST_COMPLETED,
                                     wait as _futures_wait)
@@ -721,7 +727,7 @@ def generate_connections_from_candidates(candidates, topic_papers, client,
     log(f"  {len(all_slugs)} papers, batch_size={batch_size}, "
         f"<= {max_rounds} rounds × {deadline_s}s ...")
 
-    def process_batch(batch_slugs):
+    def _build_prompt(batch_slugs):
         papers_block = []
         for slug in batch_slugs:
             p = slug_to_paper.get(slug, {})
@@ -736,7 +742,7 @@ def generate_connections_from_candidates(candidates, topic_papers, client,
                 f"[{num}] {title} | {essence}\n  Candidates: {cand_text}"
             )
 
-        prompt = f"""For each paper below, select the most meaningful related papers from its candidates.
+        return f"""For each paper below, select the most meaningful related papers from its candidates.
 Candidates are sorted by embedding similarity (score in parentheses).
 
 Papers:
@@ -761,6 +767,8 @@ Rules:
 - 유사도가 높아도 의미 없는 연결은 제외
 - target은 candidate 목록의 논문 번호만 사용"""
 
+    def process_batch(batch_slugs):
+        prompt = _build_prompt(batch_slugs)
         resp = conn_client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=10000,
@@ -838,7 +846,40 @@ Rules:
                 f"{len(todo)} papers 재시도 (막힌/실패 배치만)")
         _run_round(todo)
 
+    def _run_local_fallback(todo, cfg):
+        """남은 papers 를 로컬 OpenAI 호환 모델로 마저 연결. 성공분은 attempted 에
+        기록하고 _merge 로 합친다. 엔드포인트가 응답 없거나 SDK 가 없으면 todo 를
+        그대로(미완) 돌려준다 — 런은 절대 막지 않는다."""
+        from lib import local_llm
+        base_url, model = cfg["base_url"], cfg["model"]
+        if not local_llm.probe(base_url):
+            log(f"  [connections] local-fallback: {base_url} 응답 없음 — 건너뜀")
+            return set(todo)
+        lc = local_llm.get_client(cfg)
+        if lc is None:
+            log("  [connections] local-fallback: openai SDK 로드 실패 — 건너뜀")
+            return set(todo)
+        lbatch = max(1, int(cfg.get("batch_size", 8)))   # 로컬은 작은 배치가 안정적
+        log(f"  [connections] local-fallback: {len(todo)} papers → {model} "
+            f"@ {base_url} (batch={lbatch})")
+        done_n = 0
+        for i in range(0, len(todo), lbatch):
+            batch = todo[i:i + lbatch]
+            try:
+                _merge(local_llm.chat_json(lc, model, _build_prompt(batch)))
+                attempted.update(batch)   # 연결 0개여도 '처리됨'
+                done_n += len(batch)
+            except Exception as e:
+                log(f"    local batch ERROR: {str(e)[:90]}")
+        log(f"  [connections] local-fallback: {done_n}/{len(todo)} papers 처리")
+        return all_slug_set - attempted
+
     missing = all_slug_set - attempted
+
+    # opt-in: 끝까지 막힌 잔여분을 로컬 모델로 마저 연결 (클라우드 키·네트워크 불필요)
+    if missing and local_fallback:
+        missing = _run_local_fallback(sorted(missing), local_fallback)
+
     if missing:
         log(f"  [connections] {len(missing)} papers 미완 — 기존 연결 유지, "
             f"extract_insights 가 정규 사이클에 갱신")
@@ -853,7 +894,8 @@ Rules:
 # ═══════════════════════════════════════════
 
 def _run_topic_model(topic="ai4s", *, skip_connections=False,
-                      skip_classification=False, min_cats=8, max_cats=12):
+                      skip_classification=False, min_cats=8, max_cats=12,
+                      local_fallback=None):
     """Programmatic entrypoint for topic_modeling."""
     topic_dir = str(get_topic_dir(topic))
 
@@ -1015,7 +1057,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
         log("=" * 50)
         candidates = compute_related_candidates(embeddings, slugs, top_k=5)
         connections = generate_connections_from_candidates(
-            candidates, topic_papers, client
+            candidates, topic_papers, client, local_fallback=local_fallback
         )
         from lib.connections import sync_topic_connections
         sync_topic_connections(connections, topic, slugs, topic_dir, log=log)
@@ -1037,11 +1079,27 @@ def main():
                         help="Skip Steps 4-5 (naming/grouping/assignment). Run embedding, UMAP, connections only.")
     parser.add_argument("--min-cats", type=int, default=8)
     parser.add_argument("--max-cats", type=int, default=12)
+    parser.add_argument("--local-fallback", action="store_true",
+                        help="max retry round 를 다 돌고도 연결 못 한 papers 를 "
+                             "로컬 OpenAI 호환 모델(Ollama/LM Studio/llama.cpp/vLLM)로 "
+                             "마저 연결한다. config.json 의 local_model 블록 또는 "
+                             "LOCAL_MODEL_BASE_URL/LOCAL_MODEL_NAME 환경변수 필요.")
     args = parser.parse_args()
+
+    local_fallback = None
+    if args.local_fallback:
+        from config_loader import get_local_model_config
+        local_fallback = get_local_model_config()
+        if local_fallback is None:
+            print("[local-fallback] 설정 없음 — config.json 의 local_model 또는 "
+                  "LOCAL_MODEL_BASE_URL + LOCAL_MODEL_NAME 환경변수를 설정하세요. "
+                  "이번 실행은 로컬 fallback 없이 진행합니다.", flush=True)
+
     _run_topic_model(topic=args.topic,
                      skip_connections=args.skip_connections,
                      skip_classification=args.skip_classification,
-                     min_cats=args.min_cats, max_cats=args.max_cats)
+                     min_cats=args.min_cats, max_cats=args.max_cats,
+                     local_fallback=local_fallback)
 
 
 if __name__ == "__main__":
