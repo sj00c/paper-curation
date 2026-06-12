@@ -96,6 +96,20 @@ def get_local_model_config():
         out["batch_size"] = int(cfg["batch_size"])
     if cfg.get("timeout"):
         out["timeout"] = float(cfg["timeout"])
+    if cfg.get("reasoning_effort"):
+        # thinking 모델(EXAONE-4.5 등): "none" 이면 think OFF — 없으면 content 가
+        # 빈 채 thinking 채널만 채우는 모델이 있다 (lib/local_llm.chat_json 참조)
+        out["reasoning_effort"] = str(cfg["reasoning_effort"])
+    if cfg.get("json_mode"):
+        # response_format json_object — 서버 문법 제약으로 JSON 유효성 보장
+        out["json_mode"] = True
+    if cfg.get("num_ctx"):
+        # Ollama 네이티브 경로 전용: 요청 단위 컨텍스트(기본 8192). 신형 Ollama 가
+        # 모델 최대치(128K+)로 로드해 느려지는 것을 요청 단위로 줄인다.
+        out["num_ctx"] = int(cfg["num_ctx"])
+    if cfg.get("retries"):
+        # 형식 깨짐은 확률적이라 배치당 재시도 횟수(기본 2)
+        out["retries"] = int(cfg["retries"])
     return out
 
 

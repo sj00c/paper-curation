@@ -871,22 +871,41 @@ Rules:
         if not local_llm.probe(base_url):
             log(f"  [connections] local-fallback: {base_url} 응답 없음 — 건너뜀")
             return set(todo)
-        lc = local_llm.get_client(cfg)
-        if lc is None:
-            log("  [connections] local-fallback: openai SDK 로드 실패 — 건너뜀")
-            return set(todo)
+        # Ollama 면 네이티브 /api/chat (요청 단위 num_ctx + 정식 think:false),
+        # 그 외(LM Studio/llama.cpp/vLLM)는 OpenAI 호환 경로.
+        use_native = local_llm.detect_ollama(base_url)
+        lc = None
+        if not use_native:
+            lc = local_llm.get_client(cfg)
+            if lc is None:
+                log("  [connections] local-fallback: openai SDK 로드 실패 — 건너뜀")
+                return set(todo)
         lbatch = max(1, int(cfg.get("batch_size", 8)))   # 로컬은 작은 배치가 안정적
+        lretries = max(1, int(cfg.get("retries", 2)))    # 형식 깨짐은 확률적 → 재시도
         log(f"  [connections] local-fallback: {len(todo)} papers → {model} "
-            f"@ {base_url} (batch={lbatch})")
+            f"@ {base_url} (batch={lbatch}, native={use_native})")
         done_n = 0
         for i in range(0, len(todo), lbatch):
             batch = todo[i:i + lbatch]
-            try:
-                _merge(local_llm.chat_json(lc, model, _build_prompt(batch)))
-                attempted.update(batch)   # 연결 0개여도 '처리됨'
-                done_n += len(batch)
-            except Exception as e:
-                log(f"    local batch ERROR: {str(e)[:90]}")
+            for attempt in range(lretries):
+                try:
+                    if use_native:
+                        result = local_llm.chat_json_native(
+                            base_url, model, _build_prompt(batch),
+                            num_ctx=int(cfg.get("num_ctx", 8192)),
+                            timeout=float(cfg.get("timeout", 600)))
+                    else:
+                        result = local_llm.chat_json(
+                            lc, model, _build_prompt(batch),
+                            reasoning_effort=cfg.get("reasoning_effort"),
+                            json_mode=bool(cfg.get("json_mode")))
+                    _merge(result)
+                    attempted.update(batch)   # 연결 0개여도 '처리됨'
+                    done_n += len(batch)
+                    break
+                except Exception as e:
+                    tag = "재시도" if attempt + 1 < lretries else "포기"
+                    log(f"    local batch ERROR ({tag}): {str(e)[:90]}")
         log(f"  [connections] local-fallback: {done_n}/{len(todo)} papers 처리")
         return all_slug_set - attempted
 
