@@ -143,6 +143,61 @@ def _prune_orphans(fd, rv):
                 pass
 
 
+# 모든 figure 참조 (숫자형 figN 만이 아니라 table1 / fig1a / fig-table1 같은
+# 구추출기의 비표준 이름까지) — 이미지 embed + 뒤따르는 이탤릭 캡션 1줄.
+GENERIC_EMBED = re.compile(
+    r'!\[[^\]]*\]\(\.?/?figures/([A-Za-z0-9_.\-]+?)\.(png|webp)\)[ \t]*\n*'
+    r'(?:\*[^*\n]+\*[ \t]*\n+)?')
+
+
+def scrub_dangling_refs(sd, fd, rv):
+    """review.md figure 참조 무결성 후처리. (ext_fixed, removed) 반환.
+
+    왜 필요한가 (2026-06-12 validate 실측): 숫자형 figN 참조만 보던 기존
+    로직(_remove_fig_embed / _prune_orphans)의 사각지대 — 구추출기가 만들던
+    비표준 이름(table1, fig1a, fig-table1 …) 참조는 파일이 대체/삭제된 뒤에도
+    review.md 에 dangling 으로 남아 validate 의 BROKEN_FIG/MISSING_FIG 로
+    터졌다. 이 패스가 마지막에 한 번 더 돌며:
+      1) 파일 존재 → 유지
+      2) 확장자만 다른 파일 존재 → png 는 webp 로 변환해 참조 유지,
+         webp 가 있으면 참조를 webp 로 고침 (FIG_MISMATCH 해소)
+      3) 둘 다 없음 → embed(이미지+캡션) 제거 (MISSING/BROKEN 해소)
+    """
+    if not os.path.exists(rv):
+        return 0, 0
+    txt = open(rv, encoding="utf-8").read()
+    counts = {"fixed": 0, "removed": 0}
+
+    def _sub(m):
+        stem, ext = m.group(1), m.group(2)
+        if os.path.exists(os.path.join(fd, f"{stem}.{ext}")):
+            return m.group(0)
+        alt_ext = "webp" if ext == "png" else "png"
+        alt = os.path.join(fd, f"{stem}.{alt_ext}")
+        if os.path.exists(alt):
+            if alt_ext == "png":
+                # 참조는 webp, 파일은 png → png 를 webp 로 변환해 참조 유지
+                _, _, webp = convert_png_to_webp(alt, quality=90)
+                if webp and os.path.exists(webp):
+                    try:
+                        os.remove(alt)
+                    except OSError:
+                        pass
+                    counts["fixed"] += 1
+                    return m.group(0)
+                # 변환 실패 → 참조를 png 로 맞춤
+            counts["fixed"] += 1
+            return m.group(0).replace(f"{stem}.{ext}", f"{stem}.{alt_ext}", 1)
+        counts["removed"] += 1
+        return ""
+
+    new = GENERIC_EMBED.sub(_sub, txt)
+    if new != txt:
+        new = re.sub(r"\n{3,}", "\n\n", new)
+        open(rv, "w", encoding="utf-8").write(new)
+    return counts["fixed"], counts["removed"]
+
+
 def _backup(sd, fd):
     """Transient backup of the mutable per-paper state. Returns backup dir."""
     bak = os.path.join(sd, ".reextract-bak")
@@ -203,10 +258,14 @@ def process_one(entry):
                     fp = os.path.join(sd, fn)
                     if os.path.exists(fp):
                         update_html_refs(fp)
-                ruf.convert_to_html(slug)
                 _prune_orphans(fd, rv)
+                scrub_dangling_refs(sd, fd, rv)
+                ruf.convert_to_html(slug)
                 return (slug, "dropped_fullpage_junk", -dropped)
             _prune_orphans(fd, rv)
+            fx, rm = scrub_dangling_refs(sd, fd, rv)
+            if fx or rm:
+                ruf.convert_to_html(slug)
             return (slug, "kept_old_no_new_figs", 0)
 
         # 3) tier2: regenerate review to embed figures, preserve frontmatter +
@@ -248,11 +307,12 @@ def process_one(entry):
             if os.path.exists(fp):
                 update_html_refs(fp)
 
-        # 7) render HTML, then PRUNE figure files the final review no longer
-        #    references (orphaned old / full-page crops) so figures/ matches the
-        #    review exactly and stale full-page images are never deployed.
-        ruf.convert_to_html(slug)
+        # 7) PRUNE figure files the final review no longer references, then
+        #    SCRUB dangling refs (비표준 이름 포함 — 참조 무결성 후처리),
+        #    then render HTML so the page matches the final review exactly.
         _prune_orphans(fd, rv)
+        scrub_dangling_refs(sd, fd, rv)
+        ruf.convert_to_html(slug)
 
         shutil.rmtree(bak, ignore_errors=True)          # success -> drop backup
         return (slug, f"done_{tier}", len(new_nums))
@@ -272,12 +332,50 @@ def main():
     ap.add_argument("--log", default=LOG_DEFAULT)
     ap.add_argument("--no-resume", action="store_true", help="ignore the log; redo all")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--scrub-only", action="store_true",
+                    help="PDF/재추출 없이 corpus 전체(또는 --slugs)의 review.md "
+                         "figure 참조 무결성만 후처리: 확장자 불일치 교정 + "
+                         "dangling 참조 제거 + 변경분 HTML 재렌더 + has_figures 패치")
     args = ap.parse_args()
 
     # Geometric only — deterministic, fast, validated. Do this ONCE for the
     # whole process so every worker thread sees no key.
     os.environ.pop("GOOGLE_API_KEY", None)
     os.environ.pop("GEMINI_API_KEY", None)
+
+    if args.scrub_only:
+        slugs = ([s.strip() for s in args.slugs.split(",")] if args.slugs
+                 else sorted(os.path.basename(d) for d in glob.glob(os.path.join(PAPERS, "*"))
+                             if os.path.isfile(os.path.join(d, "review.md"))))
+        print(f"[{_now()}] scrub-only: {len(slugs)} papers")
+        tot_fx = tot_rm = changed_slugs = 0
+        for s in slugs:
+            sd = os.path.join(PAPERS, s)
+            fd = os.path.join(sd, "figures")
+            rv = os.path.join(sd, "review.md")
+            fx, rm = (0, 0) if args.dry_run else scrub_dangling_refs(sd, fd, rv)
+            if fx or rm:
+                changed_slugs += 1
+                tot_fx += fx
+                tot_rm += rm
+                ruf.convert_to_html(s)
+                print(f"  {s[:55]}: ext_fixed={fx} removed={rm}")
+        # has_figures 패치 (scrub 으로 마지막 figure 참조가 사라진 논문 반영)
+        ipath = os.path.join(PAPERS, "_papers_index.json")
+        idx = json.load(open(ipath, encoding="utf-8"))
+        patched = 0
+        for p in idx:
+            sdir = os.path.join(PAPERS, p.get("slug", ""), "figures")
+            has = os.path.isdir(sdir) and any(
+                f.lower().endswith((".png", ".webp")) for f in os.listdir(sdir))
+            if bool(p.get("has_figures")) != has:
+                p["has_figures"] = has
+                patched += 1
+        if patched and not args.dry_run:
+            atomic_write_json(ipath, idx)
+        print(f"[{_now()}] scrub-only done: {changed_slugs} papers changed "
+              f"(ext_fixed={tot_fx}, removed={tot_rm}), has_figures patched={patched}")
+        return
 
     # Build the work list.
     if args.slugs:
