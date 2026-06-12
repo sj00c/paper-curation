@@ -1,6 +1,7 @@
 """PaperBanana wrapper: path management, agent initialization, and diagram generation."""
 import asyncio
 import base64
+import json
 import logging
 import os
 import shutil
@@ -44,6 +45,7 @@ def _ensure_dataset(task_name: str = "diagram"):
     ref_path = data_dir / "ref.json"
     images_dir = data_dir / "images"
     if ref_path.exists() and images_dir.exists():
+        _prune_ref_to_available(data_dir)
         return
     try:
         from huggingface_hub import snapshot_download
@@ -59,6 +61,55 @@ def _ensure_dataset(task_name: str = "diagram"):
                        "falling back to retrieval_setting=none")
     except Exception as e:
         logger.warning(f"Dataset download failed: {e} — using retrieval_setting=none")
+    _prune_ref_to_available(data_dir)
+
+
+def _prune_ref_to_available(data_dir: Path):
+    """ref.json 에서 GT 이미지가 디스크에 없는 reference 엔트리를 제거한다.
+
+    왜 (2026-06-12 실측): HF LFS 부분 다운로드로 ref.json 이 참조하는 이미지 중
+    소수(예 298 중 4)가 누락될 수 있다. RetrieverAgent 가 그중 하나를 reference
+    로 고르면 ``FileNotFoundError`` 로 *해당 카테고리 다이어그램 생성이 통째로
+    실패* 한다(비결정적). 디렉토리 존재만 보던 기존 가드는 이를 못 잡았다.
+    누락 엔트리만 외과적으로 제거하면 남은 다수(예 294)로 retrieval 품질을
+    유지하면서 landmine 을 없앤다. 원본은 .orig 로 1회 백업, 멱등.
+    """
+    ref_path = data_dir / "ref.json"
+    images_dir = data_dir / "images"
+    if not ref_path.exists() or not images_dir.is_dir():
+        return
+    try:
+        with open(ref_path, encoding="utf-8") as f:
+            entries = json.load(f)
+        if not isinstance(entries, list):
+            return
+
+        def _img_ok(e):
+            p = e.get("path_to_gt_image") or ""
+            if not p:
+                return False
+            cand = Path(p)
+            for q in (cand, data_dir / p, images_dir / cand.name):
+                if q.exists():
+                    return True
+            return False
+
+        kept = [e for e in entries if _img_ok(e)]
+        dropped = len(entries) - len(kept)
+        if dropped <= 0:
+            return
+        backup = data_dir / "ref.orig.json"
+        if not backup.exists():
+            shutil.copy2(ref_path, backup)
+        tmp = ref_path.with_suffix(".json.tmp")
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(kept, f, ensure_ascii=False)
+        os.replace(tmp, ref_path)
+        logger.warning(
+            f"[paperbanana] ref.json: dropped {dropped} reference(s) with "
+            f"missing GT images, kept {len(kept)} (backup: ref.orig.json)")
+    except Exception as e:
+        logger.warning(f"[paperbanana] ref.json prune skipped: {e}")
 
 
 def _extract_final_image_b64(result: dict, exp_mode: str) -> str | None:
