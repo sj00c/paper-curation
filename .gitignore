@@ -12,7 +12,6 @@
 !wrangler.toml
 !CLAUDE.md
 !workflow.png
-!before_after.png
 
 # Pipeline scripts
 !pipeline/
