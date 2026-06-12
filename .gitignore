@@ -37,9 +37,6 @@
 !.github/workflows/
 !.github/workflows/*.yml
 
-# TODO progress doc
-!paper-curation-todo.md
-
 # Double-click launchers (serve docs/ + open topic site on localhost)
 !open.command
 !open_*.command
