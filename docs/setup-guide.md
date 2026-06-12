@@ -17,7 +17,7 @@ Paper Curation 파이프라인의 설치 및 설정 가이드입니다.
   conda activate py312
   pip install -r requirements.txt
   ```
-  메인을 Python 3.14 (`py314`) 로 쓰고 싶다면 형제 `py312` env 를 추가로 만들면 동일 probe 로 클러스터링 두 스크립트(`topic_modeling.py` / `classify_papers.py`)만 자동 라우팅됩니다. 자세한 내용은 README "사전 준비" 참고.
+  메인을 Python 3.14 (`py314`) 로 쓰고 싶다면 형제 `py312` env 를 추가로 만들면 동일 probe 로 클러스터링 두 스크립트(`topic_modeling.py` / `classify_papers.py`)만 자동 라우팅됩니다 — 아래 "레거시: py314 + py312 듀얼" 참고.
 - **Java Runtime** — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
 
 ## Claude Code에서 설치 (권장)
@@ -221,3 +221,48 @@ config.json
 ```
 
 Collection key나 User ID는 직접 입력할 필요 없이 Zotero API를 통해 자동으로 조회됩니다.
+
+## 설치 확인 & 문제 해결
+
+### 설치 확인 (verify)
+
+긴 파이프라인을 돌리기 전에, 한 줄로 의존성이 제대로 깔렸는지 확인하세요:
+
+```bash
+python -c "import umap, hdbscan, sentence_transformers, fitz, sklearn, anthropic; print('py312 OK')"
+```
+
+`OK` 가 찍히면 준비 완료입니다. 실행 계획만 먼저 보려면 `--dry-run` 도 가능합니다:
+
+```bash
+PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source zotero --dry-run
+```
+
+### 문제 해결 (Troubleshooting)
+
+| 증상 / 에러 메시지 | 원인 | 해결 |
+|---|---|---|
+| `op_CALL_KW: pop from empty list` (numba 트레이스백) | 분류가 Python 3.14 인터프리터에서 실행됨 | 표준 단일 `py312` env 로 실행하거나, py314 메인을 쓰면 형제 `py312` env 를 만들어 라우팅 — 아래 "레거시: py314 + py312 듀얼" 참고. 형제 위치가 아니면 `PAPER_CURATION_PY312` 로 경로 지정 |
+| `ModuleNotFoundError: umap` / `hdbscan` / `sentence_transformers` | 의존성 누락 | env 활성화 후 `pip install -r requirements.txt` (umap-learn·hdbscan·sentence-transformers 포함) |
+| Figure 품질이 낮음 / 표·구조가 깨짐 | Java 미설치로 PyMuPDF fallback | `brew install --cask temurin` (macOS) 후 재실행 |
+| SPECTER2 / arXiv 다운로드가 멈춤 (한국 망) | huggingface LFS·arXiv 차단 | [operations.md "Korean network workarounds"](operations.md#korean-network-workarounds) 의 S3 미러 명령 사용 |
+| `[COLLECTION_ERROR]` | Zotero 컬렉션 이름 오타 | 출력의 사용 가능한 컬렉션 목록에서 올바른 이름 선택 후 재실행 |
+| 검색 인덱스가 빈 임베딩으로 빌드됨 | `GOOGLE_API_KEY` 미설정 | `export GOOGLE_API_KEY=...` 후 재실행 — 검색 임베딩은 Google `gemini-embedding-001` 사용 (OpenAI 키는 더 이상 필수 아님) |
+
+## 레거시 환경
+
+<details>
+<summary><b>레거시: py314 + py312 듀얼 env (선택)</b></summary>
+
+메인을 Python 3.14 (`py314`) 로 쓰고 싶다면 numba 의 bytecode interpreter 가 3.14 의 `CALL_KW` opcode 를 아직 처리하지 못해 `topic_modeling.py` / `classify_papers.py` 의 `umap_cluster.transform()` → `sklearn.pairwise_distances(metric=callable)` 경로가 죽습니다 (0.65.1 / 0.66.0rc1 / main 모두 동일). 이때 형제 `py312` env 를 따로 만들면, `run_update_force._resolve_topic_modeling_python()` 가 **동일한 probe** (현재 인터프리터로 umap import 실패 시) 로 형제 `py312/bin/python` 를 자동으로 잡아 클러스터링 두 스크립트만 그쪽으로 보냅니다 (우선순위: `PAPER_CURATION_PY312` env var → 형제 env `<base>/envs/py312` → `which python3.12` → `sys.executable` fallback). 두 env 모두 numba 0.65 / llvmlite 0.47 / numpy 2.x 동일 라인업입니다.
+
+```bash
+conda create -n py314 -c conda-forge python=3.14 pip -y
+conda create -n py312 -c conda-forge python=3.12 pip -y
+conda run -n py314 pip install -r requirements.txt
+conda run -n py312 pip install umap-learn hdbscan sentence-transformers \
+    joblib numpy scikit-learn anthropic openai
+conda activate py314
+```
+
+</details>
