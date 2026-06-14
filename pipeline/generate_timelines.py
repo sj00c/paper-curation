@@ -729,17 +729,96 @@ def generate_candidates(method_text, caption, prefix, candidates_dir, n=5):
     return results
 
 
-def deploy_candidate(results, deploy_path):
-    """첫 번째 성공 candidate를 배포한 뒤 같은 prefix 의 형제 candidate
-    파일들을 정리한다 (디스크 누적 방지). prefix 는 deploy 된 candidate
-    의 파일명 stem 에서 trailing `_N` 을 제거해 자동 추출.
-    """
+# ── Vision judge: pick the best of N timeline candidates ──────────────────
+# All N candidates render the SAME data, so selection is a pure quality call.
+# Criteria (priority order) come from the operator:
+#   1) per-category color is distinct/appropriate and used consistently,
+#   2) emergence/disappearance and merging/branching of categories is clear,
+#   3) no spurious text (color names, category numbers, watermarks, counts, title).
+_JUDGE_MODEL = "claude-sonnet-4-6"
+_JUDGE_CRITERIA = (
+    "You are judging candidate timeline diagrams of how research categories evolve "
+    "over time. Every candidate renders the SAME underlying data — pick the single "
+    "best RENDERING, by these criteria in priority order:\n"
+    "1) COLOR: each category has a distinct, appropriate color used CONSISTENTLY for "
+    "that category across the whole timeline; the palette is clear (no two categories "
+    "in near-identical colors).\n"
+    "2) DYNAMICS: the emergence and disappearance of categories over time, and their "
+    "merging (convergence) and branching (divergence), are clearly and accurately shown.\n"
+    "3) CLEAN TEXT: NO unwanted text — no color-name labels (e.g. 'blue'/'red'), no "
+    "category index numbers, no watermarks, no raw paper counts, no chart title. "
+    "(Category names used as labels/legend are fine.)\n"
+    "Prefer the candidate that best satisfies 1, then 2, then 3; break ties by overall "
+    "readability and clean layout."
+)
+
+
+def select_best_candidate(results, caption=""):
+    """Vision-judge the N successful candidate images and return the best
+    ``(i, kb, path)`` tuple. Falls back to the first successful candidate on a
+    single input or any error, so selection never blocks deployment."""
+    if not results:
+        return None
+    if len(results) == 1:
+        return results[0]
+    try:
+        import base64
+        from anthropic import Anthropic
+        judge = Anthropic(timeout=180.0, max_retries=3)
+        content = []
+        for n, (_i, _kb, path) in enumerate(results, 1):
+            with open(path, "rb") as fh:
+                b64 = base64.standard_b64encode(fh.read()).decode()
+            content.append({"type": "text", "text": f"--- Candidate {n} ---"})
+            content.append({"type": "image", "source": {
+                "type": "base64", "media_type": "image/png", "data": b64}})
+        ctx = ("\n\nContext (what the diagram should convey):\n" + caption[:1200]) if caption else ""
+        content.append({"type": "text", "text": _JUDGE_CRITERIA + ctx +
+                        f"\n\nThere are {len(results)} candidates (1..{len(results)}). "
+                        "Call pick_best_timeline with the 1-based index of the single best."})
+        tool = {
+            "name": "pick_best_timeline",
+            "description": "Select the single best timeline candidate image.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "best": {"type": "integer",
+                             "description": f"1-based index (1..{len(results)}) of the best candidate"},
+                    "reason": {"type": "string", "description": "one concise sentence on why"},
+                },
+                "required": ["best", "reason"],
+            },
+        }
+        resp = judge.messages.create(
+            model=_JUDGE_MODEL, max_tokens=400, tools=[tool],
+            tool_choice={"type": "tool", "name": "pick_best_timeline"},
+            messages=[{"role": "user", "content": content}],
+        )
+        best, reason = None, ""
+        for block in resp.content:
+            if getattr(block, "type", "") == "tool_use" and block.name == "pick_best_timeline":
+                best = block.input.get("best")
+                reason = block.input.get("reason", "")
+        if isinstance(best, int) and 1 <= best <= len(results):
+            log(f"     [judge] picked candidate {best}/{len(results)} "
+                f"(file #{results[best - 1][0]}) — {reason[:120]}")
+            return results[best - 1]
+        log(f"     [judge] invalid pick {best!r} → first candidate")
+    except Exception as e:
+        log(f"     [judge] failed ({type(e).__name__}: {str(e)[:90]}) → first candidate")
+    return results[0]
+
+
+def deploy_candidate(results, deploy_path, caption=""):
+    """Vision-judge the candidates (best of N), deploy the winner, then clean up
+    the sibling candidate files with the same prefix (avoid disk accumulation)."""
     if not results:
         log(f"  WARNING: No successful candidates!")
         return False
-    src = results[0][2]
+    chosen = select_best_candidate(results, caption)
+    src = chosen[2]
     shutil.copy2(src, deploy_path)
-    log(f"  -> Deployed #{results[0][0]} to {os.path.basename(deploy_path)}")
+    log(f"  -> Deployed candidate (file #{chosen[0]}) to {os.path.basename(deploy_path)}")
 
     # Cleanup unused sibling candidates with same prefix
     import re as _re
@@ -953,7 +1032,7 @@ def _run_timeline(topic="ai4s", *, candidates=3, narrative_only=False,
             results = generate_candidates(method_text, caption, f"category_{slug}",
                                           candidates_dir, candidates)
             deploy_name = f"category_timeline_{category_slug(cat_name)}.png"
-            deploy_candidate(results, os.path.join(topic_dir, deploy_name))
+            deploy_candidate(results, os.path.join(topic_dir, deploy_name), caption)
             log(f"  [done]  {cat_name}")
             return deploy_name
 
@@ -987,7 +1066,7 @@ def _run_timeline(topic="ai4s", *, candidates=3, narrative_only=False,
         log(f"\n--- Main timeline ({len(method_text)} chars method) ---")
         results = generate_candidates(method_text, caption, "research_timeline",
                                       candidates_dir, candidates)
-        deploy_candidate(results, os.path.join(topic_dir, "research_timeline.png"))
+        deploy_candidate(results, os.path.join(topic_dir, "research_timeline.png"), caption)
 
     log("\n" + "=" * 60)
     log("ALL DONE")
