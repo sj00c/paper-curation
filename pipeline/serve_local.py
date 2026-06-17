@@ -294,6 +294,9 @@ class LocalHandler(SimpleHTTPRequestHandler):
             headers={
                 "Authorization": "Bearer " + api_key,
                 "Content-Type": "application/json",
+                # api.resend.com 은 Cloudflare 뒤에 있어 기본 User-Agent
+                # (Python-urllib)는 1010 으로 차단된다. 명시적 UA 필수.
+                "User-Agent": "paper-curation-serve-local/1.0 (+https://github.com/jehyunlee/paper-curation)",
             },
             method="POST",
         )
