@@ -213,7 +213,7 @@ def _fit_cat_blocks(cat_papers, client, max_prompt_tokens, target_prompt_tokens,
 def extract_cross_category_insights(topic, cat_papers, cat_summaries, client):
     """카테고리 간 교차 insight 추출. Sonnet 1회 호출.
 
-    200k 토큰 초과 시 Haiku summarization fallback 으로 150k 아래로 압축.
+    988k 토큰 초과 시 Haiku summarization fallback 으로 900k 아래로 압축.
     """
 
     # Build prompt skeleton first (without cat data) to measure overhead.

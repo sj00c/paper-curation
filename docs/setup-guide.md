@@ -17,7 +17,7 @@ Paper Curation 파이프라인의 설치 및 설정 가이드입니다.
   conda activate py312
   pip install -r requirements.txt
   ```
-  메인을 Python 3.14 (`py314`) 로 쓰고 싶다면 형제 `py312` env 를 추가로 만들면 동일 probe 로 클러스터링 두 스크립트(`topic_modeling.py` / `classify_papers.py`)만 자동 라우팅됩니다 — 아래 "레거시: py314 + py312 듀얼" 참고.
+  py314 등 다른 인터프리터로 실행해도 모든 진입점이 `_env_guard.force_py312()` 로 py312 에 자동 재실행됩니다 — paper-curation 은 py312 단독만 지원합니다. 자세한 내용은 아래 "⚠️ py314 미지원 (py312 전용)" 참고.
 - **Java Runtime** — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
 
 ## Claude Code에서 설치 (권장)
@@ -60,7 +60,7 @@ cd paper-curation
 pip install -r requirements.txt   # 전체 의존성 (anthropic·openai·umap-learn·hdbscan·sentence-transformers 등)
 ```
 
-> 표준은 단일 `py312` env 입니다 (`requirements.txt` 에 클러스터링 의존성 포함). 레거시 py314 메인을 쓰는 경우에만 형제 `py312` env 에 클러스터링 의존성을 따로 설치하세요 (위 "사전 준비" 의 conda 명령 참고).
+> 표준은 단일 `py312` env 입니다 (`requirements.txt` 에 클러스터링 의존성 포함).
 
 ### 2. Setup
 
@@ -242,7 +242,7 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source
 
 | 증상 / 에러 메시지 | 원인 | 해결 |
 |---|---|---|
-| `op_CALL_KW: pop from empty list` (numba 트레이스백) | 분류가 Python 3.14 인터프리터에서 실행됨 | 표준 단일 `py312` env 로 실행하거나, py314 메인을 쓰면 형제 `py312` env 를 만들어 라우팅 — 아래 "레거시: py314 + py312 듀얼" 참고. 형제 위치가 아니면 `PAPER_CURATION_PY312` 로 경로 지정 |
+| `op_CALL_KW: pop from empty list` (numba 트레이스백) | 분류가 Python 3.14 인터프리터에서 실행됨 | 표준 단일 `py312` env 로 실행 (진입점이 `_env_guard.force_py312()` 로 py312 자동 재실행). py312 위치가 형제 conda env 가 아니면 `PAPER_CURATION_PY312` 로 경로 지정 |
 | `ModuleNotFoundError: umap` / `hdbscan` / `sentence_transformers` | 의존성 누락 | env 활성화 후 `pip install -r requirements.txt` (umap-learn·hdbscan·sentence-transformers 포함) |
 | Figure 품질이 낮음 / 표·구조가 깨짐 | Java 미설치로 PyMuPDF fallback | `brew install --cask temurin` (macOS) 후 재실행 |
 | SPECTER2 / arXiv 다운로드가 멈춤 (한국 망) | huggingface LFS·arXiv 차단 | [operations.md "Korean network workarounds"](operations.md#korean-network-workarounds) 의 S3 미러 명령 사용 |

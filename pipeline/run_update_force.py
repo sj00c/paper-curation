@@ -196,7 +196,7 @@ def _resolve_topic_modeling_python():
 TOPIC_MODELING_PYTHON = _resolve_topic_modeling_python()
 if TOPIC_MODELING_PYTHON != sys.executable:
     print(f"[env] UMAP/HDBSCAN 단계 인터프리터: {TOPIC_MODELING_PYTHON} "
-          f"(현재 env 프로브 실패 → 보조 env 라우팅; 사유는 _state/env_probe.json)")
+          f"(현재 env 가 py312 가 아니거나 프로브 실패 → py312 라우팅; 사유는 _state/env_probe.json)")
 
 ZOTERO_DIR = get_zotero_dir()
 

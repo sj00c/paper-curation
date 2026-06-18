@@ -223,7 +223,7 @@ Deep Research 질의 -> Obsidian 메모 작성 -> 인덱스 재빌드 -> 다음 
 
 | 구분 | 항목 |
 |------|------|
-| **필수** | Python 3.12 (macOS conda env `py312` 단일 표준; 레거시 py314+py312 듀얼도 동작), Zotero (API Key + 컬렉션 + PDF) |
+| **필수** | Python 3.12 (macOS conda env `py312` 단일 표준 — py314 미지원, 진입점이 `_env_guard.force_py312()` 로 py312 자동 재실행), Zotero (API Key + 컬렉션 + PDF) |
 | **API** | Anthropic (Claude Haiku/Sonnet/Opus), Google (Gemini + `gemini-embedding-001` 검색 임베딩), Zotero Web API, Resend (배포 시 Audio Overview 이메일). OpenAI 는 선택 (답변 BYOK·insights fallback) |
 | **Python** | `pip install -r requirements.txt` — anthropic, openai, google-genai, pymupdf, Pillow, requests, pyzotero, opendataloader-pdf, numpy, scikit-learn, joblib, umap-learn, hdbscan, sentence-transformers |
 | **선택** | Obsidian (메모/Graph View), PaperBanana (타임라인 이미지), Zotero Desktop (PDF 원클릭) |
