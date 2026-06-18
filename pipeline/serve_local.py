@@ -223,8 +223,64 @@ def parse_multipart(content_type, body):
     return fields, files
 
 
+def resolve_local_emails():
+    """로컬 Audio Overview 수신자 목록. env(PAPER_CURATION_LOCAL_EMAILS) →
+    config.json(local_emails)."""
+    raw = os.environ.get("PAPER_CURATION_LOCAL_EMAILS", "")
+    if not raw and load_config is not None:
+        try:
+            raw = ",".join((load_config() or {}).get("local_emails", []) or [])
+        except Exception:
+            raw = ""
+    return [e.strip() for e in raw.split(",") if e.strip()]
+
+
+def _inject_local_keys(data):
+    """배포 시 strip 된 빈 키 슬롯(_GEMINI_KEY/_LOCAL_EMAILS)을 env→config 값으로
+    즉석 주입한다(로컬 서빙 전용, bytes in/out). 리뷰 페이지가 deploy strip 된 채
+    남아 있어도 로컬 Audio Overview 가 동작하게 한다. 배포본(Cloudflare)에는
+    serve_local 이 없으므로 BYOK strip 상태가 그대로 유지된다."""
+    key = resolve_google_key()
+    if key:
+        data = data.replace(b'_GEMINI_KEY = ""',
+                            b'_GEMINI_KEY = "' + key.encode("utf-8") + b'"')
+    emails = resolve_local_emails()
+    if emails:
+        arr = b"[" + b", ".join(json.dumps(e).encode("utf-8") for e in emails) + b"]"
+        data = data.replace(b'window._LOCAL_EMAILS = []',
+                            b'window._LOCAL_EMAILS = ' + arr)
+    return data
+
+
 class LocalHandler(SimpleHTTPRequestHandler):
     """docs/ 정적 서빙 + /api/* POST 핸들러."""
+
+    def do_GET(self):  # noqa: N802 (stdlib 규약)
+        # .html 은 env→config 키를 즉석 주입해 서빙한다 (Audio Overview _GEMINI_KEY,
+        # 로컬 이메일 _LOCAL_EMAILS). baked 상태(배포 strip 후 미복원 등)와 무관하게
+        # 로컬에서 동작하게 한다. 그 외 파일은 표준 정적 서빙.
+        fs_path = self.translate_path(self.path)
+        serve_path = None
+        if fs_path.endswith(".html") and os.path.isfile(fs_path):
+            serve_path = fs_path
+        elif self.path.split("?", 1)[0].endswith("/") and os.path.isdir(fs_path):
+            idx = os.path.join(fs_path, "index.html")
+            if os.path.isfile(idx):
+                serve_path = idx
+        if not serve_path:
+            return super().do_GET()
+        try:
+            with open(serve_path, "rb") as f:
+                data = _inject_local_keys(f.read())
+        except OSError:
+            self.send_error(404, "File not found")
+            return
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
 
     def _send_json(self, code, obj):
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
