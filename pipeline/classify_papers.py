@@ -226,6 +226,7 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
     skipped = 0
     outlier_count = 0
     assignments = []
+    processed_vecs = []  # (slug, vec_768) for papers (re)classified this run → viz coords
 
     for p in topic_papers:
         slug = p["slug"]
@@ -266,6 +267,7 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
                 "sub_category": sub,
                 "sub_categories": sub_map,
             }
+            processed_vecs.append((slug, vec))
 
         assignments.append({
             "slug": slug,
@@ -289,6 +291,26 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
     atomic_write_json(index_path, all_papers)
     log(f"[write] {index_path}")
 
+    # 시각화 좌표 갱신 — 번들에 umap_2d/3d 가 있으면 신규 논문 위치를
+    # _umap_coords.json 에 채운다(네트워크에 제대로 배치되도록). 기존 좌표는
+    # topic_modeling/복구가 fit_transform 으로 만든 canonical 값이므로 보존하고,
+    # _umap_coords 에 없는(=진짜 신규) slug 만 bundle.transform 으로 추가한다.
+    if processed_vecs:
+        cpath = Path(topic_dir) / "_umap_coords.json"
+        existing = {}
+        if cpath.exists():
+            try:
+                existing = json.loads(cpath.read_text(encoding="utf-8"))
+            except Exception:
+                existing = {}
+        missing = [(s, v) for s, v in processed_vecs if s not in existing]
+        viz = compute_viz_coords([v for _, v in missing], bundle) if missing else None
+        if viz:
+            for (s, _v), c in zip(missing, viz):
+                existing[s] = c
+            atomic_write_json(cpath, existing)
+            log(f"[write] {cpath}  (+{len(viz)} new viz coords)")
+
     cats_list = sorted({a["primary_category"] for a in assignments})
     cls_data = {
         "categories": [{"name": c} for c in cats_list],
@@ -297,6 +319,27 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
     cls_path = Path(topic_dir) / "_new_classification.json"
     atomic_write_json(cls_path, cls_data)
     log(f"[write] {cls_path}  ({len(cats_list)} categories)")
+
+
+def compute_viz_coords(vecs_768, bundle):
+    """번들의 umap_2d/umap_3d transformer 로 2D/3D 시각화 좌표 계산. 번들에 없으면 None.
+
+    generate_network 가 읽는 `_umap_coords.json` 의 {x,y,x3,y3,z3} 형식 리스트를 반환.
+    backfill/topic_modeling 이 transformer 를 번들에 저장해 둔 경우에만 동작하며,
+    신규 논문을 full topic_modeling 재실행 없이 같은 시각화 공간에 투영한다.
+    """
+    u2 = bundle.get("umap_2d")
+    u3 = bundle.get("umap_3d")
+    if u2 is None or u3 is None:
+        return None
+    arr = np.asarray(vecs_768, dtype=np.float32)
+    if arr.ndim == 1:
+        arr = arr.reshape(1, -1)
+    c2 = u2.transform(arr)
+    c3 = u3.transform(arr)
+    return [{"x": float(c2[i, 0]), "y": float(c2[i, 1]),
+             "x3": float(c3[i, 0]), "y3": float(c3[i, 1]), "z3": float(c3[i, 2])}
+            for i in range(len(arr))]
 
 
 def main():

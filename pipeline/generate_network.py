@@ -201,9 +201,12 @@ def generate_html(nodes, links, cat_colors, cat_shapes, sub_colors, years, topic
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{_escape_html(topic)} &mdash; Paper Network</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="../_assets/d3.v7.min.js"></script>
+<script>window.d3||document.write('<script src="https://d3js.org/d3.v7.min.js"><\\/script>')</script>
+<script src="../_assets/three.min.js"></script>
+<script>window.THREE||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"><\\/script>')</script>
+<script src="../_assets/OrbitControls.js"></script>
+<script>(window.THREE&&THREE.OrbitControls)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"><\\/script>')</script>
 <style>
 * {{ margin:0;padding:0;box-sizing:border-box; }}
 :root {{

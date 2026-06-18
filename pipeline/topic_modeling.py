@@ -398,11 +398,12 @@ def run_clustering(embeddings, slugs, originalities, min_cluster_size=2,
     )
     coords_3d = umap_3d.fit_transform(embeddings)
 
-    # Return clustering model + UMAP transformer too — classify_papers persists
+    # Return clustering model + UMAP transformers too — classify_papers persists
     # them via joblib so new papers can be projected to the same 5D space and
-    # routed via hdbscan.approximate_predict.
+    # routed via hdbscan.approximate_predict. umap_2d/umap_3d 도 함께 돌려보내
+    # 번들에 저장 → 신규 논문 시각화 좌표(_umap_coords.json)를 같은 fit 으로 투영.
     return (topics, probs, topic_keywords, centroids, coords_2d, coords_3d,
-            hdbscan_model, umap_cluster)
+            hdbscan_model, umap_cluster, umap_2d, umap_3d)
 
 
 # ═══════════════════════════════════════════
@@ -959,7 +960,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
     log("STEP 3: HDBSCAN FINE-GRAINED CLUSTERING")
     log("=" * 50)
     (topics, probs, topic_keywords, centroids, coords_2d, coords_3d,
-     hdbscan_model, umap_cluster) = run_clustering(
+     hdbscan_model, umap_cluster, umap_2d, umap_3d) = run_clustering(
         embeddings, slugs, originalities
     )
 
@@ -1077,6 +1078,10 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
             # 분류기(classify_papers)가 동일 임베딩 모드인지 검증하는 가드 키.
             # 번들의 manifold 가 어느 임베딩으로 학습됐는지 박아 둔다.
             "embed_model": specter2_embed.EMBED_TAG,
+            # 시각화 transformer — classify_papers.compute_viz_coords 가 신규 논문을
+            # 같은 2D/3D 공간에 투영해 _umap_coords.json 에 좌표를 채우는 데 사용.
+            "umap_2d": umap_2d,
+            "umap_3d": umap_3d,
             "trained_at": datetime.now().isoformat(),
             "n_papers": len(topic_papers),
             "n_subclusters": len(centroids),
