@@ -11,13 +11,12 @@ Paper Curation 파이프라인의 설치 및 설정 가이드입니다.
 - API 키 — `ANTHROPIC_API_KEY` (리뷰·인사이트 — **필수**), `GOOGLE_API_KEY` (검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS — **필수**), `RESEND_API_KEY` (배포 시 Audio Overview 이메일 — 배포 필수), `OPENAI_API_KEY` (답변 BYOK·insights fallback — 선택)
 - Zotero 컬렉션 이름 확인 (리뷰할 논문들이 모인 컬렉션)
 - Zotero PDF 저장 경로 확인
-- **conda env 하나 필요 (표준: 단일 `py312`)** — Python 3.12 단일 env 면 충분합니다. `requirements.txt` 가 umap-learn / hdbscan / sentence-transformers 를 포함하므로 오케스트레이터가 토픽 모델링/분류를 별도 서브프로세스 없이 in-process 로 실행합니다 (Python 3.12 는 numba 의 `CALL_KW` 비호환 문제가 없음). 생성 명령:
+- **conda env 하나 (Python 3.12, `py312`)** — `requirements.txt` 가 umap-learn / hdbscan / sentence-transformers 를 포함하므로 오케스트레이터가 토픽 모델링/분류를 별도 서브프로세스 없이 in-process 로 실행합니다. 생성 명령:
   ```bash
   conda create -n py312 -c conda-forge python=3.12 pip -y
   conda activate py312
   pip install -r requirements.txt
   ```
-  py314 등 다른 인터프리터로 실행해도 모든 진입점이 `_env_guard.force_py312()` 로 py312 에 자동 재실행됩니다 — paper-curation 은 py312 단독만 지원합니다. 자세한 내용은 아래 "⚠️ py314 미지원 (py312 전용)" 참고.
 - **Java Runtime** — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
 
 ## Claude Code에서 설치 (권장)
@@ -242,15 +241,9 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source
 
 | 증상 / 에러 메시지 | 원인 | 해결 |
 |---|---|---|
-| `op_CALL_KW: pop from empty list` (numba 트레이스백) | 분류가 Python 3.14 인터프리터에서 실행됨 | 표준 단일 `py312` env 로 실행 (진입점이 `_env_guard.force_py312()` 로 py312 자동 재실행). py312 위치가 형제 conda env 가 아니면 `PAPER_CURATION_PY312` 로 경로 지정 |
+| `op_CALL_KW: pop from empty list` (numba 트레이스백) | `py312` env 밖에서 분류가 실행됨 | `conda activate py312` 후 재실행 |
 | `ModuleNotFoundError: umap` / `hdbscan` / `sentence_transformers` | 의존성 누락 | env 활성화 후 `pip install -r requirements.txt` (umap-learn·hdbscan·sentence-transformers 포함) |
 | Figure 품질이 낮음 / 표·구조가 깨짐 | Java 미설치로 PyMuPDF fallback | `brew install --cask temurin` (macOS) 후 재실행 |
 | SPECTER2 / arXiv 다운로드가 멈춤 (한국 망) | huggingface LFS·arXiv 차단 | [operations.md "Korean network workarounds"](operations.md#korean-network-workarounds) 의 S3 미러 명령 사용 |
 | `[COLLECTION_ERROR]` | Zotero 컬렉션 이름 오타 | 출력의 사용 가능한 컬렉션 목록에서 올바른 이름 선택 후 재실행 |
 | 검색 인덱스가 빈 임베딩으로 빌드됨 | `GOOGLE_API_KEY` 미설정 | `export GOOGLE_API_KEY=...` 후 재실행 — 검색 임베딩은 Google `gemini-embedding-001` 사용 (OpenAI 키는 더 이상 필수 아님) |
-
-## ⚠️ py314 미지원 (py312 전용)
-
-paper-curation 은 **py312 단독** 환경만 지원합니다. Python 3.14 는 numba 가 3.14 의 `CALL_KW` opcode 를 처리하지 못해 클러스터링(`topic_modeling.py` / `classify_papers.py`)이 죽습니다. 과거의 "py314 메인 + py312 보조 듀얼" 구성은 **폐기**되었습니다.
-
-모든 실행 진입점(`__main__`)이 `_env_guard.force_py312()` 를 호출하므로, py312 가 아닌 인터프리터(예: py314)로 실행해도 **자동으로 py312 로 재실행**됩니다. py312 를 못 찾으면 명확히 실패하며 절대 py314 로 진행하지 않습니다. py312 위치가 표준(형제 conda env)이 아니면 `PAPER_CURATION_PY312` 환경변수로 절대 경로를 지정하세요.

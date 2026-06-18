@@ -102,15 +102,6 @@ pip install -r requirements.txt
 brew install --cask temurin   # Java for opendataloader-pdf
 ```
 
-**py312-only** — Python 3.14 is unsupported (numba can't handle its
-`CALL_KW` opcode). Every entry point (`__main__`) calls
-`_env_guard.force_py312()`, so launching under another interpreter auto
-re-execs into py312 rather than crashing. If a topic-modeling step still
-needs to route to the py312 interpreter (e.g. a dependency missing in the
-current env), `run_update_force._resolve_topic_modeling_python()` finds it:
-`PAPER_CURATION_PY312` env var → sibling `<base>/envs/py312` →
-`which python3.12`. py312 is never bypassed for py314.
-
 ## Korean network workarounds
 
 - **HuggingFace LFS blocked**: download SPECTER2 via AWS S3 mirror to

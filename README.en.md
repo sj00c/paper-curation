@@ -104,7 +104,7 @@ Checklist — get these ready and the first run won't stall:
 |------|---------|
 | **Zotero** | [API Key](https://www.zotero.org/settings/keys) + a collection with paper PDFs |
 | **API keys** | `ANTHROPIC_API_KEY` (reviews/insights — **required**), `GOOGLE_API_KEY` (search embeddings `gemini-embedding-001` / figure validation / TTS — **required**), `RESEND_API_KEY` (Audio Overview email when deployed — required for deploy), `OPENAI_API_KEY` (reader BYOK answers / insights fallback — optional) |
-| **conda env** | `py312` single env — the only supported env. Every entry point auto re-execs to py312 (Python 3.14 is unsupported — numba can't handle its `CALL_KW` opcode) |
+| **conda env** | `py312` (Python 3.12) — created by the commands below |
 | **Java Runtime** | For `opendataloader-pdf`'s PDF extraction. macOS: `brew install --cask temurin`. Without it the pipeline falls back to PyMuPDF (lower table/structure quality) |
 
 **Create the conda env** — identical to Quickstart steps 2–3:
@@ -115,7 +115,7 @@ conda activate py312
 pip install -r requirements.txt
 ```
 
-Because `requirements.txt` includes umap-learn / hdbscan / sentence-transformers, the orchestrator runs topic modeling/classification **in-process, with no subprocess**. Python 3.12 has no numba `CALL_KW` incompatibility, so a single env is enough — and every `__main__` entry point calls `_env_guard.force_py312()`, so launching under another interpreter (e.g. py314) auto re-execs into py312 rather than crashing.
+Because `requirements.txt` includes umap-learn / hdbscan / sentence-transformers, the orchestrator runs topic modeling/classification **in-process, with no subprocess** — a single `py312` env is all you need.
 
 ### Verify your install
 
@@ -135,7 +135,7 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source
 
 | Symptom / error | Cause | Fix |
 |---|---|---|
-| `op_CALL_KW: pop from empty list` (numba traceback) | Classification ran under a Python 3.14 interpreter | Run in the standard single `py312` env. Entry points auto re-exec to py312 via `_env_guard.force_py312()`; if `py312` isn't a sibling conda env, point `PAPER_CURATION_PY312` at it |
+| `op_CALL_KW: pop from empty list` (numba traceback) | Classification ran outside the `py312` env | `conda activate py312` and re-run |
 | `ModuleNotFoundError: umap` / `hdbscan` / `sentence_transformers` | Missing dependency | Activate the env and run `pip install -r requirements.txt` (it includes umap-learn / hdbscan / sentence-transformers) |
 | Figures look low-quality / tables broken | Java missing → PyMuPDF fallback | `brew install --cask temurin` (macOS), then re-run |
 | SPECTER2 / arXiv download hangs (Korean network) | huggingface LFS / arXiv blocked | Use the S3 mirror command in "Korean-network workarounds" below |
@@ -336,8 +336,7 @@ Safety nets added through recent refactors:
 | `run_full.py` orchestrator | 3-axis (`--mode/--source/--images`) single entrypoint. Auto-chains search·register·sync·review·post-processing·deploy. Prints a dry-run plan. |
 | `find_pdf()` ID-first | Zotero attachment → DOI → arXiv → strict fuzzy. Eliminates past fuzzy-mismatch incidents. |
 | `--strict-pdf` | Blocks fuzzy matching entirely. Recommended for fresh reviews and recovery. |
-| `classify_papers.py` (Phase 3) | SPECTER2 embedding → UMAP transform 5D → `hdbscan.approximate_predict` → outlier (-1) forced to nearest 768D centroid → `all_categories` = top-N parents. Zero LLM calls. Runs under `py312` (`force_py312()`). |
-| `_env_guard.force_py312()` | Every `__main__` re-execs into py312 if launched elsewhere. Discovery order: `PAPER_CURATION_PY312` → sibling `<base>/envs/py312` → `which python3.12`. |
+| `classify_papers.py` (Phase 3) | SPECTER2 embedding → UMAP transform 5D → `hdbscan.approximate_predict` → outlier (-1) forced to nearest 768D centroid → `all_categories` = top-N parents. Zero LLM calls, runs in the `py312` env. |
 | `find_pdf()` cross-platform basename | Handles Zotero linked attachments stored as Windows absolute paths (`C:\Users\…\foo.pdf`). |
 | `make_slug()` 40-char collision fix | Compare length is `min(40, min(len(a), len(b)))` with a 10-char floor, preventing different papers from colliding on a short prefix. |
 | `_zotero_text_sanity()` Korean/ASCII dual pass | Handles Zotero items with Korean titles but English PDFs (Hangul-aware keyword extraction + ASCII-only fallback). |
@@ -401,7 +400,7 @@ Deep Research query -> Obsidian note -> re-index -> your notes cited in next que
 
 | Category | Items |
 |----------|-------|
-| **Required** | Python 3.12 (macOS conda env `py312` — the only supported env; entry points auto re-exec to py312, py314 unsupported), Zotero (API Key + collection + PDFs) |
+| **Required** | Python 3.12 (macOS conda env `py312`), Zotero (API Key + collection + PDFs) |
 | **APIs** | Anthropic (Claude Haiku/Sonnet/Opus), Google (Gemini + `gemini-embedding-001` search embeddings), Zotero Web API, Resend (Audio Overview email when deployed). OpenAI is optional (reader BYOK answers / insights fallback) |
 | **Python** | `pip install -r requirements.txt` — anthropic, openai, google-genai, pymupdf, Pillow, requests, pyzotero, opendataloader-pdf, numpy, scikit-learn, joblib, umap-learn, hdbscan, sentence-transformers |
 | **Optional** | Obsidian (notes/Graph View), PaperBanana (timeline images), Zotero Desktop (one-click PDF) |
