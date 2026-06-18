@@ -245,6 +245,7 @@ def parse_review(md_path: Path, slug: str) -> dict:
     authors: list[str] = []
     doi = ""
     arxiv = ""
+    journal = ""
     body = text
     if text.startswith("---"):
         end = text.find("\n---", 3)
@@ -256,6 +257,7 @@ def parse_review(md_path: Path, slug: str) -> dict:
                     authors = [str(a).strip() for a in fm["authors"] if str(a).strip()]
                 doi = str(fm.get("doi") or "").strip()
                 arxiv = str(fm.get("arxiv") or "").strip()
+                journal = str(fm.get("journal") or "").strip()
             except Exception:
                 pass
             body = text[end + 4:]
@@ -331,6 +333,7 @@ def parse_review(md_path: Path, slug: str) -> dict:
         "first_author": first_author,
         "doi": doi,
         "arxiv": arxiv,
+        "journal": journal,
         "figures": figures,
         "chunks": chunks,
     }
@@ -577,6 +580,7 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool):
             "first_author": parsed.get("first_author", ""),
             "doi": _doi,
             "arxiv": _arxiv,
+            "journal": (parsed.get("journal") or "").strip() or "preprint",
             "figures": parsed["figures"],
         }
         for ch in parsed["chunks"]:

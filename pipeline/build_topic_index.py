@@ -970,12 +970,45 @@ def _run_topic_index(topic=None):
         [/최근\\s*(\\d+)\\s*년|last\\s+(\\d+)\\s+years?|past\\s+(\\d+)\\s+years?/i, m => ({min: now - +(m[1]||m[2]||m[3])})],
         [/최근\\s*1\\s*년|last\\s+year/i, () => ({min: now - 1})],
         [/(\\d{4})\\s*[-~]\\s*(\\d{4})/, m => ({min: +m[1], max: +m[2]})],
+        [/\\b((?:19|20)\\d{2})\\b\\s*년?/, m => ({min: +m[1], max: +m[1]})],
       ];
       for (const [re, fn] of P) {
         const m = q.match(re);
         if (m) return fn(m);
       }
       return null;
+    }
+
+    // ── Journal-aware filtering ───────────────────────────────────────
+    // 저널 메타(papers[].journal)로 후보를 거른다. 질의에 코퍼스의 저널명이
+    // 들어 있으면 그 저널로, "preprint/프리프린트/arxiv"면 미게재로 필터.
+    function _journalSet(index) {
+      if (DEEP._journals) return DEEP._journals;
+      const s = Object.create(null);
+      const papers = index.papers || {};
+      for (const k in papers) {
+        const j = String(papers[k].journal || '').trim();
+        if (j && j.toLowerCase() !== 'preprint') s[j.toLowerCase()] = j;
+      }
+      DEEP._journals = s;
+      return s;
+    }
+    function parseJournalFilter(query, index) {
+      const q = String(query || '').toLowerCase();
+      if (/preprint|프리프린트|아카이브/.test(q) || /arxiv\\s*(?:만|only|논문)?/.test(q))
+        return { kind: 'preprint', label: 'preprint' };
+      const set = _journalSet(index);
+      let best = null;
+      for (const lc in set) {
+        if (lc.length >= 5 && q.indexOf(lc) >= 0 && (!best || lc.length > best.length)) best = lc;
+      }
+      return best ? { kind: 'journal', lc: best, label: set[best] } : null;
+    }
+    function journalMatches(paperJournal, jf) {
+      if (!jf) return true;
+      const pj = String(paperJournal || '').trim().toLowerCase();
+      if (jf.kind === 'preprint') return (pj === 'preprint' || pj === '');
+      return pj.indexOf(jf.lc) >= 0;
     }
 
     function detectLang(text) {
@@ -1064,7 +1097,7 @@ def _run_topic_index(topic=None):
     // 저자 논문들을 hybridRetrieve 와 동일한 {chunk,paper,rrf} 후보로 변환.
     // chronological 이면 연도 오름차순(초과 시 연도 분포 보존 stride 샘플),
     // 아니면 질의-best chunk 코사인 관련도 내림차순. 논문당 대표 chunk 최대 2개.
-    function authorCandidates(index, hit, queryVec, timeFilter, chronological) {
+    function authorCandidates(index, hit, queryVec, timeFilter, chronological, journalFilter) {
       const papers = index.papers, chunks = index.chunks;
       const cbs = _chunkIdxBySlug(index);
       const plist = [];
@@ -1076,6 +1109,7 @@ def _run_topic_index(topic=None):
           if (timeFilter.min && (!y || y < timeFilter.min)) continue;
           if (timeFilter.max && (!y || y > timeFilter.max)) continue;
         }
+        if (!journalMatches(p.journal, journalFilter)) continue;
         const idxs = cbs[slug] || [];
         let best = -1;
         for (const ci of idxs) { const sc = cosineSim(queryVec, getChunkVec(index, ci)); if (sc > best) best = sc; }
@@ -1173,7 +1207,7 @@ def _run_topic_index(topic=None):
     // dense + BM25 두 랭킹을 RRF(score = Σ 1/(60+rank)) 로 융합해 top-N 후보를
     // 만든다. 시간 필터는 두 랭킹의 공통 후보 집합에 먼저 적용해 의미를
     // 일관되게 유지한다. paper 당 최대 3 chunk 로 다양성도 보존 (기존 의미).
-    function hybridRetrieve(index, queryVec, query, timeFilter, topN) {
+    function hybridRetrieve(index, queryVec, query, timeFilter, journalFilter, topN) {
       const chunks = index.chunks, papers = index.papers;
       const bm25 = buildBM25(index);
       const elig = [];
@@ -1186,6 +1220,7 @@ def _run_topic_index(topic=None):
           if (timeFilter.min && (!y || y < timeFilter.min)) continue;
           if (timeFilter.max && (!y || y > timeFilter.max)) continue;
         }
+        if (!journalMatches(paper.journal, journalFilter)) continue;
         elig.push(i);
       }
       if (!elig.length) return [];
@@ -1916,6 +1951,7 @@ def _run_topic_index(topic=None):
         }
         deepSetStatus('\U0001F4DA 관련 논문 검색 중... (BM25 + dense)');
         const timeFilter = parseTimeFilter(query);
+        const journalFilter = parseJournalFilter(query, index);
         const chronological = isChronological(query);
         // 저자 인지 검색: 질의가 코퍼스 저자를 가리키면 메타로 직접 후보 구성
         // (저자명은 임베딩/BM25에 없어 일반 검색으로는 매칭 불가).
@@ -1923,7 +1959,7 @@ def _run_topic_index(topic=None):
         let candidates, selected;
         if (authorHit) {
           deepSetStatus('\U0001F464 저자 "' + authorHit.label + '" 논문 ' + authorHit.slugs.length + '편' + (chronological ? ' · 시간순' : '') + ' 정리 중...');
-          candidates = authorCandidates(index, authorHit, queryVec, timeFilter, chronological);
+          candidates = authorCandidates(index, authorHit, queryVec, timeFilter, chronological, journalFilter);
           if (candidates.length === 0) {
             deepSetStatus('"' + authorHit.label + '" 저자의 논문을 (기간 조건에서) 찾지 못했어요.', true);
             return;
@@ -1936,7 +1972,7 @@ def _run_topic_index(topic=None):
           return;
         } else {
           // Hybrid: BM25 + dense → RRF top-20 후보 → LLM 재정렬 top-8
-          candidates = hybridRetrieve(index, queryVec, query, timeFilter, 20);
+          candidates = hybridRetrieve(index, queryVec, query, timeFilter, journalFilter, 20);
           if (candidates.length === 0) {
             deepSetStatus('관련 논문을 찾지 못했어요. 질의를 다시 입력해보세요.', true);
             return;
