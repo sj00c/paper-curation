@@ -2765,6 +2765,20 @@ def _run_topic_index(topic=None):
       return markup.replace(srcRe, (full, src) => full.replace(src, seen.get(src) || src));
     }
 
+    // Wrap each <h2> section of the exported report in a collapsible <details>
+    // card so long Deeper-Research reports can be folded section-by-section.
+    function sectionizeHtml(markup) {
+      const parts = String(markup).split(/(<h2[^>]*>[\\s\\S]*?<\\/h2>)/);
+      let out = (parts[0] || '').trim();
+      if (out) out = '<div class="intro">' + out + '</div>';
+      for (let i = 1; i < parts.length; i += 2) {
+        const title = (parts[i] || '').replace(/<\\/?h2[^>]*>/g, '');
+        const body = parts[i + 1] || '';
+        out += '<details class="sec" open><summary>' + title + '</summary><div class="sec-body">' + body + '</div></details>';
+      }
+      return out;
+    }
+
     async function buildFullHtml() {
       const q = document.getElementById('search-input').value;
       let answerMarkup = mdToMarkup(DEEP.currentAnswer);
@@ -2777,7 +2791,7 @@ def _run_topic_index(topic=None):
       const cited = collectCitedNums(DEEP.currentAnswer);
       let refsMarkup = '';
       if (cited.size > 0) {
-        refsMarkup = '<h3>References</h3><ol>';
+        refsMarkup = '<h3>참고문헌</h3><ol>';
         for (const n of [...cited].sort((a, b) => a - b)) {
           const ref = DEEP.currentRefs[n - 1];
           if (!ref) continue;
@@ -2807,34 +2821,51 @@ def _run_topic_index(topic=None):
       // Inline every figure as a data: URI so the file is fully
       // self-contained.
       answerMarkup = await inlineImages(answerMarkup);
+      // Fold each section into a collapsible card for long reports.
+      answerMarkup = sectionizeHtml(answerMarkup);
 
-      return '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Deep Research</title><style>' +
-        'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:760px;margin:2rem auto;padding:0 1.5rem;color:#222;line-height:1.75;}' +
-        'h1{font-size:1.35rem;margin-bottom:0.3rem;}' +
-        '.meta{color:#888;font-size:0.85rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid #eee;}' +
-        '.answer{font-size:0.96rem;}' +
-        '.answer p{margin:0.9rem 0;}' +
-        '.answer h1,.answer h2,.answer h3{color:#333;margin:1.2rem 0 0.5rem;}' +
-        '.answer sup{line-height:0;font-size:0.7em;}' +
-        '.answer sup a.cite{color:#2563EB;text-decoration:none;font-weight:600;padding:0 0.15em;border-radius:2px;}' +
-        '.answer sup a.cite:hover{background:#EBF2FF;}' +
-        '.answer sup.cite-local{color:#999;}' +
-        '.answer figure{margin:1rem 0;max-width:100%;}' +
-        '.answer img{width:100%;height:auto;display:block;margin:1rem 0;padding:0.5rem;background:#fafafa;border:1px solid #eee;border-radius:6px;box-sizing:border-box;}' +
-        '.answer figure img{margin:0;}' +
-        '.answer p img{margin:0.5rem 0;}' +
-        '.answer figure figcaption{font-size:0.78rem;color:#666;text-align:center;margin-top:0.4rem;font-style:italic;}' +
-        'h3{color:#333;margin:2rem 0 0.6rem;border-top:1px solid #eee;padding-top:1rem;}' +
-        'ol{font-size:0.85rem;color:#555;margin-left:1rem;}' +
-        'ol li{margin:0.3rem 0;}' +
-        'ol a{color:#2563EB;text-decoration:none;}' +
-        '@media print{body{max-width:none;}}' +
+      return '<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deeper Research</title><style>' +
+        '*{box-sizing:border-box;}' +
+        'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;background:#eef1f6;color:#1f2937;line-height:1.78;margin:0;padding:2.2rem 1rem;}' +
+        '.wrap{max-width:840px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(15,23,42,0.08);overflow:hidden;}' +
+        '.hd{background:linear-gradient(135deg,#2563EB,#1e3a8a);color:#fff;padding:1.7rem 2rem;}' +
+        '.hd h1{margin:0 0 0.4rem;font-size:1.4rem;font-weight:700;}' +
+        '.hd .meta{font-size:0.82rem;opacity:0.92;line-height:1.6;}' +
+        '.body{padding:1.4rem 1.9rem 2rem;}' +
+        '.intro{font-size:0.97rem;color:#374151;margin-bottom:0.6rem;}' +
+        '.intro p{margin:0.8rem 0;}' +
+        'details.sec{margin:0.85rem 0;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff;}' +
+        'details.sec[open]{box-shadow:0 2px 12px rgba(15,23,42,0.05);}' +
+        'details.sec>summary{cursor:pointer;list-style:none;padding:0.9rem 1.2rem;font-weight:700;font-size:1.03rem;color:#1e3a8a;background:#eff3ff;display:flex;align-items:center;gap:0.55rem;user-select:none;}' +
+        'details.sec>summary::-webkit-details-marker{display:none;}' +
+        'details.sec>summary::before{content:"▸";color:#6366f1;font-size:0.85em;transition:transform 0.15s;}' +
+        'details.sec[open]>summary::before{transform:rotate(90deg);}' +
+        'details.sec>summary:hover{background:#e0e7ff;}' +
+        '.sec-body{padding:0.5rem 1.4rem 1.2rem;font-size:0.96rem;}' +
+        '.sec-body p{margin:0.85rem 0;}' +
+        '.sec-body h3{color:#374151;margin:1.1rem 0 0.4rem;font-size:1rem;}' +
+        'sup{line-height:0;font-size:0.7em;}' +
+        'sup a.cite{color:#2563EB;text-decoration:none;font-weight:600;padding:0 0.15em;border-radius:2px;}' +
+        'sup a.cite:hover{background:#EBF2FF;}' +
+        'sup.cite-local{color:#9ca3af;}' +
+        'figure{margin:1rem 0;max-width:100%;}' +
+        'img{max-width:100%;height:auto;display:block;margin:0.8rem 0;padding:0.5rem;background:#f8fafc;border:1px solid #e5e7eb;border-radius:8px;}' +
+        'figure img{margin:0;padding:0.4rem;}' +
+        'figure figcaption{font-size:0.78rem;color:#6b7280;text-align:center;margin-top:0.4rem;font-style:italic;}' +
+        '.refs{margin:0 1.9rem 2rem;padding:1.2rem 1.5rem;background:#f8fafc;border:1px solid #eef0f3;border-radius:12px;}' +
+        '.refs h3{margin:0 0 0.7rem;color:#1e3a8a;font-size:1rem;}' +
+        '.refs ol{font-size:0.85rem;color:#4b5563;margin:0 0 0 1.1rem;padding:0;}' +
+        '.refs li{margin:0.35rem 0;line-height:1.6;}' +
+        '.refs a{color:#2563EB;text-decoration:none;}' +
+        '.refs a:hover{text-decoration:underline;}' +
+        '@media print{body{background:#fff;padding:0;}.wrap{box-shadow:none;}details.sec{break-inside:avoid;}}' +
+        '@media(max-width:600px){.hd,.body{padding-left:1.1rem;padding-right:1.1rem;}.refs{margin-left:1.1rem;margin-right:1.1rem;}}' +
         '</style></head><body>' +
-        '<h1>Deep Research</h1>' +
-        '<div class="meta"><strong>Query:</strong> ' + escapeAttr(q) + '<br><strong>Generated:</strong> ' + new Date().toLocaleString() + '</div>' +
-        '<div class="answer">' + answerMarkup + '</div>' +
-        refsMarkup +
-        '</body></html>';
+        '<div class="wrap">' +
+        '<div class="hd"><h1>\U0001F578️ Deeper Research</h1><div class="meta"><strong>질문:</strong> ' + escapeAttr(q) + '<br><strong>생성:</strong> ' + new Date().toLocaleString() + '</div></div>' +
+        '<div class="body">' + answerMarkup + '</div>' +
+        (refsMarkup ? ('<div class="refs">' + refsMarkup + '</div>') : '') +
+        '</div></body></html>';
     }
 
     async function openAnswerInNewTab() {
