@@ -574,6 +574,9 @@ def _run_topic_index(topic=None):
     .paper-fig img, .category-timeline img, .timeline-section img {{ cursor: zoom-in; }}
     .insights-section {{ background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }}
     .insights-section h2 {{ color: {accent_dark}; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }}
+    .insights-header {{ cursor: pointer; user-select: none; margin-bottom: 0 !important; }}
+    .insights-header.open {{ margin-bottom: 1rem !important; }}
+    .insights-body.collapsed {{ display: none; }}
     .insights-section .insight-count {{ font-size: 0.8rem; color: #888; font-weight: 400; }}
     .insight-card {{ border-left: 4px solid #999; border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; margin-bottom: 0.8rem; background: #fafafa; }}
     .insight-card.convergence {{ border-left-color: #7C3AED; background: #FAF5FF; }}
@@ -676,6 +679,15 @@ def _run_topic_index(topic=None):
       body.classList.toggle('collapsed');
       toggle.textContent = body.classList.contains('collapsed') ? '\\u25B6' : '\\u25BC';
       if (!body.classList.contains('collapsed')) setTimeout(lazyLoad, 100);
+    }
+    function toggleInsights() {
+      const body = document.getElementById('insights-body');
+      if (!body) return;
+      const toggle = document.getElementById('toggle-insights-body');
+      const header = document.querySelector('.insights-header');
+      const collapsed = body.classList.toggle('collapsed');
+      if (toggle) toggle.textContent = collapsed ? '\\u25B6' : '\\u25BC';
+      if (header) header.classList.toggle('open', !collapsed);
     }
     function sortCards(key, order) {
       document.querySelectorAll('.topic-body').forEach(body => {
@@ -3068,10 +3080,15 @@ def _run_topic_index(topic=None):
                 f'    </div>'
             )
 
+        # Collapsed by default — only the header shows; click to expand.
         return (
             '<div class="insights-section">\n'
-            f'  <h2>Research Insights <span class="insight-count">{len(cross)} findings</span></h2>\n'
+            '  <h2 class="insights-header" onclick="toggleInsights()">'
+            '<span class="topic-toggle" id="toggle-insights-body">&#x25B6;</span>'
+            f' Research Insights <span class="insight-count">{len(cross)} findings</span></h2>\n'
+            '  <div class="insights-body collapsed" id="insights-body">\n'
             + "\n".join(cards) + "\n"
+            + '  </div>\n'
             + '</div>\n\n'
         )
 
