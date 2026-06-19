@@ -614,6 +614,8 @@ def _run_topic_index(topic=None):
     .deep-btn {{ background: white; border: 1px solid #ddd; border-radius: 6px; padding: 0.32rem 0.7rem; font-size: 0.76rem; cursor: pointer; color: #555; transition: all 0.15s; font-family: inherit; }}
     .deep-btn:hover:not(:disabled) {{ background: {accent}; color: white; border-color: {accent}; }}
     .deep-btn:disabled {{ opacity: 0.4; cursor: not-allowed; }}
+    .deep-stop-btn {{ background: #fef3f2; border-color: #f0c2bd; color: #b33a3a; font-weight: 700; }}
+    .deep-stop-btn:hover:not(:disabled) {{ background: #b33a3a; color: white; border-color: #b33a3a; }}
     .deep-status {{ padding: 0.55rem 1.1rem; font-size: 0.82rem; color: #555; background: #f7f9fb; border-bottom: 1px solid #eee; display: none; }}
     .deep-status.active {{ display: block; }}
     .deep-status.error {{ color: #b33a3a; background: #fef3f2; border-bottom-color: #fadcd9; }}
@@ -819,7 +821,7 @@ def _run_topic_index(topic=None):
     // ============================================================================
     // Deep Research (client-side RAG + Anthropic streaming with Extended Thinking)
     // ============================================================================
-    const DEEP = { index: null, loading: false, currentAnswer: '', currentRefs: [], currentQuery: '' };
+    const DEEP = { index: null, loading: false, currentAnswer: '', currentRefs: [], currentQuery: '', abort: null, running: false, userAborted: false };
 
     // Safe DOM helpers (no .innerHTML usage)
     function clearEl(el) { while (el && el.firstChild) el.removeChild(el.firstChild); }
@@ -870,6 +872,64 @@ def _run_topic_index(topic=None):
       // cached (same as the per-paper button).
       const ab = document.getElementById('deep-audio');
       if (ab) ab.disabled = !enabled;
+    }
+
+    // ── Kill switch ──────────────────────────────────────────────────
+    // Every Deep/Deeper run owns one AbortController. Its signal is fed to
+    // every LLM/embed fetch (deepSignal), so clicking 중단 aborts in-flight
+    // streams immediately; orchestration boundaries also poll the flag via
+    // deepThrowIfAborted so the multi-agent loop stops between steps.
+    function deepSignal() { return DEEP.abort ? DEEP.abort.signal : undefined; }
+    // fetch() wrapper that auto-attaches the current run's abort signal, so a
+    // single 중단 click cancels every in-flight LLM/embed request. Outside a
+    // run (DEEP.abort null) it behaves exactly like plain fetch.
+    function deepFetch(url, opts) {
+      opts = opts || {};
+      if (opts.signal === undefined) { const sig = deepSignal(); if (sig) opts.signal = sig; }
+      return fetch(url, opts);
+    }
+    function deepThrowIfAborted() {
+      if (DEEP.userAborted || (DEEP.abort && DEEP.abort.signal && DEEP.abort.signal.aborted)) {
+        const e = new Error('aborted-by-user');
+        e.name = 'AbortError';
+        throw e;
+      }
+    }
+    function deepIsAbort(e) {
+      return DEEP.userAborted || (e && (e.name === 'AbortError'
+        || (e.message && e.message.indexOf('aborted-by-user') !== -1)));
+    }
+    function deepToggleStop(on) {
+      const s = document.getElementById('deep-stop');
+      if (s) s.style.display = on ? '' : 'none';
+      // Re-run shares the slot — never offer it mid-flight.
+      const rr = document.getElementById('deep-rerun');
+      if (rr && on) rr.disabled = true;
+    }
+    function deepBeginRun() {
+      DEEP.userAborted = false;
+      DEEP.abort = new AbortController();
+      DEEP.running = true;
+      deepToggleStop(true);
+    }
+    function deepEndRun() {
+      DEEP.running = false;
+      DEEP.abort = null;
+      deepToggleStop(false);
+    }
+    function deepRequestStop() {
+      if (!DEEP.running) return;
+      DEEP.userAborted = true;
+      if (DEEP.abort) { try { DEEP.abort.abort(); } catch (e) {} }
+      deepSetStatus('⏹️ 중단하는 중...');
+    }
+
+    // Show the Deep Research control bar (length/model/Deeper) the moment the
+    // user switches into Deep mode — so they can pick분량·모델 BEFORE running,
+    // instead of the panel only appearing once a query is already in flight.
+    function deepShowControls() {
+      const p = document.getElementById('deep-panel');
+      if (p) p.style.display = '';
     }
 
     async function deepLoadIndex() {
@@ -959,12 +1019,13 @@ def _run_topic_index(topic=None):
       // 접두사로 태깅 → runDeepResearch 가 친절한 한글 안내로 변환한다.
       let resp;
       try {
-        resp = await fetch('/api/embed', {
+        resp = await deepFetch('/api/embed', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ text: text }),
         });
       } catch (e) {
+        if (e && e.name === 'AbortError') throw e;  // user 중단 — bubble as-is
         throw new Error('embed-proxy-unreachable: ' + (e && e.message || e));
       }
       if (resp.status === 503 || resp.status === 404) {
@@ -1297,7 +1358,7 @@ def _run_topic_index(topic=None):
     // 인증) RRF 상위 topK 로 조용히 폴백한다 — 답변 경로는 그대로.
     async function rerankCall(backend, apiKey, model, sys, user) {
       if (backend === 'anthropic') {
-        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+        const resp = await deepFetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -1317,7 +1378,7 @@ def _run_topic_index(topic=None):
         return (data.content && data.content[0] && data.content[0].text) || '';
       }
       if (backend === 'openai') {
-        const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+        const resp = await deepFetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
           headers: { 'content-type': 'application/json', 'authorization': 'Bearer ' + apiKey },
           body: JSON.stringify({
@@ -1333,7 +1394,7 @@ def _run_topic_index(topic=None):
       if (backend === 'google') {
         const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
           + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
-        const resp = await fetch(url, {
+        const resp = await deepFetch(url, {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({
@@ -1599,7 +1660,7 @@ def _run_topic_index(topic=None):
       if (!/opus-4-8/.test(model)) {
         body.thinking = { type: 'enabled', budget_tokens: thinkingBudget };
       }
-      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      const resp = await deepFetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -1657,7 +1718,7 @@ def _run_topic_index(topic=None):
         body.reasoning_effort = 'high';
       }
       deepSetStatus('\u270D\uFE0F 답변 작성 중...');
-      const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+      const resp = await deepFetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -1707,7 +1768,7 @@ def _run_topic_index(topic=None):
       const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
         + encodeURIComponent(model) + ':streamGenerateContent?alt=sse&key=' + encodeURIComponent(apiKey);
       deepSetStatus('\u270D\uFE0F 답변 작성 중...');
-      const resp = await fetch(url, {
+      const resp = await deepFetch(url, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(body),
@@ -2044,7 +2105,7 @@ def _run_topic_index(topic=None):
     async function llmComplete(backend, apiKey, model, sys, user, maxTokens) {
       const mt = maxTokens || 2048;
       if (backend === 'anthropic') {
-        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+        const resp = await deepFetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: { 'content-type': 'application/json', 'x-api-key': apiKey,
             'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
@@ -2057,7 +2118,7 @@ def _run_topic_index(topic=None):
         return t;
       }
       if (backend === 'openai') {
-        const resp = await fetch('https://api.openai.com/v1/chat/completions', {
+        const resp = await deepFetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
           headers: { 'content-type': 'application/json', 'authorization': 'Bearer ' + apiKey },
           body: JSON.stringify({ model: model, messages: [{ role: 'system', content: sys }, { role: 'user', content: user }], max_completion_tokens: mt }),
@@ -2068,7 +2129,7 @@ def _run_topic_index(topic=None):
       }
       if (backend === 'google') {
         const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
-        const resp = await fetch(url, {
+        const resp = await deepFetch(url, {
           method: 'POST', headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents: [{ role: 'user', parts: [{ text: user }] }], generationConfig: { maxOutputTokens: mt } }),
         });
@@ -2329,16 +2390,19 @@ def _run_topic_index(topic=None):
       // PLAN 1 — investigation plan (pre-search): what aspects to research.
       deepSetStatus('\U0001F52D 조사 계획 수립 중...');
       const aspects = await planInvestigation(query, lang, backend, apiKey);
+      deepThrowIfAborted();
       deepRenderAspects(aspects);
       // SEED retrieval per aspect (union) — broader than a single query.
       const seedMap = new Map();
       for (let ai = 0; ai < aspects.length; ai++) {
+        deepThrowIfAborted();
         deepMarkAspect(ai, '검색 중...', false);
         deepSetStatus('\U0001F50D 핵심 논문 검색 중 (' + (ai + 1) + '/' + aspects.length + ')...');
         let sc = [];
         try {
           sc = await retrieveSeeds(index, aspects[ai]);
         } catch (e) {
+          if (deepIsAbort(e)) throw e;  // user 중단 → stop the whole run
           if (e && e.message && e.message.indexOf('embed-proxy-unreachable') === 0) throw e;
           console.warn('[aspect] failed:', e && e.message || e);
           deepMarkAspect(ai, '실패', true);
@@ -2407,6 +2471,7 @@ def _run_topic_index(topic=None):
       // PLAN 2 — connection/report-structure plan (post-expansion, fine-grained).
       deepSetStatus('\U0001F9E9 리포트 구조 설계 중 (' + all.length + '편 연결)...');
       const sections = await planReportSections(query, all, aspects, lang, backend, apiKey);
+      deepThrowIfAborted();
       deepRenderSections(sections);
       // MAP — per-section agents write in parallel (each on its assigned refs).
       deepSetStatus('✍️ 단락별 작성 중 (' + sections.length + '개 에이전트 · ' + topLabel + ')...');
@@ -2415,6 +2480,7 @@ def _run_topic_index(topic=None):
         return writeSection(query, all, lang, backend, apiKey, topModel, sec)
           .then(function(txt) { deepMarkSection(i, txt ? '완료' : '내용 없음', true); return { title: sec.title, text: txt }; })
           .catch(function(e) {
+            if (deepIsAbort(e)) throw e;  // user 중단 → abort the whole run
             if (isAuthError(e)) throw e;  // bad key → fail fast to the outer retry
             console.warn('[section] failed:', e && e.message || e);
             deepMarkSection(i, '실패', true);
@@ -2430,6 +2496,7 @@ def _run_topic_index(topic=None):
       try {
         await assembleReport(query, drafts, lang, backend, apiKey, topModel);
       } catch (e) {
+        if (deepIsAbort(e)) throw e;  // user 중단 → bubble to outer handler
         if (isAuthError(e)) throw e;  // bad key → outer re-prompt/retry
         console.warn('[deeper] assembler failed — falling back to drafts:', e && e.message || e);
         DEEP.currentAnswer = '';
@@ -2490,8 +2557,10 @@ def _run_topic_index(topic=None):
       DEEP.currentAnswer = '';
       DEEP.currentRefs = [];
       deepUpdateButtons(false);
+      deepBeginRun();
       try {
         const index = await deepLoadIndex();
+        deepThrowIfAborted();
         const _deeperEl = document.getElementById('deep-deeper');
         if (_deeperEl && _deeperEl.checked) {
           const ok = await runDeeperResearch(index, query);
@@ -2583,6 +2652,7 @@ def _run_topic_index(topic=None):
             fullTexts[slug] = t.slice(0, 30000);
           } catch (e) { /* fetch error or missing file -- skip silently */ }
         }));
+        deepThrowIfAborted();
         const lang = detectLang(query);
         const tier = document.getElementById('deep-model').value || 'fast';
         const length = document.getElementById('deep-length').value || 'short';
@@ -2592,6 +2662,18 @@ def _run_topic_index(topic=None):
         deepSetStatus('\u2705 완료');
         setTimeout(() => deepSetStatus(''), 2500);
       } catch (e) {
+        // User pressed 중단 — not an error. Keep whatever streamed so far so
+        // a partial-but-useful answer stays usable (copy/download enabled).
+        if (deepIsAbort(e)) {
+          if (DEEP.currentAnswer && DEEP.currentAnswer.trim()) {
+            finalizeDeepAnswer();
+            deepSetStatus('⏹️ 중단됨 — 여기까지 생성된 내용입니다.');
+          } else {
+            deepSetStatus('⏹️ 중단되었습니다.');
+          }
+          DEEP._authRetry = 0;
+          return;
+        }
         console.error(e);
         // /api/embed 프록시 미가동(503/404/네트워크) — 키 문제가 아니므로
         // 친절한 한글 안내로 분기한다. (Cloudflare 미배포 / 로컬 직접 열람 등)
@@ -2618,6 +2700,8 @@ def _run_topic_index(topic=None):
           return;
         }
         deepSetStatus('오류: ' + e.message, true);
+      } finally {
+        deepEndRun();
       }
     }
 
@@ -2631,7 +2715,8 @@ def _run_topic_index(topic=None):
       if (db) db.classList.toggle('active', mode === 'deep');
       if (mode === 'deep') {
         if (input) input.placeholder = 'Deep Research: 자유롭게 질의하세요 (예: 2023년 이후 LLM agent 동향)';
-        if (hint) hint.textContent = 'Press Enter to run Deep Research (API keys built into this page at build time).';
+        if (hint) hint.textContent = '분량·모델을 고른 뒤 Enter — Deeper 체크 시 연결 그래프 기반 멀티에이전트 리포트.';
+        deepShowControls();
       } else {
         if (input) input.placeholder = 'Search papers by title, DOI, keyword...';
         if (hint) hint.textContent = 'Enter title, DOI, author name, or keyword to filter';
@@ -2951,7 +3036,9 @@ def _run_topic_index(topic=None):
         });
       }
       const close = document.getElementById('deep-close');
-      if (close) close.addEventListener('click', deepHidePanel);
+      if (close) close.addEventListener('click', function() { deepRequestStop(); deepHidePanel(); });
+      const stop = document.getElementById('deep-stop');
+      if (stop) stop.addEventListener('click', deepRequestStop);
       const copy = document.getElementById('deep-copy');
       if (copy) copy.addEventListener('click', copyAnswerMd);
       const dl = document.getElementById('deep-download');
@@ -3285,6 +3372,7 @@ def _run_topic_index(topic=None):
         '          <input type="checkbox" id="deep-deeper"> Deeper\n'
         '        </label>\n'
         '        <span class="deep-deeper-note" id="deep-deeper-note"></span>\n'
+        '        <button class="deep-btn deep-stop-btn" id="deep-stop" style="display:none" title="생성 중인 답변을 즉시 중단">&#x23F9;&#xFE0F; 중단</button>\n'
         '        <button class="deep-btn" id="deep-rerun" disabled title="현재 질의를 선택한 모델·분량으로 다시 실행">&#x21BB; 재시작</button>\n'
         '        <div class="deep-actions">\n'
         '          <button class="deep-btn" id="deep-copy" disabled title="Copy markdown">&#x1F4CB; Copy</button>\n'
