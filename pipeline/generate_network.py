@@ -145,6 +145,28 @@ def build_network_data(topic):
                 "color": RELATION_COLORS.get(rel, "#ccc"),
             })
 
+    # Per-node connection list for the info panel: grouped BY PAPER (one entry per
+    # neighbour) with every relation+reason, from this node's own perspective —
+    # mirrors the per-paper "같이 보면 좋은 논문" card. Edges above stay undirected
+    # for drawing; this keeps the correct directional reasons for the panel.
+    node_conns = {}
+    for slug in slug_set:
+        lst = []
+        for c in connections.get(slug, []):
+            t = c.get("slug", "")
+            if t not in slug_set:
+                continue
+            reasons = c.get("reasons") or [{"relation": c.get("relation", "alternative"),
+                                            "reason": c.get("reason", "")}]
+            lst.append({
+                "o": t,
+                "r": [[rr.get("relation", "alternative"), rr.get("reason", "")]
+                      for rr in reasons],
+            })
+        if lst:
+            lst.sort(key=lambda e: _REL_ORDER.get(e["r"][0][0], 9))
+            node_conns[slug] = lst
+
     cats = sorted(set(n["category"] for n in nodes))
     years = sorted(set(n["year"] for n in nodes if n["year"] and n["year"].isdigit() and 1900 <= int(n["year"]) <= 2100))
 
@@ -172,7 +194,7 @@ def build_network_data(topic):
             sub_colors[s] = _shade(base, factor)
 
     has3D = any(n.get("ux3") is not None for n in nodes)
-    return nodes, links, cat_colors, cat_shapes, sub_colors, years, has3D
+    return nodes, links, cat_colors, cat_shapes, sub_colors, years, has3D, node_conns
 
 
 def _escape_html(text):
@@ -180,9 +202,10 @@ def _escape_html(text):
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&#x27;")
 
 
-def generate_html(nodes, links, cat_colors, cat_shapes, sub_colors, years, topic, has3D=False):
+def generate_html(nodes, links, cat_colors, cat_shapes, sub_colors, years, topic, has3D=False, node_conns=None):
     nodes_json = json.dumps(nodes, ensure_ascii=False)
     links_json = json.dumps(links, ensure_ascii=False)
+    node_conns_json = json.dumps(node_conns or {}, ensure_ascii=False)
     cat_colors_json = json.dumps(cat_colors, ensure_ascii=False)
 
     year_min = years[0] if years else "2020"
@@ -315,10 +338,11 @@ svg {{ width:100vw;height:100vh; }}
   text-decoration:none !important;margin-bottom:0.4rem;
 }}
 .review-btn:hover {{ background:#5a75f5;text-decoration:none !important; }}
-.conn-item {{ font-size:0.78rem;padding:0.15rem 0;color:var(--text-dim); }}
+.conn-item {{ font-size:0.78rem;padding:0.35rem 0;color:var(--text-dim);border-top:1px solid rgba(255,255,255,0.06); }}
 .conn-rel {{ font-weight:600;margin-right:0.3rem; }}
-.conn-link {{ color:var(--text);cursor:pointer;text-decoration:none; }}
+.conn-link {{ color:var(--text);cursor:pointer;text-decoration:none;font-weight:600; }}
 .conn-link:hover {{ color:var(--text);text-decoration:underline; }}
+.conn-reason {{ font-size:0.72rem;color:var(--text-dim);margin:0.15rem 0 0;line-height:1.35; }}
 #stats {{
   position:fixed;top:1rem;right:1rem;
   background:var(--panel);border-radius:12px;padding:0.8rem 1rem;
@@ -442,6 +466,7 @@ svg {{ width:100vw;height:100vh; }}
 // Data
 const nodesRaw = {nodes_json};
 const linksRaw = {links_json};
+const NODECONNS = {node_conns_json};
 const catColors = {cat_colors_json};
 const catShapes = {cat_shapes_json};
 const catCounts = {cat_counts_json};
@@ -734,26 +759,25 @@ function updateLabels(){{
 }}
 
 function showInfo(d){{
-  const conns = linksRaw.filter(l=>{{
-    const s=l.source.id||l.source, t=l.target.id||l.target;
-    return s===d.id||t===d.id;
-  }});
+  const nc = (NODECONNS[d.id]||[]);
   const infoCats = d.all_categories ? d.all_categories.join(" &middot; ") : d.category;
   let html = '<button id="info-close" title="Close" onclick="closeInfo()">&times;</button>';
   html += "<h3>["+esc(d.num)+"] "+esc(d.title)+"</h3>";
-  html += '<div class="info-meta"><span style="color:'+d.color+'">\u25CF</span> '+esc(infoCats)+"<br>"+d.year+" &middot; score:"+d.score+" &middot; "+conns.length+" connections</div>";
+  html += '<div class="info-meta"><span style="color:'+d.color+'">\u25CF</span> '+esc(infoCats)+"<br>"+d.year+" &middot; score:"+d.score+" &middot; "+nc.length+" connections</div>";
   html += '<div class="info-essence">'+esc(d.essence)+"</div>";
   html += '<div class="info-actions">';
   html += '<a class="review-btn" href="../papers/'+d.id+'/index.html" target="_blank">\\u2192 Review</a> ';
   if(egoId===d.id) html += '<a onclick="clearEgo()">\\u26D4 Ego \\uD574\\uC81C</a>';
   else html += '<a onclick="setEgo(\\''+d.id+'\\')">\\uD83D\\uDD0D Ego Network</a>';
   html += "</div><hr style=\\"border:none;border-top:1px solid #333;margin:0.4rem 0\\">";
-  conns.slice(0,20).forEach(l=>{{
-    const s=l.source.id||l.source, t=l.target.id||l.target;
-    const oid = s===d.id?t:s;
-    const o = nodesRaw.find(n=>n.id===oid);
-    const name = o?"["+o.num+"] "+o.title:oid;
-    html += '<div class="conn-item"><span class="conn-rel" style="color:'+l.color+'">'+(relLabels[l.relation]||l.relation)+'</span><a class="conn-link" data-id="'+oid+'">'+esc(name)+'</a></div>';
+  nc.slice(0,30).forEach(item=>{{
+    const o = nodesRaw.find(n=>n.id===item.o);
+    const name = o?"["+o.num+"] "+o.title:item.o;
+    const reasons = item.r.map(function(rr){{
+      const rel=rr[0], reason=rr[1];
+      return '<div class="conn-reason"><span class="conn-rel" style="color:'+(relColors[rel]||'#ccc')+'">'+(relLabels[rel]||rel)+'</span> '+esc(reason)+'</div>';
+    }}).join('');
+    html += '<div class="conn-item"><a class="conn-link" data-id="'+item.o+'">'+esc(name)+'</a>'+reasons+'</div>';
   }});
   info.innerHTML = html;
   info.classList.add("open");
@@ -1294,10 +1318,10 @@ def _run_network(topic="ai4s"):
     topic_dir = str(get_topic_dir(topic))
 
     log(f"Building network for {topic}...")
-    nodes, links, cat_colors, cat_shapes, sub_colors, years, has3D = build_network_data(topic)
+    nodes, links, cat_colors, cat_shapes, sub_colors, years, has3D, node_conns = build_network_data(topic)
     log(f"  {len(nodes)} nodes, {len(links)} links, has3D={has3D}")
 
-    html = generate_html(nodes, links, cat_colors, cat_shapes, sub_colors, years, topic, has3D=has3D)
+    html = generate_html(nodes, links, cat_colors, cat_shapes, sub_colors, years, topic, has3D=has3D, node_conns=node_conns)
 
     out_path = os.path.join(topic_dir, "network.html")
     with open(out_path, "w", encoding="utf-8") as f:
