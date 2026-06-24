@@ -322,17 +322,47 @@ def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
                 with open(stub_file, "w", encoding="utf-8", newline="\n") as f:
                     f.write(content)
                 changed.append(topic)
-        if not changed:
+
+        # Prune orphaned stubs so the gh-pages stub set is reproducible from the
+        # deployable-topics list alone: remove any top-level dir that is one of
+        # OUR redirect stubs (window.location.replace -> cf_url) but is no longer
+        # a deployable topic (e.g. a topic moved back to local-only).
+        import shutil
+        pruned = []
+        topic_set = set(topics)
+        for name in sorted(os.listdir(worktree)):
+            d = os.path.join(worktree, name)
+            if name in topic_set or not os.path.isdir(d) or name == ".git":
+                continue
+            idx = os.path.join(d, "index.html")
+            if not os.path.exists(idx):
+                continue
+            try:
+                with open(idx, "r", encoding="utf-8") as f:
+                    body = f.read()
+            except Exception:
+                continue
+            if "window.location.replace(" in body and cf_url in body:
+                shutil.rmtree(d)
+                pruned.append(name)
+                print(f"  [gh-pages] pruned orphaned stub: {name}")
+
+        if not changed and not pruned:
             print("  [gh-pages] all stubs up to date — no push needed")
             return
         subprocess.run(["git", "add", "-A"], check=True, cwd=worktree)
+        summary = []
+        if changed:
+            summary.append("sync " + ", ".join(changed))
+        if pruned:
+            summary.append("prune " + ", ".join(pruned))
         msg = (
-            f"Sync redirect stubs: {', '.join(changed)}\n\n"
-            "Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
+            f"gh-pages redirect stubs: {'; '.join(summary)}\n\n"
+            "Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
         )
         subprocess.run(["git", "commit", "-m", msg], check=True, cwd=worktree)
         subprocess.run(["git", "push", "origin", "gh-pages"], check=True, cwd=worktree)
-        print(f"  [gh-pages] pushed stub updates for: {', '.join(changed)}")
+        print(f"  [gh-pages] pushed ({'; '.join(summary)})")
     finally:
         subprocess.run(
             ["git", "worktree", "remove", "--force", worktree],
