@@ -59,13 +59,19 @@ THEMES = {
 # Paper connections cache (loaded once per run)
 _connections_cache = {}
 
+# Per-paper connection lists are identical across topic files (the bidirectional
+# view is global; topic files differ only in WHICH papers are keys), so we load
+# every collection — ai4s/scisci plus the combined "ai4s+scisci" and the
+# standalone "humanoid"/"physical-ai" topics — to cover papers tagged only there.
+_CONN_TOPICS = list(THEMES) + ["ai4s+scisci", "humanoid", "physical-ai"]
+
 def _load_connections():
     """Load all _paper_connections.json files."""
     global _connections_cache
     if _connections_cache:
         return _connections_cache
     from config_loader import get_topic_dir
-    for topic in THEMES:
+    for topic in _CONN_TOPICS:
         conn_path = os.path.join(str(get_topic_dir(topic)), "_paper_connections.json")
         if os.path.exists(conn_path):
             with open(conn_path, "r", encoding="utf-8") as f:
@@ -115,10 +121,20 @@ a {{ color: {t['link_color']}; }}
 .conn-item.foundation .conn-type {{ color: #8B5CF6; }}
 .conn-item.counterpoint .conn-type {{ color: #F59E0B; }}
 .conn-item.application .conn-type {{ color: #EF4444; }}
-.conn-title {{ font-size: 0.9rem; font-weight: 600; }}
+.conn-title {{ font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }}
 .conn-title a {{ color: #1a1a2e; text-decoration: none; }}
 .conn-title a:hover {{ color: {t['accent']}; text-decoration: underline; }}
-.conn-reason {{ font-size: 0.85rem; color: #555; margin-top: 0.15rem; }}
+.conn-reason {{ font-size: 0.85rem; color: #555; margin-top: 0.3rem; }}
+.conn-reason-rel {{ font-weight: 700; color: #888; margin-right: 0.25rem; }}
+/* Each reason carries its own relation badge so multiple reasons read equally. */
+.conn-rel-badge {{ display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin-right: 0.4rem; padding: 0.05rem 0.4rem; border-radius: 4px; background: #f0f0f0; color: #666; vertical-align: middle; }}
+.conn-rel-badge.alternative {{ color: #3B82F6; background: #EAF1FE; }}
+.conn-rel-badge.extension {{ color: #10B981; background: #E7F7F1; }}
+.conn-rel-badge.foundation {{ color: #8B5CF6; background: #F1ECFD; }}
+.conn-rel-badge.counterpoint {{ color: #F59E0B; background: #FEF5E7; }}
+.conn-rel-badge.application {{ color: #EF4444; background: #FDECEC; }}
+.conn-ref {{ color: {t['accent']}; text-decoration: none; font-weight: 600; }}
+.conn-ref:hover {{ text-decoration: underline; }}
 .review-fig {{ text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }}
 .review-fig img {{ max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }}
 .lightbox {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }}
@@ -504,23 +520,14 @@ def convert_review(md_path, topic, slug_dir):
         else:
             body_parts.append(f'<div class="section-box"><h2>{esc(sec_title)}</h2>\n{sec_html}</div>')
 
-    # Related papers (connections)
+    # Related papers (connections). The per-topic _paper_connections.json is
+    # already bidirectional + per-target-deduped (see lib/connections.py): every
+    # A→B edge implies B→A and a paper connected for several reasons appears once
+    # with all reasons in its ``reasons`` array. So we render the paper's edge
+    # list directly — no incoming scan, no per-relation duplication.
     connections = _load_connections()
     slug_dir_name = os.path.basename(slug_dir)
-    outgoing = connections.get(slug_dir_name, [])
-    # Incoming: 이 논문을 참조하는 다른 논문들
-    incoming = []
-    for src_slug, src_conns in connections.items():
-        if src_slug == slug_dir_name:
-            continue
-        for c in src_conns:
-            if c.get("slug") == slug_dir_name:
-                incoming.append({
-                    "slug": src_slug,
-                    "relation": c.get("relation", "alternative"),
-                    "reason": c.get("reason", ""),
-                })
-    conns = outgoing + incoming
+    conns = list(connections.get(slug_dir_name, []))
     if conns:
         # Load paper titles and dates for link text and sorting
         index_path = os.path.join(PAPERS, "_papers_index.json")
@@ -540,22 +547,23 @@ def convert_review(md_path, topic, slug_dir):
             "application": "응용 사례",
         }
 
-        # Dedup within the same relation: a paper appearing twice as e.g.
-        # "alternative" for the same source is redundant. The same paper
-        # is still allowed to show up under *different* relation types
-        # (e.g. both "alternative" and "application") because those carry
-        # distinct meanings. We keep the first occurrence so upstream
-        # ordering (if any) is preserved; the explicit sort below then
-        # places every surviving entry in the canonical order.
-        _seen_pairs = set()
-        _deduped = []
+        # Defensive dedup by target slug: the data layer already collapses each
+        # paper to one entry, but a slug can arrive via two topic files. Keep the
+        # first entry and union its ``reasons`` so no reason is lost.
+        _by_slug = {}
         for c in conns:
-            key = (c.get("relation", ""), c.get("slug", ""))
-            if key in _seen_pairs:
-                continue
-            _seen_pairs.add(key)
-            _deduped.append(c)
-        conns = _deduped
+            cs = c.get("slug", "")
+            if cs not in _by_slug:
+                _by_slug[cs] = dict(c)
+            else:
+                merged = _by_slug[cs]
+                seen = {(r.get("relation"), r.get("reason"))
+                        for r in merged.get("reasons", [])}
+                for r in c.get("reasons", []):
+                    if (r.get("relation"), r.get("reason")) not in seen:
+                        merged.setdefault("reasons", []).append(r)
+                        seen.add((r.get("relation"), r.get("reason")))
+        conns = list(_by_slug.values())
 
         # 정렬: 1차 관계 유형, 2차 시간순
         rel_order = {"foundation": 0, "alternative": 1, "extension": 2,
@@ -565,19 +573,69 @@ def convert_review(md_path, topic, slug_dir):
             slug_dates.get(c.get("slug", ""), ""),
         ))
 
+        # num → slug map for turning paper-number references inside reason text
+        # into links. LLM-written reasons reference papers two ways: bracketed
+        # ("[1065]") and bare with a Korean particle ("835는", "1021의"). We link
+        # both. The map carries leading-zero-insensitive keys ("070" and "70").
+        num_to_slug = {}
+        for s in slug_titles:
+            pre = s.split("_")[0]
+            num_to_slug[pre] = s
+            if pre.isdigit():
+                num_to_slug[str(int(pre))] = s
+
+        def _resolve(num):
+            return num_to_slug.get(num) or (num_to_slug.get(str(int(num)))
+                                            if num.isdigit() else None)
+
+        # A bare number is treated as a paper reference only when (a) it is a real
+        # paper number AND (b) a Korean reference particle follows it — this keeps
+        # years ("2024년"), counts ("7개") and percentages ("79.4%") from linking.
+        _JOSA = (r"(?:은|는|이|가|의|을|를|와|과|도|만|로|으로|에서|에게|보다|처럼"
+                 r"|이라|라는|라고|및|과는|와는|이라는|이라고)")
+        _REF_RE = re.compile(r"\[(\d+)\]|(?<![\d.])(\d{2,})(?=" + _JOSA + r")")
+
+        def _linkify_refs(reason_text):
+            """Escape reason text, then link every paper reference (bracketed or
+            bare-with-particle). References to papers absent from the corpus stay
+            plain; self-references link to the current page so none render dead."""
+            def _repl(m):
+                num = m.group(1) if m.group(1) is not None else m.group(2)
+                tslug = _resolve(num)
+                if not tslug:
+                    return m.group(0)  # not in corpus → leave plain
+                ttitle = esc(slug_titles.get(tslug, tslug))
+                cls = ("conn-ref conn-ref-self" if tslug == slug_dir_name
+                       else "conn-ref")
+                label = f"[{num}]" if m.group(1) is not None else num
+                return (f'<a class="{cls}" href="../{esc(tslug)}/index.html" '
+                        f'title="{ttitle}">{label}</a>')
+            return _REF_RE.sub(_repl, esc(reason_text))
+
         conn_items = []
         for c in conns:
             cslug = c.get("slug", "")
             rel = c.get("relation", "alternative")
-            reason = c.get("reason", "")
             ctitle = slug_titles.get(cslug, cslug)
-            label = type_labels.get(rel, rel)
+            # One card per paper. Every reason is listed equally, each carrying its
+            # own relation badge (기반 연구 / 다른 접근 / ...).
+            rlist = c.get("reasons") or [{"relation": rel, "reason": c.get("reason", "")}]
+            reason_html = []
+            for rr in rlist:
+                rreason = rr.get("reason", "")
+                if not rreason:
+                    continue
+                rrel = rr.get("relation", rel)
+                rlabel = type_labels.get(rrel, rrel)
+                reason_html.append(
+                    f'<div class="conn-reason">'
+                    f'<span class="conn-rel-badge {esc(rrel)}">{esc(rlabel)}</span>'
+                    f'{_linkify_refs(rreason)}</div>')
             conn_items.append(
                 f'<div class="conn-item {esc(rel)}">'
-                f'<div class="conn-type">{esc(label)}</div>'
                 f'<div class="conn-title"><a href="../{esc(cslug)}/index.html">{esc(ctitle)}</a></div>'
-                f'<div class="conn-reason">{esc(reason)}</div>'
-                f'</div>'
+                + "".join(reason_html)
+                + '</div>'
             )
         body_parts.append(
             '<div class="connections-box">'
@@ -595,10 +653,14 @@ def convert_review(md_path, topic, slug_dir):
     audio_connections = []
     if conns:
         for c in conns:
+            rlist = c.get("reasons") or [{"relation": c.get("relation", ""),
+                                          "reason": c.get("reason", "")}]
+            reason_txt = " / ".join(r.get("reason", "") for r in rlist
+                                    if r.get("reason"))
             audio_connections.append({
                 "title": slug_titles.get(c.get("slug", ""), c.get("slug", "")),
                 "relation": type_labels.get(c.get("relation", ""), c.get("relation", "")),
-                "reason": c.get("reason", ""),
+                "reason": reason_txt,
             })
     audio_ctx = {"title": title, "review": md, "connections": audio_connections}
 

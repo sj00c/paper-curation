@@ -114,19 +114,36 @@ def build_network_data(topic):
         })
         slug_set.add(slug)
 
+    # Connections are bidirectional (A→B and B→A both exist in the data), so we
+    # collapse each unordered pair to a single undirected edge. The displayed
+    # relation/reason is taken from the higher-priority direction.
+    _REL_ORDER = {"foundation": 0, "alternative": 1, "extension": 2,
+                  "application": 3, "counterpoint": 4}
     links = []
+    _pair_idx = {}
     for slug, conns in connections.items():
         if slug not in slug_set:
             continue
         for c in conns:
             target = c.get("slug", "")
-            if target in slug_set:
-                links.append({
-                    "source": slug, "target": target,
-                    "relation": c.get("relation", "alternative"),
-                    "reason": c.get("reason", ""),
-                    "color": RELATION_COLORS.get(c.get("relation", ""), "#ccc"),
-                })
+            if target not in slug_set or target == slug:
+                continue
+            rel = c.get("relation", "alternative")
+            key = frozenset((slug, target))
+            if key in _pair_idx:
+                existing = links[_pair_idx[key]]
+                if _REL_ORDER.get(rel, 9) < _REL_ORDER.get(existing["relation"], 9):
+                    existing["relation"] = rel
+                    existing["reason"] = c.get("reason", "")
+                    existing["color"] = RELATION_COLORS.get(rel, "#ccc")
+                continue
+            _pair_idx[key] = len(links)
+            links.append({
+                "source": slug, "target": target,
+                "relation": rel,
+                "reason": c.get("reason", ""),
+                "color": RELATION_COLORS.get(rel, "#ccc"),
+            })
 
     cats = sorted(set(n["category"] for n in nodes))
     years = sorted(set(n["year"] for n in nodes if n["year"] and n["year"].isdigit() and 1900 <= int(n["year"]) <= 2100))

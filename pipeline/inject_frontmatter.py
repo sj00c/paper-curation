@@ -475,40 +475,45 @@ def parse_frontmatter(md_text):
 
 
 def build_related_section(slug, connections):
-    """Related Papers 마크다운 섹션 생성 (outgoing + incoming)."""
+    """Related Papers 마크다운 섹션 생성.
+
+    ``connections`` (_paper_connections.json) is already the bidirectional +
+    per-target-deduped view (see lib/connections.py), so we render this paper's
+    edge list directly — NO incoming scan (that would double every link now that
+    each A→B edge already implies B→A). One bullet per related paper; when a paper
+    is connected for several reasons each reason is listed as an indented
+    sub-bullet with its own relation icon, so all reasons read equally.
+    """
     outgoing = connections.get(slug, [])
-
-    # Incoming: 이 논문을 참조하는 다른 논문들
-    incoming = []
-    for src_slug, conns_list in connections.items():
-        if src_slug == slug:
-            continue
-        for c in conns_list:
-            if c.get("slug") == slug:
-                incoming.append({
-                    "slug": src_slug,
-                    "relation": c.get("relation", "alternative"),
-                    "reason": c.get("reason", ""),
-                })
-
-    if not outgoing and not incoming:
+    if not outgoing:
         return ""
 
-    lines = ["\n## Related Papers\n"]
-
+    rel_order = {"foundation": 0, "alternative": 1, "extension": 2,
+                 "application": 3, "counterpoint": 4}
+    # Defensive dedup by target slug (data layer already collapses these).
+    by_slug = {}
+    order = []
     for c in outgoing:
-        rel = c.get("relation", "alternative")
-        icon_label = RELATION_ICONS.get(rel, rel)
-        reason = c.get("reason", "")
-        target = c.get("slug", "")
-        lines.append(f"- {icon_label}: [[papers/{target}/review]] — {reason}")
+        t = c.get("slug", "")
+        if t not in by_slug:
+            by_slug[t] = c
+            order.append(t)
+    items = [by_slug[t] for t in order]
+    items.sort(key=lambda c: rel_order.get(c.get("relation", ""), 9))
 
-    for c in incoming:
-        rel = c.get("relation", "alternative")
-        icon_label = RELATION_ICONS.get(rel, rel)
-        reason = c.get("reason", "")
-        source = c.get("slug", "")
-        lines.append(f"- {icon_label}: [[papers/{source}/review]] — {reason}")
+    lines = ["\n## Related Papers\n"]
+    for c in items:
+        target = c.get("slug", "")
+        reasons = c.get("reasons") or [{"relation": c.get("relation", "alternative"),
+                                        "reason": c.get("reason", "")}]
+        primary = reasons[0]
+        p_icon = RELATION_ICONS.get(primary.get("relation", "alternative"),
+                                    primary.get("relation", ""))
+        lines.append(f"- {p_icon}: [[papers/{target}/review]] — {primary.get('reason', '')}")
+        for r in reasons[1:]:
+            icon = RELATION_ICONS.get(r.get("relation", "alternative"),
+                                      r.get("relation", ""))
+            lines.append(f"    - {icon}: {r.get('reason', '')}")
 
     return "\n".join(lines) + "\n"
 
