@@ -720,32 +720,73 @@ def detect_topic(slug, index_path=None):
     return "ai4s"
 
 
-def _run_review_to_html(*, topic=None, slug=None, slugs=None, all_papers=False):
+def _resolve_target_slugs(all_slugs, *, slug=None, slugs=None,
+                          with_connected=False, connections=None):
+    """Pure resolver: which paper dirs to (re)render, given the corpus list.
+
+    `slugs` may be a list, a comma-separated string ("9121,9122"), or a
+    'start-end' numeric range ("251-258"). A bare prefix matches an exact slug or
+    an "NNN_" prefix (so "120" hits 120_* but not 1200_*). NOTE: a raw string is
+    normalized to a list first — iterating the string directly would walk
+    characters and match almost everything.
+
+    With `with_connected` (and a merged `connections` dict), the result is
+    expanded to include every paper connected to a seed, so a new/changed
+    connection's reverse edge is re-rendered on the neighbour's own page. The
+    bidirectional view is global, so a seed's connection list already names all
+    its neighbours in both directions.
+    """
+    if slug:
+        target = [slug] if slug in all_slugs else [d for d in all_slugs if d.startswith(slug)]
+    elif isinstance(slugs, str) and re.fullmatch(r'\s*\d+\s*-\s*\d+\s*', slugs):
+        a, b = (int(x) for x in slugs.split('-'))
+        def _num(d):
+            m = re.match(r'^(\d+)_', d)
+            return int(m.group(1)) if m else 0
+        target = [d for d in all_slugs if a <= _num(d) <= b]
+    elif slugs:
+        slug_list = ([s.strip() for s in slugs.split(',')]
+                     if isinstance(slugs, str) else list(slugs))
+        slug_list = [s for s in slug_list if s]
+        target = [d for d in all_slugs
+                  if any(d == s or d.startswith(s + '_') for s in slug_list)]
+    else:
+        target = list(all_slugs)
+
+    if with_connected and target and connections:
+        valid = set(all_slugs)
+        extra = set()
+        for s in target:
+            for c in connections.get(s, []) or []:
+                t = c.get('slug')
+                if t in valid:
+                    extra.add(t)
+        target = sorted(set(target) | extra)
+    return target
+
+
+def _run_review_to_html(*, topic=None, slug=None, slugs=None, all_papers=False,
+                        with_connected=False):
     """Programmatic entrypoint for review_to_html.
 
     - `slug` (str): one slug to convert (mutually exclusive with `slugs`).
-    - `slugs`: either a list of slugs or a 'start-end' numeric range string.
+    - `slugs`: a list of slugs, a comma-separated string ("9121,9122"), or a
+      'start-end' numeric range string ("251-258").
     - `all_papers`: convert everything (same as default behavior).
+    - `with_connected`: also re-render every paper connected to the selected
+      seeds, so a new/changed connection shows its reverse edge on the
+      neighbour's own page.
     """
     index_path = os.path.join(PAPERS, "_papers_index.json")
 
     all_slugs = sorted(d for d in os.listdir(PAPERS)
                        if os.path.isdir(os.path.join(PAPERS, d)) and re.match(r'^\d{3,}_', d))
 
-    if slug:
-        target_slugs = [slug] if slug in all_slugs else [d for d in all_slugs if d.startswith(slug)]
-    elif isinstance(slugs, str) and "-" in slugs:
-        start, end = slugs.split('-')
-        def _slug_num(d):
-            m = re.match(r'^(\d+)_', d)
-            return int(m.group(1)) if m else 0
-        target_slugs = [d for d in all_slugs
-                        if _slug_num(d) >= int(start) and _slug_num(d) <= int(end)]
-    elif slugs:
-        target_slugs = [d for d in all_slugs
-                        if any(d == s or d.startswith(s) for s in slugs)]
-    else:
-        target_slugs = all_slugs
+    target_slugs = _resolve_target_slugs(
+        all_slugs, slug=slug,
+        slugs=(None if all_papers else slugs),
+        with_connected=with_connected,
+        connections=_load_connections() if with_connected else None)
 
     converted = 0
     skipped = 0
@@ -769,10 +810,15 @@ def _run_review_to_html(*, topic=None, slug=None, slugs=None, all_papers=False):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--topic', default=None, help='Force topic (ai4s/scisci)')
-    parser.add_argument('--slugs', default=None, help='Slug range: 251-258')
+    parser.add_argument('--slugs', default=None,
+                        help='Slug range "251-258" or comma list "9121,9122"')
     parser.add_argument('--all', action='store_true', help='Regenerate all')
+    parser.add_argument('--with-connected', action='store_true',
+                        help='Also re-render pages of papers connected to --slugs '
+                             '(so reverse edges show on neighbour pages)')
     args = parser.parse_args()
-    _run_review_to_html(topic=args.topic, slugs=args.slugs, all_papers=args.all)
+    _run_review_to_html(topic=args.topic, slugs=args.slugs, all_papers=args.all,
+                        with_connected=args.with_connected)
 
 
 if __name__ == "__main__":
