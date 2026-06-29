@@ -633,6 +633,22 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
         except Exception as e:
             log(f"  [save] failed: {str(e)[:100]}")
 
+    # 증분 생성된 논문 + 그 연결 이웃의 per-paper 페이지를 다시 렌더 — 새 역방향
+    # 엣지(이웃→신규)가 이웃의 *개별 페이지* "같이 보면 좋은 논문" 에 즉시 뜨도록.
+    # (데이터/네트워크/토픽인덱스는 sync+build 로 이미 완성되지만 per-paper 페이지는
+    #  review_to_html 가 다시 그려야 반영된다.) 증분(reason=="incremental")일 때만 자동
+    # 렌더(=dirty 소규모, 싸다); full 재생성은 파이프라인 review_to_html 단계가 처리.
+    # env CONN_RENDER_NEIGHBORS=0 으로 끌 수 있다.
+    if (all_connections and reason == "incremental" and topic_dir
+            and os.environ.get("CONN_RENDER_NEIGHBORS", "1").strip().lower()
+            not in ("0", "off", "false", "no")):
+        try:
+            import review_to_html as _RTH
+            _RTH._run_review_to_html(slugs=list(dirty), with_connected=True)
+            log(f"  [conn] 이웃 페이지 재렌더: dirty {len(dirty)}편 + 연결 이웃 (--with-connected)")
+        except Exception as e:
+            log(f"  [conn] 이웃 재렌더 skip: {str(e)[:80]}")
+
     return all_connections
 
 
