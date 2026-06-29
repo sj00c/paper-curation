@@ -474,6 +474,29 @@ _OPENAI_CC_MODEL = os.environ.get("EXTRACT_INSIGHTS_CC_OPENAI_MODEL", "gpt-5.5")
 _GEMINI_CC_MODEL = os.environ.get("EXTRACT_INSIGHTS_CC_GEMINI_MODEL", "gemini-3.1-pro-preview")
 
 
+def _embed_model_tag(cache_path):
+    """Embedding-geometry tag for the connection cache.
+
+    A change in embedding geometry means cosine neighbours (hence connection
+    reasons) can shift everywhere, so the incremental diff treats a tag change as
+    a full-regen trigger. Prefer the tag the embeddings cache was written with;
+    fall back to the live SPECTER2 tag; ``None`` if neither is available (None vs
+    a real tag compares unequal → safe full regen)."""
+    try:
+        if cache_path and os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                tag = json.load(f).get("embed_model")
+            if tag:
+                return tag
+    except Exception:
+        pass
+    try:
+        from lib import specter2_embed
+        return specter2_embed.EMBED_TAG
+    except Exception:
+        return None
+
+
 def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
                               topic_dir=None, topic_slugs=None):
     """SPECTER2 코사인 top-N 후보 → Sonnet 이 관계·이유 판정 (하이브리드).
@@ -532,7 +555,7 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
         log("  Anthropic client 없음 — skip")
         return {}
 
-    # 기존 연결이 없는(신규/갭) 논문 우선 처리
+    # 기존 연결 로드 (신규/갭 우선 + 증분 dirty 판정)
     existing = {}
     if topic_dir:
         cp = os.path.join(topic_dir, "_paper_connections.json")
@@ -542,21 +565,59 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
                     existing = json.load(f)
             except Exception:
                 existing = {}
-    priority = set(s for s in candidates if not existing.get(s))
 
-    req_timeout = float(os.environ.get("EXTRACT_INSIGHTS_HTTP_TIMEOUT", "120"))
-    log(f"  연결 생성: 대상 {len(candidates)}편, top_n={top_n}, "
-        f"우선(갭) {len(priority)}편, req_timeout={req_timeout:.0f}s")
-    conn_batch = int(os.environ.get("EXTRACT_INSIGHTS_CONN_BATCH", "15"))
-    all_connections = generate_connections_from_candidates(
-        candidates, pool, client, batch_size=conn_batch,
-        request_timeout_s=req_timeout, priority_slugs=priority)
+    # ── 증분 연결 생성: top-k 멤버십이 바뀐(=hub) + 신규 + 연결갭 논문만 LLM 호출.
+    # 변화 없는 논문은 generate 를 건너뛰고, sync 의 bidi 재구성으로 inbound 만 무료
+    # 갱신한다. CONN_INCREMENTAL=0/off → 항상 full(기존 동작), CONN_FULL_REBUILD=1
+    # → 이번 실행만 강제 full(주기적 대량 rebuild). 오류 시 안전하게 full 로 fallback.
+    from lib import conn_cache
+    _inc_on = os.environ.get("CONN_INCREMENTAL", "1").strip().lower() \
+        not in ("0", "off", "false", "no")
+    _full_rebuild = os.environ.get("CONN_FULL_REBUILD", "").strip().lower() \
+        in ("1", "on", "true", "yes")
+    _force_full = _full_rebuild or not _inc_on
+    _embed_tag = _embed_model_tag(cache_path)
+    _prev_cache = conn_cache.load_topk_cache(topic_dir, top_n, scope="ei") if topic_dir else {}
+    dirty, reason = conn_cache.compute_dirty(
+        candidates, _prev_cache, existing, top_n, _embed_tag,
+        force=_force_full, log=log)
+    _total = len(candidates)
+    _pct = int(round(100 * (1 - len(dirty) / _total))) if _total else 0
+    log(f"  [conn] incremental k={top_n}: {len(dirty)}/{_total} dirty ({reason}); "
+        f"skipping {_total - len(dirty)} unchanged -> ~{_pct}% fewer LLM calls")
+    gen_candidates = conn_cache.restrict_candidates(candidates, dirty)
+    priority = set(s for s in gen_candidates if not existing.get(s))
+
+    if gen_candidates:
+        req_timeout = float(os.environ.get("EXTRACT_INSIGHTS_HTTP_TIMEOUT", "120"))
+        log(f"  연결 생성: 대상 {len(gen_candidates)}편, top_n={top_n}, "
+            f"우선(갭) {len(priority)}편, req_timeout={req_timeout:.0f}s")
+        conn_batch = int(os.environ.get("EXTRACT_INSIGHTS_CONN_BATCH", "15"))
+        all_connections = generate_connections_from_candidates(
+            gen_candidates, pool, client, batch_size=conn_batch,
+            request_timeout_s=req_timeout, priority_slugs=priority)
+    else:
+        # 0 dirty: LLM 호출을 통째로 생략. sync 는 그래도 호출해 consumer view 를
+        # 싸게 재구성한다(merge_to_global({}) 는 no-op, bidi+filter 는 LLM 없음).
+        log("  [conn] 0 dirty — LLM 호출 생략, consumer view 만 재구성")
+        all_connections = {}
 
     # 영속화: merge_to_global → filter_for_topic → per-topic JSON
     if topic_dir and topic_slugs:
         try:
             from lib.connections import sync_topic_connections
             sync_topic_connections(all_connections, topic, topic_slugs, topic_dir, log=log)
+            # 성공 시에만 캐시 갱신. 단 이번 run 에 *실제로 생성된* slug 만 current
+            # set 으로 올리고, dirty 였지만 결과를 못 받은(deadline 절단 등) slug 은
+            # prev set 을 유지해 다음 run 에 재시도되게 한다(hub inbound 누락 방지).
+            try:
+                _next_sets = conn_cache.next_cache_sets(
+                    candidates, _prev_cache, dirty, set(all_connections.keys()))
+                conn_cache.save_topk_cache(
+                    topic_dir, candidates, top_n, _embed_tag,
+                    scope="ei", sets=_next_sets)
+            except Exception as e:
+                log(f"  [conn] cache save failed: {str(e)[:80]}")
         except Exception as e:
             log(f"  [save] failed: {str(e)[:100]}")
 

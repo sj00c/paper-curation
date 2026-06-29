@@ -1747,6 +1747,11 @@ def main():
                         help="end-of-run prepare_deploy(wrangler deploy + gh-pages + master push)를 건너뛴다. "
                              "무인 자동복구(auto_recover --execute)처럼 배포를 원치 않는 경우용. "
                              "환경변수 PAPER_CURATION_NO_DEPLOY 로도 켤 수 있다.")
+    parser.add_argument("--conn-full", action="store_true",
+                        help="연결 캐시(_conn_topk_cache_k*.json)를 무시하고 이번 실행에서 전체 연결을 "
+                             "재생성한다 (월간/대량 추가 후 주기적 full rebuild 용). 자식 프로세스"
+                             "(extract_insights / topic_modeling)가 환경변수 CONN_FULL_REBUILD=1 로 "
+                             "상속한다. 환경변수 CONN_FULL_REBUILD=1 로도 직접 켤 수 있다.")
     # ── Phase 2: 3-axis mode (new, MECE). When --mode is set, it overrides the
     # legacy flag combinations and emits DeprecationWarnings for any legacy
     # flags that were also specified. Omitting --mode keeps 100% legacy
@@ -1762,6 +1767,14 @@ def main():
     # Apply --mode → legacy flags mapping. Pure translation; no behavior change
     # when --mode is absent (args.mode is None → all legacy flags honored as-is).
     _apply_mode_mapping(args)
+
+    # --conn-full → force full connection regen for child subprocesses
+    # (extract_insights / topic_modeling). They read CONN_FULL_REBUILD from env,
+    # which is inherited across subprocess.run, so setting it here is enough.
+    if getattr(args, "conn_full", False):
+        os.environ["CONN_FULL_REBUILD"] = "1"
+        print("[conn] --conn-full → CONN_FULL_REBUILD=1 "
+              "(전체 연결 재생성; 자식 프로세스 env 상속)")
 
     # Propagate strict-pdf flag to find_pdf()
     global _STRICT_PDF

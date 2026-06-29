@@ -1103,20 +1103,53 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
         candidates = compute_related_candidates(embeddings, slugs, top_k=5)
         # 기존 연결이 0개인 논문(대개 신규)을 우선 배치 — deadline 으로 라운드가
         # 잘려도 사이트에 공백으로 보이는 논문부터 먼저 채운다.
-        priority_slugs = set()
+        _edata = {}
         try:
             conn_path = os.path.join(topic_dir, "_paper_connections.json")
             with open(conn_path, "r", encoding="utf-8") as f:
                 _existing = json.load(f)
             _edata = _existing.get("connections", _existing) \
                 if isinstance(_existing, dict) else {}
-            priority_slugs = {s for s in candidates if not _edata.get(s)}
         except Exception:
             pass  # 파일 없음(첫 런) 등 — 전부 동순위로 진행
-        connections = generate_connections_from_candidates(
-            candidates, topic_papers, client, local_fallback=local_fallback,
-            priority_slugs=priority_slugs
-        )
+
+        # ── 증분 연결 생성(k=5 전용 캐시): top-k 멤버십 변동(=hub) + 신규 + 갭
+        # 논문만 LLM 호출. 변화 없는 논문은 건너뛰고 sync 의 bidi 재구성으로 inbound
+        # 만 무료 갱신. CONN_INCREMENTAL=0/off → full(기존 동작), CONN_FULL_REBUILD=1
+        # → 강제 full. 오류 시 안전하게 full 로 fallback.
+        from lib import conn_cache
+        from lib import specter2_embed
+        _inc_on = os.environ.get("CONN_INCREMENTAL", "1").strip().lower() \
+            not in ("0", "off", "false", "no")
+        _full_rebuild = os.environ.get("CONN_FULL_REBUILD", "").strip().lower() \
+            in ("1", "on", "true", "yes")
+        _force_full = _full_rebuild or not _inc_on
+        try:
+            _embed_tag = specter2_embed.EMBED_TAG
+        except Exception:
+            _embed_tag = None
+        _prev_cache = conn_cache.load_topk_cache(topic_dir, 5, scope="tm")
+        dirty, reason = conn_cache.compute_dirty(
+            candidates, _prev_cache,
+            _edata, 5, _embed_tag, force=_force_full, log=log)
+        _total = len(candidates)
+        _pct = int(round(100 * (1 - len(dirty) / _total))) if _total else 0
+        log(f"  [conn] incremental k=5: {len(dirty)}/{_total} dirty ({reason}); "
+            f"skipping {_total - len(dirty)} unchanged -> ~{_pct}% fewer LLM calls")
+        gen_candidates = conn_cache.restrict_candidates(candidates, dirty)
+        priority_slugs = {s for s in gen_candidates if not _edata.get(s)}
+
+        if gen_candidates:
+            connections = generate_connections_from_candidates(
+                gen_candidates, topic_papers, client, local_fallback=local_fallback,
+                priority_slugs=priority_slugs
+            )
+        else:
+            log("  [conn] 0 dirty — LLM 호출 생략, consumer view 만 재구성")
+            connections = {}
+        # 캐시 갱신 기준은 verify 가 깎기 *전* 의 raw 생성 결과 키 — verify 가 제거한
+        # spurious slug 도 '생성됨' 으로 봐 무한 재시도를 막는다.
+        _generated = set(connections.keys())
         # T2-4: optional LLM audit of generated connections. Env VERIFY_CONNECTIONS
         # (off|sample|strict, default sample) — sample = flag-only (log spurious,
         # keep all); strict = drop spurious before persistence. Best-effort: any
@@ -1134,6 +1167,16 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
             log(f"  [verify] connections hook skipped: {str(e)[:80]}")
         from lib.connections import sync_topic_connections
         sync_topic_connections(connections, topic, slugs, topic_dir, log=log)
+        # 성공 시에만 캐시 갱신. 실제 생성된 slug 만 current set 으로 올리고, dirty
+        # 였지만 결과를 못 받은 slug 은 prev set 유지 → 다음 run 재시도(실패 런 미저장).
+        try:
+            _next_sets = conn_cache.next_cache_sets(
+                candidates, _prev_cache, dirty, _generated)
+            conn_cache.save_topk_cache(
+                topic_dir, candidates, 5, _embed_tag,
+                scope="tm", sets=_next_sets)
+        except Exception as e:
+            log(f"  [conn] cache save failed: {str(e)[:80]}")
 
     log("\n" + "=" * 50)
     log("DONE!")

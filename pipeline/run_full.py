@@ -96,6 +96,9 @@ def build_parser():
     p.add_argument("--local-fallback", action="store_true",
                    help="topic_modeling 연결 단계가 끝까지 막히면 로컬 모델로 마저 연결 "
                         "(Ollama/LM Studio 등). config.json local_model 필요. run_update_force 로 전달.")
+    p.add_argument("--conn-full", action="store_true",
+                   help="연결 캐시를 무시하고 전체 연결 재생성 (월간/대량 추가 후 full rebuild). "
+                        "run_update_force 로 전달(CONN_FULL_REBUILD=1).")
     p.add_argument("--skip-dedup", action="store_true",
                    help="Zotero dedup preflight 스킵.")
     p.add_argument("--dedup-execute", action="store_true",
@@ -165,6 +168,8 @@ def build_update_force_cmd(args, images):
         cmd.append("--insights")
     if getattr(args, "local_fallback", False):
         cmd.append("--local-fallback")
+    if getattr(args, "conn_full", False):
+        cmd.append("--conn-full")
     if images in ("changed", "all"):
         cmd.append("--timeline")
     if args.skip_dedup:
