@@ -498,7 +498,7 @@ def _embed_model_tag(cache_path):
 
 
 def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
-                              topic_dir=None, topic_slugs=None):
+                              topic_dir=None, topic_slugs=None, seed_cache_only=False):
     """SPECTER2 코사인 top-N 후보 → Sonnet 이 관계·이유 판정 (하이브리드).
 
     topic_modeling / paper-curio 와 **동일한 SPECTER2 임베딩 기준**을 공유한다:
@@ -548,6 +548,18 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
                   if s in target_slugs and s in full_cand}
     if not candidates:
         log("  후보 없음 — skip")
+        return {}
+
+    # seed-cache-only: 현재 top-k 를 conn 캐시 베이스라인으로만 저장하고 LLM 생성은
+    # 건너뛴다. 기존 연결은 그대로(이미 멀쩡) 두고, 이후 실행이 *진짜 신규/변동* 논문만
+    # 증분 생성하도록 캐시를 깐다. 전체 재생성($$·느림·JSON 절단) 없이 증분 모드를
+    # 부팅하는 1회용 시드.
+    if seed_cache_only:
+        from lib import conn_cache
+        _tag = _embed_model_tag(cache_path)
+        conn_cache.save_topk_cache(topic_dir, candidates, top_n, _tag, scope="ei")
+        log(f"  [conn] seed-cache-only: {len(candidates)}편 top-k 베이스라인 저장 "
+            f"(LLM 호출 0). 이후 실행은 신규/변동 논문만 증분 생성.")
         return {}
 
     client = clients.get("anthropic")  # 이 단계는 Anthropic messages API 전용
@@ -625,7 +637,7 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
 
 
 def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
-                   categories=None):
+                   categories=None, seed_cache_only=False):
     """Programmatic entrypoint for extract_insights."""
     topic_dir = str(get_topic_dir(topic))
 
@@ -710,10 +722,13 @@ def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
         topic_slugs = [p["slug"] for p in topic_papers]
         connections = extract_paper_connections(
             topic, cat_papers, clients, topic_papers,
-            topic_dir=topic_dir, topic_slugs=topic_slugs)
+            topic_dir=topic_dir, topic_slugs=topic_slugs,
+            seed_cache_only=seed_cache_only)
 
-        from lib.connections import sync_topic_connections
-        sync_topic_connections(connections, topic, topic_slugs, topic_dir, log=log)
+        # seed-cache-only 면 connections=={} 이고 캐시만 깔렸으니 sync(=no-op) 생략.
+        if not seed_cache_only:
+            from lib.connections import sync_topic_connections
+            sync_topic_connections(connections, topic, topic_slugs, topic_dir, log=log)
 
     log("\nDone!")
 
@@ -727,12 +742,18 @@ def main():
                         help="생성 대상 선택. connections=paper connections(Core)만, "
                              "insights=cross-category insights(Option)만, all=둘 다(기본, 하위호환).")
     parser.add_argument("--categories", nargs="+", help="Specific categories to process (others preserved)")
+    parser.add_argument("--seed-cache-only", action="store_true",
+                        help="연결 LLM 생성 없이 현재 top-k 를 conn 캐시 베이스라인으로만 저장. "
+                             "증분 모드를 1회 부팅(전체 재생성 회피); 기존 연결은 그대로 두고 "
+                             "이후 실행이 신규/변동 논문만 증분 생성하게 한다.")
     args = parser.parse_args()
     # --only 를 기존 *_only 게이트로 매핑 (둘 다 동일 효과; --insights-only/--connections-only 와 OR).
     insights_only = args.insights_only or args.only == "insights"
-    connections_only = args.connections_only or args.only == "connections"
+    connections_only = (args.connections_only or args.only == "connections"
+                        or args.seed_cache_only)
     _run_insights(topic=args.topic, insights_only=insights_only,
-                  connections_only=connections_only, categories=args.categories)
+                  connections_only=connections_only, categories=args.categories,
+                  seed_cache_only=args.seed_cache_only)
 
 
 if __name__ == "__main__":
