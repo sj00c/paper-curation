@@ -439,10 +439,11 @@ _CMP_CSS = """
 """
 
 
-def build_html(papers, comp, md_text, theme, has_image=False):
+def build_html(papers, comp, md_text, theme, name, image_b64=None):
     title = _comp_title(papers)
-    hero = ('<div class="cmp-hero"><img src="comparison.png" '
-            'alt="비교 다이어그램"></div>') if has_image else ""
+    # 이미지는 base64 인라인 — .html 다운로드 시에도 페이지가 자기완결이 되도록.
+    hero = (f'<div class="cmp-hero"><img src="data:image/png;base64,{image_b64}" '
+            'alt="비교 다이어그램"></div>') if image_b64 else ""
     cards = '<div class="cmp-cards">' + "".join(
         _paper_card(p, i) for i, p in enumerate(papers, 1)) + "</div>"
 
@@ -471,12 +472,19 @@ def build_html(papers, comp, md_text, theme, has_image=False):
 
     # .md 다운로드: 마크다운 원문을 JS 문자열로 내장 (</ 는 태그 조기 종료 방지)
     md_js = json.dumps(md_text, ensure_ascii=False).replace("</", "<\\/")
-    dl_js = ("function downloadCmpMd() { "
-             "var b = new Blob([window._CMP_MD], {type: 'text/markdown'}); "
+    name_js = json.dumps(name)
+    dl_js = ("function _dl(blob, fname) { "
              "var a = document.createElement('a'); "
-             "a.href = URL.createObjectURL(b); "
-             "a.download = 'comparison.md'; a.click(); "
-             "URL.revokeObjectURL(a.href); }")
+             "a.href = URL.createObjectURL(blob); "
+             "a.download = fname; a.click(); "
+             "URL.revokeObjectURL(a.href); } "
+             "function downloadCmpMd() { "
+             "_dl(new Blob([window._CMP_MD], {type: 'text/markdown'}), "
+             "window._CMP_NAME + '.md'); } "
+             "function downloadCmpHtml() { "
+             "var h = '<!DOCTYPE html>' + document.documentElement.outerHTML; "
+             "_dl(new Blob([h], {type: 'text/html'}), "
+             "window._CMP_NAME + '.html'); }")
 
     css = (RH.get_css(theme) + "\n" + RH.get_audio_css(theme) + "\n" +
            _CMP_CSS.replace("ACCENT_DARK", theme["accent_dark"])
@@ -488,6 +496,7 @@ def build_html(papers, comp, md_text, theme, has_image=False):
 <h1>{_comp_title_html(papers)}</h1>
 <div class="dl-bar">
 <button class="dl-btn" onclick="downloadCmpMd()">.md 다운로드</button>
+<button class="dl-btn" onclick="downloadCmpHtml()">.html 다운로드</button>
 </div>
 {RH.audio_bar_html()}
 {hero}
@@ -514,6 +523,7 @@ def build_html(papers, comp, md_text, theme, has_image=False):
 {RH.audio_modal_html()}
 <script>
 window._CMP_MD = {md_js};
+window._CMP_NAME = {name_js};
 {dl_js}
 </script>
 {RH.audio_script_block(audio_ctx)}
@@ -544,9 +554,14 @@ def run_compare(slug_tokens):
 
     comp = compare_llm(papers)
     has_image = generate_comparison_image(papers, comp, out_dir)
+    image_b64 = None
+    if has_image:
+        import base64
+        with open(os.path.join(out_dir, "comparison.png"), "rb") as f:
+            image_b64 = base64.b64encode(f.read()).decode("ascii")
     md_text = build_markdown(papers, comp, has_image=has_image)
     theme = RH.THEMES.get(papers[0]["topic"], RH.THEMES["ai4s"])
-    html = build_html(papers, comp, md_text, theme, has_image=has_image)
+    html = build_html(papers, comp, md_text, theme, name, image_b64=image_b64)
     md_path = os.path.join(out_dir, "comparison.md")
     html_path = os.path.join(out_dir, "index.html")
     with open(md_path, "w", encoding="utf-8") as f:
