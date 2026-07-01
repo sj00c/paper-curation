@@ -52,6 +52,19 @@ _REL_LABELS = {
     "application": "응용 사례",
 }
 
+# 관계 유형 → 그래프 엣지 색
+_REL_COLORS = {
+    "기반 연구": "#2374D6",
+    "후속 연구": "#2E9E5B",
+    "다른 접근": "#E8890C",
+    "반론/비판": "#D63423",
+    "응용 사례": "#8E44AD",
+}
+
+# 비교 논문(P1, P2, ...) 노드 색 팔레트
+_PAPER_COLORS = ["#2A9D8F", "#E76F51", "#457B9D", "#9C6644", "#5A189A", "#B5838D"]
+_SHARED_COLOR = "#F5B800"  # 공통(2편 이상과 연결) 논문 노드
+
 
 def log(msg):
     print(msg, flush=True)
@@ -422,17 +435,136 @@ def _cell_html(text):
     return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", RH.esc(text))
 
 
+def _graph_data(papers):
+    """D3 그래프 데이터: 비교 논문 + 연결 논문 노드, 관계 엣지.
+
+    같은 논문이 여러 비교 논문의 연결 목록에 나타나면 노드 하나로 합치고
+    shared 로 표시 — 힘 시뮬레이션에서 자연히 비교 논문들 사이에 놓인다.
+    """
+    compared = {p["slug"] for p in papers}
+    nodes = [{"id": p["slug"], "label": f"P{i} · {p['title'][:34]}",
+              "full": p["title"], "kind": "compared", "ci": i - 1,
+              "href": f"../../{p['slug']}/index.html"}
+             for i, p in enumerate(papers, 1)]
+    conn_nodes = {}
+    links, seen_pairs = [], set()
+    for p in papers:
+        for c in p["connections"]:
+            tgt = c["slug"]
+            pair = frozenset((p["slug"], tgt))
+            if pair in seen_pairs:
+                continue  # 쌍방향 뷰라 역방향 중복 엣지 제거
+            seen_pairs.add(pair)
+            if tgt not in compared:
+                n = conn_nodes.setdefault(tgt, {
+                    "id": tgt, "label": c["title"][:34], "full": c["title"],
+                    "kind": "conn", "deg": 0,
+                    "href": f"../../{tgt}/index.html"})
+                n["deg"] += 1
+            links.append({"source": p["slug"], "target": tgt,
+                          "relation": c["relation"],
+                          "reason": (c["reason"] or "")[:200]})
+    for n in conn_nodes.values():
+        if n.pop("deg") >= 2:
+            n["kind"] = "shared"
+    return {"nodes": nodes + list(conn_nodes.values()), "links": links}
+
+
+# D3 force-directed 그래프. 플레인 문자열 — __DATA__/__REL__/__PCOLORS__/
+# __SHARED__ 를 json.dumps 값으로 치환해 사용 (JS 문자열 안에 개행 없음).
+_GRAPH_JS = r"""
+(function () {
+  var data = __DATA__;
+  var REL = __REL__;
+  var PCOLORS = __PCOLORS__;
+  var SHARED = __SHARED__;
+  var el = document.getElementById('cmp-graph');
+  if (!el || !window.d3 || !data.nodes.length) return;
+  el.innerHTML = '';  // .html 다운로드본 재실행 시 이중 렌더 방지 (직렬화된 svg 제거)
+  var W = el.clientWidth || 900, H = el.clientHeight || 520;
+  var svg = d3.select(el).append('svg')
+    .attr('viewBox', '0 0 ' + W + ' ' + H)
+    .attr('width', '100%').attr('height', '100%');
+  var nCmp = data.nodes.filter(function (d) { return d.kind === 'compared'; }).length;
+  data.nodes.forEach(function (d) {
+    if (d.kind === 'compared') { d.fx = W * (d.ci + 1) / (nCmp + 1); d.fy = H / 2; }
+  });
+  function r(d) { return d.kind === 'compared' ? 16 : d.kind === 'shared' ? 10 : 6.5; }
+  function fill(d) {
+    if (d.kind === 'compared') return PCOLORS[d.ci % PCOLORS.length];
+    return d.kind === 'shared' ? SHARED : '#B8BEC9';
+  }
+  var sim = d3.forceSimulation(data.nodes)
+    .force('link', d3.forceLink(data.links).id(function (d) { return d.id; })
+      .distance(function (l) {
+        var sh = (l.target.kind === 'shared' || l.source.kind === 'shared');
+        return sh ? 150 : 110;
+      }))
+    .force('charge', d3.forceManyBody().strength(-340))
+    .force('center', d3.forceCenter(W / 2, H / 2))
+    .force('collide', d3.forceCollide().radius(function (d) { return r(d) + 16; }));
+  var link = svg.append('g').selectAll('line').data(data.links).join('line')
+    .attr('stroke', function (l) { return REL[l.relation] || '#999'; })
+    .attr('stroke-width', 2.2).attr('stroke-opacity', 0.6);
+  link.append('title').text(function (l) { return l.relation + ' — ' + l.reason; });
+  var node = svg.append('g').selectAll('g').data(data.nodes).join('g')
+    .style('cursor', 'pointer')
+    .call(d3.drag()
+      .on('start', function (ev, d) { if (!ev.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', function (ev, d) { d.fx = ev.x; d.fy = ev.y; })
+      .on('end', function (ev, d) {
+        if (!ev.active) sim.alphaTarget(0);
+        if (d.kind !== 'compared') { d.fx = null; d.fy = null; }
+      }))
+    .on('click', function (ev, d) { if (!ev.defaultPrevented && d.href) window.open(d.href, '_blank'); });
+  node.append('circle')
+    .attr('r', r).attr('fill', fill)
+    .attr('stroke', function (d) { return d.kind === 'shared' ? '#B8860B' : '#fff'; })
+    .attr('stroke-width', function (d) { return d.kind === 'shared' ? 2.5 : 1.5; });
+  node.append('title').text(function (d) { return d.full; });
+  node.append('text')
+    .text(function (d) { return d.label; })
+    .attr('text-anchor', 'middle')
+    .attr('dy', function (d) { return r(d) + 13; })
+    .attr('font-size', function (d) { return d.kind === 'compared' ? '11.5px' : '10px'; })
+    .attr('font-weight', function (d) { return d.kind === 'conn' ? 400 : 700; })
+    .attr('fill', '#444').style('pointer-events', 'none');
+  sim.on('tick', function () {
+    data.nodes.forEach(function (d) {
+      d.x = Math.max(30, Math.min(W - 30, d.x));
+      d.y = Math.max(26, Math.min(H - 30, d.y));
+    });
+    link.attr('x1', function (l) { return l.source.x; })
+        .attr('y1', function (l) { return l.source.y; })
+        .attr('x2', function (l) { return l.target.x; })
+        .attr('y2', function (l) { return l.target.y; });
+    node.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+  });
+})();
+"""
+
+
 def _connections_section(papers):
-    """맨 뒤 '같이 보면 좋은 논문' — 논문별 링크 목록."""
-    parts = ["<h2>같이 보면 좋은 논문</h2>"]
-    for i, p in enumerate(papers, 1):
-        items = "".join(
-            f'<li><span class="rel">{RH.esc(c["relation"])}</span>'
-            f'<a href="../../{c["slug"]}/index.html">{RH.esc(c["title"][:80])}</a></li>'
-            for c in p["connections"]) or "<li>(없음)</li>"
-        parts.append(f'<p><strong>P{i} · {RH.esc(p["title"][:60])}</strong></p>'
-                     f'<ul class="cmp-conn">{items}</ul>')
-    return '<div class="section">' + "".join(parts) + "</div>"
+    """맨 뒤 '같이 보면 좋은 논문' — 인터랙티브 D3 그래프 + 범례."""
+    chips = "".join(
+        f'<span class="cmp-chip"><span class="cmp-chip-line" '
+        f'style="background:{color}"></span>{RH.esc(rel)}</span>'
+        for rel, color in _REL_COLORS.items())
+    chips += (f'<span class="cmp-chip"><span class="cmp-chip-dot" '
+              f'style="background:{_SHARED_COLOR}"></span>공통 논문</span>')
+    graph_json = json.dumps(_graph_data(papers), ensure_ascii=False).replace("</", "<\\/")
+    js = (_GRAPH_JS
+          .replace("__DATA__", graph_json)
+          .replace("__REL__", json.dumps(_REL_COLORS, ensure_ascii=False))
+          .replace("__PCOLORS__", json.dumps(_PAPER_COLORS))
+          .replace("__SHARED__", json.dumps(_SHARED_COLOR)))
+    return (
+        '<div class="section"><h2>같이 보면 좋은 논문</h2>'
+        f'<div class="cmp-legend">{chips}</div>'
+        '<div id="cmp-graph"></div>'
+        '<div class="cmp-graph-hint">노드 클릭 = 리뷰 열기 · 드래그로 재배치 · '
+        '엣지에 마우스를 올리면 연결 이유가 표시됩니다</div>'
+        f"<script>{js}</script></div>")
 
 
 _CMP_CSS = """
@@ -449,11 +581,12 @@ _CMP_CSS = """
 /* review 페이지 CSS의 점수열 규칙(td:last-child = bold accent) 무효화 —
    비교표의 마지막 열은 점수가 아니라 마지막 논문이다. 강조는 <strong>으로만. */
 td:last-child { text-align: left; font-weight: inherit; color: inherit; }
-.cmp-conn { list-style: none; padding: 0; margin: 0.3rem 0 0; }
-.cmp-conn li { font-size: 0.85rem; margin: 0.25rem 0; color: #555; line-height: 1.45; }
-.cmp-conn a { color: #1a1a2e; text-decoration: none; }
-.cmp-conn a:hover { color: ACCENT; text-decoration: underline; }
-.cmp-conn .rel { color: ACCENT; font-weight: 600; margin-right: 0.35rem; }
+#cmp-graph { width: 100%; height: 540px; border: 1px solid #e0e0e8; border-radius: 10px; background: #fafbfc; margin: 0.6rem 0 0.4rem; }
+.cmp-legend { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; font-size: 0.8rem; color: #555; margin: 0.4rem 0; }
+.cmp-chip { display: inline-flex; align-items: center; gap: 0.35rem; }
+.cmp-chip-line { display: inline-block; width: 18px; height: 3px; border-radius: 2px; }
+.cmp-chip-dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; border: 2px solid #B8860B; }
+.cmp-graph-hint { font-size: 0.78rem; color: #999; }
 .cmp-synthesis { border-left: 4px solid ACCENT; background: ACCENT_BG; padding: 0.7rem 1rem; border-radius: 0 8px 8px 0; margin: 0.8rem 0 1.4rem; }
 .dl-bar { margin: 0.6rem 0 1.4rem; }
 .dl-btn { background: ACCENT; color: #fff; border: none; border-radius: 8px; padding: 0.5rem 1rem; font-size: 0.88rem; cursor: pointer; font-family: inherit; }
@@ -537,6 +670,7 @@ def build_html(papers, comp, md_text, theme, name, image_b64=None):
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{RH.esc(title)}</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
 {css}
 </style>
