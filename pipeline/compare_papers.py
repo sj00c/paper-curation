@@ -231,13 +231,13 @@ _TOOL = {
                                            "논문의 실제 접근을 행동으로 보여줄 것. 캐릭터들끼리 "
                                            "실루엣·복장·도구가 한눈에 구별되게"},
                             "tagline_en": {"type": "string", "description":
-                                           "이 논문만의 차별점 한 줄 — 캐릭터 위 배너로 표시 "
-                                           "(≤8 words, 예: 'measures HOW FAR it spreads')"},
+                                           "이 논문만의 차별점 — 캐릭터 위 배너 "
+                                           "(≤6 words, 예: 'HOW FAR it spreads')"},
                             "traits_en": {"type": "array", "items": {"type": "string"},
-                                          "description": "이 논문 고유의 **구체적 발견·수치** 3개 "
-                                          "(각 ≤6 words, 숫자 적극 사용 — 예: '5x weekly "
-                                          "user growth', 'humans plan 70%'). 축 이름이 아니라 "
-                                          "내용을 쓸 것"},
+                                          "description": "이 논문 고유의 **구체적 발견·수치** "
+                                          "딱 2개 (각 ≤5 words, 숫자 적극 사용 — 예: "
+                                          "'users up 5x', 'humans plan 70%'). 축 이름 금지. "
+                                          "그림 전체 글자를 최소화해야 하므로 짧게"},
                         },
                         "required": ["label_en", "persona_en", "tagline_en", "traits_en"],
                     }, "description": "논문 순서대로 하나씩"},
@@ -430,19 +430,19 @@ def generate_comparison_image(papers, comp, out_dir):
         # 의인화/사물 비유 장면 — 친근한 일러스트로 공통점(공유 요소)과
         # 차이점(캐릭터 특징)을 그린다.
         char_lines = "\n".join(
-            f'- "{p.get("label_en", labels[i] if i < len(labels) else "")}" — '
+            f'- P{i + 1} — "{p.get("label_en", labels[i] if i < len(labels) else "")}": '
             f'{p.get("persona_en", "")}.\n'
-            f'  Header banner above this character: "{p.get("tagline_en", "")}"\n'
-            "  Finding cards this character presents (3 small caption cards, "
-            "keep the numbers EXACTLY): "
-            + " / ".join(f'"{t}"' for t in p.get("traits_en", [])[:3])
+            f'  Banner above P{i + 1}: "{p.get("tagline_en", "")}"\n'
+            "  Exactly 2 finding cards (keep the numbers EXACTLY): "
+            + " / ".join(f'"{t}"' for t in p.get("traits_en", [])[:2])
             for i, p in enumerate(personas))
         method = (
             f"# Friendly metaphorical comparison of {len(papers)} research papers\n\n"
             "One warm illustrated SCENE comparing research papers as "
             "characters/objects — NOT a table, NOT a chart, NOT columns. "
-            "PRIMARY GOAL: a reader must see AT A GLANCE what EACH paper "
-            "uniquely found — the differences matter more than the decoration.\n\n"
+            "PRIMARY GOALS: (1) minimal text — the image must feel light, "
+            "not crowded; (2) every text element clearly belongs to P1 or P2 "
+            "via big paper badges.\n\n"
             f"Scene setting: {spec.get('scene_en', '')}\n\n"
             f"Characters/objects (left to right, one per paper):\n{char_lines}\n\n"
             f"Shared ground (IMPORTANT): {spec.get('shared_en', '')} — draw it as "
@@ -450,19 +450,24 @@ def generate_comparison_image(papers, comp, out_dir):
             "standing on it, or both connected to it, placed center or bottom.\n"
             f"Key contrast to make instantly visible: {spec.get('contrast_en', '')}\n\n"
             "Design rules:\n"
+            "- PAPER BADGES (MOST IMPORTANT): each character wears a large bold "
+            "circular badge reading exactly \"P1\", \"P2\", ... (like a race bib) "
+            "in its accent color — the single biggest text element on its side. "
+            "The same small badge mark appears on that character's banner and "
+            "finding cards, so every phrase is instantly attributable\n"
+            "- KEEP TEXT MINIMAL: per character only the badge, ONE short banner, "
+            "TWO short finding cards, and a small name tag — nothing else; one "
+            "small label on the shared element; no other words anywhere\n"
             "- flat kawaii/chibi illustration, soft pastel palette, rounded shapes\n"
             "- characters must be VISUALLY DISTINCT at a glance: different "
             "silhouette, outfit, headgear and tools — never near-twins\n"
             "- one distinct accent color per character, tinting that character's "
-            "side of the scene, banner and finding cards\n"
-            "- name label under each character in a small rounded tag; the header "
-            "banner sits above each character in its accent color\n"
+            "side, badge, banner and cards\n"
             "- each character's pose/action IS its research approach (no abstract icons)\n"
-            "- the 3 finding cards per character are the LARGEST text after the "
-            "banners — short concrete phrases with their numbers kept verbatim, "
-            "clearly attached to their owner's side\n"
+            "- numbers in finding cards kept verbatim; cards sit clearly on their "
+            "owner's side\n"
             "- the shared element visually connects everyone; the contrast is obvious at a glance\n"
-            "- clean light background, no watermark, no text beyond the given labels/phrases"
+            "- clean light background, generous whitespace, no watermark"
         )
         caption = ("A friendly metaphorical scene comparing "
                    + " vs ".join(labels)
