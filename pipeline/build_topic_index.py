@@ -1660,7 +1660,7 @@ def _run_topic_index(topic=None):
     // the user sees what they're picking. Keyed by the same backend
     // names detectBackend() returns.
     const MODEL_LABEL = {
-      anthropic: { fast: 'Haiku 4.5', smart: 'Sonnet 4.6', top: 'Opus 4.8' },
+      anthropic: { fast: 'Haiku 4.5', smart: 'Sonnet 5', top: 'Opus 4.8' },
       openai:    { fast: 'GPT-4.1',   smart: 'GPT-5.5',    top: 'GPT-5.5' },
       google:    { fast: 'Gemini 3.1 Flash-Lite', smart: 'Gemini 3.5 Flash', top: 'Gemini 3.5 Flash' },
     };
