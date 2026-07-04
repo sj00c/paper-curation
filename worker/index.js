@@ -218,26 +218,49 @@ async function handleEmbed(request, env) {
   return jsonResponse({ embedding, model: EMBED_MODEL, dim: EMBED_DIM }, 200);
 }
 
+// Local pages (localhost / file://) call these APIs cross-origin — without
+// CORS headers the browser cannot read the response and reports the send as
+// failed even when the mail actually went out.
+function corsPreflight() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Max-Age": "86400",
+    },
+  });
+}
+
+function withCors(resp) {
+  const h = new Headers(resp.headers);
+  h.set("Access-Control-Allow-Origin", "*");
+  return new Response(resp.body, { status: resp.status, headers: h });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/api/audio-email") {
+      if (request.method === "OPTIONS") return corsPreflight();
       if (request.method !== "POST") {
         return new Response("Method Not Allowed", {
           status: 405,
           headers: { "Allow": "POST" },
         });
       }
-      return handleAudioEmail(request, env);
+      return withCors(await handleAudioEmail(request, env));
     }
     if (url.pathname === "/api/embed") {
+      if (request.method === "OPTIONS") return corsPreflight();
       if (request.method !== "POST") {
         return new Response("Method Not Allowed", {
           status: 405,
           headers: { "Allow": "POST" },
         });
       }
-      return handleEmbed(request, env);
+      return withCors(await handleEmbed(request, env));
     }
     // Everything else falls through to the static-assets binding.
     return env.ASSETS.fetch(request);

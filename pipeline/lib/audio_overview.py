@@ -618,10 +618,9 @@ async function runAudioGen() {
     setStatus("✅ 완료 (약 " + Math.round(dur) + "초). 다운로드 가능.");
 
     // Send by email (optional). LOCAL pages have a baked recipient list;
-    // WEB pages ask the visitor once and remember in localStorage. If
-    // /api/audio-email isn't deployed (e.g. running plain
-    // `python -m http.server`), we silently skip — the download is the
-    // fallback either way.
+    // WEB pages ask the visitor once and remember in localStorage. The send
+    // always targets the deployed worker (absolute AUDIO_EMAIL_ENDPOINT), so
+    // localhost / file:// pages can mail too; the download stays the fallback.
     try {
       const recipients = resolveAudioRecipients();
       if (recipients.length) {
@@ -674,6 +673,10 @@ function resolveAudioRecipients() {
   return [t];
 }
 
+// 로컬 페이지(localhost / file://)에는 /api 라우트가 없으므로 상대경로는
+// worker 에 도달하지 못한다 — 항상 배포된 worker 절대경로로 발송한다.
+var AUDIO_EMAIL_ENDPOINT = "https://paper-curation.jehyunlee.dev/api/audio-email";
+
 async function sendAudioEmail(blob, filename, title, lang, recipients) {
   const fd = new FormData();
   fd.append("mp3", blob, filename);
@@ -682,7 +685,7 @@ async function sendAudioEmail(blob, filename, title, lang, recipients) {
   fd.append("lang", lang || "ko");
   for (const r of recipients) fd.append("email", r);
   try {
-    const r = await fetch("/api/audio-email", { method: "POST", body: fd });
+    const r = await fetch(AUDIO_EMAIL_ENDPOINT, { method: "POST", body: fd });
     if (!r.ok) {
       const txt = await r.text();
       console.warn("audio-email server returned", r.status, txt.slice(0, 200));

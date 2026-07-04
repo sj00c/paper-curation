@@ -57,6 +57,9 @@ THEMES = {
                "link_color": "#1856A0", "back_href": "../../scisci/index.html"},
 }
 
+# 배포 도메인 — OG 태그의 절대 URL 용 (= prepare_deploy.CF_BASE_URL).
+_CF_BASE = "https://paper-curation.jehyunlee.dev"
+
 # Paper connections cache (loaded once per run)
 _connections_cache = {}
 
@@ -754,6 +757,40 @@ def convert_review(md_path, topic, slug_dir):
             })
     audio_ctx = {"title": title, "review": md, "connections": audio_connections}
 
+    # OG 소셜 카드 — 링크 공유 시 제목/Essence/대표 figure 가 카드로 뜬다.
+    # 이미지 URL 은 절대경로여야 크롤러가 읽는다. figures/…​.png 는 배포 시
+    # prepare_deploy 가 .webp 로 함께 재작성하므로 로컬/웹 모두 정합.
+    og_desc = ""
+    ess_m = re.search(r'\n##\s*Essence[^\n]*\n([\s\S]+?)(?=\n##\s|\Z)', md)
+    if ess_m:
+        t = re.sub(r'!\[[^\]]*\]\([^)]*\)', '', ess_m.group(1))
+        t = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', t)
+        t = re.sub(r'[*_`>#|]', '', t)
+        # Essence 박스는 figure 캡션(영문)이 앞서고 한글 요약이 뒤따른다 —
+        # 카드 설명은 한글 요약 문단을 우선한다.
+        paras = [re.sub(r'\s+', ' ', p).strip()
+                 for p in re.split(r'\n\s*\n', t) if p.strip()]
+        pick = next((p for p in paras if re.search(r'[가-힣]', p)),
+                    paras[0] if paras else "")
+        og_desc = pick[:160]
+    og_img = ""
+    fig_dir = os.path.join(slug_dir, "figures")
+    if os.path.isdir(fig_dir):
+        figs = sorted((f for f in os.listdir(fig_dir)
+                       if re.match(r'fig\d+\.(png|webp)$', f)),
+                      key=lambda f: int(re.findall(r'\d+', f)[0]))
+        if figs:
+            og_img = f"{_CF_BASE}/papers/{slug_dir_name}/figures/{figs[0]}"
+    og_meta = (
+        '<meta property="og:type" content="article">\n'
+        '<meta property="og:site_name" content="Paper Curation">\n'
+        f'<meta property="og:title" content="{esc(title)}">\n'
+        + (f'<meta property="og:description" content="{esc(og_desc)}">\n' if og_desc else "")
+        + f'<meta property="og:url" content="{_CF_BASE}/papers/{slug_dir_name}/">\n'
+        + (f'<meta property="og:image" content="{og_img}">\n' if og_img else "")
+        + f'<meta name="twitter:card" content="{"summary_large_image" if og_img else "summary"}">'
+    )
+
     # Assemble
     css = get_css(theme) + "\n" + get_audio_css(theme)
     html = f"""<!DOCTYPE html>
@@ -762,6 +799,7 @@ def convert_review(md_path, topic, slug_dir):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{esc(title)}</title>
+{og_meta}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
 <script>window.MathJax={{tex:{{inlineMath:[['$','$'],['\\\\(','\\\\)']],displayMath:[['$$','$$'],['\\\\[','\\\\]']]}}}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>

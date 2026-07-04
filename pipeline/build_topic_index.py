@@ -3390,6 +3390,15 @@ def _run_topic_index(topic=None):
         '<meta charset="UTF-8">\n'
         '<meta name="viewport" content="width=device-width,initial-scale=1.0">\n'
         f'<title>{esc(theme["title"])} &#8212; Paper Curation</title>\n'
+        # OG 소셜 카드 — 토픽 링크 공유 시 타임라인 이미지가 카드로 뜬다
+        # (research_timeline.png 는 배포 시 prepare_deploy 가 .webp 로 재작성).
+        '<meta property="og:type" content="website">\n'
+        '<meta property="og:site_name" content="Paper Curation">\n'
+        f'<meta property="og:title" content="{esc(theme["title"])} — Paper Curation">\n'
+        '<meta property="og:description" content="AI 논문 큐레이션 — 구조화 리뷰 · 연결 그래프 · 타임라인 · Deep Research">\n'
+        f'<meta property="og:url" content="https://paper-curation.jehyunlee.dev/{topic}/">\n'
+        f'<meta property="og:image" content="https://paper-curation.jehyunlee.dev/{topic}/research_timeline.png">\n'
+        '<meta name="twitter:card" content="summary_large_image">\n'
         '<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">\n'
         '<script>window.MathJax={tex:{inlineMath:[[\'$\',\'$\'],[\'\\\\(\',\'\\\\)\']],displayMath:[[\'$$\',\'$$\'],[\'\\\\[\',\'\\\\]\']]}};</script>\n'
         '<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>\n'
