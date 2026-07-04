@@ -1685,6 +1685,16 @@ def _run_topic_index(topic=None):
         : 'Smart (quality: 모델 자동 선택)';
     }
 
+    function deepWebSearchOn() {
+      const el = document.getElementById('deep-websearch');
+      return !!(el && el.checked);
+    }
+
+    // 웹 검색 ON일 때 system 에 덧붙이는 규칙. 기본 규칙("발췌 외 지식 사용 금지")
+    // 과 충돌하지 않도록 웹 출처의 사용 조건과 표기법을 명시한다 — [ref:N] 은
+    // 코퍼스 발췌 전용이고, 웹 출처는 마크다운 링크로만 표기한다.
+    const WEB_SEARCH_ADDENDUM = '\\n\\nWEB SEARCH MODE: the web_search tool is enabled for this request. Corpus excerpts remain the PRIMARY source and [ref:N] markers apply ONLY to them. You MAY search the web when recent news, tech-company blog posts, or papers outside the corpus would materially improve the answer. Attribute every web-sourced claim inline as a markdown link [source name](url) — never with [ref:N]. If web results conflict with corpus excerpts, say so explicitly.';
+
     async function callAnthropic(apiKey, model, prompt, spec, onDelta) {
       let maxTokens = spec.max_tokens;
       let thinkingBudget = spec.thinking;
@@ -1699,6 +1709,17 @@ def _run_topic_index(topic=None):
         messages: [{ role: 'user', content: prompt.user }],
         stream: true,
       };
+      if (deepWebSearchOn()) {
+        // Sonnet 5 / Opus 4.8 은 dynamic-filtering 신형(web_search_20260209),
+        // Haiku 4.5 는 구형(web_search_20250305)만 지원. 서버 툴이라 브라우저
+        // BYOK 에서 그대로 동작하고, 스트림 파서는 text_delta 외 블록을 무시한다.
+        body.tools = [{
+          type: /haiku-4-5/.test(model) ? 'web_search_20250305' : 'web_search_20260209',
+          name: 'web_search',
+          max_uses: 5,
+        }];
+        body.system = prompt.system + WEB_SEARCH_ADDENDUM;
+      }
       // Adaptive-thinking models (Opus 4.8, Sonnet 5, Fable 5) REJECT the
       // legacy budget-based thinking.type.enabled (HTTP 400). Send it ONLY to
       // models known to take the explicit budget form — whitelist, so any
@@ -1811,6 +1832,11 @@ def _run_topic_index(topic=None):
         contents: [{ role: 'user', parts: [{ text: prompt.user }] }],
         generationConfig: { maxOutputTokens: spec.max_tokens, temperature: 0.7 },
       };
+      if (deepWebSearchOn()) {
+        // Gemini 는 Google Search grounding 툴로 동일 기능 제공.
+        body.tools = [{ google_search: {} }];
+        body.systemInstruction = { parts: [{ text: prompt.system + WEB_SEARCH_ADDENDUM }] };
+      }
       const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
         + encodeURIComponent(model) + ':streamGenerateContent?alt=sse&key=' + encodeURIComponent(apiKey);
       deepSetStatus('\u270D\uFE0F 답변 작성 중...');
@@ -3439,6 +3465,9 @@ def _run_topic_index(topic=None):
         '          <option value="fast">Fast (cheap)</option>\n'
         '          <option value="smart">Smart (best)</option>\n'
         '        </select>\n'
+        '        <label class="deep-deeper-lbl" title="체크 시: 답변 생성에 웹 검색을 허용합니다 — 관련 뉴스·빅테크 블로그·코퍼스 밖 최신 논문 참조. Anthropic/Gemini 키에서 동작 (OpenAI 키는 미지원). 검색 호출 비용이 소액 추가됩니다. 기본 OFF = 코퍼스 발췌만 사용.">\n'
+        '          <input type="checkbox" id="deep-websearch"> &#x1F310; 웹 검색\n'
+        '        </label>\n'
         '        <label class="deep-deeper-lbl" title="체크 시: 핵심 논문의 연결 그래프(후속·반론·기반·응용)를 따라 확장하고, 단락별 에이전트가 작성한 뒤 오케스트레이터가 취합합니다. 분량 Long·최상위 모델이 자동 적용 (LLM 호출·시간·비용 증가).">\n'
         '          <input type="checkbox" id="deep-deeper"> Deeper\n'
         '        </label>\n'
