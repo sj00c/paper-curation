@@ -346,6 +346,83 @@ p{{margin:.6rem 0}} a{{color:#7c3aed}}
 </body></html>"""
 
 
+def make_progress_image(led, current):
+    """전체 커리큘럼 진도 로드맵 PNG(현재 강 하이라이트). Pillow만 사용."""
+    from PIL import Image, ImageDraw, ImageFont
+    import io
+    fcands = ["/System/Library/Fonts/AppleSDGothicNeo.ttc",
+              "/System/Library/Fonts/Supplemental/AppleGothic.ttf",
+              "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"]
+    fp = next((p for p in fcands if os.path.exists(p)), None)
+
+    def F(sz):
+        return ImageFont.truetype(fp, sz) if fp else ImageFont.load_default()
+
+    lecs = sorted(led["lectures"], key=lambda x: x["lecture"])
+    total = led.get("total", len(lecs))
+    n = len(lecs)
+    S, W, padx, head_h, row_h = 2, 1000, 34, 150, 66     # S=2x 슈퍼샘플 → 선명
+    Hpx = head_h + n * row_h + 26
+    img = Image.new("RGB", (W * S, Hpx * S), "white")
+    d = ImageDraw.Draw(img)
+    DONE, CUR, CUR_BG = (46, 158, 91), (232, 89, 12), (255, 243, 230)
+    UP, TXT, MUTE = (173, 181, 189), (33, 37, 41), (134, 142, 150)
+    BAR_BG, LINE = (233, 236, 239), (238, 238, 238)
+
+    def rrect(box, r, **kw):
+        d.rounded_rectangle([c * S for c in box], radius=r * S, **kw)
+
+    def circle(cx, cy, r, **kw):
+        d.ellipse([(cx - r) * S, (cy - r) * S, (cx + r) * S, (cy + r) * S], **kw)
+
+    def text(x, y, s, sz, fill, bold=False, anchor="la"):
+        d.text((x * S, y * S), s, font=F(sz * S), fill=fill, anchor=anchor,
+               stroke_width=(S if bold else 0), stroke_fill=fill)
+
+    def tw(s, sz):
+        return d.textlength(s, font=F(sz * S)) / S
+
+    def clip(s, sz, maxw):
+        if tw(s, sz) <= maxw:
+            return s
+        while s and tw(s + "…", sz) > maxw:
+            s = s[:-1]
+        return s + "…"
+
+    text(padx, 30, clip(led.get("course", "커리큘럼"), 30, W - 2 * padx), 30, TXT, bold=True)
+    text(padx, 74, f"전체 진도  {current} / {total}강", 21, CUR, bold=True)
+    by, bh = 116, 16
+    rrect((padx, by, W - padx, by + bh), bh // 2, fill=BAR_BG)
+    fillw = padx + (W - 2 * padx) * max(0.0, min(1.0, current / total))
+    if fillw > padx + bh:
+        rrect((padx, by, fillw, by + bh), bh // 2, fill=CUR)
+
+    for i, L in enumerate(lecs):
+        num = L["lecture"]
+        cy = head_h + i * row_h + row_h // 2
+        state = "cur" if num == current else ("done" if L.get("status") == "done" else "up")
+        col = {"done": DONE, "cur": CUR, "up": UP}[state]
+        if state == "cur":
+            rrect((padx - 8, cy - row_h // 2 + 5, W - padx + 8, cy + row_h // 2 - 5), 12,
+                  fill=CUR_BG, outline=CUR, width=2 * S)
+        else:
+            d.line([(padx * S, (cy + row_h // 2 - 4) * S), ((W - padx) * S, (cy + row_h // 2 - 4) * S)],
+                   fill=LINE, width=S)
+        circle(padx + 22, cy, 19, fill=col)
+        text(padx + 22, cy - 1, str(num), 19, (255, 255, 255), bold=True, anchor="mm")
+        tcol = TXT if state != "up" else MUTE
+        title = clip(f"제{num}강  {L['title']}", 22, W - (padx + 58) - 120)
+        text(padx + 58, cy - 13, title, 22, tcol, bold=(state == "cur"))
+        text(padx + 58, cy + 14, L.get("scheduled_at", "")[5:16], 13, MUTE)
+        badge = {"cur": "오늘", "done": "완료", "up": "예정"}[state]
+        text(W - padx, cy - 1, badge, 16, col, bold=(state == "cur"), anchor="rm")
+
+    img = img.resize((W, Hpx), Image.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    return buf.getvalue()
+
+
 # ── 이메일 (Resend, 다중 수신자) ─────────────────────────────────────────────
 def send_email(recipients, subject, html_body, attachments):
     resend = os.environ.get("RESEND_API_KEY", "")
@@ -355,10 +432,19 @@ def send_email(recipients, subject, html_body, attachments):
     p = DOCS / "_local_keys.json"
     if p.exists():
         lk = json.loads(p.read_text(encoding="utf-8"))
+    att = []
+    for it in attachments:
+        a = {"filename": it[0], "content": base64.b64encode(it[1]).decode()}
+        if len(it) > 2 and it[2]:                       # 인라인 이미지(cid)
+            a["content_id"] = it[2]
+            ext = it[0].rsplit(".", 1)[-1].lower()
+            a["content_type"] = {"png": "image/png", "jpg": "image/jpeg",
+                                  "jpeg": "image/jpeg", "gif": "image/gif"}.get(ext, "application/octet-stream")
+        att.append(a)
     payload = {
         "from": lk.get("audio_from") or "Paper Curation <onboarding@resend.dev>",
         "to": recipients, "subject": subject, "html": html_body,
-        "attachments": [{"filename": fn, "content": base64.b64encode(data).decode()} for fn, data in attachments],
+        "attachments": att,
     }
     if lk.get("audio_reply_to"):
         payload["reply_to"] = lk["audio_reply_to"]
@@ -421,10 +507,23 @@ def run_lecture(L, led, args):
         else:
             print(f"     ⚠️ {len(mp3)/1048576:.1f}MB · ~{dur:.0f}분 — 이메일 한도 초과, 첨부 제외(맥미니 lectures/에 저장)")
 
+    # 진도 로드맵 이미지 (매 메일에 인라인 표시 + 첨부)
+    prog_img_html = ""
+    try:
+        prog = make_progress_image(led, L["lecture"])
+        (OUTDIR / f"lecture_{L['lecture']:02d}_progress.png").write_bytes(prog)
+        attachments.append(("커리큘럼_진도.png", prog, "lecture-progress"))
+        prog_img_html = ('<div style="margin:10px 0 16px"><img src="cid:lecture-progress" '
+                         'alt="전체 진도" style="width:100%;max-width:640px;border:1px solid #eee;border-radius:10px"></div>')
+        print(f"     진도 이미지 생성 ({len(prog) / 1024:.0f}KB)")
+    except Exception as e:
+        print("     ⚠️ 진도 이미지 생성 실패:", e)
+
     print("  4) 이메일 발송")
     obj_html = "".join(f"<li>{H.escape(o)}</li>" for o in L["objectives"])
     core_html = "".join(f'<li><a href="{H.escape(c["link"])}">({c["year"]}) {H.escape(c["title"])}</a></li>' for c in core)
     body = (f"<p><b>{H.escape(course)} · 제{L['lecture']}강 / {total}</b></p><h2>{H.escape(L['title'])}</h2>"
+            f"{prog_img_html}"
             f"<p><b>🎯 오늘의 학습목표</b></p><ul>{obj_html}</ul>"
             f"<p><b>📄 다루는 논문 ({len(core)}편)</b> · 🔗 관련 연구 {len(related)}편 · 🌐 웹 출처 {len(web_sources)}개</p><ul>{core_html}</ul>"
             f"<p>첨부: Deeper Research 리포트(HTML, 링크·관련연구·참고문헌 포함)"
