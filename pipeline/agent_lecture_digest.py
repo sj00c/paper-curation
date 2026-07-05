@@ -443,7 +443,6 @@ def make_connection_map(core, related):
 
     items = "".join(core_node(c, i + 1) for i, c in enumerate(core))
     return (f'<section class="connection-map"><h2>🧭 논문 연결 지도</h2>'
-            f'<p class="map-note">Dashun Wang 핵심 논문을 시간순 세로 축으로 놓고, 같이 보면 좋은 논문을 가지처럼 붙였다. 각 노드는 탭해서 연결 사유와 논문 링크를 열 수 있다.</p>'
             f'<div class="flow-wrap">{items}</div></section>')
 
 
@@ -486,7 +485,6 @@ p{{margin:.6rem 0}} a{{color:#7c3aed}}
 .fig-gallery{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem;margin:1.3rem 0}}
 .fig-gallery .paper-fig{{margin:0}}
 .connection-map{{margin:2.4rem 0 1.2rem}}
-.map-note{{font-size:.88rem;color:#666;background:#fff;border-left:4px solid #7c3aed;border-radius:8px;padding:.75rem .9rem}}
 .flow-wrap{{position:relative;margin:1.2rem 0 0;padding-left:1.2rem}}
 .flow-wrap:before{{content:"";position:absolute;left:2.05rem;top:.4rem;bottom:.4rem;width:3px;background:linear-gradient(#7c3aed,#f97316);border-radius:999px;opacity:.35}}
 .flow-item{{position:relative;margin:0 0 1.25rem 0;padding-left:2.1rem}}
