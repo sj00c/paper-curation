@@ -158,16 +158,17 @@ def gather_evidence(lecture, related_cap=10):
         e = idx.get(rs, {})
         related.append({"slug": rs, "title": e.get("title", rs.split("_", 1)[-1].replace("_", " ")),
                         "year": _year(e), "link": paper_link(rs), "relation": meta["relation"],
-                        "reason": meta["reason"], "essence": (e.get("essence") or "")[:700]})
+                        "reason": meta["reason"], "review": read_review(rs, 1800),
+                        "essence": (e.get("essence") or "")[:700]})
 
     # LLM 근거 텍스트
     blocks = ["## 핵심 논문 (내 코퍼스 — 최우선 근거)"]
     for c in core:
         blocks.append(f"### ({c['year']}) {c['title']}\n{c['review'] or '(요약 없음)'}")
     if related:
-        blocks.append("## 연결 그래프 관련 논문 (내 코퍼스, 방법론적 연결)")
+        blocks.append("## 같이 보면 좋은 논문 (지정된 관련 논문 — 비교·대조·계보 분석의 최우선 대상)")
         for r in related:
-            blocks.append(f"- [{REL_KO.get(r['relation'], r['relation'])}] ({r['year']}) {r['title']} — {r['reason']}\n  요지: {r['essence']}")
+            blocks.append(f"### [{REL_KO.get(r['relation'], r['relation'])}] ({r['year']}) {r['title']}\n{r['review'] or r['essence'] or '(요약 없음)'}\n(연결 사유: {r['reason']})")
     return "\n\n".join(blocks), core, related
 
 
@@ -193,13 +194,12 @@ def synthesize_report(course, lecture, evidence, client):
     prompt = (
         f"당신은 '{course}' 심화 강의를 집필하는 전문 연구자입니다. **제{lecture['lecture']}강: {lecture['title']}**.\n\n"
         f"오늘의 학습목표:\n{obj}\n\n다루는 핵심 논문: {plist}\n\n"
-        "이것은 **Deeper Research** 입니다. 아래 근거(내 코퍼스의 핵심 논문 + 연결 그래프 관련 논문)를 **최우선**으로 삼되, "
-        "그리고 **반드시 google_search 웹 검색을 여러 번 수행**해 (a) 최근·후속·반박 연구, (b) 당시 통념이 뒤집힌 사례, (c) 다른 그룹의 대안적 관점을 찾아 함께 소개하세요. 코퍼스만으로 쓰지 말고 웹으로 시야를 넓힐 것.\n\n"
+        "이것은 **Deeper Research** 입니다 — 토픽 Deeper Research와 동일하게, **핵심 논문(시드)과 각 논문에 지정된 '같이 보면 좋은 논문'(연결 그래프: 기반·후속·대안·응용·반론)** 을 **최우선**으로 함께 동원해 비교·대조·계보를 분석하세요. 후대에 나온 관련 논문도 훌륭한 비교 대상입니다.\n\n"
         "작성 지침:\n"
         "- 학습목표 3개를 모두 충실히 충족.\n"
-        "- 논문 단순 나열 금지. **연구 방법론·핵심 메시지 축**으로 엮고 연구 계보를 짚을 것.\n"
-        "- **계보·수정 서사 필수**: '당시엔 X로 여겨졌으나 후대 연구에서 Y로 밝혀졌다', '이 결과는 이후 ~에 의해 반박·정교화됐다' 같은 흐름을 웹·연결 논문으로 보강.\n"
-        "- 인용: 코퍼스 논문은 (제목, 연도)로 본문에 명시. **웹 출처는 반드시 마크다운 링크 [출처 제목](URL)** 로 인라인 표기하고, 서로 다른 외부(웹) 출처를 **최소 4개 이상** 인용할 것.\n"
+        "- 논문 단순 나열 금지. **연구 방법론·핵심 메시지 축**으로 엮고, 지정 관련 논문을 핵심 논문과 **직접 비교**: 무엇을 계승·확장했고 무엇을 반박·수정했는지, 방법론 차이는 무엇인지.\n"
+        "- **계보·수정 서사 필수**: '당시엔 X로 여겨졌으나 후대 연구(관련 논문)에서 Y로 밝혀졌다', '이 결과는 이후 ~에 의해 반박·정교화됐다'를 지정 관련 논문 근거로 전개.\n"
+        "- 인용: 논문은 (제목, 연도)로 본문에 명시. **웹 검색은 보조 수단** — 코퍼스(핵심+관련 논문)로 충분하면 웹을 남용하지 말고, 코퍼스에 없는 최신 맥락·외부 반응이 꼭 필요할 때만 google_search로 보강하고 [제목](URL)로 표기.\n"
         "- 전문가 청중, 학술적 톤. 마크다운(## 소제목, 단락). 각 논문의 문제의식·방법·핵심 결과(수치)·의의를 구체적으로. **최소 18,000자 이상**의 상세 강의(서둘러 마무리 금지).\n"
         "- 메타·머리말 없이 곧바로 강의 본문으로 시작.\n\n"
         f"=== 근거 (코퍼스) ===\n{evidence}"
