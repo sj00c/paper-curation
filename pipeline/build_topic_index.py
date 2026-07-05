@@ -2013,7 +2013,31 @@ def _run_topic_index(topic=None, cross=None):
       renderTo(el, markup);
     }
 
+    // 취합기(assembler)가 리포트 본문 대신 자기 역할·편집 지침을 복창하는 서두 메타
+    // ("책임 편집장으로서 … 취합하겠습니다 / 초안을 파악했습니다 / [ref:N] 마커를 보존합니다")
+    // 를 제거. 첫 마크다운 제목 이전 구간에서 메타 단서를 가진 선두 문장만 하나씩 떼고
+    // 첫 정상 문장에서 멈춘다 — 정상 서론/본문은 건드리지 않는다(프롬프트로도 금지).
+    function stripDeepMeta(md) {
+      const orig = String(md || '');
+      let t = orig.replace(/^\\s+/, '');
+      const hi = t.search(/(^|\\n)#{1,3}\\s/);
+      let head = hi === -1 ? t : t.slice(0, hi);
+      const rest = hi === -1 ? '' : t.slice(hi);
+      let guard = 0;
+      while (guard++ < 12) {
+        const m = head.match(/^\\s*[^.!?。\\n]*?(초안|편집장|편집 지침|취합하|보존하겠|보존합니다|파악하겠|파악했|작성하겠|검토하겠|\\[ref:N\\] ?마커|figure를 모두|lead editor|assembl)[^.!?。\\n]*[.!?。]\\s*/);
+        if (!m) break;
+        head = head.slice(m[0].length);
+      }
+      const out = (head + rest).replace(/^\\s+/, '');
+      return out.length > 0 ? out : orig;
+    }
     function finalizeDeepAnswer() {
+      // 취합기가 리포트 대신 역할·지침을 복창하는 서두 메타를 제거 (프롬프트로도 금지하지만 방어).
+      try {
+        const _sm = stripDeepMeta(DEEP.currentAnswer);
+        if (_sm !== DEEP.currentAnswer) { DEEP.currentAnswer = _sm; renderDeepAnswer(DEEP.currentAnswer); }
+      } catch (e) { console.warn('[meta-strip] skipped:', e && e.message || e); }
       // 웹 검색 실행(토글 ON)의 인라인 웹 링크를 번호 레퍼런스로 흡수 —
       // 일반 실행의 본문 링크는 건드리지 않는다. 인용 가드보다 먼저 돌아야
       // 새로 붙은 번호가 가드에서 살아남는다.
@@ -2469,8 +2493,8 @@ def _run_topic_index(topic=None, cross=None):
       const refSet = (sec.refs && sec.refs.length) ? new Set(sec.refs) : null;
       const evidence = buildEvidenceText(all, refSet, fullTexts);
       const sys = (lang === 'ko')
-        ? '당신은 리서치 리포트의 한 단락을 집필하는 전문 작성자입니다. 아래 번호가 매겨진 발췌문만 근거로, 지정된 단락 주제에 해당하는 내용을 자연스러운 한국어 서술로 작성하세요. 규칙: (1) 인용은 ``[ref:N]`` 마커만 사용(N=발췌 번호) — 후처리가 링크로 바꿉니다. (2) 단락 제목·머리말 없이 본문만 출력. (3) 발췌 밖 지식 금지, 근거 없는 주장 생략. (4) 제공된 발췌 논문을 폭넓게 활용하되 단락 주제와 무관한 논문은 인용하지 마세요. (5) [연결관계:] 태그가 있는 논문은 그 관계를 문장에 녹여 표현하세요(예: "~의 후속 연구[ref:N]", "이에 대한 반론[ref:N]"). (6) 연관 Figure는 ![caption](url) 로 본문에 삽입(발췌에 명시된 URL만, 임의 URL 금지).'
-        : 'You write ONE section of a research report. Using ONLY the numbered excerpts below, write the assigned section in natural Korean prose. Rules: (1) cite with [ref:N] markers only; (2) output only the body, no heading; (3) no outside knowledge, omit unsupported claims; (4) use the provided papers broadly but do not cite ones irrelevant to this section; (5) for [연결관계:]-tagged papers weave the relation into the prose; (6) embed figures with ![caption](url) using only listed URLs.';
+        ? '당신은 리서치 리포트의 한 단락을 집필하는 전문 작성자입니다. 아래 번호가 매겨진 발췌문만 근거로, 지정된 단락 주제에 해당하는 내용을 자연스러운 한국어 서술로 작성하세요. 규칙: (1) 인용은 ``[ref:N]`` 마커만 사용(N=발췌 번호) — 후처리가 링크로 바꿉니다. (2) 단락 제목·머리말·"~하겠습니다" 같은 메타 없이 본문만 출력. (3) 발췌 밖 지식 금지, 근거 없는 주장 생략. (4) 제공된 발췌 논문을 폭넓게 활용하되 단락 주제와 무관한 논문은 인용하지 마세요. (5) [연결관계:] 태그가 있는 논문은 그 관계를 문장에 녹여 표현하세요(예: "~의 후속 연구[ref:N]", "이에 대한 반론[ref:N]"). (6) 연관 Figure는 ![caption](url) 로 본문에 삽입(발췌에 명시된 URL만, 임의 URL 금지).'
+        : 'You write ONE section of a research report. Using ONLY the numbered excerpts below, write the assigned section in natural Korean prose. Rules: (1) cite with [ref:N] markers only; (2) output only the body — no heading, no preamble or "I will…" meta; (3) no outside knowledge, omit unsupported claims; (4) use the provided papers broadly but do not cite ones irrelevant to this section; (5) for [연결관계:]-tagged papers weave the relation into the prose; (6) embed figures with ![caption](url) using only listed URLs.';
       const lenDir = (lang === 'ko')
         ? '\\n분량 지침: 이 단락을 8~15개 문단(약 1800~3600자)으로 매우 충실하고 자세하게 작성하세요.'
         : '\\nLength: write this section as 8-15 detailed paragraphs (~1500-3000 words).';
@@ -2487,8 +2511,8 @@ def _run_topic_index(topic=None, cross=None):
         return '## ' + d.title + '\\n' + (d.text || (lang === 'ko' ? '(내용 없음)' : '(no content)'));
       }).join('\\n\\n');
       const sys = (lang === 'ko')
-        ? '당신은 여러 단락 초안을 하나의 일관된 한국어 리서치 리포트로 취합하는 책임 편집장입니다. 규칙: (1) ``[ref:N]`` 인용 마커는 반드시 그대로 보존(번호 변경·삭제 금지). (2) 간결한 서론(질문 맥락)과 종합 결론을 추가. (3) **각 단락의 분량과 깊이를 최대한 보존하세요 — 요약·압축하지 말고**, 단락 간 명백히 중복되는 문장만 정리하며 매끄럽게 연결하고 ## 제목으로 구조화. (4) 연구 계보(기반→핵심→후속·응용→반론)가 한눈에 드러나게. (5) 초안에 있던 ![caption](url) figure 는 적절한 위치에 유지하되 새 URL 은 만들지 말 것. (6) 초안에 없는 사실을 새로 지어내지 말 것. (7) 초안의 인라인 웹 출처 링크 ``[source](url)`` 는 그대로 보존(변경·삭제 금지) — 후처리가 번호 레퍼런스로 흡수합니다.'
-        : 'You are the lead editor assembling section drafts into ONE coherent Korean research report. Keep all [ref:N] markers exactly (never renumber or drop them); add a short intro and synthesizing conclusion; PRESERVE the depth and length of each section — do NOT summarize or compress, only trim clearly duplicated sentences across sections; structure with ## headings; make the research lineage (foundation→core→extension/application→counterpoint) clear; keep ![caption](url) figures from the drafts but invent no new URLs; preserve inline [source](url) web-source links from the drafts exactly (never alter or drop them); do not fabricate facts beyond the drafts.';
+        ? '당신은 여러 단락 초안을 하나의 일관된 한국어 리서치 리포트로 취합하는 책임 편집장입니다. 규칙: (1) ``[ref:N]`` 인용 마커는 반드시 그대로 보존(번호 변경·삭제 금지). (2) 간결한 서론(질문 맥락)과 종합 결론을 추가. (3) **각 단락의 분량과 깊이를 최대한 보존하세요 — 요약·압축하지 말고**, 단락 간 명백히 중복되는 문장만 정리하며 매끄럽게 연결하고 ## 제목으로 구조화. (4) 연구 계보(기반→핵심→후속·응용→반론)가 한눈에 드러나게. (5) 초안에 있던 ![caption](url) figure 는 적절한 위치에 유지하되 새 URL 은 만들지 말 것. (6) 초안에 없는 사실을 새로 지어내지 말 것. (7) 초안의 인라인 웹 출처 링크 ``[source](url)`` 는 그대로 보존(변경·삭제 금지) — 후처리가 번호 레퍼런스로 흡수합니다. (8) **메타·서두 절대 금지**: 역할이나 이 규칙을 복창하지 말고, "~하겠습니다"·"초안을 파악했습니다" 같은 진행 설명 없이 곧바로 리포트 서론 문장부터 출력하세요.'
+        : 'You are the lead editor assembling section drafts into ONE coherent Korean research report. Keep all [ref:N] markers exactly (never renumber or drop them); add a short intro and synthesizing conclusion; PRESERVE the depth and length of each section — do NOT summarize or compress, only trim clearly duplicated sentences across sections; structure with ## headings; make the research lineage (foundation→core→extension/application→counterpoint) clear; keep ![caption](url) figures from the drafts but invent no new URLs; preserve inline [source](url) web-source links from the drafts exactly (never alter or drop them); do not fabricate facts beyond the drafts. Output ONLY the report itself — no preamble, no restating your role or these rules, no "I will…"/"let me…" meta; begin directly with the report intro.';
       const user = (lang === 'ko' ? '원 질문: ' : 'Question: ') + query + '\\n\\n'
         + (lang === 'ko' ? '단락 초안:' : 'Section drafts:') + '\\n\\n' + body;
       const spec = { max_tokens: 32000, thinking: 8000 };
