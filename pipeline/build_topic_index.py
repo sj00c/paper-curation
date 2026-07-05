@@ -31,7 +31,7 @@ def get_topic():
     return "ai4s"
 
 
-def _run_topic_index(topic=None):
+def _run_topic_index(topic=None, cross=None):
     """Build {topic}/index.html (cards + Deep Research UI).
 
     Phase 5 refactor: module-level code was wrapped into this
@@ -65,6 +65,13 @@ def _run_topic_index(topic=None):
     _collection_name = _collections_raw.get(TOPIC, TOPIC)
     theme["title"] = _collection_name
     theme["subtitle_prefix"] = _collection_name
+    if cross:
+        theme = {
+            "gradient": "linear-gradient(135deg, #1a0d2a 0%, #3a1a5c 50%, #6b21a8 100%)",
+            "accent": "#8B3FD6", "accent_dark": "#6B21A8", "accent_light": "#B57BF0",
+        }
+        theme["title"] = cross.get("title", "통합 Deep Research")
+        theme["subtitle_prefix"] = theme["title"]
 
     # Load data
     with open(os.path.join(PAPERS_DIR, "_papers_index.json"), encoding="utf-8") as f:
@@ -129,7 +136,10 @@ def _run_topic_index(topic=None):
                 category_analyses[cat_name_cs]["sub_themes"] = cs["sub_themes"]
 
     # Filter papers for this topic
-    topic_papers = [p for p in papers_index if TOPIC in p.get("topics", [])]
+    if cross:
+        topic_papers = []
+    else:
+        topic_papers = [p for p in papers_index if TOPIC in p.get("topics", [])]
     slug_to_index = {p["slug"]: p for p in topic_papers}
 
     # Assignment slug → category mapping (multi-class)
@@ -290,6 +300,8 @@ def _run_topic_index(topic=None):
         cat_papers[cat].sort(key=lambda p: p["overall_score"], reverse=True)
     total_cards = sum(len(v) for v in cat_papers.values())
     unique_papers = len(topic_papers)
+    if cross:
+        unique_papers = cross.get("paper_count", unique_papers)
     print(f"Total papers for {TOPIC}: {unique_papers} unique ({total_cards} cards with multi-class)")
     for cn in cat_order:
         print(f"  {cn}: {len(cat_papers.get(cn, []))}")
@@ -667,6 +679,21 @@ def _run_topic_index(topic=None):
 
     # Audio Overview styles (shared lib). accent_bg ≈ accent at ~10% alpha.
     CSS = CSS + "\n" + _audio_css(accent, accent_dark, accent + "1a")
+    if cross:
+        CSS += (
+            "\n/* cross-topic 통합 콘솔 (로컬 전용) */\n"
+            ".sort-bar{display:none!important;}\n"
+            ".mode-toggle{display:none!important;}\n"
+            '.hero a[href="feed.xml"]{display:none!important;}\n'
+            ".hero .stat:nth-child(2){display:none!important;}\n"
+            ".cross-dir{background:#fff;border:1px solid #eee;border-radius:12px;padding:1.2rem 1.4rem;margin:0.5rem 0 0;}\n"
+            ".cross-dir h2{font-size:1.05rem;margin-bottom:0.5rem;color:#6B21A8;}\n"
+            ".cross-dir p{font-size:0.92rem;color:#444;line-height:1.7;}\n"
+            ".cross-topics{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.9rem;}\n"
+            "a.cross-topic{display:inline-flex;gap:0.45rem;align-items:center;padding:0.5rem 0.95rem;border:1px solid #e5e5e5;border-radius:999px;text-decoration:none;color:#333;font-size:0.9rem;}\n"
+            "a.cross-topic:hover{background:#faf5ff;border-color:#B57BF0;}\n"
+            "a.cross-topic strong{color:#6B21A8;}\n"
+        )
 
     JS = """function toggleTopic(id) {
       const body = document.getElementById(id);
@@ -1658,7 +1685,7 @@ def _run_topic_index(topic=None):
     const LENGTH_SPEC = {
       short:  { max_tokens: 4096,  thinking: 1500, ko: '2~5개 문단으로 간결하게 (약 400~900자)',       en: '2-5 concise paragraphs (roughly 300-700 words)' },
       medium: { max_tokens: 6500,  thinking: 2500, ko: '5~10개 문단으로 충실하게 (약 900~1800자)',     en: '5-10 substantial paragraphs (roughly 700-1500 words)' },
-      long:   { max_tokens: 12000, thinking: 4000, ko: '10~20개 문단으로 상세하게 (약 1800~4500자)',   en: '10-20 detailed paragraphs (roughly 1500-3500 words)' },
+      long:   { max_tokens: 24000, thinking: 8000, ko: '20~40개 문단으로 매우 상세하게 (약 3600~9000자)',   en: '20-40 in-depth paragraphs (roughly 3000-7000 words)' },
       ultra:  { max_tokens: 20000, thinking: 6000, ko: '20~40개 문단으로 심층적으로 (약 4500~9000자)', en: '20-40 in-depth paragraphs (roughly 3500-7000 words)' },
     };
 
@@ -2215,9 +2242,9 @@ def _run_topic_index(topic=None):
     }
 
     // Numbered evidence block for the multi-agent report (curated review
-    // excerpts + relation tags + figure URLs; no local full-text). Numbering
+    // excerpts + relation tags + figure URLs + optional windowed text.md (fullTexts). Numbering
     // matches DEEP.currentRefs so [ref:N] stays consistent across all agents.
-    function buildEvidenceText(selected, allowSet) {
+    function buildEvidenceText(selected, allowSet, fullTexts) {
       const lines = [];
       for (let i = 0; i < selected.length; i++) {
         if (allowSet && !allowSet.has(i + 1)) continue;
@@ -2235,20 +2262,104 @@ def _run_topic_index(topic=None):
           ? (' [연결관계: ' + (RELATION_KO[s.relation] || s.relation) + (s.reason ? (' — ' + s.reason) : '') + ']')
           : '';
         lines.push('[' + n + '] Paper: "' + paper.title + '"' + authorTag + ' (' + (paper.year || 'n/a') + ', category: ' + (paper.category || 'n/a') + ')' + idTag + relTag + figs + '\\n' + sectionsBlock);
+        if (fullTexts && fullTexts[s.slug]) {
+          lines[lines.length - 1] += '\\n  [원문 발췌 (method·실험·수치 밀집 구간)]:\\n    ' + fullTexts[s.slug];
+        }
       }
       return 'Excerpts from paper reviews:\\n\\n' + lines.join('\\n\\n---\\n\\n');
     }
 
+    // ── Deeper depth: windowed text.md for a section's top refs (LOCAL ONLY) ──
+    // text.md is git-ignored → 404 on Cloudflare, so this silently falls back to
+    // review excerpts there; on serve_local / the cross console it injects the
+    // method/experiment/number-dense windows (mirrors build_search_index's
+    // textmd_high_signal_chunks) so Deeper isn't shallower than Deep per paper.
+    const DEEP_FT_PER_SECTION = 6;    // top refs per section that get full text
+    const DEEP_FT_DOC_CAP = 9000;     // per-doc windowed char budget
+    const _FT_SIGNAL_RE = /(method|approach|propos|algorithm|model|train|fine-?tun|dataset|benchmark|evaluat|experiment|result|ablation|baseline|accuracy|precision|recall|metric|hyper-?parameter|we (train|use|evaluate|propose|find|observe|measure|report))/i;
+    const _FT_NUM_RE = /(\\d+(?:\\.\\d+)?\\s?%|\\d+\\.\\d+)/;
+    const _FT_REF_RE = /^\\s*#{0,4}\\s*(references|bibliography|참고문헌|acknowledge?ments?)\\b/im;
+
+    function _ftQueryTerms(query) {
+      return String(query || '').toLowerCase().split(/[^a-z0-9\\uac00-\\ud7af]+/).filter(function(t) { return t.length > 3; });
+    }
+    function _ftHighSignal(raw, terms) {
+      const m = _FT_REF_RE.exec(raw);
+      let body = (m ? raw.slice(0, m.index) : raw).replace(/\\s+/g, ' ').trim();
+      if (body.length > 150000) body = body.slice(0, 150000);
+      if (body.length <= DEEP_FT_DOC_CAP) return body;
+      const size = 1400, step = 1200, wins = [];
+      for (let i = 0; i < body.length; i += step) wins.push(body.slice(i, i + size));
+      const sig = new RegExp(_FT_SIGNAL_RE.source, 'gi'), num = new RegExp(_FT_NUM_RE.source, 'g');
+      const scored = wins.map(function(w, idx) {
+        const lw = w.toLowerCase();
+        let q = 0; for (const t of terms) if (lw.indexOf(t) !== -1) q++;
+        return { idx: idx, text: w, score: (w.match(sig) || []).length + (w.match(num) || []).length + 2 * q };
+      });
+      scored.sort(function(a, b) { return b.score - a.score; });
+      const picked = []; let used = 0;
+      for (const s of scored) {
+        if (s.score <= 0 || picked.length >= 6) break;
+        if (used + s.text.length > DEEP_FT_DOC_CAP) continue;
+        picked.push(s); used += s.text.length;
+      }
+      if (!picked.length) return body.slice(0, DEEP_FT_DOC_CAP);
+      picked.sort(function(a, b) { return a.idx - b.idx; });
+      return picked.map(function(p) { return p.text; }).join(' … ');
+    }
+    async function _ftFetch(slug, terms) {
+      if (Object.prototype.hasOwnProperty.call(DEEP._ftCache, slug)) return DEEP._ftCache[slug];
+      if (DEEP._ftInflight[slug]) return DEEP._ftInflight[slug];
+      const p = (async function() {
+        try {
+          const r = await deepFetch('../papers/' + slug + '/text.md');
+          if (!r.ok) return (DEEP._ftCache[slug] = null);
+          const t = await r.text();
+          return (DEEP._ftCache[slug] = _ftHighSignal(t, terms) || null);
+        } catch (e) { return (DEEP._ftCache[slug] = null); }
+        finally { delete DEEP._ftInflight[slug]; }
+      })();
+      DEEP._ftInflight[slug] = p;
+      return p;
+    }
+    // For one section: windowed text.md for its top-N refs (by evidence rank,
+    // seeds first). Returns { slug: windowedText }; 404/missing refs omitted.
+    async function sectionFullTexts(sec, all, terms) {
+      let idxs;
+      if (sec.refs && sec.refs.length) {
+        idxs = sec.refs.slice().sort(function(a, b) { return a - b; });
+      } else {
+        idxs = all.map(function(_, i) { return i + 1; });
+      }
+      const slugs = [];
+      for (const n of idxs) {
+        const s = all[n - 1];
+        if (s && s.slug) slugs.push(s.slug);
+        if (slugs.length >= DEEP_FT_PER_SECTION) break;
+      }
+      const out = {};
+      await Promise.all(slugs.map(async function(slug) {
+        const w = await _ftFetch(slug, terms);
+        if (w) out[slug] = w;
+      }));
+      return out;
+    }
+
     // Non-streaming completion across the 3 backends (configurable max tokens).
     // Used by the report planner + per-section writer agents.
-    async function llmComplete(backend, apiKey, model, sys, user, maxTokens) {
+    async function llmComplete(backend, apiKey, model, sys, user, maxTokens, web) {
       const mt = maxTokens || 2048;
+      // 웹 검색 툴은 web=true(섹션 작성기) + 토글 ON 일 때만 켠다. planner 는 web 미전달 → 코퍼스 전용.
+      // OpenAI 는 web_search 미지원이라 코퍼스 전용 유지 (일반 Deep 과 동일).
+      const useWeb = !!web && deepWebSearchOn();
       if (backend === 'anthropic') {
+        const abody = { model: model, max_tokens: mt, system: useWeb ? (sys + WEB_SEARCH_ADDENDUM) : sys, messages: [{ role: 'user', content: user }] };
+        if (useWeb) abody.tools = [{ type: /haiku-4-5/.test(model) ? 'web_search_20250305' : 'web_search_20260209', name: 'web_search', max_uses: 3 }];
         const resp = await deepFetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: { 'content-type': 'application/json', 'x-api-key': apiKey,
             'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-          body: JSON.stringify({ model: model, max_tokens: mt, system: sys, messages: [{ role: 'user', content: user }] }),
+          body: JSON.stringify(abody),
         });
         if (!resp.ok) { const eb = await resp.text().catch(function(){ return ''; }); throw new Error('Anthropic complete ' + resp.status + ': ' + eb.slice(0, 300)); }
         const data = await resp.json();
@@ -2268,9 +2379,11 @@ def _run_topic_index(topic=None):
       }
       if (backend === 'google') {
         const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+        const gbody = { systemInstruction: { parts: [{ text: useWeb ? (sys + WEB_SEARCH_ADDENDUM) : sys }] }, contents: [{ role: 'user', parts: [{ text: user }] }], generationConfig: { maxOutputTokens: mt } };
+        if (useWeb) gbody.tools = [{ google_search: {} }];
         const resp = await deepFetch(url, {
           method: 'POST', headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ systemInstruction: { parts: [{ text: sys }] }, contents: [{ role: 'user', parts: [{ text: user }] }], generationConfig: { maxOutputTokens: mt } }),
+          body: JSON.stringify(gbody),
         });
         if (!resp.ok) { const eb = await resp.text().catch(function(){ return ''; }); throw new Error('Google complete ' + resp.status + ': ' + eb.slice(0, 300)); }
         const data = await resp.json();
@@ -2352,9 +2465,9 @@ def _run_topic_index(topic=None):
 
     // Per-section writer agent. Writes ONE section body from the shared
     // numbered evidence, citing [ref:N]. Returns markdown (no heading).
-    async function writeSection(query, all, lang, backend, apiKey, model, sec) {
+    async function writeSection(query, all, lang, backend, apiKey, model, sec, fullTexts) {
       const refSet = (sec.refs && sec.refs.length) ? new Set(sec.refs) : null;
-      const evidence = buildEvidenceText(all, refSet);
+      const evidence = buildEvidenceText(all, refSet, fullTexts);
       const sys = (lang === 'ko')
         ? '당신은 리서치 리포트의 한 단락을 집필하는 전문 작성자입니다. 아래 번호가 매겨진 발췌문만 근거로, 지정된 단락 주제에 해당하는 내용을 자연스러운 한국어 서술로 작성하세요. 규칙: (1) 인용은 ``[ref:N]`` 마커만 사용(N=발췌 번호) — 후처리가 링크로 바꿉니다. (2) 단락 제목·머리말 없이 본문만 출력. (3) 발췌 밖 지식 금지, 근거 없는 주장 생략. (4) 제공된 발췌 논문을 폭넓게 활용하되 단락 주제와 무관한 논문은 인용하지 마세요. (5) [연결관계:] 태그가 있는 논문은 그 관계를 문장에 녹여 표현하세요(예: "~의 후속 연구[ref:N]", "이에 대한 반론[ref:N]"). (6) 연관 Figure는 ![caption](url) 로 본문에 삽입(발췌에 명시된 URL만, 임의 URL 금지).'
         : 'You write ONE section of a research report. Using ONLY the numbered excerpts below, write the assigned section in natural Korean prose. Rules: (1) cite with [ref:N] markers only; (2) output only the body, no heading; (3) no outside knowledge, omit unsupported claims; (4) use the provided papers broadly but do not cite ones irrelevant to this section; (5) for [연결관계:]-tagged papers weave the relation into the prose; (6) embed figures with ![caption](url) using only listed URLs.';
@@ -2364,7 +2477,7 @@ def _run_topic_index(topic=None):
       const user = evidence + '\\n\\n---\\n'
         + (lang === 'ko' ? '작성할 단락: ' : 'Section to write: ') + sec.title + (sec.focus ? (' — ' + sec.focus) : '') + lenDir + '\\n'
         + (lang === 'ko' ? '원 질문: ' : 'Question: ') + query;
-      return await llmComplete(backend, apiKey, model, sys, user, 9000);
+      return await llmComplete(backend, apiKey, model, sys, user, 9000, true);
     }
 
     // Orchestrator: assemble section drafts into one coherent report and
@@ -2374,8 +2487,8 @@ def _run_topic_index(topic=None):
         return '## ' + d.title + '\\n' + (d.text || (lang === 'ko' ? '(내용 없음)' : '(no content)'));
       }).join('\\n\\n');
       const sys = (lang === 'ko')
-        ? '당신은 여러 단락 초안을 하나의 일관된 한국어 리서치 리포트로 취합하는 책임 편집장입니다. 규칙: (1) ``[ref:N]`` 인용 마커는 반드시 그대로 보존(번호 변경·삭제 금지). (2) 간결한 서론(질문 맥락)과 종합 결론을 추가. (3) **각 단락의 분량과 깊이를 최대한 보존하세요 — 요약·압축하지 말고**, 단락 간 명백히 중복되는 문장만 정리하며 매끄럽게 연결하고 ## 제목으로 구조화. (4) 연구 계보(기반→핵심→후속·응용→반론)가 한눈에 드러나게. (5) 초안에 있던 ![caption](url) figure 는 적절한 위치에 유지하되 새 URL 은 만들지 말 것. (6) 초안에 없는 사실을 새로 지어내지 말 것.'
-        : 'You are the lead editor assembling section drafts into ONE coherent Korean research report. Keep all [ref:N] markers exactly (never renumber or drop them); add a short intro and synthesizing conclusion; PRESERVE the depth and length of each section — do NOT summarize or compress, only trim clearly duplicated sentences across sections; structure with ## headings; make the research lineage (foundation→core→extension/application→counterpoint) clear; keep ![caption](url) figures from the drafts but invent no new URLs; do not fabricate facts beyond the drafts.';
+        ? '당신은 여러 단락 초안을 하나의 일관된 한국어 리서치 리포트로 취합하는 책임 편집장입니다. 규칙: (1) ``[ref:N]`` 인용 마커는 반드시 그대로 보존(번호 변경·삭제 금지). (2) 간결한 서론(질문 맥락)과 종합 결론을 추가. (3) **각 단락의 분량과 깊이를 최대한 보존하세요 — 요약·압축하지 말고**, 단락 간 명백히 중복되는 문장만 정리하며 매끄럽게 연결하고 ## 제목으로 구조화. (4) 연구 계보(기반→핵심→후속·응용→반론)가 한눈에 드러나게. (5) 초안에 있던 ![caption](url) figure 는 적절한 위치에 유지하되 새 URL 은 만들지 말 것. (6) 초안에 없는 사실을 새로 지어내지 말 것. (7) 초안의 인라인 웹 출처 링크 ``[source](url)`` 는 그대로 보존(변경·삭제 금지) — 후처리가 번호 레퍼런스로 흡수합니다.'
+        : 'You are the lead editor assembling section drafts into ONE coherent Korean research report. Keep all [ref:N] markers exactly (never renumber or drop them); add a short intro and synthesizing conclusion; PRESERVE the depth and length of each section — do NOT summarize or compress, only trim clearly duplicated sentences across sections; structure with ## headings; make the research lineage (foundation→core→extension/application→counterpoint) clear; keep ![caption](url) figures from the drafts but invent no new URLs; preserve inline [source](url) web-source links from the drafts exactly (never alter or drop them); do not fabricate facts beyond the drafts.';
       const user = (lang === 'ko' ? '원 질문: ' : 'Question: ') + query + '\\n\\n'
         + (lang === 'ko' ? '단락 초안:' : 'Section drafts:') + '\\n\\n' + body;
       const spec = { max_tokens: 32000, thinking: 8000 };
@@ -2519,6 +2632,8 @@ def _run_topic_index(topic=None):
     // around connection-graph expansion. Returns true if an answer was made.
     async function runDeeperResearch(index, query) {
       const lang = detectLang(query);
+      DEEP._ftCache = {}; DEEP._ftInflight = {};  // per-run windowed text.md cache (로컬 전용)
+      const _ftTerms = _ftQueryTerms(query);
       const apiKey = _LLM_KEY || _ANTHROPIC_KEY || _OPENAI_KEY || (window._GEMINI_KEY || '');
       const backend = detectBackend(apiKey);
       if (!backend) {
@@ -2561,7 +2676,7 @@ def _run_topic_index(topic=None):
         return false;
       }
       // Cap seeds (rank by best RRF) so connected papers get budget.
-      const cappedSeeds = Array.from(seedMap.values()).sort(function(a, b) { return b.best - a.best; }).slice(0, 14);
+      const cappedSeeds = Array.from(seedMap.values()).sort(function(a, b) { return b.best - a.best; }).slice(0, 28);
       const seedSet = new Set(cappedSeeds.map(function(s) { return s.slug; }));
       // 2) Graph expansion — pull connected papers (typed) of the seeds.
       deepSetStatus('\U0001F578️ 연결된 후속·반론·기반 논문 확장 중...');
@@ -2590,7 +2705,7 @@ def _run_topic_index(topic=None):
       function relBoost(rel) { return (rel === 'counterpoint' || rel === 'alternative') ? 0.5 : 0; }
       const connectedRanked = Array.from(expand.values())
         .sort(function(a, b) { return (b.count + relBoost(b.relation)) - (a.count + relBoost(a.relation)); })
-        .slice(0, 40);
+        .slice(0, 80);
       const connectedEntries = [];
       for (const c of connectedRanked) {
         const paper = index.papers[c.slug];
@@ -2600,7 +2715,7 @@ def _run_topic_index(topic=None):
       }
       deepRenderExpansion(cappedSeeds, connectedEntries);
       // Evidence set (seeds first, then connected). Renumber refs.
-      const all = cappedSeeds.concat(connectedEntries).slice(0, 50);
+      const all = cappedSeeds.concat(connectedEntries).slice(0, 100);
       DEEP.currentRefs = all.map(function(s, i) {
         return { n: i + 1, slug: s.slug, title: s.paper.title, year: s.paper.year,
           url: s.paper.url, external_url: s.paper.external_url || '',
@@ -2614,9 +2729,10 @@ def _run_topic_index(topic=None):
       deepRenderSections(sections);
       // MAP — per-section agents write in parallel (each on its assigned refs).
       deepSetStatus('✍️ 단락별 작성 중 (' + sections.length + '개 에이전트 · ' + topLabel + ')...');
-      const drafts = await Promise.all(sections.map(function(sec, i) {
+      const drafts = await Promise.all(sections.map(async function(sec, i) {
         deepMarkSection(i, '작성 중...', false);
-        return writeSection(query, all, lang, backend, apiKey, topModel, sec)
+        const secFT = await sectionFullTexts(sec, all, _ftTerms);  // 섹션 top refs 원문 윈도우 (404=요약 폴백)
+        return writeSection(query, all, lang, backend, apiKey, topModel, sec, secFT)
           .then(function(txt) { deepMarkSection(i, txt ? '완료' : '내용 없음', true); return { title: sec.title, text: txt }; })
           .catch(function(e) {
             if (deepIsAbort(e)) throw e;  // user 중단 → abort the whole run
@@ -2739,14 +2855,18 @@ def _run_topic_index(topic=None):
           deepSetStatus('이 토픽에는 해당 저자의 논문이 없는 것 같아요. 다른 토픽(예: scisci)에서 시도해보세요.', true);
           return;
         } else {
-          // Hybrid: BM25 + dense → RRF top-20 후보 → LLM 재정렬 top-8
-          candidates = hybridRetrieve(index, queryVec, query, timeFilter, journalFilter, 20);
+          // Hybrid: BM25 + dense → RRF 후보 → LLM 재정렬. Long 은 근거를 2배(top-16)로
+          // 늘려 Medium 과 실제 분량·깊이 차이가 나게 한다 (근거가 같으면 답도 수렴).
+          const _len = document.getElementById('deep-length').value || 'short';
+          const _topK = (_len === 'long') ? 16 : 8;
+          const _topN = (_len === 'long') ? 40 : 20;
+          candidates = hybridRetrieve(index, queryVec, query, timeFilter, journalFilter, _topN);
           if (candidates.length === 0) {
             deepSetStatus('관련 논문을 찾지 못했어요. 질의를 다시 입력해보세요.', true);
             return;
           }
           deepSetStatus('\U0001F9ED 상위 후보 재정렬 중...');
-          selected = await rerankCandidates(query, candidates, 8);
+          selected = await rerankCandidates(query, candidates, _topK);
         }
         // Group chunks by paper so each paper appears as a single reference
         // entry. The retrieval step still uses chunk-level cosine similarity
@@ -3150,7 +3270,7 @@ def _run_topic_index(topic=None):
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      window._searchMode = 'classic';
+      window._searchMode = window._PC_CROSS ? 'deep' : 'classic';
 
       // Refresh Fast/Smart dropdown labels based on any cached API key
       // so the user sees concrete model names from page load.
@@ -3170,6 +3290,7 @@ def _run_topic_index(topic=None):
       const db = document.getElementById('mode-deep');
       if (cb) cb.addEventListener('click', () => setSearchMode('classic'));
       if (db) db.addEventListener('click', () => setSearchMode('deep'));
+      if (window._PC_CROSS) setSearchMode('deep');
       const input = document.getElementById('search-input');
       if (input) {
         input.addEventListener('keydown', function(e) {
@@ -3248,7 +3369,7 @@ def _run_topic_index(topic=None):
     # that's a separate slot.
     JS = ("let _ANTHROPIC_KEY = " + json.dumps(_ANTHROPIC_KEY) + " || localStorage.getItem('_ANTHROPIC_KEY') || '';\n"
           "let _OPENAI_KEY = " + json.dumps(_OPENAI_KEY) + " || localStorage.getItem('_OPENAI_KEY') || '';\n"
-          "let _LLM_KEY = localStorage.getItem('_LLM_KEY') || _ANTHROPIC_KEY || '';\n" + JS)
+          "let _LLM_KEY = localStorage.getItem('_LLM_KEY') || _ANTHROPIC_KEY || '';\n" + ("window._PC_CROSS = " + ("true" if cross else "false") + ";\n") + JS)
 
 
     def render_insights_section():
@@ -3430,6 +3551,21 @@ def _run_topic_index(topic=None):
 
     exec_html = render_exec_summary(executive_summary)
     num_cats = len([c for c in cat_order if cat_papers.get(c)])
+    if cross:
+        _tlinks = "".join(
+            f'<a class="cross-topic" href="../{esc(t["slug"])}/index.html">'
+            f'{esc(t.get("title", t["slug"]))} <strong>{int(t.get("papers", 0))}</strong></a>'
+            for t in cross.get("topics", [])
+        )
+        topic_groups_parts = [
+            '<div class="cross-dir">'
+            '<h2>🧠 통합 Deep Research — 모든 토픽을 하나의 코퍼스로</h2>'
+            f'<p>{unique_papers}편의 리뷰를 토픽 경계 없이 검색합니다. 위 검색창에서 '
+            '<strong>🧠 Deep</strong> 을 누르고 질문하세요 — 연결 그래프를 넘나드는 '
+            '<strong>Deeper</strong> 확장도 지원합니다. <em>(로컬 전용)</em></p>'
+            '<div class="cross-topics">' + _tlinks + '</div>'
+            '</div>'
+        ]
 
     # Determine date range
     dates = [p.get("date", "") for cat in cat_papers.values() for p in cat]

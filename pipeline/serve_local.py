@@ -463,6 +463,8 @@ def main():
     print(f"docs/ 서빙 + /api/embed → Gemini ({GEMINI_MODEL}, {EMBED_DIM}d) 프록시")
     print(f"Gemini 키: {'감지됨' if has_key else '없음 (검색 임베딩 비활성 — 키 설정 필요)'}")
     print(f"열기: {url}")
+    if (DOCS_DIR / "_cross" / "index.html").exists():
+        print(f"통합 Deep Research (로컬 전용): http://localhost:{args.port}/_cross/")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

@@ -27,3 +27,7 @@ papers/_comparisons/
 papers/*/review.md
 papers/*/text.md
 papers/*/originality.md
+
+
+# Cross-topic 통합 Deep Research (로컬 전용)
+_cross/
