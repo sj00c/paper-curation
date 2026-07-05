@@ -36,6 +36,13 @@ OUTDIR = AGENT_DIR / "lectures"
 REPORT_MODEL = "gemini-3.1-pro-preview"
 TTS_WORKERS = 4
 
+def load_ledger():
+    return json.loads(LEDGER.read_text(encoding="utf-8"))
+
+
+def save_ledger(led):
+    LEDGER.write_text(json.dumps(led, ensure_ascii=False, indent=2), encoding="utf-8")
+
 
 # ── 근거 수집 ──────────────────────────────────────────────────────────────
 def _find_dir(slug):
