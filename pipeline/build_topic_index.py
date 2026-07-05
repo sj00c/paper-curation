@@ -2536,7 +2536,7 @@ def _run_topic_index(topic=None, cross=None):
         : 'You are the lead editor assembling section drafts into ONE coherent Korean research report. Keep all [ref:N] markers exactly (never renumber or drop them); add a short intro and synthesizing conclusion; PRESERVE the depth and length of each section — do NOT summarize or compress, only trim clearly duplicated sentences across sections; structure with ## headings; make the research lineage (foundation→core→extension/application→counterpoint) clear; keep ![caption](url) figures from the drafts but invent no new URLs; preserve inline [source](url) web-source links from the drafts exactly (never alter or drop them); do not fabricate facts beyond the drafts. Output ONLY the report itself — no preamble, no restating your role or these rules, no "I will…"/"let me…" meta; begin directly with the report intro.';
       const user = (lang === 'ko' ? '원 질문: ' : 'Question: ') + query + '\\n\\n'
         + (lang === 'ko' ? '단락 초안:' : 'Section drafts:') + '\\n\\n' + body;
-      const spec = { max_tokens: 32000, thinking: 8000 };
+      const spec = { max_tokens: 60000, thinking: 8000 };
       const prompt = { system: sys, user: user };
       const onDelta = function(txt) { DEEP.currentAnswer += txt; renderDeepAnswer(DEEP.currentAnswer); };
       DEEP.lastBackend = backend;
@@ -2794,7 +2794,9 @@ def _run_topic_index(topic=None, cross=None):
       // partial stream and let the ref-integrity guard below rebuild from the
       // section drafts (which already carry correct [ref:N]).
       try {
-        await assembleReport(query, drafts, lang, backend, apiKey, topModel);
+        // 취합기는 top(Opus, 출력 ~32K) 대신 smart(Sonnet 5, 출력 64K)로 — 확대된 Deeper
+        // 리포트가 출력 상한에 걸려 잘리지 않도록 (openai/google 는 smart=top 이라 무변).
+        await assembleReport(query, drafts, lang, backend, apiKey, resolveModel(backend, 'smart') || topModel);
       } catch (e) {
         if (deepIsAbort(e)) throw e;  // user 중단 → bubble to outer handler
         if (isAuthError(e)) throw e;  // bad key → outer re-prompt/retry
@@ -2810,9 +2812,14 @@ def _run_topic_index(topic=None, cross=None):
       const ansNums = collectCitedNums(DEEP.currentAnswer || '');
       let invented = false;
       ansNums.forEach(function(n) { if (!draftNums.has(n)) invented = true; });
-      if (draftNums.size && (ansNums.size === 0 || invented)) {
-        console.warn('[deeper] assembler citations diverged from section drafts — using concatenated drafts');
-        DEEP.currentAnswer = drafts.map(function(d) { return '## ' + d.title + '\\n\\n' + (d.text || ''); }).join('\\n\\n');
+      const draftsText = drafts.map(function(d) { return '## ' + d.title + '\\n\\n' + (d.text || ''); }).join('\\n\\n');
+      // 취합기가 max_tokens 상한에 걸려 잘렸거나(길이·인용 保存율이 초안의 60% 미만) 번호를
+      // 지어낸 경우 → 완전한 단락 초안으로 폴백해 내용·레퍼런스 손실을 막는다.
+      const citeLoss = draftNums.size >= 8 && ansNums.size < draftNums.size * 0.6;
+      const lenLoss = draftsText.length > 4000 && DEEP.currentAnswer.length < draftsText.length * 0.6;
+      if (draftNums.size && (ansNums.size === 0 || invented || citeLoss || lenLoss)) {
+        console.warn('[deeper] assembler diverged/truncated — using full section drafts (cites ' + ansNums.size + '/' + draftNums.size + ', len ' + DEEP.currentAnswer.length + '/' + draftsText.length + ')');
+        DEEP.currentAnswer = draftsText;
         renderDeepAnswer(DEEP.currentAnswer);
       }
       finalizeDeepAnswer();
