@@ -17,6 +17,12 @@ from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+try:
+    sys.stdout.reconfigure(line_buffering=True)
+    sys.stderr.reconfigure(line_buffering=True)
+except Exception:
+    pass
+
 PIPE = Path(__file__).resolve().parent
 sys.path.insert(0, str(PIPE))
 from config_loader import PAPERS_DIR, DOCS_DIR, get_google_key  # noqa: E402
