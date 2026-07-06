@@ -3,7 +3,7 @@
 
 강 1개 → 핵심 논문(내 코퍼스 우선) + 연결 그래프 1-hop 관련 논문 + **웹 검색(google_search)**
 → Gemini 심화 리포트(방법론·계보·"당시엔 X였으나 후대엔 Y로 밝혀짐" 류 수정 서사, 인용/링크)
-→ 50분(≥40분) Audio Overview(2인·전문가·학술·한국어) → 링크·관련연구·참고문헌 갖춘 HTML
+→ 30분 이상·40분 목표·최대 50분 Audio Overview(2인·전문가·학술·한국어) → 링크·관련연구·참고문헌 갖춘 HTML
 → 이메일(다중 수신자, 제N강·오늘의 학습목표 명시) → 원장(curriculum.json)에 done.
 
 맥미니 launchd:
@@ -218,17 +218,17 @@ def synthesize_report(course, lecture, evidence, client):
     return report, extract_web_sources(resp)
 
 
-# ── 오디오 (2인·전문가·학술·한국어, ≥40분 목표) ─────────────────────────────
-def make_audio(report_text, evidence, client, minutes=50):
+# ── 오디오 (2인·전문가·학술·한국어, 30분 이상·40분 목표·50분 이하) ───────────────
+def make_audio(report_text, evidence, client, minutes=40):
     lang, speakers = "ko", 2
     roles = ROLES[lang][speakers]
     labels = [r["label"] for r in roles]
     rolelines = "\n".join(f"- {r['label']}: {r['desc']}" for r in roles)
-    source = report_text + (("\n\n---\n[상세 근거]\n" + evidence[:42000]) if evidence else "")
-    # 단일 호출은 한국어에서 심하게 under-fill → 소스를 조각내 조각마다 심층 대화 생성 후 이어붙여
-    # 길이를 콘텐츠에 비례하게 강제한다(≥40분 목표).
+    source = report_text + (("\n\n---\n[상세 근거]\n" + evidence[:36000]) if evidence else "")
+    # 단일 호출은 한국어에서 심하게 under-fill → 소스를 조각내 조각마다 심층 대화 생성 후 이어붙인다.
+    # 30분 이상, 40분 목표, 50분 이하(메일 용량·청취 부담 균형).
     paras = [p for p in re.split(r"\n\s*\n", source) if p.strip()]
-    n_seg = max(5, min(6, len(source) // 8000))   # ~5-6조각 → 40~55분(이메일 40MB 한도 내)
+    n_seg = max(4, min(5, len(source) // 10000))   # ~4-5조각 → 30~45분 중심
     if len(paras) >= n_seg:
         per = -(-len(paras) // n_seg)
         segs = ["\n\n".join(paras[i:i + per]) for i in range(0, len(paras), per)]
@@ -242,7 +242,7 @@ def make_audio(report_text, evidence, client, minutes=50):
                else "앞 대화에 자연스럽게 이어서 진행(재소개·재인사 금지)")
         p = (f"당신은 전문가 청중용 학술 2인 팟캐스트 대본을 씁니다. 화자는 정확히 2명뿐:\n{rolelines}\n"
              f"각 발화는 '{labels[0]}:' 또는 '{labels[1]}:' 로 시작(콜론+공백). 이 부분은 전체 {len(segs)}개 중 {i + 1}번째. {pos}.\n"
-             "아래 내용을 **약 3,000~3,800자, 6~9 turn**의 깊이 있는 한국어 대화로 작성. 방법·수치·연구 계보와 '당시엔 X로 여겨졌으나 후대엔 Y로 밝혀졌다'식 수정 서사를 구체적으로 풀되 청취자 눈높이 비유도 곁들일 것. 라벨 외 머리말·메타·프로그램명 금지.\n\n"
+             "아래 내용을 **약 3,400~4,000자, 6~8 turn**의 깊이 있는 한국어 대화로 작성. 전체 오디오는 30분 이상·40분 목표·50분 이하가 되도록 과도한 반복과 장황한 요약을 피한다. 방법·수치·연구 계보와 '당시엔 X로 여겨졌으나 후대엔 Y로 밝혀졌다'식 수정 서사를 구체적으로 풀되 청취자 눈높이 비유도 곁들일 것. 라벨 외 머리말·메타·프로그램명 금지.\n\n"
              f"내용:\n{seg}")
         r = client.models.generate_content(
             model=REPORT_MODEL, contents=p,
@@ -255,6 +255,21 @@ def make_audio(report_text, evidence, client, minutes=50):
     if not script:
         raise RuntimeError("대본 생성 실패")
     turns = parse_turns(script, labels)
+    max_script_chars = 25_000                       # 경험상 50분 내외 상한(64kbps 첨부 안전선)
+    if turns and len(script) > max_script_chars:
+        reserve = turns[-2:] if len(turns) > 2 else []
+        reserve_chars = sum(len(a) + len(b) + 3 for a, b in reserve)
+        kept, used = [], 0
+        for lab, txt in turns[:-len(reserve)] if reserve else turns:
+            add = len(lab) + len(txt) + 3
+            if kept and used + add + reserve_chars > max_script_chars:
+                break
+            kept.append((lab, txt)); used += add
+        if reserve:
+            kept.extend(reserve)
+        turns = kept
+        script = "\n".join(f"{lab}: {txt}" for lab, txt in turns)
+        print(f"    대본 길이 상한 적용 · {len(script):,}자", flush=True)
     if turns:
         chunks = chunk_turns(turns, MAX_CHUNK_CHARS); cfg = speech_multi(roles); prefix = TTS_PREFIX[lang]
         get = lambda i: prefix + chunks[i]
@@ -670,8 +685,8 @@ def run_lecture(L, led, args):
 
     attachments = [(f"제{L['lecture']}강_{tag}.html", html.encode("utf-8"))]
     if not args.no_audio:
-        print("  3) 오디오 생성 (≥40분 목표)")
-        mp3, script, dur = make_audio(report, evidence, client, minutes=led.get("audio", {}).get("minutes", 50))
+        print("  3) 오디오 생성 (30분 이상·40분 목표·최대 50분)")
+        mp3, script, dur = make_audio(report, evidence, client, minutes=led.get("audio", {}).get("minutes", 40))
         (OUTDIR / f"lecture_{L['lecture']:02d}.mp3").write_bytes(mp3)
         (OUTDIR / f"lecture_{L['lecture']:02d}_script.txt").write_text(script, encoding="utf-8")
         if len(mp3) < 28 * 1024 * 1024:            # Resend 40MB 한도(base64 ~1.37x) 안전선
