@@ -85,12 +85,14 @@ def digest_procs() -> list[Proc]:
     out: list[Proc] = []
     for line in cp.stdout.splitlines():
         line = line.strip()
-        if "agent_lecture_digest.py" not in line:
-            continue
-        if "agent_lecture_watchdog.py" in line:
-            continue
         parts = line.split(None, 5)
         if len(parts) < 6:
+            continue
+        cmd = parts[5]
+        exe = cmd.split(None, 1)[0] if cmd else ""
+        if "python" not in Path(exe).name or "pipeline/agent_lecture_digest.py" not in cmd:
+            continue
+        if "agent_lecture_watchdog.py" in cmd:
             continue
         try:
             out.append(Proc(int(parts[0]), int(parts[1]), int(parse_cpu_time(parts[2])), parse_cpu_time(parts[3]), parts[4], parts[5]))
