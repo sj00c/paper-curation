@@ -20,7 +20,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+REPO = Path(os.environ.get("PC_REPO_DIR", str(Path(__file__).resolve().parent.parent))).expanduser()
 AGENT_DIR = Path(os.environ.get("PC_AGENT_DIR", str(Path.home() / "pc_agent" / "dashun_wang"))).expanduser()
 LEDGER = AGENT_DIR / "curriculum.json"
 OUTDIR = AGENT_DIR / "lectures"
