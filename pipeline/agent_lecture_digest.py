@@ -235,8 +235,7 @@ def make_audio(report_text, evidence, client, minutes=40):
     else:
         sz = max(1, -(-len(source) // n_seg))
         segs = [source[i:i + sz] for i in range(0, len(source), sz)]
-    scripts = []
-    for i, seg in enumerate(segs):
+    def gen_script_part(i, seg):
         pos = ("도입부: 아주 짧게 한두 마디로 시작(장황한 인사 금지)" if i == 0
                else "마무리: 핵심 통찰을 종합하며 자연스럽게 끝맺음" if i == len(segs) - 1
                else "앞 대화에 자연스럽게 이어서 진행(재소개·재인사 금지)")
@@ -247,11 +246,18 @@ def make_audio(report_text, evidence, client, minutes=40):
         r = client.models.generate_content(
             model=REPORT_MODEL, contents=p,
             config=types.GenerateContentConfig(temperature=0.8, max_output_tokens=16384))
-        t = (r.text or "").strip()
-        if t:
-            scripts.append(t)
-        print(f"    대본 {i + 1}/{len(segs)} · {len(t):,}자", flush=True)
-    script = "\n".join(scripts)
+        return i, (r.text or "").strip()
+
+    scripts = [""] * len(segs)
+    workers = min(4, len(segs))
+    print(f"    대본 병렬 생성 {len(segs)} parts · workers={workers}", flush=True)
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(gen_script_part, i, seg): i for i, seg in enumerate(segs)}
+        for fut in as_completed(futs):
+            i, t = fut.result()
+            scripts[i] = t
+            print(f"    대본 {i + 1}/{len(segs)} · {len(t):,}자", flush=True)
+    script = "\n".join(s for s in scripts if s)
     if not script:
         raise RuntimeError("대본 생성 실패")
     turns = parse_turns(script, labels)
