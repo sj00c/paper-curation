@@ -43,7 +43,12 @@ ALLOWED = {
     "h1", "h2", "h3", "h4", "h5", "blockquote", "figure", "figcaption", "div",
     "hr", "pre", "details", "summary", "small", "mark", "kbd", "abbr", "wbr",
 }
-STRAY_RE = re.compile(r'<\s*([A-Za-z][A-Za-z0-9_-]*)')
+STRAY_RE = re.compile(r'</?\s*([A-Za-z][A-Za-z0-9_-]*)(?:\s[^<>]*)?>')
+# Describing-context around a token: when present we treat <foo> as legit
+# subject matter (the paper defines/uses that token) rather than a leaked tag.
+_TOKENISH = re.compile(
+    r'토큰|태그|태깅|특수|구분|형식|형태|블록|플레이스홀더|시퀀스|출력|생성|설정|신호|'
+    r'token|tag|placeholder|prompt|프롬프트|schema|스키마|special|boxed|sequence', re.I)
 
 
 def strip_frontmatter(md):
@@ -98,7 +103,18 @@ def audit_one(slug_dir):
         issues["leaked-tags"] = LEAK_RE.findall(body)[:4]
     if PLACEHOLDER_RE.search(body):
         issues["placeholder"] = True
-    strays = sorted({t for t in STRAY_RE.findall(body) if t.lower() not in ALLOWED})
+    _nocode = re.sub(r'```[\s\S]*?```', '', body)     # drop fenced code examples
+    _nocode = re.sub(r'`[^`]*`', '', _nocode)         # drop inline code
+    strays = []
+    for _m in STRAY_RE.finditer(_nocode):
+        _n = _m.group(1)
+        if _n.lower() in ALLOWED:
+            continue
+        _win = _nocode[max(0, _m.start() - 45):_m.end() + 45]
+        if _TOKENISH.search(_win):                    # described token → not a leak
+            continue
+        strays.append(_n)
+    strays = sorted(set(strays))
     if strays:
         issues["stray-tags"] = strays[:6]
 
