@@ -686,13 +686,13 @@ def send_email(recipients, subject, html_body, attachments):
 
 
 def artifacts_ready(L, args):
-    """OUTDIR 에 이 강의 산출물이 이미 준비돼 있는지."""
+    """OUTDIR 에 이 강의 산출물이 이미 준비돼 있는지(구버전 artifacts 포함)."""
     n = L["lecture"]
     if not (OUTDIR / f"lecture_{n:02d}.html").exists():
         return False
     if not args.no_audio and not (OUTDIR / f"lecture_{n:02d}.mp3").exists():
         return False
-    return bool(L.get("build"))
+    return True
 
 
 def build_lecture(L, led, args):
@@ -709,7 +709,7 @@ def build_lecture(L, led, args):
     print("  2) Deeper Research 리포트 합성 (웹 검색 포함)")
     report, web_sources = synthesize_report(course, L, evidence, client, prior)
     if not report:
-        sys.exit("리포트 합성 실패")
+        raise RuntimeError("리포트 합성 실패")
     print(f"     리포트 {len(report):,}자 · 웹 출처 {len(web_sources)}개")
 
     OUTDIR.mkdir(parents=True, exist_ok=True)
@@ -759,7 +759,7 @@ def deliver_lecture(L, led, args):
         print(f"[deliver] 제{n}강 산출물 없음 → 먼저 생성")
         build_lecture(L, led, args)
 
-    b = L.get("build", {})
+    b = L.get("build") or L.get("artifacts") or {}
     tag = re.sub(r"[^가-힣A-Za-z0-9]+", "_", L["title"])[:30]
     html = html_path.read_text(encoding="utf-8")
     attachments = [(f"제{n}강_{tag}.html", html.encode("utf-8"))]
@@ -859,7 +859,13 @@ def main():
     targets = select_lectures(led, args)
     ok_all = True
     for L in targets:
-        ok_all = process_lecture(L, led, args) and ok_all
+        try:
+            ok_all = process_lecture(L, led, args) and ok_all
+        except SystemExit:
+            raise
+        except Exception as e:
+            ok_all = False
+            print(f"[error] 제{L.get('lecture')}강 처리 실패: {e!r} — 다음 강 계속", flush=True)
     return 0 if ok_all else 1
 
 
