@@ -433,6 +433,11 @@ def md_section_to_html(text, slug_dir=None):
 
 def _inline(text):
     """Process inline markdown: bold, italic, links, code."""
+    # Escape stray angle brackets first so literal tokens in prose (<UNKNOWN>,
+    # <EOS>, <N>, leaked schema tags, …) render visibly instead of vanishing as
+    # unknown HTML tags. The markdown rules below emit their own real tags on
+    # the already-escaped text, so they are unaffected.
+    text = text.replace('<', '&lt;').replace('>', '&gt;')
     text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<em>\1</em>', text)
