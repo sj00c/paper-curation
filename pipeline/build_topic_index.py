@@ -470,7 +470,7 @@ def _run_topic_index(topic=None, cross=None):
                     slug, title = num_to_paper[padded]
                     return f'<a href="../papers/{esc(slug)}/index.html" title="{esc(title)}">[{num}]</a>'
                 return m.group(0)
-            return re.sub(r'\[(\d{1,4})\]', _repl, text_html)
+            return re.sub(r'\[(\d+)\]', _repl, text_html)
 
         # Category Overview (한글 우선)
         overview_ko = ca.get("description_ko", "")
