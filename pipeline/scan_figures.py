@@ -39,14 +39,52 @@ def main():
     znorm = [(norm(os.path.basename(p)), p) for p in glob.glob(os.path.join(zdir, "*.pdf"))]
     print(f"Zotero PDFs: {len(znorm)}")
 
-    def resolve(title):
+    def resolve(title, year="", author=""):
         key = norm(title)[:40]
         if len(key) < 20:
             return None
         hits = [p for nf, p in znorm if key in nf]
+        if not hits:
+            return None
         if len(hits) == 1:
             return hits[0]
-        return "AMBIGUOUS" if hits else None
+
+        # ── 모호 해소 ────────────────────────────────────────────────
+        def _size(p):
+            try:
+                return os.path.getsize(p)
+            except OSError:
+                return 0
+
+        def base_key(path):
+            # Drive 중복 사본("X.pdf"/"X 1.pdf")의 말미 카운터 제거 후 정규화
+            b = os.path.basename(path)
+            b = re.sub(r"\s+\d+(?=\.pdf$)", "", b, flags=re.I)
+            return norm(b)
+
+        def pick(cands):
+            # 최대 크기 우선, 동률이면 접미사 없는 원본(짧은 이름) 우선
+            return max(cands, key=lambda p: (_size(p), -len(os.path.basename(p))))
+
+        # (a) 전부 같은 문서의 중복 사본이면 바로 선택
+        if len({base_key(p) for p in hits}) == 1:
+            return pick(hits)
+        # (b) 진짜 충돌: 연도(_YEAR_) → 제1저자 성으로 좁힌다
+        cand = hits
+        if year:
+            nar = [p for p in cand if f"_{year}_" in os.path.basename(p)]
+            if nar:
+                cand = nar
+        if author:
+            an = norm(author)
+            if an:
+                nar = [p for p in cand
+                       if an in norm(os.path.basename(p).split("_")[0])]
+                if nar:
+                    cand = nar
+        if len({base_key(p) for p in cand}) == 1:
+            return pick(cand)
+        return "AMBIGUOUS"
 
     idx = json.load(open(os.path.join(PAPERS, "_papers_index.json"), encoding="utf-8"))
     seen, mani = set(), []
@@ -71,7 +109,12 @@ def main():
                         fullpage = True
                 except Exception:
                     pass
-        pdf = resolve(p.get("title", ""))
+        _year = str(p.get("date", ""))[:4]
+        _auth = ""
+        _al = p.get("authors") or []
+        if _al:
+            _auth = str(_al[0]).split()[-1] if str(_al[0]).strip() else ""
+        pdf = resolve(p.get("title", ""), year=_year, author=_auth)
         ok = bool(pdf) and pdf != "AMBIGUOUS"
         tier = ("tier1" if has_ref else "tier2") if ok else \
                ("skip_no_pdf" if pdf is None else "skip_ambiguous")
