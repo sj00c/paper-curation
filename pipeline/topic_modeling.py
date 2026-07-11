@@ -789,11 +789,22 @@ Rules:
             max_tokens=16000,
             messages=[{"role": "user", "content": prompt}],
         )
-        text = resp.content[0].text.strip()
+        parts = []
+        for block in (getattr(resp, "content", None) or []):
+            text_part = getattr(block, "text", None)
+            if text_part:
+                parts.append(text_part)
+            elif isinstance(block, dict) and block.get("type") == "text" and block.get("text"):
+                parts.append(block["text"])
+        if not parts:
+            raise ValueError("Anthropic response contained no text block")
+        text = "\n".join(parts).strip()
         if text.startswith("```"):
-            text = text.split("```")[1]
+            text = text[3:].strip()
             if text.startswith("json"):
-                text = text[4:]
+                text = text[4:].strip()
+            if text.endswith("```"):
+                text = text[:-3].strip()
         return json.loads(text)
 
     def _merge(batch_result):

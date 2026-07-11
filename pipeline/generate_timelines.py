@@ -169,11 +169,13 @@ The following sub-themes should have proportionally wider/narrower bands:
 
 ### ABSOLUTE VISUAL RULES
 - Horizontal timeline, left to right, years at top
+- TIME AXIS EMPHASIS: give the MAJORITY of horizontal width to 2000–2026, with labeled year gridlines at 2000, 2005, 2010, 2015, 2020, 2025. Collapse everything before 2000 into a single narrow "pre-2000 foundations" zone pinned at the far-left edge — pre-2000 origins show POSITION only and must NEVER stretch or dominate the axis.
 - Sub-themes as smooth flowing ribbon/river streams with organic curves
 - Band width should qualitatively reflect field size (larger fields = wider bands)
 - Streams MUST interact: show merging, branching, influence — NO simple parallel bands
 - All branches MUST have sub-category name labels — no unlabeled ribbons
 - Mark emergence with ▶, decline with ◀
+- STYLE: match a clean editorial Sankey-style infographic — bold stream-name labels at each stream's left origin, thin sub-theme leaf labels along the right edge, milestone annotations as small rounded callout boxes, one saturated consistent color per stream, flat vector look
 - White background, clean sans-serif font
 - NO title in image, NO watermarks, NO color name text, NO specific paper counts
 - 16:9 aspect ratio, English only
@@ -313,11 +315,13 @@ Streams ordered by relative size (largest to smallest):
 
 ### ABSOLUTE VISUAL RULES
 - Horizontal timeline, left to right, years at top
+- TIME AXIS EMPHASIS: give the MAJORITY of horizontal width to 2000–2026, with labeled year gridlines at 2000, 2005, 2010, 2015, 2020, 2025. Collapse everything before 2000 into a single narrow "pre-2000 foundations" zone pinned at the far-left edge — pre-2000 origins show POSITION only and must NEVER stretch or dominate the axis.
 - Categories as smooth flowing ribbon/river streams with organic curves
 - Band width qualitatively reflects field size (larger = wider, but not linearly proportional)
 - Streams MUST interact: merging, branching, influence — NO simple parallel bands
 - Key sub-themes shown as branches within category streams
 - Mark emergence with ▶, decline with ◀
+- STYLE: match a clean editorial Sankey-style infographic — bold stream-name labels at each stream's left origin, thin sub-theme leaf labels along the right edge, milestone annotations as small rounded callout boxes, one saturated consistent color per stream, flat vector look
 - White background, clean sans-serif font
 - NO title in image, NO watermarks, NO color name text, NO specific paper counts
 - 16:9 aspect ratio, English only

@@ -606,11 +606,15 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
 
     if gen_candidates:
         req_timeout = float(os.environ.get("EXTRACT_INSIGHTS_HTTP_TIMEOUT", "120"))
-        log(f"  연결 생성: 대상 {len(gen_candidates)}편, top_n={top_n}, "
-            f"우선(갭) {len(priority)}편, req_timeout={req_timeout:.0f}s")
         conn_batch = int(os.environ.get("EXTRACT_INSIGHTS_CONN_BATCH", "15"))
+        conn_deadline = int(os.environ.get("EXTRACT_INSIGHTS_CONN_DEADLINE", "300"))
+        conn_rounds = int(os.environ.get("EXTRACT_INSIGHTS_CONN_ROUNDS", "3"))
+        log(f"  연결 생성: 대상 {len(gen_candidates)}편, top_n={top_n}, "
+            f"우선(갭) {len(priority)}편, req_timeout={req_timeout:.0f}s, "
+            f"deadline={conn_deadline}s×{conn_rounds}r")
         all_connections = generate_connections_from_candidates(
             gen_candidates, pool, client, batch_size=conn_batch,
+            deadline_s=conn_deadline, max_rounds=conn_rounds,
             request_timeout_s=req_timeout, priority_slugs=priority)
     else:
         # 0 dirty: LLM 호출을 통째로 생략. sync 는 그래도 호출해 consumer view 를

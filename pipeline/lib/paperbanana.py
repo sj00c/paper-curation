@@ -215,6 +215,15 @@ def generate_diagram(method: str, caption: str,
                 results.append(result)
             return results
 
+        # Each generate_diagram call uses a fresh asyncio.run() event loop.
+        # PaperBanana caches its async LLM clients (google-genai / AsyncAnthropic)
+        # as module globals bound to the FIRST loop, so the 2nd+ call dies with
+        # "Event loop is closed". Recreate the clients so they rebind to this loop.
+        try:
+            from utils import generation_utils as _gu
+            _gu.reinitialize_clients()
+        except Exception as _e:
+            logger.warning(f"reinitialize_clients skipped: {_e}")
         results = asyncio.run(_run())
 
         if not results:
