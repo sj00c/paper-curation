@@ -32,7 +32,7 @@
 - [파이프라인](#파이프라인)
 - [사용 모드](#사용-모드)
 - [문서](#문서) — Setup / Operations(megasearch · 한국 망 우회 · Concurrency) / Architecture
-- [발표](#발표)
+- [발표/참고자료](#발표참고자료)
 
 ## 📖 독자로 둘러보기
 
@@ -176,7 +176,7 @@ PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/e
 | **[Architecture & Internals](docs/architecture.md)** | 파이프라인 단계 상세 · 신뢰성 설계 · 내부 구조 · Karpathy LLM Wiki 비교 · 요구사항 |
 | **[English README](README.en.md)** | Full English documentation |
 
-## 발표
+## 발표/참고자료
 
 이 프로젝트는 **AAiCON 2026** (국립중앙과학관, 2026.06.25–26)에서 발표되었습니다.
 
@@ -184,6 +184,7 @@ PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/e
 |------|------|
 | **구두 발표** | [260625_이제현_AAiCon.pdf](docs/public/260625_이제현_AAiCon.pdf) |
 | **포스터** | [260625_이제현_AAiCon_poster.pdf](docs/public/260625_이제현_AAiCon_poster.pdf) |
+| **AIX 클리닉 1회** | [AIX 클리닉 1회 (KIST 존슨강당, 2026.07.16.)](docs/public/260715_AIX_clinic_paper_curation.pdf) |
 
 ---
 
