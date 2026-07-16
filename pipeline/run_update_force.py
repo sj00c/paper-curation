@@ -2237,16 +2237,32 @@ def main():
             log(f"  [persist] failed: {_e}")
 
     # ── Post-processing: rebuild index, classify, insights, topic page ──
-    if len(cp['completed']) > 0 or args.timeline or args.category or args.ensure_timeline:
+    topic = args.topic
+    newly_completed = {slug for _item, slug in remaining if slug in cp.get("completed", [])}
+    do_timeline_images = args.timeline or args.category  # --category auto-enables timeline
+    do_ensure_timeline = getattr(args, "ensure_timeline", False)
+    missing_default_artifacts = (
+        _topic_default_artifacts_missing(topic)
+        if (do_ensure_timeline or do_timeline_images)
+        else []
+    )
+    needs_postprocess = (
+        bool(newly_completed)
+        or (len(cp["completed"]) > 0 and not args.resume)
+        or bool(args.timeline)
+        or bool(args.category)
+        or bool(missing_default_artifacts)
+    )
+    if not needs_postprocess:
+        log("\nPost-processing skipped: no new papers, no explicit reclassify/retime, "
+            "and default timeline artifacts already exist.")
+    if needs_postprocess:
         log("\n" + "=" * 60)
         log("POST-PROCESSING: index → classify → summaries → insights → HTML → topic index")
         log("=" * 60)
 
-        topic = args.topic
         is_update = args.resume  # --resume implies update mode
         do_reclassify = args.category  # --category forces topic_modeling
-        do_timeline_images = args.timeline or args.category  # --category auto-enables timeline
-        do_ensure_timeline = getattr(args, "ensure_timeline", False)
 
         # extract_insights 는 paper connections(Core — '같이 보면 좋은 논문' 박스)만
         # 기본 생성한다. cross-category insights 는 Option 이라 --insights 가 명시될
@@ -2254,8 +2270,6 @@ def main():
         # 남고 build_topic_index 가 부재를 허용한다.
         insights_only_arg = ["--only", "all" if args.insights else "connections"]
 
-        # Identify newly processed slugs (for update mode)
-        newly_completed = set(cp.get("completed", [])) - previously_completed
 
         # Steps in this set MUST succeed — any non-zero exit, timeout, or
         # unexpected exception aborts the whole orchestration. Soft-failing
@@ -2435,12 +2449,6 @@ def main():
                 log(f"  [changed_categories] ERROR reading index: {e}")
                 changed_cats = []
 
-
-        missing_default_artifacts = (
-            _topic_default_artifacts_missing(topic)
-            if (do_ensure_timeline or do_timeline_images)
-            else []
-        )
         if missing_default_artifacts:
             log("  [default_outputs] missing narrative/timeline artifacts — will ensure:")
             for name in missing_default_artifacts[:12]:
