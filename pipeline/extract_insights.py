@@ -19,7 +19,7 @@ import time
 from collections import defaultdict
 from datetime import datetime
 
-from anthropic import Anthropic
+from anthropic_auth import create_anthropic_client
 from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir, load_config
 
 PAPERS_DIR = str(_PAPERS_DIR)
@@ -693,7 +693,7 @@ def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
     _http_retries = int(os.environ.get("EXTRACT_INSIGHTS_HTTP_RETRIES", "1"))
     clients: dict = {"anthropic": None, "openai": None}
     try:
-        clients["anthropic"] = Anthropic(timeout=_http_timeout, max_retries=_http_retries)
+        clients["anthropic"] = create_anthropic_client(timeout=_http_timeout, max_retries=_http_retries)
     except Exception as e:
         log(f"  [backend] Anthropic init failed: {str(e)[:80]}")
     try:

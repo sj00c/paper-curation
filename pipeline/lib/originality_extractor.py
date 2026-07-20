@@ -179,8 +179,8 @@ def _parse_json_response(text):
 def _llm_fallback(text):
     """Claude Haiku로 originality 추출."""
     try:
-        from anthropic import Anthropic
-        client = Anthropic()
+        from anthropic_auth import create_anthropic_client
+        client = create_anthropic_client(timeout=180.0, max_retries=2)
         resp = client.messages.create(
             model="claude-haiku-4-5",
             max_tokens=1024,

@@ -5,72 +5,112 @@ Paper Curation 파이프라인의 설치 및 설정 가이드입니다.
 ## 사전 준비
 
 시작하기 전에 아래 항목을 준비하세요:
+- Git, Node.js **18 이상**, `conda` 명령(Miniconda 또는 Miniforge) — NPX가 `py312` 환경과 Python 의존성을 설치합니다.
 
-- [Claude Code](https://claude.ai/code) 설치
-- [Zotero API Key](https://www.zotero.org/settings/keys) 발급
-- API 키 — `ANTHROPIC_API_KEY` (리뷰·인사이트 — **필수**), `GOOGLE_API_KEY` (검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS — **필수**), `RESEND_API_KEY` (배포 시 Audio Overview 이메일 — 배포 필수), `OPENAI_API_KEY` (답변 BYOK·insights fallback — 선택)
-- Zotero 컬렉션 이름 확인 (리뷰할 논문들이 모인 컬렉션)
-- Zotero PDF 저장 경로 확인
-- **conda env 하나 (Python 3.12, `py312`)** — `requirements.txt` 가 umap-learn / hdbscan / sentence-transformers 를 포함하므로 오케스트레이터가 토픽 모델링/분류를 별도 서브프로세스 없이 in-process 로 실행합니다. 생성 명령:
-  ```bash
-  conda create -n py312 -c conda-forge python=3.12 pip -y
-  conda activate py312
-  pip install -r requirements.txt
-  ```
-- **Java Runtime** — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
+- [Claude Code](https://claude.ai/code) **2.1.205 이상** 설치
+- Claude 인증 방식 선택
+  - **구독 OAuth (권장)** — Claude Pro/Max/Team/Enterprise. `claude auth login`으로 로그인하거나 `claude setup-token`으로 받은 env-only `CLAUDE_CODE_OAUTH_TOKEN`을 사용합니다.
+  - **Console API 키** — Anthropic Console metered API 과금. `ANTHROPIC_API_KEY`를 쓰고 NPX/setup에서 `--auth api-key`를 명시합니다.
+- [Zotero API Key](https://www.zotero.org/settings/keys) 발급, Zotero 컬렉션 이름 확인, Zotero PDF 저장 경로 확인
+- `GOOGLE_API_KEY` — 검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS에 **필수**
+- `OPENAI_API_KEY` — 선택
+- `RESEND_API_KEY` — 배포된 Audio Overview 이메일에만 필요
+- Java Runtime — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
 
-## Claude Code에서 설치 (권장)
+> OAuth 토큰은 setup이 저장하지 않습니다. `config.json`에는 `anthropic_auth.mode = "oauth"`만 저장할 수 있습니다. Claude CLI 자체는 API 키를 OAuth보다 우선할 수 있으므로 OAuth 운영 셸에서는 `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN`을 unset하는 편이 안전합니다. 이 저장소는 OAuth로 선택된 Claude child 호출에서 두 API 자격증명을 제거하고, `auto` 모드에서는 OAuth token/login을 API 키보다 우선합니다.
 
-Claude Code에서 아래와 같이 요청하면 자동으로 설치가 진행됩니다:
+## NPX 설치 (권장)
 
-> **"여기에 paper-curation을 설치해줘: https://github.com/jehyunlee/paper-curation"**
+### 새 클론 + 온보딩
 
-Claude Code가 자동으로 다음 과정을 수행합니다:
+```bash
+npx --yes github:jehyunlee/paper-curation init --auth oauth --dir paper-curation
+```
 
-1. **레포지토리 클론** 및 **Python 의존성 설치**
-2. **인터랙티브 설정** — 아래 항목을 차례로 질문합니다:
-   - Zotero API Key (또는 `ZOTERO_API_KEY` 환경변수 사용)
-   - 이메일 (Zotero/Unpaywall용)
-   - 컬렉션 alias — 파이프라인에서 `--topic` 인자로 사용할 짧은 이름 (예: `bioml`, `climate`)
-   - Zotero 컬렉션 이름 — alias에 매핑할 실제 Zotero 컬렉션
-   - Zotero PDF 저장 경로
-   - GitHub Pages 배포 설정 (선택)
-3. **환경변수 확인** — `ANTHROPIC_API_KEY`, `GOOGLE_API_KEY` 설정 여부를 체크합니다
-4. **Zotero 연결 테스트** — API key로 User ID를 조회하고 컬렉션이 실제 존재하는지 검증합니다
-   - 컬렉션 이름이 잘못된 경우, 사용 가능한 컬렉션 목록을 보여주고 다시 질문합니다
-5. **PaperBanana 확인** — 타임라인 생성용 [PaperBanana](https://github.com/dwzhu-pku/PaperBanana)가 없으면 `paper-curation/paperbanana/`에 자동으로 클론합니다
-6. **SKILL.md 생성 및 설치** — Claude Code 스킬로 등록하여 이후 `/paper-curation` 명령으로 사용할 수 있습니다
+### 이미 체크아웃한 저장소
 
-설치가 완료되면 **파이프라인 실행** 안내가 표시됩니다.
+```bash
+npx . setup --auth oauth
+```
+> **중요:** `config.json`은 로컬 비밀 설정이라 Git에 포함되지 않으며 `clone`/`pull`로 생성되지 않습니다. 가장 쉬운 방법은 export 없이 setup을 실행하고 프롬프트에 Zotero API key를 붙여 넣는 것입니다.
+>
+> ```bash
+> cd ~/dev/paper-curation
+> npx . setup --auth oauth
+> ```
+>
+> `export`는 선택사항이며 파일을 만들지 않습니다. 사용할 경우 같은 터미널에서 setup까지 실행합니다. setup은 Zotero API로 컬렉션을 조회해 번호 선택을 받고, topic alias와 `pdf_cache/`를 자동 생성합니다.
 
-> **⚠ 파이프라인 실행 시간**: Zotero 컬렉션의 논문 편수에 따라 크게 달라집니다 (Anthropic Tier·concurrency 의존).
-> 10편 이하: 수 분 / 50편: ~15분 (Tier 4 default `--concurrency 16`) ~ 1~2시간 (Tier 1 `--concurrency 4`) / 500편 이상: 비례 증가. Tier별 권장값은 [Operations Manual의 Concurrency 표](operations.md#concurrency-anthropic-tier-4-default) 참고.
+### 파일로 한 번에 입력 (`.env`, 권장)
 
-## 수동 설치 (Claude Code 없이)
+터미널 export 대신 편집 가능한 템플릿을 복사할 수 있습니다:
+
+```bash
+cp .env.example .env
+open -e .env                    # 또는 원하는 편집기로 .env 열기
+npx . setup --auth oauth
+```
+
+`.env.example`에는 실제로 필요한 API key 두 개만 있습니다:
+
+```dotenv
+ZOTERO_API_KEY=
+GEMINI_API_KEY=
+```
+
+Claude는 저장된 `claude auth login` 구독 세션을 사용하므로 `ANTHROPIC_API_KEY`는 필요하지 않습니다. `.env`는 Git에서 제외됩니다. setup은 컬렉션을 자동 조회하고 프로젝트의 `pdf_cache/`를 생성합니다. Zotero Storage에 동기화된 PDF는 실행 중 API로 자동 다운로드합니다. Zotero Storage에 없는 로컬 linked attachment만 사용할 때는 `.env`에 `ZOTERO_DIR=/linked/attachment/path`를 고급 override로 추가합니다.
+
+### Anthropic Console API 키 과금 대안
+
+```bash
+export ANTHROPIC_API_KEY=your_key
+npx . setup --auth api-key
+```
+
+NPX setup은 config.json 생성, Zotero 연결 테스트, PaperBanana 확인, SKILL.md 설치 안내를 수행합니다. 기본값으로는 비용이 드는 파이프라인을 자동 실행하지 않습니다. 첫 실행까지 이어서 돌릴 때만 `--run-first`를 명시하세요.
+`npx . doctor --network`는 OAuth(`claude auth login`/`CLAUDE_CODE_OAUTH_TOKEN`) 또는 API 키(`ANTHROPIC_API_KEY`) 중 현재 선택한 Claude 인증과 Zotero/Google 연결을 진단합니다.
+
+진단과 실행:
+
+```bash
+npx . doctor --network
+npx . run -- --topic my_topic --mode curate --source zotero
+```
+
+## 수동 conda py312 fallback
 
 <details>
-<summary>Python CLI로 직접 설치하기</summary>
+<summary>NPX 없이 Python CLI로 직접 설치하기</summary>
 
 ### 1. Clone & Dependencies
 
 ```bash
 git clone https://github.com/jehyunlee/paper-curation.git
 cd paper-curation
-pip install -r requirements.txt   # 전체 의존성 (anthropic·openai·umap-learn·hdbscan·sentence-transformers 등)
+conda create -n py312 -c conda-forge python=3.12 pip -y
+conda activate py312
+pip install -r requirements.txt
 ```
-
-> 표준은 단일 `py312` env 입니다 (`requirements.txt` 에 클러스터링 의존성 포함).
 
 ### 2. Setup
 
 ```bash
-export ANTHROPIC_API_KEY=your_key     # 리뷰·인사이트 (필수)
-export GOOGLE_API_KEY=your_key        # 검색 임베딩 gemini-embedding-001·Figure 검증·TTS (필수)
-export OPENAI_API_KEY=your_key        # 답변 BYOK·insights fallback (선택)
-python pipeline/setup.py
+# OAuth: 저장된 로그인 또는 env-only 장기 토큰
+claude auth login
+# 장기 토큰이 필요하면 발급 후 출력된 토큰을 env에 설정
+claude setup-token
+export CLAUDE_CODE_OAUTH_TOKEN='발급된_토큰'
+
+export GOOGLE_API_KEY=your_key
+export ZOTERO_API_KEY=your_key
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth --no-run
+
+# API 키 대안
+export ANTHROPIC_API_KEY=your_key
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
 ```
 
-`setup.py`가 인터랙티브 설정 마법사를 실행하여 config.json 생성, Zotero 연결 테스트, SKILL.md 생성 및 설치를 한 번에 수행합니다.
+`setup.py`가 인터랙티브 설정 마법사를 실행하여 config.json 생성, Zotero 연결 테스트, SKILL.md 생성 및 설치를 수행합니다. 직접 실행할 때는 `--no-run`으로 비용이 드는 첫 파이프라인을 건너뜁니다. NPX에서 첫 실행까지 이어서 돌릴 때만 `--run-first`를 명시하세요.
 
 스킬 설치를 건너뛰려면 `--no-install` 옵션을 사용하세요.
 
@@ -89,6 +129,9 @@ python pipeline/setup.py
     "pdf_dir": "/path/to/your/zotero/pdfs"
   },
   "unpaywall_email": "your_email@example.com",
+  "anthropic_auth": {
+    "mode": "oauth"
+  },
   "search_keywords": {
     "my_topic": {
       "primary": ["machine learning biology", "protein language model"],
@@ -102,6 +145,7 @@ python pipeline/setup.py
 | Field | Description |
 |-------|-------------|
 | `api_key` | Zotero API key ([Settings → Feeds/API](https://www.zotero.org/settings/keys)) |
+| `anthropic_auth.mode` | OAuth 선택 기록용 `oauth`만 저장합니다. 토큰은 저장하지 않고 `claude auth login` 또는 env-only `CLAUDE_CODE_OAUTH_TOKEN`을 사용합니다. API-key 모드는 `--auth api-key`와 `ANTHROPIC_API_KEY` 또는 최상위 `anthropic_api_key`로 동작합니다. |
 | `email` | 이메일 (Zotero 및 Unpaywall용) |
 | `collections` | Topic alias → Zotero 컬렉션 이름 매핑. Collection key는 Zotero API를 통해 자동 변환됩니다. |
 | `pdf_dir` | Zotero PDF가 저장된 로컬 경로 |
@@ -110,17 +154,19 @@ python pipeline/setup.py
 
 ### 환경변수 (선택)
 
-`config.json` 대신 환경변수로도 설정할 수 있습니다:
+API key와 경로 일부는 환경변수로 공급할 수 있습니다. 다만 topic alias → Zotero 컬렉션 매핑 등은 `config.json`에 필요합니다. setup을 실행하면 현재 셸의 필수 환경변수를 읽어 Git에서 제외된 로컬 `config.json`에 저장합니다:
 
 | 환경변수 | 용도 |
 |----------|------|
 | `ZOTERO_API_KEY` | Zotero API key |
 | `ZOTERO_USER_ID` | Zotero user ID |
 | `ZOTERO_DIR` | Zotero PDF 저장 경로 |
-| `ANTHROPIC_API_KEY` | Claude API key (리뷰·인사이트 — 필수) |
-| `GOOGLE_API_KEY` | Google AI key (검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS — 필수) |
-| `OPENAI_API_KEY` | OpenAI key (답변 BYOK·insights fallback — 선택) |
-| `RESEND_API_KEY` | Resend key (배포 시 Audio Overview 이메일 — wrangler secret 으로도 등록) |
+| `CLAUDE_CODE_OAUTH_TOKEN` | Claude Code OAuth env-only token (`claude setup-token`). setup이 저장하지 않음 |
+| `ANTHROPIC_API_KEY` | Anthropic Console API key (`--auth api-key`일 때만). OAuth 운영 셸에서는 우발 공존 방지 |
+| `ANTHROPIC_AUTH_TOKEN` | Claude CLI gateway/bearer credential이며 구독 OAuth 토큰이 아닙니다. OAuth 모드에서는 unset |
+| `GOOGLE_API_KEY` / `GEMINI_API_KEY` | Google AI key (검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS — 필수) |
+| `OPENAI_API_KEY` | OpenAI key (선택) |
+| `RESEND_API_KEY` | Resend key (배포된 Audio Overview 이메일에만 필요, wrangler secret 으로도 등록) |
 | `GITHUB_REPO` | GitHub repo (owner/repo) |
 | `GITHUB_BRANCH` | Git branch (기본: master) |
 | `PAGES_BASE_URL` | GitHub Pages base URL |
@@ -129,18 +175,19 @@ python pipeline/setup.py
 
 ## 사용법
 
-### `/paper-curation`
+### NPX CLI
 
-메인 파이프라인. Claude Code에서 아래와 같이 사용합니다:
+메인 파이프라인. `--` 뒤 인자는 `pipeline/run_full.py`로 전달됩니다:
 
+```bash
+npx . doctor --network
+npx . run -- --topic my_topic --mode curate --source zotero
+npx . run -- --topic my_topic --mode curate --source web --days 7
+npx . run -- --topic my_topic --mode reclassify
+npx . run -- --topic my_topic --mode retime --images all
 ```
-/paper-curation my_topic                        # 전체 파이프라인
-/paper-curation my_topic --local                # Zotero에 이미 있는 논문만 처리
-/paper-curation my_topic --local --update       # 새 논문만 추가, 기존 유지
-/paper-curation my_topic --local --update-force  # 모든 리뷰 재생성
-```
 
-트리거: "논문 큐레이션", "최신 논문 찾아줘", "paper curation"
+Claude Code 스킬(`/paper-curation`)도 계속 사용할 수 있지만, 온보딩과 운영 문서의 표준 진입점은 NPX입니다.
 
 ### `/paper-curation-workflow`
 
@@ -225,16 +272,16 @@ Collection key나 User ID는 직접 입력할 필요 없이 Zotero API를 통해
 
 ### 설치 확인 (verify)
 
-긴 파이프라인을 돌리기 전에, 한 줄로 의존성이 제대로 깔렸는지 확인하세요:
+긴 파이프라인 전에 인증·Python·패키지·Zotero 연결을 한 번에 확인하세요:
 
 ```bash
-python -c "import umap, hdbscan, sentence_transformers, fitz, sklearn, anthropic; print('py312 OK')"
+npx . doctor --network
 ```
 
-`OK` 가 찍히면 준비 완료입니다. 실행 계획만 먼저 보려면 `--dry-run` 도 가능합니다:
+실행 계획만 확인하려면:
 
 ```bash
-PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source zotero --dry-run
+npx . run -- --topic my_topic --mode curate --source zotero --dry-run
 ```
 
 ### 문제 해결 (Troubleshooting)
@@ -247,3 +294,5 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source
 | SPECTER2 / arXiv 다운로드가 멈춤 (한국 망) | huggingface LFS·arXiv 차단 | [operations.md "Korean network workarounds"](operations.md#korean-network-workarounds) 의 S3 미러 명령 사용 |
 | `[COLLECTION_ERROR]` | Zotero 컬렉션 이름 오타 | 출력의 사용 가능한 컬렉션 목록에서 올바른 이름 선택 후 재실행 |
 | 검색 인덱스가 빈 임베딩으로 빌드됨 | `GOOGLE_API_KEY` 미설정 | `export GOOGLE_API_KEY=...` 후 재실행 — 검색 임베딩은 Google `gemini-embedding-001` 사용 (OpenAI 키는 더 이상 필수 아님) |
+| OAuth structured output 버전 오류 | Claude Code < 2.1.205 | `claude update` 후 `claude --version` 확인 |
+| `Claude Code OAuth가 준비되지 않았습니다` | 구독 로그인이 없거나 만료됨 | `claude auth login` 또는 `claude setup-token` 후 `CLAUDE_CODE_OAUTH_TOKEN` 설정 |

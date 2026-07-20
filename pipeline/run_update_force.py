@@ -18,7 +18,9 @@ Paper-Curation --local --update-force 배치 실행 스크립트.
 """
 
 import argparse
+import html as html_lib
 import json
+import queue
 import os
 import re
 import shutil
@@ -37,6 +39,7 @@ from config_loader import (
     get_topic_dir, get_google_key,
 )
 from lib.categories import category_slug
+from anthropic_auth import AnthropicAuthError, create_anthropic_client, require_auth_ready
 PAPERS_DIR = str(_PAPERS_DIR)
 PROJECT_ROOT = PIPELINE_DIR.parent
 
@@ -247,10 +250,19 @@ def _resolve_topic_modeling_python():
     )
 
 
-TOPIC_MODELING_PYTHON = _resolve_topic_modeling_python()
-if TOPIC_MODELING_PYTHON != sys.executable:
-    print(f"[env] UMAP/HDBSCAN 단계 인터프리터: {TOPIC_MODELING_PYTHON} "
-          f"(현재 env 가 py312 가 아니거나 프로브 실패 → py312 라우팅; 사유는 _state/env_probe.json)")
+TOPIC_MODELING_PYTHON = None
+
+
+def _get_topic_modeling_python():
+    """Resolve the clustering interpreter on first use, not module import."""
+    global TOPIC_MODELING_PYTHON
+    if TOPIC_MODELING_PYTHON is None:
+        TOPIC_MODELING_PYTHON = _resolve_topic_modeling_python()
+        if TOPIC_MODELING_PYTHON != sys.executable:
+            print(f"[env] UMAP/HDBSCAN 단계 인터프리터: {TOPIC_MODELING_PYTHON} "
+                  f"(현재 env 가 py312 가 아니거나 프로브 실패 → py312 라우팅; "
+                  f"사유는 _state/env_probe.json)")
+    return TOPIC_MODELING_PYTHON
 
 ZOTERO_DIR = get_zotero_dir()
 
@@ -285,6 +297,34 @@ def load_checkpoint():
 _cp_lock = threading.Lock()
 _slug_to_zotero_key = {}
 _slug_to_pdf_path = {}  # populated by find_pdf hits; persisted to _papers_index.json for PDF-change detection on subsequent runs
+_oauth_call_limiter = None
+
+
+def _configure_oauth_call_limiter(auth_mode, pipeline_workers):
+    """Limit only Claude calls while keeping PDF/network workers concurrent."""
+    global _oauth_call_limiter
+    if auth_mode != "oauth":
+        _oauth_call_limiter = None
+        return None
+    try:
+        limit = max(1, int(os.environ.get("PAPER_CURATION_OAUTH_CONCURRENCY", "2")))
+    except ValueError:
+        limit = 2
+    _oauth_call_limiter = threading.BoundedSemaphore(limit)
+    log(
+        f"Claude Code OAuth: limiting model calls to {limit}; "
+        f"pipeline workers remain {pipeline_workers} "
+        "(override: PAPER_CURATION_OAUTH_CONCURRENCY)"
+    )
+    return limit
+
+
+def _run_oauth_limited(call):
+    limiter = _oauth_call_limiter
+    if limiter is None:
+        return call()
+    with limiter:
+        return call()
 
 
 def save_checkpoint(cp):
@@ -299,7 +339,60 @@ def save_checkpoint(cp):
 
 # ── Phase 1: Fetch Zotero ──
 
+_ZOTERO_ITEMS_CACHE_DIR = os.path.join(str(PIPELINE_DIR), "_cache")
+
+
+def _zotero_items_cache_path(collection_key):
+    safe_key = re.sub(r"[^A-Za-z0-9_-]", "_", str(collection_key))
+    return os.path.join(_ZOTERO_ITEMS_CACHE_DIR, f"zotero_items_{safe_key}.json")
+
+
+def _load_zotero_items_cache(collection_key):
+    try:
+        max_age_hours = float(os.environ.get("PAPER_CURATION_ZOTERO_CACHE_HOURS", "24"))
+    except ValueError:
+        max_age_hours = 24.0
+    if max_age_hours <= 0:
+        return None
+
+    path = _zotero_items_cache_path(collection_key)
+    try:
+        with open(path, "r", encoding="utf-8") as cache_file:
+            payload = json.load(cache_file)
+        fetched_at = float(payload.get("fetched_at", 0))
+        items = payload.get("items")
+        if (
+            payload.get("collection_key") == collection_key
+            and isinstance(items, list)
+            and time.time() - fetched_at <= max_age_hours * 3600
+        ):
+            log(f"Zotero metadata cache hit: {len(items)} papers ({path})")
+            return items
+    except (OSError, ValueError, TypeError, json.JSONDecodeError):
+        pass
+    return None
+
+
+def _save_zotero_items_cache(collection_key, items):
+    path = _zotero_items_cache_path(collection_key)
+    try:
+        from lib.atomic_io import atomic_write_json
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        atomic_write_json(path, {
+            "collection_key": collection_key,
+            "fetched_at": time.time(),
+            "items": items,
+        })
+        log(f"Zotero metadata cache saved: {len(items)} papers")
+    except Exception as exc:
+        log(f"WARN Zotero metadata cache write failed: {exc}")
+
+
 def fetch_zotero_items(collection_key):
+    cached = _load_zotero_items_cache(collection_key)
+    if cached is not None:
+        return cached
+
     items = []
     start = 0
     while True:
@@ -314,25 +407,29 @@ def fetch_zotero_items(collection_key):
                 with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
                     batch = json.load(resp)
                 break
-            except Exception as e:
-                last_err = e
+            except Exception as exc:
+                last_err = exc
                 wait = min(60, 2 * (2 ** attempt))
                 print(f"[fetch_zotero_items] attempt {attempt+1}/5 (start={start}) failed: "
-                      f"{type(e).__name__}: {str(e)[:120]}; sleeping {wait}s", flush=True)
-                import time as _t; _t.sleep(wait)
+                      f"{type(exc).__name__}: {str(exc)[:120]}; sleeping {wait}s", flush=True)
+                time.sleep(wait)
         if batch is None:
             raise RuntimeError(f"fetch_zotero_items exhausted retries at start={start}: {last_err}")
         if not batch:
             break
         for item in batch:
-            d = item["data"]
-            if d.get("itemType") in ("attachment", "note",
-                                      "forumPost", "videoRecording"):
+            data = item["data"]
+            if data.get("itemType") in ("attachment", "note",
+                                       "forumPost", "videoRecording"):
                 continue
-            items.append(d)
+            items.append(data)
         start += 100
+        if start % 1000 == 0:
+            log(f"Zotero metadata: {start} items scanned, {len(items)} papers retained")
         if len(batch) < 100:
             break
+
+    _save_zotero_items_cache(collection_key, items)
     return items
 
 
@@ -356,6 +453,65 @@ def _audit_append(record):
     except Exception:
         pass  # audit log never breaks the pipeline
 
+def _download_zotero_attachment(child, title=""):
+    """Download a Zotero Storage PDF into the auto-created local cache."""
+    if not API_KEY or not USER_ID or not ZOTERO_DIR:
+        return ""
+    data = child.get("data", {}) if isinstance(child, dict) else {}
+    attachment_key = str(child.get("key", "") or data.get("key", "")).strip()
+    if not attachment_key:
+        return ""
+
+    raw_name = str(data.get("filename", "") or data.get("path", "")).strip()
+    for prefix in ("storage:", "attachments:"):
+        if raw_name.startswith(prefix):
+            raw_name = raw_name[len(prefix):]
+    filename = raw_name.replace("\\", "/").rsplit("/", 1)[-1]
+    if not filename.lower().endswith(".pdf"):
+        filename = f"{attachment_key}.pdf"
+    filename = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "_", filename)
+    os.makedirs(ZOTERO_DIR, exist_ok=True)
+    destination = os.path.join(ZOTERO_DIR, filename)
+    if os.path.exists(destination) and os.path.getsize(destination) >= 1024:
+        return destination
+
+    enclosure = child.get("links", {}).get("enclosure", {}) if isinstance(child, dict) else {}
+    url = enclosure.get("href") or (
+        f"https://api.zotero.org/users/{USER_ID}/items/{attachment_key}/file"
+    )
+    partial = destination + ".part"
+    try:
+        request = urllib.request.Request(
+            url,
+            headers={
+                "Zotero-API-Key": API_KEY,
+                "User-Agent": "paper-curation",
+                "Accept": "application/pdf",
+            },
+        )
+        with urllib.request.urlopen(request, timeout=60, context=_ssl_ctx) as response:
+            with open(partial, "wb") as output:
+                shutil.copyfileobj(response, output)
+        with open(partial, "rb") as downloaded:
+            is_pdf = downloaded.read(4) == b"%PDF"
+        if not is_pdf or os.path.getsize(partial) < 1024:
+            raise ValueError("downloaded attachment is not a valid PDF")
+        os.replace(partial, destination)
+        return destination
+    except Exception as exc:
+        try:
+            if os.path.exists(partial):
+                os.remove(partial)
+        except OSError:
+            pass
+        _audit_append({
+            "key": attachment_key,
+            "title": title[:80],
+            "method": "zotero_file_download_error",
+            "error": str(exc)[:200],
+        })
+        return ""
+
 
 def _extract_arxiv_id_from_item(item):
     """Try to read an arXiv ID from a Zotero item's url/DOI/archiveID."""
@@ -365,6 +521,62 @@ def _extract_arxiv_id_from_item(item):
         if m:
             return m.group(1)
     return None
+
+def _cached_metadata_pdf(item):
+    """Return a previously downloaded title-addressed OA PDF without network I/O."""
+    title = str(item.get("title", "")).strip()
+    if not title or not ZOTERO_DIR:
+        return ""
+    try:
+        from register_zotero import safe_filename
+        candidate = os.path.join(ZOTERO_DIR, safe_filename(title) + ".pdf")
+        if not os.path.exists(candidate) or os.path.getsize(candidate) < 5120:
+            return ""
+        with open(candidate, "rb") as pdf_file:
+            return candidate if pdf_file.read(4) == b"%PDF" else ""
+    except (ImportError, OSError, ValueError):
+        return ""
+
+
+
+def _download_metadata_pdf(item):
+    """Recover an open-access PDF when the Zotero item has no attachment."""
+    title = str(item.get("title", "")).strip()
+    has_locator = bool(
+        item.get("DOI")
+        or item.get("doi")
+        or item.get("pdf_url")
+        or item.get("openAccessPdf")
+        or _extract_arxiv_id_from_item(item)
+    )
+    if not title or not has_locator:
+        return ""
+    if os.environ.get("PAPER_CURATION_AUTO_DOWNLOAD_PDF", "1").lower() in {
+        "0", "false", "no", "off"
+    }:
+        return ""
+
+    try:
+        from register_zotero import download_pdf
+        path, error = download_pdf(item, ZOTERO_DIR)
+        if path and os.path.exists(path) and os.path.getsize(path) >= 1024:
+            with open(path, "rb") as pdf_file:
+                if pdf_file.read(4) == b"%PDF":
+                    return path
+        _audit_append({
+            "key": item.get("key", ""),
+            "title": title[:80],
+            "method": "metadata_pdf_download_error",
+            "error": str(error or "downloaded file is not a valid PDF")[:200],
+        })
+    except Exception as exc:
+        _audit_append({
+            "key": item.get("key", ""),
+            "title": title[:80],
+            "method": "metadata_pdf_download_error",
+            "error": str(exc)[:200],
+        })
+    return ""
 
 
 # Global flag toggled by CLI. When True, fuzzy fallback is disabled entirely.
@@ -376,7 +588,9 @@ def find_pdf(item):
 
     Returns (path, method). `method` is one of:
       - zotero_children_abs     : Zotero child API returned an absolute path that exists
-      - zotero_children_basename: Zotero child API path's basename found under ZOTERO_DIR
+      - zotero_children_basename: Zotero child path's basename found under ZOTERO_DIR
+      - zotero_api_download     : Zotero Storage attachment downloaded into local cache
+      - metadata_oa_download   : OA PDF recovered from arXiv/DOI metadata
       - doi_filename            : DOI string appears in a PDF filename under ZOTERO_DIR
       - arxiv_filename          : arXiv ID appears in a PDF filename under ZOTERO_DIR
       - fuzzy                   : weak title-keyword match (LAST RESORT, logged)
@@ -384,6 +598,15 @@ def find_pdf(item):
     """
     key = item.get("key", "")
     title = item.get("title", "")
+    cached_metadata_pdf = _cached_metadata_pdf(item)
+    if cached_metadata_pdf:
+        _audit_append({
+            "key": key,
+            "title": title[:80],
+            "method": "metadata_oa_cache",
+            "path": cached_metadata_pdf,
+        })
+        return cached_metadata_pdf, "metadata_oa_cache"
 
     # Priority 1: Zotero children API (authoritative attachment path)
     try:
@@ -429,6 +652,11 @@ def find_pdf(item):
                 _audit_append({"key": key, "title": title[:80],
                                "method": "zotero_children_basename", "path": alt})
                 return alt, "zotero_children_basename"
+            downloaded = _download_zotero_attachment(c, title)
+            if downloaded:
+                _audit_append({"key": key, "title": title[:80],
+                               "method": "zotero_api_download", "path": downloaded})
+                return downloaded, "zotero_api_download"
     except Exception as e:
         _audit_append({"key": key, "title": title[:80],
                        "method": "children_api_error", "error": str(e)[:200]})
@@ -495,7 +723,16 @@ def find_pdf(item):
                            "method": "arxiv_ambiguous", "arxiv_id": arxiv_id,
                            "candidates": arxiv_matches[:5]})
 
-    # Priority 4 (optional): fuzzy title match — STRICTER than before.
+    # Priority 4: recover an OA PDF from arXiv/DOI metadata. This makes a
+    # metadata-only Zotero collection usable without requiring 15k manual
+    # attachment uploads. Existing local and Zotero Storage files still win.
+    downloaded = _download_metadata_pdf(item)
+    if downloaded:
+        _audit_append({"key": key, "title": title[:80],
+                       "method": "metadata_oa_download", "path": downloaded})
+        return downloaded, "metadata_oa_download"
+
+    # Priority 5 (optional): fuzzy title match — STRICTER than before.
     # The original 3-of-5 keyword rule caused the 139-paper mismatch bug.
     # We now require: (a) at least 5 significant keywords from the title,
     # (b) at least 5 of them appear in the filename (score >= 5), and
@@ -539,6 +776,56 @@ def find_pdf(item):
                    "reason": "fuzzy_below_threshold", "best_score": best_score,
                    "best_candidate": best_match, "keywords": key_words})
     return None, "no_match"
+def _find_pdf_with_wall_deadline(item):
+    """Resolve one PDF without letting suspend-stale sockets block a worker forever."""
+    try:
+        timeout = max(
+            1.0,
+            float(os.environ.get("PAPER_CURATION_PDF_LOOKUP_TIMEOUT", "360")),
+        )
+    except ValueError:
+        timeout = 360.0
+
+    outcome = queue.Queue(maxsize=1)
+
+    def resolve():
+        try:
+            outcome.put(("ok", find_pdf(item)))
+        except BaseException as exc:
+            outcome.put(("error", exc))
+
+    worker = threading.Thread(
+        target=resolve,
+        name=f"pdf-lookup-{item.get('key', 'unknown')}",
+        daemon=True,
+    )
+    worker.start()
+    deadline = time.time() + timeout
+    while worker.is_alive():
+        remaining = deadline - time.time()
+        if remaining <= 0:
+            _audit_append({
+                "key": item.get("key", ""),
+                "title": str(item.get("title", ""))[:80],
+                "method": "metadata_pdf_lookup_timeout",
+                "timeout_seconds": timeout,
+            })
+            return None, "timeout"
+        worker.join(timeout=min(0.25, remaining))
+
+    status, payload = outcome.get_nowait()
+    if status == "error":
+        raise payload
+    return payload
+
+
+def _is_terminal_failure(entry):
+    if not isinstance(entry, dict):
+        return False
+    reason = str(entry.get("reason", ""))
+    return reason.startswith(PDF_LOOKUP_TERMINAL_REASONS)
+
+
 
 
 # ── Zotero ↔ text.md sanity check (zero-cost PDF integrity gate) ──
@@ -557,7 +844,9 @@ def _zotero_text_sanity(item, text_md_path, min_title_coverage=0.6):
         return True, "no_text_skip"  # text extraction failed; downstream already fails
     try:
         with open(text_md_path, "r", encoding="utf-8", errors="replace") as f:
-            text = f.read(6000).lower()
+            # Proceedings and journal issues can bundle many papers in one PDF;
+            # the target title may appear well after the first few pages.
+            text = f.read().lower()
     except Exception:
         return True, "read_error_skip"
 
@@ -619,41 +908,67 @@ def _zotero_text_sanity(item, text_md_path, min_title_coverage=0.6):
 
 # ── Phase 2: Extract text.md (OpenDataLoader → PyMuPDF fallback) ──
 
+_OPENDATALOADER_READY = None
+_OPENDATALOADER_LOCK = threading.Lock()
+
+
+def _opendataloader_ready():
+    """Return whether both the Python package and a working Java runtime exist."""
+    global _OPENDATALOADER_READY
+    with _OPENDATALOADER_LOCK:
+        if _OPENDATALOADER_READY is not None:
+            return _OPENDATALOADER_READY
+
+        java = shutil.which("java")
+        if not java:
+            _OPENDATALOADER_READY = False
+        else:
+            try:
+                probe = subprocess.run(
+                    [java, "-version"],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                )
+                _OPENDATALOADER_READY = probe.returncode == 0
+            except (OSError, subprocess.SubprocessError):
+                _OPENDATALOADER_READY = False
+
+        if not _OPENDATALOADER_READY:
+            log("  Java runtime unavailable; using PyMuPDF text extraction")
+        return _OPENDATALOADER_READY
+
+
 def extract_text(pdf_path, slug_dir):
     text_path = os.path.join(slug_dir, "text.md")
 
-    # Strategy 1: OpenDataLoader (better table/formula/structure extraction)
-    # NOTE: pip package is `opendataloader-pdf` but Python import name is
-    # `opendataloader_pdf` (underscore). Earlier code used `opendataloader.pdf`
-    # which silently ImportError'd and fell through to PyMuPDF every time.
-    # Requires Java Runtime (e.g. `brew install --cask temurin`).
-    try:
-        import tempfile, re
-        from opendataloader_pdf import convert as odl_convert
-        with tempfile.TemporaryDirectory() as tmpdir:
-            odl_convert(input_path=[pdf_path], output_dir=tmpdir,
-                        format="markdown", quiet=True)
-            md_files = [f for f in os.listdir(tmpdir) if f.endswith(".md")]
-            if md_files:
-                with open(os.path.join(tmpdir, md_files[0]), "r", encoding="utf-8") as f:
-                    text = f.read()
-                if text and len(text) > 100:
-                    # OpenDataLoader exports its own image dump and embeds
-                    # `![image N](relative/path.png)` lines pointing to a
-                    # sibling dir that paper-curation never tracks (we use
-                    # PyMuPDF for figures/). Collapse those refs into
-                    # `[Figure N]` so the body flow survives but the broken
-                    # paths don't pollute Claude review prompts.
-                    text = re.sub(r'!\[image\s*(\d+)\]\([^)]*\)',
-                                  r'[Figure \1]', text)
-                    text = re.sub(r'\n{3,}', '\n\n', text)
-                    with open(text_path, "w", encoding="utf-8") as f:
-                        f.write(text)
-                    return True
-    except ImportError:
-        pass  # OpenDataLoader not installed → fallback
-    except Exception as e:
-        log(f"  OpenDataLoader failed: {e}, falling back to PyMuPDF")
+    # Strategy 1: OpenDataLoader (better table/formula/structure extraction).
+    # macOS ships a /usr/bin/java launcher even when no JRE is installed, so
+    # probe `java -version` once instead of emitting the same failure per PDF.
+    if _opendataloader_ready():
+        try:
+            import tempfile, re
+            from opendataloader_pdf import convert as odl_convert
+            with tempfile.TemporaryDirectory() as tmpdir:
+                odl_convert(input_path=[pdf_path], output_dir=tmpdir,
+                            format="markdown", quiet=True)
+                md_files = [f for f in os.listdir(tmpdir) if f.endswith(".md")]
+                if md_files:
+                    with open(os.path.join(tmpdir, md_files[0]), "r", encoding="utf-8") as f:
+                        text = f.read()
+                    if text and len(text) > 100:
+                        # OpenDataLoader exports its own image dump and embeds
+                        # relative refs that paper-curation does not retain.
+                        text = re.sub(r'!\[image\s*(\d+)\]\([^)]*\)',
+                                      r'[Figure \1]', text)
+                        text = re.sub(r'\n{3,}', '\n\n', text)
+                        with open(text_path, "w", encoding="utf-8") as f:
+                            f.write(text)
+                        return True
+        except ImportError:
+            pass  # OpenDataLoader not installed → fallback
+        except Exception as exc:
+            log(f"  OpenDataLoader failed: {exc}, falling back to PyMuPDF")
 
     # Strategy 2: PyMuPDF fallback
     try:
@@ -1344,8 +1659,7 @@ def write_review(item, slug_dir, figures):
         fig_refs += f"\n- Fig {fig['name']}: {fig['caption'][:80]}"
 
     try:
-        from anthropic import Anthropic
-        client = Anthropic(timeout=180.0, max_retries=4)
+        client = create_anthropic_client(timeout=180.0, max_retries=4)
 
         # Tool-use forces a structured JSON response that matches
         # REVIEW_TOOL_SCHEMA. The SDK auto-retries on schema validation
@@ -1371,14 +1685,17 @@ def write_review(item, slug_dir, figures):
         slug = os.path.basename(slug_dir.rstrip("/\\"))
         cache_dir = paper_cache_dir(slug)
 
-        def _make_call():
-            response = client.messages.create(
+        def _invoke_model():
+            return client.messages.create(
                 model=WRITE_REVIEW_MODEL,
                 max_tokens=4000,
                 tools=[REVIEW_TOOL_SCHEMA],
                 tool_choice={"type": "tool", "name": "emit_review"},
                 messages=[{"role": "user", "content": prompt}],
             )
+
+        def _make_call():
+            response = _run_oauth_limited(_invoke_model)
             for block in response.content:
                 # SDK returns ToolUseBlock; check by attribute presence.
                 if getattr(block, "type", None) == "tool_use" \
@@ -1686,54 +2003,168 @@ def convert_to_html(slug):
 
 # ── Process single paper ──
 
+class _SlugAllocator:
+    """Allocate slugs while preserving legacy first-match semantics in near-linear time."""
+
+    def __init__(self, existing_slugs):
+        self._candidates = {}
+        self._max_num = 0
+        for slug in existing_slugs:
+            self._register(slug)
+
+    @staticmethod
+    def _slug_text(slug):
+        parts = slug.split("_", 1)
+        if len(parts) < 2:
+            return ""
+        return re.sub(r"[^a-z0-9]", "", parts[1].lower())
+
+    def _register(self, slug):
+        number = re.match(r"(\d+)_", slug)
+        if number:
+            self._max_num = max(self._max_num, int(number.group(1)))
+        slug_text = self._slug_text(slug)
+        if len(slug_text) >= 10:
+            self._candidates.setdefault(slug_text[:10], []).append((slug, slug_text))
+
+    def allocate(self, item):
+        title = item.get("title", "Unknown")
+        norm_title = re.sub(r"[^a-z0-9]", "", title.lower())
+
+        # Any legacy match must share its first ten normalized characters.
+        # Restricting the scan to that bucket preserves insertion order and the
+        # exact variable-length comparison while avoiding an O(n²) full scan.
+        if len(norm_title) >= 10:
+            for slug, slug_text in self._candidates.get(norm_title[:10], ()):
+                match_len = min(40, len(norm_title), len(slug_text))
+                if match_len >= 10 and norm_title[:match_len] == slug_text[:match_len]:
+                    return slug
+
+        safe = "".join(
+            char if char.isalnum() or char in " -_" else ""
+            for char in title
+        )[:60].strip().replace(" ", "_")
+        self._max_num += 1
+        slug = f"{self._max_num:03d}_{safe}"
+        self._register(slug)
+        return slug
+
+
 def make_slug(item, existing_slugs):
-    """Match item to existing slug or generate a new one.
+    """Match one item to an existing slug or allocate a new one."""
+    return _SlugAllocator(existing_slugs).allocate(item)
 
-    Matching policy (Phase 4 collision fix):
-      • Normalise title and slug-text by stripping non-alphanumerics and
-        lowercasing.
-      • Require the FULL 40-character prefix to match — the original
-        25-character cutoff conflated different papers that shared their
-        first few words (e.g. "A hierarchical framework for measuring
-        scientific impact" vs "A Hierarchical Framework for Humanoid
-        Locomotion with Supernumerary Limbs", both → `ahierarchical
-        frameworkfor` at 25 chars).
-      • Both sides must have ≥ 40 normalised chars to be eligible; short
-        titles fall through to new-slug allocation rather than risking a
-        false match.
-    """
-    title = item.get("title", "Unknown")
-    norm_title = re.sub(r"[^a-z0-9]", "", title.lower())
 
-    # Match against existing slugs. The compared prefix length is
-    # ``min(40, min(len(a), len(b)))``: 40 chars when both sides are long
-    # enough (rejects the "Hierarchical Framework for measuring/Humanoid"
-    # false positive at chars 25-40), but the full overlap when either
-    # title is shorter (matches "Robot Learning from Human Videos: A
-    # Survey" — 35 normalised chars — against its own existing slug).
-    # Require a 10-char floor so single-word titles can't claim each
-    # other.
-    if len(norm_title) >= 10:
-        for s in existing_slugs:
-            parts = s.split("_", 1)
-            if len(parts) < 2:
-                continue
-            slug_text = re.sub(r"[^a-z0-9]", "", parts[1].lower())
-            if len(slug_text) < 10:
-                continue
-            match_len = min(40, len(norm_title), len(slug_text))
-            if match_len >= 10 and norm_title[:match_len] == slug_text[:match_len]:
-                return s
+def _clean_zotero_title(value):
+    """Decode escaped markup and remove formatting tags from Zotero titles."""
+    text = str(value or "")
+    for _ in range(2):
+        decoded = html_lib.unescape(text)
+        if decoded == text:
+            break
+        text = decoded
+    text = re.sub(r"<[^>]+>", "", text)
+    return re.sub(r"\s+", " ", text).strip()
 
-    # No match → new slug
-    safe = "".join(c if c.isalnum() or c in " -_" else "" for c in title)[:60].strip()
-    safe = safe.replace(" ", "_")
-    max_num = 0
-    for d in existing_slugs:
-        m = re.match(r"(\d+)_", d)
-        if m:
-            max_num = max(max_num, int(m.group(1)))
-    return f"{max_num + 1:03d}_{safe}"
+
+def _item_metadata_score(item):
+    return (
+        bool(_extract_arxiv_id_from_item(item)),
+        bool(item.get("DOI") or item.get("doi")),
+        len(str(item.get("abstractNote", ""))),
+    )
+
+
+def _map_items_to_slugs(items, existing_slugs, item_slug_map=None):
+    """Map one clean, metadata-rich record per slug."""
+    items_by_slug = {}
+    slug_allocator = _SlugAllocator(existing_slugs)
+    if item_slug_map is None:
+        item_slug_map = {}
+    known_slugs = set(existing_slugs)
+    canonical_slug_by_title = {}
+    duplicate_items = 0
+    skipped_untitled = 0
+    for raw_item in items:
+        item = dict(raw_item)
+        item["title"] = _clean_zotero_title(item.get("title"))
+        if not item["title"]:
+            skipped_untitled += 1
+            continue
+
+        item_key = str(item.get("key", ""))
+        normalized_title = re.sub(r"[^a-z0-9]", "", item["title"].lower())
+        canonical_slug = (
+            canonical_slug_by_title.get(normalized_title)
+            if len(normalized_title) >= 10
+            else None
+        )
+        mapped_slug = item_slug_map.get(item_key)
+        if canonical_slug:
+            slug = canonical_slug
+        elif mapped_slug:
+            slug = str(mapped_slug)
+            if slug not in known_slugs:
+                slug_allocator._register(slug)
+                known_slugs.add(slug)
+        else:
+            slug = slug_allocator.allocate(item)
+            known_slugs.add(slug)
+        if len(normalized_title) >= 10:
+            canonical_slug_by_title.setdefault(normalized_title, slug)
+        if item_key:
+            item_slug_map[item_key] = slug
+        previous = items_by_slug.get(slug)
+        if previous is None:
+            items_by_slug[slug] = item
+            continue
+        duplicate_items += 1
+        if _item_metadata_score(item) > _item_metadata_score(previous):
+            items_by_slug[slug] = item
+
+    pairs = [(item, slug) for slug, item in items_by_slug.items()]
+    return pairs, duplicate_items, skipped_untitled
+def _backfill_terminal_failure_keys(cp, item_slug_pairs):
+    """Migrate legacy slug-only terminal failures to stable Zotero item keys."""
+    keys_by_text = {}
+    ambiguous = set()
+    for item, slug in item_slug_pairs:
+        slug_text = _SlugAllocator._slug_text(slug)
+        key = str(item.get("key", ""))
+        if not slug_text or not key:
+            continue
+        prior = keys_by_text.get(slug_text)
+        if prior and prior != key:
+            ambiguous.add(slug_text)
+        else:
+            keys_by_text[slug_text] = key
+
+    matched = 0
+    for entry in cp.get("failed", []):
+        if not _is_terminal_failure(entry) or entry.get("key"):
+            continue
+        slug_text = _SlugAllocator._slug_text(str(entry.get("slug", "")))
+        if slug_text and slug_text not in ambiguous and slug_text in keys_by_text:
+            entry["key"] = keys_by_text[slug_text]
+            matched += 1
+
+    compacted = []
+    seen = set()
+    for entry in cp.get("failed", []):
+        token = (
+            ("key", str(entry.get("key")))
+            if isinstance(entry, dict) and entry.get("key")
+            else ("slug", str(entry.get("slug", "")), str(entry.get("reason", "")))
+        )
+        if token in seen:
+            continue
+        seen.add(token)
+        compacted.append(entry)
+    removed = len(cp.get("failed", [])) - len(compacted)
+    cp["failed"] = compacted
+    return matched, removed
+
+
 
 
 def paper_has_other_topics(slug):
@@ -1754,6 +2185,7 @@ def paper_has_other_topics(slug):
 
 
 MAX_RETRIES = 3
+PDF_LOOKUP_TERMINAL_REASONS = ("no_pdf:", "sanity_mismatch:")
 
 
 def _do_process(item, slug, slug_dir, pdf_path):
@@ -1805,6 +2237,23 @@ def process_paper(item, slug, cp):
         return "skipped"
 
     slug_dir = os.path.join(PAPERS_DIR, slug)
+
+    # Resolve the PDF before creating or cleaning the paper directory. A
+    # metadata-only collection can contain thousands of items with no available
+    # PDF; those should not leave empty numeric directories that corrupt future
+    # slug allocation.
+    pdf_path, match_method = _find_pdf_with_wall_deadline(item)
+    if not pdf_path:
+        log(f"  {slug}: no PDF found (method={match_method})")
+        with _cp_lock:
+            cp["failed"].append({
+                "key": item.get("key", ""),
+                "slug": slug,
+                "reason": f"no_pdf:{match_method}",
+            })
+        save_checkpoint(cp)
+        return "no_pdf"
+
     os.makedirs(slug_dir, exist_ok=True)
 
     # Clean existing files — but SKIP if paper belongs to other topics too
@@ -1818,15 +2267,6 @@ def process_paper(item, slug, cp):
         fig_dir = os.path.join(slug_dir, "figures")
         if os.path.isdir(fig_dir):
             shutil.rmtree(fig_dir)
-
-    # Find PDF
-    pdf_path, match_method = find_pdf(item)
-    if not pdf_path:
-        log(f"  {slug}: no PDF found (method={match_method})")
-        with _cp_lock:
-            cp["failed"].append({"slug": slug, "reason": f"no_pdf:{match_method}"})
-        save_checkpoint(cp)
-        return "no_pdf"
     # Record Zotero item key → slug mapping for index persistence (Phase 1
     # PDF integrity field). Keyed across threads via _cp_lock for safety.
     with _cp_lock:
@@ -1854,7 +2294,11 @@ def process_paper(item, slug, cp):
     # All retries exhausted
     log(f"  {slug}: FAILED after {MAX_RETRIES} attempts ({last_reason})")
     with _cp_lock:
-        cp["failed"].append({"slug": slug, "reason": last_reason})
+        cp["failed"].append({
+            "key": item.get("key", ""),
+            "slug": slug,
+            "reason": last_reason,
+        })
     save_checkpoint(cp)
     return last_reason
 
@@ -2013,6 +2457,17 @@ def main():
     _STRICT_PDF = args.strict_pdf
     if _STRICT_PDF:
         print("[strict-pdf] fuzzy PDF matching disabled — papers without authoritative PDF links will be skipped")
+    selected_auth = None
+    if not args.dry_run:
+        try:
+            selected_auth = require_auth_ready()
+        except AnthropicAuthError as exc:
+            raise SystemExit(f"[auth] {exc}") from exc
+        if selected_auth.mode == "oauth":
+            _configure_oauth_call_limiter(selected_auth.mode, args.concurrency)
+        topic_modeling_python = _get_topic_modeling_python()
+    else:
+        topic_modeling_python = None
 
     # ── Rebuild safety: snapshot _papers_index.json so an accidental wipe
     # is reversible. Only triggered when --mode rebuild AND not --slugs (mass).
@@ -2053,11 +2508,18 @@ def main():
     # Load checkpoint
     if args.resume:
         cp = load_checkpoint()
-        # Clear failed list so they get retried
-        prev_failed = len(cp.get("failed", []))
-        cp["failed"] = []
+        previous_failures = cp.get("failed", [])
+        terminal_failures = [
+            entry for entry in previous_failures if _is_terminal_failure(entry)
+        ]
+        retryable_failures = len(previous_failures) - len(terminal_failures)
+        cp["failed"] = terminal_failures
         previously_completed = set(cp.get("completed", []))
-        log(f"Resuming: {len(cp['completed'])} completed, {prev_failed} previously failed (will retry)")
+        log(
+            f"Resuming: {len(cp['completed'])} completed, "
+            f"{len(terminal_failures)} terminal failures preserved, "
+            f"{retryable_failures} retryable failures cleared"
+        )
     else:
         cp = {"completed": [], "failed": [], "phase": "init"}
         previously_completed = set()
@@ -2071,13 +2533,44 @@ def main():
     existing_slugs = sorted(d for d in os.listdir(PAPERS_DIR)
                             if os.path.isdir(os.path.join(PAPERS_DIR, d)) and d[0].isdigit())
 
-    # Map items to slugs
-    item_slug_pairs = []
-    for item in items:
-        slug = make_slug(item, existing_slugs)
-        item_slug_pairs.append((item, slug))
-        if slug not in existing_slugs:
-            existing_slugs.append(slug)
+    checkpoint_item_slugs = cp.get("item_slugs")
+    if not isinstance(checkpoint_item_slugs, dict):
+        checkpoint_item_slugs = {}
+        cp["item_slugs"] = checkpoint_item_slugs
+    for failure in cp.get("failed", []):
+        if (
+            isinstance(failure, dict)
+            and failure.get("key")
+            and failure.get("slug")
+        ):
+            checkpoint_item_slugs.setdefault(
+                str(failure["key"]), str(failure["slug"])
+            )
+
+    # Map items to slugs. The allocator buckets normalized ten-character
+    # prefixes, preserving make_slug's first-match behavior without scanning
+    # every previously allocated slug for every Zotero item.
+    item_slug_pairs, duplicate_items, skipped_untitled = _map_items_to_slugs(
+        items, existing_slugs, checkpoint_item_slugs
+    )
+    for mapped_item, mapped_slug in item_slug_pairs:
+        mapped_key = str(mapped_item.get("key", ""))
+        if mapped_key:
+            checkpoint_item_slugs[mapped_key] = mapped_slug
+    save_checkpoint(cp)
+    backfilled_failures, duplicate_failures = _backfill_terminal_failure_keys(
+        cp, item_slug_pairs
+    )
+    if backfilled_failures or duplicate_failures:
+        log(
+            f"Checkpoint terminal failures: backfilled {backfilled_failures} "
+            f"stable Zotero keys, removed {duplicate_failures} duplicates"
+        )
+        save_checkpoint(cp)
+    if duplicate_items:
+        log(f"Collapsed {duplicate_items} duplicate Zotero records by slug")
+    if skipped_untitled:
+        log(f"Skipped {skipped_untitled} Zotero records without titles")
 
     # --slugs filter: restrict processing to listed slug prefixes, and force-rebuild them
     if args.slugs:
@@ -2164,9 +2657,19 @@ def main():
         save_checkpoint(cp)
         log(f"--skip-existing: {skipped} papers with existing review.md marked as completed")
 
-    # Filter already completed
-    remaining = [(item, slug) for item, slug in item_slug_pairs
-                 if slug not in cp["completed"]]
+    # Filter already completed and terminal item-key failures. Zotero keys remain
+    # stable even when a metadata-only item has no directory-backed numeric slug.
+    terminal_failed_keys = {
+        str(entry.get("key", ""))
+        for entry in cp.get("failed", [])
+        if _is_terminal_failure(entry) and entry.get("key")
+    }
+    remaining = [
+        (item, slug)
+        for item, slug in item_slug_pairs
+        if slug not in cp["completed"]
+        and str(item.get("key", "")) not in terminal_failed_keys
+    ]
 
     if args.limit > 0:
         remaining = remaining[:args.limit]
@@ -2197,7 +2700,18 @@ def main():
             except Exception as e:
                 log(f"[{done}/{len(remaining)}] {slug}: ERROR {e}")
                 with _cp_lock:
-                    cp["failed"].append({"slug": slug, "reason": str(e)})
+                    cp["failed"].append({
+                        "key": next(
+                            (
+                                item.get("key", "")
+                                for item, candidate_slug in remaining
+                                if candidate_slug == slug
+                            ),
+                            "",
+                        ),
+                        "slug": slug,
+                        "reason": str(e),
+                    })
                 save_checkpoint(cp)
 
     elapsed_total = (time.time() - start_time) / 3600
@@ -2357,7 +2871,7 @@ def main():
             except Exception:
                 pass
             run_step("topic_modeling",
-                     [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
+                     [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
         elif is_update:
             # Update mode normally runs --skip-classification (refresh coords +
             # connections only, reuse the existing HDBSCAN bundle). But
@@ -2371,17 +2885,17 @@ def main():
                 log("  [topic_modeling] HDBSCAN bundle missing — running full "
                     "topic_modeling to build it (first run for this topic)")
                 run_step("topic_modeling",
-                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
+                         [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
             else:
                 run_step("topic_modeling (coords+connections)",
-                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic, "--skip-classification"] + tm_local, 3600)
+                         [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic, "--skip-classification"] + tm_local, 3600)
         else:
             run_step("topic_modeling",
-                     [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
+                     [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
 
         # Step 3: classify (always — new papers only in update mode without --category)
         run_step("classify_papers",
-                 [TOPIC_MODELING_PYTHON, "pipeline/classify_papers.py", "--topic", topic], 600)
+                 [topic_modeling_python, "pipeline/classify_papers.py", "--topic", topic], 600)
 
         # Step 4: Determine changed categories
         changed_cats = []
@@ -2562,7 +3076,7 @@ def main():
             if missing:
                 log(f"\n  [verify_umap] {len(missing)} papers missing UMAP coordinates — re-running topic_modeling...")
                 run_step("topic_modeling (umap fix)",
-                         [TOPIC_MODELING_PYTHON, "pipeline/topic_modeling.py", "--topic", topic, "--skip-connections"], 3600)
+                         [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic, "--skip-connections"], 3600)
                 if args.insights:   # 네트워크는 Option(O-2) — --insights 일 때만
                     run_step("generate_network (rebuild)",
                              ["python", "pipeline/generate_network.py", "--topic", topic], 600)

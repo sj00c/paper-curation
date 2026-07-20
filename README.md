@@ -44,35 +44,96 @@
 
 ## 🔧 운영자로 설치하기
 
-Zotero 컬렉션 + PDF + API 키(필수: Anthropic · Google · Zotero, OpenAI는 선택)만 있으면 됩니다.
+Zotero 컬렉션 + PDF + Zotero API key는 필수입니다. Google API 키도 검색 임베딩·Figure 검증·TTS에 필요합니다. Claude 호출은 두 방식 중 하나를 고릅니다.
 
-**가장 쉬운 방법 — Claude Code에서 한 줄** (전체 설치 플로우는 [CLAUDE.md](CLAUDE.md)의 "Installation Flow (Claude Code)" 참고):
+- **구독 OAuth (권장)** — Claude Pro/Max/Team/Enterprise 구독을 Claude Code OAuth로 사용합니다. Claude Code **>= 2.1.205** 필요. `claude auth login`으로 저장된 로그인 또는 `claude setup-token`으로 받은 env-only `CLAUDE_CODE_OAUTH_TOKEN`을 사용합니다.
+- **Console API 키** — `ANTHROPIC_API_KEY`를 쓰며 Anthropic Console의 metered API 과금입니다. NPX 명령에서는 `--auth api-key`를 명시합니다.
 
-> "여기에 paper-curation을 설치해줘: https://github.com/jehyunlee/paper-curation"
+> OAuth 토큰은 setup이 저장하지 않습니다. `config.json`에는 `anthropic_auth.mode = "oauth"`만 저장할 수 있습니다. Claude CLI 자체는 API 키를 OAuth보다 우선할 수 있으므로 OAuth 운영 셸에서 `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN`을 unset하는 편이 안전합니다. 이 저장소는 OAuth로 선택된 Claude child 호출에서 두 API 자격증명을 제거하고, `auto` 모드에서는 OAuth token/login을 API 키보다 우선합니다.
+`npx` 경로에는 Git, Node.js 18+, `conda` 명령(Miniconda/Miniforge)이 필요합니다. NPX가 `py312` 환경 생성과 Python 의존성 설치를 맡습니다.
 
-**수동 설치:**
+**권장 설치 — NPX:**
 
 ```bash
-# 1) 클론 + 의존성 (단일 conda env: py312)
-git clone https://github.com/jehyunlee/paper-curation.git && cd paper-curation
-conda create -n py312 -c conda-forge python=3.12 pip -y && conda activate py312
-pip install -r requirements.txt
+# 새 클론 + 온보딩
+npx --yes github:jehyunlee/paper-curation init --auth oauth --dir paper-curation
 
-# 2) API 키 (리뷰=Anthropic, 검색 임베딩·Figure 검증·TTS=Google)
-export ANTHROPIC_API_KEY=...
-export GOOGLE_API_KEY=...
+# 이미 체크아웃한 저장소에서 설정
+npx . setup --auth oauth
 
-# 3) config.json 생성(대화형) → 첫 파이프라인 실행
-PYTHONUTF8=1 python pipeline/setup.py
+# Anthropic Console API 키 과금으로 운영할 때
+npx . setup --auth api-key
+
+# 진단
+npx . doctor --network
+
+# 실행
+npx . run -- --topic my_topic --mode curate --source zotero
+```
+**`config.json` 생성 규칙:**
+
+- `config.json`은 비밀값이 들어가는 로컬 파일이라 Git에 포함되지 않습니다. 따라서 `clone`/`pull`만으로는 생기지 않습니다.
+- **가장 쉬운 방법은 export 없이 `npx . setup --auth oauth`를 실행하고 프롬프트에 Zotero API key를 붙여 넣는 것입니다.**
+- `export`는 선택적인 사전 입력입니다. 현재 셸의 환경변수만 설정하며 파일을 만들지 않습니다. 사용할 경우 같은 터미널에서 setup까지 실행해야 합니다.
+
+```bash
+cd ~/dev/paper-curation
+npx . setup --auth oauth
+
+# 선택: 파일 대신 환경변수를 쓸 때
+export ZOTERO_API_KEY=...
+export GEMINI_API_KEY=...
+npx . setup --auth oauth
 ```
 
-**설치 진단** — 문제가 있으면 `PYTHONUTF8=1 python pipeline/doctor.py` 로 py312 환경 · 필수 패키지 · API 키 · Zotero 연결을 한 번에 점검합니다.
+파일을 열어 한 번에 채우는 방식은 `.env.example`을 사용합니다:
+
+```bash
+cp .env.example .env
+open -e .env                    # 또는 원하는 편집기로 .env 열기
+npx . setup --auth oauth
+```
+
+`.env`에는 필수값인 `ZOTERO_API_KEY=`와 `GEMINI_API_KEY=` 두 줄만 있습니다. setup이 Zotero API로 컬렉션을 조회해 번호 선택을 받고, topic alias를 만들고, `pdf_cache/`를 자동 생성합니다. Zotero Storage에 동기화된 PDF는 필요할 때 API key로 cache에 내려받습니다. 로컬 linked attachment만 사용하고 Zotero Storage에 파일이 없다면 고급 설정으로 `ZOTERO_DIR`을 추가할 수 있습니다. `.env`는 Git에서 제외됩니다.
+
+기본 NPX setup은 비용이 드는 파이프라인을 자동 실행하지 않습니다. 첫 실행까지 setup에서 이어서 돌릴 때만 `--run-first`를 명시합니다.
+`npx . doctor --network`는 OAuth(`claude auth login`/`CLAUDE_CODE_OAUTH_TOKEN`) 또는 API 키(`ANTHROPIC_API_KEY`) 중 현재 선택한 Claude 인증과 Zotero/Google 연결을 진단합니다.
+
+**수동 conda py312 fallback:**
+
+```bash
+git clone https://github.com/jehyunlee/paper-curation.git && cd paper-curation
+conda create -n py312 -c conda-forge python=3.12 pip -y
+conda activate py312
+pip install -r requirements.txt
+
+# OAuth: 저장된 로그인
+claude auth login
+# 또는 장기 토큰: 먼저 발급한 뒤 출력된 토큰을 env에 설정
+claude setup-token
+export CLAUDE_CODE_OAUTH_TOKEN='발급된_토큰'
+
+export GOOGLE_API_KEY=...
+export ZOTERO_API_KEY=...
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth --no-run
+
+# API 키 대안
+export ANTHROPIC_API_KEY=...
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
+```
+
+OpenAI는 선택입니다. Resend는 배포된 Audio Overview 이메일에만 필요합니다.
 
 사전 준비 체크리스트, config.json 스키마, 설치 확인, 문제 해결 → **[Setup Guide](docs/setup-guide.md)**
 
 ## 💰 비용 가이드
 
 > 정확한 실측이 아니라 **오더 오브 매그니튜드(order-of-magnitude) 가이드**입니다. 실제 비용은 논문 편수·본문 길이·타임라인 재생성 빈도·Insights opt-in 여부에 따라 크게 달라집니다.
+
+Claude 비용은 인증 방식에 따라 다릅니다.
+
+- **OAuth (`--auth oauth`)** — Claude Code 구독(Pro/Max/Team/Enterprise)의 사용량 정책을 따릅니다. Anthropic Console API 사용량으로 과금되지 않습니다.
+- **API 키 (`--auth api-key`)** — `ANTHROPIC_API_KEY`로 Anthropic Console metered API 과금이 발생합니다. 아래 표는 이 경우의 대략치입니다.
 
 단계별로 쓰이는 모델과 단가(입력/출력, 100만 토큰당):
 
@@ -84,13 +145,12 @@ PYTHONUTF8=1 python pipeline/setup.py
 | 분류 | — (HDBSCAN + UMAP) | **LLM 호출 0회 → $0** |
 | 검색 임베딩 | Google `gemini-embedding-001` | Google 임베딩 요금(소액) |
 
-**편당 리뷰 대략치** — 리뷰 1편은 논문 본문 발췌 + 프롬프트를 입력, 6섹션 한국어 리뷰를 출력합니다. 대략 입력 ~15k · 출력 ~4k 토큰으로 잡으면:
-
+**편당 리뷰 대략치** — API 키 과금 기준, 리뷰 1편은 논문 본문 발췌 + 프롬프트를 입력, 6섹션 한국어 리뷰를 출력합니다. 대략 입력 ~15k · 출력 ~4k 토큰으로 잡으면:
 - 인트로 단가($2/$10): `15k × $2/1M + 4k × $10/1M ≈ $0.03 + $0.04 = ~$0.07`
 - 9/1 이후($3/$15): `15k × $3/1M + 4k × $15/1M ≈ $0.045 + $0.06 = ~$0.11`
 - 여기에 연결 생성(증분) + Figure 검증(Haiku)까지 얹으면 **편당 대략 $0.05–0.15** 수준입니다.
 
-**월간 운영 대략치** — 주간 ~20편(월 ~80편) 사이클 기준:
+**월간 운영 대략치** — API 키 과금으로 주간 ~20편(월 ~80편) 사이클 기준:
 
 - 리뷰: 80편 × ~$0.10 ≈ **$8**
 - 연결(증분, dirty 논문만) + 카테고리 요약(Haiku) ≈ **$1–3**
@@ -123,7 +183,7 @@ PYTHONUTF8=1 python pipeline/setup.py
 | **로컬 LLM fallback** | `--local-fallback` | 망 전멸 시 로컬 모델(Ollama 등)로 연결 생성 완결 — [운영 매뉴얼](docs/operations.md#korean-network-workarounds) |
 | **워크플로 다이어그램** | `generate_workflow.py` | 상단 고양이 다이어그램 생성(PaperBanana, `--style cat/fairy/academic`) |
 
-**필요한 것**: Zotero 컬렉션 + PDF + API 키(필수: Anthropic · Google · Zotero). OpenAI는 선택.
+**필요한 것**: Zotero 컬렉션 + PDF + Zotero API key + Google API 키 + Claude 인증(OAuth 구독 또는 Anthropic API 키). OpenAI는 선택, Resend는 배포 이메일에만 필요.
 
 ## 파이프라인
 
@@ -143,25 +203,25 @@ PYTHONUTF8=1 python pipeline/setup.py
 
 ## 사용 모드
 
-단일 오케스트레이터 `run_full.py` (3축: `--mode` / `--source` / `--images`):
+단일 진입점은 NPX CLI입니다. `--` 뒤 인자는 `pipeline/run_full.py`로 전달됩니다.
 
 ```bash
-# 주간 운영 — 검색 → Zotero 등록 → sync → 신규 리뷰 + timeline 보강
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7
-
 # 로컬 업데이트 — 검색 스킵, 신규/누락 narrative·timeline 기본 보강
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
+npx . run -- --topic ai4s --mode curate --source zotero
+
+# 주간 운영 — 검색 → Zotero 등록 → sync → 신규 리뷰 + timeline 보강
+npx . run -- --topic ai4s --mode curate --source web --days 7
 
 # timeline 보강까지 끄고 리뷰/분류만 돌리려면
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --images skip
+npx . run -- --topic ai4s --mode curate --source zotero --images skip
 
 # 분류만 / 타임라인만 / 배포만
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
-PYTHONUTF8=1 python pipeline/run_full.py --topic humanoid --mode deploy
+npx . run -- --topic ai4s --mode reclassify
+npx . run -- --topic ai4s --mode retime --images all
+npx . run -- --topic humanoid --mode deploy
 
 # 실행 계획 미리보기 / 로컬 서버
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --dry-run
+npx . run -- --topic ai4s --mode curate --source zotero --dry-run
 PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/embed
 ```
 

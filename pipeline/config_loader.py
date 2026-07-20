@@ -320,10 +320,16 @@ def get_paperbanana_dir():
 
 
 def get_zotero_dir():
-    """Zotero PDF 저장 디렉토리."""
+    """Return the configured PDF directory, creating a project-local cache by default."""
     cfg = load_config()
-    return (cfg.get("zotero", {}).get("pdf_dir", "")
-            or os.environ.get("ZOTERO_DIR", ""))
+    configured = (
+        cfg.get("zotero", {}).get("pdf_dir", "")
+        or os.environ.get("ZOTERO_DIR", "")
+        or str(PROJECT_ROOT / "pdf_cache")
+    )
+    directory = Path(configured).expanduser().resolve()
+    directory.mkdir(parents=True, exist_ok=True)
+    return str(directory)
 
 
 def get_github_repo():

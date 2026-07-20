@@ -332,17 +332,11 @@ def _valid_comp(out):
 
 
 def compare_llm(papers):
-    from anthropic import Anthropic
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        try:
-            with open(os.path.join(ROOT, "config.json"), encoding="utf-8") as f:
-                key = json.load(f).get("anthropic_api_key")
-        except Exception:
-            pass
-    if not key:
-        raise SystemExit("ANTHROPIC_API_KEY 없음")
-    client = Anthropic(api_key=key, timeout=300.0, max_retries=4)
+    from anthropic_auth import create_anthropic_client
+    try:
+        client = create_anthropic_client(timeout=300.0, max_retries=4)
+    except Exception as e:
+        raise SystemExit(f"Anthropic 클라이언트 생성 실패: {e}") from e
     base_prompt = _build_prompt(papers)
     required = ", ".join(_TOOL["input_schema"]["required"])
     extra = ""
