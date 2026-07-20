@@ -42,7 +42,7 @@ PYTHONUTF8=1 python pipeline/setup.py
 ```
 setup.py는 6단계 설치 후 곧바로 첫 파이프라인을 실행한다:
 - [1/6] config.json 로드 (없으면 인터랙티브 생성)
-- [2/6] 환경변수 확인 — **`ANTHROPIC_API_KEY` 와 `GOOGLE_API_KEY` (검색 임베딩 `gemini-embedding-001` · Figure 검증 · TTS) 는 필수**. `OPENAI_API_KEY` 는 선택 (독자 BYOK 답변 · insights fallback) 이라 없어도 경고만.
+- [2/6] 환경변수 확인 — **Claude 인증은 OAuth 구독 모드 또는 Console API 키 중 하나가 필수**. OAuth(`--auth oauth`)는 Claude Pro/Max/Team/Enterprise 구독을 Claude Code로 사용하며 Claude Code >= 2.1.205 가 필요하고, `claude auth login` 저장 로그인 또는 env-only `CLAUDE_CODE_OAUTH_TOKEN` 을 쓴다. API 키 모드(`--auth api-key`)는 `ANTHROPIC_API_KEY` 를 쓴다. `GOOGLE_API_KEY` 는 **선택** — 없으면 dense 검색·Figure 검증·TTS 가 비활성으로 남고 fallback 하지 않는다. `OPENAI_API_KEY` 도 선택.
 - [3/6] Zotero 연결 테스트 (User ID + 컬렉션 검증)
 - [4/6] PaperBanana 확인 (없으면 자동 클론)
 - [5/6] SKILL.md 생성
@@ -339,8 +339,8 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 ## External Dependencies
 
 - **Zotero Web API**: Collection names and API key are configured in `config.json`
-- **Anthropic API**: Claude Haiku/Sonnet for classification, reviews, summaries, and insights (`ANTHROPIC_API_KEY` env var). Deep Research UI도 같은 키를 사용 — 빌드 시 환경변수에서 읽어 HTML에 주입.
-- **Google Gemini API**: Figure validation in `pipeline/run_update_force.py`, TTS for Audio Overview, and **Deep Research embeddings** — `gemini-embedding-001` (`output_dimensionality=768`, `task_type=RETRIEVAL_DOCUMENT` for the index in `pipeline/build_search_index.py`, `RETRIEVAL_QUERY` for queries). Query embeddings are served to readers by the worker `/api/embed` route (deployed) or `pipeline/serve_local.py` (local), so readers need no key for retrieval. Key from `GOOGLE_API_KEY` env var or `config.json`. **Gotcha**: non-3072 dims come back non-normalized — L2-normalize before int8 quantization.
+- **Anthropic (Claude)**: 분류·리뷰·요약·insights. 두 경로 중 하나를 고른다 — **OAuth 구독 모드**(`anthropic_auth.create_anthropic_client()` 가 격리된 `claude -p` 브리지 사용, Claude Code >= 2.1.205, `claude auth login` 또는 `CLAUDE_CODE_OAUTH_TOKEN`) 또는 **Console API 키 모드**(Anthropic SDK, `ANTHROPIC_API_KEY`). setup 은 OAuth 토큰을 저장하지 않으며 `config.json` 에는 `anthropic_auth.mode = "oauth"` 만 남는다. OAuth 로 선택된 child 호출에서는 `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN` 을 제거하고, `auto` 는 OAuth 를 API 키보다 우선한다.
+- **Google Gemini API (선택)**: Figure 검증, Audio Overview TTS, Deep Research 임베딩 — `gemini-embedding-001` (`output_dimensionality=768`, 인덱스는 `RETRIEVAL_DOCUMENT`, 질의는 `RETRIEVAL_QUERY`). 질의 임베딩은 worker `/api/embed` 또는 `pipeline/serve_local.py` 가 대신 처리하므로 독자는 키가 필요 없다. 키는 `GOOGLE_API_KEY` env 또는 `config.json`. **키가 없으면 해당 기능은 비활성 상태로 남는다 — 다른 provider 로 fallback 하지 않는다.** **Gotcha**: non-3072 dims 는 비정규화 상태로 오므로 int8 양자화 전에 L2 정규화할 것.
 - **OpenAI API (optional)**: reader BYOK answer generation + `extract_insights` cross-category fallback. No longer required for the search index. Key from `OPENAI_API_KEY` env var or the `openai_api_key` field in `config.json`.
 - **PyMuPDF (fitz)**: PDF text extraction and figure rendering
 - **Pillow**: PNG→WebP conversion in `pipeline/prepare_deploy.py`

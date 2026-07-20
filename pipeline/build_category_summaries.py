@@ -14,7 +14,7 @@ import json
 import os
 import re
 from collections import defaultdict
-from anthropic import Anthropic
+from anthropic_auth import create_anthropic_client
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir
 PAPERS_DIR = str(_PAPERS_DIR)
@@ -202,7 +202,7 @@ def _run_category_summary(topic="ai4s", *, regen_ko=False, categories=None):
         key = (pc, sc)
         sub_papers[key].append(p)
 
-    client = Anthropic(timeout=180.0, max_retries=4)
+    client = create_anthropic_client(timeout=180.0, max_retries=4)
 
     if regen_ko and os.path.exists(sum_path):
         with open(sum_path, "r", encoding="utf-8") as f:
@@ -291,10 +291,14 @@ def _run_category_summary(topic="ai4s", *, regen_ko=False, categories=None):
                         issues.append(issue)
             print(f"    {st['name']}: {len(st.get('description_ko',''))}chars")
 
-    # ThreadPool: Haiku calls are I/O-bound. Anthropic Tier 4 (~5k RPM,
-    # 400k ITPM) easily handles 8 concurrent category workers.
+    # ThreadPool: API-key Haiku calls are I/O-bound and can use the
+    # historical Tier 4 default. Claude Code OAuth calls run through the
+    # local CLI, so keep them serial unless explicitly overridden.
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    max_workers = int(os.environ.get("CAT_SUMMARY_PARALLEL", "8"))
+    if "CAT_SUMMARY_PARALLEL" in os.environ:
+        max_workers = int(os.environ["CAT_SUMMARY_PARALLEL"])
+    else:
+        max_workers = 1 if client.__class__.__name__ == "ClaudeCodeClient" else 8
     with ThreadPoolExecutor(max_workers=max_workers) as ex:
         futures = [ex.submit(_process_one, s) for s in summaries]
         for fut in as_completed(futures):

@@ -143,11 +143,14 @@ JSON array 외의 텍스트(설명, 마크다운 fence)는 절대 출력하지 �
 {REFS}"""
 
 
-def parse_with_haiku(refs: list[str], anthropic_key: str, batch_size: int = 30) -> list[dict]:
+def parse_with_haiku(refs: list[str], anthropic_key: str | None = None,
+                     batch_size: int = 30) -> list[dict]:
     """Haiku 로 batch 단위로 참고문헌 파싱."""
-    import anthropic  # type: ignore
+    from anthropic_auth import create_anthropic_client
 
-    client = anthropic.Anthropic(api_key=anthropic_key)
+    client = create_anthropic_client(
+        api_key=anthropic_key or None, timeout=180.0, max_retries=2
+    )
     results: list[dict] = []
     total_batches = (len(refs) + batch_size - 1) // batch_size
 
@@ -981,10 +984,7 @@ def main():
             parsed_all = [p for p in parsed_all if p.get("ref_num", 0) <= args.limit]
     else:
         log(f"[1/6] Haiku 로 {len(raw_lines)}개 파싱 시작")
-        anth_key = os.environ.get("ANTHROPIC_API_KEY", "")
-        if not anth_key:
-            sys.exit("ANTHROPIC_API_KEY 환경변수 필요")
-        parsed_all = parse_with_haiku(raw_lines, anth_key)
+        parsed_all = parse_with_haiku(raw_lines)
         _save_json(PARSED_CACHE, parsed_all)
         log(f"  파싱 결과 저장: {PARSED_CACHE}")
 

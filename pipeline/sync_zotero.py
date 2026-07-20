@@ -140,8 +140,13 @@ def _run_sync(topic, *, dry_run=False, force_delete=False):
         return
 
     index_path = os.path.join(PAPERS_DIR, "_papers_index.json")
-    with open(index_path, "r", encoding="utf-8") as f:
-        papers = json.load(f)
+    if os.path.exists(index_path):
+        with open(index_path, "r", encoding="utf-8") as f:
+            papers = json.load(f)
+    else:
+        os.makedirs(PAPERS_DIR, exist_ok=True)
+        papers = []
+        log("Index not found — treating this as the first pipeline run.")
 
     # Fetch Zotero
     log(f"Fetching Zotero collection '{topic}' ({collection_key})...")

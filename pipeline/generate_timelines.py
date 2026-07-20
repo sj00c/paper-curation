@@ -40,6 +40,7 @@ from pathlib import Path
 # generate_diagram() 사용: from lib.paperbanana import generate_diagram
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir, IMG_TIMELINES_DIR
+from anthropic_auth import create_anthropic_client
 from lib.categories import category_slug
 PAPERS_DIR = str(_PAPERS_DIR)
 
@@ -82,8 +83,7 @@ def opus_streaming_call(prompt, max_tokens=12000):
     """Opus streaming 호출. SDK retry는 request-level만 처리하므로 mid-stream
     Connection reset/ReadError를 잡아서 수동 retry (exp backoff)."""
     import time as _time
-    from anthropic import Anthropic
-    client = Anthropic(timeout=600.0, max_retries=4)
+    client = create_anthropic_client(timeout=600.0, max_retries=4)
 
     last_err = None
     for attempt in range(5):
@@ -768,8 +768,7 @@ def select_best_candidate(results, caption=""):
         return results[0]
     try:
         import base64
-        from anthropic import Anthropic
-        judge = Anthropic(timeout=180.0, max_retries=3)
+        judge = create_anthropic_client(timeout=180.0, max_retries=3)
         content = []
         for n, (_i, _kb, path) in enumerate(results, 1):
             with open(path, "rb") as fh:

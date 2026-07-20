@@ -1,0 +1,20 @@
+{
+  "name": "paper-curation",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Dependency-free NPX onboarding CLI for paper-curation.",
+  "type": "module",
+  "bin": {
+    "paper-curation": "./bin/paper-curation.mjs"
+  },
+  "files": [
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test:npx-cli": "node --test tests/npx-cli.test.mjs"
+  },
+  "dependencies": {}
+}

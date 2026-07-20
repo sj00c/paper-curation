@@ -3,8 +3,8 @@ paper-curation 설치 스크립트.
 
 한 번 실행으로 전체 설치를 완료한다:
   1. config.json 생성 (인터랙티브)
-  2. Core API 키 게이트 — ZOTERO/ANTHROPIC/GOOGLE/RESEND 4개 필수
-     (없으면 입력받아 config.json 저장, 거부 시 설치 중단)
+  2. Core credential 게이트 — ZOTERO/GOOGLE 필수, Anthropic은 API key 또는 OAuth
+     (Resend는 Audio Overview 이메일 발송 단계로 지연)
   3. Zotero 연결 테스트 (User ID 조회 + 컬렉션 검증)
   4. PaperBanana 확인 (없으면 자동 클론)
   5. SKILL.md 생성 (템플릿 플레이스홀더 치환)
@@ -18,18 +18,120 @@ Usage:
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+from types import SimpleNamespace
+try:
+    from anthropic_auth import MIN_CLAUDE_CODE_VERSION, auth_status, claude_version
+except Exception:  # setup should still print an actionable remedy if auth helper import fails
+    MIN_CLAUDE_CODE_VERSION = (2, 1, 205)
+    auth_status = None
+    claude_version = None
 
 REPO = Path(__file__).resolve().parent.parent
 CONFIG_PATH = REPO / "config.json"
+ENV_PATH = REPO / ".env"
 EXAMPLE_PATH = REPO / "config.example.json"
 TEMPLATE_PATH = REPO / "SKILL.md.template"
 SKILL_OUTPUT = REPO / "SKILL.md"
 GITIGNORE_PATH = REPO / ".gitignore"
 SKILL_INSTALL_DIR = Path.home() / ".claude" / "skills" / "paper-curation"
+
+def _load_dotenv(path=ENV_PATH):
+    """Load a dependency-free .env subset without overriding shell exports."""
+    loaded = []
+    if not path.exists():
+        return loaded
+    for line_number, raw_line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[7:].strip()
+        if "=" not in line:
+            print(f"  △ .env:{line_number} 무시됨 (`KEY=value` 형식 필요)")
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        valid_key = (
+            bool(key)
+            and (key[0].isalpha() or key[0] == "_")
+            and all(char.isalnum() or char == "_" for char in key)
+        )
+        if not valid_key:
+            print(f"  △ .env:{line_number} 잘못된 변수명 무시됨")
+            continue
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+            value = value[1:-1]
+        elif " #" in value:
+            value = value.split(" #", 1)[0].rstrip()
+        if value and key not in os.environ:
+            os.environ[key] = value
+            loaded.append(key)
+    return loaded
+
+def _fetch_zotero_collections(api_key):
+    """Resolve the Zotero user and available collection names from one API key."""
+    import urllib.request
+
+    current_req = urllib.request.Request(
+        "https://api.zotero.org/keys/current",
+        headers={"Zotero-API-Key": api_key, "User-Agent": "paper-curation-setup"},
+    )
+    with urllib.request.urlopen(current_req, timeout=15) as response:
+        user_id = str(json.load(response).get("userID", "")).strip()
+    if not user_id:
+        raise RuntimeError("Zotero API key 응답에 userID가 없습니다")
+
+    collections_req = urllib.request.Request(
+        f"https://api.zotero.org/users/{user_id}/collections?format=json&limit=100",
+        headers={"Zotero-API-Key": api_key, "User-Agent": "paper-curation-setup"},
+    )
+    with urllib.request.urlopen(collections_req, timeout=15) as response:
+        payload = json.load(response)
+    collections = [
+        (str(item.get("data", {}).get("name", "")).strip(), str(item.get("key", "")).strip())
+        for item in payload
+        if str(item.get("data", {}).get("name", "")).strip()
+    ]
+    return user_id, collections
+
+
+def _select_zotero_collection(api_key):
+    configured_name = os.environ.get("ZOTERO_COLLECTION_NAME", "").strip()
+    configured_alias = os.environ.get("ZOTERO_TOPIC_ALIAS", "").strip()
+    if configured_name:
+        return configured_name, configured_alias
+
+    try:
+        _, collections = _fetch_zotero_collections(api_key)
+    except Exception as exc:
+        print(f"\n  ✗ Zotero 컬렉션 자동 조회 실패: {exc}")
+        print("    API key 권한과 네트워크를 확인한 뒤 setup을 다시 실행하세요.")
+        raise SystemExit(1) from exc
+
+    if not collections:
+        print("\n  ✗ Zotero 컬렉션이 없습니다. Zotero에서 컬렉션을 만든 뒤 다시 실행하세요.")
+        raise SystemExit(1)
+    if len(collections) == 1:
+        name, key = collections[0]
+        print(f"  ✓ Zotero 컬렉션 자동 선택: {name}")
+    else:
+        print("\n  Zotero 컬렉션을 선택하세요:")
+        for index, (candidate, _) in enumerate(collections, 1):
+            print(f"    {index}. {candidate}")
+        selected = input(f"  번호 입력 [1-{len(collections)}]: ").strip()
+        if not selected.isdigit() or not (1 <= int(selected) <= len(collections)):
+            print("  ✗ 올바른 컬렉션 번호가 필요합니다.")
+            raise SystemExit(1)
+        name, key = collections[int(selected) - 1]
+
+    alias = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or key.lower() or "zotero"
+    return name, alias
 
 
 def step_config():
@@ -45,34 +147,48 @@ def step_config():
 
     print("=== Paper Curation 초기 설정 ===\n")
     print("[1/6] config.json 생성\n")
+    print("  config.json은 clone/pull 또는 export만으로 생성되지 않습니다.")
+    print("  이 설정 마법사가 지금 로컬 config.json을 생성합니다.")
+    print("  ZOTERO_API_KEY export는 선택사항이며, 없으면 안전하게 직접 입력받습니다.\n")
 
-    # Zotero 설정
-    api_key = input("  Zotero API Key (https://www.zotero.org/settings/keys): ").strip()
-    email = input("  이메일 (Zotero/Unpaywall용): ").strip()
+    # Zotero 설정 — 이미 export 한 값은 다시 입력받지 않는다.
+    api_key = os.environ.get("ZOTERO_API_KEY", "").strip()
+    if api_key:
+        print("  ✓ ZOTERO_API_KEY 환경변수 감지")
+    else:
+        api_key = input("  Zotero API Key (https://www.zotero.org/settings/keys): ").strip()
+    if not api_key:
+        print("  ✗ ZOTERO_API_KEY가 필요합니다.")
+        sys.exit(1)
+    email = (
+        os.environ.get("ZOTERO_EMAIL", "").strip()
+        or os.environ.get("UNPAYWALL_EMAIL", "").strip()
+    )
+    collection_name, discovered_alias = _select_zotero_collection(api_key)
+    alias = os.environ.get("ZOTERO_TOPIC_ALIAS", "").strip() or discovered_alias
+    print(f"  ✓ Topic alias: {alias} → {collection_name}")
 
-    # 컬렉션 alias 설정
-    print("\n  앞으로 이 Collection의 Paper Curation을 운영하려면 부르기 편한 이름을 하나 정하는 게 좋습니다.")
-    print("  짧은 영문 이름을 하나 지어주세요 (예: ai4s, bioml, climate).")
-    alias = input("  Topic alias: ").strip()
-    collection_name = input(f"  Zotero 컬렉션 이름 ('{alias}'에 매핑할 컬렉션): ").strip()
+    pdf_dir = str(
+        Path(os.environ.get("ZOTERO_DIR", "").strip() or REPO / "pdf_cache")
+        .expanduser()
+        .resolve()
+    )
+    Path(pdf_dir).mkdir(parents=True, exist_ok=True)
+    print(f"  ✓ PDF cache 준비: {pdf_dir}")
 
-    pdf_dir = input("\n  Zotero PDF 저장 경로: ").strip()
-    paperbanana_dir = input("  PaperBanana 경로 (없으면 Enter): ").strip()
-
-    # GitHub 설정 (선택)
-    print("\n  GitHub Pages 배포 설정 (선택, Enter로 건너뛰기):")
-    github_repo = input("  GitHub repo (예: username/paper-curation): ").strip()
+    paperbanana_dir = os.environ.get("PAPERBANANA_DIR", "").strip()
+    github_repo = os.environ.get("GITHUB_REPO", "").strip()
 
     cfg = {
         "zotero": {
             "api_key": api_key or "YOUR_ZOTERO_API_KEY_HERE",
-            "email": email or "your.email@example.com",
+            "email": email,
             "collections": {
-                alias or "my_topic": collection_name or "Your Zotero Collection Name"
+                alias: collection_name
             },
-            "pdf_dir": pdf_dir or "/path/to/your/zotero/pdfs"
+            "pdf_dir": pdf_dir
         },
-        "unpaywall_email": email or "your.email@example.com",
+        "unpaywall_email": email,
     }
     if github_repo:
         cfg["github"] = {
@@ -90,11 +206,9 @@ def step_config():
     return cfg
 
 
-# Core API 키 게이트 — 설치를 끝내기 전에 반드시 있어야 하는 4개 필수 키.
-# 각 항목: env 변수명 → config.json 필드 경로(path) → 없으면 안 되는 이유(why).
-# env 또는 config.json 어느 한쪽에라도 값이 있으면 통과하고, 둘 다 비면 직접
-# 입력받아 config.json 에 저장한다 (config.json 은 .gitignore 로 보호됨).
-# OPENAI_API_KEY 는 더 이상 필수가 아니다 — Deep Research 임베딩이 Gemini 로 이동.
+# Core credentials gate. Zotero and Google are required for local setup; Anthropic
+# is handled separately because it supports either Console API-key mode or Claude
+# Code subscription OAuth. Resend is deferred until Audio Overview email delivery.
 REQUIRED_KEYS = [
     {
         "env": "ZOTERO_API_KEY",
@@ -105,27 +219,27 @@ REQUIRED_KEYS = [
         "prompt": "Zotero API Key",
     },
     {
-        "env": "ANTHROPIC_API_KEY",
-        "path": ("anthropic_api_key",),
-        "why": "리뷰·내러티브·Deep Research 답변 생성",
-        "issue": "https://console.anthropic.com/settings/keys",
-        "prompt": "Anthropic API Key (sk-ant-...)",
-    },
-    {
         "env": "GOOGLE_API_KEY",
+        "env_names": ("GOOGLE_API_KEY", "GEMINI_API_KEY"),
         "path": ("google_api_key",),
         "why": "figure 검증·Audio Overview·PaperBanana 타임라인·Deep Research 임베딩",
         "issue": "https://aistudio.google.com/apikey",
         "prompt": "Google API Key (AIza...)",
     },
-    {
-        "env": "RESEND_API_KEY",
-        "path": ("resend_api_key",),
-        "why": "Audio Overview 이메일 발송",
-        "issue": "https://resend.com/api-keys",
-        "prompt": "Resend API Key (re_...)",
-    },
 ]
+ANTHROPIC_API_SPEC = {
+    "env": "ANTHROPIC_API_KEY",
+    "path": ("anthropic_api_key",),
+    "why": "리뷰·내러티브·Deep Research 답변 생성",
+    "issue": "https://console.anthropic.com/settings/keys",
+    "prompt": "Anthropic API Key (sk-ant-...)",
+}
+RESEND_SPEC = {
+    "env": "RESEND_API_KEY",
+    "path": ("resend_api_key",),
+    "why": "Audio Overview 이메일 발송",
+    "issue": "https://resend.com/api-keys",
+}
 
 
 def _cfg_get(cfg, path):
@@ -150,9 +264,10 @@ def _key_value(cfg, spec):
     """필수 키를 env → config.json 순으로 찾는다. placeholder 는 빈 값 취급.
 
     반환: (value, source) — 값이 없으면 ("", None)."""
-    env_val = os.environ.get(spec["env"], "").strip()
-    if env_val:
-        return env_val, "env"
+    for env_name in spec.get("env_names", (spec["env"],)):
+        env_val = os.environ.get(env_name, "").strip()
+        if env_val:
+            return env_val, "env"
     cfg_val = _cfg_get(cfg, spec["path"]).strip()
     if cfg_val and cfg_val != spec.get("placeholder"):
         return cfg_val, "config.json"
@@ -181,18 +296,109 @@ def _prompt_required(spec):
     return user_input
 
 
-def step_env_check(cfg):
-    """Step 2: Core API 키 게이트.
+def _configured_anthropic_mode(cfg):
+    value = cfg.get("anthropic_auth", {}) if isinstance(cfg, dict) else {}
+    if isinstance(value, dict):
+        mode = str(value.get("mode", "")).strip().lower().replace("_", "-")
+        if mode in {"oauth", "api-key"}:
+            return mode
+    return ""
 
-    설치를 끝내려면 4개 Core 키(ZOTERO/ANTHROPIC/GOOGLE/RESEND)가 모두 있어야 한다.
-    env 또는 config.json 어느 한쪽에 있으면 통과하고, 둘 다 비면 그 자리에서
-    입력받아 config.json 에 저장한다. env 에만 있고 config 에 없으면 영속화를 위해
-    config 에도 반영해 downstream(config_loader / Zotero 연결 테스트)이 항상 읽도록 한다.
-    입력을 건너뛰면 sys.exit(1) 로 설치를 중단한다 (config.json 은 .gitignore 보호).
 
-    OPENAI_API_KEY 는 더 이상 필수가 아니다 — Deep Research 임베딩이 Gemini 로
-    이동했다. reader BYOK 답변 백엔드 / insights fallback 으로만 선택적으로 유용."""
-    print("\n[2/6] Core API 키 확인")
+def _prompt_anthropic_choice():
+    print()
+    print("  Anthropic 인증 방식을 선택하세요:")
+    print("    1) Claude Code OAuth (Pro/Max/Team/Enterprise 구독 사용량)")
+    print("    2) Anthropic Console API key (종량제 API 과금)")
+    choice = input("    선택 [1/2] (Enter=1): ").strip()
+    return "api-key" if choice == "2" else "oauth"
+
+
+def _oauth_unready_exit(status):
+    print()
+    detail = f" ({status.detail})" if getattr(status, "detail", "") else ""
+    print(f"  ✗ Claude Code OAuth가 준비되지 않았습니다{detail}.")
+    print("    해결:")
+    print("      claude auth login")
+    print("    또는 장기 토큰을 쓰는 환경에서는:")
+    print("      claude setup-token")
+    print("      export CLAUDE_CODE_OAUTH_TOKEN=...")
+    print("    완료 후 다시 `python pipeline/setup.py --anthropic-auth oauth` 를 실행하세요.")
+    sys.exit(1)
+
+
+def _anthropic_status(mode):
+    if auth_status is None:
+        return SimpleNamespace(
+            ready=False,
+            source="",
+            detail="pipeline/anthropic_auth.py 로드 실패",
+            mode=mode,
+        )
+    return auth_status(None if mode == "auto" else mode)
+
+
+def _ensure_anthropic_auth(cfg, requested_mode):
+    """Anthropic auth gate: API key or Claude Code OAuth.
+
+    OAuth persists only the non-secret mode marker. OAuth tokens are never read
+    from prompts, written to config, logged, or passed on command lines.
+    """
+    dirty = False
+    configured = _configured_anthropic_mode(cfg)
+    mode = configured if requested_mode == "auto" and configured else requested_mode
+    status = _anthropic_status(mode)
+
+    if mode == "auto" and status.ready:
+        mode = status.mode
+    elif mode == "auto":
+        mode = _prompt_anthropic_choice()
+        status = _anthropic_status(mode)
+
+    if mode == "oauth":
+        if not status.ready:
+            _oauth_unready_exit(status)
+        version = claude_version() if claude_version is not None else ()
+        if version < MIN_CLAUDE_CODE_VERSION:
+            installed = ".".join(str(part) for part in version) or "확인 불가"
+            required = ".".join(str(part) for part in MIN_CLAUDE_CODE_VERSION)
+            print(f"\n  ✗ Claude Code {installed}: OAuth structured output에는 >= {required} 필요")
+            print("    `claude update` 실행 후 setup을 다시 시작하세요.")
+            sys.exit(1)
+        cfg["anthropic_auth"] = {"mode": "oauth"}
+        dirty = True
+        source = status.source or "Claude Code"
+        print(f"  ✓ Anthropic 인증 설정됨 (mode=oauth, source={source}) — Claude Code 구독 OAuth")
+        print("    OAuth 토큰은 config.json 에 저장하지 않습니다.")
+        return dirty
+
+    if mode == "api-key":
+        value, source = _key_value(cfg, ANTHROPIC_API_SPEC)
+        if not value:
+            value = _prompt_required(ANTHROPIC_API_SPEC)
+            source = "입력"
+        os.environ[ANTHROPIC_API_SPEC["env"]] = value
+        if _cfg_get(cfg, ANTHROPIC_API_SPEC["path"]).strip() != value:
+            _cfg_set(cfg, ANTHROPIC_API_SPEC["path"], value)
+            dirty = True
+        if _configured_anthropic_mode(cfg):
+            cfg.pop("anthropic_auth", None)
+            dirty = True
+        print(f"  ✓ Anthropic 인증 설정됨 (mode=api-key, source={source}) — {ANTHROPIC_API_SPEC['why']}")
+        return dirty
+
+    print(f"  ✗ 알 수 없는 Anthropic 인증 모드: {mode}")
+    sys.exit(1)
+
+
+def step_env_check(cfg, anthropic_auth_mode="auto"):
+    """Step 2: Core credential gate.
+
+    Zotero and Google are required API keys. Anthropic accepts either Console
+    API-key mode or Claude Code OAuth. Resend is optional/deferred until email
+    delivery setup.
+    """
+    print("\n[2/6] Core credentials 확인")
 
     dirty = False
     for spec in REQUIRED_KEYS:
@@ -206,6 +412,16 @@ def step_env_check(cfg):
             _cfg_set(cfg, spec["path"], value)
             dirty = True
         print(f"  ✓ {spec['env']} 설정됨 ({source}) — {spec['why']}")
+
+    dirty = _ensure_anthropic_auth(cfg, anthropic_auth_mode) or dirty
+
+    resend_key, resend_source = _key_value(cfg, RESEND_SPEC)
+    if resend_key:
+        print(f"  ✓ RESEND_API_KEY 설정됨 (선택, {resend_source}) — {RESEND_SPEC['why']}")
+    else:
+        print("  · RESEND_API_KEY 미설정 (선택) — Audio Overview 이메일 발송 때 설정하면 됩니다.")
+        print("    배포 후 `npx wrangler secret put RESEND_API_KEY` 로 등록하세요.")
+
     if dirty:
         _save_config(cfg)
 
@@ -459,17 +675,23 @@ def main():
                         help="SKILL.md 스킬 설치를 건너뜁니다")
     parser.add_argument("--no-run", action="store_true",
                         help="설치만 하고 첫 파이프라인 실행은 건너뜁니다")
+    parser.add_argument("--anthropic-auth", choices=("auto", "oauth", "api-key"),
+                        default="auto",
+                        help="Anthropic 인증 방식: auto(기본), oauth(Claude Code), api-key(Console)")
     args = parser.parse_args()
 
     print("=" * 50)
     print("  Paper Curation — Setup")
     print("=" * 50)
+    dotenv_keys = _load_dotenv()
+    if dotenv_keys:
+        print(f"  ✓ .env 로드: 비어 있지 않은 설정 {len(dotenv_keys)}개 (값은 표시하지 않음)")
 
     # Step 1: config.json
     cfg = step_config()
 
-    # Step 2: Core API 키 게이트 (4개 필수 — 하나라도 없고 입력 거부 시 중단)
-    step_env_check(cfg)
+    # Step 2: Core credentials gate (Zotero/Google required, Anthropic API key or OAuth)
+    step_env_check(cfg, args.anthropic_auth)
 
     # Step 3: Zotero 연결
     step_zotero_test(cfg)
@@ -503,7 +725,7 @@ def main():
     print("  다음 단계: 파이프라인 실행")
     print("-" * 50)
     print()
-    print("  Core API 키 4종(ZOTERO·ANTHROPIC·GOOGLE·RESEND) 확인 완료.")
+    print("  필수 인증 확인 완료: ZOTERO·GOOGLE + Anthropic(API key 또는 Claude Code OAuth).")
     print("  이제 파이프라인을 실행하여 Zotero 컬렉션의 논문을 리뷰하고")
     print("  웹 페이지로 배포할 수 있습니다.")
     print()

@@ -24,6 +24,7 @@ from datetime import datetime
 from pathlib import Path
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir
+from anthropic_auth import create_anthropic_client
 
 PAPERS_DIR = str(_PAPERS_DIR)
 
@@ -44,21 +45,64 @@ def log(msg):
     print(f"[{ts}] {msg}", flush=True)
 
 
-def _anthropic_text(resp):
-    """Anthropic content blocks에서 text block만 결합한다.
-
-    claude-sonnet-5 계열이 reasoning/thinking block을 text보다 먼저 줄 수 있는데
-    resp.content[0].text 를 가정하면 ThinkingBlock 에서 AttributeError가 난다.
-    """
-    parts = []
+def _anthropic_tool_input(resp):
+    """Return the first structured tool result from an Anthropic-compatible response."""
+    block_types = []
     for block in getattr(resp, "content", []) or []:
-        if getattr(block, "type", None) == "text" and getattr(block, "text", None):
-            parts.append(block.text)
-    text = "".join(parts).strip()
-    if not text:
-        types = [getattr(b, "type", type(b).__name__) for b in getattr(resp, "content", []) or []]
-        raise RuntimeError(f"Anthropic response contained no text blocks: {types}")
-    return text
+        block_type = getattr(block, "type", None)
+        value = getattr(block, "input", None)
+        if isinstance(block, dict):
+            block_type = block.get("type")
+            value = block.get("input")
+        block_types.append(block_type or type(block).__name__)
+        if block_type == "tool_use" and isinstance(value, dict):
+            return value
+    raise RuntimeError(f"Anthropic response contained no structured tool result: {block_types}")
+
+
+def _name_map_schema(ids):
+    info_schema = {
+        "type": "object",
+        "properties": {
+            "name": {"type": "string", "minLength": 1},
+            "description": {"type": "string"},
+        },
+        "required": ["name", "description"],
+        "additionalProperties": False,
+    }
+    keys = [str(value) for value in ids]
+    return {
+        "type": "object",
+        "properties": {key: info_schema for key in keys},
+        "required": keys,
+        "additionalProperties": False,
+    }
+
+
+def _connection_map_schema(numbers):
+    connection_schema = {
+        "type": "object",
+        "properties": {
+            "target": {"type": "string"},
+            "relation": {
+                "type": "string",
+                "enum": ["alternative", "extension", "foundation", "counterpoint", "application"],
+            },
+            "reason": {"type": "string", "minLength": 1},
+        },
+        "required": ["target", "relation", "reason"],
+        "additionalProperties": False,
+    }
+    keys = [str(value) for value in numbers]
+    return {
+        "type": "object",
+        "properties": {
+            key: {"type": "array", "items": connection_schema}
+            for key in keys
+        },
+        "required": keys,
+        "additionalProperties": False,
+    }
 
 
 # ═══════════════════════════════════════════
@@ -468,28 +512,22 @@ Rules:
 - Use & for compound concepts only when necessary
 """
 
+        tool_name = "name_sub_topics"
         resp = client.messages.create(
             model=LLM_MODEL,
             max_tokens=8000,
+            tools=[{
+                "name": tool_name,
+                "description": "Return the validated names and descriptions for every supplied sub-topic.",
+                "input_schema": _name_map_schema(batch_tids),
+            }],
+            tool_choice={"type": "tool", "name": tool_name},
             messages=[{"role": "user", "content": prompt}],
         )
-        text = _anthropic_text(resp)
-        if text.startswith("```"):
-            text = text.split("```")[1]
-            if text.startswith("json"):
-                text = text[4:]
-
-        try:
-            names = json.loads(text)
-            for tid_str, info in names.items():
-                result[int(tid_str)] = info
-            log(f"    batch {bi+1}/{len(batches)}: {len(names)} named")
-        except json.JSONDecodeError as e:
-            log(f"    batch {bi+1}/{len(batches)} WARNING: JSON parse failed: {e}")
-            for tid in batch_tids:
-                if tid not in result:
-                    kw = topic_keywords[tid]
-                    result[tid] = {"name": f"Topic {tid}: {', '.join(w for w, _ in kw[:3])}", "description": ""}
+        names = _anthropic_tool_input(resp)
+        for tid_str, info in names.items():
+            result[int(tid_str)] = info
+        log(f"    batch {bi+1}/{len(batches)}: {len(names)} named")
         time.sleep(0.5)
 
     return result
@@ -597,18 +635,19 @@ Rules:
 """
 
     log(f"  Naming {n_cats} categories via Sonnet...")
+    tool_name = "name_categories"
     resp = client.messages.create(
         model=LLM_MODEL,
         max_tokens=4000,
+        tools=[{
+            "name": tool_name,
+            "description": "Return the validated name and description for every supplied category.",
+            "input_schema": _name_map_schema(sorted(cat_groups)),
+        }],
+        tool_choice={"type": "tool", "name": tool_name},
         messages=[{"role": "user", "content": prompt}],
     )
-    text = _anthropic_text(resp)
-    if text.startswith("```"):
-        text = text.split("```")[1]
-        if text.startswith("json"):
-            text = text[4:]
-
-    cat_names = json.loads(text)
+    cat_names = _anthropic_tool_input(resp)
 
     # Build tid → category_name mapping
     tid_to_cat = {}
@@ -798,31 +837,24 @@ Rules:
 
     def process_batch(batch_slugs):
         prompt = _build_prompt(batch_slugs)
+        tool_name = "select_paper_connections"
         resp = conn_client.messages.create(
             model=LLM_MODEL,
             # batch_size=25 × 후보 다수 선택 + 한국어 이유의 JSON 출력은 10k 토큰을
             # 넘겨 응답이 잘리고(Unterminated string) 배치 전체가 버려진다. 25편을
             # 여유 있게 담도록 상향.
             max_tokens=16000,
+            tools=[{
+                "name": tool_name,
+                "description": "Return validated related-paper selections for every supplied paper.",
+                "input_schema": _connection_map_schema(
+                    [slug.split("_")[0] for slug in batch_slugs]
+                ),
+            }],
+            tool_choice={"type": "tool", "name": tool_name},
             messages=[{"role": "user", "content": prompt}],
         )
-        parts = []
-        for block in (getattr(resp, "content", None) or []):
-            text_part = getattr(block, "text", None)
-            if text_part:
-                parts.append(text_part)
-            elif isinstance(block, dict) and block.get("type") == "text" and block.get("text"):
-                parts.append(block["text"])
-        if not parts:
-            raise ValueError("Anthropic response contained no text block")
-        text = "\n".join(parts).strip()
-        if text.startswith("```"):
-            text = text[3:].strip()
-            if text.startswith("json"):
-                text = text[4:].strip()
-            if text.endswith("```"):
-                text = text[:-3].strip()
-        return json.loads(text)
+        return _anthropic_tool_input(resp)
 
     def _merge(batch_result):
         for num, conns in batch_result.items():
@@ -855,7 +887,11 @@ Rules:
         수집하고 성공 배치의 슬러그를 attempted 에 기록. 막힌 워커는 join 안 함."""
         round_batches = [todo[i:i + batch_size]
                          for i in range(0, len(todo), batch_size)]
-        executor = ThreadPoolExecutor(max_workers=4)
+        default_workers = "1" if client.__class__.__name__ == "ClaudeCodeClient" else "4"
+        connection_workers = max(
+            1, int(os.environ.get("PAPER_CONNECTION_WORKERS", default_workers))
+        )
+        executor = ThreadPoolExecutor(max_workers=connection_workers)
         round_deadline = time.monotonic() + deadline_s
         try:
             futures = {executor.submit(process_batch, b): tuple(b)
@@ -999,8 +1035,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
         embeddings, slugs, originalities
     )
 
-    from anthropic import Anthropic
-    client = Anthropic(timeout=180.0, max_retries=4)
+    client = create_anthropic_client(timeout=180.0, max_retries=4)
 
     if skip_classification:
         log("\n  [Steps 4-5] SKIP (--skip-classification: preserving existing categories)")

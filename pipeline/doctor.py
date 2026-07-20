@@ -28,6 +28,13 @@ import subprocess
 import sys
 import urllib.request
 from pathlib import Path
+from types import SimpleNamespace
+try:
+    from anthropic_auth import MIN_CLAUDE_CODE_VERSION, auth_status, claude_version
+except Exception:
+    MIN_CLAUDE_CODE_VERSION = (2, 1, 205)
+    claude_version = None
+    auth_status = None
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 REPO = PIPELINE_DIR.parent
@@ -200,15 +207,25 @@ def check_java(rep):
             "brew install --cask temurin  (macOS) / apt install default-jre (Linux)",
         )
         return
-    ver = ""
     try:
         out = subprocess.run([java, "-version"], capture_output=True, text=True, timeout=10)
         blob = (out.stderr or out.stdout).strip()
-        if blob:
-            ver = blob.splitlines()[0]
-    except Exception:
-        pass
-    rep.ok("java", ver or java)
+        ver = blob.splitlines()[0] if blob else java
+        if out.returncode != 0:
+            rep.warn(
+                "java 실행 불가",
+                f"{ver} — PyMuPDF fallback 사용",
+                "brew install --cask temurin  (macOS) / apt install default-jre (Linux)",
+            )
+            return
+    except Exception as exc:
+        rep.warn(
+            "java 확인 실패",
+            f"{type(exc).__name__} — PyMuPDF fallback 사용",
+            "brew install --cask temurin  (macOS) / apt install default-jre (Linux)",
+        )
+        return
+    rep.ok("java", ver)
 
 
 # ---------------------------------------------------------------------------
@@ -230,7 +247,7 @@ def check_config(rep, cfg):
         rep.fail(
             "config.json 없음",
             f"{CONFIG_PATH}",
-            "PYTHONUTF8=1 python pipeline/setup.py  (또는 config.example.json 복사 후 수정)",
+            "npx . setup --auth oauth 실행 (키 export는 선택사항이며 setup이 대화형으로 config.json 생성)",
         )
         return
     if isinstance(cfg, dict) and "__error__" in cfg:
@@ -257,7 +274,7 @@ def check_config(rep, cfg):
         rep.fail(
             "zotero.api_key 미설정",
             "Zotero 컬렉션·PDF 가져오기에 필요",
-            "https://www.zotero.org/settings/keys 에서 발급 후 config.json 에 기입",
+            "npx . setup --auth oauth 실행 후 프롬프트에 Zotero API key 입력",
         )
 
     # zotero.collections — 최소 1개
@@ -268,18 +285,16 @@ def check_config(rep, cfg):
         rep.fail(
             "zotero.collections 비어있음",
             "최소 1개 토픽→컬렉션 매핑 필요",
-            'config.json 의 zotero.collections 에 {"topic": "Collection Name"} 추가',
+            "npx . setup --auth oauth 실행 후 topic alias와 정확한 Collection 이름 입력",
         )
 
     # zotero.pdf_dir — 필드 존재 여부 (실제 디렉토리 점검은 6번에서)
     if str(zot.get("pdf_dir", "")).strip():
         rep.ok("zotero.pdf_dir", str(zot.get("pdf_dir")))
     else:
-        rep.fail(
-            "zotero.pdf_dir 미설정",
-            "PDF 다운로드 저장 경로",
-            "config.json 의 zotero.pdf_dir 에 Zotero PDF 저장 경로 지정",
-        )
+        default_pdf_dir = REPO / "pdf_cache"
+        default_pdf_dir.mkdir(parents=True, exist_ok=True)
+        rep.ok("zotero.pdf_dir", f"자동 cache: {default_pdf_dir}")
 
     # unpaywall_email — 선택 (OA 조회 시 예의상 필요)
     if str(cfg.get("unpaywall_email", "")).strip() or str(zot.get("email", "")).strip():
@@ -308,20 +323,90 @@ def _resolve_key(cfg, env_names, cfg_keys):
                 return True, f"config:{k}"
     return False, ""
 
+def _explicit_oauth_config(cfg):
+    if not isinstance(cfg, dict):
+        return False
+    auth_cfg = cfg.get("anthropic_auth")
+    if not isinstance(auth_cfg, dict):
+        return False
+    return str(auth_cfg.get("mode", "")).strip().lower().replace("_", "-") == "oauth"
+
+
+def _format_version(ver):
+    return ".".join(str(part) for part in ver) if ver else "not found"
+
+
+def _check_claude_structured_output(rep):
+    if claude_version is None:
+        rep.fail(
+            "Claude Code CLI 버전 확인 실패",
+            "OAuth structured output에는 Claude Code >= 2.1.205 필요",
+            "Claude Code를 설치/업데이트한 뒤 `claude --version` 확인",
+        )
+        return False
+    ver = claude_version()
+    if ver >= MIN_CLAUDE_CODE_VERSION:
+        rep.ok("Claude Code CLI", f"{_format_version(ver)} — OAuth structured output 지원")
+        return True
+    rep.fail(
+        "Claude Code CLI 버전 낮음",
+        f"현재 {_format_version(ver)}, 필요 >= {_format_version(MIN_CLAUDE_CODE_VERSION)}",
+        "Claude Code를 2.1.205 이상으로 업데이트한 뒤 다시 실행",
+    )
+    return False
+
+
+def _anthropic_auth_status():
+    if auth_status is None:
+        return SimpleNamespace(
+            mode="auto",
+            source="",
+            ready=False,
+            detail="pipeline/anthropic_auth.py 로드 실패",
+        )
+    return auth_status()
+
+
+def _anthropic_remedy():
+    return (
+        "API key: export ANTHROPIC_API_KEY=sk-ant-... "
+        "(https://console.anthropic.com/settings/keys) / OAuth: claude auth login "
+        "또는 claude setup-token 후 export CLAUDE_CODE_OAUTH_TOKEN=..."
+    )
+
+
+def _check_anthropic_auth(rep, cfg):
+    status = _anthropic_auth_status()
+    source = status.source or "none"
+    detail = f"mode={status.mode}, source={source}; {status.detail}"
+
+    if not status.ready:
+        rep.fail(
+            "Anthropic 인증 미설정",
+            detail,
+            _anthropic_remedy(),
+        )
+        return
+
+    if status.mode == "oauth":
+        rep.ok("Anthropic auth", f"{detail} — Claude Code 구독 OAuth")
+        _check_claude_structured_output(rep)
+        api_found, api_src = _resolve_key(cfg, ["ANTHROPIC_API_KEY"], ["anthropic_api_key"])
+        if api_found and _explicit_oauth_config(cfg):
+            rep.warn(
+                "Anthropic API key + explicit OAuth 공존",
+                f"{api_src} 존재, config anthropic_auth.mode=oauth",
+                "OAuth를 선택했으므로 API 종량 과금으로 전환되지 않게 하위 프로세스에서 API credentials를 제거합니다.",
+            )
+    else:
+        rep.ok("Anthropic auth", f"{detail} — Console API key")
+
 
 def check_api_keys(rep, cfg):
-    rep.section("5. API 키")
+    rep.section("5. Anthropic 인증 및 API 키")
 
-    # 필수 2종
-    found, src = _resolve_key(cfg, ["ANTHROPIC_API_KEY"], ["anthropic_api_key"])
-    if found:
-        rep.ok("ANTHROPIC_API_KEY", f"설정됨 ({src}) — 리뷰·내러티브·Deep Research 답변")
-    else:
-        rep.fail(
-            "ANTHROPIC_API_KEY 미설정",
-            "리뷰·내러티브·인사이트 생성에 필수",
-            "export ANTHROPIC_API_KEY=sk-ant-...  (https://console.anthropic.com/settings/keys)",
-        )
+    # 필수: Anthropic은 API key 또는 Claude Code OAuth 둘 중 하나
+    _check_anthropic_auth(rep, cfg)
 
     found, src = _resolve_key(
         cfg, ["GOOGLE_API_KEY", "GEMINI_API_KEY"], ["google_api_key", "gemini_api_key"]
@@ -343,6 +428,15 @@ def check_api_keys(rep, cfg):
         rep.warn(
             "OPENAI_API_KEY 미설정 (선택)",
             "reader BYOK 답변 백엔드 / insights cross-category fallback 에만 사용",
+        )
+    found, src = _resolve_key(cfg, ["RESEND_API_KEY"], ["resend_api_key"])
+    if found:
+        rep.ok("RESEND_API_KEY", f"설정됨 ({src}) — Audio Overview 이메일 발송")
+    else:
+        rep.warn(
+            "RESEND_API_KEY 미설정 (선택)",
+            "Audio Overview 이메일 발송/Worker secret 등록 때만 필요 — 로컬 setup 차단 안 함",
+            "필요 시 `npx wrangler secret put RESEND_API_KEY`",
         )
 
     found, src = _resolve_key(cfg, ["CLOUDFLARE_API_TOKEN", "CF_API_TOKEN"], [])
@@ -370,22 +464,19 @@ def check_api_keys(rep, cfg):
 def check_zotero(rep, cfg, do_network):
     rep.section("6. Zotero")
     zot = cfg.get("zotero", {}) if isinstance(cfg, dict) and isinstance(cfg.get("zotero"), dict) else {}
-    pdf_dir = str(zot.get("pdf_dir", "")).strip() or os.environ.get("ZOTERO_DIR", "").strip()
+    pdf_dir = (
+        str(zot.get("pdf_dir", "")).strip()
+        or os.environ.get("ZOTERO_DIR", "").strip()
+        or str(REPO / "pdf_cache")
+    )
 
-    if not pdf_dir:
-        rep.fail("Zotero PDF 경로 미설정", "", "config.json 의 zotero.pdf_dir 지정")
-    elif Path(pdf_dir).is_dir():
-        try:
-            n_pdf = sum(1 for _ in Path(pdf_dir).glob("*.pdf"))
-            rep.ok("Zotero PDF 디렉토리", f"{pdf_dir} (PDF {n_pdf}개)")
-        except Exception:
-            rep.ok("Zotero PDF 디렉토리", pdf_dir)
-    else:
-        rep.warn(
-            "Zotero PDF 디렉토리 없음",
-            pdf_dir,
-            f"mkdir -p '{pdf_dir}'  (Zotero 'Linked Attachment Base Directory' 와 일치시킬 것)",
-        )
+    try:
+        cache_path = Path(pdf_dir).expanduser().resolve()
+        cache_path.mkdir(parents=True, exist_ok=True)
+        n_pdf = sum(1 for _ in cache_path.glob("*.pdf"))
+        rep.ok("Zotero PDF cache", f"{cache_path} (PDF {n_pdf}개)")
+    except Exception as exc:
+        rep.fail("Zotero PDF cache 생성 실패", str(exc), "경로 쓰기 권한 확인")
 
     if not do_network:
         rep.note("Zotero API 연결 테스트는 생략됨 (--network 로 활성화)")
@@ -444,10 +535,10 @@ def check_zotero(rep, cfg, do_network):
 
 
 # ---------------------------------------------------------------------------
-# 7. node / npx (wrangler 배포용, 선택)
+# 7. node / npx (NPX 온보딩 / Cloudflare 배포)
 # ---------------------------------------------------------------------------
 def check_node(rep):
-    rep.section("7. node / npx (Cloudflare 배포용, 선택)")
+    rep.section("7. node / npx (NPX 온보딩 / Cloudflare 배포)")
     node = shutil.which("node")
     npx = shutil.which("npx")
     if node and npx:
@@ -457,11 +548,11 @@ def check_node(rep):
             ver = out.stdout.strip()
         except Exception:
             pass
-        rep.ok("node / npx", f"node {ver} — wrangler deploy 가능")
+        rep.ok("node / npx", f"node {ver} — NPX 온보딩 / wrangler deploy 가능")
     else:
         rep.warn(
             "node/npx 없음",
-            "wrangler deploy (Cloudflare 배포) 에만 필요 — 로컬 운영은 불필요",
+            "NPX 온보딩과 wrangler deploy에 필요 — Python CLI 직접 실행만 가능",
             "https://nodejs.org 또는 fnm/nvm 으로 Node.js 설치",
         )
 
@@ -522,11 +613,19 @@ def check_topic(rep, topic, cfg, papers):
         )
 
     if not tdir.is_dir():
-        rep.fail(
-            f"docs/{topic}/ 없음",
-            str(tdir),
-            f"PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero",
-        )
+        command = f"PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero"
+        if not PAPERS_INDEX.exists():
+            rep.warn(
+                f"docs/{topic}/ 없음 (첫 실행 전 정상)",
+                str(tdir),
+                command,
+            )
+        else:
+            rep.fail(
+                f"docs/{topic}/ 없음",
+                str(tdir),
+                command,
+            )
         return
 
     for fname, required, desc in TOPIC_ARTIFACTS:

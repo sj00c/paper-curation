@@ -10,7 +10,7 @@ PDF↔review 오매칭 자동 복구 오케스트레이터 (T1-1 auto-recovery).
   2. 확정 오매칭 집합 결정:
        - "high" 버킷 슬러그는 전부 AUTO 확정
        - "medium" 버킷은 LLM(Anthropic tool-schema) 판정으로 true-mismatch 인
-         것만 확정. `--no-llm` 이거나 ANTHROPIC_API_KEY 가 없으면 LLM 을 건너뛰고
+         것만 확정. `--no-llm` 이거나 Anthropic 인증/클라이언트 생성이 실패하면
          medium 은 보수적으로 '미확정' 처리.
   3. dry-run(기본): 어떤 슬러그를 fix+re-review 할지 계획만 출력하고 STOP — 변경 없음.
   4. --execute: 확정 슬러그에 대해 fix_matching.py --execute (자체 백업 생성) →
@@ -38,7 +38,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from config_loader import get_topic_dir, load_config
+from config_loader import get_topic_dir
 
 PIPELINE = Path(__file__).resolve().parent
 PY = sys.executable
@@ -125,8 +125,8 @@ def _anthropic_judge(medium_results, *, model=JUDGE_MODEL):
 
     실패 시 예외를 raise — 호출부(build_plan)가 잡아 medium 을 '미확정'으로 fallback.
     """
-    from anthropic import Anthropic
-    client = Anthropic(timeout=180.0, max_retries=4)
+    from anthropic_auth import create_anthropic_client
+    client = create_anthropic_client(timeout=180.0, max_retries=4)
     prompt = _build_judge_prompt(medium_results)
     resp = client.messages.create(
         model=model,
@@ -197,7 +197,7 @@ def build_plan(report, *, no_llm=False, llm_judge=None, has_anthropic_key=None,
         "high": [slug,...],                 # auto-confirmed
         "medium_confirmed": [slug,...],     # LLM judged true-mismatch
         "medium_rejected": [slug,...],      # LLM judged clean
-        "medium_skipped": [slug,...],       # no LLM (no-llm / no key / LLM error)
+        "medium_skipped": [slug,...],       # no LLM (no-llm / auth unavailable / LLM error)
         "confirmed": [{slug,bucket,reason_ko,confidence},...],
         "confirmed_slugs": [slug,...],
         "llm_used": bool,
@@ -225,17 +225,13 @@ def build_plan(report, *, no_llm=False, llm_judge=None, has_anthropic_key=None,
             "reason_ko": _high_reason_ko(r), "confidence": 1.0,
         })
 
-    if has_anthropic_key is None:
-        has_anthropic_key = bool(
-            os.environ.get("ANTHROPIC_API_KEY")
-            or (load_config() or {}).get("anthropic_api_key", "")
-        )
+    llm_auth_available = True if has_anthropic_key is None else bool(has_anthropic_key)
 
     medium_confirmed, medium_rejected, medium_skipped = [], [], []
     llm_used = False
     llm_error = None
 
-    use_llm = bool(medium) and (not no_llm) and has_anthropic_key
+    use_llm = bool(medium) and (not no_llm) and llm_auth_available
     if use_llm:
         judge = llm_judge or _anthropic_judge
         try:
@@ -258,7 +254,7 @@ def build_plan(report, *, no_llm=False, llm_judge=None, has_anthropic_key=None,
             llm_error = f"{type(e).__name__}: {str(e)[:120]}"
             medium_skipped = [r["slug"] for r in medium]
     else:
-        # --no-llm 또는 키 없음 → 보수적으로 medium 미확정
+        # --no-llm 또는 명시적 인증 비활성화 → 보수적으로 medium 미확정
         medium_skipped = [r["slug"] for r in medium]
 
     return {

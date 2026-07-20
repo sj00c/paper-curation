@@ -9,12 +9,18 @@
 !SKILL.md
 !SKILL.md.template
 !config.example.json
+!.env.example
 !requirements.txt
 !wrangler.toml
 !CLAUDE.md
 !AGENTS.md
 !workflow.png
 !SECURITY.md
+!package.json
+!bin/
+!bin/*.mjs
+!tests/
+!tests/*.mjs
 
 # Pipeline scripts
 !pipeline/
