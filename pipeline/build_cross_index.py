@@ -6,7 +6,7 @@
 build_topic_index 의 검증된 DR 클라이언트를 그대로 재사용해 ``docs/_cross/index.html`` 을 만든다.
 
 - 병합 규칙: 같은 논문(slug)이 여러 토픽에 있으면 **청크 수가 가장 많은(=본문 청크까지 포함한)
-  버전**을 채택. ``ai4s+scisci`` 처럼 ``ai4s`` / ``scisci`` 와 겹치는 통합 토픽도 dedup 으로 자동 흡수.
+  버전**을 채택. 중복 논문이 포함된 통합 토픽도 dedup 으로 자동 흡수.
 - 연결 그래프: slug 별 edge union + (target-slug, relation) dedup. 코퍼스에 존재하는 target 만 유지
   (Deeper 확장이 항상 resolve 되도록).
 - **배포 금지**: ``docs/.assetsignore`` 에 ``_cross/`` 를 자동 등록한다 (Cloudflare 로 안 나감).
@@ -14,7 +14,7 @@ build_topic_index 의 검증된 DR 클라이언트를 그대로 재사용해 ``d
 
 Usage:
     PYTHONUTF8=1 python pipeline/build_cross_index.py                # 모든 토픽 자동 병합
-    PYTHONUTF8=1 python pipeline/build_cross_index.py --topics ai4s scisci humanoid physical-ai
+    PYTHONUTF8=1 python pipeline/build_cross_index.py --topics topic-a topic-b topic-c
     PYTHONUTF8=1 python pipeline/build_cross_index.py --no-page      # 데이터만 병합, HTML 생략
 """
 import argparse

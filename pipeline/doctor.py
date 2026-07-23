@@ -327,7 +327,7 @@ def check_config(rep, cfg):
         rep.fail(
             "config.json 없음",
             f"{CONFIG_PATH}",
-            "npx . setup --auth oauth 실행 (키 export는 선택사항이며 setup이 대화형으로 config.json 생성)",
+            "node ./bin/paper-curation.mjs setup --fresh-config --auth auto 실행 (.env/process env의 키 사용)",
         )
         return
     if isinstance(cfg, dict) and "__error__" in cfg:
@@ -354,7 +354,7 @@ def check_config(rep, cfg):
         rep.fail(
             "zotero.api_key 미설정",
             "Zotero 컬렉션·PDF 가져오기에 필요",
-            "npx . setup --auth oauth 실행 후 프롬프트에 Zotero API key 입력",
+            "node ./bin/paper-curation.mjs setup --fresh-config --auth auto 실행 후 Zotero collection 선택",
         )
 
     # zotero.collections — 최소 1개
@@ -365,7 +365,7 @@ def check_config(rep, cfg):
         rep.fail(
             "zotero.collections 비어있음",
             "최소 1개 토픽→컬렉션 매핑 필요",
-            "npx . setup --auth oauth 실행 후 topic alias와 정확한 Collection 이름 입력",
+            "node ./bin/paper-curation.mjs setup --fresh-config --auth auto 실행 후 topic alias와 Collection 선택",
         )
 
     # zotero.pdf_dir — 필드 존재 여부 (실제 디렉토리 점검은 6번에서)
@@ -734,7 +734,22 @@ def _load_papers_index():
         return None
 
 
-def check_papers_index(rep, papers):
+def _configured_topic_names(cfg):
+    topics = set()
+    if not isinstance(cfg, dict):
+        return topics
+    profiles = cfg.get("topic_profiles", {})
+    if isinstance(profiles, dict):
+        topics.update(str(topic) for topic in profiles.keys())
+    zotero = cfg.get("zotero", {})
+    if isinstance(zotero, dict):
+        collections = zotero.get("collections", {})
+        if isinstance(collections, dict):
+            topics.update(str(topic) for topic in collections.keys())
+    return topics
+
+
+def check_papers_index(rep, papers, cfg=None):
     rep.section("8. 마스터 논문 인덱스")
     if not PAPERS_INDEX.exists():
         rep.warn(
@@ -748,6 +763,21 @@ def check_papers_index(rep, papers):
         return
     n = len(papers) if isinstance(papers, list) else 0
     rep.ok("_papers_index.json", f"{n}개 논문")
+    configured_topics = _configured_topic_names(cfg)
+    if isinstance(papers, list) and isinstance(cfg, dict) and "__error__" not in cfg:
+        residue_topics = sorted({
+            str(topic)
+            for paper in papers
+            if isinstance(paper, dict)
+            for topic in (paper.get("topics") or [])
+            if str(topic) not in configured_topics
+        })
+        if residue_topics:
+            rep.warn(
+                "_papers_index.json ignored local corpus residue",
+                "unconfigured topic tags: " + ", ".join(residue_topics),
+                "These tags are historical local data and are ignored by current topic_profiles/zotero.collections.",
+            )
 
 
 # ---------------------------------------------------------------------------
@@ -856,10 +886,19 @@ def check_topic(rep, topic, cfg, papers):
         )
 
     if not tdir.is_dir():
-        command = f"PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero --no-deploy"
-        if not PAPERS_INDEX.exists():
+        command = (
+            f"PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 "
+            f"node ./bin/paper-curation.mjs run -- --topic {topic} "
+            "--mode curate --source zotero --no-deploy"
+        )
+        topic_paper_count = sum(
+            1
+            for paper in papers or []
+            if isinstance(paper, dict) and topic in (paper.get("topics") or [])
+        )
+        if not PAPERS_INDEX.exists() or topic_paper_count == 0:
             rep.warn(
-                f"docs/{topic}/ 없음 (첫 실행 전 정상)",
+                f"docs/{topic}/ 없음 (이 토픽 첫 실행 전 정상)",
                 str(tdir),
                 command,
             )
@@ -921,7 +960,7 @@ def main():
     check_api_keys(rep, cfg, args.anthropic_smoke)
     check_zotero(rep, cfg, args.network)
     check_node(rep)
-    check_papers_index(rep, papers)
+    check_papers_index(rep, papers, cfg)
     if args.topic:
         check_topic(rep, args.topic, cfg, papers)
 

@@ -24,11 +24,11 @@ PDF↔review 오매칭 자동 복구 오케스트레이터 (T1-1 auto-recovery).
 
 Usage:
   # 계획만 (변경 0)
-  PYTHONUTF8=1 python pipeline/auto_recover.py --topic ai4s
+  PYTHONUTF8=1 python pipeline/auto_recover.py --topic <configured-topic>
   # 실제 복구 (audit→fix→re-review→re-audit 반복)
-  PYTHONUTF8=1 python pipeline/auto_recover.py --topic ai4s --execute
+  PYTHONUTF8=1 python pipeline/auto_recover.py --topic <configured-topic> --execute
   # LLM 판정 끄고 high 만 보수적으로
-  PYTHONUTF8=1 python pipeline/auto_recover.py --topic ai4s --no-llm
+  PYTHONUTF8=1 python pipeline/auto_recover.py --topic <configured-topic> --no-llm
 """
 
 import argparse

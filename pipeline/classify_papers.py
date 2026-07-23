@@ -38,9 +38,9 @@ Pipeline contract:
   py312 로 통일했다 — 운영자 지시 2026-06-18.)
 
 Usage:
-  PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --slugs 088,1093
-  PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --dry-run
+  PYTHONUTF8=1 python pipeline/classify_papers.py --topic <configured-topic>
+  PYTHONUTF8=1 python pipeline/classify_papers.py --topic <configured-topic> --slugs 088,1093
+  PYTHONUTF8=1 python pipeline/classify_papers.py --topic <configured-topic> --dry-run
 """
 
 import argparse

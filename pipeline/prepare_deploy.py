@@ -42,7 +42,7 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from config_loader import get_github_branch, PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, PROJECT_ROOT, get_topic_dir, load_config
+from config_loader import get_github_branch, PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, PROJECT_ROOT, get_topic_dir, load_config, get_topic_profile
 PAPERS_DIR = str(_PAPERS_DIR)
 REPO = str(PROJECT_ROOT)
 
@@ -129,10 +129,22 @@ def update_html_refs(file_path, fig_only=False):
 
 
 CF_BASE_URL = "https://paper-curation.jehyunlee.dev"
-CF_PROBE_PATHS = ("/", "/humanoid/", "/physical-ai/", "/index.html")
 
 
-def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
+def _cloudflare_probe_paths(topics):
+    """Return bounded read-only probe paths for the requested deploy topics."""
+    if isinstance(topics, str):
+        topic_list = [topics]
+    else:
+        topic_list = list(topics or [])
+    probe_paths = ["/", "/index.html"]
+    for topic in topic_list:
+        topic = _require_topic(topic).strip("/")
+        probe_paths.extend((f"/{topic}/", f"/{topic}/index.html"))
+    return tuple(dict.fromkeys(probe_paths))
+
+
+def _verify_cloudflare(topics, timeout_s=300, interval_s=15):
     """Poll Cloudflare Worker endpoints until they all return 200 or timeout.
 
     We can't read a commit hash from response headers (Workers Static Assets
@@ -141,12 +153,13 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
     import time as _time
     import urllib.request as _ur
     import urllib.error as _ue
+    probe_paths = _cloudflare_probe_paths(topics)
     print(f"\n  [cf-verify] polling Cloudflare for ≤{timeout_s}s …")
     deadline = _time.time() + timeout_s
     last_status = {}
     while _time.time() < deadline:
         all_ok = True
-        for path in CF_PROBE_PATHS:
+        for path in probe_paths:
             url = CF_BASE_URL + path
             try:
                 req = _ur.Request(url, method="HEAD",
@@ -164,7 +177,7 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
                 last_status[path] = ("err", str(e)[:60])
                 all_ok = False
         if all_ok:
-            print(f"  [cf-verify] all {len(CF_PROBE_PATHS)} endpoints 200 OK")
+            print(f"  [cf-verify] all {len(probe_paths)} endpoints 200 OK")
             for p, (c, s) in last_status.items():
                 print(f"    {p}: {c} ({s} bytes)")
             return True
@@ -189,12 +202,14 @@ _STUB_HTML = """<!DOCTYPE html>
 </html>
 """
 
-_TOPIC_TITLES = {
-    "humanoid": "Humanoid",
-    "physical-ai": "Physical AI",
-    "ai4s": "AI for Science",
-    "scisci": "Science of Science",
-}
+def _topic_title(topic):
+    """Return the configured topic label, with a generic alias fallback."""
+    topic = _require_topic(topic)
+    try:
+        profile = get_topic_profile(topic)
+    except Exception:
+        profile = {}
+    return profile.get("label") or profile.get("collection_name") or topic.replace("-", " ").title()
 
 
 def _discover_deployable_topics():
@@ -217,6 +232,20 @@ def _discover_deployable_topics():
         if os.path.isdir(full) and os.path.isfile(os.path.join(full, "index.html")):
             topics.append(entry)
     return sorted(topics)
+
+def _assert_requested_topic_scope(requested_topics):
+    """Fail closed when wrangler would upload an unrequested topic directory."""
+    requested = {_require_topic(topic) for topic in requested_topics}
+    discovered = set(_discover_deployable_topics())
+    unrequested = sorted(discovered - requested)
+    if unrequested:
+        joined = ", ".join(unrequested)
+        raise SystemExit(
+            "Refusing to deploy unrequested topic directories: "
+            f"{joined}. Add local-only directories to docs/.assetsignore or include "
+            "every intended topic with --topics."
+        )
+    return sorted(requested)
 
 
 _PREFLIGHT_MIN_BYTES = 100_000  # topic index < this = likely stub/broken
@@ -314,7 +343,7 @@ def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
         )
         changed = []
         for topic in topics:
-            title = _TOPIC_TITLES.get(topic, topic.replace("-", " ").title())
+            title = _topic_title(topic)
             content = _STUB_HTML.format(cf_url=cf_url, topic=topic, title=title)
             stub_dir = os.path.join(worktree, topic)
             os.makedirs(stub_dir, exist_ok=True)
@@ -432,6 +461,7 @@ def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
     """Programmatic entrypoint for prepare_deploy."""
     topic = _require_topic(topic)
     topic_dir = str(get_topic_dir(topic))
+    requested_topics = list(dict.fromkeys(topics or [topic]))
 
     # Self-heal: 이전 deploy 가 Step 6 strip 과 finally restore 사이에서 죽으면
     # (예: kill -9) 로컬 HTML 이 키-strip 된 채 남아 Audio Overview/Deep Research 가
@@ -633,11 +663,12 @@ def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
             # Step 7: Upload full content to Cloudflare via wrangler
             print("\nStep 7: Deploying to Cloudflare (wrangler deploy)...")
             print("  [preflight] verifying topic indices before upload")
-            _preflight_topics(topics)
+            _assert_requested_topic_scope(requested_topics)
+            _preflight_topics(requested_topics)
             _wrangler_deploy()
 
             # Step 8: Ensure gh-pages has redirect stubs for every deployed topic
-            topics_for_stubs = topics or _discover_deployable_topics()
+            topics_for_stubs = requested_topics
             if topics_for_stubs:
                 print(f"\nStep 8: Syncing gh-pages redirect stubs "
                       f"({len(topics_for_stubs)} topics)...")
@@ -651,7 +682,7 @@ def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
             # 기본은 warn-only (느린 CF propagation 이 300s 를 넘기는 경우를 위해
             # master push 만 건너뛰고 로컬 복원은 finally 가 처리).
             print("\nStep 9: Verifying Cloudflare endpoints...")
-            cf_ok = _verify_cloudflare(topic)
+            cf_ok = _verify_cloudflare(requested_topics)
             if not cf_ok:
                 if cf_strict:
                     print("  ABORT: Cloudflare verification failed/timed out "

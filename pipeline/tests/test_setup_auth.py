@@ -293,7 +293,7 @@ class SetupAuthTests(unittest.TestCase):
         emitted = [
             line.strip()
             for line in stdout.getvalue().splitlines()
-            if "python pipeline/run_full.py" in line
+            if "node ./bin/paper-curation.mjs run --" in line
         ]
         self.assertGreaterEqual(len(emitted), 3)
         for command in emitted:

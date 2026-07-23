@@ -1,4 +1,5 @@
 import json
+import io
 import os
 import sys
 import tempfile
@@ -48,6 +49,41 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             self.assertEqual(len(candidates), 1)
             self.assertEqual(candidates[0][0]["pdf_path"], str(pdf))
             self.assertEqual(candidates[0][1], "001_Test_Paper")
+
+    def test_zotero_smoke_sample_oversamples_past_untitled_first_records(self):
+        payload = [
+            {"data": {"key": "UNTITLED1", "itemType": "document", "title": ""}},
+            {"data": {"key": "UNTITLED2", "itemType": "document"}},
+            {
+                "data": {
+                    "key": "VALID1",
+                    "itemType": "journalArticle",
+                    "title": "Physical AI Later Paper",
+                }
+            },
+        ]
+
+        class FakeResponse(io.StringIO):
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+        def fake_urlopen(req, timeout=0, context=None):
+            self.assertIn("limit=25", req.full_url)
+            self.assertIn("start=0", req.full_url)
+            return FakeResponse(json.dumps(payload))
+
+        with patch.object(ruf.urllib.request, "urlopen", side_effect=fake_urlopen):
+            items = ruf._fetch_zotero_items_sample("PHYSICALAI", 1)
+
+        candidates, duplicates, skipped = ruf._map_items_to_slugs(items, [], {})
+        self.assertEqual([item["key"] for item in items], ["VALID1"])
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0][0]["title"], "Physical AI Later Paper")
+        self.assertEqual(duplicates, 0)
+        self.assertEqual(skipped, 0)
 
     def test_smoke_writes_only_under_smoke_root_and_suppresses_deploy(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -102,6 +138,50 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             self.assertEqual(report["attempted"][0]["pdf"]["status"], "found")
             self.assertEqual(report["post_processing"]["status"], "skipped")
 
+    def test_new_topic_smoke_scans_beyond_first_candidate_for_pdf(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            production_papers = root / "docs" / "papers"
+            production_papers.mkdir(parents=True)
+            (production_papers / "_papers_index.json").write_text("[]", encoding="utf-8")
+            smoke_base = root / "pipeline"
+            smoke_base.mkdir()
+            pdf = root / "later.pdf"
+            pdf.write_bytes(b"%PDF-1.4\n")
+            args = SimpleNamespace(topic="robotics-lab", smoke_limit=1)
+            items = [
+                {"key": "NO_PDF", "title": "First Candidate", "itemType": "journalArticle"},
+                {"key": "HAS_PDF", "title": "Later Candidate", "itemType": "journalArticle"},
+            ]
+
+            def fake_process(item, slug, cp):
+                cp["completed"].append(slug)
+                return "ok"
+
+            with (
+                patch.object(ruf, "PAPERS_DIR", str(production_papers)),
+                patch.object(ruf, "PIPELINE_DIR", smoke_base),
+                patch.object(ruf, "COLLECTIONS", {"robotics-lab": "COLLKEY"}),
+                patch.object(ruf, "_fetch_zotero_items_sample", return_value=items) as fetch,
+                patch.object(
+                    ruf,
+                    "find_pdf",
+                    side_effect=[("", "no_match"), (str(pdf), "index_pdf_path")],
+                ),
+                patch.object(ruf, "process_paper", side_effect=fake_process),
+            ):
+                ruf._run_smoke(args, SimpleNamespace(mode="oauth", source="saved:/login"))
+
+            fetch.assert_called_once_with("COLLKEY", 25)
+            report_path = next(
+                (smoke_base / "_smoke" / "robotics-lab").glob("*/report.json")
+            )
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            self.assertEqual(report["status"], "ok")
+            self.assertEqual(report["candidate_count"], 2)
+            self.assertEqual(report["candidate_attempt_limit"], 10)
+            self.assertEqual([attempt["result"] for attempt in report["attempted"]], ["no_pdf", "ok"])
+
 
 
     def test_smoke_no_pdf_emits_nonzero_report(self):
@@ -119,7 +199,7 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             with (
                 patch.object(ruf, "PAPERS_DIR", str(production_papers)),
                 patch.object(ruf, "PIPELINE_DIR", smoke_base),
-                patch.object(ruf, "_find_smoke_pdf_no_write", return_value=("", "no_match")),
+                patch.object(ruf, "find_pdf", return_value=("", "no_match")),
                 patch.object(ruf, "MAX_RETRIES", 1),
             ):
                 with self.assertRaises(SystemExit) as raised:

@@ -63,7 +63,7 @@ def get_categories(topic):
     return ["Other"]
 
 
-# 하위 호환: 기존 코드가 CATEGORIES_BY_TOPIC["ai4s"] 형태로 접근하는 경우 지원
+# 하위 호환: 기존 코드가 CATEGORIES_BY_TOPIC[topic] 형태로 접근하는 경우 지원
 class _CategoriesProxy(dict):
     """dict-like proxy that loads categories on demand."""
     def __missing__(self, topic):

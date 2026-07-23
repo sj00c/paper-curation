@@ -8,22 +8,22 @@ prepare_deploy) 를 순서대로 호출한다.
 
 Usage (가장 자주 쓰는 패턴):
   # 주간 운영 — 검색 + Zotero 등록 + 신규만 리뷰
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7
+  PYTHONUTF8=1 python pipeline/run_full.py --topic <configured-topic> --mode curate --source web --days 7
 
   # 로컬 업데이트 — 검색 스킵, Zotero 변경만 동기화 후 신규 리뷰
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
+  PYTHONUTF8=1 python pipeline/run_full.py --topic <configured-topic> --mode curate --source zotero
 
   # 특정 슬러그만 force-rebuild (복구 시)
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf
+  PYTHONUTF8=1 python pipeline/run_full.py --topic <configured-topic> --mode rebuild --slugs 088,1093 --strict-pdf
 
   # 카테고리 재분류만
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
+  PYTHONUTF8=1 python pipeline/run_full.py --topic <configured-topic> --mode reclassify
 
   # 타임라인 이미지만 재생성
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
+  PYTHONUTF8=1 python pipeline/run_full.py --topic <configured-topic> --mode retime --images all
 
   # 배포만
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode deploy
+  PYTHONUTF8=1 python pipeline/run_full.py --topic <configured-topic> --mode deploy
 
 플래그 자동 연계:
   --source web    → --with-search --with-register --with-sync 자동 활성

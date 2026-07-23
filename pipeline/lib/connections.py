@@ -247,9 +247,9 @@ def sync_topic_connections(new_connections, topic, topic_slugs, topic_dir, log=p
 
     Args:
         new_connections: newly computed connections dict {slug: [{slug, relation, reason}]}
-        topic: topic name (e.g. "ai4s", "scisci")
+        topic: configured topic alias
         topic_slugs: list of slugs belonging to this topic
-        topic_dir: path to topic directory (e.g. docs/ai4s/)
+        topic_dir: path to topic directory (e.g. docs/my-topic/)
         log: logging function
     """
     # Merge into global (raw directional store)

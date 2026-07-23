@@ -777,9 +777,8 @@ def generate_connections_from_candidates(candidates, topic_papers, client,
       6) PRIORITY-FIRST: ``priority_slugs``(기존 연결이 0개인 논문 — 대개 신규)
          를 매 라운드 큐의 *맨 앞* 에 배치한다. 배치가 슬러그 정렬순으로 제출되면
          번호 큰 신규 논문이 항상 꼬리에 몰려, deadline 이 잘릴 때마다 같은
-         논문들이 반복 탈락하는 체계적 편향이 생긴다(2026-06-12 실측: ai4s 신규
-         6편이 두 런 연속 탈락). 망 예산이 부족해도 사용자에게 공백으로 보이는
-         논문부터 먼저 채운다.
+         논문들이 반복 탈락하는 체계적 편향이 실측됐다. 망 예산이 부족해도
+         사용자에게 공백으로 보이는 논문부터 먼저 채운다.
     """
     from concurrent.futures import (ThreadPoolExecutor, FIRST_COMPLETED,
                                     wait as _futures_wait)

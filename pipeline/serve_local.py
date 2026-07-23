@@ -481,7 +481,7 @@ def main():
         default="127.0.0.1",
         help="리슨 호스트 (기본 127.0.0.1; LAN 노출은 명시적으로 지정)",
     )
-    parser.add_argument("--topic", default="", help="열어볼 토픽 (URL 안내용, 예: ai4s)")
+    parser.add_argument("--topic", default="", help="열어볼 configured topic alias (URL 안내용)")
     args = parser.parse_args()
 
     if not DOCS_DIR.exists():

@@ -16,13 +16,13 @@ Zotero 컬렉션 중복 탐지·제거.
 
 Usage:
   # 기본 dry-run (실제 삭제 없음)
-  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s
+  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic <configured-topic>
 
   # 실제 삭제
-  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s --execute
+  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic <configured-topic> --execute
 
   # 특정 그룹만 확인
-  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s --show-all
+  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic <configured-topic> --show-all
 
 결과 리포트: docs/{topic}/_dedup_zotero_report.json
 """
@@ -105,7 +105,7 @@ def delete_item(item_key, version):
 
 def norm_title(title):
     # 60-char prefix is long enough that overlap between different papers is
-    # unlikely even for same-topic surveys, while still catching re-registrations
+    # unlikely even for closely related surveys, while still catching re-registrations
     # of the same paper (Zotero imports sometimes truncate or re-case titles).
     return re.sub(r"[^a-z0-9]", "", (title or "").lower())[:60]
 

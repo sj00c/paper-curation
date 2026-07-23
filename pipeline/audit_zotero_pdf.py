@@ -20,8 +20,8 @@ PDF 경로 해석은 run_update_force.find_pdf 와 같은 규약을 따른다:
   절대경로면 그대로, 아니면 basename 을 ZOTERO_DIR 아래에서 탐색.
 
 Usage:
-  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic scisci
-  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic ai4s --no-content   # 내용검사 skip(빠름)
+  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic <configured-topic>
+  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic <configured-topic> --no-content   # 내용검사 skip(빠름)
   PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --all                       # 설정된 전 컬렉션
 
 출력:
@@ -566,7 +566,7 @@ def load_existing_reports():
 def main():
     ap = argparse.ArgumentParser(description="Zotero 서지정보↔PDF 정합성 감사")
     ap.add_argument("--topic", help="단일 토픽")
-    ap.add_argument("--topics", help="콤마구분 다중 토픽 (예: scisci,ai4s)")
+    ap.add_argument("--topics", help="콤마구분 다중 토픽 (예: my-topic,other-topic)")
     ap.add_argument("--all", action="store_true", help="설정된 전 컬렉션")
     ap.add_argument("--combine-only", action="store_true",
                     help="새 감사 없이 디스크의 토픽별 JSON 만으로 통합 md 재생성")

@@ -5,10 +5,10 @@ Zotero 등록 스크립트.
 PDF를 다운로드하여 linked file로 첨부.
 
 Usage:
-  PYTHONUTF8=1 python register_zotero.py --topic scisci
-  PYTHONUTF8=1 python register_zotero.py --topic ai4s --input ai4s/_search_results.json
-  PYTHONUTF8=1 python register_zotero.py --topic scisci --fix-pdfs
-  PYTHONUTF8=1 python register_zotero.py --topic scisci --dry-run
+  PYTHONUTF8=1 python register_zotero.py --topic my-topic
+  PYTHONUTF8=1 python register_zotero.py --topic my-topic --input my-topic/_search_results.json
+  PYTHONUTF8=1 python register_zotero.py --topic my-topic --fix-pdfs
+  PYTHONUTF8=1 python register_zotero.py --topic my-topic --dry-run
 """
 
 import argparse
@@ -881,7 +881,7 @@ def _run_fix_metadata(topic, *, dry_run=False, limit=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Zotero 논문 등록 + PDF 첨부")
-    parser.add_argument("--topic", required=True, help="토픽 (ai4s 또는 scisci)")
+    parser.add_argument("--topic", required=True, help="configured topic alias")
     parser.add_argument("--input", help="검색 결과 JSON 경로 (기본: {topic}/_search_results.json)")
     parser.add_argument("--fix-pdfs", action="store_true", help="PDF 없는 아이템에 대해 재시도")
     parser.add_argument("--fix-metadata", action="store_true",

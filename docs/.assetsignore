@@ -1,8 +1,5 @@
-# Local-only topics — not published to Cloudflare
-ai4s/
-scisci/
-ai4s+scisci/
-
+# Local-only topic directories can be listed here by an operator.
+# prepare_deploy.py fails closed when an unrequested topic directory is not excluded.
 # Local dev caches — never deployed
 _local_keys.json
 _zotero_keys.json

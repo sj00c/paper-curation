@@ -43,28 +43,28 @@ Setup/auth reminders: `my_topic` in examples is the topic alias printed by setup
 ```bash
 # Weekly production run — web search + Zotero register + new-paper review
 # May auto-publish if Cloudflare credentials/config exist and deploy suppression is absent.
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7 --max-papers 20
+node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source web --days 7 --max-papers 20
 
 # Local verification / first full run (forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
 
 # Scratch-only bounded smoke (forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
 
 # Force-rebuild specific slugs (repair-only recovery, forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf --no-deploy --yes
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs 088,1093 --strict-pdf --no-deploy --yes
 
 # Reclassify only (no LLM, HDBSCAN approximate_predict; forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode reclassify --no-deploy
 
 # Timeline narrative + images (forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode retime --images all --no-deploy
 
 # Explicit deploy step
-PYTHONUTF8=1 python pipeline/run_full.py --topic humanoid --mode deploy
+node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode deploy
 
 # Dry-run (no execution, deploy suppression explicit for verification)
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --dry-run --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source web --dry-run --no-deploy
 ```
 
 ## Safety flags
@@ -140,7 +140,7 @@ brew install --cask temurin   # Java for opendataloader-pdf
   #     "model": "exaone-4.0:latest",
   #     "num_ctx": 8192, "retries": 2, "batch_size": 8
   #   }
-  PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --local-fallback --no-deploy
+  PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --local-fallback --no-deploy
   ```
 
   Ollama is auto-detected (native API: per-request `num_ctx`, `think:false`);
@@ -159,7 +159,7 @@ title: "<full paper title>"
 authors: ["First Last", ...]
 date: "2021-07-15"
 doi: "..."
-primary_topic: ai4s
+primary_topic: my-topic
 primary_category: "..."
 all_categories: [...]
 sub_categories: {"Category": "Sub-category", ...}
@@ -172,7 +172,7 @@ scores:
   overall: 5
 score: 5
 essence: "..."
-tags: [paper, ai4s, "ai4s/category-slug/sub-slug", ...]
+tags: [paper, my-topic, "my-topic/category-slug/sub-slug", ...]
 schema_version: v1
 ---
 ```
@@ -257,16 +257,16 @@ npx wrangler secret put AUDIO_REPLY_TO    # 답장이 갈 운영자 메일, 예:
 
 ```bash
 # Audit PDF↔review mismatches
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode audit --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode audit --no-deploy
 
 # Delete artifacts for high-confidence mismatches
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode fix-matching --no-deploy --yes
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode fix-matching --no-deploy --yes
 
 # Re-review cleaned slugs
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs <list> --strict-pdf --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs <list> --strict-pdf --no-deploy
 
 # Validate
-PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode validate --no-deploy --yes  # --yes → --strict
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode validate --no-deploy --yes  # --yes → --strict
 ```
 
 ## Topic configuration
@@ -277,10 +277,8 @@ Each topic ↔ Zotero collection is in `config.json`:
 {
   "zotero": {
     "collections": {
-      "ai4s": "WKEZLEE8",
-      "scisci": "3KVIDDKH",
-      "humanoid": "...",
-      "physical-ai": "..."
+      "my-topic": "COLLECTION_KEY_OR_NAME",
+      "another-topic": "ANOTHER_COLLECTION_KEY_OR_NAME"
     }
   }
 }

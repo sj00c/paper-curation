@@ -3,7 +3,7 @@ Canonical review.md → index.html converter.
 Enforces consistent layout across all review pages.
 
 Usage:
-  PYTHONUTF8=1 python review_to_html.py [--topic ai4s|scisci] [--slugs 251-258] [--all]
+  PYTHONUTF8=1 python review_to_html.py [--topic <configured-topic>] [--slugs 251-258] [--all]
   PYTHONUTF8=1 python review_to_html.py --all              # regenerate all
   PYTHONUTF8=1 python review_to_html.py --slugs 251-394    # specific range
 """
@@ -48,24 +48,13 @@ if not _GEMINI_KEY or not _LOCAL_EMAILS_RAW:
         pass
 _LOCAL_EMAILS = [e.strip() for e in _LOCAL_EMAILS_RAW.split(",") if e.strip()]
 
-THEMES = {
-    "ai4s": {"accent": "#D63423", "accent_dark": "#A62018", "accent_bg": "#FEF0EF",
-             "essence_border": "#8B1A1A", "essence_bg": "#FDF8F8",
-             "link_color": "#A62018", "back_href": "../../ai4s/index.html"},
-    "scisci": {"accent": "#2374D6", "accent_dark": "#1856A0", "accent_bg": "#EBF3FF",
-               "essence_border": "#1856A0", "essence_bg": "#F8FAFD",
-               "link_color": "#1856A0", "back_href": "../../scisci/index.html"},
-}
-
 _GENERIC_THEME = {"accent": "#555E68", "accent_dark": "#343A40", "accent_bg": "#F5F6F8",
                   "essence_border": "#4A5568", "essence_bg": "#FAFAFA",
                   "link_color": "#343A40", "back_href": "../../index.html"}
 
 
 def get_theme(topic):
-    """Return a named theme, or a generic one that links back to the topic page."""
-    if topic in THEMES:
-        return THEMES[topic]
+    """Return a generic theme that links back to the topic page."""
     theme = dict(_GENERIC_THEME)
     topic_slug = (topic or "").strip()
     if re.match(r"^[A-Za-z0-9][A-Za-z0-9_-]*$", topic_slug):
@@ -987,7 +976,7 @@ def _run_review_to_html(*, topic=None, slug=None, slugs=None, all_papers=False,
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--topic', default=None, help='Force topic (ai4s/scisci)')
+    parser.add_argument('--topic', default=None, help='Force topic alias')
     parser.add_argument('--slugs', default=None,
                         help='Slug range "251-258" or comma list "9121,9122"')
     parser.add_argument('--all', action='store_true', help='Regenerate all')

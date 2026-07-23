@@ -15,7 +15,7 @@ KST = timezone(timedelta(hours=9))
 TODAY = datetime.now(KST).strftime("%Y-%m-%d")
 
 from collections import OrderedDict
-from config_loader import PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, get_topic_dir, get_zotero_api_key, get_zotero_user_id
+from config_loader import PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, get_topic_dir, get_zotero_api_key, get_zotero_user_id, get_topic_profile
 from lib.categories import category_slug
 from lib.search_index_metadata import (
     CACHE_FORMAT_VERSION,
@@ -58,31 +58,14 @@ def _run_topic_index(topic=None, cross=None):
         raise ValueError("topic must be a non-empty string")
     TOPIC_DIR = str(get_topic_dir(TOPIC))
 
-    # Optional legacy visual theme overrides for historical example topics only;
-    # every configured topic without an override uses the generic default below.
-    from config_loader import load_config
-    _collections_raw = load_config().get("zotero", {}).get("collections", {})
-
-    THEME = {
-        "ai4s": {
-            "gradient": "linear-gradient(135deg, #2a0f0d 0%, #5c1a14 50%, #A62018 100%)",
-            "accent": "#D63423", "accent_dark": "#A62018", "accent_light": "#F06050",
-        },
-        "scisci": {
-            "gradient": "linear-gradient(135deg, #0d1a2a 0%, #14385c 50%, #1866A6 100%)",
-            "accent": "#2374D6", "accent_dark": "#1856A0", "accent_light": "#50A0F0",
-        },
-    }
-    # Default theme for unknown topics
-    _default_theme = {
+    topic_profile = get_topic_profile(TOPIC)
+    topic_label = topic_profile.get("label") or topic_profile.get("collection_name") or TOPIC
+    theme = {
         "gradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
         "accent": "#3B82F6", "accent_dark": "#2563EB", "accent_light": "#60A5FA",
+        "title": topic_label,
+        "subtitle_prefix": topic_label,
     }
-    theme = dict(THEME.get(TOPIC, _default_theme))
-    # Title from Zotero collection name in config.json
-    _collection_name = _collections_raw.get(TOPIC, TOPIC)
-    theme["title"] = _collection_name
-    theme["subtitle_prefix"] = _collection_name
     if cross:
         theme = {
             "gradient": "linear-gradient(135deg, #1a0d2a 0%, #3a1a5c 50%, #6b21a8 100%)",
@@ -1310,7 +1293,7 @@ def _run_topic_index(topic=None, cross=None):
       return s;
     }
     // 흔한 단어이기도 한 단일어 저널명(Science, Matter...)은 venue cue 가 있을
-    // 때만 필터로 인정 — "AI for science" 같은 도메인 표현 오인식 방지. 멀티워드
+    // 때만 필터로 인정 — 주제 표현을 저널 필터로 오인식하지 않도록 한다. 멀티워드
     // 저널명(Nature Communications, Science Robotics...)은 cue 없이도 매칭.
     var _JCUE = /저널|학술지|학회지|journal|게재|등재|실린|지에|published in/i;
     var _JSTOP = { science: 1, matter: 1, joule: 1, chaos: 1, brain: 1, patterns: 1, device: 1, sensors: 1 };
@@ -1857,8 +1840,8 @@ def _run_topic_index(topic=None, cross=None):
     }
 
     function buildPrompt(query, selected, lang, fullTexts, deeper) {
-      const systemKo = '당신은 학술 논문 큐레이션의 리서치 보조입니다. 아래에 제공된 논문 발췌문만을 근거로, 큐레이터의 "카테고리 요약" 스타일을 따라 답변하세요.\\n\\n스타일 지침:\\n- 서술형 한국어 문장 (불릿 나열은 꼭 필요할 때만)\\n- 2~5개 문단, 주제별 또는 시간순으로 자연스럽게 묶기\\n- **인용은 글 흐름에 녹여 쓰세요**. 매 주장 끝에 ``[ref:N]`` 마커만 붙입니다 (N=발췌문 번호) — 후처리가 작은 클릭 가능한 ⌈[N]⌉ 링크로 변환합니다. 본문에서는 **저자명·논문명·연도·시점을 어구로 다양하게 표현**해서 자연스럽게 읽히게 하세요:\\n  ▸ "He et al.에 의하면 ~[ref:1]"\\n  ▸ "최근 공개된 연구에 따르면 ~[ref:2]"\\n  ▸ "2024년에 밝혀진 바[ref:3]에 따르면 ~"\\n  ▸ "OmniH2O[ref:1]는 universal teleoperation을 보였고, 이어진 Expressive Whole-Body Control 연구[ref:4]가 이를 확장했다."\\n  ▸ "Sun et al.와 같이[ref:5], ~"\\n  ▸ "SPARK[ref:6]에서 보인 것처럼 ~"\\n  ▸ "이러한 접근은 초기 humanoid teleoperation 연구[ref:1, ref:2]에서 등장했고 ~"\\n  같은 어구를 반복하지 말고 매 문장마다 다른 표현을 선택하세요. 동일 논문을 한 단락 안에서 또 인용해야 하면 그때는 작가명 생략하고 "이 연구[ref:1]는 또한 ~" 같이 짧게.\\n  중요: ``[ref:N]`` 마커만 출력에 남기고, 우리가 생성하는 "Smith et al. (2024)" 같은 표준 표현은 따로 삽입하지 마세요 — 그건 References 섹션에서만 보여줍니다.\\n- 연관된 Figure는 본문의 적절한 위치에 ![caption](url) 형식으로 삽입 (발췌문의 Figures에 명시된 URL만 사용, 임의 URL 금지)\\n- 마지막 문단은 연구들을 종합하는 한두 문장\\n\\n답변 절차 (출력에 포함하지 말 것):\\n1. 먼저 내부적으로 질의를 분석하고, 어떤 논문들을 어떤 그룹/순서로 엮을지 계획을 세우세요.\\n2. 그런 다음 계획에 따라 최종 답변 본문만 작성하세요.\\n3. 제공된 발췌문 밖의 지식을 절대 사용하지 마세요.\\n4. 발췌문으로 뒷받침되지 않는 주장은 생략하세요.\\n5. 일부 논문에는 "ORIGINAL EXCERPT" 블록이 함께 제공될 수 있습니다. 시약 이름·분량·온도·시간·구체적 수치·실험 조건 등 정량적 디테일이 답변에 필요할 때는 그 원문 발췌를 우선 활용하세요.';
-      const systemEn = 'You are a research assistant for an academic paper curation. Answer using ONLY the provided excerpts, following the curator\\'s "category overview" style.\\n\\nStyle guidelines:\\n- Narrative prose (use bullets only when truly needed)\\n- 2-5 paragraphs, grouped by theme or chronology\\n- **Weave citations into the flow.** Append only ``[ref:N]`` markers after each claim (N = excerpt number). A post-processor turns them into small clickable [N] superscripts. In the prose, **vary how you mention author / paper / year / temporal context**:\\n  ▸ "According to He et al., ~[ref:1]"\\n  ▸ "Recent work shows ~[ref:2]"\\n  ▸ "A 2024 study reports ~[ref:3]"\\n  ▸ "OmniH2O[ref:1] established universal teleoperation, later extended by Expressive Whole-Body Control[ref:4]."\\n  ▸ "As Sun et al. did[ref:5], ~"\\n  ▸ "As shown in SPARK[ref:6], ~"\\n  ▸ "This direction emerged in early humanoid teleoperation work[ref:1, ref:2] and ~"\\n  Vary the phrasing every sentence — avoid repeating the same lead-in. When the same paper is cited again within a paragraph, drop the author and use a short hand: "This work[ref:1] also ~".\\n  Important: keep only the ``[ref:N]`` marker — do NOT insert formal "Smith et al. (2024)" tags into the prose. Those appear only in the References section at the bottom.\\n- Embed relevant figures inline at natural positions using ![caption](url) markdown; only use figure URLs explicitly listed with the excerpts (no fabricated URLs)\\n- Close with one or two synthesizing sentences\\n\\nProcedure (do NOT include in output):\\n1. First analyse the query internally and plan which papers to cover and how to group/order them.\\n2. Then write only the final answer body according to your plan.\\n3. Do not use any knowledge beyond the excerpts.\\n4. Omit any claim you cannot back up with an excerpt.\\n5. Some papers may also include an "ORIGINAL EXCERPT" block alongside the summary. When the answer needs concrete quantitative detail (reagent names, amounts, temperatures, durations, specific numbers, experimental conditions), prefer the original excerpt over the summary.';
+      const systemKo = '당신은 학술 논문 큐레이션의 리서치 보조입니다. 아래에 제공된 논문 발췌문만을 근거로, 큐레이터의 "카테고리 요약" 스타일을 따라 답변하세요.\\n\\n스타일 지침:\\n- 서술형 한국어 문장 (불릿 나열은 꼭 필요할 때만)\\n- 2~5개 문단, 주제별 또는 시간순으로 자연스럽게 묶기\\n- **인용은 글 흐름에 녹여 쓰세요**. 매 주장 끝에 ``[ref:N]`` 마커만 붙입니다 (N=발췌문 번호) — 후처리가 작은 클릭 가능한 ⌈[N]⌉ 링크로 변환합니다. 본문에서는 **저자명·논문명·연도·시점을 어구로 다양하게 표현**해서 자연스럽게 읽히게 하세요:\\n  ▸ "Smith et al.에 의하면 ~[ref:1]"\\n  ▸ "최근 공개된 연구에 따르면 ~[ref:2]"\\n  ▸ "2024년에 밝혀진 바[ref:3]에 따르면 ~"\\n  ▸ "첫 번째 연구[ref:1]가 기준선을 제시했고, 이어진 후속 연구[ref:4]가 이를 확장했다."\\n  ▸ "Lee et al.와 같이[ref:5], ~"\\n  ▸ "비교 실험[ref:6]에서 보인 것처럼 ~"\\n  ▸ "이러한 접근은 초기 관련 연구[ref:1, ref:2]에서 등장했고 ~"\\n  같은 어구를 반복하지 말고 매 문장마다 다른 표현을 선택하세요. 동일 논문을 한 단락 안에서 또 인용해야 하면 그때는 작가명 생략하고 "이 연구[ref:1]는 또한 ~" 같이 짧게.\\n  중요: ``[ref:N]`` 마커만 출력에 남기고, 우리가 생성하는 "Smith et al. (2024)" 같은 표준 표현은 따로 삽입하지 마세요 — 그건 References 섹션에서만 보여줍니다.\\n- 연관된 Figure는 본문의 적절한 위치에 ![caption](url) 형식으로 삽입 (발췌문의 Figures에 명시된 URL만 사용, 임의 URL 금지)\\n- 마지막 문단은 연구들을 종합하는 한두 문장\\n\\n답변 절차 (출력에 포함하지 말 것):\\n1. 먼저 내부적으로 질의를 분석하고, 어떤 논문들을 어떤 그룹/순서로 엮을지 계획을 세우세요.\\n2. 그런 다음 계획에 따라 최종 답변 본문만 작성하세요.\\n3. 제공된 발췌문 밖의 지식을 절대 사용하지 마세요.\\n4. 발췌문으로 뒷받침되지 않는 주장은 생략하세요.\\n5. 일부 논문에는 "ORIGINAL EXCERPT" 블록이 함께 제공될 수 있습니다. 시약 이름·분량·온도·시간·구체적 수치·실험 조건 등 정량적 디테일이 답변에 필요할 때는 그 원문 발췌를 우선 활용하세요.';
+      const systemEn = 'You are a research assistant for an academic paper curation. Answer using ONLY the provided excerpts, following the curator\\'s "category overview" style.\\n\\nStyle guidelines:\\n- Narrative prose (use bullets only when truly needed)\\n- 2-5 paragraphs, grouped by theme or chronology\\n- **Weave citations into the flow.** Append only ``[ref:N]`` markers after each claim (N = excerpt number). A post-processor turns them into small clickable [N] superscripts. In the prose, **vary how you mention author / paper / year / temporal context**:\\n  ▸ "According to Smith et al., ~[ref:1]"\\n  ▸ "Recent work shows ~[ref:2]"\\n  ▸ "A 2024 study reports ~[ref:3]"\\n  ▸ "The first study[ref:1] established a baseline, later extended by follow-up work[ref:4]."\\n  ▸ "As Lee et al. did[ref:5], ~"\\n  ▸ "As shown in the comparative experiment[ref:6], ~"\\n  ▸ "This direction emerged in early related work[ref:1, ref:2] and ~"\\n  Vary the phrasing every sentence — avoid repeating the same lead-in. When the same paper is cited again within a paragraph, drop the author and use a short hand: "This work[ref:1] also ~".\\n  Important: keep only the ``[ref:N]`` marker — do NOT insert formal "Smith et al. (2024)" tags into the prose. Those appear only in the References section at the bottom.\\n- Embed relevant figures inline at natural positions using ![caption](url) markdown; only use figure URLs explicitly listed with the excerpts (no fabricated URLs)\\n- Close with one or two synthesizing sentences\\n\\nProcedure (do NOT include in output):\\n1. First analyse the query internally and plan which papers to cover and how to group/order them.\\n2. Then write only the final answer body according to your plan.\\n3. Do not use any knowledge beyond the excerpts.\\n4. Omit any claim you cannot back up with an excerpt.\\n5. Some papers may also include an "ORIGINAL EXCERPT" block alongside the summary. When the answer needs concrete quantitative detail (reagent names, amounts, temperatures, durations, specific numbers, experimental conditions), prefer the original excerpt over the summary.';
       const lines = [];
       for (let i = 0; i < selected.length; i++) {
         const s = selected[i], n = i + 1, paper = s.paper;

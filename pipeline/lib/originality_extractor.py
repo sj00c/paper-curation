@@ -1,6 +1,6 @@
 """
 Originality extraction from paper text.
-Ported from scisci/scie/lib/originality.py.
+Generalized from the prior topic-specific originality implementation.
 
 Strategy:
 1. Primary: rule-based trigger matching (free, instant)

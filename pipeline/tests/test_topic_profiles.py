@@ -53,7 +53,9 @@ class TopicProfileTests(unittest.TestCase):
         source = (PIPELINE / "build_topic_index.py").read_text(encoding="utf-8")
         self.assertNotIn('return "ai4s"', source)
         self.assertIn('raise SystemExit("Usage: PYTHONUTF8=1 python build_topic_index.py <topic>")', source)
-        self.assertIn("theme = dict(THEME.get(TOPIC, _default_theme))", source)
+        self.assertIn("topic_profile = get_topic_profile(TOPIC)", source)
+        self.assertIn('"title": topic_label', source)
+        self.assertNotIn("THEME = {", source)
 
     def test_topic_index_author_fallback_copy_is_domain_neutral(self):
         source = (PIPELINE / "build_topic_index.py").read_text(encoding="utf-8")

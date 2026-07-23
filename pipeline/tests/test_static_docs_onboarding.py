@@ -148,7 +148,7 @@ class StaticOnboardingDocsTests(unittest.TestCase):
 
     def test_setup_local_first_run_paths_suppress_deploy_and_vector_rebuild(self):
         source = (ROOT / "pipeline" / "setup.py").read_text(encoding="utf-8")
-        self.assertIn("PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 PYTHONUTF8=1 python pipeline/run_full.py", source)
+        self.assertIn("PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run --", source)
         self.assertIn("--mode curate --source zotero --no-deploy", source)
         self.assertIn("--mode curate --source web --days 7 --no-deploy", source)
         self.assertIn("--mode rebuild --yes --no-deploy", source)

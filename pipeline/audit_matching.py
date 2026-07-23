@@ -16,9 +16,9 @@ Confidence:
   - clean  : 통과 또는 PDF 없음(판정 불가)
 
 Usage:
-  PYTHONUTF8=1 python pipeline/audit_matching.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/audit_matching.py --topic ai4s --limit 50
-  PYTHONUTF8=1 python pipeline/audit_matching.py --topic ai4s --slug 003_X
+  PYTHONUTF8=1 python pipeline/audit_matching.py --topic <configured-topic>
+  PYTHONUTF8=1 python pipeline/audit_matching.py --topic <configured-topic> --limit 50
+  PYTHONUTF8=1 python pipeline/audit_matching.py --topic <configured-topic> --slug 003_X
 
 출력: docs/{topic}/_audit_report.json
 """

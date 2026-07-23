@@ -174,14 +174,14 @@ title: "<full paper title>"
 authors: ["First Last", ...]
 date: "2021-07-15"
 doi: "..."
-primary_topic: ai4s
+primary_topic: my-topic
 primary_category: "..."
 all_categories: [...]
 sub_categories: {"Category": "Sub-category", ...}
 scores: {novelty: 5, technical: 5, significance: 5, clarity: 4, overall: 5}
 score: 5            # top-level (Obsidian sort)
 essence: "..."
-tags: [paper, ai4s, "ai4s/category-slug/sub-slug", ...]
+tags: [paper, my-topic, "my-topic/category-slug/sub-slug", ...]
 schema_version: v1
 ---
 ```

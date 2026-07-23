@@ -1,5 +1,6 @@
 """Focused tests for first-run doctor artifact reporting."""
 import io
+import json
 from contextlib import redirect_stdout
 
 import sys
@@ -42,6 +43,7 @@ class DoctorFirstRunTests(unittest.TestCase):
         self.assertEqual(reporter.warns, 1)
         self.assertIn("PAPER_CURATION_NO_DEPLOY=1", output.getvalue())
         self.assertIn("--no-deploy", output.getvalue())
+        self.assertIn("PAPER_CURATION_NO_VECTOR_REBUILD=1", output.getvalue())
 
     def test_missing_topic_directory_fails_after_index_exists(self):
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -60,13 +62,49 @@ class DoctorFirstRunTests(unittest.TestCase):
                     reporter,
                     "ai4s",
                     {"zotero": {"collections": {"ai4s": "AI for Science"}}},
-                    [],
+                    [{"slug": "001_Existing", "topics": ["ai4s"]}],
                 )
 
         self.assertEqual(reporter.fails, 1)
         self.assertEqual(reporter.warns, 0)
         self.assertIn("PAPER_CURATION_NO_DEPLOY=1", output.getvalue())
         self.assertIn("--no-deploy", output.getvalue())
+        self.assertIn("PAPER_CURATION_NO_VECTOR_REBUILD=1", output.getvalue())
+
+    def test_papers_index_reports_unconfigured_topics_as_ignored_residue(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            papers_index = root / "docs" / "papers" / "_papers_index.json"
+            papers_index.parent.mkdir(parents=True)
+            papers = [
+                {"slug": "001_Current", "topics": ["physical_ai"]},
+                {"slug": "002_Legacy", "topics": ["ai4s"]},
+            ]
+            papers_index.write_text(json.dumps(papers), encoding="utf-8")
+            reporter = doctor_module.Reporter()
+            output = io.StringIO()
+
+            with (
+                patch.object(doctor_module, "PAPERS_INDEX", papers_index),
+                redirect_stdout(output),
+            ):
+                doctor_module.check_papers_index(
+                    reporter,
+                    papers,
+                    {
+                        "topic_profiles": {"physical_ai": {"label": "Physical AI"}},
+                        "zotero": {"collections": {"robotics": "Robotics"}},
+                    },
+                )
+
+        self.assertEqual(reporter.fails, 0)
+        self.assertEqual(reporter.warns, 1)
+        text = output.getvalue()
+        self.assertIn("ignored local corpus residue", text)
+        self.assertIn("unconfigured topic tags: ai4s", text)
+        self.assertIn("ignored by current topic_profiles/zotero.collections", text)
+        self.assertNotIn("reuse", text.lower())
+        self.assertNotIn("select", text.lower())
 
     def test_normal_doctor_does_not_run_anthropic_smoke(self):
         reporter = doctor_module.Reporter()

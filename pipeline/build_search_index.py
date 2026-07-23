@@ -20,10 +20,9 @@ similarity retrieval client-side before calling Claude with the top-k
 chunks as context.
 
 Usage:
-  PYTHONUTF8=1 python pipeline/build_search_index.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/build_search_index.py --topic scisci
-  PYTHONUTF8=1 python pipeline/build_search_index.py --topic ai4s --limit 10    # debug
-  PYTHONUTF8=1 python pipeline/build_search_index.py --topic ai4s --dry-run     # chunk only, no API
+  PYTHONUTF8=1 python pipeline/build_search_index.py --topic <configured-topic>
+  PYTHONUTF8=1 python pipeline/build_search_index.py --topic <configured-topic> --limit 10    # debug
+  PYTHONUTF8=1 python pipeline/build_search_index.py --topic <configured-topic> --dry-run     # chunk only, no API
 """
 
 import argparse
@@ -588,10 +587,10 @@ def embed_batch(client, texts: list, model: str) -> list:
 
 
 # ── text.md 고신호 본문 청크 (로컬 토픽 전용) ─────────────────────────────
-# review.md 는 정량 디테일(수치/데이터셋/하이퍼파라미터)을 요약하며 떨군다. A/B 실험
-# 결과 매몰 사실 질의 적중률이 review-only 대비 크게 오른다(ai4s 6%→56%, scisci
-# 47%→67%) — 일반 질의 회귀는 없었다. 단 원문 발췌라 저작권상 **배포 토픽엔 절대
-# 포함하지 않는다**(클라우드 비공개). docs/.assetsignore 로 로컬/배포를 자동 판별.
+# review.md 는 정량 디테일(수치/데이터셋/하이퍼파라미터)을 요약하며 떨군다. 내부
+# 벤치마크에서 매몰 사실 질의 적중률이 review-only 대비 크게 올랐고 일반 질의
+# 회귀는 없었다. 단 원문 발췌라 저작권상 **배포 토픽엔 절대 포함하지 않는다**
+# (클라우드 비공개). docs/.assetsignore 로 로컬/배포를 자동 판별.
 _TXT_REF_RE = re.compile(r'(?im)^\s*#{0,4}\s*(references|bibliography|참고문헌|acknowledg(e?ments)?)\b')
 _TXT_SIGNAL = re.compile(r'(?i)\b(method|approach|propos|algorithm|model|train|fine-?tun|'
                          r'dataset|corpus|experiment|evaluat|result|baseline|ablation|'
@@ -964,7 +963,7 @@ def _run_search_index(topic, *, model="gemini-embedding-001", limit=None, dry_ru
 
 def main():
     parser = argparse.ArgumentParser(description="Build Deep Research search index")
-    parser.add_argument("--topic", required=True, help="topic alias (e.g. ai4s, scisci)")
+    parser.add_argument("--topic", required=True, help="topic alias (e.g. <configured-topic>)")
     parser.add_argument("--model", default="gemini-embedding-001")
     parser.add_argument("--limit", type=int, default=None, help="limit number of papers (debug)")
     parser.add_argument("--dry-run", action="store_true", help="chunk only, no API calls")

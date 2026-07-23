@@ -8,7 +8,7 @@ paper-curation 설치 스크립트.
   3. Zotero 연결 테스트 (User ID 조회 + 컬렉션 검증)
   4. PaperBanana 확인 (없으면 선택 기능만 비활성화; 자동 클론 없음)
   5. SKILL.md 생성 (템플릿 플레이스홀더 치환)
-  6. SKILL.md를 ~/.claude/skills/paper-curation/에 설치
+  6. Node 하네스로 Claude Code/Codex/GJC managed skill bundle 설치
 
 Usage:
   python pipeline/setup.py              # 전체 설치
@@ -38,7 +38,6 @@ EXAMPLE_PATH = REPO / "config.example.json"
 TEMPLATE_PATH = REPO / "SKILL.md.template"
 SKILL_OUTPUT = REPO / "SKILL.md"
 GITIGNORE_PATH = REPO / ".gitignore"
-SKILL_INSTALL_DIR = Path.home() / ".claude" / "skills" / "paper-curation"
 
 def _load_dotenv(path=ENV_PATH):
     """Load a dependency-free .env subset without overriding shell exports."""
@@ -675,16 +674,20 @@ def step_skill_md(cfg):
 
 
 def step_install():
-    """Step 5: SKILL.md를 Claude Code skills에 설치."""
-    print("\n[6/6] SKILL.md 설치")
-
-    if not SKILL_OUTPUT.exists():
-        print("  ✗ SKILL.md가 없습니다")
+    """Step 6: delegate the complete Claude Code/Codex/GJC bundle to the Node harness."""
+    print("\n[6/6] Managed skill bundle 설치")
+    node = shutil.which("node")
+    if not node:
+        print("  ✗ node 실행 파일이 없습니다")
+        print("    Node.js 18+ 설치 후 node ./bin/paper-curation.mjs skill install")
         return False
 
-    SKILL_INSTALL_DIR.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(SKILL_OUTPUT, SKILL_INSTALL_DIR / "SKILL.md")
-    print(f"  ✓ {SKILL_INSTALL_DIR / 'SKILL.md'}")
+    command = [node, str(REPO / "bin" / "paper-curation.mjs"), "skill", "install", "--dir", str(REPO)]
+    completed = subprocess.run(command, cwd=REPO, check=False)
+    if completed.returncode != 0:
+        print(f"  ✗ managed skill installer 실패 (exit {completed.returncode})")
+        return False
+    print("  ✓ Claude Code/Codex/GJC managed skill bundle 설치 완료")
     return True
 
 
@@ -795,7 +798,7 @@ def main():
         step_install()
     else:
         print(f"\n[6/6] 스킬 설치 건너뜀 (--no-install)")
-        print(f"  수동 설치: cp {SKILL_OUTPUT} ~/.claude/skills/paper-curation/SKILL.md")
+        print(f"  수동 설치: node ./bin/paper-curation.mjs skill install")
 
     # 요약
     collections = cfg.get("zotero", {}).get("collections", {})
@@ -824,15 +827,15 @@ def main():
     print()
     if topics:
         topic = topics[0]
-        print(f"  실행 명령어 (이후에 수동으로 돌릴 때 — 단일 진입점은 run_full.py):")
+        print(f"  실행 명령어 (이후에 수동으로 돌릴 때 — 단일 진입점은 Node 하네스):")
         print(f"    # 전체 파이프라인 (Zotero에서 가져와서 리뷰 + 분류/인덱스, 배포·vector rebuild 억제)")
-        print(f"    PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero --no-deploy")
+        print(f"    PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic {topic} --mode curate --source zotero --no-deploy")
         print()
         print(f"    # 주간 운영 (웹 검색으로 신규 논문 추가, 기존 유지, 배포·vector rebuild 억제)")
-        print(f"    PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source web --days 7 --no-deploy")
+        print(f"    PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic {topic} --mode curate --source web --days 7 --no-deploy")
         print()
         print(f"    # 명시적 vector/full rebuild (시간·비용 ↑, 배포 억제)")
-        print(f"    PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode rebuild --yes --no-deploy")
+        print(f"    PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic {topic} --mode rebuild --yes --no-deploy")
     print()
 
     # 배포·이메일은 나중 단계 — 설치 시점에는 자격증명을 묻지 않는다 (deferred)

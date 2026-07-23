@@ -24,7 +24,7 @@ e.g. after editing the transform/render logic or to reproduce the state on deman
 
 Usage:
   PYTHONUTF8=1 python pipeline/rebuild_connections.py                  # all topics: data + pages + networks
-  PYTHONUTF8=1 python pipeline/rebuild_connections.py --topics ai4s scisci
+  PYTHONUTF8=1 python pipeline/rebuild_connections.py --topics my-topic another-topic
   PYTHONUTF8=1 python pipeline/rebuild_connections.py --no-render      # rebuild topic JSON only
   PYTHONUTF8=1 python pipeline/rebuild_connections.py --no-networks    # data + pages, skip networks
   PYTHONUTF8=1 python pipeline/rebuild_connections.py --dry-run        # report only, write nothing

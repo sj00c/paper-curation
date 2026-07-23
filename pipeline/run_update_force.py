@@ -2466,82 +2466,49 @@ def _smoke_candidates_from_index(topic, limit):
         for _score, item, slug in candidates[:limit]
     ]
 
+def _smoke_zotero_item_is_candidate(data):
+    if not isinstance(data, dict):
+        return False
+    title = _clean_zotero_title(data.get("title"))
+    if not title:
+        return False
+    return data.get("itemType") not in {
+        "attachment",
+        "note",
+        "forumPost",
+        "videoRecording",
+        "webpage",
+        "blogPost",
+        "instantMessage",
+        "email",
+    }
+
+
 def _fetch_zotero_items_sample(collection_key, limit):
     items = []
-    url = (f"https://api.zotero.org/users/{USER_ID}/collections/"
-           f"{collection_key}/items/top?limit={max(1, min(5, limit))}&format=json&sort=title")
-    req = urllib.request.Request(url, headers={"Zotero-API-Key": API_KEY})
-    with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
-        batch = json.load(resp)
-    for item in batch:
-        data = item.get("data", {})
-        if data.get("itemType") in ("attachment", "note", "forumPost", "videoRecording"):
-            continue
-        items.append(data)
-        if len(items) >= limit:
+    requested = max(1, int(limit or 1))
+    page_size = min(100, max(25, requested * 5))
+    max_inspected = min(100, max(page_size * 4, requested * 10))
+    start = 0
+    while len(items) < requested and start < max_inspected:
+        url = (f"https://api.zotero.org/users/{USER_ID}/collections/"
+               f"{collection_key}/items/top?limit={page_size}&start={start}&format=json&sort=title")
+        req = urllib.request.Request(url, headers={"Zotero-API-Key": API_KEY})
+        with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
+            batch = json.load(resp)
+        if not batch:
             break
+        for item in batch:
+            data = item.get("data", {}) if isinstance(item, dict) else {}
+            if not _smoke_zotero_item_is_candidate(data):
+                continue
+            items.append(data)
+            if len(items) >= requested:
+                break
+        if len(batch) < page_size:
+            break
+        start += page_size
     return items
-
-def _find_smoke_pdf_no_write(item):
-    pdf_path = str(item.get("pdf_path") or "").strip()
-    if pdf_path and os.path.exists(pdf_path):
-        return pdf_path, "index_pdf_path"
-
-    key = item.get("key", "")
-    title = item.get("title", "")
-    if key:
-        try:
-            url = f"https://api.zotero.org/users/{USER_ID}/items/{key}/children?format=json"
-            req = urllib.request.Request(url, headers={"Zotero-API-Key": API_KEY})
-            with urllib.request.urlopen(req, timeout=10, context=_ssl_ctx) as resp:
-                children = json.load(resp)
-            for child in children:
-                data = child.get("data", {})
-                if data.get("itemType") != "attachment":
-                    continue
-                if data.get("contentType") not in ("application/pdf", ""):
-                    continue
-                child_path = data.get("path", "")
-                if not child_path.lower().endswith(".pdf"):
-                    continue
-                if child_path.startswith("attachments:"):
-                    resolved = os.path.join(ZOTERO_DIR, child_path[len("attachments:"):])
-                    if os.path.exists(resolved):
-                        return resolved, "zotero_children_abs"
-                if os.path.exists(child_path):
-                    return child_path, "zotero_children_abs"
-                fname = child_path.replace("\\", "/").rsplit("/", 1)[-1]
-                alt = os.path.join(ZOTERO_DIR, fname)
-                if os.path.exists(alt):
-                    return alt, "zotero_children_basename"
-                downloaded = _download_zotero_attachment(child, title)
-                if downloaded:
-                    return downloaded, "zotero_api_download"
-        except Exception as exc:
-            return "", f"children_api_error:{type(exc).__name__}"
-
-    doi = (item.get("DOI") or item.get("doi") or "").strip()
-    if doi and os.path.isdir(ZOTERO_DIR):
-        doi_norm = re.sub(r"[^a-z0-9]", "", doi.lower())
-        for fname in os.listdir(ZOTERO_DIR):
-            if not fname.lower().endswith(".pdf"):
-                continue
-            if doi_norm and doi_norm in re.sub(r"[^a-z0-9]", "", fname.lower()):
-                return os.path.join(ZOTERO_DIR, fname), "doi_filename"
-
-    arxiv_id = _extract_arxiv_id_from_item(item)
-    if arxiv_id and os.path.isdir(ZOTERO_DIR):
-        arxiv_norm = arxiv_id.lower().replace(".", "").replace("/", "")
-        for fname in os.listdir(ZOTERO_DIR):
-            if not fname.lower().endswith(".pdf"):
-                continue
-            if arxiv_norm in re.sub(r"[^a-z0-9]", "", fname.lower()):
-                return os.path.join(ZOTERO_DIR, fname), "arxiv_filename"
-
-    return "", "no_match"
-
-
-
 
 
 def _write_smoke_report(smoke_root, payload):
@@ -2560,6 +2527,7 @@ def _run_smoke(args, selected_auth):
     scratch_papers = os.path.join(smoke_root, "papers")
     scratch_attachments = os.path.join(smoke_root, "attachments")
     os.makedirs(scratch_papers, exist_ok=True)
+    os.makedirs(scratch_attachments, exist_ok=True)
 
     original_papers_dir = globals()["PAPERS_DIR"]
     original_checkpoint = globals()["CHECKPOINT_FILE"]
@@ -2572,15 +2540,19 @@ def _run_smoke(args, selected_auth):
     original_slug_to_pdf_path = dict(_slug_to_pdf_path)
     had_no_deploy_env = "PAPER_CURATION_NO_DEPLOY" in os.environ
     original_no_deploy_env = os.environ.get("PAPER_CURATION_NO_DEPLOY")
+    candidate_attempt_limit = limit
     try:
         candidates = _smoke_candidates_from_index(args.topic, limit)
         source = "index"
         if not candidates:
             collection_key = COLLECTIONS.get(args.topic, "")
             if collection_key:
-                items = _fetch_zotero_items_sample(collection_key, limit)
+                sample_scan_limit = 25
+                candidate_attempt_limit = min(sample_scan_limit, max(10, limit * 5))
+                items = _fetch_zotero_items_sample(collection_key, sample_scan_limit)
+                items.sort(key=_item_metadata_score, reverse=True)
                 candidates, _dups, _skipped = _map_items_to_slugs(items, [], {})
-                candidates = candidates[:limit]
+                candidates = candidates[:candidate_attempt_limit]
                 source = "zotero_sample"
             else:
                 candidates = []
@@ -2623,7 +2595,7 @@ def _run_smoke(args, selected_auth):
         pdf_path = str(item.get("pdf_path") or "").strip()
         if pdf_path and os.path.exists(pdf_path):
             return pdf_path, "index_pdf_path"
-        path, method = _find_smoke_pdf_no_write(item)
+        path, method = find_pdf(item)
         if method not in _AUTHORITATIVE_PDF_METHODS:
             return "", method
         return path, method
@@ -2632,7 +2604,8 @@ def _run_smoke(args, selected_auth):
     cp = {"completed": [], "failed": [], "phase": "smoke"}
     attempted = []
     next_command = (
-        f"PAPER_CURATION_NO_DEPLOY=1 npx . run -- --topic {args.topic} "
+        f"PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 "
+        f"node ./bin/paper-curation.mjs run -- --topic {args.topic} "
         "--mode curate --source zotero --no-deploy"
     )
 
@@ -2648,6 +2621,7 @@ def _run_smoke(args, selected_auth):
             "candidate_source": source,
             "candidate_count": len(candidates),
             "smoke_limit": limit,
+            "candidate_attempt_limit": candidate_attempt_limit,
             "attempted": attempted,
             "completed": cp.get("completed", []),
             "failed": cp.get("failed", []),
@@ -2678,7 +2652,7 @@ def _run_smoke(args, selected_auth):
             print(f"[smoke] report: {report_path}")
             raise SystemExit(2)
 
-        for original_item, slug in candidates[:limit]:
+        for original_item, slug in candidates[:candidate_attempt_limit]:
             item = dict(original_item)
             pdf_path, pdf_method = smoke_find(item)
             attempt = {

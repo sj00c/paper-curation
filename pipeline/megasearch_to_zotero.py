@@ -9,21 +9,21 @@ scholar-megasearch 가 생성한 corpus.json (+ pdfs/) 를 paper-curation 의
 
 Usage:
   PYTHONUTF8=1 python pipeline/megasearch_to_zotero.py \
-    --topic ai4s \
-    --corpus literature_search/ai4s_2026-06-08/corpus.json \
-    --pdfs-dir literature_search/ai4s_2026-06-08/pdfs \
+    --topic my-topic \
+    --corpus literature_search/my-topic_2026-06-08/corpus.json \
+    --pdfs-dir literature_search/my-topic_2026-06-08/pdfs \
     --min-sources 2
 
   # 변환만 (PDF pre-stage 없이) — register_zotero 가 PDF 를 직접 받게 둠
   PYTHONUTF8=1 python pipeline/megasearch_to_zotero.py \
-    --topic bioml --corpus run/corpus.json
+    --topic <configured-topic> --corpus run/corpus.json
 
   # 변환 + 즉시 등록까지 한 번에
   PYTHONUTF8=1 python pipeline/megasearch_to_zotero.py \
-    --topic ai4s --corpus run/corpus.json --register
+    --topic my-topic --corpus run/corpus.json --register
 
 다음 단계 (--register 미사용 시):
-  PYTHONUTF8=1 python pipeline/register_zotero.py --topic ai4s
+  PYTHONUTF8=1 python pipeline/register_zotero.py --topic my-topic
 """
 
 import argparse
@@ -218,7 +218,7 @@ def prestage_pdfs(corpus, pdfs_dir, zotero_dir, mapping):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--topic", required=True, help="paper-curation topic alias (ai4s/scisci/bioml ...)")
+    ap.add_argument("--topic", required=True, help="configured topic alias (for example: my-topic)")
     ap.add_argument("--corpus", required=True, help="scholar-megasearch corpus.json 경로")
     ap.add_argument("--pdfs-dir", default="",
                     help="scholar-megasearch 의 pdfs/ 디렉토리 (manifest.json 동봉). "
