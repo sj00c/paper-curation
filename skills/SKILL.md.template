@@ -1,0 +1,45 @@
+---
+name: {name}
+description: "{description}"
+---
+{marker}
+
+# {title}
+
+## Managed manifest
+
+- Managed id: `{id}`
+- Checkout: `{project_dir}`
+- Triggers: {triggers}
+
+## Contract
+
+Use only the repository CLI harness from the recorded checkout. Do not reproduce pipeline phases in the agent, call internal Python scripts directly, invoke agents programmatically, depend on other skills outside this managed bundle, or assume a topic, credential mode, repository owner, deployment target, or fork state.
+
+Resolve the checkout before every run:
+
+1. Use the recorded path when it still contains `bin/paper-curation.mjs` and `pipeline/setup.py`.
+2. Otherwise locate the user's current paper-curation checkout.
+3. Run every command from that checkout.
+
+The harness uses only Node.js built-ins. Python packages are pipeline runtime dependencies and are installed by `setup`, not prerequisites for installing or loading this skill.
+
+## Purpose
+
+{purpose}
+
+## Harness command
+
+```bash
+{command}
+```
+
+## Safety notes
+
+{safety}
+
+Use `node ./bin/paper-curation.mjs topic` to list valid topic aliases. It reads only `config.json`, never invokes setup, and prints aliases without collection values or credentials. If no valid topic exists, run setup rather than inventing one. Never hardcode example aliases.
+
+Never expose `.env`, API keys, OAuth tokens, or credential-bearing command lines. For smoke, preview, repair, search/register, and ordinary local curation, keep both deploy suppressors: `PAPER_CURATION_NO_DEPLOY=1` and `--no-deploy`. Only the managed deploy skill may follow explicit deployment guidance.
+
+Report only observed results: configured topic aliases; authentication mode without credential values; doctor pass, warning, and failure counts; smoke or curation output location; and whether deployment was suppressed or explicitly performed.

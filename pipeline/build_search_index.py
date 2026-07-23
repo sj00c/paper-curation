@@ -39,6 +39,16 @@ from pathlib import Path
 PIPELINE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(PIPELINE_DIR))
 from config_loader import DOCS_DIR, PAPERS_DIR, PROJECT_ROOT, get_topic_dir, get_papers_index_path
+from lib.search_index_metadata import (
+    EMBEDDING_DIMENSION,
+    EMBEDDING_SIDECAR_FILE,
+    current_cache_metadata,
+    current_index_metadata,
+    format_validation_errors,
+    metadata_dimension,
+    validate_cache_metadata,
+    validate_index_metadata,
+)
 
 # Zotero metadata (normalized-title -> {url, doi}) captured by build_topic_index.
 # Gives a real external URL for papers whose review.md frontmatter has a
@@ -92,7 +102,7 @@ def _resolve_external(title, doi, arxiv):
 
 
 def _load_gemini_key_from_config() -> str:
-    """Fallback: read gemini/google api key from config.json (written by setup.py)."""
+    """Compatibility fallback for legacy configs; environment variables take precedence."""
     try:
         cfg_path = PROJECT_ROOT / "config.json"
         if cfg_path.exists():
@@ -407,12 +417,12 @@ def quantize_int8_l2(vec: list) -> bytes:
 # ── Content-addressed embedding cache ────────────────────────────────────
 # 매 build 마다 ~16k chunk 를 전부 재임베딩하면 한국망 Gemini 호출이 느리고
 # (transient 429 한 번에 전체가 죽고) 비용이 든다. chunk_text 는 review.md
-# 에서 deterministic 하게 나오므로, sha256(model + text) → 양자화된 emb(b64)
+# 에서 deterministic 하게 나오므로, sha256(model + "\\n" + text) → 양자화된 emb(b64)
 # 로 캐싱한다. 양자화된 벡터(=index 에 그대로 들어가는 값)를 저장하므로
 # 재양자화로 인한 drift 가 없다 (int8 quantization 과 100% 일관).
 EMBED_CACHE_NAME = "_embedding_cache.json"
 # 임베딩 바이너리 사이드카 — chunk 순서대로 dim 바이트씩 (JSON 의 chunks 와 1:1)
-EMB_BIN_NAME = "_search_index_emb.bin"
+EMB_BIN_NAME = EMBEDDING_SIDECAR_FILE
 
 
 def _chunk_sha(model: str, text: str) -> str:
@@ -439,13 +449,15 @@ def load_embedding_cache(topic_dir: Path, model: str) -> dict:
     if prev_path.exists():
         try:
             prev = json.loads(prev_path.read_text(encoding="utf-8"))
-            prev_model = prev.get("model", model)
-            if prev_model == model:
+            validation = validate_index_metadata(prev, model=model)
+            if not validation.ok:
+                print(f"      WARN: {format_validation_errors('prior index', validation)}")
+            else:
                 prev_chunks = prev.get("chunks", [])
                 # 신형 포맷: emb 는 바이너리 사이드카(emb_file)에 chunk 순서대로
                 # dim 바이트씩 — 거기서 잘라 b64 로 복원해 캐시에 넣는다.
                 bin_blob = None
-                prev_dim = int(prev.get("dim") or 0)
+                prev_dim = metadata_dimension(prev)
                 if prev.get("emb_file") and prev_dim > 0:
                     bin_path = topic_dir / prev["emb_file"]
                     if (bin_path.exists()
@@ -462,6 +474,12 @@ def load_embedding_cache(topic_dir: Path, model: str) -> dict:
                         ).decode("ascii")
                     if not emb:
                         continue
+                    try:
+                        raw = base64.b64decode(emb)
+                    except Exception:
+                        continue
+                    if len(raw) != EMBEDDING_DIMENSION:
+                        continue
                     sha = ch.get("text_sha") or _chunk_sha(model, txt)
                     cache[sha] = emb
         except Exception as e:
@@ -472,9 +490,17 @@ def load_embedding_cache(topic_dir: Path, model: str) -> dict:
     if side_path.exists():
         try:
             side = json.loads(side_path.read_text(encoding="utf-8"))
-            if side.get("model") == model:
+            validation = validate_cache_metadata(side, model=model)
+            if not validation.ok:
+                print(f"      WARN: {format_validation_errors('embedding cache', validation)}")
+            else:
                 for sha, emb in (side.get("emb") or {}).items():
-                    cache[sha] = emb
+                    try:
+                        raw = base64.b64decode(emb)
+                    except Exception:
+                        continue
+                    if len(raw) == EMBEDDING_DIMENSION:
+                        cache[sha] = emb
         except Exception as e:
             print(f"      WARN: could not read embedding cache ({e})")
 
@@ -485,7 +511,7 @@ def save_embedding_cache(topic_dir: Path, model: str, sha_to_emb: dict) -> None:
     """Persist the full {text_sha: emb_b64} map to the sidecar (atomic)."""
     side_path = topic_dir / EMBED_CACHE_NAME
     tmp = side_path.with_suffix(side_path.suffix + ".tmp")
-    payload = {"model": model, "count": len(sha_to_emb), "emb": sha_to_emb}
+    payload = {**current_cache_metadata(model), "count": len(sha_to_emb), "emb": sha_to_emb}
     tmp.write_text(
         json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
         encoding="utf-8",
@@ -800,9 +826,9 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool,
     if dry_run:
         print("[3/4] --dry-run: zero-vectors for cache misses")
         for c in miss_chunks:
-            qbytes = quantize_int8_l2([0.0] * 768)
+            qbytes = quantize_int8_l2([0.0] * EMBEDDING_DIMENSION)
             sha_to_emb[c["text_sha"]] = base64.b64encode(qbytes).decode("ascii")
-        dim = 768
+        dim = EMBEDDING_DIMENSION
     elif not miss_chunks:
         print("[3/4] All chunks served from cache — no API calls")
         dim = 0  # filled in below from any cached vector
@@ -816,8 +842,8 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool,
 
         api_key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or _load_gemini_key_from_config()
         if not api_key:
-            print("ERROR: GOOGLE_API_KEY not set (env var or config.json).")
-            print("       Set GOOGLE_API_KEY/GEMINI_API_KEY or run 'python pipeline/setup.py' to save it into config.json.")
+            print("ERROR: GOOGLE_API_KEY or GEMINI_API_KEY is not set.")
+            print("       Add it to .env or the process environment; legacy config.json keys are read only for compatibility.")
             sys.exit(1)
 
         client = genai.Client(api_key=api_key)
@@ -861,6 +887,9 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool,
         _sample = sha_to_emb.get(pending_chunks[0]["text_sha"])
         if _sample:
             dim = len(base64.b64decode(_sample))
+    if dim != EMBEDDING_DIMENSION:
+        print(f"ERROR: embedding dimension {dim} != {EMBEDDING_DIMENSION} — aborting")
+        sys.exit(4)
     print(f"      dim={dim}")
 
     # --- Assemble JSON (every chunk's emb must now be present) ---
@@ -901,11 +930,8 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool,
     )
 
     out = {
-        "model": model,
-        "dim": dim,
-        "quant": "int8-l2norm",
+        **current_index_metadata(model),
         "count": len(out_chunks),
-        "emb_file": EMB_BIN_NAME,
         "papers": papers_meta,
         "chunks": out_chunks,
     }

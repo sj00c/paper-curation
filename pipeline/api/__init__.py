@@ -9,11 +9,11 @@ Public functions are re-exported here so the typical usage is::
 
     from pipeline.api import search, register, classify, timeline, deploy
 
-    search(topic="ai4s", days=7)
-    register(topic="ai4s")
-    classify(topic="ai4s")
-    timeline(topic="ai4s")
-    deploy(topic="ai4s", push=True)
+    search(topic="my-topic", days=7)
+    register(topic="my-topic")
+    classify(topic="my-topic")
+    timeline(topic="my-topic")
+    deploy(topic="my-topic", push=True)
 
 Module-level imports are lazy (done inside each wrapper) so that
 importing :mod:`pipeline.api` is cheap and side-effect free.
@@ -34,11 +34,17 @@ if str(_PIPELINE) not in sys.path:
     sys.path.insert(0, str(_PIPELINE))
 
 
+def _require_topic(topic):
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("topic must be a non-empty string")
+    return topic.strip()
+
+
 # --------------------------------------------------------------------------- #
 # Search / Zotero registration / sync
 # --------------------------------------------------------------------------- #
 
-def search(topic, *, days=7, max_papers=20, threshold=0.5,
+def search(topic, *, days=7, max_papers=100, threshold=0.3,
            skip_arxiv=False, since=None, until=None):
     """Run multi-source paper search (arXiv + Semantic Scholar + OpenAlex).
 
@@ -46,7 +52,7 @@ def search(topic, *, days=7, max_papers=20, threshold=0.5,
     ``docs/{topic}/_search_results.json``.
     """
     from search_papers import _run_search
-    return _run_search(topic=topic, days=days, max_papers=max_papers,
+    return _run_search(topic=_require_topic(topic), days=days, max_papers=max_papers,
                        threshold=threshold, skip_arxiv=skip_arxiv,
                        since=since, until=until)
 
@@ -54,31 +60,31 @@ def search(topic, *, days=7, max_papers=20, threshold=0.5,
 def register(topic, *, input_path=None, dry_run=False):
     """Register search results to Zotero + download PDFs."""
     from register_zotero import _run_register
-    return _run_register(topic=topic, input_path=input_path, dry_run=dry_run)
+    return _run_register(topic=_require_topic(topic), input_path=input_path, dry_run=dry_run)
 
 
 def register_fix_pdfs(topic, *, dry_run=False):
     """Retry PDF downloads for items in the Zotero collection missing PDFs."""
     from register_zotero import _run_fix_pdfs
-    return _run_fix_pdfs(topic=topic, dry_run=dry_run)
+    return _run_fix_pdfs(topic=_require_topic(topic), dry_run=dry_run)
 
 
 def register_fix_metadata(topic, *, dry_run=False, limit=None):
     """Backfill thin metadata on existing Zotero items."""
     from register_zotero import _run_fix_metadata
-    return _run_fix_metadata(topic=topic, dry_run=dry_run, limit=limit)
+    return _run_fix_metadata(topic=_require_topic(topic), dry_run=dry_run, limit=limit)
 
 
 def sync(topic, *, dry_run=False):
     """Sync Zotero deletions/renames back into _papers_index.json."""
     from sync_zotero import _run_sync
-    return _run_sync(topic=topic, dry_run=dry_run)
+    return _run_sync(topic=_require_topic(topic), dry_run=dry_run)
 
 
 def dedup_zotero(topic, *, execute=False):
     """Detect (and optionally remove) Zotero duplicates."""
     from dedup_zotero import _run_dedup
-    return _run_dedup(topic=topic, execute=execute)
+    return _run_dedup(topic=_require_topic(topic), execute=execute)
 
 
 # --------------------------------------------------------------------------- #
@@ -112,7 +118,7 @@ def curate(topic, *, mode="curate", concurrency=16, slugs="",
     This is the programmatic equivalent of ``run_update_force.py``.
     """
     from run_update_force import _run_curate
-    return _run_curate(topic=topic, mode=mode, concurrency=concurrency,
+    return _run_curate(topic=_require_topic(topic), mode=mode, concurrency=concurrency,
                        slugs=slugs, strict_pdf=strict_pdf, timeline=timeline,
                        also_reclassify=also_reclassify,
                        skip_dedup=skip_dedup, dedup_execute=dedup_execute,
@@ -123,17 +129,17 @@ def curate(topic, *, mode="curate", concurrency=16, slugs="",
 # Master index / topic modelling / classification
 # --------------------------------------------------------------------------- #
 
-def build_papers_index(topic="ai4s"):
+def build_papers_index(topic):
     """Rebuild docs/papers/_papers_index.json from review.md files."""
     from build_papers_index import _run_build_index
-    return _run_build_index(topic=topic)
+    return _run_build_index(topic=_require_topic(topic))
 
 
 def topic_model(topic, *, skip_connections=False, skip_classification=False,
                 min_cats=8, max_cats=12):
     """Run UMAP + HDBSCAN clustering and persist the bundle."""
     from topic_modeling import _run_topic_model
-    return _run_topic_model(topic=topic, skip_connections=skip_connections,
+    return _run_topic_model(topic=_require_topic(topic), skip_connections=skip_connections,
                             skip_classification=skip_classification,
                             min_cats=min_cats, max_cats=max_cats)
 
@@ -144,7 +150,7 @@ def classify(topic, *, slugs=None, dry_run=False):
     `slugs` may be a list of slug-prefixes or a comma-separated string.
     """
     from classify_papers import _run_classify
-    return _run_classify(topic=topic, slugs=slugs, dry_run=dry_run)
+    return _run_classify(topic=_require_topic(topic), slugs=slugs, dry_run=dry_run)
 
 
 # --------------------------------------------------------------------------- #
@@ -157,14 +163,14 @@ def category_summary(topic, *, regen_ko=False, categories=None):
     `categories` is an optional list of category names to selectively regenerate.
     """
     from build_category_summaries import _run_category_summary
-    return _run_category_summary(topic=topic, regen_ko=regen_ko,
+    return _run_category_summary(topic=_require_topic(topic), regen_ko=regen_ko,
                                  categories=categories)
 
 
 def insights(topic, *, insights_only=False, connections_only=False, categories=None):
     """Extract cross-category insights + paper_connections."""
     from extract_insights import _run_insights
-    return _run_insights(topic=topic, insights_only=insights_only,
+    return _run_insights(topic=_require_topic(topic), insights_only=insights_only,
                          connections_only=connections_only,
                          categories=categories)
 
@@ -174,7 +180,7 @@ def timeline(topic, *, main_only=False, category_only=False,
              categories=None):
     """Generate timeline narrative + PaperBanana images."""
     from generate_timelines import _run_timeline
-    return _run_timeline(topic=topic, main_only=main_only,
+    return _run_timeline(topic=_require_topic(topic), main_only=main_only,
                          category_only=category_only,
                          narrative_only=narrative_only,
                          images_only=images_only, candidates=candidates,
@@ -188,21 +194,29 @@ def timeline(topic, *, main_only=False, category_only=False,
 def network(topic):
     """Build D3.js force-directed network HTML for a topic."""
     from generate_network import _run_network
-    return _run_network(topic=topic)
+    return _run_network(topic=_require_topic(topic))
 
 
-def search_index(topic, *, model="text-embedding-3-small", limit=None,
-                 dry_run=False):
-    """Build Deep Research RAG index (section-aware chunks + int8 embeddings)."""
+def search_index(topic, *, model=None, limit=None, dry_run=False):
+    """Explicit build boundary for Deep Research RAG index creation."""
+    try:
+        from pipeline.lib.search_index_metadata import EMBEDDING_MODEL, REBUILD_GUIDANCE
+    except ModuleNotFoundError:
+        from lib.search_index_metadata import EMBEDDING_MODEL, REBUILD_GUIDANCE
+    selected_model = model or EMBEDDING_MODEL
+    if selected_model != EMBEDDING_MODEL:
+        raise ValueError(
+            f"search_index model must be {EMBEDDING_MODEL!r}, got {selected_model!r}. {REBUILD_GUIDANCE}"
+        )
     from build_search_index import _run_search_index
-    return _run_search_index(topic=topic, model=model, limit=limit,
+    return _run_search_index(topic=_require_topic(topic), model=selected_model, limit=limit,
                              dry_run=dry_run)
 
 
 def topic_index(topic):
     """Render docs/{topic}/index.html (cards + Deep Research UI)."""
     from build_topic_index import _run_topic_index
-    return _run_topic_index(topic=topic)
+    return _run_topic_index(topic=_require_topic(topic))
 
 
 def review_to_html(*, slug=None, slugs=None, all_papers=False):
@@ -211,10 +225,10 @@ def review_to_html(*, slug=None, slugs=None, all_papers=False):
     return _run_review_to_html(slug=slug, slugs=slugs, all_papers=all_papers)
 
 
-def deploy(topic=None, *, push=False, quality=90, dry_run=False):
+def deploy(topic, *, push=False, quality=90, dry_run=False):
     """PNG→WebP + Cloudflare wrangler deploy + gh-pages stub sync."""
     from prepare_deploy import _run_deploy
-    return _run_deploy(topic=topic, push=push, quality=quality, dry_run=dry_run)
+    return _run_deploy(topic=_require_topic(topic), push=push, quality=quality, dry_run=dry_run)
 
 
 # --------------------------------------------------------------------------- #
@@ -224,19 +238,19 @@ def deploy(topic=None, *, push=False, quality=90, dry_run=False):
 def validate(topic, *, strict=False, fix=False):
     """Run the validation gate (figure refs, classification schema, etc.)."""
     from validate_papers import _run_validate
-    return _run_validate(topic=topic, strict=strict, fix=fix)
+    return _run_validate(topic=_require_topic(topic), strict=strict, fix=fix)
 
 
 def audit_matching(topic):
     """PDF↔review mismatch audit."""
     from audit_matching import _run_audit
-    return _run_audit(topic=topic)
+    return _run_audit(topic=_require_topic(topic))
 
 
 def fix_matching(topic, *, slugs=None, execute=False):
     """Recovery: delete artifacts for audit-flagged slugs so they get re-reviewed."""
     from fix_matching import _run_fix_matching
-    return _run_fix_matching(topic=topic, slugs=slugs, execute=execute)
+    return _run_fix_matching(topic=_require_topic(topic), slugs=slugs, execute=execute)
 
 
 def cleanup(*, execute=False, purge_text=False):

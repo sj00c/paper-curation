@@ -18,13 +18,14 @@ Step 3 (기본):             Step 1 → Step 2 순차 실행
   - band width는 논문 편수를 정성적으로 반영 (정량 비례는 아님)
 
 Usage:
-  PYTHONUTF8=1 python generate_timelines.py --topic ai4s
-  PYTHONUTF8=1 python generate_timelines.py --topic ai4s --candidates 10
-  PYTHONUTF8=1 python generate_timelines.py --topic ai4s --narrative-only
-  PYTHONUTF8=1 python generate_timelines.py --topic ai4s --images-only
-  PYTHONUTF8=1 python generate_timelines.py --topic ai4s --main-only
-  PYTHONUTF8=1 python generate_timelines.py --topic ai4s --category-only
+  PYTHONUTF8=1 python generate_timelines.py --topic your-topic
+  PYTHONUTF8=1 python generate_timelines.py --topic your-topic --candidates 10
+  PYTHONUTF8=1 python generate_timelines.py --topic your-topic --narrative-only
+  PYTHONUTF8=1 python generate_timelines.py --topic your-topic --images-only
+  PYTHONUTF8=1 python generate_timelines.py --topic your-topic --main-only
+  PYTHONUTF8=1 python generate_timelines.py --topic your-topic --category-only
 """
+
 
 import argparse
 import json
@@ -48,6 +49,12 @@ PAPERS_DIR = str(_PAPERS_DIR)
 def log(msg):
     ts = datetime.now().strftime("%H:%M:%S")
     print(f"[{ts}] {msg}", flush=True)
+
+
+def _require_topic(topic):
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("topic must be a non-empty string")
+    return topic.strip()
 
 
 def category_input_hash(papers):
@@ -850,14 +857,15 @@ def deploy_candidate(results, deploy_path, caption=""):
 # Main
 # ═══════════════════════════════════════════
 
-def _run_timeline(topic="ai4s", *, candidates=3, narrative_only=False,
-                   images_only=False, main_only=False, category_only=False,
-                   categories=None, mode="all", force_narrative=False):
+def _run_timeline(topic, *, candidates=3, narrative_only=False,
+                  images_only=False, main_only=False, category_only=False,
+                  categories=None, mode="all", force_narrative=False):
     """Programmatic entrypoint for generate_timelines.
 
     `mode` is reserved for the api facade (legacy compatibility); the
     actual behavior is controlled by the boolean flags.
     """
+    topic = _require_topic(topic)
     # --force-narrative 는 env 로 흘려보내 narrative 입력 해시 캐시를 우회한다.
     if force_narrative:
         os.environ["TIMELINE_FORCE_NARRATIVE"] = "1"
@@ -1092,7 +1100,7 @@ def _run_timeline(topic="ai4s", *, candidates=3, narrative_only=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Generate timelines (bottom-up, 3-step)")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Configured topic alias")
     parser.add_argument("--candidates", type=int, default=3)
     parser.add_argument("--narrative-only", action="store_true", help="Step 1 only: generate narratives")
     parser.add_argument("--images-only", action="store_true", help="Step 2 only: generate images from existing narratives")

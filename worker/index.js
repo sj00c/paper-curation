@@ -27,11 +27,22 @@ const MAX_RECIPIENTS = 10;
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-// Deep Research 쿼리 임베딩 프록시 — index 와 동일한 gemini-embedding-001 을
-// RETRIEVAL_QUERY task 로 호출한다. 768D 출력은 비정규화 상태로 오므로
-// (output_dimensionality != 3072 이면 항상) 서버에서 L2 정규화한 뒤 돌려준다.
+// Deep Research 쿼리 임베딩 프록시 — document index metadata must match the
+// Python search_index_metadata.py contract, while the query call deliberately
+// uses RETRIEVAL_QUERY for Gemini's asymmetric retrieval embedding.
+const INDEX_SCHEMA_VERSION = 1;
+const EMBED_PROVIDER = "google";
 const EMBED_MODEL = "gemini-embedding-001";
+const INDEX_TASK_TYPE = "RETRIEVAL_DOCUMENT";
+const QUERY_TASK_TYPE = "RETRIEVAL_QUERY";
 const EMBED_DIM = 768;
+const EMBED_QUANT = "int8-l2norm";
+const CHUNK_HASH_BASIS = "sha256(model + '\\n' + text)";
+const SIDECAR_FORMAT_VERSION = 1;
+const CACHE_FORMAT_VERSION = 1;
+const PROVENANCE_STATUS = "local-current";
+const EMBED_SIDECAR_FILE = "_search_index_emb.bin";
+const REBUILD_GUIDANCE = "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically.";
 const MAX_QUERY_CHARS = 2000;
 
 function bytesToBase64(bytes) {
@@ -135,6 +146,131 @@ function jsonResponse(obj, status = 200) {
     headers: { "Content-Type": "application/json" },
   });
 }
+function metadataError(key, expected, actual) {
+  return `${key} expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}. ${REBUILD_GUIDANCE}`;
+}
+
+function hasAnyKey(payload, keys) {
+  return keys.some(k => Object.prototype.hasOwnProperty.call(payload || {}, k));
+}
+
+function contractShapeError(payload, expected) {
+  if (!payload || typeof payload !== "object") return "";
+  let canonicalComplete = true;
+  for (const key of Object.keys(expected)) {
+    if (key === "emb_file") continue;
+    if (!Object.prototype.hasOwnProperty.call(payload, key)) canonicalComplete = false;
+  }
+  const hasCanonicalOnly = hasAnyKey(payload, CANONICAL_ONLY_CONTRACT_KEYS);
+  const hasLegacyOnly = hasAnyKey(payload, LEGACY_ONLY_CONTRACT_KEYS);
+  const hasShared = hasAnyKey(payload, VERSIONED_SHARED_CONTRACT_KEYS);
+  const hasShortenedVersioned = hasAnyKey(payload, SHORTENED_VERSIONED_CONTRACT_KEYS);
+  if (hasShortenedVersioned) {
+    return `shortened versioned metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`;
+  }
+  if (hasCanonicalOnly && hasLegacyOnly) {
+    return `mixed canonical and legacy metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`;
+  }
+  if (hasCanonicalOnly && !canonicalComplete) {
+    return `partial canonical metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`;
+  }
+  if (hasShared && !canonicalComplete) {
+    return `partial versioned metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`;
+  }
+  return "";
+}
+
+const CANONICAL_CONTRACT_KEYS = [
+  "index_schema_version", "embedding_provider", "embedding_model",
+  "embedding_task_type", "embedding_dimension", "embedding_quantization",
+  "chunk_hash_basis", "sidecar_format_version", "cache_format_version",
+  "source_provenance_approval_status",
+];
+const CANONICAL_ONLY_CONTRACT_KEYS = [
+  "index_schema_version", "embedding_provider", "embedding_model",
+  "embedding_task_type", "embedding_dimension", "embedding_quantization",
+  "source_provenance_approval_status",
+];
+const LEGACY_CONTRACT_KEY_MAP = {
+  model: "embedding_model",
+  dim: "embedding_dimension",
+  quant: "embedding_quantization",
+};
+const LEGACY_ONLY_CONTRACT_KEYS = [
+  "model", "dim", "quant",
+];
+const SHORTENED_VERSIONED_CONTRACT_KEYS = [
+  "schema_version", "provider", "task_type", "provenance_status",
+];
+const VERSIONED_SHARED_CONTRACT_KEYS = [
+  "chunk_hash_basis", "sidecar_format_version", "cache_format_version",
+];
+
+
+function expectedIndexMetadata() {
+  return {
+    index_schema_version: INDEX_SCHEMA_VERSION,
+    embedding_provider: EMBED_PROVIDER,
+    embedding_model: EMBED_MODEL,
+    embedding_task_type: INDEX_TASK_TYPE,
+    embedding_dimension: EMBED_DIM,
+    embedding_quantization: EMBED_QUANT,
+    chunk_hash_basis: CHUNK_HASH_BASIS,
+    sidecar_format_version: SIDECAR_FORMAT_VERSION,
+    cache_format_version: CACHE_FORMAT_VERSION,
+    source_provenance_approval_status: PROVENANCE_STATUS,
+    emb_file: EMBED_SIDECAR_FILE,
+  };
+}
+
+function validateKnownSafeLegacyIndex(payload) {
+  const errors = [];
+  if (!payload || typeof payload !== "object") {
+    return { ok: false, errors: [`index metadata missing. ${REBUILD_GUIDANCE}`] };
+  }
+  const expected = expectedIndexMetadata();
+  const shapeError = contractShapeError(payload, expected);
+  if (shapeError) return { ok: false, errors: [shapeError] };
+  const hasCanonical = hasAnyKey(payload, CANONICAL_ONLY_CONTRACT_KEYS);
+  const hasLegacy = hasAnyKey(payload, LEGACY_ONLY_CONTRACT_KEYS);
+  const hasShared = hasAnyKey(payload, VERSIONED_SHARED_CONTRACT_KEYS);
+  const hasShortenedVersioned = hasAnyKey(payload, SHORTENED_VERSIONED_CONTRACT_KEYS);
+  if (hasShortenedVersioned) {
+    return { ok: false, errors: [`shortened versioned metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`] };
+  }
+  if (hasCanonical && hasLegacy) {
+    return { ok: false, errors: [`mixed canonical and legacy metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`] };
+  }
+  if (hasCanonical) {
+    return { ok: false, errors: [`partial canonical metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`] };
+  }
+  if (hasShared) {
+    return { ok: false, errors: [`partial versioned metadata is not known-safe legacy. ${REBUILD_GUIDANCE}`] };
+  }
+  if (payload.model !== EMBED_MODEL) errors.push(metadataError("model", EMBED_MODEL, payload.model));
+  if (payload.dim !== EMBED_DIM) errors.push(metadataError("dim", EMBED_DIM, payload.dim));
+  if (payload.quant !== EMBED_QUANT) errors.push(metadataError("quant", EMBED_QUANT, payload.quant));
+  if (payload.emb_file != null && payload.emb_file !== EMBED_SIDECAR_FILE) {
+    errors.push(metadataError("emb_file", EMBED_SIDECAR_FILE, payload.emb_file));
+  }
+  return { ok: errors.length === 0, errors };
+}
+
+function validateIndexMetadata(payload) {
+  const expected = expectedIndexMetadata();
+  const shapeError = contractShapeError(payload, expected);
+  if (shapeError) return { ok: false, errors: [shapeError] };
+  const errors = [];
+  for (const key of Object.keys(expected)) {
+    if (!payload || payload[key] !== expected[key]) {
+      errors.push(metadataError(key, expected[key], payload && payload[key]));
+    }
+  }
+  if (!errors.length) return { ok: true, errors: [] };
+  const legacy = validateKnownSafeLegacyIndex(payload);
+  if (legacy.ok) return legacy;
+  return { ok: false, errors };
+}
 
 // gemini-embedding-001 은 outputDimensionality != 3072 일 때 비정규화 벡터를
 // 돌려준다 (공식 가이드 명시). int8 양자화 전 단계와 동일하게 코사인 검색을
@@ -170,13 +306,20 @@ async function handleEmbed(request, env) {
     return jsonResponse(
       { error: `Query too long (max ${MAX_QUERY_CHARS} chars)` }, 413);
   }
+  const meta = validateIndexMetadata(body && body.index_metadata);
+  if (!meta.ok) {
+    return jsonResponse(
+      { error: "Incompatible document index metadata", detail: meta.errors.join("; ") },
+      409);
+  }
+
 
   const apiUrl =
     `https://generativelanguage.googleapis.com/v1beta/models/${EMBED_MODEL}:embedContent`;
   const payload = {
     model: `models/${EMBED_MODEL}`,
     content: { parts: [{ text }] },
-    taskType: "RETRIEVAL_QUERY",
+    taskType: QUERY_TASK_TYPE,
     outputDimensionality: EMBED_DIM,
   };
 
@@ -215,7 +358,13 @@ async function handleEmbed(request, env) {
   }
 
   const embedding = l2normalize(values);
-  return jsonResponse({ embedding, model: EMBED_MODEL, dim: EMBED_DIM }, 200);
+  return jsonResponse({
+    embedding,
+    embedding_model: EMBED_MODEL,
+    embedding_provider: EMBED_PROVIDER,
+    embedding_task_type: QUERY_TASK_TYPE,
+    embedding_dimension: EMBED_DIM,
+  }, 200);
 }
 
 // Local pages (localhost / file://) call these APIs cross-origin — without

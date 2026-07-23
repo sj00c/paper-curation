@@ -4,8 +4,7 @@ papers/_papers_index.json 재생성.
 모든 papers/{slug}/review.md를 파싱하여 마스터 인덱스를 생성한다.
 
 Usage:
-  PYTHONUTF8=1 python build_papers_index.py
-  PYTHONUTF8=1 python build_papers_index.py --topic ai4s  # topics 필드에 topic 할당
+  PYTHONUTF8=1 python build_papers_index.py --topic <topic>  # topics 필드에 topic 할당
 """
 
 import argparse
@@ -150,7 +149,7 @@ def parse_review(slug):
     }
 
 
-def _run_build_index(topic="ai4s"):
+def _run_build_index(topic):
     """Programmatic entrypoint. Returns the generated index list."""
     index_path = os.path.join(PAPERS_DIR, "_papers_index.json")
     existing = {}
@@ -218,7 +217,7 @@ def _run_build_index(topic="ai4s"):
 
 def main():
     parser = argparse.ArgumentParser(description="Rebuild _papers_index.json")
-    parser.add_argument("--topic", default="ai4s", help="Topic to assign to papers")
+    parser.add_argument("--topic", required=True, help="Topic to assign to papers")
     args = parser.parse_args()
     _run_build_index(topic=args.topic)
 

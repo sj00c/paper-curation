@@ -23,41 +23,48 @@ from pipeline.api import (
 
 | Mode | Default `--source` | Default `--images` | Purpose |
 |------|--------------------|---------------------|---------|
-| `curate` | `zotero` | `skip` | Pick up new papers; reuse existing reviews |
-| `rebuild` | `zotero` | `all` | Regenerate everything (destructive — review.md/figures wiped) |
-| `reclassify` | (none) | `changed` | Re-run topic_modeling + classify only |
-| `retime` | (none) | `all` | Regenerate timeline narrative + images |
-| `deploy` | (none) | `skip` | wrangler deploy + gh-pages sync + master push |
+| `curate` | `zotero` | `changed` | Pick up new papers; reuse existing reviews. Production runs may auto-publish after successful post-processing when Cloudflare credentials/config exist and deploy suppression is absent. |
+| `smoke` | `zotero` | forced `skip` | Scratch-only bounded Zotero/PDF/review smoke; no global post-processing, no deploy. |
+| `rebuild` | `zotero` | `all` | Regenerate everything (destructive — review.md/figures wiped). Production runs may auto-publish unless suppressed. |
+| `reclassify` | (none) | `changed` | Re-run topic_modeling + classify. Production runs may auto-publish unless suppressed. |
+| `retime` | (none) | `all` | Regenerate timeline narrative + images. Production runs may auto-publish unless suppressed. |
+| `deploy` | (none) | `skip` | Explicit wrangler deploy + gh-pages sync + master push |
 | `audit` | — | — | Standalone: PDF↔review mismatch audit |
 | `fix-matching` | — | — | Standalone: delete artifacts for audit-flagged slugs |
 | `dedup` | — | — | Standalone: Zotero collection dedup |
 | `validate` | — | — | Standalone: post-build validation gate |
 
-`--source web` adds search + register + sync as a preflight to `curate`.
+`--source web` adds search + register + sync as a preflight to `curate`. `--max-papers` limits only web search/register candidates; it is not a Zotero review, smoke, or post-processing cap.
+
+Setup/auth reminders: `my_topic` in examples is the topic alias printed by setup and stored in `config.json`; setup may store non-Claude local config but never persists Claude OAuth tokens. Fresh checkouts include built-in originality defaults, so no external trigger JSON is required.
 
 ## Common Commands
 
 ```bash
-# Weekly run — web search + Zotero register + new-paper review
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7
+# Weekly production run — web search + Zotero register + new-paper review
+# May auto-publish if Cloudflare credentials/config exist and deploy suppression is absent.
+PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7 --max-papers 20
 
-# Local-only update (Zotero already has new papers)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
+# Local verification / first full run (forced no-deploy)
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --no-deploy
 
-# Force-rebuild specific slugs (recovery)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf
+# Scratch-only bounded smoke (forced no-deploy)
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
 
-# Reclassify only (no LLM, HDBSCAN approximate_predict)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
+# Force-rebuild specific slugs (repair-only recovery, forced no-deploy)
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf --no-deploy --yes
 
-# Timeline narrative + images
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
+# Reclassify only (no LLM, HDBSCAN approximate_predict; forced no-deploy)
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --no-deploy
 
-# Deploy
+# Timeline narrative + images (forced no-deploy)
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all --no-deploy
+
+# Explicit deploy step
 PYTHONUTF8=1 python pipeline/run_full.py --topic humanoid --mode deploy
 
-# Dry-run (no execution)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --dry-run
+# Dry-run (no execution, deploy suppression explicit for verification)
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --dry-run --no-deploy
 ```
 
 ## Safety flags
@@ -65,6 +72,8 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web
 - `--strict-pdf` — block fuzzy PDF matching; ID (Zotero/DOI/arXiv) only
 - `--slugs A,B,C` — restrict to specific slug prefixes
 - `--dry-run` — print plan, no execution
+- `--no-deploy` — suppress any downstream deploy/auto-publish path for this run
+- `PAPER_CURATION_NO_DEPLOY=1` — environment-level deploy suppression, used by onboarding, smoke, repair-only, tests, and verification
 - `--skip-dedup` / `--dedup-execute` — control Zotero dedup preflight
 - `--yes` — bypass `--mode rebuild` confirmation gate
 
@@ -131,7 +140,7 @@ brew install --cask temurin   # Java for opendataloader-pdf
   #     "model": "exaone-4.0:latest",
   #     "num_ctx": 8192, "retries": 2, "batch_size": 8
   #   }
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --local-fallback
+  PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --local-fallback --no-deploy
   ```
 
   Ollama is auto-detected (native API: per-request `num_ctx`, `think:false`);
@@ -202,9 +211,11 @@ deferring borderline cases to the LLM.
 
 로컬 사용이 기본(Core)입니다. 외부 공유가 필요하면 **3-계층 split-host** 구조로 자동 배포됩니다:
 
+> **Production compatibility:** `--mode deploy` is the explicit deploy command, but it is not the only publishing path. Normal successful production `curate`/`rebuild`/`reclassify`/`retime` may auto-publish after global post-processing when Cloudflare credentials/config are present. Use `--no-deploy` or `PAPER_CURATION_NO_DEPLOY=1` for onboarding, smoke, repair-only, tests, verification, and local-only post-processing.
+
 | 계층 | 역할 | 내용 |
 |------|------|------|
-| **Cloudflare Workers (Static Assets + Function)** | 사용자 콘텐츠 서빙 + `/api/audio-email` 라우트 | `docs/` 전체 업로드 (`docs/.assetsignore`로 로컬 전용 토픽 제외) + `worker/index.js` (Audio Overview 이메일 발송 핸들러) |
+| **Cloudflare Workers (Static Assets + Function)** | 사용자 콘텐츠 서빙 + `/api/embed` + `/api/audio-email` | `docs/` 전체 업로드 (`docs/.assetsignore`로 로컬 전용 토픽 제외) + `worker/index.js`; deployed Deep Research embedding에는 `GOOGLE_API_KEY`, Audio Overview 이메일에는 `RESEND_API_KEY` secret 필요 |
 | **GitHub `gh-pages` 브랜치** | 진입 URL → Cloudflare 리다이렉트 | 토픽별 리다이렉트 스텁 (1KB 미만), `jehyunlee.github.io/paper-curation/{topic}/` → 운영자가 설정한 Cloudflare URL |
 | **GitHub `master` 브랜치** | 코드·설정·README | 대용량 `docs/papers/`, `docs/{topic}/` 콘텐츠는 `.gitignore`로 제외 |
 
@@ -221,11 +232,7 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode deploy
 - Cloudflare 200 OK 검증 (최대 5분 폴링)
 - master에는 **코드·설정 변경만** commit + push (대용량 콘텐츠는 `.gitignore`)
 
-환경변수 발급: Cloudflare Dashboard → My Profile → API Tokens → "Edit Cloudflare Workers" 템플릿.
-```cmd
-setx CF_API_TOKEN "..."
-setx CLOUDFLARE_ACCOUNT_ID "..."
-```
+환경변수 발급: Cloudflare Dashboard → My Profile → API Tokens → "Edit Cloudflare Workers" 템플릿. 토큰과 Account ID는 명령행에 쓰지 말고 OS 환경변수 UI, CI secret store, 또는 편집기로 연 로컬 비밀 설정에 등록하세요.
 
 **Custom domain (권장)** — `wrangler.toml` 의 `[[routes]]` 블록에 `pattern = "your-subdomain.your-domain.tld"` + `custom_domain = true` + `zone_name = "your-domain.tld"` 를 박으면 `wrangler deploy` 가 Cloudflare DNS · SSL · 라우팅까지 자동 설정합니다. 동시에 `prepare_deploy.py` 의 `CF_BASE_URL` 도 같은 값으로 갱신해야 gh-pages 스텁이 새 도메인을 가리킵니다. workers.dev 기본 도메인으로도 동작은 하지만 메일 도메인 일관성을 위해 custom domain 권장.
 
@@ -250,16 +257,16 @@ npx wrangler secret put AUDIO_REPLY_TO    # 답장이 갈 운영자 메일, 예:
 
 ```bash
 # Audit PDF↔review mismatches
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode audit
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode audit --no-deploy
 
 # Delete artifacts for high-confidence mismatches
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode fix-matching --yes
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode fix-matching --no-deploy --yes
 
 # Re-review cleaned slugs
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs <list> --strict-pdf
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs <list> --strict-pdf --no-deploy
 
 # Validate
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode validate --yes  # --yes → --strict
+PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode validate --no-deploy --yes  # --yes → --strict
 ```
 
 ## Topic configuration

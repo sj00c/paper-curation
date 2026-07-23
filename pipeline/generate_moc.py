@@ -5,8 +5,7 @@ _insights.json → MOC_Insights.md (교차 트렌드, 갭, 정책 시사점)
 _papers_index.json → MOC_Categories.md (카테고리별 논문 wikilink 목록)
 
 Usage:
-  PYTHONUTF8=1 python pipeline/generate_moc.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/generate_moc.py --topic scisci
+  PYTHONUTF8=1 python pipeline/generate_moc.py --topic your-topic
 """
 
 import argparse
@@ -184,7 +183,7 @@ def _num_to_slug(num):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate Obsidian MOC files")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Configured topic alias")
     args = parser.parse_args()
 
     topic = args.topic

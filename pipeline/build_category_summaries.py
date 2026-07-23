@@ -5,8 +5,8 @@ _category_summaries.json 생성.
 classify_papers.py 실행 후에 실행해야 한다 (primary_category 필요).
 
 Usage:
-  PYTHONUTF8=1 python build_category_summaries.py --topic ai4s
-  PYTHONUTF8=1 python build_category_summaries.py --topic ai4s --regen-ko  # 한글 설명만 재생성
+  PYTHONUTF8=1 python build_category_summaries.py --topic <topic>
+  PYTHONUTF8=1 python build_category_summaries.py --topic <topic> --regen-ko  # 한글 설명만 재생성
 """
 
 import argparse
@@ -95,7 +95,7 @@ def _call_with_invariant_gate(prompt, model, max_tokens, label, client,
     return last_text, last_issue
 
 
-def generate_description_ko(cat_name, papers, sub_themes, client, topic="ai4s"):
+def generate_description_ko(cat_name, papers, sub_themes, client, topic):
     """카테고리 overview 한글 설명 생성 ([NNN] 마커).
 
     invariant gate (length, korean ratio, [NNN] residue, terminal punct)
@@ -175,7 +175,7 @@ def validate_description(text, label):
     return None
 
 
-def _run_category_summary(topic="ai4s", *, regen_ko=False, categories=None):
+def _run_category_summary(topic, *, regen_ko=False, categories=None):
     """Programmatic entrypoint for build_category_summaries.
 
     `categories` is a list of category names to selectively regenerate.
@@ -246,7 +246,7 @@ def _run_category_summary(topic="ai4s", *, regen_ko=False, categories=None):
 
             summaries.append({
                 "category": cat_name,
-                "description": f"AI for Science category: {cat_name}",
+                "description": f"{topic} category: {cat_name}",
                 "count": len(plist),
                 "avg_score": round(sum(p.get("score", 0) for p in plist) / max(1, len(plist)), 2),
                 "sub_themes": sub_themes,
@@ -324,7 +324,7 @@ def _run_category_summary(topic="ai4s", *, regen_ko=False, categories=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Build _category_summaries.json")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True)
     parser.add_argument("--regen-ko", action="store_true", help="한글 설명만 재생성")
     parser.add_argument("--categories", nargs="+", help="Specific categories to regenerate (others preserved)")
     args = parser.parse_args()

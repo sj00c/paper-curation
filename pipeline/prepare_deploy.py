@@ -4,17 +4,17 @@
 아키텍처:
   - **로컬 docs/**: wrangler 배포 소스 (풀 콘텐츠)
   - **Cloudflare Workers**: `wrangler deploy` 로 직접 업로드. 실제 사용자
-    콘텐츠. docs/.assetsignore 로 ai4s/scisci 등 로컬 전용 토픽 제외.
+    콘텐츠. docs/.assetsignore 로 로컬 전용 토픽 제외.
   - **GitHub gh-pages 브랜치**: 작은 리다이렉트 스텁만. github.io 에 접근한
     사용자를 Cloudflare 로 리다이렉트.
   - **GitHub master 브랜치**: 코드 + 설정만. docs/ 내 대용량 콘텐츠는
     .gitignore 로 제외.
 
 Usage:
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --quality 90    # WebP 품질 (기본 90)
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --dry-run       # 변환 없이 크기 예상만
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --push          # WebP 변환 + wrangler deploy + gh-pages 스텁 + master push
+  PYTHONUTF8=1 python prepare_deploy.py --topic <alias>
+  PYTHONUTF8=1 python prepare_deploy.py --topic <alias> --quality 90    # WebP 품질 (기본 90)
+  PYTHONUTF8=1 python prepare_deploy.py --topic <alias> --dry-run       # 변환 없이 크기 예상만
+  PYTHONUTF8=1 python prepare_deploy.py --topic <alias> --push          # WebP 변환 + wrangler deploy + gh-pages 스텁 + master push
 
 환경변수 (--push 시 필수):
   CLOUDFLARE_API_TOKEN (or CF_API_TOKEN) : Cloudflare Pages:Edit 권한
@@ -45,6 +45,12 @@ from pathlib import Path
 from config_loader import get_github_branch, PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, PROJECT_ROOT, get_topic_dir, load_config
 PAPERS_DIR = str(_PAPERS_DIR)
 REPO = str(PROJECT_ROOT)
+
+
+def _require_topic(topic):
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("topic must be a non-empty string")
+    return topic.strip()
 
 
 def ensure_gitignore():
@@ -421,9 +427,10 @@ def _reinject_local_keys(docs_dir=None, *, verbose=True):
     return n
 
 
-def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
+def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
                 topics=None, workers=8, cf_strict=False):
     """Programmatic entrypoint for prepare_deploy."""
+    topic = _require_topic(topic)
     topic_dir = str(get_topic_dir(topic))
 
     # Self-heal: 이전 deploy 가 Step 6 strip 과 finally restore 사이에서 죽으면
@@ -699,7 +706,7 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Prepare for GitHub Pages deployment")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Topic alias to deploy")
     parser.add_argument("--quality", type=int, default=90, help="WebP quality (1-100)")
     parser.add_argument("--dry-run", action="store_true", help="Estimate only, no conversion")
     parser.add_argument("--push", action="store_true", help="Git add + commit + push after conversion")

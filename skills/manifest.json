@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "id": "paper-curation",
+      "name": "paper-curation",
+      "title": "Paper Curation Legacy Router",
+      "description": "Compatibility entrypoint that routes paper-curation requests to the managed harness-only skill bundle.",
+      "triggers": "paper curation, 논문 큐레이션, curate papers, Zotero paper review, paper-curation",
+      "purpose": "Route legacy invocations to the appropriate managed paper-curation skill without running pipeline internals directly.",
+      "command": "node ./bin/paper-curation.mjs skill install",
+      "safety": "Refresh the managed bundle, then choose the specific setup, doctor, topic, search, curation, smoke, or deploy workflow for the user request."
+    },
+    {
+      "id": "paper-curation-router",
+      "name": "paper-curation-router",
+      "title": "Paper Curation Router",
+      "description": "Canonical router for selecting the correct paper-curation managed skill.",
+      "triggers": "paper-curation help, paper-curation route, paper curation workflow",
+      "purpose": "Choose the narrow managed skill for the request while keeping execution inside the Node CLI harness.",
+      "command": "node ./bin/paper-curation.mjs help",
+      "safety": "Do not invent topics, credentials, deployment targets, or direct pipeline commands."
+    },
+    {
+      "id": "paper-curation-setup",
+      "name": "paper-curation-setup",
+      "title": "Paper Curation Setup",
+      "description": "Install or refresh the managed skill bundle and configure a current-user paper-curation checkout.",
+      "triggers": "paper-curation install, paper-curation setup, paper-curation first run, paper-curation fresh config",
+      "purpose": "Bootstrap the checkout, secrets, and topic configuration through the CLI harness.",
+      "command": "node ./bin/paper-curation.mjs setup --fresh-config",
+      "safety": "Inspect `.env` and `config.json` without printing secrets. Use `--reuse-config` only after verifying the collections belong to the current Zotero account."
+    },
+    {
+      "id": "paper-curation-doctor",
+      "name": "paper-curation-doctor",
+      "title": "Paper Curation Doctor",
+      "description": "Diagnose the configured paper-curation runtime through the CLI harness.",
+      "triggers": "paper-curation doctor, paper-curation diagnose, paper-curation health check",
+      "purpose": "Run the supported doctor check and report observed pass, warning, and failure counts.",
+      "command": "node ./bin/paper-curation.mjs doctor --network --anthropic-smoke",
+      "safety": "Report redacted failures and local remedies only; never expose credentials."
+    },
+    {
+      "id": "paper-curation-topic",
+      "name": "paper-curation-topic",
+      "title": "Paper Curation Topic Resolver",
+      "description": "List configured paper-curation topic aliases from the current checkout without setup or writes.",
+      "triggers": "paper-curation topic, choose Zotero collection, configured topic alias",
+      "purpose": "Read configured `zotero.collections` aliases and select only a valid user-owned topic.",
+      "command": "node ./bin/paper-curation.mjs topic",
+      "safety": "This command is read-only and prints aliases only. If multiple topics are valid and the request is unqualified, ask the user to choose because Zotero writes and LLM cost change."
+    },
+    {
+      "id": "paper-curation-search-register",
+      "name": "paper-curation-search-register",
+      "title": "Paper Curation Search Register",
+      "description": "Search for recent papers and register candidates through the paper-curation harness.",
+      "triggers": "latest papers, recent papers, search and register papers, 최신 논문 찾아줘",
+      "purpose": "Run web-source curation for an explicit configured topic, day window, and candidate count.",
+      "command": "PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <topic> --mode curate --source web --days <days> --max-papers <count> --no-deploy",
+      "safety": "`--max-papers` limits web search/register candidates only. Keep both deploy suppressors unless using the explicit deploy skill."
+    },
+    {
+      "id": "paper-curation-curate-review",
+      "name": "paper-curation-curate-review",
+      "title": "Paper Curation Curate Review",
+      "description": "Review or curate an existing Zotero collection locally through the paper-curation harness.",
+      "triggers": "review Zotero papers, curate collection, Zotero 논문 리뷰해줘",
+      "purpose": "Run local Zotero curation for a configured topic without deployment.",
+      "command": "PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <topic> --mode curate --source zotero --no-deploy",
+      "safety": "Keep both deploy suppressors for ordinary local curation and preview work."
+    },
+    {
+      "id": "paper-curation-smoke",
+      "name": "paper-curation-smoke",
+      "title": "Paper Curation Smoke",
+      "description": "Run bounded one-paper local verification through the paper-curation harness.",
+      "triggers": "paper-curation smoke, bounded verification, test one paper",
+      "purpose": "Verify one paper in scratch/local mode after setup or runtime changes without deploying.",
+      "command": "PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy",
+      "safety": "Use this for bounded verification; keep both deploy suppressors."
+    },
+    {
+      "id": "paper-curation-deploy",
+      "name": "paper-curation-deploy",
+      "title": "Paper Curation Deploy",
+      "description": "Publish paper-curation outputs only after the user explicitly requests deployment.",
+      "triggers": "paper-curation deploy, publish paper curation, 배포",
+      "purpose": "Run the harness-owned deployment path for a configured topic after explicit user approval.",
+      "command": "node ./bin/paper-curation.mjs run -- --topic <topic> --mode deploy",
+      "safety": "Deployment is not a smoke, preview, setup, repair, or ordinary curation action. Never run Git commands directly for deployment; the harness owns publishing behavior."
+    }
+  ]
+}

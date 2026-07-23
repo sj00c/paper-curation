@@ -6,7 +6,7 @@ paper-curation 설치 스크립트.
   2. Core credential 게이트 — ZOTERO/GOOGLE 필수, Anthropic은 API key 또는 OAuth
      (Resend는 Audio Overview 이메일 발송 단계로 지연)
   3. Zotero 연결 테스트 (User ID 조회 + 컬렉션 검증)
-  4. PaperBanana 확인 (없으면 자동 클론)
+  4. PaperBanana 확인 (없으면 선택 기능만 비활성화; 자동 클론 없음)
   5. SKILL.md 생성 (템플릿 플레이스홀더 치환)
   6. SKILL.md를 ~/.claude/skills/paper-curation/에 설치
 
@@ -101,11 +101,51 @@ def _fetch_zotero_collections(api_key):
     return user_id, collections
 
 
-def _select_zotero_collection(api_key):
+def _topic_alias(name, key=""):
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or key.lower() or "zotero"
+
+def _topic_profile(alias, collection):
+    if isinstance(collection, dict):
+        label = str(collection.get("label") or collection.get("name") or "").strip()
+        collection_name = str(collection.get("name") or label).strip()
+        collection_key = str(collection.get("key") or "").strip()
+    else:
+        label = str(collection).strip()
+        collection_name = label
+        collection_key = ""
+    primary = [label] if label else [alias.replace("-", " ").replace("_", " ")]
+    profile = {
+        "label": label,
+        "collection_name": collection_name,
+        "search_keywords": {
+            "primary": primary,
+            "secondary": [alias],
+        },
+    }
+    if collection_key:
+        profile["collection_key"] = collection_key
+    return profile
+
+
+def _topic_profiles(collections):
+    return {
+        alias: _topic_profile(alias, collection_name)
+        for alias, collection_name in collections.items()
+    }
+
+
+
+def _select_zotero_collections(api_key):
+    """Select one or more collections and return an alias->metadata mapping."""
     configured_name = os.environ.get("ZOTERO_COLLECTION_NAME", "").strip()
     configured_alias = os.environ.get("ZOTERO_TOPIC_ALIAS", "").strip()
     if configured_name:
-        return configured_name, configured_alias
+        return {
+            configured_alias or _topic_alias(configured_name): {
+                "label": configured_name,
+                "name": configured_name,
+            }
+        }
 
     try:
         _, collections = _fetch_zotero_collections(api_key)
@@ -120,27 +160,55 @@ def _select_zotero_collection(api_key):
     if len(collections) == 1:
         name, key = collections[0]
         print(f"  ✓ Zotero 컬렉션 자동 선택: {name}")
-    else:
-        print("\n  Zotero 컬렉션을 선택하세요:")
-        for index, (candidate, _) in enumerate(collections, 1):
-            print(f"    {index}. {candidate}")
-        selected = input(f"  번호 입력 [1-{len(collections)}]: ").strip()
-        if not selected.isdigit() or not (1 <= int(selected) <= len(collections)):
-            print("  ✗ 올바른 컬렉션 번호가 필요합니다.")
-            raise SystemExit(1)
-        name, key = collections[int(selected) - 1]
+        return {_topic_alias(name, key): {"label": name, "name": name, "key": key}}
 
-    alias = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-") or key.lower() or "zotero"
-    return name, alias
+    print("\n  Zotero 컬렉션을 선택하세요 (여러 개는 쉼표로 구분):")
+    for index, (candidate, _) in enumerate(collections, 1):
+        print(f"    {index}. {candidate}")
+    selected = input(f"  번호 입력 [1-{len(collections)}]: ").strip()
+    try:
+        indexes = [int(value.strip()) for value in selected.split(",") if value.strip()]
+    except ValueError:
+        indexes = []
+    if not indexes or any(index < 1 or index > len(collections) for index in indexes):
+        print("  ✗ 올바른 컬렉션 번호가 필요합니다.")
+        raise SystemExit(1)
+
+    selected_collections = {}
+    for index in dict.fromkeys(indexes):
+        name, key = collections[index - 1]
+        alias = _topic_alias(name, key)
+        if alias in selected_collections:
+            alias = f"{alias}-{key.lower()}"
+        selected_collections[alias] = {"label": name, "name": name, "key": key}
+    return selected_collections
 
 
-def step_config():
-    """Step 1: config.json 생성 또는 로드."""
+def _select_zotero_collection(api_key):
+    """Backward-compatible single-selection helper."""
+    alias, collection = next(iter(_select_zotero_collections(api_key).items()))
+    return collection["name"], alias
+
+
+def step_config(existing_mode="prompt"):
+    """Step 1: create config.json without silently trusting fork residue."""
     if CONFIG_PATH.exists():
-        print(f"[1/6] config.json 발견: {CONFIG_PATH}")
-        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
-
+        if existing_mode == "reuse":
+            print(f"[1/6] 기존 config.json 명시적으로 재사용: {CONFIG_PATH}")
+            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+                return json.load(f)
+        if existing_mode == "prompt":
+            if not sys.stdin.isatty():
+                print("ERROR: 기존 config.json이 있습니다. --reuse-config 또는 --fresh-config를 명시하세요.")
+                raise SystemExit(2)
+            print(f"[1/6] 기존 config.json 발견: {CONFIG_PATH}")
+            choice = input("  현재 사용자의 설정입니까? [r=새로 설정/K=재사용] (기본 r): ").strip().lower()
+            if choice == "k":
+                with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+                    return json.load(f)
+        backup_path = CONFIG_PATH.with_name(f"{CONFIG_PATH.name}.backup")
+        shutil.copy2(CONFIG_PATH, backup_path)
+        print(f"  기존 설정 백업: {backup_path}")
     if not EXAMPLE_PATH.exists():
         print("ERROR: config.example.json이 없습니다.")
         sys.exit(1)
@@ -149,7 +217,7 @@ def step_config():
     print("[1/6] config.json 생성\n")
     print("  config.json은 clone/pull 또는 export만으로 생성되지 않습니다.")
     print("  이 설정 마법사가 지금 로컬 config.json을 생성합니다.")
-    print("  ZOTERO_API_KEY export는 선택사항이며, 없으면 안전하게 직접 입력받습니다.\n")
+    print("  API 키/토큰은 config.json에 저장하지 않고 .env 또는 프로세스 환경변수에서만 읽습니다.\n")
 
     # Zotero 설정 — 이미 export 한 값은 다시 입력받지 않는다.
     api_key = os.environ.get("ZOTERO_API_KEY", "").strip()
@@ -160,13 +228,14 @@ def step_config():
     if not api_key:
         print("  ✗ ZOTERO_API_KEY가 필요합니다.")
         sys.exit(1)
+    os.environ["ZOTERO_API_KEY"] = api_key
     email = (
         os.environ.get("ZOTERO_EMAIL", "").strip()
         or os.environ.get("UNPAYWALL_EMAIL", "").strip()
     )
-    collection_name, discovered_alias = _select_zotero_collection(api_key)
-    alias = os.environ.get("ZOTERO_TOPIC_ALIAS", "").strip() or discovered_alias
-    print(f"  ✓ Topic alias: {alias} → {collection_name}")
+    collections = _select_zotero_collections(api_key)
+    for alias, collection in collections.items():
+        print(f"  ✓ Topic alias: {alias} → {collection['name']}")
 
     pdf_dir = str(
         Path(os.environ.get("ZOTERO_DIR", "").strip() or REPO / "pdf_cache")
@@ -181,12 +250,20 @@ def step_config():
 
     cfg = {
         "zotero": {
-            "api_key": api_key or "YOUR_ZOTERO_API_KEY_HERE",
             "email": email,
-            "collections": {
-                alias: collection_name
-            },
-            "pdf_dir": pdf_dir
+            "collections": {alias: collection["name"] for alias, collection in collections.items()},
+            "pdf_dir": pdf_dir,
+        },
+        "topic_profiles": _topic_profiles(collections),
+        "paths": {
+            "zotero_dir": pdf_dir,
+        },
+        "anthropic_auth": {
+            "mode": os.environ.get("PAPER_CURATION_ANTHROPIC_AUTH", "auto").strip() or "auto",
+        },
+        "features": {
+            "auto_publish": False,
+            "paperbanana": bool(paperbanana_dir),
         },
         "unpaywall_email": email,
     }
@@ -241,6 +318,12 @@ RESEND_SPEC = {
     "issue": "https://resend.com/api-keys",
 }
 
+OPENAI_SPEC = {
+    "env": "OPENAI_API_KEY",
+    "path": ("openai_api_key",),
+    "why": "reader BYOK 답변 백엔드 / insights fallback",
+}
+
 
 def _cfg_get(cfg, path):
     """중첩 path(예: ("zotero","api_key"))를 따라 문자열 값을 읽는다. 없으면 ""."""
@@ -274,6 +357,20 @@ def _key_value(cfg, spec):
     return "", None
 
 
+def _cfg_path_label(spec):
+    return ".".join(spec["path"])
+
+
+def _warn_legacy_config_secret(spec):
+    field_path = _cfg_path_label(spec)
+    print(
+        f"  △ Migration: config.json field {field_path} contains a credential; "
+        f"move it to {spec['env']} and remove the config field. Value is not shown."
+    )
+
+
+
+
 def missing_required_keys(cfg):
     """필수 Core 키 중 env·config 어디에도 값이 없는 항목 리스트를 반환한다.
 
@@ -286,7 +383,7 @@ def _prompt_required(spec):
     print()
     print(f"  ✗ {spec['env']} 미설정 — {spec['why']}에 필요합니다.")
     print(f"    발급: {spec['issue']}")
-    print("    지금 입력하면 config.json 에 저장되어 다음 실행에서도 자동 사용됩니다.")
+    print("    지금 입력한 값은 현재 프로세스에만 보관되며 config.json에는 저장하지 않습니다.")
     print("    입력을 건너뛰면 설치가 여기서 중단됩니다.")
     user_input = input(f"    {spec['prompt']} (Enter 로 중단): ").strip()
     if not user_input:
@@ -300,7 +397,7 @@ def _configured_anthropic_mode(cfg):
     value = cfg.get("anthropic_auth", {}) if isinstance(cfg, dict) else {}
     if isinstance(value, dict):
         mode = str(value.get("mode", "")).strip().lower().replace("_", "-")
-        if mode in {"oauth", "api-key"}:
+        if mode in {"auto", "oauth", "api-key"}:
             return mode
     return ""
 
@@ -346,11 +443,13 @@ def _ensure_anthropic_auth(cfg, requested_mode):
     """
     dirty = False
     configured = _configured_anthropic_mode(cfg)
-    mode = configured if requested_mode == "auto" and configured else requested_mode
+    mode = configured if requested_mode == "auto" and configured in {"oauth", "api-key"} else requested_mode
     status = _anthropic_status(mode)
+    auto_selected = False
 
     if mode == "auto" and status.ready:
         mode = status.mode
+        auto_selected = True
     elif mode == "auto":
         mode = _prompt_anthropic_choice()
         status = _anthropic_status(mode)
@@ -365,8 +464,9 @@ def _ensure_anthropic_auth(cfg, requested_mode):
             print(f"\n  ✗ Claude Code {installed}: OAuth structured output에는 >= {required} 필요")
             print("    `claude update` 실행 후 setup을 다시 시작하세요.")
             sys.exit(1)
-        cfg["anthropic_auth"] = {"mode": "oauth"}
-        dirty = True
+        if not auto_selected and cfg.get("anthropic_auth") != {"mode": "oauth"}:
+            cfg["anthropic_auth"] = {"mode": "oauth"}
+            dirty = True
         source = status.source or "Claude Code"
         print(f"  ✓ Anthropic 인증 설정됨 (mode=oauth, source={source}) — Claude Code 구독 OAuth")
         print("    OAuth 토큰은 config.json 에 저장하지 않습니다.")
@@ -378,13 +478,13 @@ def _ensure_anthropic_auth(cfg, requested_mode):
             value = _prompt_required(ANTHROPIC_API_SPEC)
             source = "입력"
         os.environ[ANTHROPIC_API_SPEC["env"]] = value
-        if _cfg_get(cfg, ANTHROPIC_API_SPEC["path"]).strip() != value:
-            _cfg_set(cfg, ANTHROPIC_API_SPEC["path"], value)
-            dirty = True
-        if _configured_anthropic_mode(cfg):
-            cfg.pop("anthropic_auth", None)
+        if not auto_selected and cfg.get("anthropic_auth") != {"mode": "api-key"}:
+            cfg["anthropic_auth"] = {"mode": "api-key"}
             dirty = True
         print(f"  ✓ Anthropic 인증 설정됨 (mode=api-key, source={source}) — {ANTHROPIC_API_SPEC['why']}")
+        if source == "config.json":
+            _warn_legacy_config_secret(ANTHROPIC_API_SPEC)
+        print("    API key는 config.json에 새로 저장하지 않습니다.")
         return dirty
 
     print(f"  ✗ 알 수 없는 Anthropic 인증 모드: {mode}")
@@ -407,17 +507,19 @@ def step_env_check(cfg, anthropic_auth_mode="auto"):
             value = _prompt_required(spec)
             source = "입력"
         os.environ[spec["env"]] = value
-        # config 에 아직 정확히 반영 안 된 값이면 저장 (env-only → config 영속화 포함)
-        if _cfg_get(cfg, spec["path"]).strip() != value:
-            _cfg_set(cfg, spec["path"], value)
-            dirty = True
         print(f"  ✓ {spec['env']} 설정됨 ({source}) — {spec['why']}")
+        if source == "config.json":
+            _warn_legacy_config_secret(spec)
+        if source == "입력":
+            print("    값은 현재 프로세스에만 보관되며 config.json에 저장하지 않습니다.")
 
     dirty = _ensure_anthropic_auth(cfg, anthropic_auth_mode) or dirty
 
     resend_key, resend_source = _key_value(cfg, RESEND_SPEC)
     if resend_key:
         print(f"  ✓ RESEND_API_KEY 설정됨 (선택, {resend_source}) — {RESEND_SPEC['why']}")
+        if resend_source == "config.json":
+            _warn_legacy_config_secret(RESEND_SPEC)
     else:
         print("  · RESEND_API_KEY 미설정 (선택) — Audio Overview 이메일 발송 때 설정하면 됩니다.")
         print("    배포 후 `npx wrangler secret put RESEND_API_KEY` 로 등록하세요.")
@@ -426,13 +528,17 @@ def step_env_check(cfg, anthropic_auth_mode="auto"):
         _save_config(cfg)
 
     # OPTIONAL: OPENAI_API_KEY 는 게이트 없음 (정보성 안내만)
-    openai_key = (os.environ.get("OPENAI_API_KEY", "").strip()
-                  or cfg.get("openai_api_key", "").strip())
+    openai_key = os.environ.get("OPENAI_API_KEY", "").strip()
     if openai_key:
         print("  ✓ OPENAI_API_KEY 설정됨 (선택) — reader BYOK 답변 백엔드 / insights fallback")
     else:
-        print("  · OPENAI_API_KEY 미설정 (선택) — Deep Research 임베딩은 Gemini 로 이동했습니다.")
-        print("    reader BYOK 답변 백엔드 / insights fallback 으로만 선택적으로 유용합니다.")
+        openai_key = cfg.get("openai_api_key", "").strip()
+        if openai_key:
+            _warn_legacy_config_secret(OPENAI_SPEC)
+            print("  ✓ OPENAI_API_KEY 설정됨 (선택, config.json) — reader BYOK 답변 백엔드 / insights fallback")
+        else:
+            print("  · OPENAI_API_KEY 미설정 (선택) — Deep Research 임베딩은 Gemini 로 이동했습니다.")
+            print("    reader BYOK 답변 백엔드 / insights fallback 으로만 선택적으로 유용합니다.")
 
 
 def step_zotero_test(cfg):
@@ -441,7 +547,10 @@ def step_zotero_test(cfg):
 
     print("\n[3/6] Zotero 연결 테스트")
 
-    api_key = cfg.get("zotero", {}).get("api_key", "")
+    api_key = (
+        os.environ.get("ZOTERO_API_KEY", "").strip()
+        or cfg.get("zotero", {}).get("api_key", "").strip()
+    )
     if not api_key or api_key == "YOUR_ZOTERO_API_KEY_HERE":
         print("  ✗ Zotero API key가 설정되지 않았습니다")
         return False
@@ -497,52 +606,25 @@ def step_zotero_test(cfg):
     return all_ok
 
 
-PAPERBANANA_REPO = "https://github.com/dwzhu-pku/PaperBanana.git"
 PAPERBANANA_DEFAULT_DIR = REPO / "paperbanana"
 
 
 def step_paperbanana(cfg):
-    """Step 4: PaperBanana 확인 및 자동 클론."""
-    print("\n[4/6] PaperBanana 확인")
-
+    """Step 4: report optional PaperBanana availability without installing it."""
+    print("\n[4/6] 선택 기능 확인")
     pb_dir = cfg.get("paperbanana_dir", "")
-
-    # 경로가 설정되어 있고 실제 존재하면 OK
     if pb_dir and Path(pb_dir).exists():
         print(f"  ✓ PaperBanana: {pb_dir}")
         return cfg
-
-    # 경로가 설정되어 있지만 존재하지 않는 경우
-    if pb_dir and not Path(pb_dir).exists():
-        print(f"  ✗ PaperBanana 경로가 존재하지 않습니다: {pb_dir}")
-        print(f"  → 기본 위치에 자동 클론합니다")
-
-    # 기본 위치에 이미 클론되어 있는지 확인
     if PAPERBANANA_DEFAULT_DIR.exists() and (PAPERBANANA_DEFAULT_DIR / "README.md").exists():
-        print(f"  ✓ PaperBanana 발견 (기존 클론): {PAPERBANANA_DEFAULT_DIR}")
+        print(f"  ✓ PaperBanana 발견: {PAPERBANANA_DEFAULT_DIR}")
         cfg["paperbanana_dir"] = str(PAPERBANANA_DEFAULT_DIR)
         _save_config(cfg)
         return cfg
-
-    # 자동 클론
-    print(f"  → PaperBanana를 클론합니다: {PAPERBANANA_REPO}")
-    print(f"     위치: {PAPERBANANA_DEFAULT_DIR}")
-    try:
-        result = subprocess.run(
-            ["git", "clone", PAPERBANANA_REPO, str(PAPERBANANA_DEFAULT_DIR)],
-            capture_output=True, text=True, timeout=120
-        )
-        if result.returncode == 0:
-            print(f"  ✓ PaperBanana 클론 완료")
-            cfg["paperbanana_dir"] = str(PAPERBANANA_DEFAULT_DIR)
-            _save_config(cfg)
-        else:
-            print(f"  ✗ 클론 실패: {result.stderr.strip()}")
-            print(f"  → 타임라인 생성 없이 파이프라인을 사용할 수 있습니다")
-    except Exception as e:
-        print(f"  ✗ 클론 실패: {e}")
-        print(f"  → 타임라인 생성 없이 파이프라인을 사용할 수 있습니다")
-
+    if pb_dir:
+        print(f"  △ PaperBanana 경로가 존재하지 않습니다: {pb_dir}")
+    print("  · PaperBanana 미설치 — 선택 기능인 타임라인 이미지 생성만 건너뜁니다.")
+    print("    setup은 외부 저장소를 자동 clone하지 않습니다.")
     return cfg
 
 
@@ -678,6 +760,11 @@ def main():
     parser.add_argument("--anthropic-auth", choices=("auto", "oauth", "api-key"),
                         default="auto",
                         help="Anthropic 인증 방식: auto(기본), oauth(Claude Code), api-key(Console)")
+    config_group = parser.add_mutually_exclusive_group()
+    config_group.add_argument("--fresh-config", action="store_true",
+                              help="기존 config.json을 백업하고 현재 사용자 설정을 새로 만듭니다")
+    config_group.add_argument("--reuse-config", action="store_true",
+                              help="기존 config.json이 현재 사용자 것임을 명시하고 재사용합니다")
     args = parser.parse_args()
 
     print("=" * 50)
@@ -687,8 +774,9 @@ def main():
     if dotenv_keys:
         print(f"  ✓ .env 로드: 비어 있지 않은 설정 {len(dotenv_keys)}개 (값은 표시하지 않음)")
 
-    # Step 1: config.json
-    cfg = step_config()
+    # Step 1: config.json. Existing ignored files may be fork/worktree residue.
+    config_mode = "fresh" if args.fresh_config else "reuse" if args.reuse_config else "prompt"
+    cfg = step_config(config_mode)
 
     # Step 2: Core credentials gate (Zotero/Google required, Anthropic API key or OAuth)
     step_env_check(cfg, args.anthropic_auth)
@@ -737,14 +825,14 @@ def main():
     if topics:
         topic = topics[0]
         print(f"  실행 명령어 (이후에 수동으로 돌릴 때 — 단일 진입점은 run_full.py):")
-        print(f"    # 전체 파이프라인 (Zotero에서 가져와서 리뷰 + Deep Research 인덱스 + 배포)")
-        print(f"    PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero")
+        print(f"    # 전체 파이프라인 (Zotero에서 가져와서 리뷰 + 분류/인덱스, 배포·vector rebuild 억제)")
+        print(f"    PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero --no-deploy")
         print()
-        print(f"    # 주간 운영 (웹 검색으로 신규 논문 추가, 기존 유지)")
-        print(f"    PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source web --days 7")
+        print(f"    # 주간 운영 (웹 검색으로 신규 논문 추가, 기존 유지, 배포·vector rebuild 억제)")
+        print(f"    PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source web --days 7 --no-deploy")
         print()
-        print(f"    # 전체 재빌드 (categorization/insights/timelines 까지 재생성 — 시간·비용 ↑)")
-        print(f"    PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode rebuild --yes")
+        print(f"    # 명시적 vector/full rebuild (시간·비용 ↑, 배포 억제)")
+        print(f"    PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode rebuild --yes --no-deploy")
     print()
 
     # 배포·이메일은 나중 단계 — 설치 시점에는 자격증명을 묻지 않는다 (deferred)
@@ -777,8 +865,8 @@ def main():
             print()
             print("  (위 환경을 준비한 뒤 'python pipeline/setup.py' 를 다시 실행하세요.)")
         else:
-            print("  Zotero에서 논문을 가져와 리뷰 → 분류 → 인덱스 →")
-            print("  Deep Research 검색 인덱스 → (GitHub 설정 시) 배포까지 진행합니다.")
+            print("  Zotero에서 논문을 가져와 리뷰 → 분류 → 인덱스까지 진행합니다.")
+            print("  Vector/full rebuild는 자동 실행하지 않습니다. 위의 명시적 rebuild 명령을 별도로 실행하세요.")
             print("  Ctrl+C 로 중단할 수 있고, 중단 후에는 --resume 모드로 이어서 진행할 수 있습니다.")
             print()
             try:
@@ -787,8 +875,8 @@ def main():
                 subprocess.run(
                     [sys.executable, str(REPO / "pipeline" / "run_full.py"),
                      "--topic", topic, "--mode", "curate", "--source", "zotero",
-                     "--concurrency", "4"],
-                    env={**os.environ, "PYTHONUTF8": "1"},
+                     "--concurrency", "4", "--no-deploy"],
+                    env={**os.environ, "PAPER_CURATION_NO_DEPLOY": "1", "PAPER_CURATION_NO_VECTOR_REBUILD": "1", "PYTHONUTF8": "1"},
                     cwd=str(REPO),
                 )
             except KeyboardInterrupt:

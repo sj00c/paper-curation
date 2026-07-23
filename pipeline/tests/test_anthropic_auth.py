@@ -76,6 +76,58 @@ class AnthropicAuthTests(unittest.TestCase):
         self.assertEqual(status.mode, "oauth")
         self.assertIsInstance(client, auth.ClaudeCodeClient)
 
+    def test_structured_smoke_uses_selected_auth_mode_and_redacts(self):
+        response = SimpleNamespace(content=[
+            SimpleNamespace(
+                type="tool_use",
+                name="paper_curation_smoke",
+                input={"ok": True, "answer": "paper-curation-smoke-ok"},
+            )
+        ])
+        client = SimpleNamespace(messages=SimpleNamespace(create=MagicMock(return_value=response)))
+        status = auth.AnthropicAuthStatus(
+            mode="oauth",
+            source="env:CLAUDE_CODE_OAUTH_TOKEN",
+            ready=True,
+            detail="ready with oauth-secret",
+        )
+
+        with (
+            patch.object(auth, "require_auth_ready", return_value=status) as require_ready,
+            patch.object(auth, "create_anthropic_client", return_value=client) as create_client,
+            patch.dict(os.environ, {"CLAUDE_CODE_OAUTH_TOKEN": "oauth-secret"}, clear=False),
+        ):
+            result = auth.run_structured_smoke("auto")
+
+        require_ready.assert_called_once_with("auto")
+        create_client.assert_called_once_with(auth_mode="oauth", timeout=60.0, max_retries=0)
+        self.assertEqual(result["smoke"], "ok")
+        self.assertEqual((result["mode"], result["source"]), ("oauth", "env:CLAUDE_CODE_OAUTH_TOKEN"))
+        self.assertNotIn("oauth-secret", json.dumps(result))
+        client.messages.create.assert_called_once()
+        self.assertIn("tools", client.messages.create.call_args.kwargs)
+
+    def test_structured_smoke_failure_redacts_api_key(self):
+        secret = "sk-ant-testsecret"
+        status = auth.AnthropicAuthStatus(
+            mode="api-key",
+            source="env:ANTHROPIC_API_KEY",
+            ready=True,
+            detail=f"ready with {secret}",
+        )
+
+        with (
+            patch.object(auth, "require_auth_ready", return_value=status),
+            patch.object(auth, "create_anthropic_client", side_effect=RuntimeError(f"bad {secret}")),
+            patch.dict(os.environ, {"ANTHROPIC_API_KEY": secret}, clear=False),
+        ):
+            result = auth.run_structured_smoke("api-key")
+
+        self.assertEqual(result["smoke"], "failed")
+        blob = json.dumps(result)
+        self.assertNotIn(secret, blob)
+        self.assertIn("<redacted:ANTHROPIC_API_KEY>", blob)
+
     def test_saved_oauth_probe_removes_api_credentials(self):
         seen = {}
 
@@ -251,6 +303,8 @@ class AnthropicAuthTests(unittest.TestCase):
         self.assertNotIn("ANTHROPIC_AUTH_TOKEN", seen["env"])
         self.assertIn("--safe-mode", seen["command"])
         self.assertNotIn("--bare", seen["command"])
+        self.assertNotIn("--tools", seen["command"])
+        self.assertNotIn("--allowedTools", seen["command"])
 
     def test_structured_output_maps_to_tool_use_block(self):
         schema = {

@@ -2,9 +2,8 @@
 Unified topic index builder for paper-curation.
 Reads reviews from papers/ central repo, generates {topic}/index.html.
 
-Usage: PYTHONUTF8=1 python build_topic_index.py <topic>
-  e.g. PYTHONUTF8=1 python build_topic_index.py ai4s
-       PYTHONUTF8=1 python build_topic_index.py scisci
+Usage: PYTHONUTF8=1 python build_topic_index.py <configured-topic>
+  e.g. PYTHONUTF8=1 python build_topic_index.py my_topic
 """
 import json, os, re, sys
 from html import escape
@@ -18,6 +17,20 @@ TODAY = datetime.now(KST).strftime("%Y-%m-%d")
 from collections import OrderedDict
 from config_loader import PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, get_topic_dir, get_zotero_api_key, get_zotero_user_id
 from lib.categories import category_slug
+from lib.search_index_metadata import (
+    CACHE_FORMAT_VERSION,
+    CHUNK_HASH_BASIS,
+    EMBEDDING_DIMENSION,
+    EMBEDDING_MODEL,
+    EMBEDDING_PROVIDER,
+    EMBEDDING_QUANTIZATION,
+    EMBEDDING_SIDECAR_FILE,
+    EMBEDDING_TASK_TYPE,
+    INDEX_SCHEMA_VERSION,
+    PROVENANCE_STATUS,
+    REBUILD_GUIDANCE,
+    SIDECAR_FORMAT_VERSION,
+)
 from lib.audio_overview import (
     get_audio_css as _audio_css,
     audio_modal_html as _audio_modal,
@@ -26,9 +39,9 @@ from lib.audio_overview import (
 PAPERS_DIR = str(_PAPERS_DIR)
 
 def get_topic():
-    if len(sys.argv) > 1:
-        return sys.argv[1]
-    return "ai4s"
+    if len(sys.argv) > 1 and sys.argv[1].strip():
+        return sys.argv[1].strip()
+    raise SystemExit("Usage: PYTHONUTF8=1 python build_topic_index.py <topic>")
 
 
 def _run_topic_index(topic=None, cross=None):
@@ -36,12 +49,17 @@ def _run_topic_index(topic=None, cross=None):
 
     Phase 5 refactor: module-level code was wrapped into this
     function so the script is importable without side-effects.
-    Pass ``topic`` explicitly; falls back to ``sys.argv[1]``.
+    Pass ``topic`` explicitly; CLI execution reads ``sys.argv[1]``.
     """
-    TOPIC = topic if topic is not None else get_topic()
+    TOPIC = topic.strip() if isinstance(topic, str) else topic
+    if TOPIC is None:
+        TOPIC = get_topic()
+    if not TOPIC:
+        raise ValueError("topic must be a non-empty string")
     TOPIC_DIR = str(get_topic_dir(TOPIC))
 
-    # Theme colors per topic (title from config.json Zotero collection name)
+    # Optional legacy visual theme overrides for historical example topics only;
+    # every configured topic without an override uses the generic default below.
     from config_loader import load_config
     _collections_raw = load_config().get("zotero", {}).get("collections", {})
 
@@ -60,7 +78,7 @@ def _run_topic_index(topic=None, cross=None):
         "gradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
         "accent": "#3B82F6", "accent_dark": "#2563EB", "accent_light": "#60A5FA",
     }
-    theme = THEME.get(TOPIC, _default_theme)
+    theme = dict(THEME.get(TOPIC, _default_theme))
     # Title from Zotero collection name in config.json
     _collection_name = _collections_raw.get(TOPIC, TOPIC)
     theme["title"] = _collection_name
@@ -868,6 +886,151 @@ def _run_topic_index(topic=None, cross=None):
     // Deep Research (client-side RAG + Anthropic streaming with Extended Thinking)
     // ============================================================================
     const DEEP = { index: null, loading: false, currentAnswer: '', currentRefs: [], currentQuery: '', abort: null, running: false, userAborted: false };
+    const DEEP_INDEX_SCHEMA_VERSION = window._DEEP_INDEX_SCHEMA_VERSION;
+    const DEEP_EMBED_PROVIDER = window._DEEP_EMBED_PROVIDER;
+    const DEEP_EMBED_MODEL = window._DEEP_EMBED_MODEL;
+    const DEEP_INDEX_TASK_TYPE = window._DEEP_INDEX_TASK_TYPE;
+    const DEEP_QUERY_TASK_TYPE = window._DEEP_QUERY_TASK_TYPE;
+    const DEEP_EMBED_DIM = window._DEEP_EMBED_DIM;
+    const DEEP_EMBED_QUANT = window._DEEP_EMBED_QUANT;
+    const DEEP_CHUNK_HASH_BASIS = window._DEEP_CHUNK_HASH_BASIS;
+    const DEEP_SIDECAR_FORMAT_VERSION = window._DEEP_SIDECAR_FORMAT_VERSION;
+    const DEEP_CACHE_FORMAT_VERSION = window._DEEP_CACHE_FORMAT_VERSION;
+    const DEEP_PROVENANCE_STATUS = window._DEEP_PROVENANCE_STATUS;
+    const DEEP_EMBED_SIDECAR_FILE = window._DEEP_EMBED_SIDECAR_FILE;
+    const DEEP_REBUILD_GUIDANCE = window._DEEP_REBUILD_GUIDANCE;
+    const DEEP_CANONICAL_CONTRACT_KEYS = {
+      index_schema_version: 1, embedding_provider: 1, embedding_model: 1,
+      embedding_task_type: 1, embedding_dimension: 1, embedding_quantization: 1,
+      chunk_hash_basis: 1, sidecar_format_version: 1, cache_format_version: 1,
+      source_provenance_approval_status: 1,
+    };
+    const DEEP_CANONICAL_ONLY_CONTRACT_KEYS = {
+      index_schema_version: 1, embedding_provider: 1, embedding_model: 1,
+      embedding_task_type: 1, embedding_dimension: 1, embedding_quantization: 1,
+      source_provenance_approval_status: 1,
+    };
+    const DEEP_LEGACY_CONTRACT_KEY_MAP = {
+      model: 'embedding_model',
+      dim: 'embedding_dimension',
+      quant: 'embedding_quantization',
+    };
+    const DEEP_LEGACY_ONLY_CONTRACT_KEYS = {
+      model: 1, dim: 1, quant: 1,
+    };
+    const DEEP_SHORTENED_VERSIONED_CONTRACT_KEYS = {
+      schema_version: 1, provider: 1, task_type: 1, provenance_status: 1,
+    };
+    const DEEP_VERSIONED_SHARED_CONTRACT_KEYS = {
+      chunk_hash_basis: 1, sidecar_format_version: 1, cache_format_version: 1,
+    };
+
+    function deepMetaErr(key, expected, actual) {
+      return key + ' expected ' + JSON.stringify(expected) + ', got ' + JSON.stringify(actual)
+        + '. ' + DEEP_REBUILD_GUIDANCE;
+    }
+    function deepHasAnyKey(index, keys) {
+      for (const k in keys) if (Object.prototype.hasOwnProperty.call(index || {}, k)) return true;
+      return false;
+    }
+    function deepContractShapeError(index, expected) {
+      if (!index || typeof index !== 'object') return '';
+      let canonicalComplete = true;
+      for (const k in expected) {
+        if (k === 'emb_file') continue;
+        if (!Object.prototype.hasOwnProperty.call(index, k)) canonicalComplete = false;
+      }
+      const hasCanonicalOnly = deepHasAnyKey(index, DEEP_CANONICAL_ONLY_CONTRACT_KEYS);
+      const hasLegacyOnly = deepHasAnyKey(index, DEEP_LEGACY_ONLY_CONTRACT_KEYS);
+      const hasShared = deepHasAnyKey(index, DEEP_VERSIONED_SHARED_CONTRACT_KEYS);
+      const hasShortenedVersioned = deepHasAnyKey(index, DEEP_SHORTENED_VERSIONED_CONTRACT_KEYS);
+      if (hasShortenedVersioned) return 'shortened versioned metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE;
+      if (hasCanonicalOnly && hasLegacyOnly) return 'mixed canonical and legacy metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE;
+      if (hasCanonicalOnly && !canonicalComplete) return 'partial canonical metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE;
+      if (hasShared && !canonicalComplete) return 'partial versioned metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE;
+      return '';
+    }
+    function deepCanonicalizeMetadata(index) {
+      const out = Object.assign({}, index || {});
+      for (const oldKey in DEEP_LEGACY_CONTRACT_KEY_MAP) {
+        if (Object.prototype.hasOwnProperty.call(out, oldKey) && oldKey !== DEEP_LEGACY_CONTRACT_KEY_MAP[oldKey]) {
+          out[DEEP_LEGACY_CONTRACT_KEY_MAP[oldKey]] = out[oldKey];
+          delete out[oldKey];
+        }
+      }
+      return out;
+    }
+    function deepExpectedIndexMetadata() {
+      return {
+        index_schema_version: DEEP_INDEX_SCHEMA_VERSION,
+        embedding_provider: DEEP_EMBED_PROVIDER,
+        embedding_model: DEEP_EMBED_MODEL,
+        embedding_task_type: DEEP_INDEX_TASK_TYPE,
+        embedding_dimension: DEEP_EMBED_DIM,
+        embedding_quantization: DEEP_EMBED_QUANT,
+        chunk_hash_basis: DEEP_CHUNK_HASH_BASIS,
+        sidecar_format_version: DEEP_SIDECAR_FORMAT_VERSION,
+        cache_format_version: DEEP_CACHE_FORMAT_VERSION,
+        source_provenance_approval_status: DEEP_PROVENANCE_STATUS,
+        emb_file: DEEP_EMBED_SIDECAR_FILE,
+      };
+    }
+    function deepDenseMetadataForWorker(index) {
+      const out = {};
+      const expected = deepExpectedIndexMetadata();
+      const validation = deepValidateIndexMetadata(index);
+      const source = validation.ok ? (validation.normalized || index || {}) : {};
+      if (validation.ok && validation.legacy) {
+        for (const k of ['model', 'dim', 'quant', 'emb_file']) if (Object.prototype.hasOwnProperty.call(source, k)) out[k] = source[k];
+      } else {
+        for (const k in expected) if (Object.prototype.hasOwnProperty.call(source, k)) out[k] = source[k];
+      }
+      return out;
+    }
+    function deepIndexDim(index) {
+      return (index && index.embedding_dimension) || (index && index.dim) || DEEP_EMBED_DIM;
+    }
+    function deepValidateKnownSafeLegacyIndex(index) {
+      const errors = [];
+      if (!index || typeof index !== 'object') return { ok: false, errors: ['index metadata missing. ' + DEEP_REBUILD_GUIDANCE], legacy: true };
+      const expected = deepExpectedIndexMetadata();
+      const shapeError = deepContractShapeError(index, expected);
+      if (shapeError) return { ok: false, errors: [shapeError], legacy: true };
+      const hasCanonical = deepHasAnyKey(index, DEEP_CANONICAL_ONLY_CONTRACT_KEYS);
+      const hasLegacy = deepHasAnyKey(index, DEEP_LEGACY_ONLY_CONTRACT_KEYS);
+      const hasShared = deepHasAnyKey(index, DEEP_VERSIONED_SHARED_CONTRACT_KEYS);
+      const hasShortenedVersioned = deepHasAnyKey(index, DEEP_SHORTENED_VERSIONED_CONTRACT_KEYS);
+      if (hasShortenedVersioned) return { ok: false, errors: ['shortened versioned metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE], legacy: true };
+      if (hasCanonical && hasLegacy) return { ok: false, errors: ['mixed canonical and legacy metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE], legacy: true };
+      if (hasCanonical) return { ok: false, errors: ['partial canonical metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE], legacy: true };
+      if (hasShared) return { ok: false, errors: ['partial versioned metadata is not known-safe legacy. ' + DEEP_REBUILD_GUIDANCE], legacy: true };
+      if (index.model !== DEEP_EMBED_MODEL) errors.push(deepMetaErr('model', DEEP_EMBED_MODEL, index.model));
+      if (index.dim !== DEEP_EMBED_DIM) errors.push(deepMetaErr('dim', DEEP_EMBED_DIM, index.dim));
+      if (index.quant !== DEEP_EMBED_QUANT) errors.push(deepMetaErr('quant', DEEP_EMBED_QUANT, index.quant));
+      if (index.emb_file != null && index.emb_file !== DEEP_EMBED_SIDECAR_FILE) errors.push(deepMetaErr('emb_file', DEEP_EMBED_SIDECAR_FILE, index.emb_file));
+      return { ok: errors.length === 0, errors: errors, legacy: true };
+    }
+    function deepValidateIndexMetadata(index) {
+      const expected = deepExpectedIndexMetadata();
+      const shapeError = deepContractShapeError(index, expected);
+      if (shapeError) return { ok: false, errors: [shapeError], legacy: false };
+      const errors = [];
+      for (const k in expected) {
+        if (!index || index[k] !== expected[k]) errors.push(deepMetaErr(k, expected[k], index && index[k]));
+      }
+      if (!errors.length) return { ok: true, errors: [], legacy: false, normalized: index };
+      const legacy = deepValidateKnownSafeLegacyIndex(index);
+      if (legacy.ok) return legacy;
+      return { ok: false, errors: errors, legacy: false };
+    }
+    function deepDisableDense(reason) {
+      DEEP.embI8 = null;
+      DEEP.denseDisabledReason = String(reason || 'Dense metadata is incompatible. ' + DEEP_REBUILD_GUIDANCE);
+      console.warn('[dense disabled]', DEEP.denseDisabledReason);
+    }
+    function deepDenseAvailable() {
+      return !DEEP.denseDisabledReason;
+    }
 
     // Safe DOM helpers (no .innerHTML usage)
     function clearEl(el) { while (el && el.firstChild) el.removeChild(el.firstChild); }
@@ -990,21 +1153,40 @@ def _run_topic_index(topic=None, cross=None):
         const resp = await fetch('_search_index.json');
         if (!resp.ok) throw new Error('Index fetch failed: ' + resp.status);
         DEEP.index = await resp.json();
-        // 신형 포맷: 임베딩은 바이너리 사이드카(emb_file) — JSON 에서 빠져
-        // cold-load 의 JSON.parse 가 가볍고, 쿼리 시 per-chunk atob 도 없다.
-        // ArrayBuffer → Int8Array 뷰 (파싱 0ms). 구형(chunk.emb b64)은
-        // getChunkVec 가 그대로 지원하므로 미재빌드 토픽도 동작.
-        if (DEEP.index.emb_file) {
-          const er = await fetch(DEEP.index.emb_file);
-          if (!er.ok) throw new Error('Embedding sidecar fetch failed: ' + er.status);
-          const buf = await er.arrayBuffer();
-          const expect = (DEEP.index.count || 0) * (DEEP.index.dim || 0);
-          if (buf.byteLength !== expect) {
-            throw new Error('Embedding sidecar size mismatch: ' + buf.byteLength + ' != ' + expect + ' — rebuild the index (build_search_index)');
+        DEEP.denseDisabledReason = '';
+        const meta = deepValidateIndexMetadata(DEEP.index);
+        if (!meta.ok) {
+          deepDisableDense('Search index metadata is incompatible: ' + meta.errors.join('; '));
+        } else if (DEEP.index.emb_file) {
+          // 신형 포맷: 임베딩은 바이너리 사이드카(emb_file) — JSON 에서 빠져
+          // cold-load 의 JSON.parse 가 가볍고, 쿼리 시 per-chunk atob 도 없다.
+          // ArrayBuffer → Int8Array 뷰 (파싱 0ms). 구형(chunk.emb b64)은
+          // getChunkVec 가 그대로 지원하므로 미재빌드 토픽도 동작.
+          try {
+            const er = await fetch(DEEP.index.emb_file);
+            if (!er.ok) throw new Error('Embedding sidecar fetch failed: ' + er.status);
+            const buf = await er.arrayBuffer();
+            const expect = (DEEP.index.count || 0) * DEEP_EMBED_DIM;
+            if (DEEP.index.sidecar_format_version != null && DEEP.index.sidecar_format_version !== DEEP_SIDECAR_FORMAT_VERSION) {
+              throw new Error(deepMetaErr('sidecar_format_version', DEEP_SIDECAR_FORMAT_VERSION, DEEP.index.sidecar_format_version));
+            }
+            if (buf.byteLength !== expect) {
+              throw new Error('Embedding sidecar byte length expected ' + expect + ', got ' + buf.byteLength + '. ' + DEEP_REBUILD_GUIDANCE);
+            }
+            DEEP.embI8 = new Int8Array(buf);
+          } catch (e) {
+            deepDisableDense(e && e.message || e);
           }
-          DEEP.embI8 = new Int8Array(buf);
         } else {
           DEEP.embI8 = null;
+          const chunks = DEEP.index.chunks || [];
+          let hasChunkEmb = false;
+          for (let i = 0; i < chunks.length; i++) {
+            if (chunks[i] && chunks[i].emb) { hasChunkEmb = true; break; }
+          }
+          if (chunks.length && !hasChunkEmb) {
+            deepDisableDense('Legacy search index has no embedding sidecar or chunk embeddings. ' + DEEP_REBUILD_GUIDANCE);
+          }
         }
         // Deep Research init: lexical(BM25) 인덱스를 미리 구축해 둔다.
         // (이후 hybridRetrieve 가 같은 캐시를 재사용)
@@ -1040,7 +1222,7 @@ def _run_topic_index(topic=None, cross=None):
     function getChunkVec(index, i) {
       // 신형 포맷: 바이너리 사이드카의 Int8 뷰에서 직접 정규화 (atob 불필요)
       if (DEEP.embI8) {
-        const dim = index.dim;
+        const dim = deepIndexDim(index);
         const off = i * dim;
         const vec = new Float32Array(dim);
         let n = 0;
@@ -1068,7 +1250,7 @@ def _run_topic_index(topic=None, cross=None):
         resp = await deepFetch('/api/embed', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ text: text }),
+          body: JSON.stringify({ text: text, index_metadata: deepDenseMetadataForWorker(DEEP.index) }),
         });
       } catch (e) {
         if (e && e.name === 'AbortError') throw e;  // user 중단 — bubble as-is
@@ -1084,6 +1266,9 @@ def _run_topic_index(topic=None, cross=None):
       const data = await resp.json();
       const raw = (data && data.embedding) || [];
       if (!raw.length) throw new Error('embed-proxy-unreachable: empty embedding');
+      if (data.embedding_provider !== DEEP_EMBED_PROVIDER || data.embedding_model !== DEEP_EMBED_MODEL || data.embedding_task_type !== DEEP_QUERY_TASK_TYPE || data.embedding_dimension !== DEEP_EMBED_DIM) {
+        throw new Error('embed-proxy incompatible query embedding metadata. ' + DEEP_REBUILD_GUIDANCE);
+      }
       // gemini-embedding-001 은 output_dimensionality != 3072 일 때 정규화되지
       // 않은 벡터를 반환한다 — 코사인 유사도(정규화된 문서 벡터 가정)와 맞추려면
       // int8 양자화와 동일하게 L2 정규화가 필수.
@@ -1251,7 +1436,7 @@ def _run_topic_index(topic=None, cross=None):
         if (!journalMatches(p.journal, journalFilter)) continue;
         const idxs = cbs[slug] || [];
         let best = -1;
-        for (const ci of idxs) { const sc = cosineSim(queryVec, getChunkVec(index, ci)); if (sc > best) best = sc; }
+        for (const ci of idxs) { const sc = queryVec ? cosineSim(queryVec, getChunkVec(index, ci)) : 0; if (sc > best) best = sc; }
         plist.push({ slug: slug, year: y || 0, score: best, idxs: idxs });
       }
       if (!plist.length) return [];
@@ -1271,7 +1456,7 @@ def _run_topic_index(topic=None, cross=None):
       const cands = [];
       for (const p of chosen) {
         const ranked = p.idxs.map(function(ci) {
-          return { ci: ci, sec: chunks[ci].section || '', s: cosineSim(queryVec, getChunkVec(index, ci)) };
+          return { ci: ci, sec: chunks[ci].section || '', s: queryVec ? cosineSim(queryVec, getChunkVec(index, ci)) : 0 };
         });
         ranked.sort(function(a, b) { return (_sectionRank(a.sec) - _sectionRank(b.sec)) || (b.s - a.s); });
         const take = ranked.slice(0, 2);
@@ -1363,13 +1548,16 @@ def _run_topic_index(topic=None, cross=None):
         elig.push(i);
       }
       if (!elig.length) return [];
-      // dense 랭킹
-      const denseScored = elig.map(function(i) {
-        return { i: i, s: cosineSim(queryVec, getChunkVec(index, i)) };
-      });
-      denseScored.sort(function(a, b) { return b.s - a.s; });
+      // dense 랭킹: metadata/sidecar validation failed면 dense를 완전히 제외하고 BM25만 사용.
+      const useDense = deepDenseAvailable() && queryVec && queryVec.length === DEEP_EMBED_DIM;
       const denseRank = Object.create(null);
-      for (let r = 0; r < denseScored.length; r++) denseRank[denseScored[r].i] = r;
+      if (useDense) {
+        const denseScored = elig.map(function(i) {
+          return { i: i, s: cosineSim(queryVec, getChunkVec(index, i)) };
+        });
+        denseScored.sort(function(a, b) { return b.s - a.s; });
+        for (let r = 0; r < denseScored.length; r++) denseRank[denseScored[r].i] = r;
+      }
       // BM25 랭킹
       const qToks = deepTokenize(query);
       const bm25Scored = elig.map(function(i) {
@@ -1381,7 +1569,8 @@ def _run_topic_index(topic=None, cross=None):
       // RRF 융합
       const RRF_K = 60;
       const fused = elig.map(function(i) {
-        let sc = 1 / (RRF_K + (denseRank[i] || 0));
+        let sc = 0;
+        if (useDense && i in denseRank) sc += 1 / (RRF_K + denseRank[i]);
         if (i in bm25Rank) sc += 1 / (RRF_K + bm25Rank[i]);
         return { i: i, score: sc };
       });
@@ -2639,8 +2828,11 @@ def _run_topic_index(topic=None, cross=None):
 
     // Retrieve seed candidates for ONE investigation aspect. Returns [].
     async function retrieveSeeds(index, q) {
-      const qv = await embedQuery(q);
-      if (index.dim && qv.length !== index.dim) return [];
+      let qv = null;
+      if (deepDenseAvailable()) {
+        qv = await embedQuery(q);
+        if (qv.length !== DEEP_EMBED_DIM) return [];
+      }
       const tf = parseTimeFilter(q);
       const jf = parseJournalFilter(q, index);
       const chrono = isChronological(q);
@@ -2897,14 +3089,17 @@ def _run_topic_index(topic=None, cross=None):
           if (ok) { deepSetStatus('✅ 완료'); setTimeout(() => deepSetStatus(''), 2500); }
           return;
         }
-        deepSetStatus('\U0001F50D 질의 임베딩 중... (' + (index.model || 'embedding') + ')');
-        const queryVec = await embedQuery(query);
-        // 차원 상수는 인덱스 헤더(index.dim)를 따른다 — 질의 임베딩 차원이
-        // 인덱스와 다르면(예: 인덱스 미재빌드) 코사인 유사도가 무의미해지므로 차단.
-        if (index.dim && queryVec.length !== index.dim) {
-          throw new Error('임베딩 차원(' + queryVec.length + ')이 검색 인덱스 차원(' + index.dim + ')과 다릅니다 — 인덱스를 재빌드하세요 (build_search_index).');
+        let queryVec = null;
+        if (deepDenseAvailable()) {
+          deepSetStatus('\U0001F50D 질의 임베딩 중... (' + DEEP_EMBED_MODEL + ' / ' + DEEP_QUERY_TASK_TYPE + ')');
+          queryVec = await embedQuery(query);
+          if (queryVec.length !== DEEP_EMBED_DIM) {
+            throw new Error('임베딩 차원(' + queryVec.length + ')이 검색 인덱스 차원(' + DEEP_EMBED_DIM + ')과 다릅니다. ' + DEEP_REBUILD_GUIDANCE);
+          }
+          deepSetStatus('\U0001F4DA 관련 논문 검색 중... (BM25 + dense)');
+        } else {
+          deepSetStatus('\U0001F4DA 관련 논문 검색 중... (BM25 only: ' + DEEP.denseDisabledReason + ')', true);
         }
-        deepSetStatus('\U0001F4DA 관련 논문 검색 중... (BM25 + dense)');
         const timeFilter = parseTimeFilter(query);
         const journalFilter = parseJournalFilter(query, index);
         const chronological = isChronological(query);
@@ -2922,8 +3117,8 @@ def _run_topic_index(topic=None, cross=None):
           selected = candidates;  // 이미 논문당 대표 chunk·정렬 완료 → 재정렬 생략(순서 보존)
         } else if (looksLikeAuthorQuery(query)) {
           // 이름+의도는 있으나 이 토픽 코퍼스에 해당 저자가 없음 → 명확히 안내
-          // (예: ai4s 에서 Dashun Wang → scisci 토픽에 존재).
-          deepSetStatus('이 토픽에는 해당 저자의 논문이 없는 것 같아요. 다른 토픽(예: scisci)에서 시도해보세요.', true);
+          // 해당 저자가 포함된 다른 명시적 토픽에서 다시 시도하도록 안내한다.
+          deepSetStatus('이 토픽에는 해당 저자의 논문이 없는 것 같아요. 해당 저자가 포함된 다른 토픽에서 다시 시도해보세요.', true);
           return;
         } else {
           // Hybrid: BM25 + dense → RRF 후보 → LLM 재정렬. Long 은 근거를 2배(top-16)로
@@ -3434,13 +3629,29 @@ def _run_topic_index(topic=None, cross=None):
     # strips them on the way to Cloudflare). At runtime the modal
     # accepts any one of the three; we sniff the prefix to pick the
     # backend (sk-ant-* → Anthropic, sk-* → OpenAI, AIza* → Google).
-    # `_LLM_KEY` is the unified slot; `_ANTHROPIC_KEY` is kept for
-    # backward-compat with any code still referencing it. The embedding
-    # step (Deep Research RAG) continues to require an OpenAI key —
-    # that's a separate slot.
+    # `_LLM_KEY` is the unified answer-generation BYOK slot;
+    # `_ANTHROPIC_KEY` is kept for backward-compat with any code still
+    # referencing it. Deep Research query embeddings are separate:
+    # /api/embed returns Gemini embedding metadata (embedding_provider/embedding_model/embedding_task_type/embedding_dimension)
+    # and uses the server-side Google key, not the reader's BYOK.
+    deep_metadata_js = (
+        "window._DEEP_INDEX_SCHEMA_VERSION = " + json.dumps(INDEX_SCHEMA_VERSION) + ";\n"
+        "window._DEEP_EMBED_PROVIDER = " + json.dumps(EMBEDDING_PROVIDER) + ";\n"
+        "window._DEEP_EMBED_MODEL = " + json.dumps(EMBEDDING_MODEL) + ";\n"
+        "window._DEEP_INDEX_TASK_TYPE = " + json.dumps(EMBEDDING_TASK_TYPE) + ";\n"
+        "window._DEEP_QUERY_TASK_TYPE = " + json.dumps("RETRIEVAL_QUERY") + ";\n"
+        "window._DEEP_EMBED_DIM = " + json.dumps(EMBEDDING_DIMENSION) + ";\n"
+        "window._DEEP_EMBED_QUANT = " + json.dumps(EMBEDDING_QUANTIZATION) + ";\n"
+        "window._DEEP_CHUNK_HASH_BASIS = " + json.dumps(CHUNK_HASH_BASIS) + ";\n"
+        "window._DEEP_SIDECAR_FORMAT_VERSION = " + json.dumps(SIDECAR_FORMAT_VERSION) + ";\n"
+        "window._DEEP_CACHE_FORMAT_VERSION = " + json.dumps(CACHE_FORMAT_VERSION) + ";\n"
+        "window._DEEP_PROVENANCE_STATUS = " + json.dumps(PROVENANCE_STATUS) + ";\n"
+        "window._DEEP_EMBED_SIDECAR_FILE = " + json.dumps(EMBEDDING_SIDECAR_FILE) + ";\n"
+        "window._DEEP_REBUILD_GUIDANCE = " + json.dumps(REBUILD_GUIDANCE) + ";\n"
+    )
     JS = ("let _ANTHROPIC_KEY = " + json.dumps(_ANTHROPIC_KEY) + " || localStorage.getItem('_ANTHROPIC_KEY') || '';\n"
           "let _OPENAI_KEY = " + json.dumps(_OPENAI_KEY) + " || localStorage.getItem('_OPENAI_KEY') || '';\n"
-          "let _LLM_KEY = localStorage.getItem('_LLM_KEY') || _ANTHROPIC_KEY || '';\n" + ("window._PC_CROSS = " + ("true" if cross else "false") + ";\n") + JS)
+          "let _LLM_KEY = localStorage.getItem('_LLM_KEY') || _ANTHROPIC_KEY || '';\n" + ("window._PC_CROSS = " + ("true" if cross else "false") + ";\n") + deep_metadata_js + JS)
 
 
     def render_insights_section():

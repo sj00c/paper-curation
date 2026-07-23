@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync, realpathSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  realpathSync,
+  writeFileSync,
+} from 'node:fs';
+import { homedir } from 'node:os';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
@@ -10,6 +18,7 @@ const ENV_NAME = 'py312';
 const VALID_AUTH = new Set(['auto', 'oauth', 'api-key']);
 const OAUTH_UNSET_ENV = ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN'];
 const MIN_CLAUDE_VERSION = [2, 1, 205];
+const MANAGED_SKILL_MARKER = '<!-- paper-curation-managed-skill -->';
 
 class CliError extends Error {
   constructor(message, code = 1) {
@@ -20,29 +29,41 @@ class CliError extends Error {
 }
 
 function usage() {
-  return `paper-curation: dependency-free onboarding for paper-curation
+  return `paper-curation: dependency-free local bootstrap for paper-curation
 
 Usage:
-  paper-curation init [--dir PATH] [--auth auto|oauth|api-key] [--run-first]
-  paper-curation setup [--dir PATH] [--auth auto|oauth|api-key] [--run-first]
-  paper-curation doctor [--dir PATH] [--network] [--topic TOPIC]
-  paper-curation run [--dir PATH] -- [run_full.py args...]
-  paper-curation auth status
-  paper-curation auth setup-token
-  paper-curation help
+  node ./bin/paper-curation.mjs init [--dir PATH] [--auth auto|oauth|api-key] [--fresh-config|--reuse-config] [--run-first]
+  node ./bin/paper-curation.mjs setup [--dir PATH] [--auth auto|oauth|api-key] [--fresh-config|--reuse-config] [--run-first]
+  node ./bin/paper-curation.mjs skill install [--dir PATH]
+  node ./bin/paper-curation.mjs doctor [--dir PATH] [--network] [--topic TOPIC] [--anthropic-smoke]
+  node ./bin/paper-curation.mjs run [--dir PATH] -- [run_full.py args...]
+  node ./bin/paper-curation.mjs auth status
+  node ./bin/paper-curation.mjs auth setup-token
+  node ./bin/paper-curation.mjs topic [--dir PATH] [--json]
+  node ./bin/paper-curation.mjs help
 
 Defaults:
   --dir paper-curation for init, current directory for other commands.
   --auth auto.
   setup/init pass --no-run to Python setup unless --run-first is present.
 
-Getting started in an existing checkout:
-  paper-curation setup --auth oauth
+Safe first run from the current checkout:
+  node ./bin/paper-curation.mjs skill install
+  node ./bin/paper-curation.mjs setup --fresh-config
+  node ./bin/paper-curation.mjs doctor --network --anthropic-smoke
+  PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- \\
+    --topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
 
-  Setup creates the untracked local config.json, validates the Zotero key, lists
-  collections for selection, and creates pdf_cache automatically. Export alone
-  never creates config.json. Copy .env.example to .env to paste the two required
-  keys (Zotero and Gemini) into one editable file.
+  Setup never silently trusts an existing ignored config.json. Use --reuse-config
+  only after confirming it belongs to the current user. Authentication defaults
+  to auto and supports either Claude OAuth or an Anthropic Console API key.
+  Put required keys in .env (recommended) instead of shell history:
+    ZOTERO_API_KEY=...
+    GEMINI_API_KEY=...
+
+  The dependency-free skill installer runs before Python environment setup.
+  Setup validates the Zotero key, supports selecting multiple collections, and
+  creates local topic aliases and pdf_cache automatically.
 `;
 }
 
@@ -95,14 +116,24 @@ export function parseArgs(argv) {
   const passthroughAt = args.indexOf('--');
   const cliArgs = passthroughAt === -1 ? args : args.slice(0, passthroughAt);
   if (args.length === 0 || cliArgs.some(isHelpToken)) {
-    return { command: 'help', dir: null, auth: 'auto', runFirst: false, forwarded: [] };
+    return {
+      command: 'help',
+      dir: null,
+      auth: 'auto',
+      configMode: 'prompt',
+      runFirst: false,
+      forwarded: [],
+      json: false,
+    };
   }
 
   let command = null;
   let dir = null;
   let auth = 'auto';
+  let configMode = 'prompt';
   let runFirst = false;
   let forwarded = [];
+  let json = false;
 
   for (let i = 0; i < args.length; i += 1) {
     const token = args[i];
@@ -130,8 +161,20 @@ export function parseArgs(argv) {
       runFirst = true;
       continue;
     }
+    if (token === '--fresh-config' || token === '--reuse-config') {
+      const requested = token === '--fresh-config' ? 'fresh' : 'reuse';
+      if (configMode !== 'prompt' && configMode !== requested) {
+        throw new CliError('--fresh-config and --reuse-config are mutually exclusive.');
+      }
+      configMode = requested;
+      continue;
+    }
 
     if (token.startsWith('--')) {
+      if (command === 'topic' && token === '--json') {
+        json = true;
+        continue;
+      }
       if (command === 'doctor') {
         forwarded.push(token);
         continue;
@@ -144,7 +187,7 @@ export function parseArgs(argv) {
       continue;
     }
 
-    if (command === 'auth' && !forwarded.length) {
+    if ((command === 'auth' || command === 'skill') && !forwarded.length) {
       forwarded.push(token);
       continue;
     }
@@ -152,6 +195,14 @@ export function parseArgs(argv) {
       forwarded.push(token);
       continue;
     }
+    if (command === 'topic') {
+      if (token === 'list' && !forwarded.length) {
+        forwarded.push(token);
+        continue;
+      }
+      throw new CliError(`Unexpected topic argument: ${token}`);
+    }
+
 
     throw new CliError(`Unexpected argument: ${token}`);
   }
@@ -161,7 +212,15 @@ export function parseArgs(argv) {
     throw new CliError(`Invalid --auth value '${auth}'. Expected auto, oauth, or api-key.`);
   }
 
-  return { command, dir, auth, runFirst, forwarded };
+  return {
+    command,
+    dir,
+    auth,
+    configMode,
+    runFirst,
+    forwarded,
+    json,
+  };
 }
 
 function resolveTargetDir(parsed, cwd) {
@@ -194,6 +253,158 @@ function condaStep(cwd, args, options = {}) {
   });
 }
 
+function skillInstallStep(cwd) {
+  return { action: 'installSkill', cwd };
+}
+
+function topicListStep(cwd, json = false) {
+  return { action: 'listTopics', cwd, json };
+}
+
+function readManagedSkillManifest(cwd) {
+  const manifestPath = path.join(cwd, 'skills', 'manifest.json');
+  if (!existsSync(manifestPath)) {
+    throw new CliError(`Missing managed skill manifest: ${manifestPath}`);
+  }
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  if (!Array.isArray(manifest.skills) || manifest.skills.length === 0) {
+    throw new CliError(`Managed skill manifest has no skills: ${manifestPath}`);
+  }
+  return manifest;
+}
+
+function renderSkillTemplate(template, values) {
+  return template.replaceAll(/\{([a-zA-Z0-9_]+)\}/g, (match, key) => {
+    if (Object.hasOwn(values, key)) return String(values[key]);
+    throw new CliError(`Unknown skill template field: ${match}`);
+  });
+}
+
+function formatList(values) {
+  return values.length ? values.join(', ') : '(none)';
+}
+
+function hasManagedMarker(filePath) {
+  return existsSync(filePath) && readFileSync(filePath, 'utf8').includes(MANAGED_SKILL_MARKER);
+}
+
+function findStaleManagedSkillIds(skillsHome, activeIds) {
+  if (!existsSync(skillsHome)) return [];
+  const stale = [];
+  for (const entry of readdirSync(skillsHome, { withFileTypes: true })) {
+    if (!entry.isDirectory() || activeIds.has(entry.name)) continue;
+    const skillFile = path.join(skillsHome, entry.name, 'SKILL.md');
+    if (hasManagedMarker(skillFile)) stale.push(entry.name);
+  }
+  return stale.sort();
+}
+
+export function installSkill(cwd, home = homedir()) {
+  requireCheckout(cwd);
+  const rootTemplatePath = path.join(cwd, 'SKILL.md.template');
+  const internalTemplatePath = path.join(cwd, 'skills', 'SKILL.md.template');
+  if (!existsSync(rootTemplatePath)) {
+    throw new CliError(`Missing skill template: ${rootTemplatePath}`);
+  }
+  if (!existsSync(internalTemplatePath)) {
+    throw new CliError(`Missing managed skill template: ${internalTemplatePath}`);
+  }
+
+  const manifest = readManagedSkillManifest(cwd);
+  const rootTemplate = readFileSync(rootTemplatePath, 'utf8');
+  const internalTemplate = readFileSync(internalTemplatePath, 'utf8');
+  const projectSkill = path.join(cwd, 'SKILL.md');
+  const skillsHome = path.join(home, '.claude', 'skills');
+  const activeIds = new Set(manifest.skills.map((skill) => skill.id));
+  const result = {
+    installed: [],
+    skipped: [],
+    stale: findStaleManagedSkillIds(skillsHome, activeIds),
+  };
+
+  mkdirSync(skillsHome, { recursive: true });
+  const manifestIds = manifest.skills.map((skill) => skill.id).join(', ');
+  const rootContent = renderSkillTemplate(rootTemplate, {
+    project_dir: cwd,
+    manifest_ids: manifestIds,
+    marker: MANAGED_SKILL_MARKER,
+  });
+  writeFileSync(projectSkill, rootContent, 'utf8');
+
+  for (const skill of manifest.skills) {
+    const skillDir = path.join(skillsHome, skill.id);
+    const skillPath = path.join(skillDir, 'SKILL.md');
+    if (existsSync(skillPath) && !hasManagedMarker(skillPath)) {
+      result.skipped.push(skill.id);
+      continue;
+    }
+    mkdirSync(skillDir, { recursive: true });
+    const content = renderSkillTemplate(internalTemplate, {
+      ...skill,
+      project_dir: cwd,
+      marker: MANAGED_SKILL_MARKER,
+    });
+    writeFileSync(skillPath, content, 'utf8');
+    result.installed.push(skill.id);
+  }
+
+  process.stdout.write(
+    `paper-curation: installed=${formatList(result.installed)} skipped=${formatList(result.skipped)} stale=${formatList(result.stale)}\n`,
+  );
+  return result;
+}
+function readJsonConfig(configPath) {
+  try {
+    return JSON.parse(readFileSync(configPath, 'utf8'));
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      throw new CliError(`Malformed config.json at ${configPath}: ${error.message}`);
+    }
+    throw error;
+  }
+}
+
+export function listConfiguredTopics(cwd) {
+  const configPath = path.join(cwd, 'config.json');
+  if (!existsSync(configPath)) {
+    throw new CliError(
+      `No config.json found in ${cwd}. Run 'node ./bin/paper-curation.mjs setup --fresh-config' to choose Zotero collections, or pass --dir PATH for an existing checkout.`,
+    );
+  }
+
+  const config = readJsonConfig(configPath);
+  const collections = config?.zotero?.collections;
+  if (!collections || typeof collections !== 'object' || Array.isArray(collections)) {
+    throw new CliError(
+      `No topic aliases found in ${configPath}. Configure zotero.collections with 'node ./bin/paper-curation.mjs setup --fresh-config'.`,
+    );
+  }
+
+  const topics = Object.keys(collections).filter((topic) => topic.length > 0);
+  if (!topics.length) {
+    throw new CliError(
+      `No topic aliases found in ${configPath}. Configure zotero.collections with 'node ./bin/paper-curation.mjs setup --fresh-config'.`,
+    );
+  }
+  return topics;
+}
+
+function printConfiguredTopics(cwd, json = false) {
+  const topics = listConfiguredTopics(cwd);
+  if (json) {
+    process.stdout.write(`${JSON.stringify({ topics, count: topics.length })}\n`);
+    return topics;
+  }
+
+  process.stdout.write(`paper-curation: configured topic aliases (${topics.length})\n`);
+  for (const topic of topics) {
+    process.stdout.write(`- ${JSON.stringify(topic)}\n`);
+  }
+  process.stdout.write('Use one alias as --topic <alias>. Run setup --fresh-config to change selections.\n');
+  return topics;
+}
+
+
 
 function requireCheckout(dir) {
   if (!isCheckout(dir)) {
@@ -201,8 +412,10 @@ function requireCheckout(dir) {
   }
 }
 
-function buildEnvironmentSetupSteps(cwd, auth, runFirst) {
-  const setupArgs = ['pipeline/setup.py', '--anthropic-auth', auth];
+function buildEnvironmentSetupSteps(cwd, auth, runFirst, configMode = 'prompt') {
+  const setupArgs = ['pipeline/setup.py', '--anthropic-auth', auth, '--no-install'];
+  if (configMode === 'fresh') setupArgs.push('--fresh-config');
+  if (configMode === 'reuse') setupArgs.push('--reuse-config');
   const setupOptions = auth === 'oauth' ? { unsetEnv: OAUTH_UNSET_ENV } : {};
   const steps = [];
   if (auth === 'oauth') {
@@ -216,6 +429,11 @@ function buildEnvironmentSetupSteps(cwd, auth, runFirst) {
       cwd,
       unsetEnv: OAUTH_UNSET_ENV,
     }));
+    steps.push(commandStep('claude', ['auth', 'login'], {
+      cwd,
+      unsetEnv: OAUTH_UNSET_ENV,
+      onlyIfPreviousFailed: true,
+    }));
   }
   if (!runFirst) setupArgs.push('--no-run');
   steps.push(
@@ -226,9 +444,14 @@ function buildEnvironmentSetupSteps(cwd, auth, runFirst) {
       '-c',
       "import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 12) else 'The py312 environment must use Python 3.12')",
     ]),
-    condaStep(cwd, ['python', '-m', 'pip', 'install', '-r', 'requirements.txt']),
-    condaStep(cwd, ['python', ...setupArgs], setupOptions),
   );
+  const setupStep = condaStep(cwd, ['python', ...setupArgs], setupOptions);
+  const dependencyStep = condaStep(
+    cwd,
+    ['python', '-m', 'pip', 'install', '-r', 'requirements.txt'],
+  );
+  if (runFirst) steps.push(dependencyStep, setupStep);
+  else steps.push(setupStep, dependencyStep);
   return steps;
 }
 
@@ -246,18 +469,49 @@ export function createPlan(argv, options = {}) {
     if (!isCheckout(targetDir)) {
       steps.push(commandStep('git', ['clone', REPO_URL, targetDir], { cwd }));
     }
-    steps.push(...buildEnvironmentSetupSteps(targetDir, parsed.auth, parsed.runFirst));
+    steps.push(skillInstallStep(targetDir));
+    steps.push(...buildEnvironmentSetupSteps(
+      targetDir,
+      parsed.auth,
+      parsed.runFirst,
+      parsed.configMode,
+    ));
     return { parsed, targetDir, steps };
   }
 
   if (parsed.command === 'setup') {
     if (options.validateCheckout !== false) requireCheckout(targetDir);
-    return { parsed, targetDir, steps: buildEnvironmentSetupSteps(targetDir, parsed.auth, parsed.runFirst) };
+    return {
+      parsed,
+      targetDir,
+      steps: [
+        skillInstallStep(targetDir),
+        ...buildEnvironmentSetupSteps(
+          targetDir,
+          parsed.auth,
+          parsed.runFirst,
+          parsed.configMode,
+        ),
+      ],
+    };
+  }
+
+  if (parsed.command === 'skill') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    if (parsed.forwarded[0] !== 'install') {
+      throw new CliError("Unknown skill command. Expected 'skill install'.");
+    }
+    return { parsed, targetDir, steps: [skillInstallStep(targetDir)] };
   }
 
   if (parsed.command === 'doctor') {
     if (options.validateCheckout !== false) requireCheckout(targetDir);
     return { parsed, targetDir, steps: [condaStep(targetDir, ['python', 'pipeline/doctor.py', ...parsed.forwarded])] };
+  }
+
+  if (parsed.command === 'topic') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    return { parsed, targetDir, readDotEnv: false, steps: [topicListStep(targetDir, parsed.json)] };
   }
 
   if (parsed.command === 'run') {
@@ -280,6 +534,8 @@ export function createPlan(argv, options = {}) {
 }
 
 function printable(step) {
+  if (step.action === 'installSkill') return `install paper-curation skill from ${step.cwd}`;
+  if (step.action === 'listTopics') return `list paper-curation topics from ${step.cwd}`;
   return [step.command, ...step.args].join(' ');
 }
 
@@ -325,8 +581,17 @@ function spawnChecked(step, dotEnv = {}) {
 export function runPlan(plan, runner = spawnChecked) {
   for (let i = 0; i < plan.steps.length; i += 1) {
     const step = plan.steps[i];
+    if (step.action === 'installSkill') {
+      if (runner === spawnChecked) installSkill(step.cwd);
+      else runner(step);
+      continue;
+    }
+    if (step.action === 'listTopics') {
+      if (runner === spawnChecked) printConfiguredTopics(step.cwd, step.json);
+      else runner(step);
+      continue;
+    }
     if (step.onlyIfPreviousFailed) continue;
-
     try {
       runner(step);
     } catch (error) {
@@ -348,8 +613,12 @@ export function main(argv = process.argv.slice(2)) {
       process.stdout.write(plan.help);
       return 0;
     }
-    const dotEnv = loadDotEnv(plan.targetDir);
-    runPlan(plan, (step) => spawnChecked(step, dotEnv));
+    const dotEnv = plan.readDotEnv === false ? {} : loadDotEnv(plan.targetDir);
+    runPlan(plan, (step) => {
+      if (step.action === 'installSkill') installSkill(step.cwd);
+      else if (step.action === 'listTopics') printConfiguredTopics(step.cwd, step.json);
+      else spawnChecked(step, dotEnv);
+    });
     return 0;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

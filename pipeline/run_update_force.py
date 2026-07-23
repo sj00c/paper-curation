@@ -2,7 +2,7 @@
 Paper-Curation --local --update-force 배치 실행 스크립트.
 
 사용법:
-  PYTHONUTF8=1 python run_update_force.py --topic ai4s
+  PYTHONUTF8=1 python run_update_force.py --topic <alias>
   # --concurrency 기본값 16 (Anthropic Tier 4). Tier 1~3 은 4~12 로 낮춤.
 
 기능:
@@ -31,6 +31,8 @@ import urllib.request
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
+from uuid import uuid4
+from pathlib import Path
 
 # Paths
 from config_loader import (
@@ -40,6 +42,13 @@ from config_loader import (
 )
 from lib.categories import category_slug
 from anthropic_auth import AnthropicAuthError, create_anthropic_client, require_auth_ready
+from lib.search_index_metadata import (
+    EMBEDDING_MODEL,
+    canonicalize_index_metadata,
+    format_validation_errors,
+    validate_index_metadata,
+    validate_known_safe_legacy_index,
+)
 PAPERS_DIR = str(_PAPERS_DIR)
 PROJECT_ROOT = PIPELINE_DIR.parent
 
@@ -61,6 +70,63 @@ def _split_cats_by_image_presence(topic, cats):
         )
         (with_image if has_image else missing).append(cat)
     return with_image, missing
+
+
+def _vector_assets_suppressed(args):
+    return bool(
+        getattr(args, "dry_run", False)
+        or getattr(args, "mode", None) == "smoke"
+        or os.environ.get("PAPER_CURATION_NO_VECTOR_REBUILD") == "1"
+    )
+
+def _validate_current_or_known_safe_legacy_index(payload):
+    legacy_validation = validate_known_safe_legacy_index(payload, model=EMBEDDING_MODEL)
+    if legacy_validation.ok:
+        return legacy_validation
+
+    current_validation = validate_index_metadata(payload, model=EMBEDDING_MODEL, allow_legacy=False)
+    if current_validation.ok and canonicalize_index_metadata(payload) == payload:
+        return current_validation
+    if current_validation.ok:
+        return legacy_validation
+    return current_validation
+
+
+
+def _report_search_index_compatibility(topic):
+    idx_path = Path(get_topic_dir(topic)) / "_search_index.json"
+    if not idx_path.exists():
+        log("  [build_search_index] SKIP: no existing search index to validate; vector rebuild suppressed")
+        return "missing"
+
+    try:
+        payload = json.loads(idx_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        log(f"  [build_search_index] SKIP: existing search index unreadable ({type(exc).__name__}); vector rebuild suppressed")
+        return "unreadable"
+
+    validation = _validate_current_or_known_safe_legacy_index(payload)
+    if validation.ok:
+        state = "legacy-compatible" if validation.is_legacy else "current"
+        log(f"  [build_search_index] SKIP: existing search index metadata is {state}; vector rebuild suppressed")
+        return state
+
+    log("  [build_search_index] SKIP: "
+        + format_validation_errors("existing search index", validation))
+    return "incompatible"
+
+
+def _postprocess_search_index(args, topic, run_step):
+    run_step("cleanup",
+             ["python", "pipeline/cleanup.py", "--execute"], 300)
+
+    if _vector_assets_suppressed(args):
+        _report_search_index_compatibility(topic)
+        return "suppressed"
+
+    run_step("build_search_index",
+             ["python", "pipeline/build_search_index.py", "--topic", topic], 900)
+    return "built"
 
 
 def _topic_default_artifacts_missing(topic):
@@ -2314,6 +2380,7 @@ _MODE_LEGACY_MAP = {
     "rebuild":    {"resume": False, "skip_existing": False, "timeline": False, "category": False},
     "reclassify": {"resume": True,  "skip_existing": True,  "timeline": False, "category": True},
     "retime":     {"resume": True,  "skip_existing": True,  "timeline": True,  "category": False},
+    "smoke":      {"resume": False, "skip_existing": False, "timeline": False, "category": False},
 }
 
 
@@ -2344,6 +2411,374 @@ def _apply_mode_mapping(args):
         setattr(args, field, value)
     print(f"[mode] {args.mode} → resume={args.resume}, skip_existing={args.skip_existing}, "
           f"timeline={args.timeline}, category={args.category}")
+
+
+_AUTHORITATIVE_PDF_METHODS = {
+    "zotero_children_abs",
+    "zotero_children_basename",
+    "zotero_api_download",
+    "metadata_oa_cache",
+    "metadata_oa_download",
+    "doi_filename",
+    "arxiv_filename",
+    "index_pdf_path",
+}
+
+
+def _smoke_item_from_index_entry(entry):
+    key = str(entry.get("zotero_item_key") or "").strip()
+    pdf_path = str(entry.get("pdf_path") or "").strip()
+    if not key and not pdf_path:
+        return None
+    item = {
+        "key": key,
+        "title": entry.get("title") or entry.get("slug") or "Smoke candidate",
+        "DOI": entry.get("doi") or entry.get("DOI") or "",
+        "abstractNote": entry.get("essence") or "",
+        "pdf_path": pdf_path,
+    }
+    return item
+
+
+def _smoke_candidates_from_index(topic, limit):
+    idx_path = os.path.join(PAPERS_DIR, "_papers_index.json")
+    if not os.path.exists(idx_path):
+        return []
+    try:
+        with open(idx_path, "r", encoding="utf-8") as f:
+            idx = json.load(f)
+    except (OSError, json.JSONDecodeError, TypeError):
+        return []
+    candidates = []
+    for entry in idx:
+        if topic not in entry.get("topics", []):
+            continue
+        item = _smoke_item_from_index_entry(entry)
+        if item:
+            slug = entry.get("slug") or make_slug(item, [])
+            pdf_path = str(item.get("pdf_path") or "")
+            score = 0 if pdf_path and os.path.exists(pdf_path) else 1
+            candidates.append((score, item, slug))
+
+    candidates.sort(key=lambda candidate: candidate[0])
+    return [
+        (item, slug)
+        for _score, item, slug in candidates[:limit]
+    ]
+
+def _fetch_zotero_items_sample(collection_key, limit):
+    items = []
+    url = (f"https://api.zotero.org/users/{USER_ID}/collections/"
+           f"{collection_key}/items/top?limit={max(1, min(5, limit))}&format=json&sort=title")
+    req = urllib.request.Request(url, headers={"Zotero-API-Key": API_KEY})
+    with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
+        batch = json.load(resp)
+    for item in batch:
+        data = item.get("data", {})
+        if data.get("itemType") in ("attachment", "note", "forumPost", "videoRecording"):
+            continue
+        items.append(data)
+        if len(items) >= limit:
+            break
+    return items
+
+def _find_smoke_pdf_no_write(item):
+    pdf_path = str(item.get("pdf_path") or "").strip()
+    if pdf_path and os.path.exists(pdf_path):
+        return pdf_path, "index_pdf_path"
+
+    key = item.get("key", "")
+    title = item.get("title", "")
+    if key:
+        try:
+            url = f"https://api.zotero.org/users/{USER_ID}/items/{key}/children?format=json"
+            req = urllib.request.Request(url, headers={"Zotero-API-Key": API_KEY})
+            with urllib.request.urlopen(req, timeout=10, context=_ssl_ctx) as resp:
+                children = json.load(resp)
+            for child in children:
+                data = child.get("data", {})
+                if data.get("itemType") != "attachment":
+                    continue
+                if data.get("contentType") not in ("application/pdf", ""):
+                    continue
+                child_path = data.get("path", "")
+                if not child_path.lower().endswith(".pdf"):
+                    continue
+                if child_path.startswith("attachments:"):
+                    resolved = os.path.join(ZOTERO_DIR, child_path[len("attachments:"):])
+                    if os.path.exists(resolved):
+                        return resolved, "zotero_children_abs"
+                if os.path.exists(child_path):
+                    return child_path, "zotero_children_abs"
+                fname = child_path.replace("\\", "/").rsplit("/", 1)[-1]
+                alt = os.path.join(ZOTERO_DIR, fname)
+                if os.path.exists(alt):
+                    return alt, "zotero_children_basename"
+                downloaded = _download_zotero_attachment(child, title)
+                if downloaded:
+                    return downloaded, "zotero_api_download"
+        except Exception as exc:
+            return "", f"children_api_error:{type(exc).__name__}"
+
+    doi = (item.get("DOI") or item.get("doi") or "").strip()
+    if doi and os.path.isdir(ZOTERO_DIR):
+        doi_norm = re.sub(r"[^a-z0-9]", "", doi.lower())
+        for fname in os.listdir(ZOTERO_DIR):
+            if not fname.lower().endswith(".pdf"):
+                continue
+            if doi_norm and doi_norm in re.sub(r"[^a-z0-9]", "", fname.lower()):
+                return os.path.join(ZOTERO_DIR, fname), "doi_filename"
+
+    arxiv_id = _extract_arxiv_id_from_item(item)
+    if arxiv_id and os.path.isdir(ZOTERO_DIR):
+        arxiv_norm = arxiv_id.lower().replace(".", "").replace("/", "")
+        for fname in os.listdir(ZOTERO_DIR):
+            if not fname.lower().endswith(".pdf"):
+                continue
+            if arxiv_norm in re.sub(r"[^a-z0-9]", "", fname.lower()):
+                return os.path.join(ZOTERO_DIR, fname), "arxiv_filename"
+
+    return "", "no_match"
+
+
+
+
+
+def _write_smoke_report(smoke_root, payload):
+    os.makedirs(smoke_root, exist_ok=True)
+    report_path = os.path.join(smoke_root, "report.json")
+    with open(report_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    return report_path
+
+
+def _run_smoke(args, selected_auth):
+    import config_loader as _smoke_config
+    limit = max(1, min(5, int(getattr(args, "smoke_limit", 1) or 1)))
+    run_id = datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + uuid4().hex[:8]
+    smoke_root = os.path.join(str(PIPELINE_DIR), "_smoke", args.topic, run_id)
+    scratch_papers = os.path.join(smoke_root, "papers")
+    scratch_attachments = os.path.join(smoke_root, "attachments")
+    os.makedirs(scratch_papers, exist_ok=True)
+
+    original_papers_dir = globals()["PAPERS_DIR"]
+    original_checkpoint = globals()["CHECKPOINT_FILE"]
+    original_find = globals()["_find_pdf_with_wall_deadline"]
+    original_strict = globals()["_STRICT_PDF"]
+    original_zotero_dir = globals()["ZOTERO_DIR"]
+    original_audit_log = globals()["_AUDIT_LOG_PATH"]
+    original_config_papers_dir = _smoke_config.PAPERS_DIR
+    original_slug_to_zotero_key = dict(_slug_to_zotero_key)
+    original_slug_to_pdf_path = dict(_slug_to_pdf_path)
+    had_no_deploy_env = "PAPER_CURATION_NO_DEPLOY" in os.environ
+    original_no_deploy_env = os.environ.get("PAPER_CURATION_NO_DEPLOY")
+    try:
+        candidates = _smoke_candidates_from_index(args.topic, limit)
+        source = "index"
+        if not candidates:
+            collection_key = COLLECTIONS.get(args.topic, "")
+            if collection_key:
+                items = _fetch_zotero_items_sample(collection_key, limit)
+                candidates, _dups, _skipped = _map_items_to_slugs(items, [], {})
+                candidates = candidates[:limit]
+                source = "zotero_sample"
+            else:
+                candidates = []
+    except Exception as exc:
+        report_path = _write_smoke_report(smoke_root, {
+            "status": "candidate_fetch_failed",
+            "run_id": run_id,
+            "topic": args.topic,
+            "auth": {
+                "mode": getattr(selected_auth, "mode", "unknown"),
+                "source": getattr(selected_auth, "source", "") or "none",
+            },
+            "error_type": type(exc).__name__,
+            "scratch_root": smoke_root,
+            "write_surfaces": [smoke_root],
+            "post_processing": {
+                "status": "skipped",
+                "reason": "candidate discovery failed before review",
+            },
+            "deploy": {
+                "status": "suppressed",
+                "reason": "smoke mode never deploys",
+            },
+            "remediation": (
+                "Check Zotero credentials/network access and rerun the same smoke command."
+            ),
+        })
+        print(f"[smoke] candidate discovery failed; report: {report_path}")
+        raise SystemExit(2)
+    os.environ["PAPER_CURATION_NO_DEPLOY"] = "1"
+
+    globals()["PAPERS_DIR"] = scratch_papers
+    globals()["CHECKPOINT_FILE"] = os.path.join(smoke_root, "checkpoint.json")
+    globals()["_STRICT_PDF"] = True
+    globals()["ZOTERO_DIR"] = scratch_attachments
+    globals()["_AUDIT_LOG_PATH"] = os.path.join(smoke_root, "find_pdf_audit.jsonl")
+    _smoke_config.PAPERS_DIR = _pathlib.Path(scratch_papers)
+
+    def smoke_find(item):
+        pdf_path = str(item.get("pdf_path") or "").strip()
+        if pdf_path and os.path.exists(pdf_path):
+            return pdf_path, "index_pdf_path"
+        path, method = _find_smoke_pdf_no_write(item)
+        if method not in _AUTHORITATIVE_PDF_METHODS:
+            return "", method
+        return path, method
+
+    globals()["_find_pdf_with_wall_deadline"] = smoke_find
+    cp = {"completed": [], "failed": [], "phase": "smoke"}
+    attempted = []
+    next_command = (
+        f"PAPER_CURATION_NO_DEPLOY=1 npx . run -- --topic {args.topic} "
+        "--mode curate --source zotero --no-deploy"
+    )
+
+    def report_payload(status, **extra):
+        return {
+            "status": status,
+            "run_id": run_id,
+            "topic": args.topic,
+            "auth": {
+                "mode": getattr(selected_auth, "mode", "unknown"),
+                "source": getattr(selected_auth, "source", "") or "none",
+            },
+            "candidate_source": source,
+            "candidate_count": len(candidates),
+            "smoke_limit": limit,
+            "attempted": attempted,
+            "completed": cp.get("completed", []),
+            "failed": cp.get("failed", []),
+            "scratch_root": smoke_root,
+            "write_surfaces": [smoke_root],
+            "post_processing": {
+                "status": "skipped",
+                "reason": "scratch smoke never runs global post-processing",
+            },
+            "deploy": {
+                "status": "suppressed",
+                "reason": "smoke forces --no-deploy and PAPER_CURATION_NO_DEPLOY=1",
+            },
+            "next_command": next_command,
+            **extra,
+        }
+
+    try:
+        if not candidates:
+            report_path = _write_smoke_report(smoke_root, report_payload(
+                "no_smokeable_pdf",
+                reason="unknown_topic_or_no_candidates",
+                remediation=(
+                    "Attach at least one PDF in Zotero or populate _papers_index.json "
+                    "with an existing pdf_path."
+                ),
+            ))
+            print(f"[smoke] report: {report_path}")
+            raise SystemExit(2)
+
+        for original_item, slug in candidates[:limit]:
+            item = dict(original_item)
+            pdf_path, pdf_method = smoke_find(item)
+            attempt = {
+                "key": item.get("key", ""),
+                "slug": slug,
+                "title": item.get("title", ""),
+                "pdf": {
+                    "status": "found" if pdf_path else "not_found",
+                    "method": pdf_method,
+                },
+            }
+            attempted.append(attempt)
+            if not pdf_path:
+                attempt["result"] = "no_pdf"
+                continue
+
+            item["pdf_path"] = pdf_path
+            result = process_paper(item, slug, cp)
+            attempt["result"] = result
+            if result == "ok":
+                report_path = _write_smoke_report(
+                    smoke_root, report_payload("ok")
+                )
+                print(f"[smoke] OK: scratch output under {smoke_root}")
+                print(f"[smoke] report: {report_path}")
+                return
+
+        report_path = _write_smoke_report(smoke_root, report_payload(
+            "no_smokeable_pdf",
+            remediation=(
+                "Attach at least one PDF in Zotero or populate _papers_index.json "
+                "with an existing pdf_path."
+            ),
+        ))
+        print(f"[smoke] no smokeable PDF found; report: {report_path}")
+        raise SystemExit(2)
+    finally:
+        globals()["PAPERS_DIR"] = original_papers_dir
+        globals()["CHECKPOINT_FILE"] = original_checkpoint
+        globals()["_find_pdf_with_wall_deadline"] = original_find
+        globals()["_STRICT_PDF"] = original_strict
+        globals()["ZOTERO_DIR"] = original_zotero_dir
+        globals()["_AUDIT_LOG_PATH"] = original_audit_log
+        _smoke_config.PAPERS_DIR = original_config_papers_dir
+        _slug_to_zotero_key.clear()
+        _slug_to_zotero_key.update(original_slug_to_zotero_key)
+        _slug_to_pdf_path.clear()
+        _slug_to_pdf_path.update(original_slug_to_pdf_path)
+        if had_no_deploy_env:
+            os.environ["PAPER_CURATION_NO_DEPLOY"] = original_no_deploy_env
+        else:
+            os.environ.pop("PAPER_CURATION_NO_DEPLOY", None)
+
+
+def _maybe_auto_deploy(args, topic):
+    """Run the legacy auto-publish path unless this run explicitly suppresses it."""
+    has_cf_token = bool(
+        os.environ.get("CLOUDFLARE_API_TOKEN") or os.environ.get("CF_API_TOKEN")
+    )
+    has_account_id = bool(os.environ.get("CLOUDFLARE_ACCOUNT_ID"))
+    no_deploy = (
+        getattr(args, "no_deploy", False)
+        or bool(os.environ.get("PAPER_CURATION_NO_DEPLOY"))
+    )
+    if no_deploy:
+        log("\n  [prepare_deploy] SKIP: deploy suppressed "
+            "(--no-deploy / PAPER_CURATION_NO_DEPLOY)")
+        return "suppressed"
+
+    if not (has_cf_token and has_account_id):
+        missing = []
+        if not has_cf_token:
+            missing.append("CLOUDFLARE_API_TOKEN (or CF_API_TOKEN)")
+        if not has_account_id:
+            missing.append("CLOUDFLARE_ACCOUNT_ID")
+        log(f"\n  [prepare_deploy] SKIP: missing env vars — {', '.join(missing)}")
+        return "missing_credentials"
+
+    log("\n  [prepare_deploy] Cloudflare env vars found, deploying...")
+    try:
+        result = subprocess.run(
+            ["python", "pipeline/prepare_deploy.py", "--topic", topic, "--push"],
+            cwd=str(PIPELINE_DIR.parent),
+            capture_output=True,
+            text=True,
+            timeout=1800,
+            env={**os.environ, "PYTHONUTF8": "1"},
+        )
+    except Exception as exc:
+        message = f"prepare_deploy failed to start: {str(exc)[:100]}"
+        log(f"  [prepare_deploy] ERROR: {message}")
+        raise RuntimeError(message) from exc
+
+    if result.returncode == 0:
+        log("  [prepare_deploy] OK: wrangler deploy + gh-pages sync done")
+        return "deployed"
+
+    message = f"prepare_deploy failed with exit {result.returncode}"
+    log(f"  [prepare_deploy] FAILED (exit {result.returncode})")
+    raise RuntimeError(message)
 
 
 def _run_curate(topic, *, mode=None, concurrency=16, resume=False,
@@ -2388,7 +2823,7 @@ def _run_curate(topic, *, mode=None, concurrency=16, resume=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Paper-curation --update-force batch")
-    parser.add_argument("--topic", default="ai4s", help="Topic: ai4s or scisci")
+    parser.add_argument("--topic", required=True, help="Topic alias to update")
     parser.add_argument("--concurrency", type=int, default=16, help="Parallel workers (Tier 4 default; lower for Tier 1~3 — see README)")
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
     parser.add_argument("--skip-existing", action="store_true",
@@ -2432,17 +2867,29 @@ def main():
     # legacy flag combinations and emits DeprecationWarnings for any legacy
     # flags that were also specified. Omitting --mode keeps 100% legacy
     # behavior, so existing callers (incl. in-flight batches) are unaffected.
-    parser.add_argument("--mode", choices=["curate", "rebuild", "reclassify", "retime"],
+    parser.add_argument("--mode", choices=["curate", "rebuild", "reclassify", "retime", "smoke"],
                         default=None,
                         help="New MECE mode selector. curate=new papers only (keeps existing reviews); "
                              "rebuild=regenerate all reviews; reclassify=re-run topic modeling on existing reviews; "
-                             "retime=regenerate timeline narratives+images only. "
+                             "retime=regenerate timeline narratives+images only; "
+                             "smoke=bounded scratch-only PDF/review runtime check. "
                              "When set, overrides --resume/--skip-existing/--timeline/--category combinations.")
+    parser.add_argument("--smoke-limit", type=int, default=1,
+                        help="--mode smoke candidate attempts (1-5; default 1).")
     args = parser.parse_args()
 
     # Apply --mode → legacy flags mapping. Pure translation; no behavior change
     # when --mode is absent (args.mode is None → all legacy flags honored as-is).
     _apply_mode_mapping(args)
+    if args.mode == "smoke":
+        args.smoke_limit = max(1, min(5, args.smoke_limit))
+        args.no_deploy = True
+        try:
+            selected_auth = require_auth_ready()
+        except AnthropicAuthError as exc:
+            raise SystemExit(f"[auth] {exc}") from exc
+        _run_smoke(args, selected_auth)
+        return
 
     # --conn-full → force full connection regen for child subprocesses
     # (extract_insights / topic_modeling). They read CONN_FULL_REBUILD from env,
@@ -3094,54 +3541,15 @@ def main():
         run_step("build_rss",
                  ["python", "pipeline/build_rss.py", topic], 300)
 
-        # Deep Research search index (section-aware chunks + OpenAI embeddings).
-        # Reads OPENAI_API_KEY from env or config.json; fails fast if missing.
-        # Cleanup stale category narratives/timelines before building the
-        # search index so Deep Research never surfaces renamed categories.
-        # Always runs --execute because post-processing has just rewritten
-        # the classifier output; any orphan entries are safe to remove.
-        run_step("cleanup",
-                 ["python", "pipeline/cleanup.py", "--execute"], 300)
+        # Deep Research search index (section-aware chunks + Gemini embeddings).
+        # Smoke, dry-run, and explicit vector-rebuild opt-out report compatibility
+        # only: they must not heal metadata mismatches by implicitly rebuilding
+        # vectors. Deploy suppression is publish-only and still builds locally.
+        _postprocess_search_index(args, topic, run_step)
 
-        run_step("build_search_index",
-                 ["python", "pipeline/build_search_index.py", "--topic", topic], 900)
-
-        # Deploy via wrangler (Cloudflare Workers with Static Assets) +
-        # idempotent gh-pages stub sync. Requires:
-        #   CLOUDFLARE_API_TOKEN (or CF_API_TOKEN), CLOUDFLARE_ACCOUNT_ID.
-        has_cf_token = bool(
-            os.environ.get("CLOUDFLARE_API_TOKEN") or os.environ.get("CF_API_TOKEN")
-        )
-        has_account_id = bool(os.environ.get("CLOUDFLARE_ACCOUNT_ID"))
-        no_deploy = (getattr(args, "no_deploy", False)
-                     or bool(os.environ.get("PAPER_CURATION_NO_DEPLOY")))
-        if no_deploy:
-            log("\n  [prepare_deploy] SKIP: deploy suppressed "
-                "(--no-deploy / PAPER_CURATION_NO_DEPLOY)")
-        elif has_cf_token and has_account_id:
-            log("\n  [prepare_deploy] Cloudflare env vars found, deploying...")
-            try:
-                result = subprocess.run(
-                    ["python", "pipeline/prepare_deploy.py", "--topic", topic, "--push"],
-                    cwd=str(PIPELINE_DIR.parent),
-                    capture_output=True, text=True, timeout=1800,
-                    env={**os.environ, "PYTHONUTF8": "1"},
-                )
-                if result.returncode == 0:
-                    log(f"  [prepare_deploy] OK: wrangler deploy + gh-pages sync done")
-                else:
-                    log(f"  [prepare_deploy] FAILED (exit {result.returncode})")
-                    if result.stderr:
-                        log(f"    {result.stderr[:500]}")
-            except Exception as e:
-                log(f"  [prepare_deploy] ERROR: {str(e)[:100]}")
-        else:
-            missing = []
-            if not has_cf_token:
-                missing.append("CLOUDFLARE_API_TOKEN (or CF_API_TOKEN)")
-            if not has_account_id:
-                missing.append("CLOUDFLARE_ACCOUNT_ID")
-            log(f"\n  [prepare_deploy] SKIP: missing env vars — {', '.join(missing)}")
+        # Preserve the legacy production auto-publish path. Smoke and explicit
+        # no-deploy runs cannot publish.
+        _maybe_auto_deploy(args, topic)
 
         log("\nPost-processing complete!")
 

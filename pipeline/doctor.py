@@ -30,23 +30,103 @@ import urllib.request
 from pathlib import Path
 from types import SimpleNamespace
 try:
-    from anthropic_auth import MIN_CLAUDE_CODE_VERSION, auth_status, claude_version
+    from anthropic_auth import (
+        MIN_CLAUDE_CODE_VERSION,
+        auth_status,
+        claude_version,
+        run_structured_smoke,
+    )
 except Exception:
     MIN_CLAUDE_CODE_VERSION = (2, 1, 205)
     claude_version = None
     auth_status = None
+    run_structured_smoke = None
+
+try:
+    from lib.search_index_metadata import (
+        EMBEDDING_SIDECAR_FILE,
+        KEY_EMBEDDING_DIMENSION,
+        KEY_EMBEDDING_MODEL,
+        canonicalize_cache_metadata,
+        canonicalize_index_metadata,
+        format_validation_errors,
+        validate_cache_metadata,
+        validate_index_metadata,
+        validate_known_safe_legacy_cache,
+        validate_known_safe_legacy_index,
+    )
+except ModuleNotFoundError:
+    from pipeline.lib.search_index_metadata import (
+        EMBEDDING_SIDECAR_FILE,
+        KEY_EMBEDDING_DIMENSION,
+        KEY_EMBEDDING_MODEL,
+        canonicalize_cache_metadata,
+        canonicalize_index_metadata,
+        format_validation_errors,
+        validate_cache_metadata,
+        validate_index_metadata,
+        validate_known_safe_legacy_cache,
+        validate_known_safe_legacy_index,
+    )
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 REPO = PIPELINE_DIR.parent
 CONFIG_PATH = REPO / "config.json"
 EXAMPLE_PATH = REPO / "config.example.json"
+ENV_PATH = REPO / ".env"
 DOCS_DIR = REPO / "docs"
 PAPERS_INDEX = DOCS_DIR / "papers" / "_papers_index.json"
+EMBED_CACHE_NAME = "_embedding_cache.json"
 
-# 기업 프록시가 HTTPS 를 self-signed 로 가로채는 환경 대비 (config_loader 와 동일)
+def _validate_current_or_known_safe_legacy_index(idx: dict):
+    legacy_validation = validate_known_safe_legacy_index(idx)
+    if legacy_validation.ok:
+        return legacy_validation
+
+    current_validation = validate_index_metadata(idx, allow_legacy=False)
+    if current_validation.ok and canonicalize_index_metadata(idx) == idx:
+        return current_validation
+    if current_validation.ok:
+        return legacy_validation
+    return current_validation
+
+
+def _validate_current_or_known_safe_legacy_cache(cache: dict, *, model: str):
+    legacy_validation = validate_known_safe_legacy_cache(cache, model=model)
+    if legacy_validation.ok:
+        return legacy_validation
+
+    current_validation = validate_cache_metadata(cache, model=model, allow_legacy=False)
+    if current_validation.ok and canonicalize_cache_metadata(cache) == cache:
+        return current_validation
+    if current_validation.ok:
+        return legacy_validation
+    return current_validation
+
+# Verify TLS for credential-bearing network checks. Custom enterprise roots should
+# be installed through SSL_CERT_FILE/REQUESTS_CA_BUNDLE instead of disabling TLS.
 _SSL_CTX = ssl.create_default_context()
-_SSL_CTX.check_hostname = False
-_SSL_CTX.verify_mode = ssl.CERT_NONE
+_TLS_CERT_ENV_NAMES = ("SSL_CERT_FILE", "REQUESTS_CA_BUNDLE")
+_SECRET_ENV_NAMES = (
+    "ANTHROPIC_API_KEY",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+    "ANTHROPIC_AUTH_TOKEN",
+    "GOOGLE_API_KEY",
+    "GEMINI_API_KEY",
+    "OPENAI_API_KEY",
+    "RESEND_API_KEY",
+    "CLOUDFLARE_API_TOKEN",
+    "CF_API_TOKEN",
+    "CLOUDFLARE_ACCOUNT_ID",
+    "ZOTERO_API_KEY",
+)
+_LEGACY_SECRET_CONFIG_KEYS = (
+    "anthropic_api_key",
+    "google_api_key",
+    "gemini_api_key",
+    "openai_api_key",
+    "resend_api_key",
+)
 
 
 # ---------------------------------------------------------------------------
@@ -332,8 +412,64 @@ def _explicit_oauth_config(cfg):
     return str(auth_cfg.get("mode", "")).strip().lower().replace("_", "-") == "oauth"
 
 
+def _configured_secret_sources(cfg):
+    sources = []
+    if isinstance(cfg, dict):
+        for key in _LEGACY_SECRET_CONFIG_KEYS:
+            if str(cfg.get(key, "")).strip():
+                sources.append(f"config:{key}")
+        zotero = cfg.get("zotero")
+        if isinstance(zotero, dict) and str(zotero.get("api_key", "")).strip():
+            sources.append("config:zotero.api_key")
+    for name in _SECRET_ENV_NAMES:
+        if os.environ.get(name, "").strip():
+            sources.append(f"env:{name}")
+    return sources
+
+
+def _check_secret_sources(rep, cfg):
+    sources = _configured_secret_sources(cfg)
+    env_detail = ".env present; values not read" if ENV_PATH.exists() else ".env absent"
+    if sources:
+        rep.ok("Secret source inventory", f"{env_detail}; 설정 출처: " + ", ".join(sources))
+    else:
+        rep.warn("Secret source inventory", f"{env_detail}; process env/config secret source 없음")
+    legacy = [src for src in sources if src.startswith("config:")]
+    if legacy:
+        rep.warn(
+            "Legacy config secret source",
+            "값은 출력하지 않음; 출처만 표시: " + ", ".join(legacy),
+            "secret-free config로 마이그레이션: .env/process env 또는 각 서비스 secret store에 값을 두고 config.json에는 비밀값을 저장하지 마세요.",
+        )
+
+
+def _check_tls_status(rep):
+    cert_sources = [name for name in _TLS_CERT_ENV_NAMES if os.environ.get(name, "").strip()]
+    if _SSL_CTX.verify_mode == ssl.CERT_REQUIRED and _SSL_CTX.check_hostname:
+        detail = "certificate verification enabled"
+        if cert_sources:
+            detail += "; custom trust env: " + ", ".join(cert_sources)
+        rep.ok("TLS verification", detail)
+    else:
+        rep.fail(
+            "TLS verification disabled",
+            "credential-bearing network checks require certificate verification",
+            "TLS 검증을 끄지 말고 SSL_CERT_FILE/REQUESTS_CA_BUNDLE 로 신뢰 루트를 지정하세요.",
+        )
+
+
+
 def _format_version(ver):
     return ".".join(str(part) for part in ver) if ver else "not found"
+
+
+def _redact_anthropic_text(text):
+    redacted = str(text)
+    for name in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN"):
+        secret = os.environ.get(name, "").strip()
+        if secret:
+            redacted = redacted.replace(secret, f"<redacted:{name}>")
+    return redacted
 
 
 def _check_claude_structured_output(rep):
@@ -378,7 +514,7 @@ def _anthropic_remedy():
 def _check_anthropic_auth(rep, cfg):
     status = _anthropic_auth_status()
     source = status.source or "none"
-    detail = f"mode={status.mode}, source={source}; {status.detail}"
+    detail = _redact_anthropic_text(f"mode={status.mode}, source={source}; {status.detail}")
 
     if not status.ready:
         rep.fail(
@@ -386,7 +522,7 @@ def _check_anthropic_auth(rep, cfg):
             detail,
             _anthropic_remedy(),
         )
-        return
+        return status
 
     if status.mode == "oauth":
         rep.ok("Anthropic auth", f"{detail} — Claude Code 구독 OAuth")
@@ -400,13 +536,43 @@ def _check_anthropic_auth(rep, cfg):
             )
     else:
         rep.ok("Anthropic auth", f"{detail} — Console API key")
+    return status
 
 
-def check_api_keys(rep, cfg):
+def _check_anthropic_smoke(rep, auth_mode):
+    if run_structured_smoke is None:
+        rep.fail(
+            "Anthropic structured smoke 실행 불가",
+            "pipeline/anthropic_auth.py 로드 실패",
+            _anthropic_remedy(),
+        )
+        return
+    result = run_structured_smoke(auth_mode)
+    detail = _redact_anthropic_text(
+        f"mode={result.get('mode', 'unknown')}, source={result.get('source', 'none')}"
+    )
+    if result.get("smoke") == "ok":
+        rep.ok("Anthropic structured smoke", f"{detail} — Claude adapter structured output OK")
+    else:
+        error = _redact_anthropic_text(result.get("error") or result.get("detail") or "unknown failure")
+        rep.fail(
+            "Anthropic structured smoke 실패",
+            f"{detail}; {error}",
+            "인증 상태와 Claude Code/API key 설정을 확인한 뒤 --anthropic-smoke 로 재시도",
+        )
+
+
+def check_api_keys(rep, cfg, anthropic_smoke=False):
     rep.section("5. Anthropic 인증 및 API 키")
+    _check_secret_sources(rep, cfg)
+    _check_tls_status(rep)
 
     # 필수: Anthropic은 API key 또는 Claude Code OAuth 둘 중 하나
-    _check_anthropic_auth(rep, cfg)
+    status = _check_anthropic_auth(rep, cfg)
+    if os.environ.get("PAPER_CURATION_NO_DEPLOY") == "1":
+        rep.note("PAPER_CURATION_NO_DEPLOY=1 — doctor/smoke 결과는 배포를 수행하지 않는 검증 전용입니다.")
+    if anthropic_smoke:
+        _check_anthropic_smoke(rep, status.mode if getattr(status, "ready", False) else None)
 
     found, src = _resolve_key(
         cfg, ["GOOGLE_API_KEY", "GEMINI_API_KEY"], ["google_api_key", "gemini_api_key"]
@@ -595,6 +761,83 @@ TOPIC_ARTIFACTS = [
     ("network.html", False, "D3 네트워크 시각화"),
 ]
 
+def _validate_topic_search_index(rep, topic, tdir):
+    idx_path = tdir / "_search_index.json"
+    if not idx_path.exists():
+        return
+    try:
+        idx = json.loads(idx_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        rep.fail(
+            f"{topic}/_search_index.json 파싱 실패",
+            str(exc),
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically.",
+        )
+        return
+    validation = _validate_current_or_known_safe_legacy_index(idx)
+    if not validation.ok:
+        rep.fail(
+            f"{topic}/_search_index.json metadata incompatible",
+            format_validation_errors(f"{topic}/_search_index.json", validation),
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically.",
+        )
+        return
+    legacy = "known-safe legacy; " if validation.is_legacy else ""
+    normalized = canonicalize_index_metadata(idx)
+    chunks = idx.get("chunks")
+    if not isinstance(chunks, list):
+        rep.fail(
+            f"{topic}/_search_index.json chunks 오류",
+            f"{type(chunks).__name__}",
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically.",
+        )
+        return
+    dim = int(normalized[KEY_EMBEDDING_DIMENSION])
+    emb_file = EMBEDDING_SIDECAR_FILE
+    emb_path = tdir / emb_file
+    expected = len(chunks) * dim
+    if not emb_path.exists():
+        rep.fail(
+            f"{topic}/{emb_file} 없음",
+            "검색 인덱스 sidecar 누락",
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically.",
+        )
+        return
+    actual = emb_path.stat().st_size
+    if actual != expected:
+        rep.fail(
+            f"{topic}/{emb_file} length mismatch",
+            f"{actual}B != count*dim {expected}B",
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically.",
+        )
+        return
+    rep.ok(f"{topic}/_search_index metadata", f"{legacy}{len(chunks)} chunks; sidecar length ok")
+
+    cache_path = tdir / EMBED_CACHE_NAME
+    if not cache_path.exists():
+        rep.warn(f"{topic}/{EMBED_CACHE_NAME} 없음", "임베딩 resume cache 없음 (선택)")
+        return
+    try:
+        cache = json.loads(cache_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        rep.fail(
+            f"{topic}/{EMBED_CACHE_NAME} 파싱 실패",
+            str(exc),
+            "손상된 cache를 제거하거나 pipeline/build_search_index.py 로 명시적으로 재빌드하세요; doctor는 재빌드하지 않습니다.",
+        )
+        return
+    cache_validation = _validate_current_or_known_safe_legacy_cache(cache, model=str(normalized[KEY_EMBEDDING_MODEL]))
+    if cache_validation.ok:
+        cache_legacy = "known-safe legacy; " if cache_validation.is_legacy else ""
+        rep.ok(f"{topic}/{EMBED_CACHE_NAME}", f"{cache_legacy}metadata compatible")
+    else:
+        rep.fail(
+            f"{topic}/{EMBED_CACHE_NAME} metadata incompatible",
+            format_validation_errors(f"{topic}/{EMBED_CACHE_NAME}", cache_validation),
+            "손상된 cache를 제거하거나 pipeline/build_search_index.py 로 명시적으로 재빌드하세요; doctor는 재빌드하지 않습니다.",
+        )
+
+
 
 def check_topic(rep, topic, cfg, papers):
     rep.section(f"9. 토픽 산출물: {topic}")
@@ -613,7 +856,7 @@ def check_topic(rep, topic, cfg, papers):
         )
 
     if not tdir.is_dir():
-        command = f"PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero"
+        command = f"PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero --no-deploy"
         if not PAPERS_INDEX.exists():
             rep.warn(
                 f"docs/{topic}/ 없음 (첫 실행 전 정상)",
@@ -640,6 +883,7 @@ def check_topic(rep, topic, cfg, papers):
             )
         else:
             rep.warn(f"{topic}/{fname} 없음", f"{desc} (선택)")
+    _validate_topic_search_index(rep, topic, tdir)
 
     # 인덱스에서 이 토픽 논문 수 교차 확인 (정보성)
     if isinstance(papers, list):
@@ -658,6 +902,8 @@ def main():
                         help="Zotero API 연결까지 테스트 (네트워크 필요)")
     parser.add_argument("--topic", default="",
                         help="해당 토픽의 산출물 존재 여부까지 점검 (예: humanoid)")
+    parser.add_argument("--anthropic-smoke", action="store_true",
+                        help="작은 Anthropic structured output 호출까지 검증 (네트워크/과금 가능)")
     args = parser.parse_args()
 
     print("=" * 52)
@@ -672,7 +918,7 @@ def main():
     check_packages(rep)
     check_java(rep)
     check_config(rep, cfg)
-    check_api_keys(rep, cfg)
+    check_api_keys(rep, cfg, args.anthropic_smoke)
     check_zotero(rep, cfg, args.network)
     check_node(rep)
     check_papers_index(rep, papers)

@@ -5,13 +5,28 @@ Ported from scisci/scie/lib/originality.py.
 Strategy:
 1. Primary: rule-based trigger matching (free, instant)
 2. Fallback: LLM (Claude Haiku) when rule-based finds nothing
-3. Self-learning: LLM-discovered triggers added to triggers JSON
+3. Optional self-learning when an operator-managed trigger JSON is supplied
 """
 import json
 import re
-from pathlib import Path
 
-TRIGGERS_PATH = Path(__file__).parent / "originality_triggers.json"
+_DEFAULT_TRIGGER_CATEGORIES = {
+    "rule_base_novelty": [
+        "novel", "new approach", "new method", "new framework", "new model",
+        "for the first time", "first work", "first study", "unprecedented",
+        "state-of-the-art",
+    ],
+    "rule_base_contribution": [
+        "we propose", "we introduce", "we present", "we develop", "we design",
+        "we demonstrate", "we establish", "we derive", "we formulate",
+        "we provide", "our approach", "our method", "our framework", "our model",
+    ],
+    "rule_base_capability": [
+        "enables", "allows us to", "outperforms", "achieves", "improves upon",
+        "addresses the limitation", "overcomes the limitation",
+    ],
+    "rule_base_learned": [],
+}
 
 
 # ── Metadata leak strip ──
@@ -45,15 +60,36 @@ def _strip_metadata_leaks(text: str) -> str:
 
 
 def load_triggers(path=None):
-    """Load trigger categories and flat list."""
-    path = path or TRIGGERS_PATH
-    with open(path, encoding="utf-8") as f:
-        data = json.load(f)
-    categories = {k: v for k, v in data.items() if k.startswith("rule_base_")}
-    all_triggers = []
-    for words in categories.values():
-        all_triggers.extend(words)
-    return {"categories": categories, "all": list(set(all_triggers)), "_path": str(path)}
+    """Load trigger categories and a flat trigger list.
+
+    The built-in defaults keep a fresh checkout runnable. An explicit JSON path
+    can still provide a learned or operator-maintained trigger set.
+    """
+    if path is None:
+        categories = {
+            name: list(words)
+            for name, words in _DEFAULT_TRIGGER_CATEGORIES.items()
+        }
+        trigger_path = None
+    else:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        categories = {
+            name: words
+            for name, words in data.items()
+            if name.startswith("rule_base_")
+        }
+        trigger_path = str(path)
+
+    all_triggers = {
+        trigger
+        for words in categories.values()
+        for trigger in words
+    }
+    result = {"categories": categories, "all": list(all_triggers)}
+    if trigger_path:
+        result["_path"] = trigger_path
+    return result
 
 
 def split_sentences(text):

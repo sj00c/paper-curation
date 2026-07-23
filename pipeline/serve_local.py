@@ -9,7 +9,7 @@ Gemini 키로 프록시해 로컬 미리보기에서도 검색이 동작하게 �
 - GET                 → docs/ 정적 파일 (mime 자동, 디렉토리는 index.html)
 - POST /api/embed     → {"text": ...} → gemini-embedding-001 (768d,
                         taskType RETRIEVAL_QUERY) → L2 정규화 후
-                        {"embedding": [...], "model": ..., "dim": 768}
+                        {"embedding": [...], "embedding_provider": "google", "embedding_model": ..., "embedding_task_type": "RETRIEVAL_QUERY", "embedding_dimension": 768}
 - POST /api/audio-email → Resend 포워딩 (worker/index.js 와 동일). 운영자
                         RESEND_API_KEY 로 MP3 첨부 메일 발송. 키 없으면 503
                         → UI 가 다운로드로 폴백.
@@ -35,8 +35,8 @@ import json
 import math
 import os
 import re
-import ssl
 import sys
+
 import urllib.error
 import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -51,14 +51,18 @@ try:
     from config_loader import load_config
 except Exception:  # config.json 없거나 import 실패해도 env/_local_keys 로 동작
     load_config = None
+from lib import search_index_metadata as search_meta
+from tls import create_ssl_context
 
 # Gemini 임베딩 설정 (인덱스 빌드와 동일 — RETRIEVAL_QUERY 만 다르다).
-GEMINI_MODEL = "gemini-embedding-001"
+GEMINI_MODEL = search_meta.EMBEDDING_MODEL
 GEMINI_ENDPOINT = (
     "https://generativelanguage.googleapis.com/v1beta/models/"
     f"{GEMINI_MODEL}:embedContent"
 )
-EMBED_DIM = 768
+EMBED_PROVIDER = search_meta.EMBEDDING_PROVIDER
+QUERY_TASK_TYPE = "RETRIEVAL_QUERY"
+EMBED_DIM = search_meta.EMBEDDING_DIMENSION
 
 # Audio Overview 이메일 발송 — worker/index.js 와 동일하게 Resend 로 포워딩.
 RESEND_ENDPOINT = "https://api.resend.com/emails"
@@ -67,10 +71,16 @@ MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024  # Resend 첨부 상한
 MAX_RECIPIENTS = 10
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
-# 사내 프록시가 HTTPS 를 self-signed 인증서로 가로채는 환경 대응 (config_loader 와 동일).
-_ssl_ctx = ssl.create_default_context()
-_ssl_ctx.check_hostname = False
-_ssl_ctx.verify_mode = ssl.CERT_NONE
+def _load_tls_config():
+    if load_config is None:
+        return None
+    try:
+        return load_config() or {}
+    except Exception:
+        return None
+
+
+_ssl_ctx = create_ssl_context(purpose="serve_local", config=_load_tls_config())
 
 _GOOGLE_KEY_CACHE = None
 
@@ -113,7 +123,7 @@ def gemini_embed(text, api_key):
     payload = {
         "model": f"models/{GEMINI_MODEL}",
         "content": {"parts": [{"text": text}]},
-        "taskType": "RETRIEVAL_QUERY",
+        "taskType": QUERY_TASK_TYPE,
         "outputDimensionality": EMBED_DIM,
     }
     req = urllib.request.Request(
@@ -323,6 +333,14 @@ class LocalHandler(SimpleHTTPRequestHandler):
             })
             return
 
+        meta = search_meta.validate_index_metadata(req.get("index_metadata") or {})
+        if not meta.ok:
+            self._send_json(409, {
+                "error": "Incompatible document index metadata",
+                "detail": "; ".join(meta.errors),
+            })
+            return
+
         try:
             vec = gemini_embed(text, api_key)
         except urllib.error.HTTPError as e:
@@ -336,7 +354,19 @@ class LocalHandler(SimpleHTTPRequestHandler):
             self._send_json(502, {"error": f"Gemini embed 실패: {e}"})
             return
 
-        self._send_json(200, {"embedding": vec, "model": GEMINI_MODEL, "dim": len(vec)})
+        if len(vec) != EMBED_DIM:
+            self._send_json(502, {
+                "error": f"Gemini embed dimension mismatch: expected {EMBED_DIM}, got {len(vec)}",
+            })
+            return
+
+        self._send_json(200, {
+            "embedding": vec,
+            "embedding_provider": EMBED_PROVIDER,
+            "embedding_model": GEMINI_MODEL,
+            "embedding_task_type": QUERY_TASK_TYPE,
+            "embedding_dimension": EMBED_DIM,
+        })
 
     # ── Audio Overview 이메일 발송 (Resend 포워딩) ──────────────────────────
     def _parse_multipart(self):
@@ -446,6 +476,11 @@ def main():
         description="docs/ 정적 서빙 + /api/embed Gemini 프록시 (로컬 미리보기용)"
     )
     parser.add_argument("--port", type=int, default=8000, help="리슨 포트 (기본 8000)")
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="리슨 호스트 (기본 127.0.0.1; LAN 노출은 명시적으로 지정)",
+    )
     parser.add_argument("--topic", default="", help="열어볼 토픽 (URL 안내용, 예: ai4s)")
     args = parser.parse_args()
 
@@ -453,18 +488,20 @@ def main():
         print(f"ERROR: docs 디렉토리를 찾을 수 없습니다: {DOCS_DIR}", file=sys.stderr)
         sys.exit(1)
 
-    sub = (args.topic.strip("/") + "/") if args.topic else ""
-    url = f"http://localhost:{args.port}/{sub}"
-
     handler = functools.partial(LocalHandler, directory=str(DOCS_DIR))
-    httpd = ThreadingHTTPServer(("", args.port), handler)
+    httpd = ThreadingHTTPServer((args.host, args.port), handler)
+    bound_host, bound_port = httpd.server_address[:2]
+    url_host = f"[{bound_host}]" if ":" in bound_host else bound_host
+    sub = (args.topic.strip("/") + "/") if args.topic else ""
+    url = f"http://{url_host}:{bound_port}/{sub}"
 
     has_key = bool(resolve_google_key())
     print(f"docs/ 서빙 + /api/embed → Gemini ({GEMINI_MODEL}, {EMBED_DIM}d) 프록시")
     print(f"Gemini 키: {'감지됨' if has_key else '없음 (검색 임베딩 비활성 — 키 설정 필요)'}")
+    print(f"바인드: {bound_host}:{bound_port}")
     print(f"열기: {url}")
     if (DOCS_DIR / "_cross" / "index.html").exists():
-        print(f"통합 Deep Research (로컬 전용): http://localhost:{args.port}/_cross/")
+        print(f"통합 Deep Research (로컬 전용): http://{url_host}:{bound_port}/_cross/")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

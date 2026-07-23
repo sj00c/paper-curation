@@ -6,8 +6,7 @@ _paper_connections.json + _papers_index.json → network.html
 - Category toggle, relation type filter, search, ego network
 
 Usage:
-  PYTHONUTF8=1 python pipeline/generate_network.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/generate_network.py --topic scisci
+  PYTHONUTF8=1 python pipeline/generate_network.py --topic your-topic
 """
 
 import argparse
@@ -32,6 +31,12 @@ RELATION_COLORS = {
 def log(msg):
     ts = datetime.now().strftime("%H:%M:%S")
     print(f"[{ts}] {msg}", flush=True)
+
+
+def _require_topic(topic):
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("topic must be a non-empty string")
+    return topic.strip()
 
 
 def build_network_data(topic):
@@ -1313,8 +1318,9 @@ render();
 </html>"""
 
 
-def _run_network(topic="ai4s"):
+def _run_network(topic):
     """Programmatic entrypoint for generate_network."""
+    topic = _require_topic(topic)
     topic_dir = str(get_topic_dir(topic))
 
     log(f"Building network for {topic}...")
@@ -1333,7 +1339,7 @@ def _run_network(topic="ai4s"):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate d3.js paper network")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Configured topic alias")
     args = parser.parse_args()
     _run_network(topic=args.topic)
 

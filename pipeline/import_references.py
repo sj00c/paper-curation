@@ -19,13 +19,13 @@
 사용
   PYTHONUTF8=1 python pipeline/import_references.py \
       --input reference.txt \
-      --collection scisci \
+      --collection <collection-alias> \
       --dry-run
 
   # 실제 등록
   PYTHONUTF8=1 python pipeline/import_references.py \
       --input reference.txt \
-      --collection scisci
+      --collection <collection-alias>
 
 플래그
   --skip-pdf       PDF 다운로드 건너뜀
@@ -894,8 +894,9 @@ def main():
     ap.add_argument("--input", required=True, help="reference.txt 경로")
     ap.add_argument(
         "--collection",
-        default="scisci",
-        help="config.json 의 zotero.collections 키 (기본: scisci)",
+        required=True,
+        metavar="ALIAS",
+        help="config.json 의 zotero.collections 키",
     )
     ap.add_argument("--dry-run", action="store_true", help="등록·PDF 단계 건너뜀")
     ap.add_argument("--no-cache", action="store_true", help="기존 캐시 무시")

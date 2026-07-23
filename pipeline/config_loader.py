@@ -10,14 +10,21 @@ Zotero API로 collection key를 자동 조회한다.
 
 import json
 import os
+import re
 import ssl
 import urllib.request
 from pathlib import Path
 
-# Corporate proxy intercepts HTTPS with self-signed cert; skip verification
-_ssl_ctx = ssl.create_default_context()
-_ssl_ctx.check_hostname = False
-_ssl_ctx.verify_mode = ssl.CERT_NONE
+try:
+    from tls import create_ssl_context
+except ImportError:
+    try:
+        from pipeline.tls import create_ssl_context
+    except ImportError:
+        def create_ssl_context(purpose=None, config=None):
+            return ssl.create_default_context()
+
+_ssl_ctx = create_ssl_context(purpose="config_loader")
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PIPELINE_DIR.parent
@@ -37,10 +44,40 @@ _config_cache = None
 _user_id_cache = None
 _collection_key_cache = None
 
+def _load_dotenv(path=PROJECT_ROOT / ".env"):
+    """Load simple .env entries without overriding process exports."""
+    if not path.exists():
+        return
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[7:].strip()
+        if "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if (
+            not key
+            or not (key[0].isalpha() or key[0] == "_")
+            or any(not (char.isalnum() or char == "_") for char in key)
+        ):
+            continue
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+            value = value[1:-1]
+        elif " #" in value:
+            value = value.split(" #", 1)[0].rstrip()
+        if value and key not in os.environ:
+            os.environ[key] = value
+
+
 
 def load_config():
-    """config.json 로드. 없으면 환경변수 폴백."""
+    """Load config.json plus process/.env secrets; env wins at access time."""
     global _config_cache
+    _load_dotenv()
     if _config_cache is not None:
         return _config_cache
 
@@ -50,11 +87,13 @@ def load_config():
     else:
         _config_cache = {
             "zotero": {
-                "api_key": os.environ.get("ZOTERO_API_KEY", ""),
-                "email": os.environ.get("UNPAYWALL_EMAIL", ""),
                 "collections": {},
             },
-            "unpaywall_email": os.environ.get("UNPAYWALL_EMAIL", ""),
+            "topic_profiles": {},
+            "paths": {
+                "zotero_dir": str(PROJECT_ROOT / "pdf_cache"),
+            },
+            "features": {},
         }
 
     return _config_cache
@@ -62,7 +101,7 @@ def load_config():
 
 def get_zotero_api_key():
     cfg = load_config()
-    return cfg.get("zotero", {}).get("api_key", "") or os.environ.get("ZOTERO_API_KEY", "")
+    return os.environ.get("ZOTERO_API_KEY", "") or cfg.get("zotero", {}).get("api_key", "")
 
 
 def get_google_key():
@@ -200,11 +239,50 @@ def _resolve_collection_value(value):
     return value
 
 
+def _topic_profile_collection_key(topic, raw):
+    if not isinstance(raw, dict):
+        raise ValueError(f"Malformed config at topic_profiles.{topic}: expected object.")
+    if "label" not in raw:
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.label: expected non-empty string.")
+    label = raw.get("label")
+    if not isinstance(label, str) or not label.strip():
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.label: expected non-empty string.")
+    if "collection_key" in raw:
+        key = raw.get("collection_key")
+        if key in (None, ""):
+            return ""
+        if not isinstance(key, str):
+            raise ValueError(f"Malformed config at topic_profiles.{topic}.collection_key: expected string.")
+        return key.strip()
+    if "collection_name" in raw:
+        name = raw.get("collection_name")
+        if name in (None, ""):
+            return ""
+        if not isinstance(name, str):
+            raise ValueError(f"Malformed config at topic_profiles.{topic}.collection_name: expected string.")
+        return _resolve_collection_value(name.strip())
+    return ""
+
+
 def get_collections():
-    """topic → collection key dict 반환. 이름은 자동으로 key로 변환."""
+    """topic → collection key dict 반환. canonical profiles win; legacy mapping falls back."""
     cfg = load_config()
-    raw = cfg.get("zotero", {}).get("collections", {})
-    return {topic: _resolve_collection_value(val) for topic, val in raw.items()}
+    out = {}
+    profiles = cfg.get("topic_profiles", {}) or {}
+    if profiles and not isinstance(profiles, dict):
+        raise ValueError("Malformed config at topic_profiles: expected object.")
+    for topic, raw in profiles.items():
+        key = _topic_profile_collection_key(topic, raw)
+        if key:
+            out[topic] = key
+
+    raw = cfg.get("zotero", {}).get("collections", {}) or {}
+    if not isinstance(raw, dict):
+        raise ValueError("Malformed config at zotero.collections: expected object.")
+    for topic, value in raw.items():
+        if topic not in profiles:
+            out[topic] = _resolve_collection_value(value)
+    return out
 
 
 def get_collection_key(topic):
@@ -213,118 +291,192 @@ def get_collection_key(topic):
 
 def get_unpaywall_email():
     cfg = load_config()
-    return cfg.get("unpaywall_email", "") or cfg.get("zotero", {}).get("email", "")
+    return (
+        os.environ.get("UNPAYWALL_EMAIL", "")
+        or os.environ.get("ZOTERO_EMAIL", "")
+        or cfg.get("unpaywall_email", "")
+        or cfg.get("zotero", {}).get("email", "")
+    )
 
 
 # ---------------------------------------------------------------------------
-# 검색 키워드 (Core-1 search)
+# 검색 키워드 / 토픽 프로필 (Core-1 search)
 # ---------------------------------------------------------------------------
-# config.json 최상위 "search_keywords".<topic> 가 우선. 없으면 아래 빌트인
-# 기본값으로 폴백한다 (ai4s/scisci 는 설정 없이도 동작). 새 토픽은 config.json 에
-# 블록을 추가하면 되고, 누락 시 get_search_keywords() 가 추가할 JSON 을 안내한다.
 
-_DEFAULT_SEARCH_KEYWORDS = {
-    "ai4s": {
-        "primary": [
-            "AI for science",
-            "machine learning science",
-            "scientific discovery AI",
-            "neural network physics",
-            "deep learning chemistry",
-            "AI drug discovery",
-            "scientific foundation model",
-            "AI materials",
-        ],
-        "secondary": [
-            "molecular dynamics",
-            "protein structure",
-            "weather prediction",
-            "quantum chemistry",
-            "scientific NLP",
-            "research automation",
-        ],
-    },
-    "scisci": {
-        "primary": [
-            "science of science",
-            "bibliometrics",
-            "scientometrics",
-            "research evaluation",
-            "citation analysis",
-            "scientific collaboration",
-        ],
-        "secondary": [
-            "h-index",
-            "research impact",
-            "academic careers",
-            "peer review",
-            "research funding",
-            "open access",
-            "reproducibility",
-            "research trend",
-            "international collaboration",
-            "science mapping",
-        ],
-    },
-}
+def _as_list(value, path):
+    if value in (None, ""):
+        return []
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list) and all(isinstance(item, str) for item in value):
+        return value
+    raise ValueError(f"Malformed config at {path}: expected string list.")
+
+def _as_keyword_list(value, path):
+    if value in (None, ""):
+        return []
+    if isinstance(value, list) and all(isinstance(item, str) for item in value):
+        return value
+    raise ValueError(f"Malformed config at {path}: expected keyword list.")
+
+
+
+def _normalize_keyword(value):
+    collapsed = re.sub(r"\s+", " ", value.strip())
+    return collapsed
+
+
+def _dedupe_keywords(values):
+    out = []
+    seen = set()
+    for value in values:
+        normalized = _normalize_keyword(value)
+        if not normalized:
+            continue
+        key = normalized.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(normalized)
+    return out
+
+
+def _alias_tokens(topic):
+    tokens = re.split(r"[-_./\s]+", topic)
+    return [token for token in tokens if token and token != topic]
+
+
+def _profile_from_collections(topic, collections):
+    value = collections.get(topic, "")
+    labels = _as_list(value, f"zotero.collections.{topic}") if value else []
+    aliases = [topic]
+    primary = labels or [topic.replace("-", " ").replace("_", " ")]
+    secondary = aliases + _alias_tokens(topic)
+    label = _dedupe_keywords(labels)[0] if labels else topic.replace("-", " ").replace("_", " ")
+    return {
+        "topic": topic,
+        "label": label,
+        "collection_name": _dedupe_keywords(labels)[0] if labels else "",
+        "collection_key": "",
+        "aliases": _dedupe_keywords(aliases),
+        "collections": _dedupe_keywords(labels),
+        "collection_label": _dedupe_keywords(labels)[0] if labels else "",
+        "search_keywords": {
+            "primary": _dedupe_keywords(primary),
+            "secondary": _dedupe_keywords(secondary),
+        },
+    }
+
+
+def _normalize_explicit_topic_profile(topic, raw):
+    if not isinstance(raw, dict):
+        raise ValueError(f"Malformed config at topic_profiles.{topic}: expected object.")
+
+    if "label" not in raw:
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.label: expected non-empty string.")
+    label_value = raw.get("label")
+    if not isinstance(label_value, str) or not label_value.strip():
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.label: expected non-empty string.")
+    label = _normalize_keyword(label_value)
+
+    aliases = _as_list(raw.get("aliases", []), f"topic_profiles.{topic}.aliases")
+    collection_name = raw.get("collection_name", "")
+    if collection_name in (None, ""):
+        collection_name = ""
+    elif not isinstance(collection_name, str):
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.collection_name: expected string.")
+    else:
+        collection_name = _normalize_keyword(collection_name)
+
+    collection_key = raw.get("collection_key", "")
+    if collection_key in (None, ""):
+        collection_key = ""
+    elif not isinstance(collection_key, str):
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.collection_key: expected string.")
+    else:
+        collection_key = collection_key.strip()
+
+    collection_values = []
+    if collection_name:
+        collection_values.append(collection_name)
+
+    keyword_block = raw.get("search_keywords", raw.get("keywords", {})) or {}
+    if not isinstance(keyword_block, dict):
+        raise ValueError(f"Malformed config at topic_profiles.{topic}.search_keywords: expected object.")
+    primary = _as_keyword_list(keyword_block.get("primary", []), f"topic_profiles.{topic}.search_keywords.primary")
+    secondary = _as_keyword_list(keyword_block.get("secondary", []), f"topic_profiles.{topic}.search_keywords.secondary")
+
+    primary = _dedupe_keywords(primary + [label] + collection_values)
+    secondary = _dedupe_keywords(secondary + aliases + [topic] + _alias_tokens(topic))
+    return {
+        "topic": topic,
+        "label": label,
+        "collection_name": collection_name,
+        "collection_key": collection_key,
+        "aliases": _dedupe_keywords(aliases + [topic]),
+        "collections": _dedupe_keywords(collection_values),
+        "collection_label": label,
+        "search_keywords": {
+            "primary": primary,
+            "secondary": secondary,
+        },
+    }
+
+
+def get_topic_profile(topic):
+    """Return a normalized, offline topic profile for any topic alias."""
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("Topic must be a non-empty string.")
+    topic = topic.strip()
+    cfg = load_config()
+    profiles = cfg.get("topic_profiles", {}) or {}
+    if not isinstance(profiles, dict):
+        raise ValueError("Malformed config at topic_profiles: expected object.")
+
+    collections = cfg.get("zotero", {}).get("collections", {}) or {}
+    if not isinstance(collections, dict):
+        raise ValueError("Malformed config at zotero.collections: expected object.")
+
+    if topic not in profiles:
+        return _profile_from_collections(topic, collections)
+
+    return _normalize_explicit_topic_profile(topic, profiles[topic])
 
 
 def get_search_keywords(topic):
-    """topic → {"primary": [...], "secondary": [...]} 검색 키워드 dict 반환.
-
-    우선순위:
-      1) config.json 최상위 "search_keywords".<topic>
-      2) 빌트인 기본값 (_DEFAULT_SEARCH_KEYWORDS — ai4s/scisci)
-
-    둘 다 없으면 config.json 에 그대로 붙여넣을 수 있는 JSON 블록을 담은
-    ValueError 를 던진다.
-    """
+    """Return normalized keyword lists; legacy search_keywords.<topic> wins."""
     cfg = load_config()
     configured = cfg.get("search_keywords", {}) or {}
+    if not isinstance(configured, dict):
+        raise ValueError("Malformed config at search_keywords: expected object.")
     if topic in configured:
-        return configured[topic]
-    if topic in _DEFAULT_SEARCH_KEYWORDS:
-        return _DEFAULT_SEARCH_KEYWORDS[topic]
+        block = configured[topic]
+        if not isinstance(block, dict):
+            raise ValueError(f"Malformed config at search_keywords.{topic}: expected object.")
+        primary = _dedupe_keywords(_as_keyword_list(block.get("primary", []), f"search_keywords.{topic}.primary"))
+        secondary = _dedupe_keywords(_as_keyword_list(block.get("secondary", []), f"search_keywords.{topic}.secondary"))
+        if not primary or not secondary:
+            raise ValueError(f"Malformed config at search_keywords.{topic}: primary and secondary must be non-empty.")
+        return {"primary": primary, "secondary": secondary}
 
-    example_block = json.dumps(
-        {
-            "search_keywords": {
-                topic: {
-                    "primary": [
-                        f"{topic} 핵심 키워드 1",
-                        f"{topic} 핵심 키워드 2",
-                        f"{topic} 핵심 키워드 3",
-                    ],
-                    "secondary": [
-                        f"{topic} 보조 키워드 1",
-                        f"{topic} 보조 키워드 2",
-                    ],
-                }
-            }
-        },
-        ensure_ascii=False,
-        indent=2,
-    )
-    raise ValueError(
-        f"'{topic}' 토픽의 검색 키워드(search_keywords)가 정의되지 않았습니다.\n"
-        f"config.json 최상위에 아래 \"search_keywords\" 블록을 추가하세요.\n"
-        f"  - primary: 관련성 가중치가 높은 핵심 키워드 (제목/초록 매칭 0.5점)\n"
-        f"  - secondary: 보조 키워드 (매칭 0.2점)\n\n"
-        f"{example_block}"
-    )
+    keywords = get_topic_profile(topic)["search_keywords"]
+    if not keywords["primary"] or not keywords["secondary"]:
+        raise ValueError(f"Malformed config at topic_profiles.{topic}: primary and secondary keywords must be non-empty.")
+    return keywords
 
 
 def get_paperbanana_dir():
     cfg = load_config()
-    return cfg.get("paperbanana_dir", "")
+    return os.environ.get("PAPERBANANA_DIR", "") or cfg.get("paperbanana_dir", "")
 
 
 def get_zotero_dir():
     """Return the configured PDF directory, creating a project-local cache by default."""
     cfg = load_config()
     configured = (
-        cfg.get("zotero", {}).get("pdf_dir", "")
-        or os.environ.get("ZOTERO_DIR", "")
+        os.environ.get("ZOTERO_DIR", "")
+        or cfg.get("paths", {}).get("zotero_dir", "")
+        or cfg.get("zotero", {}).get("pdf_dir", "")
         or str(PROJECT_ROOT / "pdf_cache")
     )
     directory = Path(configured).expanduser().resolve()
@@ -335,22 +487,22 @@ def get_zotero_dir():
 def get_github_repo():
     """GitHub repo (owner/repo 형식)."""
     cfg = load_config()
-    return (cfg.get("github", {}).get("repo", "")
-            or os.environ.get("GITHUB_REPO", ""))
+    return (os.environ.get("GITHUB_REPO", "")
+            or cfg.get("github", {}).get("repo", ""))
 
 
 def get_github_branch():
     """GitHub branch (기본 master)."""
     cfg = load_config()
-    return (cfg.get("github", {}).get("branch", "")
-            or os.environ.get("GITHUB_BRANCH", "master"))
+    return (os.environ.get("GITHUB_BRANCH", "")
+            or cfg.get("github", {}).get("branch", "master"))
 
 
 def get_pages_base_url():
     """GitHub Pages base URL."""
     cfg = load_config()
-    return (cfg.get("github", {}).get("pages_base_url", "")
-            or os.environ.get("PAGES_BASE_URL", ""))
+    return (os.environ.get("PAGES_BASE_URL", "")
+            or cfg.get("github", {}).get("pages_base_url", ""))
 
 
 def get_topic_dir(topic: str) -> Path:

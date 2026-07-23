@@ -866,7 +866,7 @@ def run_compare(slug_tokens):
         with open(os.path.join(out_dir, "comparison.png"), "rb") as f:
             image_b64 = base64.b64encode(f.read()).decode("ascii")
     md_text = build_markdown(papers, comp, has_image=has_image)
-    theme = RH.THEMES.get(papers[0]["topic"], RH.THEMES["ai4s"])
+    theme = RH.get_theme(papers[0]["topic"])
     html = build_html(papers, comp, md_text, theme, name, image_b64=image_b64)
     md_path = os.path.join(out_dir, "comparison.md")
     html_path = os.path.join(out_dir, "index.html")

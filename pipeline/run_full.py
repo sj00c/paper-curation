@@ -32,6 +32,7 @@ Usage (가장 자주 쓰는 패턴):
 """
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -57,7 +58,8 @@ def build_parser():
     p = argparse.ArgumentParser(description="Paper-curation end-to-end orchestrator (3-axis)")
     p.add_argument("--topic", required=True)
     p.add_argument("--mode", choices=["curate", "rebuild", "reclassify", "retime", "deploy",
-                                       "audit", "fix-matching", "dedup", "validate", "recover"],
+                                       "audit", "fix-matching", "dedup", "validate", "recover",
+                                       "smoke"],
                    required=True,
                    help="MECE action axis. curate/rebuild/reclassify/retime/deploy "
                         "for pipeline runs; audit/fix-matching/dedup/validate/recover "
@@ -82,7 +84,8 @@ def build_parser():
 
     # Aux
     p.add_argument("--days", type=int, default=7, help="search_papers 검색 기간.")
-    p.add_argument("--max-papers", type=int, default=20)
+    p.add_argument("--max-papers", type=int, default=20,
+                   help="Web search/register candidate limit only; not a Zotero review or post-processing cap.")
     p.add_argument("--concurrency", type=int, default=16,
                    help="Parallel review workers (Tier 4 default; see README for Tier-by-Tier table).")
     p.add_argument("--slugs", default="", help="특정 슬러그만 force-rebuild.")
@@ -109,8 +112,42 @@ def build_parser():
                    help="--mode rebuild 파괴적 확인 프롬프트 생략.")
     p.add_argument("--no-validate", action="store_true",
                    help="curate/rebuild 후 validate_papers --strict --fix 자동 호출 비활성.")
+    p.add_argument("--no-deploy", action="store_true",
+                   help="prepare_deploy.py --push 와 run_update_force 자동 배포를 fail-closed 로 억제.")
+    p.add_argument("--smoke-limit", type=int, default=1,
+                   help="--mode smoke 에서 검증할 PDF 후보 수 (1-5).")
 
     return p
+
+def validate_args(parser, args):
+    if args.mode == "deploy" and args.no_deploy:
+        parser.error("--mode deploy cannot be combined with --no-deploy")
+    if args.mode == "smoke":
+        incompatible = []
+        if args.source == "web" or args.with_search or args.with_register or args.with_sync:
+            incompatible.append("--source web/--with-search/--with-register/--with-sync")
+        if args.dedup_execute:
+            incompatible.append("--dedup-execute")
+        if args.insights:
+            incompatible.append("--insights")
+        if args.conn_full:
+            incompatible.append("--conn-full")
+        if args.images and args.images != "skip":
+            incompatible.append("--images other than skip")
+        if incompatible:
+            parser.error("--mode smoke is incompatible with " + ", ".join(incompatible))
+        if args.smoke_limit < 1 or args.smoke_limit > 5:
+            parser.error("--smoke-limit must be between 1 and 5")
+        args.source = "zotero"
+        args.no_search = True
+        args.no_register = True
+        args.no_sync = True
+        args.images = "skip"
+        args.skip_dedup = True
+        args.no_validate = True
+        args.no_deploy = True
+
+
 
 
 def resolve_source_routing(args):
@@ -147,6 +184,7 @@ def resolve_images_default(args):
         "reclassify": "changed",
         "retime": "all",
         "deploy": "skip",
+        "smoke": "skip",
     }[args.mode]
 
 
@@ -156,8 +194,10 @@ def build_update_force_cmd(args, images):
            "--topic", args.topic,
            "--concurrency", str(args.concurrency)]
     # Map our 3-axis to run_update_force's --mode
-    if args.mode in ("curate", "rebuild", "reclassify", "retime"):
+    if args.mode in ("curate", "rebuild", "reclassify", "retime", "smoke"):
         cmd.extend(["--mode", args.mode])
+    if args.mode == "smoke":
+        cmd.extend(["--smoke-limit", str(args.smoke_limit), "--no-deploy"])
     if args.strict_pdf:
         cmd.append("--strict-pdf")
     if args.slugs:
@@ -180,6 +220,8 @@ def build_update_force_cmd(args, images):
         cmd.append("--dedup-execute")
     if args.dry_run:
         cmd.append("--dry-run")
+    if args.no_deploy and "--no-deploy" not in cmd:
+        cmd.append("--no-deploy")
     return cmd
 
 
@@ -236,7 +278,9 @@ def build_tool_plan(args):
 
 
 def main():
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
+    validate_args(parser, args)
     # Standalone tooling modes (audit / fix-matching / dedup / validate)
     tool_plan = build_tool_plan(args)
     if tool_plan is not None:
@@ -279,9 +323,38 @@ def main():
         if args.mode in ("curate", "rebuild") and not args.no_validate:
             plan.append(([sys.executable, "-u", str(PIPELINE / "validate_papers.py"),
                           "--topic", args.topic, "--fix", "--strict"], None, False))
+        if args.no_deploy:
+            for cmd, _timeout, _critical in plan:
+                if str(PIPELINE / "run_update_force.py") in [str(c) for c in cmd] and "--no-deploy" not in cmd:
+                    cmd.append("--no-deploy")
 
-    # Print plan summary
+    # Print a truthful plan summary before any side effects.
+    auxiliary_modes = {"audit", "fix-matching", "dedup", "validate", "recover"}
+    if args.mode == "smoke":
+        run_class = "SCRATCH-SMOKE"
+        deploy_state = "FORCED-SUPPRESSED"
+        write_surfaces = f"pipeline/_smoke/{args.topic}/<run_id>/ only"
+    elif args.mode == "deploy":
+        run_class = "DEPLOY"
+        deploy_state = "EXPLICIT-DEPLOY"
+        write_surfaces = "Cloudflare/gh-pages/master deploy surfaces"
+    elif args.mode in auxiliary_modes:
+        run_class = "REPAIR-ONLY"
+        deploy_state = "FORCED-SUPPRESSED"
+        write_surfaces = "selected audit/repair/validation tool surfaces"
+    else:
+        run_class = "FULL-CORPUS"
+        deploy_state = (
+            "USER-SUPPRESSED" if args.no_deploy else "AUTO-PUBLISH-POSSIBLE"
+        )
+        write_surfaces = (
+            "production docs/papers/docs topic/checkpoint/cache/postprocess/deploy surfaces"
+        )
+
     print(f"[run_full] topic={args.topic} mode={args.mode} source={args.source} images={images}")
+    print(f"[run_full] run_class={run_class} deploy_state={deploy_state} write_surfaces={write_surfaces}")
+    if deploy_state == "AUTO-PUBLISH-POSSIBLE":
+        print("[run_full] *** AUTO-PUBLISH-POSSIBLE *** Cloudflare env in child runs may invoke prepare_deploy.py --push")
     print(f"[run_full] routing: search={routing['search']} register={routing['register']} sync={routing['sync']}")
     print(f"[run_full] {len(plan)} step(s) to execute")
     for i, (cmd, _timeout, critical) in enumerate(plan, 1):
@@ -295,14 +368,16 @@ def main():
     if not confirm_rebuild(args):
         sys.exit(2)
 
-    # Mark this run so next Claude session can detect unclean shutdown
-    # (e.g. Windows update reboot mid-run). Cleared at successful end.
-    mark_running(
-        mode=args.mode, topic=args.topic,
-        command=" ".join(sys.argv),
-        extra={"source": args.source, "images": images,
-                "slugs": args.slugs or None},
-    )
+    # Production runs expose crash recovery state. Scratch smoke must not touch
+    # that shared state because it is explicitly isolated from operator runs.
+    track_run_state = args.mode != "smoke"
+    if track_run_state:
+        mark_running(
+            mode=args.mode, topic=args.topic,
+            command=" ".join(sys.argv),
+            extra={"source": args.source, "images": images,
+                   "slugs": args.slugs or None},
+        )
 
     # Execute
     #   critical step  실패/timeout → sys.exit(rc)  (run_update_force 의
@@ -310,9 +385,12 @@ def main():
     #   soft step      실패/timeout → WARNING 후 continue (run 은 성공으로 종료)
     soft_warnings = []
     try:
+        child_env = None
+        if args.no_deploy:
+            child_env = {**os.environ, "PAPER_CURATION_NO_DEPLOY": "1"}
         for i, (cmd, timeout, critical) in enumerate(plan, 1):
             try:
-                rc = run(cmd, timeout=timeout)
+                rc = run(cmd, timeout=timeout, env=child_env)
             except subprocess.TimeoutExpired:
                 # raw traceback 으로 새지 않게 sentinel rc=124 로 변환
                 rc = 124
@@ -327,7 +405,8 @@ def main():
                 print(f"\n[run_full] ** WARNING ** soft step {i} exited {rc} "
                       f"— continuing (run NOT marked failed)")
     finally:
-        mark_finished()
+        if track_run_state:
+            mark_finished()
 
     if soft_warnings:
         print(f"\n[run_full] *** VALIDATION WARNINGS *** "

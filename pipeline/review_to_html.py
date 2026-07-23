@@ -57,6 +57,21 @@ THEMES = {
                "link_color": "#1856A0", "back_href": "../../scisci/index.html"},
 }
 
+_GENERIC_THEME = {"accent": "#555E68", "accent_dark": "#343A40", "accent_bg": "#F5F6F8",
+                  "essence_border": "#4A5568", "essence_bg": "#FAFAFA",
+                  "link_color": "#343A40", "back_href": "../../index.html"}
+
+
+def get_theme(topic):
+    """Return a named theme, or a generic one that links back to the topic page."""
+    if topic in THEMES:
+        return THEMES[topic]
+    theme = dict(_GENERIC_THEME)
+    topic_slug = (topic or "").strip()
+    if re.match(r"^[A-Za-z0-9][A-Za-z0-9_-]*$", topic_slug):
+        theme["back_href"] = f"../../{topic_slug}/index.html"
+    return theme
+
 # 배포 도메인 — OG 태그의 절대 URL 용 (= prepare_deploy.CF_BASE_URL).
 _CF_BASE = "https://paper-curation.jehyunlee.dev"
 
@@ -545,7 +560,7 @@ def convert_review(md_path, topic, slug_dir):
     # Strip Related Papers section (auto-generated for Obsidian)
     md = re.sub(r'\n## Related Papers\n[\s\S]*?(?=\n## |\Z)', '', md)
 
-    theme = THEMES.get(topic, THEMES["ai4s"])
+    theme = get_theme(topic)
 
     # Extract title
     title_m = re.search(r'^#\s+(.+)', md, re.MULTILINE)
@@ -879,8 +894,8 @@ def detect_topic(slug, index_path=None):
                 topics = p.get('topics', [])
                 if topics:
                     return topics[0]
-                return p.get('primary_topic', 'ai4s')
-    return "ai4s"
+                return p.get('primary_topic') or "generic"
+    return "generic"
 
 
 def _resolve_target_slugs(all_slugs, *, slug=None, slugs=None,

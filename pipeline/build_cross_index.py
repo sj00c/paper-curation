@@ -26,15 +26,50 @@ from pathlib import Path
 PIPELINE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(PIPELINE_DIR))
 from config_loader import DOCS_DIR, PROJECT_ROOT, load_config
+try:
+    from lib.search_index_metadata import (
+        EMBEDDING_SIDECAR_FILE,
+        KEY_EMBEDDING_DIMENSION,
+        KEY_EMBEDDING_MODEL,
+        canonicalize_index_metadata,
+        current_index_metadata,
+        format_validation_errors,
+        validate_index_metadata,
+        validate_known_safe_legacy_index,
+    )
+except ModuleNotFoundError:
+    from pipeline.lib.search_index_metadata import (
+        EMBEDDING_SIDECAR_FILE,
+        KEY_EMBEDDING_DIMENSION,
+        KEY_EMBEDDING_MODEL,
+        canonicalize_index_metadata,
+        current_index_metadata,
+        format_validation_errors,
+        validate_index_metadata,
+        validate_known_safe_legacy_index,
+    )
 
 CROSS_NAME = "_cross"
 SEARCH_INDEX = "_search_index.json"
-EMB_BIN = "_search_index_emb.bin"
+EMB_BIN = EMBEDDING_SIDECAR_FILE
 CONN = "_paper_connections.json"
 CROSS_META = "_cross_meta.json"
 
 # 병합 대상에서 제외 (컨텐츠 토픽이 아니거나 인덱스가 없는 디렉토리)
 _SKIP_DIRS = {"papers", "public", "notes", CROSS_NAME}
+
+def _validate_current_or_known_safe_legacy_index(idx: dict):
+    legacy_validation = validate_known_safe_legacy_index(idx)
+    if legacy_validation.ok:
+        return legacy_validation
+
+    current_validation = validate_index_metadata(idx, allow_legacy=False)
+    if current_validation.ok and canonicalize_index_metadata(idx) == idx:
+        return current_validation
+    if current_validation.ok:
+        return legacy_validation
+    return current_validation
+
 
 
 def discover_topics() -> list[str]:
@@ -50,6 +85,28 @@ def discover_topics() -> list[str]:
     return out
 
 
+def _require_mergeable_index(topic: str, idx: dict, emb_path: Path) -> tuple[str, int, list, int]:
+    validation = _validate_current_or_known_safe_legacy_index(idx)
+    if not validation.ok:
+        raise SystemExit(f"[cross] {format_validation_errors(topic, validation)}")
+    normalized = canonicalize_index_metadata(idx)
+    chunks = idx.get("chunks")
+    if not isinstance(chunks, list):
+        raise SystemExit(
+            f"[cross] {topic}: chunks must be a list. "
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically."
+        )
+    dim = int(normalized[KEY_EMBEDDING_DIMENSION])
+    expected = len(chunks) * dim
+    actual = emb_path.stat().st_size if emb_path.exists() else -1
+    if actual != expected:
+        raise SystemExit(
+            f"[cross] {topic}: embedding sidecar length mismatch: {actual}B != count*dim {expected}B. "
+            "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically."
+        )
+    return str(normalized[KEY_EMBEDDING_MODEL]), dim, chunks, expected
+
+
 def merge_indexes(topics: list[str]):
     """slug-dedup 병합. 반환: (merged_index_dict, merged_emb_bytes, per_topic_paper_counts)."""
     model = None
@@ -57,6 +114,8 @@ def merge_indexes(topics: list[str]):
     best: dict[str, dict] = {}   # slug -> {n, chunks, emb, meta, topic}
     order: list[str] = []        # slug 최초 등장 순서
     topic_paper_counts: dict[str, int] = {}
+    validated: list[tuple[str, dict, list, Path]] = []
+
 
     for t in topics:
         tdir = DOCS_DIR / t
@@ -66,24 +125,22 @@ def merge_indexes(topics: list[str]):
             print(f"[cross] skip {t}: 검색 인덱스 없음")
             continue
         idx = json.loads(idx_path.read_text(encoding="utf-8"))
-        tmodel = idx.get("model")
-        tdim = int(idx.get("dim") or 0)
+        tmodel, tdim, chunks, _ = _require_mergeable_index(t, idx, emb_path)
         if model is None:
             model, dim = tmodel, tdim
         elif tmodel != model or tdim != dim:
             raise SystemExit(
                 f"[cross] 임베딩 모델/차원 불일치: {t} 는 {tmodel}/{tdim}, 기준은 {model}/{dim}. "
-                "동일 모델로 재빌드 후 병합하세요."
+                "Rebuild the local search index with pipeline/build_search_index.py; validation never rebuilds automatically."
             )
-        chunks = idx.get("chunks", [])
-        emb = emb_path.read_bytes()
-        if len(emb) != len(chunks) * dim:
-            raise SystemExit(
-                f"[cross] {t}: emb 사이드카 {len(emb)}B != count*dim {len(chunks) * dim}B "
-                "— build_search_index 로 재빌드하세요."
-            )
+        validated.append((t, idx, chunks, emb_path))
+
         tpapers = idx.get("papers", {}) or {}
         topic_paper_counts[t] = len(tpapers)
+
+    for t, idx, chunks, emb_path in validated:
+        emb = emb_path.read_bytes()
+        tpapers = idx.get("papers", {}) or {}
 
         by_slug: dict[str, list[int]] = {}
         for i, c in enumerate(chunks):
@@ -121,11 +178,8 @@ def merge_indexes(topics: list[str]):
         )
 
     out = {
-        "model": model,
-        "dim": dim,
-        "quant": "int8-l2norm",
+        **current_index_metadata(str(model)),
         "count": len(merged_chunks),
-        "emb_file": EMB_BIN,
         "papers": papers,
         "chunks": merged_chunks,
     }

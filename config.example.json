@@ -1,6 +1,6 @@
 {
   "zotero": {
-    "api_key": "YOUR_ZOTERO_API_KEY_HERE",
+    "_comment_auth": "Put ZOTERO_API_KEY in .env/process env; do not store personal API keys in this example config.",
     "email": "your.email@example.com",
     "collections": {
       "my_topic": "Your Zotero Collection Name"
@@ -8,25 +8,27 @@
     "pdf_dir": "/path/to/your/zotero/pdfs"
   },
   "unpaywall_email": "your.email@example.com",
-  "_comment_anthropic_auth": "Anthropic 인증은 둘 중 하나입니다. 구독 OAuth는 아래 mode=oauth와 `claude auth login` 또는 env CLAUDE_CODE_OAUTH_TOKEN을 사용합니다(토큰은 config에 저장하지 않음). Console 종량제 API를 쓰려면 anthropic_auth 블록을 지우고 최상위 anthropic_api_key를 설정하세요.",
-  "anthropic_auth": {
-    "mode": "oauth"
-  },
-  "_comment_search_keywords": "search_keywords 는 토픽별 Core-1 검색 키워드입니다. primary 는 핵심 키워드(매칭 0.5점), secondary 는 보조 키워드(매칭 0.2점). ai4s/scisci 는 빌트인 기본값이 있어 생략 가능하고, 그 외 신규 토픽은 여기에 추가해야 합니다.",
-  "search_keywords": {
-    "bioml": {
-      "primary": [
-        "machine learning biology",
-        "deep learning genomics",
-        "protein language model"
-      ],
-      "secondary": [
-        "single cell RNA",
-        "drug target prediction",
-        "biomedical foundation model"
-      ]
+  "_comment_anthropic_auth": "Anthropic credentials are intentionally not stored here. Put CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY in .env/process env; setup --fresh-config may add non-secret local auth metadata when needed.",
+  "_comment_topic_profiles": "topic_profiles 는 토픽별 로컬 프로필입니다. fresh setup 이 선택한 Zotero collection label/alias 를 기준으로 canonical label/collection_name/collection_key(있을 때만)를 생성합니다. search_keywords 를 생략하면 profile label 과 alias 토큰을 domain-neutral 키워드 fallback 으로 사용합니다. 필요할 때만 primary/secondary 를 명시해 보강하세요.",
+  "topic_profiles": {
+    "my_topic": {
+      "label": "Your Zotero Collection Name",
+      "collection_name": "Your Zotero Collection Name",
+      "collection_key": "ABCDEFGH",
+      "search_keywords": {
+        "primary": [
+          "machine learning biology",
+          "protein language model"
+        ],
+        "secondary": [
+          "single cell RNA",
+          "drug target prediction"
+        ]
+      }
     }
   },
+  "_comment_search_keywords": "search_keywords 는 legacy override 입니다. 기존 config 호환용으로 topic_profiles.<topic>.search_keywords 보다 우선합니다. 새 설정은 topic_profiles 를 권장합니다.",
+  "search_keywords": {},
   "_comment_local_model": "local_model 은 선택사항입니다. topic_modeling 연결 단계가 한국망↔Anthropic 으로 끝까지 막혀 max retry round 를 다 돌고도 남는 papers 가 있으면, 로컬에서 도는 OpenAI 호환 모델로 마저 연결하는 opt-in fallback(--local-fallback)의 엔드포인트입니다. base_url+model 만 있으면 동작하고, 안 쓰면 이 블록을 삭제하세요. 환경변수 LOCAL_MODEL_BASE_URL/LOCAL_MODEL_NAME/LOCAL_MODEL_API_KEY 가 우선합니다. 예) Ollama=http://localhost:11434/v1, LM Studio=http://localhost:1234/v1, llama.cpp=http://localhost:8080/v1, vLLM=http://localhost:8000/v1. reasoning_effort 는 thinking 모델(EXAONE-4.5, Qwen3 등) 전용 — \"none\" 이면 think OFF (Ollama 가 매핑; 없으면 content 가 빈 채 thinking 토큰만 채우는 모델이 있음). 비-thinking 모델이면 키 자체를 빼세요.",
   "local_model": {
     "base_url": "http://localhost:11434/v1",

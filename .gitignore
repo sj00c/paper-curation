@@ -20,6 +20,11 @@
 !tests/
 !tests/*.mjs
 
+# Managed internal skill bundle rendered by bin/paper-curation.mjs
+!skills/
+!skills/manifest.json
+!skills/SKILL.md.template
+
 # Pipeline scripts
 !pipeline/
 !pipeline/*.py

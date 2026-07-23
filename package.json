@@ -2,7 +2,7 @@
   "name": "paper-curation",
   "version": "0.0.0",
   "private": false,
-  "description": "Dependency-free NPX onboarding CLI for paper-curation.",
+  "description": "Dependency-free local bootstrap CLI for paper-curation.",
   "type": "module",
   "bin": {
     "paper-curation": "./bin/paper-curation.mjs"

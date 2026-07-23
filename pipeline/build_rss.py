@@ -6,8 +6,7 @@ Atom 1.0 feed builder for paper-curation topics.
 review_to_html → build_topic_index 직후 run_update_force 가 체이닝한다.
 
 Usage: PYTHONUTF8=1 python build_rss.py <topic>
-  e.g. PYTHONUTF8=1 python build_rss.py humanoid
-       PYTHONUTF8=1 python build_rss.py ai4s
+  e.g. PYTHONUTF8=1 python build_rss.py <topic>
 """
 import argparse
 import json
@@ -163,8 +162,7 @@ def build_rss(topic):
 def main():
     parser = argparse.ArgumentParser(
         description="Build Atom 1.0 feed (feed.xml) for a topic")
-    parser.add_argument("topic", nargs="?", default="ai4s",
-                        help="Topic alias (e.g. humanoid, ai4s, scisci)")
+    parser.add_argument("topic", help="Topic alias")
     args = parser.parse_args()
     build_rss(args.topic)
 

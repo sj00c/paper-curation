@@ -8,8 +8,8 @@
   4. Python 리스트 리터럴 — ['a', 'b'] 형태가 그대로 남아있는지
 
 Usage:
-  PYTHONUTF8=1 python pipeline/validate_papers.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/validate_papers.py --topic ai4s --fix  # 자동 수정
+  PYTHONUTF8=1 python pipeline/validate_papers.py --topic <alias>
+  PYTHONUTF8=1 python pipeline/validate_papers.py --topic <alias> --fix  # 자동 수정
 """
 
 import argparse
@@ -462,8 +462,15 @@ def check_connection_coverage(topic):
     return issues
 
 
-def _run_validate(topic="ai4s", *, fix=False, strict=False):
+def _require_topic(topic):
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("topic must be a non-empty string")
+    return topic.strip()
+
+
+def _run_validate(topic, *, fix=False, strict=False):
     """Programmatic entrypoint for validate_papers."""
+    topic = _require_topic(topic)
     index_path = os.path.join(PAPERS_DIR, "_papers_index.json")
     with open(index_path, "r", encoding="utf-8") as f:
         papers = json.load(f)
@@ -611,7 +618,7 @@ def _run_validate(topic="ai4s", *, fix=False, strict=False):
 
 def main():
     parser = argparse.ArgumentParser(description="Post-build validation")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Topic alias to validate")
     parser.add_argument("--fix", action="store_true", help="Auto-fix figure refs + Python list literals")
     parser.add_argument("--strict", action="store_true",
                         help="Exit non-zero if any issue is found (deploy gate).")

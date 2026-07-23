@@ -14,23 +14,28 @@ Usage:
 import argparse
 import json
 import re
-import ssl
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
+try:
+    from config_loader import load_config
+    from tls import create_ssl_context
+except ImportError:
+    from pipeline.config_loader import load_config
+    from pipeline.tls import create_ssl_context
 PIPELINE_DIR = Path(__file__).resolve().parent
 PAPERS_DIR = PIPELINE_DIR.parent / "docs" / "papers"
 INDEX = PAPERS_DIR / "_papers_index.json"
 OPENALEX = "https://api.openalex.org/works"
 MAILTO = "jehyun.lee@gmail.com"
 
-# 사내 프록시가 HTTPS 를 self-signed 로 가로채는 환경 대응 (config_loader 와 동일)
-_ctx = ssl.create_default_context()
-_ctx.check_hostname = False
-_ctx.verify_mode = ssl.CERT_NONE
+_ctx = create_ssl_context(
+    purpose="enrich_journals OpenAlex venue lookup",
+    config=load_config(),
+)
 
 
 def _norm_doi(d):

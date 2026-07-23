@@ -12,9 +12,8 @@ Obsidian 호환:
   - pdf: Zotero 로컬 PDF 경로
 
 Usage:
-  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic scisci
-  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic ai4s --skip-zotero
+  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic your-topic
+  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic your-topic --skip-zotero
 """
 
 import argparse
@@ -545,7 +544,7 @@ def inject_into_review(md_path, frontmatter_yaml, related_section):
 
 def main():
     parser = argparse.ArgumentParser(description="Inject frontmatter into review.md")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Configured topic alias")
     parser.add_argument("--skip-zotero", action="store_true", help="Skip Zotero PDF lookup")
     args = parser.parse_args()
 

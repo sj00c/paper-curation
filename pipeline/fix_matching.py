@@ -7,7 +7,7 @@ review.md / text.md / figures/ 를 삭제하고, 뒤이어 실행할 재리뷰 �
 안전장치:
   - 기본 --dry-run (실제 삭제 안 함)
   - --execute 로만 실제 삭제
-  - 삭제 대상 슬러그를 `docs/{topic}/_fix_matching_backup_<ts>.json` 에 덤프 (복구용)
+  - --execute 시 삭제 대상 슬러그를 `docs/{topic}/_fix_matching_backup_<ts>.json` 에 덤프 (복구용)
   - 다른 토픽을 공유(papers/*/has multiple topics) 하는 슬러그는 삭제하지 않고 건너뜀
 
 Usage:
@@ -135,11 +135,15 @@ def _run_fix_matching(topic, *, slugs=None, execute=False, include_medium=False)
         "fixable": fixable,
         "skipped_shared": skipped_shared,
     }
-    backup_path = get_topic_dir(topic) / f"_fix_matching_backup_{ts}.json"
-    backup_path.parent.mkdir(parents=True, exist_ok=True)
-    from lib.atomic_io import atomic_write_json
-    atomic_write_json(backup_path, backup)
-    print(f"Backup list    : {backup_path}")
+    backup_path = None
+    if execute:
+        backup_path = get_topic_dir(topic) / f"_fix_matching_backup_{ts}.json"
+        backup_path.parent.mkdir(parents=True, exist_ok=True)
+        from lib.atomic_io import atomic_write_json
+        atomic_write_json(backup_path, backup)
+        print(f"Backup list    : {backup_path}")
+    else:
+        print("Backup list    : not written (dry-run)")
 
     deleted_counts = 0
     for slug in fixable:
@@ -155,15 +159,19 @@ def _run_fix_matching(topic, *, slugs=None, execute=False, include_medium=False)
     prefixes = sorted({s.split("_", 1)[0] for s in fixable})
     chunks = [",".join(prefixes[i:i + 30]) for i in range(0, len(prefixes), 30)]
     for i, c in enumerate(chunks, 1):
-        tag = f" (batch {i}/{len(chunks)})" if len(chunks) > 1 else ""
-        print(f"  PYTHONUTF8=1 python pipeline/run_update_force.py "
-              f"--topic {topic} --slugs {c} --strict-pdf{tag}")
+        if len(chunks) > 1:
+            print(f"  # batch {i}/{len(chunks)}")
+        print("  PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 "
+              f"python pipeline/run_full.py --topic {topic} --mode rebuild "
+              f"--slugs {c} --strict-pdf --no-deploy --yes")
     print()
     print("After re-review:")
-    print(f"  PYTHONUTF8=1 python pipeline/audit_matching.py --topic {topic}")
+    print("  PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 "
+          f"python pipeline/run_full.py --topic {topic} --mode audit --no-deploy")
     print("  (verify 'high-confidence mismatch' has dropped)")
     return {"fixable": fixable, "skipped_shared": skipped_shared,
-            "deleted_artifacts": deleted_counts, "backup_path": str(backup_path)}
+            "deleted_artifacts": deleted_counts,
+            "backup_path": str(backup_path) if backup_path else None}
 
 
 def main():

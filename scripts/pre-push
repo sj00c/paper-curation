@@ -16,17 +16,16 @@ RANGE="@{u}..HEAD"
 if ! git rev-parse --abbrev-ref --symbolic-full-name '@{u}' >/dev/null 2>&1; then
     RANGE="HEAD"
 fi
-LEAK=$(git diff "$RANGE" | grep -E 'sk-(ant|proj)-[A-Za-z0-9_-]{10,}' || true)
-if [ -n "$LEAK" ]; then
-    echo "[pre-push] ❌ API key leak detected — refusing push"
-    echo "$LEAK" | head -5
+LEAK_COUNT=$(git diff "$RANGE" | grep -E -c 'sk-(ant|proj)-[A-Za-z0-9_-]{10,}' || true)
+if [ "$LEAK_COUNT" != "0" ]; then
+    echo "[pre-push] API key-like secret detected in push diff — refusing push (redacted; matching lines: $LEAK_COUNT)"
     exit 1
 fi
 echo "[pre-push] ✓ no leaks"
 
-# 2. validate_papers strict gate (skip on docs-only branches)
-TOPIC="${PAPER_CURATION_TOPIC:-ai4s}"
-if [ -f pipeline/validate_papers.py ]; then
+# 2. validate_papers strict gate when the operator selects a configured topic.
+TOPIC="${PAPER_CURATION_TOPIC:-}"
+if [ -f pipeline/validate_papers.py ] && [ -n "$TOPIC" ]; then
     echo "[pre-push] validate_papers --topic $TOPIC --strict"
     if ! PYTHONUTF8=1 python pipeline/validate_papers.py --topic "$TOPIC" --strict >/tmp/_pp_validate.log 2>&1; then
         echo "[pre-push] ❌ validate_papers failed:"
@@ -36,6 +35,8 @@ if [ -f pipeline/validate_papers.py ]; then
         exit 1
     fi
     echo "[pre-push] ✓ validate_papers passed"
+elif [ -f pipeline/validate_papers.py ]; then
+    echo "[pre-push] · validate_papers skipped (set PAPER_CURATION_TOPIC to a configured alias)"
 fi
 
 exit 0

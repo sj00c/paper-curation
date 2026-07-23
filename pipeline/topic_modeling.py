@@ -9,9 +9,8 @@ BERTopic 기반 hierarchical topic modeling + UMAP 시각화 좌표 생성.
 6. 임베딩 코사인 유사도 top-20 → Sonnet이 이유/관계 작성
 
 Usage:
-  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic scisci
-  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic ai4s --skip-connections
+  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic <alias>
+  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic <alias> --skip-connections
 """
 
 import argparse
@@ -1001,10 +1000,17 @@ Rules:
 # Main
 # ═══════════════════════════════════════════
 
-def _run_topic_model(topic="ai4s", *, skip_connections=False,
-                      skip_classification=False, min_cats=8, max_cats=12,
-                      local_fallback=None):
+def _require_topic(topic):
+    if not isinstance(topic, str) or not topic.strip():
+        raise ValueError("topic must be a non-empty string")
+    return topic.strip()
+
+
+def _run_topic_model(topic, *, skip_connections=False,
+                     skip_classification=False, min_cats=8, max_cats=12,
+                     local_fallback=None):
     """Programmatic entrypoint for topic_modeling."""
+    topic = _require_topic(topic)
     topic_dir = str(get_topic_dir(topic))
 
     log(f"Loading {topic} data...")
@@ -1255,7 +1261,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
 
 def main():
     parser = argparse.ArgumentParser(description="BERTopic topic modeling + UMAP")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True, help="Topic alias to model")
     parser.add_argument("--skip-connections", action="store_true")
     parser.add_argument("--skip-classification", action="store_true",
                         help="Skip Steps 4-5 (naming/grouping/assignment). Run embedding, UMAP, connections only.")

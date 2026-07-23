@@ -33,6 +33,21 @@ REPO = Path(__file__).resolve().parent.parent
 _AUTH_ENV = "PAPER_CURATION_ANTHROPIC_AUTH"
 _VALID_MODES = {"auto", "api-key", "oauth"}
 MIN_CLAUDE_CODE_VERSION = (2, 1, 205)
+_SMOKE_MODEL = "claude-haiku-4-5"
+_SECRET_ENV_NAMES = (
+    "ANTHROPIC_API_KEY",
+    "ANTHROPIC_AUTH_TOKEN",
+    "CLAUDE_CODE_OAUTH_TOKEN",
+)
+_SMOKE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "ok": {"type": "boolean"},
+        "answer": {"type": "string"},
+    },
+    "required": ["ok", "answer"],
+    "additionalProperties": False,
+}
 
 
 class AnthropicAuthError(RuntimeError):
@@ -225,6 +240,81 @@ def create_anthropic_client(
         raise AnthropicAuthError(f"Unexpected Anthropic auth mode: {status.mode}")
     return ClaudeCodeClient(timeout=timeout, max_retries=max_retries)
 
+
+def _redact_text(text: str) -> str:
+    redacted = str(text)
+    for name in _SECRET_ENV_NAMES:
+        secret = os.environ.get(name, "").strip()
+        if secret:
+            redacted = redacted.replace(secret, f"<redacted:{name}>")
+    redacted = re.sub(r"sk-ant-[A-Za-z0-9_-]+", "<redacted:ANTHROPIC_API_KEY>", redacted)
+    redacted = re.sub(r"sk-[A-Za-z0-9_-]{16,}", "<redacted:token>", redacted)
+    return redacted
+
+
+def _redacted_status(status: AnthropicAuthStatus) -> dict[str, Any]:
+    return {
+        "mode": status.mode,
+        "source": status.source or "none",
+        "ready": bool(status.ready),
+        "detail": _redact_text(status.detail),
+    }
+
+
+def _extract_tool_input(response: Any, tool_name: str) -> dict[str, Any]:
+    for block in getattr(response, "content", []) or []:
+        if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == tool_name:
+            value = getattr(block, "input", {})
+            if isinstance(value, dict):
+                return value
+    raise AnthropicAuthError("Structured smoke did not return the expected tool_use block")
+
+
+def run_structured_smoke(auth_mode: str | None = None) -> dict[str, Any]:
+    """Run a tiny structured Anthropic request and return redacted auth/smoke status."""
+    try:
+        status = require_auth_ready(auth_mode)
+    except Exception as exc:
+        fallback = auth_status(auth_mode)
+        return {
+            **_redacted_status(fallback),
+            "smoke": "failed",
+            "error": _redact_text(f"{type(exc).__name__}: {exc}"),
+        }
+    tool_name = "paper_curation_smoke"
+    try:
+        client = create_anthropic_client(
+            auth_mode=status.mode,
+            timeout=60.0,
+            max_retries=0,
+        )
+        response = client.messages.create(
+            model=_SMOKE_MODEL,
+            max_tokens=64,
+            tools=[{
+                "name": tool_name,
+                "description": "Return the deterministic paper-curation smoke result.",
+                "input_schema": _SMOKE_SCHEMA,
+            }],
+            tool_choice={"type": "tool", "name": tool_name},
+            messages=[{
+                "role": "user",
+                "content": "Return exactly ok=true and answer='paper-curation-smoke-ok'.",
+            }],
+        )
+        structured = _extract_tool_input(response, tool_name)
+        ok = structured.get("ok") is True and structured.get("answer") == "paper-curation-smoke-ok"
+        return {
+            **_redacted_status(status),
+            "smoke": "ok" if ok else "failed",
+        }
+    except Exception as exc:
+        return {
+            **_redacted_status(status),
+            "smoke": "failed",
+            "error": _redact_text(f"{type(exc).__name__}: {exc}"),
+        }
+
 def _run_claude_process(
     command: list[str],
     *,
@@ -412,9 +502,10 @@ class _ClaudeCodeMessages:
             claude,
             "-p",
             "--safe-mode",
-            "--tools",
-            "Read" if allow_read else "",
-            *(["--allowedTools", "Read"] if allow_read else []),
+        ]
+        if allow_read:
+            command.extend(["--tools", "Read", "--allowedTools", "Read"])
+        command.extend([
             "--strict-mcp-config",
             "--disable-slash-commands",
             "--no-session-persistence",
@@ -424,7 +515,7 @@ class _ClaudeCodeMessages:
             model,
             "--system-prompt",
             system_prompt,
-        ]
+        ])
 
         if schema:
             version = claude_version()

@@ -12,7 +12,7 @@
 **핵심 기능 5줄 요약:**
 
 - **리뷰 자동화** — PDF에서 텍스트·Figure를 추출해 Claude가 6개 섹션 한국어 리뷰를 자동 작성
-- **분류·네트워크** — SPECTER2 + HDBSCAN + UMAP로 카테고리를 자동 생성·배정하고 D3.js 인터랙티브 네트워크로 시각화
+- **분류·네트워크** — SPECTER2 + HDBSCAN + UMAP로 카테고리를 자동 생성·배정하고, `--insights` 사용 시 D3.js 인터랙티브 네트워크까지 생성
 - **Deep Research RAG** — 자연어 질의 → hybrid 검색(BM25+dense) → LLM 답변 + `[N]` 인용, 필요하면 **웹 검색 토글**로 코퍼스 밖 근거까지
 - **Audio Overview** — 리뷰·답변을 팟캐스트형 한국어 오디오로(Gemini TTS → 브라우저 MP3, 배포 시 이메일)
 - **[paper-curio](https://github.com/jehyunlee/paper-curio)** — Zotero 플러그인에서 PDF AI Chat, 2~6편 비교 리포트, 컬렉션 우클릭 전체 처리(리뷰·분류·내러티브·main/category 타임라인, 배포 제외)
@@ -44,81 +44,72 @@
 
 ## 🔧 운영자로 설치하기
 
-Zotero 컬렉션 + PDF + Zotero API key는 필수입니다. Google API 키도 검색 임베딩·Figure 검증·TTS에 필요합니다. Claude 호출은 두 방식 중 하나를 고릅니다.
+Zotero 컬렉션 + PDF + Zotero API key와 Google API key가 필요합니다. Claude 호출은 준비된 Claude Code OAuth 또는 Anthropic Console API key 중 하나를 `auto`로 감지하며, 필요하면 setup에서 선택합니다. 특정 인증이나 토픽을 기본값으로 강제하지 않습니다.
 
-- **구독 OAuth (권장)** — Claude Pro/Max/Team/Enterprise 구독을 Claude Code OAuth로 사용합니다. Claude Code **>= 2.1.205** 필요. `claude auth login`으로 저장된 로그인 또는 `claude setup-token`으로 받은 env-only `CLAUDE_CODE_OAUTH_TOKEN`을 사용합니다.
-- **Console API 키** — `ANTHROPIC_API_KEY`를 쓰며 Anthropic Console의 metered API 과금입니다. NPX 명령에서는 `--auth api-key`를 명시합니다.
-
-> OAuth 토큰은 setup이 저장하지 않습니다. `config.json`에는 `anthropic_auth.mode = "oauth"`만 저장할 수 있습니다. Claude CLI 자체는 API 키를 OAuth보다 우선할 수 있으므로 OAuth 운영 셸에서 `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN`을 unset하는 편이 안전합니다. 이 저장소는 OAuth로 선택된 Claude child 호출에서 두 API 자격증명을 제거하고, `auto` 모드에서는 OAuth token/login을 API 키보다 우선합니다.
-`npx` 경로에는 Git, Node.js 18+, `conda` 명령(Miniconda/Miniforge)이 필요합니다. NPX가 `py312` 환경 생성과 Python 의존성 설치를 맡습니다.
-
-**권장 설치 — NPX:**
+현재 체크아웃의 `bin/paper-curation.mjs`가 내부/팀 milestone의 단일 하네스입니다. Node.js 내장 모듈만 사용하며 스킬 설치는 Python/conda 패키지보다 먼저 동작합니다. 공개 GitHub/npm release, 공개 scanner/license 정리, canonical upstream embedding merge는 아직 완료·공개 준비 상태가 아니며, 버전 metadata seam을 통한 audit/migration으로 연기되어 있습니다.
 
 ```bash
-# 새 클론 + 온보딩
-npx --yes github:jehyunlee/paper-curation init --auth oauth --dir paper-curation
+cd paper-curation
 
-# 이미 체크아웃한 저장소에서 설정
-npx . setup --auth oauth
+# 1) Python 의존성 없이 현재 체크아웃용 managed skill bundle 설치
+node ./bin/paper-curation.mjs skill install
 
-# Anthropic Console API 키 과금으로 운영할 때
-npx . setup --auth api-key
-
-# 진단
-npx . doctor --network
-
-# 실행
-npx . run -- --topic my_topic --mode curate --source zotero
-```
-**`config.json` 생성 규칙:**
-
-- `config.json`은 비밀값이 들어가는 로컬 파일이라 Git에 포함되지 않습니다. 따라서 `clone`/`pull`만으로는 생기지 않습니다.
-- **가장 쉬운 방법은 export 없이 `npx . setup --auth oauth`를 실행하고 프롬프트에 Zotero API key를 붙여 넣는 것입니다.**
-- `export`는 선택적인 사전 입력입니다. 현재 셸의 환경변수만 설정하며 파일을 만들지 않습니다. 사용할 경우 같은 터미널에서 setup까지 실행해야 합니다.
-
-```bash
-cd ~/dev/paper-curation
-npx . setup --auth oauth
-
-# 선택: 파일 대신 환경변수를 쓸 때
-export ZOTERO_API_KEY=...
-export GEMINI_API_KEY=...
-npx . setup --auth oauth
-```
-
-파일을 열어 한 번에 채우는 방식은 `.env.example`을 사용합니다:
-
-```bash
+# 2) 키를 shell history에 남기지 않고 입력
 cp .env.example .env
-open -e .env                    # 또는 원하는 편집기로 .env 열기
-npx . setup --auth oauth
+open -e .env                    # Linux: ${EDITOR:-vi} .env
 ```
 
-`.env`에는 필수값인 `ZOTERO_API_KEY=`와 `GEMINI_API_KEY=` 두 줄만 있습니다. setup이 Zotero API로 컬렉션을 조회해 번호 선택을 받고, topic alias를 만들고, `pdf_cache/`를 자동 생성합니다. Zotero Storage에 동기화된 PDF는 필요할 때 API key로 cache에 내려받습니다. 로컬 linked attachment만 사용하고 Zotero Storage에 파일이 없다면 고급 설정으로 `ZOTERO_DIR`을 추가할 수 있습니다. `.env`는 Git에서 제외됩니다.
+```dotenv
+ZOTERO_API_KEY=발급받은_Zotero_키
+GEMINI_API_KEY=발급받은_Google_키
+```
 
-기본 NPX setup은 비용이 드는 파이프라인을 자동 실행하지 않습니다. 첫 실행까지 setup에서 이어서 돌릴 때만 `--run-first`를 명시합니다.
-`npx . doctor --network`는 OAuth(`claude auth login`/`CLAUDE_CODE_OAUTH_TOKEN`) 또는 API 키(`ANTHROPIC_API_KEY`) 중 현재 선택한 Claude 인증과 Zotero/Google 연결을 진단합니다.
+```bash
+# 3) 현재 사용자 기준으로 새 설정 생성
+# 기존 ignored config.json은 fork/worktree 잔재일 수 있으므로 자동 재사용하지 않습니다.
+node ./bin/paper-curation.mjs setup --fresh-config
+
+# 4) 의존성/네트워크와 선택된 Anthropic 인증 진단
+node ./bin/paper-curation.mjs doctor --network --anthropic-smoke
+
+# 5) setup이 출력한 alias 중 하나로 scratch-only smoke
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
+
+# 6) 첫 로컬 curate
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
+```
+
+setup은 Zotero 컬렉션을 조회해 하나 이상을 선택받고 각각의 topic alias를 생성합니다. alias는 임의의 Zotero 주제 프로필일 수 있으며 문서 예제나 저장소 기본값으로 고정하지 않습니다. 새 `config.json`은 secret-free로 생성하고, Zotero/Google/Anthropic credential은 `.env` 또는 process environment에서만 공급합니다. 기존 설정이 현재 사용자 것임을 확인한 경우에만 `setup --reuse-config`를 사용합니다. Zotero Storage PDF는 필요할 때 `pdf_cache/`로 다운로드합니다. 로컬 linked attachment는 `.env`의 `ZOTERO_DIR`로 지정할 수 있습니다.
+
+> **프로덕션 경고:** smoke·검증·로컬 실행은 `PAPER_CURATION_NO_DEPLOY=1`과 `--no-deploy`를 함께 사용합니다. 보호를 제거한 production curate는 Cloudflare 설정이 있으면 자동 publish할 수 있습니다. 배포는 명시적인 요청에서만 실행하세요.
+>
+> ```bash
+> node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode deploy
+> ```
+
+Console API key를 강제하려면 `.env` 또는 process env에 `ANTHROPIC_API_KEY`를 넣고 `setup --fresh-config --auth api-key`를 사용합니다. OAuth를 강제하려는 경우에만 `--auth oauth`를 사용합니다. `auto`는 준비된 OAuth/API key를 감지하되 OAuth 토큰이나 API key를 config에 저장하지 않습니다.
+
+**Immutable release 이후 GitHub NPX:**
+
+현재 첫 실행 문서는 체크아웃 로컬 Node 하네스만 실행하도록 제공합니다. immutable tag/SHA가 붙은 내부 릴리스가 공지된 뒤에만 해당 릴리스 노트의 고정 ref를 사용하세요. 공개 GitHub/npm 배포와 public-readiness 주장은 연기되어 있으며, `npx --yes github:jehyunlee/paper-curation`처럼 ref 없는 GitHub 실행은 첫 설치 경로로 사용하지 않습니다.
 
 **수동 conda py312 fallback:**
 
 ```bash
-git clone https://github.com/jehyunlee/paper-curation.git && cd paper-curation
+# 이미 받은 maintainer/fork/PR checkout 루트에서 실행합니다.
+cd paper-curation
 conda create -n py312 -c conda-forge python=3.12 pip -y
 conda activate py312
 pip install -r requirements.txt
 
-# OAuth: 저장된 로그인
+# 실제 키는 명령행에 쓰지 말고 편집기로 .env에 저장합니다.
+cp .env.example .env
+open -e .env
 claude auth login
-# 또는 장기 토큰: 먼저 발급한 뒤 출력된 토큰을 env에 설정
-claude setup-token
-export CLAUDE_CODE_OAUTH_TOKEN='발급된_토큰'
-
-export GOOGLE_API_KEY=...
-export ZOTERO_API_KEY=...
 PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth --no-run
 
-# API 키 대안
-export ANTHROPIC_API_KEY=...
+# Anthropic Console API 키 과금 대안:
+# 편집기로 .env에 ANTHROPIC_API_KEY를 추가한 뒤 실행합니다.
 PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
 ```
 
@@ -193,35 +184,43 @@ Claude 비용은 인증 방식에 따라 다릅니다.
 2. **구조화 리뷰** — Claude가 6섹션 한국어 `review.md`
 3. **토픽 모델링 + 분류** — SPECTER2 + HDBSCAN + UMAP로 카테고리 자동 생성·배정
 4. **같이 보면 좋은 논문** — 임베딩 후보를 Claude가 선별(multi-round 재시도)
-5. **카테고리 요약 + 타임라인 내러티브/main·category 다이어그램** & **Deep Research 검색 인덱스**(BM25 + Gemini 임베딩)
-6. **토픽 인덱스** `index.html`(Deep Research·Audio Overview 내장) → **로컬 열람**(`serve_local.py`) 또는 **배포**
+5. **카테고리 요약 + 타임라인 내러티브/main·category 다이어그램** & **Deep Research 검색 인덱스**(BM25 + Gemini 임베딩, `pipeline/lib/search_index_metadata.py` metadata contract)
+6. **토픽 인덱스** `index.html`(Deep Research·Audio Overview 내장) → **로컬 열람**(`serve_local.py`) 또는 **명시적 배포**
 
-**브라우저 안에서**: Deep Research(키 자동 감지)와 Audio Overview(Gemini TTS → MP3)가 동작합니다.
+**브라우저 안에서**: Deep Research(키 자동 감지)와 Audio Overview(Gemini TTS → MP3)가 동작합니다. 기존 검색 인덱스/임베딩 cache metadata가 현재 `search_index_metadata.py` 계약과 맞지 않으면 혼합 사용하거나 자동 rebuild하지 않습니다(never auto-rebuilt). 명시적인 rebuild/audit 지시가 필요합니다.
 **Option 분기**: `--insights`(크로스카테고리 인사이트 + 네트워크) · `--mode deploy`(Cloudflare + gh-pages) · `--local-fallback`(망 전멸 시 로컬 LLM).
 
 단계별 입력·처리·출력 상세 → **[Architecture & Internals](docs/architecture.md)**
 
+새 체크아웃에는 originality 평가 기본값이 내장되어 있어 별도 trigger JSON 없이 구조화 리뷰의 Originality 섹션이 생성됩니다. 선택 dependency(Java, PaperBanana, 로컬 LLM 등)는 없으면 안전하게 fallback 또는 기능 생략으로 degrade합니다. TLS 검증은 기본으로 켜져 있으며, 기업 프록시 등에서 필요한 경우 신뢰 CA를 설치하거나 `SSL_CERT_FILE`/`REQUESTS_CA_BUNDLE`를 사용하세요. 임시 비보안 우회는 명명된 opt-out `PAPER_CURATION_INSECURE_TLS=1` 또는 `network.allow_insecure_tls`+`network.insecure_tls_reason`이 있을 때만 허용됩니다.
+
 ## 사용 모드
 
-단일 진입점은 NPX CLI입니다. `--` 뒤 인자는 `pipeline/run_full.py`로 전달됩니다.
+단일 진입점은 현재 체크아웃의 Node 하네스입니다. `--` 뒤 인자는 `pipeline/run_full.py`로 전달됩니다.
 
 ```bash
 # 로컬 업데이트 — 검색 스킵, 신규/누락 narrative·timeline 기본 보강
-npx . run -- --topic ai4s --mode curate --source zotero
+# 배포 억제를 강제하므로 Cloudflare 자격증명이 있어도 publish하지 않습니다.
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
 
 # 주간 운영 — 검색 → Zotero 등록 → sync → 신규 리뷰 + timeline 보강
-npx . run -- --topic ai4s --mode curate --source web --days 7
+# --max-papers는 web 검색/등록 후보 수만 제한하며, Zotero review/post-processing cap이 아닙니다.
+# 이 프로덕션 명령은 Cloudflare 자격증명/설정이 있으면 성공 후 자동 publish될 수 있습니다.
+node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source web --days 7 --max-papers 20
 
-# timeline 보강까지 끄고 리뷰/분류만 돌리려면
-npx . run -- --topic ai4s --mode curate --source zotero --images skip
+# timeline 보강까지 끄고 리뷰/분류만 로컬에서 돌리려면
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --images skip --no-deploy
 
-# 분류만 / 타임라인만 / 배포만
-npx . run -- --topic ai4s --mode reclassify
-npx . run -- --topic ai4s --mode retime --images all
-npx . run -- --topic humanoid --mode deploy
+# 특정 슬러그 repair-only/rebuild는 배포 억제를 함께 사용
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs 088,1093 --strict-pdf --no-deploy --yes
 
-# 실행 계획 미리보기 / 로컬 서버
-npx . run -- --topic ai4s --mode curate --source zotero --dry-run
+# 분류만 / 타임라인만 (로컬 실행은 배포 억제)
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode reclassify --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode retime --images all --no-deploy
+node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode deploy
+
+# 실행 계획 미리보기 / 로컬 서버 (검증은 배포 억제)
+PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --dry-run --no-deploy
 PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/embed
 ```
 

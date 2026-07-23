@@ -6,9 +6,9 @@ Cross-paper insight 추출 + 논문 간 연결 생성.
 2. _paper_connections.json — 논문별 "같이 보면 좋은 논문" 추천 (이유 포함)
 
 Usage:
-  PYTHONUTF8=1 python pipeline/extract_insights.py --topic scisci
-  PYTHONUTF8=1 python pipeline/extract_insights.py --topic ai4s --connections-only
-  PYTHONUTF8=1 python pipeline/extract_insights.py --topic ai4s --insights-only
+  PYTHONUTF8=1 python pipeline/extract_insights.py --topic <topic>
+  PYTHONUTF8=1 python pipeline/extract_insights.py --topic <topic> --connections-only
+  PYTHONUTF8=1 python pipeline/extract_insights.py --topic <topic> --insights-only
 """
 
 import argparse
@@ -672,7 +672,7 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
     return all_connections
 
 
-def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
+def _run_insights(topic, *, insights_only=False, connections_only=False,
                    categories=None, seed_cache_only=False):
     """Programmatic entrypoint for extract_insights."""
     topic_dir = str(get_topic_dir(topic))
@@ -771,7 +771,7 @@ def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Extract cross-paper insights and connections")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", required=True)
     parser.add_argument("--insights-only", action="store_true", help="Cross-category insights only")
     parser.add_argument("--connections-only", action="store_true", help="Paper connections only")
     parser.add_argument("--only", choices=["connections", "insights", "all"], default="all",
