@@ -19,6 +19,11 @@ const VALID_AUTH = new Set(['auto', 'oauth', 'api-key']);
 const OAUTH_UNSET_ENV = ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN'];
 const MIN_CLAUDE_VERSION = [2, 1, 205];
 const MANAGED_SKILL_MARKER = '<!-- paper-curation-managed-skill -->';
+const SKILL_INSTALL_TARGETS = Object.freeze([
+  { id: 'claude', segments: ['.claude', 'skills'] },
+  { id: 'codex', segments: ['.codex', 'skills'] },
+  { id: 'gjc', segments: ['.gjc', 'agent', 'skills'] },
+]);
 
 class CliError extends Error {
   constructor(message, code = 1) {
@@ -61,7 +66,7 @@ Safe first run from the current checkout:
     ZOTERO_API_KEY=...
     GEMINI_API_KEY=...
 
-  The dependency-free skill installer runs before Python environment setup.
+  The dependency-free skill installer targets Claude Code, Codex, and GJC user skill directories before Python environment setup.
   Setup validates the Zotero key, supports selecting multiple collections, and
   creates local topic aliases and pdf_cache automatically.
 `;
@@ -314,15 +319,14 @@ export function installSkill(cwd, home = homedir()) {
   const rootTemplate = readFileSync(rootTemplatePath, 'utf8');
   const internalTemplate = readFileSync(internalTemplatePath, 'utf8');
   const projectSkill = path.join(cwd, 'SKILL.md');
-  const skillsHome = path.join(home, '.claude', 'skills');
   const activeIds = new Set(manifest.skills.map((skill) => skill.id));
   const result = {
     installed: [],
     skipped: [],
-    stale: findStaleManagedSkillIds(skillsHome, activeIds),
+    stale: [],
+    targets: {},
   };
 
-  mkdirSync(skillsHome, { recursive: true });
   const manifestIds = manifest.skills.map((skill) => skill.id).join(', ');
   const rootContent = renderSkillTemplate(rootTemplate, {
     project_dir: cwd,
@@ -331,26 +335,46 @@ export function installSkill(cwd, home = homedir()) {
   });
   writeFileSync(projectSkill, rootContent, 'utf8');
 
-  for (const skill of manifest.skills) {
-    const skillDir = path.join(skillsHome, skill.id);
-    const skillPath = path.join(skillDir, 'SKILL.md');
-    if (existsSync(skillPath) && !hasManagedMarker(skillPath)) {
-      result.skipped.push(skill.id);
-      continue;
+  for (const target of SKILL_INSTALL_TARGETS) {
+    const skillsHome = path.join(home, ...target.segments);
+    const targetResult = {
+      root: skillsHome,
+      installed: [],
+      skipped: [],
+      stale: findStaleManagedSkillIds(skillsHome, activeIds),
+    };
+    mkdirSync(skillsHome, { recursive: true });
+
+    for (const skill of manifest.skills) {
+      const skillDir = path.join(skillsHome, skill.id);
+      const skillPath = path.join(skillDir, 'SKILL.md');
+      if (existsSync(skillPath) && !hasManagedMarker(skillPath)) {
+        targetResult.skipped.push(skill.id);
+        continue;
+      }
+      mkdirSync(skillDir, { recursive: true });
+      const content = renderSkillTemplate(internalTemplate, {
+        ...skill,
+        project_dir: cwd,
+        marker: MANAGED_SKILL_MARKER,
+      });
+      writeFileSync(skillPath, content, 'utf8');
+      targetResult.installed.push(skill.id);
     }
-    mkdirSync(skillDir, { recursive: true });
-    const content = renderSkillTemplate(internalTemplate, {
-      ...skill,
-      project_dir: cwd,
-      marker: MANAGED_SKILL_MARKER,
-    });
-    writeFileSync(skillPath, content, 'utf8');
-    result.installed.push(skill.id);
+
+    result.targets[target.id] = targetResult;
+    process.stdout.write(
+      `paper-curation: target=${target.id} root=${skillsHome} installed=${formatList(targetResult.installed)} skipped=${formatList(targetResult.skipped)} stale=${formatList(targetResult.stale)}\n`,
+    );
   }
 
-  process.stdout.write(
-    `paper-curation: installed=${formatList(result.installed)} skipped=${formatList(result.skipped)} stale=${formatList(result.stale)}\n`,
-  );
+  result.installed = manifest.skills
+    .map((skill) => skill.id)
+    .filter((id) => Object.values(result.targets).some((target) => target.installed.includes(id)));
+  result.skipped = manifest.skills
+    .map((skill) => skill.id)
+    .filter((id) => Object.values(result.targets).some((target) => target.skipped.includes(id)));
+  result.stale = [...new Set(Object.values(result.targets).flatMap((target) => target.stale))].sort();
   return result;
 }
 function readJsonConfig(configPath) {

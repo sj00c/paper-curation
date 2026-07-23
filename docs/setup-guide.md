@@ -16,6 +16,8 @@ cd paper-curation
 # 1) checkout 경로가 기록된 managed skill bundle 설치
 node ./bin/paper-curation.mjs skill install
 
+이 명령은 Claude Code의 `~/.claude/skills`, Codex의 `~/.codex/skills`, GJC의 `~/.gjc/agent/skills`를 모두 설치 대상으로 사용합니다. 대상별 unmanaged skill 충돌은 보존하고 건너뜁니다.
+
 # 2) 비밀값을 shell history가 아닌 .env에 저장
 cp .env.example .env
 open -e .env                    # Linux: ${EDITOR:-vi} .env

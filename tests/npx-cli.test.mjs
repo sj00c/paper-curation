@@ -61,8 +61,14 @@ function makeSkillCheckout() {
   return root;
 }
 
-function installedSkillPath(home, id) {
-  return path.join(home, '.claude', 'skills', id, 'SKILL.md');
+const skillTargetSegments = {
+  claude: ['.claude', 'skills'],
+  codex: ['.codex', 'skills'],
+  gjc: ['.gjc', 'agent', 'skills'],
+};
+
+function installedSkillPath(home, target, id) {
+  return path.join(home, ...skillTargetSegments[target], id, 'SKILL.md');
 }
 
 test('package stays bootstrap-only while version is unpublished 0.0.0', () => {
@@ -284,18 +290,23 @@ test('dependency-free skill installer renders the managed manifest into determin
     const rootSkill = readFileSync(path.join(root, 'SKILL.md'), 'utf8');
     assert.match(rootSkill, /paper-curation-managed-skill/);
     assert.match(rootSkill, new RegExp(root.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-    for (const id of expectedManagedSkillIds) {
-      const installed = readFileSync(installedSkillPath(home, id), 'utf8');
-      assert.match(installed, new RegExp(`Managed id: \`${id}\``));
-      assert.match(installed, new RegExp(root.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-      assert.match(installed, /node \.\/bin\/paper-curation\.mjs/);
+    for (const target of Object.keys(skillTargetSegments)) {
+      assert.deepEqual(result.targets[target].installed, expectedManagedSkillIds);
+      assert.deepEqual(result.targets[target].skipped, []);
+      assert.deepEqual(result.targets[target].stale, []);
+      for (const id of expectedManagedSkillIds) {
+        const installed = readFileSync(installedSkillPath(home, target, id), 'utf8');
+        assert.match(installed, new RegExp(`Managed id: \`${id}\``));
+        assert.match(installed, new RegExp(root.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+        assert.match(installed, /node \.\/bin\/paper-curation\.mjs/);
+      }
+      const topicSkill = readFileSync(installedSkillPath(home, target, 'paper-curation-topic'), 'utf8');
+      assert.match(topicSkill, /node \.\/bin\/paper-curation\.mjs topic/);
+      assert.doesNotMatch(topicSkill, /setup --reuse-config/);
+      assert.match(readFileSync(installedSkillPath(home, target, 'paper-curation-deploy'), 'utf8'), /--mode deploy/);
+      assert.match(readFileSync(installedSkillPath(home, target, 'paper-curation-smoke'), 'utf8'), /PAPER_CURATION_NO_DEPLOY=1/);
+      assert.match(readFileSync(installedSkillPath(home, target, 'paper-curation-smoke'), 'utf8'), /--no-deploy/);
     }
-    const topicSkill = readFileSync(installedSkillPath(home, 'paper-curation-topic'), 'utf8');
-    assert.match(topicSkill, /node \.\/bin\/paper-curation\.mjs topic/);
-    assert.doesNotMatch(topicSkill, /setup --reuse-config/);
-    assert.match(readFileSync(installedSkillPath(home, 'paper-curation-deploy'), 'utf8'), /--mode deploy/);
-    assert.match(readFileSync(installedSkillPath(home, 'paper-curation-smoke'), 'utf8'), /PAPER_CURATION_NO_DEPLOY=1/);
-    assert.match(readFileSync(installedSkillPath(home, 'paper-curation-smoke'), 'utf8'), /--no-deploy/);
   } finally {
     rmSync(root, { recursive: true, force: true });
     rmSync(home, { recursive: true, force: true });
@@ -306,7 +317,7 @@ test('managed skill installer is idempotent and refuses unmanaged collisions', (
   const root = makeSkillCheckout();
   const home = mkdtempSync(path.join(tmpdir(), 'paper-curation-home-'));
   try {
-    const unmanagedPath = installedSkillPath(home, 'paper-curation-doctor');
+    const unmanagedPath = installedSkillPath(home, 'claude', 'paper-curation-doctor');
     mkdirSync(path.dirname(unmanagedPath), { recursive: true });
     writeFileSync(unmanagedPath, 'user-owned doctor skill\n');
 
@@ -316,7 +327,10 @@ test('managed skill installer is idempotent and refuses unmanaged collisions', (
     assert.equal(readFileSync(unmanagedPath, 'utf8'), 'user-owned doctor skill\n');
     assert.deepEqual(first.skipped, ['paper-curation-doctor']);
     assert.deepEqual(second.skipped, ['paper-curation-doctor']);
-    assert.deepEqual(second.installed, expectedManagedSkillIds.filter((id) => id !== 'paper-curation-doctor'));
+    assert.deepEqual(second.targets.claude.skipped, ['paper-curation-doctor']);
+    assert.deepEqual(second.targets.claude.installed, expectedManagedSkillIds.filter((id) => id !== 'paper-curation-doctor'));
+    assert.deepEqual(second.targets.codex.installed, expectedManagedSkillIds);
+    assert.deepEqual(second.targets.gjc.installed, expectedManagedSkillIds);
   } finally {
     rmSync(root, { recursive: true, force: true });
     rmSync(home, { recursive: true, force: true });
@@ -327,13 +341,16 @@ test('managed skill installer reports stale managed ids without deleting them', 
   const root = makeSkillCheckout();
   const home = mkdtempSync(path.join(tmpdir(), 'paper-curation-home-'));
   try {
-    const stalePath = installedSkillPath(home, 'paper-curation-old');
+    const stalePath = installedSkillPath(home, 'claude', 'paper-curation-old');
     mkdirSync(path.dirname(stalePath), { recursive: true });
     writeFileSync(stalePath, '<!-- paper-curation-managed-skill -->\nold\n');
 
     const result = installSkill(root, home);
 
     assert.deepEqual(result.stale, ['paper-curation-old']);
+    assert.deepEqual(result.targets.claude.stale, ['paper-curation-old']);
+    assert.deepEqual(result.targets.codex.stale, []);
+    assert.deepEqual(result.targets.gjc.stale, []);
     assert.equal(readFileSync(stalePath, 'utf8'), '<!-- paper-curation-managed-skill -->\nold\n');
   } finally {
     rmSync(root, { recursive: true, force: true });

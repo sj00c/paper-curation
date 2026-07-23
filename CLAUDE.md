@@ -40,7 +40,7 @@ PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configu
 ```
 
 Support rules:
-- `skill install`은 Python/conda 패키지 없이 동작하며 외부 skill에 의존하지 않는 managed skill bundle과 self-contained `SKILL.md`를 설치한다.
+- `skill install`은 Python/conda 패키지 없이 동작하며 외부 skill에 의존하지 않는 managed skill bundle과 self-contained `SKILL.md`를 `~/.claude/skills`, `~/.codex/skills`, `~/.gjc/agent/skills`에 설치한다. 대상별 unmanaged 충돌은 덮어쓰지 않는다.
 - Verification, onboarding, smoke, repair, local curate는 deploy suppression을 유지한다.
 - 배포는 사용자가 명시적으로 publish/deploy를 요청한 경우에만 `--mode deploy`로 실행한다.
 - `doctor --network --anthropic-smoke`는 선택된 auth, Zotero, Google, structured Claude call을 secret redaction과 함께 검증한다.

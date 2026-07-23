@@ -54,6 +54,8 @@ cd paper-curation
 # 1) Python 의존성 없이 현재 체크아웃용 managed skill bundle 설치
 node ./bin/paper-curation.mjs skill install
 
+한 번의 설치로 사용자 홈의 Claude Code(`~/.claude/skills`), Codex(`~/.codex/skills`), GJC(`~/.gjc/agent/skills`)에 동일한 managed bundle을 배치합니다. 각 하네스에서 기존 unmanaged skill과 충돌하면 해당 대상만 건너뛰며 파일을 덮어쓰지 않습니다.
+
 # 2) 키를 shell history에 남기지 않고 입력
 cp .env.example .env
 open -e .env                    # Linux: ${EDITOR:-vi} .env

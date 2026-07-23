@@ -54,6 +54,8 @@ cd paper-curation
 # 1) Install the checkout-specific managed skill bundle without Python dependencies
 node ./bin/paper-curation.mjs skill install
 
+One install writes the same managed bundle to the user-level Claude Code (`~/.claude/skills`), Codex (`~/.codex/skills`), and GJC (`~/.gjc/agent/skills`) roots. An unmanaged collision is skipped only for that target and is never overwritten.
+
 # 2) Add required keys without putting secrets in shell history
 cp .env.example .env
 open -e .env                    # Linux: ${EDITOR:-vi} .env
