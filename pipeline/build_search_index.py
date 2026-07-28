@@ -38,7 +38,14 @@ from pathlib import Path
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(PIPELINE_DIR))
-from config_loader import DOCS_DIR, PAPERS_DIR, PROJECT_ROOT, get_topic_dir, get_papers_index_path
+from config_loader import (
+    DOCS_DIR,
+    PAPERS_DIR,
+    PROJECT_ROOT,
+    get_google_key,
+    get_papers_index_path,
+    get_topic_dir,
+)
 
 # Zotero metadata (normalized-title -> {url, doi}) captured by build_topic_index.
 # Gives a real external URL for papers whose review.md frontmatter has a
@@ -118,17 +125,10 @@ def _resolve_external(title, doi, arxiv):
     return doi, arxiv, ext
 
 
-def _load_gemini_key_from_config() -> str:
-    """Fallback: read gemini/google api key from config.json (written by setup.py)."""
-    try:
-        cfg_path = PROJECT_ROOT / "config.json"
-        if cfg_path.exists():
-            with open(cfg_path, "r", encoding="utf-8") as f:
-                cfg = json.load(f)
-            return (cfg.get("gemini_api_key") or cfg.get("google_api_key") or "") or ""
-    except Exception:
-        pass
-    return ""
+# 종료 코드. dense 임베딩은 선택 기능이므로 "키가 없다" 는 "패키지가 없다" 와
+# 구분되어야 한다. 둘 다 exit 1 이면 호출부가 원인을 알 수 없다.
+EXIT_MISSING_GENAI_PACKAGE = 1
+EXIT_EMBEDDINGS_UNAVAILABLE = 5
 
 try:
     import numpy as np
@@ -839,13 +839,19 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool,
             from google import genai
         except ImportError:
             print("ERROR: google-genai package not installed. Run: pip install google-genai")
-            sys.exit(1)
+            sys.exit(EXIT_MISSING_GENAI_PACKAGE)
 
-        api_key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or _load_gemini_key_from_config()
+        # 공용 해석기 하나만 쓴다. 여기서 env/config 를 직접 읽으면
+        # PAPER_CURATION_NO_GEMINI off 스위치가 이 경로에서만 무시되고,
+        # config_loader.get_google_key() 와 답이 갈린다.
+        api_key = get_google_key()
         if not api_key:
-            print("ERROR: GOOGLE_API_KEY not set (env var or config.json).")
-            print("       Set GOOGLE_API_KEY/GEMINI_API_KEY or run 'python pipeline/setup.py' to save it into config.json.")
-            sys.exit(1)
+            print("ERROR: EMBEDDINGS_UNAVAILABLE — Gemini 키가 없어 dense 임베딩을 만들 수 없습니다.")
+            print("       검색은 lexical(BM25) 전용으로 남습니다. 다른 provider 로 대체하지 않습니다.")
+            print("       사용하려면 GOOGLE_API_KEY/GEMINI_API_KEY 를 설정하거나")
+            print("       'python pipeline/setup.py' 로 config.json 에 저장하세요.")
+            print("       (PAPER_CURATION_NO_GEMINI 가 설정돼 있으면 의도적으로 비활성입니다.)")
+            sys.exit(EXIT_EMBEDDINGS_UNAVAILABLE)
 
         client = genai.Client(api_key=api_key)
         # gemini-embedding-001 은 요청당 최대 100 input 까지 받지만, 한국망

@@ -327,11 +327,11 @@ def embed_chunks(chunks: list[dict], *, progress=None) -> bytes | None:
         logger.warning("google-genai 없음 — 임베딩 생략")
         return None
 
-    key = (os.environ.get("GOOGLE_API_KEY")
-           or os.environ.get("GEMINI_API_KEY")
-           or bsi._load_gemini_key_from_config())
+    # 공용 해석기 하나만 쓴다 (PAPER_CURATION_NO_GEMINI off 스위치 포함).
+    from config_loader import get_google_key
+    key = get_google_key()
     if not key:
-        logger.warning("GOOGLE_API_KEY 없음 — 임베딩 생략")
+        logger.warning("Gemini 키 없음 — 임베딩 생략 (다른 provider 로 대체하지 않음)")
         return None
 
     client = genai.Client(api_key=key)
