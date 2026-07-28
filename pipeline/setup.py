@@ -206,9 +206,12 @@ def step_config():
     return cfg
 
 
-# Core credentials gate. Zotero and Google are required for local setup; Anthropic
-# is handled separately because it supports either Console API-key mode or Claude
-# Code subscription OAuth. Resend is deferred until Audio Overview email delivery.
+# Core credentials gate. Zotero 만 필수다. Google(Gemini) 은 선택 기능이라
+# 없으면 dense 검색·figure 검증·Audio Overview 만 비활성으로 남고 다른 provider
+# 로 대체하지 않는다 — 그걸 이유로 설치를 중단하면 "없으면 그 기능만 죽는다" 가
+# 아니라 "없으면 설치조차 못 한다" 가 된다. Anthropic 은 Console API-key 모드와
+# Claude Code 구독 OAuth 를 모두 지원하므로 따로 처리한다. Resend 는 Audio
+# Overview 이메일 발송 시점까지 미룬다.
 REQUIRED_KEYS = [
     {
         "env": "ZOTERO_API_KEY",
@@ -218,11 +221,18 @@ REQUIRED_KEYS = [
         "issue": "https://www.zotero.org/settings/keys",
         "prompt": "Zotero API Key",
     },
+]
+
+# 선택 키: 없으면 해당 기능만 비활성으로 남는다. 프롬프트는 하되 건너뛰어도
+# 설치를 중단하지 않는다.
+OPTIONAL_KEYS = [
     {
         "env": "GOOGLE_API_KEY",
         "env_names": ("GOOGLE_API_KEY", "GEMINI_API_KEY"),
         "path": ("google_api_key",),
-        "why": "figure 검증·Audio Overview·PaperBanana 타임라인·Deep Research 임베딩",
+        "why": "figure 검증·Audio Overview·Deep Research dense 임베딩",
+        "absent": "없으면 검색은 lexical(BM25) 전용으로 동작하고 figure 검증·"
+                  "Audio Overview 는 비활성으로 남습니다 (다른 provider 로 대체하지 않음)",
         "issue": "https://aistudio.google.com/apikey",
         "prompt": "Google API Key (AIza...)",
     },
@@ -294,6 +304,18 @@ def _prompt_required(spec):
         print("  키를 발급한 뒤 다시 `python pipeline/setup.py` 를 실행해주세요.")
         sys.exit(1)
     return user_input
+
+
+def _prompt_optional(spec):
+    """선택 키. 건너뛰면 그 기능만 비활성으로 남고 설치는 계속된다."""
+    print()
+    print(f"  · {spec['env']} 미설정 (선택) — {spec['why']}")
+    print(f"    {spec['absent']}")
+    print(f"    발급: {spec['issue']}")
+    try:
+        return input(f"    {spec['prompt']} (Enter 로 건너뛰기): ").strip()
+    except EOFError:
+        return ""
 
 
 def _configured_anthropic_mode(cfg):
@@ -408,6 +430,20 @@ def step_env_check(cfg, anthropic_auth_mode="auto"):
             source = "입력"
         os.environ[spec["env"]] = value
         # config 에 아직 정확히 반영 안 된 값이면 저장 (env-only → config 영속화 포함)
+        if _cfg_get(cfg, spec["path"]).strip() != value:
+            _cfg_set(cfg, spec["path"], value)
+            dirty = True
+        print(f"  ✓ {spec['env']} 설정됨 ({source}) — {spec['why']}")
+
+    for spec in OPTIONAL_KEYS:
+        value, source = _key_value(cfg, spec)
+        if not value:
+            value = _prompt_optional(spec)
+            source = "입력" if value else ""
+        if not value:
+            print(f"  · {spec['env']} 미설정 (선택) — {spec['absent']}")
+            continue
+        os.environ[spec["env"]] = value
         if _cfg_get(cfg, spec["path"]).strip() != value:
             _cfg_set(cfg, spec["path"], value)
             dirty = True
@@ -725,7 +761,9 @@ def main():
     print("  다음 단계: 파이프라인 실행")
     print("-" * 50)
     print()
-    print("  필수 인증 확인 완료: ZOTERO·GOOGLE + Anthropic(API key 또는 Claude Code OAuth).")
+    print("  필수 인증 확인 완료: ZOTERO + Anthropic(API key 또는 Claude Code OAuth).")
+    print("  GOOGLE(Gemini) 은 선택입니다 — 없으면 검색은 lexical 전용으로 동작하고")
+    print("  figure 검증·Audio Overview 만 비활성으로 남습니다.")
     print("  이제 파이프라인을 실행하여 Zotero 컬렉션의 논문을 리뷰하고")
     print("  웹 페이지로 배포할 수 있습니다.")
     print()

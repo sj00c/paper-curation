@@ -16,15 +16,31 @@ import setup as setup_cli  # noqa: E402
 
 
 class SetupAuthTests(unittest.TestCase):
-    def test_core_key_gate_excludes_anthropic_and_resend(self):
+    def test_core_key_gate_is_zotero_only(self):
+        """Gemini 는 선택 기능이므로 설치를 막지 않는다.
+
+        예전에는 GOOGLE_API_KEY 가 REQUIRED_KEYS 라 입력을 건너뛰면 setup 이
+        exit 1 했다. 그러면 "없으면 그 기능만 죽는다" 가 아니라 "없으면 설치조차
+        못 한다" 가 된다.
+        """
         self.assertEqual(
             [spec["env"] for spec in setup_cli.REQUIRED_KEYS],
-            ["ZOTERO_API_KEY", "GOOGLE_API_KEY"],
+            ["ZOTERO_API_KEY"],
         )
+        self.assertEqual(
+            [spec["env"] for spec in setup_cli.OPTIONAL_KEYS],
+            ["GOOGLE_API_KEY"],
+        )
+
+    def test_optional_key_skip_does_not_exit(self):
+        """선택 키 프롬프트를 건너뛰어도 설치가 중단되지 않는다."""
+        spec = setup_cli.OPTIONAL_KEYS[0]
+        with patch("builtins.input", return_value=""):
+            self.assertEqual(setup_cli._prompt_optional(spec), "")
 
     def test_google_env_alias_is_accepted(self):
         google_spec = next(
-            spec for spec in setup_cli.REQUIRED_KEYS
+            spec for spec in setup_cli.OPTIONAL_KEYS
             if spec["env"] == "GOOGLE_API_KEY"
         )
         with patch.dict(
