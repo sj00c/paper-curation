@@ -1760,6 +1760,26 @@ def _run_topic_index(topic=None, cross=None):
       return '';
     }
 
+    // 브라우저 Deep Research 는 BYOK 다. 서버가 OAuth 구독으로 도는 경우
+    // 빌드 시점에 구울 API 키가 없는 것이 정상이므로, 그 상태를 "형식이 이상한
+    // 키" 와 구분해서 사용자에게 이유를 말해 준다. OAuth 토큰은 절대 HTML 로
+    // 내려가지 않으며, 이 기능은 브라우저에 직접 넣은 키로만 동작한다.
+    function deepKeyState() {
+      const key = _LLM_KEY || _ANTHROPIC_KEY || _OPENAI_KEY || (window._GEMINI_KEY || '');
+      if (!key) {
+        return { ok: false, reason: 'no-key',
+                 message: 'Deep Research 비활성 — 브라우저에 저장된 API 키가 없습니다. ' +
+                          '이 기능은 BYOK 로 동작합니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza). ' +
+                          '서버가 Claude 구독(OAuth)으로 도는 경우 구울 키가 없는 것이 정상이며, ' +
+                          '구독 자격증명은 보안상 페이지에 포함되지 않습니다.' };
+      }
+      if (!detectBackend(key)) {
+        return { ok: false, reason: 'bad-format',
+                 message: '알 수 없는 API key 형식입니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza).' };
+      }
+      return { ok: true, reason: '', message: '' };
+    }
+
     const MODEL_MAP = {
       anthropic: { fast: 'claude-sonnet-5', smart: 'claude-opus-5', top: 'claude-opus-5' },
       openai:    { fast: 'gpt-4.1',          smart: 'gpt-5.5',           top: 'gpt-5.5' },
@@ -2738,10 +2758,11 @@ def _run_topic_index(topic=None, cross=None):
       DEEP._ftCache = {}; DEEP._ftInflight = {};  // per-run windowed text.md cache (로컬 전용)
       const _ftTerms = _ftQueryTerms(query);
       const apiKey = _LLM_KEY || _ANTHROPIC_KEY || _OPENAI_KEY || (window._GEMINI_KEY || '');
-      const backend = detectBackend(apiKey);
-      if (!backend) {
-        throw new Error('알 수 없는 API key 형식입니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza).');
+      const keyState = deepKeyState();
+      if (!keyState.ok) {
+        throw new Error(keyState.message);
       }
+      const backend = detectBackend(apiKey);
       const topModel = resolveModel(backend, 'top');
       const topLabel = (MODEL_LABEL[backend] && MODEL_LABEL[backend].top) || topModel;
       // PLAN 1 — investigation plan (pre-search): what aspects to research.
@@ -3385,6 +3406,24 @@ def _run_topic_index(topic=None, cross=None):
       // Refresh Fast/Smart dropdown labels based on any cached API key
       // so the user sees concrete model names from page load.
       updateDeepModelLabels();
+
+      // 키가 없으면 조용히 두지 않는다: 상태줄에 이유를 띄우고 실행 버튼을
+      // 비활성으로 만든다. "왜 안 되는지 모르겠는" 상태가 가장 나쁘다.
+      (function announceDeepKeyState() {
+        const st = deepKeyState();
+        if (st.ok) return;
+        const el = document.getElementById('deep-status');
+        if (el) {
+          el.textContent = st.message;
+          el.classList.add('active');
+        }
+        if (st.reason === 'no-key') {
+          for (const id of ['deep-rerun', 'deep-audio']) {
+            const b = document.getElementById(id);
+            if (b) { b.disabled = true; b.title = st.message; }
+          }
+        }
+      })();
 
       // Same pattern for Zotero itemKey lookup. When present (local dev),
       // the Deep Research References list adds a one-click 'Open PDF'
