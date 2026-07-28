@@ -24,7 +24,10 @@ python3 "$ROOT/scripts/scan-secrets.py"
 TOPIC="${PAPER_CURATION_TOPIC:-ai4s}"
 if [ -f pipeline/validate_papers.py ]; then
     echo "[pre-push] validate_papers --topic $TOPIC --strict (advisory)"
-    if ! PYTHONUTF8=1 python pipeline/validate_papers.py --topic "$TOPIC" --strict >/tmp/_pp_validate.log 2>&1; then
+    # `python` 은 이 저장소가 요구하는 py312 환경에 존재하지 않는다 (21 줄과 마찬가지로
+    # python3 를 쓴다). 여기만 `python` 이라 훅이 "command not found" 로 넘어가고,
+    # advisory 검사가 실제로는 한 번도 돌지 않았다.
+    if ! PYTHONUTF8=1 python3 pipeline/validate_papers.py --topic "$TOPIC" --strict >/tmp/_pp_validate.log 2>&1; then
         echo "[pre-push] ⚠ validate_papers reported issues (not blocking push):"
         tail -12 /tmp/_pp_validate.log
         echo "[pre-push] ⚠ fix before deploy — CI and prepare_deploy enforce this hard."

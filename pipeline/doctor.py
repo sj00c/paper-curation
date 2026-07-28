@@ -30,6 +30,11 @@ import urllib.request
 from pathlib import Path
 from types import SimpleNamespace
 try:
+    from config_loader import get_google_key as _get_google_key
+except Exception:  # pragma: no cover - doctor 는 단독 실행도 가능해야 한다
+    def _get_google_key():
+        return ""
+try:
     from anthropic_auth import MIN_CLAUDE_CODE_VERSION, auth_status, claude_version
 except Exception:
     MIN_CLAUDE_CODE_VERSION = (2, 1, 205)
@@ -408,16 +413,31 @@ def check_api_keys(rep, cfg):
     # 필수: Anthropic은 API key 또는 Claude Code OAuth 둘 중 하나
     _check_anthropic_auth(rep, cfg)
 
+    # Gemini 는 선택 기능이다. 없으면 dense 검색·figure 검증·TTS 만 비활성으로
+    # 남고 다른 provider 로 대체하지 않는다. 그러므로 부재는 필수 실패가 아니다.
     found, src = _resolve_key(
         cfg, ["GOOGLE_API_KEY", "GEMINI_API_KEY"], ["google_api_key", "gemini_api_key"]
     )
-    if found:
+    # 실제 호출부는 전부 config_loader.get_google_key() 를 거치고 그 함수는
+    # PAPER_CURATION_NO_GEMINI 로 꺼진다. 키가 파일에 있다는 이유로 "설정됨" 을
+    # 보고하면, 모든 호출부가 Gemini 를 안 쓰는 상태에서 진단만 거짓 양성이 된다.
+    effective = bool(_get_google_key())
+    if found and not effective:
+        rep.warn(
+            "Gemini 선택 기능 비활성",
+            f"키는 {src} 에 있으나 PAPER_CURATION_NO_GEMINI 로 꺼져 있어 "
+            "모든 호출부가 Gemini 를 사용하지 않습니다 (dense 검색·figure 검증·TTS 비활성)",
+            "다시 쓰려면 PAPER_CURATION_NO_GEMINI 를 해제하세요.",
+        )
+    elif found:
         rep.ok("GOOGLE_API_KEY", f"설정됨 ({src}) — figure 검증·TTS·Deep Research 임베딩")
     else:
-        rep.fail(
-            "GOOGLE_API_KEY 미설정",
-            "figure 검증·Audio Overview·Deep Research 임베딩에 필수",
-            "export GOOGLE_API_KEY=AIza...  (https://aistudio.google.com/apikey)",
+        rep.warn(
+            "Gemini 선택 기능 미설정",
+            "dense 검색·figure 검증·Audio Overview 가 비활성으로 남습니다. "
+            "검색은 lexical(BM25) 전용으로 동작하며 다른 provider 로 대체하지 않습니다. "
+            "core 설치·doctor·큐레이션·localhost 는 정상 동작합니다.",
+            "쓰려면 export GOOGLE_API_KEY=AIza...  (https://aistudio.google.com/apikey)",
         )
 
     # 선택
