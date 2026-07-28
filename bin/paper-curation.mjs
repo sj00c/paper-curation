@@ -40,11 +40,12 @@ Usage:
   node ./bin/paper-curation.mjs init [--dir PATH] [--auth auto|oauth|api-key] [--fresh-config|--reuse-config] [--run-first]
   node ./bin/paper-curation.mjs setup [--dir PATH] [--auth auto|oauth|api-key] [--fresh-config|--reuse-config] [--run-first]
   node ./bin/paper-curation.mjs skill install [--dir PATH]
-  node ./bin/paper-curation.mjs doctor [--dir PATH] [--network] [--topic TOPIC] [--anthropic-smoke]
+  node ./bin/paper-curation.mjs doctor [--dir PATH] [--network] [--topic TOPIC]
   node ./bin/paper-curation.mjs run [--dir PATH] -- [run_full.py args...]
   node ./bin/paper-curation.mjs auth status
-  node ./bin/paper-curation.mjs auth setup-token
   node ./bin/paper-curation.mjs topic [--dir PATH] [--json]
+  node ./bin/paper-curation.mjs serve --topic <alias> [--port N]
+  node ./bin/paper-curation.mjs deploy --topic <alias> --dry-run
   node ./bin/paper-curation.mjs help
 
 Defaults:
@@ -55,8 +56,8 @@ Defaults:
 Safe first run from the current checkout:
   node ./bin/paper-curation.mjs skill install
   node ./bin/paper-curation.mjs setup --fresh-config
-  node ./bin/paper-curation.mjs doctor --network --anthropic-smoke
-  PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- \\
+  node ./bin/paper-curation.mjs doctor --network
+  PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- \\
     --topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
 
   Setup never silently trusts an existing ignored config.json. Use --reuse-config
@@ -115,12 +116,66 @@ function readOptionValue(argv, index, option) {
   }
   return { value, consumed: 2 };
 }
+function parseDedicatedCommand(args, command) {
+  const parsed = {
+    command,
+    dir: null,
+    auth: 'auto',
+    configMode: 'prompt',
+    runFirst: false,
+    forwarded: [],
+    json: false,
+    topic: null,
+    port: null,
+    dryRun: false,
+  };
+  const seen = new Set();
+  for (let i = 1; i < args.length; i += 1) {
+    const token = args[i];
+    if (token === '--') {
+      throw new CliError(`${command} does not accept passthrough arguments.`);
+    }
+    if (token.includes('=')) {
+      throw new CliError(`${command} does not accept --option=value syntax.`);
+    }
+    if (token === '--topic' || (command === 'serve' && token === '--port')) {
+      if (seen.has(token)) throw new CliError(`Duplicate option: ${token}`);
+      const value = args[i + 1];
+      if (!value || value.startsWith('--')) throw new CliError(`${token} requires a value.`);
+      seen.add(token);
+      if (token === '--topic') parsed.topic = value;
+      else {
+        if (!/^[1-9]\d*$/.test(value) || Number(value) > 65535) {
+          throw new CliError('--port must be an integer from 1 to 65535.');
+        }
+        parsed.port = Number(value);
+      }
+      i += 1;
+      continue;
+    }
+    if (command === 'deploy' && token === '--dry-run') {
+      if (seen.has(token)) throw new CliError(`Duplicate option: ${token}`);
+      seen.add(token);
+      parsed.dryRun = true;
+      continue;
+    }
+    throw new CliError(`Unknown ${command} argument: ${token}`);
+  }
+  if (!parsed.topic) throw new CliError('--topic requires a value.');
+  return parsed;
+}
+
+function forwardsDeployMode(forwarded) {
+  return forwarded.some(
+    (token, index) => token === '--mode=deploy'
+      || (token === '--mode' && forwarded[index + 1] === 'deploy'),
+  );
+}
+
 
 export function parseArgs(argv) {
   const args = [...argv];
-  const passthroughAt = args.indexOf('--');
-  const cliArgs = passthroughAt === -1 ? args : args.slice(0, passthroughAt);
-  if (args.length === 0 || cliArgs.some(isHelpToken)) {
+  if (args.length === 0 || (args.length === 1 && isHelpToken(args[0]))) {
     return {
       command: 'help',
       dir: null,
@@ -131,6 +186,10 @@ export function parseArgs(argv) {
       json: false,
     };
   }
+  if (args[0] === 'serve' || args[0] === 'deploy') {
+    return parseDedicatedCommand(args, args[0]);
+  }
+
 
   let command = null;
   let dir = null;
@@ -175,6 +234,12 @@ export function parseArgs(argv) {
       continue;
     }
 
+    if (
+      command === 'run'
+      && (token === '--mode=deploy' || (token === '--mode' && args[i + 1] === 'deploy'))
+    ) {
+      throw new CliError("Use the dedicated 'deploy --topic <alias> [--dry-run]' command; run --mode deploy is rejected.");
+    }
     if (token.startsWith('--')) {
       if (command === 'topic' && token === '--json') {
         json = true;
@@ -242,7 +307,11 @@ function commandStep(command, args, options = {}) {
     command,
     args,
     cwd: options.cwd ?? process.cwd(),
-    env: options.env ?? {},
+    env: {
+      ...options.env,
+      PAPER_CURATION_NO_DEPLOY: '1',
+      PAPER_CURATION_NO_VECTOR_REBUILD: '1',
+    },
     stdio: options.stdio ?? 'inherit',
     ...(options.unsetEnv?.length ? { unsetEnv: [...options.unsetEnv] } : {}),
     ...(options.minClaudeVersion ? { minClaudeVersion: [...options.minClaudeVersion] } : {}),
@@ -538,9 +607,53 @@ export function createPlan(argv, options = {}) {
     return { parsed, targetDir, readDotEnv: false, steps: [topicListStep(targetDir, parsed.json)] };
   }
 
+  if (parsed.command === 'serve') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    const args = [
+      'python',
+      'pipeline/serve_local.py',
+      '--host',
+      '127.0.0.1',
+      '--topic',
+      parsed.topic,
+    ];
+    if (parsed.port !== null) args.push('--port', String(parsed.port));
+    return { parsed, targetDir, steps: [condaStep(targetDir, args)] };
+  }
+
+  if (parsed.command === 'deploy') {
+    if (!parsed.dryRun) {
+      throw new CliError(
+        'Product deploy execution is unavailable: this checkout has no trusted deployment-approval boundary.',
+      );
+    }
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    return {
+      parsed,
+      targetDir,
+      steps: [condaStep(targetDir, [
+        'python',
+        'pipeline/prepare_deploy.py',
+        '--topic',
+        parsed.topic,
+        '--dry-run',
+      ])],
+    };
+  }
+
   if (parsed.command === 'run') {
     if (options.validateCheckout !== false) requireCheckout(targetDir);
-    return { parsed, targetDir, steps: [condaStep(targetDir, ['python', 'pipeline/run_full.py', ...parsed.forwarded])] };
+    if (forwardsDeployMode(parsed.forwarded)) {
+      throw new CliError("Use the dedicated 'deploy --topic <alias> [--dry-run]' command; run --mode deploy is rejected.");
+    }
+    const forwarded = parsed.forwarded.includes('--no-deploy')
+      ? parsed.forwarded
+      : [...parsed.forwarded, '--no-deploy'];
+    return {
+      parsed: { ...parsed, forwarded },
+      targetDir,
+      steps: [condaStep(targetDir, ['python', 'pipeline/run_full.py', ...forwarded])],
+    };
   }
 
   if (parsed.command === 'auth') {

@@ -1,57 +1,33 @@
-"""TLS context helpers for outbound network clients."""
+"""Fail-closed TLS context helper for outbound network clients."""
 
 import os
 import ssl
-import warnings
 from collections.abc import Mapping
 
 INSECURE_TLS_ENV = "PAPER_CURATION_INSECURE_TLS"
 
 
-def _network_config(config):
+def _insecure_requested(config):
+    if os.environ.get(INSECURE_TLS_ENV):
+        return True
     if not isinstance(config, Mapping):
-        return {}
-    network = config.get("network", {})
-    if isinstance(network, Mapping):
-        return network
-    return {}
-
-
-def _insecure_source(config):
-    if os.environ.get(INSECURE_TLS_ENV) == "1":
-        return f"environment variable {INSECURE_TLS_ENV}=1"
-
-    network = _network_config(config)
-    reason = network.get("insecure_tls_reason")
-    if network.get("allow_insecure_tls") is True and isinstance(reason, str) and reason.strip():
-        return "config network.allow_insecure_tls with network.insecure_tls_reason"
-
-    return None
-
-
-def _warning_message(purpose, source):
-    return (
-        f"WARNING: TLS certificate and hostname verification disabled for {purpose} by {source} opt-out. "
-        "This is insecure and should only be temporary. Remediate by installing the proxy or CA certificate "
-        "in the OS/Python trust store, or set SSL_CERT_FILE or REQUESTS_CA_BUNDLE to a trusted CA bundle."
+        return False
+    network = config.get("network")
+    return isinstance(network, Mapping) and (
+        "allow_insecure_tls" in network or "insecure_tls_reason" in network
     )
 
 
 def create_ssl_context(*, purpose="default", config=None):
-    """Return an outbound TLS context that verifies certificates by default.
+    """Return a certificate- and hostname-verifying TLS context.
 
-    Insecure TLS is permitted only by the exact environment opt-out
-    PAPER_CURATION_INSECURE_TLS=1, or by config with
-    network.allow_insecure_tls true and a nonempty network.insecure_tls_reason.
+    Disabling verification is not a supported runtime mode. Any legacy
+    environment or config request for insecure TLS fails before a connection.
     """
+    if _insecure_requested(config):
+        raise ValueError(
+            "insecure TLS is unsupported; install the trusted CA in the OS/Python "
+            "trust store or configure SSL_CERT_FILE/REQUESTS_CA_BUNDLE"
+        )
     ssl_purpose = purpose if isinstance(purpose, ssl.Purpose) else ssl.Purpose.SERVER_AUTH
-    context = ssl.create_default_context(purpose=ssl_purpose)
-
-    source = _insecure_source(config)
-    if source is None:
-        return context
-
-    context.check_hostname = False
-    context.verify_mode = ssl.CERT_NONE
-    warnings.warn(_warning_message(purpose, source), RuntimeWarning, stacklevel=2)
-    return context
+    return ssl.create_default_context(purpose=ssl_purpose)

@@ -20,11 +20,10 @@ import tls as tls_module  # noqa: E402
 
 class TlsSecurityTests(unittest.TestCase):
     def _context_with_env(self, value, config=None):
-        with patch.dict(os.environ, {tls_module.INSECURE_TLS_ENV: value}, clear=False):
-            with warnings.catch_warnings(record=True) as seen:
-                warnings.simplefilter("always")
-                ctx = tls_module.create_ssl_context(purpose="test", config=config)
-        return ctx, seen
+        env = {} if value is None else {tls_module.INSECURE_TLS_ENV: value}
+        with patch.dict(os.environ, env, clear=True):
+            ctx = tls_module.create_ssl_context(purpose="test", config=config)
+        return ctx
 
     def _run_serve_local_main(self, argv):
         import serve_local  # noqa: E402
@@ -61,69 +60,39 @@ class TlsSecurityTests(unittest.TestCase):
         return captured
 
     def test_default_context_verifies_certificates_and_hostnames(self):
-        ctx, seen = self._context_with_env("0")
+        ctx = self._context_with_env(None)
 
         self.assertEqual(ctx.verify_mode, ssl.CERT_REQUIRED)
         self.assertTrue(ctx.check_hostname)
-        self.assertEqual(seen, [])
 
-    def test_env_opt_out_requires_exact_one(self):
-        for value in ["", "0", "true", "yes", "01", " 1", "1 "]:
+    def test_every_environment_opt_out_fails_closed(self):
+        for value in ["1", "0", "true", "yes", " 1"]:
             with self.subTest(value=value):
-                ctx, seen = self._context_with_env(value)
+                with self.assertRaisesRegex(ValueError, "insecure TLS is unsupported"):
+                    self._context_with_env(value)
 
-                self.assertEqual(ctx.verify_mode, ssl.CERT_REQUIRED)
-                self.assertTrue(ctx.check_hostname)
-                self.assertEqual(seen, [])
-
-        ctx, seen = self._context_with_env("1")
-        self.assertEqual(ctx.verify_mode, ssl.CERT_NONE)
-        self.assertFalse(ctx.check_hostname)
-        self.assertEqual(len(seen), 1)
-        self.assertIn("PAPER_CURATION_INSECURE_TLS=1", str(seen[0].message))
-
-    def test_config_opt_out_requires_true_flag_and_nonempty_reason(self):
-        invalid_configs = [
+    def test_every_config_opt_out_fails_closed(self):
+        configs = [
             {"network": {"allow_insecure_tls": True}},
-            {"network": {"allow_insecure_tls": True, "insecure_tls_reason": ""}},
-            {"network": {"allow_insecure_tls": True, "insecure_tls_reason": "   "}},
-            {"network": {"allow_insecure_tls": "true", "insecure_tls_reason": "proxy"}},
-            {"network": {"allow_insecure_tls": 1, "insecure_tls_reason": "proxy"}},
-            {"network": "not-a-mapping"},
-            {},
-            None,
+            {"network": {"allow_insecure_tls": False}},
+            {"network": {"insecure_tls_reason": "corporate proxy"}},
+            {"network": {"allow_insecure_tls": True, "insecure_tls_reason": "proxy"}},
         ]
-
-        for config in invalid_configs:
+        for config in configs:
             with self.subTest(config=config):
-                ctx, seen = self._context_with_env("0", config=config)
+                with self.assertRaisesRegex(ValueError, "insecure TLS is unsupported"):
+                    self._context_with_env(None, config=config)
 
-                self.assertEqual(ctx.verify_mode, ssl.CERT_REQUIRED)
-                self.assertTrue(ctx.check_hostname)
-                self.assertEqual(seen, [])
-
-        ctx, seen = self._context_with_env(
-            "0",
-            config={"network": {"allow_insecure_tls": True, "insecure_tls_reason": "corporate proxy"}},
-        )
-        self.assertEqual(ctx.verify_mode, ssl.CERT_NONE)
-        self.assertFalse(ctx.check_hostname)
-        self.assertEqual(len(seen), 1)
-
-    def test_insecure_warning_has_remediation_and_redacts_config_reason(self):
+    def test_rejection_has_remediation_without_echoing_config_reason(self):
         secret_reason = "proxy password sk-test-secret"
-        ctx, seen = self._context_with_env(
-            "0",
-            config={"network": {"allow_insecure_tls": True, "insecure_tls_reason": secret_reason}},
-        )
-
-        self.assertEqual(ctx.verify_mode, ssl.CERT_NONE)
-        self.assertEqual(len(seen), 1)
-        message = str(seen[0].message)
-        self.assertIn("TLS certificate and hostname verification disabled", message)
+        with self.assertRaises(ValueError) as raised:
+            self._context_with_env(
+                None,
+                config={"network": {"allow_insecure_tls": True, "insecure_tls_reason": secret_reason}},
+            )
+        message = str(raised.exception)
         self.assertIn("SSL_CERT_FILE", message)
         self.assertIn("REQUESTS_CA_BUNDLE", message)
-        self.assertIn("trust store", message)
         self.assertNotIn(secret_reason, message)
         self.assertNotIn("sk-test-secret", message)
 
@@ -131,17 +100,16 @@ class TlsSecurityTests(unittest.TestCase):
         run = self._run_serve_local_main([])
 
         self.assertEqual(run["address"], ("127.0.0.1", 8000))
-        self.assertIn("바인드: 127.0.0.1:8000", run["stdout"])
-        self.assertIn("열기: http://127.0.0.1:8000/", run["stdout"])
+        self.assertIn("bind: 127.0.0.1:8000", run["stdout"])
+        self.assertIn("open: http://127.0.0.1:8000/", run["stdout"])
         self.assertTrue(run["shutdown_called"])
         self.assertTrue(run["server_close_called"])
 
-    def test_serve_local_requires_explicit_host_for_lan_binding(self):
-        run = self._run_serve_local_main(["--host", "0.0.0.0", "--port", "9001", "--topic", "ai4s"])
-
-        self.assertEqual(run["address"], ("0.0.0.0", 9001))
-        self.assertIn("바인드: 0.0.0.0:9001", run["stdout"])
-        self.assertIn("열기: http://0.0.0.0:9001/ai4s/", run["stdout"])
+    def test_serve_local_rejects_lan_binding(self):
+        with self.assertRaises(SystemExit):
+            self._run_serve_local_main(
+                ["--host", "0.0.0.0", "--port", "9001", "--topic", "ai4s"]
+            )
 
     def test_network_clients_use_shared_tls_helper_without_direct_insecure_context(self):
         expected_clients = {
@@ -167,14 +135,15 @@ class TlsSecurityTests(unittest.TestCase):
             if relative_parts[0] in {"_archive", "tests"}:
                 continue
             text = path.read_text(encoding="utf-8")
-            if path.name == "tls.py":
-                text = text.replace("context.verify_mode = ssl.CERT_NONE", "")
-                text = text.replace("context.check_hostname = False", "")
             for pattern in [r"verify_mode\s*=\s*ssl\.CERT_NONE", r"check_hostname\s*=\s*False", r"_create_unverified_context"]:
                 if re.search(pattern, text):
                     offenders.append(f"{path.relative_to(PIPELINE)}:{pattern}")
 
         self.assertEqual(offenders, [])
+        helper = (PIPELINE / "tls.py").read_text(encoding="utf-8")
+        self.assertNotRegex(helper, re.compile(r"verify_mode\s*=\s*ssl\.CERT_NONE"))
+        self.assertNotRegex(helper, re.compile(r"check_hostname\s*=\s*False"))
+        self.assertNotIn("_create_unverified_context", helper)
 
 
 if __name__ == "__main__":

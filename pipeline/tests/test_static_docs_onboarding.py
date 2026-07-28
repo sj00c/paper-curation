@@ -2,6 +2,7 @@
 
 import json
 import re
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -13,9 +14,8 @@ ONBOARDING_DOCS = (
     ROOT / "README.md",
     ROOT / "README.en.md",
     ROOT / "docs" / "setup-guide.md",
-    ROOT / "CLAUDE.md",
 )
-DOCS = ONBOARDING_DOCS + (ROOT / "docs" / "operations.md",)
+DOCS = ONBOARDING_DOCS + (ROOT / "docs" / "operations.md", ROOT / "CLAUDE.md")
 SKILL_TEMPLATES = (
     ROOT / "SKILL.md.template",
     ROOT / "skills" / "SKILL.md.template",
@@ -29,7 +29,7 @@ SECRET_ASSIGNMENT = re.compile(
     re.MULTILINE | re.IGNORECASE,
 )
 UNQUALIFIED_NPX = "npx --yes github:jehyunlee/paper-curation"
-SMOKE_COMMAND = re.compile(r"^(?!.*(?:#|`)).*--mode smoke.*$", re.MULTILINE)
+SMOKE_COMMAND = "--mode smoke"
 HARDCODED_TOPIC_COMMAND = re.compile(r"^\s*(?!#).*--topic\s+(?:ai4s|scisci)\b", re.MULTILINE)
 DEFAULT_DIRECT_PYTHON_FLOW = re.compile(
     r"^\s*(?!#).*python\s+pipeline/(?:run_full|search_papers)\.py\b",
@@ -47,6 +47,22 @@ def manifest_contract_text():
         fields.extend(str(skill.get(key, "")) for key in ("id", "description", "purpose", "command", "safety"))
     return "\n".join(fields)
 
+def documented_shell_commands(text):
+    command = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if command:
+            command.append(stripped.removesuffix("\\").rstrip())
+            if not stripped.endswith("\\"):
+                yield " ".join(command)
+                command = []
+        elif stripped.endswith("\\"):
+            command = [stripped.removesuffix("\\").rstrip()]
+        else:
+            yield stripped
+    if command:
+        yield " ".join(command)
+
 
 class StaticOnboardingDocsTests(unittest.TestCase):
     @classmethod
@@ -62,7 +78,7 @@ class StaticOnboardingDocsTests(unittest.TestCase):
                 self.assertIn("node ./bin/paper-curation.mjs skill install", text)
                 self.assertIn("node ./bin/paper-curation.mjs setup --fresh-config", text)
                 self.assertIn(
-                    "node ./bin/paper-curation.mjs doctor --network --anthropic-smoke",
+                    "node ./bin/paper-curation.mjs doctor --network",
                     text,
                 )
                 self.assertNotIn("npx . setup --auth oauth", text)
@@ -96,25 +112,35 @@ class StaticOnboardingDocsTests(unittest.TestCase):
 
     def test_smoke_commands_use_both_deploy_suppressors(self):
         for path, text in self.text.items():
-            for command in SMOKE_COMMAND.findall(text):
+            commands = [
+                command
+                for command in documented_shell_commands(text)
+                if SMOKE_COMMAND in command
+                and not command.startswith(("#", ">", "-", "*", "|"))
+                and "`" not in command
+            ]
+            for command in commands:
                 with self.subTest(path=path, command=command):
                     self.assertIn("PAPER_CURATION_NO_DEPLOY=1", command)
+                    self.assertIn("PAPER_CURATION_NO_VECTOR_REBUILD=1", command)
                     self.assertIn("--no-deploy", command)
 
     def test_local_postprocessing_commands_suppress_deploy(self):
-        pattern = re.compile(r"^(?!.*(?:#|`|\\|)).*--mode (?:reclassify|retime).*$", re.MULTILINE)
+        pattern = re.compile(r"^(?!.*[#`\\|]).*--mode (?:reclassify|retime).*$", re.MULTILINE)
         for path, text in self.text.items():
             for command in pattern.findall(text):
                 with self.subTest(path=path, command=command):
                     self.assertIn("PAPER_CURATION_NO_DEPLOY=1", command)
+                    self.assertIn("PAPER_CURATION_NO_VECTOR_REBUILD=1", command)
                     self.assertIn("--no-deploy", command)
 
     def test_local_fallback_recovery_suppresses_deploy(self):
-        pattern = re.compile(r"^(?!.*(?:#|`|\\|)).*--local-fallback.*$", re.MULTILINE)
+        pattern = re.compile(r"^(?!.*[#`\\|]).*--local-fallback.*$", re.MULTILINE)
         for path, text in self.text.items():
             for command in pattern.findall(text):
                 with self.subTest(path=path, command=command):
                     self.assertIn("PAPER_CURATION_NO_DEPLOY=1", command)
+                    self.assertIn("PAPER_CURATION_NO_VECTOR_REBUILD=1", command)
                     self.assertIn("--no-deploy", command)
 
     def test_mismatch_recovery_commands_suppress_deploy(self):
@@ -137,6 +163,7 @@ class StaticOnboardingDocsTests(unittest.TestCase):
         for path, command in commands:
             with self.subTest(path=path, command=command):
                 self.assertIn("PAPER_CURATION_NO_DEPLOY=1", command)
+                self.assertIn("PAPER_CURATION_NO_VECTOR_REBUILD=1", command)
                 self.assertIn("--no-deploy", command)
 
     def test_fix_matching_prints_safe_followup_commands(self):
@@ -156,19 +183,34 @@ class StaticOnboardingDocsTests(unittest.TestCase):
         self.assertIn('"PAPER_CURATION_NO_VECTOR_REBUILD": "1"', source)
         self.assertIn("Vector/full rebuild는 자동 실행하지 않습니다", source)
 
-    def test_docs_warn_that_production_curate_can_auto_publish(self):
-        for path, text in self.text.items():
-            with self.subTest(path=path):
-                lowered = text.lower()
-                self.assertRegex(lowered, r"auto[- ]publish|자동 publish|자동으로 (?:공개|배포)")
-
-    def test_max_papers_is_documented_as_web_only(self):
+    def test_docs_expose_preview_only_and_fail_closed_deployment(self):
         for path in ONBOARDING_DOCS:
             with self.subTest(path=path):
-                text = self.text[path].lower()
-                self.assertIn("--max-papers", text)
-                self.assertIn("--source web", text)
-                self.assertRegex(text, r"search|검색")
+                text = self.text[path]
+                lowered = text.lower()
+                self.assertNotRegex(lowered, r"auto[- ]publish|자동 publish|자동으로 (?:공개|배포)")
+                self.assertIn(
+                    "node ./bin/paper-curation.mjs deploy --topic <alias> --dry-run",
+                    text,
+                )
+                self.assertRegex(
+                    lowered,
+                    r"(?:fail-closed|fails closed|거부|unavailable).*(?:deploy|배포)|(?:deploy|배포).*(?:fail-closed|fails closed|거부|unavailable)",
+                )
+
+        operations = self.text[ROOT / "docs" / "operations.md"]
+        self.assertIn("일반 `run`은 deploy를 승인하거나 실행하지 않", operations)
+        self.assertIn("신뢰할 수 있는 deployment approval issuer/executor가 없", operations)
+
+    def test_web_search_preview_keeps_candidate_work_bounded(self):
+        source = (ROOT / "pipeline" / "run_full.py").read_text(encoding="utf-8")
+        self.assertIn(
+            "Web search/register candidate limit only; not a Zotero review or post-processing cap.",
+            source,
+        )
+        self.assertIn('if routing["search"]:', source)
+        self.assertIn('"--max-papers", str(args.max_papers)', source)
+        self.assertIn('help="실행 계획만 출력, 실제 호출 없음."', source)
 
     def test_generated_skill_is_generic_and_self_contained(self):
         root_template = self.skill_text[ROOT / "SKILL.md.template"]
@@ -190,13 +232,13 @@ class StaticOnboardingDocsTests(unittest.TestCase):
         self.assertNotRegex(self.manifest_text, r"python\s+pipeline/")
         self.assertNotIn("API_KEY=", self.manifest_text)
 
-    def test_onboarding_docs_do_not_default_to_sample_topics_or_direct_python_flows(self):
+    def test_onboarding_docs_use_aliases_without_sample_topics_or_direct_python_flows(self):
         for path in ONBOARDING_DOCS:
             text = self.text[path]
             with self.subTest(path=path):
                 self.assertIsNone(HARDCODED_TOPIC_COMMAND.search(text))
                 self.assertIsNone(DEFAULT_DIRECT_PYTHON_FLOW.search(text))
-                self.assertIn("<configured-topic>", text)
+                self.assertIn("<alias>", text)
 
     def test_operator_copy_uses_fresh_config_and_generic_topic_profiles(self):
         env_example = (ROOT / ".env.example").read_text(encoding="utf-8")
@@ -212,32 +254,52 @@ class StaticOnboardingDocsTests(unittest.TestCase):
         self.assertNotIn("ai4s/scisci", config_example)
         self.assertNotIn('"mode": "oauth"', config_example)
 
-    def test_search_cli_copy_uses_configured_topic_not_sample_defaults(self):
+    def test_search_cli_copy_uses_generic_topic_profiles(self):
         search_source = (ROOT / "pipeline" / "search_papers.py").read_text(encoding="utf-8")
         build_source = (ROOT / "pipeline" / "build_topic_index.py").read_text(encoding="utf-8")
-        self.assertIn("--topic <configured-topic>", search_source)
         self.assertIn("topic_profiles", search_source)
         self.assertIn("collection label/alias", search_source)
         self.assertNotIn("--topic ai4s", search_source)
         self.assertNotIn("--topic scisci", search_source)
-        self.assertIn("<configured-topic>", build_source.split('"""', 2)[1])
         self.assertNotIn("build_topic_index.py ai4s", build_source)
         self.assertNotIn("build_topic_index.py scisci", build_source)
 
-    def test_deep_research_comment_separates_embedding_metadata_from_byok(self):
-        source = (ROOT / "pipeline" / "build_topic_index.py").read_text(encoding="utf-8")
-        self.assertIn("unified answer-generation BYOK slot", source)
-        self.assertIn("/api/embed returns Gemini embedding metadata", source)
-        self.assertIn("server-side Google key, not the reader's BYOK", source)
-        self.assertNotIn("continues to require an OpenAI key", source)
+    def test_generated_dashboard_uses_secret_free_local_assets_and_same_origin_actions(self):
+        builder = (ROOT / "pipeline" / "build_topic_index.py").read_text(encoding="utf-8")
+        runtime = (ROOT / "docs" / "public" / "paper-curation-local.js").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('href="../public/paper-curation-local.css"', builder)
+        self.assertIn('src="../public/paper-curation-local.js" defer', builder)
+        self.assertNotIn("BYOK", builder)
+        self.assertNotIn("GOOGLE_API_KEY", builder)
+        self.assertNotIn("/api/embed", builder)
+        self.assertIn("credentials: 'same-origin'", runtime)
+        for route in ("/api/action/plan", "/api/action/approve", "/api/action/start"):
+            self.assertIn(route, runtime)
 
-    def test_metadata_incompatibility_requires_explicit_rebuild(self):
-        required = ("search_index_metadata.py", "never", "auto-rebuilt")
-        for path in ONBOARDING_DOCS:
-            lowered = self.text[path].lower()
+    def test_metadata_mismatch_falls_back_to_lexical_without_automatic_rebuild(self):
+        source = (ROOT / "pipeline" / "query_search_index.py").read_text(encoding="utf-8")
+        normalized = " ".join(source.split())
+        self.assertIn(
+            "never embeds queries, rebuilds an index, or writes cache",
+            source,
+        )
+        self.assertIn("otherwise retrieval is lexical BM25 only.", normalized)
+        self.assertIn('return None, "index metadata invalid: "', source)
+        self.assertIn(
+            'return None, "legacy index metadata is unbound; dense retrieval disabled"',
+            source,
+        )
+        for path in (
+            ROOT / "README.md",
+            ROOT / "README.en.md",
+            ROOT / "docs" / "operations.md",
+        ):
             with self.subTest(path=path):
-                for needle in required:
-                    self.assertIn(needle.lower(), lowered)
+                text = " ".join(self.text[path].lower().split())
+                self.assertIn("lexical", text)
+                self.assertIn("rebuild", text)
 
     def test_active_clis_never_default_to_example_topics(self):
         parser_default = re.compile(
@@ -251,12 +313,12 @@ class StaticOnboardingDocsTests(unittest.TestCase):
         self.assertNotIn("PAPER_CURATION_TOPIC:-ai4s", pre_push)
 
     def test_pre_push_secret_detector_redacts_matched_values(self):
-        secret = "sk-ant-testsecretmaterial1234567890"
+        secret = "sk-" + "ant-" + "testsecretmaterial1234567890"
         with tempfile.TemporaryDirectory() as temp_dir:
             repo = Path(temp_dir)
 
             def git(*args):
-                subprocess.run(
+                completed = subprocess.run(
                     ["git", *args],
                     cwd=repo,
                     check=True,
@@ -264,6 +326,7 @@ class StaticOnboardingDocsTests(unittest.TestCase):
                     stderr=subprocess.PIPE,
                     text=True,
                 )
+                return completed.stdout.strip()
 
             git("init")
             git("config", "user.email", "test@example.invalid")
@@ -272,11 +335,35 @@ class StaticOnboardingDocsTests(unittest.TestCase):
             (repo / "notes.txt").write_text("safe\n", encoding="utf-8")
             git("add", "notes.txt")
             git("commit", "-m", "initial")
+            remote_oid = git("rev-parse", "HEAD")
+
+            scripts = repo / "scripts"
+            scripts.mkdir()
+            hook = scripts / "pre-push"
+            scanner = scripts / "scan-secrets.py"
+            shutil.copy2(ROOT / "scripts" / "pre-push", hook)
+            shutil.copy2(ROOT / "scripts" / "scan-secrets.py", scanner)
+
             (repo / "notes.txt").write_text(f"leaked={secret}\n", encoding="utf-8")
+            git("add", "notes.txt")
+            git("commit", "-m", "leak")
+            local_oid = git("rev-parse", "HEAD")
+            update = f"refs/heads/main {local_oid} refs/heads/main {remote_oid}\n"
 
             completed = subprocess.run(
-                ["sh", str(ROOT / "scripts" / "pre-push")],
+                ["sh", str(hook)],
                 cwd=repo,
+                input=update,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                check=False,
+            )
+            scanner.unlink()
+            missing_scanner = subprocess.run(
+                ["sh", str(hook)],
+                cwd=repo,
+                input=update,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
@@ -285,8 +372,10 @@ class StaticOnboardingDocsTests(unittest.TestCase):
 
         self.assertNotEqual(completed.returncode, 0)
         self.assertNotIn(secret, completed.stdout)
-        self.assertIn("redacted", completed.stdout)
-        self.assertIn("matching lines: 1", completed.stdout)
+        self.assertNotIn("leaked=", completed.stdout)
+        self.assertIn("credentials or scanner errors are not safe to push", completed.stdout)
+        self.assertNotEqual(missing_scanner.returncode, 0)
+        self.assertIn("security scanner is missing; refusing push", missing_scanner.stdout)
 
 
 if __name__ == "__main__":

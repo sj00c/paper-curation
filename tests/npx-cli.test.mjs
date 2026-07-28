@@ -92,8 +92,10 @@ test('help is checkout-local and pins the current first-run and smoke journey', 
   assert.match(plan.help, /node \.\/bin\/paper-curation\.mjs skill install/);
   assert.match(plan.help, /node \.\/bin\/paper-curation\.mjs setup --fresh-config/);
   assert.doesNotMatch(plan.help, /setup --auth oauth --run-first/);
-  assert.match(plan.help, /doctor --network --anthropic-smoke/);
+  assert.match(plan.help, /doctor --network/);
+  assert.doesNotMatch(plan.help, /doctor --network --anthropic-smoke/);
   assert.match(plan.help, /node \.\/bin\/paper-curation\.mjs topic \[--dir PATH\] \[--json\]/);
+  assert.match(plan.help, /PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1/);
   assert.match(plan.help, /--topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy/);
   assert.doesNotMatch(plan.help, /\bnpx\b/i);
   assert.doesNotMatch(plan.help, /github:/i);
@@ -301,11 +303,20 @@ test('dependency-free skill installer renders the managed manifest into determin
         assert.match(installed, /node \.\/bin\/paper-curation\.mjs/);
       }
       const topicSkill = readFileSync(installedSkillPath(home, target, 'paper-curation-topic'), 'utf8');
-      assert.match(topicSkill, /node \.\/bin\/paper-curation\.mjs topic/);
+      assert.match(topicSkill, /PAPER_CURATION_NO_DEPLOY=1 node \.\/bin\/paper-curation\.mjs topic/);
       assert.doesNotMatch(topicSkill, /setup --reuse-config/);
-      assert.match(readFileSync(installedSkillPath(home, target, 'paper-curation-deploy'), 'utf8'), /--mode deploy/);
-      assert.match(readFileSync(installedSkillPath(home, target, 'paper-curation-smoke'), 'utf8'), /PAPER_CURATION_NO_DEPLOY=1/);
-      assert.match(readFileSync(installedSkillPath(home, target, 'paper-curation-smoke'), 'utf8'), /--no-deploy/);
+      const routerSkill = readFileSync(installedSkillPath(home, target, 'paper-curation-router'), 'utf8');
+      assert.match(routerSkill, /node \.\/bin\/paper-curation\.mjs serve --topic <topic>/);
+      const deploySkill = readFileSync(installedSkillPath(home, target, 'paper-curation-deploy'), 'utf8');
+      assert.match(deploySkill, /node \.\/bin\/paper-curation\.mjs deploy --topic <topic> --dry-run/);
+      assert.match(deploySkill, /no trusted deployment approval issuer or executor/);
+      assert.match(deploySkill, /actual deployment fails closed/);
+      assert.doesNotMatch(deploySkill, /--mode deploy/);
+      const smokeSkill = readFileSync(installedSkillPath(home, target, 'paper-curation-smoke'), 'utf8');
+      assert.match(smokeSkill, /PAPER_CURATION_NO_DEPLOY=1/);
+      assert.match(smokeSkill, /PAPER_CURATION_NO_VECTOR_REBUILD=1/);
+      assert.match(smokeSkill, /--no-deploy/);
+      assert.match(smokeSkill, /Gemini Audio is unavailable, hide and disable it, make zero calls, and keep core curation safe/);
     }
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -358,13 +369,31 @@ test('managed skill installer reports stale managed ids without deleting them', 
   }
 });
 
-test('managed skill templates stay harness-only and package stays dependency-free', () => {
+test('managed skill templates stay checkout-local, consent-gated, and free of stale deployment guidance', () => {
+  const manifest = JSON.parse(readFileSync(new URL('../skills/manifest.json', import.meta.url), 'utf8'));
+  assert.deepEqual(manifest.skills.map((skill) => skill.id), expectedManagedSkillIds);
+  assert.equal(new Set(manifest.skills.map((skill) => skill.id)).size, expectedManagedSkillIds.length);
+
   const scanned = [
+    readFileSync(new URL('../SKILL.md', import.meta.url), 'utf8'),
     readFileSync(new URL('../SKILL.md.template', import.meta.url), 'utf8'),
     readFileSync(new URL('../skills/SKILL.md.template', import.meta.url), 'utf8'),
-    readFileSync(new URL('../skills/manifest.json', import.meta.url), 'utf8'),
+    JSON.stringify(manifest),
   ].join('\n');
 
+  assert.match(scanned, /node \.\/bin\/paper-curation\.mjs deploy --topic <topic> --dry-run/);
+  assert.match(scanned, /node \.\/bin\/paper-curation\.mjs serve --topic <topic>/);
+  assert.match(scanned, /PAPER_CURATION_NO_DEPLOY=1/);
+  assert.match(scanned, /PAPER_CURATION_NO_VECTOR_REBUILD=1/);
+  assert.match(scanned, /--no-deploy/);
+  assert.match(scanned, /actual deployment (?:is unavailable and )?fails closed/);
+  assert.match(scanned, /show the provider, model, work, maxima, and cost; obtain fresh approval/);
+  assert.match(scanned, /`auto` is OAuth-only/);
+  assert.match(scanned, /Gemini Audio is unavailable, hide and disable it, make zero calls, and keep core curation safe/);
+  assert.doesNotMatch(scanned, /--mode deploy/);
+  assert.doesNotMatch(scanned, /automatic[- ]publish/i);
+  assert.doesNotMatch(scanned, /browser.{0,80}(?:API key|provider)/i);
+  assert.doesNotMatch(scanned, /\bfallback\b/i);
   assert.doesNotMatch(scanned, /Agent\(/);
   assert.doesNotMatch(scanned, /python pipeline\//);
   assert.doesNotMatch(scanned, /\bai4s\b/i);
@@ -424,6 +453,100 @@ test('run transparently forwards smoke and no-deploy args only after --', () => 
     () => createPlan(['run', '--mode', 'smoke'], { cwd, validateCheckout: false }),
     /Unknown option: --mode/,
   );
+});
+test('serve stays loopback-only and all non-deploy child plans suppress deployment', () => {
+  const serve = createPlan(['serve', '--topic', 'robotics', '--port', '8123'], {
+    cwd,
+    validateCheckout: false,
+  });
+  assert.deepEqual(serve.steps[0].args, [
+    'run',
+    '-n',
+    'py312',
+    'python',
+    'pipeline/serve_local.py',
+    '--host',
+    '127.0.0.1',
+    '--topic',
+    'robotics',
+    '--port',
+    '8123',
+  ]);
+  assert.equal(serve.steps[0].env.PAPER_CURATION_NO_DEPLOY, '1');
+  assert.equal(serve.steps[0].env.PAPER_CURATION_NO_VECTOR_REBUILD, '1');
+
+  const run = createPlan(['run', '--', '--topic', 'robotics', '--mode', 'curate'], {
+    cwd,
+    validateCheckout: false,
+  });
+  assert.deepEqual(run.parsed.forwarded, ['--topic', 'robotics', '--mode', 'curate', '--no-deploy']);
+  assert.equal(run.steps[0].env.PAPER_CURATION_NO_DEPLOY, '1');
+  assert.equal(run.steps[0].env.PAPER_CURATION_NO_VECTOR_REBUILD, '1');
+
+  const setup = createPlan(['setup'], { cwd, validateCheckout: false });
+  assert.equal(pythonSetupStep(setup).env.PAPER_CURATION_NO_DEPLOY, '1');
+  assert.equal(pythonSetupStep(setup).env.PAPER_CURATION_NO_VECTOR_REBUILD, '1');
+});
+
+test('deploy has preview-only finite grammar and no execution path', () => {
+  assert.deepEqual(parseArgs(['deploy', '--topic', 'robotics', '--dry-run']), {
+    command: 'deploy',
+    dir: null,
+    auth: 'auto',
+    configMode: 'prompt',
+    runFirst: false,
+    forwarded: [],
+    json: false,
+    topic: 'robotics',
+    port: null,
+    dryRun: true,
+  });
+  for (const argv of [
+    ['deploy', '--topic=robotics'],
+    ['deploy', '--topic', 'robotics', '--topic', 'other'],
+    ['deploy', '--topic', 'robotics', '--unknown'],
+    ['deploy', '--topic', 'robotics', '--', '--push'],
+  ]) {
+    assert.throws(() => parseArgs(argv));
+  }
+  assert.throws(
+    () => createPlan(['run', '--', '--topic', 'robotics', '--mode', 'deploy'], {
+      cwd,
+      validateCheckout: false,
+    }),
+    /run --mode deploy is rejected/,
+  );
+  const preview = createPlan(['deploy', '--topic', 'robotics', '--dry-run'], {
+    cwd,
+    validateCheckout: false,
+  });
+  assert.deepEqual(preview.steps[0].args, [
+    'run',
+    '-n',
+    'py312',
+    'python',
+    'pipeline/prepare_deploy.py',
+    '--topic',
+    'robotics',
+    '--dry-run',
+  ]);
+  assert.equal(preview.steps[0].env.PAPER_CURATION_NO_DEPLOY, '1');
+  assert.equal(preview.steps[0].env.PAPER_CURATION_NO_VECTOR_REBUILD, '1');
+
+  let effects = 0;
+  assert.throws(
+    () => {
+      const plan = createPlan(['deploy', '--topic', 'robotics'], {
+        cwd,
+        validateCheckout: false,
+      });
+      runPlan(plan, () => {
+        effects += 1;
+      });
+    },
+    /has no trusted deployment-approval boundary/,
+  );
+  assert.equal(effects, 0);
 });
 
 test('auth commands delegate to Claude without checkout validation or secret arguments', () => {

@@ -134,7 +134,7 @@ class DoctorFirstRunTests(unittest.TestCase):
 
         smoke.assert_not_called()
 
-    def test_anthropic_smoke_opt_in_uses_selected_mode(self):
+    def test_anthropic_smoke_flag_fails_closed_without_provider_call(self):
         reporter = doctor_module.Reporter()
         status = SimpleNamespace(
             mode="oauth",
@@ -142,17 +142,10 @@ class DoctorFirstRunTests(unittest.TestCase):
             ready=True,
             detail="long-lived OAuth token configured",
         )
-        smoke = MagicMock(return_value={
-            "mode": "oauth",
-            "source": "env:CLAUDE_CODE_OAUTH_TOKEN",
-            "ready": True,
-            "detail": "long-lived OAuth token configured",
-            "smoke": "ok",
-        })
+        smoke = MagicMock()
 
         with (
             patch.object(doctor_module, "auth_status", return_value=status),
-            patch.object(doctor_module, "claude_version", return_value=doctor_module.MIN_CLAUDE_CODE_VERSION),
             patch.object(doctor_module, "run_structured_smoke", smoke),
         ):
             doctor_module.check_api_keys(
@@ -161,12 +154,12 @@ class DoctorFirstRunTests(unittest.TestCase):
                 anthropic_smoke=True,
             )
 
-        smoke.assert_called_once_with("oauth")
-        self.assertGreaterEqual(reporter.oks, 2)
+        smoke.assert_not_called()
+        self.assertGreaterEqual(reporter.fails, 1)
 
-    def test_anthropic_smoke_failure_is_required_failure(self):
+    def test_blocked_smoke_does_not_echo_credentials(self):
         reporter = doctor_module.Reporter()
-        secret = "sk-ant-secret-that-must-not-leak"
+        secret = "sk-" + "ant-" + "secret-that-must-not-leak"
         status = SimpleNamespace(
             mode="api-key",
             source="env:ANTHROPIC_API_KEY",
@@ -177,14 +170,7 @@ class DoctorFirstRunTests(unittest.TestCase):
 
         with (
             patch.object(doctor_module, "auth_status", return_value=status),
-            patch.object(doctor_module, "run_structured_smoke", return_value={
-                "mode": "api-key",
-                "source": "env:ANTHROPIC_API_KEY",
-                "ready": True,
-                "detail": "API key configured",
-                "smoke": "failed",
-                "error": f"metered call failed for {secret}",
-            }),
+            patch.object(doctor_module, "run_structured_smoke") as smoke,
             patch.dict(doctor_module.os.environ, {"ANTHROPIC_API_KEY": secret}),
             redirect_stdout(output),
         ):
@@ -194,9 +180,9 @@ class DoctorFirstRunTests(unittest.TestCase):
                 anthropic_smoke=True,
             )
 
+        smoke.assert_not_called()
         self.assertGreaterEqual(reporter.fails, 1)
         self.assertNotIn(secret, output.getvalue())
-        self.assertIn("<redacted:ANTHROPIC_API_KEY>", output.getvalue())
 
 
 if __name__ == "__main__":

@@ -12,11 +12,6 @@ from html import escape as esc
 from urllib.parse import quote as _urlquote
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR
-from lib.audio_overview import (
-    get_audio_css as _audio_css_lib,
-    audio_modal_html as _audio_modal_lib,
-    audio_script_block as _audio_script_lib,
-)
 PAPERS = str(_PAPERS_DIR)
 
 # Zotero PDF attachment keys (slug → key). Written by build_topic_index;
@@ -29,24 +24,6 @@ try:
 except Exception:
     _ZOTERO_KEYS = {}
 
-# Gemini key for the browser-direct Audio Overview feature. Baked into the
-# review page at build time (like the Deep Research keys in build_topic_index),
-# then stripped from every deployed page by prepare_deploy.py. On Cloudflare the
-# value is "" so the generate button stays disabled (localhost-only feature).
-_GEMINI_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or ""
-_LOCAL_EMAILS_RAW = os.environ.get("PAPER_CURATION_LOCAL_EMAILS", "")
-if not _GEMINI_KEY or not _LOCAL_EMAILS_RAW:
-    _cfg_path = os.path.join(os.path.dirname(os.path.dirname(_PAPERS_DIR)), "config.json")
-    try:
-        with open(_cfg_path, "r", encoding="utf-8") as _f:
-            _cfg = json.load(_f)
-        if not _GEMINI_KEY:
-            _GEMINI_KEY = _cfg.get("gemini_api_key") or _cfg.get("google_api_key", "")
-        if not _LOCAL_EMAILS_RAW:
-            _LOCAL_EMAILS_RAW = ",".join(_cfg.get("local_emails", []) or [])
-    except Exception:
-        pass
-_LOCAL_EMAILS = [e.strip() for e in _LOCAL_EMAILS_RAW.split(",") if e.strip()]
 
 _GENERIC_THEME = {"accent": "#555E68", "accent_dark": "#343A40", "accent_bg": "#F5F6F8",
                   "essence_border": "#4A5568", "essence_bg": "#FAFAFA",
@@ -60,6 +37,12 @@ def get_theme(topic):
     if re.match(r"^[A-Za-z0-9][A-Za-z0-9_-]*$", topic_slug):
         theme["back_href"] = f"../../{topic_slug}/index.html"
     return theme
+def _safe_bootstrap_json(payload):
+    """Serialize non-executable page data without permitting script termination."""
+    encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    return (encoded.replace("<", "\\u003c").replace(">", "\\u003e")
+            .replace("&", "\\u0026").replace("\u2028", "\\u2028")
+            .replace("\u2029", "\\u2029"))
 
 # 배포 도메인 — OG 태그의 절대 URL 용 (= prepare_deploy.CF_BASE_URL).
 _CF_BASE = "https://paper-curation.jehyunlee.dev"
@@ -190,36 +173,6 @@ a {{ color: {t['link_color']}; }}
 .lightbox img {{ max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }}
 .fig-caption {{ font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }}"""
 
-
-# ---------------------------------------------------------------------------
-# Audio Overview (browser-direct podcast generation via Gemini). localhost-only.
-# ---------------------------------------------------------------------------
-
-def get_audio_css(t):
-    return _audio_css_lib(t["accent"], t["accent_dark"], t["accent_bg"])
-
-
-def audio_bar_html():
-    """Button shown under the title. Always enabled — when the page is
-    deployed without a baked key, the modal JS prompts the visitor for
-    their own Gemini API key on first click and remembers it in
-    localStorage."""
-    return ('<div class="audio-bar">'
-            '<button class="audio-btn" id="audio-open" onclick="openAudioModal()">'
-            '\U0001F3A7 Audio Overview 생성</button></div>')
-
-
-def audio_modal_html():
-    return _audio_modal_lib(
-        "이 논문 리뷰를 팟캐스트형 오디오로 생성합니다. "
-        "(Gemini · 키는 브라우저에만 저장 · 완성본은 이메일로도 전송)"
-    )
-
-
-def audio_script_block(ctx):
-    """Wrap the shared Audio Overview JS with this paper's static context."""
-    return _audio_script_lib(_GEMINI_KEY, mode="paper", ctx=ctx,
-                              local_emails=_LOCAL_EMAILS)
 
 
 def parse_scores(md):
@@ -442,11 +395,18 @@ def _inline(text):
     # <EOS>, <N>, leaked schema tags, …) render visibly instead of vanishing as
     # unknown HTML tags. The markdown rules below emit their own real tags on
     # the already-escaped text, so they are unaffected.
-    text = text.replace('<', '&lt;').replace('>', '&gt;')
+    text = esc(text, quote=True)
     text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'(?<!\*)\*([^*]+?)\*(?!\*)', r'<em>\1</em>', text)
-    text = re.sub(r'\[([^\]]+)\]\((https?://[^)]+)\)', r'<a href="\2" target="_blank">\1</a>', text)
+    text = re.sub(
+        r'\[([^\]]+)\]\((https?://[^)\s]+)\)',
+        lambda match: (
+            f'<a href="{match.group(2)}" target="_blank" '
+            f'rel="noopener noreferrer">{match.group(1)}</a>'
+        ),
+        text,
+    )
     # Remove empty markdown links: [](url) → just the URL or nothing
     def _fix_empty_link(m):
         url = m.group(1)
@@ -454,7 +414,10 @@ def _inline(text):
         if url.rstrip('/') == 'https://doi.org':
             return 'N/A'
         # Non-empty URL with empty text → show URL as link
-        return f'<a href="{url}" target="_blank">{url}</a>'
+        return (
+            f'<a href="{url}" target="_blank" rel="noopener noreferrer">'
+            f'{url}</a>'
+        )
     text = re.sub(r'\[\]\((https?://[^)]+)\)', _fix_empty_link, text)
     # DOI auto-link — skip DOIs already inside <a> tags (href or link text)
     def _doi_auto_link(match):
@@ -465,67 +428,14 @@ def _inline(text):
         last_a_close = before.rfind('</a>')
         if last_a_open > last_a_close:
             return match.group(0)  # inside <a>...</a>, don't wrap
-        return f'<a href="https://doi.org/{match.group(1)}" target="_blank">{match.group(1)}</a>'
+        return (
+            f'<a href="https://doi.org/{match.group(1)}" target="_blank" '
+            f'rel="noopener noreferrer">{match.group(1)}</a>'
+        )
     text = re.sub(r'(10\.\d{4,}/[^\s<"]+)', _doi_auto_link, text)
     return text
 
 
-# .html 다운로드: 링크를 portable URL 로 치환하고 figure 를 data URI 로
-# 인라인한 자기완결 복사본을 만든다 (플레인 문자열 — JS 문자열 안 개행 없음).
-_DL_JS = r"""
-async function downloadPageHtml() {
-  var btn = document.querySelector('.dl-btn');
-  var oldLabel = btn ? btn.textContent : '';
-  if (btn) { btn.disabled = true; btn.textContent = '이미지 임베딩 중…'; }
-  var root = document.documentElement.cloneNode(true);
-  root.querySelectorAll('a[data-portable]').forEach(function (a) {
-    var u = a.getAttribute('data-portable');
-    if (u) { a.setAttribute('href', u); a.setAttribute('target', '_blank'); }
-  });
-  var live = document.querySelectorAll('img');
-  var cloned = root.querySelectorAll('img');
-  async function toDataUrl(src, liveImg) {
-    // 1) Fetch the exact bytes (same-origin: local server or Cloudflare). This
-    //    embeds the real webp/png losslessly and never taints — unlike canvas.
-    try {
-      var resp = await fetch(src, { cache: 'force-cache' });
-      if (resp && resp.ok) {
-        var blob = await resp.blob();
-        return await new Promise(function (res, rej) {
-          var fr = new FileReader();
-          fr.onload = function () { res(fr.result); };
-          fr.onerror = rej;
-          fr.readAsDataURL(blob);
-        });
-      }
-    } catch (e) { /* fall through to canvas */ }
-    // 2) Canvas fallback (when fetch is blocked, e.g. file:// origin).
-    try {
-      if (liveImg && liveImg.complete && liveImg.naturalWidth) {
-        var c = document.createElement('canvas');
-        c.width = liveImg.naturalWidth; c.height = liveImg.naturalHeight;
-        c.getContext('2d').drawImage(liveImg, 0, 0);
-        return c.toDataURL('image/webp', 0.92);
-      }
-    } catch (e) { /* tainted → keep original path */ }
-    return null;
-  }
-  for (var i = 0; i < live.length && i < cloned.length; i++) {
-    var src = cloned[i].getAttribute('src') || '';
-    if (!src || src.indexOf('data:') === 0) continue;
-    var dataUrl = await toDataUrl(src, live[i]);
-    if (dataUrl) cloned[i].setAttribute('src', dataUrl);
-  }
-  var h = '<!DOCTYPE html>' + root.outerHTML;
-  var b = new Blob([h], { type: 'text/html' });
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(b);
-  a.download = window._PAGE_SLUG + '.html';
-  a.click();
-  URL.revokeObjectURL(a.href);
-  if (btn) { btn.disabled = false; btn.textContent = oldLabel; }
-}
-"""
 
 
 def convert_review(md_path, topic, slug_dir):
@@ -580,14 +490,14 @@ def convert_review(md_path, topic, slug_dir):
 
     # Title
     body_parts.append(f'<h1>{esc(title)}</h1>')
-    # .html 다운로드 — figure 를 data URI 로 인라인하고 논문 링크를 portable
-    # URL 로 치환한 자기완결 복사본을 내려받는다.
+    # The external local runtime owns Audio actions. It starts hidden and disabled
+    # until its safe bootstrap declares the server-provided capability available.
     body_parts.append(
-        '<div class="dl-bar">'
-        '<button class="dl-btn" onclick="downloadPageHtml()">.html 다운로드</button>'
+        '<div class="local-action-controls">'
+        '<button class="deep-btn" id="deep-audio" type="button" hidden disabled '
+        'aria-disabled="true">Audio Overview 생성</button>'
+        '<div class="deep-status" id="deep-status" role="status" aria-live="polite"></div>'
         '</div>')
-    # Audio Overview button (localhost-only; disabled when no key on deploy)
-    body_parts.append(audio_bar_html())
 
     # Metadata
     if meta_line:
@@ -775,22 +685,6 @@ def convert_review(md_path, topic, slug_dir):
     # Back link
     body_parts.append(f'<div class="back"><a href="{theme["back_href"]}">&larr; 목록으로 돌아가기</a></div>')
 
-    # Audio Overview context: title + cleaned review + related papers, embedded
-    # for the browser-side script prompt. slug_titles/type_labels exist only
-    # when conns was non-empty (defined inside the block above).
-    audio_connections = []
-    if conns:
-        for c in conns:
-            rlist = c.get("reasons") or [{"relation": c.get("relation", ""),
-                                          "reason": c.get("reason", "")}]
-            reason_txt = " / ".join(r.get("reason", "") for r in rlist
-                                    if r.get("reason"))
-            audio_connections.append({
-                "title": slug_titles.get(c.get("slug", ""), c.get("slug", "")),
-                "relation": type_labels.get(c.get("relation", ""), c.get("relation", "")),
-                "reason": reason_txt,
-            })
-    audio_ctx = {"title": title, "review": md, "connections": audio_connections}
 
     # OG 소셜 카드 — 링크 공유 시 제목/Essence/대표 figure 가 카드로 뜬다.
     # 이미지 URL 은 절대경로여야 크롤러가 읽는다. figures/…​.png 는 배포 시
@@ -826,8 +720,15 @@ def convert_review(md_path, topic, slug_dir):
         + f'<meta name="twitter:card" content="{"summary_large_image" if og_img else "summary"}">'
     )
 
-    # Assemble
-    css = get_css(theme) + "\n" + get_audio_css(theme)
+    # The generated page carries only a declared capability state. The localhost
+    # runtime owns all action planning, approval, and credential handling.
+    bootstrap_json = _safe_bootstrap_json({
+        "schema": 1,
+        "topic_alias": topic or "",
+        "page_slug": slug_dir_name,
+        "audio_capability": {"schema": "AudioCapabilityV1", "state": "UNAVAILABLE"},
+    })
+    css = get_css(theme)
     html = f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -835,36 +736,16 @@ def convert_review(md_path, topic, slug_dir):
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{esc(title)}</title>
 {og_meta}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
-<script>window.MathJax={{tex:{{inlineMath:[['$','$'],['\\\\(','\\\\)']],displayMath:[['$$','$$'],['\\\\[','\\\\]']]}}}};</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<link rel="stylesheet" href="../../public/paper-curation-local.css">
 <style>
 {css}
 </style>
 </head>
 <body>
 {chr(10).join(body_parts)}
-{audio_modal_html()}
 <div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {{
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
-  document.addEventListener('click', function(e) {{
-    const img = e.target.closest('.review-fig img');
-    if (img) {{ lbImg.src = img.src; lb.classList.add('active'); }}
-  }});
-  lb.addEventListener('click', function() {{ lb.classList.remove('active'); lbImg.src = ''; }});
-  document.addEventListener('keydown', function(e) {{
-    if (e.key === 'Escape' && lb.classList.contains('active')) {{ lb.classList.remove('active'); lbImg.src = ''; }}
-  }});
-}});
-</script>
-<script>
-window._PAGE_SLUG = {json.dumps(slug_dir_name)};
-{_DL_JS}
-</script>
-{audio_script_block(audio_ctx)}
+<script id="dashboard-bootstrap" type="application/json">{bootstrap_json}</script>
+<script src="../../public/paper-curation-local.js" defer></script>
 <footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
 Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
 </footer>

@@ -81,10 +81,9 @@ def build_method_text():
     # 5. Key Design Decisions (CLAUDE.md)
     design_section = _extract_section(claude, "Key Design Decisions")
 
-    # 6. Workflow mermaid block (English version preferred — has the latest
-    #    multi-backend + Audio Overview + Worker function nodes the table
-    #    above doesn't surface). Strip the ```mermaid fences so the LLM
-    #    sees raw nodes/edges.
+    # 6. Workflow mermaid block. Strip the ```mermaid fences so the LLM sees raw
+    # nodes/edges; the generated brief below supplies the authoritative local
+    # serve/action boundary instead of preserving obsolete browser-provider nodes.
     mermaid_section = _extract_section(readme, "Workflow")
     if not mermaid_section:
         mermaid_section = _extract_section(readme, "워크플로우")
@@ -109,13 +108,12 @@ Data flow: Zotero → Claude Code → Claude (review/classify) → PaperBanana (
 Each tool MUST be represented by its recognizable logo/icon. Show Claude Code as the central orchestrator connecting all tools.
 
 ### CORE vs OPTION (CRITICAL — must be visually distinguishable!)
-The pipeline has two tiers. The diagram MUST make the tier of every element obvious at a glance:
-- **CORE (always runs, solid style)**: data collection → structured review → topic modeling/classification → Related Papers connections → category summaries + timelines → Deep Research index → topic index page → local browsing (serve_local) → in-browser Deep Research + Audio Overview.
+- **CORE (always runs, solid style)**: data collection → structured review → topic modeling/classification → Related Papers connections → category summaries + timelines → Deep Research index → topic index page → `node ./bin/paper-curation.mjs serve --topic <alias>` → browser requests a localhost server action plan, explicit approval, and status.
 - **OPTION (opt-in, dashed-border zones, each zone labeled with a small "OPTION" badge/ribbon)**:
-  * O-1 Content Deploy (`--mode deploy`): Cloudflare Workers + gh-pages redirect stubs + Resend email delivery
-  * O-2 Research Insights + Network (`--insights`): cross-category insights analysis + interactive network visualization
+  * O-1 Research Insights + Network (`--insights`): cross-category insights analysis + interactive network visualization
   * Local LLM fallback (`--local-fallback`): Ollama/LM Studio completes stranded connections during network outages
   * Workflow diagram generation (this very diagram, standalone)
+  * Legacy deployment: a distinct, dedicated operation that is outside this local workflow and requires separate approval.
 - Core flow uses solid arrows/borders; every Option element lives inside a clearly dashed enclosure with an "OPTION" tag. A reader must instantly see "this part is optional".
 
 ### PIPELINE PHASES (left to right flow)
@@ -134,28 +132,20 @@ The pipeline has two tiers. The diagram MUST make the tier of every element obvi
 ### KEY DESIGN PRINCIPLES
 {design_section}
 
-### CANONICAL WORKFLOW GRAPH (use this as the source of truth — every
-### node and edge here MUST appear in the diagram, including the
-### in-browser Deep Research multi-backend choice, the Audio Overview
-### node, the Cloudflare Worker `/api/audio-email` function, the Resend
-### email send, and the Local-vs-Deploy fork)
+### CANONICAL WORKFLOW GRAPH (use this only for build-time data flow; do not
+### reproduce obsolete browser-provider, email, Worker, or deployment nodes)
 {mermaid_block}
 
-### IN-BROWSER FEATURES (must be visible in the diagram, separate from
+### LOCAL BROWSER BOUNDARY (must be visible in the diagram, separate from
 ### the build-time pipeline above)
-- Deep Research: client-side natural-language Q&A. Detects user-pasted
-  API key by prefix and routes to ONE OF Anthropic (sk-ant-…) /
-  OpenAI (sk-…) / Google (AIza…) — three logos shown as a fan-in choice.
-- Audio Overview: in-browser podcast generation. Calls Gemini TTS,
-  encodes MP3 client-side, downloads locally AND (on deployed Worker)
-  POSTs to /api/audio-email → Resend → email with MP3 attachment.
+- The only local serving command is `node ./bin/paper-curation.mjs serve --topic <alias>`, bound to localhost.
+- Generated pages hold no credentials and make no direct provider requests. They load owned local JS/CSS assets and pass non-executable JSON bootstrap data only.
+- Deep Research and Audio are same-origin localhost server actions: browser → `/api/action/plan` → explicit user approval → `/api/action/approve` → `/api/action/start` → status/final. The server is authoritative for credentials, providers, limits, and work.
+- Audio appears only when the `AudioCapabilityV1` bootstrap state is `AVAILABLE`; an unavailable Gemini capability hides and disables Audio without probing or fallback.
 
-### DELIVERY FORK (must appear as a clear branching point)
-- LOCAL: `python -m http.server` — full text.md available, richer Deep
-  Research, no email delivery.
-- DEPLOY: Cloudflare Workers serves docs/ + Worker function handles
-  /api/audio-email. gh-pages redirect stubs forward visitors from
-  jehyunlee.github.io/paper-curation/{{topic}}/ to the Worker URL.
+### DELIVERY BOUNDARY (must appear as a clearly separate, non-default note)
+- LOCAL: the Node serve/action boundary above is the complete local browsing path.
+- DEPLOY: legacy and distinct from this workflow. It is never automatic, has no browser provider or email path, and requires dedicated separate approval before any deployment operation.
 """
     return method
 
@@ -198,7 +188,7 @@ LAYOUT
   1. ACQUIRE  (Web search → Zotero registration → Sync → Dedup)
   2. REVIEW   (PDF → Text+Figures → Sanity gate → Structured review)
   3. ANALYZE  (Embedding → Cluster assignment → Category summaries → Cross-category insights → Timeline narrative)
-  4. DELIVER  (Validate → Topic page → Search index → Deploy / Recovery audit)
+  4. DELIVER  (Validate → Topic page → Search index → Local serve/action boundary → Recovery audit)
 
 NODE STYLE
 - Rectangles with thin 1.5px black borders, subtle off-white fill (#F7F7F5)
@@ -210,11 +200,12 @@ NODE STYLE
 EDGES
 - Solid thin arrows for primary data flow
 - Dashed arrows for optional / preflight paths (dedup preflight, audit recovery)
-- CORE vs OPTION: Core nodes/edges solid; OPTION groups (Deploy O-1, Insights+Network O-2,
+- CORE vs OPTION: Core nodes/edges solid; OPTION groups (Research Insights+Network O-1,
   Local LLM fallback) enclosed in thin dashed rounded rectangles, each with a small
-  italic "Option" label at the enclosure corner
-- Diamond decision nodes only for the 3-axis MECE mode gate
-  ("mode: curate / rebuild / reclassify / retime / deploy")
+  italic "Option" label at the enclosure corner. Show legacy deployment only as a
+  separate note outside the workflow, labeled "separate approval required."
+- Diamond decision nodes only for the local MECE mode gate
+  ("mode: curate / rebuild / reclassify / retime")
 - No thick colored edges; monochrome black arrows
 
 ANNOTATIONS

@@ -102,7 +102,7 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             ]), encoding="utf-8")
             smoke_base = root / "pipeline"
             smoke_base.mkdir()
-            args = SimpleNamespace(topic="ai4s", smoke_limit=1)
+            args = SimpleNamespace(topic="ai4s", smoke_limit=1, no_deploy=True)
 
             def fake_process(item, slug, cp):
                 Path(ruf.PAPERS_DIR, slug).mkdir(parents=True)
@@ -112,7 +112,7 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
                 return "ok"
 
             with (
-                patch.dict(os.environ, {}, clear=True),
+                patch.dict(os.environ, {"PAPER_CURATION_NO_DEPLOY": "1"}, clear=True),
                 patch.object(ruf, "PAPERS_DIR", str(production_papers)),
                 patch.object(ruf, "PIPELINE_DIR", smoke_base),
                 patch.object(ruf, "_slug_to_zotero_key", {"existing": "KEY"}),
@@ -121,7 +121,7 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
                 patch.object(ruf.subprocess, "run") as subprocess_run,
             ):
                 ruf._run_smoke(args, SimpleNamespace(mode="oauth", source="saved:/login"))
-                self.assertNotIn("PAPER_CURATION_NO_DEPLOY", os.environ)
+                self.assertEqual(os.environ["PAPER_CURATION_NO_DEPLOY"], "1")
                 self.assertEqual(ruf._slug_to_zotero_key, {"existing": "KEY"})
                 self.assertEqual(ruf._slug_to_pdf_path, {"existing": "/existing.pdf"})
                 subprocess_run.assert_not_called()
@@ -148,7 +148,7 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             smoke_base.mkdir()
             pdf = root / "later.pdf"
             pdf.write_bytes(b"%PDF-1.4\n")
-            args = SimpleNamespace(topic="robotics-lab", smoke_limit=1)
+            args = SimpleNamespace(topic="robotics-lab", smoke_limit=1, no_deploy=True)
             items = [
                 {"key": "NO_PDF", "title": "First Candidate", "itemType": "journalArticle"},
                 {"key": "HAS_PDF", "title": "Later Candidate", "itemType": "journalArticle"},
@@ -159,6 +159,7 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
                 return "ok"
 
             with (
+                patch.dict(os.environ, {"PAPER_CURATION_NO_DEPLOY": "1"}, clear=True),
                 patch.object(ruf, "PAPERS_DIR", str(production_papers)),
                 patch.object(ruf, "PIPELINE_DIR", smoke_base),
                 patch.object(ruf, "COLLECTIONS", {"robotics-lab": "COLLKEY"}),
@@ -194,9 +195,10 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             ]), encoding="utf-8")
             smoke_base = root / "pipeline"
             smoke_base.mkdir()
-            args = SimpleNamespace(topic="ai4s", smoke_limit=1)
+            args = SimpleNamespace(topic="ai4s", smoke_limit=1, no_deploy=True)
 
             with (
+                patch.dict(os.environ, {"PAPER_CURATION_NO_DEPLOY": "1"}, clear=True),
                 patch.object(ruf, "PAPERS_DIR", str(production_papers)),
                 patch.object(ruf, "PIPELINE_DIR", smoke_base),
                 patch.object(ruf, "find_pdf", return_value=("", "no_match")),
@@ -224,9 +226,10 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
             )
             smoke_base = root / "pipeline"
             smoke_base.mkdir()
-            args = SimpleNamespace(topic="ai4s", smoke_limit=1)
+            args = SimpleNamespace(topic="ai4s", smoke_limit=1, no_deploy=True)
 
             with (
+                patch.dict(os.environ, {"PAPER_CURATION_NO_DEPLOY": "1"}, clear=True),
                 patch.object(ruf, "PAPERS_DIR", str(production_papers)),
                 patch.object(ruf, "PIPELINE_DIR", smoke_base),
                 patch.object(ruf, "COLLECTIONS", {"ai4s": "COLLKEY"}),
@@ -347,8 +350,10 @@ class RunUpdateForceSmokeTests(unittest.TestCase):
                 "--topic", "ai4s",
                 "--mode", "curate",
                 "--dry-run",
+                "--no-deploy",
             ]
             with (
+                patch.dict(os.environ, {"PAPER_CURATION_NO_DEPLOY": "1"}, clear=True),
                 patch.object(sys, "argv", argv),
                 patch.object(ruf, "PAPERS_DIR", str(papers)),
                 patch.object(ruf, "CHECKPOINT_FILE", str(Path(temp_dir) / "checkpoint.json")),

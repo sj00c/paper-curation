@@ -112,6 +112,11 @@ def main():
             check("손상 파일은 나머지를 막지 않음", len(loaded) == 2)
         finally:
             R.PAPERS, R._connections_cache = old_papers, old_cache
+    print("== 11. safe review bootstrap escapes script boundaries ==")
+    bootstrap = R._safe_bootstrap_json({"title": "</script><img>", "line": "\u2028\u2029"})
+    check("script terminator escaped", "</script>" not in bootstrap)
+    check("HTML-significant characters escaped", "<" not in bootstrap and ">" not in bootstrap)
+    check("line separators escaped", "\u2028" not in bootstrap and "\u2029" not in bootstrap)
 
     print()
     if fails:

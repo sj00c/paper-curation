@@ -1,46 +1,136 @@
-"""논문 리뷰(review.md) → Audio Overview (팟캐스트형 오디오) — CLI 폴백.
+"""Server-approved Gemini Audio implementation.
 
-리뷰 페이지의 브라우저-직접 생성(Audio Overview 버튼)과 동일한 보이스·연관논문
-컨텍스트·프롬프트·멀티스피커 prefix 를 사용한다. 브라우저 대신 배치/디버깅용으로
-임의 슬러그를 처리하거나, 로컬 키가 없는 셸 환경에서 쓰는 용도.
-
-사용 예:
-    PYTHONUTF8=1 python pipeline/generate_audio.py --slug 514
-    python pipeline/generate_audio.py --slug 514 --speakers 2 --length 20 --language en
-    python pipeline/generate_audio.py --slug 514 --speakers 3 --tone lively
-    python pipeline/generate_audio.py --slug 514 --focus "방법론의 한계" --speed 1.15
-
-화자 수: 1(내레이터) / 2(전문가+리포터, 멀티스피커 1콜 청크) / 3(per-turn 합성).
-길이: 10 / 20 / 30 분. 언어: ko / en (기본 ko).
-기본 구성 방향: 논문 originality 중심 + '같이 보면 좋은 논문' 연관성 엮기.
+This module contains provider and encoding helpers for a localhost authority.
+Its direct CLI intentionally fails closed because an in-memory operation
+approval cannot be transferred safely through argv, environment, or disk.
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import math
 import os
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-
-from google import genai
-from google.genai import types
+from typing import Any
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config_loader import PAPERS_DIR as _PAPERS_DIR, get_google_key  # noqa: E402
-import usage_log  # noqa: E402
+from config_loader import PAPERS_DIR as _PAPERS_DIR  # noqa: E402
+from lib.audio_operation import (
+    AUDIO_BUDGET_SECONDS,
+    AudioOperationError,
+    AudioPlan,
+    MAX_TARGET_SECONDS,
+    PCM_BYTES_PER_SAMPLE,
+    PCM_SAMPLE_RATE,
+    SILENCE_SAMPLES,
+    validate_output_path,
+)
+from lib.operation_consent import (
+    ApprovalCredential,
+    ConsentError,
+    OperationConsent,
+    canonical_json_bytes,
+    sha256_hex,
+)  # noqa: E402
 
 PAPERS = Path(_PAPERS_DIR)
 DOCS = PAPERS.parent
 
 SCRIPT_MODEL = "gemini-3.1-pro-preview"
 TTS_MODEL = "gemini-2.5-flash-preview-tts"
-SAMPLE_RATE = 24_000
+# Single authority, shared with the codec and the accounting layer. Declaring a
+# second literal here is what let the inter-chunk gap drift (D1).
+SAMPLE_RATE = PCM_SAMPLE_RATE
 MAX_CHUNK_CHARS = 2200
 TTS_WORKERS = 4
-SILENCE_MS = 200
 MP3_BITRATE_KBPS = 128
+MAX_PLAYABLE_SECONDS = MAX_TARGET_SECONDS
+
+
+class AudioApprovalError(ConsentError):
+    """A generation was not authorized before any provider interaction."""
+
+
+def require_audio_approval(*, consent: OperationConsent, approval: ApprovalCredential,
+                           plan: AudioPlan, prompt: str, source_digest: str,
+                           output_root: Path, output_path: Path | str) -> None:
+    """Redeem only an opaque approval for this exact approved Audio operation."""
+    if not isinstance(consent, OperationConsent) or not isinstance(approval, ApprovalCredential):
+        raise AudioApprovalError("AUDIO_APPROVAL_REQUIRED")
+    if not isinstance(plan, AudioPlan) or not isinstance(prompt, str):
+        raise AudioApprovalError("AUDIO_APPROVAL_SCOPE_CHANGED")
+    prompt_digest = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+    try:
+        safe_output = validate_output_path(output_root, output_path)
+    except AudioOperationError as exc:
+        raise AudioApprovalError("AUDIO_OUTPUT_PATH_UNSAFE") from exc
+    providers = tuple((item.provider, item.model, item.task, item.fallbacks) for item in plan.claim.providers)
+    expected_providers = (
+        ("gemini", SCRIPT_MODEL, "audio.script", ()),
+        ("gemini", TTS_MODEL, "audio.tts", ()),
+    )
+    expected_dag = (
+        ("A01.script",)
+        + tuple(f"A02.tts.{ordinal}" for ordinal in range(1, plan.settings.max_chunks + 1))
+        + ("A03.assemble",)
+    )
+    expected_work_digest = sha256_hex(canonical_json_bytes({
+        "expected_work": list(expected_dag),
+        "hard_actual_maximum_seconds": MAX_PLAYABLE_SECONDS,
+        "requested_target_seconds": plan.settings.requested_target_seconds,
+    }))
+    if (
+        plan.source_digest != source_digest
+        or plan.prompt_digest != prompt_digest
+        or plan.work_digest != expected_work_digest
+        or plan.output_path != str(safe_output)
+        or plan.claim.input_digests != (source_digest, prompt_digest, expected_work_digest)
+        or plan.claim.write_allowlist != (str(safe_output),)
+        or plan.claim.effect_allowlist != ("audio.script", "audio.tts", "audio.write")
+        or plan.claim.maxima.audio_seconds != MAX_PLAYABLE_SECONDS
+        or plan.settings.requested_target_seconds > plan.claim.maxima.audio_seconds
+        or providers != expected_providers
+        or plan.dag != expected_dag
+        or approval.operation_digest != plan.operation_digest
+    ):
+        raise AudioApprovalError("AUDIO_APPROVAL_SCOPE_CHANGED")
+    try:
+        consent.redeem(approval, plan.claim)
+    except ConsentError as exc:
+        raise AudioApprovalError("AUDIO_APPROVAL_REJECTED") from exc
+
+
+def validate_playable_duration(seconds: float) -> float:
+    """Admit a duration BEFORE dispatch, against the pre-dispatch budget (D3).
+
+    Targets stay approximate, but admission is charged against
+    AUDIO_BUDGET_SECONDS (3599.900 s), not the hard maximum: the reserved
+    framing margin means a schedule admitted here still fits under
+    MAX_TARGET_SECONDS after the encoder adds its final frame, so a run can
+    never pay for TTS and then have the output discarded. The hard 3600-second
+    ceiling in lib.audio_operation is unchanged and still enforced on output.
+    This is an observable rejection, never a silent assert.
+    """
+    if (
+        isinstance(seconds, bool)
+        or not isinstance(seconds, (int, float))
+        or not math.isfinite(seconds)
+        or seconds < 0
+        or seconds > AUDIO_BUDGET_SECONDS
+    ):
+        raise AudioApprovalError("AUDIO_PLAYABLE_DURATION_EXCEEDED")
+    return seconds
+
+
+def _load_google() -> tuple[Any, Any]:
+    """Import the provider SDK only after authority has been validated."""
+    from google import genai
+    from google.genai import types
+    return genai, types
 
 DEFAULT_DIRECTION = {
     "ko": "논문의 originality(독창성)를 중심으로, '같이 보면 좋은 논문'들과의 연관성(예: 장단점 비교, 대조, 후속, 보완 등)을 엮어서 전체 맥락을 파악할 수 있도록 구성한다.",
@@ -280,22 +370,14 @@ def speech_multi(roles: list[dict]) -> types.SpeechConfig:
 
 
 def tts_call(client: genai.Client, text: str, cfg: types.SpeechConfig) -> bytes:
-    last = None
-    for attempt in range(1, 3):
-        try:
-            resp = client.models.generate_content(
-                model=TTS_MODEL, contents=text,
-                config=types.GenerateContentConfig(
-                    response_modalities=["AUDIO"], speech_config=cfg,
-                    http_options=types.HttpOptions(timeout=180_000)))
-            usage_log.record_gemini(resp, TTS_MODEL)
-            return resp.candidates[0].content.parts[0].inline_data.data
-        except Exception as e:
-            last = e
-            if attempt == 2:
-                break
-            print(f"      TTS retry {attempt}/2: {type(e).__name__}", flush=True)
-    raise last
+    resp = client.models.generate_content(
+        model=TTS_MODEL, contents=text,
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO"], speech_config=cfg,
+            http_options=types.HttpOptions(timeout=180_000),
+        ),
+    )
+    return resp.candidates[0].content.parts[0].inline_data.data
 
 
 def pool_synth(client, items, fn) -> list[bytes]:
@@ -312,7 +394,7 @@ def pool_synth(client, items, fn) -> list[bytes]:
 
 
 def concat_pcm(parts: list[bytes]) -> bytes:
-    silence = b"\x00\x00" * int(SAMPLE_RATE * SILENCE_MS / 1000)
+    silence = b"\x00" * (SILENCE_SAMPLES * PCM_BYTES_PER_SAMPLE)
     return silence.join(parts)
 
 
@@ -333,18 +415,45 @@ def time_stretch(pcm: bytes, speed: float) -> bytes:
     return (out * 32767).astype(np.int16).tobytes()
 
 
-def write_mp3(path: Path, pcm: bytes) -> None:
+def write_mp3(output_root: Path, path: Path, pcm: bytes) -> None:
+    """Create the approved MP3 once, without following or replacing a destination."""
+    safe_path = validate_output_path(output_root, path)
     import lameenc
     enc = lameenc.Encoder()
     enc.set_bit_rate(MP3_BITRATE_KBPS)
     enc.set_in_sample_rate(SAMPLE_RATE)
     enc.set_channels(1)
     enc.set_quality(2)  # 0=best … 9=worst
-    path.write_bytes(enc.encode(pcm) + enc.flush())
+    mp3 = enc.encode(pcm) + enc.flush()
+    relative = safe_path.relative_to(Path(os.path.abspath(output_root)))
+    root_fd = os.open(output_root, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+    try:
+        parent_fd = root_fd
+        for component in relative.parts[:-1]:
+            next_fd = os.open(
+                component, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=parent_fd,
+            )
+            if parent_fd != root_fd:
+                os.close(parent_fd)
+            parent_fd = next_fd
+        try:
+            fd = os.open(
+                relative.name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                0o600, dir_fd=parent_fd,
+            )
+            with os.fdopen(fd, "wb") as handle:
+                handle.write(mp3)
+                handle.flush()
+                os.fsync(handle.fileno())
+        finally:
+            if parent_fd != root_fd:
+                os.close(parent_fd)
+    finally:
+        os.close(root_fd)
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="논문 리뷰 → Audio Overview (Gemini, CLI 폴백)")
+    p = argparse.ArgumentParser(description="논문 리뷰 → Audio Overview (Gemini, server-approved)")
     p.add_argument("--slug", required=True, help="슬러그 번호/이름 (예: 514)")
     p.add_argument("--speakers", type=int, choices=[1, 2, 3], default=2)
     p.add_argument("--language", choices=["ko", "en"], default="ko")
@@ -353,90 +462,18 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--tone", choices=["friendly", "academic", "lively"], default="friendly")
     p.add_argument("--focus", default="", help="주안점(선택)")
     p.add_argument("--direction", default=None, help="구성 방향 덮어쓰기(미지정 시 언어별 기본값)")
-    p.add_argument("--speed", type=float, default=1.0, help="재생 속도 배율(피치 유지, audiotsm 필요)")
     p.add_argument("--out", default=None, help="출력 MP3 경로(기본: <slug>/audio_overview.mp3)")
     return p.parse_args()
 
 
 def main() -> int:
-    args = parse_args()
-    api_key = get_google_key()  # env(GEMINI/GOOGLE) → config.json(gemini_api_key/google_api_key)
-    if not api_key:
-        print("ERROR: GEMINI_API_KEY/GOOGLE_API_KEY (env) 또는 config.json(google_api_key) 가 필요합니다.",
-              file=sys.stderr)
-        return 1
-
-    slug = resolve_slug(args.slug)
-    review_path = PAPERS / slug / "review.md"
-    if not review_path.exists():
-        print(f"ERROR: {review_path} 없음", file=sys.stderr)
-        return 1
-    review = review_path.read_text(encoding="utf-8")
-    # strip YAML frontmatter
-    while review.startswith("---"):
-        lines = review.split("\n")
-        end = next((i for i, l in enumerate(lines[1:], 1) if l.strip() == "---"), None)
-        if end is None:
-            break
-        review = "\n".join(lines[end + 1:]).lstrip("\n")
-
-    conns = load_connections(slug)
-    lang = args.language
-    direction = args.direction or DEFAULT_DIRECTION[lang]
-    roles = ROLES[lang][args.speakers]
-    client = genai.Client(api_key=api_key)
-
-    print(f"[1/2] 대본 생성 ({SCRIPT_MODEL}) — slug={slug} speakers={args.speakers} "
-          f"lang={lang} length={args.length}m connections={len(conns)}")
-    prompt = build_prompt(review, conns, args.speakers, lang, args.audience,
-                          args.length, args.tone, args.focus, direction)
-    resp = client.models.generate_content(
-        model=SCRIPT_MODEL, contents=prompt,
-        config=types.GenerateContentConfig(temperature=0.85, max_output_tokens=65536))
-    usage_log.record_gemini(resp, SCRIPT_MODEL)
-    script = (resp.text or "").strip()
-    if not script:
-        print("ERROR: 대본이 비었습니다.", file=sys.stderr)
-        return 2
-    out_dir = PAPERS / slug
-    (out_dir / "audio_script.txt").write_text(script, encoding="utf-8")
-    print(f"      → audio_script.txt ({len(script):,}자)")
-
-    print(f"[2/2] 음성 합성 ({TTS_MODEL})")
-    if args.speakers == 1:
-        chunks = chunk_paragraphs(script, MAX_CHUNK_CHARS)
-        cfg = speech_single(roles[0]["voice"])
-        parts = pool_synth(client, chunks, lambda c, i: (i, tts_call(c, chunks[i], cfg)))
-        pcm = concat_pcm(parts)
-    elif args.speakers == 2:
-        labels = [r["label"] for r in roles]
-        turns = parse_turns(script, labels)
-        if not turns:
-            print("ERROR: 화자 라벨 파싱 실패", file=sys.stderr)
-            return 3
-        chunks = chunk_turns(turns, MAX_CHUNK_CHARS)
-        cfg = speech_multi(roles)
-        prefix = TTS_PREFIX[lang]
-        parts = pool_synth(client, chunks, lambda c, i: (i, tts_call(c, prefix + chunks[i], cfg)))
-        pcm = concat_pcm(parts)
-    else:
-        labels = [r["label"] for r in roles]
-        turns = parse_turns(script, labels)
-        if not turns:
-            print("ERROR: 화자 라벨 파싱 실패", file=sys.stderr)
-            return 3
-        vmap = {r["label"]: r["voice"] for r in roles}
-        parts = pool_synth(client, turns,
-                           lambda c, i: (i, tts_call(c, turns[i][1],
-                                                     speech_single(vmap.get(turns[i][0], roles[0]["voice"])))))
-        pcm = concat_pcm(parts)
-
-    pcm = time_stretch(pcm, args.speed)
-    out = Path(args.out) if args.out else out_dir / "audio_overview.mp3"
-    write_mp3(out, pcm)
-    dur = len(pcm) / 2 / SAMPLE_RATE
-    print(f"      → {out}  ({out.stat().st_size / 1024:.0f} KiB, ~{dur:.0f}s)")
-    return 0
+    parse_args()
+    print(
+        "ERROR: AUDIO_APPROVAL_REQUIRED: Audio Overview is available only through "
+        "the localhost server's in-memory operation approval.",
+        file=sys.stderr,
+    )
+    return 1
 
 
 if __name__ == "__main__":

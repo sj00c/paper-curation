@@ -25,6 +25,10 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 try:
+    from config_loader import ConfigRecoveryError, write_config_transaction
+except ImportError:
+    from pipeline.config_loader import ConfigRecoveryError, write_config_transaction
+try:
     from anthropic_auth import MIN_CLAUDE_CODE_VERSION, auth_status, claude_version
 except Exception:  # setup should still print an actionable remedy if auth helper import fails
     MIN_CLAUDE_CODE_VERSION = (2, 1, 205)
@@ -205,9 +209,7 @@ def step_config(existing_mode="prompt"):
             if choice == "k":
                 with open(CONFIG_PATH, "r", encoding="utf-8") as f:
                     return json.load(f)
-        backup_path = CONFIG_PATH.with_name(f"{CONFIG_PATH.name}.backup")
-        shutil.copy2(CONFIG_PATH, backup_path)
-        print(f"  기존 설정 백업: {backup_path}")
+        # The replacement is installed below by the crash-recoverable transaction.
     if not EXAMPLE_PATH.exists():
         print("ERROR: config.example.json이 없습니다.")
         sys.exit(1)
@@ -275,16 +277,20 @@ def step_config(existing_mode="prompt"):
     if paperbanana_dir:
         cfg["paperbanana_dir"] = paperbanana_dir
 
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        json.dump(cfg, f, indent=2, ensure_ascii=False)
+    try:
+        write_config_transaction(cfg, CONFIG_PATH)
+    except ConfigRecoveryError as exc:
+        print(f"ERROR: {exc}")
+        raise SystemExit(2) from exc
     print(f"\n  → config.json 생성 완료")
 
     return cfg
 
 
-# Core credentials gate. Zotero and Google are required for local setup; Anthropic
-# is handled separately because it supports either Console API-key mode or Claude
-# Code subscription OAuth. Resend is deferred until Audio Overview email delivery.
+# Core credentials gate. Zotero is required for local setup. Gemini is optional:
+# Audio Overview and Gemini-backed enrichment remain unavailable without it.
+# Anthropic supports either Console API-key mode or Claude Code subscription OAuth.
+# Resend is deferred until Audio Overview email delivery.
 REQUIRED_KEYS = [
     {
         "env": "ZOTERO_API_KEY",
@@ -301,6 +307,7 @@ REQUIRED_KEYS = [
         "why": "figure 검증·Audio Overview·PaperBanana 타임라인·Deep Research 임베딩",
         "issue": "https://aistudio.google.com/apikey",
         "prompt": "Google API Key (AIza...)",
+        "optional": True,
     },
 ]
 ANTHROPIC_API_SPEC = {
@@ -371,10 +378,11 @@ def _warn_legacy_config_secret(spec):
 
 
 def missing_required_keys(cfg):
-    """필수 Core 키 중 env·config 어디에도 값이 없는 항목 리스트를 반환한다.
-
-    프롬프트·sys.exit 없는 순수 함수 — 게이트 로직 단위 테스트용."""
-    return [spec for spec in REQUIRED_KEYS if not _key_value(cfg, spec)[0]]
+    """Return missing core (not optional capability) credentials without prompting."""
+    return [
+        spec for spec in REQUIRED_KEYS
+        if not spec.get("optional") and not _key_value(cfg, spec)[0]
+    ]
 
 
 def _prompt_required(spec):
@@ -491,17 +499,15 @@ def _ensure_anthropic_auth(cfg, requested_mode):
 
 
 def step_env_check(cfg, anthropic_auth_mode="auto"):
-    """Step 2: Core credential gate.
-
-    Zotero and Google are required API keys. Anthropic accepts either Console
-    API-key mode or Claude Code OAuth. Resend is optional/deferred until email
-    delivery setup.
-    """
+    """Step 2: require Zotero; report Gemini as an optional local capability."""
     print("\n[2/6] Core credentials 확인")
 
     dirty = False
     for spec in REQUIRED_KEYS:
         value, source = _key_value(cfg, spec)
+        if not value and spec.get("optional"):
+            print(f"  · {spec['env']} 미설정 (선택) — Gemini 기능은 사용할 수 없습니다.")
+            continue
         if not value:
             value = _prompt_required(spec)
             source = "입력"
@@ -628,9 +634,8 @@ def step_paperbanana(cfg):
 
 
 def _save_config(cfg):
-    """config.json 업데이트."""
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        json.dump(cfg, f, indent=2, ensure_ascii=False)
+    """Persist config updates through the recoverable no-replace transaction."""
+    write_config_transaction(cfg, CONFIG_PATH)
 
 
 def step_skill_md(cfg):
@@ -816,14 +821,11 @@ def main():
     print("  다음 단계: 파이프라인 실행")
     print("-" * 50)
     print()
-    print("  필수 인증 확인 완료: ZOTERO·GOOGLE + Anthropic(API key 또는 Claude Code OAuth).")
-    print("  이제 파이프라인을 실행하여 Zotero 컬렉션의 논문을 리뷰하고")
-    print("  웹 페이지로 배포할 수 있습니다.")
-    print()
-    print("  ⚠ 주의: Zotero 컬렉션의 논문 편수에 따라 시간이 크게 달라집니다 (Anthropic Tier·concurrency 의존).")
-    print("    - 10편 이하: 수 분")
-    print("    - 50편: ~15분 (Tier 4 default --concurrency 16) ~ 1~2시간 (Tier 1 --concurrency 4)")
-    print("    - 500편 이상: 비례 증가. Tier별 권장값은 README 'Concurrency 가이드' 참고.")
+    print("  필수 인증 확인 완료: ZOTERO + Anthropic(API key 또는 Claude Code OAuth).")
+    print("  Gemini는 선택 기능입니다. credential/model이 없으면 Audio와 Gemini 기반")
+    print("  선택 기능만 비활성화되며 core curation·lexical search·localhost serve는 동작합니다.")
+    print("  provider를 사용하는 각 action은 실행 전에 provider/model/work/maxima/cost")
+    print("  preview와 fresh approval을 별도로 요구합니다.")
     print()
     if topics:
         topic = topics[0]
@@ -838,18 +840,18 @@ def main():
         print(f"    PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic {topic} --mode rebuild --yes --no-deploy")
     print()
 
-    # 배포·이메일은 나중 단계 — 설치 시점에는 자격증명을 묻지 않는다 (deferred)
+    # Product deploy and optional email are separate operation-scoped effects.
     print("-" * 50)
-    print("  나중 단계: 배포 & Audio Overview 이메일 (지금은 건너뜀)")
+    print("  선택 기능: Gemini Audio·이메일·제품 배포")
     print("-" * 50)
     print()
-    print("  Cloudflare/GitHub 배포 자격증명은 설치 때 묻지 않습니다. 처음 배포할 때")
-    print("  `run_full.py --mode deploy` 가 필요한 env(CF_API_TOKEN·CLOUDFLARE_ACCOUNT_ID·")
-    print("  GitHub 설정)를 그 자리에서 안내합니다. Audio Overview 이메일 발송 기능은")
-    print("  워커를 한 번 배포해 두어야 동작하며, 배포된 워커에 시크릿을 등록해야 합니다:")
-    print("    npx wrangler secret put GOOGLE_API_KEY   # 워커 측 TTS/Audio Overview 용")
-    print("    npx wrangler secret put RESEND_API_KEY   # MP3 첨부 메일 발송용")
-    print("  (자세한 내용은 README 'Audio Overview 이메일 발송 — Cloudflare Worker secrets' 참고)")
+    print("  Gemini Audio는 Gemini credential과 지원 model이 있을 때만 표시됩니다.")
+    print("  없으면 probe/call/fallback 없이 숨김·비활성 상태이며 core를 차단하지 않습니다.")
+    print("  이메일은 같은 승인된 Audio 산출물을 사용하는 별도 claimed action입니다.")
+    print("  제품 배포는 자동 실행되지 않습니다. 별도 승인을 받은 경우에만 다음의")
+    print("  제한된 명령을 사용합니다:")
+    print("    node ./bin/paper-curation.mjs deploy --topic <alias> [--dry-run]")
+    print("  source GitHub PR 전달은 제품 배포·release·merge 권한이 아닙니다.")
     print()
 
     # Step 7: 첫 파이프라인 자동 실행 (--no-run 으로 건너뛸 수 있음)

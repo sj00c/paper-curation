@@ -20,7 +20,12 @@ from collections import defaultdict
 from datetime import datetime
 
 from anthropic_auth import create_anthropic_client
-from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir, load_config
+from config_loader import (
+    PAPERS_DIR as _PAPERS_DIR,
+    get_google_key,
+    get_topic_dir,
+    load_config,
+)
 
 PAPERS_DIR = str(_PAPERS_DIR)
 
@@ -454,10 +459,10 @@ def _cc_gemini_call(prompt, schema):
         from google.genai import types as gtypes
     except ImportError as e:
         raise RuntimeError(f"google-genai SDK missing: {e}")
-    api_key = (os.environ.get("GEMINI_API_KEY")
-               or os.environ.get("GOOGLE_API_KEY")
-               or load_config().get("gemini_api_key", "")
-               or load_config().get("google_api_key", ""))
+    # Single canonical resolver: env GOOGLE_API_KEY/GEMINI_API_KEY then config.json,
+    # forced off by PAPER_CURATION_NO_GEMINI. A local chain here is what let the
+    # three resolvers disagree before this retrofit.
+    api_key = get_google_key()
     if not api_key:
         raise RuntimeError("no Gemini API key (GEMINI_API_KEY/GOOGLE_API_KEY env or config)")
     gem = genai.Client(api_key=api_key)

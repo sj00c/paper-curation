@@ -57,10 +57,13 @@ class TopicProfileTests(unittest.TestCase):
         self.assertIn('"title": topic_label', source)
         self.assertNotIn("THEME = {", source)
 
-    def test_topic_index_author_fallback_copy_is_domain_neutral(self):
-        source = (PIPELINE / "build_topic_index.py").read_text(encoding="utf-8")
+    def test_local_dashboard_author_and_paper_fallback_copy_is_domain_neutral(self):
+        source = (PIPELINE.parent / "docs" / "public" / "paper-curation-local.js").read_text(encoding="utf-8")
         self.assertIn("해당 저자가 포함된 다른 토픽에서 다시 시도해보세요", source)
+        self.assertIn("another configured topic containing this author or paper", source)
+        self.assertIn("countEl.textContent = total > 0", source)
         self.assertNotIn("다른 토픽(예: scisci)", source)
+        self.assertNotIn("scisci", source)
 
     def test_cjk_keywords_are_preserved_and_normalized(self):
         self._with_config(

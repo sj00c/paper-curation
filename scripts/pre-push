@@ -1,42 +1,35 @@
 #!/bin/sh
-# pre-push hook for paper-curation
-# Install: cp scripts/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
-#
-# Blocks pushes that:
-#  1. Embed Anthropic / OpenAI API keys (sk-ant-..., sk-proj-...)
-#  2. Fail validate_papers --strict (broken figures, schema, dup text.md, etc.)
-#
-# Both checks are quick (~5s + ~30s); skip with: git push --no-verify
+# paper-curation-managed-pre-push
+# Install with scripts/install-hooks.sh.
 
-set -e
+set -eu
 
-# 1. Secret leak detection on staged-for-push commits
-echo "[pre-push] scanning for API key leaks…"
-RANGE="@{u}..HEAD"
-if ! git rev-parse --abbrev-ref --symbolic-full-name '@{u}' >/dev/null 2>&1; then
-    RANGE="HEAD"
-fi
-LEAK_COUNT=$(git diff "$RANGE" | grep -E -c 'sk-(ant|proj)-[A-Za-z0-9_-]{10,}' || true)
-if [ "$LEAK_COUNT" != "0" ]; then
-    echo "[pre-push] API key-like secret detected in push diff — refusing push (redacted; matching lines: $LEAK_COUNT)"
+if ! REPO_ROOT=$(git rev-parse --show-toplevel); then
+    echo "[pre-push] cannot identify the current repository; refusing push" >&2
     exit 1
 fi
-echo "[pre-push] ✓ no leaks"
+SCANNER="$REPO_ROOT/scripts/scan-secrets.py"
 
-# 2. validate_papers strict gate when the operator selects a configured topic.
-TOPIC="${PAPER_CURATION_TOPIC:-}"
-if [ -f pipeline/validate_papers.py ] && [ -n "$TOPIC" ]; then
-    echo "[pre-push] validate_papers --topic $TOPIC --strict"
-    if ! PYTHONUTF8=1 python pipeline/validate_papers.py --topic "$TOPIC" --strict >/tmp/_pp_validate.log 2>&1; then
-        echo "[pre-push] ❌ validate_papers failed:"
-        tail -20 /tmp/_pp_validate.log
-        echo
-        echo "Override with: git push --no-verify"
+if [ ! -f "$SCANNER" ]; then
+    echo "[pre-push] security scanner is missing; refusing push" >&2
+    exit 1
+fi
+
+updates=0
+while IFS=' ' read -r local_ref local_oid remote_ref remote_oid extra || [ -n "${local_ref:-}${local_oid:-}${remote_ref:-}${remote_oid:-}${extra:-}" ]; do
+    if [ -z "${local_ref:-}" ] || [ -z "${local_oid:-}" ] || [ -z "${remote_ref:-}" ] || [ -z "${remote_oid:-}" ] || [ -n "${extra:-}" ]; then
+        echo "[pre-push] malformed ref update; refusing push" >&2
         exit 1
     fi
-    echo "[pre-push] ✓ validate_papers passed"
-elif [ -f pipeline/validate_papers.py ]; then
-    echo "[pre-push] · validate_papers skipped (set PAPER_CURATION_TOPIC to a configured alias)"
+    updates=$((updates + 1))
+    if ! python3 "$SCANNER" --update "$local_ref" "$local_oid" "$remote_ref" "$remote_oid"; then
+        echo "[pre-push] security scan failed; refusing push" >&2
+        exit 1
+    fi
+done
+
+if [ "$updates" -gt 0 ]; then
+    echo "[pre-push] security scan passed for $updates update(s)"
 fi
 
 exit 0

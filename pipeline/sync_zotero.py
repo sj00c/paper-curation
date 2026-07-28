@@ -19,6 +19,9 @@ import shutil
 import urllib.request
 import urllib.parse
 from datetime import datetime
+from pathlib import Path
+
+from lib.zotero_bounded import UrllibZoteroTransport, ZoteroBoundedReader
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR
 PAPERS_DIR = str(_PAPERS_DIR)
@@ -34,7 +37,54 @@ def log(msg):
     ts = datetime.now().strftime("%H:%M:%S")
     print(f"[{ts}] {msg}", flush=True)
 
+def _safe_slug_dir(root, slug):
+    root = Path(root).resolve()
+    if (
+        not isinstance(slug, str)
+        or not slug
+        or slug in {".", ".."}
+        or "/" in slug
+        or "\\" in slug
+        or "\x00" in slug
+    ):
+        raise RuntimeError("unsafe paper slug in index; refusing deletion")
+    candidate = root / slug
+    if candidate.resolve(strict=False).parent != root or candidate.is_symlink():
+        raise RuntimeError("paper path escapes or aliases the papers root; refusing deletion")
+    return candidate
 
+def _atomic_write_json(path, value):
+    path = Path(path)
+    parent = path.parent.resolve(strict=True)
+    if path.is_symlink():
+        raise RuntimeError("index path is a symlink; refusing update")
+    payload = (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    temporary = parent / f".{path.name}.{os.getpid()}.tmp"
+    descriptor = None
+    try:
+        descriptor = os.open(
+            temporary,
+            os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+            0o600,
+        )
+        with os.fdopen(descriptor, "wb") as handle:
+            descriptor = None
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+        directory_fd = os.open(parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
+    finally:
+        if descriptor is not None:
+            os.close(descriptor)
+        try:
+            temporary.unlink()
+        except FileNotFoundError:
+            pass
 def normalize_title(title):
     """제목 정규화: 소문자, 비알파벳 제거, 앞 50자."""
     return re.sub(r"[^a-z0-9]", "", title.lower())[:50]
@@ -53,44 +103,31 @@ def normalize_doi(doi):
 
 
 def fetch_zotero_items(collection_key):
-    """Zotero 컬렉션의 모든 논문 메타데이터를 반환."""
+    """Return a complete, version-pinned, deterministically ordered collection snapshot."""
+    reader = ZoteroBoundedReader(
+        UrllibZoteroTransport(_ssl_ctx), API_KEY, USER_ID,
+    )
     items = []
-    start = 0
-    while True:
-        url = (f"https://api.zotero.org/users/{USER_ID}/collections/"
-               f"{collection_key}/items/top?limit=100&start={start}&format=json")
-        req = urllib.request.Request(url, headers={
-            "Zotero-API-Key": API_KEY, "User-Agent": "Mozilla/5.0"
+    for item in reader.collection_items(collection_key):
+        d = item["data"]
+        if d.get("itemType") in ("attachment", "note", "forumPost", "videoRecording"):
+            continue
+        title = d.get("title", "").strip()
+        doi = normalize_doi(d.get("DOI", ""))
+        arxiv_id = ""
+        archive_id = d.get("archiveID", "")
+        url_field = d.get("url", "")
+        if "arXiv:" in archive_id:
+            arxiv_id = archive_id.split("arXiv:")[-1]
+        elif "arxiv.org/abs/" in url_field:
+            arxiv_id = url_field.split("arxiv.org/abs/")[-1].split("v")[0]
+        items.append({
+            "key": d["key"],
+            "title": title,
+            "title_norm": normalize_title(title),
+            "doi": doi,
+            "arxiv_id": arxiv_id,
         })
-        with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
-            batch = json.load(resp)
-        if not batch:
-            break
-        for item in batch:
-            d = item["data"]
-            if d.get("itemType") in ("attachment", "note", "forumPost", "videoRecording"):
-                continue
-            title = d.get("title", "").strip()
-            doi = normalize_doi(d.get("DOI", ""))
-            # arXiv ID from archiveID or URL
-            arxiv_id = ""
-            archive_id = d.get("archiveID", "")
-            url_field = d.get("url", "")
-            if "arXiv:" in archive_id:
-                arxiv_id = archive_id.split("arXiv:")[-1]
-            elif "arxiv.org/abs/" in url_field:
-                arxiv_id = url_field.split("arxiv.org/abs/")[-1].split("v")[0]
-
-            items.append({
-                "key": d["key"],
-                "title": title,
-                "title_norm": normalize_title(title),
-                "doi": doi,
-                "arxiv_id": arxiv_id,
-            })
-        start += 100
-        if len(batch) < 100:
-            break
     return items
 
 
@@ -134,6 +171,8 @@ _DELETE_RATIO_THRESHOLD = 0.30
 
 def _run_sync(topic, *, dry_run=False, force_delete=False):
     """Programmatic entrypoint for sync_zotero."""
+    if force_delete:
+        raise ValueError("force-delete bypass is unsupported; reconcile the Zotero snapshot first")
     collection_key = COLLECTIONS.get(topic)
     if not collection_key:
         print(f"Unknown topic: {topic}")
@@ -215,82 +254,80 @@ def _run_sync(topic, *, dry_run=False, force_delete=False):
         log("\n--dry-run: no changes made.")
         return
 
-    # --- 삭제 안전 가드 ---------------------------------------------------
-    # fetch_zotero_items 는 retry/floor 가 없어 transient 200-empty 나 짧은 응답에서
-    # 모든 미매칭 논문을 "Zotero 에서 삭제됨" 으로 오인할 수 있다. 디렉토리 rmtree 는
-    # 영구·비가역이므로, 의심스러운 fetch 에서는 파괴적 삭제만 차단한다.
-    # (title-update / remove-topic 는 비파괴적이므로 그대로 진행.)
-    delete_blocked = False
-    if to_delete_dir and not force_delete:
+    # Any suspicious snapshot blocks the complete transaction, including title and
+    # classification changes. A partial application would make the local index
+    # claim a Zotero state that was never corroborated.
+    if to_delete_dir:
         n_papers = len(topic_papers)
-        # 1) 빈/실패 fetch: 토픽 논문이 있는데 Zotero 가 0건 → 정상 상황이 아님.
+        del_ratio = len(to_delete_dir) / max(1, n_papers)
         if not zotero_items and n_papers:
-            log(f"\n[ABORT] Zotero fetch returned 0 items but index has "
-                f"{n_papers} '{topic}' papers — likely a transient Zotero outage.")
-            delete_blocked = True
-        else:
-            # 2) 비율: 토픽 논문의 30% 이상이 한 번에 삭제 대상 → fetch 결함 의심.
-            del_ratio = len(to_delete_dir) / max(1, n_papers)
-            if del_ratio > _DELETE_RATIO_THRESHOLD:
-                log(f"\n[ABORT] {len(to_delete_dir)}/{n_papers} "
-                    f"({del_ratio:.0%}) of '{topic}' papers would be deleted, "
-                    f"over the {_DELETE_RATIO_THRESHOLD:.0%} safety threshold.")
-                delete_blocked = True
-        if delete_blocked:
-            log("  Refusing to delete directories. If this is a real collection "
-                "purge, re-run with --force-delete. Otherwise re-run later.")
-            # 파괴적 삭제만 비활성화하고 비파괴적 변경은 계속 적용한다.
-            to_delete_dir = []
+            raise RuntimeError(
+                f"Zotero returned 0 items for {n_papers} indexed papers; refusing all changes"
+            )
+        if del_ratio > _DELETE_RATIO_THRESHOLD:
+            raise RuntimeError(
+                f"{len(to_delete_dir)}/{n_papers} papers would be deleted; "
+                "refusing all changes until a complete snapshot is confirmed"
+            )
 
-    # Execute
+    # Build and validate the complete local transaction before the first mutation.
     log("\nExecuting...")
     changes = 0
+    next_papers = json.loads(json.dumps(papers))
+    root = Path(PAPERS_DIR).resolve()
+    delete_dirs = {
+        paper["slug"]: _safe_slug_dir(root, paper["slug"])
+        for paper, _remaining in to_delete_dir
+    }
 
-    # Title updates
-    for p, zi in title_changed:
-        for paper in papers:
-            if paper["slug"] == p["slug"]:
-                paper["title"] = zi["title"]
+    for current, zotero in title_changed:
+        for paper in next_papers:
+            if paper["slug"] == current["slug"]:
+                paper["title"] = zotero["title"]
                 changes += 1
                 break
-        log(f"  Updated title: {p['slug'][:40]}")
 
-    # Remove topic tag
-    for p, remaining in to_remove_topic:
-        for paper in papers:
-            if paper["slug"] == p["slug"]:
+    for current, remaining in to_remove_topic:
+        for paper in next_papers:
+            if paper["slug"] == current["slug"]:
                 paper["topics"] = remaining
-                cls = paper.get("classifications", {})
-                cls.pop(topic, None)
+                classifications = paper.get("classifications", {})
+                classifications.pop(topic, None)
                 changes += 1
                 break
-        log(f"  Removed '{topic}': {p['slug'][:40]}")
 
-    # Delete entirely
-    for p, _ in to_delete_dir:
-        papers = [paper for paper in papers if paper["slug"] != p["slug"]]
-        slug_dir = os.path.join(PAPERS_DIR, p["slug"])
-        if os.path.isdir(slug_dir):
+    deleted_slugs = set(delete_dirs)
+    next_papers = [paper for paper in next_papers if paper["slug"] not in deleted_slugs]
+    changes += len(deleted_slugs)
+
+    # The index is authoritative. Commit it atomically before best-effort removal
+    # of now-unreferenced paper directories; a crash can leave only safe orphans,
+    # never an index that references already-deleted content.
+    _atomic_write_json(index_path, next_papers)
+
+    for current, zotero in title_changed:
+        log(f"  Updated title: {current['slug'][:40]}")
+    for current, _remaining in to_remove_topic:
+        log(f"  Removed '{topic}': {current['slug'][:40]}")
+    for slug, slug_dir in delete_dirs.items():
+        if slug_dir.is_dir():
             shutil.rmtree(slug_dir)
-            log(f"  Deleted: {p['slug'][:40]} (dir removed)")
+            log(f"  Deleted: {slug[:40]} (dir removed)")
         else:
-            log(f"  Deleted: {p['slug'][:40]} (index only)")
-        changes += 1
+            log(f"  Deleted: {slug[:40]} (index only)")
 
-    # Save
-    with open(index_path, "w", encoding="utf-8") as f:
-        json.dump(papers, f, ensure_ascii=False, indent=2)
-
-    log(f"\nDone. {changes} changes applied. {len(papers)} papers remaining.")
+    log(f"\nDone. {changes} changes applied. {len(next_papers)} papers remaining.")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Sync deletions/renames from Zotero")
     parser.add_argument("--topic", required=True)
     parser.add_argument("--dry-run", action="store_true", help="Show changes, don't execute")
-    parser.add_argument("--force-delete", action="store_true",
-                        help="Bypass the empty-fetch / >30%% delete-ratio safety guard "
-                             "(intentional large collection purge)")
+    parser.add_argument(
+        "--force-delete",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
     args = parser.parse_args()
     _run_sync(topic=args.topic, dry_run=args.dry_run, force_delete=args.force_delete)
 

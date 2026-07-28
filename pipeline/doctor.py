@@ -30,6 +30,11 @@ import urllib.request
 from pathlib import Path
 from types import SimpleNamespace
 try:
+    from config_loader import get_google_key
+except Exception:  # pragma: no cover - doctor must still run standalone
+    def get_google_key():
+        return ""
+try:
     from anthropic_auth import (
         MIN_CLAUDE_CODE_VERSION,
         auth_status,
@@ -572,37 +577,53 @@ def check_api_keys(rep, cfg, anthropic_smoke=False):
     if os.environ.get("PAPER_CURATION_NO_DEPLOY") == "1":
         rep.note("PAPER_CURATION_NO_DEPLOY=1 — doctor/smoke 결과는 배포를 수행하지 않는 검증 전용입니다.")
     if anthropic_smoke:
-        _check_anthropic_smoke(rep, status.mode if getattr(status, "ready", False) else None)
+        rep.fail(
+            "Anthropic smoke requires operation approval",
+            "doctor never performs provider calls; use the localhost action plan/preview/approval flow",
+        )
 
     found, src = _resolve_key(
         cfg, ["GOOGLE_API_KEY", "GEMINI_API_KEY"], ["google_api_key", "gemini_api_key"]
     )
-    if found:
-        rep.ok("GOOGLE_API_KEY", f"설정됨 ({src}) — figure 검증·TTS·Deep Research 임베딩")
+    # The functional call sites all resolve through config_loader.get_google_key(),
+    # which is forced off by PAPER_CURATION_NO_GEMINI. Reporting "설정됨" while every
+    # real call site treats Gemini as off would be a false-positive diagnosis.
+    if found and not get_google_key():
+        rep.warn(
+            "Gemini optional capability disabled",
+            f"키는 {src} 에 있으나 PAPER_CURATION_NO_GEMINI 로 비활성화되어 "
+            "모든 실제 호출 지점이 Gemini 를 사용하지 않습니다.",
+            "다시 사용하려면 PAPER_CURATION_NO_GEMINI 를 해제하세요.",
+        )
+    elif found:
+        rep.ok(
+            "Gemini optional capability",
+            f"설정됨 ({src}) — 승인된 Audio/figure/dense 작업에서만 사용",
+        )
     else:
-        rep.fail(
-            "GOOGLE_API_KEY 미설정",
-            "figure 검증·Audio Overview·Deep Research 임베딩에 필수",
-            "export GOOGLE_API_KEY=AIza...  (https://aistudio.google.com/apikey)",
+        rep.warn(
+            "Gemini optional capability unavailable",
+            "core setup·doctor·curation·lexical search·localhost serve는 계속 동작하며 "
+            "Audio는 숨김/비활성 상태입니다. provider probe/call/fallback은 수행하지 않습니다.",
+            "Audio 또는 Gemini 기반 선택 기능을 사용할 때만 GEMINI_API_KEY를 설정하세요.",
         )
 
     # 선택
     found, src = _resolve_key(cfg, ["OPENAI_API_KEY"], ["openai_api_key"])
     if found:
-        rep.ok("OPENAI_API_KEY", f"설정됨 ({src}) — reader BYOK 답변 / insights fallback")
+        rep.ok("OPENAI_API_KEY", f"설정됨 ({src}) — 명시적으로 승인된 provider action에서만 사용")
     else:
         rep.warn(
             "OPENAI_API_KEY 미설정 (선택)",
-            "reader BYOK 답변 백엔드 / insights cross-category fallback 에만 사용",
+            "core 동작에 필요하지 않으며 provider fallback으로 사용하지 않음",
         )
     found, src = _resolve_key(cfg, ["RESEND_API_KEY"], ["resend_api_key"])
     if found:
-        rep.ok("RESEND_API_KEY", f"설정됨 ({src}) — Audio Overview 이메일 발송")
+        rep.ok("RESEND_API_KEY", f"설정됨 ({src}) — 명시적으로 승인된 Audio 이메일 action에서만 사용")
     else:
         rep.warn(
             "RESEND_API_KEY 미설정 (선택)",
-            "Audio Overview 이메일 발송/Worker secret 등록 때만 필요 — 로컬 setup 차단 안 함",
-            "필요 시 `npx wrangler secret put RESEND_API_KEY`",
+            "core/Audio 다운로드를 차단하지 않으며 이메일 fallback을 수행하지 않음",
         )
 
     found, src = _resolve_key(cfg, ["CLOUDFLARE_API_TOKEN", "CF_API_TOKEN"], [])
@@ -941,8 +962,11 @@ def main():
                         help="Zotero API 연결까지 테스트 (네트워크 필요)")
     parser.add_argument("--topic", default="",
                         help="해당 토픽의 산출물 존재 여부까지 점검 (예: humanoid)")
-    parser.add_argument("--anthropic-smoke", action="store_true",
-                        help="작은 Anthropic structured output 호출까지 검증 (네트워크/과금 가능)")
+    parser.add_argument(
+        "--anthropic-smoke",
+        action="store_true",
+        help="deprecated: fails closed; provider smoke requires localhost operation approval",
+    )
     args = parser.parse_args()
 
     print("=" * 52)

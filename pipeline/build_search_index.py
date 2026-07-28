@@ -37,7 +37,7 @@ from pathlib import Path
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(PIPELINE_DIR))
-from config_loader import DOCS_DIR, PAPERS_DIR, PROJECT_ROOT, get_topic_dir, get_papers_index_path
+from config_loader import DOCS_DIR, PAPERS_DIR, get_google_key, get_topic_dir, get_papers_index_path
 from lib.search_index_metadata import (
     EMBEDDING_DIMENSION,
     EMBEDDING_SIDECAR_FILE,
@@ -100,17 +100,38 @@ def _resolve_external(title, doi, arxiv):
     return doi, arxiv, ext
 
 
-def _load_gemini_key_from_config() -> str:
-    """Compatibility fallback for legacy configs; environment variables take precedence."""
+# Refusal exit codes for the embedding pass. 1 stays "dependency missing"
+# (numpy / google-genai); 5 is the distinct "no key resolved" refusal so a
+# caller can tell a broken install from a deliberate lexical-only fallback.
+EXIT_MISSING_GENAI_PACKAGE = 1
+EXIT_EMBEDDINGS_UNAVAILABLE = 5
+
+
+def require_embedding_client():
+    """Return a Gemini client for the embedding pass, or refuse loudly.
+
+    Key resolution is delegated to config_loader.get_google_key() — the single
+    canonical resolver (env GOOGLE_API_KEY/GEMINI_API_KEY → config.json
+    gemini_api_key/google_api_key, forced off by PAPER_CURATION_NO_GEMINI).
+    """
     try:
-        cfg_path = PROJECT_ROOT / "config.json"
-        if cfg_path.exists():
-            with open(cfg_path, "r", encoding="utf-8") as f:
-                cfg = json.load(f)
-            return (cfg.get("gemini_api_key") or cfg.get("google_api_key") or "") or ""
-    except Exception:
-        pass
-    return ""
+        from google import genai
+    except ImportError:
+        print("ERROR: google-genai package not installed. Run: pip install google-genai")
+        sys.exit(EXIT_MISSING_GENAI_PACKAGE)
+
+    api_key = get_google_key()
+    if not api_key:
+        print("ERROR: EMBEDDINGS_UNAVAILABLE — no Gemini API key resolved "
+              "(GOOGLE_API_KEY/GEMINI_API_KEY env, or config.json "
+              "gemini_api_key/google_api_key).")
+        print("       Dense retrieval is unavailable; search degrades to "
+              "lexical-only until a key is configured.")
+        print("       PAPER_CURATION_NO_GEMINI forces this refusal even when a "
+              "key is configured.")
+        sys.exit(EXIT_EMBEDDINGS_UNAVAILABLE)
+
+    return genai.Client(api_key=api_key)
 
 try:
     import numpy as np
@@ -833,19 +854,7 @@ def build_index(topic: str, model: str, limit: int | None, dry_run: bool,
         dim = 0  # filled in below from any cached vector
     else:
         print(f"[3/4] Embedding {len(miss_chunks)} chunks with {model}...")
-        try:
-            from google import genai
-        except ImportError:
-            print("ERROR: google-genai package not installed. Run: pip install google-genai")
-            sys.exit(1)
-
-        api_key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or _load_gemini_key_from_config()
-        if not api_key:
-            print("ERROR: GOOGLE_API_KEY or GEMINI_API_KEY is not set.")
-            print("       Add it to .env or the process environment; legacy config.json keys are read only for compatibility.")
-            sys.exit(1)
-
-        client = genai.Client(api_key=api_key)
+        client = require_embedding_client()
         # gemini-embedding-001 은 요청당 최대 100 input 까지 받지만, 한국망
         # 타임아웃·부분실패 노출면을 줄이려 50 으로 둔다.
         BATCH = 50

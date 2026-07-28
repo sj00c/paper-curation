@@ -1,511 +1,525 @@
 #!/usr/bin/env python3
-"""로컬 미리보기 서버 — docs/ 정적 서빙 + /api/embed Gemini 프록시.
-
-`python -m http.server` 는 정적 파일만 돌려주므로, Deep Research UI 가
-같은 출처(`/api/embed`) 로 쿼리 임베딩을 요청하면 응답하지 못한다. 이
-스크립트는 docs/ 를 그대로 서빙하면서 `/api/embed` POST 를 운영자의
-Gemini 키로 프록시해 로컬 미리보기에서도 검색이 동작하게 한다.
-
-- GET                 → docs/ 정적 파일 (mime 자동, 디렉토리는 index.html)
-- POST /api/embed     → {"text": ...} → gemini-embedding-001 (768d,
-                        taskType RETRIEVAL_QUERY) → L2 정규화 후
-                        {"embedding": [...], "embedding_provider": "google", "embedding_model": ..., "embedding_task_type": "RETRIEVAL_QUERY", "embedding_dimension": 768}
-- POST /api/audio-email → Resend 포워딩 (worker/index.js 와 동일). 운영자
-                        RESEND_API_KEY 로 MP3 첨부 메일 발송. 키 없으면 503
-                        → UI 가 다운로드로 폴백.
-
-추가 의존성 없음 — 표준 라이브러리(http.server + urllib + base64)만 사용.
-
-키 우선순위:
-- 임베딩: GOOGLE_API_KEY/GEMINI_API_KEY env → config.json
-  (gemini_api_key/google_api_key) → docs/_local_keys.json (google_key/gemini_key).
-- 이메일: RESEND_API_KEY/AUDIO_FROM/AUDIO_REPLY_TO env → config.json
-  (resend_api_key/audio_from/audio_reply_to) → docs/_local_keys.json
-  (resend_key/audio_from/audio_reply_to).
-
-참고: Resend 샌드박스 발신자(onboarding@resend.dev)는 도메인 인증 전까지
-Resend 계정 본인 이메일로만 배달된다. 타인에게 보내려면 커스텀 도메인 인증 +
-AUDIO_FROM 설정 필요.
-"""
+"""Fail-closed loopback dashboard server and local operation-consent wire."""
+from __future__ import annotations
 
 import argparse
-import base64
 import functools
 import json
-import math
 import os
 import re
+import secrets
 import sys
-
-import urllib.error
-import urllib.request
+import threading
+import time
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from typing import Any
 
-# config_loader 를 그대로 재사용 (sys.path 트릭 — config_loader 는 건드리지 않는다).
 PIPELINE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PIPELINE_DIR.parent
 DOCS_DIR = PROJECT_ROOT / "docs"
 sys.path.insert(0, str(PIPELINE_DIR))
-try:
-    from config_loader import load_config
-except Exception:  # config.json 없거나 import 실패해도 env/_local_keys 로 동작
-    load_config = None
-from lib import search_index_metadata as search_meta
-from tls import create_ssl_context
 
-# Gemini 임베딩 설정 (인덱스 빌드와 동일 — RETRIEVAL_QUERY 만 다르다).
-GEMINI_MODEL = search_meta.EMBEDDING_MODEL
-GEMINI_ENDPOINT = (
-    "https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{GEMINI_MODEL}:embedContent"
+from lib.operation_consent import (  # noqa: E402
+    APPROVAL_TTL_SECONDS,
+    ApprovalRejectedError,
+    AuthUnavailableError,
+    OperationClaim,
+    OperationConsent,
+    OperationMaxima,
+    PlanExpiredError,
+    PlanScopeChangedError,
+    ProviderTask,
+    canonical_json_bytes,
+    resolve_auth_mode,
+    sha256_hex,
 )
+from lib import search_index_metadata as search_meta  # noqa: E402
+from lib.audio_overview import (  # noqa: E402
+    SCRIPT_MODEL,
+    TTS_MODEL,
+    AudioCapabilityV1,
+    audio_plan_status,
+    configured_audio_capability,
+)
+from tls import create_ssl_context  # noqa: E402
+from config_loader import get_google_key  # noqa: E402
+
+# Retained for the index metadata compatibility contract.  This server deliberately
+# does not construct a Gemini client or proxy embedding requests.
+GEMINI_MODEL = search_meta.EMBEDDING_MODEL
 EMBED_PROVIDER = search_meta.EMBEDDING_PROVIDER
 QUERY_TASK_TYPE = "RETRIEVAL_QUERY"
 EMBED_DIM = search_meta.EMBEDDING_DIMENSION
+_ssl_ctx = create_ssl_context(purpose="serve_local", config=None)
 
-# Audio Overview 이메일 발송 — worker/index.js 와 동일하게 Resend 로 포워딩.
-RESEND_ENDPOINT = "https://api.resend.com/emails"
-DEFAULT_FROM = "Paper Curation <onboarding@resend.dev>"
-MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024  # Resend 첨부 상한
-MAX_RECIPIENTS = 10
-EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+def resolve_google_key() -> str | None:
+    """Canonical Gemini key seam: delegate to the one resolver, never probe.
 
-def _load_tls_config():
-    if load_config is None:
-        return None
-    try:
-        return load_config() or {}
-    except Exception:
-        return None
-
-
-_ssl_ctx = create_ssl_context(purpose="serve_local", config=_load_tls_config())
-
-_GOOGLE_KEY_CACHE = None
-
-
-def resolve_google_key():
-    """Gemini 키 조회. env → config.json → docs/_local_keys.json 순. 캐싱(비어있으면 재시도)."""
-    global _GOOGLE_KEY_CACHE
-    if _GOOGLE_KEY_CACHE:
-        return _GOOGLE_KEY_CACHE
-
-    key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or ""
-
-    if not key and load_config is not None:
-        try:
-            cfg = load_config() or {}
-            key = cfg.get("gemini_api_key") or cfg.get("google_api_key") or ""
-        except Exception:
-            key = ""
-
-    if not key:
-        local_keys = DOCS_DIR / "_local_keys.json"
-        if local_keys.exists():
-            try:
-                data = json.loads(local_keys.read_text(encoding="utf-8"))
-                key = data.get("google_key") or data.get("gemini_key") or ""
-            except Exception:
-                key = ""
-
-    if key:
-        _GOOGLE_KEY_CACHE = key
-    return key
-
-
-def gemini_embed(text, api_key):
-    """gemini-embedding-001 으로 쿼리 임베딩 → L2 정규화한 768d 리스트 반환.
-
-    중요: output_dimensionality != 3072 이면 Gemini 가 비정규화 벡터를 돌려준다.
-    int8 양자화/코사인 비교 전에 반드시 L2 정규화해야 인덱스와 스케일이 맞는다.
+    Returns the key config_loader.get_google_key() resolves (env
+    GOOGLE_API_KEY/GEMINI_API_KEY → config.json, forced off by
+    PAPER_CURATION_NO_GEMINI), or None when nothing resolves. This server still
+    constructs no Gemini client and proxies no embedding request.
     """
-    payload = {
-        "model": f"models/{GEMINI_MODEL}",
-        "content": {"parts": [{"text": text}]},
-        "taskType": QUERY_TASK_TYPE,
-        "outputDimensionality": EMBED_DIM,
-    }
-    req = urllib.request.Request(
-        GEMINI_ENDPOINT,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Content-Type": "application/json",
-            "x-goog-api-key": api_key,
-        },
-        method="POST",
+    return get_google_key().strip() or None
+
+API_SCHEMA = 1
+MAX_JSON_BYTES = 64 * 1024
+OPERATION_TTL_SECONDS = 10 * 60
+CAPABILITY_TTL_SECONDS = 10 * 60
+IDEMPOTENCY_RE = re.compile(r"^[0-9a-f]{64}$")
+TOPIC_RE = re.compile(r"^[^/\\\x00]{1,128}$")
+
+
+def oauth_available() -> bool:
+    """Local credential presence only; never probes a provider or invokes a CLI."""
+    return bool(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "").strip())
+
+
+def api_key_available() -> bool:
+    return bool(os.environ.get("ANTHROPIC_API_KEY", "").strip())
+
+
+def gemini_api_key_available() -> bool:
+    # Canonical resolver only: env → config.json, forced off by
+    # PAPER_CURATION_NO_GEMINI. An env-only chain here disagreed with
+    # build_search_index and the Audio capability projection.
+    return bool(resolve_google_key())
+
+
+def audio_capability() -> dict[str, Any]:
+    """Derive Gemini Audio availability from local configuration without probing.
+
+    Delegates to lib.audio_overview so the server cannot drift from the library
+    contract. Hand-building the dict here shipped an extra `models` key that
+    AudioCapabilityV1 does not declare.
+
+    Reachability is deliberately narrow and stated honestly: this helper
+    synthesizes the model map from the same constants `derive_audio_capability`
+    compares against, and passes the default `safe_root=True`, so from the
+    server only GEMINI_AUTH_UNAVAILABLE and READY are reachable today.
+    GEMINI_MODEL_UNAVAILABLE needs a real configured model map and
+    AUDIO_TEMP_RECOVERY_AMBIGUOUS needs a real Audio-root probe; neither is
+    supplied here yet, and both are covered by direct library tests.
+    """
+    return _audio_capability_record().to_dict()
+
+
+def _audio_capability_record() -> AudioCapabilityV1:
+    """The capability record itself, for callers that need the typed value."""
+    return configured_audio_capability(
+        config={"audio_overview": {"models": {"script": SCRIPT_MODEL, "tts": TTS_MODEL}}},
+        auth=resolve_google_key() or "",
     )
-    with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
-        out = json.load(resp)
-
-    values = (out.get("embedding") or {}).get("values") or []
-    if not values:
-        raise ValueError("Gemini 응답에 embedding.values 가 없습니다: " + json.dumps(out)[:200])
-
-    norm = math.sqrt(sum(v * v for v in values)) or 1.0
-    return [v / norm for v in values]
 
 
-def resolve_resend_config():
-    """Resend 설정 조회 — (api_key, from, reply_to).
+class _WireState:
+    def __init__(self) -> None:
+        self.consent = OperationConsent()
+        self.capabilities: dict[str, int] = {}
+        self.lock = threading.RLock()
 
-    우선순위: env(RESEND_API_KEY/AUDIO_FROM/AUDIO_REPLY_TO) → config.json
-    (resend_api_key/audio_from/audio_reply_to) → docs/_local_keys.json
-    (resend_key/audio_from/audio_reply_to). worker 와 동일하게 from 기본값은
-    Resend 샌드박스 발신자.
-    """
-    api_key = os.environ.get("RESEND_API_KEY") or ""
-    audio_from = os.environ.get("AUDIO_FROM") or ""
-    reply_to = os.environ.get("AUDIO_REPLY_TO") or ""
-
-    if (not api_key or not audio_from or not reply_to) and load_config is not None:
-        try:
-            cfg = load_config() or {}
-            api_key = api_key or cfg.get("resend_api_key") or ""
-            audio_from = audio_from or cfg.get("audio_from") or ""
-            reply_to = reply_to or cfg.get("audio_reply_to") or ""
-        except Exception:
-            pass
-
-    if not api_key or not audio_from or not reply_to:
-        local_keys = DOCS_DIR / "_local_keys.json"
-        if local_keys.exists():
-            try:
-                data = json.loads(local_keys.read_text(encoding="utf-8"))
-                api_key = api_key or data.get("resend_key") or data.get("resend_api_key") or ""
-                audio_from = audio_from or data.get("audio_from") or ""
-                reply_to = reply_to or data.get("audio_reply_to") or ""
-            except Exception:
-                pass
-
-    return api_key, (audio_from or DEFAULT_FROM), reply_to
+def _wire_state(server: ThreadingHTTPServer) -> _WireState:
+    state = getattr(server, "operation_wire_state", None)
+    if state is None:
+        state = _WireState()
+        server.operation_wire_state = state
+    return state
 
 
-def _escape_html(s):
-    """worker/index.js escapeHtml 과 동일."""
-    return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-            .replace('"', "&quot;").replace("'", "&#39;"))
+def _error(code: str, message: str) -> dict[str, Any]:
+    return {"schema": API_SCHEMA, "error": {"code": code, "message": message}}
 
 
-def parse_multipart(content_type, body):
-    """multipart/form-data → (fields, files). 바이너리 안전(boundary 수동 분할).
-
-    fields: {name: [str, ...]}, files: {name: (filename, bytes)}.
-    cgi.FieldStorage 는 3.13 에서 제거 예정이라 표준 라이브러리만으로 직접 분할한다.
-    """
-    if "multipart/form-data" not in content_type:
-        return {}, {}
-    m = re.search(r'boundary=("?)([^";]+)\1', content_type)
-    if not m:
-        return {}, {}
-    boundary = ("--" + m.group(2)).encode("utf-8")
-
-    fields, files = {}, {}
-    for seg in body.split(boundary):
-        if not seg or seg in (b"--", b"--\r\n", b"\r\n"):
-            continue
-        if seg.startswith(b"--"):  # 종료 boundary 마커
-            continue
-        if seg.startswith(b"\r\n"):
-            seg = seg[2:]
-        hdr_end = seg.find(b"\r\n\r\n")
-        if hdr_end == -1:
-            continue
-        raw_headers = seg[:hdr_end].decode("utf-8", "replace")
-        content = seg[hdr_end + 4:]
-        if content.endswith(b"\r\n"):  # 다음 boundary 앞 CRLF 제거
-            content = content[:-2]
-        name = filename = None
-        for line in raw_headers.split("\r\n"):
-            if line.lower().startswith("content-disposition"):
-                for item in line.split(";"):
-                    item = item.strip()
-                    if item.lower().startswith("name="):
-                        name = item[5:].strip().strip('"')
-                    elif item.lower().startswith("filename="):
-                        filename = item[9:].strip().strip('"')
-        if name is None:
-            continue
-        if filename is not None:
-            files[name] = (filename, content)
-        else:
-            fields.setdefault(name, []).append(content.decode("utf-8", "replace"))
-    return fields, files
-
-
-def resolve_local_emails():
-    """로컬 Audio Overview 수신자 목록. env(PAPER_CURATION_LOCAL_EMAILS) →
-    config.json(local_emails)."""
-    raw = os.environ.get("PAPER_CURATION_LOCAL_EMAILS", "")
-    if not raw and load_config is not None:
-        try:
-            raw = ",".join((load_config() or {}).get("local_emails", []) or [])
-        except Exception:
-            raw = ""
-    return [e.strip() for e in raw.split(",") if e.strip()]
-
-
-def _inject_local_keys(data):
-    """배포 시 strip 된 빈 키 슬롯(_GEMINI_KEY/_LOCAL_EMAILS)을 env→config 값으로
-    즉석 주입한다(로컬 서빙 전용, bytes in/out). 리뷰 페이지가 deploy strip 된 채
-    남아 있어도 로컬 Audio Overview 가 동작하게 한다. 배포본(Cloudflare)에는
-    serve_local 이 없으므로 BYOK strip 상태가 그대로 유지된다."""
-    key = resolve_google_key()
-    if key:
-        data = data.replace(b'_GEMINI_KEY = ""',
-                            b'_GEMINI_KEY = "' + key.encode("utf-8") + b'"')
-    emails = resolve_local_emails()
-    if emails:
-        arr = b"[" + b", ".join(json.dumps(e).encode("utf-8") for e in emails) + b"]"
-        data = data.replace(b'window._LOCAL_EMAILS = []',
-                            b'window._LOCAL_EMAILS = ' + arr)
-    return data
+def _canonical_digest(value: Any) -> str:
+    return sha256_hex(canonical_json_bytes(value))
 
 
 class LocalHandler(SimpleHTTPRequestHandler):
-    """docs/ 정적 서빙 + /api/* POST 핸들러."""
+    """Exact-127.0.0.1 static server with a bounded, consent-gated API."""
+    server_version = "PaperCurationLocal/1"
+    sys_version = ""
 
-    def do_GET(self):  # noqa: N802 (stdlib 규약)
-        # .html 은 env→config 키를 즉석 주입해 서빙한다 (Audio Overview _GEMINI_KEY,
-        # 로컬 이메일 _LOCAL_EMAILS). baked 상태(배포 strip 후 미복원 등)와 무관하게
-        # 로컬에서 동작하게 한다. 그 외 파일은 표준 정적 서빙.
-        fs_path = self.translate_path(self.path)
-        serve_path = None
-        if fs_path.endswith(".html") and os.path.isfile(fs_path):
-            serve_path = fs_path
-        elif self.path.split("?", 1)[0].endswith("/") and os.path.isdir(fs_path):
-            idx = os.path.join(fs_path, "index.html")
-            if os.path.isfile(idx):
-                serve_path = idx
-        if not serve_path:
-            return super().do_GET()
-        try:
-            with open(serve_path, "rb") as f:
-                data = _inject_local_keys(f.read())
-        except OSError:
-            self.send_error(404, "File not found")
-            return
-        self.send_response(200)
-        self.send_header("Content-Type", "text/html; charset=utf-8")
-        self.send_header("Content-Length", str(len(data)))
+    def log_message(self, _format: str, *args: Any) -> None:
+        # Requests can carry credentials; the stdlib access log is not a safe sink.
+        return
+
+    def end_headers(self) -> None:
         self.send_header("Cache-Control", "no-store")
-        self.end_headers()
-        self.wfile.write(data)
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header(
+            "Content-Security-Policy",
+            "default-src 'none'; script-src 'self'; style-src 'self'; "
+            "img-src 'self' data:; connect-src 'self'; font-src 'self'; "
+            "base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+        )
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Permissions-Policy", "geolocation=(), microphone=(), camera=()")
+        super().end_headers()
 
-    def _send_json(self, code, obj):
-        body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
-        self.send_response(code)
+    def _expected_authority(self) -> str:
+        return "127.0.0.1:%d" % self.server.server_address[1]
+
+    def _header_values(self, name: str) -> list[str]:
+        values = self.headers.get_all(name)
+        return [] if values is None else values
+
+    def _valid_authority(self) -> bool:
+        # Do not accept proxy authority because a local capability must not be
+        # transferable through aliases, forwarded headers, or a reverse proxy.
+        if self.client_address[0] != "127.0.0.1":
+            return False
+        host_values = self._header_values("Host")
+        if len(host_values) != 1 or host_values[0] != self._expected_authority():
+            return False
+        for name in self.headers.keys():
+            lowered = name.lower()
+            if lowered == "forwarded" or lowered.startswith("x-forwarded-"):
+                return False
+        return True
+
+    def _valid_origin(self) -> bool:
+        values = self._header_values("Origin")
+        return len(values) == 1 and values[0] == "http://" + self._expected_authority()
+
+    def _send_json(self, status: int, value: dict[str, Any], *, cookie: str | None = None) -> None:
+        body = canonical_json_bytes(value)
+        self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
+        if cookie is not None:
+            self.send_header("Set-Cookie", cookie)
         self.end_headers()
         self.wfile.write(body)
 
-    def _read_body(self):
-        length = int(self.headers.get("Content-Length", 0) or 0)
-        return self.rfile.read(length) if length > 0 else b""
+    def _reject_authority(self) -> None:
+        self._send_json(400, _error("INVALID_AUTHORITY", "request authority must be exact IPv4 loopback"))
 
-    def do_POST(self):  # noqa: N802 (stdlib 규약)
+    def _read_json(self) -> tuple[dict[str, Any] | None, tuple[int, dict[str, Any]] | None]:
+        if self.headers.get("Transfer-Encoding"):
+            return None, (400, _error("TRANSFER_ENCODING_FORBIDDEN", "chunked request bodies are not accepted"))
+        content_types = self._header_values("Content-Type")
+        if len(content_types) != 1 or content_types[0] != "application/json":
+            return None, (415, _error("UNSUPPORTED_MEDIA_TYPE", "Content-Type must be application/json"))
+        lengths = self._header_values("Content-Length")
+        if len(lengths) != 1 or not lengths[0].isdigit():
+            return None, (400, _error("INVALID_CONTENT_LENGTH", "Content-Length is required"))
+        length = int(lengths[0])
+        if length > MAX_JSON_BYTES:
+            return None, (413, _error("BODY_TOO_LARGE", "JSON body exceeds the local wire limit"))
+        raw = self.rfile.read(length)
+        if len(raw) != length:
+            return None, (400, _error("TRUNCATED_BODY", "request body was truncated"))
+        try:
+            value = json.loads(raw.decode("utf-8"))
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            return None, (400, _error("INVALID_JSON", "body must be UTF-8 JSON"))
+        if not isinstance(value, dict):
+            return None, (400, _error("INVALID_SCHEMA", "JSON body must be an object"))
+        return value, None
+
+    @staticmethod
+    def _exact_keys(value: dict[str, Any], required: set[str], optional: set[str] = set()) -> bool:
+        return set(value) == required or (required <= set(value) <= required | optional)
+
+    def _capability(self) -> str | None:
+        raw = self.headers.get("Cookie", "")
+        tokens = [item.strip()[3:] for item in raw.split(";") if item.strip().startswith("pc=")]
+        if len(tokens) != 1:
+            return None
+        state = _wire_state(self.server)
+        return tokens[0] if state.capabilities.get(tokens[0], 0) > int(time.time()) else None
+
+    def _require_capability(self) -> str | None:
+        token = self._capability()
+        if token is None:
+            self._send_json(401, _error("CAPABILITY_REQUIRED", "bootstrap capability cookie is required"))
+        return token
+    def _auth_available(self, name: str, fallback: Any) -> bool:
+        override = getattr(self.server, name, None)
+        return bool(override() if callable(override) else override) if override is not None else bool(fallback())
+
+
+    def do_GET(self) -> None:  # noqa: N802
+        if not self._valid_authority():
+            return self._reject_authority()
         route = self.path.split("?", 1)[0]
-        if route == "/api/embed":
-            self._handle_embed()
-        elif route == "/api/audio-email":
-            self._handle_audio_email()
-        else:
-            self._send_json(404, {"error": "not found"})
+        if route == "/api/bootstrap":
+            return self._bootstrap()
+        if route == "/api/status":
+            return self._status()
+        return super().do_GET()
 
-    def _handle_embed(self):
-        try:
-            req = json.loads(self._read_body() or b"{}")
-        except Exception as e:
-            self._send_json(400, {"error": f"invalid JSON body: {e}"})
-            return
+    def do_POST(self) -> None:  # noqa: N802
+        # Authority and Origin intentionally precede any body read.
+        if not self._valid_authority():
+            return self._reject_authority()
+        if not self._valid_origin():
+            return self._send_json(403, _error("INVALID_ORIGIN", "Origin must be exact loopback authority"))
+        route = self.path.split("?", 1)[0]
+        if route not in {"/api/action/plan", "/api/action/approve", "/api/action/start"}:
+            return self._send_json(404, _error("NOT_FOUND", "route is not available"))
+        body, failure = self._read_json()
+        if failure:
+            return self._send_json(*failure)
+        if route == "/api/action/plan":
+            return self._plan(body)
+        if route == "/api/action/approve":
+            return self._approve(body)
+        return self._start(body)
 
-        text = (req.get("text") or "").strip()
-        if not text:
-            self._send_json(400, {"error": "missing 'text'"})
-            return
-
-        api_key = resolve_google_key()
-        if not api_key:
-            self._send_json(503, {
-                "error": "Gemini 키 없음 — GOOGLE_API_KEY env 또는 "
-                         "config.json(gemini_api_key) 를 설정하세요.",
-            })
-            return
-
-        meta = search_meta.validate_index_metadata(req.get("index_metadata") or {})
-        if not meta.ok:
-            self._send_json(409, {
-                "error": "Incompatible document index metadata",
-                "detail": "; ".join(meta.errors),
-            })
-            return
-
-        try:
-            vec = gemini_embed(text, api_key)
-        except urllib.error.HTTPError as e:
-            try:
-                detail = e.read().decode("utf-8", "replace")[:300]
-            except Exception:
-                detail = str(e)
-            self._send_json(502, {"error": f"Gemini embed {e.code}: {detail}"})
-            return
-        except Exception as e:
-            self._send_json(502, {"error": f"Gemini embed 실패: {e}"})
-            return
-
-        if len(vec) != EMBED_DIM:
-            self._send_json(502, {
-                "error": f"Gemini embed dimension mismatch: expected {EMBED_DIM}, got {len(vec)}",
-            })
-            return
-
-        self._send_json(200, {
-            "embedding": vec,
-            "embedding_provider": EMBED_PROVIDER,
-            "embedding_model": GEMINI_MODEL,
-            "embedding_task_type": QUERY_TASK_TYPE,
-            "embedding_dimension": EMBED_DIM,
-        })
-
-    # ── Audio Overview 이메일 발송 (Resend 포워딩) ──────────────────────────
-    def _parse_multipart(self):
-        return parse_multipart(self.headers.get("Content-Type", "") or "", self._read_body())
-
-    def _resend_send(self, api_key, payload):
-        """Resend /emails POST 1건. (status_code, body_snippet) 반환."""
-        req = urllib.request.Request(
-            RESEND_ENDPOINT,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={
-                "Authorization": "Bearer " + api_key,
-                "Content-Type": "application/json",
-                # api.resend.com 은 Cloudflare 뒤에 있어 기본 User-Agent
-                # (Python-urllib)는 1010 으로 차단된다. 명시적 UA 필수.
-                "User-Agent": "paper-curation-serve-local/1.0 (+https://github.com/jehyunlee/paper-curation)",
+    def _bootstrap_value(self) -> dict[str, Any]:
+        return {
+            "schema": API_SCHEMA,
+            "status": "ok",
+            "action_capability": {
+                "schema": "ActionCapabilityV1",
+                "state": "UNAVAILABLE",
+                "reason": "DISPATCH_UNAVAILABLE",
             },
-            method="POST",
-        )
+            "audio_capability": audio_capability(),
+        }
+
+    def _bootstrap(self) -> None:
+        state = _wire_state(self.server)
+        token = secrets.token_urlsafe(32)
+        with state.lock:
+            state.capabilities[token] = int(time.time()) + CAPABILITY_TTL_SECONDS
+        cookie = "pc=%s; HttpOnly; SameSite=Strict; Path=/api; Max-Age=%d" % (token, CAPABILITY_TTL_SECONDS)
+        self._send_json(200, self._bootstrap_value(), cookie=cookie)
+
+    def _status(self) -> None:
+        self._send_json(200, self._bootstrap_value())
+
+    def _validate_plan(self, body: dict[str, Any]) -> tuple[dict[str, Any] | None, tuple[int, dict[str, Any]] | None]:
+        required = {"schema", "command", "topic_alias", "input", "limits"}
+        if set(body) != required or isinstance(body.get("schema"), bool) or body.get("schema") != API_SCHEMA:
+            return None, (400, _error("INVALID_SCHEMA", "plan fields must exactly match schema 1"))
+        command = body.get("command")
+        topic = body.get("topic_alias")
+        data = body.get("input")
+        limits = body.get("limits")
+        limit_maxima = {
+            "top_k": 100,
+            "candidate_k": 100,
+            "web_searches": 12,
+            "aspects": 6,
+            "sections": 8,
+            "concurrency": 4,
+            "max_attempts": 64,
+            "tokens": 200_000,
+            "items": 100,
+        }
+        if command not in {"query.normal", "query.deeper", "audio.create"} or not isinstance(topic, str) or not TOPIC_RE.fullmatch(topic):
+            return None, (400, _error("INVALID_SCHEMA", "invalid command or topic_alias"))
+        if not isinstance(data, dict) or not isinstance(limits, dict) or any(
+            key not in limit_maxima or isinstance(value, bool) or not isinstance(value, int)
+            or value < 0 or value > limit_maxima[key] for key, value in limits.items()
+        ):
+            return None, (400, _error("INVALID_SCHEMA", "input and bounded integer limits are required"))
+        if command.startswith("query."):
+            if not self._exact_keys(data, {"auth_mode", "query"}, {"source"}) or not isinstance(data.get("query"), str) or not 0 < len(data["query"].encode("utf-8")) <= 120000:
+                return None, (400, _error("INVALID_SCHEMA", "query input is invalid"))
+        else:
+            if not self._exact_keys(data, {"auth_mode", "requested_target_seconds"}, {"source"}) or not isinstance(data.get("requested_target_seconds"), int) or isinstance(data.get("requested_target_seconds"), bool) or not 30 <= data["requested_target_seconds"] <= 3600:
+                return None, (400, _error("INVALID_SCHEMA", "audio input is invalid"))
+        if "source" in data and (not isinstance(data["source"], str) or not 0 < len(data["source"].encode("utf-8")) <= 4096):
+            return None, (400, _error("INVALID_SCHEMA", "source is invalid"))
+        if data.get("auth_mode") not in {"auto", "oauth", "api-key"}:
+            return None, (400, _error("INVALID_SCHEMA", "input.auth_mode is required"))
+        return {"command": command, "topic": topic, "input": data, "limits": limits}, None
+
+    def _plan(self, body: dict[str, Any]) -> None:
+        capability = self._require_capability()
+        if capability is None:
+            return
+        request, failure = self._validate_plan(body)
+        if failure:
+            return self._send_json(*failure)
+        assert request is not None
+        if request["command"] == "audio.create" and audio_capability()["state"] != "AVAILABLE":
+            # Optional Audio is an informational, non-mutating capability state.
+            # A6: the response carries the `result` discriminator on both
+            # variants so clients switch on one tag instead of inferring intent
+            # from an absent key. No operation, claim, or credential is created.
+            return self._send_json(200, audio_plan_status(_audio_capability_record()))
         try:
-            with urllib.request.urlopen(req, timeout=30, context=_ssl_ctx) as resp:
-                return resp.status, resp.read().decode("utf-8", "replace")[:400]
-        except urllib.error.HTTPError as e:
-            try:
-                detail = e.read().decode("utf-8", "replace")[:400]
-            except Exception:
-                detail = str(e)
-            return e.code, detail
-        except Exception as e:
-            return 0, str(e)[:400]
-
-    def _handle_audio_email(self):
-        # worker/index.js handleAudioEmail 와 동일 계약. 키 없으면 503 →
-        # UI(sendAudioEmail)가 다운로드로 graceful 폴백.
-        api_key, audio_from, reply_to = resolve_resend_config()
-        if not api_key:
-            self._send_json(503, {
-                "error": "RESEND_API_KEY 없음 — env 또는 config.json(resend_api_key) "
-                         "또는 docs/_local_keys.json(resend_key) 를 설정하세요.",
-            })
-            return
-
-        try:
-            fields, files = self._parse_multipart()
-        except Exception as e:
-            self._send_json(400, {"error": f"multipart 파싱 실패: {e}"})
-            return
-
-        recipients = [v.strip() for v in fields.get("email", []) if EMAIL_RE.match(v.strip())]
-        if not recipients:
-            self._send_json(400, {"error": "유효한 수신자 없음"})
-            return
-        if len(recipients) > MAX_RECIPIENTS:
-            self._send_json(400, {"error": f"수신자 너무 많음 (최대 {MAX_RECIPIENTS})"})
-            return
-        if "mp3" not in files:
-            self._send_json(400, {"error": "mp3 첨부 없음"})
-            return
-
-        file_name, content = files["mp3"]
-        if len(content) > MAX_ATTACHMENT_BYTES:
-            self._send_json(413, {"error": "첨부 용량 초과"})
-            return
-        b64 = base64.b64encode(content).decode("ascii")
-
-        filename = (fields.get("filename") or [file_name or "audio-overview.mp3"])[0]
-        title = (fields.get("title") or ["Audio Overview"])[0]
-        lang = (fields.get("lang") or ["ko"])[0]
-        is_ko = lang == "ko"
-
-        subject = f"[Paper Curation] Audio Overview: {title}"
-        if is_ko:
-            html = (
-                "<p>요청하신 Audio Overview 가 첨부되어 있습니다.</p>"
-                f"<p><b>제목</b>: {_escape_html(title)}</p>"
-                "<p>이 메일은 Paper Curation 의 자동 발송입니다. 답장은 운영자에게 전달됩니다.</p>"
+            if request["command"] == "audio.create":
+                resolved = resolve_auth_mode(
+                    request["input"]["auth_mode"],
+                    oauth_available=False,
+                    api_key_available=self._auth_available(
+                        "gemini_api_key_available",
+                        gemini_api_key_available,
+                    ),
+                )
+            else:
+                resolved = resolve_auth_mode(
+                    request["input"]["auth_mode"],
+                    oauth_available=self._auth_available(
+                        "oauth_available",
+                        oauth_available,
+                    ),
+                    api_key_available=self._auth_available(
+                        "api_key_available",
+                        api_key_available,
+                    ),
+                )
+        except AuthUnavailableError:
+            return self._send_json(
+                401,
+                _error("AUTH_UNAVAILABLE", "requested auth mode is unavailable"),
+            )
+        now = int(time.time())
+        operation_id = secrets.token_hex(16)
+        input_digest = _canonical_digest(request["input"])
+        resource_digest = _canonical_digest(request["limits"])
+        if request["command"] == "audio.create":
+            providers = (
+                ProviderTask("gemini", SCRIPT_MODEL, "audio.script", ()),
+                ProviderTask("gemini", TTS_MODEL, "audio.tts", ()),
             )
         else:
-            html = (
-                "<p>Your requested Audio Overview is attached.</p>"
-                f"<p><b>Title</b>: {_escape_html(title)}</p>"
-                "<p>This is an automated message from Paper Curation. Replies route to the operator.</p>"
+            query_provider = (
+                "claude" if resolved.resolved.value == "oauth" else "anthropic"
             )
+            query_model = os.environ.get(
+                "PAPER_CURATION_QUERY_MODEL",
+                "claude-sonnet-5",
+            ).strip()
+            if not query_model:
+                return self._send_json(
+                    400,
+                    _error("INVALID_MODEL", "query model must be configured"),
+                )
+            providers = (
+                ProviderTask(
+                    query_provider,
+                    query_model,
+                    request["command"],
+                    (),
+                ),
+            )
+        default_attempts = {
+            "query.normal": 12,
+            "query.deeper": 64,
+            "audio.create": 33,
+        }[request["command"]]
+        default_concurrency = 1 if request["command"] == "query.normal" else 4
+        maxima = OperationMaxima(
+            attempts=request["limits"].get("max_attempts", default_attempts),
+            tokens=request["limits"].get("tokens", 120_000),
+            items=request["limits"].get(
+                "items",
+                32 if request["command"] == "audio.create" else 100,
+            ),
+            searches=request["limits"].get("web_searches", 0),
+            audio_seconds=(
+                3600 if request["command"] == "audio.create" else 0
+            ),
+            recipients=0,
+            concurrency=request["limits"].get(
+                "concurrency",
+                default_concurrency,
+            ),
+        )
+        claim = OperationClaim(
+            version=API_SCHEMA,
+            operation_id=operation_id,
+            task="local.action",
+            command=request["command"],
+            topic=request["topic"],
+            source=str(request["input"].get("source", "local")),
+            ingress="localhost",
+            auth=resolved.resolved,
+            providers=providers,
+            maxima=maxima,
+            input_digests=(input_digest,),
+            resource_digests=(resource_digest,),
+            created_at=now,
+            expires_at=now + OPERATION_TTL_SECONDS,
+        )
+        state = _wire_state(self.server)
+        with state.lock:
+            plan = state.consent.create_plan(claim)
+            state.consent.bind_plan(
+                plan.operation_id,
+                plan.plan_hash,
+                _canonical_digest({
+                    "dispatcher": "unavailable",
+                    "request": request,
+                }),
+            )
+        preview = claim.canonical_value()
+        preview["requested_auth"] = request["input"]["auth_mode"]
+        preview["resolved_auth"] = resolved.resolved.value
+        preview["cost"] = "PRICE_UNAVAILABLE"
+        preview["dispatch_state"] = "UNAVAILABLE"
+        preview["expected_work"] = (
+            ["A01.script", "A02.tts.1..32", "A03.assemble"]
+            if request["command"] == "audio.create"
+            else [request["command"]]
+        )
+        if request["command"] == "audio.create":
+            preview["requested_target_seconds"] = request["input"][
+                "requested_target_seconds"
+            ]
+            preview["hard_actual_maximum_seconds"] = 3600
+        self._send_json(200, {"schema": API_SCHEMA, "operation_id": plan.operation_id, "plan_hash": plan.plan_hash, "preview": preview, "approval_expires_in_seconds": APPROVAL_TTL_SECONDS, "operation_expires_at": claim.expires_at})
 
-        payload_base = {
-            "from": audio_from,
-            "subject": subject,
-            "html": html,
-            "attachments": [{"filename": filename, "content": b64}],
-        }
-        if reply_to:
-            payload_base["reply_to"] = reply_to
+    def _approve(self, body: dict[str, Any]) -> None:
+        if self._require_capability() is None:
+            return
+        if set(body) != {"schema", "operation_id", "plan_hash", "decision"} or isinstance(body.get("schema"), bool) or body.get("schema") != API_SCHEMA or not all(isinstance(body.get(key), str) for key in ("operation_id", "plan_hash", "decision")):
+            return self._send_json(400, _error("INVALID_SCHEMA", "approval fields must exactly match schema 1"))
+        state = _wire_state(self.server)
+        try:
+            with state.lock:
+                credential = state.consent.approve(body["operation_id"], body["plan_hash"], decision=body["decision"])
+        except PlanScopeChangedError:
+            return self._send_json(409, _error("PLAN_SCOPE_CHANGED", "approval does not match planned scope"))
+        except PlanExpiredError:
+            return self._send_json(410, _error("PLAN_EXPIRED", "operation plan has expired"))
+        except ApprovalRejectedError:
+            return self._send_json(403, _error("APPROVAL_REJECTED", "decision must be approve"))
+        self._send_json(200, {"schema": API_SCHEMA, "operation_id": credential.operation_id, "plan_hash": credential.plan_hash, "redeem_credential": credential.token, "redeem_expires_in_seconds": APPROVAL_TTL_SECONDS})
 
-        results, any_fail = [], False
-        for to in recipients:
-            payload = dict(payload_base, to=[to])
-            code, text = self._resend_send(api_key, payload)
-            ok = 200 <= code < 300
-            any_fail = any_fail or not ok
-            results.append({"to": to, "ok": ok, "status": code, "body": text})
+    def _start(self, body: dict[str, Any]) -> None:
+        capability = self._require_capability()
+        if capability is None:
+            return
+        if set(body) != {"schema", "operation_id", "plan_hash"} or isinstance(body.get("schema"), bool) or body.get("schema") != API_SCHEMA or not all(isinstance(body.get(key), str) for key in ("operation_id", "plan_hash")):
+            return self._send_json(400, _error("INVALID_SCHEMA", "start fields must exactly match schema 1"))
+        keys = self._header_values("Idempotency-Key")
+        redeem = self._header_values("X-PC-Redeem")
+        if len(keys) != 1 or not IDEMPOTENCY_RE.fullmatch(keys[0]):
+            return self._send_json(400, _error("INVALID_IDEMPOTENCY_KEY", "Idempotency-Key must be 64 lowercase hexadecimal characters"))
+        if len(redeem) != 1 or len(redeem[0]) != 43:
+            return self._send_json(401, _error("REDEEM_REQUIRED", "X-PC-Redeem is required"))
+        self._send_json(503, _error("DISPATCH_UNAVAILABLE", "no trusted internal worker adapter is available"))
 
-        self._send_json(502 if any_fail else 200, {"results": results})
 
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="docs/ 정적 서빙 + /api/embed Gemini 프록시 (로컬 미리보기용)"
-    )
-    parser.add_argument("--port", type=int, default=8000, help="리슨 포트 (기본 8000)")
-    parser.add_argument(
-        "--host",
-        default="127.0.0.1",
-        help="리슨 호스트 (기본 127.0.0.1; LAN 노출은 명시적으로 지정)",
-    )
-    parser.add_argument("--topic", default="", help="열어볼 configured topic alias (URL 안내용)")
+def main() -> None:
+    parser = argparse.ArgumentParser(description="fail-closed local Paper Curation server")
+    parser.add_argument("--port", type=int, default=8000, help="listener port")
+    parser.add_argument("--host", default="127.0.0.1", help=argparse.SUPPRESS)
+    parser.add_argument("--topic", default="", help="configured topic alias (display only)")
     args = parser.parse_args()
-
+    if args.host != "127.0.0.1":
+        parser.error("serve_local only binds exact IPv4 loopback 127.0.0.1")
     if not DOCS_DIR.exists():
-        print(f"ERROR: docs 디렉토리를 찾을 수 없습니다: {DOCS_DIR}", file=sys.stderr)
-        sys.exit(1)
-
+        print(f"ERROR: docs directory not found: {DOCS_DIR}", file=sys.stderr)
+        raise SystemExit(1)
     handler = functools.partial(LocalHandler, directory=str(DOCS_DIR))
-    httpd = ThreadingHTTPServer((args.host, args.port), handler)
-    bound_host, bound_port = httpd.server_address[:2]
-    url_host = f"[{bound_host}]" if ":" in bound_host else bound_host
-    sub = (args.topic.strip("/") + "/") if args.topic else ""
-    url = f"http://{url_host}:{bound_port}/{sub}"
-
-    has_key = bool(resolve_google_key())
-    print(f"docs/ 서빙 + /api/embed → Gemini ({GEMINI_MODEL}, {EMBED_DIM}d) 프록시")
-    print(f"Gemini 키: {'감지됨' if has_key else '없음 (검색 임베딩 비활성 — 키 설정 필요)'}")
-    print(f"바인드: {bound_host}:{bound_port}")
-    print(f"열기: {url}")
-    if (DOCS_DIR / "_cross" / "index.html").exists():
-        print(f"통합 Deep Research (로컬 전용): http://{url_host}:{bound_port}/_cross/")
+    httpd = ThreadingHTTPServer(("127.0.0.1", args.port), handler)
+    port = httpd.server_address[1]
+    print(f"bind: 127.0.0.1:{port}")
+    print(f"open: http://127.0.0.1:{port}/")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\n종료합니다.")
+        pass
     finally:
         httpd.shutdown()
         httpd.server_close()

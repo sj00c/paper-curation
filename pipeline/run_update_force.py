@@ -1158,11 +1158,11 @@ def extract_figures(pdf_path, slug_dir):
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from api.extract import pre_validate_figure
 
-    # 키 해석: env(GOOGLE_API_KEY/GEMINI_API_KEY) → config.json. 단 reextract_figures
-    # 가 geometric-only 강제 시 세팅하는 PAPER_CURATION_NO_GEMINI 가 있으면 키 유무와
-    # 무관하게 Gemini 검증을 끈다 (env pop 만으론 config.json 키가 남아 스위치가 안 먹음).
-    have_gemini = (not os.environ.get("PAPER_CURATION_NO_GEMINI")
-                   and bool(get_google_key().strip()))
+    # 키 해석은 config_loader.get_google_key() 하나로 통일한다. 이 해석기가
+    # env(GOOGLE_API_KEY/GEMINI_API_KEY) → config.json 순으로 보고,
+    # PAPER_CURATION_NO_GEMINI (reextract_figures 의 geometric-only 강제) 가
+    # 있으면 키가 있어도 ""를 돌려주므로 검증이 확실히 꺼진다.
+    have_gemini = bool(get_google_key().strip())
     # Log a degraded-Gemini warning at most once per run instead of silently
     # accepting full pages when the validator throws.
     _gemini_warned = {"done": False}
@@ -2520,6 +2520,7 @@ def _write_smoke_report(smoke_root, payload):
 
 
 def _run_smoke(args, selected_auth):
+    _require_no_deploy_contract(args)
     import config_loader as _smoke_config
     limit = max(1, min(5, int(getattr(args, "smoke_limit", 1) or 1)))
     run_id = datetime.now().strftime("%Y%m%d_%H%M%S") + "_" + uuid4().hex[:8]
@@ -2538,8 +2539,6 @@ def _run_smoke(args, selected_auth):
     original_config_papers_dir = _smoke_config.PAPERS_DIR
     original_slug_to_zotero_key = dict(_slug_to_zotero_key)
     original_slug_to_pdf_path = dict(_slug_to_pdf_path)
-    had_no_deploy_env = "PAPER_CURATION_NO_DEPLOY" in os.environ
-    original_no_deploy_env = os.environ.get("PAPER_CURATION_NO_DEPLOY")
     candidate_attempt_limit = limit
     try:
         candidates = _smoke_candidates_from_index(args.topic, limit)
@@ -2582,7 +2581,6 @@ def _run_smoke(args, selected_auth):
         })
         print(f"[smoke] candidate discovery failed; report: {report_path}")
         raise SystemExit(2)
-    os.environ["PAPER_CURATION_NO_DEPLOY"] = "1"
 
     globals()["PAPERS_DIR"] = scratch_papers
     globals()["CHECKPOINT_FILE"] = os.path.join(smoke_root, "checkpoint.json")
@@ -2701,64 +2699,25 @@ def _run_smoke(args, selected_auth):
         _slug_to_zotero_key.update(original_slug_to_zotero_key)
         _slug_to_pdf_path.clear()
         _slug_to_pdf_path.update(original_slug_to_pdf_path)
-        if had_no_deploy_env:
-            os.environ["PAPER_CURATION_NO_DEPLOY"] = original_no_deploy_env
-        else:
-            os.environ.pop("PAPER_CURATION_NO_DEPLOY", None)
 
 
-def _maybe_auto_deploy(args, topic):
-    """Run the legacy auto-publish path unless this run explicitly suppresses it."""
-    has_cf_token = bool(
-        os.environ.get("CLOUDFLARE_API_TOKEN") or os.environ.get("CF_API_TOKEN")
+def _require_no_deploy_contract(args):
+    """Fail closed unless this ordinary entrypoint has both suppressors."""
+    if (
+        getattr(args, "no_deploy", False) is True
+        and os.environ.get("PAPER_CURATION_NO_DEPLOY") == "1"
+    ):
+        return
+    raise SystemExit(
+        "ordinary runs require PAPER_CURATION_NO_DEPLOY=1 and --no-deploy; "
+        "publishing is available only through the dedicated deploy command"
     )
-    has_account_id = bool(os.environ.get("CLOUDFLARE_ACCOUNT_ID"))
-    no_deploy = (
-        getattr(args, "no_deploy", False)
-        or bool(os.environ.get("PAPER_CURATION_NO_DEPLOY"))
-    )
-    if no_deploy:
-        log("\n  [prepare_deploy] SKIP: deploy suppressed "
-            "(--no-deploy / PAPER_CURATION_NO_DEPLOY)")
-        return "suppressed"
-
-    if not (has_cf_token and has_account_id):
-        missing = []
-        if not has_cf_token:
-            missing.append("CLOUDFLARE_API_TOKEN (or CF_API_TOKEN)")
-        if not has_account_id:
-            missing.append("CLOUDFLARE_ACCOUNT_ID")
-        log(f"\n  [prepare_deploy] SKIP: missing env vars — {', '.join(missing)}")
-        return "missing_credentials"
-
-    log("\n  [prepare_deploy] Cloudflare env vars found, deploying...")
-    try:
-        result = subprocess.run(
-            ["python", "pipeline/prepare_deploy.py", "--topic", topic, "--push"],
-            cwd=str(PIPELINE_DIR.parent),
-            capture_output=True,
-            text=True,
-            timeout=1800,
-            env={**os.environ, "PYTHONUTF8": "1"},
-        )
-    except Exception as exc:
-        message = f"prepare_deploy failed to start: {str(exc)[:100]}"
-        log(f"  [prepare_deploy] ERROR: {message}")
-        raise RuntimeError(message) from exc
-
-    if result.returncode == 0:
-        log("  [prepare_deploy] OK: wrangler deploy + gh-pages sync done")
-        return "deployed"
-
-    message = f"prepare_deploy failed with exit {result.returncode}"
-    log(f"  [prepare_deploy] FAILED (exit {result.returncode})")
-    raise RuntimeError(message)
 
 
 def _run_curate(topic, *, mode=None, concurrency=16, resume=False,
                  skip_existing=False, limit=0, timeline=False, category=False,
                  strict_pdf=False, slugs="", dry_run=False, skip_dedup=False,
-                 dedup_execute=False):
+                 dedup_execute=False, no_deploy=False):
     """Programmatic entrypoint. Patches ``sys.argv`` so the existing
     ``main()`` argparse parses the kwargs as if from the CLI. Behaviour-
     preserving; restores ``sys.argv`` on exit.
@@ -2788,6 +2747,11 @@ def _run_curate(topic, *, mode=None, concurrency=16, resume=False,
         new_argv.append("--skip-dedup")
     if dedup_execute:
         new_argv.append("--dedup-execute")
+    if not no_deploy or os.environ.get("PAPER_CURATION_NO_DEPLOY") != "1":
+        raise RuntimeError(
+            "direct curation requires no_deploy=True and PAPER_CURATION_NO_DEPLOY=1"
+        )
+    new_argv.append("--no-deploy")
     sys.argv = new_argv
     try:
         return main()
@@ -2829,9 +2793,7 @@ def main():
                              "papers 를 로컬 OpenAI 호환 모델(Ollama/LM Studio 등)로 마저 연결. "
                              "config.json 의 local_model 또는 LOCAL_MODEL_BASE_URL/NAME 필요.")
     parser.add_argument("--no-deploy", action="store_true",
-                        help="end-of-run prepare_deploy(wrangler deploy + gh-pages + master push)를 건너뛴다. "
-                             "무인 자동복구(auto_recover --execute)처럼 배포를 원치 않는 경우용. "
-                             "환경변수 PAPER_CURATION_NO_DEPLOY 로도 켤 수 있다.")
+                        help="Required with PAPER_CURATION_NO_DEPLOY=1 for every ordinary run.")
     parser.add_argument("--conn-full", action="store_true",
                         help="연결 캐시(_conn_topk_cache_k*.json)를 무시하고 이번 실행에서 전체 연결을 "
                              "재생성한다 (월간/대량 추가 후 주기적 full rebuild 용). 자식 프로세스"
@@ -2851,13 +2813,13 @@ def main():
     parser.add_argument("--smoke-limit", type=int, default=1,
                         help="--mode smoke candidate attempts (1-5; default 1).")
     args = parser.parse_args()
+    _require_no_deploy_contract(args)
 
     # Apply --mode → legacy flags mapping. Pure translation; no behavior change
     # when --mode is absent (args.mode is None → all legacy flags honored as-is).
     _apply_mode_mapping(args)
     if args.mode == "smoke":
         args.smoke_limit = max(1, min(5, args.smoke_limit))
-        args.no_deploy = True
         try:
             selected_auth = require_auth_ready()
         except AnthropicAuthError as exc:
@@ -3521,9 +3483,7 @@ def main():
         # vectors. Deploy suppression is publish-only and still builds locally.
         _postprocess_search_index(args, topic, run_step)
 
-        # Preserve the legacy production auto-publish path. Smoke and explicit
-        # no-deploy runs cannot publish.
-        _maybe_auto_deploy(args, topic)
+        # Ordinary curation never invokes a publish adapter.
 
         log("\nPost-processing complete!")
 

@@ -369,7 +369,7 @@ class SearchIndexMetadataTests(unittest.TestCase):
 
     def test_doctor_secret_source_warning_redacts_values_and_reports_tls(self):
         reporter = doctor_module.Reporter()
-        secret = "sk-ant-secret-not-for-output"
+        secret = "sk-" + "ant-" + "secret-not-for-output"
         output = io.StringIO()
         status = type("Status", (), {
             "mode": "api-key",

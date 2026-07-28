@@ -14,6 +14,10 @@ import re
 import ssl
 import urllib.request
 from pathlib import Path
+import errno
+import hashlib
+import stat
+import uuid
 
 try:
     from tls import create_ssl_context
@@ -43,6 +47,265 @@ REPO = PROJECT_ROOT  # backward compat alias
 _config_cache = None
 _user_id_cache = None
 _collection_key_cache = None
+
+CONFIG_RECOVERY_AMBIGUOUS = "CONFIG_RECOVERY_AMBIGUOUS"
+_CONFIG_MODE = 0o600
+_RECEIPT_SUFFIX = ".receipt"
+_LOCK_SUFFIX = ".lock"
+
+
+class ConfigRecoveryError(RuntimeError):
+    """The on-disk config transaction cannot be proved safe to recover."""
+
+
+def _config_digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def _fsync_directory(path):
+    fd = os.open(str(path), os.O_RDONLY)
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
+def _lstat_regular(path, *, require_mode=True):
+    try:
+        info = os.lstat(path)
+    except FileNotFoundError:
+        return None
+    if (
+        not stat.S_ISREG(info.st_mode)
+        or stat.S_ISLNK(info.st_mode)
+        or info.st_uid != os.getuid()
+        or info.st_nlink != 1
+        or (require_mode and stat.S_IMODE(info.st_mode) != _CONFIG_MODE)
+    ):
+        raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+    return info
+
+
+def _read_safe(path, *, require_mode=True):
+    _lstat_regular(path, require_mode=require_mode)
+    with open(path, "rb") as handle:
+        data = handle.read()
+    # Do not use data read through a path which changed after lstat.
+    _lstat_regular(path, require_mode=require_mode)
+    return data
+
+
+def _write_private_exclusive(path, data):
+    fd = os.open(str(path), os.O_WRONLY | os.O_CREAT | os.O_EXCL, _CONFIG_MODE)
+    try:
+        os.write(fd, data)
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+    os.chmod(path, _CONFIG_MODE)
+    _fsync_directory(path.parent)
+
+def _update_private_receipt(path, data):
+    _lstat_regular(path)
+    fd = os.open(str(path), os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0))
+    try:
+        os.ftruncate(fd, 0)
+        os.write(fd, data)
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+    _lstat_regular(path)
+    _fsync_directory(path.parent)
+
+
+def _unlink_private(path):
+    if _lstat_regular(path) is not None:
+        os.unlink(path)
+        _fsync_directory(path.parent)
+
+
+def _rename_no_replace(source, destination):
+    """Move within one directory without ever replacing an existing path.
+
+    link+unlink has no overwrite operation and is intentionally preferred to a
+    copy/replace fallback. Config files are required to be single-link regular
+    files, so it preserves the transaction's safety invariants.
+    """
+    _lstat_regular(source)
+    if _lstat_regular(destination) is not None:
+        raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+    try:
+        os.link(source, destination, follow_symlinks=False)
+    except FileExistsError as exc:
+        raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS) from exc
+    except OSError as exc:
+        if exc.errno in (errno.EXDEV, errno.EPERM, errno.EOPNOTSUPP):
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS) from exc
+        raise
+    os.unlink(source)
+    _fsync_directory(source.parent)
+
+
+def _receipt_paths(config_path, receipt):
+    expected = {"state", "original_digest", "replacement_digest", "temp", "legacy"}
+    if set(receipt) != expected or receipt["state"] not in {
+        "PREPARED", "ORIGINAL_MOVED", "REPLACED", "COMMITTED"
+    }:
+        raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+    for key in ("temp", "legacy"):
+        value = receipt[key]
+        if not isinstance(value, str) or Path(value).name != value:
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+        if not value.startswith(config_path.name + "."):
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+    for key in ("original_digest", "replacement_digest"):
+        value = receipt[key]
+        if value is not None and (not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{64}", value)):
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+    return config_path.with_name(receipt["temp"]), config_path.with_name(receipt["legacy"])
+
+
+def _read_receipt(config_path):
+    receipt_path = config_path.with_name(config_path.name + _RECEIPT_SUFFIX)
+    if _lstat_regular(receipt_path) is None:
+        return None, receipt_path
+    try:
+        receipt = json.loads(_read_safe(receipt_path).decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS) from exc
+    _receipt_paths(config_path, receipt)
+    return receipt, receipt_path
+
+
+def _check_candidate_names(config_path, receipt):
+    tracked = set()
+    if receipt:
+        tracked.update((receipt["temp"], receipt["legacy"]))
+    patterns = (
+        config_path.name + ".backup*",
+        config_path.name + ".legacy*",
+        config_path.name + ".tmp*",
+    )
+    for pattern in patterns:
+        for candidate in config_path.parent.glob(pattern):
+            if candidate.name not in tracked:
+                raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+            _lstat_regular(candidate)
+
+
+def _matches(path, digest):
+    if digest is None:
+        return _lstat_regular(path) is None
+    if _lstat_regular(path) is None:
+        return False
+    return _config_digest(_read_safe(path)) == digest
+
+
+def recover_config_transaction(config_path=CONFIG_PATH):
+    """Recover only a receipt-proven transaction; otherwise leave files intact."""
+    config_path = Path(config_path)
+    receipt, receipt_path = _read_receipt(config_path)
+    lock_path = config_path.with_name(config_path.name + _LOCK_SUFFIX)
+    if receipt is None:
+        if _lstat_regular(lock_path) is not None:
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+        _check_candidate_names(config_path, None)
+        return
+    _check_candidate_names(config_path, receipt)
+    if _lstat_regular(lock_path) is None:
+        raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+    temp_path, legacy_path = _receipt_paths(config_path, receipt)
+    state = receipt["state"]
+    original = receipt["original_digest"]
+    replacement = receipt["replacement_digest"]
+
+    if state == "PREPARED":
+        if not _matches(config_path, original) or not _matches(temp_path, replacement):
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+        _unlink_private(temp_path)
+        _unlink_private(receipt_path)
+    elif state == "ORIGINAL_MOVED":
+        if not _matches(config_path, None) or not _matches(legacy_path, original) or not _matches(temp_path, replacement):
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+        if original is not None:
+            _rename_no_replace(legacy_path, config_path)
+        _unlink_private(temp_path)
+        _unlink_private(receipt_path)
+    elif state == "REPLACED":
+        if not _matches(config_path, replacement) or not _matches(legacy_path, original) or _lstat_regular(temp_path) is not None:
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+        if original is None:
+            _unlink_private(config_path)
+        else:
+            _rename_no_replace(config_path, temp_path)
+            _rename_no_replace(legacy_path, config_path)
+            _unlink_private(temp_path)
+        _unlink_private(receipt_path)
+    else:  # COMMITTED
+        if not _matches(config_path, replacement) or _lstat_regular(temp_path) is not None or _lstat_regular(legacy_path) is not None:
+            raise ConfigRecoveryError(CONFIG_RECOVERY_AMBIGUOUS)
+        _unlink_private(receipt_path)
+    _unlink_private(lock_path)
+
+
+def _transaction_receipt(config_path, original, replacement, temp_path, legacy_path, state):
+    return json.dumps({
+        "state": state,
+        "original_digest": _config_digest(original) if original is not None else None,
+        "replacement_digest": _config_digest(replacement),
+        "temp": temp_path.name,
+        "legacy": legacy_path.name,
+    }, sort_keys=True, separators=(",", ":")).encode("utf-8")
+
+
+def write_config_transaction(config, config_path=CONFIG_PATH, crash_hook=None):
+    """Durably install one JSON config, retaining no untracked secret copy."""
+    config_path = Path(config_path)
+    replacement = json.dumps(config, indent=2, ensure_ascii=False).encode("utf-8") + b"\n"
+    recover_config_transaction(config_path)
+    original = _read_safe(config_path, require_mode=True) if _lstat_regular(config_path, require_mode=True) else None
+    token = uuid.uuid4().hex
+    temp_path = config_path.with_name(f"{config_path.name}.tmp.{token}")
+    legacy_path = config_path.with_name(f"{config_path.name}.legacy.{token}")
+    receipt_path = config_path.with_name(config_path.name + _RECEIPT_SUFFIX)
+    lock_path = config_path.with_name(config_path.name + _LOCK_SUFFIX)
+    _write_private_exclusive(lock_path, b"")
+    try:
+        _write_private_exclusive(temp_path, replacement)
+        _write_private_exclusive(receipt_path, _transaction_receipt(
+            config_path, original, replacement, temp_path, legacy_path, "PREPARED"
+        ))
+        if crash_hook:
+            crash_hook("PREPARED")
+        if original is not None:
+            _rename_no_replace(config_path, legacy_path)
+        _update_private_receipt(receipt_path, _transaction_receipt(
+            config_path, original, replacement, temp_path, legacy_path, "ORIGINAL_MOVED"
+        ))
+        if crash_hook:
+            crash_hook("ORIGINAL_MOVED")
+        _rename_no_replace(temp_path, config_path)
+        _update_private_receipt(receipt_path, _transaction_receipt(
+            config_path, original, replacement, temp_path, legacy_path, "REPLACED"
+        ))
+        if crash_hook:
+            crash_hook("REPLACED")
+        if original is not None:
+            _unlink_private(legacy_path)
+        _update_private_receipt(receipt_path, _transaction_receipt(
+            config_path, original, replacement, temp_path, legacy_path, "COMMITTED"
+        ))
+        if crash_hook:
+            crash_hook("COMMITTED")
+        _unlink_private(receipt_path)
+    finally:
+        # Before a receipt exists the uniquely named temp belongs only to this
+        # invocation and can be safely removed. A receipt makes recovery, not
+        # cleanup, authoritative after a crash.
+        if not receipt_path.exists():
+            _unlink_private(temp_path)
+            _unlink_private(lock_path)
+    return config
 
 def _load_dotenv(path=PROJECT_ROOT / ".env"):
     """Load simple .env entries without overriding process exports."""
@@ -78,6 +341,7 @@ def load_config():
     """Load config.json plus process/.env secrets; env wins at access time."""
     global _config_cache
     _load_dotenv()
+    recover_config_transaction(CONFIG_PATH)
     if _config_cache is not None:
         return _config_cache
 
@@ -105,18 +369,32 @@ def get_zotero_api_key():
 
 
 def get_google_key():
-    """Google(Gemini) API 키. env(GOOGLE_API_KEY/GEMINI_API_KEY) 우선, 없으면
-    config.json(gemini_api_key/google_api_key). figure 검증·TTS·임베딩 공용 해석기.
+    """Google(Gemini) API 키의 유일한 해석기. env(GOOGLE_API_KEY/GEMINI_API_KEY)
+    우선, 없으면 config.json(gemini_api_key/google_api_key).
+    figure 검증·TTS·임베딩 공용 — 호출부는 이 함수만 쓴다.
 
-    참고: figure 검증처럼 'env 키 유무'를 Gemini on/off 스위치로 쓰던 호출부는
-    이 함수가 config.json 까지 보므로 env 를 pop 해도 키가 남는다. 그런 곳은
-    PAPER_CURATION_NO_GEMINI 환경 플래그로 명시 비활성화한다
-    (reextract_figures.py 의 geometric-only 모드 참조)."""
+    PAPER_CURATION_NO_GEMINI 가 설정돼 있으면 키 유무와 무관하게 ""를 반환한다.
+    figure 검증처럼 'env 키 유무'를 Gemini on/off 스위치로 쓰던 호출부가 env 를
+    pop 해도 config.json 키가 남아 스위치가 안 먹던 문제를 해석기 자체에서 닫는
+    것이라, 모든 호출부가 동일하게 '키 없음'으로 동작한다
+    (reextract_figures.py 의 geometric-only 모드 참조).
+
+    값은 항상 strip 해서 돌려준다. strip 하지 않으면 공백뿐인 키(" ")가
+    truthy 라서, strip 하는 호출부(serve_local·run_update_force·doctor)는
+    '키 없음'으로, truthiness 만 보는 호출부(build_search_index·
+    extract_insights)는 '키 있음'으로 갈려 EMBEDDINGS_UNAVAILABLE 거부가
+    우회된다."""
+    if os.environ.get("PAPER_CURATION_NO_GEMINI"):
+        return ""
     cfg = load_config()
-    return (os.environ.get("GOOGLE_API_KEY")
-            or os.environ.get("GEMINI_API_KEY")
-            or cfg.get("gemini_api_key", "")
-            or cfg.get("google_api_key", "")) or ""
+    for candidate in (os.environ.get("GOOGLE_API_KEY"),
+                      os.environ.get("GEMINI_API_KEY"),
+                      cfg.get("gemini_api_key", ""),
+                      cfg.get("google_api_key", "")):
+        resolved = (candidate or "").strip()
+        if resolved:
+            return resolved
+    return ""
 
 
 def get_local_model_config():

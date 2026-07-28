@@ -34,18 +34,18 @@ node ./bin/paper-curation.mjs skill install
 cp .env.example .env
 open -e .env                    # Linux: ${EDITOR:-vi} .env
 node ./bin/paper-curation.mjs setup --fresh-config
-node ./bin/paper-curation.mjs doctor --network --anthropic-smoke
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
+node ./bin/paper-curation.mjs doctor --network
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode smoke --source zotero --smoke-limit 1 --strict-pdf --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
 ```
 
 Support rules:
 - `skill install`은 Python/conda 패키지 없이 동작하며 외부 skill에 의존하지 않는 managed skill bundle과 self-contained `SKILL.md`를 `~/.claude/skills`, `~/.codex/skills`, `~/.gjc/agent/skills`에 설치한다. 대상별 unmanaged 충돌은 덮어쓰지 않는다.
 - Verification, onboarding, smoke, repair, local curate는 deploy suppression을 유지한다.
-- 배포는 사용자가 명시적으로 publish/deploy를 요청한 경우에만 `--mode deploy`로 실행한다.
-- `doctor --network --anthropic-smoke`는 선택된 auth, Zotero, Google, structured Claude call을 secret redaction과 함께 검증한다.
+- 이 checkout은 product deploy를 실행하지 않으며 `deploy --topic <configured-topic> --dry-run`으로 정확한 scope만 미리 봅니다.
+- `doctor --network`는 local/network prerequisites를 진단하지만 provider 호출 승인이나 provider smoke를 수행하지 않습니다.
 - `--max-papers`는 web search/register 후보 제한이며 Zotero review cap이 아니다.
-- setup은 PaperBanana 또는 다른 선택 저장소를 자동 clone하지 않는다. TLS 검증은 기본 secure이며 비보안 우회는 `PAPER_CURATION_INSECURE_TLS=1` 또는 `network.allow_insecure_tls`+사유가 있는 경우로 한정한다.
+- setup은 PaperBanana 또는 다른 선택 저장소를 자동 clone하지 않습니다. TLS verification 우회는 지원하지 않으며 legacy insecure env/config가 있으면 연결 전에 fail-closed로 거부합니다.
 - unqualified GitHub NPX를 첫 실행 경로로 제시하지 않는다.
 
 ### Step 2: Manual conda py312 fallback
@@ -156,7 +156,7 @@ PYTHONUTF8=1 python pipeline/megasearch_to_zotero.py \
 PYTHONUTF8=1 python pipeline/register_zotero.py --topic bioml
 
 # 4) 첫 build는 deploy suppression 유지 — publish 의도 확인 전에는 no-deploy
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
 ```
 
 `megasearch_to_zotero.py` 가 자동으로 처리하는 것:
@@ -217,7 +217,7 @@ brew install --cask temurin   # macOS Eclipse Temurin (OpenJDK)
 echo 'conda activate py312' >> ~/.zshrc
 
 # 5) 평소 로컬 사용 — 클러스터링 라이브러리가 import 되므로 classify/topic_modeling 도 in-process 로 실행
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source web --days 7 --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source web --days 7 --no-deploy
 ```
 
 > py312 단독 환경만 지원한다. py314 등 다른 인터프리터로 실행해도 `_env_guard.force_py312()` 가 py312 로 자동 재실행하므로, 별도 듀얼 env 구성은 필요 없다 (위 "⚠️ py314 사용 금지" 참조).
@@ -249,43 +249,40 @@ Standard entrypoint is the checkout-local Node harness; `--` forwards to `pipeli
 
 ```bash
 # 진단 / verification
-node ./bin/paper-curation.mjs doctor --network --anthropic-smoke
+node ./bin/paper-curation.mjs doctor --network
 
 # 로컬 업데이트 — 검색 스킵, sync만 (배포 억제)
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --no-deploy
 
 # 주간 운영 — 검색 + Zotero 등록 + sync + 신규 리뷰
 # --max-papers는 web 검색/등록 후보 수만 제한한다.
-# 이 프로덕션 명령은 Cloudflare 자격증명/설정이 있으면 성공 후 자동 publish될 수 있다.
-node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source web --days 7 --max-papers 20
+# web source 작업은 provider/model/work/maxima/cost를 표시한 fresh operation-scoped approval 뒤에만 수행한다.
+# 승인 없는 일반 운영 예시는 제공하지 않는다.
 
 # 특정 슬러그만 force-rebuild (감사·복구 시, forced no-deploy)
 #   주의: --mode rebuild 는 토픽 전체의 categorization/insights/timelines 까지 재생성한다 (수 시간, API 비용 ↑).
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs 088,1093 --strict-pdf --no-deploy --yes
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs 088,1093 --strict-pdf --no-deploy --yes
 
 # 분류만 다시 (Phase 3 node-based, LLM 호출 없음; forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode reclassify --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode reclassify --no-deploy
 
 # 타임라인 narrative + 이미지 재생성 (forced no-deploy)
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode retime --images all --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode retime --images all --no-deploy
 
-# 배포만: wrangler deploy → Cloudflare + gh-pages 스텁 동기화 + master 코드 push
-# internal/team deployment only; deployable topics are explicit operator choices, not sample-topic defaults
-# 요구 env: CF_API_TOKEN (or CLOUDFLARE_API_TOKEN) + CLOUDFLARE_ACCOUNT_ID
-# Worker secrets (1회): wrangler secret put GOOGLE_API_KEY (/api/embed) + RESEND_API_KEY (/api/audio-email)
-node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode deploy
+# product deploy scope preview만 지원하며 실제 배포는 fail-closed로 거부한다.
+node ./bin/paper-curation.mjs deploy --topic <configured-topic> --dry-run
 
 # 실행 계획 미리보기 (변경 0, deploy suppression explicit)
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --dry-run --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode curate --source zotero --dry-run --no-deploy
 ```
 
 ### 감사·복구 (forced no-deploy)
 
 ```bash
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode audit --no-deploy
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode fix-matching --no-deploy --yes
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs <list> --strict-pdf --no-deploy --yes
-PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode validate --no-deploy --yes
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode audit --no-deploy
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode fix-matching --no-deploy --yes
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode rebuild --slugs <list> --strict-pdf --no-deploy --yes
+PAPER_CURATION_NO_DEPLOY=1 PAPER_CURATION_NO_VECTOR_REBUILD=1 node ./bin/paper-curation.mjs run -- --topic <configured-topic> --mode validate --no-deploy --yes
 
 # 개별 스크립트는 소스 수준 디버깅 전용. Zotero write/delete는 별도 실행 동의가 필요합니다.
 PAPER_CURATION_NO_DEPLOY=1 PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic <configured-topic>
@@ -334,7 +331,7 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 
 - **Zotero Web API**: Collection names and Zotero API key are configured in `config.json` or env.
 - **Claude authentication**: Reviews, connections, summaries, timelines, and insights use either Claude Code OAuth subscription mode (`--auth oauth`, Claude Code >=2.1.205, `claude auth login` or env-only `CLAUDE_CODE_OAUTH_TOKEN`) or Anthropic Console API-key mode (`--auth api-key`, `ANTHROPIC_API_KEY`). OAuth tokens are never saved by setup; `config.json` may store only `anthropic_auth.mode = "oauth"`. OAuth child calls strip API credentials, and auto mode selects an available OAuth token/login before any API key.
-- **Google Gemini API**: Required for Figure validation in `pipeline/run_update_force.py`, TTS for Audio Overview, and **Deep Research embeddings** — `gemini-embedding-001` (`output_dimensionality=768`, `task_type=RETRIEVAL_DOCUMENT` for the index in `pipeline/build_search_index.py`, `RETRIEVAL_QUERY` for queries). Query embeddings are served to readers by the worker `/api/embed` route (deployed) or `pipeline/serve_local.py` (local), so readers need no key for retrieval. Key from `GOOGLE_API_KEY` env var or `config.json`. **Gotcha**: non-3072 dims come back non-normalized — L2-normalize before int8 quantization.
+- **Google Gemini API**: Required for Figure validation in `pipeline/run_update_force.py`, TTS for Audio Overview, and **Deep Research embeddings** — `gemini-embedding-001` (`output_dimensionality=768`, `task_type=RETRIEVAL_DOCUMENT` for the index in `pipeline/build_search_index.py`, `RETRIEVAL_QUERY` for queries). Query embeddings are served to readers by the worker `/api/embed` route (deployed) or `pipeline/serve_local.py` (local), so readers need no key for retrieval. Key resolution is centralized in `config_loader.get_google_key()` — env `GOOGLE_API_KEY`/`GEMINI_API_KEY`, then `config.json` `gemini_api_key`/`google_api_key`; setting `PAPER_CURATION_NO_GEMINI` makes every call site behave as if no key exists. With no key, `pipeline/build_search_index.py` refuses with exit code 5 (`EMBEDDINGS_UNAVAILABLE`: dense retrieval unavailable, search degrades to lexical-only), distinct from exit code 1 for a missing `google-genai` install. **Gotcha**: non-3072 dims come back non-normalized — L2-normalize before int8 quantization.
 - **OpenAI API (optional)**: Optional fallback/BYOK-compatible provider where supported. No longer required for the search index.
 - **Resend API (optional)**: Only for deployed Audio Overview email via wrangler secret `RESEND_API_KEY`; not required for local curation.
 - **PyMuPDF (fitz)**: PDF text extraction and figure rendering

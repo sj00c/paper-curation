@@ -14,7 +14,7 @@ description: "{description}"
 
 ## Contract
 
-Use only the repository CLI harness from the recorded checkout. Do not reproduce pipeline phases in the agent, call internal Python scripts directly, invoke agents programmatically, depend on other skills outside this managed bundle, or assume a topic, credential mode, repository owner, deployment target, or fork state.
+Use only the checkout-local Node CLI harness from the recorded checkout. Do not reproduce pipeline phases in the agent, call internal Python scripts directly, invoke agents programmatically, depend on other skills outside this managed bundle, or assume a topic, credential mode, repository owner, deployment target, or fork state.
 
 Resolve the checkout before every run:
 
@@ -38,8 +38,10 @@ The harness uses only Node.js built-ins. Python packages are pipeline runtime de
 
 {safety}
 
-Use `node ./bin/paper-curation.mjs topic` to list valid topic aliases. It reads only `config.json`, never invokes setup, and prints aliases without collection values or credentials. If no valid topic exists, run setup rather than inventing one. Never hardcode example aliases.
+Use `PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs topic` to list exact valid topic aliases. It reads only `config.json`, never invokes setup, and prints aliases without collection values or credentials. If no valid topic exists, run setup rather than inventing one. Never hardcode example aliases. For local viewing, use `PAPER_CURATION_NO_DEPLOY=1 node ./bin/paper-curation.mjs serve --topic <topic>`; it serves localhost only.
 
-Never expose `.env`, API keys, OAuth tokens, or credential-bearing command lines. For smoke, preview, repair, search/register, and ordinary local curation, keep both deploy suppressors: `PAPER_CURATION_NO_DEPLOY=1` and `--no-deploy`. Only the managed deploy skill may follow explicit deployment guidance.
+Never expose `.env`, API keys, OAuth tokens, or credential-bearing command lines. For smoke, preview, repair, search/register, and ordinary local curation, keep `PAPER_CURATION_NO_DEPLOY=1`, `PAPER_CURATION_NO_VECTOR_REBUILD=1`, and `--no-deploy`. Deployment scope preview uses only `node ./bin/paper-curation.mjs deploy --topic <topic> --dry-run`; actual deployment is unavailable and fails closed.
 
-Report only observed results: configured topic aliases; authentication mode without credential values; doctor pass, warning, and failure counts; smoke or curation output location; and whether deployment was suppressed or explicitly performed.
+Before any provider action, show the provider, model, work, maxima, and cost; obtain fresh approval scoped to that operation. `auto` is OAuth-only. An API key is used only for an explicit approved action. Do not substitute a provider automatically. When Gemini Audio is unavailable, hide and disable it, make zero calls, and keep core curation safe.
+
+Report only observed results: configured topic aliases; authentication mode without credential values; doctor pass, warning, and failure counts; smoke or curation output location; localhost serve address; and the exact deployment preview scope. Never claim a product deployment occurred.
