@@ -360,22 +360,26 @@ Output ONLY valid JSON in this exact format:
     from api._llm import cached_call, topic_cache_dir
     cache_dir = topic_cache_dir(topic)
 
-    def _make_call():
-        # 설정된 backend 하나만 쓴다. 조용한 provider 대체는 하지 않는다 —
-        # Claude 가 죽었다고 사용자가 고르지도 않은 OpenAI/Gemini 가 대신
-        # 답하면 결과의 출처를 신뢰할 수 없고, 그 API 에 과금된다.
-        # 미설정 backend 를 건너뛰는 것(부재)과 설정된 backend 의 실패를
-        # 다른 회사로 넘기는 것(대체)은 다르다. 앞은 허용, 뒤는 금지.
-        available = [b for b in _CC_BACKENDS if _cc_backend_available(b)]
-        if not available:
-            raise RuntimeError(
-                "no cross-category insights backend is configured "
-                f"(tried: {', '.join(_CC_BACKENDS) or 'none'})")
+    # 설정된 backend 하나만 쓴다. 조용한 provider 대체는 하지 않는다 —
+    # Claude 가 죽었다고 사용자가 고르지도 않은 OpenAI/Gemini 가 대신
+    # 답하면 결과의 출처를 신뢰할 수 없고, 그 API 에 과금된다.
+    # 미설정 backend 를 건너뛰는 것(부재)과 설정된 backend 의 실패를
+    # 다른 회사로 넘기는 것(대체)은 다르다. 앞은 허용, 뒤는 금지.
+    available = [b for b in _CC_BACKENDS if _cc_backend_available(b)]
+    if not available:
+        log(f"  WARNING: cross-category insights 사용 가능한 backend 없음 "
+            f"(후보: {', '.join(_CC_BACKENDS) or 'none'}) — 비활성으로 남긴다")
+        return {"cross_category": [], "per_category": {},
+                "meta": {"status": "unavailable",
+                         "reason": "no configured backend",
+                         "candidates": list(_CC_BACKENDS)}}
 
-        backend = available[0]
-        if len(available) > 1:
-            log(f"    [insights] using {backend}; "
-                f"{', '.join(available[1:])} configured but NOT used as fallback")
+    backend = available[0]
+    if len(available) > 1:
+        log(f"    [insights] using {backend}; "
+            f"{', '.join(available[1:])} configured but NOT used as fallback")
+
+    def _make_call():
         if backend == "anthropic":
             out = _cc_anthropic_call(client, prompt, insight_schema)
         elif backend == "openai":
@@ -388,18 +392,26 @@ Output ONLY valid JSON in this exact format:
         return out
 
     try:
-        return cached_call(cache_dir, prompt, "+".join(_CC_BACKENDS), _make_call,
+        # 캐시 태그는 실제로 답한 backend 로 건다. 전체 후보 목록으로 걸면
+        # 지금은 쓰지도 않는 provider 가 예전에 만든 답이 되살아나 출처가
+        # 어긋난다.
+        return cached_call(cache_dir, prompt, backend, _make_call,
                             schema_version="v1")
     except Exception as e:
-        log(f"  WARNING: insight tool-use failed: {e}")
-        return {"cross_category": [], "per_category": {}, "meta": {}}
+        # 실패는 부재와 구분되어야 한다. 다른 provider 로 넘기지 않는 대신,
+        # 왜 비었는지는 남긴다.
+        log(f"  WARNING: insight tool-use failed on {backend} "
+            f"({type(e).__name__}: {str(e)[:120]}) — 다른 provider 로 대체하지 않는다")
+        return {"cross_category": [], "per_category": {},
+                "meta": {"status": "failed", "backend": backend,
+                         "error": f"{type(e).__name__}: {str(e)[:200]}"}}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Cross-category insights backend helpers (Anthropic / OpenAI / Gemini)
 # All three return a dict matching ``insight_schema`` so the caller stays
-# provider-agnostic. Each helper raises on failure so the outer try/except
-# chain can move to the next backend.
+# provider-agnostic. Each helper raises on failure; the caller surfaces that
+# failure rather than moving to another provider.
 # ─────────────────────────────────────────────────────────────────────────────
 
 _CC_ANTHROPIC_MODEL = os.environ.get(
@@ -490,11 +502,19 @@ def _cc_gemini_call(prompt, schema):
 #
 # 이건 fallback 체인이 아니라 우선순위 목록이다. 설정된 것 중 첫 번째 하나만
 # 쓰고, 그게 실패하면 그대로 실패다. 다른 회사 모델이 몰래 대신 답하지 않는다.
+_KNOWN_CC_BACKENDS = ("anthropic", "openai", "gemini")
 _CC_BACKENDS = [b.strip().lower() for b in
                  os.environ.get("EXTRACT_INSIGHTS_CC_BACKENDS",
-                                "anthropic,openai,gemini").split(",")
+                                ",".join(_KNOWN_CC_BACKENDS)).split(",")
                  if b.strip()]
 _CC_BACKENDS = list(dict.fromkeys(_CC_BACKENDS))
+_CC_UNKNOWN_BACKENDS = [b for b in _CC_BACKENDS if b not in _KNOWN_CC_BACKENDS]
+if _CC_UNKNOWN_BACKENDS:
+    # 오타를 조용히 '미설정' 으로 흘리면 기능이 이유 없이 죽는다.
+    raise SystemExit(
+        f"EXTRACT_INSIGHTS_CC_BACKENDS 에 모르는 backend: "
+        f"{', '.join(_CC_UNKNOWN_BACKENDS)}. "
+        f"사용 가능: {', '.join(_KNOWN_CC_BACKENDS)}")
 _OPENAI_CC_MODEL = os.environ.get("EXTRACT_INSIGHTS_CC_OPENAI_MODEL", "gpt-5.5")
 _GEMINI_CC_MODEL = os.environ.get("EXTRACT_INSIGHTS_CC_GEMINI_MODEL", "gemini-3.1-pro-preview")
 
@@ -740,7 +760,8 @@ def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
         log(f"  [backend] OpenAI init failed: {str(e)[:80]}")
     client = clients["anthropic"] or clients["openai"]
     log(f"  [backend] connections: Anthropic {'OK' if clients.get('anthropic') else 'MISSING'} "
-        f"(SPECTER2 후보 → Sonnet); cross-category insights: {'/'.join(_CC_BACKENDS)}")
+        f"(SPECTER2 후보 → Sonnet); cross-category insights 우선순위: "
+        f"{', '.join(_CC_BACKENDS)} (대체 없음, 설정된 첫 번째만 사용)")
     run_insights = not connections_only
     run_connections = not insights_only
 
