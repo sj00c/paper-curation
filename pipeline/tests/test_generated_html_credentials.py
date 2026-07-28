@@ -98,9 +98,21 @@ class BrowserGateTests(unittest.TestCase):
     def test_load_time_announcement_is_wired(self):
         self.assertIn("announceDeepKeyState", self.src)
 
-    def test_run_path_uses_the_gate_not_a_bare_format_check(self):
-        """실행 경로가 keyState 를 거치지 않으면 옛 오해 메시지가 되살아난다."""
-        self.assertIn("const keyState = deepKeyState();", self.src)
+    def test_both_run_paths_consult_the_gate(self):
+        """한쪽만 배선하면 주 경로에서 옛 오해 메시지가 그대로 남는다.
+
+        실제로 처음에는 deeper 경로에만 게이트가 있었고, 그 상태에서도
+        단일 substring 검사는 통과해 거짓 안심을 줬다. 이제 두 함수 본문
+        각각에서 deepKeyState 호출을 확인한다.
+        """
+        for fn in ("runDeepResearch", "runDeeperResearch"):
+            with self.subTest(fn=fn):
+                start = self.src.find("async function %s(" % fn)
+                self.assertNotEqual(start, -1, "%s 를 찾지 못했다" % fn)
+                nxt = self.src.find("async function ", start + 1)
+                body = self.src[start:nxt if nxt != -1 else len(self.src)]
+                self.assertIn("deepKeyState()", body,
+                              "%s 가 키 상태 게이트를 거치지 않는다" % fn)
 
 
 if __name__ == "__main__":

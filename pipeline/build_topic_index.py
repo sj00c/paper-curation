@@ -2917,8 +2917,16 @@ def _run_topic_index(topic=None, cross=None):
       // 질의 임베딩은 이제 같은 출처 /api/embed 프록시가 처리하므로 별도
       // OpenAI 임베딩 키를 더 받지 않는다. 답변 생성/재정렬용 LLM 키 하나면 된다.
       if (!_LLM_KEY) {
-        const lk = prompt('답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza… 중 하나):');
-        if (!lk) { deepSetStatus('API Key가 필요합니다.', true); return; }
+        // 왜 구운 키가 없는지부터 말한다. 구독(OAuth)으로 도는 서버는 페이지에
+        // 자격증명을 넣지 않으므로, 여기서 BYOK 키를 받는 게 정상 흐름이다.
+        const _st = deepKeyState();
+        if (!_st.ok) deepSetStatus(_st.message, true);
+        const lk = prompt('답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza… 중 하나).\n\n' +
+                          '이 기능은 BYOK 입니다. 서버가 Claude 구독(OAuth)으로 도는 경우 페이지에 구워진 키가 없는 것이 정상이며, 구독 자격증명은 보안상 페이지에 포함되지 않습니다.');
+        if (!lk) {
+          deepSetStatus(deepKeyState().message || 'API Key가 필요합니다.', true);
+          return;
+        }
         const _b = detectBackend(lk);
         if (!_b) { deepSetStatus('알 수 없는 키 형식입니다 (Anthropic은 sk-ant-, OpenAI는 sk-, Google은 AIza 로 시작).', true); return; }
         _LLM_KEY = lk;
