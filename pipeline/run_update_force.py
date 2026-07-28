@@ -2808,15 +2808,37 @@ def main():
             "refresh_retrieval_eval_snapshot",
         }
 
+        # 선택 기능이 "연결 안 됨" 으로 스스로 물러난 경우는 치명 실패가 아니다.
+        # 예: Gemini 키가 없으면 build_search_index 가 dense 임베딩을 포기하고
+        # EXIT_EMBEDDINGS_UNAVAILABLE(5) 로 끝낸다 — 검색은 lexical 전용으로
+        # 남을 뿐이고, 이걸로 오케스트레이션 전체를 죽이면 "없는 기능만 죽는다"
+        # 가 아니라 "없으면 전부 죽는다" 가 된다.
+        OPTIONAL_ABSENT_EXITS = {
+            "build_search_index": {5},
+            "build_cross_index": {5},
+        }
+
         def run_step(step_name, cmd, step_timeout=600):
             log(f"  [{step_name}] ...")
             is_critical = step_name in CRITICAL_STEPS
+            optional_absent = OPTIONAL_ABSENT_EXITS.get(step_name, frozenset())
             try:
                 result = subprocess.run(
                     cmd, cwd=str(PIPELINE_DIR.parent),
                     capture_output=True, text=True, timeout=step_timeout,
                     env={**os.environ, "PYTHONUTF8": "1"},
                 )
+                if result.returncode in optional_absent:
+                    # 실패가 아니라 "그 선택 기능이 연결 안 됨". 마지막 줄에
+                    # 이유가 찍히므로 그대로 남기고 계속 진행한다.
+                    reason = ""
+                    for line in reversed((result.stdout or "").splitlines()):
+                        if line.strip():
+                            reason = line.strip()[:160]
+                            break
+                    log(f"  [{step_name}] SKIPPED — 선택 기능 미연결 "
+                        f"(exit {result.returncode}){': ' + reason if reason else ''}")
+                    return
                 if result.returncode != 0:
                     severity = "ABORT" if is_critical else "FAILED"
                     log(f"  [{step_name}] {severity} (exit {result.returncode})")

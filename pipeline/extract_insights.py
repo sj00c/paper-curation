@@ -472,10 +472,11 @@ def _cc_gemini_call(prompt, schema):
         from google.genai import types as gtypes
     except ImportError as e:
         raise RuntimeError(f"google-genai SDK missing: {e}")
-    api_key = (os.environ.get("GEMINI_API_KEY")
-               or os.environ.get("GOOGLE_API_KEY")
-               or load_config().get("gemini_api_key", "")
-               or load_config().get("google_api_key", ""))
+    # 공용 해석기 하나만 쓴다. 같은 모듈의 가용성 판정(_cc_backend_available)이
+    # get_google_key() 를 쓰는데 여기서 자체 체인을 돌리면 한 모듈 안에서
+    # 답이 갈리고 off 스위치도 무시된다.
+    from config_loader import get_google_key
+    api_key = get_google_key()
     if not api_key:
         raise RuntimeError("no Gemini API key (GEMINI_API_KEY/GOOGLE_API_KEY env or config)")
     gem = genai.Client(api_key=api_key)

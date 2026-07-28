@@ -317,9 +317,13 @@ def _audio_blocks(enabled: bool) -> tuple[str, str, str]:
         from lib.citedby.deep_panel import AUDIO_PROVIDER_JS
     except Exception:  # noqa: BLE001 — 오디오는 부가 기능
         return "", "", ""
-    import os
-    key = (os.environ.get("GOOGLE_API_KEY")
-           or os.environ.get("GEMINI_API_KEY") or "")
+    # 공용 해석기 하나만 쓴다 (PAPER_CURATION_NO_GEMINI off 스위치 포함).
+    # 키가 없으면 오디오 버튼은 비활성으로 남고 다른 provider 로 대체하지 않는다.
+    try:
+        from config_loader import get_google_key
+        key = get_google_key()
+    except Exception:  # noqa: BLE001 — 키 조회 실패는 '미설정' 으로 본다
+        key = ""
     css = get_audio_css("#D63423", "#a82a1c", "#fdecea")
     modal = audio_modal_html(
         "선택한 citedby 리포트 또는 Deep Research 답변을 팟캐스트형 오디오로 "

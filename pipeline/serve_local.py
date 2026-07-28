@@ -82,16 +82,18 @@ def resolve_google_key():
     if _GOOGLE_KEY_CACHE:
         return _GOOGLE_KEY_CACHE
 
-    key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY") or ""
+    # 공용 해석기가 env → config.json 을 담당한다. 여기서 직접 읽으면
+    # PAPER_CURATION_NO_GEMINI off 스위치가 이 경로에서만 무시된다.
+    key = ""
+    try:
+        from config_loader import get_google_key
+        key = get_google_key() or ""
+    except Exception:
+        key = ""
 
-    if not key and load_config is not None:
-        try:
-            cfg = load_config() or {}
-            key = cfg.get("gemini_api_key") or cfg.get("google_api_key") or ""
-        except Exception:
-            key = ""
-
-    if not key:
+    # docs/_local_keys.json 은 로컬 서버 전용 보조 경로다. off 스위치가
+    # 켜져 있으면 여기서도 되살리지 않는다.
+    if not key and not os.environ.get("PAPER_CURATION_NO_GEMINI"):
         local_keys = DOCS_DIR / "_local_keys.json"
         if local_keys.exists():
             try:
