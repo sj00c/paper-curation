@@ -1756,7 +1756,9 @@ def _run_topic_index(topic=None, cross=None):
       const k = String(key).trim();
       if (k.startsWith('sk-ant-')) return 'anthropic';
       if (k.startsWith('sk-')) return 'openai';
-      if (k.startsWith('AIza')) return 'google';
+      // Google 은 형식이 둘이다: 구형 `AIza…` 와 AI Studio 신형 `AQ.…`.
+      // `AIza` 만 보면 지금 발급되는 키를 "알 수 없는 형식" 으로 거절한다.
+      if (k.startsWith('AIza') || k.startsWith('AQ.')) return 'google';
       return '';
     }
 
@@ -1769,13 +1771,13 @@ def _run_topic_index(topic=None, cross=None):
       if (!key) {
         return { ok: false, reason: 'no-key',
                  message: 'Deep Research 비활성 — 브라우저에 저장된 API 키가 없습니다. ' +
-                          '이 기능은 BYOK 로 동작합니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza). ' +
+                          '이 기능은 BYOK 로 동작합니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza…/AQ.…). ' +
                           '서버가 Claude 구독(OAuth)으로 도는 경우 구울 키가 없는 것이 정상이며, ' +
                           '구독 자격증명은 보안상 페이지에 포함되지 않습니다.' };
       }
       if (!detectBackend(key)) {
         return { ok: false, reason: 'bad-format',
-                 message: '알 수 없는 API key 형식입니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza).' };
+                 message: '알 수 없는 API key 형식입니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza…/AQ.…).' };
       }
       return { ok: true, reason: '', message: '' };
     }
@@ -2038,7 +2040,7 @@ def _run_topic_index(topic=None, cross=None):
       const apiKey = _LLM_KEY || _ANTHROPIC_KEY;
       if (!apiKey) throw new Error('API key missing — Deep Research \uD328\uB110\uC5D0\uC11C \uD0A4\uB97C \uC785\uB825\uD558\uC138\uC694 (Anthropic / OpenAI / Google \uC911 \uD558\uB098).');
       const backend = detectBackend(apiKey);
-      if (!backend) throw new Error('\uC54C \uC218 \uC5C6\uB294 API key \uD615\uC2DD\uC785\uB2C8\uB2E4 (Anthropic\uC740 sk-ant-, OpenAI\uB294 sk-, Google\uC740 AIza \uB85C \uC2DC\uC791).');
+      if (!backend) throw new Error('\uC54C \uC218 \uC5C6\uB294 API key \uD615\uC2DD\uC785\uB2C8\uB2E4 (Anthropic\uC740 sk-ant-, OpenAI\uB294 sk-, Google\uC740 AIza \uB610\uB294 AQ. \uB85C \uC2DC\uC791).');
       const model = resolveModel(backend, tier);
       const spec = LENGTH_SPEC[length] || LENGTH_SPEC.short;
       const p = buildPrompt(query, selected, lang, fullTexts, deeper);
@@ -2282,11 +2284,11 @@ def _run_topic_index(topic=None, cross=None):
         localStorage.removeItem('_LLM_KEY');
         localStorage.removeItem('_ANTHROPIC_KEY');
       } catch (e) {}
-      const nk = prompt('API Key Invalid. Try with another one.\\n\\n답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza… 중 하나):');
+      const nk = prompt('API Key Invalid. Try with another one.\\n\\n답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza…/AQ.… 중 하나):');
       if (!nk) return null;
       const b = detectBackend(nk);
       if (!b) {
-        deepSetStatus('알 수 없는 키 형식입니다 (sk-ant- / sk- / AIza 중 하나로 시작).', true);
+        deepSetStatus('알 수 없는 키 형식입니다 (sk-ant- / sk- / AIza·AQ. 중 하나로 시작).', true);
         return null;
       }
       _LLM_KEY = nk;
@@ -2921,14 +2923,14 @@ def _run_topic_index(topic=None, cross=None):
         // 자격증명을 넣지 않으므로, 여기서 BYOK 키를 받는 게 정상 흐름이다.
         const _st = deepKeyState();
         if (!_st.ok) deepSetStatus(_st.message, true);
-        const lk = prompt('답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza… 중 하나).\n\n' +
+        const lk = prompt('답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza…/AQ.… 중 하나).\\n\\n' +
                           '이 기능은 BYOK 입니다. 서버가 Claude 구독(OAuth)으로 도는 경우 페이지에 구워진 키가 없는 것이 정상이며, 구독 자격증명은 보안상 페이지에 포함되지 않습니다.');
         if (!lk) {
           deepSetStatus(deepKeyState().message || 'API Key가 필요합니다.', true);
           return;
         }
         const _b = detectBackend(lk);
-        if (!_b) { deepSetStatus('알 수 없는 키 형식입니다 (Anthropic은 sk-ant-, OpenAI는 sk-, Google은 AIza 로 시작).', true); return; }
+        if (!_b) { deepSetStatus('알 수 없는 키 형식입니다 (Anthropic은 sk-ant-, OpenAI는 sk-, Google은 AIza 또는 AQ. 로 시작).', true); return; }
         _LLM_KEY = lk;
         localStorage.setItem('_LLM_KEY', lk);
         if (_b === 'anthropic') {
