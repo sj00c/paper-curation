@@ -45,10 +45,34 @@ def _strip_metadata_leaks(text: str) -> str:
 
 
 def load_triggers(path=None):
-    """Load trigger categories and flat list."""
+    """Load trigger categories and flat list.
+
+    파일이 없거나 깨져 있으면 **빈 트리거 집합**으로 시작한다. 이건 관용이
+    아니라 이 모듈의 설계 그대로다 — 모듈 docstring 이 말하는 self-learning
+    구조에서 `_update_triggers()` 는 `rule_base_learned` 카테고리를 없으면
+    만들고 `_path` 에 새로 써 넣는다. 즉 **쓰는 쪽은 빈 상태에서 출발할 수
+    있는데 읽는 쪽만 못 했다.**
+
+    이 비대칭의 대가가 컸다: `originality_triggers.json` 은 화이트리스트
+    `.gitignore` (`!pipeline/lib/*.py` 만 있고 `*.json` 은 없다) 때문에 한
+    번도 추적된 적이 없어서, 새로 clone 하면 파일이 아예 없다. 그 상태에서
+    `load_triggers()` 가 FileNotFoundError 로 죽어 citedby 의 originality
+    추출 경로가 통째로 터졌다. 규칙 히트가 0건인 것과 파일이 없는 것은
+    둘 다 "LLM fallback 으로 간다" 여야 한다.
+    """
     path = path or TRIGGERS_PATH
-    with open(path, encoding="utf-8") as f:
-        data = json.load(f)
+    data = {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        pass
+    except (OSError, json.JSONDecodeError):
+        # 손상된 학습 파일이 파이프라인을 죽이면 안 된다. 빈 집합으로 진행하고
+        # 다음 _update_triggers() 가 정상 파일로 덮어쓴다.
+        pass
+    if not isinstance(data, dict):
+        data = {}
     categories = {k: v for k, v in data.items() if k.startswith("rule_base_")}
     all_triggers = []
     for words in categories.values():

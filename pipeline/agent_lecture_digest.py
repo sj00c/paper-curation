@@ -38,7 +38,11 @@ from generate_audio import (  # noqa: E402
 )
 from google import genai  # noqa: E402
 from google.genai import types  # noqa: E402
-import lameenc  # noqa: E402
+# lameenc(MP3 인코더)는 아래 한 곳에서만 쓴다. 최상단에서 import 하면 이
+# 모듈의 순수 텍스트 헬퍼(`md_to_html`)를 빌려 쓰는 쪽까지 MP3 인코더를
+# 요구하게 된다. 실제로 citedby 리포트가 그 때문에 타임라인 narrative 의
+# 마크다운을 렌더하지 못하고 `##`·`**` 를 글자 그대로 노출했다.
+# 사용 지점에서 늦게 부른다.
 import usage_log  # noqa: E402
 
 PAPERS = Path(PAPERS_DIR)
@@ -319,6 +323,7 @@ def make_audio(report_text, evidence, client, minutes=40, prior=""):
             parts[futs[fut]] = fut.result(); done += 1
             print(f"      [{done}/{len(chunks)}]", flush=True)
     pcm = concat_pcm([p for p in parts if p])
+    import lameenc  # 지연 import — 최상단 참조 시 md_to_html 이용자까지 막힌다
     enc = lameenc.Encoder(); enc.set_bit_rate(64); enc.set_in_sample_rate(SAMPLE_RATE); enc.set_channels(1); enc.set_quality(2)
     mp3 = enc.encode(pcm) + enc.flush()
     return mp3, script, len(pcm) / 2 / SAMPLE_RATE / 60
