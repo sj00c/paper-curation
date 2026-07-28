@@ -443,11 +443,11 @@ def check_api_keys(rep, cfg):
     # 선택
     found, src = _resolve_key(cfg, ["OPENAI_API_KEY"], ["openai_api_key"])
     if found:
-        rep.ok("OPENAI_API_KEY", f"설정됨 ({src}) — reader BYOK 답변 / insights fallback")
+        rep.ok("OPENAI_API_KEY", f"설정됨 ({src}) — reader BYOK 답변 (다른 provider 를 대체하지 않음)")
     else:
         rep.warn(
             "OPENAI_API_KEY 미설정 (선택)",
-            "reader BYOK 답변 백엔드 / insights cross-category fallback 에만 사용",
+            "reader BYOK 답변 백엔드로만 선택적으로 사용 (cross-category insights 는 대체하지 않음)",
         )
     found, src = _resolve_key(cfg, ["RESEND_API_KEY"], ["resend_api_key"])
     if found:

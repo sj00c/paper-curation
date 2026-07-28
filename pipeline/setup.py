@@ -465,10 +465,10 @@ def step_env_check(cfg, anthropic_auth_mode="auto"):
     openai_key = (os.environ.get("OPENAI_API_KEY", "").strip()
                   or cfg.get("openai_api_key", "").strip())
     if openai_key:
-        print("  ✓ OPENAI_API_KEY 설정됨 (선택) — reader BYOK 답변 백엔드 / insights fallback")
+        print("  ✓ OPENAI_API_KEY 설정됨 (선택) — reader BYOK 답변 백엔드 (다른 provider 를 대체하지 않음)")
     else:
         print("  · OPENAI_API_KEY 미설정 (선택) — Deep Research 임베딩은 Gemini 로 이동했습니다.")
-        print("    reader BYOK 답변 백엔드 / insights fallback 으로만 선택적으로 유용합니다.")
+        print("    reader BYOK 답변 백엔드로만 선택적으로 유용합니다 (다른 provider 를 대체하지 않음).")
 
 
 def step_zotero_test(cfg):

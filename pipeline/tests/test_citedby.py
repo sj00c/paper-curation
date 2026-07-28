@@ -2430,19 +2430,55 @@ class ServerSideKeyTests(unittest.TestCase):
         self.assertEqual(seen["system"], TF.TEXT_SYSTEM)
         self.assertNotEqual(seen["system"], TF._JSON_SYSTEM)
 
-    def test_llm_text_cascades_on_failure(self):
+    def test_llm_text_does_not_substitute_another_provider(self):
+        """첫 provider 가 죽어도 다른 회사 모델이 대신 답하지 않는다.
+
+        예전에는 이 테스트가 정반대(cascade 성공)를 단언해서, 그린 스위트가
+        정작 없애야 할 결함을 잠그고 있었다.
+        """
         from lib.citedby import topic_filter as TF
 
+        called = []
+
         def boom(*a, **k):
+            called.append("anthropic")
             raise RuntimeError("down")
 
-        with patch.dict(TF._CALLERS, {"anthropic": boom,
-                                      "google": lambda *a, **k: "구글 답변"}), \
+        def google(*a, **k):
+            called.append("google")
+            return "구글 답변"
+
+        with patch.dict(TF._CALLERS, {"anthropic": boom, "google": google}), \
              patch.object(TF, "resolve_keys",
                           return_value={"anthropic": "A", "google": "G"}):
             ans, prov, _ = TF.llm_text("q")
-        self.assertEqual(ans, "구글 답변")
-        self.assertEqual(prov, "google")
+        self.assertEqual(ans, "")
+        self.assertEqual(prov, "")
+        self.assertEqual(called, ["anthropic"],
+                         "설정된 provider 가 실패했는데 다른 vendor 가 호출됐다")
+
+    def test_llm_text_stream_does_not_substitute_another_provider(self):
+        """독자에게 보이는 답변 경로도 대체하지 않는다."""
+        from lib.citedby import topic_filter as TF
+
+        called = []
+
+        def boom(*a, **k):
+            called.append("anthropic")
+            raise RuntimeError("down")
+
+        def google(key, model, prompt, max_tokens, emit, web_search, on_event):
+            called.append("google")
+            emit("구글 스트림")
+            return "구글 스트림", False
+
+        with patch.dict(TF._STREAM_CALLERS, {"anthropic": boom, "google": google}), \
+             patch.object(TF, "resolve_keys",
+                          return_value={"anthropic": "A", "google": "G"}):
+            ans, prov, _ = TF.llm_text_stream("q", lambda _t: None)
+        self.assertEqual(ans, "")
+        self.assertEqual(prov, "")
+        self.assertEqual(called, ["anthropic"])
 
     def test_llm_text_empty_when_no_keys(self):
         from lib.citedby import topic_filter as TF

@@ -460,19 +460,26 @@ def llm_text(prompt: str, *, max_tokens: int = 8000,
         (answer, provider, model) — 전부 실패하면 ("", "", "").
     """
     keys = resolve_keys() if keys is None else keys
-    for provider, model in list(models or ANSWER_MODELS):
-        key = keys.get(provider)
-        caller = _CALLERS.get(provider)
-        if not key or caller is None:
-            continue
-        try:
-            text = caller(key, model, prompt, max_tokens, TEXT_SYSTEM)
-        except Exception as e:  # noqa: BLE001 — 다음 provider 로
-            logger.warning("답변 생성 실패 (%s/%s): %s",
-                           provider, model, str(e)[:140])
-            continue
-        if text and text.strip():
-            return text, provider, model
+    # 설정된 첫 provider 하나만 쓴다. 실패해도 다른 회사 모델로 갈아타지 않는다 —
+    # 사용자가 고르지 않은 vendor 가 대신 답하면 출처를 신뢰할 수 없고 그 API 에
+    # 과금된다. 미설정 provider 를 건너뛰는 것(부재)은 허용된다.
+    candidates = [(p, m) for p, m in list(models or ANSWER_MODELS)
+                  if keys.get(p) and _CALLERS.get(p) is not None]
+    if not candidates:
+        logger.warning("답변 생성: 설정된 provider 가 없다")
+        return "", "", ""
+
+    provider, model = candidates[0]
+    try:
+        text = _CALLERS[provider](keys[provider], model, prompt, max_tokens,
+                                  TEXT_SYSTEM)
+    except Exception as e:  # noqa: BLE001 — 대체하지 않고 실패를 알린다
+        logger.warning("답변 생성 실패 (%s/%s): %s — 다른 provider 로 대체하지 않는다",
+                       provider, model, str(e)[:140])
+        return "", "", ""
+    if text and text.strip():
+        return text, provider, model
+    logger.warning("답변 생성 결과가 비었다 (%s/%s) — 대체하지 않는다", provider, model)
     return "", "", ""
 _STREAM_SYSTEM = (
     "You are a careful research assistant. Write a complete, self-contained "
@@ -655,17 +662,23 @@ def llm_text_stream(prompt: str, on_delta, *, max_tokens: int = 16000,
                     models=None, on_event=None) -> tuple[str, str, str]:
     """Stream a complete answer, continuing once when a provider hits its cap.
 
-    Provider fallback is safe only before any text reaches the browser. Once a
-    stream has emitted text, switching providers would duplicate or contradict
-    the visible answer, so a mid-stream failure is surfaced to the caller.
+    설정된 첫 provider 하나만 쓴다. 실패해도 다른 회사 모델로 갈아타지 않는다.
+    이건 독자에게 보이는 답변 경로라 대체가 특히 위험하다 — 사용자가 고르지도
+    않은 vendor 가 답을 쓰고 그 API 에 과금되는데, 화면상으로는 구분되지 않는다.
+    미설정 provider 를 건너뛰는 것(부재)만 허용한다.
     """
     on_event = on_event or (lambda event, payload: None)
     keys = resolve_keys() if keys is None else keys
-    for provider, model in list(models or ANSWER_MODELS):
-        key = keys.get(provider)
-        caller = _STREAM_CALLERS.get(provider)
-        if not key or caller is None or (web_search and provider == "openai"):
-            continue
+    candidates = [(p, m) for p, m in list(models or ANSWER_MODELS)
+                  if keys.get(p) and _STREAM_CALLERS.get(p) is not None
+                  and not (web_search and p == "openai")]
+    if not candidates:
+        logger.warning("스트리밍 답변 생성: 설정된 provider 가 없다")
+        return "", "", ""
+
+    for provider, model in candidates[:1]:
+        key = keys[provider]
+        caller = _STREAM_CALLERS[provider]
         emitted = []
         emit = lambda text: (emitted.append(text), on_delta(text))
         try:
@@ -684,12 +697,13 @@ def llm_text_stream(prompt: str, on_delta, *, max_tokens: int = 16000,
                 if truncated_again:
                     raise RuntimeError(
                         f"{provider} response remained truncated after continuation")
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:  # noqa: BLE001 — 대체하지 않고 실패를 알린다
             if emitted:
                 raise
-            logger.warning("스트리밍 답변 생성 실패 (%s/%s): %s",
+            logger.warning("스트리밍 답변 생성 실패 (%s/%s): %s — "
+                           "다른 provider 로 대체하지 않는다",
                            provider, model, str(e)[:180])
-            continue
+            return "", "", ""
         if text.strip():
             return text, provider, model
     return "", "", ""

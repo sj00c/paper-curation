@@ -106,9 +106,13 @@ def synthesize_summary(course, led, evidence):
         "- **최소 14,000자 이상**. 메타·머리말 없이 곧바로 정리편 본문으로 시작.\n\n"
         f"=== 근거 (11강 커리큘럼 코퍼스 + 이미 발송한 강의노트) ===\n{evidence}"
     )
-    errs = []
-    # 1) Gemini gemini-3.1-pro — 원 시리즈(1~11강) 저자 모델
-    try:
+    # 합성 backend 는 설정된 것 하나만 쓴다. 실패해도 다른 회사 모델로 갈아타지
+    # 않는다 — 사용자가 고르지 않은 vendor 가 대신 쓰고 그 API 에 과금된다.
+    # 미설정 backend 를 건너뛰는 것(부재)만 허용한다.
+    from anthropic_auth import auth_status, create_anthropic_client
+
+    if get_google_key():
+        # 1) Gemini gemini-3.1-pro — 원 시리즈(1~11강) 저자 모델
         client = genai.Client(api_key=get_google_key())
         cfg = types.GenerateContentConfig(temperature=0.55, max_output_tokens=40000)
         resp = client.models.generate_content(model=ald.REPORT_MODEL, contents=prompt, config=cfg)
@@ -117,32 +121,29 @@ def synthesize_summary(course, led, evidence):
         except Exception:
             pass
         txt = (resp.text or "").strip()
-        if len(txt) >= 3000:
-            return txt, ald.REPORT_MODEL
-        errs.append(("gemini", f"과소 응답 {len(txt)}자"))
-    except Exception as e:
-        errs.append(("gemini", str(e)[:140]))
+        if len(txt) < 3000:
+            raise RuntimeError(
+                f"Gemini 합성 과소 응답 {len(txt)}자 — 다른 provider 로 대체하지 않는다")
+        return txt, ald.REPORT_MODEL
 
-    # 2) Anthropic claude-sonnet-5 — 파이프라인 기본 합성 모델 (Gemini 쿼터 소진 시 fallback)
-    # OAuth 구독 모드에서는 ANTHROPIC_API_KEY 가 없는 것이 정상이므로 env 유무로
-    # 게이트하면 구독 사용자가 Claude 를 못 쓴다. 인증 준비 여부로 판단한다.
-    from anthropic_auth import auth_status, create_anthropic_client
     if auth_status().ready:
-        try:
-            ac = create_anthropic_client(timeout=600.0, max_retries=4)
-            out = []
-            with ac.messages.stream(model="claude-sonnet-5", max_tokens=32000,
-                                    messages=[{"role": "user", "content": prompt}]) as stream:
-                for chunk in stream.text_stream:
-                    out.append(chunk)
-            txt = "".join(out).strip()
-            if len(txt) >= 3000:
-                return txt, "claude-sonnet-5"
-            errs.append(("claude", f"과소 응답 {len(txt)}자"))
-        except Exception as e:
-            errs.append(("claude", str(e)[:140]))
+        # 2) Anthropic claude-sonnet-5 — Gemini 가 아예 미설정일 때의 선택지이지
+        #    Gemini 실패 시의 대체가 아니다.
+        ac = create_anthropic_client(timeout=600.0, max_retries=4)
+        out = []
+        with ac.messages.stream(model="claude-sonnet-5", max_tokens=32000,
+                                messages=[{"role": "user", "content": prompt}]) as stream:
+            for chunk in stream.text_stream:
+                out.append(chunk)
+        txt = "".join(out).strip()
+        if len(txt) < 3000:
+            raise RuntimeError(
+                f"Claude 합성 과소 응답 {len(txt)}자 — 다른 provider 로 대체하지 않는다")
+        return txt, "claude-sonnet-5"
 
-    raise RuntimeError("모든 합성 백엔드 실패: " + " | ".join(f"{p}:{m}" for p, m in errs))
+    raise RuntimeError(
+        "합성 backend 가 설정되지 않았다 (Gemini 키 또는 Claude 인증 필요) — "
+        "다른 provider 로 대체하지 않는다")
 
 
 # ── 그림: 강별 대표 논문 1편씩(있는 것만) → figure interleave 용 core ──────────
@@ -385,7 +386,7 @@ def main():
         print("  1) 근거 수집 (11강 전체 코퍼스 + 강의노트)")
         evidence = summary_evidence(led)
         print(f"     근거 {len(evidence):,}자")
-        print("  2) Deeper Research 정리편 합성 (Gemini → Claude Sonnet fallback)")
+        print("  2) Deeper Research 정리편 합성 (설정된 backend 1개만 사용, 대체 없음)")
         report, used_model = synthesize_summary(course, led, evidence)
         OUT_MD.write_text(report, encoding="utf-8")
         print(f"     리포트 {len(report):,}자 (모델: {used_model}) → {OUT_MD}")
