@@ -23,12 +23,29 @@ import sys
 import threading
 from collections.abc import Iterable
 
+# 이 훅은 **자기완결적이어야 한다.** `.git/hooks/pre-push` 가 부르는 유일한
+# 파일이고, `scripts/` 만 떼어 배치되는 경우가 실제로 있다 (테스트 픽스처가
+# 바로 그 형태다). 따라서 `pipeline/` 을 import 하지 않는다 — import 하면
+# 훅이 ModuleNotFoundError 로 죽고, 그건 fail-closed 처럼 보이지만 실제로는
+# "훅이 고장 났으니 끄자" 로 이어진다.
+#
+# 대신 표를 복제하되 **표류는 테스트로 막는다**:
+# `pipeline/tests/test_deploy_secret_surface.py` 가 이 표와
+# `pipeline/lib/secret_patterns.PATTERNS` 의 동일성을 강제한다. 한쪽만
+# 고치면 CI 가 깨진다.
 ZERO_RE = re.compile(r"^0+$")
 RAW_PATTERNS = (
-    ("Anthropic/OpenAI", re.compile(rb"sk-(?:ant|proj)-[A-Za-z0-9_-]{20,}")),
+    # sk-ant-api03-… (API key) / sk-ant-oat01-… (구독 OAuth 토큰)
+    ("Anthropic key or OAuth token", re.compile(rb"sk-ant-[A-Za-z0-9_-]{20,}")),
+    ("OpenAI project key", re.compile(rb"sk-proj-[A-Za-z0-9_-]{20,}")),
+    # 레거시 OpenAI: sk- + 48 alnum. 예전 표는 이걸 통째로 놓쳤다.
+    ("OpenAI legacy key", re.compile(rb"sk-[A-Za-z0-9]{48}")),
+    ("Google API key", re.compile(rb"AIza[0-9A-Za-z_-]{35}")),
+    # Google AI Studio 신형 키. 배포 감사에서 실제로 잡힌 형식이다.
+    ("Google API key (AQ)", re.compile(rb"AQ\.[A-Za-z0-9_-]{20,}")),
+    ("Google OAuth token", re.compile(rb"ya29\.[A-Za-z0-9_-]{20,}")),
     ("AWS access key", re.compile(rb"AKIA[0-9A-Z]{16}")),
     ("GitHub token", re.compile(rb"gh[pousr]_[A-Za-z0-9]{20,}")),
-    ("Google API key", re.compile(rb"AIza[0-9A-Za-z_-]{35}")),
 )
 BASE64_TOKEN = re.compile(rb"(?<![A-Za-z0-9+/=])[A-Za-z0-9+/]{24,}={0,2}(?![A-Za-z0-9+/=])")
 WHITESPACE = re.compile(rb"\s+")

@@ -45,6 +45,86 @@ from pathlib import Path
 from config_loader import get_github_branch, PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, PROJECT_ROOT, get_topic_dir, load_config
 PAPERS_DIR = str(_PAPERS_DIR)
 REPO = str(PROJECT_ROOT)
+from lib.secret_patterns import (
+    find_local_emails,
+    find_secrets,
+    redact,
+    reinject_key_slot,
+    strip_key_slots,
+    strip_local_emails,
+)
+
+# 배포되는 텍스트 자산 확장자. wrangler 는 `docs/` 아래를 통째로 올리므로
+# leak 검사는 index.html 만이 아니라 이 전부를 봐야 한다.
+_SCANNED_SUFFIXES = frozenset({".html", ".json", ".js", ".xml", ".txt", ".md"})
+
+
+def _assetsignore_rules(docs_dir):
+    """`docs/.assetsignore` 를 읽어 (패턴, 디렉터리여부) 목록으로."""
+    path = Path(docs_dir) / ".assetsignore"
+    rules = []
+    if not path.exists():
+        return rules
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        rules.append((line.rstrip("/"), line.endswith("/")))
+    return rules
+
+
+def _segments_match(path_parts, pattern_parts):
+    """세그먼트 단위 glob. `fnmatch` 를 통짜 경로에 쓰면 `*` 가 `/` 를 넘어
+    `papers/*/citedby` 가 `papers/a/b/citedby` 까지 먹는다 — 검사 범위를
+    넓히는 게 아니라 **좁히는** 방향의 오류라 위험하다."""
+    import fnmatch
+    if len(path_parts) != len(pattern_parts):
+        return False
+    return all(fnmatch.fnmatch(a, b) for a, b in zip(path_parts, pattern_parts))
+
+
+def _is_ignored(rel_posix, rules):
+    """wrangler 가 이 상대경로를 업로드에서 뺐는지.
+
+    파일 자신뿐 아니라 모든 상위 경로를 대조한다. `papers/*/citedby/` 같은
+    디렉터리 규칙은 그 아래 전부를 제외하기 때문이다.
+    """
+    parts = rel_posix.split("/")
+    prefixes = [parts[:i] for i in range(1, len(parts) + 1)]
+    for pattern, _dir_only in rules:
+        if pattern.startswith("**/"):
+            tail = pattern[3:].split("/")
+            if any(_segments_match(p[-len(tail):], tail) for p in prefixes
+                   if len(p) >= len(tail)):
+                return True
+            continue
+        pat_parts = pattern.split("/")
+        if any(_segments_match(p, pat_parts) for p in prefixes):
+            return True
+    return False
+
+
+def _scannable_files(docs_dir):
+    """**wrangler 가 실제로 올리는** 텍스트 파일 전부.
+
+    `.assetsignore` 를 존중하는 이유는 편의가 아니라 정확성이다. 업로드되지
+    않는 로컬 캐시(`_local_keys.json` 은 이름 그대로 키를 담는다)에서 오탐이
+    나면 배포가 영구 abort 되고, 그럼 운영자가 안전망을 꺼 버린다. wrangler
+    와 **같은 파일**을 읽으므로 검사 범위와 업로드 범위가 어긋날 수 없다.
+
+    strip 은 이 필터와 무관하게 모든 .html 에 걸린다 — 지운 뒤 복원하므로
+    로컬에 손해가 없고, 범위를 좁히다 실수할 이유가 없다.
+    """
+    docs_dir = Path(docs_dir)
+    rules = _assetsignore_rules(docs_dir)
+    out = []
+    for p in docs_dir.rglob("*"):
+        if not p.is_file() or p.suffix.lower() not in _SCANNED_SUFFIXES:
+            continue
+        if _is_ignored(p.relative_to(docs_dir).as_posix(), rules):
+            continue
+        out.append(p)
+    return sorted(out)
 
 
 def ensure_gitignore():
@@ -458,21 +538,23 @@ def _reinject_local_keys(docs_dir=None, *, verbose=True):
     emails = [e.strip() for e in raw_emails.split(",") if e.strip()]
     emails_js = "[" + ", ".join(json.dumps(e) for e in emails) + "]"
 
+    # 슬롯→값 매핑. 이 dict 와 strip 이 같은 `KEY_SLOTS` 표를 공유하므로
+    # 한쪽만 바뀌어 서로 어긋날 수 없다. `_LLM_KEY` 는 페이지에서
+    # `localStorage || _ANTHROPIC_KEY` 로 유도되므로 굽지 않는다.
+    slot_values = {
+        "_GEMINI_KEY": gemini,
+        "_ANTHROPIC_KEY": anthropic,
+        "_OPENAI_KEY": openai,
+    }
     n = 0
-    for html_path in docs_dir.rglob("index.html"):
+    for html_path in docs_dir.rglob("*.html"):
         try:
             text = html_path.read_text(encoding="utf-8")
         except OSError:
             continue
         new = text
-        if gemini:
-            new = new.replace('_GEMINI_KEY = ""', '_GEMINI_KEY = ' + json.dumps(gemini))
-        if anthropic:
-            new = re.sub(r'((?:const|let|var)\s+_ANTHROPIC_KEY\s*=\s*)""',
-                         lambda m: m.group(1) + json.dumps(anthropic), new)
-        if openai:
-            new = re.sub(r'((?:const|let|var)\s+_OPENAI_KEY\s*=\s*)""',
-                         lambda m: m.group(1) + json.dumps(openai), new)
+        for slot, value in slot_values.items():
+            new, _ = reinject_key_slot(new, slot, value)
         if emails:
             new = new.replace('window._LOCAL_EMAILS = []', 'window._LOCAL_EMAILS = ' + emails_js)
         if new != text:
@@ -662,44 +744,25 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
     # Step 5.9: 배포 사본만 PUBLIC 모드로 재렌더(라이선스 게이팅). 로컬 full 은 finally 에서 복원.
     _full_snaps = _render_public_copies(topics) if push else {}
 
-    # Step 6: Strip API keys from HTML for deploy (local working tree restored after commit)
-    print("\nStep 6: Stripping API keys from deployed HTML (local keys preserved)...")
-    import re as _re
+    # Step 6: Strip credentials from every deployed HTML (local tree restored after commit).
+    #
+    # Strip 은 **슬롯 이름** 으로 한다 (lib/secret_patterns). 예전 구현은 값이
+    # `sk-`/`AIza` 로 시작할 때만 지웠는데, 그건 fail-open 이다 — 접두사가 다른
+    # 키(사내 게이트웨이·Azure)나 `window._OPENAI_KEY = "sk-…"` 처럼 선언 형태가
+    # 다른 조합을 조용히 통과시켰다. 이제 슬롯에 든 문자열 리터럴은 모양과
+    # 무관하게 전부 비운다.
+    #
+    # 대상도 `index.html` 에서 **모든 .html** 로 넓혔다. wrangler 는 docs/ 아래를
+    # 통째로 올리므로 `generate_network.py` 가 쓰는 `{topic}/network.html` 도
+    # 업로드된다. 예전 루프는 그 파일을 아예 보지 않았다.
+    print("\nStep 6: Stripping credentials from deployed HTML (local keys preserved)...")
     _originals = {}  # Path -> original content, restored after push
-    for html_path in DOCS_DIR.rglob("index.html"):
+    _slots_blanked = 0
+    for html_path in DOCS_DIR.rglob("*.html"):
         text = html_path.read_text(encoding="utf-8")
-        new_text = _re.sub(
-            r'(const|let|var)\s+_ANTHROPIC_KEY\s*=\s*"sk-[^"]*"',
-            r'\1 _ANTHROPIC_KEY = ""',
-            text,
-        )
-        new_text = _re.sub(
-            r'(const|let|var)\s+_OPENAI_KEY\s*=\s*"sk-[^"]*"',
-            r'\1 _OPENAI_KEY = ""',
-            new_text,
-        )
-        # Gemini key for the Audio Overview feature (review pages):
-        #   window._GEMINI_KEY = "AIza...";
-        new_text = _re.sub(
-            r'(window\.)?_GEMINI_KEY\s*=\s*"AIza[^"]*"',
-            lambda m: (m.group(1) or "") + '_GEMINI_KEY = ""',
-            new_text,
-        )
-        # _LLM_KEY (Deep Research unified slot — Anthropic / OpenAI / Google).
-        # The build chooses one of the three to bake in; this catches any
-        # remnant regardless of provider prefix.
-        new_text = _re.sub(
-            r'(const|let|var)\s+_LLM_KEY\s*=\s*"(sk-[^"]*|AIza[^"]*)"',
-            r'\1 _LLM_KEY = ""',
-            new_text,
-        )
-        # _LOCAL_EMAILS — operator addresses baked for localhost convenience.
-        # Empty the array on deploy so visitors only see the prompt path.
-        new_text = _re.sub(
-            r'window\._LOCAL_EMAILS\s*=\s*\[[^\]]*\]',
-            'window._LOCAL_EMAILS = []',
-            new_text,
-        )
+        new_text, n_keys = strip_key_slots(text)
+        new_text, _ = strip_local_emails(new_text)
+        _slots_blanked += n_keys
         if new_text != text:
             _originals[html_path] = text
             html_path.write_text(new_text, encoding="utf-8")
@@ -716,31 +779,44 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
     # tree with emptied keys (Deep Research / Audio Overview silently broken
     # until a rebuild). restore is idempotent, so it's the single restore site.
     try:
-        # Safety net: verify no residual API keys remain in any deployed HTML
-        _leak_re = _re.compile(r'sk-(ant|proj)-[A-Za-z0-9_\-]{10,}|AIza[0-9A-Za-z_\-]{30,}')
-        _leak_paths = [
-            str(p) for p in DOCS_DIR.rglob("index.html")
-            if _leak_re.search(p.read_text(encoding="utf-8"))
-        ]
-        if _leak_paths:
-            print(f"  ABORT: API key still present in {len(_leak_paths)} files — refusing to commit:")
-            for p in _leak_paths:
-                print(f"    - {p}")
+        # Safety net. 두 가지를 예전 구현에서 고쳤다:
+        #
+        # 1) **범위** — `index.html` 만 훑었다. wrangler 는 docs/ 아래 텍스트
+        #    자산을 전부 올린다 (network.html, _search_index.json, RSS …).
+        #    그물이 업로드 surface 보다 좁으면 안전망이 아니다.
+        # 2) **패턴** — `sk-(ant|proj)-` 만 찾아, 레거시 OpenAI 키
+        #    (`sk-` + 48 alnum) 는 stripper 는 지우는데 검사는 못 보는
+        #    비대칭이 있었다. 이제 lib/secret_patterns 의 단일 표를 쓰므로
+        #    검사는 정의상 stripper 의 상위집합이다.
+        _scan_targets = _scannable_files(DOCS_DIR)
+        _leaks = []       # (path, 패턴 이름, 축약값)
+        _email_leaks = []
+        for p in _scan_targets:
+            try:
+                body = p.read_text(encoding="utf-8", errors="ignore")
+            except OSError as e:
+                print(f"  ABORT: 배포 자산을 읽지 못해 검사할 수 없습니다: {p} ({e})")
+                sys.exit(1)
+            for name, value in find_secrets(body):
+                _leaks.append((str(p), name, redact(value)))
+            if find_local_emails(body):
+                _email_leaks.append(str(p))
+
+        if _leaks:
+            _files = {path for path, _, _ in _leaks}
+            print(f"  ABORT: 자격증명이 배포 자산 {len(_files)}개 파일에 남아 있습니다 — 커밋/업로드 거부:")
+            for path, name, shown in _leaks[:20]:
+                print(f"    - {path}: {name} ({shown})")
+            if len(_leaks) > 20:
+                print(f"    … and {len(_leaks) - 20} more")
             sys.exit(1)
-        # Safety net: verify _LOCAL_EMAILS is empty in every deployed HTML.
-        # The strip above replaces the literal array with `[]`; this catches any
-        # remnant (e.g. emails baked into a different surface we forgot to handle).
-        _email_leak_re = _re.compile(r'window\._LOCAL_EMAILS\s*=\s*\[\s*"[^"]+')
-        _email_leaks = [
-            str(p) for p in DOCS_DIR.rglob("index.html")
-            if _email_leak_re.search(p.read_text(encoding="utf-8"))
-        ]
         if _email_leaks:
             print(f"  ABORT: _LOCAL_EMAILS still populated in {len(_email_leaks)} files — refusing to commit:")
             for p in _email_leaks:
                 print(f"    - {p}")
             sys.exit(1)
-        print(f"  Stripped API keys from {len(_originals)} files (0 leaks remaining)")
+        print(f"  Stripped {_slots_blanked} key slots in {len(_originals)} files; "
+              f"scanned {len(_scan_targets)} deploy assets (0 leaks)")
 
         # Step 7-10: Deploy (only if --push). Otherwise we stop here — the
         # working tree was modified by API-key strip in Step 6 so we still

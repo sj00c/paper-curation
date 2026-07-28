@@ -132,12 +132,19 @@ AUDIO_JS = r"""
 // Gemini key into the Deep Research prompt (AIza-prefixed). This lets
 // Audio Overview pick up keys that Deep Research stored, and vice
 // versa, without a second prompt.
+// Google 키 형식은 둘이다: 구형 `AIza…`, AI Studio 신형 `AQ.…`.
+// `AIza` 만 받으면 지금 발급되는 키를 "형식이 틀렸다"며 거절한다 —
+// 이 저장소가 실제로 쓰는 키가 바로 `AQ.` 형식이다.
+function isGeminiKey(k) {
+  const s = String(k || "").trim();
+  return s.startsWith("AIza") || s.startsWith("AQ.");
+}
 let GKEY = (window._GEMINI_KEY || "") || (function() {
   try {
     const direct = localStorage.getItem("_GEMINI_KEY") || "";
     if (direct) return direct;
     const llm = localStorage.getItem("_LLM_KEY") || "";
-    if (llm && String(llm).startsWith("AIza")) return llm;
+    if (llm && isGeminiKey(llm)) return llm;
     return "";
   } catch (e) { return ""; }
 })();
@@ -155,17 +162,37 @@ function rememberGeminiKey(k) {
     }
   } catch (e) {}
 }
+// 키가 없을 때 "왜 없는지"를 먼저 말한다. 페이지에 키가 구워져 있지 않은 건
+// 고장이 아니라 설계다 — 배포본은 자격증명을 싣지 않고(BYOK), 파이프라인이
+// Claude 구독(OAuth)으로 도는 경우 애초에 구울 API key 자체가 존재하지 않는다.
+// 구독 자격증명은 보안상 어떤 생성물에도 포함되지 않는다. 이 설명이 없으면
+// 독자는 "키 형식이 틀렸나?" 를 의심하며 엉뚱한 곳을 고치게 된다.
+// 토픽 페이지 Deep Research 의 deepKeyState() 와 같은 구분을 쓴다.
+function audioKeyState() {
+  if (!GKEY) {
+    return { ok: false, reason: "no-key",
+             message: "Audio Overview 비활성 — 브라우저에 저장된 Gemini API Key가 " +
+                      "없습니다. 이 기능은 BYOK 이며, 페이지에 키가 구워져 있지 " +
+                      "않은 것이 정상입니다." };
+  }
+  if (!isGeminiKey(GKEY)) {
+    return { ok: false, reason: "bad-format",
+             message: "저장된 키가 Gemini 형식이 아닙니다 (AIza… 또는 AQ.… 로 시작)." };
+  }
+  return { ok: true, reason: "", message: "" };
+}
 function ensureGeminiKey() {
-  if (GKEY) return GKEY;
+  const st = audioKeyState();
+  if (st.ok) return GKEY;
   const k = prompt(
-    "Audio Overview는 Gemini API Key가 필요합니다.\n" +
+    st.message + "\n\n" +
     "https://aistudio.google.com/apikey 에서 발급 후 입력하세요.\n" +
     "(브라우저에만 저장됩니다 — 외부로 전송하지 않습니다)"
   );
   if (!k) return "";
   const t = String(k).trim();
-  if (!t.startsWith("AIza")) {
-    alert("올바른 형식이 아닙니다. Gemini API Key는 AIza 로 시작합니다.");
+  if (!isGeminiKey(t)) {
+    alert("올바른 형식이 아닙니다. Gemini API Key는 AIza… 또는 AQ.… 로 시작합니다.");
     return "";
   }
   rememberGeminiKey(t);
@@ -712,12 +739,14 @@ document.addEventListener("DOMContentLoaded", function() {
   // text fallback).
   const ob = document.getElementById("audio-open");
   if (ob && !GKEY) {
-    ob.title = "클릭 시 Gemini API Key 입력 창이 뜹니다 (브라우저에만 저장)";
+    ob.title = "이 기능은 BYOK 입니다. 배포본에는 자격증명을 싣지 않으며, " +
+               "구독(OAuth)으로 도는 서버는 구울 API key 자체가 없습니다. " +
+               "클릭하면 Gemini API Key 입력 창이 뜹니다 (브라우저에만 저장).";
     const bar = ob.parentElement;
     if (bar && !bar.querySelector(".audio-hint")) {
       const hint = document.createElement("span");
       hint.className = "audio-hint";
-      hint.textContent = "Gemini API Key 필요 (첫 클릭 시 입력)";
+      hint.textContent = "Gemini API Key 필요 — BYOK (페이지에 키가 없는 것이 정상)";
       hint.style.cssText = "margin-left:0.6rem;font-size:0.78rem;color:#888;";
       bar.appendChild(hint);
     }
