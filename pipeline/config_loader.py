@@ -73,11 +73,19 @@ def get_google_key():
     이 함수가 config.json 까지 보므로 env 를 pop 해도 키가 남는다. 그런 곳은
     PAPER_CURATION_NO_GEMINI 환경 플래그로 명시 비활성화한다
     (reextract_figures.py 의 geometric-only 모드 참조)."""
+    if os.environ.get("PAPER_CURATION_NO_GEMINI"):
+        # docstring 이 약속하는 명시 off 스위치. 이게 없으면 env 를 pop 해도
+        # config.json 키가 남아 스위치가 안 먹는다.
+        return ""
     cfg = load_config()
-    return (os.environ.get("GOOGLE_API_KEY")
-            or os.environ.get("GEMINI_API_KEY")
-            or cfg.get("gemini_api_key", "")
-            or cfg.get("google_api_key", "")) or ""
+    for candidate in (os.environ.get("GOOGLE_API_KEY"),
+                      os.environ.get("GEMINI_API_KEY"),
+                      cfg.get("gemini_api_key", ""),
+                      cfg.get("google_api_key", "")):
+        resolved = (candidate or "").strip()
+        if resolved:
+            return resolved
+    return ""
 
 
 def get_local_model_config():

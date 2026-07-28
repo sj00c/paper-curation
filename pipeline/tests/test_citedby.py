@@ -580,7 +580,7 @@ class KeyResolutionTests(unittest.TestCase):
 
 
 class LlmCascadeTests(unittest.TestCase):
-    """Anthropic → Google → OpenAI 순서와 폴백."""
+    """설정된 첫 provider 만 쓴다. 조용한 provider 대체는 하지 않는다."""
 
     def test_uses_first_available_provider(self):
         calls = []
@@ -595,26 +595,46 @@ class LlmCascadeTests(unittest.TestCase):
         self.assertEqual(out, {"ok": 1})
         self.assertEqual(calls, ["anthropic"])
 
-    def test_falls_through_on_exception(self):
+    def test_failure_does_not_substitute_another_provider(self):
+        """첫 provider 가 죽어도 다른 회사 모델이 몰래 대신 답하지 않는다.
+
+        대체가 일어나면 결과의 출처를 신뢰할 수 없고, 사용자가 고르지도 않은
+        API 에 과금될 수 있다.
+        """
+        called = []
+
         def boom(key, model, prompt, mt):
+            called.append("anthropic")
             raise RuntimeError("429")
 
         def ok(key, model, prompt, mt):
+            called.append("google")
             return '{"ok": 2}'
 
         with patch.dict(topic_filter._CALLERS,
                         {"anthropic": boom, "google": ok}, clear=False):
             out = topic_filter.llm_json("p", keys={"anthropic": "k",
                                                    "google": "k"})
-        self.assertEqual(out, {"ok": 2})
+        self.assertIsNone(out)
+        self.assertEqual(called, ["anthropic"])
 
-    def test_falls_through_on_unparseable_json(self):
+    def test_unparseable_json_does_not_substitute_another_provider(self):
+        called = []
+
+        def garbage(key, model, prompt, mt):
+            called.append("anthropic")
+            return "garbage"
+
+        def ok(key, model, prompt, mt):
+            called.append("google")
+            return '{"ok": 3}'
+
         with patch.dict(topic_filter._CALLERS,
-                        {"anthropic": lambda *a: "garbage",
-                         "google": lambda *a: '{"ok": 3}'}, clear=False):
+                        {"anthropic": garbage, "google": ok}, clear=False):
             out = topic_filter.llm_json("p", keys={"anthropic": "k",
                                                    "google": "k"})
-        self.assertEqual(out, {"ok": 3})
+        self.assertIsNone(out)
+        self.assertEqual(called, ["anthropic"])
 
     def test_no_keys_returns_none(self):
         self.assertIsNone(topic_filter.llm_json("p", keys={}))

@@ -81,6 +81,18 @@ def resolve_keys() -> dict[str, str]:
                 if v:
                     keys[provider] = v
                     break
+    # Google 은 공용 해석기를 거친다. 여기서 env/config 를 직접 읽으면
+    # PAPER_CURATION_NO_GEMINI off 스위치가 이 경로에서만 무시된다.
+    try:
+        from config_loader import get_google_key
+        resolved_google = get_google_key()
+        if resolved_google:
+            keys["google"] = resolved_google
+        else:
+            keys.pop("google", None)
+    except Exception as e:  # noqa: BLE001 — 키 조회 실패가 전체를 죽이지 않게
+        logger.debug("google key 조회 실패: %s", e)
+
     # OAuth 구독 모드에서는 ANTHROPIC_API_KEY 가 없는 것이 정상이다. 키가
     # 없다는 이유로 Anthropic 을 건너뛰면 구독 사용자는 Claude 에 영영 닿지
     # 못하고 조용히 다른 provider 로 넘어간다. 인증이 준비돼 있으면 키 대신
@@ -190,35 +202,40 @@ def llm_json(prompt: str, *, max_tokens: int = 1024,
     keys = resolve_keys() if keys is None else keys
     models = list(models or DEFAULT_MODELS)
 
-    for provider, model in models:
-        key = keys.get(provider, "")
-        if not key:
-            continue
-        caller = _CALLERS.get(provider)
-        if caller is None:
-            continue
+    # 설정된 provider 만 후보로 남긴다. 키/인증이 없는 provider 는 "그 기능이
+    # 없는 것"이므로 조용히 건너뛴다 — 이건 대체가 아니라 미설정이다.
+    candidates = [(p, m) for p, m in models
+                  if keys.get(p, "") and _CALLERS.get(p) is not None]
+    if not candidates:
+        logger.warning("citedby LLM: 설정된 provider 가 없어 건너뛴다")
+        return None
 
-        def _run(_c=caller, _k=key, _m=model):
-            return _c(_k, _m, prompt, max_tokens)
+    provider, model = candidates[0]
+    caller = _CALLERS[provider]
+    key = keys[provider]
 
-        try:
-            if cache_dir:
-                from api._llm import cached_call
-                raw = cached_call(cache_dir, prompt, model, _run,
-                                  schema_version="citedby-v1")
-            else:
-                raw = _run()
-        except Exception as e:  # noqa: BLE001 — 다음 provider 로 넘어간다
-            logger.warning("citedby LLM 실패 (%s/%s): %s", provider, model,
-                           str(e)[:160])
-            continue
+    def _run():
+        return caller(key, model, prompt, max_tokens)
 
-        parsed = _parse_json(raw if isinstance(raw, str) else str(raw))
-        if parsed is not None:
-            return parsed
+    # 조용한 provider 대체는 하지 않는다. 첫 provider 가 실패하면 그대로
+    # 실패다 — 다른 회사 모델이 몰래 대신 답하면 결과의 출처를 신뢰할 수 없고,
+    # 사용자가 고르지 않은 API 에 과금될 수 있다.
+    try:
+        if cache_dir:
+            from api._llm import cached_call
+            raw = cached_call(cache_dir, prompt, model, _run,
+                              schema_version="citedby-v1")
+        else:
+            raw = _run()
+    except Exception as e:  # noqa: BLE001 — 대체하지 않고 실패를 알린다
+        logger.warning("citedby LLM 실패 (%s/%s): %s — 다른 provider 로 대체하지 않는다",
+                       provider, model, str(e)[:160])
+        return None
+
+    parsed = _parse_json(raw if isinstance(raw, str) else str(raw))
+    if parsed is None:
         logger.warning("citedby LLM 응답 JSON 파싱 실패 (%s/%s)", provider, model)
-
-    return None
+    return parsed
 
 
 # ── 주제 필터링 ───────────────────────────────────────────────────────────
