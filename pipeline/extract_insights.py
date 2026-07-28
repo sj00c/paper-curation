@@ -361,25 +361,31 @@ Output ONLY valid JSON in this exact format:
     cache_dir = topic_cache_dir(topic)
 
     def _make_call():
-        last_err = None
-        for backend in _CC_BACKENDS:
-            try:
-                if backend == "anthropic":
-                    out = _cc_anthropic_call(client, prompt, insight_schema)
-                elif backend == "openai":
-                    out = _cc_openai_call(prompt, insight_schema)
-                elif backend == "gemini":
-                    out = _cc_gemini_call(prompt, insight_schema)
-                else:
-                    log(f"    [insights:{backend}] unknown backend, skipping")
-                    continue
-                log(f"    [insights:{backend}] OK in {time.time()-_t0:.0f}s")
-                return out
-            except Exception as e:
-                last_err = e
-                log(f"    [insights:{backend}] failed ({type(e).__name__}: {str(e)[:80]}) → next backend")
-        raise RuntimeError(f"all cross-category backends failed: "
-                           f"{type(last_err).__name__}: {str(last_err)[:120]}")
+        # 설정된 backend 하나만 쓴다. 조용한 provider 대체는 하지 않는다 —
+        # Claude 가 죽었다고 사용자가 고르지도 않은 OpenAI/Gemini 가 대신
+        # 답하면 결과의 출처를 신뢰할 수 없고, 그 API 에 과금된다.
+        # 미설정 backend 를 건너뛰는 것(부재)과 설정된 backend 의 실패를
+        # 다른 회사로 넘기는 것(대체)은 다르다. 앞은 허용, 뒤는 금지.
+        available = [b for b in _CC_BACKENDS if _cc_backend_available(b)]
+        if not available:
+            raise RuntimeError(
+                "no cross-category insights backend is configured "
+                f"(tried: {', '.join(_CC_BACKENDS) or 'none'})")
+
+        backend = available[0]
+        if len(available) > 1:
+            log(f"    [insights] using {backend}; "
+                f"{', '.join(available[1:])} configured but NOT used as fallback")
+        if backend == "anthropic":
+            out = _cc_anthropic_call(client, prompt, insight_schema)
+        elif backend == "openai":
+            out = _cc_openai_call(prompt, insight_schema)
+        elif backend == "gemini":
+            out = _cc_gemini_call(prompt, insight_schema)
+        else:  # pragma: no cover — _cc_backend_available 가 이미 걸러낸다
+            raise RuntimeError(f"unknown insights backend: {backend}")
+        log(f"    [insights:{backend}] OK in {time.time()-_t0:.0f}s")
+        return out
 
     try:
         return cached_call(cache_dir, prompt, "+".join(_CC_BACKENDS), _make_call,
@@ -477,10 +483,13 @@ def _cc_gemini_call(prompt, schema):
     return json.loads(text)
 
 
-# Cross-category insights fallback chain (separate from paper_connections):
-# anthropic → openai → gemini. Each backend is forced into the same JSON schema
-# so the downstream consumer is provider-agnostic. Override with
-# EXTRACT_INSIGHTS_CC_BACKENDS=openai,gemini etc.
+# Cross-category insights backend 우선순위 (paper_connections 와는 별개):
+# anthropic → openai → gemini. 각 backend 는 같은 JSON 스키마로 강제되므로
+# 소비자는 provider 를 몰라도 된다. `EXTRACT_INSIGHTS_CC_BACKENDS=openai,gemini`
+# 로 바꿀 수 있다.
+#
+# 이건 fallback 체인이 아니라 우선순위 목록이다. 설정된 것 중 첫 번째 하나만
+# 쓰고, 그게 실패하면 그대로 실패다. 다른 회사 모델이 몰래 대신 답하지 않는다.
 _CC_BACKENDS = [b.strip().lower() for b in
                  os.environ.get("EXTRACT_INSIGHTS_CC_BACKENDS",
                                 "anthropic,openai,gemini").split(",")
@@ -488,6 +497,32 @@ _CC_BACKENDS = [b.strip().lower() for b in
 _CC_BACKENDS = list(dict.fromkeys(_CC_BACKENDS))
 _OPENAI_CC_MODEL = os.environ.get("EXTRACT_INSIGHTS_CC_OPENAI_MODEL", "gpt-5.5")
 _GEMINI_CC_MODEL = os.environ.get("EXTRACT_INSIGHTS_CC_GEMINI_MODEL", "gemini-3.1-pro-preview")
+
+
+def _cc_backend_available(backend: str) -> bool:
+    """그 backend 가 '설정되어 있는가'. 호출을 시도해 보지는 않는다.
+
+    미설정(부재)과 설정된 backend 의 실패를 가르는 지점이다. 부재는 조용히
+    건너뛰어도 되지만, 실패는 다른 provider 로 넘기지 않는다.
+    """
+    if backend == "anthropic":
+        try:
+            from anthropic_auth import auth_status
+            # OAuth 구독 모드에서는 ANTHROPIC_API_KEY 가 없는 것이 정상이므로
+            # env 유무가 아니라 인증 준비 여부로 판단한다.
+            return bool(auth_status().ready)
+        except Exception:  # noqa: BLE001 — 인증 조회 실패는 '미설정' 으로 본다
+            return False
+    if backend == "openai":
+        return bool((os.environ.get("OPENAI_API_KEY") or
+                     load_config().get("openai_api_key", "")).strip())
+    if backend == "gemini":
+        try:
+            from config_loader import get_google_key
+            return bool(get_google_key())
+        except Exception:  # noqa: BLE001
+            return False
+    return False
 
 
 def _embed_model_tag(cache_path):
