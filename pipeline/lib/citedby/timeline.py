@@ -268,9 +268,10 @@ def _select_best(results: list, caption: str = ""):
     if len(results) == 1:
         return results[0]
     try:
-        from anthropic import Anthropic
+        # OAuth 구독 모드 지원: SDK 를 직접 만들지 않고 공용 해석기를 쓴다.
+        from anthropic_auth import create_anthropic_client
 
-        judge = Anthropic(timeout=180.0, max_retries=3)
+        judge = create_anthropic_client(timeout=180.0, max_retries=3)
         content = []
         for n, (_i, _sz, _path, png) in enumerate(results, 1):
             content.append({"type": "text", "text": f"--- Candidate {n} ---"})

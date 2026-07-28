@@ -48,6 +48,10 @@ _CONFIG_KEYS = {
     "openai": ("openai_api_key",),
 }
 
+# api-key 가 아니라 OAuth 구독으로 Claude 를 쓰는 경우 키 딕셔너리에 넣을
+# 자리표시자. 실제 인증은 anthropic_auth 가 처리하므로 값 자체는 쓰이지 않는다.
+_OAUTH_SENTINEL = "__anthropic_oauth__"
+
 
 def resolve_keys() -> dict[str, str]:
     """LLM 제공자별 API 키. env 우선, 없으면 config.json.
@@ -77,6 +81,17 @@ def resolve_keys() -> dict[str, str]:
                 if v:
                     keys[provider] = v
                     break
+    # OAuth 구독 모드에서는 ANTHROPIC_API_KEY 가 없는 것이 정상이다. 키가
+    # 없다는 이유로 Anthropic 을 건너뛰면 구독 사용자는 Claude 에 영영 닿지
+    # 못하고 조용히 다른 provider 로 넘어간다. 인증이 준비돼 있으면 키 대신
+    # 센티널을 넣어 호출 경로를 열어 준다 (_call_anthropic 은 키를 쓰지 않는다).
+    if not keys.get("anthropic"):
+        try:
+            from anthropic_auth import auth_status
+            if auth_status().ready:
+                keys["anthropic"] = _OAUTH_SENTINEL
+        except Exception as e:  # noqa: BLE001 — 인증 조회 실패가 전체를 죽이지 않게
+            logger.debug("anthropic auth 조회 실패: %s", e)
     return keys
 
 
@@ -107,8 +122,11 @@ _JSON_SYSTEM = "You are a JSON-only responder. Output ONLY valid JSON."
 
 def _call_anthropic(key: str, model: str, prompt: str, max_tokens: int,
                     system: str = _JSON_SYSTEM) -> str:
-    from anthropic import Anthropic
-    client = Anthropic(api_key=key, timeout=180.0, max_retries=4)
+    # OAuth 구독 모드에서도 동작해야 하므로 SDK 를 직접 만들지 않는다.
+    # api_key 를 명시로 넘기면 anthropic_auth 가 api-key 모드로 강제하므로
+    # (OAuth 무력화), 여기서는 넘기지 않고 설정된 모드가 결정하게 둔다.
+    from anthropic_auth import create_anthropic_client
+    client = create_anthropic_client(timeout=180.0, max_retries=4)
     resp = client.messages.create(
         model=model, max_tokens=max_tokens, system=system,
         messages=[{"role": "user", "content": prompt}],
@@ -452,9 +470,10 @@ _STREAM_SYSTEM = (
 
 def _stream_anthropic(key, model, prompt, max_tokens, on_delta, web_search,
                       on_event):
-    from anthropic import Anthropic
+    # OAuth 구독 모드 지원: SDK 직접 생성 금지, api_key 명시 금지 (위 참조).
+    from anthropic_auth import create_anthropic_client
 
-    client = Anthropic(api_key=key, timeout=600.0, max_retries=4)
+    client = create_anthropic_client(timeout=600.0, max_retries=4)
     kwargs = {
         "model": model,
         "max_tokens": max_tokens,

@@ -124,10 +124,12 @@ def synthesize_summary(course, led, evidence):
         errs.append(("gemini", str(e)[:140]))
 
     # 2) Anthropic claude-sonnet-5 — 파이프라인 기본 합성 모델 (Gemini 쿼터 소진 시 fallback)
-    if os.environ.get("ANTHROPIC_API_KEY"):
+    # OAuth 구독 모드에서는 ANTHROPIC_API_KEY 가 없는 것이 정상이므로 env 유무로
+    # 게이트하면 구독 사용자가 Claude 를 못 쓴다. 인증 준비 여부로 판단한다.
+    from anthropic_auth import auth_status, create_anthropic_client
+    if auth_status().ready:
         try:
-            from anthropic import Anthropic
-            ac = Anthropic(timeout=600.0, max_retries=4)
+            ac = create_anthropic_client(timeout=600.0, max_retries=4)
             out = []
             with ac.messages.stream(model="claude-sonnet-5", max_tokens=32000,
                                     messages=[{"role": "user", "content": prompt}]) as stream:
@@ -236,7 +238,6 @@ def build_audio(report_text):
     """정리편 Audio Overview. 대본=Claude Sonnet(2인 대화), 음성=Gemini 멀티스피커 TTS."""
     import generate_audio as ga
     import lameenc
-    from anthropic import Anthropic
     from concurrent.futures import ThreadPoolExecutor, as_completed
     lang = "ko"
     roles = ga.ROLES[lang][2]
@@ -252,7 +253,8 @@ def build_audio(report_text):
         sz = max(1, -(-len(report_text) // n_seg))
         segs = [report_text[i:i + sz] for i in range(0, len(report_text), sz)]
 
-    ac = Anthropic(timeout=600.0, max_retries=4)
+    from anthropic_auth import create_anthropic_client
+    ac = create_anthropic_client(timeout=600.0, max_retries=4)
     scripts = [""] * len(segs)
     print(f"     대본 병렬 생성 {len(segs)} parts (claude-sonnet-5)", flush=True)
     with ThreadPoolExecutor(max_workers=3) as ex:

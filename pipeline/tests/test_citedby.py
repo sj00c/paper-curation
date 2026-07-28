@@ -2254,14 +2254,17 @@ class TimelineProcedureTests(unittest.TestCase):
         resp = unittest.mock.MagicMock(content=[block])
         client = unittest.mock.MagicMock()
         client.messages.create.return_value = resp
-        with patch("anthropic.Anthropic", return_value=client):
+        # OAuth 구독 모드를 지원하려고 SDK 직접 생성 대신 공용 해석기를 쓰므로
+        # 패치 지점도 그 seam 으로 옮긴다.
+        with patch("anthropic_auth.create_anthropic_client", return_value=client):
             self.assertEqual(TL._select_best(res, "cap")[0], 2)
 
     def test_judge_failure_falls_back_to_first(self):
         """선별이 배치를 막아서는 안 된다."""
         from lib.citedby import timeline as TL
         res = [(1, 10, "/a.png", b"A"), (2, 20, "/b.png", b"B")]
-        with patch("anthropic.Anthropic", side_effect=RuntimeError("down")):
+        with patch("anthropic_auth.create_anthropic_client",
+                   side_effect=RuntimeError("down")):
             self.assertEqual(TL._select_best(res, "")[0], 1)
 
     def test_single_candidate_skips_judge(self):
