@@ -588,14 +588,48 @@ def _save_config(cfg):
         json.dump(cfg, f, indent=2, ensure_ascii=False)
 
 
-def step_skill_md(cfg):
-    """Step 5: SKILL.md 생성."""
-    print("\n[5/6] SKILL.md 생성")
+# 템플릿에 남을 수 있는 슬롯과, 값이 없을 때 무엇이 꺼지는지.
+# 빈 문자열로 치환하면 "--topic " 이나 "배포 URL: /{topic}/" 같은 조용히 망가진
+# 문장이 남는다. 값이 없으면 슬롯을 그대로 두고 이유를 말한다.
+SKILL_PLACEHOLDER_REASONS = {
+    "{topic_alias}": "config.json 의 zotero.collections 가 비어 있음 — 실행 예시의 토픽을 직접 채워야 함",
+    "{pages_base_url}": "config.json 의 github.pages_base_url 미설정 — 배포 URL 확인은 수동",
+    "{github_repo}": "config.json 의 github.repo 미설정",
+    "{zotero_dir}": "config.json 의 zotero.pdf_dir 미설정",
+    "{email}": "config.json 의 zotero.email / unpaywall_email 미설정",
+}
 
+
+def resolve_topic_alias(cfg):
+    """SKILL 실행 예시에 쓸 기본 topic alias (zotero.collections 의 첫 키)."""
+    collections = cfg.get("zotero", {}).get("collections") or {}
+    for alias in collections:
+        if alias:
+            return alias
+    return ""
+
+
+def render_skill_md(template, replacements):
+    """빈 값은 치환하지 않는다.
+
+    반환: (렌더 결과, 값이 없어 그대로 남은 슬롯 목록).
+    빈 문자열 치환은 문장을 조용히 망가뜨리므로 슬롯을 남겨 눈에 보이게 한다.
+    """
+    content = template
+    unresolved = []
+    for placeholder, value in replacements.items():
+        if value:
+            content = content.replace(placeholder, value)
+        elif placeholder in template:
+            unresolved.append(placeholder)
+    return content, unresolved
+
+
+def skill_replacements(cfg):
     zotero = cfg.get("zotero", {})
     github = cfg.get("github", {})
-
-    replacements = {
+    return {
+        "{topic_alias}": resolve_topic_alias(cfg),
         "{github_repo}": github.get("repo", ""),
         "{pages_base_url}": github.get("pages_base_url", ""),
         "{zotero_dir}": zotero.get("pdf_dir", ""),
@@ -603,19 +637,29 @@ def step_skill_md(cfg):
         "{email}": zotero.get("email", "") or cfg.get("unpaywall_email", ""),
     }
 
+
+def step_skill_md(cfg):
+    """Step 5: SKILL.md 생성."""
+    print("\n[5/6] SKILL.md 생성")
+
+    replacements = skill_replacements(cfg)
+
     if not TEMPLATE_PATH.exists():
         print("  ✗ SKILL.md.template이 없습니다")
         return False
 
     with open(TEMPLATE_PATH, "r", encoding="utf-8") as f:
-        content = f.read()
+        template = f.read()
 
-    for placeholder, value in replacements.items():
-        content = content.replace(placeholder, value)
+    content, unresolved = render_skill_md(template, replacements)
 
     with open(SKILL_OUTPUT, "w", encoding="utf-8") as f:
         f.write(content)
     print(f"  ✓ {SKILL_OUTPUT}")
+
+    for placeholder in unresolved:
+        reason = SKILL_PLACEHOLDER_REASONS.get(placeholder, "config.json 값 없음")
+        print(f"  ! {placeholder} 미해결 — {reason}")
 
     # .gitignore에 config.json 확인
     if GITIGNORE_PATH.exists():
