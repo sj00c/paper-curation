@@ -132,6 +132,46 @@ class ToolSchemaTableTests(unittest.TestCase):
         self.assertEqual([], missing, f"문서에만 있는 tool: {missing}")
 
 
+class DocumentedEnvVarsTests(unittest.TestCase):
+    """문서가 광고하는 튜닝 노브는 실제로 읽히는 것이어야 한다.
+
+    `EXTRACT_INSIGHTS_PARALLEL` 은 세 문서가 "Tier 1~3 에서는 낮추라" 고
+    권했지만 코드 어디에서도 읽지 않았다. 실제 노브는
+    `PAPER_CONNECTION_WORKERS` 다. 없는 손잡이를 돌리라고 시키는 문서는
+    사용자가 429 를 못 피하게 만든다.
+    """
+
+    # 코드가 아니라 외부(셸/CI/배포 플랫폼)가 소비하는 변수.
+    EXTERNAL = {"PYTHONUTF8", "PYTHONPATH"}
+
+    def _source_text(self):
+        # 테스트는 제외한다. 이 파일이 docstring 에 폐기된 이름을 적어두면
+        # 그 자체가 "소스에 있다" 는 증거가 되어 검사가 자기 자신을 무력화한다.
+        parts = []
+        for pattern in ("pipeline/**/*.py", "scripts/*.py", "worker/*.js", "bin/*.mjs"):
+            for path in REPO.glob(pattern):
+                if "tests" in path.parts:
+                    continue
+                parts.append(path.read_text(encoding="utf-8", errors="ignore"))
+        return "\n".join(parts)
+
+    def test_every_documented_env_var_is_read_somewhere(self):
+        sources = self._source_text()
+        offenders = []
+        for rel in DOCS:
+            text = _read(rel)
+            if text is None:
+                continue
+            for lineno, line in enumerate(text.splitlines(), 1):
+                for name in re.findall(r"`([A-Z][A-Z0-9_]{5,})`", line):
+                    if name in self.EXTERNAL or name in sources:
+                        continue
+                    offenders.append(f"{rel}:{lineno} {name}")
+        self.assertEqual(
+            [], offenders, "코드가 읽지 않는 env var 를 문서가 광고한다:\n" + "\n".join(offenders)
+        )
+
+
 class AgentsMirrorsClaudeTests(unittest.TestCase):
     """AGENTS.md 와 CLAUDE.md 는 헤더 말고 한 글자도 달라선 안 된다."""
 

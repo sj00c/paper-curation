@@ -82,10 +82,15 @@ tiers should drop:
 | **4** | **16–20** |
 
 Phase 2 added per-category parallelism for the post-review phase:
-- `CAT_SUMMARY_PARALLEL` (default 8) — Haiku per-category summaries
+- `CAT_SUMMARY_PARALLEL` (default 8, OAuth 1) — Haiku per-category summaries
 - `TIMELINE_NARRATIVE_PARALLEL` (default 8) — Opus per-category narratives
-- `TIMELINE_IMAGE_PARALLEL` (default 4) — PaperBanana per-category images
-- `EXTRACT_INSIGHTS_PARALLEL` (default 4) — Sonnet per-category paper_connections
+- `TIMELINE_IMAGE_PARALLEL` (default 1) — PaperBanana per-category images;
+  Gemini image RPM is the real bottleneck, so this stays serial unless you
+  raise it deliberately
+- `PAPER_CONNECTION_WORKERS` (default 4, OAuth 1) — Sonnet Related-Papers
+  batches, the pool `extract_insights` actually drives. Batch shape is tuned
+  separately with `EXTRACT_INSIGHTS_CONN_BATCH` (15),
+  `EXTRACT_INSIGHTS_CONN_DEADLINE` (300s) and `EXTRACT_INSIGHTS_CONN_ROUNDS` (3)
 
 Wall-clock for finalize phase: ~25 min → ~6 min at Tier 4.
 

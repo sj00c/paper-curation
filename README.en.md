@@ -387,7 +387,7 @@ For calling parts of the pipeline from other code or tuning performance.
 
 **LLM call caching — `api/_llm.cached_call`** — SHA-256 of `(prompt, model, schema_version)` keys a JSON cache (`docs/{topic}/.llm_cache/` and per-paper `docs/papers/{slug}/.llm_cache/`). Re-runs on unchanged input issue zero LLM calls; bypass with `force=True`. The Deep Research index adds a content-addressed embedding cache, so an unchanged chunk is never re-embedded.
 
-**Category-level ThreadPool parallelism** — LLM I/O stages parallelize by category (~4× wall-clock). Worker counts via env vars: `CAT_SUMMARY_PARALLEL` (8, Haiku), `TIMELINE_NARRATIVE_PARALLEL` (8, Opus), `TIMELINE_IMAGE_PARALLEL` (4, Gemini image), `EXTRACT_INSIGHTS_PARALLEL` (4, Sonnet). Lower these under Tier 1–3.
+**Category-level ThreadPool parallelism** — LLM I/O stages parallelize by category (~4× wall-clock). Worker counts via env vars: `CAT_SUMMARY_PARALLEL` (8, Haiku), `TIMELINE_NARRATIVE_PARALLEL` (8, Opus), `TIMELINE_IMAGE_PARALLEL` (1, Gemini image — its RPM is the bottleneck), `PAPER_CONNECTION_WORKERS` (4, Sonnet Related-Papers batches). Under Claude Code subscription OAuth the calls go through the local CLI, so `CAT_SUMMARY_PARALLEL` and `PAPER_CONNECTION_WORKERS` default to 1; an explicit env value always wins. Lower these under Tier 1–3.
 
 **Tool-use schema enforcement** — LLM responses go through Anthropic tool-use schemas (`emit_review` Haiku, `emit_insights` Sonnet, `emit_verdicts` Haiku, `emit_comparison` Sonnet) so JSON parse jitter is zero and post-hoc fixers were deleted. Related Papers is the exception: it parses JSON out of a plain Sonnet response, which is why that stage has multi-round retry and an opt-in `--local-fallback` rather than schema enforcement.
 

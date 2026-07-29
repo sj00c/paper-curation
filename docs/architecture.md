@@ -139,10 +139,12 @@ LLM I/O bound 단계는 카테고리 단위로 병렬화돼 wall-clock 이 약 4
 
 | 단계 | env var | 기본 worker | 모델 |
 |---|---|---|---|
-| `build_category_summaries` (카테고리 한글 description + sub-themes) | `CAT_SUMMARY_PARALLEL` | 8 | Haiku |
+| `build_category_summaries` (카테고리 한글 description + sub-themes) | `CAT_SUMMARY_PARALLEL` | 8 (OAuth 는 1) | Haiku |
 | `generate_timelines` STEP 1 narrative | `TIMELINE_NARRATIVE_PARALLEL` | 8 | Opus streaming |
-| `generate_timelines` STEP 2 PaperBanana 이미지 | `TIMELINE_IMAGE_PARALLEL` | 4 | Gemini image |
-| `extract_insights` per-category paper_connections | `EXTRACT_INSIGHTS_PARALLEL` | 4 | Sonnet |
+| `generate_timelines` STEP 2 PaperBanana 이미지 | `TIMELINE_IMAGE_PARALLEL` | 1 (Gemini 이미지 RPM 이 병목) | Gemini image |
+| `extract_insights` → `generate_connections_from_candidates` 배치 | `PAPER_CONNECTION_WORKERS` | 4 (OAuth 는 1) | Sonnet |
+
+OAuth 구독 모드는 로컬 `claude` CLI 를 거치므로 기본 worker 가 1 입니다 — 명시적으로 env 를 주면 그 값이 이깁니다. `extract_insights` 의 배치 크기·마감·라운드는 별도로 `EXTRACT_INSIGHTS_CONN_BATCH`(15) / `EXTRACT_INSIGHTS_CONN_DEADLINE`(300s) / `EXTRACT_INSIGHTS_CONN_ROUNDS`(3) 입니다.
 
 Tier 1~3 에서는 worker 수를 낮춰 ITPM cap 을 피해야 합니다.
 
