@@ -36,7 +36,7 @@
 |---|---|
 | **입력** | 카테고리별 논문 목록 + 리뷰 |
 | **처리 (Core)** | <ul><li>Claude Sonnet이 카테고리 요약·세부 주제 작성</li><li>**같이 보면 좋은 논문**: 임베딩 top-20 후보 → Sonnet이 관계 유형 + 한국어 이유 선별. 망 장애에 강건 — multi-round 재시도(막힌 배치만), 연결 0개 논문 우선 처리(priority-first), 그래도 남으면 `--local-fallback`(Option)으로 로컬 모델이 완결</li><li>Claude Opus가 카테고리별 연구 동향 내러티브 작성</li><li>PaperBanana가 카테고리당 다이어그램 후보를 여러 장 생성하고, Claude 비전 심사가 그중 최적안을 선별 — 카테고리별 색상이 일관되게 배치됐는지, 카테고리의 등장·소멸·융합·분기가 또렷한지, 색상 이름·번호 같은 불필요한 텍스트가 없는지를 기준으로</li></ul> |
-| **처리 (Option O-2, `--insights`)** | <ul><li>크로스카테고리 Research Insights 분석 (Anthropic → OpenAI → Gemini 3-backend fallback)</li><li>네트워크 시각화(<code>network.html</code>) 재생성</li></ul> |
+| **처리 (Option O-2, `--insights`)** | <ul><li>크로스카테고리 Research Insights 분석 (설정된 backend 하나만 사용 — 후보 순서 anthropic → openai → gemini 는 우선순위지 대체 체인이 아니다)</li><li>네트워크 시각화(<code>network.html</code>) 재생성</li></ul> |
 | **출력** | <ul><li><code>_category_summaries.json</code></li><li><code>_paper_connections.json</code></li><li><code>_timeline_narrative.json</code></li><li><code>category_timeline_*.png</code></li><li>(O-2) <code>_insights.json</code> + <code>network.html</code></li></ul> |
 
 ### 5. Deep Research 인덱스
@@ -78,7 +78,7 @@
 | `find_pdf()` cross-platform basename | Zotero linked attachment 이 Windows 절대경로 (`C:\Users\…\foo.pdf`) 로 저장된 경우 macOS `os.path.basename` 이 백슬래시를 분리자로 인식 못해 매칭 실패하던 버그. `path.replace("\\", "/").rsplit("/", 1)[-1]` 로 해결 |
 | `make_slug()` 40-char collision fix | 25-char prefix matching 이 다른 논문을 거짓 매칭하던 버그 (예: "A Hierarchical Framework for Humanoid Locomotion" ↔ "A hierarchical framework for measuring scientific impact"). 비교 길이를 `min(40, min(len(a), len(b)))` 로 변경, 10-char floor 추가. 짧은 제목의 자기-자신 매칭 (예: "Robot Learning from Human Videos: A Survey", 35 norm chars) 보존 |
 | `_zotero_text_sanity()` 한국어/ASCII 듀얼 패스 | Zotero 에 한국어 제목으로 등록된 영문 PDF 케이스 통과. 한글 syllable 을 keyword 추출 정규식에 포함, threshold 스케일링 (구 `max(3, …)` → `max(1, len(kw)*coverage)`), ASCII-only fallback (영문 token 만 일치해도 DOI/author 통과하면 OK) |
-| `extract_insights` 3-backend fallback | cross-category insights 호출에 Anthropic → OpenAI → Gemini chain. `EXTRACT_INSIGHTS_CC_BACKENDS` env var 로 순서 override. ReadTimeout/connection 에러 시 다음 backend 자동 시도. 각 backend 는 동일한 tool-use / structured output schema 로 강제 |
+| `extract_insights` backend 우선순위 (대체 없음) | cross-category insights 는 후보 목록(기본 anthropic, openai, gemini) 중 **설정된 첫 번째 하나만** 호출하고 거기서 끝난다. 실패해도 다음 backend 로 넘어가지 않는다 — 사용자가 고르지 않은 벤더가 대신 답하면 결과의 출처를 믿을 수 없고 그 API 에 과금된다. 미설정 backend 를 건너뛰는 것(부재)만 허용. 하나도 설정돼 있지 않으면 insights 는 `meta.status="unavailable"` 로 비활성. 순서는 `EXTRACT_INSIGHTS_CC_BACKENDS` 로 override, 모르는 이름은 import 시점에 즉시 실패 |
 | `run_step()` CRITICAL_STEPS hard-fail | `build_papers_index` / `topic_modeling*` / `classify_papers` / source·`_cross` 검색 인덱스 빌드와 품질 평가는 실패 시 `RuntimeError` 로 abort. 신규 분류 누락, stale 검색 인덱스, retrieval recall 회귀 상태로 배포되는 것을 차단. LLM narrative/이미지 생성은 degradable 로 soft-fail 유지 |
 | `audit_matching.py` | 동일 text.md 해시 공유 슬러그 탐지 (duplicate PDF) + 4축 cross-check |
 | `fix_matching.py` | 감사 결과 기반 리뷰 삭제 + 재리뷰 명령 자동 출력 (기본 dry-run) |
@@ -153,8 +153,11 @@ LLM 응답의 JSON 파싱 흔들림을 0 으로 만들기 위해 Anthropic tool-
 | 호출처 | tool 이름 | 모델 |
 |---|---|---|
 | `write_review` (논문 1편 리뷰 JSON) | `emit_review` | Haiku |
-| `extract_insights.extract_cross_category_insights` | `emit_insights` | Sonnet (+ OpenAI/Gemini fallback) |
-| `extract_insights._call_connections_batch` (Anthropic 분기) | `emit_connections` | Sonnet (+ OpenAI `response_format=json_object` fallback) |
+| `extract_insights.extract_cross_category_insights` | `emit_insights` | Sonnet — 설정된 backend 하나만. openai/gemini 는 후보지 대체가 아니다 |
+| `auto_recover` 판정 | `emit_verdicts` | Haiku |
+| `compare_papers` | `emit_comparison` | Sonnet |
+
+**같이 보면 좋은 논문**(`topic_modeling.generate_connections_from_candidates`)은 이 표에 없습니다 — tool-use 없이 Sonnet 응답에서 JSON 을 파싱합니다. 그래서 다른 단계와 달리 파싱 실패가 실재하고, 막힌 배치는 multi-round 재시도 후 기존 연결을 유지한 채 남으며, opt-in `--local-fallback` 은 그 잔여분을 로컬 모델로 채우는 사용자 선택입니다 (자동 벤더 대체가 아님).
 
 ### 5. Figure pre-validator — `api/extract.pre_validate_figure`
 
@@ -225,6 +228,6 @@ Deep Research 질의 -> Obsidian 메모 작성 -> 인덱스 재빌드 -> 다음 
 | 구분 | 항목 |
 |------|------|
 | **필수** | Python 3.12 (macOS conda env `py312`), Zotero (API Key + 컬렉션 + PDF) |
-| **API** | Anthropic (Claude Haiku/Sonnet/Opus), Google (Gemini + `gemini-embedding-001` 검색 임베딩), Zotero Web API, Resend (배포 시 Audio Overview 이메일). OpenAI 는 선택 (답변 BYOK·insights fallback) |
+| **API** | **필수**: Anthropic (Claude Haiku/Sonnet/Opus — OAuth 구독 또는 Console API 키), Zotero Web API. **선택**: Google (Figure 검증 · Audio Overview TTS · `gemini-embedding-001` 검색 임베딩 — 없으면 dense 검색이 꺼지고 BM25 lexical 만 남는다), OpenAI (독자 BYOK 답변 · insights backend 후보), Resend (배포 시 Audio Overview 이메일). 선택 API 가 없으면 그 기능만 비활성이고 다른 provider 로 대체하지 않는다 |
 | **Python** | `pip install -r requirements.txt` — anthropic, openai, google-genai, pymupdf, Pillow, requests, pyzotero, opendataloader-pdf, numpy, scikit-learn, joblib, umap-learn, hdbscan, sentence-transformers |
 | **선택** | Obsidian (메모/Graph View), PaperBanana (타임라인 이미지), Zotero Desktop (PDF 원클릭) |

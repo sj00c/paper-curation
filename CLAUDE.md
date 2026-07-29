@@ -34,7 +34,7 @@ pip install anthropic google-genai pymupdf Pillow requests opendataloader-pdf
 5. **Zotero PDF 저장 경로**
 6. **PaperBanana 경로** — "PaperBanana가 이미 설치된 경로가 있으면 알려주세요. 없으면 자동으로 클론합니다." (없으면 생략, setup.py가 자동 클론)
 7. **GitHub 설정** — 선택사항 (정적 호스팅 자동 배포용), 없으면 생략
-8. **GOOGLE_API_KEY** — Deep Research 검색 인덱스 빌드(`build_search_index.py`)가 Google `gemini-embedding-001` 로 임베딩하므로 **필수**다 (Figure 검증·TTS 와 공용). 환경변수에 없으면 setup.py가 직접 입력받아 `config.json` 에 저장한다. `OPENAI_API_KEY` 는 **선택** — 독자 BYOK 답변과 insights fallback 에만 쓰이고, 없어도 설치가 진행된다.
+8. **GOOGLE_API_KEY** — **선택**이다. 있으면 Deep Research 검색 인덱스(`build_search_index.py`, `gemini-embedding-001`)와 Figure 검증·Audio Overview TTS 가 살고, 없으면 그 셋만 비활성으로 남는다 (검색은 BM25 lexical 만). 다른 provider 로 대체하지 않는다. setup.py 는 건너뛰어도 exit 0 으로 설치를 마친다. `OPENAI_API_KEY` 도 **선택** — 독자 BYOK 답변과 insights backend 후보에만 쓰인다.
 
 ### Step 3: setup.py 실행 및 검증
 ```bash
@@ -107,7 +107,7 @@ setup.py 출력의 "다음 단계" 섹션을 사용자에게 전달한다. 특�
 | 2 | `pipeline/build_papers_index.py` | Rebuild `_papers_index.json` with integrity fields (`text_md_sha256`, `doi_verified`, `zotero_item_key`) via atomic write |
 | 3 | `pipeline/classify_papers.py` | **HDBSCAN approximate_predict (원 설계)** — `topic_modeling` 이 저장한 `_hdbscan_model.joblib` 번들(hdbscan_model + UMAP transformer + centroids + tid→cat) 로드 → UMAP 5D 투영 → `hdbscan.approximate_predict` 로 primary sub-cluster 결정. Outlier(-1)는 768D centroid 코사인 최단점으로 강제 배정. `all_categories` 는 centroid 거리 오름차순 top-N parent. SPECTER2 임베딩은 proximity adapter + CLS pooling (업그레이드 후 새 임베딩을 반영하려면 `topic_modeling.py` 를 한 번 재실행해 `_hdbscan_model.joblib` 번들을 재생성해야 함). LLM 호출 없음. **UMAP/hdbscan/sentence-transformers env 필수** (py312 단독 — py314 금지, `_env_guard` 가 py312 로 자동 재실행) |
 | 4 | `pipeline/build_category_summaries.py` | Per-category 한글 description + sub-themes via Haiku |
-| 4.5 | `pipeline/extract_insights.py` | Paper connections via Sonnet (Core 기본). Cross-category Research Insights 생성은 **opt-in** — `run_full --insights` 일 때만. Auto Haiku-summarization fallback when prompt >988k tokens (compress toward 900k). cross-category 호출은 Anthropic → OpenAI → Gemini fallback |
+| 4.5 | `pipeline/extract_insights.py` | Paper connections via Sonnet (Core 기본). Cross-category Research Insights 생성은 **opt-in** — `run_full --insights` 일 때만. Auto Haiku-summarization fallback when prompt >988k tokens (compress toward 900k). cross-category 호출은 후보 목록(anthropic, openai, gemini) 중 **설정된 첫 번째 하나만** 쓰고, 실패해도 다음으로 넘어가지 않는다 (대체 금지 — 미설정 건너뛰기만 허용) |
 | 5 | `pipeline/generate_timelines.py` | Bottom-up timeline narrative (Opus) + PaperBanana images. Gemini retry schedule 3×60s → 2×1800s |
 | 5.5 | `pipeline/generate_network.py` | D3.js force-directed network visualization |
 | 5.5 | `pipeline/generate_workflow.py` | Pipeline workflow diagram (PaperBanana, `--style cat/fairy/academic`) |
@@ -341,7 +341,7 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 - **Zotero Web API**: Collection names and API key are configured in `config.json`
 - **Anthropic (Claude)**: 분류·리뷰·요약·insights. 두 경로 중 하나를 고른다 — **OAuth 구독 모드**(`anthropic_auth.create_anthropic_client()` 가 격리된 `claude -p` 브리지 사용, Claude Code >= 2.1.205, `claude auth login` 또는 `CLAUDE_CODE_OAUTH_TOKEN`) 또는 **Console API 키 모드**(Anthropic SDK, `ANTHROPIC_API_KEY`). setup 은 OAuth 토큰을 저장하지 않으며 `config.json` 에는 `anthropic_auth.mode = "oauth"` 만 남는다. OAuth 로 선택된 child 호출에서는 `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN` 을 제거하고, `auto` 는 OAuth 를 API 키보다 우선한다.
 - **Google Gemini API (선택)**: Figure 검증, Audio Overview TTS, Deep Research 임베딩 — `gemini-embedding-001` (`output_dimensionality=768`, 인덱스는 `RETRIEVAL_DOCUMENT`, 질의는 `RETRIEVAL_QUERY`). 질의 임베딩은 worker `/api/embed` 또는 `pipeline/serve_local.py` 가 대신 처리하므로 독자는 키가 필요 없다. 키는 `GOOGLE_API_KEY` env 또는 `config.json`. **키가 없으면 해당 기능은 비활성 상태로 남는다 — 다른 provider 로 fallback 하지 않는다.** **Gotcha**: non-3072 dims 는 비정규화 상태로 오므로 int8 양자화 전에 L2 정규화할 것.
-- **OpenAI API (optional)**: reader BYOK answer generation + `extract_insights` cross-category fallback. No longer required for the search index. Key from `OPENAI_API_KEY` env var or the `openai_api_key` field in `config.json`.
+- **OpenAI API (선택)**: 독자 BYOK 답변 생성 + `extract_insights` cross-category **backend 후보**(대체 체인이 아님 — 설정된 첫 후보만 쓰고, Claude 가 실패했다고 OpenAI 가 대신 답하지 않는다). 검색 인덱스에는 더 이상 필요 없다. 키는 `OPENAI_API_KEY` env 또는 `config.json` 의 `openai_api_key`.
 - **PyMuPDF (fitz)**: PDF text extraction and figure rendering
 - **Pillow**: PNG→WebP conversion in `pipeline/prepare_deploy.py`
 - **Zotero PDF storage**: Path configured in `config.json` (`zotero.pdf_dir`)

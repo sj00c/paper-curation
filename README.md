@@ -44,7 +44,7 @@
 
 ## 🔧 운영자로 설치하기
 
-Zotero 컬렉션 + PDF + Zotero API key는 필수입니다. Google API 키도 검색 임베딩·Figure 검증·TTS에 필요합니다. Claude 호출은 두 방식 중 하나를 고릅니다.
+Zotero 컬렉션 + PDF + Zotero API key는 필수입니다. Google API 키는 선택입니다 — 없으면 dense 검색·Figure 검증·Audio Overview TTS가 꺼진 채로 남고(검색은 BM25 lexical만) 다른 provider로 대체하지 않습니다. Claude 호출은 두 방식 중 하나를 고릅니다.
 
 - **구독 OAuth (권장)** — Claude Pro/Max/Team/Enterprise 구독을 Claude Code OAuth로 사용합니다. Claude Code **>= 2.1.205** 필요. `claude auth login`으로 저장된 로그인 또는 `claude setup-token`으로 받은 env-only `CLAUDE_CODE_OAUTH_TOKEN`을 사용합니다.
 - **Console API 키** — `ANTHROPIC_API_KEY`를 쓰며 Anthropic Console의 metered API 과금입니다. NPX 명령에서는 `--auth api-key`를 명시합니다.
@@ -183,7 +183,7 @@ Claude 비용은 인증 방식에 따라 다릅니다.
 | **로컬 LLM fallback** | `--local-fallback` | 망 전멸 시 로컬 모델(Ollama 등)로 연결 생성 완결 — [운영 매뉴얼](docs/operations.md#korean-network-workarounds) |
 | **워크플로 다이어그램** | `generate_workflow.py` | 상단 고양이 다이어그램 생성(PaperBanana, `--style cat/fairy/academic`) |
 
-**필요한 것**: Zotero 컬렉션 + PDF + Zotero API key + Google API 키 + Claude 인증(OAuth 구독 또는 Anthropic API 키). OpenAI는 선택, Resend는 배포 이메일에만 필요.
+**필요한 것**: Zotero 컬렉션 + PDF + Zotero API key + Claude 인증(OAuth 구독 또는 Anthropic API 키). Google·OpenAI·Resend는 선택 — 없으면 그 기능(각각 dense 검색·Figure 검증·TTS / 독자 BYOK 답변 / 배포 이메일)만 비활성으로 남고 다른 provider로 대체하지 않습니다.
 
 ## 파이프라인
 
