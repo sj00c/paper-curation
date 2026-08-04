@@ -1333,8 +1333,10 @@ def _run_network(topic="ai4s"):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate d3.js paper network")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="generate_network")
     _run_network(topic=args.topic)
 
 

@@ -2388,7 +2388,7 @@ def _run_curate(topic, *, mode=None, concurrency=16, resume=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Paper-curation --update-force batch")
-    parser.add_argument("--topic", default="ai4s", help="Topic: ai4s or scisci")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--concurrency", type=int, default=16, help="Parallel workers (Tier 4 default; lower for Tier 1~3 — see README)")
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
     parser.add_argument("--skip-existing", action="store_true",
@@ -2442,6 +2442,8 @@ def main():
                              "retime=regenerate timeline narratives+images only. "
                              "When set, overrides --resume/--skip-existing/--timeline/--category combinations.")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="run_update_force")
 
     # Apply --mode → legacy flags mapping. Pure translation; no behavior change
     # when --mode is absent (args.mode is None → all legacy flags honored as-is).

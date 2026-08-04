@@ -545,9 +545,11 @@ def inject_into_review(md_path, frontmatter_yaml, related_section):
 
 def main():
     parser = argparse.ArgumentParser(description="Inject frontmatter into review.md")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--skip-zotero", action="store_true", help="Skip Zotero PDF lookup")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="inject_frontmatter")
 
     topic = args.topic
     topic_dir = str(get_topic_dir(topic))

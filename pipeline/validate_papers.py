@@ -611,12 +611,14 @@ def _run_validate(topic="ai4s", *, fix=False, strict=False):
 
 def main():
     parser = argparse.ArgumentParser(description="Post-build validation")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--fix", action="store_true", help="Auto-fix figure refs + Python list literals")
     parser.add_argument("--strict", action="store_true",
                         help="Exit non-zero if any issue is found (deploy gate).")
     args = parser.parse_args()
-    _run_validate(topic=args.topic, fix=args.fix, strict=args.strict)
+    from config_loader import resolve_topic
+    topic = resolve_topic(args.topic, script="validate_papers")
+    _run_validate(topic=topic, fix=args.fix, strict=args.strict)
 
 
 if __name__ == "__main__":

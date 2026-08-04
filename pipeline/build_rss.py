@@ -163,10 +163,11 @@ def build_rss(topic):
 def main():
     parser = argparse.ArgumentParser(
         description="Build Atom 1.0 feed (feed.xml) for a topic")
-    parser.add_argument("topic", nargs="?", default="ai4s",
-                        help="Topic alias (e.g. humanoid, ai4s, scisci)")
+    parser.add_argument("topic", nargs="?", default="",
+                        help="Topic alias (생략 시 설정된 토픽이 하나면 그것)")
     args = parser.parse_args()
-    build_rss(args.topic)
+    from config_loader import resolve_topic
+    build_rss(resolve_topic(args.topic, script="build_rss"))
 
 
 if __name__ == "__main__":

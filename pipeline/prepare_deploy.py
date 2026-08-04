@@ -904,7 +904,7 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Prepare for GitHub Pages deployment")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--quality", type=int, default=90, help="WebP quality (1-100)")
     parser.add_argument("--dry-run", action="store_true", help="Estimate only, no conversion")
     parser.add_argument("--push", action="store_true", help="Git add + commit + push after conversion")
@@ -915,6 +915,8 @@ def main():
     parser.add_argument("--restore-keys", action="store_true",
                         help="strip 으로 비워진 로컬 HTML 키 슬롯을 env→config 로 재주입하고 종료 (배포 중단 복구 도구)")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="prepare_deploy")
     if args.restore_keys:
         _reinject_local_keys(DOCS_DIR)
         return

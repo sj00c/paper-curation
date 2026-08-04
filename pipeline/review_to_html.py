@@ -57,6 +57,40 @@ THEMES = {
                "link_color": "#1856A0", "back_href": "../../scisci/index.html"},
 }
 
+# 미등록 토픽용 중립 테마. build_topic_index.py 의 _default_theme 과 같은 파랑
+# 계열이라, 토픽 인덱스와 개별 논문 페이지의 accent 가 어긋나지 않는다.
+_DEFAULT_THEME = {
+    "accent": "#3B82F6", "accent_dark": "#2563EB", "accent_bg": "#EFF6FF",
+    "essence_border": "#2563EB", "essence_bg": "#F8FAFD",
+    "link_color": "#2563EB",
+}
+
+
+def theme_for(topic):
+    """토픽별 테마. 미등록 토픽은 중립 테마 + 자기 토픽으로 돌아가는 back_href.
+
+    예전에는 ai4s 테마로 폴백해서, physical-ai 같은 설치에서 논문 페이지가
+    빨간색으로 뜨고 '목록으로' 링크가 존재하지 않는 ../../ai4s/index.html 로
+    갔다. back_href 는 언제나 자기 토픽을 가리켜야 한다.
+    """
+    known = THEMES.get(topic)
+    if known:
+        return known
+    return dict(_DEFAULT_THEME, back_href=f"../../{topic}/index.html")
+
+def _fallback_topic():
+    """인덱스가 토픽을 말해주지 않을 때 쓸 토픽.
+
+    설정된 토픽이 하나뿐이면 그것. 여러 개거나 config 를 못 읽으면 "unknown"
+    으로 남겨, 존재하지 않는 남의 토픽 페이지로 링크되는 대신 눈에 띄게 한다.
+    """
+    try:
+        from config_loader import get_default_topic
+        return get_default_topic() or "unknown"
+    except Exception:
+        return "unknown"
+
+
 # 배포 도메인 — OG 태그의 절대 URL 용 (= prepare_deploy.CF_BASE_URL).
 _CF_BASE = "https://paper-curation.jehyunlee.dev"
 
@@ -605,7 +639,7 @@ def convert_review(md_path, topic, slug_dir):
     # Strip Related Papers section (auto-generated for Obsidian)
     md = re.sub(r'\n## Related Papers\n[\s\S]*?(?=\n## |\Z)', '', md)
 
-    theme = THEMES.get(topic, THEMES["ai4s"])
+    theme = theme_for(topic)
 
     # Extract title
     title_m = re.search(r'^#\s+(.+)', md, re.MULTILINE)
@@ -971,7 +1005,12 @@ Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
 
 
 def detect_topic(slug, index_path=None):
-    """Detect topic from _papers_index.json."""
+    """Detect topic from _papers_index.json.
+
+    인덱스에 토픽이 없으면 설정된 토픽(유일할 때)으로 폴백한다. 예전에는
+    'ai4s' 를 반환해서, ai4s 가 없는 설치의 논문이 존재하지 않는 토픽으로
+    렌더됐다 — 테마도 back_href 도 전부 어긋났다.
+    """
     if index_path and os.path.exists(index_path):
         with open(index_path, 'r', encoding='utf-8') as f:
             idx = json.load(f)
@@ -980,8 +1019,11 @@ def detect_topic(slug, index_path=None):
                 topics = p.get('topics', [])
                 if topics:
                     return topics[0]
-                return p.get('primary_topic', 'ai4s')
-    return "ai4s"
+                primary = p.get('primary_topic')
+                if primary:
+                    return primary
+                break
+    return _fallback_topic()
 
 
 def _resolve_target_slugs(all_slugs, *, slug=None, slugs=None,

@@ -828,7 +828,7 @@ def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Extract cross-paper insights and connections")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--insights-only", action="store_true", help="Cross-category insights only")
     parser.add_argument("--connections-only", action="store_true", help="Paper connections only")
     parser.add_argument("--only", choices=["connections", "insights", "all"], default="all",
@@ -840,6 +840,8 @@ def main():
                              "증분 모드를 1회 부팅(전체 재생성 회피); 기존 연결은 그대로 두고 "
                              "이후 실행이 신규/변동 논문만 증분 생성하게 한다.")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="extract_insights")
     # --only 를 기존 *_only 게이트로 매핑 (둘 다 동일 효과; --insights-only/--connections-only 와 OR).
     insights_only = args.insights_only or args.only == "insights"
     connections_only = (args.connections_only or args.only == "connections"

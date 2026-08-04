@@ -1092,7 +1092,7 @@ def _run_timeline(topic="ai4s", *, candidates=3, narrative_only=False,
 
 def main():
     parser = argparse.ArgumentParser(description="Generate timelines (bottom-up, 3-step)")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--candidates", type=int, default=3)
     parser.add_argument("--narrative-only", action="store_true", help="Step 1 only: generate narratives")
     parser.add_argument("--images-only", action="store_true", help="Step 2 only: generate images from existing narratives")
@@ -1102,6 +1102,8 @@ def main():
     parser.add_argument("--force-narrative", action="store_true",
                         help="narrative 입력 해시 캐시 무시하고 모든 카테고리 narrative 강제 재생성")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="generate_timelines")
     _run_timeline(topic=args.topic, candidates=args.candidates,
                   narrative_only=args.narrative_only,
                   images_only=args.images_only, main_only=args.main_only,

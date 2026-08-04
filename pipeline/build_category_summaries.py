@@ -324,10 +324,12 @@ def _run_category_summary(topic="ai4s", *, regen_ko=False, categories=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Build _category_summaries.json")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--regen-ko", action="store_true", help="한글 설명만 재생성")
     parser.add_argument("--categories", nargs="+", help="Specific categories to regenerate (others preserved)")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="build_category_summaries")
     _run_category_summary(topic=args.topic, regen_ko=args.regen_ko,
                           categories=args.categories)
 

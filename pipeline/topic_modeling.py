@@ -1255,7 +1255,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
 
 def main():
     parser = argparse.ArgumentParser(description="BERTopic topic modeling + UMAP")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--skip-connections", action="store_true")
     parser.add_argument("--skip-classification", action="store_true",
                         help="Skip Steps 4-5 (naming/grouping/assignment). Run embedding, UMAP, connections only.")
@@ -1267,6 +1267,8 @@ def main():
                              "마저 연결한다. config.json 의 local_model 블록 또는 "
                              "LOCAL_MODEL_BASE_URL/LOCAL_MODEL_NAME 환경변수 필요.")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="topic_modeling")
 
     local_fallback = None
     if args.local_fallback:

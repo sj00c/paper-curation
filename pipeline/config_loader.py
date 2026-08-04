@@ -366,6 +366,69 @@ def get_topic_dir(topic: str) -> Path:
     return DOCS_DIR / topic
 
 
+def get_topic_names() -> list:
+    """설정된 topic alias 목록. 네트워크 없음.
+
+    get_collections() 는 컬렉션 이름을 Zotero 키로 해석하느라 API 를 탈 수 있다.
+    토픽 alias 만 필요한 자리(기본값 결정, 폴백)에서는 이 함수를 쓴다.
+    """
+    cfg = load_config()
+    raw = cfg.get("zotero", {}).get("collections", {}) or {}
+    return [t for t in raw.keys() if t]
+
+
+def get_default_topic() -> str:
+    """--topic 생략 시 쓸 토픽. 유일할 때만 확정, 아니면 빈 문자열.
+
+    토픽이 하나뿐인 설치(대다수)는 --topic 없이도 그 토픽으로 돌아간다.
+    여러 개면 무엇을 뜻했는지 알 수 없으므로 호출자가 명시를 요구해야 한다.
+    ai4s 로 조용히 폴백하던 예전 동작은, ai4s 가 없는 설치에서 엉뚱한 토픽에
+    쓰거나 빈 결과를 내놓고도 성공한 것처럼 보였다.
+    """
+    names = get_topic_names()
+    return names[0] if len(names) == 1 else ""
+
+def resolve_topic(explicit: str = "", *, script: str = "") -> str:
+    """--topic 인자를 해석한다. 개별 스크립트를 직접 부를 때의 공통 진입점.
+
+    이행 설계. 예전에는 argparse 가 default="ai4s" 를 박아, --topic 을 빼면
+    ai4s 설치가 아닌데도 조용히 ai4s 를 대상으로 삼았다. physical-ai 설치에서
+    `validate_papers.py` 를 인자 없이 부르면 남의 토픽을 검사하고 통과한 것처럼
+    끝났다. 그렇다고 곧바로 required 로 바꾸면, 매일 `--topic` 없이 돌리던
+    사람들의 손이 하루아침에 깨진다.
+
+    그래서 세 갈래로 나눈다.
+      - 명시했으면 그대로 쓴다.
+      - 생략했고 설정된 토픽이 하나뿐이면 그것으로 진행하되, 한 줄 알린다.
+        (토픽이 하나인 설치가 대다수 — 이 경로가 기존 사용자를 지킨다)
+      - 생략했고 토픽이 여럿/없으면 무엇을 뜻했는지 알 수 없으므로 멈춘다.
+        조용히 하나를 고르면 엉뚱한 토픽을 건드린다.
+    """
+    if explicit:
+        return explicit
+
+    names = get_topic_names()
+    where = f"{script}: " if script else ""
+
+    if len(names) == 1:
+        topic = names[0]
+        print(f"[topic] {where}--topic 생략 → 설정된 유일한 토픽 '{topic}' 사용 "
+              f"(명시하려면 --topic {topic})")
+        return topic
+
+    if not names:
+        raise SystemExit(
+            f"[topic] {where}--topic 이 필요합니다. config.json 의 "
+            f"zotero.collections 에 토픽이 없습니다 — 먼저 setup 을 실행하세요."
+        )
+
+    raise SystemExit(
+        f"[topic] {where}--topic 이 필요합니다. 설정된 토픽이 여러 개라 "
+        f"자동으로 고를 수 없습니다: {', '.join(sorted(names))}"
+    )
+
+
+
 def get_papers_index_path() -> Path:
     """papers/_papers_index.json 경로 반환."""
     return PAPERS_DIR / "_papers_index.json"

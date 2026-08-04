@@ -184,8 +184,10 @@ def _num_to_slug(num):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate Obsidian MOC files")
-    parser.add_argument("--topic", default="ai4s")
+    parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     args = parser.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="generate_moc")
 
     topic = args.topic
     topic_dir = str(get_topic_dir(topic))
