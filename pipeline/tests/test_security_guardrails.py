@@ -46,6 +46,9 @@ class PushRepo:
         # Hook expects ROOT/scripts/scan-secrets.py.
         (self.work / "scripts").mkdir()
         shutil.move(self.work / "scan-secrets.py", self.work / "scripts/scan-secrets.py")
+        # 훅 2단계(줄바꿈 가드)도 같은 자리에서 찾는다. 없으면 훅이 그 단계에서
+        # 죽어 시크릿 스캔 결과와 무관하게 push 가 실패한다.
+        shutil.copy2(ROOT / "scripts/check-eol.py", self.work / "scripts/check-eol.py")
         os.chmod(hooks / "pre-push", 0o755)
         self.commit("base.txt", "base\n", "base")
         self.push("HEAD:refs/heads/main", expect=0)

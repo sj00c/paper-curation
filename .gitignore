@@ -3,6 +3,7 @@
 
 # Whitelist: core project files
 !.gitignore
+!.gitattributes
 !.nojekyll
 !README.md
 !README.en.md

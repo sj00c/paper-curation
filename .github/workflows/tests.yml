@@ -1,0 +1,79 @@
+name: tests
+
+# 642개 파이썬 테스트 + npx CLI 테스트가 저장소에 있는데, 지금까지 이것들을
+# 자동으로 돌리는 곳이 없었다. pre-push 훅은 시크릿 스캔과 (advisory)
+# validate_papers 만 돌린다. 회귀를 막으려고 쓴 테스트는 누가 돌려야 회귀를
+# 막는다.
+#
+# 무거운 클러스터링 의존성(umap-learn / hdbscan / sentence-transformers → torch)
+# 은 설치하지 않는다. 테스트는 그 경로를 import 하지 않으며, 매 push 마다 수 GB
+# 를 받는 대가로 얻는 게 없다. 나머지 requirements 는 파일에서 그대로 읽어
+# 목록이 두 벌로 갈라지지 않게 한다.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies (heavy clustering stack excluded)
+        run: |
+          python -m pip install --upgrade pip
+          grep -vE '^(umap-learn|hdbscan|sentence-transformers)\s*$' requirements.txt > /tmp/req-ci.txt
+          pip install -r /tmp/req-ci.txt pytest
+
+      - name: pytest
+        run: PYTHONUTF8=1 python -m pytest pipeline/tests -q
+
+  line-endings:
+    # 이 저장소는 CRLF 17개와 LF 127개가 섞여 있다 (upstream 이 Windows 산).
+    # 편집 도구가 CRLF 파일을 LF 로 다시 쓰면 두 줄 수정이 파일 전체 재작성으로
+    # 잡혀 리뷰가 불가능해진다. pre-push 훅이 1차로 막지만, --no-verify 나 웹
+    # 편집으로 들어온 것은 여기서 잡는다.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 줄바꿈만 바뀐 변경 차단
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          [ -n "$base" ] || base="$(git rev-parse HEAD~1 2>/dev/null || git rev-parse HEAD)"
+          echo "base=$base"
+          fail=0
+          for f in $(git diff --name-only "$base" HEAD); do
+            git cat-file -e "$base:$f" 2>/dev/null || continue
+            [ -f "$f" ] || continue
+            old="$(git show "$base:$f" | head -c 200000)"
+            case "$old" in *$'\r'*) old_eol=crlf ;; *) old_eol=lf ;; esac
+            new="$(head -c 200000 "$f")"
+            case "$new" in *$'\r'*) new_eol=crlf ;; *) new_eol=lf ;; esac
+            if [ "$old_eol" != "$new_eol" ]; then
+              echo "::error file=$f::줄바꿈이 $old_eol → $new_eol 로 바뀌었습니다. scripts/check-eol.py --fix 로 되돌리세요."
+              fail=1
+            fi
+          done
+          exit $fail
+
+  npx-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: node --test
+        run: npm run test:npx-cli
