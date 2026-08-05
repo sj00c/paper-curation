@@ -208,5 +208,61 @@ class EntrypointsUseResolverTests(unittest.TestCase):
 
 
 
+class DeployTopicNeutralityTests(unittest.TestCase):
+    """배포 경로도 토픽을 하드코딩하지 않는다.
+
+    두 군데가 박혀 있었다.
+      - _TOPIC_TITLES: humanoid/physical-ai/ai4s/scisci 만 담은 dict. 새 토픽은
+        전부 alias 흉내(bioml → "Bioml")로 gh-pages 스텁에 실렸다. 사용자는 이미
+        setup 에서 label 을 정했는데 그걸 안 봤다.
+      - CF_PROBE_PATHS: ("/", "/humanoid/", "/physical-ai/", "/index.html"). 배포
+        검증이 그 두 토픽을 고정으로 찔러서, 없는 설치는 영영 200 을 못 받고
+        타임아웃했다. topic 인자를 받으면서 쓰지도 않았다.
+    """
+
+    def _prepare_deploy(self):
+        import prepare_deploy
+        return prepare_deploy
+
+    def test_label_comes_from_config_profile(self):
+        P = self._prepare_deploy()
+        cfg = {"topic_profiles": {"bioml": {"label": "Biology × ML"}}}
+        with patch("config_loader.load_config", return_value=cfg):
+            self.assertEqual(P._topic_title("bioml"), "Biology × ML")
+
+    def test_label_falls_back_to_collection_name(self):
+        P = self._prepare_deploy()
+        cfg = {"zotero": {"collections": {"climate": "Climate Science"}}}
+        with patch("config_loader.load_config", return_value=cfg):
+            self.assertEqual(P._topic_title("climate"), "Climate Science")
+
+    def test_label_last_resort_is_the_alias(self):
+        P = self._prepare_deploy()
+        with patch("config_loader.load_config", return_value={}):
+            self.assertEqual(P._topic_title("physical-ai"), "Physical Ai")
+
+    def test_label_survives_unreadable_config(self):
+        P = self._prepare_deploy()
+        with patch("config_loader.load_config", side_effect=RuntimeError("boom")):
+            self.assertEqual(P._topic_title("bioml"), "Bioml")
+
+    def test_probe_paths_have_no_hardcoded_topics(self):
+        """루트 경로만 고정이어야 한다."""
+        P = self._prepare_deploy()
+        for path in P.CF_ROOT_PROBE_PATHS:
+            with self.subTest(path=path):
+                self.assertNotIn("humanoid", path)
+                self.assertNotIn("physical-ai", path)
+
+    def test_verify_probes_the_requested_topic(self):
+        """_verify_cloudflare 가 받은 토픽을 실제로 찔러야 한다."""
+        import inspect
+
+        P = self._prepare_deploy()
+        src = inspect.getsource(P._verify_cloudflare)
+        self.assertIn("probe_paths", src)
+        self.assertIn("topic", src.split("def _verify_cloudflare")[1][:400])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

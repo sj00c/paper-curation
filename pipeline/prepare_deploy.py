@@ -203,7 +203,10 @@ def update_html_refs(file_path, fig_only=False):
 
 
 CF_BASE_URL = "https://paper-curation.jehyunlee.dev"
-CF_PROBE_PATHS = ("/", "/humanoid/", "/physical-ai/", "/index.html")
+# 고정 경로는 사이트 루트만. 토픽 경로는 실제 배포 대상에서 만든다 — 예전에는
+# ("/", "/humanoid/", "/physical-ai/", "/index.html") 로 박혀 있어서, 그 두 토픽이
+# 없는 설치는 존재하지 않는 URL 을 찌르고 영영 200 을 못 받아 타임아웃했다.
+CF_ROOT_PROBE_PATHS = ("/", "/index.html")
 
 
 def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
@@ -215,12 +218,21 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
     import time as _time
     import urllib.request as _ur
     import urllib.error as _ue
+
+    # 실제로 배포된 토픽만 찌른다. topic 인자는 받아만 두고 쓰지 않아서, 어떤
+    # 설치든 humanoid/physical-ai 를 확인하려 들었다.
+    probe_paths = list(CF_ROOT_PROBE_PATHS)
+    for t in dict.fromkeys([topic, *_discover_deployable_topics()]):
+        if t:
+            probe_paths.append(f"/{t}/")
+    probe_paths = list(dict.fromkeys(probe_paths))
+
     print(f"\n  [cf-verify] polling Cloudflare for ≤{timeout_s}s …")
     deadline = _time.time() + timeout_s
     last_status = {}
     while _time.time() < deadline:
         all_ok = True
-        for path in CF_PROBE_PATHS:
+        for path in probe_paths:
             url = CF_BASE_URL + path
             try:
                 req = _ur.Request(url, method="HEAD",
@@ -238,7 +250,7 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
                 last_status[path] = ("err", str(e)[:60])
                 all_ok = False
         if all_ok:
-            print(f"  [cf-verify] all {len(CF_PROBE_PATHS)} endpoints 200 OK")
+            print(f"  [cf-verify] all {len(probe_paths)} endpoints 200 OK")
             for p, (c, s) in last_status.items():
                 print(f"    {p}: {c} ({s} bytes)")
             return True
@@ -263,12 +275,30 @@ _STUB_HTML = """<!DOCTYPE html>
 </html>
 """
 
-_TOPIC_TITLES = {
-    "humanoid": "Humanoid",
-    "physical-ai": "Physical AI",
-    "ai4s": "AI for Science",
-    "scisci": "Science of Science",
-}
+def _topic_title(topic):
+    """gh-pages 스텁에 쓸 사람이 읽는 토픽 이름.
+
+    config.json 의 topic_profiles.<topic>.label 을 먼저 본다. 예전에는 네 토픽만
+    담긴 dict 를 하드코딩해서, 새 토픽은 전부 alias 를 흉내낸 제목으로 떨어졌다
+    (bioml → "Bioml"). 라벨은 사용자가 setup 에서 이미 정한 값이므로 그것을 쓴다.
+    zotero.collections 의 컬렉션 이름이 그 다음, 마지막이 alias 정리본이다.
+    """
+    try:
+        from config_loader import load_config
+        cfg = load_config() or {}
+    except Exception:
+        cfg = {}
+
+    profile = (cfg.get("topic_profiles") or {}).get(topic) or {}
+    label = profile.get("label") or profile.get("collection_name")
+    if label:
+        return label
+
+    collection = (cfg.get("zotero", {}).get("collections") or {}).get(topic)
+    if isinstance(collection, str) and collection:
+        return collection
+
+    return topic.replace("-", " ").title()
 
 
 def _discover_deployable_topics():
@@ -450,7 +480,7 @@ def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
         )
         changed = []
         for topic in topics:
-            title = _TOPIC_TITLES.get(topic, topic.replace("-", " ").title())
+            title = _topic_title(topic)
             content = _STUB_HTML.format(cf_url=cf_url, topic=topic, title=title)
             stub_dir = os.path.join(worktree, topic)
             os.makedirs(stub_dir, exist_ok=True)

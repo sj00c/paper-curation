@@ -36,7 +36,14 @@ CONFIG_PATH = REPO / "config.json"
 ENV_PATH = REPO / ".env"
 EXAMPLE_PATH = REPO / "config.example.json"
 TEMPLATE_PATH = REPO / "SKILL.md.template"
-SKILL_OUTPUT = REPO / "SKILL.md"
+# 렌더 산출물은 추적되지 않는 경로에 쓴다. 예전에는 추적 파일인 REPO/SKILL.md 를
+# 덮어써서, setup 을 돌린 사람은 누구나 자기 topic alias 가 박힌 diff 를 안고
+# 있었다 (git status 가 더러워지고, 실수로 커밋되면 남의 설치값이 저장소에 남는다).
+# REPO/SKILL.md 는 upstream 레퍼런스 산출물이고, test_skill_template 이 그것을
+# 템플릿과 대조해 고정한다 — 로컬 설치가 그 역할을 침범하면 안 된다.
+SKILL_OUTPUT = REPO / "SKILL.generated.md"
+# 레퍼런스 산출물. 템플릿을 고친 유지보수자만 --write-reference 로 갱신한다.
+SKILL_REFERENCE = REPO / "SKILL.md"
 GITIGNORE_PATH = REPO / ".gitignore"
 SKILL_INSTALL_DIR = Path.home() / ".claude" / "skills" / "paper-curation"
 
@@ -638,6 +645,29 @@ def skill_replacements(cfg):
     }
 
 
+REFERENCE_REPLACEMENTS = {
+    "{topic_alias}": "ai4s",
+    "{pages_base_url}": "https://jehyunlee.github.io/paper-curation",
+}
+
+
+def write_reference_skill_md():
+    """커밋되는 레퍼런스 SKILL.md 를 템플릿에서 다시 만든다.
+
+    템플릿을 고치면 이 산출물도 같이 움직여야 test_skill_template 이 통과한다.
+    예전에는 그 갱신 경로가 없어서, 유지보수자가 손으로 두 파일을 맞추거나
+    setup 을 돌려 자기 설치값을 커밋에 섞는 수밖에 없었다.
+    """
+    template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    content, unresolved = render_skill_md(template, REFERENCE_REPLACEMENTS)
+    if unresolved:
+        print(f"  ✗ 미해결 placeholder: {unresolved}")
+        return False
+    SKILL_REFERENCE.write_text(content, encoding="utf-8")
+    print(f"  ✓ {SKILL_REFERENCE} (레퍼런스 값으로 렌더)")
+    return True
+
+
 def step_skill_md(cfg):
     """Step 5: SKILL.md 생성."""
     print("\n[5/6] SKILL.md 생성")
@@ -677,7 +707,7 @@ def step_install():
     print("\n[6/6] SKILL.md 설치")
 
     if not SKILL_OUTPUT.exists():
-        print("  ✗ SKILL.md가 없습니다")
+        print(f"  ✗ {SKILL_OUTPUT.name} 이 없습니다")
         return False
 
     SKILL_INSTALL_DIR.mkdir(parents=True, exist_ok=True)
@@ -758,7 +788,13 @@ def main():
     parser.add_argument("--anthropic-auth", choices=("auto", "oauth", "api-key"),
                         default="auto",
                         help="Anthropic 인증 방식: auto(기본), oauth(Claude Code), api-key(Console)")
+    parser.add_argument("--write-reference", action="store_true",
+                        help="커밋되는 레퍼런스 SKILL.md 를 템플릿에서 재생성 (유지보수자용). "
+                             "config.json 을 읽지 않고 레퍼런스 값으로만 렌더한다.")
     args = parser.parse_args()
+
+    if args.write_reference:
+        raise SystemExit(0 if write_reference_skill_md() else 1)
 
     print("=" * 50)
     print("  Paper Curation — Setup")

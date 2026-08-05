@@ -30,10 +30,9 @@ REPO = PIPELINE.parent
 TEMPLATE = REPO / "SKILL.md.template"
 
 # 커밋된 SKILL.md 를 만들어 낸 값. 이 저장소(레퍼런스 설치)의 topic alias 와 Pages URL.
-REFERENCE = {
-    "{topic_alias}": "ai4s",
-    "{pages_base_url}": "https://jehyunlee.github.io/paper-curation",
-}
+# setup 의 --write-reference 가 쓰는 값과 같아야 한다 — 두 벌로 갈라지면 테스트는
+# 통과하는데 재생성 결과가 커밋본과 달라진다. 그래서 여기서 직접 참조한다.
+REFERENCE = setup_cli.REFERENCE_REPLACEMENTS
 
 
 def _git_show(path):
@@ -185,6 +184,62 @@ class StepSkillMdTests(unittest.TestCase):
                  redirect_stdout(io.StringIO()):
                 self.assertFalse(setup_cli.step_skill_md({}))
             self.assertFalse(out.exists())
+
+
+class ReferenceOutputSeparationTests(unittest.TestCase):
+    """setup 이 추적 파일을 덮지 않는다는 계약.
+
+    예전에는 SKILL_OUTPUT 이 추적되는 REPO/SKILL.md 라, setup 을 돌린 사람은 누구나
+    자기 topic alias 가 박힌 diff 를 안고 있었다. 실수로 커밋되면 남의 설치값이
+    저장소의 레퍼런스로 남는다.
+    """
+
+    def test_setup_renders_to_an_untracked_path(self):
+        self.assertNotEqual(setup_cli.SKILL_OUTPUT, setup_cli.SKILL_REFERENCE)
+        self.assertEqual(setup_cli.SKILL_REFERENCE.name, "SKILL.md")
+
+    def test_generated_output_is_gitignored(self):
+        """생성물이 추적되면 같은 문제가 되돌아온다."""
+        proc = subprocess.run(
+            ["git", "check-ignore", "-q", setup_cli.SKILL_OUTPUT.name],
+            cwd=REPO, capture_output=True, check=False,
+        )
+        self.assertEqual(0, proc.returncode,
+                         f"{setup_cli.SKILL_OUTPUT.name} 이 gitignore 되지 않는다")
+
+    def test_write_reference_reproduces_the_committed_file(self):
+        """--write-reference 는 커밋본을 그대로 재현해야 한다 (idempotent)."""
+        committed = _git_show("SKILL.md")
+        if committed is None:
+            self.skipTest("HEAD:SKILL.md 를 읽을 수 없음")
+        template = TEMPLATE.read_text(encoding="utf-8")
+        rendered, unresolved = setup_cli.render_skill_md(
+            template, setup_cli.REFERENCE_REPLACEMENTS)
+        self.assertEqual([], unresolved)
+        self.assertEqual(committed, rendered)
+
+    def test_step_skill_md_does_not_touch_the_reference(self):
+        """로컬 설치값으로 렌더해도 레퍼런스 파일은 그대로여야 한다."""
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            template = tmp / "SKILL.md.template"
+            template.write_text("--topic {topic_alias}\n", encoding="utf-8")
+            reference = tmp / "SKILL.md"
+            reference.write_text("REFERENCE-UNTOUCHED\n", encoding="utf-8")
+            out = tmp / "SKILL.generated.md"
+
+            cfg = {"zotero": {"collections": {"bioml": "BioML"}}}
+            with patch.object(setup_cli, "TEMPLATE_PATH", template), \
+                 patch.object(setup_cli, "SKILL_OUTPUT", out), \
+                 patch.object(setup_cli, "SKILL_REFERENCE", reference), \
+                 patch.object(setup_cli, "GITIGNORE_PATH", tmp / ".gitignore"), \
+                 redirect_stdout(io.StringIO()):
+                setup_cli.step_skill_md(cfg)
+
+            self.assertEqual("REFERENCE-UNTOUCHED\n",
+                             reference.read_text(encoding="utf-8"),
+                             "setup 이 레퍼런스 파일을 덮었다")
+            self.assertIn("bioml", out.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

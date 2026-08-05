@@ -42,13 +42,11 @@ class PushRepo:
         run(["git", "config", "user.name", "Security Test"], self.work)
         hooks = self.work / ".git/hooks"
         shutil.copy2(ROOT / "scripts/pre-push", hooks / "pre-push")
-        shutil.copy2(ROOT / "scripts/scan-secrets.py", self.work / "scan-secrets.py")
-        # Hook expects ROOT/scripts/scan-secrets.py.
-        (self.work / "scripts").mkdir()
-        shutil.move(self.work / "scan-secrets.py", self.work / "scripts/scan-secrets.py")
-        # 훅 2단계(줄바꿈 가드)도 같은 자리에서 찾는다. 없으면 훅이 그 단계에서
-        # 죽어 시크릿 스캔 결과와 무관하게 push 가 실패한다.
-        shutil.copy2(ROOT / "scripts/check-eol.py", self.work / "scripts/check-eol.py")
+        # 훅이 쓰는 스크립트를 이름으로 나열하면, 훅에 단계가 하나 추가될 때마다
+        # 여기가 조용히 뒤처진다. 실제로 줄바꿈 가드를 넣었을 때 훅이 그 단계에서
+        # 죽어 시크릿과 무관한 테스트 12개가 함께 무너졌다. 디렉토리째 복사해서
+        # 훅이 무엇을 부르든 따라오게 한다.
+        shutil.copytree(ROOT / "scripts", self.work / "scripts")
         os.chmod(hooks / "pre-push", 0o755)
         self.commit("base.txt", "base\n", "base")
         self.push("HEAD:refs/heads/main", expect=0)
