@@ -207,6 +207,34 @@ class EntrypointsUseResolverTests(unittest.TestCase):
                               f"{name}.py 가 resolve_topic 을 거치지 않는다")
 
 
+class NoThemeFallbackToAi4sTests(unittest.TestCase):
+    """THEMES["ai4s"] 로 폴백하는 자리가 다시 생기지 않게.
+
+    review_to_html 에서 고쳤는데 compare_papers 에 같은 줄이 한 벌 더 있었다.
+    폴백은 theme_for() 한 곳에만 있어야 한다.
+    """
+
+    def test_no_module_falls_back_to_the_ai4s_theme(self):
+        """review_to_html 밖에서 THEMES["ai4s"] 를 참조하면 안 된다."""
+        import re
+
+        pattern = re.compile(r'THEMES\[["\']ai4s["\']\]')
+        offenders = []
+        for root, _dirs, files in os.walk(PIPELINE):
+            if "tests" in root or "_archive" in root:
+                continue
+            for fn in files:
+                if not fn.endswith(".py") or fn == "review_to_html.py":
+                    continue
+                path = os.path.join(root, fn)
+                for line in open(path, encoding="utf-8").read().splitlines():
+                    if pattern.search(line):
+                        offenders.append(
+                            f"{os.path.relpath(path, PIPELINE)}: {line.strip()}")
+        self.assertEqual([], offenders,
+                         "ai4s 테마로 폴백하는 자리가 남았다 — theme_for() 를 쓸 것")
+
+
 
 class DeployTopicNeutralityTests(unittest.TestCase):
     """배포 경로도 토픽을 하드코딩하지 않는다.
