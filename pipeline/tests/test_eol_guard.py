@@ -139,22 +139,28 @@ class RepoPolicyTests(unittest.TestCase):
             self.skipTest("pre-push 훅 없음")
         self.assertNotIn('PAPER_CURATION_TOPIC:-ai4s}', hook.read_text(encoding="utf-8"))
 
-    def test_no_tracked_source_states_a_frozen_lf_count(self):
-        """고정된 LF 파일 개수(예: 'LF ' + 세자리 수)가 추적 소스에 남으면 안 된다.
+    def test_no_tracked_source_states_the_127_lf_regression(self):
+        """gen-2 의 127-계열 LF 개수 회귀가 추적 소스에 되살아나지 않게 고정한다.
 
         LF 개수는 커밋마다 흘러 금방 거짓이 된다 (한때 127 로 적혔다가 184 가 됨).
         실제로 한 번은 branch-ledger 만 고치고 .gitattributes/pre-push/CI 코멘트에
         옛 숫자가 남아 저장소가 같은 사실을 두고 자기모순을 냈다. glob 필터한 grep 은
         확장자 없는 .gitattributes/pre-push 를 구조적으로 못 봐서 놓쳤다 — git grep 으로
         전 추적 파일을 훑는다. 논문 콘텐츠(docs/papers)는 무관하므로 제외.
-        """
-        import subprocess
 
+        범위는 그 사건의 값(12x)으로 좁힌다: 일반 3자리 규칙은 코퍼스의 정당한
+        한글 개수 표현('642개 tests', '3,273개 …')과 충돌해 오탐이 난다. 다른
+        고정 개수가 문제되면 EOL-정책 파일에 한정한 별도 규칙으로 넓히면 된다.
+        """
         proc = subprocess.run(
             ["git", "grep", "-n", "-E", r"LF 12[0-9]|12[0-9]개",
              "--", ".", ":!docs/papers"],
             cwd=REPO, capture_output=True, text=True, check=False,
         )
+        # git grep exits 0 (match) or 1 (no match); anything else means the scan
+        # itself failed and an empty stdout would be a vacuous pass.
+        self.assertIn(proc.returncode, (0, 1),
+                      f"git grep failed ({proc.returncode}): {proc.stderr}")
         self.assertEqual(
             proc.stdout, "",
             f"frozen LF count found in tracked source:\n{proc.stdout}",
