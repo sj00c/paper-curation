@@ -94,14 +94,40 @@ def find_root_key(collections: dict, name_or_key: str) -> str:
     return ""
 
 
+# 미분류 컬렉션의 관례적 이름. 실제 라이브러리는 루트마다 다르게 쓴다 —
+# "AI for Science"/"Physical AI" 는 "99 Unclassified", "KIST Life Sciences" 는
+# 번호 없이 "Unclassified". 둘 다 잡는다.
+DEFAULT_UNCLASSIFIED_NAMES = ("99 Unclassified", "Unclassified", "미분류")
+
+# unclassified 처리 방식.
+#   "skip"    — 배정하지 않고 남긴다. 나중에 HDBSCAN 제안을 붙일 자리.
+#   "include" — 그대로 하나의 카테고리로 쓴다. 사용자가 Zotero 에서 만든 칸이니
+#               페이지에도 그대로 보이는 편이 정직하다.
+UNCLASSIFIED_MODES = ("skip", "include")
+
+
+def is_unclassified(name, unclassified_names=DEFAULT_UNCLASSIFIED_NAMES):
+    """이 카테고리 이름이 '미분류' 칸인가.
+
+    번호 접두사("99 ")를 떼고 비교하므로, 사용자가 번호를 바꿔 달아도("90 …")
+    같은 칸으로 인식한다. 이름 규칙에 기대는 건 취약하지만, Zotero 에 '이건
+    미분류 칸' 이라고 표시할 자리가 없어서 이게 유일한 신호다.
+    """
+    n = re.sub(r"^\d+\s+", "", str(name or "")).strip().lower()
+    return n in {re.sub(r"^\d+\s+", "", x).strip().lower()
+                 for x in unclassified_names}
+
+
 def build_assignments(index_papers, zotero_items, categories,
-                      *, unclassified_names=("99 Unclassified", "Unclassified")):
+                      *, unclassified="skip",
+                      unclassified_names=DEFAULT_UNCLASSIFIED_NAMES):
     """Zotero 소속 컬렉션 → classify_papers 형식의 assignments.
 
     Args:
         index_papers: `_papers_index.json` 의 항목들 (이 토픽 것만).
         zotero_items: Zotero items 응답의 `data` dict 목록.
         categories: {collection_key: category_name} — child_categories() 결과.
+        unclassified: "skip"(기본) 또는 "include". UNCLASSIFIED_MODES 참조.
 
     Returns:
         (assignments, stats). assignments 는 classify_papers 가 쓰는 것과 같은
@@ -109,9 +135,15 @@ def build_assignments(index_papers, zotero_items, categories,
 
         사람이 여러 하위 컬렉션에 넣어 둔 논문은 all_categories 에 전부 실리고,
         primary 는 이름순 첫 번째다 — 임의로 하나를 고르지 않는다.
-        "99 Unclassified" 만 배정된 논문은 미분류로 남겨 호출자가 처리하게 한다
-        (HDBSCAN 제안을 붙일 수 있는 자리).
+
+        미분류 칸은 `unclassified` 로 갈린다. "skip" 이면 그 칸에만 든 논문을
+        배정하지 않고 stats["unclassified"] 로만 세고, "include" 면 다른 카테고리와
+        똑같이 취급한다. 어느 쪽이든 실제 카테고리가 하나라도 있으면 미분류 칸은
+        가려진다 — 사람이 분류해 둔 것이 우선이다.
     """
+    if unclassified not in UNCLASSIFIED_MODES:
+        raise ValueError(
+            f"unclassified must be one of {UNCLASSIFIED_MODES}, got {unclassified!r}")
     by_doi, by_title = {}, {}
     for item in zotero_items:
         doi = _norm_doi(item.get("DOI") or item.get("doi") or "")
@@ -124,7 +156,6 @@ def build_assignments(index_papers, zotero_items, categories,
         if title:
             by_title.setdefault(title, cols)
 
-    unclassified = {n.strip().lower() for n in unclassified_names}
     assignments = []
     stats = {"matched_doi": 0, "matched_title": 0, "unmatched": 0, "unclassified": 0}
 
@@ -147,10 +178,14 @@ def build_assignments(index_papers, zotero_items, categories,
             continue
 
         names = [categories[c] for c in cols]
-        real = [n for n in names if n.strip().lower() not in unclassified]
+        real = [n for n in names if not is_unclassified(n, unclassified_names)]
+
         if not real:
+            # 미분류 칸에만 들어 있다.
             stats["unclassified"] += 1
-            continue
+            if unclassified == "skip":
+                continue
+            real = sorted(dict.fromkeys(names))
 
         real = sorted(dict.fromkeys(real))
         stats[hit] += 1

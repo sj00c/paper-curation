@@ -32,7 +32,7 @@ if PIPELINE not in sys.path:
 
 from lib.zotero_tree import (  # noqa: E402
     _norm_doi, _norm_title, build_assignments, child_categories,
-    find_root_key, to_classification,
+    find_root_key, is_unclassified, to_classification,
 )
 
 # 실제 라이브러리 모양을 축소한 것
@@ -115,6 +115,38 @@ class AssignmentTests(unittest.TestCase):
         asg, stats = build_assignments(papers, items, self.cats)
         self.assertEqual(asg, [])
         self.assertEqual(stats["unclassified"], 1)
+
+    def test_unclassified_can_be_included_on_request(self):
+        """include 모드면 미분류도 하나의 카테고리로 쓴다."""
+        papers = [{"slug": "001_A", "doi": "10.1/a", "title": "t"}]
+        items = [{"DOI": "10.1/a", "title": "t", "collections": ["C99"]}]
+        asg, stats = build_assignments(papers, items, self.cats,
+                                       unclassified="include")
+        self.assertEqual(len(asg), 1)
+        self.assertEqual(asg[0]["primary_category"], "99 Unclassified")
+        self.assertEqual(stats["unclassified"], 1)
+
+    def test_include_mode_still_prefers_real_categories(self):
+        """include 여도 사람이 분류해 둔 칸이 있으면 미분류는 가려진다."""
+        papers = [{"slug": "001_A", "doi": "10.1/a", "title": "t"}]
+        items = [{"DOI": "10.1/a", "title": "t", "collections": ["C99", "C02"]}]
+        asg, _ = build_assignments(papers, items, self.cats, unclassified="include")
+        self.assertEqual(asg[0]["all_categories"], ["02 Biology & Medicine"])
+
+    def test_unknown_mode_is_rejected(self):
+        """오타를 조용히 기본값으로 삼키면 안 된다."""
+        with self.assertRaises(ValueError):
+            build_assignments([], [], self.cats, unclassified="hdbscan")
+
+    def test_unclassified_is_recognised_across_naming_conventions(self):
+        """루트마다 이름이 다르다 — 실측: '99 Unclassified' vs 'Unclassified'."""
+        for name in ("99 Unclassified", "Unclassified", "unclassified",
+                     "90 Unclassified", "미분류"):
+            with self.subTest(name=name):
+                self.assertTrue(is_unclassified(name))
+        for name in ("01 General Methods & Platforms", "Neuroscience", ""):
+            with self.subTest(name=name):
+                self.assertFalse(is_unclassified(name))
 
     def test_unclassified_does_not_hide_a_real_category(self):
         papers = [{"slug": "001_A", "doi": "10.1/a", "title": "t"}]
