@@ -5,17 +5,20 @@
 
 * `_env_guard.find_py312()` 가 conda **밖** 인터프리터로 진입하면 표준 위치에
   py312 가 멀쩡히 있어도 못 찾아, 모든 CLI 진입점이 죽었다.
-* `agent_lecture_digest` 가 MP3 인코더(`lameenc`)를 최상단에서 import 해서,
-  그 모듈의 순수 텍스트 헬퍼를 빌려 쓰는 citedby 리포트가 마크다운을 렌더하지
-  못하고 `##` 를 글자 그대로 노출했다.
+* `agent_lecture_digest` 가 MP3 인코더(`lameenc`)와 Gemini SDK(`google.genai`)를
+  최상단에서 import 해서, 그 모듈의 순수 텍스트 헬퍼를 빌려 쓰는 citedby 리포트가
+  마크다운을 렌더하지 못하고 `##` 를 글자 그대로 노출했다. 헬퍼는 `lib/mdhtml.py`
+  로 분리했다.
 * `originality_extractor.load_triggers()` 가 self-learning 파일이 없으면
   FileNotFoundError 로 죽었다. 정작 쓰는 쪽(`_update_triggers`)은 빈 상태에서
   파일을 새로 만들 수 있었는데 읽는 쪽만 못 했다.
 """
 from __future__ import annotations
 
+import ast
 import builtins
 import importlib
+import re
 import json
 import os
 import sys
@@ -102,26 +105,39 @@ class FindPy312Tests(unittest.TestCase):
 
 
 class OptionalHeavyDepTests(unittest.TestCase):
-    """텍스트 헬퍼가 MP3 인코더를 요구하면 안 된다."""
+    """텍스트 헬퍼가 선택 SDK(MP3 인코더·Gemini)를 요구하면 안 된다."""
 
-    def test_markdown_helper_imports_without_lameenc(self):
-        blocked = "lameenc"
+    def test_markdown_helper_imports_without_optional_sdks(self):
+        blocked = ("lameenc", "google", "anthropic", "openai")
 
         real_import = builtins.__import__
 
         def deny(name, *a, **kw):
-            if name == blocked or name.startswith(blocked + "."):
-                raise ModuleNotFoundError(f"No module named '{blocked}'")
+            if any(name == b or name.startswith(b + ".") for b in blocked):
+                raise ModuleNotFoundError(f"No module named '{name}'")
             return real_import(name, *a, **kw)
 
-        for mod in [m for m in list(sys.modules) if m == "agent_lecture_digest"]:
-            del sys.modules[mod]
-        sys.modules.pop(blocked, None)
+        sys.modules.pop("lib.mdhtml", None)
+        for b in blocked:
+            sys.modules.pop(b, None)
         with patch.object(builtins, "__import__", deny):
-            mod = importlib.import_module("agent_lecture_digest")
+            mod = importlib.import_module("lib.mdhtml")
             html = mod.md_to_html("## 제목\n\n**굵게** 본문")
         self.assertIn("<h2>", html)
         self.assertIn("<strong>굵게</strong>", html)
+
+    def test_markdown_helper_stays_out_of_the_sdk_heavy_module(self):
+        """`md_to_html` 본체가 google.genai 를 끌고 오는 모듈로 돌아오면 안 된다.
+
+        예전엔 agent_lecture_digest 안에 있었고, citedby 리포트가 그것을
+        빌려 쓰다가 Gemini SDK 가 없으면 조용히 `##`·`**` 를 노출했다.
+        """
+        src = (PIPELINE / "agent_lecture_digest.py").read_text(encoding="utf-8")
+        self.assertNotIn("\ndef md_to_html(", src)
+        self.assertTrue((PIPELINE / "lib" / "mdhtml.py").exists())
+
+        report_src = (PIPELINE / "lib" / "citedby" / "report.py").read_text(encoding="utf-8")
+        self.assertNotIn("from agent_lecture_digest import", report_src)
 
     def test_lameenc_is_not_a_module_level_import(self):
         src = (PIPELINE / "agent_lecture_digest.py").read_text(encoding="utf-8")
@@ -137,6 +153,109 @@ class OptionalHeavyDepTests(unittest.TestCase):
             papers=[{"title": "P"}], timeline_narrative="## 제목\n\n**굵게** 본문")
         self.assertIn("<strong>굵게</strong>", html)
         self.assertNotIn("<p>## 제목</p>", html)
+
+
+class DeclaredDependencyTests(unittest.TestCase):
+    """최상단에서 import 하는 서드파티는 requirements.txt 에 선언돼 있어야 한다.
+
+    `lib/metrics/store.py` 가 `import yaml` 을 최상단에서 하는데 PyYAML 이
+    선언돼 있지 않았다. run_metrics 는 soft step 이라, 깨끗한 설치에서는
+    피인용/레퍼런스 수집이 매 사이클 조용히 실패만 하고 아무도 몰랐다.
+    """
+
+    # import 이름 → 배포 이름
+    _DIST = {
+        "PIL": "Pillow",
+        "google": "google-genai",
+        "sklearn": "scikit-learn",
+        "umap": "umap-learn",
+        "yaml": "PyYAML",
+        "fitz": "pymupdf",
+        "cv2": "opencv-python",
+    }
+
+    # 문서화된 파이프라인이 아닌 개인 일회성 스크립트. 여기 것들은 matplotlib
+    # 같은 걸 별도로 깔고 쓰므로 설치 계약에서 제외한다.
+    _ONE_OFF = {
+        "curriculum_map.py", "dashun_timeline.py", "dashun_timeline_pb.py",
+        "lecture_map.py", "_dw_board_pack.py", "_dw_send12.py",
+    }
+
+    @staticmethod
+    def _norm(name: str) -> str:
+        return name.lower().replace("_", "-")
+
+    def _declared(self) -> set[str]:
+        req = (PIPELINE.parent / "requirements.txt").read_text(encoding="utf-8")
+        out = set()
+        for line in req.splitlines():
+            line = line.split("#")[0].strip()
+            if not line:
+                continue
+            out.add(self._norm(re.split(r"[<>=!\[;]", line)[0].strip()))
+        return out
+
+    def _local_module_names(self) -> set[str]:
+        names = set()
+        for pat in ("*.py", "lib/*.py", "lib/*/*.py", "api/*.py"):
+            names |= {p.stem for p in PIPELINE.glob(pat)}
+        names |= {d.name for d in PIPELINE.iterdir() if d.is_dir()}
+        names |= {d.name for d in (PIPELINE / "lib").iterdir() if d.is_dir()}
+        return names
+
+    def test_every_module_level_third_party_import_is_declared(self):
+        declared = self._declared()
+        local = self._local_module_names()
+        undeclared: dict[str, list[str]] = {}
+
+        for path in sorted(PIPELINE.rglob("*.py")):
+            if "_archive" in path.parts or "tests" in path.parts:
+                continue
+            if path.name in self._ONE_OFF:
+                continue
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+            for node in tree.body:  # 최상단만 — 지연 import 는 선택 의존성이다
+                if isinstance(node, ast.Import):
+                    names = [a.name.split(".")[0] for a in node.names]
+                elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
+                    names = [node.module.split(".")[0]]
+                else:
+                    continue
+                for name in names:
+                    if name in sys.stdlib_module_names or name in local:
+                        continue
+                    dist = self._norm(self._DIST.get(name, name))
+                    if dist not in declared:
+                        undeclared.setdefault(name, []).append(
+                            str(path.relative_to(PIPELINE.parent)))
+
+        self.assertEqual(
+            undeclared, {},
+            "requirements.txt 에 없는 최상단 서드파티 import — 깨끗한 설치에서 죽는다")
+
+
+class MachineSpecificPathTests(unittest.TestCase):
+    """다른 머신에서 죽는 절대 경로를 소스에 박지 않는다.
+
+    `lecture_map.py` 가 `sys.path.insert(0, "/Users/jehyunlee/Documents/
+    paper-curation/pipeline")` 를 들고 있었다. 저장소를 다른 데 클론하거나
+    홈 디렉토리가 다르면 그 줄은 아무 것도 안 하고, 바로 다음 import 가
+    죽는다. 실제로 이 저장소는 이미 그 경로에 있지 않다.
+    """
+
+    _HOME_PATH = re.compile(r"""["'](?:/Users/|/home/|[A-Za-z]:\\Users\\)""")
+
+    def test_no_module_hardcodes_a_home_directory(self):
+        offenders = []
+        for path in sorted(PIPELINE.rglob("*.py")):
+            if "_archive" in path.parts or "tests" in path.parts:
+                continue
+            for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                if line.lstrip().startswith("#"):
+                    continue
+                if self._HOME_PATH.search(line):
+                    offenders.append(f"{path.relative_to(PIPELINE.parent)}:{i}")
+        self.assertEqual(offenders, [], "머신 고유 절대 경로가 박혀 있다")
 
 
 class LoadTriggersTests(unittest.TestCase):
