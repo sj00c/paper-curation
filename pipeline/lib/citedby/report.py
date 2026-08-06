@@ -588,11 +588,13 @@ def _timeline_section(data_uri: str, lbl: dict, narrative: str = "",
     if streams:
         out.append(_stream_cards(streams, lbl, papers))
     elif narrative:
-        # streams 를 못 받은 경우의 폴백. 마크다운 변환은
-        # agent_lecture_digest 의 것을 그대로 쓴다 —
-        # 이스케이프·헤딩·굵게·링크를 이미 처리한다.
+        # streams 를 못 받은 경우의 폴백. 이스케이프·헤딩·굵게·링크를
+        # 이미 처리하는 `lib/mdhtml` 을 쓴다. 예전엔 agent_lecture_digest
+        # 에서 빌려 썼는데, 그 모듈이 google.genai 를 최상단에서 요구해
+        # Gemini SDK 없는 환경에선 아래 except 로 조용히 떨어져 `##`·`**`
+        # 가 글자 그대로 노출됐다.
         try:
-            from agent_lecture_digest import md_to_html as _md
+            from ..mdhtml import md_to_html as _md
             inner = _md(narrative)
         except Exception:  # noqa: BLE001 — 변환 실패해도 글은 보여준다
             inner = "".join(f"<p>{_esc(x.strip())}</p>"

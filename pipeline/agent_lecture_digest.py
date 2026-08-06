@@ -38,11 +38,10 @@ from generate_audio import (  # noqa: E402
 )
 from google import genai  # noqa: E402
 from google.genai import types  # noqa: E402
-# lameenc(MP3 인코더)는 아래 한 곳에서만 쓴다. 최상단에서 import 하면 이
-# 모듈의 순수 텍스트 헬퍼(`md_to_html`)를 빌려 쓰는 쪽까지 MP3 인코더를
-# 요구하게 된다. 실제로 citedby 리포트가 그 때문에 타임라인 narrative 의
-# 마크다운을 렌더하지 못하고 `##`·`**` 를 글자 그대로 노출했다.
-# 사용 지점에서 늦게 부른다.
+# lameenc(MP3 인코더)는 아래 한 곳에서만 쓴다. 최상단에서 import 하면 오디오와
+# 무관한 경로까지 MP3 인코더를 요구하게 되므로 사용 지점에서 늦게 부른다.
+# (순수 텍스트 헬퍼 `md_to_html` 은 이 모듈이 google.genai 를 요구한다는 이유로
+#  `lib/mdhtml.py` 로 분리했다 — 아래 재노출 지점 참고.)
 import usage_log  # noqa: E402
 
 PAPERS = Path(PAPERS_DIR)
@@ -330,35 +329,10 @@ def make_audio(report_text, evidence, client, minutes=40, prior=""):
 
 
 # ── HTML (링크·관련연구·참고문헌 정상) ───────────────────────────────────────
-_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")
-
-
-def md_to_html(md):
-    md = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", md)          # 이미지 마크업 제거
-    out, para = [], []
-
-    def flush():
-        if not para:
-            return
-        t = H.escape("\n".join(para)).replace("\n", "<br>")
-        t = _LINK_RE.sub(lambda m: f'<a href="{m.group(2)}" target="_blank" rel="noopener">{m.group(1)}</a>', t)
-        t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
-        out.append(f"<p>{t}</p>")
-        para.clear()
-
-    for line in md.split("\n"):
-        s = line.strip()
-        if not s:
-            flush(); continue
-        m = re.match(r"(#{1,3})\s+(.*)", s)
-        if m:
-            flush()
-            lvl = "h2" if len(m.group(1)) <= 2 else "h3"
-            out.append(f"<{lvl}>{H.escape(m.group(2))}</{lvl}>")
-        else:
-            para.append(line)
-    flush()
-    return "\n".join(out)
+# md_to_html 은 `lib/mdhtml.py` 로 옮겼다. 이 모듈은 최상단에서 google.genai 를
+# 요구하므로, 마크다운만 필요한 쪽(citedby 리포트 등)이 여기에 매달리면 Gemini
+# SDK 가 없을 때 조용히 렌더가 죽는다. 여기서는 하위 호환용으로 재노출만 한다.
+from lib.mdhtml import md_to_html, _LINK_RE  # noqa: E402,F401
 
 
 def gather_figures(core, per_paper=2, total_cap=10, max_bytes=300 * 1024):
