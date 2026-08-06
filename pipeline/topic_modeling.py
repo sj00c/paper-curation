@@ -25,6 +25,7 @@ from pathlib import Path
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir
 from anthropic_auth import create_anthropic_client
+from lib.atomic_io import atomic_write_json
 
 PAPERS_DIR = str(_PAPERS_DIR)
 
@@ -244,8 +245,7 @@ def compute_embeddings(originalities, cache_path=None):
                 os.makedirs(os.path.dirname(cache_path), exist_ok=True)
                 cache_data = {"embed_model": current_tag,
                               "slugs": slugs, "embeddings": embeddings.tolist()}
-                with open(cache_path, "w", encoding="utf-8") as f:
-                    json.dump(cache_data, f)
+                atomic_write_json(cache_path, cache_data, indent=None)
                 log(f"  Cache updated: {len(slugs)} papers ({cache_path})")
 
             return embeddings, slugs
@@ -264,8 +264,7 @@ def compute_embeddings(originalities, cache_path=None):
             "slugs": slugs,
             "embeddings": embeddings.tolist(),
         }
-        with open(cache_path, "w", encoding="utf-8") as f:
-            json.dump(cache_data, f)
+        atomic_write_json(cache_path, cache_data, indent=None)
         log(f"  Cached: {cache_path}")
 
     return embeddings, slugs
@@ -1075,8 +1074,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
                     "all_categories": a["all_categories"],
                     "sub_category": a["sub_category"],
                 }
-        with open(os.path.join(PAPERS_DIR, "_papers_index.json"), "w", encoding="utf-8") as f:
-            json.dump(all_papers, f, ensure_ascii=False, indent=2)
+        atomic_write_json(os.path.join(PAPERS_DIR, "_papers_index.json"), all_papers)
         log(f"  Updated classifications in _papers_index.json")
 
         # Update _new_classification.json
@@ -1090,8 +1088,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
             ],
         }
         cls_path = os.path.join(topic_dir, "_new_classification.json")
-        with open(cls_path, "w", encoding="utf-8") as f:
-            json.dump(cls_data, f, ensure_ascii=False, indent=2)
+        atomic_write_json(cls_path, cls_data)
         log(f"  Updated _new_classification.json ({len(cats_list)} categories)")
 
     # Save UMAP coordinates
@@ -1104,8 +1101,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
             entry["z3"] = float(coords_3d[i][2])
         umap_data[slug] = entry
     umap_path = os.path.join(topic_dir, "_umap_coords.json")
-    with open(umap_path, "w", encoding="utf-8") as f:
-        json.dump(umap_data, f, ensure_ascii=False, indent=2)
+    atomic_write_json(umap_path, umap_data)
     log(f"  UMAP coordinates: {umap_path}")
 
     # Save topic model info + persisted clustering bundle. classify_papers
@@ -1126,8 +1122,7 @@ def _run_topic_model(topic="ai4s", *, skip_connections=False,
                              for tid in topic_names},
         }
         info_path = os.path.join(topic_dir, "_topic_model_info.json")
-        with open(info_path, "w", encoding="utf-8") as f:
-            json.dump(topic_info_data, f, ensure_ascii=False, indent=2)
+        atomic_write_json(info_path, topic_info_data)
         log(f"  Topic model info: {info_path}")
 
         # Persist HDBSCAN model + UMAP transformer + centroids + maps.

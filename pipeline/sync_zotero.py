@@ -21,6 +21,7 @@ import urllib.parse
 from datetime import datetime
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR
+from lib.atomic_io import atomic_write_json
 PAPERS_DIR = str(_PAPERS_DIR)
 
 from config_loader import get_zotero_api_key, get_zotero_user_id, get_collections, _ssl_ctx
@@ -277,9 +278,9 @@ def _run_sync(topic, *, dry_run=False, force_delete=False):
             log(f"  Deleted: {p['slug'][:40]} (index only)")
         changes += 1
 
-    # Save
-    with open(index_path, "w", encoding="utf-8") as f:
-        json.dump(papers, f, ensure_ascii=False, indent=2)
+    # Save — 바로 위에서 slug 디렉토리를 rmtree 한 뒤라, 여기서 잘려 쓰이면
+    # 인덱스와 디스크가 둘 다 깨진 상태로 남는다. 원자적으로 쓴다.
+    atomic_write_json(index_path, papers)
 
     log(f"\nDone. {changes} changes applied. {len(papers)} papers remaining.")
 
