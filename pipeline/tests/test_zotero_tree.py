@@ -196,6 +196,137 @@ class OutputContractTests(unittest.TestCase):
                          ["all_categories", "primary_category", "slug", "sub_category"])
 
 
+class LocalDbTests(unittest.TestCase):
+    """로컬 zotero.sqlite 경로.
+
+    같은 데이터를 Web API 로 받으면 자식 컬렉션마다 100건씩 페이징해야 해서
+    ai4s(15,399건) 기준 수 분이 걸린다. sqlite 는 복사 + 쿼리 한 번으로 0.1초고,
+    네트워크도 API 키도 필요 없다. 실측: 전체 분류가 2.3초, 결과는 Web API 와
+    완전히 동일(3,267/3,273 배정).
+
+    Zotero 가 실행 중이면 원본 DB 가 잠기므로 복사본을 읽는다 —
+    lib/citedby/local_library.py 와 같은 방식이다.
+    """
+
+    def _make_db(self, path):
+        import sqlite3
+
+        con = sqlite3.connect(path)
+        con.executescript("""
+            CREATE TABLE collections (collectionID INTEGER PRIMARY KEY,
+                collectionName TEXT, parentCollectionID INTEGER, key TEXT);
+            CREATE TABLE collectionItems (collectionID INTEGER, itemID INTEGER);
+            CREATE TABLE itemData (itemID INTEGER, fieldID INTEGER, valueID INTEGER);
+            CREATE TABLE itemDataValues (valueID INTEGER PRIMARY KEY, value TEXT);
+            CREATE TABLE fields (fieldID INTEGER PRIMARY KEY, fieldName TEXT);
+            CREATE TABLE deletedItems (itemID INTEGER PRIMARY KEY);
+            INSERT INTO collections VALUES (1,'AI for Science',NULL,'ROOT1'),
+                                           (2,'01 Methods',1,'C01'),
+                                           (3,'02 Biology',1,'C02');
+            INSERT INTO fields VALUES (1,'DOI'),(2,'title');
+            INSERT INTO itemDataValues VALUES (10,'10.1/a'),(11,'Paper A'),
+                                              (12,'10.1/b'),(13,'Paper B');
+            INSERT INTO itemData VALUES (100,1,10),(100,2,11),(101,1,12),(101,2,13);
+            INSERT INTO collectionItems VALUES (2,100),(3,100),(2,101);
+        """)
+        con.commit()
+        con.close()
+
+    def test_collections_match_the_web_api_shape(self):
+        import tempfile
+
+        from lib.zotero_tree import fetch_collections_local
+
+        with tempfile.TemporaryDirectory() as td:
+            db = os.path.join(td, "zotero.sqlite")
+            self._make_db(db)
+            cols = fetch_collections_local(db)
+        self.assertEqual(cols["ROOT1"], {"name": "AI for Science", "parent": None})
+        self.assertEqual(cols["C01"], {"name": "01 Methods", "parent": "ROOT1"})
+        self.assertEqual(list(child_categories(cols, "ROOT1").values()),
+                         ["01 Methods", "02 Biology"])
+
+    def test_items_carry_every_collection_they_belong_to(self):
+        import tempfile
+
+        from lib.zotero_tree import fetch_items_local
+
+        with tempfile.TemporaryDirectory() as td:
+            db = os.path.join(td, "zotero.sqlite")
+            self._make_db(db)
+            items = fetch_items_local("ROOT1", db)
+
+        by_doi = {i["DOI"]: i for i in items}
+        self.assertEqual(sorted(by_doi["10.1/a"]["collections"]), ["C01", "C02"])
+        self.assertEqual(by_doi["10.1/b"]["collections"], ["C01"])
+        self.assertEqual(by_doi["10.1/a"]["title"], "Paper A")
+
+    def test_local_items_feed_build_assignments_unchanged(self):
+        """sqlite 출력이 Web API 출력과 같은 형식이라 그대로 물린다."""
+        import tempfile
+
+        from lib.zotero_tree import fetch_collections_local, fetch_items_local
+
+        with tempfile.TemporaryDirectory() as td:
+            db = os.path.join(td, "zotero.sqlite")
+            self._make_db(db)
+            cols = fetch_collections_local(db)
+            items = fetch_items_local("ROOT1", db)
+
+        cats = child_categories(cols, "ROOT1")
+        papers = [{"slug": "001_A", "doi": "10.1/a", "title": "Paper A"}]
+        asg, stats = build_assignments(papers, items, cats)
+        self.assertEqual(stats["matched_doi"], 1)
+        self.assertEqual(asg[0]["all_categories"], ["01 Methods", "02 Biology"])
+
+    def test_deleted_items_are_excluded(self):
+        """휴지통에 넣은 논문이 카테고리에 남으면 안 된다."""
+        import sqlite3
+        import tempfile
+
+        from lib.zotero_tree import fetch_items_local
+
+        with tempfile.TemporaryDirectory() as td:
+            db = os.path.join(td, "zotero.sqlite")
+            self._make_db(db)
+            con = sqlite3.connect(db)
+            con.execute("INSERT INTO deletedItems VALUES (100)")
+            con.commit()
+            con.close()
+            items = fetch_items_local("ROOT1", db)
+        self.assertEqual([i["DOI"] for i in items], ["10.1/b"])
+
+    def test_missing_db_returns_none_so_caller_can_fall_back(self):
+        from lib.zotero_tree import (fetch_collections_local, fetch_items_local,
+                                     local_db_path)
+
+        self.assertIsNone(local_db_path("/nonexistent/zotero.sqlite"))
+        self.assertIsNone(fetch_collections_local("/nonexistent/zotero.sqlite"))
+        self.assertIsNone(fetch_items_local("ROOT1", "/nonexistent/zotero.sqlite"))
+
+    def test_env_var_overrides_the_default_location(self):
+        import tempfile
+        from unittest.mock import patch
+
+        from lib.zotero_tree import local_db_path
+
+        with tempfile.TemporaryDirectory() as td:
+            db = os.path.join(td, "custom.sqlite")
+            open(db, "wb").close()
+            with patch.dict(os.environ, {"ZOTERO_SQLITE": db}):
+                self.assertEqual(str(local_db_path()), db)
+
+    def test_original_db_is_not_opened_directly(self):
+        """Zotero 실행 중 잠금을 피하려면 복사본을 읽어야 한다."""
+        import inspect
+
+        from lib import zotero_tree
+
+        src = inspect.getsource(zotero_tree._open_readonly)
+        self.assertIn("copy2", src)
+        self.assertIn("mode=ro", src)
+
+
 class CliWiringTests(unittest.TestCase):
     """classify_papers 의 공급원 선택 계약.
 

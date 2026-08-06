@@ -26,10 +26,101 @@ classify_papers 가 쓰는 것과 같은 `_new_classification.json` 형식으로
 from __future__ import annotations
 
 import json
+import os
 import re
+import shutil
+import sqlite3
+import tempfile
 import urllib.request
+from pathlib import Path
 
 _API = "https://api.zotero.org"
+
+# 로컬 Zotero DB. lib/citedby/local_library.py 와 같은 규약을 쓴다 —
+# ZOTERO_SQLITE env 가 우선, 없으면 Zotero 의 기본 위치.
+DEFAULT_DB = Path.home() / "Zotero" / "zotero.sqlite"
+
+
+def local_db_path(explicit=None):
+    """읽을 zotero.sqlite 경로. 없으면 None."""
+    db = Path(explicit or os.environ.get("ZOTERO_SQLITE") or DEFAULT_DB)
+    return db if db.exists() else None
+
+
+def _open_readonly(db_path):
+    """Zotero 가 실행 중이면 원본이 잠기므로 복사본을 읽는다.
+
+    citedby/local_library.py 가 쓰는 방식 그대로다. 220MB 복사가 0.1초라 매번
+    떠도 부담이 없고, 잠금 경합이나 반쯤 쓰인 상태를 볼 위험이 없다.
+    """
+    fd, tmp = tempfile.mkstemp(suffix=".sqlite", prefix="zotero_tree_")
+    os.close(fd)
+    shutil.copy2(db_path, tmp)
+    return sqlite3.connect(f"file:{tmp}?mode=ro", uri=True), tmp
+
+
+_COLLECTIONS_SQL = """
+SELECT c.key, c.collectionName, p.key
+FROM collections c
+LEFT JOIN collections p ON c.parentCollectionID = p.collectionID
+"""
+
+# 부모 컬렉션의 자식들에 속한 논문 + DOI/제목. 한 번의 쿼리로 끝난다.
+# Web API 는 자식마다 100건씩 페이징해야 해서 ai4s(15,399건) 기준 수 분이 걸린다.
+_CHILD_ITEMS_SQL = """
+SELECT ci.itemID, c.key,
+       MAX(CASE WHEN f.fieldName = 'DOI'   THEN idv.value END) AS doi,
+       MAX(CASE WHEN f.fieldName = 'title' THEN idv.value END) AS title
+FROM collections c
+JOIN collections p          ON c.parentCollectionID = p.collectionID AND p.key = ?
+JOIN collectionItems ci     ON ci.collectionID = c.collectionID
+LEFT JOIN itemData id       ON id.itemID = ci.itemID
+LEFT JOIN fields f          ON f.fieldID = id.fieldID
+LEFT JOIN itemDataValues idv ON idv.valueID = id.valueID
+WHERE ci.itemID NOT IN (SELECT itemID FROM deletedItems)
+GROUP BY ci.itemID, c.key
+"""
+
+
+def fetch_collections_local(db_path=None):
+    """로컬 DB 에서 {key: {name, parent}}. Web API 응답과 같은 형식."""
+    db = local_db_path(db_path)
+    if not db:
+        return None
+    conn, tmp = _open_readonly(db)
+    try:
+        return {key: {"name": name, "parent": parent}
+                for key, name, parent in conn.execute(_COLLECTIONS_SQL) if key}
+    finally:
+        conn.close()
+        Path(tmp).unlink(missing_ok=True)
+
+
+def fetch_items_local(root_key, db_path=None):
+    """루트의 자식 컬렉션에 속한 논문들을 Web API items 형식으로.
+
+    build_assignments 가 그대로 받을 수 있도록 {DOI, title, collections} 모양으로
+    맞춘다. 한 논문이 여러 자식에 들어 있으면 collections 에 전부 담긴다.
+    """
+    db = local_db_path(db_path)
+    if not db:
+        return None
+    conn, tmp = _open_readonly(db)
+    try:
+        merged = {}
+        for item_id, ckey, doi, title in conn.execute(_CHILD_ITEMS_SQL, (root_key,)):
+            rec = merged.setdefault(
+                item_id, {"DOI": doi or "", "title": title or "", "collections": []})
+            rec["collections"].append(ckey)
+            # 같은 논문의 다른 행에서 값이 채워질 수 있다.
+            if doi and not rec["DOI"]:
+                rec["DOI"] = doi
+            if title and not rec["title"]:
+                rec["title"] = title
+        return list(merged.values())
+    finally:
+        conn.close()
+        Path(tmp).unlink(missing_ok=True)
 
 
 def _norm_doi(value: str) -> str:

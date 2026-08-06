@@ -196,11 +196,30 @@ def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
     from config_loader import (_ssl_ctx, get_collection_key, get_zotero_api_key,
                                get_zotero_user_id)
     from lib.zotero_tree import (build_assignments, child_categories,
-                                 fetch_collections, to_classification)
+                                 fetch_collections, fetch_collections_local,
+                                 fetch_items_local, local_db_path,
+                                 to_classification)
 
     topic_dir = str(get_topic_dir(topic))
-    api_key = get_zotero_api_key()
-    user_id = get_zotero_user_id()
+
+    # 로컬 zotero.sqlite 가 원천이다. 같은 데이터를 Web API 로 받으면 자식마다
+    # 100건씩 페이징해야 해서 ai4s(15,399건) 기준 수 분이 걸리는데, sqlite 는
+    # 220MB 복사 + 쿼리 한 번으로 0.1초다. 네트워크도 API 키도 필요 없다.
+    # DB 가 없는 환경(원격/CI)에서만 Web API 로 내려간다.
+    db = local_db_path()
+    collections = fetch_collections_local() if db else None
+    if collections:
+        log(f"[zotero] local db: {db}")
+        api_key = user_id = None
+    else:
+        if db:
+            log(f"[zotero] local db unreadable ({db}) — falling back to Web API")
+        else:
+            log("[zotero] no local zotero.sqlite — using Web API "
+                "(set ZOTERO_SQLITE to point at one)")
+        api_key = get_zotero_api_key()
+        user_id = get_zotero_user_id()
+        collections = fetch_collections(api_key, user_id, ssl_ctx=_ssl_ctx)
 
     root_key = get_collection_key(topic)
     if not root_key:
@@ -208,7 +227,6 @@ def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
             f"[classify:zotero] '{topic}' 의 Zotero 컬렉션을 찾을 수 없습니다. "
             f"config.json 의 zotero.collections 를 확인하세요.")
 
-    collections = fetch_collections(api_key, user_id, ssl_ctx=_ssl_ctx)
     categories = child_categories(collections, root_key)
     if not categories:
         raise SystemExit(
@@ -216,25 +234,30 @@ def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
             f"Zotero 에서 카테고리 폴더를 만들거나 --classify-source hdbscan 을 쓰세요.")
     log(f"[zotero] {len(categories)} categories under {topic} [{root_key}]")
 
-    # 하위 컬렉션별로 긁는다. 부모를 한 번에 긁으면 하위 논문까지 전부 나와서
-    # (부모 items = 자식 합계) 대형 토픽에서 페이징이 몇 배로 길어진다.
-    items = []
-    for ckey, cname in categories.items():
-        start = 0
-        while True:
-            url = (f"https://api.zotero.org/users/{user_id}/collections/{ckey}"
-                   f"/items/top?limit=100&start={start}&format=json")
-            req = urllib.request.Request(
-                url, headers={"Zotero-API-Key": api_key, "User-Agent": "paper-curation"})
-            with urllib.request.urlopen(req, timeout=60, context=_ssl_ctx) as resp:
-                batch = json.load(resp)
-            if not batch:
-                break
-            items.extend(i.get("data", {}) for i in batch)
-            if len(batch) < 100:
-                break
-            start += 100
-        log(f"  {cname}: {len(items)} cumulative")
+    items = fetch_items_local(root_key) if db else None
+    if items is None:
+        # 하위 컬렉션별로 긁는다. 부모를 한 번에 긁으면 하위 논문까지 전부 나와서
+        # (부모 items = 자식 합계) 대형 토픽에서 페이징이 몇 배로 길어진다.
+        items = []
+        for ckey, cname in categories.items():
+            start = 0
+            while True:
+                url = (f"https://api.zotero.org/users/{user_id}/collections/{ckey}"
+                       f"/items/top?limit=100&start={start}&format=json")
+                req = urllib.request.Request(
+                    url,
+                    headers={"Zotero-API-Key": api_key, "User-Agent": "paper-curation"})
+                with urllib.request.urlopen(req, timeout=60, context=_ssl_ctx) as resp:
+                    batch = json.load(resp)
+                if not batch:
+                    break
+                items.extend(i.get("data", {}) for i in batch)
+                if len(batch) < 100:
+                    break
+                start += 100
+            log(f"  {cname}: {len(items)} cumulative")
+    else:
+        log(f"[zotero] {len(items)} items from local db")
 
     all_papers, index_path = load_index()
     topic_papers = [p for p in all_papers if topic in p.get("topics", [])]
