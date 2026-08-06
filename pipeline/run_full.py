@@ -93,6 +93,14 @@ def build_parser():
     p.add_argument("--insights", action="store_true",
                    help="extract_insights 에서 cross-category insights(Option)까지 재생성 "
                         "(기본은 paper connections(Core)만). run_update_force 로 전달.")
+    p.add_argument("--classify-source", choices=("hdbscan", "zotero"),
+                   default="hdbscan",
+                   help="분류 공급원. hdbscan(기본)=임베딩 클러스터링, "
+                        "zotero=Zotero 하위 컬렉션(사용자가 만든 폴더)을 카테고리로 사용. "
+                        "run_update_force 로 전달.")
+    p.add_argument("--unclassified", choices=("skip", "include"), default="skip",
+                   help="--classify-source zotero 전용. 미분류 폴더에만 있는 논문을 "
+                        "빼거나(skip, 기본) 카테고리로 포함(include).")
     p.add_argument("--local-fallback", action="store_true",
                    help="topic_modeling 연결 단계가 끝까지 막히면 로컬 모델로 마저 연결 "
                         "(Ollama/LM Studio 등). config.json local_model 필요. run_update_force 로 전달.")
@@ -168,6 +176,10 @@ def build_update_force_cmd(args, images):
         cmd.append("--category")
     if args.insights:
         cmd.append("--insights")
+    if getattr(args, "classify_source", "hdbscan") != "hdbscan":
+        cmd.extend(["--classify-source", args.classify_source])
+        if getattr(args, "unclassified", "skip") != "skip":
+            cmd.extend(["--unclassified", args.unclassified])
     if getattr(args, "local_fallback", False):
         cmd.append("--local-fallback")
     if getattr(args, "conn_full", False):

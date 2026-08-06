@@ -196,5 +196,53 @@ class OutputContractTests(unittest.TestCase):
                          ["all_categories", "primary_category", "slug", "sub_category"])
 
 
+class CliWiringTests(unittest.TestCase):
+    """classify_papers 의 공급원 선택 계약.
+
+    upstream 사용자에게 영향이 없어야 하므로 기본값은 hdbscan 이고 Zotero 경로는
+    opt-in 이다. 플래그를 엉뚱한 공급원에 붙이면 조용히 무시하지 않고 멈춘다 —
+    --slugs 를 zotero 에 붙이면 "일부만 반영됐다"고 착각하게 된다.
+    """
+
+    def _dispatch(self, argv):
+        from unittest.mock import patch
+
+        import classify_papers
+
+        calls = {}
+        with patch.object(sys, "argv", ["classify_papers.py", *argv]), \
+             patch.object(classify_papers, "_run_classify",
+                          lambda **kw: calls.setdefault("hdbscan", kw)), \
+             patch.object(classify_papers, "_run_classify_zotero",
+                          lambda **kw: calls.setdefault("zotero", kw)), \
+             patch("config_loader.resolve_topic", return_value="t"):
+            classify_papers.main()
+        return calls
+
+    def test_default_source_is_hdbscan(self):
+        """기존 동작 보호 — 아무것도 안 주면 예전과 같은 경로."""
+        calls = self._dispatch([])
+        self.assertIn("hdbscan", calls)
+        self.assertNotIn("zotero", calls)
+
+    def test_zotero_source_is_opt_in(self):
+        calls = self._dispatch(["--classify-source", "zotero"])
+        self.assertIn("zotero", calls)
+        self.assertEqual(calls["zotero"]["unclassified"], "skip")
+
+    def test_unclassified_flag_reaches_the_zotero_path(self):
+        calls = self._dispatch(["--classify-source", "zotero",
+                                "--unclassified", "include"])
+        self.assertEqual(calls["zotero"]["unclassified"], "include")
+
+    def test_slugs_with_zotero_is_refused(self):
+        with self.assertRaises(SystemExit):
+            self._dispatch(["--classify-source", "zotero", "--slugs", "001"])
+
+    def test_unclassified_without_zotero_is_refused(self):
+        with self.assertRaises(SystemExit):
+            self._dispatch(["--unclassified", "include"])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

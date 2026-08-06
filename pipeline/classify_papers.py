@@ -175,6 +175,111 @@ def classify_via_bundle(vec_768, bundle):
     return primary_cat, all_cats, primary_subname, sub_per_cat, raw_outlier
 
 
+def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
+    """Zotero 컬렉션 트리를 분류로 그대로 쓴다 (HDBSCAN 대안 공급원).
+
+    사용자는 Zotero 안에서 이미 논문을 정리해 둔다. 최상위 컬렉션이 분야(=토픽)
+    이고 그 아래 하위 컬렉션이 사람이 만든 카테고리다. HDBSCAN 경로는 그 구조를
+    무시하고 임베딩으로 카테고리를 새로 만드는데, 그러면 사용자가 고른 체계와
+    겹치지도 않는 결과가 나온다.
+
+    이 경로는 무거운 의존성을 타지 않는다 — UMAP/hdbscan/sentence-transformers,
+    `_hdbscan_model.joblib` 번들, 임베딩 캐시 전부 불필요하다. Zotero API 응답에
+    각 논문의 소속 컬렉션 키가 이미 들어 있어서 추가 호출도 없다.
+
+    출력은 HDBSCAN 경로와 동일하다 — `_new_classification.json` 과
+    `_papers_index.json` 의 `classifications[topic]`. 그래서 하류(카테고리 요약,
+    insights, 타임라인, 네트워크, 토픽 인덱스, 검색 인덱스)는 그대로 돈다.
+    """
+    import urllib.request
+
+    from config_loader import (_ssl_ctx, get_collection_key, get_zotero_api_key,
+                               get_zotero_user_id)
+    from lib.zotero_tree import (build_assignments, child_categories,
+                                 fetch_collections, to_classification)
+
+    topic_dir = str(get_topic_dir(topic))
+    api_key = get_zotero_api_key()
+    user_id = get_zotero_user_id()
+
+    root_key = get_collection_key(topic)
+    if not root_key:
+        raise SystemExit(
+            f"[classify:zotero] '{topic}' 의 Zotero 컬렉션을 찾을 수 없습니다. "
+            f"config.json 의 zotero.collections 를 확인하세요.")
+
+    collections = fetch_collections(api_key, user_id, ssl_ctx=_ssl_ctx)
+    categories = child_categories(collections, root_key)
+    if not categories:
+        raise SystemExit(
+            f"[classify:zotero] '{topic}' [{root_key}] 아래에 하위 컬렉션이 없습니다. "
+            f"Zotero 에서 카테고리 폴더를 만들거나 --classify-source hdbscan 을 쓰세요.")
+    log(f"[zotero] {len(categories)} categories under {topic} [{root_key}]")
+
+    # 하위 컬렉션별로 긁는다. 부모를 한 번에 긁으면 하위 논문까지 전부 나와서
+    # (부모 items = 자식 합계) 대형 토픽에서 페이징이 몇 배로 길어진다.
+    items = []
+    for ckey, cname in categories.items():
+        start = 0
+        while True:
+            url = (f"https://api.zotero.org/users/{user_id}/collections/{ckey}"
+                   f"/items/top?limit=100&start={start}&format=json")
+            req = urllib.request.Request(
+                url, headers={"Zotero-API-Key": api_key, "User-Agent": "paper-curation"})
+            with urllib.request.urlopen(req, timeout=60, context=_ssl_ctx) as resp:
+                batch = json.load(resp)
+            if not batch:
+                break
+            items.extend(i.get("data", {}) for i in batch)
+            if len(batch) < 100:
+                break
+            start += 100
+        log(f"  {cname}: {len(items)} cumulative")
+
+    all_papers, index_path = load_index()
+    topic_papers = [p for p in all_papers if topic in p.get("topics", [])]
+    log(f"[index] {len(topic_papers)} {topic} papers")
+
+    assignments, stats = build_assignments(
+        topic_papers, items, categories, unclassified=unclassified)
+    log(f"[classify:zotero] {stats} → assigned {len(assignments)}/{len(topic_papers)}")
+
+    if stats["unmatched"]:
+        log(f"  NOTE: {stats['unmatched']} papers are not in any category folder "
+            f"(they stay with their existing classification)")
+    if unclassified == "skip" and stats["unclassified"]:
+        log(f"  NOTE: {stats['unclassified']} papers sit only in the unclassified bin "
+            f"— pass --unclassified include to keep them")
+
+    if dry_run:
+        cats = Counter(a["primary_category"] for a in assignments)
+        log("[dry-run] per-category counts:")
+        for c, n in cats.most_common():
+            log(f"  {c}: {n}")
+        return
+
+    by_slug = {a["slug"]: a for a in assignments}
+    for p in topic_papers:
+        a = by_slug.get(p.get("slug"))
+        if not a:
+            continue           # 매칭 실패/미분류는 기존 분류를 그대로 둔다
+        p.setdefault("classifications", {})[topic] = {
+            "primary_category": a["primary_category"],
+            "all_categories": a["all_categories"],
+            "sub_category": a["sub_category"],
+            "sub_categories": {},
+        }
+
+    from lib.atomic_io import atomic_write_json
+    atomic_write_json(index_path, all_papers)
+    log(f"[write] {index_path}")
+
+    cls_data = to_classification(assignments)
+    cls_path = Path(topic_dir) / "_new_classification.json"
+    atomic_write_json(cls_path, cls_data)
+    log(f"[write] {cls_path}  ({len(cls_data['categories'])} categories)")
+
+
 def _run_classify(topic, *, slugs=None, dry_run=False):
     """Programmatic entrypoint for classify_papers.
 
@@ -344,15 +449,41 @@ def compute_viz_coords(vecs_768, bundle):
 
 def main():
     ap = argparse.ArgumentParser(
-        description="HDBSCAN approximate_predict classifier (원 설계)")
-    ap.add_argument("--topic", required=True)
+        description="Paper classifier — HDBSCAN approximate_predict (원 설계) 또는 "
+                    "Zotero 컬렉션 트리")
+    ap.add_argument("--topic", default="",
+                    help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
+    ap.add_argument("--classify-source", choices=("hdbscan", "zotero"),
+                    default="hdbscan",
+                    help="분류 공급원. hdbscan(기본)=임베딩 클러스터링, "
+                         "zotero=사용자가 Zotero 에서 만든 하위 컬렉션을 카테고리로 사용.")
+    ap.add_argument("--unclassified", choices=("skip", "include"), default="skip",
+                    help="--classify-source zotero 전용. 미분류 폴더에만 있는 논문을 "
+                         "빼거나(skip, 기본) 하나의 카테고리로 포함(include).")
     ap.add_argument("--slugs", default="",
                     help="Comma-separated slug prefixes. If set, only these "
-                         "papers are (re)classified; others keep existing entries.")
+                         "papers are (re)classified; others keep existing entries. "
+                         "(hdbscan 공급원 전용)")
     ap.add_argument("--dry-run", action="store_true",
                     help="Print assignment summary without writing JSONs.")
     args = ap.parse_args()
-    _run_classify(topic=args.topic, slugs=args.slugs, dry_run=args.dry_run)
+
+    from config_loader import resolve_topic
+    topic = resolve_topic(args.topic, script="classify_papers")
+
+    if args.classify_source == "zotero":
+        if args.slugs:
+            raise SystemExit(
+                "[classify] --slugs 는 hdbscan 공급원 전용입니다. Zotero 공급원은 "
+                "사용자의 컬렉션 배치를 그대로 반영하므로 일부만 골라 적용하지 않습니다.")
+        _run_classify_zotero(topic=topic, unclassified=args.unclassified,
+                             dry_run=args.dry_run)
+        return
+
+    if args.unclassified != "skip":
+        raise SystemExit(
+            "[classify] --unclassified 는 --classify-source zotero 에서만 의미가 있습니다.")
+    _run_classify(topic=topic, slugs=args.slugs, dry_run=args.dry_run)
 
 
 if __name__ == "__main__":

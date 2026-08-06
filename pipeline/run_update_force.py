@@ -2418,6 +2418,14 @@ def main():
     parser.add_argument("--insights", action="store_true",
                         help="extract_insights 에서 cross-category insights(Option)까지 재생성. "
                              "기본은 paper connections(Core, '같이 보면 좋은 논문')만 생성 (--only connections).")
+    parser.add_argument("--classify-source", choices=("hdbscan", "zotero"),
+                        default="hdbscan",
+                        help="분류 공급원. hdbscan(기본)=임베딩 클러스터링, "
+                             "zotero=Zotero 하위 컬렉션을 카테고리로 사용. "
+                             "classify_papers 로 전달.")
+    parser.add_argument("--unclassified", choices=("skip", "include"), default="skip",
+                        help="--classify-source zotero 전용. 미분류 폴더에만 있는 논문을 "
+                             "빼거나(skip, 기본) 카테고리로 포함(include).")
     parser.add_argument("--local-fallback", action="store_true",
                         help="topic_modeling 연결 단계에서 max retry round 를 다 돌고도 막힌 "
                              "papers 를 로컬 OpenAI 호환 모델(Ollama/LM Studio 등)로 마저 연결. "
@@ -2961,8 +2969,15 @@ def main():
                      [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic] + tm_local, 3600)
 
         # Step 3: classify (always — new papers only in update mode without --category)
-        run_step("classify_papers",
-                 [topic_modeling_python, "pipeline/classify_papers.py", "--topic", topic], 600)
+        classify_cmd = [topic_modeling_python, "pipeline/classify_papers.py",
+                        "--topic", topic]
+        _cls_source = getattr(args, "classify_source", "hdbscan")
+        if _cls_source != "hdbscan":
+            classify_cmd += ["--classify-source", _cls_source]
+            _unc = getattr(args, "unclassified", "skip")
+            if _unc != "skip":
+                classify_cmd += ["--unclassified", _unc]
+        run_step("classify_papers", classify_cmd, 600)
 
         # Step 4: Determine changed categories
         changed_cats = []
