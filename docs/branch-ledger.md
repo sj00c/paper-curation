@@ -44,8 +44,9 @@ Verify: `git rev-list --count HEAD..upstream/master` is `0`, and
 Verify: `anthropic_auth.auth_status()` returns `mode=oauth ready=True`, and every Claude
 callsite goes through `create_anthropic_client()` — no *pipeline* module imports the
 Anthropic SDK directly except `anthropic_auth` itself. (Two tests,
-`pipeline/tests/test_relevance.py` and `test_verify.py`, import it deliberately to
-assert on SDK types.)
+`pipeline/tests/test_relevance.py` and `test_verify.py`, construct a real SDK client for
+an optional live-API smoke call gated on `ANTHROPIC_API_KEY`; both are skipped without a
+key.)
 
 ## Purpose 3 — generalize beyond ai4s
 

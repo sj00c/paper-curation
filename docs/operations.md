@@ -79,7 +79,9 @@ PYTHONUTF8=1 python pipeline/run_citedby.py \
 - `--skip-dedup` / `--dedup-execute` — control Zotero dedup preflight
 - `--yes` — bypass `--mode rebuild` confirmation gate
 - `--classify-source hdbscan|zotero` — classification source (default `hdbscan`);
-  see "Classification source" below
+  see "Classification source" below. Only valid on the classifying modes
+  (`curate`/`rebuild`/`reclassify`/`retime`); `run_full` refuses it on `deploy` and the
+  standalone tool modes rather than dropping it.
 - `--unclassified skip|include` — `--classify-source zotero` only
 - omitting `--topic` — **individual scripts only** (`run_update_force`,
   `classify_papers`, `validate_papers`, …): resolves to the single configured topic and
@@ -438,10 +440,13 @@ no category folder (6) keep whatever classification they already had.
 Three behaviors worth knowing:
 
 - A paper filed in several child collections keeps all of them in `all_categories`;
-  `primary_category` is the alphabetically first, not a guess at relevance.
+  `primary_category` is the alphabetically first, not a guess at relevance. When a real
+  category matches, the unclassified bin is dropped even under `--unclassified include` —
+  what you sorted by hand wins.
 - The unclassified bin is detected **by name** — `99 Unclassified`, `Unclassified`,
-  `미분류`, with any numeric prefix stripped. Name your bin something else and
-  `--unclassified` will not recognize it.
+  `미분류`. A leading number is stripped **only when a space follows it** (`99 Unclassified`
+  works; `99Unclassified`, `99-Unclassified`, `99.Unclassified` do not). Name your bin
+  anything else and `--unclassified` will not recognize it.
 - Trashed *items* are excluded; trashed *collections* are not, so a deleted Zotero
   folder can still appear as a category until Zotero empties its trash.
 

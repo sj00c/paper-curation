@@ -414,16 +414,62 @@ class OrchestratorUnclassifiedGuardTests(unittest.TestCase):
         with patch.object(sys, "argv", argv):
             run_full.main()  # must not raise
 
-    def test_guard_is_present_in_both_orchestrators(self):
-        """소스에 fail-fast 가드가 두 곳 다 있어야 한다 (침묵 드롭 재발 방지)."""
+    def test_run_full_rejects_classify_flags_on_nonclassifying_modes(self):
+        """f-3: deploy/validate/audit/... never classify, so classify flags there would
+        vanish silently — the same defect class the guard exists to close, via mode."""
+        for mode in ("deploy", "validate", "audit"):
+            with self.subTest(mode=mode):
+                with self.assertRaises(SystemExit):
+                    self._run_full(["--topic", "t", "--mode", mode,
+                                    "--classify-source", "zotero", "--dry-run"])
+
+    def test_run_full_allows_classify_source_on_classifying_modes(self):
+        from unittest.mock import patch
+
+        import run_full
+        for mode, extra in (("reclassify", []), ("curate", ["--source", "zotero"])):
+            with self.subTest(mode=mode):
+                argv = ["run_full.py", "--topic", "t", "--mode", mode,
+                        "--classify-source", "zotero", "--dry-run", *extra]
+                with patch.object(sys, "argv", argv):
+                    run_full.main()  # must not raise
+
+    def test_run_update_force_rejects_unclassified_on_hdbscan(self):
+        """blk-1: behaviorally bind run_update_force's guard, not just its source text.
+
+        The guard sits before resolve_topic, so a correct guard raises SystemExit with
+        zero I/O. resolve_topic is patched to raise a NON-SystemExit error: if the guard
+        is ever mutated to a no-op (raise->pass), execution falls through to that patch
+        and the RuntimeError propagates, failing assertRaises(SystemExit) cleanly without
+        touching Zotero. A source-regex test alone let that exact mutation pass green.
+        """
+        from unittest.mock import patch
+
+        import run_update_force
+        argv = ["run_update_force.py", "--topic", "t",
+                "--unclassified", "include", "--dry-run"]
+        with patch("config_loader.resolve_topic",
+                   side_effect=RuntimeError("guard should have stopped this run")), \
+                patch.object(sys, "argv", argv):
+            with self.assertRaises(SystemExit):
+                run_update_force.main()
+
+    def test_guard_raises_in_both_orchestrators(self):
+        """소스에 조건뿐 아니라 `raise` 까지 있어야 한다.
+
+        기존 정규식은 조건 두 줄만 매칭해서, `raise SystemExit` 를 `pass` 로 바꾼
+        변이(=gen-1 침묵 드롭 재현)도 통과했다. raise 를 요구하도록 조인다.
+        """
         import re
 
+        pattern = re.compile(
+            r'unclassified.*!=.*"skip"[\s\S]{0,200}?'
+            r'classify_source.*!=.*"zotero"[\s\S]{0,200}?raise SystemExit')
         for name in ("run_full", "run_update_force"):
             src = open(os.path.join(PIPELINE, f"{name}.py"), encoding="utf-8").read()
             self.assertRegex(
-                src,
-                r'unclassified.*!=.*"skip".*\n.*classify_source.*!=.*"zotero"',
-                f"{name}.py lacks the --unclassified fail-fast guard",
+                src, pattern,
+                f"{name}.py lacks a raising --unclassified fail-fast guard",
             )
 
 

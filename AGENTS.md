@@ -229,9 +229,12 @@ DOI(3,228) 우선, 없으면 정규화 제목(39) 으로 잇는다 — `_papers_
 알아둘 동작 3가지:
 
 - 여러 하위 컬렉션에 든 논문은 `all_categories` 에 전부 담기고, `primary_category` 는
-  그 중 이름순 첫 번째다 (관련도 판단이 아님).
-- 미분류 칸은 **이름으로** 감지한다 — `99 Unclassified`, `Unclassified`, `미분류`
-  (숫자 접두사는 무시). 다른 이름을 쓰면 `--unclassified` 가 인식하지 못한다.
+  그 중 이름순 첫 번째다 (관련도 판단이 아님). 단, 실제 카테고리가 하나라도 있으면
+  미분류 칸은 `--unclassified include` 여도 제외된다 — 사람이 분류해 둔 것이 우선이다.
+- 미분류 칸은 **이름으로** 감지한다 — `99 Unclassified`, `Unclassified`, `미분류`. 앞의
+  숫자는 **뒤에 공백이 있을 때만** 벗겨낸다(`99 Unclassified` ✓ 이지만 `99Unclassified`·
+  `99-Unclassified`·`99.Unclassified` 는 인식 못 함). 다른 이름을 쓰면 `--unclassified`
+  가 그 칸을 알아보지 못한다.
 - 휴지통의 *논문* 은 제외되지만 휴지통의 *컬렉션* 은 아니다. Zotero 휴지통을 비우기
   전까지 삭제한 폴더가 카테고리로 남을 수 있다.
 
@@ -396,7 +399,9 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 - `--skip-dedup` / `--dedup-execute` — Zotero dedup preflight 제어
 - `--insights` — 크로스카테고리 Research Insights 생성 opt-in (기본 Core 는 paper-connections 만)
 - `--yes` — `--mode rebuild` 확인 게이트 우회
-- `--classify-source hdbscan|zotero` — 분류 공급원 (기본 hdbscan). 위 "Zotero 계층 분류" 참조
+- `--classify-source hdbscan|zotero` — 분류 공급원 (기본 hdbscan). 위 "Zotero 계층 분류" 참조.
+  분류를 수행하는 모드(`curate`/`rebuild`/`reclassify`/`retime`)에서만 유효 — `run_full` 은
+  `deploy` 나 standalone tool 모드에서 이 플래그를 조용히 버리지 않고 거부한다.
 - `--unclassified skip|include` — `--classify-source zotero` 전용
 - `--topic` 생략 — **개별 스크립트 한정** (`run_update_force`, `classify_papers`, `validate_papers`
   등). 설정된 토픽이 하나뿐이면 그것으로 진행하고 한 줄 알린다. 여러 개거나 없으면

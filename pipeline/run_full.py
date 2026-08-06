@@ -261,6 +261,19 @@ def main():
             getattr(args, "classify_source", "hdbscan") != "zotero":
         raise SystemExit(
             "[run_full] --unclassified 는 --classify-source zotero 에서만 유효합니다.")
+    # Classification flags only reach a classifier through curate/rebuild/reclassify/
+    # retime (which run run_update_force → classify_papers). deploy and the standalone
+    # tool modes (audit/fix-matching/dedup/validate/recover) never classify, so a
+    # --classify-source/--unclassified typed there would vanish unremarked — the same
+    # silent-drop this guard exists to prevent, reached by mode instead of source.
+    _CLASSIFYING_MODES = {"curate", "rebuild", "reclassify", "retime"}
+    if getattr(args, "mode", None) not in _CLASSIFYING_MODES:
+        if getattr(args, "classify_source", "hdbscan") != "hdbscan" or \
+                getattr(args, "unclassified", "skip") != "skip":
+            raise SystemExit(
+                f"[run_full] --classify-source / --unclassified 는 분류를 수행하는 모드"
+                f"(curate/rebuild/reclassify/retime)에서만 유효합니다. --mode "
+                f"{getattr(args, 'mode', None)} 에는 적용되지 않습니다.")
     # Standalone tooling modes (audit / fix-matching / dedup / validate)
     tool_plan = build_tool_plan(args)
     if tool_plan is not None:
