@@ -374,6 +374,59 @@ class CliWiringTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             self._dispatch(["--unclassified", "include"])
 
+class OrchestratorUnclassifiedGuardTests(unittest.TestCase):
+    """run_full / run_update_force 가 hdbscan 경로에서 --unclassified 를 조용히
+    버리지 않고 멈추는가.
+
+    classify_papers 단독은 그 조합을 거부하지만, 오케스트레이터는 zotero 경로에서만
+    --unclassified 를 자식 커맨드에 실었다. 그래서 `run_full --unclassified include`
+    (기본 hdbscan) 은 거부도 전달도 아닌 침묵 드롭이었다 — 사용자가 타이핑하는
+    진입점에서 계약이 깨진다. 두 오케스트레이터 모두 진입 직후 fail-fast 한다.
+    """
+
+    def _run_full(self, argv):
+        from unittest.mock import patch
+
+        import run_full
+        with patch.object(sys, "argv", ["run_full.py", *argv]):
+            run_full.main()
+
+    def test_run_full_rejects_unclassified_on_hdbscan(self):
+        with self.assertRaises(SystemExit):
+            self._run_full(["--topic", "t", "--mode", "reclassify",
+                            "--unclassified", "include", "--dry-run"])
+
+    def test_run_full_allows_unclassified_with_zotero(self):
+        # zotero + include is valid; dry-run prints the plan and returns without raising.
+        from unittest.mock import patch
+
+        import run_full
+        argv = ["run_full.py", "--topic", "t", "--mode", "reclassify",
+                "--classify-source", "zotero", "--unclassified", "include", "--dry-run"]
+        with patch.object(sys, "argv", argv):
+            run_full.main()  # must not raise
+
+    def test_run_full_default_still_works(self):
+        from unittest.mock import patch
+
+        import run_full
+        argv = ["run_full.py", "--topic", "t", "--mode", "reclassify", "--dry-run"]
+        with patch.object(sys, "argv", argv):
+            run_full.main()  # must not raise
+
+    def test_guard_is_present_in_both_orchestrators(self):
+        """소스에 fail-fast 가드가 두 곳 다 있어야 한다 (침묵 드롭 재발 방지)."""
+        import re
+
+        for name in ("run_full", "run_update_force"):
+            src = open(os.path.join(PIPELINE, f"{name}.py"), encoding="utf-8").read()
+            self.assertRegex(
+                src,
+                r'unclassified.*!=.*"skip".*\n.*classify_source.*!=.*"zotero"',
+                f"{name}.py lacks the --unclassified fail-fast guard",
+            )
+
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

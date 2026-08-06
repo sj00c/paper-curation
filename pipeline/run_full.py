@@ -253,6 +253,14 @@ def build_tool_plan(args):
 
 def main():
     args = build_parser().parse_args()
+    # --unclassified is only meaningful with --classify-source zotero. classify_papers
+    # rejects the combination, but the orchestrator never forwards the flag on the
+    # hdbscan path, so without this guard `run_full --unclassified include` (default
+    # source) is silently dropped instead of refused. Fail fast at the entrypoint.
+    if getattr(args, "unclassified", "skip") != "skip" and \
+            getattr(args, "classify_source", "hdbscan") != "zotero":
+        raise SystemExit(
+            "[run_full] --unclassified 는 --classify-source zotero 에서만 유효합니다.")
     # Standalone tooling modes (audit / fix-matching / dedup / validate)
     tool_plan = build_tool_plan(args)
     if tool_plan is not None:

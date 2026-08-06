@@ -305,9 +305,14 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode rebuild --slugs
 # Reclassify only (HDBSCAN approximate_predict + centroid fallback, no LLM calls)
 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode reclassify
 
-# Reclassify from the folder tree you already built in Zotero, instead of clustering
-# (reads zotero.sqlite directly — no HDBSCAN bundle, no embeddings, no API key)
+# Reclassify from the folder tree you already built in Zotero, instead of clustering.
+# NOTE: run_full still runs topic_modeling first (it also refreshes coords/connections).
+# For the bundle-free, embedding-free path, call classify_papers directly (below).
 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode reclassify --classify-source zotero
+
+# Zotero source, standalone — no HDBSCAN bundle, no embeddings; needs no API key
+# when a local zotero.sqlite is present (it falls back to the Zotero Web API otherwise)
+PYTHONUTF8=1 python pipeline/classify_papers.py --topic my_topic --classify-source zotero
 
 # Also generate cross-category Research Insights (opt-in — Core runs paper-connections only)
 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source zotero --insights
@@ -332,7 +337,7 @@ PYTHONUTF8=1 python pipeline/serve_local.py   # localhost:8000 + /api/embed + /a
 - **retime** — regenerate narratives + timeline images
 - **deploy** — run `prepare_deploy.py` only (split-host: Cloudflare + gh-pages stubs + master code push)
 
-Safety flags: `--strict-pdf` (block fuzzy PDF match), `--slugs A,B,C`, `--dry-run`, `--skip-dedup`, `--dedup-execute`, `--insights`, `--yes`, `--classify-source hdbscan|zotero`, `--unclassified skip|include`. Omitting `--topic` resolves to the single configured topic and says so; with more than one it stops and lists them.
+Safety flags: `--strict-pdf` (block fuzzy PDF match), `--slugs A,B,C`, `--dry-run`, `--skip-dedup`, `--dedup-execute`, `--insights`, `--yes`, `--classify-source hdbscan|zotero`, `--unclassified skip|include`. On the individual scripts (`run_update_force`, `classify_papers`, …) omitting `--topic` resolves to the single configured topic and says so; with more than one it stops and lists them. `run_full.py` still requires `--topic`.
 
 ### Concurrency Tuning by Anthropic Tier
 

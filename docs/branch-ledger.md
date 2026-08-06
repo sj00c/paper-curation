@@ -1,8 +1,12 @@
 # Branch ledger — `work/oauth-on-latest`
 
-Every commit on this branch (`upstream/master..HEAD`, 34 commits), classified by which
-stated purpose it serves. The point is that when this is later PR'd upstream, the
-selection is obvious without re-reading 34 commit messages.
+Every commit on this branch (`upstream/master..HEAD`), classified by which stated
+purpose it serves. The point is that when this is later PR'd upstream, the selection is
+obvious without re-reading three dozen commit messages.
+
+The table below covers the 34 commits that existed when it was written. The commit that
+adds this file (and any later one) is deliberately not self-listed — regenerate from git
+rather than trusting the count.
 
 The three stated purposes were:
 
@@ -38,8 +42,10 @@ Verify: `git rev-list --count HEAD..upstream/master` is `0`, and
 | `9166844` | Route upstream's new Claude callsites through the OAuth-aware client | Upstream had added Claude calls that constructed the SDK directly, which bypasses OAuth. |
 
 Verify: `anthropic_auth.auth_status()` returns `mode=oauth ready=True`, and every Claude
-callsite goes through `create_anthropic_client()` — no module imports the Anthropic SDK
-directly except `anthropic_auth` itself.
+callsite goes through `create_anthropic_client()` — no *pipeline* module imports the
+Anthropic SDK directly except `anthropic_auth` itself. (Two tests,
+`pipeline/tests/test_relevance.py` and `test_verify.py`, import it deliberately to
+assert on SDK types.)
 
 ## Purpose 3 — generalize beyond ai4s
 
@@ -100,7 +106,7 @@ Real bugs found along the way that any install hits, independent of purposes 1�
 | `b6145a1` | Stop setup from installing a skill that stopped being true | The rendered skill hardcoded ai4s, so every non-ai4s install shipped a skill pointing at a topic the user does not have. |
 | `6387e1e` | Point the concurrency docs at the knob that actually exists | Docs named a flag that was not the real one. |
 | `f40e55f` | Split md_to_html out of agent_lecture_digest | The converter lived in a module that imports `google.genai` at import time, so citedby reports rendered raw markdown on machines without the Gemini SDK. |
-| `4d8cc08` | Launch child steps with sys.executable, not literal "python" | `force_py312()` re-execs the entrypoint, then 37 child invocations ran whatever `python` PATH resolved to. |
+| `4d8cc08` | Launch child steps with sys.executable, not literal "python" | `force_py312()` re-execs the entrypoint, then child steps ran whatever `python` PATH resolved to. The commit replaces 35 of them (`git show 4d8cc08 --numstat` → 35/35 in `run_update_force.py`). |
 | `61170a7` | Write the index files atomically | A kill mid-write left a truncated `_papers_index.json`, which every later step reads. |
 | `ba5b0a1` | Declare PyYAML; document py312 as the only supported interpreter | `lib/metrics/store.py` imports `yaml` at module level but it was not in requirements, so step 1.5 failed silently every cycle. |
 | `0f1223c` | Stop hardcoding the original author's home directory | `lecture_map.py` inserted a path that exists on exactly one machine. |
@@ -116,11 +122,11 @@ undone in an earlier turn).
 |---|---|---|
 | `726fe59` | Fix a SyntaxError I introduced that killed every generated topic page | Repairs damage from an earlier commit in this branch. |
 | `012adef` | Verify the generated page as an artifact, not as source text | Follow-up to `726fe59`: the test had asserted against source text, so it could not have caught the break. |
-| `83873c1` | Stop line-ending churn from burying real diffs | A batch patch rewrote 8 CRLF files as LF and inflated a 359-line change to 6,138. Caught before commit, but nothing in the repo would have stopped it, hence `.gitattributes` + `scripts/check-eol.py` + a CI job. |
+| `83873c1` | Stop line-ending churn from burying real diffs | A batch patch rewrote 8 CRLF files as LF, which staged as 6,138 changed lines for a 359-line change. Those figures are working-tree measurements taken before the commit, so they are not recoverable from git history. Caught before committing, but nothing in the repo would have stopped it — hence `.gitattributes` + `scripts/check-eol.py` + a CI job. |
 
-The repo has 17 CRLF and 179 LF tracked text files **by design** — the CRLF ones come
-from upstream, which still commits from Windows. Do not normalize: it would rewrite
-thousands of lines and conflict wholesale on every upstream merge.
+The repo has 17 CRLF and 184 LF tracked text files **by design** (`git ls-files --eol`)
+— the CRLF ones come from upstream, which still commits from Windows. Do not normalize:
+it would rewrite thousands of lines and conflict wholesale on every upstream merge.
 
 ## Upstream PR guidance
 

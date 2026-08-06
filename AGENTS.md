@@ -226,13 +226,27 @@ DOI(3,228) 우선, 없으면 정규화 제목(39) 으로 잇는다 — `_papers_
 `zotero_item_key` 는 3,273편 중 1편에만 있어 매핑 키로 쓸 수 없다. 어느 카테고리
 폴더에도 없는 논문(6편)은 기존 분류를 그대로 유지한다.
 
+알아둘 동작 3가지:
+
+- 여러 하위 컬렉션에 든 논문은 `all_categories` 에 전부 담기고, `primary_category` 는
+  그 중 이름순 첫 번째다 (관련도 판단이 아님).
+- 미분류 칸은 **이름으로** 감지한다 — `99 Unclassified`, `Unclassified`, `미분류`
+  (숫자 접두사는 무시). 다른 이름을 쓰면 `--unclassified` 가 인식하지 못한다.
+- 휴지통의 *논문* 은 제외되지만 휴지통의 *컬렉션* 은 아니다. Zotero 휴지통을 비우기
+  전까지 삭제한 폴더가 카테고리로 남을 수 있다.
+
 ```bash
 # Zotero 폴더 구조를 분류로 사용
+# 주의: run_full 은 이 경우에도 topic_modeling 을 먼저 돌린다 (좌표·연결 갱신 때문).
+# 번들·임베딩 없이 분류만 하려면 아래 classify_papers 단독 호출을 쓴다.
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --classify-source zotero
 
 # 미분류 폴더까지 카테고리로 포함
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify \
   --classify-source zotero --unclassified include
+
+# 단독 실행 — HDBSCAN 번들도 임베딩도 필요 없다
+PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --classify-source zotero
 ```
 
 ### run_update_force.py flags
@@ -384,9 +398,10 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 - `--yes` — `--mode rebuild` 확인 게이트 우회
 - `--classify-source hdbscan|zotero` — 분류 공급원 (기본 hdbscan). 위 "Zotero 계층 분류" 참조
 - `--unclassified skip|include` — `--classify-source zotero` 전용
-- `--topic` 생략 — 설정된 토픽이 **하나뿐이면** 그것으로 진행하고 한 줄 알린다. 여러
-  개거나 없으면 멈추고 토픽 목록을 보여준다 (예전에는 `ai4s` 로 조용히 폴백해서,
-  ai4s 가 없는 설치가 남의 토픽을 대상으로 돌았다)
+- `--topic` 생략 — **개별 스크립트 한정** (`run_update_force`, `classify_papers`, `validate_papers`
+  등). 설정된 토픽이 하나뿐이면 그것으로 진행하고 한 줄 알린다. 여러 개거나 없으면
+  멈추고 토픽 목록을 보여준다 (예전에는 `ai4s` 로 조용히 폴백해서, ai4s 가 없는 설치가
+  남의 토픽을 대상으로 돌았다). `run_full.py` 는 `--topic` 이 여전히 필수다.
 
 ## Key Design Decisions
 

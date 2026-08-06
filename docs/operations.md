@@ -50,8 +50,10 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088
 # Reclassify only (no LLM, HDBSCAN approximate_predict)
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
 
-# Reclassify from your own Zotero folder tree instead of clustering
-# (no HDBSCAN bundle, no embeddings — reads zotero.sqlite directly)
+# Reclassify from your own Zotero folder tree instead of clustering.
+# NOTE: run_full still runs topic_modeling first (it also refreshes coords and
+# connections), so this is not the bundle-free path — that is the standalone
+# classify_papers invocation under "Classification source".
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --classify-source zotero
 
 # Timeline narrative + images
@@ -79,9 +81,11 @@ PYTHONUTF8=1 python pipeline/run_citedby.py \
 - `--classify-source hdbscan|zotero` — classification source (default `hdbscan`);
   see "Classification source" below
 - `--unclassified skip|include` — `--classify-source zotero` only
-- omitting `--topic` — resolves to the single configured topic and says so; stops
-  and lists the topics when there is more than one (it used to fall back to
-  `ai4s`, so an install without ai4s silently targeted somebody else's topic)
+- omitting `--topic` — **individual scripts only** (`run_update_force`,
+  `classify_papers`, `validate_papers`, …): resolves to the single configured topic and
+  says so; stops and lists the topics when there is more than one (it used to fall back
+  to `ai4s`, so an install without ai4s silently targeted somebody else's topic).
+  `run_full.py` still requires `--topic`.
 
 ## Concurrency (Anthropic Tier 4 default)
 
@@ -430,6 +434,16 @@ Measured on the ai4s corpus (3,273 reviewed papers, 8 Zotero categories):
 Matching is by normalized DOI (3,228) then normalized title (39); `zotero_item_key`
 exists on only 1 of 3,273 index entries and cannot be used as the join key. Papers in
 no category folder (6) keep whatever classification they already had.
+
+Three behaviors worth knowing:
+
+- A paper filed in several child collections keeps all of them in `all_categories`;
+  `primary_category` is the alphabetically first, not a guess at relevance.
+- The unclassified bin is detected **by name** — `99 Unclassified`, `Unclassified`,
+  `미분류`, with any numeric prefix stripped. Name your bin something else and
+  `--unclassified` will not recognize it.
+- Trashed *items* are excluded; trashed *collections* are not, so a deleted Zotero
+  folder can still appear as a category until Zotero empties its trash.
 
 ```bash
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify \

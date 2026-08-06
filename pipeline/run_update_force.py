@@ -2450,6 +2450,13 @@ def main():
                              "retime=regenerate timeline narratives+images only. "
                              "When set, overrides --resume/--skip-existing/--timeline/--category combinations.")
     args = parser.parse_args()
+    # --unclassified only applies to --classify-source zotero. Reject the mismatch here
+    # rather than dropping it silently: the classify step only appends --unclassified on
+    # the zotero path (see Step 3), so on hdbscan it would otherwise vanish unremarked.
+    if getattr(args, "unclassified", "skip") != "skip" and \
+            getattr(args, "classify_source", "hdbscan") != "zotero":
+        raise SystemExit(
+            "[run_update_force] --unclassified 는 --classify-source zotero 에서만 유효합니다.")
     from config_loader import resolve_topic
     args.topic = resolve_topic(args.topic, script="run_update_force")
 
