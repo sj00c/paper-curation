@@ -268,6 +268,9 @@ npx . run -- --topic ai4s --mode reclassify
 npx . run -- --topic ai4s --mode retime --images all
 npx . run -- --topic humanoid --mode deploy
 
+# 내가 Zotero 에서 만든 폴더 구조를 그대로 카테고리로 (클러스터링 대신)
+npx . run -- --topic ai4s --mode reclassify --classify-source zotero
+
 # 실행 계획 미리보기 / 로컬 서버
 npx . run -- --topic ai4s --mode curate --source zotero --dry-run
 PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/embed + /api/citedby-answer

@@ -25,7 +25,7 @@ from pipeline.api import (
 |------|--------------------|---------------------|---------|
 | `curate` | `zotero` | `skip` | Pick up new papers; reuse existing reviews |
 | `rebuild` | `zotero` | `all` | Regenerate everything (destructive — review.md/figures wiped) |
-| `reclassify` | (none) | `changed` | Re-run topic_modeling + classify only |
+| `reclassify` | (none) | `changed` | Re-run topic_modeling + classify only (see `--classify-source`) |
 | `retime` | (none) | `all` | Regenerate timeline narrative + images |
 | `deploy` | (none) | `skip` | wrangler deploy + gh-pages sync + master push |
 | `audit` | — | — | Standalone: PDF↔review mismatch audit |
@@ -50,6 +50,10 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088
 # Reclassify only (no LLM, HDBSCAN approximate_predict)
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
 
+# Reclassify from your own Zotero folder tree instead of clustering
+# (no HDBSCAN bundle, no embeddings — reads zotero.sqlite directly)
+PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --classify-source zotero
+
 # Timeline narrative + images
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
 
@@ -72,6 +76,12 @@ PYTHONUTF8=1 python pipeline/run_citedby.py \
 - `--dry-run` — print plan, no execution
 - `--skip-dedup` / `--dedup-execute` — control Zotero dedup preflight
 - `--yes` — bypass `--mode rebuild` confirmation gate
+- `--classify-source hdbscan|zotero` — classification source (default `hdbscan`);
+  see "Classification source" below
+- `--unclassified skip|include` — `--classify-source zotero` only
+- omitting `--topic` — resolves to the single configured topic and says so; stops
+  and lists the topics when there is more than one (it used to fall back to
+  `ai4s`, so an install without ai4s silently targeted somebody else's topic)
 
 ## Concurrency (Anthropic Tier 4 default)
 
@@ -372,6 +382,63 @@ Each topic ↔ Zotero collection is in `config.json`:
 ```
 
 `docs/.assetsignore` controls which topics ship to Cloudflare.
+
+## Classification source
+
+Two sources feed the same artifact. `--classify-source hdbscan` (default) clusters
+SPECTER2 embeddings and invents category names. `--classify-source zotero` reads the
+folder tree you already built in Zotero: the top-level collection is the topic and its
+child collections are the categories.
+
+```
+AI for Science  [67W74439]  15,388 items      ← top level = topic
+  ├ 01 General Methods & Platforms   3,984    ← children = categories
+  ├ 02 Biology & Medicine            2,920
+  ├ …
+  └ 99 Unclassified                  2,286
+```
+
+Both write the same `{topic}/_new_classification.json` (`categories[]` +
+`assignments[]`) and the same `classifications[topic]` in `_papers_index.json`, so
+category summaries, insights, timelines, network, topic index and search index consume
+either without change.
+
+| Flag | Effect |
+|------|--------|
+| `--classify-source hdbscan` | Default. Embedding clustering; needs the `_hdbscan_model.joblib` bundle |
+| `--classify-source zotero` | Use your Zotero child collections as the categories |
+| `--unclassified skip` | Default. Papers only in the unclassified bin keep their existing classification |
+| `--unclassified include` | Treat the unclassified bin as a category of its own |
+
+`--unclassified` is rejected on the hdbscan path and `--slugs` on the zotero path,
+rather than being silently ignored.
+
+**Source of truth is the local `zotero.sqlite`** — `ZOTERO_SQLITE` then
+`~/Zotero/zotero.sqlite`. The file is copied before reading because Zotero locks the
+original while running (same approach as `lib/citedby/local_library.py`), and trashed
+items are excluded. Without a local database it falls back to the Zotero Web API. The
+sqlite path needs no API key and no network; the same data over the Web API means
+paging every child collection 100 items at a time.
+
+Measured on the ai4s corpus (3,273 reviewed papers, 8 Zotero categories):
+
+| Mode | Assigned | Categories |
+|---|---|---|
+| `--unclassified skip` | 2,828 / 3,273 | 7 |
+| `--unclassified include` | 3,267 / 3,273 | 8 |
+
+Matching is by normalized DOI (3,228) then normalized title (39); `zotero_item_key`
+exists on only 1 of 3,273 index entries and cannot be used as the join key. Papers in
+no category folder (6) keep whatever classification they already had.
+
+```bash
+PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify \
+  --classify-source zotero --unclassified include
+
+# Standalone, without the orchestrator
+PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s \
+  --classify-source zotero --dry-run
+```
 
 ## See also
 

@@ -305,6 +305,10 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode rebuild --slugs
 # Reclassify only (HDBSCAN approximate_predict + centroid fallback, no LLM calls)
 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode reclassify
 
+# Reclassify from the folder tree you already built in Zotero, instead of clustering
+# (reads zotero.sqlite directly — no HDBSCAN bundle, no embeddings, no API key)
+PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode reclassify --classify-source zotero
+
 # Also generate cross-category Research Insights (opt-in — Core runs paper-connections only)
 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode curate --source zotero --insights
 
@@ -324,11 +328,11 @@ PYTHONUTF8=1 python pipeline/serve_local.py   # localhost:8000 + /api/embed + /a
 `--mode` meanings:
 - **curate** — review new papers only, preserve existing (most common)
 - **rebuild** — regenerate all review.md. Requires `--yes` or `--slugs`
-- **reclassify** — keep reviews, reassign categories (node-based)
+- **reclassify** — keep reviews, reassign categories. Two sources: `--classify-source hdbscan` (default, embedding clustering) or `--classify-source zotero` (your own Zotero child collections; add `--unclassified include` to keep the unclassified bin as a category)
 - **retime** — regenerate narratives + timeline images
 - **deploy** — run `prepare_deploy.py` only (split-host: Cloudflare + gh-pages stubs + master code push)
 
-Safety flags: `--strict-pdf` (block fuzzy PDF match), `--slugs A,B,C`, `--dry-run`, `--skip-dedup`, `--dedup-execute`, `--insights`, `--yes`.
+Safety flags: `--strict-pdf` (block fuzzy PDF match), `--slugs A,B,C`, `--dry-run`, `--skip-dedup`, `--dedup-execute`, `--insights`, `--yes`, `--classify-source hdbscan|zotero`, `--unclassified skip|include`. Omitting `--topic` resolves to the single configured topic and says so; with more than one it stops and lists them.
 
 ### Concurrency Tuning by Anthropic Tier
 

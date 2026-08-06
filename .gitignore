@@ -86,6 +86,7 @@ reports/output/
 !docs/setup-guide.md
 !docs/operations.md
 !docs/architecture.md
+!docs/branch-ledger.md
 
 # Public assets (conference talk slides, etc.) — tracked on master + GitHub-served
 !docs/public/

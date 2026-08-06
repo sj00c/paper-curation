@@ -107,7 +107,7 @@ setup.py 출력의 "다음 단계" 섹션을 사용자에게 전달한다. 특�
 | 1 | `pipeline/run_update_force.py` | Full batch: Zotero fetch → PDF parse → figure extract → **Zotero↔text sanity gate** → review → HTML. ID-first `find_pdf()` with `--strict-pdf` blocking fuzzy |
 | 1.5 | `pipeline/run_metrics.py` | **피인용수·레퍼런스** — `citations.md`(이력 append + 피인용 10회↑ 인용목록) + `references.md`(DOI>URL>서지). 기본 30일 증분이라 매 사이클 태워도 비용 거의 없음. **soft step**(외부 API 장애가 파이프라인을 죽이지 않음). `--skip-metrics` 로 생략 |
 | 2 | `pipeline/build_papers_index.py` | Rebuild `_papers_index.json` with integrity fields (`text_md_sha256`, `doi_verified`, `zotero_item_key`) via atomic write |
-| 3 | `pipeline/classify_papers.py` | **HDBSCAN approximate_predict (원 설계)** — `topic_modeling` 이 저장한 `_hdbscan_model.joblib` 번들(hdbscan_model + UMAP transformer + centroids + tid→cat) 로드 → UMAP 5D 투영 → `hdbscan.approximate_predict` 로 primary sub-cluster 결정. Outlier(-1)는 768D centroid 코사인 최단점으로 강제 배정. `all_categories` 는 centroid 거리 오름차순 top-N parent. SPECTER2 임베딩은 proximity adapter + CLS pooling (업그레이드 후 새 임베딩을 반영하려면 `topic_modeling.py` 를 한 번 재실행해 `_hdbscan_model.joblib` 번들을 재생성해야 함). LLM 호출 없음. **UMAP/hdbscan/sentence-transformers env 필수** (py312 단독 — py314 금지, `_env_guard` 가 py312 로 자동 재실행) |
+| 3 | `pipeline/classify_papers.py` | 분류 공급원 2개. **기본 `--classify-source hdbscan`** — `topic_modeling` 이 저장한 `_hdbscan_model.joblib` 번들(hdbscan_model + UMAP transformer + centroids + tid→cat) 로드 → UMAP 5D 투영 → `hdbscan.approximate_predict` 로 primary sub-cluster 결정. Outlier(-1)는 768D centroid 코사인 최단점으로 강제 배정. `all_categories` 는 centroid 거리 오름차순 top-N parent. SPECTER2 임베딩은 proximity adapter + CLS pooling (업그레이드 후 새 임베딩을 반영하려면 `topic_modeling.py` 를 한 번 재실행해 `_hdbscan_model.joblib` 번들을 재생성해야 함). LLM 호출 없음. **UMAP/hdbscan/sentence-transformers env 필수** (py312 단독 — py314 금지, `_env_guard` 가 py312 로 자동 재실행). **`--classify-source zotero`** — 사용자가 Zotero 에서 만든 하위 컬렉션을 그대로 카테고리로 사용 (아래 "Zotero 계층 분류") |
 | 4 | `pipeline/build_category_summaries.py` | Per-category 한글 description + sub-themes via Haiku |
 | 4.5 | `pipeline/extract_insights.py` | Paper connections via Sonnet (Core 기본). Cross-category Research Insights 생성은 **opt-in** — `run_full --insights` 일 때만. Auto Haiku-summarization fallback when prompt >988k tokens (compress toward 900k). cross-category 호출은 후보 목록(anthropic, openai, gemini) 중 **설정된 첫 번째 하나만** 쓰고, 실패해도 다음으로 넘어가지 않는다 (대체 금지 — 미설정 건너뛰기만 허용) |
 | 5 | `pipeline/generate_timelines.py` | Bottom-up timeline narrative (Opus) + PaperBanana images. Gemini retry schedule 3×60s → 2×1800s |
@@ -180,6 +180,60 @@ PYTHONUTF8=1 python pipeline/megasearch_to_zotero.py \
 - `--source zotero` (로컬 Zotero 만) — Step 0 자체가 skip
 
 **MCP 의존성**: `~/.claude.json` 의 `mcpServers` 에 `arxiv-mcp-server` / `asta` / `paper-search-mcp` 가 등록돼 있어야 함 (`scholar-megasearch/setup/install.sh` 가 자동 등록). `uv` 가 없으면 arxiv-mcp-server 만 비활성 (paper-search-mcp 가 arXiv 도 커버하므로 운영에는 영향 없음).
+
+### Zotero 계층 분류 (`--classify-source zotero`)
+
+사용자는 이미 Zotero 안에서 논문을 정리해 둔다. 최상위 컬렉션이 토픽이고 그 아래
+하위 컬렉션이 사람이 만든 카테고리다:
+
+```
+AI for Science  [67W74439]  15,388편        ← 최상위 = 토픽
+  ├ 01 General Methods & Platforms   3,984  ← 하위 = 카테고리
+  ├ 02 Biology & Medicine            2,920
+  ├ …
+  └ 99 Unclassified                  2,286
+```
+
+기본 HDBSCAN 경로는 이 구조를 쓰지 않고 임베딩으로 카테고리를 새로 만든다.
+`--classify-source zotero` 는 그 트리를 그대로 카테고리로 읽어, HDBSCAN 경로와
+**동일한** `_new_classification.json`(`categories[]` + `assignments[]`) 과
+`_papers_index.json` 의 `classifications[topic]` 을 쓴다. 따라서 하류(카테고리 요약,
+insights, 타임라인, 네트워크, 토픽 인덱스, 검색 인덱스)는 그대로 돈다.
+
+| Flag | Effect |
+|------|--------|
+| `--classify-source hdbscan` | 기본. 임베딩 클러스터링 (위 표 Step 3) |
+| `--classify-source zotero` | Zotero 하위 컬렉션을 카테고리로 사용 |
+| `--unclassified skip` | 기본. 미분류 폴더에만 있는 논문은 배정하지 않고 기존 분류 유지 |
+| `--unclassified include` | 미분류 폴더를 하나의 카테고리로 포함 |
+
+`--unclassified` 는 `--classify-source zotero` 에서만 유효하고, `--slugs` 는
+`hdbscan` 에서만 유효하다. 잘못 조합하면 조용히 무시하지 않고 멈춘다.
+
+**데이터 원천은 로컬 `zotero.sqlite`**. 경로는 `ZOTERO_SQLITE` env → `~/Zotero/zotero.sqlite`
+순으로 찾고, Zotero 실행 중 잠금을 피하려 복사본을 읽는다(`lib/citedby/local_library.py`
+와 같은 방식). 로컬 DB 가 없으면 Zotero Web API 로 폴백한다. sqlite 경로는 휴지통
+항목(`deletedItems`)도 제외한다.
+
+실측 (ai4s 코퍼스 3,273편, Zotero 카테고리 8개):
+
+| 모드 | 배정 | 카테고리 |
+|---|---|---|
+| `--unclassified skip` | 2,828 / 3,273 | 7개 |
+| `--unclassified include` | 3,267 / 3,273 | 8개 |
+
+DOI(3,228) 우선, 없으면 정규화 제목(39) 으로 잇는다 — `_papers_index.json` 의
+`zotero_item_key` 는 3,273편 중 1편에만 있어 매핑 키로 쓸 수 없다. 어느 카테고리
+폴더에도 없는 논문(6편)은 기존 분류를 그대로 유지한다.
+
+```bash
+# Zotero 폴더 구조를 분류로 사용
+PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --classify-source zotero
+
+# 미분류 폴더까지 카테고리로 포함
+PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify \
+  --classify-source zotero --unclassified include
+```
 
 ### run_update_force.py flags
 
@@ -303,10 +357,14 @@ PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s --execute
 # 빌드 검증 게이트 (--strict 면 이슈 시 exit 1)
 PYTHONUTF8=1 python pipeline/validate_papers.py --topic ai4s --strict
 
-# 분류만 단독 (UMAP transform + hdbscan.approximate_predict)
+# 분류만 단독 — 기본 공급원 (UMAP transform + hdbscan.approximate_predict)
 # 사전 조건: topic_modeling 이 `_hdbscan_model.joblib` 번들을 미리 저장해 두었어야 함
 PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s
 PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --slugs 088,1093 --dry-run
+
+# 분류만 단독 — Zotero 공급원 (번들·임베딩 불필요, zotero.sqlite 직접 읽음)
+PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --classify-source zotero --dry-run
+PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --classify-source zotero --unclassified include
 
 # Topic modeling (UMAP/hdbscan/sentence-transformers 의존 — 단일 py312 env 활성 상태)
 PYTHONUTF8=1 python pipeline/topic_modeling.py --topic ai4s
@@ -324,13 +382,18 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 - `--skip-dedup` / `--dedup-execute` — Zotero dedup preflight 제어
 - `--insights` — 크로스카테고리 Research Insights 생성 opt-in (기본 Core 는 paper-connections 만)
 - `--yes` — `--mode rebuild` 확인 게이트 우회
+- `--classify-source hdbscan|zotero` — 분류 공급원 (기본 hdbscan). 위 "Zotero 계층 분류" 참조
+- `--unclassified skip|include` — `--classify-source zotero` 전용
+- `--topic` 생략 — 설정된 토픽이 **하나뿐이면** 그것으로 진행하고 한 줄 알린다. 여러
+  개거나 없으면 멈추고 토픽 목록을 보여준다 (예전에는 `ai4s` 로 조용히 폴백해서,
+  ai4s 가 없는 설치가 남의 토픽을 대상으로 돌았다)
 
 ## Key Design Decisions
 
 - **Bottom-up topic modeling**: `topic_modeling.py`는 BERTopic 대신 sklearn HDBSCAN + UMAP을 직접 사용. HDBSCAN fine-grained clustering → c-TF-IDF 키워드 추출 (Grootendorst 2022, 클러스터=1문서 tf × 클래스 idf) → Sonnet 배치 작명 → Sonnet 카테고리 그룹핑. `min_cluster_size`를 자동 조정하여 sub-topic 40~100개를 목표로 한다.
 - **Multi-class classification**: Papers get 1 `primary_category` + 1-3 `all_categories`. The topic index shows cards under every matching category.
 - **Whitelist .gitignore**: Everything is excluded by default (`*`), then only code + configs are whitelisted. Under `docs/` only `index.html` (landing redirect), `setup-guide.md`, and `.assetsignore` are tracked on master. All topic content (`docs/papers/`, `docs/humanoid/`, `docs/physical-ai/`, etc.) is gitignored — it lives locally and on Cloudflare, never on master. `wrangler deploy` uses `docs/` directly; `docs/.assetsignore` excludes ai4s/scisci and local caches from the Cloudflare upload.
-- **Two themes**: `ai4s` uses red accent (#D63423), `scisci` uses blue (#2374D6). Theme selection flows through `review_to_html.py` and `build_topic_index.py`.
+- **Two themes**: `ai4s` uses red accent (#D63423), `scisci` uses blue (#2374D6). Theme selection flows through `review_to_html.py` and `build_topic_index.py`. 그 둘 외의 토픽은 중립 파랑(#3B82F6) + 자기 토픽으로 돌아가는 back_href 를 받는다 (`review_to_html.theme_for()`); 예전에는 ai4s 테마로 폴백해서 ai4s 가 없는 설치의 '목록으로' 링크가 404 였다.
 - **Figure extraction**: PyMuPDF renders pages containing "Figure N" / "Fig. N" at 3x zoom. Up to 5 figures per paper from pages 0-14.
 - **Slug format**: `{NNN}_{Title_first_40_chars}` where NNN is zero-padded sequence number.
 - **PDF-change auto-detect**: `run_update_force.py` 가 매 실행 시작 시 `_papers_index.json` 의 `pdf_path` 캐시와 디스크 mtime을 비교해 PDF가 review.md 보다 새 것이면 자동으로 `forced_slugs` 에 추가한다 (Zotero API 호출 0, 순수 stat). 캐시는 `find_pdf()` 성공 시 자동 적재되므로 처음 한 사이클을 돈 뒤부터 작동.
