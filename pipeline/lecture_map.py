@@ -34,7 +34,7 @@ from matplotlib import font_manager as fm
 from matplotlib.collections import LineCollection
 import numpy as np
 
-sys.path.insert(0, "/Users/jehyunlee/Documents/paper-curation/pipeline")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import agent_lecture_digest as ald
 
 ORANGE = "#F76707"
