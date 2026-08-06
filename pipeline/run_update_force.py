@@ -2899,7 +2899,7 @@ def main():
 
         # Step 1: Always rebuild index
         run_step("build_papers_index",
-                 ["python", "pipeline/build_papers_index.py", "--topic", topic])
+                 [sys.executable, "pipeline/build_papers_index.py", "--topic", topic])
 
         # Step 1.5: 피인용수·레퍼런스 (citations.md / references.md)
         #
@@ -2916,7 +2916,7 @@ def main():
         # CRITICAL_STEPS 에 넣지 않은 이유다.
         if not getattr(args, "skip_metrics", False):
             run_step("run_metrics",
-                     ["python", "pipeline/run_metrics.py", "--quiet"],
+                     [sys.executable, "pipeline/run_metrics.py", "--quiet"],
                      step_timeout=5400)
 
         # Step 2: topic_modeling
@@ -3026,11 +3026,11 @@ def main():
         def run_default_topic_outputs(reason):
             log(f"  [default_outputs] full narrative/timeline generation ({reason})")
             run_step("build_category_summaries",
-                     ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
+                     [sys.executable, "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
+                     [sys.executable, "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
-                     ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
+                     [sys.executable, "pipeline/generate_timelines.py", "--topic", topic], 21600)
         # Step 5-6: summaries, insights, timelines — scoped by changed categories
         if do_reclassify and changed_cats and missing_default_artifacts:
             # If default outputs are absent, scoped timeline regeneration would
@@ -3040,29 +3040,29 @@ def main():
             # --category: full reclassification → rebuild ALL summaries/insights (old cats must be purged)
             # Only timelines are scoped to changed categories
             run_step("build_category_summaries",
-                     ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
+                     [sys.executable, "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
+                     [sys.executable, "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             cats_arg = ["--categories"] + changed_cats
             run_step("generate_timelines",
-                     ["python", "pipeline/generate_timelines.py", "--topic", topic] + cats_arg, 21600)
+                     [sys.executable, "pipeline/generate_timelines.py", "--topic", topic] + cats_arg, 21600)
         elif do_reclassify:
             # --category but no diff detected: full regeneration
             run_step("build_category_summaries",
-                     ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
+                     [sys.executable, "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
+                     [sys.executable, "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
-                     ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
+                     [sys.executable, "pipeline/generate_timelines.py", "--topic", topic], 21600)
         elif is_update:
             if missing_default_artifacts and (do_ensure_timeline or do_timeline_images):
                 run_default_topic_outputs("missing default outputs")
             elif changed_cats:
                 cats_arg = ["--categories"] + changed_cats
                 run_step("build_category_summaries",
-                         ["python", "pipeline/build_category_summaries.py", "--topic", topic] + cats_arg, 1200)
+                         [sys.executable, "pipeline/build_category_summaries.py", "--topic", topic] + cats_arg, 1200)
                 run_step("extract_insights",
-                         ["python", "pipeline/extract_insights.py", "--topic", topic] + cats_arg + insights_only_arg, 14400)
+                         [sys.executable, "pipeline/extract_insights.py", "--topic", topic] + cats_arg + insights_only_arg, 14400)
 
                 # Split by image presence:
                 #   - cats_with_image: narrative-only (unless --timeline explicitly requested)
@@ -3075,17 +3075,17 @@ def main():
                 if do_timeline_images:
                     # --timeline: full generation for all changed cats
                     run_step("generate_timelines",
-                             ["python", "pipeline/generate_timelines.py", "--topic", topic] + cats_arg, 21600)
+                             [sys.executable, "pipeline/generate_timelines.py", "--topic", topic] + cats_arg, 21600)
                 else:
                     # Auto: narrative-only for cats with existing images
                     if cats_with_image:
                         run_step("generate_timelines (narrative)",
-                                 ["python", "pipeline/generate_timelines.py", "--topic", topic,
+                                 [sys.executable, "pipeline/generate_timelines.py", "--topic", topic,
                                   "--categories"] + cats_with_image + ["--narrative-only"], 21600)
                     # Auto: full generation for new/renamed cats without images
                     if cats_missing_image:
                         run_step("generate_timelines (images)",
-                                 ["python", "pipeline/generate_timelines.py", "--topic", topic,
+                                 [sys.executable, "pipeline/generate_timelines.py", "--topic", topic,
                                   "--categories"] + cats_missing_image, 21600)
             elif do_timeline_images:
                 run_default_topic_outputs("--timeline requested")
@@ -3094,30 +3094,30 @@ def main():
         elif do_timeline_images:
             # --timeline alone (no --resume): full regeneration of all narratives + images
             run_step("build_category_summaries",
-                     ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
+                     [sys.executable, "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
+                     [sys.executable, "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
-                     ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
+                     [sys.executable, "pipeline/generate_timelines.py", "--topic", topic], 21600)
         else:
             # Full mode (no --resume, no --timeline)
             run_step("build_category_summaries",
-                     ["python", "pipeline/build_category_summaries.py", "--topic", topic], 1200)
+                     [sys.executable, "pipeline/build_category_summaries.py", "--topic", topic], 1200)
             run_step("extract_insights",
-                     ["python", "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
+                     [sys.executable, "pipeline/extract_insights.py", "--topic", topic] + insights_only_arg, 14400)
             run_step("generate_timelines",
-                     ["python", "pipeline/generate_timelines.py", "--topic", topic], 21600)
+                     [sys.executable, "pipeline/generate_timelines.py", "--topic", topic], 21600)
 
         # Step 7-10: Always run (fast steps)
         run_step("inject_frontmatter",
-                 ["python", "pipeline/inject_frontmatter.py", "--topic", topic], 600)
+                 [sys.executable, "pipeline/inject_frontmatter.py", "--topic", topic], 600)
         run_step("generate_moc",
-                 ["python", "pipeline/generate_moc.py", "--topic", topic], 600)
+                 [sys.executable, "pipeline/generate_moc.py", "--topic", topic], 600)
         # 네트워크 시각화는 Research Insights 와 묶인 Option(O-2) — --insights 일 때만.
         # (LLM 호출은 없지만 기능 분류상 인사이트 분석 부가물로 함께 게이트)
         if args.insights:
             run_step("generate_network",
-                     ["python", "pipeline/generate_network.py", "--topic", topic], 600)
+                     [sys.executable, "pipeline/generate_network.py", "--topic", topic], 600)
         else:
             log("  [generate_network] SKIP (Option O-2 — --insights 일 때만 재생성)")
 
@@ -3140,7 +3140,7 @@ def main():
                          [topic_modeling_python, "pipeline/topic_modeling.py", "--topic", topic, "--skip-connections"], 3600)
                 if args.insights:   # 네트워크는 Option(O-2) — --insights 일 때만
                     run_step("generate_network (rebuild)",
-                             ["python", "pipeline/generate_network.py", "--topic", topic], 600)
+                             [sys.executable, "pipeline/generate_network.py", "--topic", topic], 600)
             else:
                 log(f"  [verify_umap] OK: all {len(topic_slugs)} papers have coordinates")
         except RuntimeError:
@@ -3149,13 +3149,13 @@ def main():
             log(f"  [verify_umap] WARNING: verification failed ({str(e)[:100]})")
 
         run_step("review_to_html",
-                 ["python", "pipeline/review_to_html.py", "--all"], 600)
+                 [sys.executable, "pipeline/review_to_html.py", "--all"], 600)
         run_step("build_topic_index",
-                 ["python", "pipeline/build_topic_index.py", topic], 600)
+                 [sys.executable, "pipeline/build_topic_index.py", topic], 600)
 
         # Atom 피드(feed.xml) — build_topic_index 가 심은 autodiscovery <link> 의 대상.
         run_step("build_rss",
-                 ["python", "pipeline/build_rss.py", topic], 300)
+                 [sys.executable, "pipeline/build_rss.py", topic], 300)
 
         # Deep Research search index (section-aware chunks + Gemini embeddings).
         # Reads GOOGLE_API_KEY/GEMINI_API_KEY from env or config.json.
@@ -3164,16 +3164,16 @@ def main():
         # Always runs --execute because post-processing has just rewritten
         # the classifier output; any orphan entries are safe to remove.
         run_step("cleanup",
-                 ["python", "pipeline/cleanup.py", "--execute"], 300)
+                 [sys.executable, "pipeline/cleanup.py", "--execute"], 300)
 
         run_step("build_search_index",
-                 ["python", "pipeline/build_search_index.py", "--topic", topic], 900)
+                 [sys.executable, "pipeline/build_search_index.py", "--topic", topic], 900)
 
         # `_cross` is a cheap merge of existing topic sidecars (no embedding
         # calls). Keep the agent/CLI default collection synchronized after every
         # source-topic rebuild; the generic page itself need not be regenerated.
         run_step("build_cross_index",
-                 ["python", "pipeline/build_cross_index.py", "--no-page"], 300)
+                 [sys.executable, "pipeline/build_cross_index.py", "--no-page"], 300)
 
         # Fixed query vectors make this a deterministic, network-free deploy
         # gate. A source collection and the merged agent collection must both
@@ -3181,7 +3181,7 @@ def main():
         eval_dir = PIPELINE_DIR / "eval"
         eval_results = eval_dir / "results"
         eval_common = [
-            "python", "pipeline/evaluate_retrieval.py",
+            sys.executable, "pipeline/evaluate_retrieval.py",
             "--queries", str(eval_dir / "retrieval_queries.jsonl"),
             "--vectors", str(eval_dir / "retrieval_query_vectors.json"),
             "--baseline", str(eval_dir / "retrieval_baseline.json"),
@@ -3201,7 +3201,7 @@ def main():
                  300)
         run_step(
             "refresh_retrieval_eval_snapshot",
-            ["python", "pipeline/refresh_retrieval_eval_snapshot.py", "--if-installed"],
+            [sys.executable, "pipeline/refresh_retrieval_eval_snapshot.py", "--if-installed"],
             900,
         )
 
@@ -3221,7 +3221,7 @@ def main():
             log("\n  [prepare_deploy] Cloudflare env vars found, deploying...")
             try:
                 result = subprocess.run(
-                    ["python", "pipeline/prepare_deploy.py", "--topic", topic, "--push"],
+                    [sys.executable, "pipeline/prepare_deploy.py", "--topic", topic, "--push"],
                     cwd=str(PIPELINE_DIR.parent),
                     capture_output=True, text=True, timeout=1800,
                     env={**os.environ, "PYTHONUTF8": "1"},
