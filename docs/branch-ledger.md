@@ -4,9 +4,11 @@ Every commit on this branch (`upstream/master..HEAD`), classified by which state
 purpose it serves. The point is that when this is later PR'd upstream, the selection is
 obvious without re-reading three dozen commit messages.
 
-The table below covers the 34 commits that existed when it was written. The commit that
-adds this file (and any later one) is deliberately not self-listed — regenerate from git
-rather than trusting the count.
+This table lists every in-range commit **except the single commit that writes the
+current revision of this file** — its own hash cannot exist before it is committed.
+Everything already reachable when the file is edited is listed. Regenerate the range with
+`git log --oneline upstream/master..HEAD` and confirm only the tip ledger-commit is
+absent.
 
 The three stated purposes were:
 
@@ -68,6 +70,9 @@ the user's own Zotero structure.
 | `6fcb3b9` | Make the unclassified bin selectable instead of always dropped | Always skipping the bin silently dropped 439 of 3,273 ai4s papers. `--unclassified skip|include`. |
 | `164c1ba` | Wire the Zotero source into classify_papers behind an opt-in flag | `--classify-source hdbscan|zotero`, default unchanged, flag threaded through `run_full` → `run_update_force` → `classify_papers`. |
 | `7f8c097` | Read the collection tree from zotero.sqlite instead of the Web API | The data is already on disk. One query (0.1s) replaces paging 15,399 items over the network, needs no API key, and excludes trashed items. Web API stays as the fallback. |
+| `642179e` | Document the Zotero classification source and ledger the branch | The docs half of Purpose 3 (README/README.en/AGENTS/CLAUDE/operations describe `--classify-source`/`--unclassified`/`zotero.sqlite`/`--topic`) plus this ledger. PR candidate with the 3b code. |
+| `a68636c` | Refuse --unclassified at the orchestrators, and correct the docs QA caught | Closes a silent-drop: `run_full`/`run_update_force` ignored `--unclassified` on the hdbscan path instead of refusing it. Fixes six doc claims a review pass found. PR candidate with 3b. |
+| `2fb79aa` | Bind the guard test, fix the mode axis, correct the docs | The `a68636c` guard had no behavioral test (a raise→pass mutation stayed green); adds one. Also refuses classify flags on non-classifying modes (deploy/validate/…), the same silent-drop by a different door. PR candidate with 3b. |
 
 Verified end to end on real data (see `.gjc/_session-*/ultragoal/ledger.jsonl`, goal
 G001): real writing runs on the 3,273-paper ai4s corpus assigned 2,828 papers across 7
@@ -124,10 +129,13 @@ undone in an earlier turn).
 | `726fe59` | Fix a SyntaxError I introduced that killed every generated topic page | Repairs damage from an earlier commit in this branch. |
 | `012adef` | Verify the generated page as an artifact, not as source text | Follow-up to `726fe59`: the test had asserted against source text, so it could not have caught the break. |
 | `83873c1` | Stop line-ending churn from burying real diffs | A batch patch rewrote 8 CRLF files as LF, which staged as 6,138 changed lines for a 359-line change. Those figures are working-tree measurements taken before the commit, so they are not recoverable from git history. Caught before committing, but nothing in the repo would have stopped it — hence `.gitattributes` + `scripts/check-eol.py` + a CI job. |
+| `4e5840e` | Purge the last stale LF count and guard against its return | The 179→184 LF correction had missed two extensionless files (`.gitattributes`, `scripts/pre-push`); this finishes it and adds a `git grep` test so a frozen count can't recur. Cleanup of this branch's own artifacts. |
+| `6a51012` | Match the frozen-count guard's docstring and rigor to what it does | The `4e5840e` test's docstring overstated its regex coverage and could pass vacuously on a git failure. Cleanup of a defect introduced one commit earlier. |
 
-The repo has 17 CRLF and 184 LF tracked text files **by design** (`git ls-files --eol`)
-— the CRLF ones come from upstream, which still commits from Windows. Do not normalize:
-it would rewrite thousands of lines and conflict wholesale on every upstream merge.
+The repo has 17 CRLF tracked text files and many LF ones **by design** — exact counts
+via `git ls-files --eol`. The CRLF ones come from upstream, which still commits from
+Windows. Do not normalize: it would rewrite thousands of lines and conflict wholesale on
+every upstream merge.
 
 ## Upstream PR guidance
 
@@ -136,7 +144,7 @@ it would rewrite thousands of lines and conflict wholesale on every upstream mer
 | Purpose 1 (`d3da625`) | n/a | A merge of upstream into this fork; nothing to send back. |
 | Purpose 2 (OAuth) | **Yes** | Self-contained: one new module plus callsite routing. |
 | Purpose 3a (de-hardcoding) | **Yes** | Bug fixes; any non-ai4s install is affected. |
-| Purpose 3b (Zotero tree) | **Yes** | Purely additive — new module, new flags, default behavior unchanged. |
+| Purpose 3b (Zotero tree) | **Yes** | Purely additive — new module, new flags, default behavior unchanged. Ships as `c4791cf`/`6fcb3b9`/`164c1ba`/`7f8c097` + the docs `642179e` + the hardening `a68636c`/`2fb79aa` (orchestrator guards, behavioral guard test, mode-axis guard). |
 | Portable fixes | **Yes**, individually | Each stands alone. |
 | Provider substitution | **Separate discussion** | A deliberate behavior change; upstream may consider the fallbacks intentional. |
-| Detours | **Fork-local** | `83873c1` is arguably useful upstream (upstream authors from Windows), the other two only repair damage introduced here. |
+| Detours | **Fork-local** | `83873c1` is arguably useful upstream (upstream authors from Windows); `726fe59`/`012adef`/`4e5840e`/`6a51012` only repair damage introduced on this branch. |
