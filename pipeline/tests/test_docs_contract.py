@@ -144,6 +144,16 @@ class DocumentedEnvVarsTests(unittest.TestCase):
     # 코드가 아니라 외부(셸/CI/배포 플랫폼)가 소비하는 변수.
     EXTERNAL = {"PYTHONUTF8", "PYTHONPATH"}
 
+    # env var 가 아예 아닌 도메인 상수. 정규식은 백틱 안 대문자를 전부 후보로
+    # 잡으므로, SPDX 라이선스 값이나 저널 상태 이름처럼 "환경변수가 아닌 것" 은
+    # 여기에 이름을 적어 구분한다. EXTERNAL 과 섞지 않는다 — 저쪽은 실제
+    # 환경변수지만 우리 코드가 아니라 런타임이 읽는 것들이다.
+    NOT_ENV_VARS = {
+        "NOASSERTION",                                   # SPDX license status
+        "PREPARED", "LEDGER_DURABLE",                    # bibliography journal states
+        "DB_COMMITTED", "DESCRIPTOR_COMMITTED",
+    }
+
     def _source_text(self):
         # 테스트는 제외한다. 이 파일이 docstring 에 폐기된 이름을 적어두면
         # 그 자체가 "소스에 있다" 는 증거가 되어 검사가 자기 자신을 무력화한다.
@@ -164,7 +174,7 @@ class DocumentedEnvVarsTests(unittest.TestCase):
                 continue
             for lineno, line in enumerate(text.splitlines(), 1):
                 for name in re.findall(r"`([A-Z][A-Z0-9_]{5,})`", line):
-                    if name in self.EXTERNAL or name in sources:
+                    if name in self.EXTERNAL or name in self.NOT_ENV_VARS or name in sources:
                         continue
                     offenders.append(f"{rel}:{lineno} {name}")
         self.assertEqual(

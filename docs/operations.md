@@ -1,8 +1,252 @@
 # Paper-Curation Operations Manual
 
-Detailed recipes, concurrency tuning, and recovery flows for the
-paper-curation pipeline. The trigger-side dispatcher lives in
-`SKILL.md` — this file is the operator's reference.
+Detailed recipes, concurrency tuning, and recovery flows for the paper-curation pipeline.
+## Affiliation registry proposal review
+### Pinned operator-curated baseline import
+
+The audited 4,747-record source may be accepted only through this explicit, SHA-pinned mode; it records `operator:jehyunlee` approval and hash-bound replay evidence. It is not a general trust switch:
+
+```bash
+python pipeline/audit_affiliation_registry.py import \
+  --source <audited-fixed-4747-source.json> \
+  --registry pipeline/affiliation_registry.json \
+  --corrections pipeline/affiliation_registry_corrections.jsonl \
+  --baseline pipeline/affiliation_registry_baseline.json \
+  --operator-curated
+```
+
+The command rejects any source whose bytes do not match the pinned SHA-256 or whose record count is not exactly 4,747. New or unseen institutions, normal source imports, network resolution, and Scopus enrichment remain proposal-only until authoritative evidence or separate operator review; Scopus is never hierarchy authority.
+### Official-only relationship transition
+
+Before any automatic identity application, append the one-shot transition to the pinned import. Supply the canonical registry SHA-256 and event head from the validated current snapshot; begin with `--dry-run`, then publish the receipt. The receipt records the exact `2245 = official_retained + demoted_or_superseded` equation and complete pre-transition relationship-ID hash.
+
+```bash
+python pipeline/audit_affiliation_registry.py transition-relationship-policy \
+  --registry pipeline/affiliation_registry.json \
+  --corrections pipeline/affiliation_registry_corrections.jsonl \
+  --baseline pipeline/affiliation_registry_baseline.json \
+  --receipt .cache/affiliation-relationship-policy-2026-08-08.json \
+  --timestamp 2026-08-08T00:00:00Z --effective-date 2026-08-08 \
+  --expected-registry-sha256 <current-canonical-registry-sha256> \
+  --expected-event-head <current-event-head> --dry-run
+```
+
+Re-run without `--dry-run` only after reviewing that receipt output. The transition preserves historical accepted evidence but retains an accepted relationship only when it already cites reviewed `authority=official` evidence; every other legacy edge becomes a proposal requiring reviewed official membership evidence. Do not hand-edit generated artifacts. Compatibility `group_id` may temporarily disappear while official relationship evidence is reviewed. Wikipedia, Scopus, ROR, and identity/correction facts never automatically establish a relationship.
+
+The bibliography builder is deliberately offline. Run the resolver as a scheduled post-run job on either Mac; it appends every policy and provider result to proposal JSONL, while only provider-owned attempts enter `affiliation_enrichment_attempts`:
+
+```bash
+python pipeline/audit_affiliation_registry.py resolve-pending \
+  --db .cache/bibliography.sqlite3 --registry pipeline/affiliation_registry.json \
+  --proposals .cache/affiliation-proposals.jsonl --allow-network \
+  --retrieved-at 2026-08-08T00:00:00Z
+```
+
+`--name` and `--country` support an explicit case. Verified-TLS ROR is queried first; only exact country-consistent identities are proposals, and ROR official URLs are recorded for organization/member-page review. Wikipedia exact-title lookup is a discovery fallback only; Scopus is optional metadata only. Each provider gets at most two attempts (one retry); five provider failures open the circuit breaker. Provider failures, limits, and missing credentials remain pending and return exit code 6 for a retryable incomplete batch. Faculty, School, College, and Department fragments are never guessed. Generic-fragment, request-budget, and circuit-breaker policy records remain in proposal JSONL but are never written as provider attempts.
+
+Review proposal JSONL into a separate approved JSONL. Identity approval requires `confidence: 1.0` and exact country-consistent ROR evidence. Relationship approval requires an approved official organization/member-page URL and exact quote; seed labels and Scopus cannot establish membership. Apply under the sidecar lock, then Git-sync the tracked artifacts:
+
+```bash
+python pipeline/audit_affiliation_registry.py apply-approved \
+  --registry pipeline/affiliation_registry.json \
+  --corrections pipeline/affiliation_registry_corrections.jsonl \
+  --baseline pipeline/affiliation_registry_baseline.json \
+  --approvals reviewed-affiliation-approvals.jsonl \
+  --timestamp 2026-08-08T00:00:00Z --effective-date 2026-08-08 \
+  --expected-registry-sha256 <current-canonical-registry-sha256> \
+  --expected-event-head <current-event-head> \
+  --receipt .cache/affiliation-apply-approved-2026-08-08.json
+```
+
+Low-confidence or conflicting cases remain pending; never hand-edit registry artifacts. After projecting an approved registry into the bibliography DB, bind release drift thresholds to that reviewed snapshot. The strict checker then blocks publication when active unresolved observations grow beyond the bounded allowance, any unresolved case is older than 30 days, identity/country mismatches increase materially, or one umbrella group exceeds the concentration threshold.
+### Affiliation identity freeze and publication protocol
+
+Routine bibliography builds and review generation are offline: they only project already
+accepted exact identifiers, aliases, and direct redirects. An observation with a missing
+or unmappable country remains pending, except that an exact accepted external identifier
+or one globally unique accepted survivor may be reported as a lookup-only result; neither
+path creates, enriches, aliases, or merges an identity.
+
+Country values use the tracked ISO 3166-1:2020 derivative from Debian `iso-codes`
+upstream 4.18.0 (2025-04-11), source package 4.18.0-1, exact source
+`https://sources.debian.org/data/main/i/iso-codes/4.18.0-1/data/iso_3166-1.json`
+(`data/iso_3166-1.json`, LGPL-2.1-or-later). The command-owned raw cache is
+`.cache/affiliation-oracles/iso-codes/4.18.0-1/iso_3166-1.json`; its raw SHA-256 is
+`f01b812b57fba9f31ff621bf33e7c7570a01964dbeb5be2167e94decf538c89f` and
+the canonical map SHA-256 is
+`079e9037803744d92198452b06ae230ba8952ea6e592b666dbb81206247278e3`.
+The closed input domain is current alpha-2, alpha-3, and exact English short names,
+plus only these literal aliases:
+
+- `China→CN`; `Taiwan→TW`; `Hong Kong→HK`; `Macao/Macau→MO`;
+  `South Korea`/`Republic of Korea`/`Korea, South`/`Korea South→KR`;
+  `North Korea`/`Democratic People's Republic of Korea`/`Korea, North`/
+  `Korea North→KP`; `Turkey→TR`.
+- `United States`/`United States of America`/`USA`/`U.S.A.`/`U.S.→US`;
+  `United Kingdom`/`Great Britain`/`Britain`/`UK`/`U.K.→GB`;
+  `Russia→RU`; `Vietnam→VN`; `Iran→IR`; `Syria→SY`; `Laos→LA`;
+  `Moldova→MD`; `Tanzania→TZ`; `Brunei→BN`; `Bolivia→BO`;
+  `Venezuela→VE`; `Czech Republic→CZ`; `Ivory Coast→CI`;
+  `Cape Verde→CV`; `Swaziland→SZ`; `Macedonia`/`FYROM→MK`;
+  `East Timor→TL`; `Palestine`/`Palestinian Territories→PS`.
+
+Current territories including `HK`, `MO`, `TW`, and `PS` remain distinct site
+codes. Numeric codes, `XK`, `EL`, historical `AN/BU/CS/DD/NT/SU/TP/YU/ZR`,
+localizations, successor guesses, fuzzy matches, and package/runtime fallbacks are
+unmappable. A branch retains its physical site country, a legal entity its
+domicile, and parent geography is obtained only through an accepted relationship.
+Multinational umbrellas have `country_scope=multinational` and no country code.
+Only accepted `part_of` edges may populate legacy `group_id`;
+`jointly_operated_by`, `member_of`, and `network_member_of` are non-parental and
+never supply a compatibility parent. A map change needs data-owner and independent
+architect/critic approval, `country_map_changed` and correction events,
+reprojection, cohort redisposition, and a strict check before automatic apply.
+
+The identity oracle is ROR Schema 2.1 from the
+`https://github.com/ror-community/ror-schema` repository at commit
+`20ec1cf1edc3e0051de0ea2eae2bfdf536b9ba63`. Its immutable source URL is
+`https://raw.githubusercontent.com/ror-community/ror-schema/20ec1cf1edc3e0051de0ea2eae2bfdf536b9ba63/ror_schema_v2_1.json`;
+the command-owned copy is
+`.cache/affiliation-oracles/ror-schema/20ec1cf1edc3e0051de0ea2eae2bfdf536b9ba63/ror_schema_v2_1.json`
+with raw SHA-256
+`5df548a5f7a927fc9e94f196d2c3e78c96c25343909999dfda5110b535e2ddf7`.
+License status is `NOASSERTION`: the pinned repository tree has no license file
+and the upstream repository declares no license. Do not infer or substitute a
+license.
+
+The public-suffix oracle is sourced from the official canonical URL
+`https://publicsuffix.org/list/public_suffix_list.dat`. The pinned immutable
+source is
+`https://raw.githubusercontent.com/publicsuffix/list/e1b8015c3b2f0f4f8c18659c2480fc1a22c07b20/public_suffix_list.dat`,
+snapshot `2026-07-25_14-20-03_UTC`, commit
+`e1b8015c3b2f0f4f8c18659c2480fc1a22c07b20`, both ICANN and PRIVATE sections,
+license MPL-2.0. Its command-owned copy is
+`.cache/affiliation-oracles/psl/2026-07-25_14-20-03_UTC-e1b8015/public_suffix_list.dat`
+with raw SHA-256
+`fe6adc7fb8014f57d28d69b18d0aa3e581efb432544922e12131a5d4a87bd954`.
+There is no runtime fallback for either oracle.
+
+ROR pages have 5-second connect, 15-second read-idle, and 30-second total
+deadlines; 2,097,152 wire and 8,388,608 decoded-byte limits; and maxima of 10
+pages or 200 records. An official-site chain has 5-second connect per address,
+10-second read-idle, 30-second total, and at most three redirects. Its limits are
+1,048,576 wire/4,194,304 decoded bytes per response and 2,097,152
+wire/8,388,608 decoded bytes per chain. Limit+1 fails. Only `identity` and
+streamed `gzip`, and final `text/html`, `application/xhtml+xml`, or
+`application/ld+json`, are accepted.
+
+Automatic fetch rejects every proxy setting, permits HTTPS port 443 only,
+validates the complete A/AAAA set as global, and dials a selected vetted IP
+directly without re-resolution while retaining the original IDNA hostname for
+TLS SNI, certificate verification, and `Host` on every redirect. Every redirect
+repeats those checks and must retain the pinned-PSL registrable domain.
+Charset precedence is UTF-8 BOM, one HTTP charset, one declaration in the first
+1,024 wire bytes, then strict UTF-8. Labels are only `utf-8`/`utf8`,
+`windows-1252`/`cp1252`, and `iso-8859-1`/`latin1`; disagreement, ambiguity,
+decode replacement, or unsupported labels fail closed. Extraction precedence is
+scoped Organization/CollegeOrUniversity JSON-LD, visible title, visible h1, then
+explicit legal/contact organization name; country is JSON-LD PostalAddress then
+visible legal/contact address. Same-tier multiplicity or lower-tier conflict
+fails. Retain no page: at most four exact pointer-bound quotes, 512 UTF-8 bytes
+each and 2,048 bytes total, plus digests and transport metadata. Wikipedia is
+discovery-only; Scopus is optional enrichment and never authority.
+Before any network investigation, `pin-oracles` and `check-oracles` operate only on the
+command-installed immutable cache; they never download substitutes. Freeze the exact
+5,162 IDs with `freeze-pending-cohort --db … --registry … --cohort … --timestamp …`.
+Investigate that artifact with `resolve-pending --db … --cohort … --evidence-dir …`;
+each attempt carries its covered pending IDs and its immutable segment is fsynced before
+the SQLite join. Evaluate with `evaluate-pending --registry … --db … --cohort …`.
+The resulting artifact has one disjoint terminal disposition per frozen ID,
+`UNCLASSIFIED=0`, and recomputed decision digest. `apply-investigated --dry-run` checks
+that digest and current heads; `--canary` permits at most 50 eligible decisions and every
+other batch permits at most 100. A zero-eligible cohort performs no identity mutation, but
+is still a durable finalization: the decision segment and hash-chain ledger are fsynced,
+all 5,162 dispositions join SQLite in one transaction, registry/cohort heads advance, and
+the receipt plus generation descriptor are published descriptor-last.
+`recover-investigated --db … --journal …` obtains the writer flock and finishes only
+`PREPARED`, `LEDGER_DURABLE`, `DB_COMMITTED`, or `DESCRIPTOR_COMMITTED` journals;
+unreferenced evidence and its index entry are quarantined rather than hand-deleted.
+
+Run the audited sequence exactly: freeze the cohort and relationship heads; complete the
+official-only relationship transition; investigate into immutable evidence segments;
+dry-run at exact heads; apply a 50-decision canary, then no more than 100 decisions per
+generation; project; strict-check; emit the cohort/disposition, source-ID/alias/redirect,
+country, evidence, relationship, ledger, and generation reports; commit and push target
+Git blobs; then publish the matching generation through CAS. A second host fetches Git
+before CAS pull and proves DB/logical hashes, registry/event contracts, oracle/country
+hashes, cohort, ledger, relationship equation, and strict result equality.
+
+Use the stable local lock pathname only with POSIX advisory `flock`: shared for
+readers, exclusive for writers and recovery. Reader timeout is 30 seconds,
+writer/recovery timeout 120 seconds, and nonblocking poll interval 0.25 seconds.
+The pathname is diagnostic, not ownership, and is never deleted or replaced;
+kernel close, process death, and reboot release ownership. Descriptors are
+noninheritable and are never passed to a subprocess. A timeout reports busy and
+fails closed; no PID, mtime, stale-file deletion, or manual cleanup authorizes
+takeover.
+
+The Mac mini authority uses a stable control `flock` and issues a 90-second
+boot-bound monotonic lease with a cryptographically random writer UUID and
+durable increasing fence token. Heartbeats renew every 20 seconds; acquisition
+polls every 2 seconds for at most 120 seconds; each authority RPC times out after
+10 seconds; commit requires at least 30 seconds remaining. Acquire remote lease
+before local exclusive. Release local exclusive before exact-owner lease release.
+Only the current unexpired host/boot/token/run/writer/client tuple may renew or
+advance the manifest. Owner death waits for exact expiry; authority reboot
+invalidates the boot ID and the next acquisition increments the fence. Early
+takeover, stale-token renew/commit, PID tests, remote `mkdir`, wall-clock
+takeover, descriptor inheritance, and manual lock/lease/fence/manifest edits are
+prohibited.
+
+Recovery obtains exclusive and completes only proven `PREPARED`,
+`LEDGER_DURABLE`, `DB_COMMITTED`, or `DESCRIPTOR_COMMITTED` journal state;
+unreferenced immutable staging is quarantined. A busy lock/lease, unknown hash,
+descriptor mismatch, evidence gap, automatic relationship, duplicate active
+identity key, cohort/transition accounting mismatch, heartbeat failure, or
+non-APFS/POSIX authority blocks publication. Report the wait/timeout/recovery,
+lease acquisition/renewal/expiry/takeover/fence rejection/boot-change, journal,
+Git/CAS, and second-host counters for every phase, including explicit zero or
+not-executed values.
+
+```bash
+python pipeline/audit_affiliation_registry.py apply-investigated \
+  --registry pipeline/affiliation_registry.json \
+  --decisions .cache/affiliation-decisions.json \
+  --db .cache/bibliography.sqlite3 \
+  --evidence-dir .cache/affiliation-evidence \
+  --ledger .cache/affiliation-ledger.jsonl \
+  --corrections pipeline/affiliation_registry_corrections.jsonl \
+  --baseline pipeline/affiliation_registry_baseline.json \
+  --receipt .cache/affiliation-apply-receipt.json \
+  --journal .cache/affiliation-apply.journal \
+  --generation-descriptor .cache/affiliation-generation.json \
+  --timestamp 2026-08-09T01:59:00Z --effective-date 2026-08-09
+
+python pipeline/audit_affiliation_registry.py snapshot-db-baseline \
+  --db .cache/bibliography.sqlite3 \
+  --registry pipeline/affiliation_registry.json \
+  --baseline pipeline/affiliation_registry_baseline.json \
+  --captured-at 2026-08-09T01:59:00Z
+
+python pipeline/check_bibliography_db.py --strict --release-date 2026-08-09 \
+  --db .cache/bibliography.sqlite3 \
+  --registry pipeline/affiliation_registry.json \
+  --baseline pipeline/affiliation_registry_baseline.json \
+  --cohort .cache/affiliation-frozen-cohort.json \
+  --decisions .cache/affiliation-decisions.json \
+  --ledger .cache/affiliation-ledger.jsonl \
+  --generation-descriptor .cache/affiliation-generation.json
+
+python pipeline/audit_affiliation_registry.py report \
+  --registry pipeline/affiliation_registry.json \
+  --db .cache/bibliography.sqlite3 \
+  --cohort .cache/affiliation-frozen-cohort.json \
+  --decisions .cache/affiliation-decisions.json \
+  --ledger .cache/affiliation-ledger.jsonl \
+  --generation-descriptor .cache/affiliation-generation.json \
+  > .cache/affiliation-final-report.json
+```
+The trigger-side dispatcher lives in `SKILL.md`; this file is the operator's reference.
 
 ## Pipeline overview
 
@@ -354,6 +598,103 @@ npx wrangler secret put AUDIO_REPLY_TO    # 답장이 갈 운영자 메일, 예:
 ---
 
 
+## Bibliography DB operations
+
+The bibliography DB is the persistent memory layer for author, institution, country, DOI/URL, journal, date, Zotero key, and local review-directory queries. It is collection-independent and must be checked after corpus changes.
+The Mac mini's `.cache/bibliography.sqlite3` is canonical. The MacBook keeps a local copy; `pipeline/sync_bibliography_db.py --pull` runs before review generation and `--push` runs afterward. Google Drive is backup/transport only, not a live SQLite volume.
+Review generation also writes `.cache/review_progress.json`. The live phase label cycles through `PDF 매칭 → text.md 추출 → figure 추출 → review.md 생성 → HTML 변환`, while the log includes the completed/total percentage.
+Bootstrap establishes generation zero only when the remote object and manifest are unchanged; run it once before the first CAS-protected push:
+```bash
+python pipeline/sync_bibliography_db.py --bootstrap
+```
+Every publish supplies the immutable pull/bootstrap receipt as `--base-receipt` (and
+migration receipt when applicable). A strict affiliation generation also supplies the
+complete all-or-nothing artifact set; each role is stored as an immutable hash-addressed
+object and the descriptor is installed after the cohort, decisions, and ledger:
+```bash
+python pipeline/sync_bibliography_db.py --push \
+  --base-receipt .cache/bibliography.base.json \
+  --migration-receipt .cache/bibliography-migration.json \
+  --cohort .cache/affiliation-frozen-cohort.json \
+  --decisions .cache/affiliation-decisions.json \
+  --ledger .cache/affiliation-ledger.jsonl \
+  --generation-descriptor .cache/affiliation-generation.json
+
+# The second host fetches/fast-forwards Git first, then stages and verifies every
+# declared object before taking the local writer flock and installing descriptor-last.
+python pipeline/sync_bibliography_db.py --pull \
+  --cohort .cache/affiliation-frozen-cohort.json \
+  --decisions .cache/affiliation-decisions.json \
+  --ledger .cache/affiliation-ledger.jsonl \
+  --generation-descriptor .cache/affiliation-generation.json \
+  --phase-receipt .cache/affiliation-pull-phase-receipt.json
+```
+Every valid pull creates an attempt-unique `in_progress` journal under
+`.cache/affiliation-pull-phase-receipts/` before fetching the authority, then
+atomically finalizes that same record and updates the shown latest-receipt path
+(the shown path is also the default). Final attempt records are never reused.
+They record UTC phase duration, exact monotonic writer-lock request,
+acquisition, successful release, and derived wait/hold durations; typed
+acquisition/release outcomes; the 120-second timeout budget and
+timeout/busy/failure counts; manifest revalidation counts; descriptor-last
+status; and installed DB/base/migration/artifact hashes. Pull fsyncs every
+staged file before replacement and every installed file and destination
+directory in descriptor-last order. Immediately before the first active-file
+replacement it writes the durable install journal
+`.cache/bibliography.pull-install.json`. Strict readers reject that journal; a
+later pull under the writer lock reinstalls the current authority generation
+in full, completes all durability barriers, clears/fsyncs the journal, and
+reports the observed recovery count/status. The attempt-unique record is the
+sole audit authority and is finalized before the shown latest path is updated.
+An attempt-finalization error leaves the durable record `in_progress`, never
+publishes a successful latest copy, and fails the command. The latest path is
+best-effort discovery only: failure to refresh it emits the authoritative
+attempt path but does not rewrite or invalidate a successfully finalized
+attempt. Failed pulls finalize a failed attempt record before returning the
+primary error. Custom receipt paths that alias any managed generation output by
+resolved filesystem identity, hard link, Unicode normalization, or case
+variant—or that enter the immutable attempt directory—are rejected before
+authority access.
+A missing, partial, or hash-mismatched declared artifact fails closed. All subsequent
+migration/publish operations use the immutable pull/base receipt, not a reconstructed
+receipt.
+
+```bash
+# Institution-centered literature search
+PYTHONUTF8=1 python pipeline/query_bibliography.py --institution "Cambridge" --sort date
+
+# Country / author / journal filters
+PYTHONUTF8=1 python pipeline/query_bibliography.py --country "United Kingdom" --json
+PYTHONUTF8=1 python pipeline/query_bibliography.py --author "Yuan" --sort date --desc
+
+# Completeness gate
+PYTHONUTF8=1 python pipeline/check_bibliography_db.py --strict
+```
+
+Registry updates must be projected before publication. The strict checker rejects stale registry/baseline/correction projections, any remigration-required marker, relationship-row drift, and every observation slot without exactly one current version; terminal superseded slots retain one current `superseded` observation.
+
+```bash
+# Controlled local migration; creates a verified backup and receipt.
+# The base receipt comes from the last successful sync pull/bootstrap.
+python pipeline/repair_bibliography_institutions.py \
+  --db .cache/bibliography.sqlite3 \
+  --base-receipt .cache/bibliography.base.json --execute
+python pipeline/check_bibliography_db.py --strict
+
+# Local rollback restores the verified pre-migration backup and deliberately
+# leaves a remigration-required marker, which blocks push until migration reruns.
+python pipeline/repair_bibliography_institutions.py \
+  --db .cache/bibliography.sqlite3 --rollback
+
+# Published rollback never rewinds the manifest. It republishes a retained
+# immutable object as a newer CAS generation, binds the migration receipt,
+# and forces a controlled remigration before the next push.
+python pipeline/sync_bibliography_db.py \
+  --rollback-generation <older-generation> \
+  --migration-receipt .cache/bibliography.sqlite3.affiliation-migrate.json
+```
+
+The DB is stale when its paper count differs from `docs/papers/_papers_index.json`. After Zotero ingestion, forced rebuilds, or review corpus changes, run the builder with `--all` on the Mac mini worker before treating institution statistics as current. Institution spelling changes must be added to `institution_aliases`, not patched in individual queries.
 ## Recovery flows
 
 ```bash
