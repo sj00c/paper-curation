@@ -13,7 +13,10 @@ it came from. These tests exist so that class of regression fails loudly
 instead of passing `check_bibliography_db.py --strict`.
 """
 import re
+import sqlite3
+import tempfile
 import unittest
+from pathlib import Path
 
 from pipeline import build_bibliography_db as bib
 
@@ -162,6 +165,53 @@ class SegmentSplittingTests(unittest.TestCase):
                          "Goethe University Frankfurt, Germany")
 
 
+class RawInstitutionAliasTests(unittest.TestCase):
+    """Generic college labels must resolve to the university in the raw line."""
+
+    def test_numbered_zhejiang_college_resolves_to_university(self):
+        self.assertEqual(
+            bib.resolve_institution_from_raw(
+                "4College of Education, Zhejiang University, Hangzhou, China",
+                "College of Education"),
+            "Zhejiang University")
+        self.assertEqual(
+            bib._raw_institution_alias(
+                "4College of Education, Zhejiang University, Hangzhou, China"),
+            "Zhejiang University")
+
+    def test_minnesota_liberal_arts_college_resolves_to_university(self):
+        self.assertEqual(
+            bib.resolve_institution_from_raw(
+                "School of Statistics, College of Liberal Arts, "
+                "University of Minnesota, Twin Cities, MN",
+                "College of Liberal Arts"),
+            "University of Minnesota")
+        self.assertEqual(
+            bib._raw_institution_alias(
+                "School of Statistics, College of Liberal Arts, "
+                "University of Minnesota, Twin Cities, MN"),
+            "University of Minnesota")
+
+    def test_department_and_school_lines_resolve_to_parent_organisation(self):
+        cases = {
+            "1Department of Biotechnology, IILM University, Greater Noida, India":
+                "IILM University",
+            "Mr. Amit Singh, School of Business Management, JSPM University Pune":
+                "JSPM University",
+            "Department of Commerce, Marian College Kuttikkanam Autonomous, India":
+                "Marian College",
+            "1Department of Mathematical Sciences, Chalmers University of "
+            "Technology and University of Gothenburg":
+                "Chalmers University of Technology",
+        }
+        for raw, expected in cases.items():
+            with self.subTest(raw=raw):
+                self.assertEqual(
+                    bib.parent_institution_from_raw(raw),
+                    expected,
+                )
+
+
 class TitleAndBylineGuardTests(unittest.TestCase):
     """Front matter starts with the title and the author byline."""
 
@@ -209,6 +259,49 @@ class ScopusPrecedenceTests(unittest.TestCase):
             records, "… a university somewhere …", [], offline=True)
         self.assertEqual(miss[0]["source"], "scopus-unconfirmed")
 
+
+class StalePaperPruneTests(unittest.TestCase):
+    def test_prunes_papers_missing_from_authoritative_index(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "bibliography.sqlite3"
+            conn = sqlite3.connect(db)
+            conn.executescript(bib.SCHEMA)
+            conn.execute(
+                "INSERT INTO papers (slug,title,review_dir) VALUES ('keep','Keep','keep')")
+            conn.execute(
+                "INSERT INTO papers (slug,title,review_dir) VALUES ('drop','Drop','drop')")
+            drop_id = conn.execute(
+                "SELECT paper_id FROM papers WHERE slug='drop'").fetchone()[0]
+            conn.execute(
+                "INSERT INTO institutions "
+                "(institution_name,normalized_name,source) "
+                "VALUES ('Stale University','stale university','test')")
+            institution_id = conn.execute(
+                "SELECT institution_id FROM institutions").fetchone()[0]
+            conn.execute(
+                "INSERT INTO paper_institutions "
+                "(paper_id,institution_id,raw_name,country_name,source) "
+                "VALUES (?,?,?,?,?)",
+                (drop_id, institution_id, "Stale University", "", "test"),
+            )
+            conn.commit()
+            conn.close()
+
+            result = bib.prune_stale_papers(db, {"keep"})
+
+            conn = sqlite3.connect(db)
+            try:
+                self.assertEqual(
+                    conn.execute("SELECT slug FROM papers").fetchall(),
+                    [("keep",)],
+                )
+                self.assertEqual(
+                    conn.execute("SELECT COUNT(*) FROM institutions").fetchone()[0],
+                    0,
+                )
+            finally:
+                conn.close()
+            self.assertEqual(result, {"papers": 1, "institutions": 1})
 
 if __name__ == "__main__":
     unittest.main()

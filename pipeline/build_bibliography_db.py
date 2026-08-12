@@ -801,6 +801,9 @@ RAW_INSTITUTION_ALIASES = [
     (r"\bHong Kong University of Science and Technology\b", "The Hong Kong University of Science and Technology"),
     (r"\bChinese University of Hong Kong,?\s*Shenzhen\b", "The Chinese University of Hong Kong, Shenzhen"),
     (r"\bChinese University of Hong Kong\b", "The Chinese University of Hong Kong"),
+    (r"\bZhejiang University\b", "Zhejiang University"),
+    (r"\bUniversity of Minnesota\b", "University of Minnesota"),
+    (r"\bChalmers University of Technology\b", "Chalmers University of Technology"),
     (r"\bPampanga State University\b", "Pampanga State University"),
     (r"\bHal Marcus College of Science and Engineering\b", "University of West Florida"),
     (r"\bNational University of Science (?:and|&) Technology,?\s*Muscat,?\s*Oman\b", "National University of Science & Technology, Oman"),
@@ -1247,6 +1250,18 @@ def institution_from_raw(
             or is_suspicious_institution_name(candidate)):
         return None
     return candidate, group
+
+
+def parent_institution_from_raw(raw: str) -> str:
+    """Extract a non-subunit organisation from a full affiliation line."""
+    direct = _raw_institution_alias(raw)
+    if direct and not is_suspicious_institution_name(direct):
+        return direct
+    parsed = institution_from_raw(raw, allow_remote=False)
+    if not parsed:
+        return ""
+    candidate = canonical_institution(parsed[0])
+    return "" if is_suspicious_institution_name(candidate) else candidate
 
 
 _SCOPUS_RECORD_CACHE = None
@@ -1978,9 +1993,23 @@ def _build_unlocked(entries: list[dict], db_path: Path, update_zotero: bool = Fa
                 # ROR is the naming authority: it collapses "Stanford"/"Stanford
                 # University", "Universität Wien"/"University of Vienna" and
                 # 清华大学/"Tsinghua University" onto one record, and it supplies
-                # the research umbrella an institute belongs to.
-                ror = ror_normalize(raw, name, country, offline=offline)
+                # the research umbrella an institute belongs to. Resolve audited
+                # raw-line aliases first so a generic subunit such as "College of
+                # Education" cannot displace the university named on that line.
+                ror_lookup = _raw_institution_alias(raw) or raw
+                ror = ror_normalize(ror_lookup, name, country, offline=offline)
                 name = ror["institution"] or name
+                if is_suspicious_institution_name(name):
+                    parent_lookup = parent_institution_from_raw(raw)
+                    if parent_lookup:
+                        repaired = ror_normalize(
+                            parent_lookup, parent_lookup, country, offline=offline)
+                        repaired_name = repaired["institution"] or parent_lookup
+                        if not is_suspicious_institution_name(repaired_name):
+                            ror = repaired
+                            name = repaired_name
+                if is_suspicious_institution_name(name):
+                    continue
                 country = ror["country_name"] or country
                 iid = resolve_institution_row(
                     conn, name, country, record["source"], ror)
@@ -2226,6 +2255,35 @@ def prune_orphan_institutions(conn: sqlite3.Connection) -> int:
     return len(orphans)
 
 
+def prune_stale_papers(db_path: Path, current_slugs: set[str]) -> dict:
+    """Remove DB papers absent from the authoritative papers index."""
+    if not db_path.exists():
+        return {"papers": 0, "institutions": 0}
+    descriptor = bibliography_lock.acquire_bibliography_writer_lock(db_path)
+    try:
+        conn = sqlite3.connect(db_path, timeout=60.0)
+        conn.execute("PRAGMA busy_timeout = 60000")
+        conn.execute("PRAGMA foreign_keys = ON")
+        try:
+            stale_ids = [
+                paper_id for paper_id, slug in conn.execute(
+                    "SELECT paper_id, slug FROM papers")
+                if slug not in current_slugs
+            ]
+            if stale_ids:
+                conn.executemany(
+                    "DELETE FROM papers WHERE paper_id=?",
+                    ((paper_id,) for paper_id in stale_ids),
+                )
+            institutions = prune_orphan_institutions(conn)
+            conn.commit()
+        finally:
+            conn.close()
+        return {"papers": len(stale_ids), "institutions": institutions}
+    finally:
+        bibliography_lock.release_bibliography_writer_lock(db_path, descriptor)
+
+
 def finalize(db_path: Path) -> dict:
     """Run only the table-wide passes a streaming ingest deferred.
 
@@ -2359,7 +2417,9 @@ def main() -> int:
     ap.add_argument("--offline", action="store_true",
                     help="use the deterministic offline affiliation registry")
     args = ap.parse_args()
-    entries = load_entries()
+    source_entries = load_entries()
+    current_slugs = {paper["slug"] for paper in source_entries}
+    entries = source_entries
     if args.slugs:
         prefixes = [value.strip() for value in args.slugs.split(",") if value.strip()]
         entries = [p for p in entries if any(p["slug"].startswith(prefix) for prefix in prefixes)]
@@ -2377,6 +2437,11 @@ def main() -> int:
             except RuntimeError as exc:
                 print(str(exc), file=sys.stderr)
                 return 3
+            stale = prune_stale_papers(args.output, current_slugs)
+            result.update({
+                "stale_papers_pruned": stale["papers"],
+                "stale_institutions_pruned": stale["institutions"],
+            })
             print(json.dumps({**result, "changed": 0}, ensure_ascii=False, indent=2))
             return 0
         print(json.dumps({"processed": 0, "changed": 0, "db": str(args.output)}, ensure_ascii=False, indent=2))
@@ -2389,6 +2454,11 @@ def main() -> int:
     except RuntimeError as exc:
         print(str(exc), file=sys.stderr)
         return 3
+    stale = prune_stale_papers(args.output, current_slugs)
+    result.update({
+        "stale_papers_pruned": stale["papers"],
+        "stale_institutions_pruned": stale["institutions"],
+    })
     conn = sqlite3.connect(args.output)
     result.update({
         "papers": conn.execute("SELECT COUNT(*) FROM papers").fetchone()[0],

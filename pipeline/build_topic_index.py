@@ -3793,8 +3793,8 @@ def _run_topic_index(topic=None, cross=None):
         '<meta property="og:site_name" content="Paper Curation">\n'
         f'<meta property="og:title" content="{esc(theme["title"])} — Paper Curation">\n'
         '<meta property="og:description" content="AI 논문 큐레이션 — 구조화 리뷰 · 연결 그래프 · 타임라인 · Deep Research">\n'
-        f'<meta property="og:url" content="https://paper-curation.jehyunlee.dev/{topic}/">\n'
-        f'<meta property="og:image" content="https://paper-curation.jehyunlee.dev/{topic}/research_timeline.png">\n'
+        f'<meta property="og:url" content="https://paper-curation.jehyunlee.dev/{TOPIC}/">\n'
+        f'<meta property="og:image" content="https://paper-curation.jehyunlee.dev/{TOPIC}/research_timeline.png">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
         # Atom 피드 autodiscovery — RSS 리더가 feed.xml 을 자동 인식 (build_rss.py 생성)
         f'<link rel="alternate" type="application/atom+xml" title="{esc(theme["title"])} — Paper Curation" href="feed.xml">\n'

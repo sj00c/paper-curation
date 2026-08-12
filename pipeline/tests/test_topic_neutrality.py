@@ -236,6 +236,23 @@ class NoThemeFallbackToAi4sTests(unittest.TestCase):
 
 
 
+class TopicIndexMetadataTests(unittest.TestCase):
+    """CLI topic resolution must also reach generated social metadata."""
+
+    def test_social_metadata_uses_resolved_topic(self):
+        src = open(
+            os.path.join(PIPELINE, "build_topic_index.py"),
+            encoding="utf-8",
+        ).read()
+        self.assertIn(
+            'paper-curation.jehyunlee.dev/{TOPIC}/',
+            src,
+        )
+        self.assertNotIn(
+            'paper-curation.jehyunlee.dev/{topic}/',
+            src,
+        )
+
 class DeployTopicNeutralityTests(unittest.TestCase):
     """배포 경로도 토픽을 하드코딩하지 않는다.
 
