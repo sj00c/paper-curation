@@ -21,6 +21,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from types import SimpleNamespace
 try:
@@ -45,6 +46,27 @@ SKILL_OUTPUT = REPO / "SKILL.generated.md"
 SKILL_REFERENCE = REPO / "SKILL.md"
 GITIGNORE_PATH = REPO / ".gitignore"
 SKILL_INSTALL_DIR = Path.home() / ".claude" / "skills" / "paper-curation"
+
+
+def _write_secret_json(path, value):
+    """Atomically write credential-bearing JSON with mode 0600."""
+    path = Path(path)
+    fd, temporary = tempfile.mkstemp(
+        prefix=f".{path.name}.", suffix=".tmp", dir=path.parent
+    )
+    try:
+        os.fchmod(fd, 0o600)
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
+            json.dump(value, stream, indent=2, ensure_ascii=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+        os.chmod(path, 0o600)
+    finally:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
 
 def _load_dotenv(path=ENV_PATH):
     """Load a dependency-free .env subset without overriding shell exports."""
@@ -220,8 +242,7 @@ def step_config():
     if paperbanana_dir:
         cfg["paperbanana_dir"] = paperbanana_dir
 
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        json.dump(cfg, f, indent=2, ensure_ascii=False)
+    _write_secret_json(CONFIG_PATH, cfg)
     print(f"\n  → config.json 생성 완료")
 
     return cfg
@@ -604,8 +625,7 @@ def step_paperbanana(cfg):
 
 def _save_config(cfg):
     """config.json 업데이트."""
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        json.dump(cfg, f, indent=2, ensure_ascii=False)
+    _write_secret_json(CONFIG_PATH, cfg)
 
 
 # 템플릿에 남을 수 있는 슬롯과, 값이 없을 때 무엇이 꺼지는지.

@@ -15,6 +15,7 @@ test('help is available without constructing commands', () => {
   const plan = createPlan(['--help'], { cwd, validateCheckout: false });
   assert.match(plan.help, /paper-curation init/);
   assert.match(plan.help, /paper-curation inspect/);
+  assert.match(plan.help, /paper-curation deploy --topic TOPIC/);
   assert.deepEqual(plan.steps, []);
 });
 
@@ -61,6 +62,7 @@ test('init accepts --dir after command options and constructs dry onboarding flo
   assert.equal(plan.steps[4].onlyIfPreviousFailed, true);
   assert.deepEqual(plan.steps[5].args.slice(0, 6), ['run', '-n', 'py312', 'python', '-c', "import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 12) else 'The py312 environment must use Python 3.12')"]);
   assert.deepEqual(plan.steps[6].args, ['run', '-n', 'py312', 'python', '-m', 'pip', 'install', '-r', 'requirements.txt']);
+  assert.deepEqual(plan.steps[7].args, ['run', '-n', 'py312', 'python', '-m', 'pip', 'install', '-e', '.']);
   assert.deepEqual(lastStep(plan).args, [
     'run',
     '-n',
@@ -81,6 +83,9 @@ test('setup supports --dir before command options and --run-first is explicit', 
   });
 
   assert.equal(plan.targetDir, cwd);
+  assert.deepEqual(plan.steps.at(-2).args, [
+    'run', '-n', 'py312', 'python', '-m', 'pip', 'install', '-e', '.',
+  ]);
   assert.deepEqual(lastStep(plan).args, [
     'run',
     '-n',
@@ -153,6 +158,88 @@ test('run forwards only arguments after -- without treating --help as CLI help',
     '--topic',
     'x',
   ]);
+});
+
+test('friendly workflow commands use the authoritative Python module CLI', () => {
+  const cases = [
+    {
+      argv: ['build', '--topic', 'example-topic'],
+      expected: ['python', '-m', 'paper_curation.cli', 'build', '--topic', 'example-topic'],
+    },
+    {
+      argv: ['update', '--topic', 'example-topic'],
+      expected: ['python', '-m', 'paper_curation.cli', 'update', '--topic', 'example-topic'],
+    },
+    {
+      argv: ['serve', '--topic', 'example-topic', '--port', '8123'],
+      expected: ['python', '-m', 'paper_curation.cli', 'serve', '--topic', 'example-topic', '--', '--port', '8123'],
+    },
+    {
+      argv: ['query', '--topic', 'example-topic', '--query', 'test query', '--top-k', '3'],
+      expected: ['python', '-m', 'paper_curation.cli', 'query', '--topic', 'example-topic', '--query', 'test query', '--', '--top-k', '3'],
+    },
+    {
+      argv: ['validate', '--topic', 'example-topic'],
+      expected: ['python', '-m', 'paper_curation.cli', 'validate', '--topic', 'example-topic'],
+    },
+    {
+      argv: ['repair', '--topic', 'example-topic'],
+      expected: ['python', '-m', 'paper_curation.cli', 'repair', '--topic', 'example-topic'],
+    },
+    {
+      argv: ['deploy', '--topic', 'example-topic'],
+      expected: ['python', '-m', 'paper_curation.cli', 'deploy', '--topic', 'example-topic'],
+    },
+  ];
+
+  for (const { argv, expected } of cases) {
+    const plan = createPlan(argv, { cwd, validateCheckout: false });
+    assert.deepEqual(plan.steps[0].args, ['run', '-n', 'py312', ...expected], argv.join(' '));
+    assert.equal(plan.steps[0].args.includes('pipeline'), false, argv.join(' '));
+  }
+});
+
+test('topic-bound friendly commands reject missing topics', () => {
+  for (const command of ['build', 'update', 'query', 'validate', 'repair', 'deploy']) {
+    assert.throws(
+      () => createPlan([command], { cwd, validateCheckout: false }),
+      new RegExp(`${command} requires --topic TOPIC`),
+    );
+  }
+});
+
+test('query requires an explicit query in addition to its topic', () => {
+  assert.throws(
+    () => createPlan(['query', '--topic', 'example-topic'], { cwd, validateCheckout: false }),
+    /query requires --query QUERY/,
+  );
+});
+
+test('repair remains a preview until --execute is explicitly provided', () => {
+  const preview = createPlan(['repair', '--topic', 'example-topic'], { cwd, validateCheckout: false });
+  const execute = createPlan(['repair', '--topic', 'example-topic', '--execute'], {
+    cwd,
+    validateCheckout: false,
+  });
+
+  assert.deepEqual(preview.steps[0].args, [
+    'run', '-n', 'py312', 'python', '-m', 'paper_curation.cli', 'repair', '--topic', 'example-topic',
+  ]);
+  assert.deepEqual(execute.steps[0].args, [
+    'run', '-n', 'py312', 'python', '-m', 'paper_curation.cli', 'repair', '--topic', 'example-topic', '--execute',
+  ]);
+  assert.throws(() => parseArgs(['build', '--execute']), /only supported by repair/);
+});
+
+test('deploy stays separate from build and update plans', () => {
+  const deploy = createPlan(['deploy', '--topic', 'example-topic'], { cwd, validateCheckout: false });
+  const commandArgs = deploy.steps[0].args;
+
+  assert.deepEqual(commandArgs, [
+    'run', '-n', 'py312', 'python', '-m', 'paper_curation.cli', 'deploy', '--topic', 'example-topic',
+  ]);
+  assert.equal(commandArgs.includes('build'), false);
+  assert.equal(commandArgs.includes('update'), false);
 });
 
 test('auth commands delegate to Claude without checkout validation or secret arguments', () => {

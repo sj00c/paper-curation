@@ -2,14 +2,17 @@
   "name": "paper-curation",
   "version": "0.0.0",
   "private": false,
-  "description": "Dependency-free NPX onboarding and read-only inspection CLI for paper-curation.",
+  "description": "Dependency-free NPX CLI for paper-curation setup and local workflow planning.",
   "type": "module",
   "bin": {
     "paper-curation": "./bin/paper-curation.mjs"
   },
   "files": [
     "bin",
-    "pipeline/inspect_installation.py",
+    "pipeline",
+    "pyproject.toml",
+    "requirements.txt",
+    "src",
     "paper-curation.yaml"
   ],
   "engines": {

@@ -1,146 +1,33 @@
 # AGENTS.md
 
-This file provides guidance to coding agents (Claude Code, Codex, and others) working with
-code in this repository. It is kept byte-identical to CLAUDE.md apart from this header —
-edit one and pipeline/tests/test_docs_contract.py will point at the other.
+This file guides coding agents. All content after this header must match its counterpart.
 
-## Project overview
+## Product contract
 
-This repository curates papers from a configured Zotero collection into structured reviews,
-HTML pages, topic views, and optional search indexes. All local data, credentials, collection
-names, storage locations, hosting targets, and notification recipients belong in local
-configuration; do not add them to repository documentation or tracked files.
-
-`docs/papers/` is the source of generated paper content. A topic view under `docs/<topic>/`
-contains its generated index, classifications, narratives, network data, and optional search
-artifacts. Generated corpus content is intentionally ignored by Git.
-
-## Local setup and configuration
-
-Start by reading `config.example.json`, then create an untracked `config.json` with the Zotero
-collection, local PDF directory, and only the optional integrations required by this install.
-Credentials must be supplied through local configuration or the environment, never committed.
-
-`pipeline/setup.py` is an interactive local configuration helper. It may create local
-configuration and install a local Claude skill at `~/.claude/skills/paper-curation/`, but it
-does **not** run a curation build, deploy content, publish a branch, or send notifications.
-Review the generated configuration before running any pipeline command.
-
-```bash
-python pipeline/setup.py --no-install
-```
-
-A normal local dependency setup is deliberately separate from curation:
-
-```bash
-python -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-```
+The installable `src/paper_curation` package and its `paper-curation` CLI are the official interface. Use `setup`, `migrate`, `inspect`, `doctor`, `build`, `update`, `serve`, `query`, `validate`, `repair`, and `deploy`. `pipeline/run_full.py` is a compatibility wrapper for existing automation and advanced troubleshooting, not the primary entry point.
 
 ## Architecture
 
-| Component | Responsibility |
-|---|---|
-| `pipeline/run_full.py` | Orchestrates selected local pipeline modes and validates incompatible options. |
-| Zotero integration | Retrieves configured collection metadata and attachments. |
-| `run_update_force.py` | Extracts text and figures, creates reviews, and renders paper HTML. |
-| `build_papers_index.py` | Rebuilds the paper metadata index atomically. |
-| `topic_modeling.py` / `classify_papers.py` | Creates or applies topic classifications. Zotero hierarchy classification is also supported. |
-| `build_topic_index.py` | Produces the topic index, navigation, and search UI. |
-| `build_search_index.py` | Builds the optional hybrid retrieval index. |
-| `validate_papers.py` | Checks generated-content integrity; `--strict` fails on violations. |
-| `prepare_deploy.py` | Prepares a configured deployment target; it is never part of local setup. |
+Dependencies point inward: CLI and orchestration call application use cases; application owns domain contracts; integrations, retrieval, bibliography, rendering, and config implement those contracts. Domain code has no CLI, network, filesystem, or rendering dependency. Rendering uses packaged static resources. Keep side effects declarative: plan them in application/orchestration and perform them only in integration adapters.
 
-The retrieval UI combines lexical and dense retrieval when a search index is available. Query
-embeddings may be served by a configured worker endpoint or `pipeline/serve_local.py`; readers
-need not receive provider credentials. Optional answer-generation credentials are BYOK.
+Configured provider candidates are **대체 금지**: choose one configured
+provider and surface its failure rather than silently substituting another.
 
-Cross-category insights choose one configured backend candidate. A failure is not retried on a
-different provider: **대체 금지**. Missing optional credentials disable the dependent feature;
-they do not enable a substitute provider.
+## Operations and security
 
-## Routine local commands
+All configuration, credentials, caches, databases, generated corpus data, local paths, and deployment URLs are installation-local and untracked. Never add them to repository files. `inspect` and normal `doctor` are read-only. `repair` previews by default and requires `--execute` to write. Build/update never deploy; deployment is an explicit configured public action. Browser BYOK values are page-memory only and never enter Web Storage, URLs, or static output.
 
-All commands below act on the explicit `<topic>` supplied by the operator. Start with a dry run
-when the source may alter external state.
+Preview configuration migration before execution:
 
 ```bash
-# Inspect the planned curation work without writing content.
-PYTHONUTF8=1 python pipeline/run_full.py --topic <topic> --mode curate --source web --dry-run
-
-# Curate from the configured local/Zotero source.
-PYTHONUTF8=1 python pipeline/run_full.py --topic <topic> --mode curate --source zotero
-
-# Rebuild generated views for an existing topic.
-PYTHONUTF8=1 python pipeline/run_full.py --topic <topic> --mode rebuild
-
-# Validate generated output.
-PYTHONUTF8=1 python pipeline/validate_papers.py --topic <topic> --strict
-
-# Query an existing local search index without rebuilding it.
-python pipeline/query_search_index.py --topic <topic> --query "example research question" --mode hybrid --json
+paper-curation migrate --config config.json
+paper-curation migrate --config config.json --execute
 ```
 
-## Classification and bibliography
+Migration preserves recognized legacy local data paths and public URL values and reports unsupported values.
 
-The default classifier uses stored embedding and clustering artifacts. With
-`--classify-source zotero`, child collections in the configured Zotero collection become
-categories; `--unclassified` controls whether an explicitly named unclassified collection is
-included. These modes write the same downstream classification schema.
+## Contributor integration contract
 
-`pipeline/build_bibliography_db.py` builds the local bibliographic database from paper metadata
-and sidecars. It records bibliographic fields and normalized affiliation evidence. Keep one
-writer per local database; use the provided lock and validation tools rather than sharing a live
-SQLite file through a sync service. Affiliation evidence is retained with its source so reports
-can distinguish publisher metadata, resolved records, and PDF-derived inference.
+Work from a generic fork's `main`, then create a temporary integration branch. Classify each change before integration: generic algorithms, contracts, adapters, and synthetic fixtures may go upstream; operator-specific corpus, credentials, local paths, deployment settings, generated output, and person/topic/machine artifacts may not. Run contract and full gates before proposing integration. Never auto-merge generated corpus; review it separately as local operator output.
 
-```bash
-PYTHONUTF8=1 python pipeline/build_bibliography_db.py --topic <topic>
-PYTHONUTF8=1 python pipeline/check_bibliography_db.py --strict
-python pipeline/report_field_leaders.py --topic <topic> --top 20
-```
-
-## Explicit recovery and destructive operations
-
-Recovery commands are not onboarding steps. Run their dry-run form first, inspect the report,
-and use an execute flag only when the operator has confirmed the affected scope.
-
-```bash
-# Audit only; does not remove artifacts.
-PYTHONUTF8=1 python pipeline/audit_matching.py --topic <topic>
-
-# Backs up and removes flagged generated review artifacts after audit.
-PYTHONUTF8=1 python pipeline/fix_matching.py --topic <topic> --execute
-
-# DESTRUCTIVE: removes duplicate Zotero items after a dry-run review.
-PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic <topic> --execute
-
-# DESTRUCTIVE: deletes stale generated files after previewing the cleanup plan.
-PYTHONUTF8=1 python pipeline/cleanup.py --execute
-```
-
-## Publication and notifications
-
-Building locally does not publish anything. Deployment requires an explicitly configured hosting
-target and the credentials accepted by that target. Invoke the deploy mode only after reviewing
-the generated output and target configuration:
-
-```bash
-# EXTERNAL SIDE EFFECT: publish only to the configured target.
-PYTHONUTF8=1 python pipeline/run_full.py --topic <topic> --mode deploy
-```
-
-Notifications are opt-in local configuration. Do not infer recipients, domains, repository
-branches, remote machines, or credentials from this repository.
-
-## Engineering rules
-
-- Keep `AGENTS.md` and `CLAUDE.md` identical after their distinct headers.
-- Treat `config.json`, caches, generated corpus output, and credentials as local state.
-- Preserve the canonical `review.md` → `index.html` rendering flow; do not hand-edit generated
-  HTML when the source review or renderer should be fixed.
-- Use explicit topics and inspect dry-run output before operations that create, change, publish,
-  or delete data.
-- Keep API behavior documented as implemented; do not promise automatic fallback, build,
-  deployment, or notification behavior.
+Do not create topic-, person-, or machine-named branches. Extend adapters or configuration extension points instead of embedding installation behavior. Add synthetic fixture tests for new adapters, configuration behavior, and contracts. Keep `AGENTS.md` and `CLAUDE.md` byte-identical after their headers.

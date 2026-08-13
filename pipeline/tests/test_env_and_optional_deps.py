@@ -174,6 +174,7 @@ class DeclaredDependencyTests(unittest.TestCase):
             names |= {p.stem for p in PIPELINE.glob(pat)}
         names |= {d.name for d in PIPELINE.iterdir() if d.is_dir()}
         names |= {d.name for d in (PIPELINE / "lib").iterdir() if d.is_dir()}
+        names |= {d.name for d in (PIPELINE.parent / "src").iterdir() if d.is_dir()}
         return names
 
     def test_every_module_level_third_party_import_is_declared(self):

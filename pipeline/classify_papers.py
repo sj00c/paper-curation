@@ -53,6 +53,7 @@ from pathlib import Path
 import numpy as np
 
 from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir
+from paper_curation.application.classify import validate_classification_mapping
 PAPERS_DIR = str(_PAPERS_DIR)
 
 TOP_N_CATEGORIES = 3
@@ -281,6 +282,9 @@ def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
             log(f"  {c}: {n}")
         return
 
+    cls_data = to_classification(assignments)
+    validate_classification_mapping(cls_data)
+
     by_slug = {a["slug"]: a for a in assignments}
     for p in topic_papers:
         a = by_slug.get(p.get("slug"))
@@ -297,7 +301,6 @@ def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
     atomic_write_json(index_path, all_papers)
     log(f"[write] {index_path}")
 
-    cls_data = to_classification(assignments)
     cls_path = Path(topic_dir) / "_new_classification.json"
     atomic_write_json(cls_path, cls_data)
     log(f"[write] {cls_path}  ({len(cls_data['categories'])} categories)")
@@ -414,6 +417,13 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
             log(f"  {c}: {n}")
         return
 
+    cats_list = sorted({a["primary_category"] for a in assignments})
+    cls_data = {
+        "categories": [{"name": c} for c in cats_list],
+        "assignments": assignments,
+    }
+    validate_classification_mapping(cls_data)
+
     # Write back
     from lib.atomic_io import atomic_write_json
     atomic_write_json(index_path, all_papers)
@@ -439,11 +449,6 @@ def _run_classify(topic, *, slugs=None, dry_run=False):
             atomic_write_json(cpath, existing)
             log(f"[write] {cpath}  (+{len(viz)} new viz coords)")
 
-    cats_list = sorted({a["primary_category"] for a in assignments})
-    cls_data = {
-        "categories": [{"name": c} for c in cats_list],
-        "assignments": assignments,
-    }
     cls_path = Path(topic_dir) / "_new_classification.json"
     atomic_write_json(cls_path, cls_data)
     log(f"[write] {cls_path}  ({len(cats_list)} categories)")

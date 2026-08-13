@@ -598,7 +598,13 @@ class PipelineWiringTests(unittest.TestCase):
         self.assertNotIn("run_metrics", block)
 
     def test_run_full_forwards_the_flag(self):
-        src = (PIPELINE_DIR / "run_full.py").read_text(encoding="utf-8")
+        src = (
+            PIPELINE_DIR.parent
+            / "src"
+            / "paper_curation"
+            / "orchestration"
+            / "legacy_run_full.py"
+        ).read_text(encoding="utf-8")
         self.assertIn("--skip-metrics", src)
 
 

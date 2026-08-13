@@ -462,8 +462,14 @@ class OrchestratorUnclassifiedGuardTests(unittest.TestCase):
         pattern = re.compile(
             r'unclassified.*!=.*"skip"[\s\S]{0,200}?'
             r'classify_source.*!=.*"zotero"[\s\S]{0,200}?raise SystemExit')
-        for name in ("run_full", "run_update_force"):
-            src = open(os.path.join(PIPELINE, f"{name}.py"), encoding="utf-8").read()
+        sources = {
+            "run_full": os.path.join(
+                os.path.dirname(PIPELINE), "src", "paper_curation",
+                "orchestration", "legacy_run_full.py"),
+            "run_update_force": os.path.join(PIPELINE, "run_update_force.py"),
+        }
+        for name, path in sources.items():
+            src = open(path, encoding="utf-8").read()
             self.assertRegex(
                 src, pattern,
                 f"{name}.py lacks a raising --unclassified fail-fast guard",

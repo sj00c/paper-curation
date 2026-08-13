@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paper-curation"
+version = "0.1.0"
+description = "Typed local foundation for paper curation"
+requires-python = ">=3.12"
+
+[project.scripts]
+paper-curation = "paper_curation.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"paper_curation.rendering.network" = ["template.html"]
+"paper_curation.rendering.paper_page" = ["style.css"]
+"paper_curation.rendering.topic_page" = ["app.js"]

@@ -415,6 +415,27 @@ _JS = r"""
   // ── 마크다운 렌더 ────────────────────────────────────────────────────
   // 코퍼스 Deep Research 와 같은 규약: marked.js 가 있으면 그걸 쓰고, 없으면
   // 최소 폴백. [ref:N] 은 렌더 후 클릭 가능한 배지로 바꾼다.
+  function sanitizeMarkup(h){
+    var allowed=new Set(['P','BR','H1','H2','H3','H4','STRONG','EM','UL','OL','LI',
+      'BLOCKQUOTE','CODE','PRE','A','SUP','SPAN']);
+    var doc=new DOMParser().parseFromString('<body>'+String(h||'')+'</body>','text/html');
+    Array.prototype.slice.call(doc.body.querySelectorAll('*')).forEach(function(node){
+      if(!allowed.has(node.tagName)){
+        node.replaceWith(document.createTextNode(node.textContent||'')); return;
+      }
+      Array.prototype.slice.call(node.attributes).forEach(function(attr){
+        var name=attr.name.toLowerCase();
+        var ok=node.tagName==='A'&&(name==='href'||name==='class'||name==='title');
+        if(!ok) node.removeAttribute(attr.name);
+      });
+      if(node.hasAttribute('href')){
+        var value=node.getAttribute('href').trim();
+        if(!/^(https?:|#|zotero:)/i.test(value)) node.removeAttribute('href');
+      }
+      if(node.tagName==='A') node.setAttribute('rel','noopener noreferrer');
+    });
+    return doc.body.innerHTML;
+  }
   function mdToMarkup(md, refPrefix){
     var h;
     if(window.marked){
@@ -434,10 +455,11 @@ _JS = r"""
       h='<p>'+h+'</p>';
     }
     var prefix=(refPrefix===undefined)?'dr-ref-':refPrefix;
-    return h.replace(/\[ref:(\d+)\]/g,function(_,n){
+    h=h.replace(/\[ref:(\d+)\]/g,function(_,n){
       return '<a class="dr-cite" href="#'+prefix+n+
         '" title="Reference '+n+'">['+n+']</a>';
     });
+    return sanitizeMarkup(h);
   }
 
   // ── reference identity + context-aware export ───────────────────────────
@@ -793,6 +815,14 @@ AUDIO_PROVIDER_JS = (
 
 
 def panel_script(index_file: str, collection: str = "") -> str:
+    collection_json = (
+        json.dumps(collection or "_cross", ensure_ascii=False)
+        .replace("&", "\\u0026")
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+        .replace("\u2028", "\\u2028")
+        .replace("\u2029", "\\u2029")
+    )
     return (
         '<script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js" '
         'integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+" '
@@ -801,6 +831,6 @@ def panel_script(index_file: str, collection: str = "") -> str:
         f"var IDX_FILE={json.dumps(index_file)};\n"
         f"var MODELS={json.dumps(_MODELS)};\n"
         f"var TOPK={TOPK};var POOL={POOL};var PER_PAPER={PER_PAPER};"
-        f"var MAX_OUT={MAX_OUT};var COLLECTION={json.dumps(collection or '_cross')};\n"
+        f"var MAX_OUT={MAX_OUT};var COLLECTION={collection_json};\n"
         f"{_JS}\n</script>"
     )

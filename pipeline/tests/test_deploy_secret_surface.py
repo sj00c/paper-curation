@@ -460,7 +460,14 @@ class AudioOverviewKeyStateTests(unittest.TestCase):
             'return s.startsWith("AIza") || s.startsWith("AQ.");', ""))
 
     def test_topic_page_backend_detection_accepts_both_google_shapes(self):
-        src = (PIPELINE / "build_topic_index.py").read_text(encoding="utf-8")
+        src = (
+            PIPELINE.parent
+            / "src"
+            / "paper_curation"
+            / "rendering"
+            / "topic_page"
+            / "app.js"
+        ).read_text(encoding="utf-8")
         self.assertIn("k.startsWith('AIza') || k.startsWith('AQ.')", src)
 
     def test_generated_audio_js_parses(self):

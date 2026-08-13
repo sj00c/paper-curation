@@ -2352,6 +2352,11 @@ def load_sidecar(directory: Path) -> dict | None:
     if recorded and text.exists():
         if hashlib.sha256(text.read_bytes()).hexdigest() != recorded:
             return None
+    try:
+        from paper_curation.application.bibliography import record_from_sidecar
+        record_from_sidecar(payload, text.read_bytes())
+    except (OSError, ValueError):
+        return None
     return payload
 
 

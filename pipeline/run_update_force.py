@@ -33,6 +33,10 @@ import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
+from paper_curation.orchestration import (
+    FailurePolicy, ReceiptStatus, SideEffect, Step, StepExecutionError, SubprocessRunner,
+)
+
 # Paths
 from config_loader import (
     PAPERS_DIR as _PAPERS_DIR, PIPELINE_DIR, _ssl_ctx,
@@ -3202,18 +3206,33 @@ def main():
             "build_search_index": {5},
             "build_cross_index": {5},
         }
+        step_runner = SubprocessRunner(
+            environment={**os.environ, "PYTHONUTF8": "1"},
+            cwd=str(PIPELINE_DIR.parent),
+        )
 
         def run_step(step_name, cmd, step_timeout=600):
             log(f"  [{step_name}] ...")
             is_critical = step_name in CRITICAL_STEPS
             optional_absent = OPTIONAL_ABSENT_EXITS.get(step_name, frozenset())
+            step = Step(
+                name=step_name,
+                argv=tuple(str(part) for part in cmd),
+                side_effect=SideEffect.LOCAL_WRITE,
+                failure_policy=FailurePolicy.CRITICAL if is_critical else FailurePolicy.OPTIONAL,
+                optional_absent_exit_codes=frozenset(optional_absent),
+                timeout=step_timeout,
+            )
             try:
-                result = subprocess.run(
-                    cmd, cwd=str(PIPELINE_DIR.parent),
-                    capture_output=True, text=True, timeout=step_timeout,
-                    env={**os.environ, "PYTHONUTF8": "1"},
-                )
-                if result.returncode in optional_absent:
+                result = step_runner.run(step)
+                if result.status is ReceiptStatus.TIMED_OUT:
+                    log(f"  [{step_name}] TIMEOUT ({step_timeout}s)")
+                    if is_critical:
+                        raise RuntimeError(
+                            f"critical step '{step_name}' timed out "
+                            f"after {step_timeout}s; aborting orchestration.")
+                    return
+                if result.status is ReceiptStatus.SKIPPED:
                     # 실패가 아니라 "그 선택 기능이 연결 안 됨". 마지막 줄에
                     # 이유가 찍히므로 그대로 남기고 계속 진행한다.
                     reason = ""
@@ -3263,13 +3282,40 @@ def main():
                         log(f"  [{step_name}] OK: {out_lines[-1][:100]}")
                     else:
                         log(f"  [{step_name}] OK")
-            except subprocess.TimeoutExpired:
-                log(f"  [{step_name}] TIMEOUT ({step_timeout}s)")
-                if is_critical:
+            except StepExecutionError as exc:
+                result = exc.receipt
+                if result.status is ReceiptStatus.TIMED_OUT:
+                    log(f"  [{step_name}] TIMEOUT ({step_timeout}s)")
                     raise RuntimeError(
                         f"critical step '{step_name}' timed out "
-                        f"after {step_timeout}s; aborting orchestration."
-                    )
+                        f"after {step_timeout}s; aborting orchestration.") from exc
+                # Preserve the legacy diagnostic dump and console tail before
+                # translating the fail-closed runner error to this script's API.
+                severity = "ABORT"
+                log(f"  [{step_name}] {severity} (exit {result.returncode})")
+                ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+                safe_step = re.sub(r'[^A-Za-z0-9_-]+', '_', step_name)[:50]
+                dump_path = PIPELINE_DIR / "_logs" / f"step_failure_{safe_step}_{ts}.log"
+                try:
+                    dump_path.parent.mkdir(parents=True, exist_ok=True)
+                    stderr = result.stderr or "(empty)\n"
+                    stdout = result.stdout or "(empty)\n"
+                    with open(dump_path, "w", encoding="utf-8") as f:
+                        f.write(f"=== command ===\n{' '.join(str(c) for c in cmd)}\n")
+                        f.write(f"\n=== exit code: {result.returncode} ===\n")
+                        f.write(f"\n=== STDERR ({len(result.stderr)} chars) ===\n{stderr}")
+                        f.write(f"\n=== STDOUT ({len(result.stdout)} chars) ===\n{stdout}")
+                    log(f"    [diag] full output dumped: {dump_path}")
+                except Exception as _dump_e:
+                    log(f"    [diag] dump failed: {_dump_e}")
+                if result.stderr:
+                    for ln in result.stderr.rstrip().splitlines()[-30:]:
+                        log(f"    {ln}")
+                raise RuntimeError(
+                    f"critical step '{step_name}' failed "
+                    f"(exit {result.returncode}); aborting orchestration. "
+                    f"See {dump_path} for full output."
+                ) from exc
             except RuntimeError:
                 raise  # critical-step abort: re-raise as-is
             except Exception as e:

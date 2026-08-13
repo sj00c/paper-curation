@@ -110,12 +110,24 @@ class NoKeyMeansNoCredentialInOutputTests(unittest.TestCase):
                 self.assertNotIn(SENTINEL["GEMINI"], script)
                 self.assertNotIn(SENTINEL["EMAIL"], script)
 
+    def test_audio_context_cannot_terminate_inline_script(self):
+        from lib.audio_overview import audio_script_block
+        block = audio_script_block("", ctx={"review": "</script><img onerror=alert(1)>"})
+        self.assertNotIn("</script><img", block)
+        self.assertIn("\\u003c/script\\u003e", block)
+
 
 class BrowserGateTests(unittest.TestCase):
     """키가 없을 때 조용히 죽지 않고 이유를 말한다."""
 
     def setUp(self):
-        self.src = SOURCES["build_topic_index"].read_text(encoding="utf-8")
+        self.src = (
+            SOURCES["build_topic_index"].read_text(encoding="utf-8")
+            + "\n"
+            + (PIPELINE.parent / "src/paper_curation/rendering/topic_page/app.js").read_text(
+                encoding="utf-8"
+            )
+        )
 
     def test_key_state_helper_exists(self):
         self.assertIn("function deepKeyState()", self.src)

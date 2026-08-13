@@ -16,6 +16,7 @@ import re
 import struct
 from collections import Counter
 from pathlib import Path
+from paper_curation.application.retrieve import reciprocal_rank_fusion
 from typing import Any, Sequence
 
 BM25_K1 = 1.5
@@ -251,15 +252,16 @@ def query_search_index(topic: str, query: str, *, top_k: int = 10, mode: str = "
             raw_embeddings, index["dim"], vector, eligible)
         dense_rank = _rank(dense_scores, eligible)
 
-    if mode == "bm25":
-        final_scores = {position: 1 / (RRF_K + bm25_rank[position]) for position in eligible}
-    elif mode == "dense":
-        final_scores = {position: 1 / (RRF_K + dense_rank[position]) for position in eligible}
-    else:
-        final_scores = {
-            position: 1 / (RRF_K + dense_rank[position]) + 1 / (RRF_K + bm25_rank[position])
-            for position in eligible
-        }
+    ordered_bm25 = [str(position) for position in sorted(eligible, key=lambda p: bm25_rank[p])]
+    ordered_dense = (
+        [str(position) for position in sorted(eligible, key=lambda p: dense_rank[p])]
+        if mode != "bm25" else []
+    )
+    rankings = [ordered_bm25] if mode == "bm25" else [ordered_dense]
+    if mode == "hybrid":
+        rankings = [ordered_dense, ordered_bm25]
+    fused_by_identity = reciprocal_rank_fusion(rankings, k=RRF_K)
+    final_scores = {position: fused_by_identity[str(position)] for position in eligible}
     ordered = sorted(eligible, key=lambda position: (-final_scores[position], position))
 
     results: list[dict[str, Any]] = []

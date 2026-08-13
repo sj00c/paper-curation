@@ -16,12 +16,18 @@
 !CLAUDE.md
 !AGENTS.md
 !SECURITY.md
+!CONTRIBUTING.md
 !package.json
+!pyproject.toml
 !paper-curation.yaml
 !bin/
 !bin/*.mjs
 !tests/
 !tests/*.mjs
+!src/
+!src/**
+src/*.egg-info/
+src/**/*.egg-info/
 
 # Pipeline scripts
 !pipeline/
@@ -37,9 +43,11 @@
 !pipeline/tests/
 !pipeline/tests/*.py
 !pipeline/tests/*.mjs
+!pipeline/tests/fixtures/
+!pipeline/tests/fixtures/**
 pipeline/eval/results/
 
-# Cloudflare Worker function (handles /api/audio-email + serves static assets).
+# Cloudflare Worker function (handles /api/embed + serves static assets).
 # Deployed by `wrangler deploy` alongside docs/.
 !worker/
 !worker/*.js
@@ -53,9 +61,8 @@ pipeline/eval/results/
 !.github/workflows/
 !.github/workflows/*.yml
 
-# Double-click launchers (serve docs/ + open topic site on localhost)
+# Optional local launcher
 !open.command
-!open_*.command
 
 reports/build/
 reports/output/

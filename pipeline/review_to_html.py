@@ -22,6 +22,9 @@ from lib.audio_overview import (
     audio_modal_html as _audio_modal_lib,
     audio_script_block as _audio_script_lib,
 )
+from paper_curation.rendering.models import topic_back_href
+from paper_curation.rendering.paper_page.view_model import build_paper_page_view_model
+from paper_curation.rendering.paper_page.style import render_css
 PAPERS = str(_PAPERS_DIR)
 
 # Zotero PDF attachment keys (slug → key). Written by build_topic_index;
@@ -48,7 +51,7 @@ def theme_for(topic):
     for key in theme:
         if profile.get(key):
             theme[key] = str(profile[key])
-    theme["back_href"] = f"../../{topic}/index.html"
+    theme["back_href"] = topic_back_href(topic).href
     return theme
 
 def _fallback_topic():
@@ -166,70 +169,7 @@ def _load_connections():
     return _connections_cache
 
 def get_css(t):
-    return f"""* {{ margin: 0; padding: 0; box-sizing: border-box; }}
-body {{ font-family: 'KoPub Dotum', 'KoPubDotumMedium', -apple-system, 'Noto Sans KR', sans-serif; max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.7; color: #333; background: #f0f2f5; }}
-h1 {{ font-size: 1.4rem; color: #1a1a2e; border-bottom: 3px solid {t['accent']}; padding-bottom: 0.5rem; margin-bottom: 1rem; }}
-h2 {{ font-size: 1.1rem; color: {t['accent']}; margin: 0 0 0.6rem; padding: 0; border: none; }}
-h3 {{ font-size: 1rem; color: #333; margin: 0.8rem 0 0.4rem; }}
-p {{ margin: 0.4rem 0; font-size: 0.93rem; }}
-blockquote {{ border-left: 4px solid {t['accent']}; margin: 0.8rem 0; padding: 0.6rem 1rem; background: #f0f4f8; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: #555; }}
-ul, ol {{ margin: 0.4rem 0 0.4rem 1.5rem; }}
-li {{ margin: 0.2rem 0; font-size: 0.93rem; }}
-.section-box {{ background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }}
-table {{ border-collapse: collapse; margin: 0.5rem 0; font-size: 0.85rem; width: 100%; }}
-th, td {{ border: 1px solid #e0e0e0; padding: 6px 12px; text-align: left; }}
-th {{ background: {t['accent']}; color: white; font-weight: 600; font-size: 0.82rem; }}
-tr:nth-child(even) {{ background: #f8f9fa; }}
-td:last-child {{ text-align: center; font-weight: 600; color: {t['accent']}; }}
-.eval-badges {{ display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }}
-.eval-badge {{ background: {t['accent_bg']}; color: {t['accent_dark']}; padding: 0.2rem 0.7rem; border-radius: 14px; font-size: 0.8rem; font-weight: 600; }}
-.dl-bar {{ margin: 0.5rem 0; }}
-.dl-btn {{ background: {t['accent']}; color: #fff; border: none; border-radius: 8px; padding: 0.45rem 0.9rem; font-size: 0.85rem; cursor: pointer; font-family: inherit; }}
-.dl-btn:hover {{ background: {t['accent_dark']}; }}
-.essence-box {{ border: 2px solid {t['essence_border']}; border-radius: 10px; padding: 1rem 1.2rem; margin: 0.8rem 0; background: {t['essence_bg']}; }}
-.essence-box h2 {{ color: {t['essence_border']}; margin: 0 0 0.5rem; border: none; padding: 0; }}
-code {{ background: #e8edf3; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }}
-img {{ max-width: min(100%, 700px); border: 1px solid #e8e8e8; border-radius: 8px; margin: 0.8rem auto; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }}
-hr {{ border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }}
-strong {{ color: #1a1a2e; }}
-a {{ color: {t['link_color']}; }}
-.back {{ margin-top: 1.5rem; padding: 0.8rem 0; border-top: 2px solid #e0e0e0; }}
-.back a {{ font-weight: 600; text-decoration: none; }}
-.back a:hover {{ text-decoration: underline; }}
-.connections-box {{ background: white; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }}
-.connections-box h2 {{ color: {t['accent']}; margin: 0 0 0.8rem; border: none; padding: 0; font-size: 1.05rem; }}
-.conn-item {{ border-left: 3px solid #ddd; padding: 0.6rem 0 0.6rem 1rem; margin-bottom: 0.6rem; }}
-.conn-item.alternative {{ border-left-color: #3B82F6; }}
-.conn-item.extension {{ border-left-color: #10B981; }}
-.conn-item.foundation {{ border-left-color: #8B5CF6; }}
-.conn-item.counterpoint {{ border-left-color: #F59E0B; }}
-.conn-item.application {{ border-left-color: #EF4444; }}
-.conn-type {{ font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #888; margin-bottom: 0.15rem; }}
-.conn-item.alternative .conn-type {{ color: #3B82F6; }}
-.conn-item.extension .conn-type {{ color: #10B981; }}
-.conn-item.foundation .conn-type {{ color: #8B5CF6; }}
-.conn-item.counterpoint .conn-type {{ color: #F59E0B; }}
-.conn-item.application .conn-type {{ color: #EF4444; }}
-.conn-title {{ font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }}
-.conn-title a {{ color: #1a1a2e; text-decoration: none; }}
-.conn-title a:hover {{ color: {t['accent']}; text-decoration: underline; }}
-.conn-reason {{ font-size: 0.85rem; color: #555; margin-top: 0.3rem; }}
-.conn-reason-rel {{ font-weight: 700; color: #888; margin-right: 0.25rem; }}
-/* Each reason carries its own relation badge so multiple reasons read equally. */
-.conn-rel-badge {{ display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; margin-right: 0.4rem; padding: 0.05rem 0.4rem; border-radius: 4px; background: #f0f0f0; color: #666; vertical-align: middle; }}
-.conn-rel-badge.alternative {{ color: #3B82F6; background: #EAF1FE; }}
-.conn-rel-badge.extension {{ color: #10B981; background: #E7F7F1; }}
-.conn-rel-badge.foundation {{ color: #8B5CF6; background: #F1ECFD; }}
-.conn-rel-badge.counterpoint {{ color: #F59E0B; background: #FEF5E7; }}
-.conn-rel-badge.application {{ color: #EF4444; background: #FDECEC; }}
-.conn-ref {{ color: {t['accent']}; text-decoration: none; font-weight: 600; }}
-.conn-ref:hover {{ text-decoration: underline; }}
-.review-fig {{ text-align: center; margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 12px; }}
-.review-fig img {{ max-width: min(100%, 700px); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: zoom-in; }}
-.lightbox {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; cursor: zoom-out; align-items: center; justify-content: center; }}
-.lightbox.active {{ display: flex; }}
-.lightbox img {{ max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 8px; }}
-.fig-caption {{ font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic; }}"""
+    return render_css(t)
 
 
 # ---------------------------------------------------------------------------
@@ -622,6 +562,8 @@ def convert_review(md_path, topic, slug_dir):
     else:
         _tm = re.search(r'(?m)^title:\s*(.+)$', _fm_m.group(1)) if _fm_m else None
         title = _tm.group(1).strip().strip('"').strip("'") if _tm else _slug
+    # Apply the package renderer's production input and route validation.
+    build_paper_page_view_model(topic, {"slug": _slug, "title": title})
 
     # Extract metadata blockquote
     meta_m = re.search(r'^>\s*\*\*저자\*\*.*$', md, re.MULTILINE)

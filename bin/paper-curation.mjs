@@ -25,8 +25,15 @@ function usage() {
 Usage:
   paper-curation init [--dir PATH] [--auth auto|oauth|api-key] [--run-first]
   paper-curation setup [--dir PATH] [--auth auto|oauth|api-key] [--run-first]
-  paper-curation doctor [--dir PATH] [--network] [--topic TOPIC]
   paper-curation inspect [--dir PATH]
+  paper-curation doctor [--dir PATH] [doctor options...]
+  paper-curation build --topic TOPIC
+  paper-curation update --topic TOPIC
+  paper-curation serve [--topic TOPIC] [server options...]
+  paper-curation query --topic TOPIC --query QUERY [query options...]
+  paper-curation validate --topic TOPIC
+  paper-curation repair --topic TOPIC [--execute]
+  paper-curation deploy --topic TOPIC
   paper-curation run [--dir PATH] -- [run_full.py args...]
   paper-curation auth status
   paper-curation auth setup-token
@@ -36,6 +43,9 @@ Defaults:
   --dir paper-curation for init, current directory for other commands.
   --auth auto.
   setup/init configure only; --run-first explicitly starts the first local build.
+  build, update, validate, repair, and deploy require an explicit topic.
+  repair previews changes by default; only --execute performs the repair.
+  deploy is a separate explicit operation and never runs as part of build or update.
 
 Getting started in an existing checkout:
   paper-curation setup --auth oauth
@@ -96,13 +106,19 @@ export function parseArgs(argv) {
   const passthroughAt = args.indexOf('--');
   const cliArgs = passthroughAt === -1 ? args : args.slice(0, passthroughAt);
   if (args.length === 0 || cliArgs.some(isHelpToken)) {
-    return { command: 'help', dir: null, auth: 'auto', runFirst: false, forwarded: [] };
+    return {
+      command: 'help', dir: null, auth: 'auto', runFirst: false, topic: null, query: null,
+      execute: false, forwarded: [],
+    };
   }
 
   let command = null;
   let dir = null;
   let auth = 'auto';
   let runFirst = false;
+  let topic = null;
+  let query = null;
+  let execute = false;
   let forwarded = [];
 
   for (let i = 0; i < args.length; i += 1) {
@@ -132,8 +148,30 @@ export function parseArgs(argv) {
       continue;
     }
 
-    if (token.startsWith('--')) {
+    if (token === '--topic' || token.startsWith('--topic=')) {
+      const parsed = readOptionValue(args, i, '--topic');
+      topic = parsed.value;
       if (command === 'doctor') {
+        forwarded.push(token, ...(parsed.consumed === 2 ? [parsed.value] : []));
+      }
+      i += parsed.consumed - 1;
+      continue;
+    }
+
+    if (token === '--query' || token.startsWith('--query=')) {
+      const parsed = readOptionValue(args, i, '--query');
+      query = parsed.value;
+      i += parsed.consumed - 1;
+      continue;
+    }
+
+    if (token === '--execute') {
+      execute = true;
+      continue;
+    }
+
+    if (token.startsWith('--')) {
+      if (command === 'doctor' || command === 'serve' || command === 'query') {
         forwarded.push(token);
         continue;
       }
@@ -149,7 +187,7 @@ export function parseArgs(argv) {
       forwarded.push(token);
       continue;
     }
-    if (command === 'doctor') {
+    if (command === 'doctor' || command === 'serve' || command === 'query') {
       forwarded.push(token);
       continue;
     }
@@ -161,8 +199,16 @@ export function parseArgs(argv) {
   if (!VALID_AUTH.has(auth)) {
     throw new CliError(`Invalid --auth value '${auth}'. Expected auto, oauth, or api-key.`);
   }
+  if (execute && command !== 'repair') {
+    throw new CliError('--execute is only supported by repair.');
+  }
+  if (query && command !== 'query') {
+    throw new CliError('--query is only supported by query.');
+  }
 
-  return { command, dir, auth, runFirst, forwarded };
+  return {
+    command, dir, auth, runFirst, topic, query, execute, forwarded,
+  };
 }
 
 function resolveTargetDir(parsed, cwd) {
@@ -202,6 +248,21 @@ function requireCheckout(dir) {
   }
 }
 
+function requireTopic(parsed) {
+  if (!parsed.topic) {
+    throw new CliError(`${parsed.command} requires --topic TOPIC.`);
+  }
+}
+
+function friendlyCliStep(cwd, parsed) {
+  const args = ['python', '-m', 'paper_curation.cli', parsed.command];
+  if (parsed.topic) args.push('--topic', parsed.topic);
+  if (parsed.query) args.push('--query', parsed.query);
+  if (parsed.execute) args.push('--execute');
+  if (parsed.forwarded.length) args.push('--', ...parsed.forwarded);
+  return condaStep(cwd, args);
+}
+
 function buildEnvironmentSetupSteps(cwd, auth, runFirst) {
   const setupArgs = ['pipeline/setup.py', '--anthropic-auth', auth];
   const setupOptions = auth === 'oauth' ? { unsetEnv: OAUTH_UNSET_ENV } : {};
@@ -228,6 +289,7 @@ function buildEnvironmentSetupSteps(cwd, auth, runFirst) {
       "import sys; raise SystemExit(0 if sys.version_info[:2] == (3, 12) else 'The py312 environment must use Python 3.12')",
     ]),
     condaStep(cwd, ['python', '-m', 'pip', 'install', '-r', 'requirements.txt']),
+    condaStep(cwd, ['python', '-m', 'pip', 'install', '-e', '.']),
     condaStep(cwd, ['python', ...setupArgs], setupOptions),
   );
   return steps;
@@ -269,6 +331,48 @@ export function createPlan(argv, options = {}) {
   if (parsed.command === 'run') {
     if (options.validateCheckout !== false) requireCheckout(targetDir);
     return { parsed, targetDir, steps: [condaStep(targetDir, ['python', 'pipeline/run_full.py', ...parsed.forwarded])] };
+  }
+
+  if (parsed.command === 'build') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    requireTopic(parsed);
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
+  }
+
+  if (parsed.command === 'update') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    requireTopic(parsed);
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
+  }
+
+  if (parsed.command === 'serve') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
+  }
+
+  if (parsed.command === 'query') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    requireTopic(parsed);
+    if (!parsed.query) throw new CliError('query requires --query QUERY.');
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
+  }
+
+  if (parsed.command === 'validate') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    requireTopic(parsed);
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
+  }
+
+  if (parsed.command === 'repair') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    requireTopic(parsed);
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
+  }
+
+  if (parsed.command === 'deploy') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    requireTopic(parsed);
+    return { parsed, targetDir, steps: [friendlyCliStep(targetDir, parsed)] };
   }
 
   if (parsed.command === 'auth') {

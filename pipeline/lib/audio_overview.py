@@ -676,10 +676,20 @@ def audio_script_block(gemini_key, mode="paper", ctx=None, provider_js=""):
     falls through to the in-memory prompt path.
 
     """
-    prefix = "window._GEMINI_KEY = " + json.dumps(gemini_key or "") + ";\n"
-    prefix += "window._AUDIO_MODE = " + json.dumps(mode) + ";\n"
+    def inline_json(value):
+        return (
+            json.dumps(value, ensure_ascii=False)
+            .replace("&", "\\u0026")
+            .replace("<", "\\u003c")
+            .replace(">", "\\u003e")
+            .replace("\u2028", "\\u2028")
+            .replace("\u2029", "\\u2029")
+        )
+
+    prefix = "window._GEMINI_KEY = " + inline_json(gemini_key or "") + ";\n"
+    prefix += "window._AUDIO_MODE = " + inline_json(mode) + ";\n"
     if ctx is not None:
-        prefix += "window._AUDIO = " + json.dumps(ctx, ensure_ascii=False) + ";\n"
+        prefix += "window._AUDIO = " + inline_json(ctx) + ";\n"
     if provider_js:
         prefix += provider_js + "\n"
     return ('<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js" '

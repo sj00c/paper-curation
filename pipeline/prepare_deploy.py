@@ -616,6 +616,18 @@ def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
     """Programmatic entrypoint for prepare_deploy."""
     public_base_url = ""
     if push:
+        from inspect_deploy import inspect_deploy
+        failures = inspect_deploy(topic)
+        if failures:
+            raise SystemExit(
+                "Refusing public deployment; preflight failed:\n- "
+                + "\n- ".join(failures)
+            )
+        # All substantive integrity/freshness/tool checks must pass before
+        # ensure_gitignore, image conversion, rewrites, or public re-rendering.
+        _preflight_search_indexes(topics)
+        _preflight_topics(topics)
+        _wrangler_env()
         if not _public_deployment_enabled():
             raise SystemExit(
                 "Refusing public deployment: set publication.mode to 'public' "
@@ -825,9 +837,6 @@ def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
         else:
             # Step 6: Upload full content to Cloudflare via wrangler
             print("\nStep 6: Deploying to Cloudflare (wrangler deploy)...")
-            print("  [preflight] verifying topic indices before upload")
-            _preflight_search_indexes(topics)
-            _preflight_topics(topics)
             _wrangler_deploy()
 
             # Step 7: Verify Cloudflare endpoints return 200 before making

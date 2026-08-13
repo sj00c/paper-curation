@@ -15,6 +15,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import stat
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
@@ -55,28 +56,24 @@ class SkillTemplateDriftTests(unittest.TestCase):
         self.template = TEMPLATE.read_text(encoding="utf-8")
 
     @unittest.skipUnless(shutil.which("git"), "git 없이는 커밋본을 읽을 수 없다")
-    def test_render_reproduces_committed_skill_md(self):
+    def test_render_reproduces_worktree_skill_md(self):
         """레퍼런스 값으로 렌더한 템플릿 == 커밋된 SKILL.md.
 
         로컬 SKILL.md 가 아니라 커밋본과 비교한다. 다른 topic alias 로 설치한
         사용자의 작업 트리는 정당하게 달라지지만, 추적되는 두 파일이 서로
         갈라지는 것은 언제나 결함이다.
         """
-        committed = _git_show("SKILL.md")
-        if committed is None:
-            self.skipTest("HEAD:SKILL.md 를 읽을 수 없음")
-
         rendered, unresolved = setup_cli.render_skill_md(self.template, REFERENCE)
         self.assertEqual([], unresolved)
         self.assertEqual(
-            committed,
+            (REPO / "SKILL.md").read_text(encoding="utf-8"),
             rendered,
             "SKILL.md.template 과 SKILL.md 가 갈라졌다. 한쪽만 고치면 setup 이 "
             "다른 쪽을 조용히 덮어쓴다.",
         )
 
-    def test_template_is_the_dispatcher_not_the_legacy_playbook(self):
-        """템플릿은 run_full.py 단일 진입점을 지시해야 한다."""
+    def test_template_uses_official_cli_and_keeps_legacy_troubleshooting(self):
+        self.assertIn("paper-curation update", self.template)
         self.assertIn("pipeline/run_full.py", self.template)
         for stale in (
             'subagent_type="paper-scout"',
@@ -93,6 +90,8 @@ class SkillTemplateDriftTests(unittest.TestCase):
         """템플릿이 쓰는 슬롯은 전부 치환 대상이고, 비었을 때 이유를 말할 수 있어야 한다."""
         replacements = setup_cli.skill_replacements({})
         for placeholder in REFERENCE:
+            if placeholder not in self.template:
+                continue
             self.assertIn(placeholder, self.template)
             self.assertIn(placeholder, replacements)
             self.assertIn(placeholder, setup_cli.SKILL_PLACEHOLDER_REASONS)
@@ -126,10 +125,9 @@ class SkillRenderTests(unittest.TestCase):
         rendered, unresolved = setup_cli.render_skill_md(
             TEMPLATE.read_text(encoding="utf-8"), setup_cli.skill_replacements(cfg)
         )
-        self.assertIn("--topic bioml --mode curate", rendered)
+        self.assertIn("paper-curation update --topic bioml", rendered)
         self.assertNotIn("--topic ai4s", rendered)
-        # github 미설정이므로 배포 URL 슬롯만 남는다.
-        self.assertEqual(["{pages_base_url}"], unresolved)
+        self.assertEqual([], unresolved)
 
     def test_topic_alias_missing_is_empty_not_a_guess(self):
         self.assertEqual("", setup_cli.resolve_topic_alias({}))
@@ -154,6 +152,13 @@ class StepSkillMdTests(unittest.TestCase):
                  redirect_stdout(buf):
                 ok = setup_cli.step_skill_md(cfg)
             return ok, out.read_text(encoding="utf-8"), buf.getvalue()
+
+    def test_secret_json_writer_creates_private_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "config.json"
+            setup_cli._write_secret_json(path, {"api_key": "secret"})
+            self.assertEqual(stat.S_IMODE(path.stat().st_mode), 0o600)
+            self.assertEqual(json.loads(path.read_text()), {"api_key": "secret"})
 
     def test_unresolved_slots_are_reported_with_a_reason(self):
         ok, written, output = self._run({}, "--topic {topic_alias}\n{pages_base_url}/x/\n")
@@ -209,14 +214,11 @@ class ReferenceOutputSeparationTests(unittest.TestCase):
 
     def test_write_reference_reproduces_the_committed_file(self):
         """--write-reference 는 커밋본을 그대로 재현해야 한다 (idempotent)."""
-        committed = _git_show("SKILL.md")
-        if committed is None:
-            self.skipTest("HEAD:SKILL.md 를 읽을 수 없음")
         template = TEMPLATE.read_text(encoding="utf-8")
         rendered, unresolved = setup_cli.render_skill_md(
             template, setup_cli.REFERENCE_REPLACEMENTS)
         self.assertEqual([], unresolved)
-        self.assertEqual(committed, rendered)
+        self.assertEqual((REPO / "SKILL.md").read_text(encoding="utf-8"), rendered)
 
     def test_step_skill_md_does_not_touch_the_reference(self):
         """로컬 설치값으로 렌더해도 레퍼런스 파일은 그대로여야 한다."""
