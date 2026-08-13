@@ -5,7 +5,15 @@
     "collections": {
       "my_topic": "Your Zotero Collection Name"
     },
-    "pdf_dir": "/path/to/your/zotero/pdfs"
+    "pdf_dir": "/path/to/your/zotero/pdfs",
+    "pdf_dir_by_host": {
+      "my-laptop": "/Users/me/Library/CloudStorage/GoogleDrive-me/내 드라이브/Zotero",
+      "my-server": "/Users/me/Documents/Zotero"
+    },
+    "pdf_dir_candidates": [
+      "~/Zotero",
+      "/path/to/other/machine/Zotero"
+    ]
   },
   "unpaywall_email": "your.email@example.com",
   "_comment_anthropic_auth": "Anthropic 인증은 둘 중 하나입니다. 구독 OAuth는 아래 mode=oauth와 `claude auth login` 또는 env CLAUDE_CODE_OAUTH_TOKEN을 사용합니다(토큰은 config에 저장하지 않음). Console 종량제 API를 쓰려면 anthropic_auth 블록을 지우고 최상위 anthropic_api_key를 설정하세요.",

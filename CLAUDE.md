@@ -344,11 +344,11 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
 
 # 특정 슬러그만 force-rebuild (감사·복구 시)
-#   주의: --mode rebuild 는 토픽 전체의 categorization/insights/timelines 까지 재생성한다 (수 시간, API 비용 ↑).
-#   PDF 한 편 교체 후 review.md만 갱신하고 싶으면 다음 패턴이 가볍다:
-#     rm docs/papers/{NNN}_*/review.md
-#     python pipeline/run_full.py --topic ai4s --mode curate --source zotero --skip-dedup
-#   (이후 분류 영향까지 반영하려면 --mode reclassify 별도 실행)
+#   --slugs 는 "이 논문들만 바뀌었다"는 선언이라 후처리도 그 범위로 좁혀진다:
+#   topic_modeling 은 저장된 HDBSCAN 번들을 재사용(--skip-classification)하고,
+#   narrative/timeline 은 바뀐 카테고리만, review_to_html 은 해당 논문 + 연결된
+#   이웃 페이지만 다시 만든다. (--slugs 없는 --mode rebuild 는 전편 재생성이므로
+#   토픽 전체 재생성이 그대로 맞다.)
 PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf
 
 # 분류만 다시 (Phase 3 node-based, LLM 호출 없음)
@@ -449,4 +449,78 @@ PYTHONUTF8=1 python pipeline/cleanup.py --execute
 - **OpenAI API (선택)**: 독자 BYOK 답변 생성 + `extract_insights` cross-category **backend 후보**(대체 체인이 아님 — 설정된 첫 후보만 쓰고, Claude 가 실패했다고 OpenAI 가 대신 답하지 않는다). 검색 인덱스에는 더 이상 필요 없다. 키는 `OPENAI_API_KEY` env 또는 `config.json` 의 `openai_api_key`.
 - **PyMuPDF (fitz)**: PDF text extraction and figure rendering
 - **Pillow**: PNG→WebP conversion in `pipeline/prepare_deploy.py`
-- **Zotero PDF storage**: Path configured in `config.json` (`zotero.pdf_dir`)
+- **Zotero PDF storage**: `config.json` 의 `zotero.pdf_dir`. 같은 라이브러리를 여러 머신에서
+  쓰면 경로가 다르므로 `get_zotero_dir()` 이 순서대로 해결한다 —
+  ① `ZOTERO_DIR` 환경변수 → ② `zotero.pdf_dir_by_host[<hostname>]` (짧은 호스트명, 대소문자·
+  `.local` 무시) → ③ `zotero.pdf_dir_candidates` 중 **실제로 존재하는** 첫 경로 → ④ `zotero.pdf_dir`.
+  Zotero 의 `linked_file` 첨부는 **만들어진 머신의 절대경로**를 그대로 들고 있어서
+  (`C:\\Users\\jehyu\\GoogleDrive\\Zotero\\...`), 경로를 하나로 박으면 다른 머신에서 1,025편이
+  "파일 없음" 이 된다. `audit_zotero_pdf.resolve_pdf_path` 가 두 구분자 모두에서 파일명을 잘라
+  로컬 디렉토리에서 찾는다.
+
+## 분야별 기관·연구자 분석 (Field leaders)
+
+`python pipeline/report_field_leaders.py --topic ai4s --top 20`
+
+**근거 등급을 반드시 구분한다.** 논문이 어떤 기관 소속을 달고 있다는 사실
+(`paper_institutions`)은 그대로 세도 되지만, **저자를 그 기관 중 하나에 귀속**시키려면
+바이라인 위첨자가 필요하다. 기관이 여럿인데 마커가 없으면 빌더는 저자×기관 전조합을
+넣는다 — `paper_author_institutions` 의 86%(31,566/36,667)가 이 `pdf.unmarked-multi`
+추정이다. 이걸로 기관별 연구자를 세면 **그 기관에 있던 적 없는 사람**이 상위에 올라온다.
+
+리포트가 세는 링크는 셋뿐이다:
+
+|source|의미|
+|---|---|
+|`openalex`|출판사가 기탁한 저자↔기관 매핑 (ROR 기반) — 가장 강함|
+|`pdf.byline-marker`|위첨자가 실제로 해석된 것|
+|`pdf.sole-affiliation`|기관이 하나뿐이라 모호함이 없는 것|
+
+`--include-guessed` 를 주면 전조합까지 포함하되 리포트에 경고가 찍힌다.
+
+**OpenAlex 보강** — `python pipeline/enrich_openalex_authorships.py --execute`
+DOI 보유 논문에 대해 저자별 기관(ROR)·교신저자 플래그·OpenAlex 저자 ID·ORCID 를 가져와
+`source='openalex'` 로 **기존 PDF 링크 옆에** 추가한다(덮어쓰지 않음). 이게 없으면
+교신저자와 ORCID 는 DB 전체에서 0건이다.
+
+**피인용** — `python pipeline/run_metrics.py` (기본 30일 증분).
+`--quiet` 는 진행 출력을 끄고, 수집은 전량을 모은 뒤 일괄 기록하므로 중간에 파일이
+늘지 않는다. DOI 가 있어야 조회되므로 상한은 DOI 보유 논문 수다(현재 1,812/4,196 = 43%).
+리포트가 커버리지를 함께 출력하는 이유 — 일부만 수집된 피인용으로 순위를 매기면
+**수집된 논문이 먼저 올라올 뿐**이다.
+
+## paper-curio (Zotero 플러그인) — 두 번째 리뷰 생성기
+
+소스: `/Users/jehyunlee/Documents/내노트북/01_Work/01_Devs/AX/paper-curio` (TypeScript, Zotero 플러그인).
+앞으로 서지정보 DB 등록은 **실질적으로 이쪽을 통해 이루어진다**.
+
+같은 Zotero 라이브러리와 같은 `docs/papers/{slug}/` 를 공유하며, `src/core/pipeline.ts` 가
+text.md → figures → review.md → index.html → `_papers_index.json` 순으로 본체와 동일한 산출물을
+쓴다. 무거운 단계는 `src/extract/pybridge.ts` 가 이 저장소의 py312 함수(`extract_text`,
+`extract_figures`, `write_review`)를 직접 호출하고, 실패 시 TS(pdf.js/멀티프로바이더)로 폴백한다.
+자기가 만든 항목은 Zotero item 의 `extra` 에 `papercurio: {slug};{date}` 마커를 남긴다 —
+출처 판별은 이 마커가 유일하게 확실한 신호다(슬러그 대소문자는 정황 증거일 뿐).
+
+**서지 DB 등록 완성도** (`pipeline/audit_ingest_inputs.py` 로 실측, papercurio 224편 vs 본체 3,972편):
+
+|지표|papercurio|본체|
+|---|---|---|
+|`source_documents(text)` 보유|78.1%|100%|
+|저자↔기관 링크|70.1%|79.2%|
+|기관 링크|82.1%|84.0%|
+|`scopus-unconfirmed` 소속|22.8%|8.0%|
+|`zotero_item_key` 누락|0편|44편|
+
+- text.md 가 없는 49편 중 **40편은 Zotero 에 PDF 자체가 없다** — 추출할 원문이 없으니 본체도 동일하게
+  비운다. papercurio 결함이 아니다. 나머지 10편은 PDF 가 리뷰 생성 **이후** 첨부된 경우다.
+- `scopus-unconfirmed` 가 2.8배 높은 건 위 결과다: 대조할 본문이 없으면 Scopus 소속을 확인할 수 없어
+  신뢰도 0.95(`scopus+pdf`) 로 승격되지 못한다.
+- **유일하게 papercurio 가 쓰지 않는 산출물은 `bibliography.json` 사이드카**다. 이게 없으면
+  `build_bibliography_db.py` 가 매 빌드마다 Zotero 라이브러리 전체를 페이징한다(~200초, 실패 시
+  `zotero_item_key` 조용히 유실). 본체는 리뷰 생성 시 이 파일을 남긴다.
+
+**PDF 를 나중에 붙일 때 주의**: 아이템의 `url` 을 눌러 받은 PDF 는 그 url 이 가리키는 논문이지 그
+아이템의 논문이 아닐 수 있고, Zotmoov 가 파일명을 **아이템 제목으로 자동 변경**하므로 파일명으로는
+절대 판별할 수 없다. 본문 텍스트로 확인해야 한다 —
+`python pipeline/inspect_zotero_item.py --keys <KEY> --check-pdf`.
+

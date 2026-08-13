@@ -76,6 +76,90 @@ def collect(db: Path, report: dict, issues: list[str], warnings: list[str]) -> N
         if orphans:
             issues.append(f"orphan institutions: {orphans}")
 
+        # A paper must carry its own bibliography. Each of these was measured
+        # in the shipped DB and each produced the same damage — a row holding
+        # another work's title, journal and pagination. Gated so a repair
+        # cannot silently rot back.
+        from lib import zotero_identity
+        identity = zotero_identity.audit(conn, ROOT / "docs" / "papers")
+        report["placeholder_doi_papers"] = identity["placeholder_doi_papers"]
+        report["papers_on_a_shared_zotero_key"] = \
+            identity["papers_on_a_shared_key"]
+        report["title_disagreements"] = identity["title_disagreements"]
+        if identity["placeholder_doi_papers"]:
+            issues.append(
+                f"non-DOI values in papers.doi: "
+                f"{identity['placeholder_doi_papers']} "
+                f"({', '.join(identity['placeholder_doi_values'][:6])})")
+        report["correction_pairs"] = identity["correction_pairs"]
+        if identity["papers_on_a_shared_key"]:
+            worst = identity["shared_key_detail"][0]
+            # Two papers claiming one Zotero record is either contamination or
+            # the same paper filed under two slugs. The second needs an
+            # operator's decision (pipeline/dedup_zotero.py,
+            # pipeline/audit_matching.py), so it is surfaced without blocking.
+            warnings.append(
+                f"papers sharing a Zotero item: "
+                f"{identity['papers_on_a_shared_key']} across "
+                f"{identity['shared_zotero_keys']} items "
+                f"(worst: {worst['zotero_item_key']} — "
+                f"{', '.join(slug[:28] for slug in worst['slugs'])})")
+        if identity["title_disagreements"]:
+            worst = identity["title_disagreement_detail"][0]
+            issues.append(
+                f"papers titled as another work: "
+                f"{identity['title_disagreements']} "
+                f"(worst: {worst['slug'][:40]} — DB {worst['db_title'][:40]!r})")
+
+        # Connections are LLM claims: whether a claim is *true* cannot be
+        # checked here and this gate does not pretend to. What is checkable is
+        # that both endpoints are real papers — the JSON files this replaced
+        # held 79 pairs pointing at papers deleted long ago, with nothing to
+        # notice — and that every row names the model that asserted it, so a
+        # later reader can tell derived data from bibliographic fact.
+        if "paper_connections" in tables:
+            report["connections"] = scalar(
+                conn, "SELECT COUNT(*) FROM paper_connections")
+            broken = scalar(
+                conn,
+                "SELECT COUNT(*) FROM paper_connections c WHERE NOT EXISTS("
+                " SELECT 1 FROM papers p WHERE p.paper_id=c.paper_id) OR NOT"
+                " EXISTS(SELECT 1 FROM papers p"
+                "        WHERE p.paper_id=c.related_paper_id)")
+            report["connection_dangling_endpoints"] = broken
+            if broken:
+                issues.append(f"connections with missing endpoints: {broken}")
+            unattributed = scalar(
+                conn,
+                "SELECT COUNT(*) FROM paper_connections"
+                " WHERE model IS NULL OR model=''")
+            report["connections_without_model"] = unattributed
+            if unattributed:
+                issues.append(
+                    f"connections not attributed to a model: {unattributed}")
+            self_linked = scalar(
+                conn, "SELECT COUNT(*) FROM paper_connections"
+                      " WHERE paper_id=related_paper_id")
+            if self_linked:
+                issues.append(f"self-referential connections: {self_linked}")
+
+        # Author-level affiliation. A row must agree with the paper-level table:
+        # an author cannot sit at an institution the paper is not linked to.
+        if "paper_author_institutions" in tables:
+            report["author_institution_links"] = scalar(
+                conn, "SELECT COUNT(*) FROM paper_author_institutions")
+            inconsistent = scalar(
+                conn,
+                "SELECT COUNT(*) FROM paper_author_institutions pai"
+                " WHERE NOT EXISTS(SELECT 1 FROM paper_institutions pi"
+                "  WHERE pi.paper_id=pai.paper_id"
+                "    AND pi.institution_id=pai.institution_id)")
+            report["author_institution_inconsistent"] = inconsistent
+            if inconsistent:
+                issues.append(
+                    "author affiliations absent from paper_institutions: "
+                    f"{inconsistent}")
+
         # The name gates exist to catch parser garbage. A name ROR resolved is
         # by definition not parser garbage, so only unresolved names are judged
         # — otherwise "Yale School of Medicine" and "Technische Universität
