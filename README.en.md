@@ -6,10 +6,6 @@
 
 Turn hundreds of papers into structured Korean reviews, auto-classify them with AI, and ask natural-language questions grounded in the actual papers. A **personal research knowledge system** that runs locally; deployment is optional. Orchestrated by Claude Code.
 
-![Paper Curation pipeline](workflow.png)
-
-> 🐱 **The whole pipeline in one picture** — collection, review, classification, related-paper linking, timelines, Deep Research, and deploy, all handled by cats.
-
 ---
 
 ## What It Does
@@ -34,10 +30,9 @@ Features are split into **Core** (always produced by the default pipeline) and *
 
 | Feature | How to enable | Description |
 |---------|---------------|-------------|
-| **Content Deploy (O-1)** | `--mode deploy` | Cloudflare Workers (static assets + `/api/embed` + `/api/audio-email`) + gh-pages redirect stubs. Deploying activates Audio Overview email delivery |
+| **Content Deploy (O-1)** | `--mode deploy` | Cloudflare Workers (static assets + `/api/embed`) + optional gh-pages redirect stubs |
 | **Research Insights + Network (O-2)** | `--insights` | Cross-category insight analysis + regenerates the interactive UMAP 2D/3D network (category filters, ego network, hub/bridge) |
 | **Local LLM fallback** | `--local-fallback` | When Related Papers generation is blocked by network failures to the very end, a local model (Ollama/LM Studio/…) completes the remainder. Requires a `local_model` block in config.json |
-| **Workflow diagram** | `generate_workflow.py` | Generates the cat pipeline diagram at the top of this README (PaperBanana, `--style cat/fairy/academic`) |
 
 **What you need**: a Zotero collection with PDFs, a Zotero API key, and one Claude authentication mode:
 
@@ -110,11 +105,11 @@ export CLAUDE_CODE_OAUTH_TOKEN='token_printed_by_setup-token'
 
 export GOOGLE_API_KEY=...
 export ZOTERO_API_KEY=...
-PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth --no-run
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth
 
 # Or metered Console API billing
 export ANTHROPIC_API_KEY=sk-ant-...
-PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key
 ```
 
 `setup.py` creates `config.json`, tests Zotero connectivity, and installs the Claude Code skill. Run the pipeline separately after setup.
@@ -126,7 +121,7 @@ PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
 | **Zotero** | [API Key](https://www.zotero.org/settings/keys) + a collection with paper PDFs |
 | **Claude auth** | Subscription OAuth (`claude auth login` or env-only `CLAUDE_CODE_OAUTH_TOKEN`) **or** metered Console `ANTHROPIC_API_KEY` |
 | **Google API key** (optional) | `GOOGLE_API_KEY` for dense search embeddings, figure validation, and TTS. Without it those stay off and search is BM25-lexical only |
-| **Optional keys** | `OPENAI_API_KEY` for reader BYOK answers and as an insights backend candidate; `RESEND_API_KEY` for deployed Audio Overview email |
+| **Optional keys** | `OPENAI_API_KEY` for reader BYOK answers and as an insights backend candidate; `RESEND_API_KEY` for explicitly requested completion notifications |
 | **conda env** | `py312` (Python 3.12), created automatically by NPX or manually above |
 | **Java Runtime** | For `opendataloader-pdf`; without it, the pipeline falls back to PyMuPDF |
 
@@ -222,7 +217,7 @@ The cat diagram at the top is the bird's-eye view. `run_full.py` runs the Core s
 | **Input** | All classifications + reviews + timelines + UMAP coordinates |
 | **Processing** | <ul><li>(Core) Assembles category cards, search, timeline narratives, Deep Research UI, and the Audio Overview modal into a single HTML</li><li>(Option O-2, `--insights`) Regenerates the D3.js + Three.js interactive network from UMAP 2D/3D coordinates</li></ul> |
 | **Output** | <ul><li><code>{topic}/index.html</code></li><li>(O-2) <code>{topic}/network.html</code></li></ul> |
-| **Usage** | `PYTHONUTF8=1 python pipeline/serve_local.py` — browse locally. On both per-paper pages and Deep Research answers, the 🎧 **Audio Overview** button generates a Korean podcast (Gemini TTS, MP3 encoded in-browser → instant download). On the deployed site the finished MP3 is also delivered by email automatically |
+| **Usage** | `PYTHONUTF8=1 python pipeline/serve_local.py` — browse locally. On both per-paper pages and Deep Research answers, the Audio Overview button generates a Korean podcast (Gemini TTS, MP3 encoded in-browser → instant download). Email delivery is available only when explicitly configured. |
 
 ### Deployment (Option O-1)
 
@@ -230,8 +225,8 @@ Local use is the default. For sharing, a **3-tier split-host** architecture depl
 
 | Tier | Role | Contents |
 |------|------|----------|
-| **Cloudflare Workers (Static Assets + Function)** | Serves user-facing content + the `/api/embed` and `/api/audio-email` routes | Full `docs/` uploaded (local-only topics excluded via `docs/.assetsignore`) + `worker/index.js` |
-| **GitHub `gh-pages` branch** | Entry-URL → Cloudflare redirect | Per-topic redirect stubs (<1KB), `jehyunlee.github.io/paper-curation/{topic}/` → the operator-configured Cloudflare URL |
+| **Cloudflare Workers (Static Assets + Function)** | Serves user-facing content + the `/api/embed` route | Full `docs/` uploaded (local-only topics excluded via `docs/.assetsignore`) + `worker/index.js` |
+| **GitHub `gh-pages` branch** | Optional entry-URL → Cloudflare redirect | Per-topic redirect stubs pointing to the operator-configured public URL |
 | **GitHub `master` branch** | Code / config / README only | Large `docs/papers/`, `docs/{topic}/` content is `.gitignore`'d |
 
 ```bash
@@ -239,23 +234,19 @@ Local use is the default. For sharing, a **3-tier split-host** architecture depl
 PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode deploy
 ```
 
-Automatic: PNG → WebP conversion (~60% smaller) · API keys and local-only emails stripped from deployed HTML (local working tree restored after push) · `npx wrangler deploy` → Cloudflare (hash-based incremental upload, Worker deployed in the same step) · gh-pages redirect-stub idempotent sync · Cloudflare 200-OK verification (polls up to 5 min) · only code/config pushed to master (content is gitignored).
+Deployment converts PNG to WebP, verifies that no local credentials are present, deploys with Wrangler, verifies the configured public URL, and only then optionally synchronizes redirect stubs. It never commits or pushes source-branch changes.
 
-**Custom domain (recommended)** — add a `[[routes]]` block to `wrangler.toml` (`pattern`, `custom_domain = true`, `zone_name`); `wrangler deploy` provisions DNS, SSL, and routing. Update `prepare_deploy.py`'s `CF_BASE_URL` so the gh-pages stubs point at it. The default `*.workers.dev` URL works too, but a custom domain matters for email consistency.
+**Custom domain (recommended)** — add a `[[routes]]` block to your deployment-specific Wrangler configuration (`pattern`, `custom_domain = true`, `zone_name`), set `publication.mode` to `public`, and configure `publication.base_url` or `PAPER_CURATION_PUBLIC_BASE_URL`. The tracked `wrangler.toml` intentionally contains no owner-specific route.
 
-**Worker secrets** — `worker/index.js` exposes `/api/embed` (a `gemini-embedding-001` query-embedding proxy so readers search without a key) and `/api/audio-email` (ships finished MP3s via [Resend](https://resend.com)). Register them with `wrangler secret put`:
+**Worker secret** — `worker/index.js` exposes `/api/embed`, a
+`gemini-embedding-001` query-embedding proxy so readers can search without
+receiving the operator's key:
 
 ```bash
 npx wrangler secret put GOOGLE_API_KEY    # /api/embed proxy (gemini-embedding-001, required)
-npx wrangler secret put RESEND_API_KEY    # re_xxx from Resend (required for email)
-npx wrangler secret put AUDIO_FROM        # e.g. "Paper Curation <noreply@your-domain.tld>" (domain must be verified)
-npx wrangler secret put AUDIO_REPLY_TO    # operator inbox for replies, e.g. "you@gmail.com" (optional)
 ```
 
 - Without `GOOGLE_API_KEY`, `/api/embed` fails and Deep Research retrieval won't work. Locally, `pipeline/serve_local.py` plays the same role.
-- When `RESEND_API_KEY` is unset, `/api/audio-email` returns 503 and the client falls back to download-only.
-- `AUDIO_FROM` requires the domain to be SPF/DKIM/DMARC-verified in Resend before sending to arbitrary recipients.
-- To bake operator addresses for localhost builds, add `"local_emails": [...]` to `config.json` or set `PAPER_CURATION_LOCAL_EMAILS`. These are stripped at deploy time.
 
 ---
 
@@ -368,7 +359,7 @@ cd ..
 **2. arXiv API chronic 429/timeout** — once `export.arxiv.org` throttles your IP, even a proper User-Agent doesn't always help. Pass `--skip-arxiv` to search via OpenAlex + Semantic Scholar only (saves ~8 min per window):
 
 ```bash
-PYTHONUTF8=1 python pipeline/search_papers.py --topic scisci --since 2026-04-01 --until 2026-04-10 --skip-arxiv
+PYTHONUTF8=1 python pipeline/search_papers.py --topic my-topic --since 2026-04-01 --until 2026-04-10 --skip-arxiv
 ```
 
 OpenAlex returns 1k+ items per keyword and dominates the result pool, so missing arXiv rarely degrades coverage.
@@ -377,7 +368,7 @@ OpenAlex returns 1k+ items per keyword and dominates the result pool, so missing
 
 ```bash
 # Add a local_model block to config.json (Ollama example — measured: EXAONE-4.0-32B, ~32s per 8-paper batch)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --local-fallback
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode curate --source zotero --local-fallback
 ```
 
 Ollama is auto-detected and served via its native API; LM Studio/llama.cpp/vLLM use the OpenAI-compatible path. A dead endpoint is skipped silently.
@@ -469,15 +460,4 @@ Deep Research query -> Obsidian note -> re-index -> your notes cited in next que
 
 ---
 
-## Talks
-
-This project was presented at **AAiCON 2026** (National Science Museum, Daejeon, Korea · 2026.06.25–26).
-
-| Format | Slides |
-|--------|--------|
-| **Oral presentation** | [260625_이제현_AAiCon.pdf](docs/public/260625_이제현_AAiCon.pdf) |
-| **Poster** | [260625_이제현_AAiCon_poster.pdf](docs/public/260625_이제현_AAiCon_poster.pdf) |
-
----
-
-*Built with Claude Code.* 🐱
+*Built with Claude Code.*

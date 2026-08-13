@@ -7,10 +7,11 @@ binary/NUL blobs, and annotated-tag messages are all inspected.
 
 Input (default): pre-push ref lines on stdin:
     <local-ref> <local-oid> <remote-ref> <remote-oid>
-New refs are enumerated with `rev-list <oid> --not --remotes`; updates use
-`rev-list <local> ^<remote>`. The local ref object itself is always included so
-annotated tag messages are scanned. With no stdin, HEAD objects not on any
-remote are scanned (safe manual fallback).
+Every non-deletion local tip is enumerated with `rev-list --objects <oid>`.
+This deliberately includes objects reachable from an existing remote: a remote
+ref is not evidence that the local history was already scanned. With no stdin,
+all objects reachable from HEAD are scanned. `--all` scans only the current
+HEAD snapshot; `--history` scans every object from every ref.
 """
 from __future__ import annotations
 
@@ -46,6 +47,9 @@ RAW_PATTERNS = (
     ("Google OAuth token", re.compile(rb"ya29\.[A-Za-z0-9_-]{20,}")),
     ("AWS access key", re.compile(rb"AKIA[0-9A-Z]{16}")),
     ("GitHub token", re.compile(rb"gh[pousr]_[A-Za-z0-9]{20,}")),
+    ("Zotero API key", re.compile(
+        rb"""(?:ZOTERO_API_KEY|Zotero-API-Key)\s*["']?\s*[,=:]\s*["']?[A-Za-z0-9]{24}(?![A-Za-z0-9])"""
+    )),
 )
 BASE64_TOKEN = re.compile(rb"(?<![A-Za-z0-9+/=])[A-Za-z0-9+/]{24,}={0,2}(?![A-Za-z0-9+/=])")
 WHITESPACE = re.compile(rb"\s+")
@@ -72,23 +76,18 @@ def pushed_objects(lines: Iterable[str]) -> set[str]:
         fields = line.split()
         if len(fields) != 4:
             continue
-        _local_ref, local_oid, _remote_ref, remote_oid = fields
+        _local_ref, local_oid, _remote_ref, _remote_oid = fields
         refs_seen += 1
         if ZERO_RE.fullmatch(local_oid):  # deletion
             continue
-        objects.add(local_oid)  # annotated tag object / tip commit itself
-        if ZERO_RE.fullmatch(remote_oid):
-            objects.update(rev_objects([local_oid, "--not", "--remotes"]))
-        else:
-            objects.update(rev_objects([local_oid, f"^{remote_oid}"]))
+        objects.update(rev_objects([local_oid]))
     if refs_seen == 0:
-        objects.add(git("rev-parse", "HEAD").decode().strip())
-        objects.update(rev_objects(["HEAD", "--not", "--remotes"]))
+        objects.update(rev_objects(["HEAD"]))
     return objects
 
 
-def all_reachable_objects() -> set[str]:
-    # CI mode: inspect the complete current snapshot independent of diff attrs
+def snapshot_objects() -> set[str]:
+    # Snapshot mode: inspect the complete current tree independent of diff attrs
     # or binary status, plus HEAD and annotated-tag objects/messages.
     objects = {git("rev-parse", "HEAD").decode().strip()}
     out = git("ls-tree", "-r", "-z", "--format=%(objectname)", "HEAD")
@@ -96,6 +95,11 @@ def all_reachable_objects() -> set[str]:
     tags = git("for-each-ref", "--format=%(objectname)", "refs/tags")
     objects.update(x.decode("ascii") for x in tags.splitlines() if x)
     return objects
+
+
+def history_objects() -> set[str]:
+    """All objects reachable from any local or remote ref."""
+    return rev_objects(["--all"])
 
 
 def findings(data: bytes) -> set[str]:
@@ -161,11 +165,19 @@ def scan_objects(oids: set[str]) -> list[tuple[str, str, set[str]]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Scan raw pushed git objects for secrets")
-    parser.add_argument("--all", action="store_true",
-                        help="scan HEAD snapshot and annotated-tag objects")
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--all", action="store_true",
+                       help="scan the current HEAD snapshot and annotated-tag objects")
+    modes.add_argument("--history", action="store_true",
+                       help="scan all objects reachable from every ref")
     args = parser.parse_args()
     try:
-        oids = all_reachable_objects() if args.all else pushed_objects(sys.stdin)
+        if args.history:
+            oids = history_objects()
+        elif args.all:
+            oids = snapshot_objects()
+        else:
+            oids = pushed_objects(sys.stdin)
         hits = scan_objects(oids)
     except Exception as exc:
         print(f"[secret-scan] ERROR: {exc}", file=sys.stderr)

@@ -1,7 +1,7 @@
 """
 Zotero 서지정보 ↔ 첨부 PDF 정합성 감사.
 
-배경: dedup_text / audit_matching 은 *로컬 docs/papers* 산출물(review.md / text.md)
+배경: audit_matching 은 *로컬 docs/papers* 산출물(review.md / text.md)
 을 본다. 이 스크립트는 그 **상류**인 Zotero 컬렉션 자체를 본다 — 서지 항목(메타데이터)
 과 거기 붙은 PDF 파일이 실제로 같은 논문인지, 한 항목에 PDF 가 여러 개 붙지는 않았는지,
 같은 논문이 여러 항목으로 중복 등록되지는 않았는지를 교차검증한다.
@@ -20,8 +20,8 @@ PDF 경로 해석은 run_update_force.find_pdf 와 같은 규약을 따른다:
   절대경로면 그대로, 아니면 basename 을 ZOTERO_DIR 아래에서 탐색.
 
 Usage:
-  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic scisci
-  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic ai4s --no-content   # 내용검사 skip(빠름)
+  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --topic my-topic --no-content   # 내용검사 skip(빠름)
   PYTHONUTF8=1 python pipeline/audit_zotero_pdf.py --all                       # 설정된 전 컬렉션
 
 출력:
@@ -570,7 +570,7 @@ def load_existing_reports():
 def main():
     ap = argparse.ArgumentParser(description="Zotero 서지정보↔PDF 정합성 감사")
     ap.add_argument("--topic", help="단일 토픽")
-    ap.add_argument("--topics", help="콤마구분 다중 토픽 (예: scisci,ai4s)")
+    ap.add_argument("--topics", help="콤마구분 다중 토픽 (예: topic-a,topic-b)")
     ap.add_argument("--all", action="store_true", help="설정된 전 컬렉션")
     ap.add_argument("--combine-only", action="store_true",
                     help="새 감사 없이 디스크의 토픽별 JSON 만으로 통합 md 재생성")

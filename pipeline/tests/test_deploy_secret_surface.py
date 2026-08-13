@@ -30,7 +30,6 @@ from lib.secret_patterns import (  # noqa: E402
     find_local_emails,
     find_secrets,
     redact,
-    reinject_key_slot,
     strip_key_slots,
     strip_local_emails,
 )
@@ -48,6 +47,7 @@ FAKE = {
     "google_oauth": "ya29." + "F" * 40,
     "aws": "AKIA" + "G" * 16,
     "github": "ghp_" + "H" * 30,
+    "zotero_api": "Z" * 24,
 }
 
 # 접두사가 전혀 없는 자격증명(Azure OpenAI 32-hex, 사내 게이트웨이 등).
@@ -59,8 +59,12 @@ class SecretPatternTests(unittest.TestCase):
     def test_every_known_credential_shape_is_detected(self):
         for name, value in FAKE.items():
             with self.subTest(shape=name):
+                source = (
+                    f'ZOTERO_API_KEY = "{value}"'
+                    if name == "zotero_api" else f'let x = "{value}";'
+                )
                 self.assertTrue(
-                    find_secrets(f'let x = "{value}";'),
+                    find_secrets(source),
                     f"{name} 형태가 leak 검사에서 탐지되지 않는다",
                 )
 
@@ -70,6 +74,14 @@ class SecretPatternTests(unittest.TestCase):
 
     def test_google_oauth_token_is_detected(self):
         self.assertTrue(find_secrets(FAKE["google_oauth"]))
+
+    def test_zotero_api_key_is_detected(self):
+        self.assertTrue(find_secrets(
+            f'ZOTERO_API_KEY = "{FAKE["zotero_api"]}"'
+        ))
+
+    def test_zotero_api_key_requires_a_zotero_context_label(self):
+        self.assertEqual(find_secrets(FAKE["zotero_api"]), [])
 
     def test_paper_titles_are_not_false_positives(self):
         """논문 제목·슬러그의 `sk-...` 는 자격증명이 아니다.
@@ -143,12 +155,12 @@ class SlotStripTests(unittest.TestCase):
         self.assertEqual((n1, n2), (1, 0))
         self.assertEqual(once, twice)
 
-    def test_strip_preserves_the_localstorage_fallback_chain(self):
-        """키만 비우고 BYOK 경로는 살아 있어야 한다. 아니면 배포본이 죽는다."""
+    def test_strip_preserves_a_runtime_prompt_fallback_chain(self):
+        """키 리터럴만 비우고 runtime BYOK 표현은 보존한다."""
         src = (f'let _ANTHROPIC_KEY = "{FAKE["anthropic_api"]}"'
-               " || localStorage.getItem('_ANTHROPIC_KEY') || '';")
+               " || getRuntimeKey() || '';")
         out, _ = strip_key_slots(src)
-        self.assertIn("localStorage.getItem('_ANTHROPIC_KEY')", out)
+        self.assertIn("getRuntimeKey()", out)
 
     def test_strip_does_not_touch_unrelated_assignments(self):
         src = 'const _SEARCH_INDEX = "papers/_search_index.json";'
@@ -162,27 +174,6 @@ class SlotStripTests(unittest.TestCase):
         self.assertEqual(n, 1)
         self.assertFalse(find_local_emails(out))
         self.assertIn("window._LOCAL_EMAILS = []", out)
-
-
-class ReinjectTests(unittest.TestCase):
-    def test_reinject_round_trips_every_declaration_form(self):
-        for slot in KEY_SLOTS:
-            for decl in ("const ", "let ", "var ", "window."):
-                with self.subTest(slot=slot, decl=decl.strip()):
-                    original = f'{decl}{slot} = "{FAKE["google_api"]}";'
-                    stripped, _ = strip_key_slots(original)
-                    healed, n = reinject_key_slot(stripped, slot, FAKE["google_api"])
-                    self.assertEqual(n, 1, "strip 된 슬롯이 복원되지 않았다")
-                    self.assertEqual(healed, original)
-
-    def test_reinject_with_empty_value_is_a_noop(self):
-        src = 'let _OPENAI_KEY = "";'
-        out, n = reinject_key_slot(src, "_OPENAI_KEY", "")
-        self.assertEqual((out, n), (src, 0))
-
-    def test_reinject_escapes_the_value(self):
-        out, _ = reinject_key_slot('let _LLM_KEY = "";', "_LLM_KEY", 'a"b\\c')
-        self.assertIn(r'"a\"b\\c"', out)
 
 
 class DeploySurfaceTests(unittest.TestCase):
@@ -223,17 +214,16 @@ class DeploySurfaceTests(unittest.TestCase):
         self.assertTrue(rules, "docs/.assetsignore 를 읽지 못했다")
         expectations = [
             # 업로드되지 않음 → 검사 대상 아님
-            ("ai4s/index.html", True), ("scisci/x/y.json", True),
             ("_cross/a.html", True), ("_local_keys.json", True),
             ("papers/006_X/review.md", True), ("papers/006_X/text.md", True),
             ("papers/006_X/citations.md", True),
             ("papers/006_X/citedby/report.html", True),
             ("papers/006_X/citedby/sub/a.json", True),
-            ("papers/_comparisons/a.html", True), ("x/.obsidian/c.json", True),
+            ("x/.obsidian/c.json", True),
             (".gjc/state.json", True),
             # 업로드됨 → 반드시 검사
-            ("humanoid/index.html", False), ("humanoid/network.html", False),
-            ("humanoid/_search_index.json", False),
+            ("my-topic/index.html", False), ("my-topic/network.html", False),
+            ("my-topic/_search_index.json", False),
             ("papers/006_X/index.html", False),
             ("papers/_papers_index.json", False),
             ("index.html", False), ("setup-guide.md", False),
@@ -249,10 +239,10 @@ class DeploySurfaceTests(unittest.TestCase):
         self.assertTrue(self.pd._is_ignored("papers/006_X/citedby/r.html", rules))
         self.assertFalse(self.pd._is_ignored("papers/a/b/citedby/r.html", rules))
 
-    def test_real_docs_scan_scope_excludes_local_only_topics(self):
+    def test_real_docs_scan_scope_excludes_global_local_only_paths(self):
         targets = self.pd._scannable_files(self.pd.DOCS_DIR)
         rels = {p.relative_to(self.pd.DOCS_DIR).as_posix() for p in targets}
-        self.assertFalse([r for r in rels if r.startswith(("ai4s/", "scisci/", "_cross/"))])
+        self.assertFalse([r for r in rels if r.startswith("_cross/")])
         self.assertFalse([r for r in rels if "/citedby/" in r])
         self.assertFalse([r for r in rels if r.endswith(("/review.md", "/text.md"))])
 
@@ -348,6 +338,83 @@ class ScanSecretsHookTests(unittest.TestCase):
         names = [n for n, _ in mod.RAW_PATTERNS]
         self.assertIn("OpenAI legacy key", names)
         self.assertIn("Google OAuth token", names)
+        self.assertIn("Zotero API key", names)
+
+    def test_hook_detects_zotero_key_raw_whitespace_and_base64(self):
+        import base64
+        mod = self._load_hook()
+        key = FAKE["zotero_api"].encode("ascii")
+        for source, suffix in (
+            (b'ZOTERO_API_KEY="' + key + b'"', ""),
+            (b'ZOTERO_API_KEY="' + key[:12] + b"\n" + key[12:] + b'"',
+             " (whitespace-split)"),
+            (base64.b64encode(b'ZOTERO_API_KEY="' + key + b'"'), " (base64)"),
+        ):
+            with self.subTest(source=suffix or "raw"):
+                self.assertIn("Zotero API key" + suffix, mod.findings(source))
+
+    def test_hook_ignores_zotero_configuration_placeholders(self):
+        mod = self._load_hook()
+        for placeholder in (
+            b"ZOTERO_API_KEY",
+            b"YOUR_ZOTERO_API_KEY",
+            b"${ZOTERO_API_KEY}",
+            b'ZOTERO_API_KEY="YOUR_ZOTERO_API_KEY_HERE"',
+        ):
+            with self.subTest(placeholder=placeholder):
+                self.assertNotIn("Zotero API key", mod.findings(placeholder))
+
+    def test_snapshot_ignores_deleted_blob_but_history_and_tip_modes_find_it(self):
+        """`--all`은 현재 snapshot, `--history`/push는 reachable history를 본다."""
+        import subprocess
+        import tempfile
+
+        hook = PIPELINE.parent / "scripts" / "scan-secrets.py"
+        key = FAKE["zotero_api"]
+        with tempfile.TemporaryDirectory() as td:
+            repo = Path(td)
+
+            def git(*args, input=None):
+                return subprocess.run(
+                    ["git", *args], cwd=repo, input=input, text=True,
+                    capture_output=True, check=True,
+                )
+
+            git("init", "-q")
+            git("config", "user.email", "test@example.invalid")
+            git("config", "user.name", "Test")
+            (repo / "secret.txt").write_text(
+                f'ZOTERO_API_KEY="{key}"\n', encoding="ascii"
+            )
+            git("add", "secret.txt")
+            git("commit", "-qm", "secret")
+            secret_oid = git("rev-parse", "HEAD").stdout.strip()
+            git("update-ref", "refs/remotes/origin/main", secret_oid)
+            (repo / "secret.txt").write_text("removed\n", encoding="ascii")
+            git("commit", "-am", "remove secret", "-q")
+            tip_oid = git("rev-parse", "HEAD").stdout.strip()
+
+            def scan(*args, input=None):
+                return subprocess.run(
+                    [sys.executable, str(hook), *args], cwd=repo, input=input,
+                    text=True, capture_output=True, check=False,
+                )
+
+            snapshot = scan("--all")
+            history = scan("--history")
+            fallback = scan()
+            new_ref = scan(
+                input=f"refs/heads/main {tip_oid} refs/heads/main {'0' * 40}\n"
+            )
+
+        self.assertEqual(snapshot.returncode, 0, snapshot.stderr)
+        for name, proc in (
+            ("history", history), ("no-stdin fallback", fallback), ("new ref", new_ref)
+        ):
+            with self.subTest(mode=name):
+                self.assertEqual(proc.returncode, 1, proc.stderr)
+                self.assertIn("Zotero API key", proc.stderr)
+                self.assertNotIn(key, proc.stderr)
 
 
 class AudioOverviewKeyStateTests(unittest.TestCase):
@@ -407,7 +474,6 @@ class AudioOverviewKeyStateTests(unittest.TestCase):
         import lib.audio_overview as ao
         block = ao.audio_script_block(
             "", mode="paper", ctx={"title": "t", "review": "r", "connections": []},
-            local_emails=[],
         )
         js = re.sub(r"(?s)^.*?<script>|</script>.*$", "", block)
         with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f:

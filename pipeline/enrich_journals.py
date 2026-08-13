@@ -13,6 +13,7 @@ Usage:
 """
 import argparse
 import json
+import os
 import re
 import ssl
 import time
@@ -20,17 +21,16 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
+from config_loader import get_openalex_email
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 PAPERS_DIR = PIPELINE_DIR.parent / "docs" / "papers"
 INDEX = PAPERS_DIR / "_papers_index.json"
 OPENALEX = "https://api.openalex.org/works"
-MAILTO = "jehyun.lee@gmail.com"
+MAILTO = get_openalex_email()
 
-# 사내 프록시가 HTTPS 를 self-signed 로 가로채는 환경 대응 (config_loader 와 동일)
-_ctx = ssl.create_default_context()
-_ctx.check_hostname = False
-_ctx.verify_mode = ssl.CERT_NONE
+_CA_BUNDLE = os.environ.get("PAPER_CURATION_CA_BUNDLE", "").strip()
+_ctx = ssl.create_default_context(cafile=_CA_BUNDLE or None)
 
 
 def _norm_doi(d):
@@ -47,10 +47,13 @@ def fetch_venues(dois):
     for i in range(0, len(uniq), 50):
         batch = uniq[i:i + 50]
         flt = "doi:" + "|".join(batch)
-        url = (f"{OPENALEX}?per-page=50&mailto={MAILTO}&select=doi,primary_location"
-               f"&filter=" + urllib.parse.quote(flt, safe=":|/."))
+        params = f"per-page=50&select=doi,primary_location"
+        if MAILTO:
+            params += "&mailto=" + urllib.parse.quote(MAILTO)
+        url = f"{OPENALEX}?{params}&filter=" + urllib.parse.quote(flt, safe=":|/.")
         req = urllib.request.Request(
-            url, headers={"User-Agent": f"paper-curation/1.0 (mailto:{MAILTO})"})
+            url, headers={"User-Agent": "paper-curation/1.0"
+                          + (f" (mailto:{MAILTO})" if MAILTO else "")})
         data = {"results": []}
         for attempt in range(4):
             try:

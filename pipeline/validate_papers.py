@@ -8,8 +8,8 @@
   4. Python 리스트 리터럴 — ['a', 'b'] 형태가 그대로 남아있는지
 
 Usage:
-  PYTHONUTF8=1 python pipeline/validate_papers.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/validate_papers.py --topic ai4s --fix  # 자동 수정
+  PYTHONUTF8=1 python pipeline/validate_papers.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/validate_papers.py --topic my-topic --fix  # 자동 수정
 """
 
 import argparse
@@ -25,10 +25,9 @@ from config_loader import PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, get_topic_dir
 PAPERS_DIR = str(_PAPERS_DIR)
 
 try:
-    from lib.categories import category_slug, CATEGORIES_BY_TOPIC
+    from lib.categories import category_slug
 except Exception:
     category_slug = None
-    CATEGORIES_BY_TOPIC = {}
 
 
 def log(msg):
@@ -478,7 +477,7 @@ def check_connection_coverage(topic):
     return issues
 
 
-def _run_validate(topic="ai4s", *, fix=False, strict=False):
+def _run_validate(topic, *, fix=False, strict=False):
     """Programmatic entrypoint for validate_papers."""
     index_path = os.path.join(PAPERS_DIR, "_papers_index.json")
     with open(index_path, "r", encoding="utf-8") as f:

@@ -7,8 +7,8 @@ Zotero 컬렉션과 _papers_index.json 간 동기화.
   3. 매칭: DOI 우선, 제목 퍼지 매칭 폴백
 
 Usage:
-  PYTHONUTF8=1 python sync_zotero.py --topic ai4s
-  PYTHONUTF8=1 python sync_zotero.py --topic ai4s --dry-run
+  PYTHONUTF8=1 python sync_zotero.py --topic my-topic
+  PYTHONUTF8=1 python sync_zotero.py --topic my-topic --dry-run
 """
 
 import argparse

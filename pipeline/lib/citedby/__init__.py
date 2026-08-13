@@ -1,7 +1,7 @@
 """citedby — DOI 하나로 인용논문을 수집·분석하는 서브패키지.
 
-scisci(`jehyunlee/scisci`) 의 citedby 웹앱 코어를 paper-curation 으로 이식한
-것이다. Flask/SSE/세션 계층은 버리고 **순수 로직만** 가져왔다 — 진입점은
+기존 citedby 웹앱 코어의 순수 로직을 paper-curation에 통합한 것이다.
+Flask/SSE/세션 계층은 버렸으며 진입점은
 로컬 웹앱(`serve_local.py` 의 `/api/citedby`)과 CLI(`run_citedby.py`) 두 갈래로
 붙는다.
 

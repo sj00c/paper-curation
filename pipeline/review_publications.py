@@ -58,8 +58,7 @@ PREPRINT_HOSTS = ("arxiv", "biorxiv", "medrxiv", "chemrxiv", "ssrn",
 # rewritten a paper's bibliography to point at a data deposit.
 # Crossref and OpenAlex do not share a type vocabulary: a NeurIPS or EMNLP
 # paper is "proceedings-article" at Crossref and "conference-paper" at
-# OpenAlex. Listing only Crossref's rejected every conference paper OpenAlex
-# returned — most of an AI4S corpus.
+# OpenAlex. Restricting to Crossref types would reject conference papers.
 FORMAL_TYPES = ("article", "journal-article", "proceedings-article",
                 "conference-paper", "book-chapter", "review", "letter",
                 "editorial", "book-part", "reference-entry")

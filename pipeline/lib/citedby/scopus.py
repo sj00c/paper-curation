@@ -1,8 +1,7 @@
 """Scopus REST API 인프라 — 키 로테이션 + 검색결과 변환.
 
-scisci `lib/retrieval.py` 에서 citing 경로가 실제로 쓰는 부분만 발췌 이식했다
-(원본 2,073 줄 중 ~130 줄). 발췌 기준은 `citing.get_citing_from_scopus` 가
-import 하던 5개 심볼이다:
+Scopus citing adapter. `citing.get_citing_from_scopus`가 사용하는 API
+호출만 이 경계에 둔다.
 
     SCOPUS_SEARCH_URL, _get_scopus_api_keys, _get_next_scopus_key,
     _rotate_scopus_key, scopus_results_to_df

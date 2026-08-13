@@ -7,18 +7,18 @@ review.md / text.md / figures/ 를 삭제하고, 뒤이어 실행할 재리뷰 �
 안전장치:
   - 기본 --dry-run (실제 삭제 안 함)
   - --execute 로만 실제 삭제
-  - 삭제 대상 슬러그를 `docs/{topic}/_fix_matching_backup_<ts>.json` 에 덤프 (복구용)
+  - 실행 전에 대상 파일을 `docs/.recovery/fix_matching/<ts>/`에 실제 복사
   - 다른 토픽을 공유(papers/*/has multiple topics) 하는 슬러그는 삭제하지 않고 건너뜀
 
 Usage:
   # 기본: dry-run 으로 영향 범위 확인
-  PYTHONUTF8=1 python pipeline/fix_matching.py --topic ai4s
+  PYTHONUTF8=1 python pipeline/fix_matching.py --topic my-topic
 
   # 실제 삭제 + 재리뷰 명령 출력
-  PYTHONUTF8=1 python pipeline/fix_matching.py --topic ai4s --execute
+  PYTHONUTF8=1 python pipeline/fix_matching.py --topic my-topic --execute
 
   # 특정 슬러그만 처리 (audit 결과와 관계없이)
-  PYTHONUTF8=1 python pipeline/fix_matching.py --topic ai4s --slugs 088,1093 --execute
+  PYTHONUTF8=1 python pipeline/fix_matching.py --topic my-topic --slugs 088,1093 --execute
 """
 
 import argparse
@@ -56,8 +56,8 @@ def slug_has_other_topics(slug, index, this_topic):
     return False
 
 
-def delete_slug_artifacts(slug, dry_run=True):
-    """Remove review.md / text.md / index.html / figures/. Keep _papers_index.json entry."""
+def delete_slug_artifacts(slug, dry_run=True, backup_root=None):
+    """Back up and remove generated artifacts; keep the master index entry."""
     slug_dir = PAPERS_DIR / slug
     targets = []
     for name in ("review.md", "text.md", "index.html"):
@@ -69,10 +69,17 @@ def delete_slug_artifacts(slug, dry_run=True):
         targets.append(fig_dir)
 
     if not dry_run:
+        if backup_root is None:
+            raise ValueError("backup_root is required when deleting artifacts")
+        destination = Path(backup_root) / slug
         for t in targets:
+            saved = destination / t.relative_to(slug_dir)
+            saved.parent.mkdir(parents=True, exist_ok=True)
             if t.is_dir():
+                shutil.copytree(t, saved)
                 shutil.rmtree(t)
             else:
+                shutil.copy2(t, saved)
                 t.unlink()
     return [str(t.relative_to(PAPERS_DIR)) for t in targets]
 
@@ -135,15 +142,20 @@ def _run_fix_matching(topic, *, slugs=None, execute=False, include_medium=False)
         "fixable": fixable,
         "skipped_shared": skipped_shared,
     }
-    backup_path = get_topic_dir(topic) / f"_fix_matching_backup_{ts}.json"
-    backup_path.parent.mkdir(parents=True, exist_ok=True)
-    from lib.atomic_io import atomic_write_json
-    atomic_write_json(backup_path, backup)
-    print(f"Backup list    : {backup_path}")
+    backup_root = DOCS / ".recovery" / "fix_matching" / ts
+    backup_path = backup_root / "manifest.json"
+    if execute:
+        backup_root.mkdir(parents=True, exist_ok=False)
+        from lib.atomic_io import atomic_write_json
+        atomic_write_json(backup_path, backup)
+        print(f"Backup         : {backup_root}")
+    else:
+        print(f"Backup         : would create {backup_root}")
 
     deleted_counts = 0
     for slug in fixable:
-        targets = delete_slug_artifacts(slug, dry_run=not execute)
+        targets = delete_slug_artifacts(
+            slug, dry_run=not execute, backup_root=backup_root if execute else None)
         print(f"  {'DEL' if execute else 'would-del'}: {slug}  "
               f"({len(targets)} items)")
         deleted_counts += len(targets)
@@ -163,7 +175,8 @@ def _run_fix_matching(topic, *, slugs=None, execute=False, include_medium=False)
     print(f"  PYTHONUTF8=1 python pipeline/audit_matching.py --topic {topic}")
     print("  (verify 'high-confidence mismatch' has dropped)")
     return {"fixable": fixable, "skipped_shared": skipped_shared,
-            "deleted_artifacts": deleted_counts, "backup_path": str(backup_path)}
+            "deleted_artifacts": deleted_counts,
+            "backup_path": str(backup_path) if execute else ""}
 
 
 def main():

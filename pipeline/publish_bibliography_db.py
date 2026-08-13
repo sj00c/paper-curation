@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Atomically publish a local bibliography DB into the shared Google Drive."""
+"""Atomically publish a local bibliography DB to an explicit target."""
 from __future__ import annotations
 
 import argparse
@@ -8,10 +8,8 @@ import shutil
 import time
 from pathlib import Path
 
-SHARED = Path.home() / "Library" / "CloudStorage" / "GoogleDrive-jehyun.lee@gmail.com" / "내 드라이브" / "paper-curation" / "bibliography.sqlite3"
 
-
-def publish(source: Path, target: Path = SHARED) -> None:
+def publish(source: Path, target: Path) -> None:
     if not source.exists():
         raise FileNotFoundError(source)
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -24,10 +22,22 @@ def publish(source: Path, target: Path = SHARED) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--source", type=Path, required=True)
-    ap.add_argument("--target", type=Path, default=SHARED)
+    ap.add_argument(
+        "--target",
+        type=Path,
+        help="Destination path (or set PAPER_CURATION_BIBLIO_PUBLISH_TARGET).",
+    )
     ap.add_argument("--wait-for-pid", type=int)
     ap.add_argument("--poll", type=int, default=60)
     args = ap.parse_args()
+    target = args.target or os.environ.get(
+        "PAPER_CURATION_BIBLIO_PUBLISH_TARGET", ""
+    ).strip()
+    if not target:
+        ap.error(
+            "an explicit target is required: pass --target or set "
+            "PAPER_CURATION_BIBLIO_PUBLISH_TARGET"
+        )
     if args.wait_for_pid:
         while True:
             try:
@@ -37,7 +47,7 @@ def main() -> int:
             except PermissionError:
                 break
             time.sleep(args.poll)
-    publish(args.source, args.target)
+    publish(args.source, Path(target))
     return 0
 
 

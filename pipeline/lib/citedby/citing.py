@@ -1,6 +1,6 @@
 """인용논문(citing papers) 수집 — DOI 하나로 여러 학술 DB 를 훑는다.
 
-scisci `scie/lib/citing.py` 이식본. 주어진 DOI 를 인용한 논문을 OpenAlex /
+주어진 DOI 를 인용한 논문을 OpenAlex /
 Scopus / Semantic Scholar / arXiv 에서 병렬 수집하고, source 우선순위 기반으로
 병합·중복제거해 단일 DataFrame 으로 돌려준다.
 
@@ -12,10 +12,8 @@ paper-curation 의 "같이 보면 좋은 논문"(SPECTER2 임베딩 유사도)�
   1. **429 무한루프 수정** — 원본 OpenAlex/S2 루프는 429 를 만나면 sleep 후
      `continue` 만 해서 커서/오프셋이 전진하지 않아 영구히 돌 수 있었다.
      재시도 횟수를 유한하게 묶었다 (`_MAX_RATE_LIMIT_RETRIES`).
-  2. **`find_paper_in_db` 제거** — scisci `literature.db` 의 `papers` 테이블
-     스키마 전용이라 paper-curation 에는 대응물이 없다.
-  3. **Scopus 인프라 분리** — `.scopus` 모듈로 발췌 (원본은 retrieval.py 의존).
-  4. **pandas 지연 import** — citedby 미사용 시 기동 비용 0.
+  2. Scopus adapter는 `.scopus` 모듈로 분리한다.
+  3. pandas는 citedby 사용 시에만 지연 import한다.
 """
 from __future__ import annotations
 

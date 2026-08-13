@@ -9,11 +9,11 @@ Public functions are re-exported here so the typical usage is::
 
     from pipeline.api import search, register, classify, timeline, deploy
 
-    search(topic="ai4s", days=7)
-    register(topic="ai4s")
-    classify(topic="ai4s")
-    timeline(topic="ai4s")
-    deploy(topic="ai4s", push=True)
+    search(topic="my-topic", days=7)
+    register(topic="my-topic")
+    classify(topic="my-topic")
+    timeline(topic="my-topic")
+    deploy(topic="my-topic", push=True)
 
 Module-level imports are lazy (done inside each wrapper) so that
 importing :mod:`pipeline.api` is cheap and side-effect free.
@@ -123,7 +123,7 @@ def curate(topic, *, mode="curate", concurrency=16, slugs="",
 # Master index / topic modelling / classification
 # --------------------------------------------------------------------------- #
 
-def build_papers_index(topic="ai4s"):
+def build_papers_index(topic):
     """Rebuild docs/papers/_papers_index.json from review.md files."""
     from build_papers_index import _run_build_index
     return _run_build_index(topic=topic)
@@ -266,38 +266,16 @@ def cleanup(*, execute=False, purge_text=False):
     return _run_cleanup(execute=execute, purge_text=purge_text)
 
 
-def institution_report(topic="ai4s", *, top=15):
-    """Top-N institution report: research-flow narrative, timeline chart,
-    author-overlap labs, notable researchers, linked bibliography.
-
-    Reads `.cache/bibliography.sqlite3` only — no corpus mutation, no API calls.
-    Writes reports/source/{topic}_institutions_top{n}.md and
-    reports/build/{topic}_institutions_top{n}.html.
-    """
-    from build_institution_report import (BUILD_DIR, SOURCE_DIR, fetch,
-                                          render_html, render_markdown)
-    institutions, meta = fetch(topic, top)
-    SOURCE_DIR.mkdir(parents=True, exist_ok=True)
-    BUILD_DIR.mkdir(parents=True, exist_ok=True)
-    stem = f"{topic}_institutions_top{top}"
-    md_path = SOURCE_DIR / f"{stem}.md"
-    html_path = BUILD_DIR / f"{stem}.html"
-    md_path.write_text(render_markdown(institutions, meta), encoding="utf-8")
-    html_path.write_text(render_html(institutions, meta), encoding="utf-8")
-    return {"topic": topic, "institutions": len(institutions),
-            "papers_covered": sum(i["count"] for i in institutions),
-            "md": str(md_path), "html": str(html_path)}
-
-
 def affiliation_sources(*, check=False, refresh_ror=False):
-    """Ensure the ROR index and curated group table exist (idempotent)."""
+    """Ensure the public ROR dump and index exist (idempotent)."""
     import setup_affiliation_sources as setup
     if check:
         return setup.report()
-    return {"dump": setup.ensure_dump(force=refresh_ror),
-            "index": setup.ensure_index(force=refresh_ror),
-            "curated": setup.ensure_curated_dict(),
-            "state": setup.report()}
+    return {
+        "dump": setup.ensure_ror_dump(refresh=refresh_ror),
+        "index": setup.ensure_ror_index(rebuild=refresh_ror),
+        "state": setup.report(),
+    }
 
 
 __all__ = [
@@ -315,6 +293,5 @@ __all__ = [
     "topic_index", "review_to_html", "deploy",
     # validate / audit / cleanup
     "validate", "audit_matching", "fix_matching", "cleanup",
-    # bibliography-backed reports
-    "institution_report", "affiliation_sources",
+    "affiliation_sources",
 ]

@@ -8,7 +8,7 @@ this module answers three questions and provides a display label:
   - derivative_public_ok(cls): may the AI review (a derivative) be published?
   - label(cls)             : human attribution label (저작권법 제37조 / CC BY)
 
-Rationale (KIST 대륙아주 법무검토의견서, 2026-02-27):
+Policy rationale:
   - 모든 CC 라이선스는 *변경 없는* 원본의 재배포(복제·전송)를 허용 → figure(원본
     그대로)는 CC 이면 공개 OK. NC 도 사이트가 비영리면 준수로 본다.
   - ND(변경금지)만 2차적 저작물(=AI 리뷰) 작성/공개를 금지 → derivative 불가.

@@ -61,21 +61,3 @@ def get_categories(topic):
         return cats
 
     return ["Other"]
-
-
-# 하위 호환: 기존 코드가 CATEGORIES_BY_TOPIC["ai4s"] 형태로 접근하는 경우 지원
-class _CategoriesProxy(dict):
-    """dict-like proxy that loads categories on demand."""
-    def __missing__(self, topic):
-        cats = get_categories(topic)
-        self[topic] = cats
-        return cats
-
-    def get(self, topic, default=None):
-        try:
-            return self[topic]
-        except Exception:
-            return default if default is not None else ["Other"]
-
-
-CATEGORIES_BY_TOPIC = _CategoriesProxy()

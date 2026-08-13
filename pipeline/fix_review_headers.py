@@ -70,7 +70,7 @@ def fix_one(slug_dir, execute=False):
     source = "backup" if header_from_backup(slug_dir) else "frontmatter"
     title = re.match(r'#\s+(.+)', header).group(1).strip()
     tm = re.search(r'(?m)^primary_topic:\s*(.+)$', fm_body)
-    topic = tm.group(1).strip().strip('"').strip("'") if tm else "ai4s"
+    topic = tm.group(1).strip().strip('"').strip("'") if tm else ""
 
     if execute:
         new = fm_block + "\n" + header.rstrip("\n") + "\n\n" + body.lstrip("\n")
@@ -126,7 +126,12 @@ def main():
             with open(review, encoding="utf-8") as f:
                 _, fm_body, _ = split_review(f.read())
             tm = re.search(r'(?m)^primary_topic:\s*(.+)$', fm_body)
-            targets[name] = tm.group(1).strip().strip('"').strip("'") if tm else "ai4s"
+            if tm:
+                targets[name] = tm.group(1).strip().strip('"').strip("'")
+            elif args.topic:
+                targets[name] = args.topic
+            else:
+                print(f"[SKIP] {name}: primary_topic 없음 — --topic 필요")
 
     if not targets:
         return 0
@@ -135,12 +140,18 @@ def main():
         return 0
 
     from review_to_html import convert_review
+    from config_loader import get_default_topic
+    default_topic = args.topic or get_default_topic()
     ok = 0
     for slug, topic in sorted(targets.items()):
+        render_topic = args.topic or topic or default_topic
+        if not render_topic:
+            print(f"[SKIP] {slug}: HTML 테마 토픽을 결정할 수 없음 — --topic 필요")
+            continue
         slug_dir = os.path.join(PAPERS_DIR, slug)
         try:
             html = convert_review(os.path.join(slug_dir, "review.md"),
-                                  args.topic or topic, slug_dir)
+                                  render_topic, slug_dir)
             out = os.path.join(slug_dir, "index.html")
             tmp = out + ".tmp"
             with open(tmp, "w", encoding="utf-8") as f:

@@ -1,10 +1,7 @@
 """마크다운 → HTML 최소 변환기 (순수 텍스트 헬퍼).
 
-`agent_lecture_digest` 안에 있던 것을 여기로 꺼냈다. 그 모듈은 최상단에서
-`generate_audio` → `google.genai` 를 import 하기 때문에, 마크다운 한 줄을
-렌더하려는 쪽까지 Gemini SDK 를 요구하게 된다. 실제로 citedby 리포트가 그
-때문에 타임라인 narrative 를 렌더하지 못하고 `##`·`**` 를 글자 그대로
-노출했다 (import 실패를 except 로 삼켜 조용히 품질만 떨어뜨렸다).
+Provider SDK를 요구하는 생성기와 분리하여, 마크다운 한 줄을 렌더하려는 쪽이
+선택 의존성을 함께 import하지 않도록 한다.
 
 여기에는 `re` / `html` 외의 의존성이 없다. 선택 SDK 가 하나도 안 깔린
 환경에서도 import 된다.

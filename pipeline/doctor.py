@@ -13,7 +13,7 @@ pipeline/doctor.py — 설치 환경 일괄 진단 도구.
 Usage:
   PYTHONUTF8=1 python pipeline/doctor.py                    # 로컬 환경만 점검
   PYTHONUTF8=1 python pipeline/doctor.py --network          # Zotero API 연결까지
-  PYTHONUTF8=1 python pipeline/doctor.py --topic humanoid   # 특정 토픽 산출물까지
+  PYTHONUTF8=1 python pipeline/doctor.py --topic my-topic   # 특정 토픽 산출물까지
 
 종료코드: 필수 항목이 하나라도 ✗ 이면 1, 아니면 0.
 """
@@ -48,10 +48,8 @@ EXAMPLE_PATH = REPO / "config.example.json"
 DOCS_DIR = REPO / "docs"
 PAPERS_INDEX = DOCS_DIR / "papers" / "_papers_index.json"
 
-# 기업 프록시가 HTTPS 를 self-signed 로 가로채는 환경 대비 (config_loader 와 동일)
-_SSL_CTX = ssl.create_default_context()
-_SSL_CTX.check_hostname = False
-_SSL_CTX.verify_mode = ssl.CERT_NONE
+_CA_BUNDLE = os.environ.get("PAPER_CURATION_CA_BUNDLE", "").strip()
+_SSL_CTX = ssl.create_default_context(cafile=_CA_BUNDLE or None)
 
 
 # ---------------------------------------------------------------------------
@@ -451,12 +449,12 @@ def check_api_keys(rep, cfg):
         )
     found, src = _resolve_key(cfg, ["RESEND_API_KEY"], ["resend_api_key"])
     if found:
-        rep.ok("RESEND_API_KEY", f"설정됨 ({src}) — Audio Overview 이메일 발송")
+        rep.ok("RESEND_API_KEY", f"설정됨 ({src}) — 완료 알림 사용 가능")
     else:
         rep.warn(
             "RESEND_API_KEY 미설정 (선택)",
-            "Audio Overview 이메일 발송/Worker secret 등록 때만 필요 — 로컬 setup 차단 안 함",
-            "필요 시 `npx wrangler secret put RESEND_API_KEY`",
+            "명시적 bibliography 완료 알림에만 필요 — 로컬 setup 차단 안 함",
+            "필요 시 로컬 환경변수로 설정",
         )
 
     found, src = _resolve_key(cfg, ["CLOUDFLARE_API_TOKEN", "CF_API_TOKEN"], [])
@@ -685,7 +683,7 @@ def _git_hooks_dir():
 
 
 def check_guardrails(rep):
-    rep.section("10. 가드레일 (Git · 에이전트 · 백업)")
+    rep.section("10. 저장소 가드레일")
 
     src = REPO / "scripts" / "pre-push"
     installed = _git_hooks_dir() / "pre-push"
@@ -694,8 +692,8 @@ def check_guardrails(rep):
     if not src.exists():
         rep.warn("scripts/pre-push 없음", "훅 소스가 저장소에 없음")
     elif not installed.exists():
-        rep.fail("pre-push 훅 미설치",
-                 "시크릿 유출 스캔이 실행된 적 없음 (.git/hooks 에 pre-push 없음)", fix)
+        rep.warn("pre-push 훅 미설치",
+                 "선택적 로컬 시크릿 스캔 훅이 없음", fix)
     elif installed.read_bytes() != src.read_bytes():
         rep.warn("pre-push 훅 구버전",
                  "scripts/pre-push 와 설치본이 다름 — 재설치 필요", fix)
@@ -710,68 +708,6 @@ def check_guardrails(rep):
     else:
         rep.fail("시크릿 스캐너 없음", "scripts/scan-secrets.py 누락")
 
-    # Agent layer: source-controlled guard must match its installed global copy,
-    # settings must wire PreToolUse + deny and must not bypass dangerous prompts.
-    guard_src = REPO / "scripts" / "claude_guard.py"
-    guard_dst = Path.home() / ".claude" / "hooks" / "guard.py"
-    settings_path = Path.home() / ".claude" / "settings.json"
-    agent_fix = "python3 scripts/install-agent-guard.py"
-    if not guard_src.exists():
-        rep.fail("에이전트 가드 소스 없음", "scripts/claude_guard.py 누락")
-    elif not guard_dst.exists():
-        rep.fail("에이전트 PreToolUse 가드 미설치", str(guard_dst), agent_fix)
-    elif guard_dst.read_bytes() != guard_src.read_bytes():
-        rep.fail("에이전트 가드 구버전/변조",
-                 "설치본이 저장소 소스와 다름", agent_fix)
-    else:
-        rep.ok("에이전트 PreToolUse 가드 활성", "설치본 == 버전관리 소스")
-
-    try:
-        settings = json.loads(settings_path.read_text(encoding="utf-8"))
-    except Exception as exc:
-        rep.fail("Claude settings 읽기 실패", str(exc), agent_fix)
-    else:
-        deny = settings.get("permissions", {}).get("deny", [])
-        pre = settings.get("hooks", {}).get("PreToolUse", [])
-        wired = any("guard.py" in json.dumps(x) for x in pre)
-        if settings.get("skipDangerousModePermissionPrompt") is True:
-            rep.fail("dangerous-mode 프롬프트 스킵 활성",
-                     "skipDangerousModePermissionPrompt=true", agent_fix)
-        elif not deny or not wired:
-            rep.fail("Claude deny/PreToolUse 미배선",
-                     f"deny={len(deny)} · PreToolUse guard={wired}", agent_fix)
-        else:
-            rep.ok("Claude 권한 정책 활성",
-                   f"deny {len(deny)}건 · dangerous-mode 스킵 없음")
-
-    broken_agents = []
-    agents_dir = Path.home() / ".claude" / "agents"
-    if agents_dir.exists():
-        broken_agents = [p for p in agents_dir.iterdir()
-                         if p.is_symlink() and not p.exists()]
-    if broken_agents:
-        rep.warn("에이전트 심링크 단절",
-                 f"{len(broken_agents)}개가 존재하지 않는 경로를 가리킴",
-                 "끊어진 링크를 삭제하거나 현재 agent 소스로 다시 연결")
-    else:
-        rep.ok("에이전트 심링크 정상")
-
-    # 백업 대상 (macOS Time Machine) — git 밖 로컬 산출물 보호
-    if sys.platform == "darwin":
-        try:
-            tm = subprocess.run(["tmutil", "destinationinfo"],
-                                capture_output=True, text=True, timeout=5)
-            if tm.returncode != 0 or "No destinations" in (tm.stdout + tm.stderr):
-                rep.warn(
-                    "Time Machine 대상 없음",
-                    "git 밖 로컬 산출물(docs/papers · _agent · _local_keys 등) 미백업",
-                    "시스템 설정 → Time Machine 에서 백업 디스크 지정")
-            else:
-                rep.ok("Time Machine 대상 구성됨")
-        except FileNotFoundError:
-            pass
-        except Exception:
-            pass
 
 
 # ---------------------------------------------------------------------------
@@ -784,7 +720,7 @@ def main():
     parser.add_argument("--network", action="store_true",
                         help="Zotero API 연결까지 테스트 (네트워크 필요)")
     parser.add_argument("--topic", default="",
-                        help="해당 토픽의 산출물 존재 여부까지 점검 (예: humanoid)")
+                        help="해당 토픽의 산출물 존재 여부까지 점검")
     args = parser.parse_args()
 
     print("=" * 52)

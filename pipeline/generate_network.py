@@ -6,8 +6,8 @@ _paper_connections.json + _papers_index.json → network.html
 - Category toggle, relation type filter, search, ego network
 
 Usage:
-  PYTHONUTF8=1 python pipeline/generate_network.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/generate_network.py --topic scisci
+  PYTHONUTF8=1 python pipeline/generate_network.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/generate_network.py --topic my-topic
 """
 
 import argparse
@@ -240,13 +240,10 @@ def generate_html(nodes, links, cat_colors, cat_shapes, sub_colors, years, topic
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{_escape_html(topic)} &mdash; Paper Network</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css" integrity="sha384-a+6QFBwEmWYo4LaR7Ti/cfkRL9OEt6L85DKw3wkYLYxj+jlH56ipE4IdHWZ9+lOF" crossorigin="anonymous">
 <script src="../_assets/d3.v7.min.js"></script>
-<script>window.d3||document.write('<script src="https://d3js.org/d3.v7.min.js"><\\/script>')</script>
 <script src="../_assets/three.min.js"></script>
-<script>window.THREE||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"><\\/script>')</script>
 <script src="../_assets/OrbitControls.js"></script>
-<script>(window.THREE&&THREE.OrbitControls)||document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"><\\/script>')</script>
 <style>
 * {{ margin:0;padding:0;box-sizing:border-box; }}
 :root {{
@@ -1313,7 +1310,7 @@ render();
 </html>"""
 
 
-def _run_network(topic="ai4s"):
+def _run_network(topic):
     """Programmatic entrypoint for generate_network."""
     topic_dir = str(get_topic_dir(topic))
 

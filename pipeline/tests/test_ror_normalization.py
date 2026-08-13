@@ -22,7 +22,7 @@ import sqlite3
 import unittest
 from pathlib import Path
 
-from pipeline.lib import affiliation_groups, ror_index
+from pipeline.lib import ror_index
 
 ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / ".cache" / "bibliography.sqlite3"
@@ -252,48 +252,6 @@ class ParentGroupTests(unittest.TestCase):
         self.assertIsNotNone(hit)
         parent = self.index.eligible_parent(hit["ror_id"])
         self.assertIsNone(parent, f"got {parent and parent['display']}")
-
-
-class CuratedGroupTests(unittest.TestCase):
-    """The operator-curated Scopus table fills gaps ROR leaves."""
-
-    def test_real_hierarchies_are_kept(self):
-        for name, group in (("Harvard Medical School", "Harvard University"),
-                            ("Dalian Institute of Chemical Physics",
-                             "Chinese Academy of Sciences"),
-                            ("Indian Institute of Technology Madras",
-                             "Indian Institutes of Technology")):
-            with self.subTest(name=name):
-                self.assertEqual(affiliation_groups.group_for(name), group)
-
-    def test_spelling_variants_are_not_hierarchies(self):
-        """"ETH Zurich" → "ETH Zürich" is a variant; it must not become a parent."""
-        for name in ("ETH Zurich", "The University of Melbourne",
-                     "University of Edinburgh"):
-            with self.subTest(name=name):
-                group = affiliation_groups.group_for(name)
-                self.assertNotEqual(ror_index.normalize(group or name),
-                                    ror_index.normalize(name)) if group else None
-                if group:
-                    self.assertNotEqual(ror_index.normalize(group),
-                                        ror_index.normalize(name))
-
-    def test_brand_rollup_covers_ror_gaps(self):
-        """ROR records no parent for Helmholtz Institute Ulm."""
-        self.assertEqual(
-            affiliation_groups.group_for("Helmholtz Institute Ulm"),
-            "Helmholtz Association of German Research Centres")
-
-    def test_transitive_roll_up(self):
-        """CAS institutes were filed under UCAS, which ROR gives no parent."""
-        self.assertEqual(
-            affiliation_groups.roll_up("University of Chinese Academy of Sciences"),
-            "Chinese Academy of Sciences")
-
-    def test_roll_up_terminates(self):
-        self.assertEqual(
-            affiliation_groups.roll_up("Chinese Academy of Sciences"),
-            "Chinese Academy of Sciences")
 
 
 @unittest.skipUnless(DB.exists(), ".cache/bibliography.sqlite3 없음")

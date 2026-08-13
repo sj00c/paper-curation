@@ -167,7 +167,11 @@ def corpus_chunks(slug: str, idx: CorpusIndex, *, dim: int = 768) -> tuple:
     """
     topic = (idx.meta.get(slug) or {}).get("primary_topic") or ""
     candidates = [topic] if topic else []
-    candidates += ["ai4s", "scisci", "humanoid", "physical-ai"]
+    try:
+        from config_loader import get_topic_names
+        candidates += get_topic_names()
+    except Exception:
+        pass
 
     for t in candidates:
         if not t:

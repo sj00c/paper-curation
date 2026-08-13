@@ -12,9 +12,9 @@ Obsidian 호환:
   - pdf: Zotero 로컬 PDF 경로
 
 Usage:
-  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic scisci
-  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic ai4s --skip-zotero
+  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/inject_frontmatter.py --topic my-topic --skip-zotero
 """
 
 import argparse

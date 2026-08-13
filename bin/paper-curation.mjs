@@ -26,6 +26,7 @@ Usage:
   paper-curation init [--dir PATH] [--auth auto|oauth|api-key] [--run-first]
   paper-curation setup [--dir PATH] [--auth auto|oauth|api-key] [--run-first]
   paper-curation doctor [--dir PATH] [--network] [--topic TOPIC]
+  paper-curation inspect [--dir PATH]
   paper-curation run [--dir PATH] -- [run_full.py args...]
   paper-curation auth status
   paper-curation auth setup-token
@@ -34,7 +35,7 @@ Usage:
 Defaults:
   --dir paper-curation for init, current directory for other commands.
   --auth auto.
-  setup/init pass --no-run to Python setup unless --run-first is present.
+  setup/init configure only; --run-first explicitly starts the first local build.
 
 Getting started in an existing checkout:
   paper-curation setup --auth oauth
@@ -217,7 +218,7 @@ function buildEnvironmentSetupSteps(cwd, auth, runFirst) {
       unsetEnv: OAUTH_UNSET_ENV,
     }));
   }
-  if (!runFirst) setupArgs.push('--no-run');
+  if (runFirst) setupArgs.push('--run-first');
   steps.push(
     commandStep('conda', ['run', '-n', ENV_NAME, 'python', '--version'], { cwd, env: { PYTHONUTF8: '1' } }),
     commandStep('conda', ['create', '-n', ENV_NAME, '-c', 'conda-forge', 'python=3.12', 'pip', '-y'], { cwd, env: { PYTHONUTF8: '1' }, onlyIfPreviousFailed: true }),
@@ -258,6 +259,11 @@ export function createPlan(argv, options = {}) {
   if (parsed.command === 'doctor') {
     if (options.validateCheckout !== false) requireCheckout(targetDir);
     return { parsed, targetDir, steps: [condaStep(targetDir, ['python', 'pipeline/doctor.py', ...parsed.forwarded])] };
+  }
+
+  if (parsed.command === 'inspect') {
+    if (options.validateCheckout !== false) requireCheckout(targetDir);
+    return { parsed, targetDir, steps: [condaStep(targetDir, ['python', 'pipeline/inspect_installation.py'])] };
   }
 
   if (parsed.command === 'run') {

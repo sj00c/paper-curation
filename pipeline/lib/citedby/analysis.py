@@ -1,20 +1,16 @@
 """citedby 오케스트레이션 — DOI → 인용논문 → 독창성 → 주제필터 → 요약 → 리포트.
 
-scisci `scie/lib/pipeline_worker.py`("zero Flask dependency" 순수 로직) 이식본.
-원본은 Flask 앱이 SSE 로 감싸 쓰던 계층인데, 여기서는 진입점이 둘이다:
+인용논문 분석의 provider-independent orchestration.
 
     serve_local.py `/api/citedby`  (로컬 웹앱, NDJSON 청크 스트리밍)
-    run_citedby.py                 (CLI → paper-curio 브리지)
+    run_citedby.py                 (CLI)
 
 두 진입점 모두 이 모듈의 순수 함수를 부른다. 이 모듈은 파일을 쓰지 않고
 **산출물을 문자열/딕트로 반환**한다 — 저장 위치 결정은 호출부 몫이라 테스트가
 네트워크·파일시스템 없이 돌아간다.
 
 이식하며 제거한 중복 (계획된 3건):
-  1. originality → paper-curation `lib/originality_extractor` 재사용.
-     scisci 의 `get_originality_strict/tagged/llm_batch` 를 가져오지 않았다.
-     대신 기존 `extract_originality()`(rule-based → LLM 폴백 → self-learning)를
-     **ThreadPool 로 병렬 호출**해 원본의 순차 지연을 없앴다.
+  1. originality → `lib/originality_extractor`를 ThreadPool로 병렬 호출한다.
   2. LLM 재시도/캐시 → `api/_llm.cached_call` (topic_filter 모듈에서 처리).
   3. 리포트/엑셀 → `report.py` (HTML + stdlib CSV). python-docx/openpyxl 불필요.
 """
@@ -76,9 +72,7 @@ def fetch_paper_metadata(doi: str) -> dict | None:
 def _originality_categories(text: str, triggers: dict) -> str:
     """추출된 독창성 문장에 걸린 트리거 카테고리 라벨.
 
-    scisci 는 `get_originality_tagged` 로 태그를 따로 계산했지만, 여기서는
-    이미 뽑힌 문장을 기존 트리거 사전으로 역조회해 같은 정보를 얻는다
-    (모듈 하나를 통째로 이식하지 않기 위한 얇은 어댑터).
+    이미 뽑힌 문장을 기존 트리거 사전으로 역조회한다.
     """
     if not text:
         return ""
@@ -141,37 +135,26 @@ def extract_originality_for_papers(papers: list[dict], *,
     def _one(idx: int):
         abstract = (papers[idx].get("abstract") or "").strip()
         try:
-            text, new_triggers = oe._llm_fallback(abstract)
+            text = oe._llm_fallback(abstract)
         except Exception as e:  # noqa: BLE001 — 한 편 실패가 전체를 죽이지 않게
             logger.warning("originality LLM 실패: %s", str(e)[:120])
-            return idx, "", []
-        return idx, text, new_triggers
+            return idx, ""
+        return idx, text
 
-    learned: list[str] = []
     done = 0
     workers = max(1, min(ORIGINALITY_PARALLEL, len(needs_llm)))
     with ThreadPoolExecutor(max_workers=workers) as ex:
         for future in as_completed([ex.submit(_one, i) for i in needs_llm]):
-            idx, text, new_triggers = future.result()
+            idx, text = future.result()
             done += 1
             if text:
                 papers[idx]["originality"] = text
                 papers[idx]["originality_category"] = (
                     _originality_categories(text, triggers) or "llm_detected")
                 papers[idx]["originality_source"] = "llm"
-            learned.extend(new_triggers or [])
             if done % 10 == 0 or done == len(needs_llm):
                 emit("llm_originality",
                      f"LLM fallback: {done}/{len(needs_llm)}", done, len(needs_llm))
-
-    # 3) self-learning — 새 트리거를 사전에 되먹인다 (기존 구현 재사용).
-    if learned:
-        try:
-            added = oe._update_triggers(triggers, learned)
-            if added:
-                emit("llm_originality", f"Self-learning: {added}개 트리거 추가")
-        except Exception as e:  # noqa: BLE001
-            logger.warning("트리거 self-learning 실패: %s", e)
 
     return papers
 

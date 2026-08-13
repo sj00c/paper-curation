@@ -27,7 +27,6 @@ OAuth 구독 자격증명(`CLAUDE_CODE_OAUTH_TOKEN`)은 애초에 어떤 생성�
 """
 from __future__ import annotations
 
-import json
 import re
 
 # ── 자격증명 형태 ────────────────────────────────────────────────────────
@@ -49,6 +48,8 @@ _SPECS: tuple[tuple[str, str], ...] = (
     ("Google OAuth token", r"ya29\.[A-Za-z0-9_-]{20,}"),
     ("AWS access key", r"AKIA[0-9A-Z]{16}"),
     ("GitHub token", r"gh[pousr]_[A-Za-z0-9]{20,}"),
+    ("Zotero API key",
+     r"""(?:ZOTERO_API_KEY|Zotero-API-Key)\s*["']?\s*[,=:]\s*["']?[A-Za-z0-9]{24}(?![A-Za-z0-9])"""),
 )
 
 PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = tuple(
@@ -108,29 +109,6 @@ def strip_local_emails(text: str) -> tuple[str, int]:
     """``window._LOCAL_EMAILS`` 배열을 비운다. 반환: (새 텍스트, 비운 횟수)."""
     out, n = _LOCAL_EMAILS_RE.subn('window._LOCAL_EMAILS = []', text)
     return out, n
-
-
-_EMPTY_SLOT_RE = {
-    slot: re.compile(
-        r'(?P<decl>(?:const|let|var)\s+|window\.)?' + re.escape(slot) + r'\s*=\s*""'
-    )
-    for slot in KEY_SLOTS
-}
-
-
-def reinject_key_slot(text: str, slot: str, value: str) -> tuple[str, int]:
-    """비어 있는 ``slot`` 에 ``value`` 를 되꽂는다 (로컬 복원 전용).
-
-    strip 과 **같은 슬롯 표·같은 선언 형태**를 쓴다. 예전엔 strip 이
-    `window.` 를 받고 re-inject 는 안 받는 비대칭이 있어, 한 번 strip 된
-    슬롯이 로컬에서 영영 복원되지 않을 수 있었다. 값이 비면 no-op.
-    """
-    if not value or slot not in _EMPTY_SLOT_RE:
-        return text, 0
-    lit = json.dumps(value)
-    return _EMPTY_SLOT_RE[slot].subn(
-        lambda m: (m.group("decl") or "") + slot + " = " + lit, text
-    )
 
 
 def find_secrets(text: str) -> list[tuple[str, str]]:

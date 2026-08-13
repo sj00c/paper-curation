@@ -4,19 +4,20 @@
 아키텍처:
   - **로컬 docs/**: wrangler 배포 소스 (풀 콘텐츠)
   - **Cloudflare Workers**: `wrangler deploy` 로 직접 업로드. 실제 사용자
-    콘텐츠. docs/.assetsignore 로 ai4s/scisci 등 로컬 전용 토픽 제외.
+    콘텐츠. docs/.assetsignore 로 설치별 로컬 전용 토픽 제외.
   - **GitHub gh-pages 브랜치**: 작은 리다이렉트 스텁만. github.io 에 접근한
     사용자를 Cloudflare 로 리다이렉트.
-  - **GitHub master 브랜치**: 코드 + 설정만. docs/ 내 대용량 콘텐츠는
-    .gitignore 로 제외.
-
 Usage:
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --quality 90    # WebP 품질 (기본 90)
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --dry-run       # 변환 없이 크기 예상만
-  PYTHONUTF8=1 python prepare_deploy.py --topic ai4s --push          # WebP 변환 + wrangler deploy + gh-pages 스텁 + master push
+  PYTHONUTF8=1 python prepare_deploy.py --topic my-topic
+  PYTHONUTF8=1 python prepare_deploy.py --topic my-topic --quality 90    # WebP 품질 (기본 90)
+  PYTHONUTF8=1 python prepare_deploy.py --topic my-topic --dry-run       # 변환 없이 크기 예상만
+  PYTHONUTF8=1 python prepare_deploy.py --topic my-topic --push          # WebP 변환 + wrangler deploy + gh-pages 스텁
 
-환경변수 (--push 시 필수):
+공개 배포 설정 (--push 시 필수):
+  config.json publication.mode = "public"
+  PAPER_CURATION_PUBLIC_BASE_URL 또는 config.json publication.base_url
+
+환경변수 (--push 시 추가 필수):
   CLOUDFLARE_API_TOKEN (or CF_API_TOKEN) : Cloudflare Pages:Edit 권한
   CLOUDFLARE_ACCOUNT_ID                   : 계정 ID
 
@@ -27,10 +28,9 @@ Usage:
   4. 원본 PNG 삭제 (WebP 검증된 것만)
   5. HTML 에서 API key 제거 (로컬 working tree 는 나중에 복원)
   6. (--push) `wrangler deploy` 로 Cloudflare 업로드
-  7. (--push) gh-pages 브랜치에 리다이렉트 스텁 idempotent 동기화
-  8. (--push) Cloudflare 엔드포인트 200 OK 검증
-  9. (--push) master 에 코드/설정 변경만 commit + push (대용량 콘텐츠는 gitignored)
-  10. 로컬 HTML 의 API key 복원
+  7. (--push) Cloudflare 엔드포인트 200 OK 검증
+  8. (--push) gh-pages 브랜치에 리다이렉트 스텁 idempotent 동기화
+  9. 로컬 HTML 의 API key 복원
 """
 
 import argparse
@@ -49,7 +49,6 @@ from lib.secret_patterns import (
     find_local_emails,
     find_secrets,
     redact,
-    reinject_key_slot,
     strip_key_slots,
     strip_local_emails,
 )
@@ -202,14 +201,26 @@ def update_html_refs(file_path, fig_only=False):
     return False
 
 
-CF_BASE_URL = "https://paper-curation.jehyunlee.dev"
-# 고정 경로는 사이트 루트만. 토픽 경로는 실제 배포 대상에서 만든다 — 예전에는
-# ("/", "/humanoid/", "/physical-ai/", "/index.html") 로 박혀 있어서, 그 두 토픽이
-# 없는 설치는 존재하지 않는 URL 을 찌르고 영영 200 을 못 받아 타임아웃했다.
+# 고정 경로는 사이트 루트만. 토픽 경로는 실제 배포 대상에서 만든다.
 CF_ROOT_PROBE_PATHS = ("/", "/index.html")
 
 
-def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
+def _resolve_public_base_url():
+    """Resolve an explicitly configured public deployment destination."""
+    base_url = os.environ.get("PAPER_CURATION_PUBLIC_BASE_URL", "").strip()
+    if not base_url:
+        publication = (load_config() or {}).get("publication") or {}
+        base_url = str(publication.get("base_url") or "").strip()
+    return base_url.rstrip("/")
+
+
+def _public_deployment_enabled():
+    """Whether the local operator explicitly enabled public deployment."""
+    publication = (load_config() or {}).get("publication") or {}
+    return str(publication.get("mode") or "").strip().lower() == "public"
+
+
+def _verify_cloudflare(base_url, topic, timeout_s=300, interval_s=15):
     """Poll Cloudflare Worker endpoints until they all return 200 or timeout.
 
     We can't read a commit hash from response headers (Workers Static Assets
@@ -219,8 +230,7 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
     import urllib.request as _ur
     import urllib.error as _ue
 
-    # 실제로 배포된 토픽만 찌른다. topic 인자는 받아만 두고 쓰지 않아서, 어떤
-    # 설치든 humanoid/physical-ai 를 확인하려 들었다.
+    # 실제로 배포된 토픽만 확인한다.
     probe_paths = list(CF_ROOT_PROBE_PATHS)
     for t in dict.fromkeys([topic, *_discover_deployable_topics()]):
         if t:
@@ -233,7 +243,7 @@ def _verify_cloudflare(topic, timeout_s=300, interval_s=15):
     while _time.time() < deadline:
         all_ok = True
         for path in probe_paths:
-            url = CF_BASE_URL + path
+            url = base_url + path
             try:
                 req = _ur.Request(url, method="HEAD",
                                    headers={"User-Agent": "paper-curation/cf-verify"})
@@ -465,7 +475,7 @@ def _wrangler_deploy():
         raise SystemExit(f"wrangler deploy failed with exit {result.returncode}")
 
 
-def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
+def _sync_gh_pages_stubs(topics, cf_url):
     """Ensure origin/gh-pages has redirect stubs for each topic. Idempotent:
     only commits + pushes when a stub would actually change."""
     import tempfile
@@ -529,8 +539,7 @@ def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
         if pruned:
             summary.append("prune " + ", ".join(pruned))
         msg = (
-            f"gh-pages redirect stubs: {'; '.join(summary)}\n\n"
-            "Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
+            f"gh-pages redirect stubs: {'; '.join(summary)}"
         )
         subprocess.run(["git", "commit", "-m", msg], check=True, cwd=worktree)
         subprocess.run(["git", "push", "origin", "gh-pages"], check=True, cwd=worktree)
@@ -540,59 +549,6 @@ def _sync_gh_pages_stubs(topics, cf_url=CF_BASE_URL):
             ["git", "worktree", "remove", "--force", worktree],
             cwd=REPO, check=False,
         )
-
-
-def _reinject_local_keys(docs_dir=None, *, verbose=True):
-    """배포용 strip 으로 비워진 로컬 HTML 키 슬롯을 env→config 값으로 재주입한다.
-
-    키 값은 build 와 동일한 env→config 출처에서 결정론적으로 재유도하므로, deploy
-    가 (kill -9 등으로) Step 6 strip 과 finally restore 사이에서 죽어 로컬 working
-    tree 가 strip 된 채 남아도 별도 백업 없이 복원된다. 배포본에는 영향이 없다 —
-    strip 은 항상 wrangler deploy 직전에 다시 실행되기 때문.
-
-    재주입 대상: _GEMINI_KEY(Audio Overview) · _ANTHROPIC_KEY · _OPENAI_KEY
-    (Deep Research) · _LOCAL_EMAILS(로컬 이메일). 값이 없으면 해당 슬롯은 건너뛴다.
-    반환: 실제로 수정된 파일 수.
-    """
-    docs_dir = Path(docs_dir or DOCS_DIR)
-    try:
-        cfg = load_config() or {}
-    except Exception:
-        cfg = {}
-    gemini = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-              or cfg.get("gemini_api_key", "") or cfg.get("google_api_key", "")) or ""
-    anthropic = (os.environ.get("ANTHROPIC_API_KEY") or cfg.get("anthropic_api_key", "")) or ""
-    openai = (os.environ.get("OPENAI_API_KEY") or cfg.get("openai_api_key", "")) or ""
-    raw_emails = (os.environ.get("PAPER_CURATION_LOCAL_EMAILS", "")
-                  or ",".join(cfg.get("local_emails", []) or []))
-    emails = [e.strip() for e in raw_emails.split(",") if e.strip()]
-    emails_js = "[" + ", ".join(json.dumps(e) for e in emails) + "]"
-
-    # 슬롯→값 매핑. 이 dict 와 strip 이 같은 `KEY_SLOTS` 표를 공유하므로
-    # 한쪽만 바뀌어 서로 어긋날 수 없다. `_LLM_KEY` 는 페이지에서
-    # `localStorage || _ANTHROPIC_KEY` 로 유도되므로 굽지 않는다.
-    slot_values = {
-        "_GEMINI_KEY": gemini,
-        "_ANTHROPIC_KEY": anthropic,
-        "_OPENAI_KEY": openai,
-    }
-    n = 0
-    for html_path in docs_dir.rglob("*.html"):
-        try:
-            text = html_path.read_text(encoding="utf-8")
-        except OSError:
-            continue
-        new = text
-        for slot, value in slot_values.items():
-            new, _ = reinject_key_slot(new, slot, value)
-        if emails:
-            new = new.replace('window._LOCAL_EMAILS = []', 'window._LOCAL_EMAILS = ' + emails_js)
-        if new != text:
-            html_path.write_text(new, encoding="utf-8")
-            n += 1
-    if verbose:
-        print(f"  로컬 HTML 키 재주입: {n} 파일 (env→config)")
-    return n
 
 
 def _deploy_slugs(topics):
@@ -655,20 +611,33 @@ def _render_public_copies(topics):
     return snaps
 
 
-def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
-                topics=None, workers=8, cf_strict=False):
+def _run_deploy(topic, *, quality=90, dry_run=False, push=False,
+                topics=None, workers=8):
     """Programmatic entrypoint for prepare_deploy."""
+    public_base_url = ""
+    if push:
+        if not _public_deployment_enabled():
+            raise SystemExit(
+                "Refusing public deployment: set publication.mode to 'public' "
+                "in config.json."
+            )
+        public_base_url = _resolve_public_base_url()
+        if not public_base_url:
+            raise SystemExit(
+                "Refusing public deployment: set PAPER_CURATION_PUBLIC_BASE_URL "
+                "or publication.base_url in config.json."
+            )
+        if topics:
+            raise SystemExit(
+                "Refusing public deployment with --topics: Wrangler deploys the "
+                "entire docs asset tree."
+            )
     topic_dir = str(get_topic_dir(topic))
 
     # Self-heal: 이전 deploy 가 Step 6 strip 과 finally restore 사이에서 죽으면
     # (예: kill -9) 로컬 HTML 이 키-strip 된 채 남아 Audio Overview/Deep Research 가
     # 로컬에서 깨진다. 본격 작업 전에 env→config 로 재주입해 복원한다 (이미 키가 있으면
     # no-op). 배포 직전 Step 6 가 다시 strip 하므로 배포본에는 영향 없음.
-    if not dry_run:
-        _healed = _reinject_local_keys(DOCS_DIR, verbose=False)
-        if _healed:
-            print(f"  [self-heal] 이전 배포 중단으로 비워진 로컬 키 복원: {_healed} HTML")
-
     print("Step 1: .gitignore")
     if not dry_run:
         ensure_gitignore()
@@ -841,85 +810,43 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
                 print(f"    … and {len(_leaks) - 20} more")
             sys.exit(1)
         if _email_leaks:
-            print(f"  ABORT: _LOCAL_EMAILS still populated in {len(_email_leaks)} files — refusing to commit:")
+            print(f"  ABORT: legacy local-email slots remain in {len(_email_leaks)} files:")
             for p in _email_leaks:
                 print(f"    - {p}")
             sys.exit(1)
         print(f"  Stripped {_slots_blanked} key slots in {len(_originals)} files; "
               f"scanned {len(_scan_targets)} deploy assets (0 leaks)")
 
-        # Step 7-10: Deploy (only if --push). Otherwise we stop here — the
+        # Step 7-8: Deploy (only if --push). Otherwise we stop here — the
         # working tree was modified by API-key strip in Step 6 so we still
         # need to restore it in the finally block.
         if not push:
-            print("\n(--push 없이 실행됨. Cloudflare 업로드/gh-pages 동기화/master push 모두 스킵)")
+            print("\n(--push 없이 실행됨. Cloudflare 업로드/gh-pages 동기화를 건너뜀)")
         else:
-            # Step 7: Upload full content to Cloudflare via wrangler
-            print("\nStep 7: Deploying to Cloudflare (wrangler deploy)...")
+            # Step 6: Upload full content to Cloudflare via wrangler
+            print("\nStep 6: Deploying to Cloudflare (wrangler deploy)...")
             print("  [preflight] verifying topic indices before upload")
             _preflight_search_indexes(topics)
             _preflight_topics(topics)
             _wrangler_deploy()
 
-            # Step 8: Ensure gh-pages has redirect stubs for every deployed topic
-            topics_for_stubs = topics or _discover_deployable_topics()
+            # Step 7: Verify Cloudflare endpoints return 200 before making
+            # any gh-pages changes.
+            print("\nStep 7: Verifying Cloudflare endpoints...")
+            cf_ok = _verify_cloudflare(public_base_url, topic)
+            if not cf_ok:
+                raise SystemExit(
+                    "Cloudflare verification failed/timed out; refusing gh-pages sync."
+                )
+
+            # Step 8: Ensure gh-pages has redirect stubs for every deployed topic.
+            topics_for_stubs = _discover_deployable_topics()
             if topics_for_stubs:
                 print(f"\nStep 8: Syncing gh-pages redirect stubs "
                       f"({len(topics_for_stubs)} topics)...")
-                _sync_gh_pages_stubs(topics_for_stubs)
+                _sync_gh_pages_stubs(topics_for_stubs, public_base_url)
             else:
                 print("\nStep 8: No deployable topics found — skipping gh-pages sync")
-
-            # Step 9: Verify Cloudflare endpoints return 200.
-            # Bind the result — a failed/timed-out deploy must NOT be recorded
-            # as a clean "Deploy:" commit on master. cf_strict 면 hard abort,
-            # 기본은 warn-only (느린 CF propagation 이 300s 를 넘기는 경우를 위해
-            # master push 만 건너뛰고 로컬 복원은 finally 가 처리).
-            print("\nStep 9: Verifying Cloudflare endpoints...")
-            cf_ok = _verify_cloudflare(topic)
-            if not cf_ok:
-                if cf_strict:
-                    print("  ABORT: Cloudflare verification failed/timed out "
-                          "(--cf-strict) — refusing to commit master")
-                    sys.exit(1)
-                print("  WARN: Cloudflare verification failed/timed out — "
-                      "skipping master commit/push (deploy NOT recorded as clean)")
-
-            # Step 10: Commit + push master — only code/config changes.
-            # docs/* content is gitignored, so this only captures genuine
-            # source changes (pipeline scripts, wrangler.toml, etc.).
-            # Gated on cf_ok: a broken deploy is never committed as success.
-            if not cf_ok:
-                print("\nStep 10: Skipped (Cloudflare verification failed)")
-                return
-            print("\nStep 10: Committing code/config changes to master...")
-            os.chdir(REPO)
-            subprocess.run(["git", "add", "-A"], check=True)
-            staged = subprocess.run(
-                ["git", "diff", "--cached", "--quiet"], capture_output=True,
-            )
-            if staged.returncode == 0:
-                print("  No master-tracked changes to commit")
-            else:
-                name_status = subprocess.run(
-                    ["git", "diff", "--cached", "--name-status"],
-                    capture_output=True, text=True, encoding="utf-8", errors="replace",
-                )
-                ns_lines = [l for l in (name_status.stdout or "").splitlines() if l.strip()]
-                print(f"  Master-tracked diff: {len(ns_lines)} files")
-                for l in ns_lines[:15]:
-                    print(f"    {l}")
-                if len(ns_lines) > 15:
-                    print(f"    ... +{len(ns_lines) - 15} more")
-                subprocess.run(
-                    ["git", "commit", "-m",
-                     f"Deploy: {converted} figures WebP, "
-                     f"{total_orig // 1048576}→{total_webp // 1048576}MB\n\n"
-                     f"Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"],
-                    check=True,
-                )
-                subprocess.run(["git", "push", "origin", "master"], check=True)
-                print("  Pushed code/config changes to master")
     finally:
         # Restore local working tree so Deep Research UI keeps working without rebuild
         _restore_originals()
@@ -933,26 +860,20 @@ def _run_deploy(topic="ai4s", *, quality=90, dry_run=False, push=False,
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Prepare for GitHub Pages deployment")
+    parser = argparse.ArgumentParser(description="Prepare a local or public deployment")
     parser.add_argument("--topic", default="", help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     parser.add_argument("--quality", type=int, default=90, help="WebP quality (1-100)")
     parser.add_argument("--dry-run", action="store_true", help="Estimate only, no conversion")
-    parser.add_argument("--push", action="store_true", help="Git add + commit + push after conversion")
-    parser.add_argument("--topics", nargs="+", help="Only deploy these topics (exclude others from git add)")
+    parser.add_argument("--push", action="store_true",
+                        help="Deploy publicly when publication.mode is public")
+    parser.add_argument("--topics", nargs="+",
+                        help="Limit local preparation; public deployment rejects this option")
     parser.add_argument("--workers", type=int, default=8, help="Parallel workers for conversion")
-    parser.add_argument("--cf-strict", action="store_true",
-                        help="Abort (no master commit/push) if Cloudflare 200-OK verification fails/times out")
-    parser.add_argument("--restore-keys", action="store_true",
-                        help="strip 으로 비워진 로컬 HTML 키 슬롯을 env→config 로 재주입하고 종료 (배포 중단 복구 도구)")
     args = parser.parse_args()
     from config_loader import resolve_topic
     args.topic = resolve_topic(args.topic, script="prepare_deploy")
-    if args.restore_keys:
-        _reinject_local_keys(DOCS_DIR)
-        return
     _run_deploy(topic=args.topic, quality=args.quality, dry_run=args.dry_run,
-                push=args.push, topics=args.topics, workers=args.workers,
-                cf_strict=args.cf_strict)
+                push=args.push, topics=args.topics, workers=args.workers)
 
 
 if __name__ == "__main__":

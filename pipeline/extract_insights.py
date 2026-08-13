@@ -6,9 +6,9 @@ Cross-paper insight 추출 + 논문 간 연결 생성.
 2. _paper_connections.json — 논문별 "같이 보면 좋은 논문" 추천 (이유 포함)
 
 Usage:
-  PYTHONUTF8=1 python pipeline/extract_insights.py --topic scisci
-  PYTHONUTF8=1 python pipeline/extract_insights.py --topic ai4s --connections-only
-  PYTHONUTF8=1 python pipeline/extract_insights.py --topic ai4s --insights-only
+  PYTHONUTF8=1 python pipeline/extract_insights.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/extract_insights.py --topic my-topic --connections-only
+  PYTHONUTF8=1 python pipeline/extract_insights.py --topic my-topic --insights-only
 """
 
 import argparse
@@ -573,11 +573,10 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
                               topic_dir=None, topic_slugs=None, seed_cache_only=False):
     """SPECTER2 코사인 top-N 후보 → Sonnet 이 관계·이유 판정 (하이브리드).
 
-    topic_modeling / paper-curio 와 **동일한 SPECTER2 임베딩 기준**을 공유한다:
+    topic_modeling 과 동일한 SPECTER2 임베딩 기준을 공유한다:
     후보는 `compute_related_candidates`(코사인 top-N, 전체 토픽 풀에서) 로 좁히고,
     판정은 `generate_connections_from_candidates`(Sonnet, 후보 내에서만 선택) 로 한다.
-    카테고리 통째 덤프 방식 대비 (1) topic_modeling 과 기준 통일, (2) paper-curio
-    경로와 방식 일치, (3) 프롬프트 페이로드 급감(느린 망 타임아웃 완화).
+    카테고리 통째 덤프 방식보다 기준이 일관되고 프롬프트가 작다.
 
     연결을 생성할 대상은 `cat_papers`(= --categories 필터 반영)에 한정하되, 후보
     풀은 `all_topic_papers` 전체에서 뽑아 cross-category 연결을 유지한다. top-N 은
@@ -728,7 +727,7 @@ def extract_paper_connections(topic, cat_papers, clients, all_topic_papers=None,
     return all_connections
 
 
-def _run_insights(topic="ai4s", *, insights_only=False, connections_only=False,
+def _run_insights(topic, *, insights_only=False, connections_only=False,
                    categories=None, seed_cache_only=False):
     """Programmatic entrypoint for extract_insights."""
     topic_dir = str(get_topic_dir(topic))

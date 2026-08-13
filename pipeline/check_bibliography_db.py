@@ -206,11 +206,10 @@ def collect(db: Path, report: dict, issues: list[str], warnings: list[str]) -> N
             report["parent_groups"] = scalar(
                 conn, "SELECT COUNT(DISTINCT parent_name) FROM institutions "
                       "WHERE parent_name<>''")
-            if report["ror_share"] < 0.40:
+            if not resolved:
                 issues.append(
-                    f"ROR normalisation collapsed: {resolved}/"
-                    f"{report['institutions']} institutions carry a ROR id — "
-                    "run python pipeline/setup_affiliation_sources.py")
+                    "no institution carries a ROR id — run python "
+                    "pipeline/setup_affiliation_sources.py")
             from lib.ror_index import ADMINISTRATIVE_BODY, UNIVERSITY_SYSTEM
             ineligible = [
                 parent for (parent,) in conn.execute(
@@ -221,21 +220,6 @@ def collect(db: Path, report: dict, issues: list[str], warnings: list[str]) -> N
             if ineligible:
                 issues.append("ineligible parent groups: "
                               + ", ".join(sorted(ineligible)[:8]))
-
-            # The curated group table is the pinned baseline for parent groups.
-            # Losing it costs 1,872 hierarchies while ROR keeps resolving, so no
-            # other number in this report would move — hence an explicit gate.
-            from lib import affiliation_groups
-            curated = affiliation_groups.active_path()
-            report["curated_group_table"] = str(curated) if curated else None
-            report["curated_group_entries"] = \
-                affiliation_groups.stats()["entries"]
-            if curated is None:
-                issues.append(
-                    "curated affiliation group table missing — expected "
-                    "pipeline/data/dict_afgroupname_confident.json or "
-                    "PAPER_CURATION_AFGROUP_DICT; run python "
-                    "pipeline/setup_affiliation_sources.py")
     finally:
         conn.close()
 

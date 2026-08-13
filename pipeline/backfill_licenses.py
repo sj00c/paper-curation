@@ -6,9 +6,10 @@ fetches license metadata from OpenAlex (batchable by DOI), normalizes it via
 lib/license_util, and writes `license: "<class>"` into the schema-v1 frontmatter
 so build_papers_index / build_topic_index / review_to_html can gate.
 
-  PYTHONUTF8=1 python pipeline/backfill_licenses.py --topic humanoid
+  PYTHONUTF8=1 python pipeline/backfill_licenses.py --topic my-topic
   PYTHONUTF8=1 python pipeline/backfill_licenses.py            # all papers
-  PYTHONUTF8=1 python pipeline/backfill_licenses.py --dry-run --limit 100
+  PYTHONUTF8=1 python pipeline/backfill_licenses.py --limit 100
+  PYTHONUTF8=1 python pipeline/backfill_licenses.py --execute
   PYTHONUTF8=1 python pipeline/backfill_licenses.py --force
 
 Resilient to malformed frontmatter (regex reader, not YAML). Resumable: papers
@@ -63,7 +64,7 @@ def _contact_email():
                 return str(cfg[k]).strip()
     except Exception:
         pass
-    return "paper-curation@example.com"
+    return ""
 
 
 def _load_zmeta():
@@ -164,7 +165,7 @@ def _topic_slugs(topic):
             if topic in (e.get("topics") or []) or e.get("primary_topic") == topic]
 
 
-def run(topic=None, limit=None, dry_run=False, force=False, batch=50):
+def run(topic=None, limit=None, dry_run=True, force=False, batch=50):
     email = _contact_email()
     zmeta = _load_zmeta()
     slugs = _topic_slugs(topic)
@@ -238,10 +239,12 @@ def main():
     ap = argparse.ArgumentParser(description="Backfill license into review.md frontmatter (OpenAlex)")
     ap.add_argument("--topic", default=None, help="limit to a topic (default: all papers)")
     ap.add_argument("--limit", type=int, default=None)
-    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--execute", action="store_true",
+                    help="write review frontmatter; default is dry-run")
     ap.add_argument("--force", action="store_true", help="re-fetch even if license already set")
     args = ap.parse_args()
-    run(topic=args.topic, limit=args.limit, dry_run=args.dry_run, force=args.force)
+    run(topic=args.topic, limit=args.limit,
+        dry_run=not args.execute, force=args.force)
 
 
 if __name__ == "__main__":

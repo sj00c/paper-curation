@@ -1,12 +1,4 @@
-"""생성 HTML 에 자격증명이 새지 않는다.
-
-브라우저 Deep Research 는 BYOK 다. 로컬 편의를 위해 API 키를 구워 넣는 경로가
-있고 prepare_deploy 가 배포 전에 걷어내지만, 두 가지는 무조건이다.
-
-1. 키가 없으면(=구독 OAuth 로 도는 정상 상태) 생성물에 자격증명이 하나도 없다.
-2. OAuth 토큰은 어떤 경우에도 HTML 로 내려가지 않는다. 구독 자격증명이 정적
-   산출물로 새면 그건 되돌릴 수 없다.
-"""
+"""생성 HTML 에 자격증명이나 수신자가 포함되지 않는다."""
 import atexit
 import json
 import re
@@ -101,12 +93,22 @@ class NoKeyMeansNoCredentialInOutputTests(unittest.TestCase):
                 baked = _json.dumps(value or "")
                 self.assertIn(baked, ('""',))
 
-    def test_review_to_html_key_slot_is_empty_without_env_or_config(self):
+    def test_review_to_html_audio_slots_are_always_empty(self):
         import importlib
-        with patch.dict("os.environ", {}, clear=True):
-            with patch("json.load", return_value={}):
+        with patch.dict("os.environ", {
+            "GEMINI_API_KEY": SENTINEL["GEMINI"],
+            "PAPER_CURATION_LOCAL_EMAILS": SENTINEL["EMAIL"],
+        }, clear=True):
+            with patch("json.load", return_value={
+                "gemini_api_key": SENTINEL["GEMINI"],
+                "local_emails": [SENTINEL["EMAIL"]],
+            }):
                 mod = importlib.reload(importlib.import_module("review_to_html"))
-                self.assertEqual(getattr(mod, "_GEMINI_KEY", ""), "")
+                script = mod.audio_script_block({})
+                self.assertIn('window._GEMINI_KEY = "";', script)
+                self.assertNotIn("_LOCAL_EMAILS", script)
+                self.assertNotIn(SENTINEL["GEMINI"], script)
+                self.assertNotIn(SENTINEL["EMAIL"], script)
 
 
 class BrowserGateTests(unittest.TestCase):
@@ -307,21 +309,36 @@ class GeneratedArtifactCredentialTests(unittest.TestCase):
     """생성기를 실제로 돌려서 산출물을 검사한다."""
 
     @requires_secret_patterns
-    def test_no_key_build_leaves_every_credential_slot_empty(self):
+    def test_generated_page_uses_runtime_only_credential_slots(self):
         html = build_topic_page()
-        for name, pattern in (
-            ("_ANTHROPIC_KEY", r'(?:const|let|var)\s+_ANTHROPIC_KEY\s*=\s*("(?:[^"\\]|\\.)*")'),
-            ("_OPENAI_KEY", r'(?:const|let|var)\s+_OPENAI_KEY\s*=\s*("(?:[^"\\]|\\.)*")'),
-            ("_GEMINI_KEY", r'window\._GEMINI_KEY\s*=\s*("(?:[^"\\]|\\.)*")'),
-        ):
-            with self.subTest(slot=name):
-                found = re.findall(pattern, html)
-                self.assertTrue(found, "%s 슬롯을 찾지 못했다" % name)
-                self.assertEqual(set(found), {'""'},
-                                 "%s 가 빈 슬롯이 아니다" % name)
+        self.assertIn(
+            "let _ANTHROPIC_KEY = '';",
+            html,
+        )
+        self.assertIn(
+            "let _OPENAI_KEY = '';",
+            html,
+        )
+        self.assertNotIn("localStorage.setItem('_LLM_KEY'", html)
+        self.assertNotIn("localStorage.setItem('_GEMINI_KEY'", html)
+        self.assertNotRegex(html, r'generativelanguage\.googleapis\.com[^"\'\s]*[?&]key=')
+        self.assertIn("'x-goog-api-key': apiKey", html)
+        self.assertIn('window._GEMINI_KEY = "";', html)
+        self.assertNotIn("_LOCAL_EMAILS", html)
         self.assertNotIn("_LLM_KEY = \"", html,
                          "_LLM_KEY 에 리터럴 값이 구워졌다")
         self.assertFalse(leaks(html))
+
+    def test_remote_scripts_are_version_pinned_and_integrity_checked(self):
+        html = build_topic_page()
+        tags = re.findall(r'<script\b[^>]*\bsrc="https://[^"]+"[^>]*>', html)
+        self.assertTrue(tags)
+        for tag in tags:
+            with self.subTest(tag=tag):
+                self.assertIn("integrity=\"sha384-", tag)
+                self.assertIn("crossorigin=\"anonymous\"", tag)
+                if "npm/marked" in tag or "npm/mathjax" in tag:
+                    self.assertRegex(tag, r'npm/(?:marked|mathjax)@\d')
 
     @requires_secret_patterns
     def test_oauth_token_in_environment_never_reaches_the_topic_page(self):
@@ -389,8 +406,8 @@ class GeneratedArtifactCredentialTests(unittest.TestCase):
                          "설명 문구가 거짓이다 — OAuth 토큰이 페이지에 있다")
 
 
-class BakeStripSymmetryTests(unittest.TestCase):
-    """구워 넣는 슬롯과 배포 전 걷어내는 슬롯이 1:1 로 맞는지."""
+class RawGeneratedArtifactCredentialTests(unittest.TestCase):
+    """Raw local artifacts are safe before any deployment stripping."""
 
     @requires_secret_patterns
     def test_prepare_deploy_strips_and_scans_from_the_shared_table(self):
@@ -404,7 +421,7 @@ class BakeStripSymmetryTests(unittest.TestCase):
                               "쓰지 않는다 — 규칙이 다시 갈라질 수 있다" % symbol)
 
     @requires_secret_patterns
-    def test_baked_keys_are_removed_by_the_deploy_strip(self):
+    def test_topic_page_never_bakes_keys_or_recipients(self):
         html = build_topic_page(env_extra={
             "ANTHROPIC_API_KEY": SENTINEL["ANTHROPIC"],
             "OPENAI_API_KEY": SENTINEL["OPENAI"],
@@ -412,31 +429,27 @@ class BakeStripSymmetryTests(unittest.TestCase):
             "PAPER_CURATION_LOCAL_EMAILS": SENTINEL["EMAIL"],
         })
         for key in ("ANTHROPIC", "OPENAI", "GEMINI", "EMAIL"):
-            with self.subTest(phase="baked", sentinel=key):
-                self.assertIn(SENTINEL[key], html,
-                              "로컬 편의용 bake 경로가 사라졌다 — 테스트 전제 붕괴")
-        stripped = apply_strip(html)
-        for key in ("ANTHROPIC", "OPENAI", "GEMINI", "EMAIL"):
-            with self.subTest(phase="stripped", sentinel=key):
-                self.assertNotIn(SENTINEL[key], stripped,
-                                 "%s 슬롯이 배포본에서 걷어내지지 않는다" % key)
-        self.assertFalse(leaks(stripped))
+            with self.subTest(sentinel=key):
+                self.assertNotIn(SENTINEL[key], html)
+        self.assertIn('window._GEMINI_KEY = "";', html)
+        self.assertNotIn("_LOCAL_EMAILS", html)
+        self.assertFalse(leaks(html))
 
     @requires_secret_patterns
-    def test_paper_page_slots_are_removed_by_the_deploy_strip(self):
+    def test_paper_page_never_bakes_keys_or_recipients(self):
         html = build_paper_page(env_extra={
             "GEMINI_API_KEY": SENTINEL["GEMINI"],
             "PAPER_CURATION_LOCAL_EMAILS": SENTINEL["EMAIL"],
         })
-        self.assertIn(SENTINEL["GEMINI"], html)
-        stripped = apply_strip(html)
-        self.assertNotIn(SENTINEL["GEMINI"], stripped)
-        self.assertNotIn(SENTINEL["EMAIL"], stripped)
+        self.assertNotIn(SENTINEL["GEMINI"], html)
+        self.assertNotIn(SENTINEL["EMAIL"], html)
+        self.assertIn('window._GEMINI_KEY = "";', html)
+        self.assertNotIn("_LOCAL_EMAILS", html)
 
     @requires_secret_patterns
     def test_every_credential_slot_in_a_real_page_is_a_known_strip_target(self):
         """새 자격증명 슬롯을 구우면서 strip 표에 올리는 걸 잊는 경우를 잡는다."""
-        known = set(KEY_SLOTS) | {"_LOCAL_EMAILS"}
+        known = set(KEY_SLOTS)
         for builder in (build_topic_page, build_paper_page):
             html = builder(env_extra={
                 "ANTHROPIC_API_KEY": SENTINEL["ANTHROPIC"],
@@ -451,13 +464,7 @@ class BakeStripSymmetryTests(unittest.TestCase):
                                   "없다" % slot)
 
     @requires_secret_patterns
-    def test_strip_does_not_depend_on_the_provider_prefix(self):
-        """값이 sk-/AIza 로 시작하지 않아도 슬롯은 비워져야 한다.
-
-        접두사 조건부 strip 은 fail-open 이다 — 사내 게이트웨이 키나 Azure
-        스타일 값(접두사 없음)을 그대로 배포본에 남긴다. leak 검사도 형태로
-        찾으므로 백업이 되지 못한다.
-        """
+    def test_raw_generation_does_not_depend_on_provider_key_prefix(self):
         odd = {
             "ANTHROPIC_API_KEY": "QAoddANTHROPIC-no-sk-prefix-1111111111",
             "OPENAI_API_KEY": "QAoddOPENAI-no-sk-prefix-2222222222",
@@ -465,37 +472,20 @@ class BakeStripSymmetryTests(unittest.TestCase):
         }
         html = build_topic_page(env_extra=dict(odd))
         for name, value in odd.items():
-            with self.subTest(phase="baked", env=name):
-                self.assertIn(value, html, "bake 경로가 사라졌다 — 전제 붕괴")
-        stripped = apply_strip(html)
-        for name, value in odd.items():
-            with self.subTest(phase="stripped", env=name):
-                self.assertNotIn(value, stripped,
-                                 "%s 값이 접두사가 다르다는 이유로 배포본에 "
-                                 "남는다" % name)
-        self.assertFalse(find_local_emails(stripped))
+            with self.subTest(env=name):
+                self.assertNotIn(value, html)
+        self.assertFalse(find_local_emails(html))
 
     @requires_secret_patterns
-    def test_key_reinjection_never_happens_between_strip_and_upload(self):
-        """strip 후 재주입이 업로드 전에 끼어들면 strip 이 무의미해진다.
-
-        재주입 자체는 정당하다(중단된 배포로 비워진 로컬 트리 self-heal, 그리고
-        --restore-keys). 금지되는 건 위치다: Step 6 strip 과 wrangler 업로드
-        사이에서 다시 채워 넣으면 키가 그대로 배포된다.
-        """
+    def test_key_reinjection_is_absent(self):
+        """생성물에 owner 키를 다시 굽는 복구 경로를 두지 않는다."""
         src = SOURCES["prepare_deploy"].read_text(encoding="utf-8")
         strip_at = src.find("strip_key_slots(")
         self.assertNotEqual(strip_at, -1, "Step 6 strip 호출부를 찾지 못했다")
         upload = re.search(r"^\s+_wrangler_deploy\(\)\s*$", src, re.M)
         self.assertIsNotNone(upload, "wrangler 업로드 호출부를 찾지 못했다")
         self.assertLess(strip_at, upload.start(), "strip 이 업로드보다 뒤에 있다")
-        calls = [m.start() for m in re.finditer(r"(?<!def )_reinject_local_keys\(", src)]
-        self.assertTrue(calls, "_reinject_local_keys 호출부를 찾지 못했다")
-        for pos in calls:
-            with self.subTest(line=src.count("\n", 0, pos) + 1):
-                self.assertFalse(
-                    strip_at < pos < upload.start(),
-                    "strip 과 wrangler 업로드 사이에서 키를 재주입한다")
+        self.assertNotIn("_reinject_local_keys", src)
 
 
 class GeneratedPageBrowserGateTests(unittest.TestCase):
@@ -577,13 +567,16 @@ class GeneratedPageBrowserGateTests(unittest.TestCase):
     def test_bad_format_key_is_not_reported_as_a_missing_key(self):
         """형식이 틀린 키와 '키가 아예 없음' 은 다른 안내여야 한다."""
         path = self._page_script(build_topic_page())
-        res = self._run(path, {"seedLocalStorage": {"_LLM_KEY": "definitely-not-a-key"}})
-        text = res["statusText"] or ""
+        res = self._run(path, {
+            "action": "run",
+            "promptReturn": "definitely-not-a-key",
+        })
+        text = res["statusAfterRun"] or ""
         self.assertTrue(text, "형식이 틀린 키인데 아무 안내도 없다")
         self.assertNotIn("BYOK", text,
                          "형식 오류를 '키가 없다' 안내로 잘못 설명한다")
-        self.assertIsNot(res["rerunDisabled"], True,
-                         "형식 오류인데 no-key 처럼 버튼을 잠갔다")
+        self.assertIs(res["rerunDisabled"], True,
+                      "유효한 키가 없는데 재실행 버튼이 활성화됐다")
 
     def test_cancelling_the_byok_prompt_leaves_an_explanation(self):
         """프롬프트를 취소해도 이유가 남아야 한다 — 무성 실패 금지."""

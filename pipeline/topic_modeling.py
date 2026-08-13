@@ -9,9 +9,9 @@ BERTopic 기반 hierarchical topic modeling + UMAP 시각화 좌표 생성.
 6. 임베딩 코사인 유사도 top-20 → Sonnet이 이유/관계 작성
 
 Usage:
-  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic scisci
-  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic ai4s --skip-connections
+  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/topic_modeling.py --topic my-topic --skip-connections
 """
 
 import argparse
@@ -1000,7 +1000,7 @@ Rules:
 # Main
 # ═══════════════════════════════════════════
 
-def _run_topic_model(topic="ai4s", *, skip_connections=False,
+def _run_topic_model(topic, *, skip_connections=False,
                       skip_classification=False, min_cats=8, max_cats=12,
                       local_fallback=None):
     """Programmatic entrypoint for topic_modeling."""

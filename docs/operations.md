@@ -1,809 +1,136 @@
-# Paper-Curation Operations Manual
+# Operations Manual
 
-Detailed recipes, concurrency tuning, and recovery flows for the paper-curation pipeline.
-## Affiliation registry proposal review
-### Pinned operator-curated baseline import
+Paper Curation은 로컬 실행이 기본입니다. 공개 배포, 이메일, 원격 DB 동기화는 각각 별도의 명시적 설정과 명령이 있어야 동작합니다.
 
-The audited 4,747-record source may be accepted only through this explicit, SHA-pinned mode; it records `operator:jehyunlee` approval and hash-bound replay evidence. It is not a general trust switch:
+## 기본 점검
 
 ```bash
-python pipeline/audit_affiliation_registry.py import \
-  --source <audited-fixed-4747-source.json> \
-  --registry pipeline/affiliation_registry.json \
-  --corrections pipeline/affiliation_registry_corrections.jsonl \
-  --baseline pipeline/affiliation_registry_baseline.json \
-  --operator-curated
+paper-curation inspect
+paper-curation doctor
 ```
 
-The command rejects any source whose bytes do not match the pinned SHA-256 or whose record count is not exactly 4,747. New or unseen institutions, normal source imports, network resolution, and Scopus enrichment remain proposal-only until authoritative evidence or separate operator review; Scopus is never hierarchy authority.
-### Official-only relationship transition
+`inspect`는 저장소, Python 3.12, Claude 인증, Zotero 로컬 DB, 설정된 토픽과 publication mode를 읽기 전용으로 확인합니다. `doctor --network`만 외부 연결을 점검합니다.
 
-Before any automatic identity application, append the one-shot transition to the pinned import. Supply the canonical registry SHA-256 and event head from the validated current snapshot; begin with `--dry-run`, then publish the receipt. The receipt records the exact `2245 = official_retained + demoted_or_superseded` equation and complete pre-transition relationship-ID hash.
+## 로컬 운영
 
 ```bash
-python pipeline/audit_affiliation_registry.py transition-relationship-policy \
-  --registry pipeline/affiliation_registry.json \
-  --corrections pipeline/affiliation_registry_corrections.jsonl \
-  --baseline pipeline/affiliation_registry_baseline.json \
-  --receipt .cache/affiliation-relationship-policy-2026-08-08.json \
-  --timestamp 2026-08-08T00:00:00Z --effective-date 2026-08-08 \
-  --expected-registry-sha256 <current-canonical-registry-sha256> \
-  --expected-event-head <current-event-head> --dry-run
+TOPIC=my-topic
+
+# 실행 계획만 확인
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode curate --source zotero --dry-run
+
+# Zotero의 신규·누락 논문 처리
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode curate --source zotero
+
+# 웹 검색부터 신규 논문 처리
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode curate --source web --days 7
+
+# 로컬 대시보드
+PYTHONUTF8=1 python pipeline/serve_local.py --topic "$TOPIC"
 ```
 
-Re-run without `--dry-run` only after reviewing that receipt output. The transition preserves historical accepted evidence but retains an accepted relationship only when it already cites reviewed `authority=official` evidence; every other legacy edge becomes a proposal requiring reviewed official membership evidence. Do not hand-edit generated artifacts. Compatibility `group_id` may temporarily disappear while official relationship evidence is reviewed. Wikipedia, Scopus, ROR, and identity/correction facts never automatically establish a relationship.
+생성 결과는 `docs/{topic}/index.html`, 논문 리뷰는 `docs/papers/{slug}/`에 저장됩니다.
 
-The bibliography builder is deliberately offline. Run the resolver as a scheduled post-run job on either Mac; it appends every policy and provider result to proposal JSONL, while only provider-owned attempts enter `affiliation_enrichment_attempts`:
+## 분류
+
+기본 분류는 저장된 SPECTER2/UMAP/HDBSCAN 번들을 사용합니다.
 
 ```bash
-python pipeline/audit_affiliation_registry.py resolve-pending \
-  --db .cache/bibliography.sqlite3 --registry pipeline/affiliation_registry.json \
-  --proposals .cache/affiliation-proposals.jsonl --allow-network \
-  --retrieved-at 2026-08-08T00:00:00Z
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode reclassify
 ```
 
-`--name` and `--country` support an explicit case. Verified-TLS ROR is queried first; only exact country-consistent identities are proposals, and ROR official URLs are recorded for organization/member-page review. Wikipedia exact-title lookup is a discovery fallback only; Scopus is optional metadata only. Each provider gets at most two attempts (one retry); five provider failures open the circuit breaker. Provider failures, limits, and missing credentials remain pending and return exit code 6 for a retryable incomplete batch. Faculty, School, College, and Department fragments are never guessed. Generic-fragment, request-budget, and circuit-breaker policy records remain in proposal JSONL but are never written as provider attempts.
-
-Review proposal JSONL into a separate approved JSONL. Identity approval requires `confidence: 1.0` and exact country-consistent ROR evidence. Relationship approval requires an approved official organization/member-page URL and exact quote; seed labels and Scopus cannot establish membership. Apply under the sidecar lock, then Git-sync the tracked artifacts:
+Zotero 하위 컬렉션을 카테고리로 사용할 수도 있습니다.
 
 ```bash
-python pipeline/audit_affiliation_registry.py apply-approved \
-  --registry pipeline/affiliation_registry.json \
-  --corrections pipeline/affiliation_registry_corrections.jsonl \
-  --baseline pipeline/affiliation_registry_baseline.json \
-  --approvals reviewed-affiliation-approvals.jsonl \
-  --timestamp 2026-08-08T00:00:00Z --effective-date 2026-08-08 \
-  --expected-registry-sha256 <current-canonical-registry-sha256> \
-  --expected-event-head <current-event-head> \
-  --receipt .cache/affiliation-apply-approved-2026-08-08.json
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode reclassify \
+  --classify-source zotero --unclassified skip
 ```
 
-Low-confidence or conflicting cases remain pending; never hand-edit registry artifacts. After projecting an approved registry into the bibliography DB, bind release drift thresholds to that reviewed snapshot. The strict checker then blocks publication when active unresolved observations grow beyond the bounded allowance, any unresolved case is older than 30 days, identity/country mismatches increase materially, or one umbrella group exceeds the concentration threshold.
-### Affiliation identity freeze and publication protocol
+`--unclassified include`는 이름이 `Unclassified`, `99 Unclassified`, `미분류`인 폴더를 카테고리로 포함합니다. 여러 하위 컬렉션에 속한 논문은 `all_categories`에 모두 기록됩니다.
 
-Routine bibliography builds and review generation are offline: they only project already
-accepted exact identifiers, aliases, and direct redirects. An observation with a missing
-or unmappable country remains pending, except that an exact accepted external identifier
-or one globally unique accepted survivor may be reported as a lookup-only result; neither
-path creates, enriches, aliases, or merges an identity.
-
-Country values use the tracked ISO 3166-1:2020 derivative from Debian `iso-codes`
-upstream 4.18.0 (2025-04-11), source package 4.18.0-1, exact source
-`https://sources.debian.org/data/main/i/iso-codes/4.18.0-1/data/iso_3166-1.json`
-(`data/iso_3166-1.json`, LGPL-2.1-or-later). The command-owned raw cache is
-`.cache/affiliation-oracles/iso-codes/4.18.0-1/iso_3166-1.json`; its raw SHA-256 is
-`f01b812b57fba9f31ff621bf33e7c7570a01964dbeb5be2167e94decf538c89f` and
-the canonical map SHA-256 is
-`079e9037803744d92198452b06ae230ba8952ea6e592b666dbb81206247278e3`.
-The closed input domain is current alpha-2, alpha-3, and exact English short names,
-plus only these literal aliases:
-
-- `China→CN`; `Taiwan→TW`; `Hong Kong→HK`; `Macao/Macau→MO`;
-  `South Korea`/`Republic of Korea`/`Korea, South`/`Korea South→KR`;
-  `North Korea`/`Democratic People's Republic of Korea`/`Korea, North`/
-  `Korea North→KP`; `Turkey→TR`.
-- `United States`/`United States of America`/`USA`/`U.S.A.`/`U.S.→US`;
-  `United Kingdom`/`Great Britain`/`Britain`/`UK`/`U.K.→GB`;
-  `Russia→RU`; `Vietnam→VN`; `Iran→IR`; `Syria→SY`; `Laos→LA`;
-  `Moldova→MD`; `Tanzania→TZ`; `Brunei→BN`; `Bolivia→BO`;
-  `Venezuela→VE`; `Czech Republic→CZ`; `Ivory Coast→CI`;
-  `Cape Verde→CV`; `Swaziland→SZ`; `Macedonia`/`FYROM→MK`;
-  `East Timor→TL`; `Palestine`/`Palestinian Territories→PS`.
-
-Current territories including `HK`, `MO`, `TW`, and `PS` remain distinct site
-codes. Numeric codes, `XK`, `EL`, historical `AN/BU/CS/DD/NT/SU/TP/YU/ZR`,
-localizations, successor guesses, fuzzy matches, and package/runtime fallbacks are
-unmappable. A branch retains its physical site country, a legal entity its
-domicile, and parent geography is obtained only through an accepted relationship.
-Multinational umbrellas have `country_scope=multinational` and no country code.
-Only accepted `part_of` edges may populate legacy `group_id`;
-`jointly_operated_by`, `member_of`, and `network_member_of` are non-parental and
-never supply a compatibility parent. A map change needs data-owner and independent
-architect/critic approval, `country_map_changed` and correction events,
-reprojection, cohort redisposition, and a strict check before automatic apply.
-
-The identity oracle is ROR Schema 2.1 from the
-`https://github.com/ror-community/ror-schema` repository at commit
-`20ec1cf1edc3e0051de0ea2eae2bfdf536b9ba63`. Its immutable source URL is
-`https://raw.githubusercontent.com/ror-community/ror-schema/20ec1cf1edc3e0051de0ea2eae2bfdf536b9ba63/ror_schema_v2_1.json`;
-the command-owned copy is
-`.cache/affiliation-oracles/ror-schema/20ec1cf1edc3e0051de0ea2eae2bfdf536b9ba63/ror_schema_v2_1.json`
-with raw SHA-256
-`5df548a5f7a927fc9e94f196d2c3e78c96c25343909999dfda5110b535e2ddf7`.
-License status is `NOASSERTION`: the pinned repository tree has no license file
-and the upstream repository declares no license. Do not infer or substitute a
-license.
-
-The public-suffix oracle is sourced from the official canonical URL
-`https://publicsuffix.org/list/public_suffix_list.dat`. The pinned immutable
-source is
-`https://raw.githubusercontent.com/publicsuffix/list/e1b8015c3b2f0f4f8c18659c2480fc1a22c07b20/public_suffix_list.dat`,
-snapshot `2026-07-25_14-20-03_UTC`, commit
-`e1b8015c3b2f0f4f8c18659c2480fc1a22c07b20`, both ICANN and PRIVATE sections,
-license MPL-2.0. Its command-owned copy is
-`.cache/affiliation-oracles/psl/2026-07-25_14-20-03_UTC-e1b8015/public_suffix_list.dat`
-with raw SHA-256
-`fe6adc7fb8014f57d28d69b18d0aa3e581efb432544922e12131a5d4a87bd954`.
-There is no runtime fallback for either oracle.
-
-ROR pages have 5-second connect, 15-second read-idle, and 30-second total
-deadlines; 2,097,152 wire and 8,388,608 decoded-byte limits; and maxima of 10
-pages or 200 records. An official-site chain has 5-second connect per address,
-10-second read-idle, 30-second total, and at most three redirects. Its limits are
-1,048,576 wire/4,194,304 decoded bytes per response and 2,097,152
-wire/8,388,608 decoded bytes per chain. Limit+1 fails. Only `identity` and
-streamed `gzip`, and final `text/html`, `application/xhtml+xml`, or
-`application/ld+json`, are accepted.
-
-Automatic fetch rejects every proxy setting, permits HTTPS port 443 only,
-validates the complete A/AAAA set as global, and dials a selected vetted IP
-directly without re-resolution while retaining the original IDNA hostname for
-TLS SNI, certificate verification, and `Host` on every redirect. Every redirect
-repeats those checks and must retain the pinned-PSL registrable domain.
-Charset precedence is UTF-8 BOM, one HTTP charset, one declaration in the first
-1,024 wire bytes, then strict UTF-8. Labels are only `utf-8`/`utf8`,
-`windows-1252`/`cp1252`, and `iso-8859-1`/`latin1`; disagreement, ambiguity,
-decode replacement, or unsupported labels fail closed. Extraction precedence is
-scoped Organization/CollegeOrUniversity JSON-LD, visible title, visible h1, then
-explicit legal/contact organization name; country is JSON-LD PostalAddress then
-visible legal/contact address. Same-tier multiplicity or lower-tier conflict
-fails. Retain no page: at most four exact pointer-bound quotes, 512 UTF-8 bytes
-each and 2,048 bytes total, plus digests and transport metadata. Wikipedia is
-discovery-only; Scopus is optional enrichment and never authority.
-Before any network investigation, `pin-oracles` and `check-oracles` operate only on the
-command-installed immutable cache; they never download substitutes. Freeze the exact
-5,162 IDs with `freeze-pending-cohort --db … --registry … --cohort … --timestamp …`.
-Investigate that artifact with `resolve-pending --db … --cohort … --evidence-dir …`;
-each attempt carries its covered pending IDs and its immutable segment is fsynced before
-the SQLite join. Evaluate with `evaluate-pending --registry … --db … --cohort …`.
-The resulting artifact has one disjoint terminal disposition per frozen ID,
-`UNCLASSIFIED=0`, and recomputed decision digest. `apply-investigated --dry-run` checks
-that digest and current heads; `--canary` permits at most 50 eligible decisions and every
-other batch permits at most 100. A zero-eligible cohort performs no identity mutation, but
-is still a durable finalization: the decision segment and hash-chain ledger are fsynced,
-all 5,162 dispositions join SQLite in one transaction, registry/cohort heads advance, and
-the receipt plus generation descriptor are published descriptor-last.
-`recover-investigated --db … --journal …` obtains the writer flock and finishes only
-`PREPARED`, `LEDGER_DURABLE`, `DB_COMMITTED`, or `DESCRIPTOR_COMMITTED` journals;
-unreferenced evidence and its index entry are quarantined rather than hand-deleted.
-
-Run the audited sequence exactly: freeze the cohort and relationship heads; complete the
-official-only relationship transition; investigate into immutable evidence segments;
-dry-run at exact heads; apply a 50-decision canary, then no more than 100 decisions per
-generation; project; strict-check; emit the cohort/disposition, source-ID/alias/redirect,
-country, evidence, relationship, ledger, and generation reports; commit and push target
-Git blobs; then publish the matching generation through CAS. A second host fetches Git
-before CAS pull and proves DB/logical hashes, registry/event contracts, oracle/country
-hashes, cohort, ledger, relationship equation, and strict result equality.
-
-Use the stable local lock pathname only with POSIX advisory `flock`: shared for
-readers, exclusive for writers and recovery. Reader timeout is 30 seconds,
-writer/recovery timeout 120 seconds, and nonblocking poll interval 0.25 seconds.
-The pathname is diagnostic, not ownership, and is never deleted or replaced;
-kernel close, process death, and reboot release ownership. Descriptors are
-noninheritable and are never passed to a subprocess. A timeout reports busy and
-fails closed; no PID, mtime, stale-file deletion, or manual cleanup authorizes
-takeover.
-
-The Mac mini authority uses a stable control `flock` and issues a 90-second
-boot-bound monotonic lease with a cryptographically random writer UUID and
-durable increasing fence token. Heartbeats renew every 20 seconds; acquisition
-polls every 2 seconds for at most 120 seconds; each authority RPC times out after
-10 seconds; commit requires at least 30 seconds remaining. Acquire remote lease
-before local exclusive. Release local exclusive before exact-owner lease release.
-Only the current unexpired host/boot/token/run/writer/client tuple may renew or
-advance the manifest. Owner death waits for exact expiry; authority reboot
-invalidates the boot ID and the next acquisition increments the fence. Early
-takeover, stale-token renew/commit, PID tests, remote `mkdir`, wall-clock
-takeover, descriptor inheritance, and manual lock/lease/fence/manifest edits are
-prohibited.
-
-Recovery obtains exclusive and completes only proven `PREPARED`,
-`LEDGER_DURABLE`, `DB_COMMITTED`, or `DESCRIPTOR_COMMITTED` journal state;
-unreferenced immutable staging is quarantined. A busy lock/lease, unknown hash,
-descriptor mismatch, evidence gap, automatic relationship, duplicate active
-identity key, cohort/transition accounting mismatch, heartbeat failure, or
-non-APFS/POSIX authority blocks publication. Report the wait/timeout/recovery,
-lease acquisition/renewal/expiry/takeover/fence rejection/boot-change, journal,
-Git/CAS, and second-host counters for every phase, including explicit zero or
-not-executed values.
+## 이미지와 타임라인
 
 ```bash
-python pipeline/audit_affiliation_registry.py apply-investigated \
-  --registry pipeline/affiliation_registry.json \
-  --decisions .cache/affiliation-decisions.json \
-  --db .cache/bibliography.sqlite3 \
-  --evidence-dir .cache/affiliation-evidence \
-  --ledger .cache/affiliation-ledger.jsonl \
-  --corrections pipeline/affiliation_registry_corrections.jsonl \
-  --baseline pipeline/affiliation_registry_baseline.json \
-  --receipt .cache/affiliation-apply-receipt.json \
-  --journal .cache/affiliation-apply.journal \
-  --generation-descriptor .cache/affiliation-generation.json \
-  --timestamp 2026-08-09T01:59:00Z --effective-date 2026-08-09
+# 변경된 카테고리만
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode retime --images changed
 
-python pipeline/audit_affiliation_registry.py snapshot-db-baseline \
-  --db .cache/bibliography.sqlite3 \
-  --registry pipeline/affiliation_registry.json \
-  --baseline pipeline/affiliation_registry_baseline.json \
-  --captured-at 2026-08-09T01:59:00Z
-
-python pipeline/check_bibliography_db.py --strict --release-date 2026-08-09 \
-  --db .cache/bibliography.sqlite3 \
-  --registry pipeline/affiliation_registry.json \
-  --baseline pipeline/affiliation_registry_baseline.json \
-  --cohort .cache/affiliation-frozen-cohort.json \
-  --decisions .cache/affiliation-decisions.json \
-  --ledger .cache/affiliation-ledger.jsonl \
-  --generation-descriptor .cache/affiliation-generation.json
-
-python pipeline/audit_affiliation_registry.py report \
-  --registry pipeline/affiliation_registry.json \
-  --db .cache/bibliography.sqlite3 \
-  --cohort .cache/affiliation-frozen-cohort.json \
-  --decisions .cache/affiliation-decisions.json \
-  --ledger .cache/affiliation-ledger.jsonl \
-  --generation-descriptor .cache/affiliation-generation.json \
-  > .cache/affiliation-final-report.json
-```
-The trigger-side dispatcher lives in `SKILL.md`; this file is the operator's reference.
-
-## Pipeline overview
-
-Single orchestrator: `pipeline/run_full.py` (3 axes — `--mode`,
-`--source`, `--images`). Individual scripts under `pipeline/*.py` are
-also importable as functions from `pipeline.api`:
-
-```python
-from pipeline.api import (
-    search, register, sync, dedup_zotero,
-    curate, classify, topic_model, category_summary, insights,
-    timeline, network, search_index, topic_index, review_to_html,
-    deploy, validate, audit_matching, fix_matching, cleanup,
-)
+# 전체 재생성
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode retime --images all
 ```
 
-## Modes (run_full.py)
+Google API Key와 PaperBanana가 없으면 관련 이미지 기능만 비활성으로 남습니다.
 
-| Mode | Default `--source` | Default `--images` | Purpose |
-|------|--------------------|---------------------|---------|
-| `curate` | `zotero` | `skip` | Pick up new papers; reuse existing reviews |
-| `rebuild` | `zotero` | `all` | Regenerate everything (destructive — review.md/figures wiped) |
-| `reclassify` | (none) | `changed` | Re-run topic_modeling + classify only (see `--classify-source`) |
-| `retime` | (none) | `all` | Regenerate timeline narrative + images |
-| `deploy` | (none) | `skip` | wrangler deploy + gh-pages sync + master push |
-| `audit` | — | — | Standalone: PDF↔review mismatch audit |
-| `fix-matching` | — | — | Standalone: delete artifacts for audit-flagged slugs |
-| `dedup` | — | — | Standalone: Zotero collection dedup |
-| `validate` | — | — | Standalone: post-build validation gate |
-
-`--source web` adds search + register + sync as a preflight to `curate`.
-
-## Common Commands
+## 검색 인덱스와 검색
 
 ```bash
-# Weekly run — web search + Zotero register + new-paper review
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7
-
-# Local-only update (Zotero already has new papers)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
-
-# Force-rebuild specific slugs (recovery)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf
-
-# Reclassify only (no LLM, HDBSCAN approximate_predict)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
-
-# Reclassify from your own Zotero folder tree instead of clustering.
-# NOTE: run_full still runs topic_modeling first (it also refreshes coords and
-# connections), so this is not the bundle-free path — that is the standalone
-# classify_papers invocation under "Classification source".
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify --classify-source zotero
-
-# Timeline narrative + images
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
-
-# Deploy
-PYTHONUTF8=1 python pipeline/run_full.py --topic humanoid --mode deploy
-
-# Dry-run (no execution)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --dry-run
-
-# Citedby — PDF-first index + default timeline/narrative + localhost open
-PYTHONUTF8=1 python pipeline/run_citedby.py \
-  --doi 10.xxxx/xxxxx --slug 042_Some_Paper \
-  --pdf-first --build-index --serve --open
+PYTHONUTF8=1 python pipeline/build_search_index.py --topic "$TOPIC"
+python pipeline/query_search_index.py --topic "$TOPIC" --query "your research question" --json
 ```
 
-## Safety flags
+Google API Key가 없으면 lexical BM25 검색만 사용합니다. Dense 인덱스에는 `gemini-embedding-001`의 768차원 `RETRIEVAL_DOCUMENT` 벡터를 L2 정규화한 뒤 int8로 저장합니다.
 
-- `--strict-pdf` — block fuzzy PDF matching; ID (Zotero/DOI/arXiv) only
-- `--slugs A,B,C` — restrict to specific slug prefixes
-- `--dry-run` — print plan, no execution
-- `--skip-dedup` / `--dedup-execute` — control Zotero dedup preflight
-- `--yes` — bypass `--mode rebuild` confirmation gate
-- `--classify-source hdbscan|zotero` — classification source (default `hdbscan`);
-  see "Classification source" below. Only valid on the classifying modes
-  (`curate`/`rebuild`/`reclassify`/`retime`); `run_full` refuses it on `deploy` and the
-  standalone tool modes rather than dropping it.
-- `--unclassified skip|include` — `--classify-source zotero` only
-- omitting `--topic` — **individual scripts only** (`run_update_force`,
-  `classify_papers`, `validate_papers`, …): resolves to the single configured topic and
-  says so; stops and lists the topics when there is more than one (it used to fall back
-  to `ai4s`, so an install without ai4s silently targeted somebody else's topic).
-  `run_full.py` still requires `--topic`.
-
-## Concurrency (Anthropic Tier 4 default)
-
-`run_full.py --concurrency` and `run_update_force.py --concurrency`
-control per-paper review parallelism. Default 16 (Tier 4). Lower
-tiers should drop:
-
-| Tier | Recommended |
-|------|-------------|
-| Free / 1 | 2–4 |
-| 2 | 6–8 |
-| 3 | 10–12 |
-| **4** | **16–20** |
-
-Phase 2 added per-category parallelism for the post-review phase:
-- `CAT_SUMMARY_PARALLEL` (default 8, OAuth 1) — Haiku per-category summaries
-- `TIMELINE_NARRATIVE_PARALLEL` (default 8) — Opus per-category narratives
-- `TIMELINE_IMAGE_PARALLEL` (default 1) — PaperBanana per-category images;
-  Gemini image RPM is the real bottleneck, so this stays serial unless you
-  raise it deliberately
-- `PAPER_CONNECTION_WORKERS` (default 4, OAuth 1) — Sonnet Related-Papers
-  batches, the pool `extract_insights` actually drives. Batch shape is tuned
-  separately with `EXTRACT_INSIGHTS_CONN_BATCH` (15),
-  `EXTRACT_INSIGHTS_CONN_DEADLINE` (300s) and `EXTRACT_INSIGHTS_CONN_ROUNDS` (3)
-
-Wall-clock for finalize phase: ~25 min → ~6 min at Tier 4.
-
-## Python environment
-
-**Standard: single conda env `py312` (Python 3.12).** `requirements.txt`
-includes the clustering stack (umap-learn / hdbscan / sentence-transformers),
-so topic modeling/classification runs in-process — no subprocess routing.
+## 검증과 복구
 
 ```bash
-conda create -n py312 -c conda-forge python=3.12 pip -y
-conda activate py312
-pip install -r requirements.txt
-brew install --cask temurin   # Java for opendataloader-pdf
+PYTHONUTF8=1 python pipeline/validate_papers.py --topic "$TOPIC" --strict
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode audit
 ```
 
-## Korean network workarounds
-
-- **HuggingFace LFS blocked**: download SPECTER2 via AWS S3 mirror to
-  `.cache/base/`, then `topic_modeling.py` auto-detects:
-
-  ```bash
-  mkdir -p .cache && cd .cache
-  curl -L -o specter2_0.tar.gz \
-       "https://ai2-s2-research-public.s3.amazonaws.com/specter2_0/specter2_0.tar.gz"
-  tar -xzf specter2_0.tar.gz
-  ```
-
-- **arXiv chronic 429**: `search_papers.py --skip-arxiv` (OpenAlex + S2 only)
-- **OpenDataLoader fallback**: PyMuPDF takes over silently; install
-  Temurin Java to get pdffigures2 structure
-- **Anthropic stale connections (half-open sockets)**: the Related-Papers
-  connection step defends itself automatically — multi-round retry (only
-  stuck batches), zero-connection-papers-first ordering, and unfinished
-  papers keep their previous connections (self-heals next cycle). If a
-  local model is available, `--local-fallback` completes the remainder
-  on the spot (measured: EXAONE-4.0-32B, ~32 s per 8-paper batch):
-
-  ```bash
-  # config.json — add a local_model block (Ollama example)
-  #   "local_model": {
-  #     "base_url": "http://localhost:11434/v1",
-  #     "model": "exaone-4.0:latest",
-  #     "num_ctx": 8192, "retries": 2, "batch_size": 8
-  #   }
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero --local-fallback
-  ```
-
-  Ollama is auto-detected (native API: per-request `num_ctx`, `think:false`);
-  LM Studio/llama.cpp/vLLM use the OpenAI-compatible path. A dead endpoint
-  is skipped silently — the pipeline never blocks on it.
-
-## Schema v1 frontmatter (Phase 3)
-
-Every `docs/papers/{slug}/review.md` carries YAML frontmatter
-populated by `inject_frontmatter.py`. Readers prefer frontmatter over
-body-regex parsing when `schema_version: v1` is present.
-
-```yaml
----
-title: "<full paper title>"
-authors: ["First Last", ...]
-date: "2021-07-15"
-doi: "..."
-primary_topic: ai4s
-primary_category: "..."
-all_categories: [...]
-sub_categories: {"Category": "Sub-category", ...}
-sub_category: "..."
-scores:
-  novelty: 5
-  technical: 5
-  significance: 5
-  clarity: 4
-  overall: 5
-score: 5
-essence: "..."
-tags: [paper, ai4s, "ai4s/category-slug/sub-slug", ...]
-schema_version: v1
----
-```
-
-Migration script: `pipeline/_archive/migrate_to_toolschema.py` (one-time, now archived). Originals are
-preserved at `docs/papers/.legacy/{slug}_v0.md`. Re-running the
-migration is idempotent (existing backups are kept).
-
-## LLM tool-use + cache
-
-Phase 3 migrated `write_review` and `extract_insights.cross_category`
-to Anthropic tool-use schemas. Responses are forced into the schema
-shape; the SDK retries on mismatch. Post-hoc fixers
-(`fix_python_list_literals`, `fix_figure_paths`, `fix_evaluation_format`,
-`validate_review_format`) are no longer invoked.
-
-Each tool-use call is wrapped in `api._llm.cached_call` keyed on
-`sha256(prompt || model || schema_version)`. Cache layout:
-
-```
-docs/papers/{slug}/.llm_cache/{hash}.json     # per-paper (write_review)
-docs/{topic}/.llm_cache/{hash}.json           # per-topic (insights)
-```
-
-A re-run of `--mode rebuild` on an unchanged paper costs zero LLM
-calls. Pass `force=True` to `cached_call` to bypass.
-
-## Figure pre-validator (Phase 4)
-
-`api.extract.pre_validate_figure(png_path)` runs before each Gemini
-figure validation call. Heuristics: file size, dimensions, grayscale
-variance. Skips ~30% of Gemini calls on obviously-invalid crops while
-deferring borderline cases to the LLM.
-
-## Retrieval quality regression
-
-The tracked `pipeline/eval/retrieval_queries.jsonl` corpus contains five fixed
-queries for each of the eight current collections. Query vectors are generated
-once with Gemini `RETRIEVAL_QUERY` and committed, so routine evaluation is
-offline and deterministic.
+다음 명령은 데이터를 지우거나 원격 Zotero를 변경할 수 있으므로 먼저 dry-run 결과를 검토해야 합니다.
 
 ```bash
-# Run all collections and reject recall@5 regressions beyond 0.025
-python pipeline/evaluate_retrieval.py \
-  --queries pipeline/eval/retrieval_queries.jsonl \
-  --vectors pipeline/eval/retrieval_query_vectors.json \
-  --all --baseline pipeline/eval/retrieval_baseline.json \
-  --min-recall-at-5 0 --strict \
-  --output pipeline/eval/results/latest.json \
-  --failures pipeline/eval/results/failures.json
+# PDF↔review 오매칭 산출물 제거
+PYTHONUTF8=1 python pipeline/fix_matching.py --topic "$TOPIC" --execute
 
-# Install the same test on macOS (Sunday 03:17)
-scripts/install-retrieval-eval-launchd.sh
+# Zotero 중복 삭제
+PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic "$TOPIC" --execute
 ```
-The installer mirrors only evaluator runtime, tracked corpus, baseline, and the
-eight index sidecars to
-`~/Library/Application Support/paper-curation/retrieval-eval/`. macOS
-LaunchAgents cannot read a repository under `Documents` without TCC approval,
-so the scheduled job evaluates this atomic snapshot and writes reports under
-`~/Library/Logs/paper-curation/`. Successful orchestrated index rebuilds refresh
-the snapshot automatically when the LaunchAgent is installed.
 
-`run_update_force.py` rebuilds `_cross`, then hard-gates the rebuilt source
-collection and `_cross` before deploy. The bootstrap labels are BM25 top-1
-known-item targets, not exhaustive relevance judgments; therefore the active
-gate detects regression from the tracked baseline rather than claiming a
-0.95 absolute floor. Review observed failures before adding them to the query
-set. Regenerate vectors explicitly after changing query bytes:
+예상하지 못한 사용자 변경은 stash·reset·삭제하지 않습니다.
+
+## Bibliography DB
+
+로컬 기본 DB는 `.cache/bibliography.sqlite3`입니다.
 
 ```bash
-python pipeline/generate_retrieval_vectors.py \
-  --queries pipeline/eval/retrieval_queries.jsonl \
-  --output pipeline/eval/retrieval_query_vectors.json --force
-```
-
-Record measurement-driven model, chunking, or collection changes in
-`pipeline/eval/retrieval_decisions.json`; do not revise labels merely to make a
-gate pass.
-
-## Citedby operations
-
-`run_citedby.py` is a standalone tool rather than a `run_full.py` mode. For a reviewed
-seed paper, pass its slug so all timestamped artifacts stay under that paper:
-
-```bash
-PYTHONUTF8=1 python pipeline/run_citedby.py \
-  --doi 10.xxxx/xxxxx \
-  --slug 042_Some_Paper \
-  --pdf-first --build-index --serve --open
-```
-
-Default behavior and controls:
-
-- Timeline narrative and PaperBanana image are **on by default**. Use
-  `--no-timeline` only for a deliberately text-only or fast run.
-- Timeline candidate generation and critique have a **1800-second wall-clock cap**.
-  A timeout does not discard the report: the narrative and remaining sections are
-  still written, with the image failure shown explicitly.
-- `--pdf-first` applies the evidence order corpus review > Zotero PDF > abstract >
-  title. Use `--build-index` with it to write `_citedby_index.json` plus the
-  int8 embedding sidecar from those enriched sources.
-- `--serve` reuses a healthy paper-curation server or starts one; `--open` launches
-  the generated `http://localhost:8000/...` URL. Do not open the report as
-  `file://` when using Deep(er) Research.
-- The report and Deep(er) Research result have separate PDF, Markdown, Obsidian,
-  and Audio controls. Screen links open local corpus reviews, print links switch
-  to DOI/arXiv/source URLs, and Obsidian links target review Markdown or generated
-  evidence notes.
-- The local server must return 200 from `/api/health`. `/api/embed` needs
-  `GOOGLE_API_KEY`; `/api/citedby-answer` uses the configured answer providers.
-  A `304` for `_citedby_index_emb.bin` is a normal browser-cache hit.
-
-Re-running the same command creates a new timestamped report and reuses available
-corpus chunks, embeddings, and cached analysis. Source failures are soft: available
-providers continue, and the final report records the surviving evidence.
-
-## Deploy (Option O-1)
-
-로컬 사용이 기본(Core)입니다. 외부 공유가 필요하면 **3-계층 split-host** 구조로 자동 배포됩니다:
-
-| 계층 | 역할 | 내용 |
-|------|------|------|
-| **Cloudflare Workers (Static Assets + Function)** | 사용자 콘텐츠 서빙 + `/api/audio-email` 라우트 | `docs/` 전체 업로드 (`docs/.assetsignore`로 로컬 전용 토픽 제외) + `worker/index.js` (Audio Overview 이메일 발송 핸들러) |
-| **GitHub `gh-pages` 브랜치** | 진입 URL → Cloudflare 리다이렉트 | 토픽별 리다이렉트 스텁 (1KB 미만), `jehyunlee.github.io/paper-curation/{topic}/` → 운영자가 설정한 Cloudflare URL |
-| **GitHub `master` 브랜치** | 코드·설정·README | 대용량 `docs/papers/`, `docs/{topic}/` 콘텐츠는 `.gitignore`로 제외 |
-
-```bash
-# 배포 (환경변수 필요: CF_API_TOKEN + CLOUDFLARE_ACCOUNT_ID)
-PYTHONUTF8=1 python pipeline/run_full.py --topic my_topic --mode deploy
-```
-
-자동 처리:
-- PNG → WebP 변환 (용량 ~60% 절감)
-- 배포용 HTML에서 API 키·로컬 이메일 제거 후 로컬 working tree 자동 복원
-- `npx wrangler deploy` → Cloudflare 업로드 (해시 기반 증분 업로드) + Worker 함수 동시 배포
-- gh-pages 리다이렉트 스텁 idempotent 동기화 (새 토픽 자동 감지, 변경 없으면 푸시 스킵)
-- Cloudflare 200 OK 검증 (최대 5분 폴링)
-- master에는 **코드·설정 변경만** commit + push (대용량 콘텐츠는 `.gitignore`)
-
-환경변수 발급: Cloudflare Dashboard → My Profile → API Tokens → "Edit Cloudflare Workers" 템플릿.
-```cmd
-setx CF_API_TOKEN "..."
-setx CLOUDFLARE_ACCOUNT_ID "..."
-```
-
-**Custom domain (권장)** — `wrangler.toml` 의 `[[routes]]` 블록에 `pattern = "your-subdomain.your-domain.tld"` + `custom_domain = true` + `zone_name = "your-domain.tld"` 를 박으면 `wrangler deploy` 가 Cloudflare DNS · SSL · 라우팅까지 자동 설정합니다. 동시에 `prepare_deploy.py` 의 `CF_BASE_URL` 도 같은 값으로 갱신해야 gh-pages 스텁이 새 도메인을 가리킵니다. workers.dev 기본 도메인으로도 동작은 하지만 메일 도메인 일관성을 위해 custom domain 권장.
-
-**Cloudflare Worker secrets (이메일 + 질의 임베딩)** — `worker/index.js` 가 두 라우트를 노출합니다: `/api/audio-email` ([Resend](https://resend.com) API 로 MP3 첨부 메일 발송) + `/api/embed` (`gemini-embedding-001` 질의 임베딩 프록시 — 독자가 키 없이 검색하도록). `wrangler secret put` 으로 등록:
-
-```bash
-npx wrangler secret put GOOGLE_API_KEY    # /api/embed 질의 임베딩 프록시용 (gemini-embedding-001, 필수)
-npx wrangler secret put RESEND_API_KEY    # Resend 대시보드의 re_xxx 키 (이메일 발송 필수)
-npx wrangler secret put AUDIO_FROM        # 예: "Paper Curation <noreply@your-domain.tld>" (도메인 verify 필요)
-npx wrangler secret put AUDIO_REPLY_TO    # 답장이 갈 운영자 메일, 예: "you@gmail.com" (선택)
-```
-
-- `GOOGLE_API_KEY` 가 없으면 `/api/embed` 가 실패해 Deep Research 검색이 동작하지 않습니다 (배포 시 필수). 로컬에서는 `pipeline/serve_local.py` 가 같은 역할을 합니다.
-- `RESEND_API_KEY` 가 비어 있으면 `/api/audio-email` 이 503 을 반환하고, 클라이언트는 다운로드만으로 fallback 합니다.
-- `AUDIO_FROM` 의 도메인은 Resend 에서 SPF/DKIM/DMARC TXT 3개를 등록해 verify 해두어야 임의 수신자에게 발송할 수 있습니다 (verify 전엔 Resend 계정 메일 1명만 가능).
-- 로컬 빌드 시 운영자 본인 메일을 미리 박아두려면 `config.json` 에 `"local_emails": ["a@b.com", ...]` 또는 환경변수 `PAPER_CURATION_LOCAL_EMAILS="a@b.com,c@d.com"`. 배포 시 자동 strip 됩니다.
-
----
-
-
-## Bibliography DB operations
-
-The bibliography DB is the persistent memory layer for author, institution, country, DOI/URL, journal, date, Zotero key, and local review-directory queries. It is collection-independent and must be checked after corpus changes.
-The Mac mini's `.cache/bibliography.sqlite3` is canonical. The MacBook keeps a local copy; `pipeline/sync_bibliography_db.py --pull` runs before review generation and `--push` runs afterward. Google Drive is backup/transport only, not a live SQLite volume.
-Review generation also writes `.cache/review_progress.json`. The live phase label cycles through `PDF 매칭 → text.md 추출 → figure 추출 → review.md 생성 → HTML 변환`, while the log includes the completed/total percentage.
-Bootstrap establishes generation zero only when the remote object and manifest are unchanged; run it once before the first CAS-protected push:
-```bash
-python pipeline/sync_bibliography_db.py --bootstrap
-```
-Every publish supplies the immutable pull/bootstrap receipt as `--base-receipt` (and
-migration receipt when applicable). A strict affiliation generation also supplies the
-complete all-or-nothing artifact set; each role is stored as an immutable hash-addressed
-object and the descriptor is installed after the cohort, decisions, and ledger:
-```bash
-python pipeline/sync_bibliography_db.py --push \
-  --base-receipt .cache/bibliography.base.json \
-  --migration-receipt .cache/bibliography-migration.json \
-  --cohort .cache/affiliation-frozen-cohort.json \
-  --decisions .cache/affiliation-decisions.json \
-  --ledger .cache/affiliation-ledger.jsonl \
-  --generation-descriptor .cache/affiliation-generation.json
-
-# The second host fetches/fast-forwards Git first, then stages and verifies every
-# declared object before taking the local writer flock and installing descriptor-last.
-python pipeline/sync_bibliography_db.py --pull \
-  --cohort .cache/affiliation-frozen-cohort.json \
-  --decisions .cache/affiliation-decisions.json \
-  --ledger .cache/affiliation-ledger.jsonl \
-  --generation-descriptor .cache/affiliation-generation.json \
-  --phase-receipt .cache/affiliation-pull-phase-receipt.json
-```
-Every valid pull creates an attempt-unique `in_progress` journal under
-`.cache/affiliation-pull-phase-receipts/` before fetching the authority, then
-atomically finalizes that same record and updates the shown latest-receipt path
-(the shown path is also the default). Final attempt records are never reused.
-They record UTC phase duration, exact monotonic writer-lock request,
-acquisition, successful release, and derived wait/hold durations; typed
-acquisition/release outcomes; the 120-second timeout budget and
-timeout/busy/failure counts; manifest revalidation counts; descriptor-last
-status; and installed DB/base/migration/artifact hashes. Pull fsyncs every
-staged file before replacement and every installed file and destination
-directory in descriptor-last order. Immediately before the first active-file
-replacement it writes the durable install journal
-`.cache/bibliography.pull-install.json`. Strict readers reject that journal; a
-later pull under the writer lock reinstalls the current authority generation
-in full, completes all durability barriers, clears/fsyncs the journal, and
-reports the observed recovery count/status. The attempt-unique record is the
-sole audit authority and is finalized before the shown latest path is updated.
-An attempt-finalization error leaves the durable record `in_progress`, never
-publishes a successful latest copy, and fails the command. The latest path is
-best-effort discovery only: failure to refresh it emits the authoritative
-attempt path but does not rewrite or invalidate a successfully finalized
-attempt. Failed pulls finalize a failed attempt record before returning the
-primary error. Custom receipt paths that alias any managed generation output by
-resolved filesystem identity, hard link, Unicode normalization, or case
-variant—or that enter the immutable attempt directory—are rejected before
-authority access.
-A missing, partial, or hash-mismatched declared artifact fails closed. All subsequent
-migration/publish operations use the immutable pull/base receipt, not a reconstructed
-receipt.
-
-```bash
-# Institution-centered literature search
-PYTHONUTF8=1 python pipeline/query_bibliography.py --institution "Cambridge" --sort date
-
-# Country / author / journal filters
-PYTHONUTF8=1 python pipeline/query_bibliography.py --country "United Kingdom" --json
-PYTHONUTF8=1 python pipeline/query_bibliography.py --author "Yuan" --sort date --desc
-
-# Completeness gate
+PYTHONUTF8=1 python pipeline/build_bibliography_db.py --all
 PYTHONUTF8=1 python pipeline/check_bibliography_db.py --strict
+PYTHONUTF8=1 python pipeline/query_bibliography.py --institution "Cambridge" --sort date
 ```
 
-Registry updates must be projected before publication. The strict checker rejects stale registry/baseline/correction projections, any remigration-required marker, relationship-row drift, and every observation slot without exactly one current version; terminal superseded slots retain one current `superseded` observation.
+완료 이메일은 `notifications.completion_email` 또는 `BIBLIOGRAPHY_COMPLETION_EMAIL`을 설정하고 해당 실행에 `--notify`를 지정한 경우에만 발송됩니다.
 
-```bash
-# Controlled local migration; creates a verified backup and receipt.
-# The base receipt comes from the last successful sync pull/bootstrap.
-python pipeline/repair_bibliography_institutions.py \
-  --db .cache/bibliography.sqlite3 \
-  --base-receipt .cache/bibliography.base.json --execute
-python pipeline/check_bibliography_db.py --strict
+## 공개 배포
 
-# Local rollback restores the verified pre-migration backup and deliberately
-# leaves a remigration-required marker, which blocks push until migration reruns.
-python pipeline/repair_bibliography_institutions.py \
-  --db .cache/bibliography.sqlite3 --rollback
-
-# Published rollback never rewinds the manifest. It republishes a retained
-# immutable object as a newer CAS generation, binds the migration receipt,
-# and forces a controlled remigration before the next push.
-python pipeline/sync_bibliography_db.py \
-  --rollback-generation <older-generation> \
-  --migration-receipt .cache/bibliography.sqlite3.affiliation-migrate.json
-```
-
-The DB is stale when its paper count differs from `docs/papers/_papers_index.json`. After Zotero ingestion, forced rebuilds, or review corpus changes, run the builder with `--all` on the Mac mini worker before treating institution statistics as current. Institution spelling changes must be added to `institution_aliases`, not patched in individual queries.
-## Recovery flows
-
-```bash
-# Audit PDF↔review mismatches
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode audit
-
-# Delete artifacts for high-confidence mismatches
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode fix-matching --yes
-
-# Re-review cleaned slugs
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs <list> --strict-pdf
-
-# Validate
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode validate --yes  # --yes → --strict
-```
-
-## Topic configuration
-
-Each topic ↔ Zotero collection is in `config.json`:
+공개 배포는 `config.json`에 다음처럼 명시해야 합니다.
 
 ```json
 {
-  "zotero": {
-    "collections": {
-      "ai4s": "WKEZLEE8",
-      "scisci": "3KVIDDKH",
-      "humanoid": "...",
-      "physical-ai": "..."
-    }
+  "publication": {
+    "mode": "public",
+    "base_url": "https://papers.example.org"
   }
 }
 ```
 
-`docs/.assetsignore` controls which topics ship to Cloudflare.
-
-## Classification source
-
-Two sources feed the same artifact. `--classify-source hdbscan` (default) clusters
-SPECTER2 embeddings and invents category names. `--classify-source zotero` reads the
-folder tree you already built in Zotero: the top-level collection is the topic and its
-child collections are the categories.
-
-```
-AI for Science  [67W74439]  15,388 items      ← top level = topic
-  ├ 01 General Methods & Platforms   3,984    ← children = categories
-  ├ 02 Biology & Medicine            2,920
-  ├ …
-  └ 99 Unclassified                  2,286
-```
-
-Both write the same `{topic}/_new_classification.json` (`categories[]` +
-`assignments[]`) and the same `classifications[topic]` in `_papers_index.json`, so
-category summaries, insights, timelines, network, topic index and search index consume
-either without change.
-
-| Flag | Effect |
-|------|--------|
-| `--classify-source hdbscan` | Default. Embedding clustering; needs the `_hdbscan_model.joblib` bundle |
-| `--classify-source zotero` | Use your Zotero child collections as the categories |
-| `--unclassified skip` | Default. Papers only in the unclassified bin keep their existing classification |
-| `--unclassified include` | Treat the unclassified bin as a category of its own |
-
-`--unclassified` is rejected on the hdbscan path and `--slugs` on the zotero path,
-rather than being silently ignored.
-
-**Source of truth is the local `zotero.sqlite`** — `ZOTERO_SQLITE` then
-`~/Zotero/zotero.sqlite`. The file is copied before reading because Zotero locks the
-original while running (same approach as `lib/citedby/local_library.py`), and trashed
-items are excluded. Without a local database it falls back to the Zotero Web API. The
-sqlite path needs no API key and no network; the same data over the Web API means
-paging every child collection 100 items at a time.
-
-Measured on the ai4s corpus (3,273 reviewed papers, 8 Zotero categories):
-
-| Mode | Assigned | Categories |
-|---|---|---|
-| `--unclassified skip` | 2,828 / 3,273 | 7 |
-| `--unclassified include` | 3,267 / 3,273 | 8 |
-
-Matching is by normalized DOI (3,228) then normalized title (39); `zotero_item_key`
-exists on only 1 of 3,273 index entries and cannot be used as the join key. Papers in
-no category folder (6) keep whatever classification they already had.
-
-Three behaviors worth knowing:
-
-- A paper filed in several child collections keeps all of them in `all_categories`;
-  `primary_category` is the alphabetically first, not a guess at relevance. When a real
-  category matches, the unclassified bin is dropped even under `--unclassified include` —
-  what you sorted by hand wins.
-- The unclassified bin is detected **by name** — `99 Unclassified`, `Unclassified`,
-  `미분류`. A leading number is stripped **only when a space follows it** (`99 Unclassified`
-  works; `99Unclassified`, `99-Unclassified`, `99.Unclassified` do not). Name your bin
-  anything else and `--unclassified` will not recognize it.
-- Trashed *items* are excluded; trashed *collections* are not, so a deleted Zotero
-  folder can still appear as a category until Zotero empties its trash.
+Cloudflare 자격증명과 Worker secrets도 별도로 설정합니다.
 
 ```bash
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify \
-  --classify-source zotero --unclassified include
-
-# Standalone, without the orchestrator
-PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s \
-  --classify-source zotero --dry-run
+export CLOUDFLARE_API_TOKEN=...
+export CLOUDFLARE_ACCOUNT_ID=...
+npx wrangler secret put GOOGLE_API_KEY
+PYTHONUTF8=1 python pipeline/run_full.py --topic "$TOPIC" --mode deploy
 ```
 
-## See also
+저장소의 `wrangler.toml`에는 소유자별 custom domain route가 없습니다. 배포자는 자신의 Wrangler 설정에 route를 추가해야 합니다. 배포 명령은 source branch를 자동 commit하거나 push하지 않습니다.
 
-- `CLAUDE.md` — codebase-wide Claude Code guidance
-- `SKILL.md` — the user-facing skill dispatcher (this trigger entry)
-- `pipeline/api/__init__.py` — programmatic API (25 functions)
-- `pipeline/api/_llm.py` — caching helpers for LLM calls
-- `pipeline/api/extract.py` — figure pre-validation heuristics
+`docs/.assetsignore`에는 로컬 전용 토픽과 업로드 금지 자산을 설치별로 추가합니다. 현재 public deploy에서 `--topics` 부분 업로드는 지원하지 않으며, 전체 `docs/` 업로드 범위를 오해하지 않도록 명시적으로 거부합니다.
+
+## 환경 경계
+
+- 지원 인터프리터: Python 3.12
+- Claude 인증: Claude Code OAuth 또는 `ANTHROPIC_API_KEY`
+- Zotero API Key: 메타데이터·첨부 접근에 필수
+- Google API Key: dense 검색, Figure 검증, 타임라인 이미지, TTS에 선택
+- OpenAI API Key: 선택한 backend 기능에만 사용
+- `PAPER_CURATION_CA_BUNDLE`: 사설 CA가 필요한 환경에서만 지정하며 TLS 검증을 끄지 않습니다.

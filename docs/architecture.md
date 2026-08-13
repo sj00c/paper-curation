@@ -48,7 +48,7 @@
 | **출력** | <code>_search_index.json</code> + <code>_search_index_emb.bin</code> |
 | **활용** | 토픽 페이지에서 자연어 질의 → 질의 임베딩은 worker <code>/api/embed</code> (배포) 또는 <code>pipeline/serve_local.py</code> (로컬) 가 <code>gemini-embedding-001</code> (<code>task_type=RETRIEVAL_QUERY</code>) 로 대신 계산 → **hybrid 검색** (BM25 + dense, RRF 융합) → LLM 이 상위 후보를 한 문장씩 re-rank → 사용자 키 prefix 자동 감지로 **Anthropic / OpenAI / Google 중 하나**가 논문 근거 답변 스트리밍. 검색에는 독자 키가 전혀 필요 없고, 키(BYOK)는 답변 생성에만 쓰입니다. 응답은 자연어 본문 + 클릭 가능 `[N]` 인용 + 자동 figure 인라인. Fast/Smart 토글 라벨은 감지된 백엔드의 실제 모델명을 표시 (예: `Fast (cost: Sonnet 5)`) |
 | **CLI/API 활용** | <code>query_search_index.py</code>가 동일 토크나이저·BM25(<code>k1=1.5, b=0.75</code>)·dense cosine·RRF(<code>k=60</code>)를 읽기 전용으로 실행합니다. 기본 컬렉션은 <code>_cross</code>. <code>--mode bm25</code>는 키 없이 동작하고, hybrid/dense는 Gemini <code>RETRIEVAL_QUERY</code>를 사용합니다. <code>pipeline.api.query_search_index()</code>로 에이전트/자동화에서 JSON 결과를 직접 소비할 수 있습니다. |
-| **갱신·품질 경계** | 질의는 인덱스를 재빌드하지 않습니다. curate/rebuild의 <code>run_update_force.py</code>가 source 인덱스와 <code>_cross</code>를 자동 갱신하고 source fingerprint를 기록합니다. 이어 고정 40질의·고정 query vector 평가를 네트워크 없이 실행하며, source 컬렉션 또는 <code>_cross</code>의 recall@5가 baseline보다 0.025 초과 하락하면 배포를 중단합니다. macmini launchd도 같은 평가를 매주 실행합니다. |
+| **갱신·품질 경계** | 질의는 인덱스를 재빌드하지 않습니다. curate/rebuild가 source 인덱스와 <code>_cross</code>를 갱신하고 source fingerprint를 기록합니다. 품질 회귀는 설치자가 자기 코퍼스용 query·relevance·baseline을 준비해 <code>evaluate_retrieval.py</code>로 검증합니다. |
 
 ### 6. 인덱스 + 네트워크
 
@@ -57,7 +57,7 @@
 | **입력** | 전체 분류 + 리뷰 + 타임라인 + UMAP 좌표 |
 | **처리** | <ul><li>(Core) 카테고리 카드·검색·타임라인·Deep Research UI·Audio Overview 모달을 하나의 HTML로 조립</li><li>(Option O-2, `--insights`) UMAP 2D/3D 좌표로 D3.js + Three.js 인터랙티브 네트워크 재생성</li></ul> |
 | **출력** | <ul><li><code>{topic}/index.html</code></li><li>(O-2) <code>{topic}/network.html</code></li></ul> |
-| **활용** | <code>cd docs && python -m http.server 8000</code> → 브라우저에서 바로 사용. 개별 논문 페이지 / Deep Research 답변 양쪽에서 🎧 **Audio Overview** 버튼으로 팟캐스트형 한국어 오디오 생성 (Gemini TTS, 브라우저 안에서 MP3 인코딩 → 즉시 다운로드). 배포 환경에선 완성된 MP3 가 이메일로도 자동 발송됨 |
+| **활용** | <code>pipeline/serve_local.py</code>로 브라우저에서 사용. 개별 논문 페이지와 Deep Research 답변에서 Audio Overview를 생성하고 브라우저에서 MP3로 내려받습니다. |
 
 ### Citedby: corpus-first 인용 계보와 다중 출력
 
@@ -99,7 +99,7 @@
 | `make_slug()` 40-char collision fix | 25-char prefix matching 이 다른 논문을 거짓 매칭하던 버그 (예: "A Hierarchical Framework for Humanoid Locomotion" ↔ "A hierarchical framework for measuring scientific impact"). 비교 길이를 `min(40, min(len(a), len(b)))` 로 변경, 10-char floor 추가. 짧은 제목의 자기-자신 매칭 (예: "Robot Learning from Human Videos: A Survey", 35 norm chars) 보존 |
 | `_zotero_text_sanity()` 한국어/ASCII 듀얼 패스 | Zotero 에 한국어 제목으로 등록된 영문 PDF 케이스 통과. 한글 syllable 을 keyword 추출 정규식에 포함, threshold 스케일링 (구 `max(3, …)` → `max(1, len(kw)*coverage)`), ASCII-only fallback (영문 token 만 일치해도 DOI/author 통과하면 OK) |
 | `extract_insights` backend 우선순위 (대체 없음) | cross-category insights 는 후보 목록(기본 anthropic, openai, gemini) 중 **설정된 첫 번째 하나만** 호출하고 거기서 끝난다. 실패해도 다음 backend 로 넘어가지 않는다 — 사용자가 고르지 않은 벤더가 대신 답하면 결과의 출처를 믿을 수 없고 그 API 에 과금된다. 미설정 backend 를 건너뛰는 것(부재)만 허용. 하나도 설정돼 있지 않으면 insights 는 `meta.status="unavailable"` 로 비활성. 순서는 `EXTRACT_INSIGHTS_CC_BACKENDS` 로 override, 모르는 이름은 import 시점에 즉시 실패 |
-| `run_step()` CRITICAL_STEPS hard-fail | `build_papers_index` / `topic_modeling*` / `classify_papers` / source·`_cross` 검색 인덱스 빌드와 품질 평가는 실패 시 `RuntimeError` 로 abort. 신규 분류 누락, stale 검색 인덱스, retrieval recall 회귀 상태로 배포되는 것을 차단. LLM narrative/이미지 생성은 degradable 로 soft-fail 유지 |
+| `run_step()` CRITICAL_STEPS hard-fail | `build_papers_index` / `topic_modeling*` / `classify_papers` / source·`_cross` 검색 인덱스 빌드는 실패 시 `RuntimeError` 로 abort. 신규 분류 누락과 stale 검색 인덱스 배포를 차단한다. LLM narrative/이미지 생성은 degradable 로 soft-fail 유지 |
 | `audit_matching.py` | 동일 text.md 해시 공유 슬러그 탐지 (duplicate PDF) + 4축 cross-check |
 | `fix_matching.py` | 감사 결과 기반 리뷰 삭제 + 재리뷰 명령 자동 출력 (기본 dry-run) |
 | `dedup_zotero.py` | Zotero 컬렉션 중복 탐지/삭제 (제목 60자 + DOI + arXiv + PDF 공유). `run_update_force` preflight 자동 통합 |
@@ -177,7 +177,7 @@ LLM 응답의 JSON 파싱 흔들림을 0 으로 만들기 위해 Anthropic tool-
 | `write_review` (논문 1편 리뷰 JSON) | `emit_review` | Haiku |
 | `extract_insights.extract_cross_category_insights` | `emit_insights` | Sonnet — 설정된 backend 하나만. openai/gemini 는 후보지 대체가 아니다 |
 | `auto_recover` 판정 | `emit_verdicts` | Haiku |
-| `compare_papers` | `emit_comparison` | Sonnet |
+
 
 **같이 보면 좋은 논문**(`topic_modeling.generate_connections_from_candidates`)은 이 표에 없습니다 — tool-use 없이 Sonnet 응답에서 JSON 을 파싱합니다. 그래서 다른 단계와 달리 파싱 실패가 실재하고, 막힌 배치는 multi-round 재시도 후 기존 연결을 유지한 채 남으며, opt-in `--local-fallback` 은 그 잔여분을 로컬 모델로 채우는 사용자 선택입니다 (자동 벤더 대체가 아님).
 
@@ -201,14 +201,14 @@ title: "<full paper title>"
 authors: ["First Last", ...]
 date: "2021-07-15"
 doi: "..."
-primary_topic: ai4s
+primary_topic: my-topic
 primary_category: "..."
 all_categories: [...]
 sub_categories: {"Category": "Sub-category", ...}
 scores: {novelty: 5, technical: 5, significance: 5, clarity: 4, overall: 5}
 score: 5            # top-level (Obsidian sort)
 essence: "..."
-tags: [paper, ai4s, "ai4s/category-slug/sub-slug", ...]
+tags: [paper, my-topic, "my-topic/category-slug/sub-slug", ...]
 schema_version: v1
 ---
 ```
@@ -250,6 +250,6 @@ Deep Research 질의 -> Obsidian 메모 작성 -> 인덱스 재빌드 -> 다음 
 | 구분 | 항목 |
 |------|------|
 | **필수** | Python 3.12 (macOS conda env `py312`), Zotero (API Key + 컬렉션 + PDF) |
-| **API** | **필수**: Anthropic (Claude Haiku/Sonnet/Opus — OAuth 구독 또는 Console API 키), Zotero Web API. **선택**: Google (Figure 검증 · Audio Overview TTS · `gemini-embedding-001` 검색 임베딩 — 없으면 dense 검색이 꺼지고 BM25 lexical 만 남는다), OpenAI (독자 BYOK 답변 · insights backend 후보), Resend (배포 시 Audio Overview 이메일). 선택 API 가 없으면 그 기능만 비활성이고 다른 provider 로 대체하지 않는다 |
+| **API** | **필수**: Anthropic (OAuth 구독 또는 Console API 키), Zotero Web API. **선택**: Google (Figure 검증 · Audio Overview TTS · 검색 임베딩), OpenAI (독자 BYOK 답변 · insights backend 후보), Resend (명시적 완료 알림). |
 | **Python** | `pip install -r requirements.txt` — anthropic, openai, google-genai, pymupdf, Pillow, requests, pyzotero, opendataloader-pdf, numpy, scikit-learn, joblib, umap-learn, hdbscan, sentence-transformers |
 | **선택** | Obsidian (메모/Graph View), PaperBanana (타임라인 이미지), Zotero Desktop (PDF 원클릭) |

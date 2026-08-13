@@ -1,17 +1,10 @@
 """주제 필터링 + 5W1H 요약 — citedby 의 LLM 단계.
 
-scisci `scie/lib/topic_filter.py` 이식본. 인용논문 목록을 사용자가 준 주제로
+인용논문 목록을 사용자가 준 주제로
 걸러내고, 통과한 논문마다 What/How/Result/Relevance 구조 요약을 만든다.
 
-이식하며 바뀐 점 (계획된 중복 제거):
-  1. **구 Gemini SDK 제거** — 원본은 `google.generativeai`(deprecated) 를 썼다.
-     paper-curation 표준인 `google-genai` 로 마이그레이션했다. 안 하면 py312 에
-     deprecated 패키지가 딸려 들어와 충돌한다.
-  2. **`llm_call_with_retry` → `api/_llm.cached_call`** — scisci 자체 재시도
-     헬퍼(utils.py) 대신 paper-curation 의 SHA-256 캐시 호출을 쓴다. 같은
-     (프롬프트, 모델) 조합은 재실행 시 **LLM 호출 0회** → 동일 DOI 재분석이 공짜.
-  3. **`import MyAPIKEY` 제거** — 개인 로컬 모듈 의존을 걷어내고 env →
-     config.json 순으로만 키를 찾는다.
+Gemini는 `google-genai`를 사용하고, LLM 호출은 `api/_llm.cached_call`의
+SHA-256 캐시를 공유한다. 키는 환경변수와 로컬 config에서만 읽는다.
 """
 from __future__ import annotations
 
@@ -56,7 +49,7 @@ _OAUTH_SENTINEL = "__anthropic_oauth__"
 def resolve_keys() -> dict[str, str]:
     """LLM 제공자별 API 키. env 우선, 없으면 config.json.
 
-    scisci 의 `MyAPIKEY` 폴백은 제거했다 (개인 로컬 모듈 의존).
+    Provider keys are optional and local.
     """
     keys: dict[str, str] = {}
     for provider, names in _ENV_KEYS.items():

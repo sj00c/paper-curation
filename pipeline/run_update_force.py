@@ -2,7 +2,7 @@
 Paper-Curation --local --update-force 배치 실행 스크립트.
 
 사용법:
-  PYTHONUTF8=1 python run_update_force.py --topic ai4s
+  PYTHONUTF8=1 python run_update_force.py --topic my-topic
   # --concurrency 기본값 16 (Anthropic Tier 4). Tier 1~3 은 4~12 로 낮춤.
 
 기능:
@@ -312,44 +312,9 @@ def log(msg):
     print(f"[{ts}] {msg}", flush=True)
 
 
-def sync_bibliography_db(direction, *, required=True):
-    """Synchronize the bibliography DB with the authority host.
-
-    `--push` is required: publishing a generation is the point of the release
-    path and a failure there has to stop it. The opening `--pull` is not — it
-    refreshes a base receipt, and when the authority is simply unreachable
-    (DNS failure, tunnel down, laptop off the network) refusing to review papers
-    is the wrong response. An unreachable host is reported and the run
-    continues on the local DB; the closing push will fail loudly if it is still
-    unreachable then.
-    """
-    result = subprocess.run(
-        [sys.executable, str(PIPELINE_DIR / "sync_bibliography_db.py"), direction],
-        cwd=str(PROJECT_ROOT), capture_output=True, text=True, timeout=180,
-    )
-    if result.returncode != 0:
-        detail = result.stderr.strip() or result.stdout.strip()
-        unreachable = any(
-            marker in detail for marker in (
-                "no such host", "Connection closed", "Connection refused",
-                "Operation timed out", "Host key verification failed",
-                "Could not resolve hostname", "Network is unreachable"))
-        if not required and unreachable:
-            log(f"[bibliography-sync] {direction} SKIPPED — authority "
-                f"unreachable; continuing on the local DB")
-            return False
-        raise RuntimeError(
-            f"bibliography sync failed ({direction}): {detail}")
-    if result.stdout.strip():
-        log(f"[bibliography-sync] {result.stdout.strip()}")
-    return True
-
-
 def run_bibliography_release_steps(run_step):
-    """Build, validate, then publish; a failed gate prevents the push call."""
-    # Institution normalisation needs the ROR index and the curated group table.
-    # Both live under gitignored `.cache/`, so without this step a wiped cache
-    # degrades silently to raw PDF affiliation strings.
+    """Build and validate the installation-local bibliography database."""
+    # Institution normalization needs the public ROR index under `.cache/`.
     run_step(
         "setup_affiliation_sources",
         [sys.executable, "pipeline/setup_affiliation_sources.py"],
@@ -363,19 +328,13 @@ def run_bibliography_release_steps(run_step):
     # per cycle no matter how many papers changed.
     run_step(
         "build_bibliography_db",
-        [sys.executable, "pipeline/build_bibliography_db.py", "--changed-only",
-         "--no-email"],
+        [sys.executable, "pipeline/build_bibliography_db.py", "--changed-only"],
         7200,
     )
     run_step(
         "check_bibliography_db",
         [sys.executable, "pipeline/check_bibliography_db.py", "--strict"],
         600,
-    )
-    run_step(
-        "sync_bibliography_db (push)",
-        [sys.executable, "pipeline/sync_bibliography_db.py", "--push"],
-        180,
     )
 
 
@@ -1192,9 +1151,8 @@ def extract_figures(pdf_path, slug_dir):
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from api.extract import pre_validate_figure
 
-    # 키 해석: env(GOOGLE_API_KEY/GEMINI_API_KEY) → config.json. 단 reextract_figures
-    # 가 geometric-only 강제 시 세팅하는 PAPER_CURATION_NO_GEMINI 가 있으면 키 유무와
-    # 무관하게 Gemini 검증을 끈다 (env pop 만으론 config.json 키가 남아 스위치가 안 먹음).
+    # 키 해석: env(GOOGLE_API_KEY/GEMINI_API_KEY) → config.json. 명시적
+    # PAPER_CURATION_NO_GEMINI가 있으면 config 키와 무관하게 검증을 끈다.
     have_gemini = (not os.environ.get("PAPER_CURATION_NO_GEMINI")
                    and bool(get_google_key().strip()))
     # Log a degraded-Gemini warning at most once per run instead of silently
@@ -2809,10 +2767,6 @@ def main():
                         help="topic_modeling 연결 단계에서 max retry round 를 다 돌고도 막힌 "
                              "papers 를 로컬 OpenAI 호환 모델(Ollama/LM Studio 등)로 마저 연결. "
                              "config.json 의 local_model 또는 LOCAL_MODEL_BASE_URL/NAME 필요.")
-    parser.add_argument("--no-deploy", action="store_true",
-                        help="end-of-run prepare_deploy(wrangler deploy + gh-pages + master push)를 건너뛴다. "
-                             "무인 자동복구(auto_recover --execute)처럼 배포를 원치 않는 경우용. "
-                             "환경변수 PAPER_CURATION_NO_DEPLOY 로도 켤 수 있다.")
     parser.add_argument("--conn-full", action="store_true",
                         help="연결 캐시(_conn_topk_cache_k*.json)를 무시하고 이번 실행에서 전체 연결을 "
                              "재생성한다 (월간/대량 추가 후 주기적 full rebuild 용). 자식 프로세스"
@@ -2923,7 +2877,6 @@ def main():
         cp = {"completed": [], "failed": [], "phase": "init"}
         previously_completed = set()
 
-    sync_bibliography_db("--pull", required=False)
     # Fetch items
     log(f"Fetching Zotero collection '{args.topic}' ({collection_key})...")
     items = fetch_zotero_items(collection_key)
@@ -3236,12 +3189,8 @@ def main():
             "classify_papers",
             "build_search_index",
             "build_cross_index",
-            "evaluate_retrieval",
-            "evaluate_retrieval (_cross)",
-            "refresh_retrieval_eval_snapshot",
             "build_bibliography_db",
             "check_bibliography_db",
-            "sync_bibliography_db (push)",
         }
 
         # 선택 기능이 "연결 안 됨" 으로 스스로 물러난 경우는 치명 실패가 아니다.
@@ -3556,8 +3505,6 @@ def main():
         # review/frontmatter refresh. The ordered helper makes strict validation
         # a hard publication gate and `--changed-only` keeps it incremental.
         run_bibliography_release_steps(run_step)
-        run_step("generate_moc",
-                 [sys.executable, "pipeline/generate_moc.py", "--topic", topic], 600)
         # 네트워크 시각화는 Research Insights 와 묶인 Option(O-2) — --insights 일 때만.
         # (LLM 호출은 없지만 기능 분류상 인사이트 분석 부가물로 함께 게이트)
         if args.insights:
@@ -3629,77 +3576,6 @@ def main():
         # source-topic rebuild; the generic page itself need not be regenerated.
         run_step("build_cross_index",
                  [sys.executable, "pipeline/build_cross_index.py", "--no-page"], 300)
-
-        # Fixed query vectors make this a deterministic, network-free deploy
-        # gate. A source collection and the merged agent collection must both
-        # retain the tracked recall floor and baseline before publication.
-        eval_dir = PIPELINE_DIR / "eval"
-        eval_results = eval_dir / "results"
-        eval_common = [
-            sys.executable, "pipeline/evaluate_retrieval.py",
-            "--queries", str(eval_dir / "retrieval_queries.jsonl"),
-            "--vectors", str(eval_dir / "retrieval_query_vectors.json"),
-            "--baseline", str(eval_dir / "retrieval_baseline.json"),
-            "--strict",
-            "--min-recall-at-5", "0",
-            "--max-regression", "0.025",
-        ]
-        run_step("evaluate_retrieval",
-                 eval_common + ["--topic", topic,
-                                "--output", str(eval_results / f"{topic}.json"),
-                                "--failures", str(eval_results / f"{topic}_failures.json")],
-                 300)
-        run_step("evaluate_retrieval (_cross)",
-                 eval_common + ["--topic", "_cross",
-                                "--output", str(eval_results / "_cross.json"),
-                                "--failures", str(eval_results / "_cross_failures.json")],
-                 300)
-        run_step(
-            "refresh_retrieval_eval_snapshot",
-            [sys.executable, "pipeline/refresh_retrieval_eval_snapshot.py", "--if-installed"],
-            900,
-        )
-
-        # Deploy via wrangler (Cloudflare Workers with Static Assets) +
-        # idempotent gh-pages stub sync. Requires:
-        #   CLOUDFLARE_API_TOKEN (or CF_API_TOKEN), CLOUDFLARE_ACCOUNT_ID.
-        has_cf_token = bool(
-            os.environ.get("CLOUDFLARE_API_TOKEN") or os.environ.get("CF_API_TOKEN")
-        )
-        has_account_id = bool(os.environ.get("CLOUDFLARE_ACCOUNT_ID"))
-        no_deploy = (getattr(args, "no_deploy", False)
-                     or bool(os.environ.get("PAPER_CURATION_NO_DEPLOY")))
-        if no_deploy:
-            log("\n  [prepare_deploy] SKIP: deploy suppressed "
-                "(--no-deploy / PAPER_CURATION_NO_DEPLOY)")
-        elif has_cf_token and has_account_id:
-            log("\n  [prepare_deploy] Cloudflare env vars found, deploying...")
-            try:
-                result = subprocess.run(
-                    [sys.executable, "pipeline/prepare_deploy.py", "--topic", topic, "--push"],
-                    cwd=str(PIPELINE_DIR.parent),
-                    capture_output=True, text=True, timeout=1800,
-                    env={**os.environ, "PYTHONUTF8": "1"},
-                )
-                if result.returncode == 0:
-                    log(f"  [prepare_deploy] OK: wrangler deploy + gh-pages sync done")
-                else:
-                    log(f"  [prepare_deploy] FAILED (exit {result.returncode})")
-                    if result.stderr:
-                        log(f"    {result.stderr[:500]}")
-                    raise RuntimeError(
-                        f"prepare_deploy failed with exit {result.returncode}"
-                    )
-            except Exception as e:
-                log(f"  [prepare_deploy] ERROR: {str(e)[:100]}")
-                raise
-        else:
-            missing = []
-            if not has_cf_token:
-                missing.append("CLOUDFLARE_API_TOKEN (or CF_API_TOKEN)")
-            if not has_account_id:
-                missing.append("CLOUDFLARE_ACCOUNT_ID")
-            log(f"\n  [prepare_deploy] SKIP: missing env vars — {', '.join(missing)}")
 
         log("\nPost-processing complete!")
 

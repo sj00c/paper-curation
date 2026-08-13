@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Most active institutions in a field, and the researchers behind them.
 
-    python pipeline/report_field_leaders.py --topic ai4s --top 20
-    python pipeline/report_field_leaders.py --topic ai4s --json
+    python pipeline/report_field_leaders.py --topic my-topic --top 20
+    python pipeline/report_field_leaders.py --topic my-topic --json
 
 Institution counts come from `paper_institutions`, which records that a paper
 carries an affiliation — that link is safe to count.
@@ -157,7 +157,8 @@ def render(topic: str, cov: dict, rows: list[dict], per: int,
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--topic", default="ai4s")
+    ap.add_argument("--topic", default="",
+                    help="대상 토픽 (생략 시 설정된 토픽이 하나면 그것)")
     ap.add_argument("--top", type=int, default=20)
     ap.add_argument("--researchers", type=int, default=5)
     ap.add_argument("--db", type=Path, default=DEFAULT_DB)
@@ -166,6 +167,8 @@ def main() -> int:
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--out", type=Path)
     args = ap.parse_args()
+    from config_loader import resolve_topic
+    args.topic = resolve_topic(args.topic, script="report_field_leaders")
 
     sources = TRUSTED_SOURCES + (("pdf.unmarked-multi",)
                                  if args.include_guessed else ())

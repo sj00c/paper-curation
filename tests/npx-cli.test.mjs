@@ -14,6 +14,7 @@ function lastStep(plan) {
 test('help is available without constructing commands', () => {
   const plan = createPlan(['--help'], { cwd, validateCheckout: false });
   assert.match(plan.help, /paper-curation init/);
+  assert.match(plan.help, /paper-curation inspect/);
   assert.deepEqual(plan.steps, []);
 });
 
@@ -68,13 +69,12 @@ test('init accepts --dir after command options and constructs dry onboarding flo
     'pipeline/setup.py',
     '--anthropic-auth',
     'oauth',
-    '--no-run',
   ]);
   assert.equal(lastStep(plan).env.PYTHONUTF8, '1');
   assert.deepEqual(lastStep(plan).unsetEnv, ['ANTHROPIC_API_KEY', 'ANTHROPIC_AUTH_TOKEN']);
 });
 
-test('setup supports --dir before command options and --run-first removes --no-run', () => {
+test('setup supports --dir before command options and --run-first is explicit', () => {
   const plan = createPlan(['--dir=.', 'setup', '--auth=api-key', '--run-first'], {
     cwd,
     validateCheckout: false,
@@ -89,6 +89,7 @@ test('setup supports --dir before command options and --run-first removes --no-r
     'pipeline/setup.py',
     '--anthropic-auth',
     'api-key',
+    '--run-first',
   ]);
   assert.equal(lastStep(plan).unsetEnv, undefined);
 });
@@ -111,6 +112,25 @@ test('doctor delegates flags through conda run in the selected checkout', () => 
     '--network',
     '--topic',
     'robotics',
+  ]);
+  assert.equal(plan.steps[0].env.PYTHONUTF8, '1');
+});
+
+test('inspect delegates to the read-only Python inspector in the selected checkout', () => {
+  const plan = createPlan(['inspect', '--dir', '.'], {
+    cwd,
+    validateCheckout: false,
+  });
+
+  assert.equal(plan.steps.length, 1);
+  assert.equal(plan.steps[0].command, 'conda');
+  assert.equal(plan.steps[0].cwd, cwd);
+  assert.deepEqual(plan.steps[0].args, [
+    'run',
+    '-n',
+    'py312',
+    'python',
+    'pipeline/inspect_installation.py',
   ]);
   assert.equal(plan.steps[0].env.PYTHONUTF8, '1');
 });

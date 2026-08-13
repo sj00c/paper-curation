@@ -1,14 +1,7 @@
 name: tests
 
-# 642개 파이썬 테스트 + npx CLI 테스트가 저장소에 있는데, 지금까지 이것들을
-# 자동으로 돌리는 곳이 없었다. pre-push 훅은 시크릿 스캔과 (advisory)
-# validate_papers 만 돌린다. 회귀를 막으려고 쓴 테스트는 누가 돌려야 회귀를
-# 막는다.
-#
-# 무거운 클러스터링 의존성(umap-learn / hdbscan / sentence-transformers → torch)
-# 은 설치하지 않는다. 테스트는 그 경로를 import 하지 않으며, 매 push 마다 수 GB
-# 를 받는 대가로 얻는 게 없다. 나머지 requirements 는 파일에서 그대로 읽어
-# 목록이 두 벌로 갈라지지 않게 한다.
+# Run the product contract tests without downloading the optional clustering
+# stack; focused tests use synthetic fixtures for those boundaries.
 
 on:
   push:
@@ -36,10 +29,7 @@ jobs:
         run: PYTHONUTF8=1 python -m pytest pipeline/tests -q
 
   line-endings:
-    # 이 저장소는 CRLF 파일과 LF 파일이 섞여 있다 (CRLF 17개, LF 다수; upstream 이 Windows 산).
-    # 편집 도구가 CRLF 파일을 LF 로 다시 쓰면 두 줄 수정이 파일 전체 재작성으로
-    # 잡혀 리뷰가 불가능해진다. pre-push 훅이 1차로 막지만, --no-verify 나 웹
-    # 편집으로 들어온 것은 여기서 잡는다.
+    # Preserve each changed file's existing EOL convention.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

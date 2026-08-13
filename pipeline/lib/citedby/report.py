@@ -1,7 +1,6 @@
 """citedby 리포트 렌더러 — 자기완결 HTML + print CSS (→ 브라우저 PDF 저장).
 
-scisci 의 `lib/report_generator.py`(564줄, python-docx + KoPub 폰트)를 대체한다.
-docx 를 만들지 않고 **HTML 한 장**을 낸다:
+인용 분석 결과를 의존성 없는 **HTML 한 장**으로 렌더한다:
 
   * 로컬 웹앱 패널에서 그대로 읽고
   * [PDF 출력] 버튼 → `window.print()` → 브라우저 "PDF로 저장"
@@ -327,7 +326,7 @@ def _audio_blocks(enabled: bool) -> tuple[str, str, str]:
     css = get_audio_css("#D63423", "#a82a1c", "#fdecea")
     modal = audio_modal_html(
         "선택한 citedby 리포트 또는 Deep Research 답변을 팟캐스트형 오디오로 "
-        "만듭니다. (Gemini · 완성본은 이메일로도 전송)")
+        "만듭니다. (Gemini · MP3 다운로드)")
     script = audio_script_block(key, mode="deep",
                                 provider_js=AUDIO_PROVIDER_JS)
     # 상단 바는 citedby 리포트 컨텍스트를 명시한다. Deep 패널 버튼은 `deep`을
@@ -589,10 +588,7 @@ def _timeline_section(data_uri: str, lbl: dict, narrative: str = "",
         out.append(_stream_cards(streams, lbl, papers))
     elif narrative:
         # streams 를 못 받은 경우의 폴백. 이스케이프·헤딩·굵게·링크를
-        # 이미 처리하는 `lib/mdhtml` 을 쓴다. 예전엔 agent_lecture_digest
-        # 에서 빌려 썼는데, 그 모듈이 google.genai 를 최상단에서 요구해
-        # Gemini SDK 없는 환경에선 아래 except 로 조용히 떨어져 `##`·`**`
-        # 가 글자 그대로 노출됐다.
+        # 처리하는 dependency-light `lib.mdhtml` 을 쓴다.
         try:
             from ..mdhtml import md_to_html as _md
             inner = _md(narrative)
@@ -1107,9 +1103,7 @@ def build_report_html(*,
         body.append(_appendix(papers, lbl))
 
     body.append(
-        f'<footer>paper-curation · citedby · {_esc(ts)} · '
-        '<a href="https://github.com/jehyunlee/paper-curation">'
-        'Jehyun Lee (https://github.com/jehyunlee/paper-curation)</a></footer>'
+        f'<footer>Paper Curation · citedby · {_esc(ts)}</footer>'
     )
     # Audio Overview 자산이 실릴 때만 버튼을 낸다.
     _audio_css, _audio_modal, _audio_script = _audio_blocks(bool(deep_index))
@@ -1132,8 +1126,7 @@ def build_report_html(*,
 def papers_to_csv(papers: list[dict], columns: list[str] | None = None) -> str:
     """citing 논문 목록을 CSV 문자열로. stdlib 만 사용 (openpyxl 불필요).
 
-    scisci 의 `excel_export.py`(271줄 + openpyxl)를 대체한다. 데이터 export 는
-    CSV 로 충분하고 — Excel 에서 그대로 열린다 — 리포트는 HTML/PDF 가 담당한다.
+    데이터 export는 CSV로 제공하고 리포트는 HTML/PDF가 담당한다.
     `url` 컬럼을 덧붙여 표 안에서도 원문으로 바로 갈 수 있게 한다.
     """
     import csv

@@ -2,10 +2,11 @@
 Zotero 컬렉션 중복 탐지·제거.
 
 중복 그룹핑 축 (하나라도 겹치면 같은 그룹):
-  - normalized title prefix (첫 30자, 특수문자 제거·lowercase)
   - DOI (정규화)
   - arXiv ID (URL/DOI/extra에서 추출)
   - 첨부 PDF의 파일명 (basename) — 같은 PDF 공유 감지
+
+제목은 보고서 표시와 keeper 점수에만 쓰며 삭제 근거로 쓰지 않는다.
 
 남길 항목 선정 점수 (높을수록 보존):
   1. has_pdf (가장 강한 우선순위: PDF 있는 것 > 없는 것) — +1000
@@ -16,13 +17,13 @@ Zotero 컬렉션 중복 탐지·제거.
 
 Usage:
   # 기본 dry-run (실제 삭제 없음)
-  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s
+  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic my-topic
 
   # 실제 삭제
-  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s --execute
+  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic my-topic --execute
 
   # 특정 그룹만 확인
-  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic ai4s --show-all
+  PYTHONUTF8=1 python pipeline/dedup_zotero.py --topic my-topic --show-all
 
 결과 리포트: docs/{topic}/_dedup_zotero_report.json
 """
@@ -91,10 +92,7 @@ def list_collection_items(collection_key):
 
 
 def list_children(item_key):
-    try:
-        return _api(f"items/{item_key}/children", params={"format": "json"})
-    except Exception:
-        return []
+    return _api(f"items/{item_key}/children", params={"format": "json"})
 
 
 def delete_item(item_key, version):
@@ -172,13 +170,11 @@ def group_duplicates(items):
     for item in items:
         parent.setdefault(item["key"], item["key"])
 
-    for key_type in ("title", "doi", "arxiv", "pdf"):
+    for key_type in ("doi", "arxiv", "pdf"):
         bucket = defaultdict(list)
         for it in items:
             d = it.get("data", {})
-            if key_type == "title":
-                k = norm_title(d.get("title", ""))
-            elif key_type == "doi":
+            if key_type == "doi":
                 k = norm_doi(d.get("DOI", ""))
             elif key_type == "arxiv":
                 k = extract_arxiv_id(d)

@@ -5,7 +5,7 @@ papers/_papers_index.json 재생성.
 
 Usage:
   PYTHONUTF8=1 python build_papers_index.py
-  PYTHONUTF8=1 python build_papers_index.py --topic ai4s  # topics 필드에 topic 할당
+  PYTHONUTF8=1 python build_papers_index.py --topic my-topic  # topics 필드에 topic 할당
 """
 
 import argparse
@@ -187,7 +187,7 @@ def parse_review(slug):
     }
 
 
-def _run_build_index(topic="ai4s"):
+def _run_build_index(topic):
     """Programmatic entrypoint. Returns the generated index list."""
     index_path = os.path.join(PAPERS_DIR, "_papers_index.json")
     existing = {}

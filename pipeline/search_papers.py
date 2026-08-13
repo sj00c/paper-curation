@@ -5,8 +5,8 @@ arXiv, Semantic Scholar, OpenAlex를 순차적으로 검색하여
 중복 제거 및 관련성 점수 필터링 후 JSON으로 저장.
 
 사용법:
-    PYTHONUTF8=1 python search_papers.py --topic scisci --days 7
-    PYTHONUTF8=1 python search_papers.py --topic ai4s --days 1 --max-papers 50
+    PYTHONUTF8=1 python search_papers.py --topic my-topic --days 7
+    PYTHONUTF8=1 python search_papers.py --topic my-topic --days 1 --max-papers 50
 """
 
 import argparse
@@ -23,13 +23,12 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from config_loader import get_unpaywall_email, get_search_keywords, _ssl_ctx
-from lib.categories import CATEGORIES_BY_TOPIC
+
 
 # ---------------------------------------------------------------------------
 # 검색 키워드 정의
 # ---------------------------------------------------------------------------
-# 키워드는 config_loader.get_search_keywords(topic) 가 제공한다 (config.json 의
-# "search_keywords".<topic> 우선, 없으면 빌트인 ai4s/scisci 기본값 폴백).
+# 키워드는 config.json 의 search_keywords.<topic>에서 읽는다.
 
 # ---------------------------------------------------------------------------
 # 관련성 점수 계산
@@ -437,7 +436,6 @@ def deduplicate(papers: list) -> list:
 def _run_search(topic, *, days=7, max_papers=100, threshold=0.3,
                 skip_arxiv=False, since=None, until=None, output=None):
     """Programmatic entrypoint for search_papers."""
-    # config.json 의 search_keywords.<topic> 우선, 없으면 빌트인 ai4s/scisci 폴백.
     # 알 수 없는 토픽이면 추가할 JSON 블록을 안내하는 ValueError 발생.
     kw_config = get_search_keywords(topic)
     since = since or ""
@@ -533,8 +531,7 @@ def _run_search(topic, *, days=7, max_papers=100, threshold=0.3,
 def main():
     parser = argparse.ArgumentParser(description="다중 소스 학술 논문 검색")
     parser.add_argument("--topic", required=True,
-                        help="검색 주제 (예: ai4s, scisci). config.json 의 "
-                             "search_keywords 에 정의되었거나 빌트인 기본값이 있는 토픽.")
+                        help="config.json search_keywords에 정의된 토픽 alias")
     parser.add_argument("--days", type=int, default=7, help="검색 기간(일, 기본: 7). --since/--until 사용 시 무시.")
     parser.add_argument("--since", default="", help="시작일 YYYY-MM-DD (포함). --days보다 우선.")
     parser.add_argument("--until", default="", help="종료일 YYYY-MM-DD (제외, 즉 [since, until)). 비우면 오늘까지.")

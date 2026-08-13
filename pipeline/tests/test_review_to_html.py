@@ -15,6 +15,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+import config_loader as C  # noqa: E402
 import review_to_html as R  # noqa: E402
 
 ALL = sorted([
@@ -81,7 +82,44 @@ def main():
     print("== 9. no selector -> whole corpus ==")
     check("empty -> all", r(ALL) == ALL)
 
-    print("== 10. _load_connections discovers topic dirs (no hardcoded names) ==")
+    print("== 10. operator attribution is explicit and escaped ==")
+    identity_vars = [
+        "PAPER_CURATION_OPERATOR_NAME",
+        "PAPER_CURATION_OPERATOR_ORGANIZATION",
+        "PAPER_CURATION_OPERATOR_EMAIL",
+    ]
+    old_config = C._config_cache
+    old_env = {key: os.environ.get(key) for key in identity_vars}
+    try:
+        for key in identity_vars:
+            os.environ.pop(key, None)
+        C._config_cache = {
+            "operator": {
+                "name": "<Researcher>",
+                "organization": "R&D",
+                "email": "operator@example.test",
+            }
+        }
+        check(
+            "configured attribution is HTML-escaped",
+            R.operator_attribution_html()
+            == "Developed by &lt;Researcher&gt;, R&amp;D | operator@example.test",
+        )
+        for key in identity_vars:
+            os.environ[key] = ""
+        check(
+            "explicit empty identity does not fall back",
+            R.operator_attribution_html() == "",
+        )
+    finally:
+        C._config_cache = old_config
+        for key, value in old_env.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+
+    print("== 11. _load_connections discovers topic dirs (no hardcoded names) ==")
     # 커스텀 토픽 설치에서 연결이 통째로 빠지던 회귀 가드: docs/ 를 스캔해
     # _paper_connections.json 을 가진 모든 디렉토리를 읽어야 한다.
     import json as _json

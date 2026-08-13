@@ -38,25 +38,25 @@ description: "최신 학술 논문 자동 큐레이션 풀 파이프라인. 검�
 
 ```bash
 # 주간 — 검색 + Zotero 등록 + 신규 리뷰
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode curate --source web --days 7
 
 # 로컬 — Zotero 컬렉션만 동기화 + 신규 리뷰
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode curate --source zotero
 
 # 특정 슬러그 force-rebuild (복구)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf --yes
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode rebuild --slugs 088,1093 --strict-pdf --yes
 
 # 분류만 다시 (LLM 호출 0, HDBSCAN approximate_predict)
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode reclassify
 
 # 타임라인 narrative + 이미지
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode retime --images all
 
-# 배포 (Cloudflare + gh-pages + master push)
-PYTHONUTF8=1 python pipeline/run_full.py --topic humanoid --mode deploy
+# 명시적 공개 배포 (publication.mode=public + base_url 필요)
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode deploy
 
 # 실행 계획만 미리보기
-PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --dry-run
+PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode curate --source web --dry-run
 ```
 
 </Quick_Recipes>
@@ -111,6 +111,6 @@ from pipeline.api.extract import pre_validate_figure
 - [ ] 사용자 요청을 위 표의 한 줄로 매핑
 - [ ] `pipeline/run_full.py` 단일 진입점으로 실행 (`Bash` tool)
 - [ ] 실패 시 `--dry-run` 으로 plan 확인 후 재실행
-- [ ] 배포 후 `https://jehyunlee.github.io/paper-curation/{topic}/` 접속 확인
+- [ ] 배포 후 `https://example.invalid/paper-curation/{topic}/` 접속 확인
 - [ ] 자세한 운영 / 환경 / 복구는 `docs/operations.md`
 </Final_Checklist>

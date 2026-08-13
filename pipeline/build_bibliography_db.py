@@ -25,8 +25,10 @@ import uuid
 from pathlib import Path
 try:
     from .lib import bibliography_lock, country_map, doi as _doi
+    from .config_loader import get_completion_email, get_openalex_email
 except ImportError:
     from lib import bibliography_lock, country_map, doi as _doi
+    from config_loader import get_completion_email, get_openalex_email
 
 ROOT = Path(__file__).resolve().parents[1]
 PAPERS_DIR = ROOT / "docs" / "papers"
@@ -34,7 +36,6 @@ INDEX_PATH = PAPERS_DIR / "_papers_index.json"
 DEFAULT_DB = Path(os.environ.get("PAPER_CURATION_BIBLIO_DB", str(
     ROOT / ".cache" / "bibliography.sqlite3"
 )))
-MAILTO = "jehyun.lee@gmail.com"
 SSL_CTX = ssl.create_default_context()
 
 SCHEMA = """
@@ -373,18 +374,6 @@ def ensure_legacy_institution_schema(conn: sqlite3.Connection) -> None:
 def norm(s: str) -> str:
     return re.sub(r"\s+", " ", (s or "").strip()).casefold()
 
-INSTITUTION_ENGLISH_ALIASES_PATH = (
-    Path(__file__).with_name("institution_english_aliases.json")
-)
-try:
-    INSTITUTION_ENGLISH_ALIASES = json.loads(
-        INSTITUTION_ENGLISH_ALIASES_PATH.read_text(encoding="utf-8"))
-except (OSError, ValueError):
-    INSTITUTION_ENGLISH_ALIASES = {}
-_INSTITUTION_ENGLISH_ALIASES_BY_NORM = {
-    norm(source): target
-    for source, target in INSTITUTION_ENGLISH_ALIASES.items()
-}
 LOCAL_LANGUAGE_INSTITUTION_RE = re.compile(
     r"Universität|Universitaet|Université|Università|Universidad|"
     r"Universidade|Universiteit|Universitat|Universitatea|Universitet(?:et)?|"
@@ -458,7 +447,14 @@ def external_url(doi: str, arxiv: str) -> str:
 
 
 def request_json(url: str, headers: dict | None = None, timeout: int = 30) -> dict:
-    req = urllib.request.Request(url, headers=headers or {"User-Agent": f"paper-curation/1.0 (mailto:{MAILTO})"})
+    if headers is None:
+        user_agent = "paper-curation/1.0"
+        if urllib.parse.urlparse(url).netloc == "api.openalex.org":
+            email = get_openalex_email()
+            if email:
+                user_agent += f" (mailto:{email})"
+        headers = {"User-Agent": user_agent}
+    req = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout, context=SSL_CTX) as r:
         return json.load(r)
 
@@ -482,9 +478,6 @@ def resolve_english_institution(name: str, country: str = "",
                                 offline: bool = False) -> str:
     """Resolve a local-language organization label to an English ROR label."""
     name = re.sub(r"\s+", " ", name or "").strip(" ,;:-")
-    static = _INSTITUTION_ENGLISH_ALIASES_BY_NORM.get(norm(name))
-    if static:
-        return static
     if not is_local_language_institution(name) or not allow_remote or offline:
         return ""
 
@@ -1484,9 +1477,6 @@ def _clean_affiliation_text(value: str) -> str:
 
 def _apply_institution_aliases(value: str) -> str:
     value = re.sub(r"\s+", " ", value or "").strip(" ,;:-†‡")
-    english = _INSTITUTION_ENGLISH_ALIASES_BY_NORM.get(norm(value))
-    if english:
-        return english
     for pattern, canonical in INSTITUTION_CANONICAL_ALIASES:
         if re.match(pattern, value, re.I):
             return canonical
@@ -2912,29 +2902,10 @@ def ror_normalize(raw: str, fallback_name: str, country: str,
         outcome = _ROR_INDEX.resolve_affiliation(
             candidate, country, allow_remote=not offline)
         if outcome["evidence"] not in {"unresolved", "empty"}:
-            if not outcome.get("parent"):
-                outcome = dict(outcome)
-                outcome["parent"] = curated_group_for(
-                    outcome.get("institution") or candidate)
             return outcome
-    curated = curated_group_for(fallback_name or raw)
-    return {"institution": "", "parent": curated, "ror_id": "",
+    return {"institution": "", "parent": "", "ror_id": "",
             "parent_ror_id": "", "country_name": "",
-            "evidence": "curated-group" if curated else "unresolved"}
-
-
-def curated_group_for(name: str) -> str:
-    """Parent group from the operator-curated Scopus table.
-
-    Layered under ROR: it only ever fills a gap, never overrides an edge ROR
-    actually records.
-    """
-    try:
-        from lib import affiliation_groups
-    except ImportError:
-        return ""
-    group = affiliation_groups.group_for(name)
-    return "" if norm(group) == norm(name) else group
+            "evidence": "unresolved"}
 
 
 def resolve_institution_row(conn: sqlite3.Connection, name: str, country: str,
@@ -3001,7 +2972,6 @@ def consolidate_institution_parents(conn: sqlite3.Connection) -> int:
     try:
         from lib.ror_index import (ADMINISTRATIVE_BODY, UNIVERSITY_SYSTEM,
                                    RorIndex)
-        from lib import affiliation_groups
     except ImportError:
         return 0
     index = RorIndex()
@@ -3029,10 +2999,6 @@ def consolidate_institution_parents(conn: sqlite3.Connection) -> int:
                 eligible = index.eligible_parent(ror_id)
                 if eligible:
                     parent, parent_ror = eligible["display"], eligible["ror_id"]
-            if not parent and not ror_states_a_parent:
-                parent = affiliation_groups.group_for(name)
-            if parent:
-                parent = affiliation_groups.roll_up(parent)
             if parent and (ADMINISTRATIVE_BODY.search(parent)
                            or UNIVERSITY_SYSTEM.search(parent)
                            or norm(parent) == norm(name)):
@@ -3378,6 +3344,10 @@ def build(entries: list[dict], db_path: Path, update_zotero: bool = False,
 
 def send_completion_email(result: dict) -> None:
     """Send a short completion report through the repository's Resend setup."""
+    recipient = get_completion_email()
+    if not recipient:
+        print("[bibliography] completion email skipped: recipient unavailable", flush=True)
+        return
     config = {}
     try:
         config = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
@@ -3404,9 +3374,8 @@ def send_completion_email(result: dict) -> None:
         f"<p>Zotero items scanned: {result.get('zotero_items_seen', 0)}<br>"
         f"Zotero records updated: {result.get('zotero_updated', 0)}<br>"
         f"Formal publications resolved: {result.get('formal_publications_resolved', 0)}</p>",
-        f"<p>Database: <code>{result.get('db', '')}</code></p>",
     ]
-    payload = {"from": sender, "to": ["jehyun.lee@gmail.com"], "subject": subject,
+    payload = {"from": sender, "to": [recipient], "subject": subject,
                "html": "\n".join(lines)}
     if reply_to:
         payload["reply_to"] = reply_to
@@ -3465,7 +3434,8 @@ def main() -> int:
                          "(Zotero·Scopus·PDF 접근 없음)")
     ap.add_argument("--changed-only", action="store_true",
                     help="process only papers whose review.md/text.md changed")
-    ap.add_argument("--no-email", action="store_true")
+    ap.add_argument("--notify", action="store_true",
+                    help="send the configured completion notification")
     ap.add_argument("--skip-zotero", action="store_true",
                     help="skip the full Zotero library scan for a local incremental repair")
     ap.add_argument("--slugs", help="comma-separated slug prefixes to rebuild")
@@ -3530,7 +3500,7 @@ def main() -> int:
     })
     conn.close()
     print(json.dumps(result, ensure_ascii=False, indent=2))
-    if not args.no_email:
+    if args.notify:
         send_completion_email(result)
     return 0
 

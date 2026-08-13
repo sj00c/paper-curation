@@ -8,22 +8,22 @@ prepare_deploy) 를 순서대로 호출한다.
 
 Usage (가장 자주 쓰는 패턴):
   # 주간 운영 — 검색 + Zotero 등록 + 신규만 리뷰
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source web --days 7
+  PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode curate --source web --days 7
 
   # 로컬 업데이트 — 검색 스킵, Zotero 변경만 동기화 후 신규 리뷰
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode curate --source zotero
+  PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode curate --source zotero
 
   # 특정 슬러그만 force-rebuild (복구 시)
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode rebuild --slugs 088,1093 --strict-pdf
+  PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode rebuild --slugs 088,1093 --strict-pdf
 
   # 카테고리 재분류만
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode reclassify
+  PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode reclassify
 
   # 타임라인 이미지만 재생성
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode retime --images all
+  PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode retime --images all
 
   # 배포만
-  PYTHONUTF8=1 python pipeline/run_full.py --topic ai4s --mode deploy
+  PYTHONUTF8=1 python pipeline/run_full.py --topic my-topic --mode deploy
 
 플래그 자동 연계:
   --source web    → --with-search --with-register --with-sync 자동 활성
@@ -57,8 +57,7 @@ def build_parser():
     p = argparse.ArgumentParser(description="Paper-curation end-to-end orchestrator (3-axis)")
     p.add_argument("--topic", required=True)
     p.add_argument("--mode", choices=["curate", "rebuild", "reclassify", "retime", "deploy",
-                                       "audit", "fix-matching", "dedup", "validate", "recover",
-                                       "report"],
+                                       "audit", "fix-matching", "dedup", "validate", "recover"],
                    required=True,
                    help="MECE action axis. curate/rebuild/reclassify/retime/deploy "
                         "for pipeline runs; audit/fix-matching/dedup/validate/recover "
@@ -87,8 +86,6 @@ def build_parser():
     p.add_argument("--concurrency", type=int, default=16,
                    help="Parallel review workers (Tier 4 default; see README for Tier-by-Tier table).")
     p.add_argument("--slugs", default="", help="특정 슬러그만 force-rebuild.")
-    p.add_argument("--top", type=int, default=15,
-                   help="--mode report: 리포트에 포함할 상위 기관 수 (기본 15).")
     p.add_argument("--strict-pdf", action="store_true",
                    help="fuzzy PDF 매칭 차단 (ID-first 실패 시 skip).")
     p.add_argument("--also-reclassify", action="store_true",
@@ -217,13 +214,6 @@ def build_tool_plan(args):
     자체가 작업의 전부이므로 모두 critical (실패 시 abort).
     """
     py = sys.executable
-    if args.mode == "report":
-        # Institution report: research-flow narrative, timeline chart, parallel
-        # labs, notable researchers. Reads the bibliography DB only — no corpus
-        # mutation and no API calls, so it is safe to re-run at any time.
-        cmd = [py, "-u", str(PIPELINE / "build_institution_report.py"),
-               "--topic", args.topic, "--top", str(args.top)]
-        return [(cmd, None, True)]
     if args.mode == "audit":
         return [([py, "-u", str(PIPELINE / "audit_matching.py"),
                   "--topic", args.topic], None, True)]

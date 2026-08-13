@@ -122,16 +122,9 @@ def audio_modal_html(sub_text="팟캐스트형 오디오로 생성합니다. (Ge
 AUDIO_JS = r"""
 (function() {
 // _GEMINI_KEY is baked into the page at build time on localhost and
-// stripped on deploy. To let Cloudflare visitors still generate audio,
-// we additionally accept a user-provided key via localStorage and via
-// a one-time prompt the first time they click the button. The key
-// stays in their browser only — it is never sent anywhere except
-// google's TTS / Gemini endpoints.
-// Read the Gemini key from any slot the user might have used in this
-// browser before — direct _GEMINI_KEY, or _LLM_KEY if they typed a
-// Gemini key into the Deep Research prompt (AIza-prefixed). This lets
-// Audio Overview pick up keys that Deep Research stored, and vice
-// versa, without a second prompt.
+// stripped on deploy. Visitors can provide a key at runtime; it is held only
+// in memory for the current page and sent only to Google's Gemini endpoints.
+// Deep Research may share a Gemini key through the page's in-memory slot.
 // Google 키 형식은 둘이다: 구형 `AIza…`, AI Studio 신형 `AQ.…`.
 // `AIza` 만 받으면 지금 발급되는 키를 "형식이 틀렸다"며 거절한다 —
 // 이 저장소가 실제로 쓰는 키가 바로 `AQ.` 형식이다.
@@ -139,28 +132,10 @@ function isGeminiKey(k) {
   const s = String(k || "").trim();
   return s.startsWith("AIza") || s.startsWith("AQ.");
 }
-let GKEY = (window._GEMINI_KEY || "") || (function() {
-  try {
-    const direct = localStorage.getItem("_GEMINI_KEY") || "";
-    if (direct) return direct;
-    const llm = localStorage.getItem("_LLM_KEY") || "";
-    if (llm && isGeminiKey(llm)) return llm;
-    return "";
-  } catch (e) { return ""; }
-})();
+let GKEY = isGeminiKey(window._GEMINI_KEY) ? window._GEMINI_KEY : "";
 function rememberGeminiKey(k) {
   GKEY = k || "";
   window._GEMINI_KEY = GKEY;
-  try {
-    if (GKEY) {
-      localStorage.setItem("_GEMINI_KEY", GKEY);
-      // Also seed the Deep Research unified slot so users who started
-      // here don't get re-prompted on the topic page. Only fill it when
-      // empty — never overwrite an existing Anthropic/OpenAI key.
-      const existing = localStorage.getItem("_LLM_KEY") || "";
-      if (!existing) localStorage.setItem("_LLM_KEY", GKEY);
-    }
-  } catch (e) {}
 }
 // 키가 없을 때 "왜 없는지"를 먼저 말한다. 페이지에 키가 구워져 있지 않은 건
 // 고장이 아니라 설계다 — 배포본은 자격증명을 싣지 않고(BYOK), 파이프라인이
@@ -171,13 +146,13 @@ function rememberGeminiKey(k) {
 function audioKeyState() {
   if (!GKEY) {
     return { ok: false, reason: "no-key",
-             message: "Audio Overview 비활성 — 브라우저에 저장된 Gemini API Key가 " +
+             message: "Audio Overview 비활성 — 이 페이지에 Gemini API Key가 " +
                       "없습니다. 이 기능은 BYOK 이며, 페이지에 키가 구워져 있지 " +
                       "않은 것이 정상입니다." };
   }
   if (!isGeminiKey(GKEY)) {
     return { ok: false, reason: "bad-format",
-             message: "저장된 키가 Gemini 형식이 아닙니다 (AIza… 또는 AQ.… 로 시작)." };
+             message: "입력된 키가 Gemini 형식이 아닙니다 (AIza… 또는 AQ.… 로 시작)." };
   }
   return { ok: true, reason: "", message: "" };
 }
@@ -187,7 +162,7 @@ function ensureGeminiKey() {
   const k = prompt(
     st.message + "\n\n" +
     "https://aistudio.google.com/apikey 에서 발급 후 입력하세요.\n" +
-    "(브라우저에만 저장됩니다 — 외부로 전송하지 않습니다)"
+    "(이 페이지를 닫으면 지워지며 Google Gemini API에만 전송됩니다)"
   );
   if (!k) return "";
   const t = String(k).trim();
@@ -278,8 +253,7 @@ function getSeg(groupId) {
 
 function openAudioModal() {
   // Acquire the Gemini key lazily — at modal-open time. This lets
-  // Cloudflare visitors paste their own key the first time and have it
-  // remembered for subsequent sessions (localStorage).
+  // Cloudflare visitors paste their own key for the current page lifetime.
   if (!ensureGeminiKey()) {
     // User dismissed the prompt or entered an invalid key. Don't open
     // the modal — pretending the form is usable would lead to a
@@ -289,8 +263,7 @@ function openAudioModal() {
   // We used to prompt for the email address here, but that forced
   // visitors to commit before they'd even seen the form. The recipient
   // list is now resolved inside runAudioGen() — the prompt fires once,
-  // the first time they actually click "생성", and never again
-  // (localStorage remembers it).
+  // the first time they actually click "생성" during this page load.
   const s = loadSettings();
   setSeg("seg-speakers", s.speakers);
   setSeg("seg-lang", s.lang);
@@ -421,8 +394,10 @@ function buildScriptPrompt(s) {
 }
 
 async function geminiPost(model, body) {
-  const r = await fetch(GBASE + model + ":generateContent?key=" + encodeURIComponent(GKEY), {
-    method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)
+  const r = await fetch(GBASE + model + ":generateContent", {
+    method: "POST",
+    headers: {"Content-Type": "application/json", "x-goog-api-key": GKEY},
+    body: JSON.stringify(body)
   });
   if (!r.ok) {
     let msg = r.status + " " + r.statusText;
@@ -644,89 +619,11 @@ async function runAudioGen() {
     const dur = pcm.length / 2 / SAMPLE_RATE;
     setStatus("✅ 완료 (약 " + Math.round(dur) + "초). 다운로드 가능.");
 
-    // Send by email (optional). LOCAL pages have a baked recipient list;
-    // WEB pages ask the visitor once and remember in localStorage. The send
-    // always targets the deployed worker (absolute AUDIO_EMAIL_ENDPOINT), so
-    // localhost / file:// pages can mail too; the download stays the fallback.
-    try {
-      const recipients = resolveAudioRecipients();
-      if (recipients.length) {
-        const MAX_MAIL_BYTES = 25 * 1024 * 1024;   // Resend/worker 첨부 상한
-        if (blob.size > MAX_MAIL_BYTES) {
-          setStatus("✅ 완료 — 다운로드 가능 (오디오 " + Math.round(blob.size / 1048576) + "MB > 이메일 첨부 한도 25MB → 이메일 생략. 위에서 MP3를 받으세요)");
-        } else {
-          setStatus("📧 이메일로 전송 중...");
-          const ok = await sendAudioEmail(blob, fname, ctx.title || "Audio Overview", s.lang, recipients);
-          if (ok) {
-            setStatus("✅ 완료 — 다운로드 가능 + 이메일 발송됨 (" + recipients.join(", ") + ")");
-          } else {
-            setStatus("✅ 완료 — 다운로드 가능 (이메일 발송 실패. 위에서 직접 받으세요)");
-          }
-        }
-      }
-    } catch (mailErr) {
-      console.warn("audio email send skipped:", mailErr);
-    }
   } catch (e) {
     console.error(e);
     setStatus("오류: " + (e.message || e));
   } finally {
     go.disabled = false;
-  }
-}
-
-// ── Email delivery helpers ──────────────────────────────────────────
-function isLocalHost() {
-  const h = window.location.hostname;
-  return h === "localhost" || h === "127.0.0.1" || h === "0.0.0.0"
-      || h.endsWith(".local") || window.location.protocol === "file:";
-}
-
-function resolveAudioRecipients() {
-  // LOCAL pages: baked list (`window._LOCAL_EMAILS`) — the owner sees
-  // every audio without ever being asked.
-  // WEB pages: localStorage + first-time prompt.
-  const baked = Array.isArray(window._LOCAL_EMAILS) ? window._LOCAL_EMAILS.filter(Boolean) : [];
-  if (isLocalHost() && baked.length) return baked;
-  let e = "";
-  try { e = localStorage.getItem("_AUDIO_EMAIL") || ""; } catch (er) {}
-  if (e) return [e];
-  const entered = prompt(
-    "Audio Overview 완성본을 이메일로 받으시려면 주소를 입력하세요.\n" +
-    "(브라우저에만 저장되며 다음에 다시 묻지 않습니다. 비워두면 다운로드만 합니다.)"
-  );
-  if (!entered) return [];
-  const t = String(entered).trim();
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(t)) {
-    alert("이메일 형식이 올바르지 않습니다. 다운로드로 받으세요.");
-    return [];
-  }
-  try { localStorage.setItem("_AUDIO_EMAIL", t); } catch (er) {}
-  return [t];
-}
-
-// 로컬 페이지(localhost / file://)에는 /api 라우트가 없으므로 상대경로는
-// worker 에 도달하지 못한다 — 항상 배포된 worker 절대경로로 발송한다.
-var AUDIO_EMAIL_ENDPOINT = "https://paper-curation.jehyunlee.dev/api/audio-email";
-
-async function sendAudioEmail(blob, filename, title, lang, recipients) {
-  const fd = new FormData();
-  fd.append("mp3", blob, filename);
-  fd.append("filename", filename);
-  fd.append("title", title || "Audio Overview");
-  fd.append("lang", lang || "ko");
-  for (const r of recipients) fd.append("email", r);
-  try {
-    const r = await fetch(AUDIO_EMAIL_ENDPOINT, { method: "POST", body: fd });
-    if (!r.ok) {
-      const txt = await r.text();
-      console.warn("audio-email server returned", r.status, txt.slice(0, 200));
-      return false;
-    }
-    return true;
-  } catch (e) {
-    console.warn("audio-email fetch failed:", e);
-    return false;
   }
 }
 
@@ -769,28 +666,23 @@ window.runAudioGen = runAudioGen;
 """
 
 
-def audio_script_block(gemini_key, mode="paper", ctx=None, provider_js="",
-                        local_emails=None):
-    """Wrap AUDIO_JS with the injected key, mode, and either a static context
-    (paper) or a context-provider snippet (deep).
+def audio_script_block(gemini_key, mode="paper", ctx=None, provider_js=""):
+    """Wrap AUDIO_JS with the in-memory key and audio context.
 
     Always emits the script so deployed pages can still accept a
     user-provided key at runtime (the JS prompts the visitor on first
-    click and remembers the result in localStorage). When no key is
+    click and retains it only for that page lifetime). When no key is
     baked at build time we set the global to an empty string so the JS
-    falls through to the localStorage / prompt path.
+    falls through to the in-memory prompt path.
 
-    ``local_emails`` is a list of recipient addresses baked into the
-    build so the operator never has to retype them on localhost. The
-    array is stripped on deploy by ``prepare_deploy.py`` so visitor
-    pages always start with an empty list and prompt instead.
     """
     prefix = "window._GEMINI_KEY = " + json.dumps(gemini_key or "") + ";\n"
     prefix += "window._AUDIO_MODE = " + json.dumps(mode) + ";\n"
-    prefix += "window._LOCAL_EMAILS = " + json.dumps(local_emails or []) + ";\n"
     if ctx is not None:
         prefix += "window._AUDIO = " + json.dumps(ctx, ensure_ascii=False) + ";\n"
     if provider_js:
         prefix += provider_js + "\n"
-    return ('<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>\n'
+    return ('<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js" '
+            'integrity="sha384-xuasJXVcyv3hZq0eYpelEkBC8l4yufatZXDsKuyCU2rqfhDCb+ftuE/mSfZAteiK" '
+            'crossorigin="anonymous"></script>\n'
             "<script>\n" + prefix + AUDIO_JS + "\n</script>")

@@ -1,11 +1,9 @@
 """
 Originality extraction from paper text.
-Ported from scisci/scie/lib/originality.py.
 
 Strategy:
 1. Primary: rule-based trigger matching (free, instant)
 2. Fallback: LLM (Claude Haiku) when rule-based finds nothing
-3. Self-learning: LLM-discovered triggers added to triggers JSON
 """
 import json
 import re
@@ -47,18 +45,8 @@ def _strip_metadata_leaks(text: str) -> str:
 def load_triggers(path=None):
     """Load trigger categories and flat list.
 
-    파일이 없거나 깨져 있으면 **빈 트리거 집합**으로 시작한다. 이건 관용이
-    아니라 이 모듈의 설계 그대로다 — 모듈 docstring 이 말하는 self-learning
-    구조에서 `_update_triggers()` 는 `rule_base_learned` 카테고리를 없으면
-    만들고 `_path` 에 새로 써 넣는다. 즉 **쓰는 쪽은 빈 상태에서 출발할 수
-    있는데 읽는 쪽만 못 했다.**
-
-    이 비대칭의 대가가 컸다: `originality_triggers.json` 은 화이트리스트
-    `.gitignore` (`!pipeline/lib/*.py` 만 있고 `*.json` 은 없다) 때문에 한
-    번도 추적된 적이 없어서, 새로 clone 하면 파일이 아예 없다. 그 상태에서
-    `load_triggers()` 가 FileNotFoundError 로 죽어 citedby 의 originality
-    추출 경로가 통째로 터졌다. 규칙 히트가 0건인 것과 파일이 없는 것은
-    둘 다 "LLM fallback 으로 간다" 여야 한다.
+    파일이 없거나 깨져 있으면 빈 트리거 집합으로 시작하고 LLM fallback을
+    사용한다. 런타임 결과를 소스 옆 사전에 다시 쓰지 않는다.
     """
     path = path or TRIGGERS_PATH
     data = {}
@@ -68,8 +56,6 @@ def load_triggers(path=None):
     except FileNotFoundError:
         pass
     except (OSError, json.JSONDecodeError):
-        # 손상된 학습 파일이 파이프라인을 죽이면 안 된다. 빈 집합으로 진행하고
-        # 다음 _update_triggers() 가 정상 파일로 덮어쓴다.
         pass
     if not isinstance(data, dict):
         data = {}
@@ -213,53 +199,14 @@ def _llm_fallback(text):
         )
         result = _parse_json_response(resp.content[0].text)
         sentences = result.get("originality_sentences", [])
-        triggers = result.get("trigger_phrases", [])
         out = ". ".join(sentences) if sentences else ""
-        return _strip_metadata_leaks(out), triggers
+        return _strip_metadata_leaks(out)
     except Exception:
-        return "", []
-
-
-def _update_triggers(triggers_data, new_triggers):
-    """LLM이 발견한 trigger를 JSON에 추가 (self-learning)."""
-    if not new_triggers:
-        return 0
-
-    added = 0
-    existing = set(w.strip().lower() for w in triggers_data["all"])
-
-    for trigger in new_triggers:
-        trigger = trigger.strip().lower()
-        if len(trigger) < 4:
-            continue
-        if trigger in existing:
-            continue
-        if trigger.strip() in _STOP_TRIGGERS:
-            continue
-        words = trigger.split()
-        has_verb = any(w.endswith(("ed", "ing", "ize", "ise", "ate", "ify")) for w in words)
-        if len(words) < 2 and not has_verb:
-            continue
-
-        if "rule_base_learned" not in triggers_data["categories"]:
-            triggers_data["categories"]["rule_base_learned"] = []
-        triggers_data["categories"]["rule_base_learned"].append(trigger)
-        triggers_data["all"].append(trigger)
-        existing.add(trigger)
-        added += 1
-
-    if added > 0 and "_path" in triggers_data:
-        save_data = dict(triggers_data["categories"])
-        save_data["_version"] = "2026.1-live"
-        save_data["_description"] = "Auto-updated by LLM fallback learning"
-        with open(triggers_data["_path"], "w", encoding="utf-8") as f:
-            json.dump(save_data, f, indent=4, ensure_ascii=False)
-
-    return added
+        return ""
 
 
 def extract_originality(text, triggers=None):
-    """Extract originality: rule-based first, LLM fallback if empty, self-learning.
+    """Extract originality using deterministic rules, then an LLM fallback.
 
     Args:
         text: Paper text (first ~1000 chars recommended)
@@ -280,12 +227,4 @@ def extract_originality(text, triggers=None):
         return result
 
     # 2. LLM fallback
-    result, new_triggers = _llm_fallback(text)
-
-    # 3. Self-learning
-    if new_triggers:
-        learned = _update_triggers(triggers, new_triggers)
-        if learned > 0:
-            pass  # logging handled by caller if needed
-
-    return result
+    return _llm_fallback(text)

@@ -52,8 +52,8 @@ PYTHONUTF8=1 python pipeline/run_full.py --topic {topic_alias} --mode reclassify
 # 타임라인 narrative + 이미지
 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic_alias} --mode retime --images all
 
-# 배포 (Cloudflare + gh-pages + master push)
-PYTHONUTF8=1 python pipeline/run_full.py --topic humanoid --mode deploy
+# 명시적 공개 배포 (publication.mode=public + base_url 필요)
+PYTHONUTF8=1 python pipeline/run_full.py --topic {topic_alias} --mode deploy
 
 # 실행 계획만 미리보기
 PYTHONUTF8=1 python pipeline/run_full.py --topic {topic_alias} --mode curate --source web --dry-run

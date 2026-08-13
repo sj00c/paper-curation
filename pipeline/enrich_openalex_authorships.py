@@ -39,9 +39,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PIPELINE = ROOT / "pipeline"
 if str(PIPELINE) not in sys.path:
     sys.path.insert(0, str(PIPELINE))
+from config_loader import get_openalex_email
 
 DEFAULT_DB = ROOT / ".cache" / "bibliography.sqlite3"
-MAILTO = "jehyun.lee@gmail.com"
+MAILTO = get_openalex_email()
 SELECT = "id,doi,cited_by_count,authorships"
 
 
@@ -74,10 +75,14 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
 
 
 def fetch_work(doi: str) -> dict | None:
-    url = (f"https://api.openalex.org/works/doi:{urllib.parse.quote(doi)}"
-           f"?select={SELECT}&mailto={MAILTO}")
+    params = {"select": SELECT}
+    if MAILTO:
+        params["mailto"] = MAILTO
+    url = (f"https://api.openalex.org/works/doi:{urllib.parse.quote(doi)}?"
+           + urllib.parse.urlencode(params))
     request = urllib.request.Request(
-        url, headers={"User-Agent": f"paper-curation/1.0 (mailto:{MAILTO})"})
+        url, headers={"User-Agent": "paper-curation/1.0"
+                      + (f" (mailto:{MAILTO})" if MAILTO else "")})
     for attempt in range(3):
         try:
             with urllib.request.urlopen(request, timeout=30) as response:

@@ -1,0 +1,66 @@
+schema_version: 1
+name: paper-curation
+runtime:
+  default_mode: local
+  python:
+    version: "3.12"
+  claude_code:
+    minimum_version: "2.1.205"
+    authentication:
+      recommended: oauth
+      alternatives:
+        - api-key
+      oauth:
+        commands:
+          - claude auth login
+        environment:
+          - CLAUDE_CODE_OAUTH_TOKEN
+      api_key:
+        environment:
+          - ANTHROPIC_API_KEY
+zotero:
+  api_key:
+    required: true
+    environment:
+      - ZOTERO_API_KEY
+  local_sqlite:
+    preferred: true
+    environment:
+      - ZOTERO_SQLITE
+    default_path: ~/Zotero/zotero.sqlite
+google:
+  required: false
+  environment:
+    - GOOGLE_API_KEY
+    - GEMINI_API_KEY
+  enables:
+    - dense search embeddings
+    - timeline images
+    - figure verification
+    - audio overview text-to-speech
+onboarding:
+  - inspect_repository
+  - verify_claude_auth
+  - inspect_zotero_account
+  - discover_local_zotero
+  - list_zotero_collections
+  - select_topics
+  - select_local_or_public
+  - write_config
+  - run_doctor
+  - build
+  - serve
+publication:
+  default_mode: local
+  public_deployment: explicit
+  configuration:
+    mode: publication.mode
+    base_url: publication.base_url
+  environment:
+    - PAPER_CURATION_PUBLIC_BASE_URL
+outputs:
+  content_root: docs
+  topic_site: docs/{topic}/index.html
+  reviews: docs/papers/
+  local_url: http://localhost:8000/{topic}/
+  public_url: "{publication.base_url}/{topic}/"

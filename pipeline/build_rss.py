@@ -6,8 +6,8 @@ Atom 1.0 feed builder for paper-curation topics.
 review_to_html → build_topic_index 직후 run_update_force 가 체이닝한다.
 
 Usage: PYTHONUTF8=1 python build_rss.py <topic>
-  e.g. PYTHONUTF8=1 python build_rss.py humanoid
-       PYTHONUTF8=1 python build_rss.py ai4s
+  e.g. PYTHONUTF8=1 python build_rss.py my-topic
+       PYTHONUTF8=1 python build_rss.py another-topic
 """
 import argparse
 import json
@@ -17,14 +17,17 @@ import sys
 from datetime import datetime, timezone
 from xml.sax.saxutils import escape, quoteattr
 
-from config_loader import PAPERS_DIR as _PAPERS_DIR, get_topic_dir
+from config_loader import (
+    PAPERS_DIR as _PAPERS_DIR,
+    get_operator_identity,
+    get_public_base_url,
+    get_topic_dir,
+)
 from lib.dateutil import normalize_date
 from lib.atomic_io import atomic_write_text
 
 PAPERS_DIR = str(_PAPERS_DIR)
 
-# Canonical Cloudflare 도메인 (build_topic_index 의 OG 메타와 동일한 SITE 상수).
-SITE = "https://paper-curation.jehyunlee.dev"
 MAX_ENTRIES = 50
 
 
@@ -63,6 +66,7 @@ def _collect_topic_papers(topic, topic_dir, papers_index):
     반환: [{slug, title, url, updated, summary, category, authors}, ...] (미정렬)
     조인 실패(메타 없음)·날짜 파싱 실패 항목은 조용히 skip.
     """
+    site = get_public_base_url() or "http://localhost:8000"
     by_slug = {p["slug"]: p for p in papers_index}
 
     # 1순위: _new_classification.json assignments (slug + primary_category)
@@ -92,7 +96,7 @@ def _collect_topic_papers(topic, topic_dir, papers_index):
         entries.append({
             "slug": slug,
             "title": p.get("title", slug),
-            "url": f"{SITE}/papers/{slug}/",
+            "url": f"{site}/papers/{slug}/",
             "updated": updated,
             "sort_key": _date_sort_key(p.get("date", "")),
             "summary": p.get("essence", ""),
@@ -104,7 +108,7 @@ def _collect_topic_papers(topic, topic_dir, papers_index):
 
 def _build_atom(topic, entries):
     """entries 리스트를 Atom 1.0 XML 문자열로 직렬화 (모든 텍스트/속성 이스케이프)."""
-    topic_url = f"{SITE}/{topic}/"
+    topic_url = f"{get_public_base_url() or 'http://localhost:8000'}/{topic}/"
     feed_title = f"{topic} — Paper Curation"
     # 피드 updated: 최신 엔트리 시각, 없으면 빌드 시각
     feed_updated = entries[0]["updated"] if entries else \
@@ -117,7 +121,10 @@ def _build_atom(topic, entries):
     lines.append(f'  <link href={quoteattr(topic_url + "feed.xml")} rel="self" type="application/atom+xml"/>')
     lines.append(f"  <id>{escape(topic_url)}</id>")
     lines.append(f"  <updated>{feed_updated}</updated>")
-    lines.append("  <author><name>Jehyun Lee</name></author>")
+    operator = get_operator_identity()
+    feed_author = operator.get("name") or operator.get("organization")
+    if feed_author:
+        lines.append(f"  <author><name>{escape(feed_author)}</name></author>")
     lines.append("  <generator>paper-curation build_rss.py</generator>")
 
     for e in entries:

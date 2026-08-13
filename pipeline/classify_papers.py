@@ -38,9 +38,9 @@ Pipeline contract:
   py312 로 통일했다 — 운영자 지시 2026-06-18.)
 
 Usage:
-  PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s
-  PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --slugs 088,1093
-  PYTHONUTF8=1 python pipeline/classify_papers.py --topic ai4s --dry-run
+  PYTHONUTF8=1 python pipeline/classify_papers.py --topic my-topic
+  PYTHONUTF8=1 python pipeline/classify_papers.py --topic my-topic --slugs 088,1093
+  PYTHONUTF8=1 python pipeline/classify_papers.py --topic my-topic --dry-run
 """
 
 import argparse
@@ -203,8 +203,8 @@ def _run_classify_zotero(topic, *, unclassified="skip", dry_run=False):
     topic_dir = str(get_topic_dir(topic))
 
     # 로컬 zotero.sqlite 가 원천이다. 같은 데이터를 Web API 로 받으면 자식마다
-    # 100건씩 페이징해야 해서 ai4s(15,399건) 기준 수 분이 걸리는데, sqlite 는
-    # 220MB 복사 + 쿼리 한 번으로 0.1초다. 네트워크도 API 키도 필요 없다.
+    # 100건씩 페이징해야 하지만 sqlite 는 복사와 쿼리 한 번으로 끝난다.
+    # 네트워크도 API 키도 필요 없다.
     # DB 가 없는 환경(원격/CI)에서만 Web API 로 내려간다.
     db = local_db_path()
     collections = fetch_collections_local() if db else None

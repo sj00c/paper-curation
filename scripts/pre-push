@@ -10,8 +10,6 @@
 #      not a push gate. Blocking every push on unrelated data issues would train
 #      `git push --no-verify`, which also disables the secret scan.
 #
-# `git push --no-verify` is also blocked by the agent PreToolUse guard.
-
 set -e
 
 ROOT="$(git rev-parse --show-toplevel)"

@@ -3,7 +3,7 @@ Canonical review.md → index.html converter.
 Enforces consistent layout across all review pages.
 
 Usage:
-  PYTHONUTF8=1 python review_to_html.py [--topic ai4s|scisci] [--slugs 251-258] [--all]
+  PYTHONUTF8=1 python review_to_html.py [--topic my-topic] [--slugs 251-258] [--all]
   PYTHONUTF8=1 python review_to_html.py --all              # regenerate all
   PYTHONUTF8=1 python review_to_html.py --slugs 251-394    # specific range
 """
@@ -11,7 +11,12 @@ import os, re, sys, json, argparse
 from html import escape as esc
 from urllib.parse import quote as _urlquote
 
-from config_loader import PAPERS_DIR as _PAPERS_DIR
+from config_loader import (
+    PAPERS_DIR as _PAPERS_DIR,
+    get_operator_attribution,
+    get_public_base_url,
+    get_topic_profile,
+)
 from lib.audio_overview import (
     get_audio_css as _audio_css_lib,
     audio_modal_html as _audio_modal_lib,
@@ -29,36 +34,6 @@ try:
 except Exception:
     _ZOTERO_KEYS = {}
 
-# Gemini key for the browser-direct Audio Overview feature. Baked into the
-# review page at build time (like the Deep Research keys in build_topic_index),
-# then stripped from every deployed page by prepare_deploy.py. On Cloudflare the
-# value is "" so the generate button stays disabled (localhost-only feature).
-_GEMINI_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or ""
-_LOCAL_EMAILS_RAW = os.environ.get("PAPER_CURATION_LOCAL_EMAILS", "")
-if not _GEMINI_KEY or not _LOCAL_EMAILS_RAW:
-    _cfg_path = os.path.join(os.path.dirname(os.path.dirname(_PAPERS_DIR)), "config.json")
-    try:
-        with open(_cfg_path, "r", encoding="utf-8") as _f:
-            _cfg = json.load(_f)
-        if not _GEMINI_KEY:
-            _GEMINI_KEY = _cfg.get("gemini_api_key") or _cfg.get("google_api_key", "")
-        if not _LOCAL_EMAILS_RAW:
-            _LOCAL_EMAILS_RAW = ",".join(_cfg.get("local_emails", []) or [])
-    except Exception:
-        pass
-_LOCAL_EMAILS = [e.strip() for e in _LOCAL_EMAILS_RAW.split(",") if e.strip()]
-
-THEMES = {
-    "ai4s": {"accent": "#D63423", "accent_dark": "#A62018", "accent_bg": "#FEF0EF",
-             "essence_border": "#8B1A1A", "essence_bg": "#FDF8F8",
-             "link_color": "#A62018", "back_href": "../../ai4s/index.html"},
-    "scisci": {"accent": "#2374D6", "accent_dark": "#1856A0", "accent_bg": "#EBF3FF",
-               "essence_border": "#1856A0", "essence_bg": "#F8FAFD",
-               "link_color": "#1856A0", "back_href": "../../scisci/index.html"},
-}
-
-# 미등록 토픽용 중립 테마. build_topic_index.py 의 _default_theme 과 같은 파랑
-# 계열이라, 토픽 인덱스와 개별 논문 페이지의 accent 가 어긋나지 않는다.
 _DEFAULT_THEME = {
     "accent": "#3B82F6", "accent_dark": "#2563EB", "accent_bg": "#EFF6FF",
     "essence_border": "#2563EB", "essence_bg": "#F8FAFD",
@@ -67,16 +42,14 @@ _DEFAULT_THEME = {
 
 
 def theme_for(topic):
-    """토픽별 테마. 미등록 토픽은 중립 테마 + 자기 토픽으로 돌아가는 back_href.
-
-    예전에는 ai4s 테마로 폴백해서, physical-ai 같은 설치에서 논문 페이지가
-    빨간색으로 뜨고 '목록으로' 링크가 존재하지 않는 ../../ai4s/index.html 로
-    갔다. back_href 는 언제나 자기 토픽을 가리켜야 한다.
-    """
-    known = THEMES.get(topic)
-    if known:
-        return known
-    return dict(_DEFAULT_THEME, back_href=f"../../{topic}/index.html")
+    """Config-driven topic theme with a neutral fallback."""
+    theme = dict(_DEFAULT_THEME)
+    profile = get_topic_profile(topic)
+    for key in theme:
+        if profile.get(key):
+            theme[key] = str(profile[key])
+    theme["back_href"] = f"../../{topic}/index.html"
+    return theme
 
 def _fallback_topic():
     """인덱스가 토픽을 말해주지 않을 때 쓸 토픽.
@@ -90,9 +63,6 @@ def _fallback_topic():
     except Exception:
         return "unknown"
 
-
-# 배포 도메인 — OG 태그의 절대 URL 용 (= prepare_deploy.CF_BASE_URL).
-_CF_BASE = "https://paper-curation.jehyunlee.dev"
 
 # Paper connections cache (loaded once per run)
 _connections_cache = {}
@@ -145,7 +115,7 @@ def _portable_url(doi, title):
     """다운로드된 .html 에서도 살아있는 절대 URL. build_search_index 의
     _resolve_external 재사용 — 유효 DOI → doi.org, arXiv → arxiv.org, 없으면
     Zotero 에 등록된 원문 URL(_zotero_meta.json, 제목 매칭), 최후엔 Scholar 검색.
-    compare_papers.py 도 이 구현을 공유한다."""
+    여러 렌더러가 이 구현을 공유할 수 있다."""
     global _BSI
     ext = ""
     try:
@@ -169,10 +139,10 @@ def _load_connections():
     """Load every docs/<topic>/_paper_connections.json.
 
     Topic dirs are DISCOVERED from the filesystem (any docs/ subdirectory
-    holding a _paper_connections.json) — same rule as rebuild_connections.
+    holding a _paper_connections.json).
     Topic names must not be hardcoded here: setup.py installs arbitrary topic
     aliases, and a fixed list silently drops their connections (surfaced as
-    paper-curio comparisons missing 같이 보면 좋은 논문). Per-paper lists are
+    cross-topic pages missing 같이 보면 좋은 논문). Per-paper lists are
     identical across topic files (the bidirectional view is global; files
     differ only in WHICH papers are keys), so merge order doesn't matter.
     """
@@ -273,8 +243,7 @@ def get_audio_css(t):
 def audio_bar_html():
     """Button shown under the title. Always enabled — when the page is
     deployed without a baked key, the modal JS prompts the visitor for
-    their own Gemini API key on first click and remembers it in
-    localStorage."""
+    their own Gemini API key on first click and keeps it only for the page lifetime."""
     return ('<div class="audio-bar">'
             '<button class="audio-btn" id="audio-open" onclick="openAudioModal()">'
             '\U0001F3A7 Audio Overview 생성</button></div>')
@@ -288,9 +257,13 @@ def audio_modal_html():
 
 
 def audio_script_block(ctx):
-    """Wrap the shared Audio Overview JS with this paper's static context."""
-    return _audio_script_lib(_GEMINI_KEY, mode="paper", ctx=ctx,
-                              local_emails=_LOCAL_EMAILS)
+    """Wrap Audio Overview with a runtime-only BYOK credential."""
+    return _audio_script_lib("", mode="paper", ctx=ctx)
+
+
+def operator_attribution_html():
+    """Escaped footer attribution, or empty when the operator is anonymous."""
+    return esc(get_operator_attribution())
 
 
 def parse_scores(md):
@@ -917,20 +890,22 @@ def convert_review(md_path, topic, slug_dir):
         pick = next((p for p in paras if re.search(r'[가-힣]', p)),
                     paras[0] if paras else "")
         og_desc = pick[:160]
+    public_base_url = get_public_base_url()
     og_img = ""
     fig_dir = os.path.join(slug_dir, "figures")
     if os.path.isdir(fig_dir):
         figs = sorted((f for f in os.listdir(fig_dir)
                        if re.match(r'fig\d+\.(png|webp)$', f)),
                       key=lambda f: int(re.findall(r'\d+', f)[0]))
-        if figs:
-            og_img = f"{_CF_BASE}/papers/{slug_dir_name}/figures/{figs[0]}"
+        if figs and public_base_url:
+            og_img = f"{public_base_url}/papers/{slug_dir_name}/figures/{figs[0]}"
     og_meta = (
         '<meta property="og:type" content="article">\n'
         '<meta property="og:site_name" content="Paper Curation">\n'
         f'<meta property="og:title" content="{esc(title)}">\n'
         + (f'<meta property="og:description" content="{esc(og_desc)}">\n' if og_desc else "")
-        + f'<meta property="og:url" content="{_CF_BASE}/papers/{slug_dir_name}/">\n'
+        + (f'<meta property="og:url" content="{public_base_url}/papers/{slug_dir_name}/">\n'
+           if public_base_url else "")
         + (f'<meta property="og:image" content="{og_img}">\n' if og_img else "")
         + f'<meta name="twitter:card" content="{"summary_large_image" if og_img else "summary"}">'
     )
@@ -970,9 +945,9 @@ def convert_review(md_path, topic, slug_dir):
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>{esc(title)}</title>
 {og_meta}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css" integrity="sha384-a+6QFBwEmWYo4LaR7Ti/cfkRL9OEt6L85DKw3wkYLYxj+jlH56ipE4IdHWZ9+lOF" crossorigin="anonymous">
 <script>window.MathJax={{tex:{{inlineMath:[['$','$'],['\\\\(','\\\\)']],displayMath:[['$$','$$'],['\\\\[','\\\\]']]}}}};</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6/1Nxveei" crossorigin="anonymous" async></script>
 <style>
 {css}
 </style>
@@ -1001,8 +976,7 @@ window._PAGE_SLUG = {json.dumps(slug_dir_name)};
 </script>
 {"" if _nd_restrict else audio_script_block(audio_ctx)}
 <footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">
-게재 논문은 arXiv&middot;OpenReview 등 공개 프리프린트이며 원문 저작권은 원저작자에게 귀속됩니다 &middot; 이 페이지의 리뷰&middot;요약&middot;해설은 생성형 AI가 생성한 2차적 분석물입니다<br>
-Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
+게재 논문은 arXiv&middot;OpenReview 등 공개 프리프린트이며 원문 저작권은 원저작자에게 귀속됩니다 &middot; 이 페이지의 리뷰&middot;요약&middot;해설은 생성형 AI가 생성한 2차적 분석물입니다{f'<br>{operator_attribution_html()}' if operator_attribution_html() else ""}
 </footer>
 </body>
 </html>"""
@@ -1012,9 +986,7 @@ Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com
 def detect_topic(slug, index_path=None):
     """Detect topic from _papers_index.json.
 
-    인덱스에 토픽이 없으면 설정된 토픽(유일할 때)으로 폴백한다. 예전에는
-    'ai4s' 를 반환해서, ai4s 가 없는 설치의 논문이 존재하지 않는 토픽으로
-    렌더됐다 — 테마도 back_href 도 전부 어긋났다.
+    인덱스에 토픽이 없으면 설정된 토픽이 유일할 때만 사용한다.
     """
     if index_path and os.path.exists(index_path):
         with open(index_path, 'r', encoding='utf-8') as f:
@@ -1120,7 +1092,7 @@ def _run_review_to_html(*, topic=None, slug=None, slugs=None, all_papers=False,
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--topic', default=None, help='Force topic (ai4s/scisci)')
+    parser.add_argument('--topic', default=None, help='Force a configured topic alias')
     parser.add_argument('--slugs', default=None,
                         help='Slug range "251-258" or comma list "9121,9122"')
     parser.add_argument('--all', action='store_true', help='Regenerate all')

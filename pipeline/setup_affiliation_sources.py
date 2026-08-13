@@ -1,17 +1,8 @@
 #!/usr/bin/env python3
-"""Acquire and build every input the affiliation normaliser needs.
+"""Acquire and build the public ROR inputs used for affiliation normalization.
 
-Institution naming depends on three artifacts that live outside the repository:
-
-1. the ROR data dump (~35 MB zip → 305 MB JSON) from Zenodo,
-2. the SQLite lookup index projected from that dump,
-3. `dict_afgroupname_confident.json`, the operator-curated Scopus group table.
-
-All three sit under `.cache/`, which is gitignored, so a clean checkout or a
-wiped cache silently loses institution normalisation: `build_bibliography_db.py`
-prints one warning and carries on with raw PDF strings. This script makes the
-acquisition reproducible and idempotent — run it once per machine, and again
-only when a new ROR release is wanted.
+The ROR dump and projected SQLite index live under gitignored ``.cache/``.
+This command makes their acquisition reproducible and idempotent.
 
     python pipeline/setup_affiliation_sources.py            # ensure everything
     python pipeline/setup_affiliation_sources.py --check     # report, change nothing
@@ -20,9 +11,7 @@ only when a new ROR release is wanted.
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import os
 import shutil
 import sys
 import urllib.request
@@ -33,28 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ROR_DIR = ROOT / ".cache" / "ror"
-CURATED_DIR = ROOT / ".cache" / "affiliation"
-CURATED_NAME = "dict_afgroupname_confident.json"
-
 ZENODO_COMMUNITY = "https://zenodo.org/api/records?communities=ror-data&sort=newest&size=1"
-
-# The curated Scopus group table is resolved by `lib.affiliation_groups` across
-# three layers: PAPER_CURATION_AFGROUP_DICT (live copy), pipeline/data (pinned in
-# the repository), .cache/affiliation (staged). This step only has to make sure
-# at least one layer exists, and it reports which one won. The Google Drive path
-# is the last-resort source used to stage the cache on the operator's own laptop.
-CURATED_FALLBACK = str(
-    Path.home() / "Library/CloudStorage/GoogleDrive-jehyun.lee@gmail.com/"
-    "내 드라이브/KIER_후임자인수인계/ARI/code_copy/data_common/literature"
-    / CURATED_NAME)
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1 << 20), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def latest_ror_release() -> dict:
@@ -125,44 +93,14 @@ def ensure_ror_index(rebuild: bool = False) -> dict:
     return {"status": "built", **ror_index.build_index()}
 
 
-def ensure_curated_dict() -> dict:
-    """Confirm a curated group table is reachable; stage the fallback if not.
-
-    The pinned copy in `pipeline/data/` normally satisfies this on every machine.
-    The Google Drive fallback is staged into the cache only when neither the env
-    var nor the pinned copy is present.
-    """
-    from lib import affiliation_groups
-    active = affiliation_groups.active_path()
-    if active is not None:
-        return {"status": "present", "path": str(active),
-                "sha256": sha256_file(active)[:16],
-                "entries": affiliation_groups.stats()["entries"]}
-    source = Path(CURATED_FALLBACK)
-    if source.is_file():
-        target = affiliation_groups.CACHED_PATH
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, target)
-        return {"status": "staged", "from": str(source),
-                "sha256": sha256_file(target)[:16]}
-    return {"status": "missing", "hint":
-            "commit pipeline/data/dict_afgroupname_confident.json or set "
-            "PAPER_CURATION_AFGROUP_DICT; without it 1,872 curated parent "
-            "hierarchies are lost and only ROR edges remain"}
-
-
 def report() -> dict:
-    from lib import affiliation_groups, ror_index
+    from lib import ror_index
     dump = ror_index.latest_dump()
-    curated = affiliation_groups.active_path()
     return {
         "ror_dump": dump.name if dump else None,
         "ror_index": (str(ror_index.INDEX_PATH)
                       if ror_index.INDEX_PATH.exists() else None),
-        "curated_group_dict": str(curated) if curated else None,
-        "curated_entries": affiliation_groups.stats()["entries"],
-        "curated_layers": [str(p) for p in affiliation_groups.curated_paths()],
-        "ready": bool(ror_index.INDEX_PATH.exists()) and curated is not None,
+        "ready": bool(ror_index.INDEX_PATH.exists()),
     }
 
 
@@ -181,7 +119,6 @@ def main() -> int:
 
     result = {"dump": ensure_ror_dump(refresh=args.refresh_ror)}
     result["index"] = ensure_ror_index(rebuild=args.refresh_ror)
-    result["curated"] = ensure_curated_dict()
     result["state"] = report()
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if result["state"]["ready"] else 2

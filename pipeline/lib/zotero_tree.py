@@ -1,13 +1,12 @@
 """Zotero 컬렉션 트리를 분류 공급원으로 읽는다.
 
-왜 필요한가. 사용자는 Zotero 안에서 이미 논문을 분류해 둔다. 실제 라이브러리는
-이런 모양이다:
+왜 필요한가. 사용자는 Zotero 안에서 이미 논문을 분류해 둔다. 예:
 
-    AI for Science  [67W74439]  15,388편        ← 최상위 = 토픽
-      ├ 01 General Methods & Platforms   3,984  ← 하위 = 사람이 만든 카테고리
-      ├ 02 Biology & Medicine            2,920
+    My Research  [TOPLEVEL]                 ← 최상위 = 토픽
+      ├ 01 Methods                         ← 하위 = 사람이 만든 카테고리
+      ├ 02 Applications
       ├ …
-      └ 99 Unclassified                  2,286
+      └ 99 Unclassified
 
 파이프라인은 최상위 컬렉션에서 논문을 긁어오기만 하고 이 하위 구조를 버린 뒤,
 HDBSCAN 으로 카테고리를 처음부터 새로 만들었다. 사람이 정리해 둔 분류와 겹치지도
@@ -19,8 +18,7 @@ classify_papers 가 쓰는 것과 같은 `_new_classification.json` 형식으로
 
     {"title": "...", "collections": ["9GMSEJCW", "AT43FF5G"]}
 
-매핑 키. `_papers_index.json` 의 zotero_item_key 는 3273편 중 1편에만 있어서 쓸 수
-없다. DOI(3249/3273)를 먼저 보고, 없으면 정규화한 제목으로 잇는다.
+매핑은 DOI를 우선하고, 없으면 정규화한 제목으로 잇는다.
 """
 
 from __future__ import annotations
@@ -66,7 +64,7 @@ LEFT JOIN collections p ON c.parentCollectionID = p.collectionID
 """
 
 # 부모 컬렉션의 자식들에 속한 논문 + DOI/제목. 한 번의 쿼리로 끝난다.
-# Web API 는 자식마다 100건씩 페이징해야 해서 ai4s(15,399건) 기준 수 분이 걸린다.
+# Web API 는 자식마다 100건씩 페이징해야 하므로 로컬 DB가 훨씬 빠르다.
 _CHILD_ITEMS_SQL = """
 SELECT ci.itemID, c.key,
        MAX(CASE WHEN f.fieldName = 'DOI'   THEN idv.value END) AS doi,
@@ -185,9 +183,8 @@ def find_root_key(collections: dict, name_or_key: str) -> str:
     return ""
 
 
-# 미분류 컬렉션의 관례적 이름. 실제 라이브러리는 루트마다 다르게 쓴다 —
-# "AI for Science"/"Physical AI" 는 "99 Unclassified", "KIST Life Sciences" 는
-# 번호 없이 "Unclassified". 둘 다 잡는다.
+# 미분류 컬렉션의 관례적 이름. 실제 라이브러리마다 번호 유무가 달라
+# "99 Unclassified"와 "Unclassified"를 모두 인식한다.
 DEFAULT_UNCLASSIFIED_NAMES = ("99 Unclassified", "Unclassified", "미분류")
 
 # unclassified 처리 방식.

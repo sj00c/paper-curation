@@ -4,44 +4,52 @@
 
 논문 PDF → 한국어 구조화 리뷰 → 자동 분류 → 연구 동향 타임라인 → 검색 가능한 사이트 + **Deep Research**(논문 근거 RAG Q&A)까지 — Claude Code가 오케스트레이션하는 개인 논문 큐레이션 파이프라인.
 
-**라이브 데모 — 설치 없이 바로 보기:**
+## 설치 전에 알아둘 것
 
-- **Humanoid** — https://paper-curation.jehyunlee.dev/humanoid/
-- **Physical AI** — https://paper-curation.jehyunlee.dev/physical-ai/
+**필수**
+
+- macOS 또는 Linux, Python 3.12
+- Claude Code 2.1.205 이상과 OAuth 로그인(권장), 또는 Anthropic Console API 키
+- Zotero 계정·API Key와 Zotero 데스크톱 또는 PDF 저장 경로
+
+**선택**
+
+- Google API Key: dense 검색 embedding·타임라인 이미지·Figure 검증·TTS
+- GitHub·Cloudflare: 공개 배포를 명시적으로 선택할 때만 필요
+
+**기본 결과**
+
+- 로컬 대시보드: `docs/{topic}/index.html`
+- 로컬 URL: `http://localhost:8000/{topic}/`
+- 논문 리뷰: `docs/papers/`
+
+**데이터 전송 범위**
+
+- Zotero 메타데이터는 Zotero API에서 조회합니다.
+- 논문 본문은 리뷰 생성을 위해 선택한 Claude 인증 경로로 전달됩니다.
+- PDF와 생성 결과는 기본적으로 로컬에 저장됩니다.
+- 공개 배포·이메일 알림은 목적지와 실행 옵션을 명시한 경우에만 수행합니다.
+
+기계가 읽는 전체 요구사항과 순서는 [`paper-curation.yaml`](paper-curation.yaml)에 있으며, `npx . inspect`가 파일을 변경하지 않고 현재 준비 상태를 점검합니다.
 
 **핵심 기능 5줄 요약:**
 
 - **리뷰 자동화** — PDF에서 텍스트·Figure를 추출해 Claude가 6개 섹션 한국어 리뷰를 자동 작성
 - **분류·네트워크** — SPECTER2 + HDBSCAN + UMAP로 카테고리를 자동 생성·배정하고 D3.js 인터랙티브 네트워크로 시각화
 - **Deep Research RAG** — 자연어 질의 → hybrid 검색(BM25+dense) → LLM 답변 + `[N]` 인용, 필요하면 **웹 검색 토글**로 코퍼스 밖 근거까지
-- **Audio Overview** — 리뷰·답변을 팟캐스트형 한국어 오디오로(Gemini TTS → 브라우저 MP3, 배포 시 이메일)
-- **[paper-curio](https://github.com/jehyunlee/paper-curio)** — Zotero 플러그인에서 PDF AI Chat, 2~6편 비교 리포트, 컬렉션 우클릭 전체 처리(리뷰·분류·내러티브·main/category 타임라인, 배포 제외)
+- **Audio Overview** — 리뷰·답변을 팟캐스트형 한국어 오디오로(Gemini TTS → 브라우저 MP3 다운로드)
+
 
 🇬🇧 [English README](README.en.md)
 
-![Paper Curation 파이프라인](workflow.png)
-
-> 🐱 **한 장으로 보는 전체 파이프라인** — 수집부터 배포까지, 고양이들이 대신합니다.
-
 ## 목차
 
-- [📖 독자로 둘러보기](#-독자로-둘러보기)
 - [🔧 운영자로 설치하기](#-운영자로-설치하기)
 - [💰 비용 가이드](#-비용-가이드)
 - [기능](#기능)
 - [파이프라인](#파이프라인)
 - [사용 모드](#사용-모드)
 - [문서](#문서) — Setup / Operations(megasearch · 한국 망 우회 · Concurrency) / Architecture
-- [발표/참고자료](#발표참고자료)
-
-## 📖 독자로 둘러보기
-
-설치도, API 키도 필요 없습니다. 위 라이브 데모 링크를 열면 바로 열람할 수 있습니다.
-
-- **웹에서 보기** — [Humanoid](https://paper-curation.jehyunlee.dev/humanoid/) · [Physical AI](https://paper-curation.jehyunlee.dev/physical-ai/). 카테고리별 카드, 검색, 타임라인, 논문별 한국어 리뷰 페이지가 모두 정적으로 제공됩니다.
-- **Deep Research 사용법** — 토픽 페이지 상단의 검색창에 자연어로 질문하면 됩니다. **검색(retrieval)은 키가 전혀 필요 없습니다** — 질의 임베딩은 서버(worker `/api/embed`)가 대신 계산합니다. 답변 생성만 본인 API 키(BYOK)를 입력하면 되고, Anthropic·OpenAI·Google 키 prefix를 자동 감지해 그중 하나로 근거 답변을 스트리밍합니다. 코퍼스 밖 최신 정보가 필요하면 **웹 검색 토글**을 켜 인라인 링크 인용으로 보강할 수 있습니다.
-- **RSS 구독** — 각 토픽은 Atom 피드를 제공합니다: [Humanoid feed](https://paper-curation.jehyunlee.dev/humanoid/feed.xml) · [Physical AI feed](https://paper-curation.jehyunlee.dev/physical-ai/feed.xml). 리더로 구독하면 새로 추가되는 리뷰를 받아볼 수 있습니다.
-
 ## 🔧 운영자로 설치하기
 
 Zotero 컬렉션 + PDF + Zotero API key는 필수입니다. Google API 키는 선택입니다 — 없으면 dense 검색·Figure 검증·Audio Overview TTS가 꺼진 채로 남고(검색은 BM25 lexical만) 다른 provider로 대체하지 않습니다. Claude 호출은 두 방식 중 하나를 고릅니다.
@@ -115,14 +123,14 @@ export CLAUDE_CODE_OAUTH_TOKEN='발급된_토큰'
 
 export GOOGLE_API_KEY=...
 export ZOTERO_API_KEY=...
-PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth --no-run
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth
 
 # API 키 대안
 export ANTHROPIC_API_KEY=...
-PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key
 ```
 
-OpenAI는 선택입니다. Resend는 배포된 Audio Overview 이메일에만 필요합니다.
+OpenAI는 선택입니다. Resend는 명시적 bibliography 완료 알림에만 필요합니다.
 
 사전 준비 체크리스트, config.json 스키마, 설치 확인, 문제 해결 → **[Setup Guide](docs/setup-guide.md)**
 
@@ -169,7 +177,7 @@ Claude 비용은 인증 방식에 따라 다릅니다.
 | **자동 분류** | Bottom-up 토픽 모델링(SPECTER2 + HDBSCAN + UMAP)으로 카테고리 자동 생성·배정 |
 | **같이 보면 좋은 논문** | 임베딩 후보를 Claude가 선별 — 관계 유형 + 한국어 이유 1문장. 망 장애에 강건(multi-round 재시도 + 연결 0개 논문 우선) |
 | **Deep Research** | 자연어 질의 → hybrid 검색(BM25+dense) → LLM 답변 + `[N]` 인용. Anthropic·OpenAI·Google 키 자동 감지 |
-| **Audio Overview** | 리뷰/답변을 팟캐스트형 한국어 오디오로(Gemini TTS, 브라우저 MP3 인코딩 → 다운로드 + 배포 시 이메일) |
+| **Audio Overview** | 리뷰/답변을 팟캐스트형 한국어 오디오로(Gemini TTS, 브라우저 MP3 인코딩 → 다운로드) |
 | **타임라인** | 카테고리별 연구 동향 내러티브 + 다이어그램(PaperBanana) + main research timeline. `curate`에서도 누락 산출물은 기본 보강 |
 | **지식 축적** | Obsidian 연동 — 메모가 다음 질의에 반영되는 compounding knowledge |
 | **Citedby** | DOI 한 편에서 인용 계보·타임라인·내러티브·Deep(er) Research를 생성하고 PDF·Markdown·Obsidian·Audio로 출력 |
@@ -182,7 +190,6 @@ Claude 비용은 인증 방식에 따라 다릅니다.
 | **콘텐츠 배포 (O-1)** | `--mode deploy` | Cloudflare Workers + gh-pages 스텁. 배포 시 Audio 이메일 발송 활성화 — [운영 매뉴얼](docs/operations.md#deploy-option-o-1) |
 | **Insights + 네트워크 (O-2)** | `--insights` | 크로스카테고리 인사이트 + UMAP 2D/3D 인터랙티브 네트워크 재생성 |
 | **로컬 LLM fallback** | `--local-fallback` | 망 전멸 시 로컬 모델(Ollama 등)로 연결 생성 완결 — [운영 매뉴얼](docs/operations.md#korean-network-workarounds) |
-| **워크플로 다이어그램** | `generate_workflow.py` | 상단 고양이 다이어그램 생성(PaperBanana, `--style cat/fairy/academic`) |
 
 **필요한 것**: Zotero 컬렉션 + PDF + Zotero API key + Claude 인증(OAuth 구독 또는 Anthropic API 키). Google·OpenAI·Resend는 선택 — 없으면 그 기능(각각 dense 검색·Figure 검증·TTS / 독자 BYOK 답변 / 배포 이메일)만 비활성으로 남고 다른 provider로 대체하지 않습니다.
 
@@ -234,7 +241,7 @@ PYTHONUTF8=1 python pipeline/run_citedby.py \
 python pipeline/query_search_index.py --query "과학적 발견 자동화" --mode bm25
 
 # Gemini 질의 임베딩 + BM25 RRF, 구조화 JSON 출력
-python pipeline/query_search_index.py --topic humanoid --query "VLA action tokenization" --json
+python pipeline/query_search_index.py --topic my-topic --query "your research question" --json
 ```
 기본 컬렉션은 `_cross`이며 `hybrid`·`dense`·`bm25`를 지원합니다. Python에서는
 `pipeline.api.query_search_index()`를 호출합니다. 질의는 인덱스를 변경하지 않으며,
@@ -242,10 +249,9 @@ curate/rebuild가 인덱스를 갱신하고 deploy preflight가 fingerprint fres
 
 **검색 품질 회귀 테스트** — 8개 컬렉션의 고정 40질의·고정 Gemini query vector로
 `recall@5/10`, `MRR@10`, 실패 질의를 네트워크 없이 측정합니다. 인덱스 재빌드 뒤에는
-해당 컬렉션과 `_cross`가 baseline보다 하락하면 배포를 중단하며, macmini에서는
-`scripts/install-retrieval-eval-launchd.sh`로 매주 일요일 03:17 평가를 설치합니다.
-초기 `retrieval-v2-bootstrap`은 BM25 top-1 known-item 라벨이므로 절대 품질 점수가 아니라
-회귀 감지용입니다. 평가 자료·결정 기록은 `pipeline/eval/`에 있습니다.
+검색 품질 평가는 설치자의 코퍼스에 맞는 query·relevant slug 파일을 별도로
+준비해 `pipeline/evaluate_retrieval.py`에 전달합니다. 저장소는 특정 코퍼스의
+고정 query vector나 baseline을 배포하지 않습니다.
 
 단계별 입력·처리·출력 상세 → **[Architecture & Internals](docs/architecture.md)**
 
@@ -253,26 +259,28 @@ curate/rebuild가 인덱스를 갱신하고 deploy preflight가 fingerprint fres
 
 단일 진입점은 NPX CLI입니다. `--` 뒤 인자는 `pipeline/run_full.py`로 전달됩니다.
 
-```bash
+# 단일 논문 리뷰부터 온디맨드 전체 처리까지
+TOPIC=my-topic
+
 # 로컬 업데이트 — 검색 스킵, 신규/누락 narrative·timeline 기본 보강
-npx . run -- --topic ai4s --mode curate --source zotero
+npx . run -- --topic "$TOPIC" --mode curate --source zotero
 
 # 주간 운영 — 검색 → Zotero 등록 → sync → 신규 리뷰 + timeline 보강
-npx . run -- --topic ai4s --mode curate --source web --days 7
+npx . run -- --topic "$TOPIC" --mode curate --source web --days 7
 
 # timeline 보강까지 끄고 리뷰/분류만 돌리려면
-npx . run -- --topic ai4s --mode curate --source zotero --images skip
+npx . run -- --topic "$TOPIC" --mode curate --source zotero --images skip
 
 # 분류만 / 타임라인만 / 배포만
-npx . run -- --topic ai4s --mode reclassify
-npx . run -- --topic ai4s --mode retime --images all
-npx . run -- --topic humanoid --mode deploy
+npx . run -- --topic "$TOPIC" --mode reclassify
+npx . run -- --topic "$TOPIC" --mode retime --images all
+npx . run -- --topic "$TOPIC" --mode deploy
 
 # 내가 Zotero 에서 만든 폴더 구조를 그대로 카테고리로 (클러스터링 대신)
-npx . run -- --topic ai4s --mode reclassify --classify-source zotero
+npx . run -- --topic "$TOPIC" --mode reclassify --classify-source zotero
 
 # 실행 계획 미리보기 / 로컬 서버
-npx . run -- --topic ai4s --mode curate --source zotero --dry-run
+npx . run -- --topic "$TOPIC" --mode curate --source zotero --dry-run
 PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/embed + /api/citedby-answer
 ```
 
@@ -287,16 +295,6 @@ PYTHONUTF8=1 python pipeline/serve_local.py     # http://localhost:8000 + /api/e
 | **[Architecture & Internals](docs/architecture.md)** | 파이프라인 단계 상세 · 신뢰성 설계 · 내부 구조 · Karpathy LLM Wiki 비교 · 요구사항 |
 | **[English README](README.en.md)** | Full English documentation |
 
-## 발표/참고자료
-
-이 프로젝트는 **AAiCON 2026** (국립중앙과학관, 2026.06.25–26)에서 발표되었습니다.
-
-| 형식 | 자료 |
-|------|------|
-| **구두 발표** | [260625_이제현_AAiCon.pdf](docs/public/260625_이제현_AAiCon.pdf) |
-| **포스터** | [260625_이제현_AAiCon_poster.pdf](docs/public/260625_이제현_AAiCon_poster.pdf) |
-| **AIX 클리닉 1회** | [AIX 클리닉 1회 (KIST 존슨강당, 2026.07.16.)](docs/public/260715_AIX_clinic_paper_curation.pdf) |
-
 ---
 
-*Built with Claude Code.* 🐱
+*Built with Claude Code.*

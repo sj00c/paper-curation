@@ -14,10 +14,10 @@ import ssl
 import urllib.request
 from pathlib import Path
 
-# Corporate proxy intercepts HTTPS with self-signed cert; skip verification
-_ssl_ctx = ssl.create_default_context()
-_ssl_ctx.check_hostname = False
-_ssl_ctx.verify_mode = ssl.CERT_NONE
+# TLS verification is mandatory. Private/corporate CAs may be supplied
+# explicitly without disabling hostname or certificate checks.
+_ca_bundle = os.environ.get("PAPER_CURATION_CA_BUNDLE", "").strip()
+_ssl_ctx = ssl.create_default_context(cafile=_ca_bundle or None)
 
 PIPELINE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PIPELINE_DIR.parent
@@ -71,8 +71,7 @@ def get_google_key():
 
     참고: figure 검증처럼 'env 키 유무'를 Gemini on/off 스위치로 쓰던 호출부는
     이 함수가 config.json 까지 보므로 env 를 pop 해도 키가 남는다. 그런 곳은
-    PAPER_CURATION_NO_GEMINI 환경 플래그로 명시 비활성화한다
-    (reextract_figures.py 의 geometric-only 모드 참조)."""
+    PAPER_CURATION_NO_GEMINI 환경 플래그로 명시 비활성화한다."""
     if os.environ.get("PAPER_CURATION_NO_GEMINI"):
         # docstring 이 약속하는 명시 off 스위치. 이게 없으면 env 를 pop 해도
         # config.json 키가 남아 스위치가 안 먹는다.
@@ -192,7 +191,7 @@ def _resolve_collection_value(value):
     """Collection value가 이름이면 key로 변환, 이미 key면 그대로.
 
     Zotero collection key는 8자 대문자 영숫자 (예: WKEZLEE8).
-    "Humanoid"처럼 8자이면서 알파벳이 섞인 이름과 구분하기 위해
+    같은 길이의 컬렉션 이름과 구분하기 위해
     먼저 이름으로 조회한다.
     """
     if not value:
@@ -224,76 +223,66 @@ def get_unpaywall_email():
     return cfg.get("unpaywall_email", "") or cfg.get("zotero", {}).get("email", "")
 
 
+def get_openalex_email():
+    """OpenAlex polite-pool contact, without an implicit maintainer address."""
+    if "OPENALEX_EMAIL" in os.environ:
+        return os.environ["OPENALEX_EMAIL"].strip()
+    return str(get_unpaywall_email() or "").strip()
+
+
+def get_operator_identity():
+    """Configured operator attribution, with explicit environment overrides."""
+    operator = load_config().get("operator", {}) or {}
+    if not isinstance(operator, dict):
+        operator = {}
+    fields = {
+        "name": "PAPER_CURATION_OPERATOR_NAME",
+        "organization": "PAPER_CURATION_OPERATOR_ORGANIZATION",
+        "email": "PAPER_CURATION_OPERATOR_EMAIL",
+    }
+    return {
+        field: str(os.environ[env] if env in os.environ else operator.get(field, "") or "").strip()
+        for field, env in fields.items()
+    }
+
+
+def get_operator_attribution():
+    """Plain-text operator attribution, or empty when no identity is configured."""
+    identity = get_operator_identity()
+    name_and_organization = ", ".join(
+        value for value in (identity["name"], identity["organization"]) if value
+    )
+    values = [value for value in (name_and_organization, identity["email"]) if value]
+    return f"Developed by {' | '.join(values)}" if values else ""
+
+
+def get_completion_email():
+    """Explicit recipient for bibliography completion notifications."""
+    if "BIBLIOGRAPHY_COMPLETION_EMAIL" in os.environ:
+        return os.environ["BIBLIOGRAPHY_COMPLETION_EMAIL"].strip()
+    notifications = load_config().get("notifications", {}) or {}
+    if not isinstance(notifications, dict):
+        return ""
+    return str(notifications.get("completion_email", "") or "").strip()
+
+
 # ---------------------------------------------------------------------------
 # 검색 키워드 (Core-1 search)
 # ---------------------------------------------------------------------------
-# config.json 최상위 "search_keywords".<topic> 가 우선. 없으면 아래 빌트인
-# 기본값으로 폴백한다 (ai4s/scisci 는 설정 없이도 동작). 새 토픽은 config.json 에
-# 블록을 추가하면 되고, 누락 시 get_search_keywords() 가 추가할 JSON 을 안내한다.
-
-_DEFAULT_SEARCH_KEYWORDS = {
-    "ai4s": {
-        "primary": [
-            "AI for science",
-            "machine learning science",
-            "scientific discovery AI",
-            "neural network physics",
-            "deep learning chemistry",
-            "AI drug discovery",
-            "scientific foundation model",
-            "AI materials",
-        ],
-        "secondary": [
-            "molecular dynamics",
-            "protein structure",
-            "weather prediction",
-            "quantum chemistry",
-            "scientific NLP",
-            "research automation",
-        ],
-    },
-    "scisci": {
-        "primary": [
-            "science of science",
-            "bibliometrics",
-            "scientometrics",
-            "research evaluation",
-            "citation analysis",
-            "scientific collaboration",
-        ],
-        "secondary": [
-            "h-index",
-            "research impact",
-            "academic careers",
-            "peer review",
-            "research funding",
-            "open access",
-            "reproducibility",
-            "research trend",
-            "international collaboration",
-            "science mapping",
-        ],
-    },
-}
+# Every topic owns its search vocabulary in config.json. Product source does
+# not carry privileged domain presets.
 
 
 def get_search_keywords(topic):
     """topic → {"primary": [...], "secondary": [...]} 검색 키워드 dict 반환.
 
-    우선순위:
-      1) config.json 최상위 "search_keywords".<topic>
-      2) 빌트인 기본값 (_DEFAULT_SEARCH_KEYWORDS — ai4s/scisci)
-
-    둘 다 없으면 config.json 에 그대로 붙여넣을 수 있는 JSON 블록을 담은
+    없으면 config.json 에 그대로 붙여넣을 수 있는 JSON 블록을 담은
     ValueError 를 던진다.
     """
     cfg = load_config()
     configured = cfg.get("search_keywords", {}) or {}
     if topic in configured:
         return configured[topic]
-    if topic in _DEFAULT_SEARCH_KEYWORDS:
-        return _DEFAULT_SEARCH_KEYWORDS[topic]
-
     example_block = json.dumps(
         {
             "search_keywords": {
@@ -336,11 +325,9 @@ def _hostname():
 def get_zotero_dir():
     """Zotero PDF 저장 디렉토리 — 머신마다 다른 경로를 순서대로 해결한다.
 
-    같은 라이브러리를 여러 대에서 쓰면 경로가 머신마다 다르다: 이 노트북은
-    Google Drive CloudStorage 아래, macmini 는 홈 디렉토리 아래, Windows 는
-    ``C:\\Users\\...\\Zotero``. Zotero 의 linked_file 첨부는 **만들어진 머신의
-    절대경로를 그대로** 들고 있어서, 한 경로를 코드나 config 에 박아두면 다른
-    머신에서는 전부 "파일 없음" 이 된다 (실제로 1,025편이 그렇게 집계됐다).
+    같은 라이브러리를 여러 대에서 쓰면 Zotero 경로가 머신마다 다르다.
+    linked_file 첨부는 만들어진 머신의 절대경로를 저장하므로 hostname별
+    경로 설정을 지원한다.
 
     해결 순서 — 먼저 맞는 것이 이긴다:
 
@@ -394,6 +381,17 @@ def get_pages_base_url():
             or os.environ.get("PAGES_BASE_URL", ""))
 
 
+def get_public_base_url() -> str:
+    """Explicit public site base URL, or empty for local-only installs."""
+    configured = load_config().get("publication", {}) or {}
+    if not isinstance(configured, dict):
+        configured = {}
+    return (
+        os.environ.get("PAPER_CURATION_PUBLIC_BASE_URL", "").strip()
+        or str(configured.get("base_url", "") or "").strip()
+    ).rstrip("/")
+
+
 def get_topic_dir(topic: str) -> Path:
     """docs/{topic} 경로 반환."""
     return DOCS_DIR / topic
@@ -410,13 +408,20 @@ def get_topic_names() -> list:
     return [t for t in raw.keys() if t]
 
 
+def get_topic_profile(topic: str) -> dict:
+    """Optional presentation metadata for a topic."""
+    profiles = load_config().get("topic_profiles", {}) or {}
+    if not isinstance(profiles, dict):
+        return {}
+    profile = profiles.get(topic, {}) or {}
+    return dict(profile) if isinstance(profile, dict) else {}
+
+
 def get_default_topic() -> str:
     """--topic 생략 시 쓸 토픽. 유일할 때만 확정, 아니면 빈 문자열.
 
     토픽이 하나뿐인 설치(대다수)는 --topic 없이도 그 토픽으로 돌아간다.
     여러 개면 무엇을 뜻했는지 알 수 없으므로 호출자가 명시를 요구해야 한다.
-    ai4s 로 조용히 폴백하던 예전 동작은, ai4s 가 없는 설치에서 엉뚱한 토픽에
-    쓰거나 빈 결과를 내놓고도 성공한 것처럼 보였다.
     """
     names = get_topic_names()
     return names[0] if len(names) == 1 else ""
@@ -424,11 +429,7 @@ def get_default_topic() -> str:
 def resolve_topic(explicit: str = "", *, script: str = "") -> str:
     """--topic 인자를 해석한다. 개별 스크립트를 직접 부를 때의 공통 진입점.
 
-    이행 설계. 예전에는 argparse 가 default="ai4s" 를 박아, --topic 을 빼면
-    ai4s 설치가 아닌데도 조용히 ai4s 를 대상으로 삼았다. physical-ai 설치에서
-    `validate_papers.py` 를 인자 없이 부르면 남의 토픽을 검사하고 통과한 것처럼
-    끝났다. 그렇다고 곧바로 required 로 바꾸면, 매일 `--topic` 없이 돌리던
-    사람들의 손이 하루아침에 깨진다.
+    토픽이 하나면 그 alias를 사용하고, 여러 개면 명시를 요구한다.
 
     그래서 세 갈래로 나눈다.
       - 명시했으면 그대로 쓴다.
@@ -471,14 +472,9 @@ def get_papers_index_path() -> Path:
 # ---------------------------------------------------------------------------
 # Every pipeline entry point imports config_loader, and so does the PaperBanana
 # wrapper (lib/paperbanana.py) before it runs PaperBanana's agents in-process.
-# Installing the google-genai monkey-patch here guarantees that *all* Gemini
-# calls report token usage to PC_USAGE_ENDPOINT — the pipeline's own
-# generate_content/TTS *and* PaperBanana's image + agent calls, which build
-# their own genai.Client and never call usage_log directly. Failure-swallowing;
-# never fatal to config loading.
-try:
+# Instrumentation is an explicit process-level opt-in. Importing configuration
+# alone must not monkey-patch SDK classes or start telemetry.
+if os.environ.get("PC_USAGE_ENDPOINT", "").strip():
     import usage_log as _usage_log
 
     _usage_log.instrument_genai()
-except Exception:
-    pass

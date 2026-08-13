@@ -28,9 +28,6 @@ opendataloader-pdf
 # 조용히 실패한다 (soft step 이라 파이프라인은 계속 돈다).
 PyYAML
 
-# --- Audio Overview CLI fallback (generate_audio.py: PCM → MP3) ---
-lameenc
-
 # --- Topic modeling / classification (also required in the py312 env) ---
 numpy
 scikit-learn

@@ -3,8 +3,8 @@ Unified topic index builder for paper-curation.
 Reads reviews from papers/ central repo, generates {topic}/index.html.
 
 Usage: PYTHONUTF8=1 python build_topic_index.py <topic>
-  e.g. PYTHONUTF8=1 python build_topic_index.py ai4s
-       PYTHONUTF8=1 python build_topic_index.py scisci
+  e.g. PYTHONUTF8=1 python build_topic_index.py my-topic
+       PYTHONUTF8=1 python build_topic_index.py another-topic
 """
 import json, os, re, sys
 from html import escape
@@ -16,7 +16,11 @@ KST = timezone(timedelta(hours=9))
 TODAY = datetime.now(KST).strftime("%Y-%m-%d")
 
 from collections import OrderedDict
-from config_loader import PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, get_topic_dir, get_zotero_api_key, get_zotero_user_id
+from config_loader import (
+    PAPERS_DIR as _PAPERS_DIR, DOCS_DIR, get_operator_attribution,
+    get_public_base_url, get_topic_dir, get_topic_profile,
+    get_zotero_api_key, get_zotero_user_id,
+)
 from lib.categories import category_slug
 from lib.audio_overview import (
     get_audio_css as _audio_css,
@@ -41,9 +45,9 @@ def _is_deploy_topic(topic):
     return True
 
 def get_topic():
-    if len(sys.argv) > 1:
-        return sys.argv[1]
-    return "ai4s"
+    from config_loader import resolve_topic
+    return resolve_topic(sys.argv[1] if len(sys.argv) > 1 else "",
+                         script="build_topic_index")
 
 
 def _run_topic_index(topic=None, cross=None):
@@ -60,26 +64,19 @@ def _run_topic_index(topic=None, cross=None):
     from config_loader import load_config
     _collections_raw = load_config().get("zotero", {}).get("collections", {})
 
-    THEME = {
-        "ai4s": {
-            "gradient": "linear-gradient(135deg, #2a0f0d 0%, #5c1a14 50%, #A62018 100%)",
-            "accent": "#D63423", "accent_dark": "#A62018", "accent_light": "#F06050",
-        },
-        "scisci": {
-            "gradient": "linear-gradient(135deg, #0d1a2a 0%, #14385c 50%, #1866A6 100%)",
-            "accent": "#2374D6", "accent_dark": "#1856A0", "accent_light": "#50A0F0",
-        },
-    }
-    # Default theme for unknown topics
     _default_theme = {
         "gradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
         "accent": "#3B82F6", "accent_dark": "#2563EB", "accent_light": "#60A5FA",
     }
-    theme = THEME.get(TOPIC, _default_theme)
-    # Title from Zotero collection name in config.json
+    profile = get_topic_profile(TOPIC)
+    theme = dict(_default_theme)
+    for key in ("gradient", "accent", "accent_dark", "accent_light"):
+        if profile.get(key):
+            theme[key] = str(profile[key])
     _collection_name = _collections_raw.get(TOPIC, TOPIC)
-    theme["title"] = _collection_name
-    theme["subtitle_prefix"] = _collection_name
+    theme["title"] = str(profile.get("title") or _collection_name)
+    theme["subtitle_prefix"] = str(
+        profile.get("subtitle_prefix") or theme["title"])
     if cross:
         theme = {
             "gradient": "linear-gradient(135deg, #1a0d2a 0%, #3a1a5c 50%, #6b21a8 100%)",
@@ -326,6 +323,12 @@ def _run_topic_index(topic=None, cross=None):
 
     def esc(s):
         return escape(str(s)) if s else ""
+
+    operator_attribution = esc(get_operator_attribution())
+    operator_attribution = (
+        f"<br>{operator_attribution}"
+        if operator_attribution else ""
+    )
 
     def make_doi_link(doi, arxiv):
         if doi:
@@ -1202,7 +1205,7 @@ def _run_topic_index(topic=None, cross=None):
 
     // ── Author-aware retrieval ────────────────────────────────────────
     // 저자명은 chunk 본문/임베딩에 들어있지 않다(섹션 본문만 인덱싱). 그래서
-    // "Dashun Wang의 연구를 시간순으로" 같은 질의는 dense/BM25 둘 다 매칭이
+    // "특정 저자의 연구를 시간순으로" 같은 질의는 dense/BM25 둘 다 매칭이
     // 안 돼 엉뚱한 결과로 흐른다. index.papers 의 authors/first_author 메타
     // (이미 로드됨)를 직접 매칭해 해당 저자 논문을 후보로 구성한다.
     function _normName(s) {
@@ -1484,10 +1487,10 @@ def _run_topic_index(topic=None, cross=None):
       }
       if (backend === 'google') {
         const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
-          + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+          + encodeURIComponent(model) + ':generateContent';
         const resp = await deepFetch(url, {
           method: 'POST',
-          headers: { 'content-type': 'application/json' },
+          headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
           body: JSON.stringify({
             systemInstruction: { parts: [{ text: sys }] },
             contents: [{ role: 'user', parts: [{ text: user }] }],
@@ -1600,7 +1603,7 @@ def _run_topic_index(topic=None, cross=None):
       // Export form: replace [ref:N] with a small superscript link
       // ([N]) that points at the external (DOI / arXiv) URL. We do NOT
       // inject "Author et al. (year)" text — that produced ugly double
-      // mentions like 'SPARK"SPARK: Safe..." (2025)' when the model
+      // mentions like 'a duplicated paper title and citation year' when the model
       // already named the paper in prose. The model is now instructed
       // to vary citation phrasing ("Smith et al.에 의하면", "최근 연구에
       // 따르면", "2023년에 밝혀진 바에 따르면", …) directly in the prose,
@@ -1713,8 +1716,8 @@ def _run_topic_index(topic=None, cross=None):
     }
 
     function buildPrompt(query, selected, lang, fullTexts, deeper) {
-      const systemKo = '당신은 학술 논문 큐레이션의 리서치 보조입니다. 아래에 제공된 논문 발췌문만을 근거로, 큐레이터의 "카테고리 요약" 스타일을 따라 답변하세요.\\n\\n스타일 지침:\\n- 서술형 한국어 문장 (불릿 나열은 꼭 필요할 때만)\\n- 2~5개 문단, 주제별 또는 시간순으로 자연스럽게 묶기\\n- **인용은 글 흐름에 녹여 쓰세요**. 매 주장 끝에 ``[ref:N]`` 마커만 붙입니다 (N=발췌문 번호) — 후처리가 작은 클릭 가능한 ⌈[N]⌉ 링크로 변환합니다. 본문에서는 **저자명·논문명·연도·시점을 어구로 다양하게 표현**해서 자연스럽게 읽히게 하세요:\\n  ▸ "He et al.에 의하면 ~[ref:1]"\\n  ▸ "최근 공개된 연구에 따르면 ~[ref:2]"\\n  ▸ "2024년에 밝혀진 바[ref:3]에 따르면 ~"\\n  ▸ "OmniH2O[ref:1]는 universal teleoperation을 보였고, 이어진 Expressive Whole-Body Control 연구[ref:4]가 이를 확장했다."\\n  ▸ "Sun et al.와 같이[ref:5], ~"\\n  ▸ "SPARK[ref:6]에서 보인 것처럼 ~"\\n  ▸ "이러한 접근은 초기 humanoid teleoperation 연구[ref:1, ref:2]에서 등장했고 ~"\\n  같은 어구를 반복하지 말고 매 문장마다 다른 표현을 선택하세요. 동일 논문을 한 단락 안에서 또 인용해야 하면 그때는 작가명 생략하고 "이 연구[ref:1]는 또한 ~" 같이 짧게.\\n  중요: ``[ref:N]`` 마커만 출력에 남기고, 우리가 생성하는 "Smith et al. (2024)" 같은 표준 표현은 따로 삽입하지 마세요 — 그건 References 섹션에서만 보여줍니다.\\n- 연관된 Figure는 본문의 적절한 위치에 ![caption](url) 형식으로 삽입 (발췌문의 Figures에 명시된 URL만 사용, 임의 URL 금지)\\n- 마지막 문단은 연구들을 종합하는 한두 문장\\n\\n답변 절차 (출력에 포함하지 말 것):\\n1. 먼저 내부적으로 질의를 분석하고, 어떤 논문들을 어떤 그룹/순서로 엮을지 계획을 세우세요.\\n2. 그런 다음 계획에 따라 최종 답변 본문만 작성하세요.\\n3. 제공된 발췌문 밖의 지식을 절대 사용하지 마세요.\\n4. 발췌문으로 뒷받침되지 않는 주장은 생략하세요.\\n5. 일부 논문에는 "ORIGINAL EXCERPT" 블록이 함께 제공될 수 있습니다. 시약 이름·분량·온도·시간·구체적 수치·실험 조건 등 정량적 디테일이 답변에 필요할 때는 그 원문 발췌를 우선 활용하세요.';
-      const systemEn = 'You are a research assistant for an academic paper curation. Answer using ONLY the provided excerpts, following the curator\\'s "category overview" style.\\n\\nStyle guidelines:\\n- Narrative prose (use bullets only when truly needed)\\n- 2-5 paragraphs, grouped by theme or chronology\\n- **Weave citations into the flow.** Append only ``[ref:N]`` markers after each claim (N = excerpt number). A post-processor turns them into small clickable [N] superscripts. In the prose, **vary how you mention author / paper / year / temporal context**:\\n  ▸ "According to He et al., ~[ref:1]"\\n  ▸ "Recent work shows ~[ref:2]"\\n  ▸ "A 2024 study reports ~[ref:3]"\\n  ▸ "OmniH2O[ref:1] established universal teleoperation, later extended by Expressive Whole-Body Control[ref:4]."\\n  ▸ "As Sun et al. did[ref:5], ~"\\n  ▸ "As shown in SPARK[ref:6], ~"\\n  ▸ "This direction emerged in early humanoid teleoperation work[ref:1, ref:2] and ~"\\n  Vary the phrasing every sentence — avoid repeating the same lead-in. When the same paper is cited again within a paragraph, drop the author and use a short hand: "This work[ref:1] also ~".\\n  Important: keep only the ``[ref:N]`` marker — do NOT insert formal "Smith et al. (2024)" tags into the prose. Those appear only in the References section at the bottom.\\n- Embed relevant figures inline at natural positions using ![caption](url) markdown; only use figure URLs explicitly listed with the excerpts (no fabricated URLs)\\n- Close with one or two synthesizing sentences\\n\\nProcedure (do NOT include in output):\\n1. First analyse the query internally and plan which papers to cover and how to group/order them.\\n2. Then write only the final answer body according to your plan.\\n3. Do not use any knowledge beyond the excerpts.\\n4. Omit any claim you cannot back up with an excerpt.\\n5. Some papers may also include an "ORIGINAL EXCERPT" block alongside the summary. When the answer needs concrete quantitative detail (reagent names, amounts, temperatures, durations, specific numbers, experimental conditions), prefer the original excerpt over the summary.';
+      const systemKo = '당신은 학술 논문 큐레이션의 리서치 보조입니다. 아래에 제공된 논문 발췌문만을 근거로, 큐레이터의 "카테고리 요약" 스타일을 따라 답변하세요.\\n\\n스타일 지침:\\n- 서술형 한국어 문장 (불릿 나열은 꼭 필요할 때만)\\n- 2~5개 문단, 주제별 또는 시간순으로 자연스럽게 묶기\\n- **인용은 글 흐름에 녹여 쓰세요**. 매 주장 끝에 ``[ref:N]`` 마커만 붙입니다 (N=발췌문 번호) — 후처리가 작은 클릭 가능한 ⌈[N]⌉ 링크로 변환합니다. 본문에서는 **저자명·논문명·연도·시점을 어구로 다양하게 표현**해서 자연스럽게 읽히게 하세요:\\n  ▸ "He et al.에 의하면 ~[ref:1]"\\n  ▸ "최근 공개된 연구에 따르면 ~[ref:2]"\\n  ▸ "2024년에 밝혀진 바[ref:3]에 따르면 ~"\\n  ▸ "초기 연구[ref:1]가 핵심 방법을 제시했고, 후속 연구[ref:4]가 이를 확장했다."\\n  ▸ "Sun et al.와 같이[ref:5], ~"\\n  ▸ "SPARK[ref:6]에서 보인 것처럼 ~"\\n  ▸ "이러한 접근은 초기 humanoid teleoperation 연구[ref:1, ref:2]에서 등장했고 ~"\\n  같은 어구를 반복하지 말고 매 문장마다 다른 표현을 선택하세요. 동일 논문을 한 단락 안에서 또 인용해야 하면 그때는 작가명 생략하고 "이 연구[ref:1]는 또한 ~" 같이 짧게.\\n  중요: ``[ref:N]`` 마커만 출력에 남기고, 우리가 생성하는 "Smith et al. (2024)" 같은 표준 표현은 따로 삽입하지 마세요 — 그건 References 섹션에서만 보여줍니다.\\n- 연관된 Figure는 본문의 적절한 위치에 ![caption](url) 형식으로 삽입 (발췌문의 Figures에 명시된 URL만 사용, 임의 URL 금지)\\n- 마지막 문단은 연구들을 종합하는 한두 문장\\n\\n답변 절차 (출력에 포함하지 말 것):\\n1. 먼저 내부적으로 질의를 분석하고, 어떤 논문들을 어떤 그룹/순서로 엮을지 계획을 세우세요.\\n2. 그런 다음 계획에 따라 최종 답변 본문만 작성하세요.\\n3. 제공된 발췌문 밖의 지식을 절대 사용하지 마세요.\\n4. 발췌문으로 뒷받침되지 않는 주장은 생략하세요.\\n5. 일부 논문에는 "ORIGINAL EXCERPT" 블록이 함께 제공될 수 있습니다. 시약 이름·분량·온도·시간·구체적 수치·실험 조건 등 정량적 디테일이 답변에 필요할 때는 그 원문 발췌를 우선 활용하세요.';
+      const systemEn = 'You are a research assistant for an academic paper curation. Answer using ONLY the provided excerpts, following the curator\\'s "category overview" style.\\n\\nStyle guidelines:\\n- Narrative prose (use bullets only when truly needed)\\n- 2-5 paragraphs, grouped by theme or chronology\\n- **Weave citations into the flow.** Append only ``[ref:N]`` markers after each claim (N = excerpt number). A post-processor turns them into small clickable [N] superscripts. In the prose, **vary how you mention author / paper / year / temporal context**:\\n  ▸ "According to Lee et al., ~[ref:1]"\\n  ▸ "Recent work shows ~[ref:2]"\\n  ▸ "A 2024 study reports ~[ref:3]"\\n  ▸ "An initial study[ref:1] established the method, later extended by follow-up work[ref:4]."\\n  ▸ "Following earlier work[ref:5], ~"\\n  ▸ "As shown in a recent study[ref:6], ~"\\n  ▸ "This direction emerged in earlier work[ref:1, ref:2] and ~"\\n  Vary the phrasing every sentence — avoid repeating the same lead-in. When the same paper is cited again within a paragraph, drop the author and use a short hand: "This work[ref:1] also ~".\\n  Important: keep only the ``[ref:N]`` marker — do NOT insert formal "Smith et al. (2024)" tags into the prose. Those appear only in the References section at the bottom.\\n- Embed relevant figures inline at natural positions using ![caption](url) markdown; only use figure URLs explicitly listed with the excerpts (no fabricated URLs)\\n- Close with one or two synthesizing sentences\\n\\nProcedure (do NOT include in output):\\n1. First analyse the query internally and plan which papers to cover and how to group/order them.\\n2. Then write only the final answer body according to your plan.\\n3. Do not use any knowledge beyond the excerpts.\\n4. Omit any claim you cannot back up with an excerpt.\\n5. Some papers may also include an "ORIGINAL EXCERPT" block alongside the summary. When the answer needs concrete quantitative detail (reagent names, amounts, temperatures, durations, specific numbers, experimental conditions), prefer the original excerpt over the summary.';
       const lines = [];
       for (let i = 0; i < selected.length; i++) {
         const s = selected[i], n = i + 1, paper = s.paper;
@@ -1983,11 +1986,11 @@ def _run_topic_index(topic=None, cross=None):
         body.systemInstruction = { parts: [{ text: prompt.system + WEB_SEARCH_ADDENDUM }] };
       }
       const url = 'https://generativelanguage.googleapis.com/v1beta/models/'
-        + encodeURIComponent(model) + ':streamGenerateContent?alt=sse&key=' + encodeURIComponent(apiKey);
+        + encodeURIComponent(model) + ':streamGenerateContent?alt=sse';
       deepSetStatus('\u270D\uFE0F 답변 작성 중...');
       const resp = await deepFetch(url, {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
         body: JSON.stringify(body),
       });
       if (!resp.ok) {
@@ -2277,19 +2280,13 @@ def _run_topic_index(topic=None, cross=None):
       return 'llm';
     }
 
-    // Wipe the offending key from BOTH globals and localStorage, then
-    // pop a fresh prompt with the "API Key Invalid. Try with another
-    // one" prefix. Returns the new key, or null if the user cancels.
+    // Wipe the offending in-memory key, then prompt for a replacement.
     function clearKeyAndRePrompt(scope) {
       // LLM (answer-generation) scope -- also drop the cached
       // Anthropic/Gemini aliases so a Google key isn't silently
       // re-used for audio after the user replaces a bad LLM key.
       _LLM_KEY = '';
       _ANTHROPIC_KEY = '';
-      try {
-        localStorage.removeItem('_LLM_KEY');
-        localStorage.removeItem('_ANTHROPIC_KEY');
-      } catch (e) {}
       const nk = prompt('API Key Invalid. Try with another one.\\n\\n답변 생성용 API Key를 입력하세요 (Anthropic sk-ant-… / OpenAI sk-… / Google AIza…/AQ.… 중 하나):');
       if (!nk) return null;
       const b = detectBackend(nk);
@@ -2298,13 +2295,10 @@ def _run_topic_index(topic=None, cross=None):
         return null;
       }
       _LLM_KEY = nk;
-      try { localStorage.setItem('_LLM_KEY', nk); } catch (e) {}
       if (b === 'anthropic') {
         _ANTHROPIC_KEY = nk;
-        try { localStorage.setItem('_ANTHROPIC_KEY', nk); } catch (e) {}
       } else if (b === 'google') {
         window._GEMINI_KEY = nk;
-        try { localStorage.setItem('_GEMINI_KEY', nk); } catch (e) {}
       }
       updateDeepModelLabels();
       return nk;
@@ -2509,11 +2503,11 @@ def _run_topic_index(topic=None, cross=None):
         return (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
       }
       if (backend === 'google') {
-        const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(apiKey);
+        const url = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent';
         const gbody = { systemInstruction: { parts: [{ text: useWeb ? (sys + WEB_SEARCH_ADDENDUM) : sys }] }, contents: [{ role: 'user', parts: [{ text: user }] }], generationConfig: { maxOutputTokens: mt } };
         if (useWeb) gbody.tools = [{ google_search: {} }];
         const resp = await deepFetch(url, {
-          method: 'POST', headers: { 'content-type': 'application/json' },
+          method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': apiKey },
           body: JSON.stringify(gbody),
         });
         if (!resp.ok) { const eb = await resp.text().catch(function(){ return ''; }); throw new Error('Google complete ' + resp.status + ': ' + eb.slice(0, 300)); }
@@ -2938,15 +2932,11 @@ def _run_topic_index(topic=None, cross=None):
         const _b = detectBackend(lk);
         if (!_b) { deepSetStatus('알 수 없는 키 형식입니다 (Anthropic은 sk-ant-, OpenAI는 sk-, Google은 AIza 또는 AQ. 로 시작).', true); return; }
         _LLM_KEY = lk;
-        localStorage.setItem('_LLM_KEY', lk);
         if (_b === 'anthropic') {
           _ANTHROPIC_KEY = lk;
-          localStorage.setItem('_ANTHROPIC_KEY', lk);
         } else if (_b === 'google') {
-          // Same key works for Audio Overview (Gemini). Seed _GEMINI_KEY
-          // so the audio modal doesn't re-prompt for the same key.
+          // Share the key with Audio Overview for this page lifetime only.
           window._GEMINI_KEY = lk;
-          try { localStorage.setItem('_GEMINI_KEY', lk); } catch (e) {}
         }
         deepSetStatus('✓ ' + _b + ' 키 감지됨');
         updateDeepModelLabels();
@@ -2998,8 +2988,7 @@ def _run_topic_index(topic=None, cross=None):
           selected = candidates;  // 이미 논문당 대표 chunk·정렬 완료 → 재정렬 생략(순서 보존)
         } else if (looksLikeAuthorQuery(query)) {
           // 이름+의도는 있으나 이 토픽 코퍼스에 해당 저자가 없음 → 명확히 안내
-          // (예: ai4s 에서 Dashun Wang → scisci 토픽에 존재).
-          deepSetStatus('이 토픽에는 해당 저자의 논문이 없는 것 같아요. 다른 토픽(예: scisci)에서 시도해보세요.', true);
+          deepSetStatus('이 토픽에는 해당 저자의 논문이 없는 것 같아요. 다른 토픽에서 시도해보세요.', true);
           return;
         } else {
           // Hybrid: BM25 + dense → RRF 후보 → LLM 재정렬. Long 은 근거를 2배(top-16)로
@@ -3517,33 +3506,10 @@ def _run_topic_index(topic=None, cross=None):
       }
     });"""
 
-    # --- Build-time: inject API keys from env vars into JS ---
-    _cfg_path = Path(__file__).resolve().parent.parent / "config.json"
-    _cfg_keys = {}
-    if _cfg_path.exists():
-        with open(_cfg_path, "r", encoding="utf-8") as _f:
-            _cfg_keys = json.load(_f)
-    _ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY") or _cfg_keys.get("anthropic_api_key", "")
-    _OPENAI_KEY = os.environ.get("OPENAI_API_KEY") or _cfg_keys.get("openai_api_key", "")
-    _GEMINI_KEY = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-                   or _cfg_keys.get("gemini_api_key", "") or _cfg_keys.get("google_api_key", ""))
-    # Local-only Audio Overview recipients (baked for localhost convenience;
-    # stripped by prepare_deploy.py before Cloudflare upload).
-    _LOCAL_EMAILS_RAW = (os.environ.get("PAPER_CURATION_LOCAL_EMAILS", "")
-                         or ",".join(_cfg_keys.get("local_emails", []) or []))
-    _LOCAL_EMAILS = [e.strip() for e in _LOCAL_EMAILS_RAW.split(",") if e.strip()]
-    # ── Deep Research multi-backend keys ──────────────────────────────
-    # We baked these at build time for local dev (where prepare_deploy
-    # strips them on the way to Cloudflare). At runtime the modal
-    # accepts any one of the three; we sniff the prefix to pick the
-    # backend (sk-ant-* → Anthropic, sk-* → OpenAI, AIza* → Google).
-    # `_LLM_KEY` is the unified slot; `_ANTHROPIC_KEY` is kept for
-    # backward-compat with any code still referencing it. The embedding
-    # step (Deep Research RAG) continues to require an OpenAI key —
-    # that's a separate slot.
-    JS = ("let _ANTHROPIC_KEY = " + json.dumps(_ANTHROPIC_KEY) + " || localStorage.getItem('_ANTHROPIC_KEY') || '';\n"
-          "let _OPENAI_KEY = " + json.dumps(_OPENAI_KEY) + " || localStorage.getItem('_OPENAI_KEY') || '';\n"
-          "let _LLM_KEY = localStorage.getItem('_LLM_KEY') || _ANTHROPIC_KEY || '';\n" + ("window._PC_CROSS = " + ("true" if cross else "false") + ";\n") + JS)
+    # Credentials are runtime-only BYOK values held in memory for one page load.
+    JS = ("let _ANTHROPIC_KEY = '';\n"
+          "let _OPENAI_KEY = '';\n"
+          "let _LLM_KEY = '';\n" + ("window._PC_CROSS = " + ("true" if cross else "false") + ";\n") + JS)
 
 
     def render_insights_section():
@@ -3780,6 +3746,15 @@ def _run_topic_index(topic=None, cross=None):
         "};"
     )
 
+    public_base_url = get_public_base_url()
+    og_meta = ""
+    if public_base_url:
+        topic_url = f"{public_base_url}/{TOPIC}/"
+        og_meta = (
+            f'<meta property="og:url" content="{esc(topic_url)}">\n'
+            f'<meta property="og:image" content="{esc(topic_url)}research_timeline.png">\n'
+        )
+
     HTML = (
         '<!DOCTYPE html>\n'
         '<html lang="ko">\n'
@@ -3793,15 +3768,14 @@ def _run_topic_index(topic=None, cross=None):
         '<meta property="og:site_name" content="Paper Curation">\n'
         f'<meta property="og:title" content="{esc(theme["title"])} — Paper Curation">\n'
         '<meta property="og:description" content="AI 논문 큐레이션 — 구조화 리뷰 · 연결 그래프 · 타임라인 · Deep Research">\n'
-        f'<meta property="og:url" content="https://paper-curation.jehyunlee.dev/{TOPIC}/">\n'
-        f'<meta property="og:image" content="https://paper-curation.jehyunlee.dev/{TOPIC}/research_timeline.png">\n'
+        f'{og_meta}'
         '<meta name="twitter:card" content="summary_large_image">\n'
         # Atom 피드 autodiscovery — RSS 리더가 feed.xml 을 자동 인식 (build_rss.py 생성)
         f'<link rel="alternate" type="application/atom+xml" title="{esc(theme["title"])} — Paper Curation" href="feed.xml">\n'
-        '<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css">\n'
+        '<link rel="stylesheet" href="https://cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css" integrity="sha384-a+6QFBwEmWYo4LaR7Ti/cfkRL9OEt6L85DKw3wkYLYxj+jlH56ipE4IdHWZ9+lOF" crossorigin="anonymous">\n'
         '<script>window.MathJax={tex:{inlineMath:[[\'$\',\'$\'],[\'\\\\(\',\'\\\\)\']],displayMath:[[\'$$\',\'$$\'],[\'\\\\[\',\'\\\\]\']]}};</script>\n'
-        '<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>\n'
-        '<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>\n'
+        '<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6/1Nxveei" crossorigin="anonymous" async></script>\n'
+        '<script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js" integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+" crossorigin="anonymous"></script>\n'
         f'<style>\n{CSS}\n</style>\n'
         '</head>\n'
         '<body>\n'
@@ -3897,12 +3871,11 @@ def _run_topic_index(topic=None, cross=None):
         '<div id="lightbox" class="lightbox"><img id="lightbox-img" alt=""></div>\n\n'
         f'<script>\n{JS}\n</script>\n\n'
         + _audio_modal("이 Deep Research 답변을 팟캐스트형 오디오로 생성합니다. (Gemini · 키는 브라우저에만 저장 · 완성본은 이메일로도 전송)") + "\n"
-        + _audio_script(_GEMINI_KEY, mode="deep", provider_js=_AUDIO_PROVIDER_JS,
-                        local_emails=_LOCAL_EMAILS) + "\n"
+        + _audio_script("", mode="deep", provider_js=_AUDIO_PROVIDER_JS) + "\n"
         + '<footer style="text-align:center;padding:2rem 0 1rem;color:#999;font-size:0.85rem;border-top:1px solid #eee;margin-top:3rem;">'
         '게재 논문은 arXiv&middot;OpenReview 등 공개 프리프린트이며 저작권은 원저작자에게 귀속됩니다 &middot; 리뷰&middot;요약&middot;Deep Research 답변은 생성형 AI가 생성한 결과물입니다'
-        '<br>Developed by Jehyun Lee, KIST AIX Strategy Department | jehyun.lee@gmail.com'
-        '</footer>\n\n'
+        + operator_attribution
+        + '</footer>\n\n'
         '</body>\n</html>'
     )
 
@@ -3912,28 +3885,30 @@ def _run_topic_index(topic=None, cross=None):
     print(f"Written: {out_path} ({len(HTML):,} chars)")
 
 
-    # Operator convenience: write docs/_zotero_keys.json (slug -> Zotero
+    # Operator convenience: refresh docs/_zotero_keys.json (slug -> Zotero
     # itemKey). The Deep Research References list checks this on page load
     # and, if present, adds a one-click 'Open PDF' button next to each
     # reference. The button uses 'zotero://open-pdf/library/items/<KEY>'
     # which the Zotero desktop app handles directly. Git-ignored, so the
     # Cloudflare deployment never sees it.
+    # Ordinary rendering is local-only and network-free: existing caches remain
+    # available to the page, but Zotero credentials are never resolved unless
+    # an operator explicitly asks to refresh them.
+    _refresh_zotero_cache = (
+        bool(os.environ.get("PAPER_CURATION_REFRESH_ZOTERO_CACHE"))
+        and not bool(os.environ.get("SKIP_ZOTERO_KEYS"))
+    )
     try:
         import urllib.request as _urllib_request
-        import time as _time
-        _api_key = get_zotero_api_key()
-        _user_id = get_zotero_user_id()
+        _api_key = get_zotero_api_key() if _refresh_zotero_cache else ""
+        _user_id = get_zotero_user_id() if _refresh_zotero_cache else ""
         # The map is shared across all topics + git-ignored (localhost only).
-        # Re-paginating the whole Zotero library on every topic build only risks
-        # an API hang for no benefit, so reuse a recent (<24h) file. Force a
-        # refresh by deleting docs/_zotero_keys.json; skip entirely with
-        # SKIP_ZOTERO_KEYS=1.
+        # Re-paginating the whole Zotero library is opt-in. Existing caches are
+        # consumed as-is; set PAPER_CURATION_REFRESH_ZOTERO_CACHE=1 to refresh.
         _zk_existing = Path(DOCS_DIR) / "_zotero_keys.json"
         _zm_existing = Path(DOCS_DIR) / "_zotero_meta.json"
-        _zk_fresh = (_zk_existing.exists() and _zm_existing.exists()
-                     and (_time.time() - _zk_existing.stat().st_mtime) < 86400)
-        if os.environ.get("SKIP_ZOTERO_KEYS") or _zk_fresh:
-            print(f"Zotero keys: reusing existing {_zk_existing} (fresh; skip re-fetch)")
+        if not _refresh_zotero_cache:
+            print(f"Zotero keys: using existing {_zk_existing} (refresh not requested)")
         elif _api_key and _user_id:
             _items = []
             _start = 0

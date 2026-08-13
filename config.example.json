@@ -7,8 +7,8 @@
     },
     "pdf_dir": "/path/to/your/zotero/pdfs",
     "pdf_dir_by_host": {
-      "my-laptop": "/Users/me/Library/CloudStorage/GoogleDrive-me/내 드라이브/Zotero",
-      "my-server": "/Users/me/Documents/Zotero"
+      "my-laptop": "~/Zotero",
+      "my-server": "/path/to/zotero/pdfs"
     },
     "pdf_dir_candidates": [
       "~/Zotero",
@@ -20,9 +20,9 @@
   "anthropic_auth": {
     "mode": "oauth"
   },
-  "_comment_search_keywords": "search_keywords 는 토픽별 Core-1 검색 키워드입니다. primary 는 핵심 키워드(매칭 0.5점), secondary 는 보조 키워드(매칭 0.2점). ai4s/scisci 는 빌트인 기본값이 있어 생략 가능하고, 그 외 신규 토픽은 여기에 추가해야 합니다.",
+  "_comment_search_keywords": "search_keywords 는 모든 토픽이 직접 제공하는 Core-1 검색 키워드입니다. primary 는 핵심 키워드(매칭 0.5점), secondary 는 보조 키워드(매칭 0.2점).",
   "search_keywords": {
-    "bioml": {
+    "my_topic": {
       "primary": [
         "machine learning biology",
         "deep learning genomics",
@@ -33,6 +33,15 @@
         "drug target prediction",
         "biomedical foundation model"
       ]
+    }
+  },
+  "topic_profiles": {
+    "my_topic": {
+      "title": "My Research Topic",
+      "accent": "#3B82F6",
+      "accent_dark": "#2563EB",
+      "accent_light": "#60A5FA",
+      "gradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
     }
   },
   "_comment_local_model": "local_model 은 선택사항입니다. topic_modeling 연결 단계가 한국망↔Anthropic 으로 끝까지 막혀 max retry round 를 다 돌고도 남는 papers 가 있으면, 로컬에서 도는 OpenAI 호환 모델로 마저 연결하는 opt-in fallback(--local-fallback)의 엔드포인트입니다. base_url+model 만 있으면 동작하고, 안 쓰면 이 블록을 삭제하세요. 환경변수 LOCAL_MODEL_BASE_URL/LOCAL_MODEL_NAME/LOCAL_MODEL_API_KEY 가 우선합니다. 예) Ollama=http://localhost:11434/v1, LM Studio=http://localhost:1234/v1, llama.cpp=http://localhost:8080/v1, vLLM=http://localhost:8000/v1. reasoning_effort 는 thinking 모델(EXAONE-4.5, Qwen3 등) 전용 — \"none\" 이면 think OFF (Ollama 가 매핑; 없으면 content 가 빈 채 thinking 토큰만 채우는 모델이 있음). 비-thinking 모델이면 키 자체를 빼세요.",
@@ -50,6 +59,18 @@
     "repo": "your-username/paper-curation",
     "branch": "master",
     "pages_base_url": "https://your-username.github.io/paper-curation"
+  },
+  "operator": {
+    "name": "Your Name",
+    "organization": "Your Organization",
+    "email": "operator@example.com"
+  },
+  "notifications": {
+    "completion_email": ""
+  },
+  "publication": {
+    "mode": "local",
+    "base_url": ""
   },
   "paperbanana_dir": "/path/to/your/PaperBanana"
 }

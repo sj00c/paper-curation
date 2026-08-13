@@ -3,8 +3,7 @@ paper-curation 설치 스크립트.
 
 한 번 실행으로 전체 설치를 완료한다:
   1. config.json 생성 (인터랙티브)
-  2. Core credential 게이트 — ZOTERO/GOOGLE 필수, Anthropic은 API key 또는 OAuth
-     (Resend는 Audio Overview 이메일 발송 단계로 지연)
+  2. Core credential 게이트 — Zotero와 Claude 인증 확인
   3. Zotero 연결 테스트 (User ID 조회 + 컬렉션 검증)
   4. PaperBanana 확인 (없으면 자동 클론)
   5. SKILL.md 생성 (템플릿 플레이스홀더 치환)
@@ -196,6 +195,21 @@ def step_config():
             "pdf_dir": pdf_dir
         },
         "unpaywall_email": email,
+        "search_keywords": {
+            alias: {
+                "primary": [collection_name],
+                "secondary": [],
+            }
+        },
+        "topic_profiles": {
+            alias: {
+                "title": collection_name,
+            }
+        },
+        "publication": {
+            "mode": "local",
+            "base_url": "",
+        },
     }
     if github_repo:
         cfg["github"] = {
@@ -254,7 +268,7 @@ ANTHROPIC_API_SPEC = {
 RESEND_SPEC = {
     "env": "RESEND_API_KEY",
     "path": ("resend_api_key",),
-    "why": "Audio Overview 이메일 발송",
+    "why": "명시적 bibliography 완료 알림",
     "issue": "https://resend.com/api-keys",
 }
 
@@ -462,8 +476,7 @@ def step_env_check(cfg, anthropic_auth_mode="auto"):
     if resend_key:
         print(f"  ✓ RESEND_API_KEY 설정됨 (선택, {resend_source}) — {RESEND_SPEC['why']}")
     else:
-        print("  · RESEND_API_KEY 미설정 (선택) — Audio Overview 이메일 발송 때 설정하면 됩니다.")
-        print("    배포 후 `npx wrangler secret put RESEND_API_KEY` 로 등록하세요.")
+        print("  · RESEND_API_KEY 미설정 (선택) — 완료 알림을 쓰지 않으면 필요 없습니다.")
 
     if dirty:
         _save_config(cfg)
@@ -646,8 +659,8 @@ def skill_replacements(cfg):
 
 
 REFERENCE_REPLACEMENTS = {
-    "{topic_alias}": "ai4s",
-    "{pages_base_url}": "https://jehyunlee.github.io/paper-curation",
+    "{topic_alias}": "my-topic",
+    "{pages_base_url}": "https://example.invalid/paper-curation",
 }
 
 
@@ -783,8 +796,8 @@ def main():
     parser = argparse.ArgumentParser(description="paper-curation setup")
     parser.add_argument("--no-install", action="store_true",
                         help="SKILL.md 스킬 설치를 건너뜁니다")
-    parser.add_argument("--no-run", action="store_true",
-                        help="설치만 하고 첫 파이프라인 실행은 건너뜁니다")
+    parser.add_argument("--run-first", action="store_true",
+                        help="설치 완료 후 첫 로컬 파이프라인을 명시적으로 실행합니다")
     parser.add_argument("--anthropic-auth", choices=("auto", "oauth", "api-key"),
                         default="auto",
                         help="Anthropic 인증 방식: auto(기본), oauth(Claude Code), api-key(Console)")
@@ -845,7 +858,7 @@ def main():
     print("  GOOGLE(Gemini) 은 선택입니다 — 없으면 검색은 lexical 전용으로 동작하고")
     print("  figure 검증·Audio Overview 만 비활성으로 남습니다.")
     print("  이제 파이프라인을 실행하여 Zotero 컬렉션의 논문을 리뷰하고")
-    print("  웹 페이지로 배포할 수 있습니다.")
+    print("  로컬 웹 페이지를 생성할 수 있습니다.")
     print()
     print("  ⚠ 주의: Zotero 컬렉션의 논문 편수에 따라 시간이 크게 달라집니다 (Anthropic Tier·concurrency 의존).")
     print("    - 10편 이하: 수 분")
@@ -855,7 +868,7 @@ def main():
     if topics:
         topic = topics[0]
         print(f"  실행 명령어 (이후에 수동으로 돌릴 때 — 단일 진입점은 run_full.py):")
-        print(f"    # 전체 파이프라인 (Zotero에서 가져와서 리뷰 + Deep Research 인덱스 + 배포)")
+        print(f"    # 로컬 파이프라인 (Zotero에서 가져와서 리뷰 + Deep Research 인덱스)")
         print(f"    PYTHONUTF8=1 python pipeline/run_full.py --topic {topic} --mode curate --source zotero")
         print()
         print(f"    # 주간 운영 (웹 검색으로 신규 논문 추가, 기존 유지)")
@@ -867,23 +880,20 @@ def main():
 
     # 배포·이메일은 나중 단계 — 설치 시점에는 자격증명을 묻지 않는다 (deferred)
     print("-" * 50)
-    print("  나중 단계: 배포 & Audio Overview 이메일 (지금은 건너뜀)")
+    print("  나중 단계: 공개 배포 (지금은 건너뜀)")
     print("-" * 50)
     print()
     print("  Cloudflare/GitHub 배포 자격증명은 설치 때 묻지 않습니다. 처음 배포할 때")
     print("  `run_full.py --mode deploy` 가 필요한 env(CF_API_TOKEN·CLOUDFLARE_ACCOUNT_ID·")
-    print("  GitHub 설정)를 그 자리에서 안내합니다. Audio Overview 이메일 발송 기능은")
-    print("  워커를 한 번 배포해 두어야 동작하며, 배포된 워커에 시크릿을 등록해야 합니다:")
-    print("    npx wrangler secret put GOOGLE_API_KEY   # 워커 측 TTS/Audio Overview 용")
-    print("    npx wrangler secret put RESEND_API_KEY   # MP3 첨부 메일 발송용")
-    print("  (자세한 내용은 README 'Audio Overview 이메일 발송 — Cloudflare Worker secrets' 참고)")
+    print("  GitHub 설정)를 그 자리에서 안내합니다. Dense 검색을 공개하려면:")
+    print("    npx wrangler secret put GOOGLE_API_KEY   # /api/embed")
     print()
 
-    # Step 7: 첫 파이프라인 자동 실행 (--no-run 으로 건너뛸 수 있음)
-    if topics and not args.no_run:
+    # Step 7: 첫 파이프라인은 --run-first 로 명시한 경우에만 실행한다.
+    if topics and args.run_first:
         topic = topics[0]
         print("-" * 50)
-        print(f"  첫 파이프라인을 자동 실행합니다 (topic: {topic})")
+        print(f"  요청한 첫 로컬 파이프라인을 실행합니다 (topic: {topic})")
         print("-" * 50)
 
         # Preflight: classify/topic_modeling 은 UMAP/HDBSCAN 의존 — 별도 py312 env
@@ -896,7 +906,7 @@ def main():
             print("  (위 환경을 준비한 뒤 'python pipeline/setup.py' 를 다시 실행하세요.)")
         else:
             print("  Zotero에서 논문을 가져와 리뷰 → 분류 → 인덱스 →")
-            print("  Deep Research 검색 인덱스 → (GitHub 설정 시) 배포까지 진행합니다.")
+            print("  Deep Research 검색 인덱스까지 로컬에서 생성합니다.")
             print("  Ctrl+C 로 중단할 수 있고, 중단 후에는 --resume 모드로 이어서 진행할 수 있습니다.")
             print()
             try:
@@ -911,8 +921,9 @@ def main():
                 )
             except KeyboardInterrupt:
                 print("\n  (파이프라인 실행이 중단되었습니다. 나중에 --resume 으로 재개 가능)")
-    elif topics and args.no_run:
-        print("  (--no-run 지정: 첫 파이프라인 실행은 건너뜁니다)")
+    elif topics:
+        print("  첫 파이프라인은 실행하지 않았습니다.")
+        print("  실행하려면 위 명령을 사용하거나 setup에 --run-first를 명시하세요.")
     print()
 
 

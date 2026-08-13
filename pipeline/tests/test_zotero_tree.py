@@ -3,16 +3,13 @@
 배경. 사용자는 Zotero 안에서 이미 논문을 분류해 둔다. 실제 라이브러리는 최상위
 컬렉션(= 토픽) 아래에 사람이 만든 하위 컬렉션(= 카테고리)이 달린 트리다:
 
-    AI for Science  15,388편
-      ├ 01 General Methods & Platforms   3,984
-      ├ 02 Biology & Medicine            2,920
-      └ 99 Unclassified                  2,286
+    My Research
+      ├ 01 Methods
+      ├ 02 Applications
+      └ 99 Unclassified
 
 파이프라인은 최상위에서 논문만 긁고 이 구조를 버린 뒤 HDBSCAN 으로 카테고리를
 새로 만들었다. 사람이 정리한 분류와 겹치지도 않는 별개 체계가 나온다.
-
-실측: 리뷰 완료 3,273편 중 2,828편(86.4%)이 DOI 로 사람 분류에 그대로 붙었다
-(제목 매칭 26편, 미매칭 6편, 99 Unclassified 439편).
 
 여기서 고정하는 계약:
   - 하위 컬렉션이 카테고리가 되고, 이름순(01, 02 … 관례)을 지킨다.

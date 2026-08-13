@@ -1,7 +1,6 @@
 """Incremental paper-connection cache (cost control for full-corpus regen).
 
-The expensive path in the pipeline is the *full* connection generation that
-paper-curio consumes for inbound/hub edges:
+The expensive path in the pipeline is full connection generation:
   - ``extract_insights.extract_paper_connections``  (top_k=25)
   - ``topic_modeling`` Step 6                        (top_k=5)
 

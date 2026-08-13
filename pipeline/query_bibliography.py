@@ -15,9 +15,6 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SHARED_DB = (Path.home() / "Library" / "CloudStorage" /
-             "GoogleDrive-jehyun.lee@gmail.com" / "내 드라이브" /
-             "paper-curation" / "bibliography.sqlite3")
 DEFAULT_DB = Path(os.environ.get(
     "PAPER_CURATION_BIBLIO_DB", str(ROOT / ".cache" / "bibliography.sqlite3")
 ))

@@ -1,20 +1,37 @@
 #!/bin/bash
-# Serve docs/ at http://localhost:8000 (/api/embed Gemini proxy + 로컬 키 즉석주입) → 랜딩 열기.
-# 8000 에 서버가 떠 있어도 실제 응답하는지 curl 헬스체크 — 응답 없는 좀비면 kill 후 재기동.
-SUBPATH=""
-cd "$(dirname "$0")" 2>/dev/null
-[ -f pipeline/serve_local.py ] || cd "/Users/jehyunlee/Documents/내노트북/paper-curation" || exit 1
-alive() { curl -fsS -m 5 -o /dev/null "http://localhost:8000/"; }
+# Generic local launcher. Optional first argument is a configured topic alias.
+set -eu
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+cd "$ROOT"
+[ -f pipeline/serve_local.py ] || {
+  echo "paper-curation checkout not found: $ROOT" >&2
+  exit 1
+}
 
-if lsof -nP -iTCP:8000 -sTCP:LISTEN >/dev/null 2>&1 && ! alive; then
-  echo "포트 8000 응답 없음(좀비 서버) — 정리 후 재기동합니다."
-  lsof -nP -tiTCP:8000 -sTCP:LISTEN | xargs kill -9 2>/dev/null
-  sleep 1
-fi
-if ! lsof -nP -iTCP:8000 -sTCP:LISTEN >/dev/null 2>&1; then
-  python3 pipeline/serve_local.py --port 8000 &
+TOPIC="${1:-}"
+PORT="${PAPER_CURATION_PORT:-8000}"
+URL="http://localhost:${PORT}/${TOPIC:+${TOPIC}/}"
+alive() { curl -fsS -m 5 -o /dev/null "http://localhost:${PORT}/"; }
+
+if ! alive; then
+  if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
+    echo "port $PORT is owned by another process; refusing to terminate it" >&2
+    exit 1
+  fi
+  SERVER_ARGS=(pipeline/serve_local.py --port "$PORT")
+  if [ -n "$TOPIC" ]; then SERVER_ARGS+=(--topic "$TOPIC"); fi
+  python3 "${SERVER_ARGS[@]}" &
   SERVER_PID=$!
-  for i in $(seq 1 20); do alive && break; sleep 0.5; done
+  for _ in $(seq 1 20); do
+    alive && break
+    sleep 0.5
+  done
+  alive || {
+    echo "paper-curation server did not become ready on port $PORT" >&2
+    kill "$SERVER_PID" 2>/dev/null || true
+    exit 1
+  }
 fi
-open "http://localhost:8000/${SUBPATH}"
+
+open "$URL"
 if [ -n "${SERVER_PID:-}" ]; then wait "$SERVER_PID"; fi

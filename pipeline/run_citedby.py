@@ -12,7 +12,7 @@
     PYTHONUTF8=1 python pipeline/run_citedby.py \\
         --doi 10.1038/s41597-023-02198-9 --topic "다른 분야간 융합연구"
 
-    # 특정 논문 폴더 아래로 (paper-curio 브리지가 쓰는 형태)
+    # 특정 논문 폴더 아래로
     PYTHONUTF8=1 python pipeline/run_citedby.py --doi 10.1/x --slug 042_Some_Paper
 
     # 소스 제한 / LLM 없이 rule-based 만 / JSON 요약 출력
@@ -195,7 +195,7 @@ def main(argv=None) -> int:
         csv_path = out_dir / f"citing_{stamp}.csv"
         csv_path.write_text(result["csv"], encoding="utf-8")
 
-    # 논문 목록 JSON — Zotero 일괄 등록(paper-curio) 처럼 후속 소비자가
+    # 논문 목록 JSON — 후속 소비자가
     # CSV 를 파싱하지 않고 바로 읽을 수 있게 서지 필드만 추려 낸다.
     papers_path = None
     if result.get("papers"):
@@ -204,7 +204,7 @@ def main(argv=None) -> int:
             [_export_paper(p) for p in result["papers"]],
             ensure_ascii=False), encoding="utf-8")
 
-    # 서버 확보를 **payload 조립 전에** 한다 — --json 소비자(paper-curio 브리지)가
+    # 서버 확보를 **payload 조립 전에** 한다 — --json 소비자가
     # url 을 받아야 file:// 대신 http 로 열 수 있다.
     serve_url = ""
     if args.serve:

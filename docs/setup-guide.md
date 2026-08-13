@@ -14,7 +14,7 @@ Paper Curation 파이프라인의 설치 및 설정 가이드입니다.
 - [Zotero API Key](https://www.zotero.org/settings/keys) 발급, Zotero 컬렉션 이름 확인, Zotero PDF 저장 경로 확인
 - `GOOGLE_API_KEY` — 검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS에 **필수**
 - `OPENAI_API_KEY` — 선택
-- `RESEND_API_KEY` — 배포된 Audio Overview 이메일에만 필요
+- `RESEND_API_KEY` — 선택적 bibliography 완료 알림에만 필요
 - Java Runtime — `opendataloader-pdf` 가 Java CLI 래퍼. macOS: `brew install --cask temurin`. 없으면 PyMuPDF 로 자동 fallback (표/구조 추출 품질 ↓).
 
 > OAuth 토큰은 setup이 저장하지 않습니다. `config.json`에는 `anthropic_auth.mode = "oauth"`만 저장할 수 있습니다. Claude CLI 자체는 API 키를 OAuth보다 우선할 수 있으므로 OAuth 운영 셸에서는 `ANTHROPIC_API_KEY`/`ANTHROPIC_AUTH_TOKEN`을 unset하는 편이 안전합니다. 이 저장소는 OAuth로 선택된 Claude child 호출에서 두 API 자격증명을 제거하고, `auto` 모드에서는 OAuth token/login을 API 키보다 우선합니다.
@@ -103,14 +103,14 @@ export CLAUDE_CODE_OAUTH_TOKEN='발급된_토큰'
 
 export GOOGLE_API_KEY=your_key
 export ZOTERO_API_KEY=your_key
-PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth --no-run
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth oauth
 
 # API 키 대안
 export ANTHROPIC_API_KEY=your_key
-PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
+PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key
 ```
 
-`setup.py`가 인터랙티브 설정 마법사를 실행하여 config.json 생성, Zotero 연결 테스트, SKILL.md 생성 및 설치를 수행합니다. 직접 실행할 때는 `--no-run`으로 비용이 드는 첫 파이프라인을 건너뜁니다. NPX에서 첫 실행까지 이어서 돌릴 때만 `--run-first`를 명시하세요.
+`setup.py`가 인터랙티브 설정 마법사를 실행하여 config.json 생성, Zotero 연결 테스트, SKILL.md 생성 및 설치를 수행합니다. 기본값은 설정만 수행하며, 첫 로컬 파이프라인까지 이어서 돌릴 때만 `--run-first`를 명시하세요.
 
 스킬 설치를 건너뛰려면 `--no-install` 옵션을 사용하세요.
 
@@ -149,7 +149,8 @@ PYTHONUTF8=1 python pipeline/setup.py --anthropic-auth api-key --no-run
 | `email` | 이메일 (Zotero 및 Unpaywall용) |
 | `collections` | Topic alias → Zotero 컬렉션 이름 매핑. Collection key는 Zotero API를 통해 자동 변환됩니다. |
 | `pdf_dir` | Zotero PDF가 저장된 로컬 경로 |
-| `search_keywords` | 토픽별 Core-1 검색 키워드 (`{topic: {primary: [...], secondary: [...]}}`). `primary` 매칭 0.5점, `secondary` 0.2점. `ai4s`/`scisci` 는 빌트인 기본값이 있어 생략 가능하고, 그 외 신규 토픽은 여기에 추가합니다. (선택) |
+| `search_keywords` | 토픽별 Core-1 검색 키워드 (`{topic: {primary: [...], secondary: [...]}}`). 모든 토픽에 필요하며 setup이 컬렉션 이름을 초기 primary 값으로 저장합니다. |
+| `topic_profiles` | 토픽별 표시 이름과 선택적 색상 테마. 없으면 중립 테마를 사용합니다. |
 | `paperbanana_dir` | [PaperBanana](https://github.com/dwzhu-pku/PaperBanana) clone 경로 (선택) |
 
 ### 환경변수 (선택)
@@ -166,7 +167,7 @@ API key와 경로 일부는 환경변수로 공급할 수 있습니다. 다만 t
 | `ANTHROPIC_AUTH_TOKEN` | Claude CLI gateway/bearer credential이며 구독 OAuth 토큰이 아닙니다. OAuth 모드에서는 unset |
 | `GOOGLE_API_KEY` / `GEMINI_API_KEY` | Google AI key (검색 임베딩 `gemini-embedding-001`·Figure 검증·TTS — 필수) |
 | `OPENAI_API_KEY` | OpenAI key (선택) |
-| `RESEND_API_KEY` | Resend key (배포된 Audio Overview 이메일에만 필요, wrangler secret 으로도 등록) |
+| `RESEND_API_KEY` | Resend key (명시적 bibliography 완료 알림에만 필요) |
 | `GITHUB_REPO` | GitHub repo (owner/repo) |
 | `GITHUB_BRANCH` | Git branch (기본: master) |
 | `PAGES_BASE_URL` | GitHub Pages base URL |
@@ -219,7 +220,7 @@ Claude Code 스킬(`/paper-curation`)도 계속 사용할 수 있지만, 온보�
 
 ## PaperBanana (타임라인 생성용, 선택)
 
-타임라인 생성에는 PaperBanana와 scisci 래퍼가 필요합니다. 없어도 파이프라인은 정상 동작하며, 타임라인 생성만 건너뜁니다.
+타임라인 이미지 생성에는 PaperBanana가 필요합니다. 없어도 나머지 파이프라인은 정상 동작합니다.
 
 <details>
 <summary>PaperBanana 설치 방법</summary>
@@ -230,25 +231,21 @@ git clone https://github.com/dwzhu-pku/PaperBanana.git /path/to/paperbanana
 cd /path/to/paperbanana
 pip install -r requirements.txt
 
-# 2. scisci 클론 (PaperBanana 래퍼)
-git clone https://github.com/jehyunlee/scisci.git /path/to/scisci
 ```
 
 `config.json`에 경로를 추가하세요:
 
 ```json
 {
-  "paperbanana_dir": "/path/to/paperbanana",
-  "scisci_lib": "/path/to/scisci/scie"
+  "paperbanana_dir": "/path/to/paperbanana"
 }
 ```
 
 의존성 체인:
 ```
 pipeline/generate_timelines.py
-  → scisci/scie/lib/paperbanana.py   (래퍼: 경로 관리, async 실행)
-    → paperbanana/                    (7-agent pipeline: Retriever → Planner → Visualizer → Critic)
-  → scisci/scie/lib/timeline.py      (LLM 내러티브 분석)
+  → pipeline/lib/paperbanana.py
+    → paperbanana/ (Retriever → Planner → Visualizer → Critic)
 ```
 
 </details>

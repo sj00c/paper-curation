@@ -1,22 +1,4 @@
-"""토픽 중립성 고정 — ai4s 가 없는 설치에서도 논문 페이지가 옳게 렌더되게.
-
-배경. review_to_html 은 미등록 토픽을 만나면 `THEMES.get(topic, THEMES["ai4s"])`
-로 ai4s 테마를 씌웠다. physical-ai 설치에서 실제로 두 가지가 깨졌다.
-
-  1. accent 불일치 — build_topic_index 는 미지 토픽에 중립 파랑(#3B82F6)을 주는데
-     논문 페이지만 ai4s 빨강(#D63423)으로 떴다. 같은 사이트 안에서 색이 갈렸다.
-  2. 죽은 링크 — back_href 가 ../../ai4s/index.html 로 굳어, ai4s 디렉토리가 없는
-     설치에서는 '목록으로 돌아가기' 가 404 였다.
-
-detect_topic 도 같은 뿌리로 'ai4s' 를 반환해, 인덱스가 토픽을 말해주지 않는 논문이
-남의 토픽으로 렌더됐다.
-
-여기서 고정하는 계약:
-  - 알려진 토픽(ai4s/scisci)의 테마는 그대로다. 기존 사이트가 바뀌면 안 된다.
-  - 미등록 토픽은 중립 테마를 받고, back_href 는 언제나 자기 토픽을 가리킨다.
-  - detect_topic 의 폴백은 설정에서 유도한다. 토픽이 유일하면 그것, 아니면 눈에
-    띄는 'unknown' — 존재하지 않는 남의 페이지로 조용히 링크되지 않는다.
-"""
+"""토픽 중립성 고정 — 모든 토픽은 같은 config 기반 경로를 사용한다."""
 
 import os
 import sys
@@ -31,20 +13,13 @@ import review_to_html as R  # noqa: E402
 
 
 class ThemeNeutralityTests(unittest.TestCase):
-    def test_known_topics_keep_their_theme(self):
-        """기존 토픽의 색과 링크는 그대로여야 한다 (배포된 사이트 보호)."""
-        ai4s = R.theme_for("ai4s")
-        self.assertEqual(ai4s["accent"], "#D63423")
-        self.assertEqual(ai4s["back_href"], "../../ai4s/index.html")
-
-        scisci = R.theme_for("scisci")
-        self.assertEqual(scisci["accent"], "#2374D6")
-        self.assertEqual(scisci["back_href"], "../../scisci/index.html")
-
-    def test_unknown_topic_does_not_borrow_ai4s_theme(self):
-        """미등록 토픽이 ai4s 빨강을 물려받으면 안 된다."""
-        theme = R.theme_for("physical-ai")
-        self.assertNotEqual(theme["accent"], R.THEMES["ai4s"]["accent"])
+    def test_profile_can_override_the_neutral_theme(self):
+        with patch("review_to_html.get_topic_profile", return_value={
+            "accent": "#123456", "accent_dark": "#123000"
+        }):
+            theme = R.theme_for("configured")
+        self.assertEqual(theme["accent"], "#123456")
+        self.assertEqual(theme["accent_dark"], "#123000")
 
     def test_unknown_topic_back_href_points_at_itself(self):
         """back_href 는 자기 토픽. 이게 깨지면 '목록으로' 가 404 였다."""
@@ -56,8 +31,10 @@ class ThemeNeutralityTests(unittest.TestCase):
                 )
 
     def test_unknown_topic_theme_is_complete(self):
-        """중립 테마도 알려진 테마와 같은 키를 전부 갖춰야 렌더가 KeyError 로 죽지 않는다."""
-        required = set(R.THEMES["ai4s"].keys())
+        required = {
+            "accent", "accent_dark", "accent_bg", "essence_border",
+            "essence_bg", "link_color", "back_href",
+        }
         self.assertTrue(required.issubset(set(R.theme_for("bioml").keys())))
 
     def test_unknown_topic_accent_matches_topic_index_default(self):
@@ -185,7 +162,7 @@ class EntrypointsUseResolverTests(unittest.TestCase):
     SCRIPTS = [
         "run_update_force", "generate_network", "generate_timelines",
         "topic_modeling", "build_papers_index", "inject_frontmatter",
-        "prepare_deploy", "generate_moc", "build_category_summaries",
+        "prepare_deploy", "build_category_summaries",
         "extract_insights", "validate_papers", "build_rss",
     ]
 
@@ -207,15 +184,8 @@ class EntrypointsUseResolverTests(unittest.TestCase):
                               f"{name}.py 가 resolve_topic 을 거치지 않는다")
 
 
-class NoThemeFallbackToAi4sTests(unittest.TestCase):
-    """THEMES["ai4s"] 로 폴백하는 자리가 다시 생기지 않게.
-
-    review_to_html 에서 고쳤는데 compare_papers 에 같은 줄이 한 벌 더 있었다.
-    폴백은 theme_for() 한 곳에만 있어야 한다.
-    """
-
-    def test_no_module_falls_back_to_the_ai4s_theme(self):
-        """review_to_html 밖에서 THEMES["ai4s"] 를 참조하면 안 된다."""
+class NoNamedThemeDefaultsTests(unittest.TestCase):
+    def test_no_module_defines_named_topic_themes(self):
         import re
 
         pattern = re.compile(r'THEMES\[["\']ai4s["\']\]')
@@ -224,7 +194,7 @@ class NoThemeFallbackToAi4sTests(unittest.TestCase):
             if "tests" in root or "_archive" in root:
                 continue
             for fn in files:
-                if not fn.endswith(".py") or fn == "review_to_html.py":
+                if not fn.endswith(".py"):
                     continue
                 path = os.path.join(root, fn)
                 for line in open(path, encoding="utf-8").read().splitlines():
@@ -244,14 +214,9 @@ class TopicIndexMetadataTests(unittest.TestCase):
             os.path.join(PIPELINE, "build_topic_index.py"),
             encoding="utf-8",
         ).read()
-        self.assertIn(
-            'paper-curation.jehyunlee.dev/{TOPIC}/',
-            src,
-        )
-        self.assertNotIn(
-            'paper-curation.jehyunlee.dev/{topic}/',
-            src,
-        )
+        self.assertIn("get_public_base_url()", src)
+        self.assertIn('f"{public_base_url}/{TOPIC}/"', src)
+        self.assertNotRegex(src, r"https://[^\"']+/\{TOPIC\}/")
 
 class DeployTopicNeutralityTests(unittest.TestCase):
     """배포 경로도 토픽을 하드코딩하지 않는다.
