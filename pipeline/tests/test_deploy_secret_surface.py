@@ -19,6 +19,7 @@ import re
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 PIPELINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PIPELINE))
@@ -415,6 +416,16 @@ class ScanSecretsHookTests(unittest.TestCase):
                 self.assertEqual(proc.returncode, 1, proc.stderr)
                 self.assertIn("Zotero API key", proc.stderr)
                 self.assertNotIn(key, proc.stderr)
+
+    def test_existing_ref_scans_only_objects_introduced_after_destination_tip(self):
+        mod = self._load_hook()
+        calls = []
+        with patch.object(mod, "rev_objects", side_effect=lambda args: calls.append(args) or set()):
+            mod.pushed_objects([
+                "refs/heads/main " + "a" * 40
+                + " refs/heads/main " + "b" * 40
+            ])
+        self.assertEqual(calls, [["a" * 40, "^" + "b" * 40]])
 
 
 class AudioOverviewKeyStateTests(unittest.TestCase):

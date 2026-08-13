@@ -76,11 +76,17 @@ def pushed_objects(lines: Iterable[str]) -> set[str]:
         fields = line.split()
         if len(fields) != 4:
             continue
-        _local_ref, local_oid, _remote_ref, _remote_oid = fields
+        _local_ref, local_oid, _remote_ref, remote_oid = fields
         refs_seen += 1
         if ZERO_RE.fullmatch(local_oid):  # deletion
             continue
-        objects.update(rev_objects([local_oid]))
+        # Existing destination history is already present on that destination.
+        # Exclude only the exact advertised destination tip — never every local
+        # remote-tracking ref, which could hide objects absent from this remote.
+        revisions = [local_oid]
+        if not ZERO_RE.fullmatch(remote_oid):
+            revisions.append(f"^{remote_oid}")
+        objects.update(rev_objects(revisions))
     if refs_seen == 0:
         objects.update(rev_objects(["HEAD"]))
     return objects
