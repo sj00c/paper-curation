@@ -268,8 +268,12 @@ def check_timeline_mismatch(topic):
     """{topic}/index.html/_new_classification.json의 카테고리 목록과 실제 존재하는
     category_timeline_*.png 파일명을 비교. 둘 중 한쪽에만 있으면 경고.
 
-    - 분류에 있는데 이미지 없음 → timeline 재생성 필요
+    - 이미지 기능을 사용 중인데 일부 분류 이미지만 없음 → timeline 재생성 필요
     - 이미지가 있는데 분류에 없음 → stale PNG (cleanup 대상)
+
+    타임라인 이미지는 선택 기능이다. 해당 토픽에 category timeline 이미지가
+    하나도 없으면 "이미지 비활성" 설치로 보고 누락을 만들지 않는다. 하나라도
+    생성된 토픽만 전체 카테고리 집합의 완전성을 검사한다.
     """
     issues = []
     topic_dir = Path(get_topic_dir(topic))
@@ -299,6 +303,9 @@ def check_timeline_mismatch(topic):
         m = re.match(r"category_timeline_(.+)\.(png|webp)$", p.name)
         if m:
             actual_slugs.add(m.group(1))
+
+    if not actual_slugs:
+        return issues
 
     missing_images = expected_slugs - actual_slugs
     stale_images = actual_slugs - expected_slugs
