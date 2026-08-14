@@ -5,13 +5,28 @@
 ## 설치와 일상 작업
 
 ```bash
-python -m pip install .
-python -m pip install -r requirements.txt
+git clone https://github.com/sj00c/paper-curation.git
+cd paper-curation
+conda env create -f environment.yml
+conda activate py312
 paper-curation setup
 paper-curation inspect
 paper-curation doctor --network
 paper-curation update --topic <topic>
 paper-curation serve --topic <topic>
+```
+
+`environment.yml`은 Docker 설정이 아니라 각 사용자 컴퓨터에 Python 3.12,
+Java 17, native scientific packages와 `paper-curation` CLI를 설치하는 Conda
+환경 정의입니다. Zotero Desktop, Claude Code 로그인, PDF와 생성 결과는 모두
+사용자 컴퓨터에 그대로 남습니다.
+
+저장소를 업데이트한 뒤에는 다음 명령으로 의존성과 CLI를 함께 갱신합니다.
+
+```bash
+git pull --ff-only origin master
+conda env update -f environment.yml --prune
+conda activate py312
 ```
 
 `setup`은 로컬 `config.json`만 만들거나 갱신합니다. `inspect`와 기본 `doctor`는 읽기 전용이며, `doctor --network`만 외부 연결을 확인합니다. 전체 생성은 `build --topic <topic>`, 증분 수집·생성은 `update --topic <topic>`입니다. 검색·검증·복구·공개 배포는 각각 다음처럼 명시합니다.

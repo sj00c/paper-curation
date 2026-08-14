@@ -1,0 +1,24 @@
+name: py312
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  - pip
+  - openjdk=17
+
+  # Native scientific packages are more reliable from conda-forge,
+  # especially on Apple Silicon and Windows.
+  - numpy
+  - scikit-learn
+  - joblib
+  - umap-learn
+  - hdbscan
+  - sentence-transformers
+
+  # Install the remaining application dependencies and register the
+  # `paper-curation` command from this checkout.
+  - pip:
+      - -r requirements.txt
+      - -e .

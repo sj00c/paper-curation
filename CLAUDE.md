@@ -6,6 +6,11 @@ This file guides coding agents. All content after this header must match its cou
 
 The installable `src/paper_curation` package and its `paper-curation` CLI are the official interface. Use `setup`, `migrate`, `inspect`, `doctor`, `build`, `update`, `serve`, `query`, `validate`, `repair`, and `deploy`. `pipeline/run_full.py` is a compatibility wrapper for existing automation and advanced troubleshooting, not the primary entry point.
 
+The supported workstation environment is the Conda `py312` environment
+declared by `environment.yml`. It is a host installation, not Docker: Zotero,
+Claude Code authentication, PDFs, caches, and generated output remain local to
+each user's computer.
+
 ## Architecture
 
 Dependencies point inward: CLI and orchestration call application use cases; application owns domain contracts; integrations, retrieval, bibliography, rendering, and config implement those contracts. Domain code has no CLI, network, filesystem, or rendering dependency. Rendering uses packaged static resources. Keep side effects declarative: plan them in application/orchestration and perform them only in integration adapters.

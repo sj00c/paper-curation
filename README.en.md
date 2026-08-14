@@ -2,16 +2,31 @@
 
 An installable local tool for reviewing, rendering, and searching a Zotero corpus. The official entry point is the `paper-curation` CLI provided by the Python package. Configuration migration preserves existing local data paths and public URLs.
 
-## Install and routine work
+## Installation and daily use
 
 ```bash
-python -m pip install .
-python -m pip install -r requirements.txt
+git clone https://github.com/sj00c/paper-curation.git
+cd paper-curation
+conda env create -f environment.yml
+conda activate py312
 paper-curation setup
 paper-curation inspect
 paper-curation doctor --network
 paper-curation update --topic <topic>
 paper-curation serve --topic <topic>
+```
+
+`environment.yml` is not a Docker configuration. It creates a local Conda
+environment containing Python 3.12, Java 17, native scientific packages, and
+the `paper-curation` CLI. Zotero Desktop, Claude Code authentication, PDFs,
+and generated output remain on the user's computer.
+
+Update an existing checkout and its environment with:
+
+```bash
+git pull --ff-only origin master
+conda env update -f environment.yml --prune
+conda activate py312
 ```
 
 `setup` creates or updates only local `config.json`. `inspect` and default `doctor` are read-only; only `doctor --network` checks external connections. Use `build --topic <topic>` for a full rebuild and `update --topic <topic>` for incremental collection and generation. Search, validation, repair, and public deployment are explicit:

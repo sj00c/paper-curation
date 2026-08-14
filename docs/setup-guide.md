@@ -2,16 +2,30 @@
 
 ## Install the official CLI
 
-Use Python 3.12 or newer and install the checkout as a package:
+Install Miniforge or another Conda distribution, then create the repository's
+local workstation environment:
 
 ```bash
-python -m venv .venv
-. .venv/bin/activate
-python -m pip install .
-python -m pip install -r requirements.txt
+git clone https://github.com/sj00c/paper-curation.git
+cd paper-curation
+conda env create -f environment.yml
+conda activate py312
 paper-curation setup
 paper-curation inspect
 paper-curation doctor --network
+```
+
+The environment file is a Conda YAML file, not Docker Compose. It installs
+Python 3.12, Java 17, native clustering dependencies, remaining pip
+dependencies, and this checkout in editable mode. Each user continues to use
+their host Zotero installation, Claude Code login, local PDFs, and browser.
+
+To update:
+
+```bash
+git pull --ff-only origin master
+conda env update -f environment.yml --prune
+conda activate py312
 ```
 
 `setup` creates or updates untracked local configuration. It is configuration-only: it does not build, publish, notify, or alter a remote corpus. `inspect` is read-only; use `doctor --network` only when checking configured external services.

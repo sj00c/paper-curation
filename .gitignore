@@ -12,6 +12,7 @@
 !config.example.json
 !.env.example
 !requirements.txt
+!environment.yml
 !wrangler.toml
 !CLAUDE.md
 !AGENTS.md
