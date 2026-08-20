@@ -21,3 +21,6 @@ where = ["src"]
 "paper_curation.rendering.network" = ["template.html"]
 "paper_curation.rendering.paper_page" = ["style.css"]
 "paper_curation.rendering.topic_page" = ["app.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["pipeline/tests"]

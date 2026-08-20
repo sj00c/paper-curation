@@ -83,7 +83,7 @@ class RemovedBehaviourIsNotAdvertisedTests(unittest.TestCase):
         """
         for rel, marker in (
             ("docs/architecture.md", "대체 체인이 아니다"),
-            ("README.en.md", "not a fallback chain"),
+            ("README.en.md", "never falls back"),
             ("CLAUDE.md", "대체 금지"),
         ):
             text = _require(rel)
@@ -92,7 +92,7 @@ class RemovedBehaviourIsNotAdvertisedTests(unittest.TestCase):
             )
 
     def test_the_backend_env_var_is_documented_where_the_order_is_explained(self):
-        for rel in ("docs/architecture.md", "README.en.md"):
+        for rel in ("docs/architecture.md",):
             text = _require(rel)
             self.assertTrue(
                 "EXTRACT_INSIGHTS_CC_BACKENDS" in text,

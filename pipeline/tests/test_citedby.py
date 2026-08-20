@@ -3191,6 +3191,25 @@ class TimelineFailureVisibilityTests(unittest.TestCase):
         self.assertIn("RuntimeError", errs[0])
         self.assertIn("boom", errs[0])
 
+    def test_narrative_survives_paperbanana_configuration_error(self):
+        """선택한 이미지 생성기가 미설정이어도 narrative 는 리포트로 돌아온다."""
+        from lib.citedby import timeline as TL
+        with patch.object(
+                TL, "build_narrative",
+                return_value=("method text", "caption", "독자용 narrative", [])), \
+             patch("lib.paperbanana.generate_diagram",
+                   side_effect=ValueError(
+                       "PaperBanana generation requires PAPERBANANA_DIR")):
+            r = TL.generate(
+                {"clusters": [{"name": "a", "count": 1, "citations": 0,
+                               "years": {}, "keywords": [], "titles": []}],
+                 "years": [2024], "total": 1},
+                candidates=1)
+        self.assertEqual(r.uri, "")
+        self.assertEqual(r.narrative, "method text")
+        self.assertEqual(r.overview, "독자용 narrative")
+        self.assertIn("PAPERBANANA_DIR", r.failure)
+
     def test_missing_paperbanana_names_itself(self):
         from lib.citedby import timeline as TL
         with patch.dict("sys.modules", {"lib.paperbanana": None}):

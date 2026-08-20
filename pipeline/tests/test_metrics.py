@@ -597,16 +597,5 @@ class PipelineWiringTests(unittest.TestCase):
         block = block[:block.index("}")]
         self.assertNotIn("run_metrics", block)
 
-    def test_run_full_forwards_the_flag(self):
-        src = (
-            PIPELINE_DIR.parent
-            / "src"
-            / "paper_curation"
-            / "orchestration"
-            / "legacy_run_full.py"
-        ).read_text(encoding="utf-8")
-        self.assertIn("--skip-metrics", src)
-
-
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -15,6 +15,7 @@ from .model import FailurePolicy, Plan, Step
 class ReceiptStatus(str, Enum):
     SUCCEEDED = "succeeded"
     SKIPPED = "skipped"
+    BLOCKED = "blocked"
     FAILED = "failed"
     TIMED_OUT = "timed-out"
 
@@ -54,22 +55,40 @@ class SubprocessRunner:
         executor: Executor | None = None,
         environment: Mapping[str, str] | None = None,
         cwd: str | None = None,
-        capabilities: frozenset[str] | set[str] | None = None,
+        selected_capabilities: frozenset[str] | set[str] | None = None,
+        selected_providers: Mapping[str, str] | None = None,
         capture_output: bool = True,
     ) -> None:
         self._executor = executor or _default_executor
         self._environment = dict(os.environ if environment is None else environment)
         self._cwd = cwd
-        self._capabilities = frozenset(capabilities or ())
+        self._selected_capabilities = frozenset(selected_capabilities or ())
+        self._selected_providers = dict(selected_providers or {})
+        if set(self._selected_providers) != set(self._selected_capabilities):
+            raise ValueError("each selected capability must bind to exactly one selected provider")
         self._capture_output = capture_output
 
     def run(self, step: Step) -> RunReceipt:
         """Run one step. Critical failures raise after a receipt is constructed."""
-        if step.capability_requirement and step.capability_requirement not in self._capabilities:
-            receipt = RunReceipt(
-                step, ReceiptStatus.SKIPPED, None,
-                detail=f"required capability unavailable: {step.capability_requirement}",
-            )
+        return self._run(
+            step,
+            capabilities=self._selected_capabilities,
+            providers=self._selected_providers,
+        )
+
+    def _run(
+        self,
+        step: Step,
+        *,
+        capabilities: frozenset[str],
+        providers: Mapping[str, str],
+    ) -> RunReceipt:
+        if not self._is_selected(
+            step,
+            capabilities=capabilities,
+            providers=providers,
+        ):
+            receipt = self._skipped_receipt(step)
             if step.failure_policy is FailurePolicy.CRITICAL:
                 raise StepExecutionError(receipt)
             return receipt
@@ -106,8 +125,69 @@ class SubprocessRunner:
         return receipt
 
     def run_plan(self, plan: Plan) -> tuple[RunReceipt, ...]:
-        """Run the plan in validated topological order, stopping on critical failure."""
-        return tuple(self.run(step) for step in plan.topological_steps())
+        """Run a plan, recording blocked dependents without invoking them."""
+        receipts: dict[str, RunReceipt] = {}
+        for step in plan.topological_steps():
+            failed_prerequisites = [
+                receipts[name]
+                for name in step.prerequisites
+                if receipts[name].status is not ReceiptStatus.SUCCEEDED
+            ]
+            if failed_prerequisites:
+                receipts[step.name] = RunReceipt(
+                    step,
+                    ReceiptStatus.BLOCKED,
+                    None,
+                    detail="blocked by prerequisite: " + ", ".join(
+                        f"{receipt.step.name} ({receipt.status.value})"
+                        for receipt in sorted(failed_prerequisites, key=lambda receipt: receipt.step.name)
+                    ),
+                )
+                continue
+            if not self._is_selected(
+                step,
+                capabilities=plan.selected_capabilities,
+                providers=plan.selected_providers,
+            ):
+                receipts[step.name] = self._skipped_receipt(step)
+                continue
+            try:
+                receipts[step.name] = self._run(
+                    step,
+                    capabilities=plan.selected_capabilities,
+                    providers=plan.selected_providers,
+                )
+            except StepExecutionError as exc:
+                receipts[step.name] = exc.receipt
+        return tuple(receipts[step.name] for step in plan.topological_steps())
+
+    @staticmethod
+    def _is_selected(
+        step: Step,
+        *,
+        capabilities: frozenset[str],
+        providers: Mapping[str, str],
+    ) -> bool:
+        if step.capability_requirement is None:
+            return True
+        return (
+            step.capability_requirement in capabilities
+            and step.provider_requirement is not None
+            and providers.get(step.capability_requirement) == step.provider_requirement
+        )
+
+    @staticmethod
+    def _skipped_receipt(step: Step) -> RunReceipt:
+        if step.capability_requirement is None:
+            detail = ""
+        elif step.provider_requirement is None:
+            detail = f"required capability unavailable: {step.capability_requirement}"
+        else:
+            detail = (
+                "required capability/provider unavailable: "
+                f"{step.capability_requirement}/{step.provider_requirement}"
+            )
+        return RunReceipt(step, ReceiptStatus.SKIPPED, None, detail=detail)
 
 
 def _as_text(value: object) -> str:

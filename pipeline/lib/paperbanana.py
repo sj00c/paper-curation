@@ -11,37 +11,51 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from config_loader import get_paperbanana_dir
 
-_pb_dir = get_paperbanana_dir()
-if not _pb_dir:
-    raise ValueError(
-        "paperbanana_dir not set. "
-        "Set it in config.json or PAPERBANANA_DIR env var. "
-        "Clone from: https://github.com/dwzhu-pku/PaperBanana"
-    )
-PAPERBANANA_DIR = Path(_pb_dir)
+def _resolve_paperbanana_dir() -> Path:
+    """Return a configured PaperBanana checkout when generation is requested."""
+    configured = os.environ.get("PAPERBANANA_DIR", "").strip()
+    if not configured:
+        pipeline_dir = str(Path(__file__).resolve().parent.parent)
+        if pipeline_dir not in sys.path:
+            sys.path.insert(0, pipeline_dir)
+        from config_loader import get_paperbanana_dir
+        configured = str(get_paperbanana_dir() or "").strip()
+    if not configured:
+        raise ValueError(
+            "PaperBanana generation requires PAPERBANANA_DIR or "
+            "paperbanana_dir in config.json. Clone it from "
+            "https://github.com/dwzhu-pku/PaperBanana"
+        )
+
+    paperbanana_dir = Path(configured).expanduser().resolve()
+    if not paperbanana_dir.is_dir():
+        raise ValueError(
+            f"PaperBanana directory does not exist: {paperbanana_dir}. "
+            "Set PAPERBANANA_DIR or paperbanana_dir in config.json to a "
+            "PaperBanana checkout."
+        )
+    return paperbanana_dir
 
 
-def _ensure_path():
+def _ensure_path(paperbanana_dir: Path):
     """Add PaperBanana to sys.path if not already there."""
-    if str(PAPERBANANA_DIR) not in sys.path:
-        sys.path.insert(0, str(PAPERBANANA_DIR))
+    if str(paperbanana_dir) not in sys.path:
+        sys.path.insert(0, str(paperbanana_dir))
 
 
-def _ensure_config():
+def _ensure_config(paperbanana_dir: Path):
     """Copy model_config.template.yaml to model_config.yaml if missing."""
-    configs_dir = PAPERBANANA_DIR / "configs"
+    configs_dir = paperbanana_dir / "configs"
     config_path = configs_dir / "model_config.yaml"
     template_path = configs_dir / "model_config.template.yaml"
     if not config_path.exists() and template_path.exists():
         shutil.copy2(template_path, config_path)
 
 
-def _ensure_dataset(task_name: str = "diagram"):
+def _ensure_dataset(paperbanana_dir: Path, task_name: str = "diagram"):
     """Download PaperBananaBench reference data from HuggingFace if not present."""
-    data_dir = PAPERBANANA_DIR / "data" / "PaperBananaBench" / task_name
+    data_dir = paperbanana_dir / "data" / "PaperBananaBench" / task_name
     ref_path = data_dir / "ref.json"
     images_dir = data_dir / "images"
     if ref_path.exists() and images_dir.exists():
@@ -54,7 +68,7 @@ def _ensure_dataset(task_name: str = "diagram"):
             "dwzhu/PaperBananaBench",
             repo_type="dataset",
             allow_patterns=[f"{task_name}/*"],
-            local_dir=str(PAPERBANANA_DIR / "data" / "PaperBananaBench"),
+            local_dir=str(paperbanana_dir / "data" / "PaperBananaBench"),
         )
     except ImportError:
         logger.warning("huggingface_hub not installed — skipping dataset download, "
@@ -162,15 +176,16 @@ def generate_diagram(method: str, caption: str,
     # before that transition so generated images stay in the requested project path.
     resolved_output = _resolve_output_path(output_path)
     try:
-        _ensure_path()
-        os.chdir(str(PAPERBANANA_DIR))
-        _ensure_config()
+        paperbanana_dir = _resolve_paperbanana_dir()
+        _ensure_path(paperbanana_dir)
+        os.chdir(str(paperbanana_dir))
+        _ensure_config(paperbanana_dir)
 
         # Download reference dataset for auto retrieval
         if retrieval_setting == "auto":
-            _ensure_dataset("diagram")
+            _ensure_dataset(paperbanana_dir, "diagram")
             # If dataset still not available, fall back to none
-            ref_path = PAPERBANANA_DIR / "data" / "PaperBananaBench" / "diagram" / "ref.json"
+            ref_path = paperbanana_dir / "data" / "PaperBananaBench" / "diagram" / "ref.json"
             if not ref_path.exists():
                 retrieval_setting = "none"
                 logger.info("Reference data not available, using retrieval_setting=none")
@@ -190,7 +205,7 @@ def generate_diagram(method: str, caption: str,
             split_name="demo",
             exp_mode=exp_mode,
             retrieval_setting=retrieval_setting,
-            work_dir=PAPERBANANA_DIR,
+            work_dir=paperbanana_dir,
         )
 
         processor = PaperVizProcessor(

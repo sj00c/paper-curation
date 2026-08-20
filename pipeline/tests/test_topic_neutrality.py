@@ -2,14 +2,21 @@
 
 import os
 import sys
+import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 PIPELINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PIPELINE not in sys.path:
     sys.path.insert(0, PIPELINE)
 
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+
 import review_to_html as R  # noqa: E402
+from paper_curation.config.models import AppConfig  # noqa: E402
+from paper_curation.workspace import Workspace  # noqa: E402
 
 
 class ThemeNeutralityTests(unittest.TestCase):
@@ -40,6 +47,47 @@ class ThemeNeutralityTests(unittest.TestCase):
     def test_unknown_topic_accent_matches_topic_index_default(self):
         """build_topic_index 의 미지-토픽 기본 accent 와 같아야 사이트 안에서 색이 안 갈린다."""
         self.assertEqual(R.theme_for("bioml")["accent"], "#3B82F6")
+
+
+class SyntheticTopicWorkspaceTests(unittest.TestCase):
+    """Configured aliases and workspaces, not known topic-name blacklists, define behavior."""
+
+    TOPICS = ("synthetic-graph-2049", "synthetic-field-notes-2051")
+
+    def test_synthetic_topics_share_the_same_config_and_workspace_contract(self):
+        with tempfile.TemporaryDirectory() as temporary_root:
+            workspace = Workspace(Path(temporary_root))
+            for topic in self.TOPICS:
+                with self.subTest(topic=topic):
+                    config = AppConfig.from_mapping({
+                        "workspace": {"root": temporary_root},
+                        "source": {
+                            "provider": "zotero",
+                            "transport": "local-sqlite",
+                            "collections": {topic: f"Collection for {topic}"},
+                            "sqlite_path": str(Path(temporary_root) / "zotero.sqlite"),
+                        },
+                        "core": {
+                            "review": {
+                                "provider": "local-model",
+                                "model": "configured-model",
+                                "local_endpoint": "http://127.0.0.1:11434",
+                            }
+                        },
+                        "features": {},
+                        "search_keywords": {
+                            topic: {"primary": ["synthetic research"], "secondary": []}
+                        },
+                        "topic_profiles": {topic: {"title": f"Profile for {topic}"}},
+                        "publication": {"mode": "local", "base_url": ""},
+                    })
+                    self.assertEqual(config.source.collections[topic], f"Collection for {topic}")
+                    self.assertEqual(
+                        config.search_keywords[topic].primary,
+                        ("synthetic research",),
+                    )
+                    self.assertEqual(workspace.papers, Path(temporary_root) / "papers")
+                    self.assertEqual(R.theme_for(topic)["back_href"], f"../../{topic}/index.html")
 
 
 class DetectTopicFallbackTests(unittest.TestCase):

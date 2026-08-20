@@ -2,61 +2,93 @@
 
 ## Install the official CLI
 
-Install Miniforge or another Conda distribution, then create the repository's
-local workstation environment:
+Install a Conda distribution, then create the local workstation environment:
 
 ```bash
-git clone https://github.com/sj00c/paper-curation.git
+git clone <fork-url>
 cd paper-curation
 conda env create -f environment.yml
 conda activate py312
-paper-curation setup
-paper-curation inspect
-paper-curation doctor --network
 ```
 
-The environment file is a Conda YAML file, not Docker Compose. It installs
-Python 3.12, Java 17, native clustering dependencies, remaining pip
-dependencies, and this checkout in editable mode. Each user continues to use
-their host Zotero installation, Claude Code login, local PDFs, and browser.
+This is a host installation, not Docker. Zotero Desktop, authentication state, local PDFs, and all generated state remain local.
 
-To update:
+## Create configuration from a strict input
+
+Use `config.example.json` as a schema-shaped reference, then create an untracked strict input configuration for this installation. Its keys, values, and cross-field requirements are validated; unknown keys and invalid provider, transport, or publication combinations are rejected.
+
+Preview setup first:
 
 ```bash
-git pull --ff-only origin master
-conda env update -f environment.yml --prune
-conda activate py312
+paper-curation setup --input strict-input-config.json --config config.json
+paper-curation setup --input strict-input-config.json --config config.json --execute
 ```
 
-`setup` creates or updates untracked local configuration. It is configuration-only: it does not build, publish, notify, or alter a remote corpus. `inspect` is read-only; use `doctor --network` only when checking configured external services.
+The preview does not write. The execute command writes the target configuration and its workspace directories. Add `--replace` only when deliberately replacing an existing target configuration.
 
-## Local configuration and security
-
-Keep `config.json`, `.env`, credential files, PDF caches, databases, and generated corpus data local and untracked. Add only the integrations required by this installation. Missing optional credentials disable their feature rather than selecting another provider. Do not place credentials in documentation, static output, browser storage, or URLs.
-
-Existing installations can evolve configuration safely:
+For a prior `config.json`, preview migration before applying it:
 
 ```bash
 paper-curation migrate --config config.json
 paper-curation migrate --config config.json --execute
 ```
 
-Review the preview before execution. The migration preserves recognized old local data paths and public URL values, and reports values it cannot migrate.
+Migration preserves recognized old local-data paths and public URLs and reports unsupported values.
 
-## First operation
+## Select local Zotero access and Core review
+
+Set `source.provider` to Zotero and choose one explicit transport:
+
+- `local-sqlite` reads the local Zotero SQLite library and requires `source.sqlite_path`.
+- `zotero-storage` uses Zotero Storage and requires an empty `source.sqlite_path`.
+
+Map each local topic alias in `source.collections`; commands use that alias as `--topic`. The configured workspace owns `papers/`, `.cache/`, `.staging/`, and `site/`. They are local, untracked state; do not add corpus data or generated output to the repository.
+
+Core requires exactly one selected `core.review.provider` and an explicit `core.review.model`. A failure is reported for that pair and never causes a fallback. An enhancement with `enabled: true` is rejected unless its selected adapter is installed. Credentials merely permit a selected provider to run; they never enable or select one.
+
+## First local run
+
+Check local configuration, then build, validate, and serve:
 
 ```bash
-paper-curation update --topic <topic>
-paper-curation validate --topic <topic>
-paper-curation serve --topic <topic>
+paper-curation inspect --config config.json
+paper-curation doctor --config config.json
+paper-curation build --config config.json
+paper-curation validate --config config.json
+paper-curation serve --config config.json
 ```
 
-Use `build --topic <topic>` for a full rebuild. `query --topic <topic> --query "…"` reads the existing index. `repair --topic <topic>` previews recovery; add `--execute` only after review. `deploy --topic <topic>` is an explicit public operation and never runs automatically after build or update.
+`inspect` and default `doctor` are read-only. Use `paper-curation doctor --config config.json --network` only to check configured external services. `serve` is local by default; use its `--dry-run`, `--host`, `--port`, or `--public-bind` options only when those explicit behaviors are needed.
 
-## Legacy troubleshooting
-
-`pipeline/run_full.py` remains a compatibility wrapper for existing automation, so it has not been removed. New workflows must use `paper-curation`; invoke the wrapper only to reproduce an advanced legacy command:
+Use update selection and preview before writing Core output. A successful Core run has a complete review, rendered page, and receipt; partial output does not count as success:
 
 ```bash
-python pipeline/run_full.py --topic <topic> --mode curate --source zotero
+paper-curation update --config config.json --topic <topic-alias> --dry-run
+paper-curation update --config config.json --topic <topic-alias> --paper <record-id> --attachment <record-id>=<attachment-id>
 ```
+
+`query` is local lexical search over completed, verified Core output:
+
+```bash
+paper-curation query --config config.json --topic <topic-alias> --query "research question" --limit 10
+```
+
+Repair also previews before it writes:
+
+```bash
+paper-curation repair --config config.json
+paper-curation repair --config config.json --execute
+```
+
+## Public deployment and compatibility
+
+Cloudflare publication is explicit and separate from building or updating:
+
+```bash
+paper-curation deploy --config config.json
+paper-curation deploy --config config.json --execute
+```
+
+The preview verifies the configured public action; execution requires explicit public Cloudflare configuration and local authentication. No build-time deployment occurs.
+
+`pipeline/run_full.py` is only a filename-compatibility wrapper for `paper-curation`; it accepts official CLI arguments and owns no historical modes.

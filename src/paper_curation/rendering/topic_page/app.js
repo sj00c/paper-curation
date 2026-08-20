@@ -1022,10 +1022,10 @@ function toggleTopic(id) {
       ultra:  { max_tokens: 20000, thinking: 6000, ko: '20~40개 문단으로 심층적으로 (약 4500~9000자)', en: '20-40 in-depth paragraphs (roughly 3500-7000 words)' },
     };
 
-    // ── Backend detection + model mapping ─────────────────────────────
+    // ── Backend detection + explicit model mapping ────────────────────
     // Web visitors give us ONE key. We sniff the prefix to pick the
-    // backend, then map the selected tier (fast / smart) to that
-    // provider's equivalent model.
+    // backend. Model IDs are installation configuration supplied in page
+    // memory; this packaged asset contains no provider/model defaults.
     function detectBackend(key) {
       if (!key) return '';
       const k = String(key).trim();
@@ -1050,34 +1050,31 @@ function toggleTopic(id) {
                           '서버가 Claude 구독(OAuth)으로 도는 경우 구울 키가 없는 것이 정상이며, ' +
                           '구독 자격증명은 보안상 페이지에 포함되지 않습니다.' };
       }
-      if (!detectBackend(key)) {
+      const backend = detectBackend(key);
+      if (!backend) {
         return { ok: false, reason: 'bad-format',
                  message: '알 수 없는 API key 형식입니다 (Anthropic sk-ant- / OpenAI sk- / Google AIza…/AQ.…).' };
+      }
+      if (!resolveModel(backend, 'fast') || !resolveModel(backend, 'smart')) {
+        return { ok: false, reason: 'no-model',
+                 message: 'Deep Research 비활성 — 이 provider의 모델이 설치 설정에 명시되지 않았습니다.' };
       }
       return { ok: true, reason: '', message: '' };
     }
 
-    const MODEL_MAP = {
-      anthropic: { fast: 'claude-sonnet-5', smart: 'claude-opus-5', top: 'claude-opus-5' },
-      openai:    { fast: 'gpt-4.1',          smart: 'gpt-5.5',           top: 'gpt-5.5' },
-      google:    { fast: 'gemini-3.1-flash-lite', smart: 'gemini-3.5-flash', top: 'gemini-3.5-flash' },
-    };
+    const MODEL_MAP = (
+      window.PAPER_CURATION_MODELS &&
+      typeof window.PAPER_CURATION_MODELS === 'object'
+    ) ? window.PAPER_CURATION_MODELS : {};
 
     function resolveModel(backend, tier) {
       const m = MODEL_MAP[backend];
       if (!m) return '';
-      if (tier === 'top') return m.top || m.smart;
-      return tier === 'smart' ? m.smart : m.fast;
+      const selected = tier === 'top'
+        ? (m.top || m.smart)
+        : (tier === 'smart' ? m.smart : m.fast);
+      return typeof selected === 'string' ? selected.trim() : '';
     }
-
-    // Short, human-friendly model labels for the Fast/Smart dropdown so
-    // the user sees what they're picking. Keyed by the same backend
-    // names detectBackend() returns.
-    const MODEL_LABEL = {
-      anthropic: { fast: 'Sonnet 5', smart: 'Opus 5', top: 'Opus 5' },
-      openai:    { fast: 'GPT-4.1',   smart: 'GPT-5.5',    top: 'GPT-5.5' },
-      google:    { fast: 'Gemini 3.1 Flash-Lite', smart: 'Gemini 3.5 Flash', top: 'Gemini 3.5 Flash' },
-    };
 
     function updateDeepModelLabels() {
       // Refresh the Fast/Smart dropdown labels based on whatever key is
@@ -1088,15 +1085,15 @@ function toggleTopic(id) {
       const key = _LLM_KEY || _ANTHROPIC_KEY || _OPENAI_KEY ||
         (window._GEMINI_KEY || '');
       const backend = detectBackend(key);
-      const labels = MODEL_LABEL[backend];
+      const labels = MODEL_MAP[backend];
       const fastOpt = sel.querySelector('option[value="fast"]');
       const smartOpt = sel.querySelector('option[value="smart"]');
       if (fastOpt) fastOpt.textContent = labels
         ? 'Fast (cost: ' + labels.fast + ')'
-        : 'Fast (cost: 모델 자동 선택)';
+        : 'Fast (model not configured)';
       if (smartOpt) smartOpt.textContent = labels
         ? 'Smart (quality: ' + labels.smart + ')'
-        : 'Smart (quality: 모델 자동 선택)';
+        : 'Smart (model not configured)';
     }
 
     function deepWebSearchOn() {

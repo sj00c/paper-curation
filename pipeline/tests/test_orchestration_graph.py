@@ -2,11 +2,9 @@
 
 import subprocess
 import unittest
-from unittest.mock import patch
-from pathlib import Path
-from tempfile import TemporaryDirectory
 
 from paper_curation.orchestration import (
+    CostClass,
     FailurePolicy,
     Plan,
     PlanValidationError,
@@ -16,7 +14,6 @@ from paper_curation.orchestration import (
     StepExecutionError,
     SubprocessRunner,
 )
-from paper_curation.orchestration.planner import Planner
 
 
 class OrchestrationGraphTests(unittest.TestCase):
@@ -59,88 +56,63 @@ class OrchestrationGraphTests(unittest.TestCase):
         with self.assertRaises(StepExecutionError):
             runner.run(step)
 
-    def test_build_and_update_preserve_the_friendly_cli_contract(self):
-        planner = Planner(project_root=__import__("pathlib").Path("/checkout"), python="python")
-        build_plan = planner.plan("build", topic="arbitrary-topic")
-        update_plan = planner.plan("update", topic="arbitrary-topic")
-        self.assertEqual(
-            [step.name for step in build_plan.topological_steps()],
-            ["inspect", "run-full"],
-        )
-        build = build_plan.steps[-1].argv
-        update = update_plan.steps[-1].argv
-        self.assertEqual(
-            build,
-            (
-                "python", "-u", "/checkout/pipeline/run_full.py",
-                "--topic", "arbitrary-topic", "--mode", "rebuild", "--yes",
-            ),
-        )
-        self.assertEqual(
-            update,
-            (
-                "python", "-u", "/checkout/pipeline/run_full.py",
-                "--topic", "arbitrary-topic", "--mode", "curate",
-                "--source", "zotero",
-            ),
-        )
-
-    def test_installed_cli_discovers_the_checkout_from_cwd(self):
-        with TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            (root / "pipeline").mkdir()
-            (root / "pipeline" / "run_full.py").write_text("", encoding="utf-8")
-            with patch("paper_curation.orchestration.planner.Path.cwd", return_value=root):
-                planner = Planner(python="python")
-            self.assertEqual(planner.project_root, root.resolve())
-
-    def test_query_and_legacy_effects_follow_effective_arguments(self):
-        planner = Planner(project_root=Path("/checkout"), python="python")
-        hybrid = planner.plan("query", topic="topic", query="q").steps[0]
-        lexical = planner.plan(
-            "query", topic="topic", query="q", legacy_args=("--mode", "bm25")
-        ).steps[0]
-        deploy = planner.plan(
-            "legacy-run-full",
-            topic="topic",
-            legacy_args=("--mode", "deploy"),
-        )
-        self.assertIn(SideEffect.NETWORK_READ, hybrid.declared_effects)
-        self.assertNotIn(SideEffect.NETWORK_READ, lexical.declared_effects)
-        self.assertIn(SideEffect.PUBLICATION, deploy.steps[0].declared_effects)
-        self.assertFalse(deploy.local_only)
-
-    def test_friendly_commands_reject_axis_overrides(self):
-        planner = Planner(project_root=Path("/checkout"), python="python")
-        with self.assertRaises(ValueError):
-            planner.plan(
-                "update",
-                topic="topic",
-                legacy_args=("--mode", "deploy"),
-            )
-        with self.assertRaises(ValueError):
-            planner.plan(
+    def test_plan_requires_one_exact_provider_per_selected_capability(self):
+        with self.assertRaises(PlanValidationError):
+            Plan(
                 "build",
-                topic="topic",
-                legacy_args=("--source=web",),
+                (Step("review", ("review",)),),
+                selected_capabilities=frozenset({"review"}),
             )
 
-    def test_effective_options_accept_equals_and_last_value_wins(self):
-        planner = Planner(project_root=Path("/checkout"), python="python")
-        lexical = planner.plan(
-            "query",
-            topic="topic",
-            query="q",
-            legacy_args=("--mode=hybrid", "--mode", "bm25"),
+    def test_unselected_provider_is_not_executed(self):
+        calls = []
+        plan = Plan(
+            "build",
+            (Step(
+                "review", ("review",),
+                capability_requirement="review",
+                provider_requirement="selected",
+            ),),
+            selected_capabilities=frozenset({"review"}),
+            selected_providers={"review": "other"},
         )
-        deploy = planner.plan(
-            "legacy-run-full",
-            topic="topic",
-            legacy_args=("--mode=reclassify", "--mode=deploy"),
-        )
-        self.assertNotIn(SideEffect.NETWORK_READ, lexical.steps[0].declared_effects)
-        self.assertIn(SideEffect.PUBLICATION, deploy.steps[0].declared_effects)
+        runner = SubprocessRunner(executor=lambda argv, **kwargs: calls.append(argv))
+        receipts = runner.run_plan(plan)
+        self.assertEqual(receipts[0].status, ReceiptStatus.SKIPPED)
+        self.assertEqual(calls, [])
 
+    def test_metered_step_requires_an_exact_capability_provider_binding(self):
+        with self.assertRaises(PlanValidationError):
+            Step("review", ("review",), cost_class=CostClass.METERED)
+
+    def test_optional_failure_blocks_dependent_without_executing_it(self):
+        calls = []
+        plan = Plan("build", (
+            Step("optional", ("optional",), failure_policy=FailurePolicy.OPTIONAL),
+            Step("dependent", ("dependent",), prerequisites=frozenset({"optional"})),
+        ))
+        runner = SubprocessRunner(
+            executor=lambda argv, **kwargs: calls.append(argv) or subprocess.CompletedProcess(argv, 1)
+        )
+        receipts = runner.run_plan(plan)
+        self.assertEqual([receipt.status for receipt in receipts], [
+            ReceiptStatus.FAILED, ReceiptStatus.BLOCKED,
+        ])
+        self.assertEqual(calls, [("optional",)])
+        self.assertIn("optional (failed)", receipts[1].detail)
+
+    def test_plan_records_critical_failure_and_blocks_its_dependent(self):
+        plan = Plan("build", (
+            Step("critical", ("critical",)),
+            Step("dependent", ("dependent",), prerequisites=frozenset({"critical"})),
+        ))
+        runner = SubprocessRunner(
+            executor=lambda argv, **kwargs: subprocess.CompletedProcess(argv, 1)
+        )
+        receipts = runner.run_plan(plan)
+        self.assertEqual([receipt.status for receipt in receipts], [
+            ReceiptStatus.FAILED, ReceiptStatus.BLOCKED,
+        ])
 
 if __name__ == "__main__":
     unittest.main()

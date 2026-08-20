@@ -5,6 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 import re
 from typing import Literal
+import unicodedata
+
+from .author_identity import Author
 
 EvidenceGrade = Literal["primary", "secondary", "derived"]
 
@@ -18,7 +21,15 @@ def canonical_doi(value: str) -> str:
     doi = value.strip()
     doi = re.sub(r"^https?://(?:dx\.)?doi\.org/", "", doi, flags=re.IGNORECASE)
     doi = re.sub(r"^doi:\s*", "", doi, flags=re.IGNORECASE)
-    return doi.casefold()
+    doi = doi.casefold()
+    if not doi:
+        return ""
+    if (
+        not re.fullmatch(r"10\.\d+/\S+", doi)
+        or any(marker in doi for marker in ("xxxx", "your-doi", "insert-doi", "placeholder", "{", "}", "<", ">"))
+    ):
+        raise BibliographyValidationError("DOI is invalid or a placeholder")
+    return doi
 
 
 def canonical_arxiv_id(value: str) -> str:
@@ -32,7 +43,7 @@ def canonical_arxiv_id(value: str) -> str:
 
 def canonical_title(value: str) -> str:
     """Return the conservative title identity used only as a last dedupe key."""
-    return " ".join(value.casefold().split())
+    return " ".join(unicodedata.normalize("NFC", value).casefold().split())
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,6 +61,18 @@ class SourceEvidence:
             raise BibliographyValidationError("evidence grade is invalid")
 
 
+def stable_evidence_union(*evidence_groups: tuple[SourceEvidence, ...]) -> tuple[SourceEvidence, ...]:
+    """Deduplicate exact evidence while retaining the first asserted order."""
+    result: list[SourceEvidence] = []
+    seen: set[SourceEvidence] = set()
+    for evidence_group in evidence_groups:
+        for evidence in evidence_group:
+            if evidence not in seen:
+                result.append(evidence)
+                seen.add(evidence)
+    return tuple(result)
+
+
 @dataclass(frozen=True, slots=True)
 class Institution:
     """An institution asserted for a bibliography record."""
@@ -63,6 +86,78 @@ class Institution:
     def __post_init__(self) -> None:
         if not self.name.strip():
             raise BibliographyValidationError("institution name must not be empty")
+        object.__setattr__(self, "evidence", stable_evidence_union(self.evidence))
+
+
+@dataclass(frozen=True, slots=True)
+class BibliographyField:
+    """One named metadata assertion, retaining its display value."""
+
+    name: str
+    value: str
+
+    def __post_init__(self) -> None:
+        if not self.name.strip() or not self.value.strip():
+            raise BibliographyValidationError("bibliography field name and value must not be empty")
+
+
+@dataclass(frozen=True, slots=True)
+class FieldEvidence:
+    """Evidence supporting one field assertion."""
+
+    field: BibliographyField
+    evidence: tuple[SourceEvidence, ...] = ()
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "evidence", stable_evidence_union(self.evidence))
+
+
+def merge_field_evidence(*assertions: FieldEvidence) -> tuple[FieldEvidence, ...]:
+    """Union exact duplicate assertions without selecting between different values."""
+    positions: dict[BibliographyField, int] = {}
+    merged: list[FieldEvidence] = []
+    for assertion in assertions:
+        position = positions.get(assertion.field)
+        if position is None:
+            positions[assertion.field] = len(merged)
+            merged.append(assertion)
+            continue
+        current = merged[position]
+        merged[position] = FieldEvidence(
+            field=current.field,
+            evidence=stable_evidence_union(current.evidence, assertion.evidence),
+        )
+    return tuple(merged)
+
+
+@dataclass(frozen=True, slots=True)
+class MetadataConflict:
+    """Incompatible assertions for one field; no winner is inferred."""
+
+    field_name: str
+    assertions: tuple[FieldEvidence, ...]
+
+    def __post_init__(self) -> None:
+        if not self.field_name.strip() or len(self.assertions) < 2:
+            raise BibliographyValidationError("metadata conflicts require a field and two assertions")
+        if any(assertion.field.name != self.field_name for assertion in self.assertions):
+            raise BibliographyValidationError("conflict assertions must name the conflicted field")
+        if len({assertion.field.value for assertion in self.assertions}) != len(self.assertions):
+            raise BibliographyValidationError("conflict assertions must have distinct values")
+
+
+@dataclass(frozen=True, slots=True)
+class AuthorInstitutionLink:
+    """A record-local author-to-institution assertion using positional indices."""
+
+    author_index: int
+    institution_index: int
+    evidence: tuple[SourceEvidence, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.author_index < 0 or self.institution_index < 0:
+            raise BibliographyValidationError("author and institution indices must not be negative")
+        object.__setattr__(self, "evidence", stable_evidence_union(self.evidence))
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,7 +166,7 @@ class BibliographyRecord:
 
     key: str
     title: str
-    authors: tuple[str, ...] = ()
+    authors: tuple[Author, ...] = ()
     doi: str = ""
     arxiv_id: str = ""
     publication_title: str = ""
@@ -87,6 +182,44 @@ class BibliographyRecord:
             raise BibliographyValidationError("record title must not be empty")
         object.__setattr__(self, "doi", canonical_doi(self.doi))
         object.__setattr__(self, "arxiv_id", canonical_arxiv_id(self.arxiv_id))
+        if any(not isinstance(author, Author) for author in self.authors):
+            raise BibliographyValidationError("record authors must be Author values")
+        object.__setattr__(self, "authors", tuple(self.authors))
+        object.__setattr__(self, "institutions", tuple(self.institutions))
+        object.__setattr__(self, "evidence", stable_evidence_union(self.evidence))
+
+    @property
+    def identity_keys(self) -> frozenset[str]:
+        """Identifiers used to merge equivalent bibliography records."""
+        keys = set()
+        if self.doi:
+            keys.add(f"doi:{self.doi}")
+        if self.arxiv_id:
+            keys.add(f"arxiv:{self.arxiv_id}")
+        if not keys:
+            keys.add(f"title:{canonical_title(self.title)}")
+        return frozenset(keys)
+
+
+@dataclass(frozen=True, slots=True)
+class MergedBibliography:
+    """A record with retained field assertions, conflicts, and local author links."""
+
+    record: BibliographyRecord
+    field_evidence: tuple[FieldEvidence, ...] = ()
+    conflicts: tuple[MetadataConflict, ...] = ()
+    author_institution_links: tuple[AuthorInstitutionLink, ...] = ()
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "field_evidence", merge_field_evidence(*self.field_evidence))
+        object.__setattr__(self, "conflicts", tuple(self.conflicts))
+        links = tuple(self.author_institution_links)
+        for link in links:
+            if link.author_index >= len(self.record.authors):
+                raise BibliographyValidationError("author link index is outside the record")
+            if link.institution_index >= len(self.record.institutions):
+                raise BibliographyValidationError("institution link index is outside the record")
+        object.__setattr__(self, "author_institution_links", links)
 
 
 @dataclass(frozen=True, slots=True)
@@ -103,15 +236,18 @@ class CitingPaper:
             raise BibliographyValidationError("citing paper title must not be empty")
         object.__setattr__(self, "doi", canonical_doi(self.doi))
         object.__setattr__(self, "arxiv_id", canonical_arxiv_id(self.arxiv_id))
+        object.__setattr__(self, "evidence", stable_evidence_union(self.evidence))
 
     @property
     def identity_keys(self) -> frozenset[str]:
         """Identifiers used to merge equivalent records from a selected source."""
-        keys = {f"title:{canonical_title(self.title)}"}
+        keys = set()
         if self.doi:
             keys.add(f"doi:{self.doi}")
         if self.arxiv_id:
             keys.add(f"arxiv:{self.arxiv_id}")
+        if not keys:
+            keys.add(f"title:{canonical_title(self.title)}")
         return frozenset(keys)
 
 

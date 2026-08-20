@@ -371,65 +371,8 @@ class CliWiringTests(unittest.TestCase):
         with self.assertRaises(SystemExit):
             self._dispatch(["--unclassified", "include"])
 
-class OrchestratorUnclassifiedGuardTests(unittest.TestCase):
-    """run_full / run_update_force 가 hdbscan 경로에서 --unclassified 를 조용히
-    버리지 않고 멈추는가.
-
-    classify_papers 단독은 그 조합을 거부하지만, 오케스트레이터는 zotero 경로에서만
-    --unclassified 를 자식 커맨드에 실었다. 그래서 `run_full --unclassified include`
-    (기본 hdbscan) 은 거부도 전달도 아닌 침묵 드롭이었다 — 사용자가 타이핑하는
-    진입점에서 계약이 깨진다. 두 오케스트레이터 모두 진입 직후 fail-fast 한다.
-    """
-
-    def _run_full(self, argv):
-        from unittest.mock import patch
-
-        import run_full
-        with patch.object(sys, "argv", ["run_full.py", *argv]):
-            run_full.main()
-
-    def test_run_full_rejects_unclassified_on_hdbscan(self):
-        with self.assertRaises(SystemExit):
-            self._run_full(["--topic", "t", "--mode", "reclassify",
-                            "--unclassified", "include", "--dry-run"])
-
-    def test_run_full_allows_unclassified_with_zotero(self):
-        # zotero + include is valid; dry-run prints the plan and returns without raising.
-        from unittest.mock import patch
-
-        import run_full
-        argv = ["run_full.py", "--topic", "t", "--mode", "reclassify",
-                "--classify-source", "zotero", "--unclassified", "include", "--dry-run"]
-        with patch.object(sys, "argv", argv):
-            run_full.main()  # must not raise
-
-    def test_run_full_default_still_works(self):
-        from unittest.mock import patch
-
-        import run_full
-        argv = ["run_full.py", "--topic", "t", "--mode", "reclassify", "--dry-run"]
-        with patch.object(sys, "argv", argv):
-            run_full.main()  # must not raise
-
-    def test_run_full_rejects_classify_flags_on_nonclassifying_modes(self):
-        """f-3: deploy/validate/audit/... never classify, so classify flags there would
-        vanish silently — the same defect class the guard exists to close, via mode."""
-        for mode in ("deploy", "validate", "audit"):
-            with self.subTest(mode=mode):
-                with self.assertRaises(SystemExit):
-                    self._run_full(["--topic", "t", "--mode", mode,
-                                    "--classify-source", "zotero", "--dry-run"])
-
-    def test_run_full_allows_classify_source_on_classifying_modes(self):
-        from unittest.mock import patch
-
-        import run_full
-        for mode, extra in (("reclassify", []), ("curate", ["--source", "zotero"])):
-            with self.subTest(mode=mode):
-                argv = ["run_full.py", "--topic", "t", "--mode", mode,
-                        "--classify-source", "zotero", "--dry-run", *extra]
-                with patch.object(sys, "argv", argv):
-                    run_full.main()  # must not raise
+class OperatorExtensionUnclassifiedGuardTests(unittest.TestCase):
+    """The explicit legacy operator extension still rejects dropped flags."""
 
     def test_run_update_force_rejects_unclassified_on_hdbscan(self):
         """blk-1: behaviorally bind run_update_force's guard, not just its source text.
@@ -451,7 +394,7 @@ class OrchestratorUnclassifiedGuardTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 run_update_force.main()
 
-    def test_guard_raises_in_both_orchestrators(self):
+    def test_guard_raises_in_operator_extension(self):
         """소스에 조건뿐 아니라 `raise` 까지 있어야 한다.
 
         기존 정규식은 조건 두 줄만 매칭해서, `raise SystemExit` 를 `pass` 로 바꾼
@@ -462,12 +405,7 @@ class OrchestratorUnclassifiedGuardTests(unittest.TestCase):
         pattern = re.compile(
             r'unclassified.*!=.*"skip"[\s\S]{0,200}?'
             r'classify_source.*!=.*"zotero"[\s\S]{0,200}?raise SystemExit')
-        sources = {
-            "run_full": os.path.join(
-                os.path.dirname(PIPELINE), "src", "paper_curation",
-                "orchestration", "legacy_run_full.py"),
-            "run_update_force": os.path.join(PIPELINE, "run_update_force.py"),
-        }
+        sources = {"run_update_force": os.path.join(PIPELINE, "run_update_force.py")}
         for name, path in sources.items():
             src = open(path, encoding="utf-8").read()
             self.assertRegex(

@@ -1,4 +1,4 @@
-"""Explicit, side-effect-free paths for a checkout."""
+"""Explicit, side-effect-free paths for one local installation workspace."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from pathlib import Path
 
 @dataclass(frozen=True, slots=True)
 class Workspace:
-    """Paths owned by a single checkout.
+    """Paths owned by a single installation.
 
     Constructing this object neither creates nor inspects any paths.
     """
@@ -20,25 +20,24 @@ class Workspace:
         object.__setattr__(self, "root", Path(os.path.abspath(os.fspath(self.root))))
 
     @property
-    def docs(self) -> Path:
-        return self.root / "docs"
-
-    @property
     def papers(self) -> Path:
-        return self.docs / "papers"
+        return self.root / "papers"
 
     @property
     def cache(self) -> Path:
-        return self.root / "cache"
+        return self.root / ".cache"
 
-    def topic(self, alias: str) -> Path:
-        """Return a topic directory while rejecting paths outside ``docs``."""
-        if not isinstance(alias, str) or not alias or alias in {".", ".."}:
-            raise ValueError("topic alias must be a non-empty directory name")
-        candidate = Path(alias)
-        if candidate.is_absolute() or len(candidate.parts) != 1:
-            raise ValueError("topic alias must be a single directory name")
-        return self.docs / candidate
+    @property
+    def staging(self) -> Path:
+        return self.root / ".staging"
+
+    @property
+    def quarantine(self) -> Path:
+        return self.root / ".quarantine"
+
+    @property
+    def site(self) -> Path:
+        return self.root / "site"
 
     def within_root(self, *parts: str | Path) -> Path:
         """Join relative components under the checkout without allowing escapes."""
