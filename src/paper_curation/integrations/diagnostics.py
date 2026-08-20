@@ -53,16 +53,18 @@ class SystemDiagnosticsProbes:
         return ProbeResult(ready, "Python 3.12 available" if ready else "Python 3.12 is required")
 
     def workspace_readable(self, location: str) -> ProbeResult:
-        ready = self.path_exists(location) and self.path_access(location, os.R_OK)
+        expanded = Path(location).expanduser()
+        ready = self.path_exists(expanded) and self.path_access(expanded, os.R_OK)
         return ProbeResult(ready, "workspace is readable" if ready else "workspace is not readable")
 
     def workspace_writable(self, location: str) -> ProbeResult:
-        ready = self.path_exists(location) and self.path_access(location, os.W_OK)
+        expanded = Path(location).expanduser()
+        ready = self.path_exists(expanded) and self.path_access(expanded, os.W_OK)
         return ProbeResult(ready, "workspace is writable" if ready else "workspace is not writable")
 
     def source_ready(self, transport: str, *, network: bool) -> ProbeResult:
         if transport == "local-sqlite":
-            ready = self.path_exists(self.config.source.sqlite_path)
+            ready = self.path_exists(Path(self.config.source.sqlite_path).expanduser())
             return ProbeResult(ready, "local source is available" if ready else "local source is unavailable")
         credential = self.config.credentials.zotero_api_key or self.environment.get("ZOTERO_API_KEY", "")
         if not credential.strip():

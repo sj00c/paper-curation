@@ -209,7 +209,7 @@ class ZoteroStorageSource(_ZoteroApi):
                     source_id=_ZOTERO_SOURCE_ID,
                     scope_id=scope_id,
                     record_id=item["key"],
-                    title=_required_text(data, "title", "Zotero API item"),
+                    title=_required_text(data, "title", f"Zotero API item {item['key']}"),
                     authors=_creators(data),
                     abstract=_text(data, "abstractNote"),
                     doi=_text(data, "DOI"),
